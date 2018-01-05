@@ -1,0 +1,38 @@
+/* 
+  File.strings
+  AirBackupHelper
+
+  Created by iMobie on 10/20/17.
+  Copyright (c) 2017 iMobie. All rights reserved.
+*/
+"MSG_Size_MB" = "MB";
+"MSG_Size_GB" = "GB";
+"MSG_Size_KB" = "KB";
+"MSG_Size_B" = "B";
+
+//1.开始备份：
+"Backup_Start" = "AnyTrans está haciendo copia de su \"%@\" vía Wi-Fi (%d%%).";
+
+//2.备份失败：
+"Backup_Error" = "Se produjo un error cuando hacía copia de su \"%@\". Código de error: \"%d\".";
+//3.备份完成:
+//a.开启AnyTrans的时候就只提示备份完成:
+"Backup_Complete" = " \"%@\" Copia completa.";
+"Backup_Complete_Limite1" = "La versión actual solamente permite hacer copia de %@ dato. Por favor actualice AnyTrans para más servicio ilimitado.";
+
+//c.超过备份限制：
+"Backup_Complete_Limite2" = "¡Espacio insuficiente de backup! Por favor actualice AnyTrans para más servicio ilimitado.";
+
+"Backup_Unlock_Btn" = "Desbloquee más espacio de backup >";//暂时没有用
+
+"PrepareBackup_Start" = "Preparando hacer copia de su \"%@\" vía Wi-Fi, por favor espere…";
+"WifiDeviceConnected_Tips" = "Conectando \"%@\", por favor espere...";
+"BatteryNotification_Low" = "%d%% batería restante. ¡Por favor cargue su dispositivo!";
+"BackupOutOfDateNotification" = "No se puede hacer copia de \"%@\" como horario programado. ¿Desea hacer la copia de seguridad ahora?"; //暂时没有用
+"BatteryHighNotification" = "Solo queda %d%% de batería de \"%@\". Por favor inicie AnyTrans para hacer el cambio.";
+
+"OkBtnText" = "OK";
+"CancelBtnText" = "Cancelar";
+"AirBackup_DeviceStoped" = "Se ha detenido la copia de %@.";
+
+"SP_Download_Url" = "http://www.imobie.es/anytrans/download.htm";

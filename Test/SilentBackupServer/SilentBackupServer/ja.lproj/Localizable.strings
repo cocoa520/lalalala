@@ -1,0 +1,41 @@
+/* 
+  File.strings
+  AirBackupHelper
+
+  Created by iMobie on 10/20/17.
+  Copyright (c) 2017 iMobie. All rights reserved.
+*/
+"MSG_Size_MB" = "MB";
+"MSG_Size_GB" = "GB";
+"MSG_Size_KB" = "KB";
+"MSG_Size_B" = "B";
+
+//1.开始备份：
+"Backup_Start" = "AnyTransはWi-Fiで\”%@\”をバックアップしています (%d%%)。";
+
+//2.备份失败：
+"Backup_Error" = "\"%@\"をバックアップ中にエラーが発生しました。エラーコード： \"%d\"";
+//3.备份完成:
+//a.开启AnyTrans的时候就只提示备份完成:
+"Backup_Complete" = "\"%@\"バックアップ完了";
+"Backup_Complete_Limite1" = "未認証版では、%@のみバックアップできます。制限なしでバックアップするには、完全版にアップデートしてください。";
+
+//c.超过备份限制：
+"Backup_Complete_Limite2" = "十分なバックアップストレージがありません。制限なしでバックアップするには、完全版にアップデートしてください。";
+
+
+"Backup_Unlock_Btn" = "今すぐアップデート >";//暂时没有用
+
+
+"PrepareBackup_Start" = "Wi-Fiで\"%@\"をバックアップすることを準備中、しばらくお待ちください...";
+"WifiDeviceConnected_Tips" = "\"%@\"を接続中、しばらくお待ちください...";
+"BatteryNotification_Low" = "バッテリー残量は%d%%。お使いのデバイスを充電してください。";
+"BackupOutOfDateNotification" = "スケジュール通りに\"%@\"を自動的にバックアップすることができませんでした。今バックアップしますか？"; //暂时没有用
+"BatteryHighNotification" = "\"%@\"のバッテリー残量は%d%%のため、バックアップできません。AnyTransで設定を変更してください。";
+
+"OkBtnText" = "OK";
+"CancelBtnText" = "キャンセル";
+
+"AirBackup_DeviceStoped" = "%@のバックアップが中止されました。";
+
+"SP_Download_Url" = "http://www.imobie.jp/anytrans/download.htm";
