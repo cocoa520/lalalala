@@ -10,17 +10,15 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self setupView];
 }
 
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
 
-    // Update the view, if already loaded.
+- (void)setupView {
+    
 }
-
 
 @end
