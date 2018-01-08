@@ -244,6 +244,12 @@ CGFloat const labelY = 10.0f;
 }
 
 - (IBAction)sendToMac:(NSButton *)sender {
+    if (-1 == self.selectedIndex) {
+        NSLog(@"please select one item");
+        return;
+    }
+    
+    
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
     openPanel.canChooseFiles = NO;
     openPanel.allowsMultipleSelection = NO;

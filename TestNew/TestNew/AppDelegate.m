@@ -20,6 +20,11 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    
 }
 
+//实现这个方法并且返回YES，则会自动调用- (void)applicationWillTerminate:(NSNotification *)aNotification，让app结束进程
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return YES;
+}
 @end
