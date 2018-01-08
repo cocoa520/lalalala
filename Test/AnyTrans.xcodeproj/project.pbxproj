@@ -2848,8 +2848,8 @@
 		B92AD1CB1D41A82800D443A0 /* IMBMsgImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B92AD1CA1D41A82800D443A0 /* IMBMsgImageInfo.m */; };
 		B92AD1CE1D41A82E00D443A0 /* IMBContactBaseInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B92AD1CD1D41A82E00D443A0 /* IMBContactBaseInfoManager.m */; };
 		B92AD1D11D41B4D000D443A0 /* IMBMessageNameTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92AD1D01D41B4D000D443A0 /* IMBMessageNameTextCell.m */; };
-		B92BFD7220036D7C003948D7 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7120036D7C003948D7 /* MobileDevice.framework */; };
-		B92BFD7420036DB3003948D7 /* AirTrafficHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7320036DB3003948D7 /* AirTrafficHost.framework */; };
+		B92BFD7620036FB6003948D7 /* AirTrafficHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7520036FB6003948D7 /* AirTrafficHost.framework */; };
+		B92BFD7820036FD2003948D7 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7720036FD2003948D7 /* MobileDevice.framework */; };
 		B92C95FB1D4C992A00080152 /* IMBQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B92C95FA1D4C992A00080152 /* IMBQueue.m */; };
 		B92C95FE1D4C993400080152 /* IMBiCloudTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92C95FD1D4C993400080152 /* IMBiCloudTableCell.m */; };
 		B92C963B1D4C995400080152 /* IMBHoverBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92C96361D4C995400080152 /* IMBHoverBtnCell.m */; };
@@ -7759,8 +7759,8 @@
 		B92AD1CD1D41A82E00D443A0 /* IMBContactBaseInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBContactBaseInfoManager.m; sourceTree = "<group>"; };
 		B92AD1CF1D41B4D000D443A0 /* IMBMessageNameTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMessageNameTextCell.h; sourceTree = "<group>"; };
 		B92AD1D01D41B4D000D443A0 /* IMBMessageNameTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMessageNameTextCell.m; sourceTree = "<group>"; };
-		B92BFD7120036D7C003948D7 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MobileDevice.framework; sourceTree = "<group>"; };
-		B92BFD7320036DB3003948D7 /* AirTrafficHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AirTrafficHost.framework; sourceTree = "<group>"; };
+		B92BFD7520036FB6003948D7 /* AirTrafficHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirTrafficHost.framework; path = ../../../../../../../System/Library/PrivateFrameworks/AirTrafficHost.framework; sourceTree = "<group>"; };
+		B92BFD7720036FD2003948D7 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B92C95F91D4C992A00080152 /* IMBQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBQueue.h; sourceTree = "<group>"; };
 		B92C95FA1D4C992A00080152 /* IMBQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBQueue.m; sourceTree = "<group>"; };
 		B92C95FC1D4C993400080152 /* IMBiCloudTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiCloudTableCell.h; sourceTree = "<group>"; };
@@ -10514,12 +10514,14 @@
 				B99C268C1D3CE55E0078284A /* libicucore.dylib in Frameworks */,
 				7B9A34D71FA5C95A00624321 /* libMagickCore-6.Q16.2.dylib in Frameworks */,
 				B99C268A1D3CE4440078284A /* QuartzCore.framework in Frameworks */,
+				B92BFD7820036FD2003948D7 /* MobileDevice.framework in Frameworks */,
 				B99C26881D3CE3A30078284A /* libiconv.dylib in Frameworks */,
 				B996F6961FA6D72D0044F2A1 /* libpng16.16.dylib in Frameworks */,
 				B93A7F641D3CE1AC004FC2B6 /* CoreMedia.framework in Frameworks */,
 				B93A7F621D3CE196004FC2B6 /* AVFoundation.framework in Frameworks */,
 				B9B399D71D33334E00513EF8 /* AddressBook.framework in Frameworks */,
 				B996F6901FA6D72D0044F2A1 /* libcrypto.1.0.0.dylib in Frameworks */,
+				B92BFD7620036FB6003948D7 /* AirTrafficHost.framework in Frameworks */,
 				B93A7F601D3CE171004FC2B6 /* ImageCaptureCore.framework in Frameworks */,
 				B93A7F5E1D3CE14D004FC2B6 /* WebKit.framework in Frameworks */,
 				B935ABCF1FC690D8007C620A /* liblzfse.a in Frameworks */,
@@ -10527,7 +10529,6 @@
 				B93A7F5C1D3CE12F004FC2B6 /* Security.framework in Frameworks */,
 				B996F6871FA6D5970044F2A1 /* libgpac.dylib in Frameworks */,
 				B93A7F5A1D3CE119004FC2B6 /* DiskArbitration.framework in Frameworks */,
-				B92BFD7220036D7C003948D7 /* MobileDevice.framework in Frameworks */,
 				B9B399D51D33333000513EF8 /* ScriptingBridge.framework in Frameworks */,
 				B9B399D91D33335800513EF8 /* IOKit.framework in Frameworks */,
 				B93A7F581D3CE0DB004FC2B6 /* SystemConfiguration.framework in Frameworks */,
@@ -10547,7 +10548,6 @@
 				B9B399BF1D3331B800513EF8 /* libcurl.dylib in Frameworks */,
 				B939E8911DB9DD96008F7CA4 /* ServiceManager.framework in Frameworks */,
 				B9B399BD1D3331AA00513EF8 /* libz.dylib in Frameworks */,
-				B92BFD7420036DB3003948D7 /* AirTrafficHost.framework in Frameworks */,
 				7B9A34D81FA5C95A00624321 /* libMagickWand-6.Q16.2.dylib in Frameworks */,
 				B9B399531D332BBC00513EF8 /* Cocoa.framework in Frameworks */,
 			);
@@ -15722,12 +15722,12 @@
 			isa = PBXGroup;
 			children = (
 				B901902E1F56977F00EF5499 /* libSystem.B.dylib */,
-				B92BFD7320036DB3003948D7 /* AirTrafficHost.framework */,
+				B92BFD7720036FD2003948D7 /* MobileDevice.framework */,
+				B92BFD7520036FB6003948D7 /* AirTrafficHost.framework */,
 				B939E8901DB9DD96008F7CA4 /* ServiceManager.framework */,
 				B99C268B1D3CE55E0078284A /* libicucore.dylib */,
 				B99C26891D3CE4440078284A /* QuartzCore.framework */,
 				B99C26871D3CE3A30078284A /* libiconv.dylib */,
-				B92BFD7120036D7C003948D7 /* MobileDevice.framework */,
 				B93A7F631D3CE1AC004FC2B6 /* CoreMedia.framework */,
 				B93A7F611D3CE196004FC2B6 /* AVFoundation.framework */,
 				B93A7F5F1D3CE171004FC2B6 /* ImageCaptureCore.framework */,
