@@ -14,6 +14,26 @@
 		B92BFD4C20034D74003948D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92BFD4A20034D74003948D7 /* Main.storyboard */; };
 		B92BFD5720034D74003948D7 /* TestNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD5620034D74003948D7 /* TestNewTests.m */; };
 		B92BFD6220034D75003948D7 /* TestNewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD6120034D75003948D7 /* TestNewUITests.m */; };
+		B92BFD7A2003704F003948D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD792003704F003948D7 /* QuartzCore.framework */; };
+		B92BFD7D200370EC003948D7 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7C200370EC003948D7 /* MobileDevice.framework */; };
+		B92BFD7F20037111003948D7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD7E20037111003948D7 /* CoreMedia.framework */; };
+		B92BFD8120037143003948D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8020037143003948D7 /* Foundation.framework */; };
+		B92BFD8320037153003948D7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8220037153003948D7 /* CoreData.framework */; };
+		B92BFD8520037165003948D7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8420037165003948D7 /* AppKit.framework */; };
+		B92BFD8720037173003948D7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8620037173003948D7 /* Cocoa.framework */; };
+		B92BFD89200371C0003948D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD88200371C0003948D7 /* SystemConfiguration.framework */; };
+		B92BFD8B200371D5003948D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8A200371D5003948D7 /* IOKit.framework */; };
+		B92BFD8D20037251003948D7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8C20037251003948D7 /* libsqlite3.dylib */; };
+		B92BFD8F2003727E003948D7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8E2003727E003948D7 /* libxml2.dylib */; };
+		B92BFD9120037296003948D7 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9020037296003948D7 /* libcrypto.dylib */; };
+		B92BFD93200372A1003948D7 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD92200372A1003948D7 /* libssl.dylib */; };
+		B92BFD97200372C7003948D7 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD96200372C7003948D7 /* libz.1.2.5.dylib */; };
+		B92BFD99200372D5003948D7 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD98200372D5003948D7 /* libcurl.dylib */; };
+		B92BFD9B200372DE003948D7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9A200372DE003948D7 /* libz.dylib */; };
+		B92BFD9D200372F3003948D7 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9C200372F3003948D7 /* Quartz.framework */; };
+		B92BFD9F2003730D003948D7 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9E2003730D003948D7 /* libSystem.B.dylib */; };
+		B92BFDA120037321003948D7 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA020037321003948D7 /* libicucore.dylib */; };
+		B92BFDA32003733A003948D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA22003733A003948D7 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +69,26 @@
 		B92BFD5D20034D75003948D7 /* TestNewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestNewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92BFD6120034D75003948D7 /* TestNewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNewUITests.m; sourceTree = "<group>"; };
 		B92BFD6320034D75003948D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B92BFD792003704F003948D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD7C200370EC003948D7 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
+		B92BFD7E20037111003948D7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8020037143003948D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8220037153003948D7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8420037165003948D7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8620037173003948D7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD88200371C0003948D7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8A200371D5003948D7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD8C20037251003948D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD8E2003727E003948D7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD9020037296003948D7 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libcrypto.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD92200372A1003948D7 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libssl.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD96200372C7003948D7 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD98200372D5003948D7 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libcurl.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD9A200372DE003948D7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFD9C200372F3003948D7 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
+		B92BFD9E2003730D003948D7 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.B.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFDA020037321003948D7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
+		B92BFDA22003733A003948D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B92BFDA32003733A003948D7 /* libiconv.dylib in Frameworks */,
+				B92BFDA120037321003948D7 /* libicucore.dylib in Frameworks */,
+				B92BFD9F2003730D003948D7 /* libSystem.B.dylib in Frameworks */,
+				B92BFD9D200372F3003948D7 /* Quartz.framework in Frameworks */,
+				B92BFD9B200372DE003948D7 /* libz.dylib in Frameworks */,
+				B92BFD99200372D5003948D7 /* libcurl.dylib in Frameworks */,
+				B92BFD97200372C7003948D7 /* libz.1.2.5.dylib in Frameworks */,
+				B92BFD93200372A1003948D7 /* libssl.dylib in Frameworks */,
+				B92BFD9120037296003948D7 /* libcrypto.dylib in Frameworks */,
+				B92BFD8F2003727E003948D7 /* libxml2.dylib in Frameworks */,
+				B92BFD8D20037251003948D7 /* libsqlite3.dylib in Frameworks */,
+				B92BFD8B200371D5003948D7 /* IOKit.framework in Frameworks */,
+				B92BFD89200371C0003948D7 /* SystemConfiguration.framework in Frameworks */,
+				B92BFD8720037173003948D7 /* Cocoa.framework in Frameworks */,
+				B92BFD8520037165003948D7 /* AppKit.framework in Frameworks */,
+				B92BFD8320037153003948D7 /* CoreData.framework in Frameworks */,
+				B92BFD8120037143003948D7 /* Foundation.framework in Frameworks */,
+				B92BFD7F20037111003948D7 /* CoreMedia.framework in Frameworks */,
+				B92BFD7D200370EC003948D7 /* MobileDevice.framework in Frameworks */,
+				B92BFD7A2003704F003948D7 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +139,7 @@
 		B92BFD3320034D74003948D7 = {
 			isa = PBXGroup;
 			children = (
+				B92BFD7B2003709E003948D7 /* FrameWork */,
 				B92BFD3E20034D74003948D7 /* TestNew */,
 				B92BFD5520034D74003948D7 /* TestNewTests */,
 				B92BFD6020034D75003948D7 /* TestNewUITests */,
@@ -135,6 +196,33 @@
 				B92BFD6320034D75003948D7 /* Info.plist */,
 			);
 			path = TestNewUITests;
+			sourceTree = "<group>";
+		};
+		B92BFD7B2003709E003948D7 /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				B92BFDA22003733A003948D7 /* libiconv.dylib */,
+				B92BFDA020037321003948D7 /* libicucore.dylib */,
+				B92BFD9E2003730D003948D7 /* libSystem.B.dylib */,
+				B92BFD9A200372DE003948D7 /* libz.dylib */,
+				B92BFD98200372D5003948D7 /* libcurl.dylib */,
+				B92BFD96200372C7003948D7 /* libz.1.2.5.dylib */,
+				B92BFD92200372A1003948D7 /* libssl.dylib */,
+				B92BFD9020037296003948D7 /* libcrypto.dylib */,
+				B92BFD8E2003727E003948D7 /* libxml2.dylib */,
+				B92BFD8C20037251003948D7 /* libsqlite3.dylib */,
+				B92BFD9C200372F3003948D7 /* Quartz.framework */,
+				B92BFD8A200371D5003948D7 /* IOKit.framework */,
+				B92BFD88200371C0003948D7 /* SystemConfiguration.framework */,
+				B92BFD8620037173003948D7 /* Cocoa.framework */,
+				B92BFD8420037165003948D7 /* AppKit.framework */,
+				B92BFD8220037153003948D7 /* CoreData.framework */,
+				B92BFD8020037143003948D7 /* Foundation.framework */,
+				B92BFD7E20037111003948D7 /* CoreMedia.framework */,
+				B92BFD7C200370EC003948D7 /* MobileDevice.framework */,
+				B92BFD792003704F003948D7 /* QuartzCore.framework */,
+			);
+			name = FrameWork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,9 +490,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = TestNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-U",
@@ -423,9 +515,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = TestNew/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-U",
