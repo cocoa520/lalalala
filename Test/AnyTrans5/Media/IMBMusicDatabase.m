@@ -115,7 +115,7 @@
         }
     }
     
-    if ([databaseFilePath hasSuffix:@"iTunesCDB"] == YES) {
+    if ([databaseFilePath hasSuffix:@"iTunesCDB"] == YES) {//后缀；；；prefix ： 前缀
         databaseRoot = [[IMBiTunesCDBRoot alloc] init];
     } else {
         databaseRoot = [[IMBiTunesDBRoot alloc] init];

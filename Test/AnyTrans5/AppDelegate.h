@@ -10,12 +10,14 @@
 @class IMBMainWindowController;
 @class IMBUpgradeWindowController;
 @class IMBLogManager;
+@class ZLMainWindowController;
+
 #import "IMBCheckUpdater.h"
 #import "IMBiPod.h"
 #import "IMBDownloadFile.h"
 @interface AppDelegate : NSObject <NSApplicationDelegate,IMBDownLoadProgress>
 {
-    IMBMainWindowController *_mainWindowController;
+    ZLMainWindowController *_mainWindowController;
 
     NSMenu *ProductMenuItem;
     NSMenuItem *AboutMenuItem;
@@ -70,6 +72,7 @@
 @property (assign) IBOutlet NSMenuItem *hideOtherMenuItem;
 @property (assign) IBOutlet NSMenuItem *showAllMenuItem;
 @property (assign) IBOutlet NSMenuItem *quitMenuItem;
+
 @property (assign) IBOutlet NSMenu *editMenuItem;
 @property (assign) IBOutlet NSMenuItem *undoMenuItem;
 @property (assign) IBOutlet NSMenuItem *redoMenuItem;
@@ -79,10 +82,12 @@
 @property (assign) IBOutlet NSMenuItem *pasteMatchMenuItem;
 @property (assign) IBOutlet NSMenuItem *deleteMenuItem;
 @property (assign) IBOutlet NSMenuItem *selectAllMenuItem;
+
 @property (assign) IBOutlet NSMenu *windowMenuItem;
 @property (assign) IBOutlet NSMenuItem *minimizeMenuItem;
 @property (assign) IBOutlet NSMenuItem *zoomMenuItem;
 @property (assign) IBOutlet NSMenuItem *bringAllToFrontMenuItem;
+
 @property (assign) IBOutlet NSMenu *helpMenuItem;
 @property (assign) IBOutlet NSMenuItem *HomeMenuItem;
 @property (assign) IBOutlet NSMenuItem *OnlineGuideMenuItem;

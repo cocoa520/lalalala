@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -2998,6 +2998,8 @@
 		B94C92621D64145B0047ADE9 /* IMBCallHistoryClone.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C92611D64145B0047ADE9 /* IMBCallHistoryClone.m */; };
 		B94C92651D6433F70047ADE9 /* IMBContactClone.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C92641D6433F70047ADE9 /* IMBContactClone.m */; };
 		B94C92681D6454FE0047ADE9 /* IMBMessageClone.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C92671D6454FE0047ADE9 /* IMBMessageClone.m */; };
+		B94F1EB61FFCC04600E692AC /* ZLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B94F1EB41FFCC04600E692AC /* ZLMainWindowController.m */; };
+		B94F1EB71FFCC04600E692AC /* ZLMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94F1EB51FFCC04600E692AC /* ZLMainWindowController.xib */; };
 		B95201C81D5F050F000DFFE9 /* BackupViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B95201C51D5F050F000DFFE9 /* BackupViewAnimation.m */; };
 		B95201C91D5F050F000DFFE9 /* CarAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95201C71D5F050F000DFFE9 /* CarAnimationView.m */; };
 		B95201E21D5F2873000DFFE9 /* BoatAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B95201E11D5F2873000DFFE9 /* BoatAnimationView.m */; };
@@ -4193,6 +4195,7 @@
 		B9F090FC1D3E08D100C93633 /* IMBSTUCMethod.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9F090F91D3E08D100C93633 /* IMBSTUCMethod.mm */; };
 		B9F090FD1D3E08D100C93633 /* STUCMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9F090FA1D3E08D100C93633 /* STUCMethod.cpp */; };
 		B9F2EAFD1F94841D00193658 /* IMBPhotoExportSettingConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F2EAFC1F94841D00193658 /* IMBPhotoExportSettingConfig.m */; };
+		B9F401C11FFE26390062542A /* HeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F401C01FFE26390062542A /* HeaderTitleNames.plist */; };
 		B9F542FF1E4C52960064B57B /* IMBReminderEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F542FE1E4C52960064B57B /* IMBReminderEditView.m */; };
 		B9F6BD081D6A9FD3003C7433 /* IMBAirSyncImportBetweenDeviceTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6BD071D6A9FD3003C7433 /* IMBAirSyncImportBetweenDeviceTransfer.m */; };
 		B9F6BD0B1D6B0197003C7433 /* IMBBetweenDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6BD0A1D6B0197003C7433 /* IMBBetweenDeviceHandler.m */; };
@@ -8038,6 +8041,9 @@
 		B94C92641D6433F70047ADE9 /* IMBContactClone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBContactClone.m; sourceTree = "<group>"; };
 		B94C92661D6454FE0047ADE9 /* IMBMessageClone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMessageClone.h; sourceTree = "<group>"; };
 		B94C92671D6454FE0047ADE9 /* IMBMessageClone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMessageClone.m; sourceTree = "<group>"; };
+		B94F1EB31FFCC04600E692AC /* ZLMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLMainWindowController.h; sourceTree = "<group>"; };
+		B94F1EB41FFCC04600E692AC /* ZLMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLMainWindowController.m; sourceTree = "<group>"; };
+		B94F1EB51FFCC04600E692AC /* ZLMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLMainWindowController.xib; sourceTree = "<group>"; };
 		B95201C41D5F050F000DFFE9 /* BackupViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupViewAnimation.h; sourceTree = "<group>"; };
 		B95201C51D5F050F000DFFE9 /* BackupViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupViewAnimation.m; sourceTree = "<group>"; };
 		B95201C61D5F050F000DFFE9 /* CarAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarAnimationView.h; sourceTree = "<group>"; };
@@ -10366,6 +10372,7 @@
 		B9F090FB1D3E08D100C93633 /* STUCMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUCMethod.h; sourceTree = "<group>"; };
 		B9F2EAFB1F94841D00193658 /* IMBPhotoExportSettingConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoExportSettingConfig.h; sourceTree = "<group>"; };
 		B9F2EAFC1F94841D00193658 /* IMBPhotoExportSettingConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoExportSettingConfig.m; sourceTree = "<group>"; };
+		B9F401C01FFE26390062542A /* HeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeaderTitleNames.plist; sourceTree = "<group>"; };
 		B9F542FD1E4C52960064B57B /* IMBReminderEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBReminderEditView.h; sourceTree = "<group>"; };
 		B9F542FE1E4C52960064B57B /* IMBReminderEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBReminderEditView.m; sourceTree = "<group>"; };
 		B9F6BD061D6A9FD3003C7433 /* IMBAirSyncImportBetweenDeviceTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAirSyncImportBetweenDeviceTransfer.h; sourceTree = "<group>"; };
@@ -15011,6 +15018,17 @@
 			path = ToDelete;
 			sourceTree = "<group>";
 		};
+		B94F1EB21FFCBFF900E692AC /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				B94F1EB31FFCC04600E692AC /* ZLMainWindowController.h */,
+				B94F1EB41FFCC04600E692AC /* ZLMainWindowController.m */,
+				B94F1EB51FFCC04600E692AC /* ZLMainWindowController.xib */,
+				B9F401C01FFE26390062542A /* HeaderTitleNames.plist */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		B966061B1D33541800A70786 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -15749,6 +15767,7 @@
 		B9B399581D332BBC00513EF8 /* AnyTrans5 */ = {
 			isa = PBXGroup;
 			children = (
+				B94F1EB21FFCBFF900E692AC /* Test */,
 				0C18C99A1F79E4FE0080DB3A /* Error */,
 				B97DCE641F0B21A600CE57FF /* Android */,
 				B919C7C31E10AB200047C520 /* AnyYoutubeDLManager */,
@@ -19303,7 +19322,7 @@
 				};
 			};
 			buildConfigurationList = B9B3994A1D332BBC00513EF8 /* Build configuration list for PBXProject "AnyTrans" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -20383,6 +20402,7 @@
 				0CA0837B1FEA86E4002A5A5D /* trancodingbtn_min1@2x.png in Resources */,
 				0CA0877E1FEA86E4002A5A5D /* preview_back@2x.png in Resources */,
 				0CA0813E1FEA86E4002A5A5D /* toios_btngift_la@2x.png in Resources */,
+				B94F1EB71FFCC04600E692AC /* ZLMainWindowController.xib in Resources */,
 				0CA080071FEA86E4002A5A5D /* airbackup_hot1jp@2x.png in Resources */,
 				0CA081E71FEA86E4002A5A5D /* annoy_freecar_two.png in Resources */,
 				0CA082B81FEA86E4002A5A5D /* clone_close_down.png in Resources */,
@@ -21188,6 +21208,7 @@
 				0CA082901FEA86E4002A5A5D /* re_buy_right2@2x.png in Resources */,
 				0CA084D21FEA86E4002A5A5D /* photoviedo_allvideo1@2x.png in Resources */,
 				0CA085F71FEA86E4002A5A5D /* nav_airwifi1@2x.png in Resources */,
+				B9F401C11FFE26390062542A /* HeaderTitleNames.plist in Resources */,
 				0CA081CE1FEA86E4002A5A5D /* annoy_bg_three@2x.png in Resources */,
 				0CA086481FEA86E4002A5A5D /* select_iTunesU@2x.png in Resources */,
 				0CA084341FEA86E4002A5A5D /* fastdriver_arrow_left3.png in Resources */,
@@ -22310,6 +22331,7 @@
 				B9CC3BD61D3E4CFF0082F448 /* NoteTextGrowthField.m in Sources */,
 				B9C6C36B1F0B6D4400345147 /* BERApplicationSpecificParser.m in Sources */,
 				2779DA471D38E9E6009F12D5 /* File_Ape.cpp in Sources */,
+				B94F1EB61FFCC04600E692AC /* ZLMainWindowController.m in Sources */,
 				B9C6C6891F0B6D4600345147 /* DPAESCBCCipher.m in Sources */,
 				96CA2B031D5A31EA00F8884F /* IMBAllFileExport.m in Sources */,
 				B9C6C69B1F0B6D4600345147 /* ServiceKeySetBuilder.m in Sources */,
@@ -23754,7 +23776,7 @@
 		B9B399811D332BBD00513EF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -23786,7 +23808,7 @@
 					"$(PROJECT_DIR)/AnyTrans5/icloud/iCloud9Decrypt/LZFSE",
 					"$(PROJECT_DIR)/AnyTrans5/Photo/HeifConvert/OpencvPythonLib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"-licucore",
@@ -23794,8 +23816,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.11;
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -23803,7 +23824,7 @@
 		B9B399821D332BBD00513EF8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -23834,7 +23855,7 @@
 					"$(PROJECT_DIR)/AnyTrans5/icloud/iCloud9Decrypt/LZFSE",
 					"$(PROJECT_DIR)/AnyTrans5/Photo/HeifConvert/OpencvPythonLib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"-licucore",
@@ -23842,8 +23863,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.11;
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
