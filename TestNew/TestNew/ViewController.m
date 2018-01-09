@@ -245,6 +245,21 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
 {
     BOOL _subscribed;
     am_device_notification _notification;
+    bool _isNeedInputPassCode,_insession,_connected;
+    am_device _amDevice;
+    
+    
+    am_device _device;
+    NSString *_lasterror;
+    NSString *_deviceName;
+    NSString *_udid;
+    NSString *_totalDiskCapacity;
+    NSString *_serialNumber;
+    
+    NSString * _deviceClass;
+    NSString * _productType;
+    NSString *_productVersion;
+    NSString *_totalDataAvailable;
 }
 
 @end
@@ -262,7 +277,9 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
 
 - (void)setupView {
     _subscribed = NO;
-    
+    _isNeedInputPassCode = NO;
+    _connected = NO;
+    _insession = YES;
     [self startListen];
 }
 
@@ -309,7 +326,8 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             if (connectType == 1) {
                 // 1:有线连接
 //                if (/* DISABLES CODE */ (NO)) {
-                    [self connectDevice:info->dev];
+                _connected = YES;
+                [self connectDevice:info->dev];
 //                }
             } else if (connectType == 2) {
                 
@@ -329,6 +347,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             
         case ADNCI_MSG_DISCONNECTED: {
             int connectType = AMDeviceGetInterfaceType(info->dev);
+            _amDevice = info->dev;
             if (connectType == 2) {//wifi连接设备断开
 //                for (d in _devices) {
 //                    if ([d isDevice:info->dev]) {
@@ -363,6 +382,16 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 }
 
 - (void)connectDevice:(am_device)dev {
+    _amDevice = dev;
+    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
+    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
+    _productType = [[self deviceValueForKey:@"ProductType"] retain];
+    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
+    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
+    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
+    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
+    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
 //        AMDevice * d = [AMDevice deviceFrom:dev];
 //        if (d != nil) {
@@ -399,7 +428,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 }
 
 - (void)disConnectDevice:(am_device)dev {
-    
+    _amDevice = dev;
 }
 
 #pragma mark -- 注销监听
@@ -415,4 +444,84 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     [super dealloc];
 }
 
+#pragma mark -- Others 
+
+- (bool)checkStatus:(int)ret from:(const char *)func
+{
+    if (ret != 0) {
+        NSString *retStr = [NSString stringWithFormat:@"%x",ret];
+        if ([@"e8000025" isEqualToString:retStr]) {
+            _isNeedInputPassCode = TRUE;
+        }
+        return NO;
+    }
+    return YES;
+}
+
+
+- (id)deviceValueForKey:(NSString*)key
+{
+    return [self deviceValueForKey:key inDomain:nil];
+}
+
+- (id)deviceValueForKey:(NSString*)key inDomain:(NSString*)domain
+{
+    BOOL opened_connection = NO;
+    BOOL opened_session = NO;
+    id result = nil;
+    
+    // first, check for a connection
+    if (!_connected) {
+        if (![self deviceConnect]) goto bail;
+        opened_connection = YES;
+    }
+    
+    // one way or another, we have a connection, look for a session
+    if (!_insession) {
+        if (![self startSession]) goto bail;
+        opened_session = YES;
+    }
+    
+    // ok we have a session running, just query and set up to return
+    result = (id)AMDeviceCopyValue(_amDevice,(CFStringRef)domain,(CFStringRef)key);
+    
+bail:
+    if (opened_session) [self stopSession];
+    if (opened_connection) [self deviceDisconnect];
+    return [result autorelease];
+}
+
+- (bool)deviceConnect
+{
+    if (![self checkStatus:AMDeviceConnect(_amDevice) from:"AMDeviceConnect"]) return NO;
+    _connected = YES;
+    return YES;
+}
+
+- (bool)startSession
+{
+    if ([self checkStatus:AMDeviceStartSession(_amDevice) from:"AMDeviceStartSession"]) {
+        _insession = YES;
+        return YES;
+    }
+    return NO;
+}
+
+- (bool)stopSession
+{
+    if ([self checkStatus:AMDeviceStopSession(_amDevice) from:"AMDeviceStopSession"]) {
+        _insession = NO;
+        return YES;
+    }
+    return NO;
+}
+
+- (bool)deviceDisconnect
+{
+    if ([self checkStatus:AMDeviceDisconnect(_amDevice) from:"AMDeviceDisconnect"]) {
+        _connected = NO;
+        return YES;
+    }
+    return NO;
+}
 @end

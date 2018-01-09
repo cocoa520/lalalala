@@ -533,7 +533,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TsinHzl.TestNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -558,7 +558,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TsinHzl.TestNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
