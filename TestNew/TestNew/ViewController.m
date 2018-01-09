@@ -279,7 +279,7 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     _subscribed = NO;
     _isNeedInputPassCode = NO;
     _connected = NO;
-    _insession = YES;
+    _insession = NO;
     [self startListen];
 }
 
@@ -391,6 +391,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
     _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
     _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+    NSDictionary *dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.data_sync"];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
 //        AMDevice * d = [AMDevice deviceFrom:dev];
