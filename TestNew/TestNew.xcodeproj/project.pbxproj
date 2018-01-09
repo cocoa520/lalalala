@@ -20,8 +20,6 @@
 		B92BFD8120037143003948D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8020037143003948D7 /* Foundation.framework */; };
 		B92BFD8320037153003948D7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8220037153003948D7 /* CoreData.framework */; };
 		B92BFD8520037165003948D7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8420037165003948D7 /* AppKit.framework */; };
-		B92BFD8720037173003948D7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8620037173003948D7 /* Cocoa.framework */; };
-		B92BFD89200371C0003948D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD88200371C0003948D7 /* SystemConfiguration.framework */; };
 		B92BFD8B200371D5003948D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8A200371D5003948D7 /* IOKit.framework */; };
 		B92BFD8D20037251003948D7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8C20037251003948D7 /* libsqlite3.dylib */; };
 		B92BFD8F2003727E003948D7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD8E2003727E003948D7 /* libxml2.dylib */; };
@@ -34,6 +32,10 @@
 		B92BFD9F2003730D003948D7 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9E2003730D003948D7 /* libSystem.B.dylib */; };
 		B92BFDA120037321003948D7 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA020037321003948D7 /* libicucore.dylib */; };
 		B92BFDA32003733A003948D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA22003733A003948D7 /* libiconv.dylib */; };
+		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
+		B9E127312004512C008F6854 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E127302004512C008F6854 /* NSData+Category.m */; };
+		B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273320045148008F6854 /* NSDictionary+Category.m */; };
+		B9E1273F20049E63008F6854 /* CustomDC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273E20049E63008F6854 /* CustomDC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +77,6 @@
 		B92BFD8020037143003948D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B92BFD8220037153003948D7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		B92BFD8420037165003948D7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
-		B92BFD8620037173003948D7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		B92BFD88200371C0003948D7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		B92BFD8A200371D5003948D7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		B92BFD8C20037251003948D7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFD8E2003727E003948D7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
@@ -89,6 +89,15 @@
 		B92BFD9E2003730D003948D7 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.B.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA020037321003948D7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA22003733A003948D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		B9E1272C20045101008F6854 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		B9E1272D20045101008F6854 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		B9E1272F2004512C008F6854 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
+		B9E127302004512C008F6854 /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
+		B9E1273220045148008F6854 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
+		B9E1273320045148008F6854 /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
+		B9E1273520045167008F6854 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		B9E1273D20049E63008F6854 /* CustomDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDC.h; sourceTree = "<group>"; };
+		B9E1273E20049E63008F6854 /* CustomDC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +117,6 @@
 				B92BFD8F2003727E003948D7 /* libxml2.dylib in Frameworks */,
 				B92BFD8D20037251003948D7 /* libsqlite3.dylib in Frameworks */,
 				B92BFD8B200371D5003948D7 /* IOKit.framework in Frameworks */,
-				B92BFD89200371C0003948D7 /* SystemConfiguration.framework in Frameworks */,
-				B92BFD8720037173003948D7 /* Cocoa.framework in Frameworks */,
 				B92BFD8520037165003948D7 /* AppKit.framework in Frameworks */,
 				B92BFD8320037153003948D7 /* CoreData.framework in Frameworks */,
 				B92BFD8120037143003948D7 /* Foundation.framework in Frameworks */,
@@ -160,6 +167,8 @@
 		B92BFD3E20034D74003948D7 /* TestNew */ = {
 			isa = PBXGroup;
 			children = (
+				B9E1273C20049DB2008F6854 /* CustomDC */,
+				B9E127202004506C008F6854 /* DeviceConnection */,
 				B92BFD3F20034D74003948D7 /* AppDelegate.h */,
 				B92BFD4020034D74003948D7 /* AppDelegate.m */,
 				B92BFD4520034D74003948D7 /* ViewController.h */,
@@ -213,8 +222,6 @@
 				B92BFD8C20037251003948D7 /* libsqlite3.dylib */,
 				B92BFD9C200372F3003948D7 /* Quartz.framework */,
 				B92BFD8A200371D5003948D7 /* IOKit.framework */,
-				B92BFD88200371C0003948D7 /* SystemConfiguration.framework */,
-				B92BFD8620037173003948D7 /* Cocoa.framework */,
 				B92BFD8420037165003948D7 /* AppKit.framework */,
 				B92BFD8220037153003948D7 /* CoreData.framework */,
 				B92BFD8020037143003948D7 /* Foundation.framework */,
@@ -223,6 +230,29 @@
 				B92BFD792003704F003948D7 /* QuartzCore.framework */,
 			);
 			name = FrameWork;
+			sourceTree = "<group>";
+		};
+		B9E127202004506C008F6854 /* DeviceConnection */ = {
+			isa = PBXGroup;
+			children = (
+				B9E1273520045167008F6854 /* IMBNotificationDefine.h */,
+				B9E1273220045148008F6854 /* NSDictionary+Category.h */,
+				B9E1273320045148008F6854 /* NSDictionary+Category.m */,
+				B9E1272F2004512C008F6854 /* NSData+Category.h */,
+				B9E127302004512C008F6854 /* NSData+Category.m */,
+				B9E1272C20045101008F6854 /* NSString+Category.h */,
+				B9E1272D20045101008F6854 /* NSString+Category.m */,
+			);
+			path = DeviceConnection;
+			sourceTree = "<group>";
+		};
+		B9E1273C20049DB2008F6854 /* CustomDC */ = {
+			isa = PBXGroup;
+			children = (
+				B9E1273D20049E63008F6854 /* CustomDC.h */,
+				B9E1273E20049E63008F6854 /* CustomDC.m */,
+			);
+			path = CustomDC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,9 +384,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9E127312004512C008F6854 /* NSData+Category.m in Sources */,
 				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
 				B92BFD4420034D74003948D7 /* main.m in Sources */,
+				B9E1272E20045101008F6854 /* NSString+Category.m in Sources */,
+				B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */,
 				B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */,
+				B9E1273F20049E63008F6854 /* CustomDC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
