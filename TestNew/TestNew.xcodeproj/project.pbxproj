@@ -35,7 +35,6 @@
 		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
 		B9E127312004512C008F6854 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E127302004512C008F6854 /* NSData+Category.m */; };
 		B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273320045148008F6854 /* NSDictionary+Category.m */; };
-		B9E1273F20049E63008F6854 /* CustomDC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273E20049E63008F6854 /* CustomDC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +95,6 @@
 		B9E1273220045148008F6854 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
 		B9E1273320045148008F6854 /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
 		B9E1273520045167008F6854 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
-		B9E1273D20049E63008F6854 /* CustomDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDC.h; sourceTree = "<group>"; };
-		B9E1273E20049E63008F6854 /* CustomDC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,8 +246,6 @@
 		B9E1273C20049DB2008F6854 /* CustomDC */ = {
 			isa = PBXGroup;
 			children = (
-				B9E1273D20049E63008F6854 /* CustomDC.h */,
-				B9E1273E20049E63008F6854 /* CustomDC.m */,
 			);
 			path = CustomDC;
 			sourceTree = "<group>";
@@ -390,7 +385,6 @@
 				B9E1272E20045101008F6854 /* NSString+Category.m in Sources */,
 				B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */,
 				B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */,
-				B9E1273F20049E63008F6854 /* CustomDC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
