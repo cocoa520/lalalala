@@ -69,7 +69,7 @@ typedef struct _am_device_notification	*am_device_notification;
    typedef uint32_t  	am_service;
 #endif
 
-int startServiceFaildCount;
+//int startServiceFaildCount;
 /// This class represents a service running on the mobile device.  To create
 /// an instance of this class, send the \p -startService: message to an instance
 /// of AMDevice.
@@ -1159,6 +1159,9 @@ enum device_link_file_status_t {
 @property (readonly) NSString *totalDiskCapacity;
 @property (readonly) bool connected;
 @property (nonatomic, readwrite) BOOL isValid;
+
+
++ (AMDevice*)deviceFrom:(am_device)device;
 
 - (int)getDeviceRet;
 

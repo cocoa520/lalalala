@@ -32,6 +32,8 @@
 		B92BFD9F2003730D003948D7 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9E2003730D003948D7 /* libSystem.B.dylib */; };
 		B92BFDA120037321003948D7 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA020037321003948D7 /* libicucore.dylib */; };
 		B92BFDA32003733A003948D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA22003733A003948D7 /* libiconv.dylib */; };
+		B9BDB4C5200618ED00514704 /* NSString+ZLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */; };
+		B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDB4C720061A0200514704 /* ZLFileTool.m */; };
 		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
 		B9E127312004512C008F6854 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E127302004512C008F6854 /* NSData+Category.m */; };
 		B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273320045148008F6854 /* NSDictionary+Category.m */; };
@@ -88,6 +90,10 @@
 		B92BFD9E2003730D003948D7 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.B.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA020037321003948D7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA22003733A003948D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		B9BDB4C3200618ED00514704 /* NSString+ZLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZLExtension.h"; sourceTree = "<group>"; };
+		B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZLExtension.m"; sourceTree = "<group>"; };
+		B9BDB4C620061A0200514704 /* ZLFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFileTool.h; sourceTree = "<group>"; };
+		B9BDB4C720061A0200514704 /* ZLFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLFileTool.m; sourceTree = "<group>"; };
 		B9E1272C20045101008F6854 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
 		B9E1272D20045101008F6854 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
 		B9E1272F2004512C008F6854 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
@@ -246,6 +252,10 @@
 		B9E1273C20049DB2008F6854 /* CustomDC */ = {
 			isa = PBXGroup;
 			children = (
+				B9BDB4C3200618ED00514704 /* NSString+ZLExtension.h */,
+				B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */,
+				B9BDB4C620061A0200514704 /* ZLFileTool.h */,
+				B9BDB4C720061A0200514704 /* ZLFileTool.m */,
 			);
 			path = CustomDC;
 			sourceTree = "<group>";
@@ -382,7 +392,9 @@
 				B9E127312004512C008F6854 /* NSData+Category.m in Sources */,
 				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
 				B92BFD4420034D74003948D7 /* main.m in Sources */,
+				B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */,
 				B9E1272E20045101008F6854 /* NSString+Category.m in Sources */,
+				B9BDB4C5200618ED00514704 /* NSString+ZLExtension.m in Sources */,
 				B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */,
 				B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */,
 			);
@@ -533,7 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TsinHzl.TestNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -558,7 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TsinHzl.TestNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

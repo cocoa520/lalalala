@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <syslog.h>
@@ -23,6 +24,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "IMBNotificationDefine.h"
 #import <AppKit/AppKit.h>
+
+#import "ZLFileTool.h"
 
 
 #pragma mark -------------------------------------Begin --- MobileDevice.framework internals
@@ -249,7 +252,6 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     am_device _amDevice;
     
     
-    am_device _device;
     NSString *_lasterror;
     NSString *_deviceName;
     NSString *_udid;
@@ -260,6 +262,11 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     NSString * _productType;
     NSString *_productVersion;
     NSString *_totalDataAvailable;
+    NSDictionary *_dataDic;
+    
+//    AMDevice *_deviceHandle;
+    
+    afc_connection _afc;
 }
 
 @end
@@ -280,6 +287,7 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     _isNeedInputPassCode = NO;
     _connected = NO;
     _insession = NO;
+    
     [self startListen];
 }
 
@@ -296,6 +304,14 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     }
 }
 
+- (void)stopListen {
+    int ret = AMDeviceNotificationUnsubscribe(_notification);
+    if (ret == 0) {
+        _subscribed = NO;
+    } else {
+        NSLog(@"AMDeviceNotificationUnsubscribe failed: %d", ret);
+    }
+}
 /////////监听回调方法
 // this is called back by AMDeviceNotificationSubscribe()
 // we just punt back into a regular method//我们仅仅是把它放在一个常规的方法里进行回调
@@ -325,22 +341,11 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             int connectType = AMDeviceGetInterfaceType(info->dev);
             if (connectType == 1) {
                 // 1:有线连接
-//                if (/* DISABLES CODE */ (NO)) {
-                _connected = YES;
                 [self connectDevice:info->dev];
-//                }
             } else if (connectType == 2) {
                 
             } else {
                 // 默认有线连接
-//                d = [AMDevice deviceFrom:info->dev];
-//                if (d != nil) {
-//                    [_devices addObject:d];
-//                    [d setIsWifiConnection:NO];
-//                    if (_listener && [_listener respondsToSelector:@selector(deviceConnected:)]) {
-//                        [_listener deviceConnected:d];
-//                    }
-//                }
             }
             break;
         }
@@ -349,40 +354,18 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             int connectType = AMDeviceGetInterfaceType(info->dev);
             _amDevice = info->dev;
             if (connectType == 2) {//wifi连接设备断开
-//                for (d in _devices) {
-//                    if ([d isDevice:info->dev]) {
-//                        NSLog(@"Device udid:%@",d.udid);
-//                        NSLog(@"Device serialNumber:%@",d.serialNumber);
-//                        if (d.serialNumber == nil) {
-//                            NSLog(@"******");
-//                        }
-//                        [d forgetDevice];
-//                        NSLog(@"Device serialNumber2:%@",d.serialNumber);
-//                        if (_listener && [_listener respondsToSelector:@selector(deviceDisconnected:)]) {
-//                            NSLog(@"Device serialNumber3:%@",d.serialNumber);
-//                            BOOL isConnected = NO;
-//                            [d setIsConnected:&isConnected];
-//                            [_listener deviceDisconnected:d];
-//                        }
-//                        
-//                        [_devices removeObject:d];
-//                        
-//                        break;
-//                    }
-//                }
             }else {//1则为数据线连接设备断开
                 [self disConnectDevice:info->dev];
             }
             break;
         }
     }
-    
-    // if he's waiting for us to do something, break him
-//    if (_waitingInRunLoop) CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
 - (void)connectDevice:(am_device)dev {
     _amDevice = dev;
+    
+    
     _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
     _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
     _productType = [[self deviceValueForKey:@"ProductType"] retain];
@@ -391,41 +374,11 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
     _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
     _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
-    NSDictionary *dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.data_sync"];
+    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        AMDevice * d = [AMDevice deviceFrom:dev];
-//        if (d != nil) {
-//            if ([d getDeviceRet] == -402653052) {
-//                return;
-//            }
-//            BOOL isConnected = YES;
-//            if ([_devices count] > 0) {
-//                BOOL isExist = NO;
-//                for (AMDevice *amDevice in _devices) {
-//                    if ([amDevice.serialNumber isEqualToString:d.serialNumber]) {
-//                        isExist = YES;
-//                        break;
-//                    }
-//                }
-//                if (!isExist) {
-//                    [_devices addObject:d];
-//                }
-//            }else {
-//                if (![_devices containsObject:d]) {
-//                    [_devices addObject:d];
-//                }
-//            }
-//            [d setIsConnected:&isConnected];
-//            if (_listener && [_listener respondsToSelector:@selector(deviceConnected:)]) {
-//                [_listener deviceConnected:d];
-//            }
-//        }else {
-//            if (_listener && [_listener respondsToSelector:@selector(deviceNeedPassword:)]) {
-//                [_listener deviceNeedPassword:dev];
-//            }
-//        }
-    });
+    
+    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
+
 }
 
 - (void)disConnectDevice:(am_device)dev {
@@ -435,12 +388,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 #pragma mark -- 注销监听
 - (void)dealloc {
     
-    int ret = AMDeviceNotificationUnsubscribe(_notification);
-    if (ret == 0) {
-        _subscribed = NO;
-    } else {
-        NSLog(@"AMDeviceNotificationUnsubscribe failed: %d", ret);
-    }
+    [self stopListen];
     
     [super dealloc];
 }
@@ -492,6 +440,7 @@ bail:
     return [result autorelease];
 }
 
+#pragma mark --- deviceConnetion And deviceDisconnection
 - (bool)deviceConnect
 {
     if (![self checkStatus:AMDeviceConnect(_amDevice) from:"AMDeviceConnect"]) return NO;
@@ -525,4 +474,274 @@ bail:
     }
     return NO;
 }
+
+#pragma mark --- 文件相关操作
+
+- (BOOL)copyRemoteFile:(NSString*)path1 toLocalFile:(NSString*)path2
+{
+    // NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    BOOL result = NO;
+    if ([self ensureConnectionIsOpen]) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        // make sure local file doesn't exist
+        if ([fm fileExistsAtPath:path2]) {
+        } else {
+            // open remote file for read
+            AFCFileReference *in = [self openForRead:path1];
+            if (in) {
+                uint32_t bufsz = 10240;
+                uint32_t filesize = [[[self getFileInfo:path1] valueForKey:@"st_size"] intValue];
+                if (filesize>102400*5) {
+                    bufsz = 102400*5;
+                }else if (filesize<=102400*5&&filesize>102400){
+                    bufsz = 102400*5;
+                }else if (filesize<=102400){
+                    bufsz = 102400;
+                }
+                // open local file for write - stupidly we need to create it before
+                // we can make an NSFileHandle
+                [fm createFileAtPath:path2 contents:nil attributes:nil];
+                NSFileHandle *out = [NSFileHandle fileHandleForWritingAtPath:path2];
+                if (!out) {
+                } else {
+                    // copy all content across 10K at a time...  use
+                    // malloc for the buffer rather than NSData because I've noticed
+                    // strange problems in the debugger
+                    //NSLog(@"after fileHandleForWritingAtPath1");
+                    char *buff = (char*)malloc(bufsz);
+                    uint64_t done = 0;
+                    while (1) {
+                        uint64_t n = [in readN:bufsz bytes:buff];
+                        if (n==0) break;
+                        NSData *b2 = [[NSData alloc]
+                                      initWithBytesNoCopy:buff length:n freeWhenDone:NO];
+                        [out writeData:b2];
+                        [b2 release];
+                        done += n;
+                    }
+                    free(buff);
+                    [out closeFile];
+                    result = YES;
+                }
+                [in closeFile];
+            }
+        }
+    }
+    return result;
+}
+
+- (AFCFileReference*)openForRead:(NSString*)path
+{
+    if (![self ensureConnectionIsOpen]) return nil;
+    AFCFileReference *afcFile = nil;
+    @synchronized(self) {
+        afc_file_ref ref = 0;
+        //        NSLog(@"open path:%@  socket_fd:%d  [path UTF8String]:%s  _afc:%@",path,socket_fd,[path UTF8String],_afc);
+        @try {
+            afc_error_t openRet = AFCFileRefOpen(_afc, [path UTF8String], 1, &ref);
+            bool ret = [self checkStatus:openRet from:"AFCFileRefOpen"];
+            if (ret) {
+                afcFile = [[[AFCFileReference alloc] initWithPath:path reference:ref afc:_afc] autorelease];
+            }
+        }
+        @catch (NSException *exception) {
+            NSLog(@"exception:%@",exception.reason);
+        }
+    }
+    // if mode==0, ret=7
+    // if file does not exist, ret=8
+    return afcFile;
+}
+
+- (bool)ensureConnectionIsOpen
+{
+    if (_afc) return YES;
+//    [self setLastError:@"Connection is not open"];
+    return NO;
+}
+
+
+- (NSDictionary*)getFileInfo:(NSString*)path
+{
+    if (!path) {
+//        [self setLastError:@"Input path is nil"];
+        return nil;
+    }
+    
+    if ([self ensureConnectionIsOpen]) {
+        afc_dictionary dict;
+        if ([self checkStatus:AFCFileInfoOpen(_afc, [path UTF8String], &dict) from:"AFCFileInfoOpen"]) {
+            NSMutableDictionary *result = [self readAfcDictionary:dict];
+            [result setObject:path forKey:@"path"];
+            AFCKeyValueClose(dict);
+//            [self clearLastError];
+            
+            // fix the ones we know are dates
+            [self fix_date_entry:@"st_birthtime" in:result];
+            [self fix_date_entry:@"st_mtime" in:result];
+            return [NSDictionary dictionaryWithDictionary:result];
+        }
+    }
+    return nil;
+}
+-(void)fix_date_entry:(NSString*)key in:(NSMutableDictionary *)dict
+{
+    id d = [dict objectForKey:key];
+    if (d) {
+        long v = [d doubleValue] / 1000000000.0;
+        d = [NSDate dateWithTimeIntervalSince1970:v];
+        [dict setObject:d forKey:key];
+    }
+}
+- (NSMutableDictionary*)readAfcDictionary:(afc_dictionary)dict
+{
+    NSMutableDictionary *result = [[[NSMutableDictionary alloc] init] autorelease];
+    const char *k, *v;
+    while (0 == AFCKeyValueRead(dict, &k, &v)) {
+        if (!k) break;
+        if (!v) break;
+        
+        // if all the characters in the value are digits, pass it back as
+        // as 'long long' in a dictionary - else pass it back as a string
+        const char *p;
+        for (p=v; *p; p++) if (*p<'0' | *p>'9') break;
+        if (*p) {
+            /* its a string */
+            [result setObject:[NSString stringWithUTF8String:v] forKey:[NSString stringWithUTF8String:k]];
+        } else {
+            [result setObject:[NSNumber numberWithLongLong:atoll(v)] forKey:[NSString stringWithUTF8String:k]];
+        }
+    }
+    return result;
+}
 @end
+
+#pragma mark ------ AFCFileReference
+
+@implementation AFCFileReference
+
+@synthesize lasterror = _lasterror;
+
+- (void)clearLastError
+{
+    [_lasterror release];
+    _lasterror = nil;
+}
+
+- (void)setLastError:(NSString*)msg
+{
+    [self clearLastError];
+    _lasterror = [msg retain];
+}
+
+- (bool)checkStatus:(afc_error_t)ret from:(const char *)func
+{
+    if (ret != 0) {
+        [self setLastError:[NSString stringWithFormat:@"%s failed: %d",func,ret]];
+        return NO;
+    }
+    [self clearLastError];
+    return YES;
+}
+
+- (bool)ensureFileIsOpen
+{
+    if (_ref) return YES;
+    [self setLastError:@"File is not open"];
+    return NO;
+}
+
+- (void)dealloc
+{
+    [self closeFile];
+    [_lasterror release];
+    [super dealloc];
+}
+
+- (id)initWithPath:(NSString*)path reference:(afc_file_ref)ref afc:(afc_connection)afc
+{
+    if (self=[super init]) {
+        _ref = ref;
+        _afc = afc;
+    }
+    return self;
+}
+
+- (bool)closeFile
+{
+    if (![self ensureFileIsOpen]) return NO;
+    if (![self checkStatus:AFCFileRefClose(_afc, _ref) from:"AFCFileRefClose"]) return NO;
+    _ref = 0;
+    return YES;
+}
+
+- (bool)seek:(int64_t)offset mode:(int)m
+{
+    if (![self ensureFileIsOpen]) return NO;
+    return [self checkStatus:AFCFileRefSeek(_afc, _ref, offset, m) from:"AFCFileRefSeek"];
+}
+
+- (bool)tell:(uint64_t*)offset
+{
+    if (![self ensureFileIsOpen]) return NO;
+    return [self checkStatus:AFCFileRefTell(_afc, _ref, offset) from:"AFCFileRefTell"];
+}
+
+- (afc_long)readN:(afc_long)n bytes:(char *)buff
+{
+    //NSLog(@"ensureFileIsOpen before");
+    if (![self ensureFileIsOpen]) return NO;
+    afc_long afcSize = n;
+    if (![self checkStatus:AFCFileRefRead(_afc, _ref, buff, &afcSize) from:"AFCFileRefRead"]) return 0;
+    //NSLog(@"ensureFileIsOpen after afcSize");
+    return afcSize;
+}
+
+- (bool)writeN:(afc_long)n bytes:(const char *)buff
+{
+    if (![self ensureFileIsOpen]) return NO;
+    if (n>0) {
+        return [self checkStatus:AFCFileRefWrite(_afc, _ref, buff, n) from:"AFCFileRefWrite"];
+    }
+    return YES;
+}
+
+- (bool)writeNSData:(NSData*)data
+{
+    return [self writeN:[data length] bytes:[data bytes]];
+}
+
+- (bool)setFileSize:(uint64_t)size
+{
+    if (![self ensureFileIsOpen]) return NO;
+    return [self checkStatus:AFCFileRefSetFileSize(_afc, _ref, size) from:"AFCFileRefSetFileSize"];
+}
+
+- (void)lock:(int)tries {
+    BOOL ret = NO;
+    @try {
+        for (int i = 0; i < tries; i++) {
+            ret = [self checkStatus:AFCFileRefLock(_afc, _ref) from:"AFCFileRefLock"];
+            if (ret == YES) {
+                break;
+            }
+            [NSThread sleepForTimeInterval:250];
+        }
+    }
+    @catch (NSException *exception) {
+        ret = NO;
+    }
+}
+
+- (void)unLock {
+    BOOL ret = NO;
+    @try {
+        ret = [self checkStatus:AFCFileRefUnlock(_afc, _ref) from:"AFCFileRefUnlock"];
+    }
+    @catch (NSException *exception) {
+        ret = NO;
+    }
+}
+
+@end
+
