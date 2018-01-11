@@ -24,7 +24,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "IMBNotificationDefine.h"
 #import <AppKit/AppKit.h>
-
+#import <malloc/malloc.h>
 #import "ZLFileTool.h"
 
 
@@ -267,6 +267,22 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
 //    AMDevice *_deviceHandle;
     
     afc_connection _afc;
+    
+    char* _identifier;
+    int _headerSize;
+    int _sectionSize;
+    Byte* _unusedHeader;
+    int _requiredHeaderSize;
+    int _unk1;
+    int _versionNumber;
+    int _listContainerCount;
+    UInt64 _iD;
+    Byte *_unk2;
+    int unk2Length;
+    int16_t _hashingScheme;
+    NSMutableArray *_childSections;
+    int unusedHeaderLength;
+
 }
 
 @end
@@ -378,11 +394,49 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     
     
     [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
+    
+    [self connectComplete];
 
 }
 
 - (void)disConnectDevice:(am_device)dev {
     _amDevice = dev;
+}
+
+
+- (BOOL)connectComplete {
+    BOOL ret = NO;
+    
+    
+    NSString *parseFilePath = [ZLFileTool zl_getParseFilePath];
+    NSString *databaseFilePath = [ZLFileTool zl_getItunesPath];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:parseFilePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:parseFilePath error:nil];
+    }
+    ret = [self copyRemoteFile:databaseFilePath toLocalFile:parseFilePath];
+    if (ret) {
+        NSData *reader = nil;
+        reader = [NSData dataWithContentsOfFile:parseFilePath];
+        @try {
+            //        [root read:iPod reader:reader currPosition:0];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@",exception);
+        }
+        @finally {
+            [self cleanParseFile:parseFilePath];
+        }
+    }
+    return ret;
+
+}
+
+- (void)cleanParseFile:(NSString*)parseFilePath {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:parseFilePath] == YES) {
+        [fileManager removeItemAtPath:parseFilePath error:nil];
+    }
 }
 
 #pragma mark -- 注销监听
@@ -475,55 +529,171 @@ bail:
     return NO;
 }
 
+#pragma mark --- 解析CDB文件相关
+
+-(BOOL)validateHeader:(NSString *)validIdentifier{
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF8);
+    NSString* strIndentfier = [[NSString alloc] initWithCString:_identifier encoding:enc];
+    if ([strIndentfier isEqual:validIdentifier] == FALSE) {
+        @throw [NSException exceptionWithName:@"Ex_Parse_CDBIdentifier_Invalid" reason:[NSString stringWithFormat:@"Parse CDB %@ indentifier invalid!", validIdentifier] userInfo:nil];
+    }
+    if(_headerSize < _requiredHeaderSize){
+        @throw [NSException exceptionWithName:@"ExUnsupportiTunesVersion_CDBHeader_Invalid" reason:@"Parse CDB header invalid!" userInfo:nil];
+    }
+    [strIndentfier release];
+    return TRUE;
+}
+- (long)readDataWithReader:(NSData *)reader currPosition:(long)currPosition {
+    int readLength = 4;
+    
+    
+//    int identifierLength = readLength;
+    _identifier = (char*)malloc(readLength + 1);
+    memset(_identifier, 0, malloc_size(_identifier));
+    [reader getBytes:_identifier range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_headerSize);
+    [reader getBytes:&_headerSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    [self validateHeader:@"mhbd"];
+    
+    readLength = sizeof(_sectionSize);
+    [reader getBytes:&_sectionSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_unk1);
+    [reader getBytes:&_unk1 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_versionNumber);
+    [reader getBytes:&_versionNumber range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_listContainerCount);
+    [reader getBytes:&_listContainerCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_iD);
+    [reader getBytes:&_iD range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = 16;
+    unk2Length = readLength;
+    _unk2 = (Byte*)malloc(readLength + 1);
+    memset(_unk2, 0, malloc_size(_unk2));
+    [reader getBytes:_unk2 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_hashingScheme);
+    [reader getBytes:&_hashingScheme range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    currPosition = [self readToHeaderEnd:reader currPosition:currPosition];
+    
+    readLength = _sectionSize - _headerSize;
+    Byte *dataByte = (Byte*)malloc(_sectionSize - _headerSize + 1);
+    memset(dataByte, 0, malloc_size(_identifier));
+    [reader getBytes:dataByte range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    //解压内存流
+    NSData *decompressionData;
+    NSData *CompressionData;
+    CompressionData = [NSData dataWithBytes:dataByte length:(_sectionSize - _headerSize)];
+    decompressionData = [[CompressionData zlibInflate] retain];
+    free(dataByte);
+    
+    //解析CDB的实际内容
+    long decCurrPostion = 0;
+    while (decCurrPostion != [decompressionData length]) {
+//        IMBListContainerHeader *containerHeader = [[IMBListContainerHeader alloc] init];
+        decCurrPostion = [self readDataSecTimeWithReader:decompressionData currPosition:decCurrPostion];
+//        [_childSections addObject:containerHeader];
+//        [containerHeader release];
+    }
+    return currPosition;
+}
+
+- (long)readDataSecTimeWithReader:(NSData *)reader currPosition:(long)currPosition {
+    int readLength = 4;
+    _identifier = (char*)malloc(readLength + 1);
+    memset(_identifier, 0, malloc_size(_identifier));
+    [reader getBytes:_identifier range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    readLength = sizeof(_headerSize);
+    [reader getBytes:&_headerSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    [self validateHeader:@"mhsd"];
+    
+    readLength = sizeof(_sectionSize);
+    [reader getBytes:&_sectionSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    int _typeInt;
+    readLength = sizeof(_typeInt);
+    [reader getBytes:&_typeInt range:NSMakeRange(currPosition, readLength)];
+    int type = _typeInt;
+    currPosition += readLength;
+    currPosition = [self readToHeaderEnd:reader currPosition:currPosition];
+    
+    switch (type) {
+        case 1:
+//            currPosition = [self readDataSecTimeWithReader:reader currPosition:currPosition];
+            break;
+        default:
+            
+            break;
+    }
+    return currPosition;
+}
+-(long)readToHeaderEnd:(NSData *)reader currPosition:(long)currPosition{
+    unusedHeaderLength = _headerSize - _requiredHeaderSize;
+    _unusedHeader = malloc(unusedHeaderLength + 1);
+    memset(_unusedHeader, 0, malloc_size(_unusedHeader));
+    [reader getBytes:_unusedHeader range:NSMakeRange(currPosition, unusedHeaderLength)];
+    return currPosition + unusedHeaderLength;
+}
 #pragma mark --- 文件相关操作
 
 - (BOOL)copyRemoteFile:(NSString*)path1 toLocalFile:(NSString*)path2
 {
-    // NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     BOOL result = NO;
     if ([self ensureConnectionIsOpen]) {
         NSFileManager *fm = [NSFileManager defaultManager];
         // make sure local file doesn't exist
-        if ([fm fileExistsAtPath:path2]) {
-        } else {
-            // open remote file for read
-            AFCFileReference *in = [self openForRead:path1];
-            if (in) {
-                uint32_t bufsz = 10240;
-                uint32_t filesize = [[[self getFileInfo:path1] valueForKey:@"st_size"] intValue];
-                if (filesize>102400*5) {
-                    bufsz = 102400*5;
-                }else if (filesize<=102400*5&&filesize>102400){
-                    bufsz = 102400*5;
-                }else if (filesize<=102400){
-                    bufsz = 102400;
-                }
-                // open local file for write - stupidly we need to create it before
-                // we can make an NSFileHandle
-                [fm createFileAtPath:path2 contents:nil attributes:nil];
-                NSFileHandle *out = [NSFileHandle fileHandleForWritingAtPath:path2];
-                if (!out) {
-                } else {
-                    // copy all content across 10K at a time...  use
-                    // malloc for the buffer rather than NSData because I've noticed
-                    // strange problems in the debugger
-                    //NSLog(@"after fileHandleForWritingAtPath1");
-                    char *buff = (char*)malloc(bufsz);
-                    uint64_t done = 0;
-                    while (1) {
-                        uint64_t n = [in readN:bufsz bytes:buff];
-                        if (n==0) break;
-                        NSData *b2 = [[NSData alloc]
-                                      initWithBytesNoCopy:buff length:n freeWhenDone:NO];
-                        [out writeData:b2];
-                        [b2 release];
-                        done += n;
+        if (![fm fileExistsAtPath:path2]) {
+            {
+                // open remote file for read
+                AFCFileReference *in = [self openForRead:path1];
+                if (in) {
+                    uint32_t bufsz = 10240;
+                    uint32_t filesize = [[[self getFileInfo:path1] valueForKey:@"st_size"] intValue];
+                    if (filesize>102400*5) {
+                        bufsz = 102400*5;
+                    }else if (filesize<=102400*5&&filesize>102400){
+                        bufsz = 102400*5;
+                    }else if (filesize<=102400){
+                        bufsz = 102400;
                     }
-                    free(buff);
-                    [out closeFile];
-                    result = YES;
+                    // open local file for write - stupidly we need to create it before
+                    // we can make an NSFileHandle
+                    [fm createFileAtPath:path2 contents:nil attributes:nil];
+                    NSFileHandle *out = [NSFileHandle fileHandleForWritingAtPath:path2];
+                    if (!out) {
+                    } else {
+                        // copy all content across 10K at a time...  use
+                        // malloc for the buffer rather than NSData because I've noticed
+                        // strange problems in the debugger
+                        //NSLog(@"after fileHandleForWritingAtPath1");
+                        char *buff = (char*)malloc(bufsz);
+                        uint64_t done = 0;
+                        while (1) {
+                            uint64_t n = [in readN:bufsz bytes:buff];
+                            if (n==0) break;
+                            NSData *b2 = [[NSData alloc]
+                                          initWithBytesNoCopy:buff length:n freeWhenDone:NO];
+                            [out writeData:b2];
+                            [b2 release];
+                            done += n;
+                        }
+                        free(buff);
+                        [out closeFile];
+                        result = YES;
+                    }
+                    [in closeFile];
                 }
-                [in closeFile];
             }
         }
     }
@@ -536,7 +706,6 @@ bail:
     AFCFileReference *afcFile = nil;
     @synchronized(self) {
         afc_file_ref ref = 0;
-        //        NSLog(@"open path:%@  socket_fd:%d  [path UTF8String]:%s  _afc:%@",path,socket_fd,[path UTF8String],_afc);
         @try {
             afc_error_t openRet = AFCFileRefOpen(_afc, [path UTF8String], 1, &ref);
             bool ret = [self checkStatus:openRet from:"AFCFileRefOpen"];
@@ -564,7 +733,6 @@ bail:
 - (NSDictionary*)getFileInfo:(NSString*)path
 {
     if (!path) {
-//        [self setLastError:@"Input path is nil"];
         return nil;
     }
     
@@ -574,7 +742,6 @@ bail:
             NSMutableDictionary *result = [self readAfcDictionary:dict];
             [result setObject:path forKey:@"path"];
             AFCKeyValueClose(dict);
-//            [self clearLastError];
             
             // fix the ones we know are dates
             [self fix_date_entry:@"st_birthtime" in:result];

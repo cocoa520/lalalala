@@ -11,5 +11,16 @@
 @interface ZLFileTool : NSObject
 
 + (BOOL)zl_writeDataPlsitWithDataDic:(NSDictionary *)dataDic fileName:(NSString *)fileName;
++ (NSString*)zl_getAppSupportPath;
++ (NSString*)zl_getParseFilePath;
++ (NSString *)zl_getItunesPath;
 
 @end
+
+
+
+/**
+ 
+ /iTunes_Control/iTunes/iTunesCDB
+ 
+ **/
