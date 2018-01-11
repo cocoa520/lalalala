@@ -382,6 +382,11 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _amDevice = dev;
     
     
+    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
+    uint32 socket_fd = 1;
+    AFCConnectionOpen(socket_fd,0,&_afc);
+    [self connectComplete];
+    
     _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
     _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
     _productType = [[self deviceValueForKey:@"ProductType"] retain];
@@ -393,9 +398,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
     
-    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
     
-    [self connectComplete];
 
 }
 
@@ -543,6 +546,7 @@ bail:
     [strIndentfier release];
     return TRUE;
 }
+//////解析Itunes数据
 - (long)readDataWithReader:(NSData *)reader currPosition:(long)currPosition {
     int readLength = 4;
     
@@ -606,7 +610,7 @@ bail:
     }
     return currPosition;
 }
-
+//////解析Itunes数据
 - (long)readDataSecTimeWithReader:(NSData *)reader currPosition:(long)currPosition {
     int readLength = 4;
     _identifier = (char*)malloc(readLength + 1);
@@ -638,6 +642,7 @@ bail:
     }
     return currPosition;
 }
+
 -(long)readToHeaderEnd:(NSData *)reader currPosition:(long)currPosition{
     unusedHeaderLength = _headerSize - _requiredHeaderSize;
     _unusedHeader = malloc(unusedHeaderLength + 1);
