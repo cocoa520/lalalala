@@ -386,11 +386,22 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     //AMDeviceConnect(dev);
 //      int ret = AMDeviceSecureStartService(dev, (CFStringRef)@"com.apple.afc", 0, &_service);
     
-    AMDeviceConnect(dev);
-    AMDeviceIsPaired(dev);
-    AMDeviceValidatePairing(dev);
-    AMDeviceStartSession(dev);
-    
+    int retValue = AMDeviceConnect(dev);
+    if (retValue != 0) {
+        return;
+    }
+    retValue = AMDeviceIsPaired(dev);
+    if (retValue == 0) {
+        return;
+    }
+    retValue = AMDeviceValidatePairing(dev);
+    if (retValue != 0) {
+        return;
+    }
+    retValue = AMDeviceStartSession(dev);
+    if (retValue != 0) {
+        return;
+    }
     
     uint32_t dummy = 0;
     
@@ -448,7 +459,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
         }
-        @finally {//操作完成之后就要将复制到本地的ituneCDB文件删除
+        @finally {//操作完成之后就要将复制到本地的itunesCDB文件删除
             [self cleanParseFile:parseFilePath];
         }
     }
