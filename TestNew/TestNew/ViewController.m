@@ -250,7 +250,7 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     am_device_notification _notification;
     bool _isNeedInputPassCode,_insession,_connected;
     am_device _amDevice;
-    
+    am_service _service;
     
     NSString *_lasterror;
     NSString *_deviceName;
@@ -382,20 +382,40 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _amDevice = dev;
     
     
-    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
-    uint32 socket_fd = 1;
-    AFCConnectionOpen(socket_fd,0,&_afc);
-    [self connectComplete];
+//    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
+    //AMDeviceConnect(dev);
+//      int ret = AMDeviceSecureStartService(dev, (CFStringRef)@"com.apple.afc", 0, &_service);
     
-    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
-    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
-    _productType = [[self deviceValueForKey:@"ProductType"] retain];
-    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
-    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
-    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
-    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
-    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
-    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
+    AMDeviceConnect(dev);
+    AMDeviceIsPaired(dev);
+    AMDeviceValidatePairing(dev);
+    AMDeviceStartSession(dev);
+    
+    
+    uint32_t dummy = 0;
+    
+    
+    int ret = AMDeviceStartService(dev,(CFStringRef)@"com.apple.afc", &_service, &dummy);//--有线连接
+    if (ret == 0) {
+        int ret = AFCConnectionOpen(_service,0,&_afc);
+        if (ret == 0) {
+          [self connectComplete];
+        }else {
+            NSLog(@"AFCConnectionOpen--Failed");
+        }
+        
+    }
+    
+    
+//    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
+//    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
+//    _productType = [[self deviceValueForKey:@"ProductType"] retain];
+//    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
+//    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
+//    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
+//    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
+//    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+//    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
     
     
@@ -422,12 +442,13 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         NSData *reader = nil;
         reader = [NSData dataWithContentsOfFile:parseFilePath];
         @try {
+            /////此处解析ItunesCDB文件
             //        [root read:iPod reader:reader currPosition:0];
         }
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
         }
-        @finally {
+        @finally {//操作完成之后就要将复制到本地的ituneCDB文件删除
             [self cleanParseFile:parseFilePath];
         }
     }
