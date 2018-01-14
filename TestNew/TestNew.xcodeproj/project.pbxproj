@@ -37,6 +37,7 @@
 		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
 		B9E127312004512C008F6854 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E127302004512C008F6854 /* NSData+Category.m */; };
 		B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273320045148008F6854 /* NSDictionary+Category.m */; };
+		FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE9E10200B65D2002AB92A /* CusArchiever.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		B9E1273220045148008F6854 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
 		B9E1273320045148008F6854 /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
 		B9E1273520045167008F6854 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		FACE9E0F200B65D2002AB92A /* CusArchiever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CusArchiever.h; sourceTree = "<group>"; };
+		FACE9E10200B65D2002AB92A /* CusArchiever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CusArchiever.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,8 @@
 				B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */,
 				B9BDB4C620061A0200514704 /* ZLFileTool.h */,
 				B9BDB4C720061A0200514704 /* ZLFileTool.m */,
+				FACE9E0F200B65D2002AB92A /* CusArchiever.h */,
+				FACE9E10200B65D2002AB92A /* CusArchiever.m */,
 			);
 			path = CustomDC;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9E127312004512C008F6854 /* NSData+Category.m in Sources */,
+				FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */,
 				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
 				B92BFD4420034D74003948D7 /* main.m in Sources */,
 				B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */,

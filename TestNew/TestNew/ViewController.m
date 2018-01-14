@@ -303,6 +303,7 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     _isNeedInputPassCode = NO;
     _connected = NO;
     _insession = NO;
+    _requiredHeaderSize = 50;
     
     [self startListen];
 }
@@ -418,15 +419,15 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     }
     
     
-//    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
-//    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
-//    _productType = [[self deviceValueForKey:@"ProductType"] retain];
-//    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
-//    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
-//    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
-//    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
-//    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
-//    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
+    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
+    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
+    _productType = [[self deviceValueForKey:@"ProductType"] retain];
+    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
+    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
+    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
+    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
+    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
     
     
@@ -455,6 +456,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         @try {
             /////此处解析ItunesCDB文件
             //        [root read:iPod reader:reader currPosition:0];
+            [self readDataWithReader:reader currPosition:0];
         }
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
@@ -645,6 +647,9 @@ bail:
 //////解析Itunes数据
 - (long)readDataSecTimeWithReader:(NSData *)reader currPosition:(long)currPosition {
     int readLength = 4;
+    _headerSize = 0;
+    _sectionSize = 0;
+    
     _identifier = (char*)malloc(readLength + 1);
     memset(_identifier, 0, malloc_size(_identifier));
     [reader getBytes:_identifier range:NSMakeRange(currPosition, readLength)];
@@ -672,6 +677,239 @@ bail:
             
             break;
     }
+    return currPosition;
+}
+
+- (long)readDataThirdTimeWithReader:(NSData *)reader currPosition:(long)currPosition {
+    
+    long startOfElement = currPosition;
+    
+    int readLength = 0;
+    readLength = 4;
+//    identifierLength = readLength;
+    _identifier = (char*)malloc(readLength + 1);
+    memset(_identifier, 0, malloc_size(_identifier));
+    [reader getBytes:_identifier range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_headerSize);
+    [reader getBytes:&_headerSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    [self validateHeader:@"mhit"];
+    
+    readLength = sizeof(_sectionSize);
+    [reader getBytes:&_sectionSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dataObjectCount);
+    [reader getBytes:&_dataObjectCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_iD);
+    [reader getBytes:&_iD range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_visible);
+    [reader getBytes:&_visible range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_fileType);
+    [reader getBytes:&_fileType range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = 2;
+    typeLength = readLength;
+    _type = (Byte*)malloc(readLength + 1);
+    memset(_type, 0, malloc_size(_type));
+    [reader getBytes:_type range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = 1;
+    [reader getBytes:&_compilationFlag range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_rating);
+    [reader getBytes:&_rating range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dateLastModified);
+    [reader getBytes:&_dateLastModified range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_fileSize);
+    [reader getBytes:&_fileSize range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_trackLength);
+    [reader getBytes:&_trackLength range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_trackNumber);
+    [reader getBytes:&_trackNumber range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_albumTrackCount);
+    [reader getBytes:&_albumTrackCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_year);
+    [reader getBytes:&_year range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_bitrate);
+    [reader getBytes:&_bitrate range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_sampleRate);
+    [reader getBytes:&_sampleRate range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_volumeAdjustment);
+    [reader getBytes:&_volumeAdjustment range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_startTime);
+    [reader getBytes:&_startTime range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_stopTime);
+    [reader getBytes:&_stopTime range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = 4;
+    unk1Length = readLength;
+    _unk1 = (Byte*)malloc(readLength + 1);
+    memset(_unk1, 0, malloc_size(_unk1));
+    [reader getBytes:_unk1 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_playCount);
+    [reader getBytes:&_playCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_playCount2);
+    [reader getBytes:&_playCount2 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dateLastPalyed);
+    [reader getBytes:&_dateLastPalyed range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_discNumber);
+    [reader getBytes:&_discNumber range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_totalDiscCount);
+    [reader getBytes:&_totalDiscCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_userID);
+    [reader getBytes:&_userID range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dateAdded);
+    [reader getBytes:&_dateAdded range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_bookmarkTime);
+    [reader getBytes:&_bookmarkTime range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dbID);
+    [reader getBytes:&_dbID range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_isChecked);
+    [reader getBytes:&_isChecked range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_unk2);
+    [reader getBytes:&_unk2 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_bpm);
+    [reader getBytes:&_bpm range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_artworkCount);
+    [reader getBytes:&_artworkCount range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = 38;
+    unk3Length = readLength;
+    _unk3 = (Byte*)malloc(readLength + 1);
+    memset(_unk3, 0, malloc_size(_unk3));
+    [reader getBytes:_unk3 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_hasArtworkByte);
+    [reader getBytes:&_hasArtworkByte range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_skipWhenShuffling);
+    [reader getBytes:&_skipWhenShuffling range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_rememberPlaybackPosition);
+    [reader getBytes:&_rememberPlaybackPosition range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_podcastFlag);
+    [reader getBytes:&_podcastFlag range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_dbID2);
+    [reader getBytes:&_dbID2 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_hasLyrics);
+    [reader getBytes:&_hasLyrics range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_isVideoFile);
+    [reader getBytes:&_isVideoFile range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = 30;
+    unk4Length = readLength;
+    _unk4 = (Byte*)malloc(readLength + 1);
+    memset(_unk4, 0, malloc_size(_unk4));
+    [reader getBytes:_unk4 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_mediaType);
+    [reader getBytes:&_mediaType range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    
+    
+    readLength = 44;
+    unk5Length = readLength;
+    _unk5 = (Byte*)malloc(readLength + 1);
+    memset(_unk5, 0, malloc_size(_unk5));
+    [reader getBytes:_unk5 range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    readLength = sizeof(_hasGaplessData);
+    [reader getBytes:&_hasGaplessData range:NSMakeRange(currPosition, readLength)];
+    currPosition += readLength;
+    
+    if (_headerSize > 352) {
+        long previousPostion = currPosition;
+        currPosition = startOfElement +352;
+        readLength = sizeof(_artworkIdLink);
+        [reader getBytes:&_artworkIdLink range:NSMakeRange(currPosition, readLength)];
+        currPosition += readLength;
+        currPosition = previousPostion;
+    }
+    currPosition = [self readToHeaderEnd:reader currPosition:currPosition];
+    
+    for (int i = 0; i < _dataObjectCount; i++) {
+        IMBBaseMHODElement *mhod = [IMBMHODFactory readMHOD:iPod reader:reader currPosition:&currPosition];
+        [_childSections addObject:mhod];
+    }
+    
+    _fileIsExist = [self checkFileIsExsit];
     return currPosition;
 }
 
