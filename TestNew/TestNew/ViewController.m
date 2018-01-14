@@ -684,8 +684,10 @@ bail:
     
     long startOfElement = currPosition;
     
-    int readLength = 0;
-    readLength = 4;
+    int readLength = 4;
+    _headerSize = 0;
+    _sectionSize = 0;
+    _iD = 0;
 //    identifierLength = readLength;
     _identifier = (char*)malloc(readLength + 1);
     memset(_identifier, 0, malloc_size(_identifier));
@@ -701,6 +703,7 @@ bail:
     [reader getBytes:&_sectionSize range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    int _dataObjectCount = 0;
     readLength = sizeof(_dataObjectCount);
     [reader getBytes:&_dataObjectCount range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
@@ -709,14 +712,18 @@ bail:
     [reader getBytes:&_iD range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    int _visible = 0;
     readLength = sizeof(_visible);
     [reader getBytes:&_visible range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    int _fileType = 0;
     readLength = sizeof(_fileType);
     [reader getBytes:&_fileType range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    Byte *_type;
+    int typeLength = 0;
     readLength = 2;
     typeLength = readLength;
     _type = (Byte*)malloc(readLength + 1);
@@ -724,6 +731,8 @@ bail:
     [reader getBytes:_type range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    Byte _compilationFlag = '\0';
+    Byte _rating = '\0';
     readLength = 1;
     [reader getBytes:&_compilationFlag range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
@@ -732,10 +741,12 @@ bail:
     [reader getBytes:&_rating range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    uint _dateLastModified = 0;
     readLength = sizeof(_dateLastModified);
     [reader getBytes:&_dateLastModified range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;
     
+    uint _fileSize = 0;
     readLength = sizeof(_fileSize);
     [reader getBytes:&_fileSize range:NSMakeRange(currPosition, readLength)];
     currPosition += readLength;

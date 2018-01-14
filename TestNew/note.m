@@ -1,4 +1,13 @@
 #######################
+
+
+
+/*
+ 
+ 解析CDB文件到底应该怎么解析，看着项目里解析还是挺复杂的
+ 
+ */
+
 ########
 ########解析CDB文件分别调用的文件的类的read方法顺序及其步骤
 1、_dataArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Music]]];
@@ -14,3 +23,5 @@
 10、currPosition = [track read:iPod reader:reader currPosition:currPosition];
     IMBTrackList   - (long)read:(IMBiPod *)ipod reader:(NSData *)reader currPosition:(long)currPosition
 11、IMBTrack  - (long)read:(IMBiPod *)ipod reader:(NSData *)reader currPosition:(long)currPosition
+
+
