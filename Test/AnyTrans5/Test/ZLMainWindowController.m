@@ -486,6 +486,22 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 
 - (void)disConnectDevice:(am_device)dev {
     _amDevice = dev;
+    
+    self.sizeLabel.stringValue = @"Please Connect Your Device";
+    _deviceHandle = nil;
+    _ipod = nil;
+    _deviceName = nil;
+    _udid = nil;
+    _productType = nil;
+    _deviceClass = nil;
+    _productVersion = nil;
+    _serialNumber = nil;
+    _totalDiskCapacity = nil;
+    _totalDataAvailable = nil;
+    _dataDic = nil;
+    
+    self.dataArray = nil;
+    [_tableView reloadData];
 }
 
 
