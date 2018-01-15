@@ -726,6 +726,10 @@ enum device_link_file_status_t {
 /// this property will be nil.
 @property (readonly) NSString *lasterror;
 
+
+- (id)initWithPath:(NSString*)path reference:(afc_file_ref)ref afc:(afc_connection)afc;
+
+
 /// Close the file.  
 /// Any outstanding writes are flushed to disk.
 - (bool)closeFile;

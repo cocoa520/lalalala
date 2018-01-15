@@ -3139,6 +3139,8 @@
 		B9B7841C1D49B8DA00B9FD42 /* IMBMyAlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B7841A1D49B8DA00B9FD42 /* IMBMyAlbumsViewController.xib */; };
 		B9B784281D49D0B300B9FD42 /* IMBNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B784261D49D0B300B9FD42 /* IMBNoteListViewController.m */; };
 		B9B784291D49D0B300B9FD42 /* IMBNoteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B784271D49D0B300B9FD42 /* IMBNoteListViewController.xib */; };
+		B9B81FF1200C5FCC0054FC7D /* NSString+ZLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B81FEE200C5FCC0054FC7D /* NSString+ZLExtension.m */; };
+		B9B81FF2200C5FCC0054FC7D /* ZLFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B81FF0200C5FCC0054FC7D /* ZLFileTool.m */; };
 		B9C1AC651D50D2E800E560FF /* IMBAlertSupeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C1AC641D50D2E800E560FF /* IMBAlertSupeView.m */; };
 		B9C4918E1D41D6A600C57985 /* AppInstallProgressFile in Resources */ = {isa = PBXBuildFile; fileRef = B9C491851D41D6A600C57985 /* AppInstallProgressFile */; };
 		B9C4918F1D41D6A600C57985 /* IMBAppEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C491871D41D6A600C57985 /* IMBAppEntity.m */; };
@@ -8263,6 +8265,10 @@
 		B9B784251D49D0B300B9FD42 /* IMBNoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNoteListViewController.h; sourceTree = "<group>"; };
 		B9B784261D49D0B300B9FD42 /* IMBNoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNoteListViewController.m; sourceTree = "<group>"; };
 		B9B784271D49D0B300B9FD42 /* IMBNoteListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBNoteListViewController.xib; sourceTree = "<group>"; };
+		B9B81FED200C5FCC0054FC7D /* NSString+ZLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZLExtension.h"; sourceTree = "<group>"; };
+		B9B81FEE200C5FCC0054FC7D /* NSString+ZLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZLExtension.m"; sourceTree = "<group>"; };
+		B9B81FEF200C5FCC0054FC7D /* ZLFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFileTool.h; sourceTree = "<group>"; };
+		B9B81FF0200C5FCC0054FC7D /* ZLFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLFileTool.m; sourceTree = "<group>"; };
 		B9C1AC611D507F9800E560FF /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		B9C1AC631D50D2E800E560FF /* IMBAlertSupeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAlertSupeView.h; sourceTree = "<group>"; };
 		B9C1AC641D50D2E800E560FF /* IMBAlertSupeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAlertSupeView.m; sourceTree = "<group>"; };
@@ -15021,6 +15027,10 @@
 		B94F1EB21FFCBFF900E692AC /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				B9B81FED200C5FCC0054FC7D /* NSString+ZLExtension.h */,
+				B9B81FEE200C5FCC0054FC7D /* NSString+ZLExtension.m */,
+				B9B81FEF200C5FCC0054FC7D /* ZLFileTool.h */,
+				B9B81FF0200C5FCC0054FC7D /* ZLFileTool.m */,
 				B94F1EB31FFCC04600E692AC /* ZLMainWindowController.h */,
 				B94F1EB41FFCC04600E692AC /* ZLMainWindowController.m */,
 				B94F1EB51FFCC04600E692AC /* ZLMainWindowController.xib */,
@@ -22667,6 +22677,7 @@
 				B9C6C6701F0B6D4600345147 /* TimeStatistics.m in Sources */,
 				B9C6C52E1F0B6D4500345147 /* GeneralDigest.m in Sources */,
 				B9C6C3A21F0B6D4400345147 /* Attribute.m in Sources */,
+				B9B81FF2200C5FCC0054FC7D /* ZLFileTool.m in Sources */,
 				B9C6C3FF1F0B6D4400345147 /* DVCSCertInfoBuilder.m in Sources */,
 				B94178AE1D5370C4002CBC3C /* IMBDeleteCameraRollPhotos.m in Sources */,
 				B9C6C46A1F0B6D4500345147 /* ResponderID.m in Sources */,
@@ -22932,6 +22943,7 @@
 				B9C6C46E1F0B6D4500345147 /* ServiceLocator.m in Sources */,
 				B9C492571D41D6E000C57985 /* IMBMHODType2.m in Sources */,
 				27DD1B711D406C10000B82B9 /* IMBSelecedDeviceBtn.m in Sources */,
+				B9B81FF1200C5FCC0054FC7D /* NSString+ZLExtension.m in Sources */,
 				279EE1101D3CAEFF0060EFD8 /* IMBPlaylistViewController.m in Sources */,
 				2779DA431D38E9E6009F12D5 /* File_Adpcm.cpp in Sources */,
 				B9CC3BC01D3E4CF80082F448 /* IMBEditButton.m in Sources */,

@@ -53,11 +53,11 @@
     int _typeInt;
     readLength = sizeof(_typeInt);
     [reader getBytes:&_typeInt range:NSMakeRange(currPosition, readLength)];
-    int type = (MHSDSectionTypeEnum)_typeInt;
+    _type = (MHSDSectionTypeEnum)_typeInt;
     currPosition += readLength;
     currPosition = [self readToHeaderEnd:reader currPosition:currPosition];
     
-    switch (type) {
+    switch (_type) {
         case Albums:
             _childElement = [[IMBAlbumListContainer alloc] initWithParent:self];
             break;

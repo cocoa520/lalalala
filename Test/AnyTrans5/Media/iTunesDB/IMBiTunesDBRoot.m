@@ -124,7 +124,8 @@
 
 -(IMBListContainerHeader*)getChildSection:(MHSDSectionTypeEnum)type{
     IMBListContainerHeader *containerHeader = nil;
-    for (int i = 0; i < [_childSections count]; i++) {
+    NSInteger count = [_childSections count];
+    for (int i = 0; i < count; i++) {
         containerHeader = [_childSections objectAtIndex:i];
         if ([containerHeader type] == type) {
             return containerHeader;

@@ -726,6 +726,7 @@ enum device_link_file_status_t {
 /// this property will be nil.
 @property (readonly) NSString *lasterror;
 
+- (id)initWithPath:(NSString*)path reference:(afc_file_ref)ref afc:(afc_connection)afc;
 /// Close the file.  
 /// Any outstanding writes are flushed to disk.
 - (bool)closeFile;
@@ -1159,6 +1160,8 @@ enum device_link_file_status_t {
 @property (readonly) NSString *totalDiskCapacity;
 @property (readonly) bool connected;
 @property (nonatomic, readwrite) BOOL isValid;
+
++ (AMDevice*)deviceFrom:(am_device)device;
 
 - (int)getDeviceRet;
 
