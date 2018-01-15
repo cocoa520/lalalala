@@ -127,7 +127,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="472-Rd-bxT">
+                    <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="472-Rd-bxT">
                         <rect key="frame" x="572" y="397" width="83" height="32"/>
                         <buttonCell key="cell" type="bevel" title="Send To Mac" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="30d-rZ-7bI">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

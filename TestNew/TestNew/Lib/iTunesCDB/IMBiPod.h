@@ -38,7 +38,7 @@
     NSString *_uniqueKey;
     
     // 纪录日志的句柄
-    IMBLogManager *_logHandle;
+//    IMBLogManager *_logHandle;
     NSString *_mediaDBPath;
     BOOL _mediaDamage;
     BOOL _infoLoadFinished;

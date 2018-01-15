@@ -32,6 +32,61 @@
 		B92BFD9F2003730D003948D7 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD9E2003730D003948D7 /* libSystem.B.dylib */; };
 		B92BFDA120037321003948D7 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA020037321003948D7 /* libicucore.dylib */; };
 		B92BFDA32003733A003948D7 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFDA22003733A003948D7 /* libiconv.dylib */; };
+		B96F3536200CAD720026FC98 /* IMBiTunesCDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34E5200CAD720026FC98 /* IMBiTunesCDBRoot.m */; };
+		B96F3537200CAD720026FC98 /* iTunesCDB in Resources */ = {isa = PBXBuildFile; fileRef = B96F34E6200CAD720026FC98 /* iTunesCDB */; };
+		B96F3538200CAD720026FC98 /* IMBSqliteTables.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34E9200CAD720026FC98 /* IMBSqliteTables.m */; };
+		B96F3539200CAD720026FC98 /* IMBSqliteTables_31.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34EB200CAD720026FC98 /* IMBSqliteTables_31.m */; };
+		B96F353A200CAD720026FC98 /* IMBSqliteTables_4.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34ED200CAD720026FC98 /* IMBSqliteTables_4.m */; };
+		B96F353B200CAD720026FC98 /* IMBSqliteTables_Above3.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34EF200CAD720026FC98 /* IMBSqliteTables_Above3.m */; };
+		B96F353C200CAD720026FC98 /* IMBSqliteTables_Nano5G.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34F1200CAD720026FC98 /* IMBSqliteTables_Nano5G.m */; };
+		B96F353D200CAD720026FC98 /* IMBSqliteTables_Nano6G.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34F3200CAD720026FC98 /* IMBSqliteTables_Nano6G.m */; };
+		B96F353E200CAD720026FC98 /* IMBSqliteTables_5.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34F6200CAD720026FC98 /* IMBSqliteTables_5.m */; };
+		B96F353F200CAD720026FC98 /* IMBSyncAppBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34F8200CAD720026FC98 /* IMBSyncAppBuilder.m */; };
+		B96F3540200CAD720026FC98 /* IMBSyncPlistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F34FA200CAD720026FC98 /* IMBSyncPlistBuilder.m */; };
+		B96F3541200CAD720026FC98 /* IMBDatabaseHasher.mm in Sources */ = {isa = PBXBuildFile; fileRef = B96F34FE200CAD720026FC98 /* IMBDatabaseHasher.mm */; };
+		B96F3542200CAD720026FC98 /* IMBHash58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B96F34FF200CAD720026FC98 /* IMBHash58.cpp */; };
+		B96F3543200CAD720026FC98 /* IMBHash72.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B96F3501200CAD720026FC98 /* IMBHash72.cpp */; };
+		B96F3544200CAD720026FC98 /* rijndael.c in Sources */ = {isa = PBXBuildFile; fileRef = B96F3503200CAD720026FC98 /* rijndael.c */; };
+		B96F3545200CAD720026FC98 /* IMBAlbumListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3506200CAD720026FC98 /* IMBAlbumListContainer.m */; };
+		B96F3546200CAD720026FC98 /* IMBIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3508200CAD720026FC98 /* IMBIDGenerator.m */; };
+		B96F3547200CAD720026FC98 /* IMBiTunesDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F350A200CAD720026FC98 /* IMBiTunesDBRoot.m */; };
+		B96F3548200CAD720026FC98 /* IMBListContainerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F350C200CAD720026FC98 /* IMBListContainerHeader.m */; };
+		B96F3549200CAD720026FC98 /* IMBPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F350E200CAD720026FC98 /* IMBPlaylist.m */; };
+		B96F354A200CAD720026FC98 /* IMBPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3510200CAD720026FC98 /* IMBPlaylistItem.m */; };
+		B96F354B200CAD720026FC98 /* IMBPlaylistList.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3512200CAD720026FC98 /* IMBPlaylistList.m */; };
+		B96F354C200CAD720026FC98 /* IMBPlaylistListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3514200CAD720026FC98 /* IMBPlaylistListContainer.m */; };
+		B96F354D200CAD720026FC98 /* IMBPlaylistListV2Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3516200CAD720026FC98 /* IMBPlaylistListV2Container.m */; };
+		B96F354E200CAD720026FC98 /* IMBPodcastListAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3518200CAD720026FC98 /* IMBPodcastListAdapter.m */; };
+		B96F354F200CAD720026FC98 /* IMBTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F351A200CAD720026FC98 /* IMBTrack.m */; };
+		B96F3550200CAD720026FC98 /* IMBTracklist.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F351C200CAD720026FC98 /* IMBTracklist.m */; };
+		B96F3551200CAD720026FC98 /* IMBTrackListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F351E200CAD720026FC98 /* IMBTrackListContainer.m */; };
+		B96F3552200CAD720026FC98 /* IMBType5Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3520200CAD720026FC98 /* IMBType5Container.m */; };
+		B96F3553200CAD720026FC98 /* IMBType6Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3522200CAD720026FC98 /* IMBType6Container.m */; };
+		B96F3554200CAD720026FC98 /* IMBUnknownListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3524200CAD720026FC98 /* IMBUnknownListContainer.m */; };
+		B96F3555200CAD720026FC98 /* IMBArtworkStringMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3527200CAD720026FC98 /* IMBArtworkStringMHOD.m */; };
+		B96F3556200CAD720026FC98 /* IMBBaseMHODElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3529200CAD720026FC98 /* IMBBaseMHODElement.m */; };
+		B96F3557200CAD720026FC98 /* IMBMenuIndexMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F352B200CAD720026FC98 /* IMBMenuIndexMHOD.m */; };
+		B96F3558200CAD720026FC98 /* IMBMHODFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F352D200CAD720026FC98 /* IMBMHODFactory.m */; };
+		B96F3559200CAD720026FC98 /* IMBPlaylistPositionMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F352F200CAD720026FC98 /* IMBPlaylistPositionMHOD.m */; };
+		B96F355A200CAD720026FC98 /* IMBStringMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3531200CAD720026FC98 /* IMBStringMHOD.m */; };
+		B96F355B200CAD720026FC98 /* IMBUnicodeMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3533200CAD720026FC98 /* IMBUnicodeMHOD.m */; };
+		B96F355C200CAD720026FC98 /* IMBUnknownMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3535200CAD720026FC98 /* IMBUnknownMHOD.m */; };
+		B96F3561200CADA50026FC98 /* IMBBaseDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F355E200CADA50026FC98 /* IMBBaseDatabase.m */; };
+		B96F3562200CADA50026FC98 /* IMBBaseDatabaseElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3560200CADA50026FC98 /* IMBBaseDatabaseElement.m */; };
+		B96F3565200CADCA0026FC98 /* IMBiPod.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3564200CADCA0026FC98 /* IMBiPod.m */; };
+		B96F3568200CADDF0026FC98 /* MobileDeviceAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3567200CADDF0026FC98 /* MobileDeviceAccess.m */; };
+		B96F356B200CAE0A0026FC98 /* IMBBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F356A200CAE0A0026FC98 /* IMBBaseEntity.m */; };
+		B96F356E200CAE2C0026FC98 /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F356D200CAE2C0026FC98 /* IMBCommonEnum.m */; };
+		B96F3571200CAE4D0026FC98 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3570200CAE4D0026FC98 /* DateHelper.m */; };
+		B96F3576200CAE690026FC98 /* MediaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3573200CAE690026FC98 /* MediaHelper.m */; };
+		B96F3577200CAE690026FC98 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3575200CAE690026FC98 /* StringHelper.m */; };
+		B96F3580200CAE9D0026FC98 /* IMBArtworkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3579200CAE9D0026FC98 /* IMBArtworkDB.m */; };
+		B96F3581200CAE9D0026FC98 /* IMBArtworkDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F357B200CAE9D0026FC98 /* IMBArtworkDBRoot.m */; };
+		B96F3582200CAE9D0026FC98 /* IMBArtworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F357D200CAE9D0026FC98 /* IMBArtworkEntity.m */; };
+		B96F3583200CAE9D0026FC98 /* IMBArtworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F357F200CAE9D0026FC98 /* IMBArtworkHelper.m */; };
+		B96F3586200CB1A30026FC98 /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3585200CB1A30026FC98 /* TempHelper.m */; };
+		B96F3589200CB1C60026FC98 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F3588200CB1C60026FC98 /* IMBSession.m */; };
+		B96F358C200CB1E80026FC98 /* IMBNewTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F358B200CB1E80026FC98 /* IMBNewTrack.m */; };
 		B9BDB4C5200618ED00514704 /* NSString+ZLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */; };
 		B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BDB4C720061A0200514704 /* ZLFileTool.m */; };
 		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
@@ -91,6 +146,115 @@
 		B92BFD9E2003730D003948D7 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.B.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA020037321003948D7 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		B92BFDA22003733A003948D7 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		B96F34E4200CAD720026FC98 /* IMBiTunesCDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesCDBRoot.h; sourceTree = "<group>"; };
+		B96F34E5200CAD720026FC98 /* IMBiTunesCDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesCDBRoot.m; sourceTree = "<group>"; };
+		B96F34E6200CAD720026FC98 /* iTunesCDB */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesCDB; sourceTree = "<group>"; };
+		B96F34E8200CAD720026FC98 /* IMBSqliteTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables.h; sourceTree = "<group>"; };
+		B96F34E9200CAD720026FC98 /* IMBSqliteTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables.m; sourceTree = "<group>"; };
+		B96F34EA200CAD720026FC98 /* IMBSqliteTables_31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_31.h; sourceTree = "<group>"; };
+		B96F34EB200CAD720026FC98 /* IMBSqliteTables_31.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_31.m; sourceTree = "<group>"; };
+		B96F34EC200CAD720026FC98 /* IMBSqliteTables_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_4.h; sourceTree = "<group>"; };
+		B96F34ED200CAD720026FC98 /* IMBSqliteTables_4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_4.m; sourceTree = "<group>"; };
+		B96F34EE200CAD720026FC98 /* IMBSqliteTables_Above3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Above3.h; sourceTree = "<group>"; };
+		B96F34EF200CAD720026FC98 /* IMBSqliteTables_Above3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Above3.m; sourceTree = "<group>"; };
+		B96F34F0200CAD720026FC98 /* IMBSqliteTables_Nano5G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Nano5G.h; sourceTree = "<group>"; };
+		B96F34F1200CAD720026FC98 /* IMBSqliteTables_Nano5G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Nano5G.m; sourceTree = "<group>"; };
+		B96F34F2200CAD720026FC98 /* IMBSqliteTables_Nano6G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Nano6G.h; sourceTree = "<group>"; };
+		B96F34F3200CAD720026FC98 /* IMBSqliteTables_Nano6G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Nano6G.m; sourceTree = "<group>"; };
+		B96F34F5200CAD720026FC98 /* IMBSqliteTables_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_5.h; sourceTree = "<group>"; };
+		B96F34F6200CAD720026FC98 /* IMBSqliteTables_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_5.m; sourceTree = "<group>"; };
+		B96F34F7200CAD720026FC98 /* IMBSyncAppBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncAppBuilder.h; sourceTree = "<group>"; };
+		B96F34F8200CAD720026FC98 /* IMBSyncAppBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncAppBuilder.m; sourceTree = "<group>"; };
+		B96F34F9200CAD720026FC98 /* IMBSyncPlistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlistBuilder.h; sourceTree = "<group>"; };
+		B96F34FA200CAD720026FC98 /* IMBSyncPlistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlistBuilder.m; sourceTree = "<group>"; };
+		B96F34FD200CAD720026FC98 /* IMBDatabaseHasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDatabaseHasher.h; sourceTree = "<group>"; };
+		B96F34FE200CAD720026FC98 /* IMBDatabaseHasher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMBDatabaseHasher.mm; sourceTree = "<group>"; };
+		B96F34FF200CAD720026FC98 /* IMBHash58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMBHash58.cpp; sourceTree = "<group>"; };
+		B96F3500200CAD720026FC98 /* IMBHash58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHash58.h; sourceTree = "<group>"; };
+		B96F3501200CAD720026FC98 /* IMBHash72.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMBHash72.cpp; sourceTree = "<group>"; };
+		B96F3502200CAD720026FC98 /* IMBHash72.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHash72.h; sourceTree = "<group>"; };
+		B96F3503200CAD720026FC98 /* rijndael.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rijndael.c; sourceTree = "<group>"; };
+		B96F3504200CAD720026FC98 /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rijndael.h; sourceTree = "<group>"; };
+		B96F3505200CAD720026FC98 /* IMBAlbumListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAlbumListContainer.h; sourceTree = "<group>"; };
+		B96F3506200CAD720026FC98 /* IMBAlbumListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAlbumListContainer.m; sourceTree = "<group>"; };
+		B96F3507200CAD720026FC98 /* IMBIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIDGenerator.h; sourceTree = "<group>"; };
+		B96F3508200CAD720026FC98 /* IMBIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIDGenerator.m; sourceTree = "<group>"; };
+		B96F3509200CAD720026FC98 /* IMBiTunesDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesDBRoot.h; sourceTree = "<group>"; };
+		B96F350A200CAD720026FC98 /* IMBiTunesDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesDBRoot.m; sourceTree = "<group>"; };
+		B96F350B200CAD720026FC98 /* IMBListContainerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBListContainerHeader.h; sourceTree = "<group>"; };
+		B96F350C200CAD720026FC98 /* IMBListContainerHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBListContainerHeader.m; sourceTree = "<group>"; };
+		B96F350D200CAD720026FC98 /* IMBPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylist.h; sourceTree = "<group>"; };
+		B96F350E200CAD720026FC98 /* IMBPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylist.m; sourceTree = "<group>"; };
+		B96F350F200CAD720026FC98 /* IMBPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistItem.h; sourceTree = "<group>"; };
+		B96F3510200CAD720026FC98 /* IMBPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistItem.m; sourceTree = "<group>"; };
+		B96F3511200CAD720026FC98 /* IMBPlaylistList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistList.h; sourceTree = "<group>"; };
+		B96F3512200CAD720026FC98 /* IMBPlaylistList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistList.m; sourceTree = "<group>"; };
+		B96F3513200CAD720026FC98 /* IMBPlaylistListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistListContainer.h; sourceTree = "<group>"; };
+		B96F3514200CAD720026FC98 /* IMBPlaylistListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistListContainer.m; sourceTree = "<group>"; };
+		B96F3515200CAD720026FC98 /* IMBPlaylistListV2Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistListV2Container.h; sourceTree = "<group>"; };
+		B96F3516200CAD720026FC98 /* IMBPlaylistListV2Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistListV2Container.m; sourceTree = "<group>"; };
+		B96F3517200CAD720026FC98 /* IMBPodcastListAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPodcastListAdapter.h; sourceTree = "<group>"; };
+		B96F3518200CAD720026FC98 /* IMBPodcastListAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPodcastListAdapter.m; sourceTree = "<group>"; };
+		B96F3519200CAD720026FC98 /* IMBTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTrack.h; sourceTree = "<group>"; };
+		B96F351A200CAD720026FC98 /* IMBTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTrack.m; sourceTree = "<group>"; };
+		B96F351B200CAD720026FC98 /* IMBTracklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTracklist.h; sourceTree = "<group>"; };
+		B96F351C200CAD720026FC98 /* IMBTracklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTracklist.m; sourceTree = "<group>"; };
+		B96F351D200CAD720026FC98 /* IMBTrackListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTrackListContainer.h; sourceTree = "<group>"; };
+		B96F351E200CAD720026FC98 /* IMBTrackListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTrackListContainer.m; sourceTree = "<group>"; };
+		B96F351F200CAD720026FC98 /* IMBType5Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBType5Container.h; sourceTree = "<group>"; };
+		B96F3520200CAD720026FC98 /* IMBType5Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBType5Container.m; sourceTree = "<group>"; };
+		B96F3521200CAD720026FC98 /* IMBType6Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBType6Container.h; sourceTree = "<group>"; };
+		B96F3522200CAD720026FC98 /* IMBType6Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBType6Container.m; sourceTree = "<group>"; };
+		B96F3523200CAD720026FC98 /* IMBUnknownListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnknownListContainer.h; sourceTree = "<group>"; };
+		B96F3524200CAD720026FC98 /* IMBUnknownListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnknownListContainer.m; sourceTree = "<group>"; };
+		B96F3526200CAD720026FC98 /* IMBArtworkStringMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkStringMHOD.h; sourceTree = "<group>"; };
+		B96F3527200CAD720026FC98 /* IMBArtworkStringMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkStringMHOD.m; sourceTree = "<group>"; };
+		B96F3528200CAD720026FC98 /* IMBBaseMHODElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseMHODElement.h; sourceTree = "<group>"; };
+		B96F3529200CAD720026FC98 /* IMBBaseMHODElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseMHODElement.m; sourceTree = "<group>"; };
+		B96F352A200CAD720026FC98 /* IMBMenuIndexMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMenuIndexMHOD.h; sourceTree = "<group>"; };
+		B96F352B200CAD720026FC98 /* IMBMenuIndexMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMenuIndexMHOD.m; sourceTree = "<group>"; };
+		B96F352C200CAD720026FC98 /* IMBMHODFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMHODFactory.h; sourceTree = "<group>"; };
+		B96F352D200CAD720026FC98 /* IMBMHODFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMHODFactory.m; sourceTree = "<group>"; };
+		B96F352E200CAD720026FC98 /* IMBPlaylistPositionMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistPositionMHOD.h; sourceTree = "<group>"; };
+		B96F352F200CAD720026FC98 /* IMBPlaylistPositionMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistPositionMHOD.m; sourceTree = "<group>"; };
+		B96F3530200CAD720026FC98 /* IMBStringMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBStringMHOD.h; sourceTree = "<group>"; };
+		B96F3531200CAD720026FC98 /* IMBStringMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBStringMHOD.m; sourceTree = "<group>"; };
+		B96F3532200CAD720026FC98 /* IMBUnicodeMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnicodeMHOD.h; sourceTree = "<group>"; };
+		B96F3533200CAD720026FC98 /* IMBUnicodeMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnicodeMHOD.m; sourceTree = "<group>"; };
+		B96F3534200CAD720026FC98 /* IMBUnknownMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnknownMHOD.h; sourceTree = "<group>"; };
+		B96F3535200CAD720026FC98 /* IMBUnknownMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnknownMHOD.m; sourceTree = "<group>"; };
+		B96F355D200CADA50026FC98 /* IMBBaseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseDatabase.h; sourceTree = "<group>"; };
+		B96F355E200CADA50026FC98 /* IMBBaseDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseDatabase.m; sourceTree = "<group>"; };
+		B96F355F200CADA50026FC98 /* IMBBaseDatabaseElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseDatabaseElement.h; sourceTree = "<group>"; };
+		B96F3560200CADA50026FC98 /* IMBBaseDatabaseElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseDatabaseElement.m; sourceTree = "<group>"; };
+		B96F3563200CADCA0026FC98 /* IMBiPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiPod.h; sourceTree = "<group>"; };
+		B96F3564200CADCA0026FC98 /* IMBiPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiPod.m; sourceTree = "<group>"; };
+		B96F3566200CADDF0026FC98 /* MobileDeviceAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDeviceAccess.h; sourceTree = "<group>"; };
+		B96F3567200CADDF0026FC98 /* MobileDeviceAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDeviceAccess.m; sourceTree = "<group>"; };
+		B96F3569200CAE0A0026FC98 /* IMBBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseEntity.h; sourceTree = "<group>"; };
+		B96F356A200CAE0A0026FC98 /* IMBBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseEntity.m; sourceTree = "<group>"; };
+		B96F356C200CAE2C0026FC98 /* IMBCommonEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonEnum.h; sourceTree = "<group>"; };
+		B96F356D200CAE2C0026FC98 /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
+		B96F356F200CAE4D0026FC98 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		B96F3570200CAE4D0026FC98 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		B96F3572200CAE690026FC98 /* MediaHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaHelper.h; sourceTree = "<group>"; };
+		B96F3573200CAE690026FC98 /* MediaHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaHelper.m; sourceTree = "<group>"; };
+		B96F3574200CAE690026FC98 /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
+		B96F3575200CAE690026FC98 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
+		B96F3578200CAE9D0026FC98 /* IMBArtworkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkDB.h; sourceTree = "<group>"; };
+		B96F3579200CAE9D0026FC98 /* IMBArtworkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkDB.m; sourceTree = "<group>"; };
+		B96F357A200CAE9D0026FC98 /* IMBArtworkDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkDBRoot.h; sourceTree = "<group>"; };
+		B96F357B200CAE9D0026FC98 /* IMBArtworkDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkDBRoot.m; sourceTree = "<group>"; };
+		B96F357C200CAE9D0026FC98 /* IMBArtworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkEntity.h; sourceTree = "<group>"; };
+		B96F357D200CAE9D0026FC98 /* IMBArtworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkEntity.m; sourceTree = "<group>"; };
+		B96F357E200CAE9D0026FC98 /* IMBArtworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkHelper.h; sourceTree = "<group>"; };
+		B96F357F200CAE9D0026FC98 /* IMBArtworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkHelper.m; sourceTree = "<group>"; };
+		B96F3584200CB1A30026FC98 /* TempHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHelper.h; sourceTree = "<group>"; };
+		B96F3585200CB1A30026FC98 /* TempHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempHelper.m; sourceTree = "<group>"; };
+		B96F3587200CB1C60026FC98 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
+		B96F3588200CB1C60026FC98 /* IMBSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSession.m; sourceTree = "<group>"; };
+		B96F358A200CB1E80026FC98 /* IMBNewTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNewTrack.h; sourceTree = "<group>"; };
+		B96F358B200CB1E80026FC98 /* IMBNewTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNewTrack.m; sourceTree = "<group>"; };
 		B9BDB4C3200618ED00514704 /* NSString+ZLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZLExtension.h"; sourceTree = "<group>"; };
 		B9BDB4C4200618ED00514704 /* NSString+ZLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZLExtension.m"; sourceTree = "<group>"; };
 		B9BDB4C620061A0200514704 /* ZLFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLFileTool.h; sourceTree = "<group>"; };
@@ -173,6 +337,7 @@
 		B92BFD3E20034D74003948D7 /* TestNew */ = {
 			isa = PBXGroup;
 			children = (
+				B96F34E2200CAD720026FC98 /* Lib */,
 				B9E1273C20049DB2008F6854 /* CustomDC */,
 				B9E127202004506C008F6854 /* DeviceConnection */,
 				B92BFD3F20034D74003948D7 /* AppDelegate.h */,
@@ -238,9 +403,173 @@
 			name = FrameWork;
 			sourceTree = "<group>";
 		};
+		B96F34E2200CAD720026FC98 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				B96F34E3200CAD720026FC98 /* iTunesCDB */,
+				B96F34FB200CAD720026FC98 /* iTunesDB */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		B96F34E3200CAD720026FC98 /* iTunesCDB */ = {
+			isa = PBXGroup;
+			children = (
+				B96F358A200CB1E80026FC98 /* IMBNewTrack.h */,
+				B96F358B200CB1E80026FC98 /* IMBNewTrack.m */,
+				B96F3569200CAE0A0026FC98 /* IMBBaseEntity.h */,
+				B96F356A200CAE0A0026FC98 /* IMBBaseEntity.m */,
+				B96F3587200CB1C60026FC98 /* IMBSession.h */,
+				B96F3588200CB1C60026FC98 /* IMBSession.m */,
+				B96F356F200CAE4D0026FC98 /* DateHelper.h */,
+				B96F3570200CAE4D0026FC98 /* DateHelper.m */,
+				B96F3584200CB1A30026FC98 /* TempHelper.h */,
+				B96F3585200CB1A30026FC98 /* TempHelper.m */,
+				B96F3578200CAE9D0026FC98 /* IMBArtworkDB.h */,
+				B96F3579200CAE9D0026FC98 /* IMBArtworkDB.m */,
+				B96F357A200CAE9D0026FC98 /* IMBArtworkDBRoot.h */,
+				B96F357B200CAE9D0026FC98 /* IMBArtworkDBRoot.m */,
+				B96F357C200CAE9D0026FC98 /* IMBArtworkEntity.h */,
+				B96F357D200CAE9D0026FC98 /* IMBArtworkEntity.m */,
+				B96F357E200CAE9D0026FC98 /* IMBArtworkHelper.h */,
+				B96F357F200CAE9D0026FC98 /* IMBArtworkHelper.m */,
+				B96F3572200CAE690026FC98 /* MediaHelper.h */,
+				B96F3573200CAE690026FC98 /* MediaHelper.m */,
+				B96F3574200CAE690026FC98 /* StringHelper.h */,
+				B96F3575200CAE690026FC98 /* StringHelper.m */,
+				B96F356C200CAE2C0026FC98 /* IMBCommonEnum.h */,
+				B96F356D200CAE2C0026FC98 /* IMBCommonEnum.m */,
+				B96F3563200CADCA0026FC98 /* IMBiPod.h */,
+				B96F3564200CADCA0026FC98 /* IMBiPod.m */,
+				B96F355D200CADA50026FC98 /* IMBBaseDatabase.h */,
+				B96F355E200CADA50026FC98 /* IMBBaseDatabase.m */,
+				B96F355F200CADA50026FC98 /* IMBBaseDatabaseElement.h */,
+				B96F3560200CADA50026FC98 /* IMBBaseDatabaseElement.m */,
+				B96F34E4200CAD720026FC98 /* IMBiTunesCDBRoot.h */,
+				B96F34E5200CAD720026FC98 /* IMBiTunesCDBRoot.m */,
+				B96F34E6200CAD720026FC98 /* iTunesCDB */,
+				B96F34E7200CAD720026FC98 /* Sqlite */,
+			);
+			path = iTunesCDB;
+			sourceTree = "<group>";
+		};
+		B96F34E7200CAD720026FC98 /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				B96F34E8200CAD720026FC98 /* IMBSqliteTables.h */,
+				B96F34E9200CAD720026FC98 /* IMBSqliteTables.m */,
+				B96F34EA200CAD720026FC98 /* IMBSqliteTables_31.h */,
+				B96F34EB200CAD720026FC98 /* IMBSqliteTables_31.m */,
+				B96F34EC200CAD720026FC98 /* IMBSqliteTables_4.h */,
+				B96F34ED200CAD720026FC98 /* IMBSqliteTables_4.m */,
+				B96F34EE200CAD720026FC98 /* IMBSqliteTables_Above3.h */,
+				B96F34EF200CAD720026FC98 /* IMBSqliteTables_Above3.m */,
+				B96F34F0200CAD720026FC98 /* IMBSqliteTables_Nano5G.h */,
+				B96F34F1200CAD720026FC98 /* IMBSqliteTables_Nano5G.m */,
+				B96F34F2200CAD720026FC98 /* IMBSqliteTables_Nano6G.h */,
+				B96F34F3200CAD720026FC98 /* IMBSqliteTables_Nano6G.m */,
+				B96F34F4200CAD720026FC98 /* Sync */,
+			);
+			path = Sqlite;
+			sourceTree = "<group>";
+		};
+		B96F34F4200CAD720026FC98 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				B96F34F5200CAD720026FC98 /* IMBSqliteTables_5.h */,
+				B96F34F6200CAD720026FC98 /* IMBSqliteTables_5.m */,
+				B96F34F7200CAD720026FC98 /* IMBSyncAppBuilder.h */,
+				B96F34F8200CAD720026FC98 /* IMBSyncAppBuilder.m */,
+				B96F34F9200CAD720026FC98 /* IMBSyncPlistBuilder.h */,
+				B96F34FA200CAD720026FC98 /* IMBSyncPlistBuilder.m */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		B96F34FB200CAD720026FC98 /* iTunesDB */ = {
+			isa = PBXGroup;
+			children = (
+				B96F34FC200CAD720026FC98 /* DatabaseHash */,
+				B96F3505200CAD720026FC98 /* IMBAlbumListContainer.h */,
+				B96F3506200CAD720026FC98 /* IMBAlbumListContainer.m */,
+				B96F3507200CAD720026FC98 /* IMBIDGenerator.h */,
+				B96F3508200CAD720026FC98 /* IMBIDGenerator.m */,
+				B96F3509200CAD720026FC98 /* IMBiTunesDBRoot.h */,
+				B96F350A200CAD720026FC98 /* IMBiTunesDBRoot.m */,
+				B96F350B200CAD720026FC98 /* IMBListContainerHeader.h */,
+				B96F350C200CAD720026FC98 /* IMBListContainerHeader.m */,
+				B96F350D200CAD720026FC98 /* IMBPlaylist.h */,
+				B96F350E200CAD720026FC98 /* IMBPlaylist.m */,
+				B96F350F200CAD720026FC98 /* IMBPlaylistItem.h */,
+				B96F3510200CAD720026FC98 /* IMBPlaylistItem.m */,
+				B96F3511200CAD720026FC98 /* IMBPlaylistList.h */,
+				B96F3512200CAD720026FC98 /* IMBPlaylistList.m */,
+				B96F3513200CAD720026FC98 /* IMBPlaylistListContainer.h */,
+				B96F3514200CAD720026FC98 /* IMBPlaylistListContainer.m */,
+				B96F3515200CAD720026FC98 /* IMBPlaylistListV2Container.h */,
+				B96F3516200CAD720026FC98 /* IMBPlaylistListV2Container.m */,
+				B96F3517200CAD720026FC98 /* IMBPodcastListAdapter.h */,
+				B96F3518200CAD720026FC98 /* IMBPodcastListAdapter.m */,
+				B96F3519200CAD720026FC98 /* IMBTrack.h */,
+				B96F351A200CAD720026FC98 /* IMBTrack.m */,
+				B96F351B200CAD720026FC98 /* IMBTracklist.h */,
+				B96F351C200CAD720026FC98 /* IMBTracklist.m */,
+				B96F351D200CAD720026FC98 /* IMBTrackListContainer.h */,
+				B96F351E200CAD720026FC98 /* IMBTrackListContainer.m */,
+				B96F351F200CAD720026FC98 /* IMBType5Container.h */,
+				B96F3520200CAD720026FC98 /* IMBType5Container.m */,
+				B96F3521200CAD720026FC98 /* IMBType6Container.h */,
+				B96F3522200CAD720026FC98 /* IMBType6Container.m */,
+				B96F3523200CAD720026FC98 /* IMBUnknownListContainer.h */,
+				B96F3524200CAD720026FC98 /* IMBUnknownListContainer.m */,
+				B96F3525200CAD720026FC98 /* MHOD */,
+			);
+			path = iTunesDB;
+			sourceTree = "<group>";
+		};
+		B96F34FC200CAD720026FC98 /* DatabaseHash */ = {
+			isa = PBXGroup;
+			children = (
+				B96F34FD200CAD720026FC98 /* IMBDatabaseHasher.h */,
+				B96F34FE200CAD720026FC98 /* IMBDatabaseHasher.mm */,
+				B96F34FF200CAD720026FC98 /* IMBHash58.cpp */,
+				B96F3500200CAD720026FC98 /* IMBHash58.h */,
+				B96F3501200CAD720026FC98 /* IMBHash72.cpp */,
+				B96F3502200CAD720026FC98 /* IMBHash72.h */,
+				B96F3503200CAD720026FC98 /* rijndael.c */,
+				B96F3504200CAD720026FC98 /* rijndael.h */,
+			);
+			path = DatabaseHash;
+			sourceTree = "<group>";
+		};
+		B96F3525200CAD720026FC98 /* MHOD */ = {
+			isa = PBXGroup;
+			children = (
+				B96F3526200CAD720026FC98 /* IMBArtworkStringMHOD.h */,
+				B96F3527200CAD720026FC98 /* IMBArtworkStringMHOD.m */,
+				B96F3528200CAD720026FC98 /* IMBBaseMHODElement.h */,
+				B96F3529200CAD720026FC98 /* IMBBaseMHODElement.m */,
+				B96F352A200CAD720026FC98 /* IMBMenuIndexMHOD.h */,
+				B96F352B200CAD720026FC98 /* IMBMenuIndexMHOD.m */,
+				B96F352C200CAD720026FC98 /* IMBMHODFactory.h */,
+				B96F352D200CAD720026FC98 /* IMBMHODFactory.m */,
+				B96F352E200CAD720026FC98 /* IMBPlaylistPositionMHOD.h */,
+				B96F352F200CAD720026FC98 /* IMBPlaylistPositionMHOD.m */,
+				B96F3530200CAD720026FC98 /* IMBStringMHOD.h */,
+				B96F3531200CAD720026FC98 /* IMBStringMHOD.m */,
+				B96F3532200CAD720026FC98 /* IMBUnicodeMHOD.h */,
+				B96F3533200CAD720026FC98 /* IMBUnicodeMHOD.m */,
+				B96F3534200CAD720026FC98 /* IMBUnknownMHOD.h */,
+				B96F3535200CAD720026FC98 /* IMBUnknownMHOD.m */,
+			);
+			path = MHOD;
+			sourceTree = "<group>";
+		};
 		B9E127202004506C008F6854 /* DeviceConnection */ = {
 			isa = PBXGroup;
 			children = (
+				B96F3566200CADDF0026FC98 /* MobileDeviceAccess.h */,
+				B96F3567200CADDF0026FC98 /* MobileDeviceAccess.m */,
 				B9E1273520045167008F6854 /* IMBNotificationDefine.h */,
 				B9E1273220045148008F6854 /* NSDictionary+Category.h */,
 				B9E1273320045148008F6854 /* NSDictionary+Category.m */,
@@ -368,6 +697,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96F3537200CAD720026FC98 /* iTunesCDB in Resources */,
 				B92BFD4920034D74003948D7 /* Assets.xcassets in Resources */,
 				B92BFD4C20034D74003948D7 /* Main.storyboard in Resources */,
 			);
@@ -394,15 +724,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96F3542200CAD720026FC98 /* IMBHash58.cpp in Sources */,
+				B96F3541200CAD720026FC98 /* IMBDatabaseHasher.mm in Sources */,
+				B96F3556200CAD720026FC98 /* IMBBaseMHODElement.m in Sources */,
+				B96F3551200CAD720026FC98 /* IMBTrackListContainer.m in Sources */,
+				B96F354A200CAD720026FC98 /* IMBPlaylistItem.m in Sources */,
+				B96F3550200CAD720026FC98 /* IMBTracklist.m in Sources */,
+				B96F353D200CAD720026FC98 /* IMBSqliteTables_Nano6G.m in Sources */,
+				B96F354B200CAD720026FC98 /* IMBPlaylistList.m in Sources */,
 				B9E127312004512C008F6854 /* NSData+Category.m in Sources */,
 				FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */,
 				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
+				B96F3583200CAE9D0026FC98 /* IMBArtworkHelper.m in Sources */,
+				B96F3555200CAD720026FC98 /* IMBArtworkStringMHOD.m in Sources */,
+				B96F354D200CAD720026FC98 /* IMBPlaylistListV2Container.m in Sources */,
+				B96F353B200CAD720026FC98 /* IMBSqliteTables_Above3.m in Sources */,
+				B96F3582200CAE9D0026FC98 /* IMBArtworkEntity.m in Sources */,
+				B96F3543200CAD720026FC98 /* IMBHash72.cpp in Sources */,
+				B96F3581200CAE9D0026FC98 /* IMBArtworkDBRoot.m in Sources */,
+				B96F3553200CAD720026FC98 /* IMBType6Container.m in Sources */,
+				B96F3586200CB1A30026FC98 /* TempHelper.m in Sources */,
+				B96F3547200CAD720026FC98 /* IMBiTunesDBRoot.m in Sources */,
+				B96F3539200CAD720026FC98 /* IMBSqliteTables_31.m in Sources */,
+				B96F3546200CAD720026FC98 /* IMBIDGenerator.m in Sources */,
+				B96F353C200CAD720026FC98 /* IMBSqliteTables_Nano5G.m in Sources */,
+				B96F3557200CAD720026FC98 /* IMBMenuIndexMHOD.m in Sources */,
+				B96F3548200CAD720026FC98 /* IMBListContainerHeader.m in Sources */,
+				B96F354F200CAD720026FC98 /* IMBTrack.m in Sources */,
 				B92BFD4420034D74003948D7 /* main.m in Sources */,
+				B96F3565200CADCA0026FC98 /* IMBiPod.m in Sources */,
+				B96F353E200CAD720026FC98 /* IMBSqliteTables_5.m in Sources */,
+				B96F3544200CAD720026FC98 /* rijndael.c in Sources */,
 				B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */,
+				B96F3568200CADDF0026FC98 /* MobileDeviceAccess.m in Sources */,
+				B96F3562200CADA50026FC98 /* IMBBaseDatabaseElement.m in Sources */,
 				B9E1272E20045101008F6854 /* NSString+Category.m in Sources */,
+				B96F3589200CB1C60026FC98 /* IMBSession.m in Sources */,
 				B9BDB4C5200618ED00514704 /* NSString+ZLExtension.m in Sources */,
+				B96F3577200CAE690026FC98 /* StringHelper.m in Sources */,
+				B96F355C200CAD720026FC98 /* IMBUnknownMHOD.m in Sources */,
+				B96F3538200CAD720026FC98 /* IMBSqliteTables.m in Sources */,
+				B96F3554200CAD720026FC98 /* IMBUnknownListContainer.m in Sources */,
+				B96F358C200CB1E80026FC98 /* IMBNewTrack.m in Sources */,
+				B96F3571200CAE4D0026FC98 /* DateHelper.m in Sources */,
+				B96F3552200CAD720026FC98 /* IMBType5Container.m in Sources */,
+				B96F354C200CAD720026FC98 /* IMBPlaylistListContainer.m in Sources */,
+				B96F3580200CAE9D0026FC98 /* IMBArtworkDB.m in Sources */,
+				B96F356E200CAE2C0026FC98 /* IMBCommonEnum.m in Sources */,
 				B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */,
+				B96F3558200CAD720026FC98 /* IMBMHODFactory.m in Sources */,
+				B96F3561200CADA50026FC98 /* IMBBaseDatabase.m in Sources */,
+				B96F354E200CAD720026FC98 /* IMBPodcastListAdapter.m in Sources */,
+				B96F3545200CAD720026FC98 /* IMBAlbumListContainer.m in Sources */,
+				B96F356B200CAE0A0026FC98 /* IMBBaseEntity.m in Sources */,
+				B96F3540200CAD720026FC98 /* IMBSyncPlistBuilder.m in Sources */,
+				B96F355B200CAD720026FC98 /* IMBUnicodeMHOD.m in Sources */,
+				B96F353A200CAD720026FC98 /* IMBSqliteTables_4.m in Sources */,
+				B96F3559200CAD720026FC98 /* IMBPlaylistPositionMHOD.m in Sources */,
+				B96F3536200CAD720026FC98 /* IMBiTunesCDBRoot.m in Sources */,
 				B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */,
+				B96F355A200CAD720026FC98 /* IMBStringMHOD.m in Sources */,
+				B96F3549200CAD720026FC98 /* IMBPlaylist.m in Sources */,
+				B96F3576200CAE690026FC98 /* MediaHelper.m in Sources */,
+				B96F353F200CAD720026FC98 /* IMBSyncAppBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
