@@ -269,7 +269,7 @@ CGFloat const labelY = 10.0f;
     NSString * _productType;
     NSString *_productVersion;
     NSString *_totalDataAvailable;
-    NSDictionary *_dataDic;
+//    NSDictionary *_dataDic;
     
     AMDevice *_deviceHandle;
     IMBiPod *_ipod;
@@ -324,6 +324,7 @@ CGFloat const labelY = 10.0f;
     [self setupView];
 }
 
+//初始化方法
 - (void)setupView {
     self.window.title = @"MainWindow";
     self.sizeLabel.stringValue = @"Please Connect Your Device";
@@ -365,6 +366,7 @@ CGFloat const labelY = 10.0f;
     [self startListen];
 }
 
+//开始监听
 - (void)startListen {
     if (!_subscribed) {
         // try to subscribe for notifications - pass self as the callback_data
@@ -427,13 +429,10 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     }
 }
 
+//设备连接成功做的事情
 - (void)connectDevice:(am_device)dev {
     _amDevice = dev;
     
-    
-    //    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
-    //AMDeviceConnect(dev);
-    //      int ret = AMDeviceSecureStartService(dev, (CFStringRef)@"com.apple.afc", 0, &_service);
     
     _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
     _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
@@ -443,7 +442,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
     _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
     _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
-    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
+//    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
 //    _deviceHandle = [AMDevice deviceFrom:dev];
     
@@ -484,6 +483,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     
 }
 
+//设备断开连接做的事情
 - (void)disConnectDevice:(am_device)dev {
     _amDevice = dev;
     
@@ -498,13 +498,12 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _serialNumber = nil;
     _totalDiskCapacity = nil;
     _totalDataAvailable = nil;
-    _dataDic = nil;
     
     self.dataArray = nil;
     [_tableView reloadData];
 }
 
-
+//设备成功连接、复制CDB文件、解析CDB文件、显示track数据
 - (BOOL)connectComplete {
     BOOL ret = NO;
     
@@ -618,7 +617,7 @@ bail:
     return [result autorelease];
 }
 
-#pragma mark --- deviceConnetion And deviceDisconnection
+#pragma mark --- deviceConnetion And deviceDisconnection  deviceStartSession And deviceStopSession
 - (bool)deviceConnect
 {
     if (![self checkStatus:AMDeviceConnect(_amDevice) from:"AMDeviceConnect"]) return NO;
@@ -656,6 +655,7 @@ bail:
 
 #pragma mark --- 文件相关操作
 
+//复制文件
 - (BOOL)copyRemoteFile:(NSString*)path1 toLocalFile:(NSString*)path2
 {
     BOOL result = NO;
@@ -709,6 +709,7 @@ bail:
     return result;
 }
 
+//开启读取文件
 - (AFCFileReference*)openForRead:(NSString*)path
 {
     if (![self ensureConnectionIsOpen]) return nil;
@@ -731,6 +732,7 @@ bail:
     return afcFile;
 }
 
+//连接是否打开
 - (bool)ensureConnectionIsOpen
 {
     if (_afc) return YES;
@@ -738,7 +740,7 @@ bail:
     return NO;
 }
 
-
+//获取文件信息
 - (NSDictionary*)getFileInfo:(NSString*)path
 {
     if (!path) {
@@ -760,6 +762,8 @@ bail:
     }
     return nil;
 }
+
+
 -(void)fix_date_entry:(NSString*)key in:(NSMutableDictionary *)dict
 {
     id d = [dict objectForKey:key];
@@ -769,6 +773,8 @@ bail:
         [dict setObject:d forKey:key];
     }
 }
+
+//读取afc信息
 - (NSMutableDictionary*)readAfcDictionary:(afc_dictionary)dict
 {
     NSMutableDictionary *result = [[[NSMutableDictionary alloc] init] autorelease];
