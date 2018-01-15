@@ -401,6 +401,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         }
             
         case ADNCI_MSG_UNSUBSCRIBED: {
+            //注销监听
             return;
         }
             
@@ -421,6 +422,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             int connectType = AMDeviceGetInterfaceType(info->dev);
             _amDevice = info->dev;
             if (connectType == 2) {//wifi连接设备断开
+                
             }else {//1则为数据线连接设备断开
                 [self disConnectDevice:info->dev];
             }
@@ -526,15 +528,12 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             IMBiTunesCDBRoot *databaseRoot = [[IMBiTunesCDBRoot alloc] init];
             _ipod = [[IMBiPod alloc] initWithDevice:_deviceHandle];
             [databaseRoot read:_ipod reader:reader currPosition:0];
-            if (_ipod) {
-                //获取解析出来的tracks数据
-                IMBTrackListContainer *tracksContainer = (IMBTrackListContainer*)[[databaseRoot getChildSection:Tracks] getListContainer];
-                IMBTracklist *tracklist = [tracksContainer getTracklist];
-                
-                _dataArray = tracklist.trackArray;
-                [_tableView reloadData];
-                
-            }
+            //获取解析出来的tracks数据
+            IMBTrackListContainer *tracksContainer = (IMBTrackListContainer*)[[databaseRoot getChildSection:Tracks] getListContainer];
+            IMBTracklist *tracklist = [tracksContainer getTracklist];
+            
+            _dataArray = tracklist.trackArray;
+            [_tableView reloadData];
         }
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
