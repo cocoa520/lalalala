@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9104C9E200DFDFA00C1ECEA /* IMBAMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */; };
+		B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */; };
+		B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */; };
+		B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
@@ -41,6 +45,14 @@
 
 /* Begin PBXFileReference section */
 		B9104C97200DB2C300C1ECEA /* iOSFilesPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSFilesPch.pch; sourceTree = "<group>"; };
+		B9104C9A200DFDFA00C1ECEA /* IMBAMDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMDeviceInfo.h; sourceTree = "<group>"; };
+		B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMDeviceInfo.m; sourceTree = "<group>"; };
+		B9104C9C200DFDFA00C1ECEA /* IMBDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceInfo.h; sourceTree = "<group>"; };
+		B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceInfo.m; sourceTree = "<group>"; };
+		B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonEnum.h; sourceTree = "<group>"; };
+		B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
+		B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
+		B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -158,6 +170,14 @@
 		EE39ACE6200CBD9700D084CE /* deviceConnection */ = {
 			isa = PBXGroup;
 			children = (
+				B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */,
+				B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */,
+				B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */,
+				B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */,
+				B9104C9A200DFDFA00C1ECEA /* IMBAMDeviceInfo.h */,
+				B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */,
+				B9104C9C200DFDFA00C1ECEA /* IMBDeviceInfo.h */,
+				B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */,
 				EE39ACE7200CBD9700D084CE /* IMBNotificationDefine.h */,
 				EE39ACE8200CBD9700D084CE /* MobileDevice.h */,
 				EE39ACE9200CBD9700D084CE /* MobileDeviceAccess.h */,
@@ -345,12 +365,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE39AD1E200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
+				B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */,
 				B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */,
+				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
 				EE39AD6A200D977000D084CE /* NSString+Category.m in Sources */,
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
+				B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */,
 				EE39AD26200CBD9700D084CE /* IMBNoTitleBarWindow.m in Sources */,
+				B9104C9E200DFDFA00C1ECEA /* IMBAMDeviceInfo.m in Sources */,
 				EE39AD1F200CBD9700D084CE /* StringHelper.m in Sources */,
 				EE39AD12200CBD9700D084CE /* AppDelegate.m in Sources */,
 				EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */,

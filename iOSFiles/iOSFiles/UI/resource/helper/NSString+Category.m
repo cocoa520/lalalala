@@ -355,7 +355,7 @@
     return guid;
 }
 
-#pragma mark - ContainsString
+#pragma mark - ContainsString   这种查找是否存在子字符串的方法很给力
 - (BOOL)containsString:(NSString *)string
                options:(NSStringCompareOptions)options {
     NSRange rng = [self rangeOfString:string options:options];

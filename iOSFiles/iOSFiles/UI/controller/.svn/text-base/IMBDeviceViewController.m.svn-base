@@ -34,6 +34,7 @@
 - (void)awakeFromNib {
     [self setupView];
     [self deviceConnection];
+    
 }
 
 - (void)setupView {
@@ -65,22 +66,28 @@
     };
 }
 
-//- (void)dealloc {
-//    [[IMBDeviceConnection singleton] stopListening];
-//    
-//    [super dealloc];
-//}
+- (void)dealloc {
+    [[IMBDeviceConnection singleton] stopListening];
+    
+    [super dealloc];
+}
 
-#pragma mark -- 设备链接状态
-
+#pragma mark -- 设备连接状态
+/**
+ *  设备连接成功
+ */
 - (void)deviceConnected {
     
 }
-
+/**
+ *  设备断开连接
+ */
 - (void)deviceDisconnected:(NSString *)serialNum {
     
 }
-
+/**
+ *  设备连接需要密码
+ */
 - (void)deviceNeededPwd:(am_device)device {
     
 }

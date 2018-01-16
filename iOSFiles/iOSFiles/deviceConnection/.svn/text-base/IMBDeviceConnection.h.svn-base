@@ -12,13 +12,12 @@
 @interface IMBDeviceConnection : NSObject
 {
     @private
-    NSMutableArray *_serialArray;
+    
 }
 @property(nonatomic, copy)void(^IMBDeviceConnected)(void);
 @property(nonatomic, copy)void(^IMBDeviceDisconnected)(NSString *serialNum);
 @property(nonatomic, copy)void(^IMBDeviceNeededPassword)(am_device device);
 
-@property(nonatomic, retain, readonly)NSMutableArray *serialArray;
 
 + (instancetype)singleton;
 

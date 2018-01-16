@@ -1,15 +1,15 @@
 10
 
 dir
-987
+991
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/deviceConnection
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-01-16T06:54:43.368207Z
-987
-longfan
+2018-01-16T07:28:24.632557Z
+990
+hezhonglin
 
 
 
@@ -62,7 +62,7 @@ dingming
 
 MobileDeviceAccess.h
 file
-988
+
 
 
 
@@ -94,16 +94,16 @@ hezhonglin
 
 68504
 
-IMBDeviceConnection.m
+IMBCommonEnum.m
 file
-990
+997
 
 
 
-2018-01-16T07:27:41.000000Z
-46476ffbecef9f716379ab9c2a34784b
-2018-01-16T07:28:24.632557Z
-990
+2018-01-16T09:34:13.000000Z
+13be3e4bf9f5927a7ad10f5e71fa31a1
+2018-01-16T10:11:38.610559Z
+997
 hezhonglin
 
 
@@ -126,7 +126,41 @@ hezhonglin
 
 
 
-4326
+35130
+
+IMBDeviceConnection.m
+file
+998
+
+
+
+2018-01-16T10:31:22.000000Z
+f7cd0b15dc71c2a054e940abdeba869c
+2018-01-16T10:33:21.056847Z
+998
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3659
 
 MobileDeviceAccess.m
 file
@@ -161,6 +195,210 @@ longfan
 
 
 278311
+
+IMBSupportedArtworkFormat.h
+file
+997
+
+
+
+2017-11-22T04:23:34.000000Z
+445cd1b8ef2fbbfc6e0f42cbef7eb582
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1762
+
+IMBAMDeviceInfo.h
+file
+997
+
+
+
+2017-11-22T04:23:34.000000Z
+340539fa3b82d81caef6d31fccf195ec
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6693
+
+IMBDeviceInfo.h
+file
+997
+
+
+
+2018-01-16T09:48:13.000000Z
+5d1f0bf036926b32fd852136d985ec44
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11157
+
+IMBSupportedArtworkFormat.m
+file
+997
+
+
+
+2017-11-22T04:23:34.000000Z
+a1fa913f1843d839cc7ec720426c2395
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5543
+
+IMBCommonEnum.h
+file
+997
+
+
+
+2018-01-16T10:00:15.000000Z
+817143c7fff6cd998d4ff8d06b7a59fb
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11860
+
+IMBAMDeviceInfo.m
+file
+997
+
+
+
+2017-11-22T04:23:34.000000Z
+dda138402e5da2d9bab578bf30d0f1d6
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17159
 
 MobileDevice.h
 file
@@ -198,14 +436,14 @@ has-props
 
 IMBDeviceConnection.h
 file
-988
+997
 
 
 
-2018-01-16T05:22:08.000000Z
-d5dd75d9848d2dd7f8c5af3c126c25c0
-2018-01-16T06:57:19.181281Z
-988
+2018-01-16T08:31:09.000000Z
+725d9181b47b4244a6bc5db17e4cbd16
+2018-01-16T10:11:38.610559Z
+997
 hezhonglin
 
 
@@ -228,5 +466,39 @@ hezhonglin
 
 
 
-658
+562
+
+IMBDeviceInfo.m
+file
+997
+
+
+
+2017-11-22T04:23:34.000000Z
+a014af470f91c00b6d2dbffc97ed9aae
+2018-01-16T10:11:38.610559Z
+997
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19536
 

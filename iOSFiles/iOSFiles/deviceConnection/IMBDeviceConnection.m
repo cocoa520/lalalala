@@ -12,7 +12,10 @@
 static id _instance = nil;
 
 @interface IMBDeviceConnection()<NSCopying,MobileDeviceAccessListener>
-
+{
+    NSOperationQueue *_processingQueue;
+    NSMutableArray *_serialArray;
+}
 @property(nonatomic, retain)MobileDeviceAccess *deviceAccess;
 
 @end
@@ -45,6 +48,8 @@ static id _instance = nil;
     
     [_serialArray release];
     _serialArray = nil;
+    [_processingQueue release];
+    _processingQueue = nil;
     
     [super dealloc];
 }
@@ -64,6 +69,7 @@ static id _instance = nil;
 - (void)setUp {
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
     _deviceAccess = [MobileDeviceAccess singleton];
+    _processingQueue = [[NSOperationQueue alloc] init];
 }
 
 /**
@@ -72,8 +78,6 @@ static id _instance = nil;
 - (void)startListening {
     [self.deviceAccess setListener:self];
     
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(mountNotification:) name:NSWorkspaceDidMountNotification object:nil];
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(unmountNotification:) name:NSWorkspaceDidUnmountNotification object:nil];
 }
 /**
  *  断开监听
@@ -81,19 +85,11 @@ static id _instance = nil;
 - (void)stopListening {
     [self.deviceAccess stopListener];
     
-    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self name:NSWorkspaceDidMountNotification object:nil];
-    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self name:NSWorkspaceDidUnmountNotification object:nil];
 }
 
 #pragma mark --  通知方法
 
-- (void)mountNotification:(NSNotification *)noti {
-    
-}
 
-- (void)unmountNotification:(NSNotification *)noti {
-    
-}
 #pragma mark --  设备连接监听方法
 /**
  *  设备成功连接
@@ -108,16 +104,16 @@ static id _instance = nil;
         }
         NSString *deviceSerialNumber = ((AMDevice *)device).serialNumber;
         if (deviceSerialNumber) {
-            [self.serialArray addObject:deviceSerialNumber];
+            [_serialArray addObject:deviceSerialNumber];
         }
         
         device.isValid = YES;
-//        [_processingQueue addOperationWithBlock:^(void){
-//            sleep(2);
-//            if ([_servialArray containsObject:deviceSerialNumber]) {
+        [_processingQueue addOperationWithBlock:^(void){
+            sleep(2);
+            if ([_serialArray containsObject:deviceSerialNumber]) {
 //                [self createIPodByDevice:device];
-//            }
-//        }];
+            }
+        }];
     }else {
         NSLog(@"preSerialNumber is nil");
     }
@@ -131,8 +127,8 @@ static id _instance = nil;
     IMBFFuncLog;
     device.isValid = NO;
     NSString *serialNumber = [device serialNumber];
-    if ([self.serialArray containsObject:serialNumber]) {
-        [self.serialArray removeObject:serialNumber];
+    if ([_serialArray containsObject:serialNumber]) {
+        [_serialArray removeObject:serialNumber];
     }
     
     if (_IMBDeviceDisconnected) {
