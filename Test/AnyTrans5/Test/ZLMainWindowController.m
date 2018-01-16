@@ -869,35 +869,35 @@ bail:
 }
 
 
-- (void)showPopoverView:(NSView *)view {
-    
-    [self.popover close];
-    [self.popover showRelativeToRect:view.bounds ofView:view preferredEdge:NSMaxYEdge];
-}
-
-- (IBAction)sendToMac:(NSButton *)sender {
-    if (-1 == self.selectedIndex) {
-        NSLog(@"please select one item");
-        return;
-    }
-    
-    
-    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-    openPanel.canChooseFiles = NO;
-    openPanel.allowsMultipleSelection = NO;
-    openPanel.canChooseDirectories = YES;
-    [openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-        if (NSFileHandlingPanelOKButton == result) {
-            [self performSelector:@selector(contentToMac:) withObject:openPanel afterDelay:0.1];
-        }
-    }];
-}
-
-- (void)contentToMac:(NSOpenPanel *)openPanel {
-    NSString *path = openPanel.URL.path;
-    if (path) {
-        
-    }
-}
+//- (void)showPopoverView:(NSView *)view {
+//    
+//    [self.popover close];
+//    [self.popover showRelativeToRect:view.bounds ofView:view preferredEdge:NSMaxYEdge];
+//}
+//
+//- (IBAction)sendToMac:(NSButton *)sender {
+//    if (-1 == self.selectedIndex) {
+//        NSLog(@"please select one item");
+//        return;
+//    }
+//    
+//    
+//    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+//    openPanel.canChooseFiles = NO;
+//    openPanel.allowsMultipleSelection = NO;
+//    openPanel.canChooseDirectories = YES;
+//    [openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+//        if (NSFileHandlingPanelOKButton == result) {
+//            [self performSelector:@selector(contentToMac:) withObject:openPanel afterDelay:0.1];
+//        }
+//    }];
+//}
+//
+//- (void)contentToMac:(NSOpenPanel *)openPanel {
+//    NSString *path = openPanel.URL.path;
+//    if (path) {
+//        
+//    }
+//}
 
 @end
