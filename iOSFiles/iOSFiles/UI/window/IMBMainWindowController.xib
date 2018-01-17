@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </customView>
                     <box title="Box" borderType="none" titlePosition="noTitle" id="ixW-fu-fjw">
-                        <rect key="frame" x="0.0" y="0.0" width="1060" height="578"/>
+                        <rect key="frame" x="0.0" y="-4" width="1060" height="578"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="1060" height="578"/>

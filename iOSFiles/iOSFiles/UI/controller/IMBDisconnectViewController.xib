@@ -9,9 +9,10 @@
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDisconnectViewController">
             <connections>
                 <outlet property="_noconnectView" destination="lg5-sf-Utl" id="vIp-8U-DXh"/>
-                <outlet property="_nonectimageView1" destination="Qhy-5t-jbC" id="soF-DX-pmf"/>
                 <outlet property="_promptTextField" destination="I9W-Ut-hJZ" id="WJq-jL-ypG"/>
                 <outlet property="_titleTextField" destination="0ux-KW-TWt" id="c4D-hj-IzK"/>
+                <outlet property="cusContentView" destination="d6X-Qx-mo4" id="q5j-zg-HLa"/>
+                <outlet property="promptTF" destination="I9W-Ut-hJZ" id="cUi-qZ-qpg"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -43,17 +44,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="1060" height="574"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Qhy-5t-jbC">
-                            <rect key="frame" x="0.0" y="0.0" width="1060" height="420"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottom" imageScaling="proportionallyUpOrDown" image="noconnect_bg" id="qaU-hv-tLO"/>
-                        </imageView>
+                        <customView id="d6X-Qx-mo4">
+                            <rect key="frame" x="20" y="20" width="1020" height="404"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
                     </subviews>
                 </customView>
             </subviews>
         </customView>
     </objects>
-    <resources>
-        <image name="noconnect_bg" width="2000" height="840"/>
-    </resources>
 </document>

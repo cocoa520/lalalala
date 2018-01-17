@@ -9,11 +9,19 @@
 #import "IMBDeviceViewController.h"
 #import "IMBDisconnectViewController.h"
 #import "IMBDeviceConnection.h"
+#import "IMBDeviceInfo.h"
+#import "IMBiPod.h"
+
+#import "TestDeviceInfoController.h"
 
 
 @interface IMBDeviceViewController ()
 
-
+{
+    @private
+    IMBDisconnectViewController *_disConnectController;
+    
+}
 
 @end
 
@@ -38,10 +46,8 @@
 }
 
 - (void)setupView {
-    IMBDisconnectViewController *disConnectController = [[IMBDisconnectViewController alloc]initWithNibName:@"IMBDisconnectViewController" bundle:nil];
-    [_deviceBox addSubview:disConnectController.view];
-    [disConnectController release];
-    disConnectController = nil;
+    _disConnectController = [[IMBDisconnectViewController alloc]initWithNibName:@"IMBDisconnectViewController" bundle:nil];
+    [_deviceBox addSubview:_disConnectController.view];
     
     
 }
@@ -64,9 +70,27 @@
         //设备连接需要密码
         [self deviceNeededPwd:device];
     };
+    deviceConnection.IMBDeviceConnectedCompletion = ^(IMBiPod *iPod) {
+        //加载设备信息完成,ipod中含有设备详细信息
+        _disConnectController.promptTF.stringValue = iPod.deviceInfo.deviceName;
+        
+        IMBDeviceInfo *deviceInfo = [iPod.deviceInfo retain];
+        IMBFLog(@"");
+        
+        TestDeviceInfoController *infoController = [[TestDeviceInfoController alloc] init];
+        infoController.view.frame = _disConnectController.cusContentView.bounds;
+        
+        infoController.ipod = iPod;
+        [_disConnectController.cusContentView addSubview:infoController.view];
+        [infoController release];
+        infoController = nil;
+        
+    };
 }
 
 - (void)dealloc {
+    [_disConnectController release];
+    _disConnectController = nil;
     [[IMBDeviceConnection singleton] stopListening];
     
     [super dealloc];
@@ -77,12 +101,13 @@
  *  设备连接成功
  */
 - (void)deviceConnected {
-    
+    _disConnectController.promptTF.stringValue = @"Connecting Your Device...";
 }
 /**
  *  设备断开连接
  */
 - (void)deviceDisconnected:(NSString *)serialNum {
+    _disConnectController.promptTF.stringValue = @"Please plug-in your iPhone,iPad or iPod, Start your journey";
     
 }
 /**
@@ -91,4 +116,5 @@
 - (void)deviceNeededPwd:(am_device)device {
     
 }
+
 @end

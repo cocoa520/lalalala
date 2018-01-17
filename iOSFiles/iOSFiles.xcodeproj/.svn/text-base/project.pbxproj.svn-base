@@ -11,6 +11,12 @@
 		B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */; };
 		B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */; };
 		B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */; };
+		B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD93200EF73B00D02B13 /* IMBiPod.m */; };
+		B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD95200EF73B00D02B13 /* IMBSession.m */; };
+		B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */; };
+		B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */; };
+		B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9F200EF8E300D02B13 /* TempHelper.m */; };
+		B9FBDDAF200F4BF900D02B13 /* TestDeviceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
@@ -26,8 +32,6 @@
 		EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACF6200CBD9700D084CE /* DDTTYLogger.m */; };
 		EE39AD1C200CBD9700D084CE /* IMBLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACF8200CBD9700D084CE /* IMBLogManager.m */; };
 		EE39AD1D200CBD9700D084CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACF9200CBD9700D084CE /* main.m */; };
-		EE39AD1E200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACFE200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */; };
-		EE39AD1F200CBD9700D084CE /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD00200CBD9700D084CE /* StringHelper.m */; };
 		EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD05200CBD9700D084CE /* IMBLackCornerView.m */; };
 		EE39AD22200CBD9700D084CE /* IMBNoTitleBarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD07200CBD9700D084CE /* IMBNoTitleBarContentView.m */; };
 		EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD09200CBD9700D084CE /* IMBWhiteView.m */; };
@@ -38,9 +42,11 @@
 		EE39AD33200D8CA500D084CE /* IMBDisconnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE39AD31200D8CA500D084CE /* IMBDisconnectViewController.xib */; };
 		EE39AD37200D8DB000D084CE /* IMBDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD35200D8DB000D084CE /* IMBDeviceViewController.m */; };
 		EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE39AD36200D8DB000D084CE /* IMBDeviceViewController.xib */; };
-		EE39AD69200D977000D084CE /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD66200D977000D084CE /* NSData+Category.m */; };
-		EE39AD6A200D977000D084CE /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD68200D977000D084CE /* NSString+Category.m */; };
-		EE39AD71200DA43400D084CE /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD70200DA43400D084CE /* NSDictionary+Category.m */; };
+		EE39ADA5200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD9C200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */; };
+		EE39ADA6200F038300D084CE /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39AD9E200F038300D084CE /* NSData+Category.m */; };
+		EE39ADA7200F038300D084CE /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ADA0200F038300D084CE /* NSDictionary+Category.m */; };
+		EE39ADA8200F038300D084CE /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ADA2200F038300D084CE /* NSString+Category.m */; };
+		EE39ADA9200F038300D084CE /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ADA4200F038300D084CE /* StringHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +59,18 @@
 		B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
 		B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
 		B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
+		B9FBDD92200EF73B00D02B13 /* IMBiPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiPod.h; sourceTree = "<group>"; };
+		B9FBDD93200EF73B00D02B13 /* IMBiPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiPod.m; sourceTree = "<group>"; };
+		B9FBDD94200EF73B00D02B13 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
+		B9FBDD95200EF73B00D02B13 /* IMBSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSession.m; sourceTree = "<group>"; };
+		B9FBDD98200EF7FD00D02B13 /* IMBAMFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMFileSystem.h; sourceTree = "<group>"; };
+		B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMFileSystem.m; sourceTree = "<group>"; };
+		B9FBDD9A200EF7FD00D02B13 /* IMBFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystem.h; sourceTree = "<group>"; };
+		B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystem.m; sourceTree = "<group>"; };
+		B9FBDD9E200EF8E300D02B13 /* TempHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHelper.h; sourceTree = "<group>"; };
+		B9FBDD9F200EF8E300D02B13 /* TempHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempHelper.m; sourceTree = "<group>"; };
+		B9FBDDAD200F4BF900D02B13 /* TestDeviceInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeviceInfoController.h; sourceTree = "<group>"; };
+		B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeviceInfoController.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -80,10 +98,6 @@
 		EE39ACF7200CBD9700D084CE /* IMBLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBLogManager.h; sourceTree = "<group>"; };
 		EE39ACF8200CBD9700D084CE /* IMBLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBLogManager.m; sourceTree = "<group>"; };
 		EE39ACF9200CBD9700D084CE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EE39ACFD200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+BezierPathQuartzUtilities.h"; sourceTree = "<group>"; };
-		EE39ACFE200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+BezierPathQuartzUtilities.m"; sourceTree = "<group>"; };
-		EE39ACFF200CBD9700D084CE /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
-		EE39AD00200CBD9700D084CE /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		EE39AD04200CBD9700D084CE /* IMBLackCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBLackCornerView.h; sourceTree = "<group>"; };
 		EE39AD05200CBD9700D084CE /* IMBLackCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBLackCornerView.m; sourceTree = "<group>"; };
 		EE39AD06200CBD9700D084CE /* IMBNoTitleBarContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNoTitleBarContentView.h; sourceTree = "<group>"; };
@@ -103,12 +117,16 @@
 		EE39AD34200D8DB000D084CE /* IMBDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceViewController.h; sourceTree = "<group>"; };
 		EE39AD35200D8DB000D084CE /* IMBDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceViewController.m; sourceTree = "<group>"; };
 		EE39AD36200D8DB000D084CE /* IMBDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDeviceViewController.xib; sourceTree = "<group>"; };
-		EE39AD65200D977000D084CE /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
-		EE39AD66200D977000D084CE /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
-		EE39AD67200D977000D084CE /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
-		EE39AD68200D977000D084CE /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
-		EE39AD6F200DA43400D084CE /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
-		EE39AD70200DA43400D084CE /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
+		EE39AD9B200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+BezierPathQuartzUtilities.h"; sourceTree = "<group>"; };
+		EE39AD9C200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+BezierPathQuartzUtilities.m"; sourceTree = "<group>"; };
+		EE39AD9D200F038300D084CE /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
+		EE39AD9E200F038300D084CE /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
+		EE39AD9F200F038300D084CE /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
+		EE39ADA0200F038300D084CE /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
+		EE39ADA1200F038300D084CE /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		EE39ADA2200F038300D084CE /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		EE39ADA3200F038300D084CE /* StringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelper.h; sourceTree = "<group>"; };
+		EE39ADA4200F038300D084CE /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,20 +188,30 @@
 		EE39ACE6200CBD9700D084CE /* deviceConnection */ = {
 			isa = PBXGroup;
 			children = (
-				B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */,
-				B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */,
-				B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */,
-				B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */,
+				B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */,
+				B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */,
+				EE39ACE9200CBD9700D084CE /* MobileDeviceAccess.h */,
+				EE39ACEA200CBD9700D084CE /* MobileDeviceAccess.m */,
+				EE39ACE8200CBD9700D084CE /* MobileDevice.h */,
 				B9104C9A200DFDFA00C1ECEA /* IMBAMDeviceInfo.h */,
 				B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */,
 				B9104C9C200DFDFA00C1ECEA /* IMBDeviceInfo.h */,
 				B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */,
 				EE39ACE7200CBD9700D084CE /* IMBNotificationDefine.h */,
-				EE39ACE8200CBD9700D084CE /* MobileDevice.h */,
-				EE39ACE9200CBD9700D084CE /* MobileDeviceAccess.h */,
-				EE39ACEA200CBD9700D084CE /* MobileDeviceAccess.m */,
-				B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */,
-				B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */,
+				B9FBDD9E200EF8E300D02B13 /* TempHelper.h */,
+				B9FBDD9F200EF8E300D02B13 /* TempHelper.m */,
+				B9FBDD98200EF7FD00D02B13 /* IMBAMFileSystem.h */,
+				B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */,
+				B9FBDD9A200EF7FD00D02B13 /* IMBFileSystem.h */,
+				B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */,
+				B9FBDD92200EF73B00D02B13 /* IMBiPod.h */,
+				B9FBDD93200EF73B00D02B13 /* IMBiPod.m */,
+				B9FBDD94200EF73B00D02B13 /* IMBSession.h */,
+				B9FBDD95200EF73B00D02B13 /* IMBSession.m */,
+				B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */,
+				B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */,
+				B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */,
+				B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */,
 			);
 			path = deviceConnection;
 			sourceTree = "<group>";
@@ -210,6 +238,7 @@
 		EE39ACFA200CBD9700D084CE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EE39AD9A200F038300D084CE /* helper */,
 				EE39AD29200D8BBD00D084CE /* controller */,
 				EE39ACFB200CBD9700D084CE /* resource */,
 				EE39AD02200CBD9700D084CE /* view */,
@@ -221,34 +250,8 @@
 		EE39ACFB200CBD9700D084CE /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				EE39ACFC200CBD9700D084CE /* helper */,
-				EE39AD01200CBD9700D084CE /* skin */,
 			);
 			path = resource;
-			sourceTree = "<group>";
-		};
-		EE39ACFC200CBD9700D084CE /* helper */ = {
-			isa = PBXGroup;
-			children = (
-				EE39AD6F200DA43400D084CE /* NSDictionary+Category.h */,
-				EE39AD70200DA43400D084CE /* NSDictionary+Category.m */,
-				EE39AD65200D977000D084CE /* NSData+Category.h */,
-				EE39AD66200D977000D084CE /* NSData+Category.m */,
-				EE39AD67200D977000D084CE /* NSString+Category.h */,
-				EE39AD68200D977000D084CE /* NSString+Category.m */,
-				EE39ACFD200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.h */,
-				EE39ACFE200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */,
-				EE39ACFF200CBD9700D084CE /* StringHelper.h */,
-				EE39AD00200CBD9700D084CE /* StringHelper.m */,
-			);
-			path = helper;
-			sourceTree = "<group>";
-		};
-		EE39AD01200CBD9700D084CE /* skin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = skin;
 			sourceTree = "<group>";
 		};
 		EE39AD02200CBD9700D084CE /* view */ = {
@@ -287,8 +290,27 @@
 				EE39AD2F200D8CA500D084CE /* IMBDisconnectViewController.h */,
 				EE39AD30200D8CA500D084CE /* IMBDisconnectViewController.m */,
 				EE39AD31200D8CA500D084CE /* IMBDisconnectViewController.xib */,
+				B9FBDDAD200F4BF900D02B13 /* TestDeviceInfoController.h */,
+				B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		EE39AD9A200F038300D084CE /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				EE39AD9B200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.h */,
+				EE39AD9C200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */,
+				EE39AD9D200F038300D084CE /* NSData+Category.h */,
+				EE39AD9E200F038300D084CE /* NSData+Category.m */,
+				EE39AD9F200F038300D084CE /* NSDictionary+Category.h */,
+				EE39ADA0200F038300D084CE /* NSDictionary+Category.m */,
+				EE39ADA1200F038300D084CE /* NSString+Category.h */,
+				EE39ADA2200F038300D084CE /* NSString+Category.m */,
+				EE39ADA3200F038300D084CE /* StringHelper.h */,
+				EE39ADA4200F038300D084CE /* StringHelper.m */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,32 +386,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE39AD1E200CBD9700D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
+				EE39ADA5200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
+				B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */,
 				B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */,
+				B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */,
+				B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */,
 				B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */,
+				B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */,
 				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
+				B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
-				EE39AD6A200D977000D084CE /* NSString+Category.m in Sources */,
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
 				B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */,
+				EE39ADA8200F038300D084CE /* NSString+Category.m in Sources */,
 				EE39AD26200CBD9700D084CE /* IMBNoTitleBarWindow.m in Sources */,
 				B9104C9E200DFDFA00C1ECEA /* IMBAMDeviceInfo.m in Sources */,
-				EE39AD1F200CBD9700D084CE /* StringHelper.m in Sources */,
 				EE39AD12200CBD9700D084CE /* AppDelegate.m in Sources */,
+				EE39ADA6200F038300D084CE /* NSData+Category.m in Sources */,
 				EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */,
 				EE39AD22200CBD9700D084CE /* IMBNoTitleBarContentView.m in Sources */,
 				EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */,
+				B9FBDDAF200F4BF900D02B13 /* TestDeviceInfoController.m in Sources */,
 				EE39AD17200CBD9700D084CE /* DDAbstractDatabaseLogger.m in Sources */,
 				EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */,
 				EE39AD32200D8CA500D084CE /* IMBDisconnectViewController.m in Sources */,
 				EE39AD37200D8DB000D084CE /* IMBDeviceViewController.m in Sources */,
 				EE39AD19200CBD9700D084CE /* DDFileLogger.m in Sources */,
-				EE39AD69200D977000D084CE /* NSData+Category.m in Sources */,
 				EE39AD24200CBD9700D084CE /* IMBMainWindowController.m in Sources */,
 				EE39AD1D200CBD9700D084CE /* main.m in Sources */,
-				EE39AD71200DA43400D084CE /* NSDictionary+Category.m in Sources */,
+				EE39ADA7200F038300D084CE /* NSDictionary+Category.m in Sources */,
 				EE39AD1C200CBD9700D084CE /* IMBLogManager.m in Sources */,
+				EE39ADA9200F038300D084CE /* StringHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

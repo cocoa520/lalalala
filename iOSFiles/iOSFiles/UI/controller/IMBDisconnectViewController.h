@@ -12,4 +12,7 @@
     
 }
 
+@property (assign) IBOutlet NSTextField *promptTF;
+@property (assign) IBOutlet NSView *cusContentView;
+
 @end

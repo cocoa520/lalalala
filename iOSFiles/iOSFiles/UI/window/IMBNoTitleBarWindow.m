@@ -29,7 +29,9 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
 @synthesize minButton = _minButton;
 @synthesize maxButton = _maxButton;
 @synthesize maxAndminView = _maxAndminView;
+
 #pragma mark - NSWindow Overwritings 重载
+
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
 	if ((self = [super initWithContentRect:contentRect styleMask:NSResizableWindowMask backing:bufferingType defer:YES])) {
 		[self setMovableByWindowBackground:YES];
@@ -40,6 +42,7 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     myWindow=self;
     [self setHasShadow:YES];
     Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));

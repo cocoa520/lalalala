@@ -7,8 +7,63 @@
 //
 
 #import "IMBDeviceConnection.h"
+#import "IMBiPod.h"
 
 
+#pragma mark -- IMBBaseInfo  Class
+@implementation IMBBaseInfo
+
+@synthesize kyDeviceSize = _kyDeviceSize;
+@synthesize allDeviceSize = _allDeviceSize ;
+@synthesize uniqueKey = _uniqueKey;
+@synthesize deviceName = _deviceName;
+@synthesize connectType = _connectType;
+@synthesize devIconName = _devIconName;
+@synthesize accountiCloud = _accountiCloud;
+@synthesize isLoaded = _isLoaded;
+@synthesize isSelected = _isSelected;
+@synthesize isConnected = _isConnected;
+@synthesize isicloudView = _isicloudView;
+@synthesize isiPod = _isiPod;
+@synthesize isAndroid = _isAndroid;
+
+#pragma mark -- 初始化操作
+- (id)init {
+    self = [super init];
+    if (self) {
+        _isLoaded = NO;
+        _isSelected = NO;
+        _isiPod = NO;
+        _isAndroid = NO;
+        _deviceName = nil;
+        _connectType = 0;
+        _kyDeviceSize = 0;
+        _accountiCloud = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+- (void)setIsConnected:(BOOL *)isConnected
+{
+    if (isConnected == NULL) {
+        
+    }else{
+        _isConnected = isConnected;
+    }
+}
+
+- (BOOL)isIsConnected
+{
+    return *_isConnected;
+}
+
+-(void)dealloc{
+    [self setAccountiCloud:nil];
+    [super dealloc];
+}
+
+@end
+
+#pragma mark -- IMBDeviceConnection  Class
 static id _instance = nil;
 
 @interface IMBDeviceConnection()<NSCopying,MobileDeviceAccessListener>
@@ -43,16 +98,20 @@ static id _instance = nil;
 - (id)copyWithZone:(NSZone *)zone {
     return _instance;
 }
-
+/**
+ *  销毁操作
+ */
 - (void)dealloc {
     
     [_serialArray release];
     _serialArray = nil;
+    
     [_processingQueue release];
     _processingQueue = nil;
     
     [super dealloc];
 }
+
 #pragma mark --  初始化操作
 
 - (instancetype)init
@@ -70,6 +129,7 @@ static id _instance = nil;
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
     _deviceAccess = [MobileDeviceAccess singleton];
     _processingQueue = [[NSOperationQueue alloc] init];
+    [_processingQueue setMaxConcurrentOperationCount:4];
 }
 
 /**
@@ -80,7 +140,7 @@ static id _instance = nil;
     
 }
 /**
- *  断开监听
+ *  注销监听
  */
 - (void)stopListening {
     [self.deviceAccess stopListener];
@@ -98,6 +158,7 @@ static id _instance = nil;
  */
 - (void)deviceConnected:(AMDevice *)device {
     IMBFFuncLog;
+    [[IMBLogManager singleton] writeInfoLog:@"DeviceConnected Successfully"];
     if (device) {
         if (self.IMBDeviceConnected) {
             self.IMBDeviceConnected();
@@ -111,11 +172,11 @@ static id _instance = nil;
         [_processingQueue addOperationWithBlock:^(void){
             sleep(2);
             if ([_serialArray containsObject:deviceSerialNumber]) {
-//                [self createIPodByDevice:device];
+                [self getDeviceInfoWithDevice:device];
             }
         }];
     }else {
-        NSLog(@"preSerialNumber is nil");
+        IMBFLog(@"preSerialNumber is nil");
     }
 }
 /**
@@ -125,6 +186,7 @@ static id _instance = nil;
  */
 - (void)deviceDisconnected:(AMDevice *)device {
     IMBFFuncLog;
+    [[IMBLogManager singleton] writeInfoLog:@"DeviceDisConnected Successfully"];
     device.isValid = NO;
     NSString *serialNumber = [device serialNumber];
     if ([_serialArray containsObject:serialNumber]) {
@@ -134,11 +196,6 @@ static id _instance = nil;
     if (_IMBDeviceDisconnected) {
         _IMBDeviceDisconnected(serialNumber);
     }
-//    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-//                              seriaNumber, @"UniqueKey"
-//                              , nil];
-//    [nc postNotificationName:DeviceBtnChangeNotification object:[NSNumber numberWithBool:NO] userInfo:userInfo];
-//    [nc postNotificationName:DeviceDisConnectedNotification object:seriaNumber userInfo:userInfo];
 }
 /**
  *  设备需要密码
@@ -146,6 +203,7 @@ static id _instance = nil;
  *  @param device 设备
  */
 - (void)deviceNeedPassword:(am_device)device {
+    [[IMBLogManager singleton] writeInfoLog:@"DeviceNeededPassword"];
     IMBFFuncLog;
     if (self.IMBDeviceNeededPassword) {
         self.IMBDeviceNeededPassword(device);
@@ -162,5 +220,13 @@ static id _instance = nil;
     return NO;
 }
 
+
+- (void)getDeviceInfoWithDevice:(AMDevice *)dev {
+//    IMBAMDeviceInfo *deviceInfo = [[[IMBAMDeviceInfo alloc] initWithDevice:dev] autorelease];
+    IMBiPod *iPod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
+    if (self.IMBDeviceConnectedCompletion) {
+        self.IMBDeviceConnectedCompletion(iPod);
+    }
+}
 
 @end

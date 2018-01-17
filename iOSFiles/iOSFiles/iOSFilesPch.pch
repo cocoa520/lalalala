@@ -16,6 +16,8 @@
 #pragma mark -- 引入头文件
 
 #import "IMBNotificationDefine.h"
+#import "IMBCommonEnum.h"
+#import "IMBLogManager.h"
 #import <AppKit/AppKit.h>
 
 #pragma mark -- 自定义宏

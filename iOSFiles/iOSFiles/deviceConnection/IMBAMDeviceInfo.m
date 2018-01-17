@@ -10,6 +10,7 @@
 #import "IMBSupportedArtworkFormat.h"
 
 @implementation IMBAMDeviceInfo
+
 - (id)initWithDevice:(id)device {
     self = [super initWithDevice:device];
     if (self) {
@@ -44,7 +45,9 @@
     deviceBaseInfo = [[(AMDevice*)_device getDeviceInfo] retain];
     _deviceName = [(NSString*)[deviceBaseInfo objectForKey:@"DeviceName"] retain];
 }
-
+/**
+ *  获取设备基本信息
+ */
 - (void)getDeviceBaseInfo {
     deviceBaseInfo = [[(AMDevice*)_device getDeviceInfo] retain];
     _deviceName = [(NSString*)[deviceBaseInfo objectForKey:@"DeviceName"] retain];

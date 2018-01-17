@@ -105,6 +105,8 @@
 //        [[NSUserDefaults standardUserDefaults] synchronize];
 //    }
     _mainWindowController = [[ZLMainWindowController alloc] initWithWindowNibName:@"ZLMainWindowController"];
+    [[_mainWindowController window] center];
+//    [[_mainWindowController window] orderFront:nil];
     [_mainWindowController showWindow:nil];
 }
 
