@@ -1,0 +1,32 @@
+//
+//  iOSFilesPch.pch
+//  iOSFiles
+//
+//  Created by iMobie on 18/1/16.
+//  Copyright © 2018年 iMobie. All rights reserved.
+//
+
+#ifndef iOSFilesPch_pch
+#define iOSFilesPch_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#pragma mark -- 引入头文件
+
+#import "IMBNotificationDefine.h"
+#import "IMBCommonEnum.h"
+#import "IMBLogManager.h"
+#import <AppKit/AppKit.h>
+
+#pragma mark -- 自定义宏
+#ifdef DEBUG
+# define IMBFLog(fmt, ...) NSLog((@"[函数名:%s]\n""[行号:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define IMBFLog(...);
+#endif
+
+#define IMBFFuncLog IMBFLog(@"%s",__func__)
+
+#endif /* iOSFilesPch_pch */

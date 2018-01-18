@@ -11,12 +11,12 @@
 		B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */; };
 		B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */; };
 		B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */; };
+		B97D5B6D2010A47800BE6788 /* TestDeviceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */; };
 		B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD93200EF73B00D02B13 /* IMBiPod.m */; };
 		B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD95200EF73B00D02B13 /* IMBSession.m */; };
 		B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */; };
 		B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */; };
 		B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9F200EF8E300D02B13 /* TempHelper.m */; };
-		B9FBDDAF200F4BF900D02B13 /* TestDeviceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
@@ -59,6 +59,8 @@
 		B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
 		B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
 		B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
+		B97D5B6B2010A47800BE6788 /* TestDeviceInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeviceInfoController.h; sourceTree = "<group>"; };
+		B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeviceInfoController.m; sourceTree = "<group>"; };
 		B9FBDD92200EF73B00D02B13 /* IMBiPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiPod.h; sourceTree = "<group>"; };
 		B9FBDD93200EF73B00D02B13 /* IMBiPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiPod.m; sourceTree = "<group>"; };
 		B9FBDD94200EF73B00D02B13 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
@@ -69,8 +71,6 @@
 		B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystem.m; sourceTree = "<group>"; };
 		B9FBDD9E200EF8E300D02B13 /* TempHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHelper.h; sourceTree = "<group>"; };
 		B9FBDD9F200EF8E300D02B13 /* TempHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempHelper.m; sourceTree = "<group>"; };
-		B9FBDDAD200F4BF900D02B13 /* TestDeviceInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeviceInfoController.h; sourceTree = "<group>"; };
-		B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeviceInfoController.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -284,14 +284,14 @@
 		EE39AD29200D8BBD00D084CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				B97D5B6B2010A47800BE6788 /* TestDeviceInfoController.h */,
+				B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */,
 				EE39AD34200D8DB000D084CE /* IMBDeviceViewController.h */,
 				EE39AD35200D8DB000D084CE /* IMBDeviceViewController.m */,
 				EE39AD36200D8DB000D084CE /* IMBDeviceViewController.xib */,
 				EE39AD2F200D8CA500D084CE /* IMBDisconnectViewController.h */,
 				EE39AD30200D8CA500D084CE /* IMBDisconnectViewController.m */,
 				EE39AD31200D8CA500D084CE /* IMBDisconnectViewController.xib */,
-				B9FBDDAD200F4BF900D02B13 /* TestDeviceInfoController.h */,
-				B9FBDDAE200F4BF900D02B13 /* TestDeviceInfoController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 				EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */,
 				EE39AD22200CBD9700D084CE /* IMBNoTitleBarContentView.m in Sources */,
 				EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */,
-				B9FBDDAF200F4BF900D02B13 /* TestDeviceInfoController.m in Sources */,
+				B97D5B6D2010A47800BE6788 /* TestDeviceInfoController.m in Sources */,
 				EE39AD17200CBD9700D084CE /* DDAbstractDatabaseLogger.m in Sources */,
 				EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */,
 				EE39AD32200D8CA500D084CE /* IMBDisconnectViewController.m in Sources */,
