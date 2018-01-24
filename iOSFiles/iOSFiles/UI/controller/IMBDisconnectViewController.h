@@ -13,6 +13,7 @@
 }
 
 @property (assign) IBOutlet NSTextField *promptTF;
-@property (assign) IBOutlet NSView *cusContentView;
+@property (assign) IBOutlet NSTextField *promptLeftTF;
+@property (assign) IBOutlet NSTextField *promptRightTF;
 
 @end

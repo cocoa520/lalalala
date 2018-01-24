@@ -8,10 +8,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDisconnectViewController">
             <connections>
-                <outlet property="_noconnectView" destination="lg5-sf-Utl" id="vIp-8U-DXh"/>
-                <outlet property="_promptTextField" destination="I9W-Ut-hJZ" id="WJq-jL-ypG"/>
-                <outlet property="cusContentView" destination="d6X-Qx-mo4" id="q5j-zg-HLa"/>
-                <outlet property="promptTF" destination="I9W-Ut-hJZ" id="cUi-qZ-qpg"/>
+                <outlet property="promptLeftTF" destination="I9W-Ut-hJZ" id="ZMa-ar-E9h"/>
+                <outlet property="promptRightTF" destination="tbe-aA-neG" id="qWw-nM-NYT"/>
+                <outlet property="promptTF" destination="h4H-o1-Zxe" id="far-bR-n3o"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -22,24 +21,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="I9W-Ut-hJZ">
-                    <rect key="frame" x="100" y="387" width="860" height="171"/>
+                    <rect key="frame" x="0.0" y="0.0" width="530" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Please plug-in your iPhone,iPad or iPod, Start your journey" id="G6j-so-BGO">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="G6j-so-BGO">
                         <font key="font" size="20" name="HelveticaNeue-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView id="lg5-sf-Utl">
-                    <rect key="frame" x="0.0" y="0.0" width="1060" height="578"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <customView id="d6X-Qx-mo4">
-                            <rect key="frame" x="20" y="24" width="1020" height="345"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </customView>
-                    </subviews>
-                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tbe-aA-neG">
+                    <rect key="frame" x="532" y="0.0" width="530" height="500"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="aaE-xX-bmN">
+                        <font key="font" size="20" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="h4H-o1-Zxe">
+                    <rect key="frame" x="18" y="528" width="1024" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Please plug-in your iPhone,iPad or iPod, Start your journey" id="o7O-TT-ror">
+                        <font key="font" metaFont="system" size="22"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
         </customView>
     </objects>

@@ -76,8 +76,11 @@ typedef enum DeviceConnectMode {
 @interface IMBDeviceConnection : NSObject
 {
     @private
-    
+    NSMutableArray *_allDevices;
 }
+
+@property(nonatomic, retain, readonly)NSMutableArray *allDevices;
+
 /**
  *  监听设备连接状态
  */
@@ -99,7 +102,7 @@ typedef enum DeviceConnectMode {
  *
  *  @param dev dev
  */
-- (void)resConnectDevice:(am_device)dev;
+- (void)reConnectDevice:(am_device)dev;
 
 
 @end

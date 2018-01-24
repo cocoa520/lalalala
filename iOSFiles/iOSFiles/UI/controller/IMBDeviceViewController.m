@@ -47,7 +47,7 @@
 }
 
 - (void)setupView {
-    _disConnectController = [[IMBDisconnectViewController alloc]initWithNibName:@"IMBDisconnectViewController" bundle:nil];
+    _disConnectController = [[IMBDisconnectViewController alloc] initWithNibName:@"IMBDisconnectViewController" bundle:nil];
     [_deviceBox addSubview:_disConnectController.view];
     
     
@@ -74,7 +74,8 @@
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBiPod *iPod) {
         //加载设备信息完成,ipod中含有设备详细信息
         IMBDeviceInfo *deviceInfo = [iPod.deviceInfo retain];
-        _disConnectController.promptTF.stringValue = [NSString stringWithFormat:@"Device Name:%@\nSerial Num:%@\nDevice Class:%@\nProduct Type:%@\nProduct Version:%@\nPhone Num:%@",deviceInfo.deviceName,deviceInfo.serialNumber,deviceInfo.deviceClass,deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber];
+        _disConnectController.promptLeftTF.stringValue = [NSString stringWithFormat:@"Device Name:\nSerial Num:\nDevice Class:\nProduct Type:\nProduct Version:\nPhone Num:\nFirmwareVersion:"];
+        _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,deviceInfo.serialNumber,deviceInfo.deviceClass,deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber];
         
 //        IMBDeviceInfo *deviceInfo = [iPod.deviceInfo retain];
         IMBFLog(@"");
@@ -125,9 +126,12 @@
         if (returnCode == 1) {
             IMBFLog(@"111111111");
             //点击确定，重新链接设备
-            [[IMBDeviceConnection singleton] performSelector:@selector(resConnectDevice:) withObject:(id)device afterDelay:1.0f];
+            [[IMBDeviceConnection singleton] performSelector:@selector(reConnectDevice:) withObject:(id)device afterDelay:1.0f];
         }
     }];
+    
+    [alert release];
+    alert = nil;
 }
 
 

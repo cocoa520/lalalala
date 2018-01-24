@@ -106,6 +106,9 @@ static id _instance = nil;
     [_serialArray release];
     _serialArray = nil;
     
+    [_allDevices release];
+    _allDevices = nil;
+    
     [_processingQueue release];
     _processingQueue = nil;
     
@@ -127,9 +130,10 @@ static id _instance = nil;
  */
 - (void)setUp {
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
+    _allDevices = [[NSMutableArray alloc] init];
     _deviceAccess = [MobileDeviceAccess singleton];
     _processingQueue = [[NSOperationQueue alloc] init];
-    [_processingQueue setMaxConcurrentOperationCount:4];
+    [_processingQueue setMaxConcurrentOperationCount:4];//设置并发数
 }
 
 /**
@@ -170,7 +174,7 @@ static id _instance = nil;
         
         device.isValid = YES;
         [_processingQueue addOperationWithBlock:^(void){
-            sleep(2);
+            sleep(2.0f);
             if ([_serialArray containsObject:deviceSerialNumber]) {
                 [self getDeviceInfoWithDevice:device];
             }
@@ -189,6 +193,10 @@ static id _instance = nil;
     [[IMBLogManager singleton] writeInfoLog:@"DeviceDisConnected Successfully"];
     device.isValid = NO;
     NSString *serialNumber = [device serialNumber];
+    
+    //删除设备
+    [self removeDeviceByKey:serialNumber];
+    
     if ([_serialArray containsObject:serialNumber]) {
         [_serialArray removeObject:serialNumber];
     }
@@ -224,18 +232,66 @@ static id _instance = nil;
 
 - (void)getDeviceInfoWithDevice:(AMDevice *)dev {
 //    IMBAMDeviceInfo *deviceInfo = [[[IMBAMDeviceInfo alloc] initWithDevice:dev] autorelease];
-    IMBiPod *iPod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
+    IMBiPod *ipod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
     if (self.IMBDeviceConnectedCompletion) {
-        self.IMBDeviceConnectedCompletion(iPod);
+        self.IMBDeviceConnectedCompletion(ipod);
     }
+    
+    IMBBaseInfo *baseInfo =[[[IMBBaseInfo alloc] init] autorelease];
+    [baseInfo setUniqueKey:ipod.uniqueKey];
+    [baseInfo setDeviceName:ipod.deviceInfo.deviceName];
+    [baseInfo setAllDeviceSize:ipod.deviceInfo.totalDiskCapacity];
+    [baseInfo setKyDeviceSize:ipod.deviceInfo.totalDataAvailable];
+    [baseInfo setIsLoaded:NO];
+    if ([dev isKindOfClass:[AMDevice class]]) {
+        [baseInfo setIsConnected:dev.isConnected];
+    }
+    [baseInfo setConnectType:ipod.deviceInfo.family];
+    [baseInfo setIsiPod:YES];
+    
+    [_allDevices addObject:baseInfo];
 }
 /**
  *  重新连接设备
  *
  *  @param dev 设备
  */
-- (void)resConnectDevice:(am_device)dev {
+- (void)reConnectDevice:(am_device)dev {
     [[MobileDeviceAccess singleton] connectDevice:dev];
 }
+
+#pragma mark -- 获取/删除设备
+/**
+ *  根据serialNum获取已连接设备
+ *
+ *  @param key serialNum
+ *
+ *  @return 基本设备信息
+ */
+- (IMBBaseInfo *)getDeviceByKey:(NSString *)key {
+    if (key) {
+        for (IMBBaseInfo *baseInfo in _allDevices) {
+            if ([baseInfo.uniqueKey isEqualToString:key]) {
+                return baseInfo;
+            }
+        }
+    }
+    return nil;
+}
+/**
+ *  根据serialNum删除设备
+ *
+ *  @param key serialNum
+ */
+- (void)removeDeviceByKey:(NSString *)key {
+    if (key) {
+        IMBBaseInfo *baseInfo = [self getDeviceByKey:key];
+        if (baseInfo) {
+            [_allDevices removeObject:baseInfo];
+        }
+    }
+}
+
+#pragma mark --
 
 @end
