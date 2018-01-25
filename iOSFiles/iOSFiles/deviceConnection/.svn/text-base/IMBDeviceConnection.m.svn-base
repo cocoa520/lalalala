@@ -77,6 +77,9 @@ static id _instance = nil;
 
 @implementation IMBDeviceConnection
 
+@synthesize allDevices = _allDevices;
+@synthesize alliPods = _alliPods;
+
 
 #pragma mark -- 单例实现
 + (instancetype)singleton {
@@ -109,6 +112,9 @@ static id _instance = nil;
     [_allDevices release];
     _allDevices = nil;
     
+    [_alliPods release];
+    _alliPods = nil;
+    
     [_processingQueue release];
     _processingQueue = nil;
     
@@ -131,6 +137,7 @@ static id _instance = nil;
 - (void)setUp {
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
     _allDevices = [[NSMutableArray alloc] init];
+    _alliPods = [[NSMutableArray alloc] init];
     _deviceAccess = [MobileDeviceAccess singleton];
     _processingQueue = [[NSOperationQueue alloc] init];
     [_processingQueue setMaxConcurrentOperationCount:4];//设置并发数
@@ -167,7 +174,7 @@ static id _instance = nil;
         if (self.IMBDeviceConnected) {
             self.IMBDeviceConnected();
         }
-        NSString *deviceSerialNumber = ((AMDevice *)device).serialNumber;
+        NSString *deviceSerialNumber = device.serialNumber;
         if (deviceSerialNumber) {
             [_serialArray addObject:deviceSerialNumber];
         }
@@ -233,6 +240,7 @@ static id _instance = nil;
 - (void)getDeviceInfoWithDevice:(AMDevice *)dev {
 //    IMBAMDeviceInfo *deviceInfo = [[[IMBAMDeviceInfo alloc] initWithDevice:dev] autorelease];
     IMBiPod *ipod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
+    ipod.uniqueKey = dev.serialNumber;
     if (self.IMBDeviceConnectedCompletion) {
         self.IMBDeviceConnectedCompletion(ipod);
     }
@@ -250,6 +258,7 @@ static id _instance = nil;
     [baseInfo setIsiPod:YES];
     
     [_allDevices addObject:baseInfo];
+    [_alliPods addObject:ipod];
 }
 /**
  *  重新连接设备
@@ -279,6 +288,23 @@ static id _instance = nil;
     return nil;
 }
 /**
+ *  通过key获取iPod
+ *
+ *  @param key eky
+ *
+ *  @return iPod
+ */
+- (IMBiPod *)getiPodByKey:(NSString *)key {
+    if (key) {
+        for (IMBiPod *ipod in _alliPods) {
+            if ([ipod.uniqueKey isEqualToString:key]) {
+                return ipod;
+            }
+        }
+    }
+    return nil;
+}
+/**
  *  根据serialNum删除设备
  *
  *  @param key serialNum
@@ -288,6 +314,10 @@ static id _instance = nil;
         IMBBaseInfo *baseInfo = [self getDeviceByKey:key];
         if (baseInfo) {
             [_allDevices removeObject:baseInfo];
+        }
+        IMBiPod *ipod = [self getiPodByKey:key];
+        if (ipod) {
+            [_alliPods removeObject:ipod];
         }
     }
 }

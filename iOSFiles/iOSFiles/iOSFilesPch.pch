@@ -18,6 +18,7 @@
 #import "IMBNotificationDefine.h"
 #import "IMBCommonEnum.h"
 #import "IMBLogManager.h"
+#import "IMBConst.h"
 #import <AppKit/AppKit.h>
 
 #pragma mark -- 自定义宏
@@ -28,5 +29,8 @@
 #endif
 
 #define IMBFFuncLog IMBFLog(@"%s",__func__)
+#define IMBRgbAColor(r,g,b,A) [NSColor colorWithDeviceRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(A)]
+#define IMBRgbColor(r,g,b) IMBRgbAColor(r,g,b,1)
+#define IMBGrayColor(n) IMBRgbAColor(n,n,n,1)
 
 #endif /* iOSFilesPch_pch */

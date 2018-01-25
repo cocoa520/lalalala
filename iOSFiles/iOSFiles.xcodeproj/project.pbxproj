@@ -11,7 +11,10 @@
 		B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */; };
 		B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */; };
 		B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */; };
-		B97D5B6D2010A47800BE6788 /* TestDeviceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */; };
+		B996D9B02019730100E6991A /* IMBSelecedDeviceBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */; };
+		B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9C52019CA7600E6991A /* IMBDevViewController.m */; };
+		B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B996D9C62019CA7600E6991A /* IMBDevViewController.xib */; };
+		B996D9CD2019E26900E6991A /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9CC2019E26900E6991A /* IMBConst.m */; };
 		B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD93200EF73B00D02B13 /* IMBiPod.m */; };
 		B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD95200EF73B00D02B13 /* IMBSession.m */; };
 		B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */; };
@@ -59,8 +62,13 @@
 		B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
 		B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
 		B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
-		B97D5B6B2010A47800BE6788 /* TestDeviceInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeviceInfoController.h; sourceTree = "<group>"; };
-		B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeviceInfoController.m; sourceTree = "<group>"; };
+		B996D9AE2019730100E6991A /* IMBSelecedDeviceBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSelecedDeviceBtn.h; sourceTree = "<group>"; };
+		B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSelecedDeviceBtn.m; sourceTree = "<group>"; };
+		B996D9C42019CA7600E6991A /* IMBDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevViewController.h; sourceTree = "<group>"; };
+		B996D9C52019CA7600E6991A /* IMBDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevViewController.m; sourceTree = "<group>"; };
+		B996D9C62019CA7600E6991A /* IMBDevViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDevViewController.xib; sourceTree = "<group>"; };
+		B996D9CB2019E26900E6991A /* IMBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBConst.h; sourceTree = "<group>"; };
+		B996D9CC2019E26900E6991A /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
 		B9FBDD92200EF73B00D02B13 /* IMBiPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiPod.h; sourceTree = "<group>"; };
 		B9FBDD93200EF73B00D02B13 /* IMBiPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiPod.m; sourceTree = "<group>"; };
 		B9FBDD94200EF73B00D02B13 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
@@ -177,6 +185,8 @@
 				EE39ACE2200CBD9700D084CE /* AppDelegate.m */,
 				EE39ACF9200CBD9700D084CE /* main.m */,
 				B9104C97200DB2C300C1ECEA /* iOSFilesPch.pch */,
+				B996D9CB2019E26900E6991A /* IMBConst.h */,
+				B996D9CC2019E26900E6991A /* IMBConst.m */,
 				EE39ACEB200CBD9700D084CE /* Info.plist */,
 				EE39ACE6200CBD9700D084CE /* deviceConnection */,
 				EE39ACEC200CBD9700D084CE /* Log */,
@@ -257,6 +267,8 @@
 		EE39AD02200CBD9700D084CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B996D9AE2019730100E6991A /* IMBSelecedDeviceBtn.h */,
+				B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */,
 				EE39AD04200CBD9700D084CE /* IMBLackCornerView.h */,
 				EE39AD05200CBD9700D084CE /* IMBLackCornerView.m */,
 				EE39AD06200CBD9700D084CE /* IMBNoTitleBarContentView.h */,
@@ -284,14 +296,15 @@
 		EE39AD29200D8BBD00D084CE /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				B97D5B6B2010A47800BE6788 /* TestDeviceInfoController.h */,
-				B97D5B6C2010A47800BE6788 /* TestDeviceInfoController.m */,
 				EE39AD34200D8DB000D084CE /* IMBDeviceViewController.h */,
 				EE39AD35200D8DB000D084CE /* IMBDeviceViewController.m */,
 				EE39AD36200D8DB000D084CE /* IMBDeviceViewController.xib */,
 				EE39AD2F200D8CA500D084CE /* IMBDisconnectViewController.h */,
 				EE39AD30200D8CA500D084CE /* IMBDisconnectViewController.m */,
 				EE39AD31200D8CA500D084CE /* IMBDisconnectViewController.xib */,
+				B996D9C42019CA7600E6991A /* IMBDevViewController.h */,
+				B996D9C52019CA7600E6991A /* IMBDevViewController.m */,
+				B996D9C62019CA7600E6991A /* IMBDevViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -376,6 +389,7 @@
 				EE39AD16200CBD9700D084CE /* Info.plist in Resources */,
 				EE39AD25200CBD9700D084CE /* IMBMainWindowController.xib in Resources */,
 				EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */,
+				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,15 +402,18 @@
 			files = (
 				EE39ADA5200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */,
+				B996D9CD2019E26900E6991A /* IMBConst.m in Sources */,
 				B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */,
 				B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */,
 				B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */,
+				B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */,
 				B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */,
 				B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */,
 				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
 				B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
+				B996D9B02019730100E6991A /* IMBSelecedDeviceBtn.m in Sources */,
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
 				B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */,
 				EE39ADA8200F038300D084CE /* NSString+Category.m in Sources */,
@@ -407,7 +424,6 @@
 				EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */,
 				EE39AD22200CBD9700D084CE /* IMBNoTitleBarContentView.m in Sources */,
 				EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */,
-				B97D5B6D2010A47800BE6788 /* TestDeviceInfoController.m in Sources */,
 				EE39AD17200CBD9700D084CE /* DDAbstractDatabaseLogger.m in Sources */,
 				EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */,
 				EE39AD32200D8CA500D084CE /* IMBDisconnectViewController.m in Sources */,

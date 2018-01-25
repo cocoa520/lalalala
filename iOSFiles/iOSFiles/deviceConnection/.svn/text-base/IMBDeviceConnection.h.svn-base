@@ -77,9 +77,11 @@ typedef enum DeviceConnectMode {
 {
     @private
     NSMutableArray *_allDevices;
+    NSMutableArray *_alliPods;
 }
 
 @property(nonatomic, retain, readonly)NSMutableArray *allDevices;
+@property(nonatomic, retain, readonly)NSMutableArray *alliPods;
 
 /**
  *  监听设备连接状态
@@ -103,6 +105,21 @@ typedef enum DeviceConnectMode {
  *  @param dev dev
  */
 - (void)reConnectDevice:(am_device)dev;
-
+/**
+ *  通过key获取iPod
+ *
+ *  @param key eky
+ *
+ *  @return iPod
+ */
+- (IMBiPod *)getiPodByKey:(NSString *)key;
+/**
+ *  根据serialNum获取已连接设备
+ *
+ *  @param key serialNum
+ *
+ *  @return 基本设备信息
+ */
+- (IMBBaseInfo *)getDeviceByKey:(NSString *)key;
 
 @end
