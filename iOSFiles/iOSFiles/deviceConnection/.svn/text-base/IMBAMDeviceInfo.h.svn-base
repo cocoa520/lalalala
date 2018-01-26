@@ -14,8 +14,8 @@
     BOOL _isJailBreak;
 }
 
-@property (nonatomic, readonly) BOOL isIOSDevice;
-@property (nonatomic, readonly) BOOL isJailbreak;
+//@property (nonatomic, readonly) BOOL isIOSDevice;
+//@property (nonatomic, readonly) BOOL isJailbreak;
 @property (nonatomic, getter = isWifiConnect, readonly) BOOL isWifiConnect;
 @property (nonatomic, getter = airSync, readonly) BOOL airSync;
 @property (nonatomic, getter = deviceName, readonly) NSString *deviceName;

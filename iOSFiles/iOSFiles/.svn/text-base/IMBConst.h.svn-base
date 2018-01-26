@@ -8,4 +8,6 @@
 
 #import <AppKit/AppKit.h>
 
+
+APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNotiWithParams;
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNoti;

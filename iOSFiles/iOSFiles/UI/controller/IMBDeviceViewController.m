@@ -47,7 +47,9 @@
     
 }
 
-
+/**
+ *  初始化
+ */
 - (void)setupView {
     _disConnectController = [[IMBDisconnectViewController alloc] initWithNibName:@"IMBDisconnectViewController" bundle:nil];
     [_deviceBox addSubview:_disConnectController.view];
@@ -58,12 +60,19 @@
             [_mainWindowController configButtonName:@"No Device Connected" WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:NO WithIsDisable:YES withConnectType:0];
         }
     });
+    
+    [self emptyDeviceInfo];
 }
 
+/**
+ *  添加通知
+ */
 - (void)addNotis {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNoti object:nil];
 }
-
+/**
+ *  设备连接监听以及相应的监听方法
+ */
 - (void)deviceConnection {
     
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
@@ -78,28 +87,38 @@
         //设备断开连接
         
         if (deviceConnection.allDevices.count) {
-            IMBBaseInfo *baseInfo = [[deviceConnection.allDevices lastObject] retain];
+            IMBBaseInfo *baseInfo = [deviceConnection.allDevices firstObject];
             [_mainWindowController configButtonName:baseInfo.deviceName WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType];
-            [baseInfo release];
-            baseInfo = nil;
+            IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
+            [self setDeviceInfosWithiPod:ipod];
+            
+            
         }else {
             [_mainWindowController configButtonName:@"No Device Connected" WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:NO WithIsDisable:YES withConnectType:0];
+            [self deviceDisconnected:serialNum];
         }
-        [self deviceDisconnected:serialNum];
+        
     };
     deviceConnection.IMBDeviceNeededPassword = ^(am_device device){
         //设备连接需要密码
+        if (deviceConnection.allDevices.count == 0) {
+            _disConnectController.promptTF.stringValue = @"Device Needs Password";
+            [self emptyDeviceInfo];
+        }
         [self deviceNeededPwd:device];
     };
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBiPod *iPod) {
         //加载设备信息完成,ipod中含有设备详细信息
-        
-        if (iPod) {
+        if ([_disConnectController.promptLeftTF.stringValue isEqualToString:@""]) {
             [self setDeviceInfosWithiPod:iPod];
         }
+        
+        
     };
 }
-
+/**
+ *  清空操作
+ */
 - (void)dealloc {
     [_disConnectController release];
     _disConnectController = nil;
@@ -123,7 +142,7 @@
 - (void)deviceConnected {
     _disConnectController.promptTF.stringValue = @"Connected";
     
-    [self emptyDeviceInfo];
+//    [self emptyDeviceInfo];
 }
 /**
  *  设备断开连接
@@ -139,8 +158,6 @@
  */
 - (void)deviceNeededPwd:(am_device)device {
     [[IMBLogManager singleton] writeInfoLog:@"Connetion Needs Password"];
-    _disConnectController.promptTF.stringValue = @"Device Needs Password";
-    [self emptyDeviceInfo];
     
     NSAlert *alert = [NSAlert alertWithMessageText:@"Device Needs Password" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Make sure you give access to us"];
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
@@ -153,31 +170,42 @@
     
     
 }
-
+/**
+ *  清空显示设备信息
+ */
 - (void)emptyDeviceInfo {
     _disConnectController.promptLeftTF.stringValue = @"";
     _disConnectController.promptRightTF.stringValue = @"";
 }
-
+/**
+ *  设置显示设备信息
+ *
+ *  @param iPod iPod
+ */
 - (void)setDeviceInfosWithiPod:(IMBiPod *)iPod {
+    if (iPod == nil) return;
+    
     IMBDeviceInfo *deviceInfo = [iPod.deviceInfo retain];
     
     
     [_mainWindowController configButtonName:deviceInfo.deviceName WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceInfo.family];
     
-    _disConnectController.promptLeftTF.stringValue = [NSString stringWithFormat:@"Device Name:\nAvailable Size:\nSerial Num:\nDevice Class:\nPhone:\nProduct Type:\nProduct Version::\nPhone Num:\nFirmware Version:\nUnique ChipID:\nActivation State:\nRegionInfo:\nModel Number:\nBuild Version:\nHardware Model:\nCPU Architecture:\nBaseband Version:"];
-    _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,[NSString stringWithFormat:@"%.01f GB",deviceInfo.totalDataAvailable/1024.0/1024.0/1024.0],deviceInfo.serialNumber,deviceInfo.deviceClass,[deviceInfo getIPodFamilyString],deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber,deviceInfo.firmwareVersion,deviceInfo.uniqueChipID,deviceInfo.activationState,deviceInfo.regionInfo,deviceInfo.modelNumber,deviceInfo.buildVersion,deviceInfo.hardwareModel,deviceInfo.CPUArchitecture,deviceInfo.basebandVersion];
+    _disConnectController.promptLeftTF.stringValue = [NSString stringWithFormat:@"Device Name:\nAvailable Size:\nTotal Size:\nSerial Num:\nDevice Class:\nPhone:\nProduct Type:\nProduct Version:\nPhone Num:\nFirmware Version:\nUnique ChipID:\nActivation State:\nRegion Info:\nModel Number:\nBuild Version:\nHardware Model:\nCPU Architecture:\nBaseband Version:"];
+    _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,[NSString stringWithFormat:@"%.01f GB",deviceInfo.totalDataAvailable/1024.0/1024.0/1024.0],[NSString stringWithFormat:@"%.01f GB",deviceInfo.totalSize/1024.0/1024.0/1024.0],deviceInfo.serialNumber,deviceInfo.deviceClass,[deviceInfo getIPodFamilyString],deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber,deviceInfo.firmwareVersion,deviceInfo.uniqueChipID,deviceInfo.activationState,deviceInfo.regionInfo,deviceInfo.modelNumber,deviceInfo.buildVersion,deviceInfo.hardwareModel,deviceInfo.CPUArchitecture,deviceInfo.basebandVersion];
     
     [deviceInfo release];
     deviceInfo = nil;
 }
 #pragma mark -- 通知
-
+/**
+ *  设备选择切换响应方法
+ *
+ *  @param noti noti
+ */
 - (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
     IMBiPod *iPod = [noti object];
     
-    if (iPod) {
-        [self setDeviceInfosWithiPod:iPod];
-    }
+    [self setDeviceInfosWithiPod:iPod];
+    
 }
 @end

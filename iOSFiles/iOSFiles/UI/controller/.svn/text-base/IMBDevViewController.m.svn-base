@@ -29,12 +29,17 @@ CGFloat const labelY = 10.0f;
     // Do view setup here.
 }
 
+/**
+ *  初始化方法
+ */
 - (void)awakeFromNib {
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
 }
-
+/**
+ *  属性设置
+ */
 - (void)setDevices:(NSMutableArray *)devices {
     _devices = devices;
     
@@ -42,6 +47,8 @@ CGFloat const labelY = 10.0f;
         [_tableView reloadData];
     }
 }
+
+#pragma mark -- tableviewdelegate  tableviewdatasource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return _devices.count;
@@ -53,11 +60,17 @@ CGFloat const labelY = 10.0f;
 }
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
     if (_devices.count) {
-        IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
-        IMBiPod *ipod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
-        if (ipod) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNoti object:ipod];
-        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+        NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
+        [queue addOperationWithBlock:^{
+            IMBFLog(@"%@",[NSThread currentThread]);
+            IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
+            IMBiPod *ipod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
+            if (ipod) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNoti object:ipod];
+            }
+        }];
     }
     return YES;
 }

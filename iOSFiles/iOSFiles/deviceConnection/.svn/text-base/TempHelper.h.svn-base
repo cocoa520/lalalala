@@ -18,9 +18,9 @@
 +(NSString*)getAppSkinPath;
 +(NSString*)getAppiMobieConfigPath ;
 + (NSString *)getBackupFolderPath;
-+(NSString *)currentSelectionLanguage;
+//+(NSString *)currentSelectionLanguage;
 //自定义维度，用于事件跟踪
-+ (NSMutableDictionary *)customDimension;
+//+ (NSMutableDictionary *)customDimension;
 + (NSMutableDictionary*)getPlistFileDir:(NSString*)Path;
 + (BOOL)stringIsNilOrEmpty:(NSString*)string;
 + (NSString *)getSoftwareBackupFolderPath:(NSString *)name withUuid:(NSString *)uuid;
@@ -60,7 +60,7 @@
 + (NSDate*)greenwishTime2LocalTime:(NSDate*)greenwishTime;
 + (NSString *)getCurrentTimeStamp;
 + (NSString *)pingDomain:(NSString *)networkDomain;
-+ (NSString *)checkiCloudInternetAvailble;
+//+ (NSString *)checkiCloudInternetAvailble;
 +(BOOL)connectedToNetwork;
 + (BOOL)runApp:(NSString*)appName;
 + (void)exoprtPdfWithPath:(NSString *)path withcontrol:(id)control withmakeSizew:(int )width withhigh:(int )high;

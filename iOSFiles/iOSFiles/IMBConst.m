@@ -8,4 +8,5 @@
 
 #import "IMBConst.h"
 
+NSString * const IMBSelectedDeviceDidChangeNotiWithParams = @"IMBSelectedDeviceDidChangeNotiWithParams";
 NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNoti";

@@ -118,5 +118,5 @@
 
 - (BOOL)stringIsNilOrEmpty:(NSString*)string;
 
-- (void)closeMediaDirService;
+//- (void)closeMediaDirService;
 @end

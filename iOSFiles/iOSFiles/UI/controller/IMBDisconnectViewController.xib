@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="I9W-Ut-hJZ">
-                    <rect key="frame" x="0.0" y="0.0" width="530" height="500"/>
+                    <rect key="frame" x="0.0" y="0.0" width="530" height="535"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="G6j-so-BGO">
                         <font key="font" size="20" name="HelveticaNeue-Light"/>
@@ -30,7 +30,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tbe-aA-neG">
-                    <rect key="frame" x="532" y="0.0" width="530" height="500"/>
+                    <rect key="frame" x="532" y="0.0" width="530" height="534"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="aaE-xX-bmN">
                         <font key="font" size="20" name="HelveticaNeue-Light"/>
@@ -39,7 +39,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="h4H-o1-Zxe">
-                    <rect key="frame" x="18" y="528" width="1024" height="30"/>
+                    <rect key="frame" x="18" y="542" width="1024" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Please plug-in your iPhone,iPad or iPod, Start your journey" id="o7O-TT-ror">
                         <font key="font" metaFont="system" size="22"/>

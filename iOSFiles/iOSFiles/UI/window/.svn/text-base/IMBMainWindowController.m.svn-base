@@ -29,6 +29,9 @@
     return self;
 }
 
+/**
+ *  初始化操作
+ */
 - (void)awakeFromNib {
     NSRect screenRect = [NSScreen mainScreen].frame;
     [self.window setMaxSize:screenRect.size];
@@ -50,18 +53,34 @@
     [self addNotis];
     
 }
-
+/**
+ *  关闭window
+ */
 - (void)closeWindow:(id)sender {
     [self.window close];
 }
 
-
+/**
+ *  配置设备选择按钮
+ *
+ *  @param buttonName  按钮title
+ *  @param textColor   按钮字体颜色
+ *  @param size        按钮大小
+ *  @param showIcon    是否显示icon
+ *  @param showTrangle 是否显示右边的三角
+ *  @param isDisable   是否可点击
+ *  @param connectType 连接设备的type
+ */
 - (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType {
     
     [_selectedDeviceBtn configButtonName:buttonName WithTextColor:textColor WithTextSize:size WithIsShowIcon:showIcon WithIsShowTrangle:showTrangle WithIsDisable:isDisable withConnectType:connectType];
 }
 
-
+/**
+ *  设备选择按钮点击
+ *
+ *  @param sender 按钮
+ */
 - (IBAction)selectedDeviceBtnClicked:(IMBSelecedDeviceBtn *)sender {
     IMBFFuncLog;
     
@@ -90,9 +109,14 @@
         _devPopover.delegate = self;
         
         IMBDevViewController *devController = [[[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil] autorelease];
-        devController.view.frame = NSMakeRect(0, 0, 300.0f, 200.0f);
+        CGFloat w = 300.0f;
+        CGFloat h = 50.0f*deviceConnection.allDevices.count;
+        h = h > 200.0f ? 200.0f : h;
+        
+        devController.view.frame = NSMakeRect(0, 0, w, h);
         
         NSMutableArray *allDevices = [[NSMutableArray alloc] init];
+        
         if (deviceConnection.allDevices.count) {
             for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
                 [allDevices addObject:baseInfo];
@@ -114,17 +138,17 @@
  *  添加通知
  */
 - (void)addNotis {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
 }
 
 - (void)dealloc {
     //移除通知
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
     
     [super dealloc];
 }
 
-#pragma mark -- 通知
+#pragma mark -- 通知响应方法
 
 - (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
     if (_devPopover.isShown) {

@@ -233,7 +233,7 @@
 @property (nonatomic, getter = isSupportVoiceMemo, readonly) BOOL isSupportVoiceMemo;
 @property (nonatomic, getter = isSupportPhoto, readonly) BOOL isSupportPhoto;
 @property (nonatomic, getter = isSupportApplication, readonly) BOOL isSupportApplication;
-- (void)reloadName;
+//- (void)reloadName;
 - (BOOL)needHashABChkSum;
 - (BOOL)isShuffle;
 - (BOOL)isSupportMusic;

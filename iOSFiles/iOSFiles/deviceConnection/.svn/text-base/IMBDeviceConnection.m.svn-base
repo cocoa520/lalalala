@@ -319,6 +319,7 @@ static id _instance = nil;
         if (ipod) {
             [_alliPods removeObject:ipod];
         }
+        
     }
 }
 
