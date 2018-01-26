@@ -78,11 +78,11 @@ CGFloat const labelY = 10.0f;
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSString *strIdt = [tableColumn identifier];
     NSTableCellView *aView = [tableView makeViewWithIdentifier:strIdt owner:self];
-    if (!aView)
+    if (!aView) {
         aView = [[NSTableCellView alloc] initWithFrame:CGRectMake(0, 0, tableColumn.width, rowH)];
-    else
+    } else {
         for (NSView *view in aView.subviews)[view removeFromSuperview];
-    
+    }
     IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
     
     NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, labelY, tableColumn.width, rowH - 2*labelY)];

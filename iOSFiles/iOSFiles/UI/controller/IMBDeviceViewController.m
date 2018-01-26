@@ -187,11 +187,13 @@
     
     IMBDeviceInfo *deviceInfo = [iPod.deviceInfo retain];
     
+    NSString *availableSize = [NSString stringWithFormat:@"%.01f GB",deviceInfo.totalDataAvailable/1024.0/1024.0/1024.0];
+    NSString *totalSize = [NSString stringWithFormat:@"%.01f GB",deviceInfo.totalSize/1024.0/1024.0/1024.0];
     
     [_mainWindowController configButtonName:deviceInfo.deviceName WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceInfo.family];
     
     _disConnectController.promptLeftTF.stringValue = [NSString stringWithFormat:@"Device Name:\nAvailable Size:\nTotal Size:\nSerial Num:\nDevice Class:\nPhone:\nProduct Type:\nProduct Version:\nPhone Num:\nFirmware Version:\nUnique ChipID:\nActivation State:\nRegion Info:\nModel Number:\nBuild Version:\nHardware Model:\nCPU Architecture:\nBaseband Version:"];
-    _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,[NSString stringWithFormat:@"%.01f GB",deviceInfo.totalDataAvailable/1024.0/1024.0/1024.0],[NSString stringWithFormat:@"%.01f GB",deviceInfo.totalSize/1024.0/1024.0/1024.0],deviceInfo.serialNumber,deviceInfo.deviceClass,[deviceInfo getIPodFamilyString],deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber,deviceInfo.firmwareVersion,deviceInfo.uniqueChipID,deviceInfo.activationState,deviceInfo.regionInfo,deviceInfo.modelNumber,deviceInfo.buildVersion,deviceInfo.hardwareModel,deviceInfo.CPUArchitecture,deviceInfo.basebandVersion];
+    _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,availableSize,totalSize,deviceInfo.serialNumber,deviceInfo.deviceClass,[deviceInfo getIPodFamilyString],deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber,deviceInfo.firmwareVersion,deviceInfo.uniqueChipID,deviceInfo.activationState,deviceInfo.regionInfo,deviceInfo.modelNumber,deviceInfo.buildVersion,deviceInfo.hardwareModel,deviceInfo.CPUArchitecture,deviceInfo.basebandVersion];
     
     [deviceInfo release];
     deviceInfo = nil;

@@ -70,8 +70,9 @@ static id _instance = nil;
 {
     NSOperationQueue *_processingQueue;
     NSMutableArray *_serialArray;
+    MobileDeviceAccess *_deviceAccess;
 }
-@property(nonatomic, retain)MobileDeviceAccess *deviceAccess;
+//@property(nonatomic, retain)MobileDeviceAccess *deviceAccess;
 
 @end
 
@@ -147,14 +148,14 @@ static id _instance = nil;
  *  开始监听
  */
 - (void)startListening {
-    [self.deviceAccess setListener:self];
+    [_deviceAccess setListener:self];
     
 }
 /**
  *  注销监听
  */
 - (void)stopListening {
-    [self.deviceAccess stopListener];
+    [_deviceAccess stopListener];
     
 }
 
