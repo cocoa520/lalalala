@@ -1,0 +1,546 @@
+=================================================================
+install started:{
+    ClientOptions =     {
+        PackageType = Developer;
+    };
+    Command = Install;
+    PackagePath = "/PublicStaging/Angry Birds Seasons Free.app";
+}
+2013-05-24 12:20:13.332 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 5;
+    Status = CreatingStagingDirectory;
+}
+2013-05-24 12:20:17.486 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 15;
+    Status = ExtractingPackage;
+}
+2013-05-24 12:20:20.592 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 20;
+    Status = InspectingPackage;
+}
+2013-05-24 12:20:21.822 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 20;
+    Status = TakingInstallLock;
+}
+2013-05-24 12:20:23.422 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 30;
+    Status = PreflightingApplication;
+}
+2013-05-24 12:20:25.927 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 40;
+    Status = VerifyingApplication;
+}
+2013-05-24 12:20:29.197 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 60;
+    Status = InstallingApplication;
+}
+2013-05-24 12:20:31.405 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 70;
+    Status = PostflightingApplication;
+}
+2013-05-24 12:20:33.472 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 80;
+    Status = SandboxingApplication;
+}
+2013-05-24 12:20:35.876 iMobieTrans[1541:303] install replay:{
+    Status = Complete;
+}
+===============================================================
+
+===============================================================
+Copy App doc completely
+2013-05-24 12:21:46.741 iMobieTrans[1541:303] install started:{
+    ClientOptions =     {
+        PackageType = Developer;
+    };
+    Command = Install;
+    PackagePath = "/PublicStaging/Candy Crush Saga \U00ae.app";
+}
+2013-05-24 12:21:46.764 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 5;
+    Status = CreatingStagingDirectory;
+}
+2013-05-24 12:21:46.765 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 15;
+    Status = ExtractingPackage;
+}
+2013-05-24 12:22:09.853 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 20;
+    Status = InspectingPackage;
+}
+2013-05-24 12:22:09.862 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 20;
+    Status = TakingInstallLock;
+}
+2013-05-24 12:22:09.864 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 30;
+    Status = PreflightingApplication;
+}
+2013-05-24 12:22:09.865 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 40;
+    Status = VerifyingApplication;
+}
+2013-05-24 12:22:14.984 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 50;
+    Status = CreatingContainer;
+}
+2013-05-24 12:22:14.990 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 60;
+    Status = InstallingApplication;
+}
+2013-05-24 12:22:14.995 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 70;
+    Status = PostflightingApplication;
+}
+2013-05-24 12:22:14.996 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 80;
+    Status = SandboxingApplication;
+}
+2013-05-24 12:22:15.271 iMobieTrans[1541:303] install replay:{
+    PercentComplete = 90;
+    Status = GeneratingApplicationMap;
+}
+2013-05-24 12:22:15.653 iMobieTrans[1541:303] install replay:{
+    Status = Complete;
+}
+
+//不等于的时候，DeviceFamilyNotSupported
+iMobieTrans[1690:303] install started:{
+    ClientOptions =     {
+        PackageType = Developer;
+    };
+    Command = Install;
+    PackagePath = "/PublicStaging/\U690d\U7269\U5927\U6218\U50f5\U5c38 HD\U7248.app";
+}
+2013-05-24 12:36:39.613 iMobieTrans[1690:303] install replay:{
+    PercentComplete = 5;
+    Status = CreatingStagingDirectory;
+}
+2013-05-24 12:36:39.613 iMobieTrans[1690:303] install replay:{
+    PercentComplete = 15;
+    Status = ExtractingPackage;
+}
+2013-05-24 12:37:02.320 iMobieTrans[1690:303] install replay:{
+    PercentComplete = 20;
+    Status = InspectingPackage;
+}
+2013-05-24 12:37:02.480 iMobieTrans[1690:303] install replay:{
+    PercentComplete = 20;
+    Status = TakingInstallLock;
+}
+2013-05-24 12:37:02.482 iMobieTrans[1690:303] install replay:{
+    PercentComplete = 30;
+    Status = PreflightingApplication;
+}
+2013-05-24 12:37:02.535 iMobieTrans[1690:303] install replay:{
+    Error = DeviceFamilyNotSupported;
+}
+
+
+//开始备份 all
+2013-07-03 18:55:17.396 iMobieTrans[14267:303] Archive start: {
+    ApplicationIdentifier = "Herofox.JP300Free";
+    ClientOptions =     {
+        ArchiveType = All;
+        SkipUninstall = 1;
+    };
+    Command = Archive;
+}
+2013-07-03 18:55:17.410 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 0;
+    Status = TakingInstallLock;
+}
+2013-07-03 18:55:17.413 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 2;
+    Status = EmptyingApplication;
+}
+2013-07-03 18:55:17.414 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 3;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.474 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 4;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.486 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 5;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.498 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 6;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.509 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 7;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.526 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 8;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.540 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 9;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.544 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 10;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.552 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 11;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.558 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 12;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.573 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 13;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.579 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 14;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.590 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 15;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.620 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 16;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.631 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 17;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.644 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 18;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.655 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 19;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.673 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 20;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.695 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 21;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.726 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 22;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.733 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 23;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.740 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 24;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.750 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 25;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.754 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 26;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.769 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 27;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.778 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 28;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.785 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 29;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.791 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 30;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.872 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 31;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.879 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 32;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.887 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 33;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.900 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 34;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.916 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 35;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.919 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 36;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.943 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 37;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:17.991 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 38;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.016 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 39;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.017 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 40;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.030 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 41;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.041 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 42;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.048 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 43;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.054 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 44;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.121 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 45;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.132 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 46;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.145 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 47;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.148 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 48;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.171 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 49;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.186 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 50;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.253 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 51;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.259 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 52;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.327 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 53;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.329 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 54;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.329 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 55;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.330 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 56;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.330 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 57;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.331 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 58;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.376 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 59;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.384 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 60;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.391 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 61;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.397 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 62;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.409 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 63;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.426 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 64;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.435 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 65;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.441 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 66;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.453 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 67;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.458 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 68;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.501 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 69;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.511 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 70;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.518 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 71;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.526 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 72;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.532 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 73;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.539 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 74;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.546 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 75;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.559 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 76;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.599 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 77;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.606 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 78;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.785 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 79;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.786 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 80;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.786 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 81;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.787 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 82;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.787 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 83;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.787 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 84;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.788 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 85;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.788 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 86;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.822 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 87;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.823 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 88;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.824 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 89;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.827 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 90;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.828 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 91;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.830 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 92;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:18.832 iMobieTrans[14267:303] Archive reply: {
+    PercentComplete = 93;
+    Status = ArchivingApplication;
+}
+2013-07-03 18:55:19.037 iMobieTrans[14267:303] Archive reply: {
+    Status = Complete;
+}
+
+
+2013-07-04 13:13:20.149 iMobieTrans[17611:a307] Archive reply: {
+    Error = AlreadyArchived;
+}
+
+
+2013-07-04 13:13:20.149 iMobieTrans[17611:a307] Archive reply: {
+ install replay:{
+    Error = DeviceFamilyNotSupported;
+}
+
+
+
+
+
+
+
+//开到删除
+//
+
+
+

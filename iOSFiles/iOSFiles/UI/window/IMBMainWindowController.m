@@ -125,9 +125,9 @@
             if (_devPopover != nil) {
                 _devPopover.contentViewController = devController;
             }
-            devController.devices = [allDevices retain];
-            [allDevices release];
-            allDevices = nil;
+            devController.devices = allDevices;
+//            [allDevices release];
+//            allDevices = nil;
             NSRectEdge prefEdge = NSMaxYEdge;
             NSRect rect = NSMakeRect(sender.bounds.origin.x, sender.bounds.origin.y, sender.bounds.size.width, sender.bounds.size.height);
             [_devPopover showRelativeToRect:rect ofView:sender preferredEdge:prefEdge];

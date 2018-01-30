@@ -37,6 +37,21 @@ CGFloat const labelY = 10.0f;
     _tableView.delegate = self;
     _tableView.dataSource = self;
 }
+- (void)dealloc {
+//    [super dealloc];
+    
+    if (_devices) {
+        [_devices release];
+        _devices = nil;
+    }
+    if (_tableView) {
+        [_tableView release];
+        _tableView = nil;
+    }
+    
+    
+    
+}
 /**
  *  属性设置
  */

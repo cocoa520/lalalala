@@ -81,7 +81,7 @@
 //    __block typeof(self) weakSelf = self;
     deviceConnection.IMBDeviceConnected = ^{
         //设备连接成功
-        [self deviceConnected];
+        [self deviceConnectedWithConnection:deviceConnection];
     };
     deviceConnection.IMBDeviceDisconnected = ^(NSString *serialNum){
         //设备断开连接
@@ -109,6 +109,7 @@
     };
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBiPod *iPod) {
         //加载设备信息完成,ipod中含有设备详细信息
+        _disConnectController.promptTF.stringValue = @"Connected";
         if ([_disConnectController.promptLeftTF.stringValue isEqualToString:@""]) {
             [self setDeviceInfosWithiPod:iPod];
         }
@@ -139,8 +140,13 @@
 /**
  *  设备连接成功
  */
-- (void)deviceConnected {
-    _disConnectController.promptTF.stringValue = @"Connected";
+- (void)deviceConnectedWithConnection:(IMBDeviceConnection *)connection {
+    if (connection.allDevices.count) {
+        _disConnectController.promptTF.stringValue = @"Connecting another device";
+    }else {
+        _disConnectController.promptTF.stringValue = @"Connecting";
+    }
+    
     
 //    [self emptyDeviceInfo];
 }
@@ -148,7 +154,7 @@
  *  设备断开连接
  */
 - (void)deviceDisconnected:(NSString *)serialNum {
-    [[IMBLogManager singleton] writeInfoLog:@"Disonneted"];
+    [[IMBLogManager singleton] writeInfoLog:@"Disconneted"];
     _disConnectController.promptTF.stringValue = @"Please plug-in your iPhone,iPad or iPod, Start your journey";
     [self emptyDeviceInfo];
     
@@ -162,7 +168,7 @@
     NSAlert *alert = [NSAlert alertWithMessageText:@"Device Needs Password" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Make sure you give access to us"];
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == 1) {
-            IMBFLog(@"111111111");
+            IMBFLog(@"clicked OK button");
             //点击确定，重新链接设备
             [[IMBDeviceConnection singleton] performSelector:@selector(reConnectDevice:) withObject:(id)device afterDelay:1.0f];
         }

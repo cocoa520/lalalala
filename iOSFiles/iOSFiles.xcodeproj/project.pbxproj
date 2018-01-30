@@ -7,18 +7,156 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9104C9E200DFDFA00C1ECEA /* IMBAMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */; };
-		B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */; };
+		B90D14D420201599002D9F9B /* AppInstallProgressFile in Resources */ = {isa = PBXBuildFile; fileRef = B90D14C920201599002D9F9B /* AppInstallProgressFile */; };
+		B90D14D520201599002D9F9B /* IMBAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14CB20201599002D9F9B /* IMBAppConfig.m */; };
+		B90D14D620201599002D9F9B /* IMBAppEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14CD20201599002D9F9B /* IMBAppEntity.m */; };
+		B90D14D720201599002D9F9B /* IMBApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14CF20201599002D9F9B /* IMBApplicationManager.m */; };
+		B90D14D920201599002D9F9B /* IMBAppSyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14D320201599002D9F9B /* IMBAppSyncModel.m */; };
+		B90D14DC2020214C002D9F9B /* SimpleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14DB2020214C002D9F9B /* SimpleNode.m */; };
+		B90D14E120202198002D9F9B /* HoverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14DE20202198002D9F9B /* HoverButton.m */; };
+		B90D14E220202198002D9F9B /* IMBHoverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14E020202198002D9F9B /* IMBHoverButton.m */; };
+		B90D14E5202021D0002D9F9B /* IMBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14E4202021D0002D9F9B /* IMBAnimation.m */; };
+		B90D14E820202281002D9F9B /* IMBMyDrawCommonly.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14E720202281002D9F9B /* IMBMyDrawCommonly.m */; };
+		B90D14EB20202803002D9F9B /* IMBHoverBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14EA20202803002D9F9B /* IMBHoverBtnCell.m */; };
+		B90D14EE20202824002D9F9B /* IMBAnimateProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14ED20202824002D9F9B /* IMBAnimateProgressBar.m */; };
+		B90D14F120202875002D9F9B /* IMBTransResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D14F020202875002D9F9B /* IMBTransResult.m */; };
 		B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */; };
-		B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */; };
+		B9347CC6201ED9BD00A8CEC3 /* IMBBookEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CBB201ED9BD00A8CEC3 /* IMBBookEntity.m */; };
+		B9347CC8201ED9BD00A8CEC3 /* IMBBooksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CBF201ED9BD00A8CEC3 /* IMBBooksManager.m */; };
+		B9347CCD201ED9F600A8CEC3 /* IMBSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CCC201ED9F600A8CEC3 /* IMBSqliteManager.m */; };
+		B9348088201EFB2500A8CEC3 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9348087201EFB2500A8CEC3 /* libsqlite3.dylib */; };
+		B9348997201EFD2100A8CEC3 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B934874E201EFD2100A8CEC3 /* FMDatabase.m */; };
+		B9348998201EFD2100A8CEC3 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348750201EFD2100A8CEC3 /* FMDatabaseAdditions.m */; };
+		B9348999201EFD2100A8CEC3 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348752201EFD2100A8CEC3 /* FMDatabasePool.m */; };
+		B934899A201EFD2100A8CEC3 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348754201EFD2100A8CEC3 /* FMDatabaseQueue.m */; };
+		B934899B201EFD2100A8CEC3 /* fmdb.text in Sources */ = {isa = PBXBuildFile; fileRef = B9348755201EFD2100A8CEC3 /* fmdb.text */; };
+		B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348757201EFD2100A8CEC3 /* FMResultSet.m */; };
+		B9348AA8201EFDFA00A8CEC3 /* IMBProgressCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348AA7201EFDFA00A8CEC3 /* IMBProgressCounter.m */; };
+		B9348AAB201EFE2D00A8CEC3 /* IMBBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348AAA201EFE2D00A8CEC3 /* IMBBaseEntity.m */; };
+		B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348AD7201EFED600A8CEC3 /* IMBPhotoEntity.m */; };
+		B9348B04201EFED600A8CEC3 /* IMBPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348ADB201EFED600A8CEC3 /* IMBPhotoManager.m */; };
+		B9348B08201F03C700A8CEC3 /* IMBBookCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B07201F03C700A8CEC3 /* IMBBookCollection.m */; };
+		B9348B0B201F03D500A8CEC3 /* IMBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B0A201F03D500A8CEC3 /* IMBBaseModel.m */; };
+		B9348B0E201F042500A8CEC3 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B0D201F042500A8CEC3 /* DateHelper.m */; };
+		B9348B3A201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B2F201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m */; };
+		B9348B3B201F0DAB00A8CEC3 /* IMBAMFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B31201F0DAB00A8CEC3 /* IMBAMFileSystem.m */; };
+		B9348B3C201F0DAB00A8CEC3 /* IMBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B33201F0DAB00A8CEC3 /* IMBDeviceInfo.m */; };
+		B9348B3D201F0DAB00A8CEC3 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B35201F0DAB00A8CEC3 /* IMBFileSystem.m */; };
+		B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B37201F0DAB00A8CEC3 /* IMBInformation.m */; };
+		B9348B3F201F0DAB00A8CEC3 /* IMBInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */; };
+		B9348B45201F0E0500A8CEC3 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B42201F0E0500A8CEC3 /* IMBSession.m */; };
+		B9348B46201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B44201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.m */; };
+		B9655D6220207C7100FE2D92 /* IMBArtworkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655C9A20207C7100FE2D92 /* IMBArtworkDB.m */; };
+		B9655D6320207C7100FE2D92 /* IMBArtworkDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655C9C20207C7100FE2D92 /* IMBArtworkDBRoot.m */; };
+		B9655D6420207C7100FE2D92 /* IMBArtworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655C9E20207C7100FE2D92 /* IMBArtworkEntity.m */; };
+		B9655D6520207C7100FE2D92 /* IMBArtworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CA020207C7100FE2D92 /* IMBArtworkHelper.m */; };
+		B9655D6620207C7100FE2D92 /* IMBArtworkListContainerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CA220207C7100FE2D92 /* IMBArtworkListContainerHeader.m */; };
+		B9655D6720207C7100FE2D92 /* IMBArtworkUnknownListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CA420207C7100FE2D92 /* IMBArtworkUnknownListContainer.m */; };
+		B9655D6820207C7100FE2D92 /* IMBImageAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CA620207C7100FE2D92 /* IMBImageAlbum.m */; };
+		B9655D6920207C7100FE2D92 /* IMBImageAlbumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CA820207C7100FE2D92 /* IMBImageAlbumItem.m */; };
+		B9655D6A20207C7100FE2D92 /* IMBImageAlbumList.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CAA20207C7100FE2D92 /* IMBImageAlbumList.m */; };
+		B9655D6B20207C7100FE2D92 /* IMBImageAlbumListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CAC20207C7100FE2D92 /* IMBImageAlbumListContainer.m */; };
+		B9655D6C20207C7100FE2D92 /* IMBImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CAE20207C7100FE2D92 /* IMBImageList.m */; };
+		B9655D6D20207C7100FE2D92 /* IMBImageListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CB020207C7100FE2D92 /* IMBImageListContainer.m */; };
+		B9655D6E20207C7100FE2D92 /* IMBIPodImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CB220207C7100FE2D92 /* IMBIPodImage.m */; };
+		B9655D6F20207C7100FE2D92 /* IMBIPodImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CB420207C7100FE2D92 /* IMBIPodImageFormat.m */; };
+		B9655D7020207C7100FE2D92 /* IMBIThmbFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CB620207C7100FE2D92 /* IMBIThmbFile.m */; };
+		B9655D7120207C7100FE2D92 /* IMBIThmbFileList.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CB820207C7100FE2D92 /* IMBIThmbFileList.m */; };
+		B9655D7220207C7100FE2D92 /* IMBIThmbFileListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CBA20207C7100FE2D92 /* IMBIThmbFileListContainer.m */; };
+		B9655D7320207C7100FE2D92 /* IMBMHODType2.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CBC20207C7100FE2D92 /* IMBMHODType2.m */; };
+		B9655D7420207C7100FE2D92 /* IMBSupportedArtworkFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CBE20207C7100FE2D92 /* IMBSupportedArtworkFormat.m */; };
+		B9655D7520207C7100FE2D92 /* IMBMediaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CC220207C7100FE2D92 /* IMBMediaConverter.m */; };
+		B9655D7620207C7100FE2D92 /* IMBConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CC520207C7100FE2D92 /* IMBConfig.m */; };
+		B9655D7720207C7100FE2D92 /* IMBRingtoneConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CC720207C7100FE2D92 /* IMBRingtoneConfig.m */; };
+		B9655D7820207C7100FE2D92 /* IMBCvtEncodedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CCA20207C7100FE2D92 /* IMBCvtEncodedMedia.m */; };
+		B9655D7920207C7100FE2D92 /* IMBCvtMediaConvertEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CCC20207C7100FE2D92 /* IMBCvtMediaConvertEncoder.m */; };
+		B9655D7A20207C7100FE2D92 /* IMBCvtMediaEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CCE20207C7100FE2D92 /* IMBCvtMediaEncoding.m */; };
+		B9655D7B20207C7100FE2D92 /* IMBCvtDeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CD120207C7100FE2D92 /* IMBCvtDeviceEntity.m */; };
+		B9655D7C20207C7100FE2D92 /* IMBCvtMediaFileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CD320207C7100FE2D92 /* IMBCvtMediaFileEntity.m */; };
+		B9655D7D20207C7100FE2D92 /* IMBBaseDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CD520207C7100FE2D92 /* IMBBaseDatabase.m */; };
+		B9655D7E20207C7100FE2D92 /* IMBBaseDatabaseElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CD720207C7100FE2D92 /* IMBBaseDatabaseElement.m */; };
+		B9655D7F20207C7100FE2D92 /* IMBMediaLibraryDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CD920207C7100FE2D92 /* IMBMediaLibraryDBHelper.m */; };
+		B9655D8020207C7100FE2D92 /* IMBMusicDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CDB20207C7100FE2D92 /* IMBMusicDatabase.m */; };
+		B9655D8120207C7100FE2D92 /* IMBNewTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CDD20207C7100FE2D92 /* IMBNewTrack.m */; };
+		B9655D8220207C7100FE2D92 /* IMBVideoImageAcquire.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CDF20207C7100FE2D92 /* IMBVideoImageAcquire.m */; };
+		B9655D8320207C7100FE2D92 /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CE120207C7100FE2D92 /* IMBVideoImageByOther.m */; };
+		B9655D8420207C7100FE2D92 /* IMBiTunesCDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CE420207C7100FE2D92 /* IMBiTunesCDBRoot.m */; };
+		B9655D8520207C7100FE2D92 /* iTunesCDB in Resources */ = {isa = PBXBuildFile; fileRef = B9655CE520207C7100FE2D92 /* iTunesCDB */; };
+		B9655D8620207C7100FE2D92 /* IMBSqliteTables.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CE820207C7100FE2D92 /* IMBSqliteTables.m */; };
+		B9655D8720207C7100FE2D92 /* IMBSqliteTables_31.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CEA20207C7100FE2D92 /* IMBSqliteTables_31.m */; };
+		B9655D8820207C7100FE2D92 /* IMBSqliteTables_4.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CEC20207C7100FE2D92 /* IMBSqliteTables_4.m */; };
+		B9655D8920207C7100FE2D92 /* IMBSqliteTables_Above3.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CEE20207C7100FE2D92 /* IMBSqliteTables_Above3.m */; };
+		B9655D8A20207C7100FE2D92 /* IMBSqliteTables_Nano5G.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CF020207C7100FE2D92 /* IMBSqliteTables_Nano5G.m */; };
+		B9655D8B20207C7100FE2D92 /* IMBSqliteTables_Nano6G.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CF220207C7100FE2D92 /* IMBSqliteTables_Nano6G.m */; };
+		B9655D8C20207C7100FE2D92 /* IMBSqliteTables_5.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CF520207C7100FE2D92 /* IMBSqliteTables_5.m */; };
+		B9655D8D20207C7100FE2D92 /* IMBSyncAppBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CF720207C7100FE2D92 /* IMBSyncAppBuilder.m */; };
+		B9655D8E20207C7100FE2D92 /* IMBSyncPlistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655CF920207C7100FE2D92 /* IMBSyncPlistBuilder.m */; };
+		B9655D8F20207C7100FE2D92 /* IMBDatabaseHasher.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9655CFD20207C7100FE2D92 /* IMBDatabaseHasher.mm */; };
+		B9655D9020207C7100FE2D92 /* IMBHash58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9655CFE20207C7100FE2D92 /* IMBHash58.cpp */; };
+		B9655D9120207C7100FE2D92 /* IMBHash72.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0020207C7100FE2D92 /* IMBHash72.cpp */; };
+		B9655D9220207C7100FE2D92 /* rijndael.c in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0220207C7100FE2D92 /* rijndael.c */; };
+		B9655D9320207C7100FE2D92 /* IMBAlbumListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0520207C7100FE2D92 /* IMBAlbumListContainer.m */; };
+		B9655D9420207C7100FE2D92 /* IMBIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0720207C7100FE2D92 /* IMBIDGenerator.m */; };
+		B9655D9520207C7100FE2D92 /* IMBiTunesDBRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0920207C7100FE2D92 /* IMBiTunesDBRoot.m */; };
+		B9655D9620207C7100FE2D92 /* IMBListContainerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0B20207C7100FE2D92 /* IMBListContainerHeader.m */; };
+		B9655D9720207C7100FE2D92 /* IMBPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0D20207C7100FE2D92 /* IMBPlaylist.m */; };
+		B9655D9820207C7100FE2D92 /* IMBPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D0F20207C7100FE2D92 /* IMBPlaylistItem.m */; };
+		B9655D9920207C7100FE2D92 /* IMBPlaylistList.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1120207C7100FE2D92 /* IMBPlaylistList.m */; };
+		B9655D9A20207C7100FE2D92 /* IMBPlaylistListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1320207C7100FE2D92 /* IMBPlaylistListContainer.m */; };
+		B9655D9B20207C7100FE2D92 /* IMBPlaylistListV2Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1520207C7100FE2D92 /* IMBPlaylistListV2Container.m */; };
+		B9655D9C20207C7100FE2D92 /* IMBPodcastListAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1720207C7100FE2D92 /* IMBPodcastListAdapter.m */; };
+		B9655D9D20207C7100FE2D92 /* IMBTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1920207C7100FE2D92 /* IMBTrack.m */; };
+		B9655D9E20207C7100FE2D92 /* IMBTracklist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1B20207C7100FE2D92 /* IMBTracklist.m */; };
+		B9655D9F20207C7100FE2D92 /* IMBTrackListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1D20207C7100FE2D92 /* IMBTrackListContainer.m */; };
+		B9655DA020207C7100FE2D92 /* IMBType5Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D1F20207C7100FE2D92 /* IMBType5Container.m */; };
+		B9655DA120207C7100FE2D92 /* IMBType6Container.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2120207C7100FE2D92 /* IMBType6Container.m */; };
+		B9655DA220207C7100FE2D92 /* IMBUnknownListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2320207C7100FE2D92 /* IMBUnknownListContainer.m */; };
+		B9655DA320207C7100FE2D92 /* IMBArtworkStringMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2620207C7100FE2D92 /* IMBArtworkStringMHOD.m */; };
+		B9655DA420207C7100FE2D92 /* IMBBaseMHODElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2820207C7100FE2D92 /* IMBBaseMHODElement.m */; };
+		B9655DA520207C7100FE2D92 /* IMBMenuIndexMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2A20207C7100FE2D92 /* IMBMenuIndexMHOD.m */; };
+		B9655DA620207C7100FE2D92 /* IMBMHODFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2C20207C7100FE2D92 /* IMBMHODFactory.m */; };
+		B9655DA720207C7100FE2D92 /* IMBPlaylistPositionMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D2E20207C7100FE2D92 /* IMBPlaylistPositionMHOD.m */; };
+		B9655DA820207C7100FE2D92 /* IMBStringMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3020207C7100FE2D92 /* IMBStringMHOD.m */; };
+		B9655DA920207C7100FE2D92 /* IMBUnicodeMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3220207C7100FE2D92 /* IMBUnicodeMHOD.m */; };
+		B9655DAA20207C7100FE2D92 /* IMBUnknownMHOD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3420207C7100FE2D92 /* IMBUnknownMHOD.m */; };
+		B9655DAB20207C7100FE2D92 /* IMBiTunesPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3720207C7100FE2D92 /* IMBiTunesPrefs.m */; };
+		B9655DAC20207C7100FE2D92 /* IMBiTunesSD.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3A20207C7100FE2D92 /* IMBiTunesSD.m */; };
+		B9655DAD20207C7100FE2D92 /* IMBSDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3C20207C7100FE2D92 /* IMBSDEntry.m */; };
+		B9655DAE20207C7100FE2D92 /* IMBSDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D3E20207C7100FE2D92 /* IMBSDHeader.m */; };
+		B9655DAF20207C7100FE2D92 /* IMBPlayCountEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4120207C7100FE2D92 /* IMBPlayCountEntry.m */; };
+		B9655DB020207C7100FE2D92 /* IMBPlayCountHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4320207C7100FE2D92 /* IMBPlayCountHeader.m */; };
+		B9655DB120207C7100FE2D92 /* IMBPlayCounts.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4520207C7100FE2D92 /* IMBPlayCounts.m */; };
+		B9655DB220207C7100FE2D92 /* IMBIOS5Sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4820207C7100FE2D92 /* IMBIOS5Sqlite.m */; };
+		B9655DB320207C7100FE2D92 /* IMBIOSSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4A20207C7100FE2D92 /* IMBIOSSqlite.m */; };
+		B9655DB420207C7100FE2D92 /* IMBPCSqliteTables.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4C20207C7100FE2D92 /* IMBPCSqliteTables.m */; };
+		B9655DB520207C7100FE2D92 /* IMBPurchasesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D4F20207C7100FE2D92 /* IMBPurchasesInfo.m */; };
+		B9655DB620207C7100FE2D92 /* IMBPurchasesPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5120207C7100FE2D92 /* IMBPurchasesPlist.m */; };
+		B9655DB720207C7100FE2D92 /* IMBPurchasesSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5320207C7100FE2D92 /* IMBPurchasesSqlite.m */; };
+		B9655DB820207C7100FE2D92 /* IMBRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5620207C7100FE2D92 /* IMBRecording.m */; };
+		B9655DB920207C7100FE2D92 /* IMBRecordingEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5820207C7100FE2D92 /* IMBRecordingEntry.m */; };
+		B9655DBA20207C7100FE2D92 /* IMBSyncPlaylistFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5B20207C7100FE2D92 /* IMBSyncPlaylistFactory.m */; };
+		B9655DBB20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5D20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.m */; };
+		B9655DBC20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D5F20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.m */; };
+		B9655DBD20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.m in Sources */ = {isa = PBXBuildFile; fileRef = B9655D6120207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.m */; };
+		B9655DBF20207D1D00FE2D92 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DBE20207D1D00FE2D92 /* libiconv.dylib */; };
+		B9655DC120207D3E00FE2D92 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */; };
+		B9655DC320207D5500FE2D92 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC220207D5500FE2D92 /* libcurl.dylib */; };
+		B9655DC520207D6200FE2D92 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC420207D6100FE2D92 /* libz.dylib */; };
+		B9655DC720207D7100FE2D92 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC620207D7100FE2D92 /* libz.1.2.5.dylib */; };
+		B9655DC920207D7B00FE2D92 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC820207D7B00FE2D92 /* libssl.dylib */; };
+		B9655DCB20207D8800FE2D92 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DCA20207D8800FE2D92 /* libcrypto.dylib */; };
+		B9655DCD20207D9800FE2D92 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DCC20207D9800FE2D92 /* libxml2.dylib */; };
+		B9655DCF20207DA600FE2D92 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DCE20207DA600FE2D92 /* Quartz.framework */; };
+		B9655DD120207DAE00FE2D92 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DD020207DAE00FE2D92 /* IOKit.framework */; };
+		B9655DD320207DB800FE2D92 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DD220207DB800FE2D92 /* AppKit.framework */; };
+		B9655DD520207DC200FE2D92 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DD420207DC200FE2D92 /* CoreData.framework */; };
+		B9655DD720207DCF00FE2D92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DD620207DCF00FE2D92 /* CoreMedia.framework */; };
+		B9655DD920207DDA00FE2D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DD820207DDA00FE2D92 /* QuartzCore.framework */; };
 		B996D9B02019730100E6991A /* IMBSelecedDeviceBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */; };
 		B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9C52019CA7600E6991A /* IMBDevViewController.m */; };
 		B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B996D9C62019CA7600E6991A /* IMBDevViewController.xib */; };
 		B996D9CD2019E26900E6991A /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9CC2019E26900E6991A /* IMBConst.m */; };
 		B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD93200EF73B00D02B13 /* IMBiPod.m */; };
-		B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD95200EF73B00D02B13 /* IMBSession.m */; };
-		B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */; };
-		B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */; };
 		B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDD9F200EF8E300D02B13 /* TempHelper.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
@@ -53,15 +191,280 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B90D14C920201599002D9F9B /* AppInstallProgressFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppInstallProgressFile; sourceTree = "<group>"; };
+		B90D14CA20201599002D9F9B /* IMBAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppConfig.h; sourceTree = "<group>"; };
+		B90D14CB20201599002D9F9B /* IMBAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppConfig.m; sourceTree = "<group>"; };
+		B90D14CC20201599002D9F9B /* IMBAppEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppEntity.h; sourceTree = "<group>"; };
+		B90D14CD20201599002D9F9B /* IMBAppEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppEntity.m; sourceTree = "<group>"; };
+		B90D14CE20201599002D9F9B /* IMBApplicationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBApplicationManager.h; sourceTree = "<group>"; };
+		B90D14CF20201599002D9F9B /* IMBApplicationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBApplicationManager.m; sourceTree = "<group>"; };
+		B90D14D220201599002D9F9B /* IMBAppSyncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppSyncModel.h; sourceTree = "<group>"; };
+		B90D14D320201599002D9F9B /* IMBAppSyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppSyncModel.m; sourceTree = "<group>"; };
+		B90D14DA2020214C002D9F9B /* SimpleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleNode.h; sourceTree = "<group>"; };
+		B90D14DB2020214C002D9F9B /* SimpleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleNode.m; sourceTree = "<group>"; };
+		B90D14DD20202198002D9F9B /* HoverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoverButton.h; sourceTree = "<group>"; };
+		B90D14DE20202198002D9F9B /* HoverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HoverButton.m; sourceTree = "<group>"; };
+		B90D14DF20202198002D9F9B /* IMBHoverButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHoverButton.h; sourceTree = "<group>"; };
+		B90D14E020202198002D9F9B /* IMBHoverButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBHoverButton.m; sourceTree = "<group>"; };
+		B90D14E3202021D0002D9F9B /* IMBAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMBAnimation.h; path = FileSystem/IMBAnimation.h; sourceTree = "<group>"; };
+		B90D14E4202021D0002D9F9B /* IMBAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMBAnimation.m; path = FileSystem/IMBAnimation.m; sourceTree = "<group>"; };
+		B90D14E620202281002D9F9B /* IMBMyDrawCommonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMyDrawCommonly.h; sourceTree = "<group>"; };
+		B90D14E720202281002D9F9B /* IMBMyDrawCommonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMyDrawCommonly.m; sourceTree = "<group>"; };
+		B90D14E920202803002D9F9B /* IMBHoverBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHoverBtnCell.h; sourceTree = "<group>"; };
+		B90D14EA20202803002D9F9B /* IMBHoverBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBHoverBtnCell.m; sourceTree = "<group>"; };
+		B90D14EC20202824002D9F9B /* IMBAnimateProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAnimateProgressBar.h; sourceTree = "<group>"; };
+		B90D14ED20202824002D9F9B /* IMBAnimateProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAnimateProgressBar.m; sourceTree = "<group>"; };
+		B90D14EF20202875002D9F9B /* IMBTransResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTransResult.h; sourceTree = "<group>"; };
+		B90D14F020202875002D9F9B /* IMBTransResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTransResult.m; sourceTree = "<group>"; };
 		B9104C97200DB2C300C1ECEA /* iOSFilesPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSFilesPch.pch; sourceTree = "<group>"; };
-		B9104C9A200DFDFA00C1ECEA /* IMBAMDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMDeviceInfo.h; sourceTree = "<group>"; };
-		B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMDeviceInfo.m; sourceTree = "<group>"; };
-		B9104C9C200DFDFA00C1ECEA /* IMBDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceInfo.h; sourceTree = "<group>"; };
-		B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceInfo.m; sourceTree = "<group>"; };
 		B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonEnum.h; sourceTree = "<group>"; };
 		B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonEnum.m; sourceTree = "<group>"; };
-		B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
-		B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
+		B9347CBA201ED9BD00A8CEC3 /* IMBBookEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBookEntity.h; sourceTree = "<group>"; };
+		B9347CBB201ED9BD00A8CEC3 /* IMBBookEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBookEntity.m; sourceTree = "<group>"; };
+		B9347CBE201ED9BD00A8CEC3 /* IMBBooksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBooksManager.h; sourceTree = "<group>"; };
+		B9347CBF201ED9BD00A8CEC3 /* IMBBooksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBooksManager.m; sourceTree = "<group>"; };
+		B9347CCB201ED9F600A8CEC3 /* IMBSqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteManager.h; sourceTree = "<group>"; };
+		B9347CCC201ED9F600A8CEC3 /* IMBSqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteManager.m; sourceTree = "<group>"; };
+		B9348087201EFB2500A8CEC3 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B934874D201EFD2100A8CEC3 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		B934874E201EFD2100A8CEC3 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		B934874F201EFD2100A8CEC3 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		B9348750201EFD2100A8CEC3 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B9348751201EFD2100A8CEC3 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		B9348752201EFD2100A8CEC3 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		B9348753201EFD2100A8CEC3 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		B9348754201EFD2100A8CEC3 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		B9348755201EFD2100A8CEC3 /* fmdb.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = fmdb.text; sourceTree = "<group>"; };
+		B9348756201EFD2100A8CEC3 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		B9348757201EFD2100A8CEC3 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		B9348AA6201EFDFA00A8CEC3 /* IMBProgressCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBProgressCounter.h; sourceTree = "<group>"; };
+		B9348AA7201EFDFA00A8CEC3 /* IMBProgressCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBProgressCounter.m; sourceTree = "<group>"; };
+		B9348AA9201EFE2D00A8CEC3 /* IMBBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseEntity.h; sourceTree = "<group>"; };
+		B9348AAA201EFE2D00A8CEC3 /* IMBBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseEntity.m; sourceTree = "<group>"; };
+		B9348AD6201EFED600A8CEC3 /* IMBPhotoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoEntity.h; sourceTree = "<group>"; };
+		B9348AD7201EFED600A8CEC3 /* IMBPhotoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoEntity.m; sourceTree = "<group>"; };
+		B9348ADA201EFED600A8CEC3 /* IMBPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoManager.h; sourceTree = "<group>"; };
+		B9348ADB201EFED600A8CEC3 /* IMBPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoManager.m; sourceTree = "<group>"; };
+		B9348B06201F03C700A8CEC3 /* IMBBookCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBookCollection.h; sourceTree = "<group>"; };
+		B9348B07201F03C700A8CEC3 /* IMBBookCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBookCollection.m; sourceTree = "<group>"; };
+		B9348B09201F03D500A8CEC3 /* IMBBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseModel.h; sourceTree = "<group>"; };
+		B9348B0A201F03D500A8CEC3 /* IMBBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseModel.m; sourceTree = "<group>"; };
+		B9348B0C201F042500A8CEC3 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		B9348B0D201F042500A8CEC3 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		B9348B2E201F0DAB00A8CEC3 /* IMBAMDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMDeviceInfo.h; sourceTree = "<group>"; };
+		B9348B2F201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMDeviceInfo.m; sourceTree = "<group>"; };
+		B9348B30201F0DAB00A8CEC3 /* IMBAMFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMFileSystem.h; sourceTree = "<group>"; };
+		B9348B31201F0DAB00A8CEC3 /* IMBAMFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMFileSystem.m; sourceTree = "<group>"; };
+		B9348B32201F0DAB00A8CEC3 /* IMBDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceInfo.h; sourceTree = "<group>"; };
+		B9348B33201F0DAB00A8CEC3 /* IMBDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceInfo.m; sourceTree = "<group>"; };
+		B9348B34201F0DAB00A8CEC3 /* IMBFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystem.h; sourceTree = "<group>"; };
+		B9348B35201F0DAB00A8CEC3 /* IMBFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystem.m; sourceTree = "<group>"; };
+		B9348B36201F0DAB00A8CEC3 /* IMBInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBInformation.h; sourceTree = "<group>"; };
+		B9348B37201F0DAB00A8CEC3 /* IMBInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBInformation.m; sourceTree = "<group>"; };
+		B9348B38201F0DAB00A8CEC3 /* IMBInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBInformationManager.h; sourceTree = "<group>"; };
+		B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBInformationManager.m; sourceTree = "<group>"; };
+		B9348B40201F0DD500A8CEC3 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		B9348B41201F0E0500A8CEC3 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
+		B9348B42201F0E0500A8CEC3 /* IMBSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSession.m; sourceTree = "<group>"; };
+		B9348B43201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
+		B9348B44201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
+		B9655C9920207C7100FE2D92 /* IMBArtworkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkDB.h; sourceTree = "<group>"; };
+		B9655C9A20207C7100FE2D92 /* IMBArtworkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkDB.m; sourceTree = "<group>"; };
+		B9655C9B20207C7100FE2D92 /* IMBArtworkDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkDBRoot.h; sourceTree = "<group>"; };
+		B9655C9C20207C7100FE2D92 /* IMBArtworkDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkDBRoot.m; sourceTree = "<group>"; };
+		B9655C9D20207C7100FE2D92 /* IMBArtworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkEntity.h; sourceTree = "<group>"; };
+		B9655C9E20207C7100FE2D92 /* IMBArtworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkEntity.m; sourceTree = "<group>"; };
+		B9655C9F20207C7100FE2D92 /* IMBArtworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkHelper.h; sourceTree = "<group>"; };
+		B9655CA020207C7100FE2D92 /* IMBArtworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkHelper.m; sourceTree = "<group>"; };
+		B9655CA120207C7100FE2D92 /* IMBArtworkListContainerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkListContainerHeader.h; sourceTree = "<group>"; };
+		B9655CA220207C7100FE2D92 /* IMBArtworkListContainerHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkListContainerHeader.m; sourceTree = "<group>"; };
+		B9655CA320207C7100FE2D92 /* IMBArtworkUnknownListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkUnknownListContainer.h; sourceTree = "<group>"; };
+		B9655CA420207C7100FE2D92 /* IMBArtworkUnknownListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkUnknownListContainer.m; sourceTree = "<group>"; };
+		B9655CA520207C7100FE2D92 /* IMBImageAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageAlbum.h; sourceTree = "<group>"; };
+		B9655CA620207C7100FE2D92 /* IMBImageAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageAlbum.m; sourceTree = "<group>"; };
+		B9655CA720207C7100FE2D92 /* IMBImageAlbumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageAlbumItem.h; sourceTree = "<group>"; };
+		B9655CA820207C7100FE2D92 /* IMBImageAlbumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageAlbumItem.m; sourceTree = "<group>"; };
+		B9655CA920207C7100FE2D92 /* IMBImageAlbumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageAlbumList.h; sourceTree = "<group>"; };
+		B9655CAA20207C7100FE2D92 /* IMBImageAlbumList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageAlbumList.m; sourceTree = "<group>"; };
+		B9655CAB20207C7100FE2D92 /* IMBImageAlbumListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageAlbumListContainer.h; sourceTree = "<group>"; };
+		B9655CAC20207C7100FE2D92 /* IMBImageAlbumListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageAlbumListContainer.m; sourceTree = "<group>"; };
+		B9655CAD20207C7100FE2D92 /* IMBImageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageList.h; sourceTree = "<group>"; };
+		B9655CAE20207C7100FE2D92 /* IMBImageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageList.m; sourceTree = "<group>"; };
+		B9655CAF20207C7100FE2D92 /* IMBImageListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBImageListContainer.h; sourceTree = "<group>"; };
+		B9655CB020207C7100FE2D92 /* IMBImageListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBImageListContainer.m; sourceTree = "<group>"; };
+		B9655CB120207C7100FE2D92 /* IMBIPodImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIPodImage.h; sourceTree = "<group>"; };
+		B9655CB220207C7100FE2D92 /* IMBIPodImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIPodImage.m; sourceTree = "<group>"; };
+		B9655CB320207C7100FE2D92 /* IMBIPodImageFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIPodImageFormat.h; sourceTree = "<group>"; };
+		B9655CB420207C7100FE2D92 /* IMBIPodImageFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIPodImageFormat.m; sourceTree = "<group>"; };
+		B9655CB520207C7100FE2D92 /* IMBIThmbFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIThmbFile.h; sourceTree = "<group>"; };
+		B9655CB620207C7100FE2D92 /* IMBIThmbFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIThmbFile.m; sourceTree = "<group>"; };
+		B9655CB720207C7100FE2D92 /* IMBIThmbFileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIThmbFileList.h; sourceTree = "<group>"; };
+		B9655CB820207C7100FE2D92 /* IMBIThmbFileList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIThmbFileList.m; sourceTree = "<group>"; };
+		B9655CB920207C7100FE2D92 /* IMBIThmbFileListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIThmbFileListContainer.h; sourceTree = "<group>"; };
+		B9655CBA20207C7100FE2D92 /* IMBIThmbFileListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIThmbFileListContainer.m; sourceTree = "<group>"; };
+		B9655CBB20207C7100FE2D92 /* IMBMHODType2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMHODType2.h; sourceTree = "<group>"; };
+		B9655CBC20207C7100FE2D92 /* IMBMHODType2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMHODType2.m; sourceTree = "<group>"; };
+		B9655CBD20207C7100FE2D92 /* IMBSupportedArtworkFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSupportedArtworkFormat.h; sourceTree = "<group>"; };
+		B9655CBE20207C7100FE2D92 /* IMBSupportedArtworkFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSupportedArtworkFormat.m; sourceTree = "<group>"; };
+		B9655CC120207C7100FE2D92 /* IMBMediaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMediaConverter.h; sourceTree = "<group>"; };
+		B9655CC220207C7100FE2D92 /* IMBMediaConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMediaConverter.m; sourceTree = "<group>"; };
+		B9655CC420207C7100FE2D92 /* IMBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBConfig.h; sourceTree = "<group>"; };
+		B9655CC520207C7100FE2D92 /* IMBConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConfig.m; sourceTree = "<group>"; };
+		B9655CC620207C7100FE2D92 /* IMBRingtoneConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRingtoneConfig.h; sourceTree = "<group>"; };
+		B9655CC720207C7100FE2D92 /* IMBRingtoneConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRingtoneConfig.m; sourceTree = "<group>"; };
+		B9655CC920207C7100FE2D92 /* IMBCvtEncodedMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtEncodedMedia.h; sourceTree = "<group>"; };
+		B9655CCA20207C7100FE2D92 /* IMBCvtEncodedMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtEncodedMedia.m; sourceTree = "<group>"; };
+		B9655CCB20207C7100FE2D92 /* IMBCvtMediaConvertEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaConvertEncoder.h; sourceTree = "<group>"; };
+		B9655CCC20207C7100FE2D92 /* IMBCvtMediaConvertEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaConvertEncoder.m; sourceTree = "<group>"; };
+		B9655CCD20207C7100FE2D92 /* IMBCvtMediaEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaEncoding.h; sourceTree = "<group>"; };
+		B9655CCE20207C7100FE2D92 /* IMBCvtMediaEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaEncoding.m; sourceTree = "<group>"; };
+		B9655CD020207C7100FE2D92 /* IMBCvtDeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtDeviceEntity.h; sourceTree = "<group>"; };
+		B9655CD120207C7100FE2D92 /* IMBCvtDeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtDeviceEntity.m; sourceTree = "<group>"; };
+		B9655CD220207C7100FE2D92 /* IMBCvtMediaFileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaFileEntity.h; sourceTree = "<group>"; };
+		B9655CD320207C7100FE2D92 /* IMBCvtMediaFileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaFileEntity.m; sourceTree = "<group>"; };
+		B9655CD420207C7100FE2D92 /* IMBBaseDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseDatabase.h; sourceTree = "<group>"; };
+		B9655CD520207C7100FE2D92 /* IMBBaseDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseDatabase.m; sourceTree = "<group>"; };
+		B9655CD620207C7100FE2D92 /* IMBBaseDatabaseElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseDatabaseElement.h; sourceTree = "<group>"; };
+		B9655CD720207C7100FE2D92 /* IMBBaseDatabaseElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseDatabaseElement.m; sourceTree = "<group>"; };
+		B9655CD820207C7100FE2D92 /* IMBMediaLibraryDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMediaLibraryDBHelper.h; sourceTree = "<group>"; };
+		B9655CD920207C7100FE2D92 /* IMBMediaLibraryDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMediaLibraryDBHelper.m; sourceTree = "<group>"; };
+		B9655CDA20207C7100FE2D92 /* IMBMusicDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMusicDatabase.h; sourceTree = "<group>"; };
+		B9655CDB20207C7100FE2D92 /* IMBMusicDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMusicDatabase.m; sourceTree = "<group>"; };
+		B9655CDC20207C7100FE2D92 /* IMBNewTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNewTrack.h; sourceTree = "<group>"; };
+		B9655CDD20207C7100FE2D92 /* IMBNewTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNewTrack.m; sourceTree = "<group>"; };
+		B9655CDE20207C7100FE2D92 /* IMBVideoImageAcquire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVideoImageAcquire.h; sourceTree = "<group>"; };
+		B9655CDF20207C7100FE2D92 /* IMBVideoImageAcquire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageAcquire.m; sourceTree = "<group>"; };
+		B9655CE020207C7100FE2D92 /* IMBVideoImageByOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVideoImageByOther.h; sourceTree = "<group>"; };
+		B9655CE120207C7100FE2D92 /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
+		B9655CE320207C7100FE2D92 /* IMBiTunesCDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesCDBRoot.h; sourceTree = "<group>"; };
+		B9655CE420207C7100FE2D92 /* IMBiTunesCDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesCDBRoot.m; sourceTree = "<group>"; };
+		B9655CE520207C7100FE2D92 /* iTunesCDB */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesCDB; sourceTree = "<group>"; };
+		B9655CE720207C7100FE2D92 /* IMBSqliteTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables.h; sourceTree = "<group>"; };
+		B9655CE820207C7100FE2D92 /* IMBSqliteTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables.m; sourceTree = "<group>"; };
+		B9655CE920207C7100FE2D92 /* IMBSqliteTables_31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_31.h; sourceTree = "<group>"; };
+		B9655CEA20207C7100FE2D92 /* IMBSqliteTables_31.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_31.m; sourceTree = "<group>"; };
+		B9655CEB20207C7100FE2D92 /* IMBSqliteTables_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_4.h; sourceTree = "<group>"; };
+		B9655CEC20207C7100FE2D92 /* IMBSqliteTables_4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_4.m; sourceTree = "<group>"; };
+		B9655CED20207C7100FE2D92 /* IMBSqliteTables_Above3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Above3.h; sourceTree = "<group>"; };
+		B9655CEE20207C7100FE2D92 /* IMBSqliteTables_Above3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Above3.m; sourceTree = "<group>"; };
+		B9655CEF20207C7100FE2D92 /* IMBSqliteTables_Nano5G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Nano5G.h; sourceTree = "<group>"; };
+		B9655CF020207C7100FE2D92 /* IMBSqliteTables_Nano5G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Nano5G.m; sourceTree = "<group>"; };
+		B9655CF120207C7100FE2D92 /* IMBSqliteTables_Nano6G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_Nano6G.h; sourceTree = "<group>"; };
+		B9655CF220207C7100FE2D92 /* IMBSqliteTables_Nano6G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_Nano6G.m; sourceTree = "<group>"; };
+		B9655CF420207C7100FE2D92 /* IMBSqliteTables_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSqliteTables_5.h; sourceTree = "<group>"; };
+		B9655CF520207C7100FE2D92 /* IMBSqliteTables_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSqliteTables_5.m; sourceTree = "<group>"; };
+		B9655CF620207C7100FE2D92 /* IMBSyncAppBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncAppBuilder.h; sourceTree = "<group>"; };
+		B9655CF720207C7100FE2D92 /* IMBSyncAppBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncAppBuilder.m; sourceTree = "<group>"; };
+		B9655CF820207C7100FE2D92 /* IMBSyncPlistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlistBuilder.h; sourceTree = "<group>"; };
+		B9655CF920207C7100FE2D92 /* IMBSyncPlistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlistBuilder.m; sourceTree = "<group>"; };
+		B9655CFC20207C7100FE2D92 /* IMBDatabaseHasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDatabaseHasher.h; sourceTree = "<group>"; };
+		B9655CFD20207C7100FE2D92 /* IMBDatabaseHasher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMBDatabaseHasher.mm; sourceTree = "<group>"; };
+		B9655CFE20207C7100FE2D92 /* IMBHash58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMBHash58.cpp; sourceTree = "<group>"; };
+		B9655CFF20207C7100FE2D92 /* IMBHash58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHash58.h; sourceTree = "<group>"; };
+		B9655D0020207C7100FE2D92 /* IMBHash72.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMBHash72.cpp; sourceTree = "<group>"; };
+		B9655D0120207C7100FE2D92 /* IMBHash72.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHash72.h; sourceTree = "<group>"; };
+		B9655D0220207C7100FE2D92 /* rijndael.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rijndael.c; sourceTree = "<group>"; };
+		B9655D0320207C7100FE2D92 /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rijndael.h; sourceTree = "<group>"; };
+		B9655D0420207C7100FE2D92 /* IMBAlbumListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAlbumListContainer.h; sourceTree = "<group>"; };
+		B9655D0520207C7100FE2D92 /* IMBAlbumListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAlbumListContainer.m; sourceTree = "<group>"; };
+		B9655D0620207C7100FE2D92 /* IMBIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIDGenerator.h; sourceTree = "<group>"; };
+		B9655D0720207C7100FE2D92 /* IMBIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIDGenerator.m; sourceTree = "<group>"; };
+		B9655D0820207C7100FE2D92 /* IMBiTunesDBRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesDBRoot.h; sourceTree = "<group>"; };
+		B9655D0920207C7100FE2D92 /* IMBiTunesDBRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesDBRoot.m; sourceTree = "<group>"; };
+		B9655D0A20207C7100FE2D92 /* IMBListContainerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBListContainerHeader.h; sourceTree = "<group>"; };
+		B9655D0B20207C7100FE2D92 /* IMBListContainerHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBListContainerHeader.m; sourceTree = "<group>"; };
+		B9655D0C20207C7100FE2D92 /* IMBPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylist.h; sourceTree = "<group>"; };
+		B9655D0D20207C7100FE2D92 /* IMBPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylist.m; sourceTree = "<group>"; };
+		B9655D0E20207C7100FE2D92 /* IMBPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistItem.h; sourceTree = "<group>"; };
+		B9655D0F20207C7100FE2D92 /* IMBPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistItem.m; sourceTree = "<group>"; };
+		B9655D1020207C7100FE2D92 /* IMBPlaylistList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistList.h; sourceTree = "<group>"; };
+		B9655D1120207C7100FE2D92 /* IMBPlaylistList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistList.m; sourceTree = "<group>"; };
+		B9655D1220207C7100FE2D92 /* IMBPlaylistListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistListContainer.h; sourceTree = "<group>"; };
+		B9655D1320207C7100FE2D92 /* IMBPlaylistListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistListContainer.m; sourceTree = "<group>"; };
+		B9655D1420207C7100FE2D92 /* IMBPlaylistListV2Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistListV2Container.h; sourceTree = "<group>"; };
+		B9655D1520207C7100FE2D92 /* IMBPlaylistListV2Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistListV2Container.m; sourceTree = "<group>"; };
+		B9655D1620207C7100FE2D92 /* IMBPodcastListAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPodcastListAdapter.h; sourceTree = "<group>"; };
+		B9655D1720207C7100FE2D92 /* IMBPodcastListAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPodcastListAdapter.m; sourceTree = "<group>"; };
+		B9655D1820207C7100FE2D92 /* IMBTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTrack.h; sourceTree = "<group>"; };
+		B9655D1920207C7100FE2D92 /* IMBTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTrack.m; sourceTree = "<group>"; };
+		B9655D1A20207C7100FE2D92 /* IMBTracklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTracklist.h; sourceTree = "<group>"; };
+		B9655D1B20207C7100FE2D92 /* IMBTracklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTracklist.m; sourceTree = "<group>"; };
+		B9655D1C20207C7100FE2D92 /* IMBTrackListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTrackListContainer.h; sourceTree = "<group>"; };
+		B9655D1D20207C7100FE2D92 /* IMBTrackListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTrackListContainer.m; sourceTree = "<group>"; };
+		B9655D1E20207C7100FE2D92 /* IMBType5Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBType5Container.h; sourceTree = "<group>"; };
+		B9655D1F20207C7100FE2D92 /* IMBType5Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBType5Container.m; sourceTree = "<group>"; };
+		B9655D2020207C7100FE2D92 /* IMBType6Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBType6Container.h; sourceTree = "<group>"; };
+		B9655D2120207C7100FE2D92 /* IMBType6Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBType6Container.m; sourceTree = "<group>"; };
+		B9655D2220207C7100FE2D92 /* IMBUnknownListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnknownListContainer.h; sourceTree = "<group>"; };
+		B9655D2320207C7100FE2D92 /* IMBUnknownListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnknownListContainer.m; sourceTree = "<group>"; };
+		B9655D2520207C7100FE2D92 /* IMBArtworkStringMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkStringMHOD.h; sourceTree = "<group>"; };
+		B9655D2620207C7100FE2D92 /* IMBArtworkStringMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkStringMHOD.m; sourceTree = "<group>"; };
+		B9655D2720207C7100FE2D92 /* IMBBaseMHODElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseMHODElement.h; sourceTree = "<group>"; };
+		B9655D2820207C7100FE2D92 /* IMBBaseMHODElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseMHODElement.m; sourceTree = "<group>"; };
+		B9655D2920207C7100FE2D92 /* IMBMenuIndexMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMenuIndexMHOD.h; sourceTree = "<group>"; };
+		B9655D2A20207C7100FE2D92 /* IMBMenuIndexMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMenuIndexMHOD.m; sourceTree = "<group>"; };
+		B9655D2B20207C7100FE2D92 /* IMBMHODFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMHODFactory.h; sourceTree = "<group>"; };
+		B9655D2C20207C7100FE2D92 /* IMBMHODFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMHODFactory.m; sourceTree = "<group>"; };
+		B9655D2D20207C7100FE2D92 /* IMBPlaylistPositionMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlaylistPositionMHOD.h; sourceTree = "<group>"; };
+		B9655D2E20207C7100FE2D92 /* IMBPlaylistPositionMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlaylistPositionMHOD.m; sourceTree = "<group>"; };
+		B9655D2F20207C7100FE2D92 /* IMBStringMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBStringMHOD.h; sourceTree = "<group>"; };
+		B9655D3020207C7100FE2D92 /* IMBStringMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBStringMHOD.m; sourceTree = "<group>"; };
+		B9655D3120207C7100FE2D92 /* IMBUnicodeMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnicodeMHOD.h; sourceTree = "<group>"; };
+		B9655D3220207C7100FE2D92 /* IMBUnicodeMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnicodeMHOD.m; sourceTree = "<group>"; };
+		B9655D3320207C7100FE2D92 /* IMBUnknownMHOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUnknownMHOD.h; sourceTree = "<group>"; };
+		B9655D3420207C7100FE2D92 /* IMBUnknownMHOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUnknownMHOD.m; sourceTree = "<group>"; };
+		B9655D3620207C7100FE2D92 /* IMBiTunesPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesPrefs.h; sourceTree = "<group>"; };
+		B9655D3720207C7100FE2D92 /* IMBiTunesPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesPrefs.m; sourceTree = "<group>"; };
+		B9655D3920207C7100FE2D92 /* IMBiTunesSD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesSD.h; sourceTree = "<group>"; };
+		B9655D3A20207C7100FE2D92 /* IMBiTunesSD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesSD.m; sourceTree = "<group>"; };
+		B9655D3B20207C7100FE2D92 /* IMBSDEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSDEntry.h; sourceTree = "<group>"; };
+		B9655D3C20207C7100FE2D92 /* IMBSDEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSDEntry.m; sourceTree = "<group>"; };
+		B9655D3D20207C7100FE2D92 /* IMBSDHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSDHeader.h; sourceTree = "<group>"; };
+		B9655D3E20207C7100FE2D92 /* IMBSDHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSDHeader.m; sourceTree = "<group>"; };
+		B9655D4020207C7100FE2D92 /* IMBPlayCountEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlayCountEntry.h; sourceTree = "<group>"; };
+		B9655D4120207C7100FE2D92 /* IMBPlayCountEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlayCountEntry.m; sourceTree = "<group>"; };
+		B9655D4220207C7100FE2D92 /* IMBPlayCountHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlayCountHeader.h; sourceTree = "<group>"; };
+		B9655D4320207C7100FE2D92 /* IMBPlayCountHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlayCountHeader.m; sourceTree = "<group>"; };
+		B9655D4420207C7100FE2D92 /* IMBPlayCounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPlayCounts.h; sourceTree = "<group>"; };
+		B9655D4520207C7100FE2D92 /* IMBPlayCounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPlayCounts.m; sourceTree = "<group>"; };
+		B9655D4720207C7100FE2D92 /* IMBIOS5Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIOS5Sqlite.h; sourceTree = "<group>"; };
+		B9655D4820207C7100FE2D92 /* IMBIOS5Sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIOS5Sqlite.m; sourceTree = "<group>"; };
+		B9655D4920207C7100FE2D92 /* IMBIOSSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBIOSSqlite.h; sourceTree = "<group>"; };
+		B9655D4A20207C7100FE2D92 /* IMBIOSSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBIOSSqlite.m; sourceTree = "<group>"; };
+		B9655D4B20207C7100FE2D92 /* IMBPCSqliteTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPCSqliteTables.h; sourceTree = "<group>"; };
+		B9655D4C20207C7100FE2D92 /* IMBPCSqliteTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPCSqliteTables.m; sourceTree = "<group>"; };
+		B9655D4E20207C7100FE2D92 /* IMBPurchasesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesInfo.h; sourceTree = "<group>"; };
+		B9655D4F20207C7100FE2D92 /* IMBPurchasesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesInfo.m; sourceTree = "<group>"; };
+		B9655D5020207C7100FE2D92 /* IMBPurchasesPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesPlist.h; sourceTree = "<group>"; };
+		B9655D5120207C7100FE2D92 /* IMBPurchasesPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesPlist.m; sourceTree = "<group>"; };
+		B9655D5220207C7100FE2D92 /* IMBPurchasesSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesSqlite.h; sourceTree = "<group>"; };
+		B9655D5320207C7100FE2D92 /* IMBPurchasesSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesSqlite.m; sourceTree = "<group>"; };
+		B9655D5520207C7100FE2D92 /* IMBRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRecording.h; sourceTree = "<group>"; };
+		B9655D5620207C7100FE2D92 /* IMBRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRecording.m; sourceTree = "<group>"; };
+		B9655D5720207C7100FE2D92 /* IMBRecordingEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRecordingEntry.h; sourceTree = "<group>"; };
+		B9655D5820207C7100FE2D92 /* IMBRecordingEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRecordingEntry.m; sourceTree = "<group>"; };
+		B9655D5A20207C7100FE2D92 /* IMBSyncPlaylistFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlaylistFactory.h; sourceTree = "<group>"; };
+		B9655D5B20207C7100FE2D92 /* IMBSyncPlaylistFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlaylistFactory.m; sourceTree = "<group>"; };
+		B9655D5C20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlaylistToCDB_AboveIOS5.h; sourceTree = "<group>"; };
+		B9655D5D20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlaylistToCDB_AboveIOS5.m; sourceTree = "<group>"; };
+		B9655D5E20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlaylistToCDB_BelowIOS4.h; sourceTree = "<group>"; };
+		B9655D5F20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlaylistToCDB_BelowIOS4.m; sourceTree = "<group>"; };
+		B9655D6020207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPlaylistToCDB_BelowIOS5.h; sourceTree = "<group>"; };
+		B9655D6120207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPlaylistToCDB_BelowIOS5.m; sourceTree = "<group>"; };
+		B9655DBE20207D1D00FE2D92 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = usr/lib/libSystem.B.dylib; sourceTree = SDKROOT; };
+		B9655DC220207D5500FE2D92 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		B9655DC420207D6100FE2D92 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B9655DC620207D7100FE2D92 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		B9655DC820207D7B00FE2D92 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = usr/lib/libssl.dylib; sourceTree = SDKROOT; };
+		B9655DCA20207D8800FE2D92 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		B9655DCC20207D9800FE2D92 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		B9655DCE20207DA600FE2D92 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		B9655DD020207DAE00FE2D92 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		B9655DD220207DB800FE2D92 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		B9655DD420207DC200FE2D92 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B9655DD620207DCF00FE2D92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B9655DD820207DDA00FE2D92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B996D9AE2019730100E6991A /* IMBSelecedDeviceBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSelecedDeviceBtn.h; sourceTree = "<group>"; };
 		B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSelecedDeviceBtn.m; sourceTree = "<group>"; };
 		B996D9C42019CA7600E6991A /* IMBDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevViewController.h; sourceTree = "<group>"; };
@@ -71,12 +474,6 @@
 		B996D9CC2019E26900E6991A /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
 		B9FBDD92200EF73B00D02B13 /* IMBiPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiPod.h; sourceTree = "<group>"; };
 		B9FBDD93200EF73B00D02B13 /* IMBiPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiPod.m; sourceTree = "<group>"; };
-		B9FBDD94200EF73B00D02B13 /* IMBSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSession.h; sourceTree = "<group>"; };
-		B9FBDD95200EF73B00D02B13 /* IMBSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSession.m; sourceTree = "<group>"; };
-		B9FBDD98200EF7FD00D02B13 /* IMBAMFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAMFileSystem.h; sourceTree = "<group>"; };
-		B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAMFileSystem.m; sourceTree = "<group>"; };
-		B9FBDD9A200EF7FD00D02B13 /* IMBFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystem.h; sourceTree = "<group>"; };
-		B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystem.m; sourceTree = "<group>"; };
 		B9FBDD9E200EF8E300D02B13 /* TempHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHelper.h; sourceTree = "<group>"; };
 		B9FBDD9F200EF8E300D02B13 /* TempHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempHelper.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
@@ -88,7 +485,6 @@
 		EE39ACE2200CBD9700D084CE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EE39ACE3200CBD9700D084CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE39ACE5200CBD9700D084CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		EE39ACE7200CBD9700D084CE /* IMBNotificationDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
 		EE39ACE8200CBD9700D084CE /* MobileDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDevice.h; sourceTree = "<group>"; };
 		EE39ACE9200CBD9700D084CE /* MobileDeviceAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDeviceAccess.h; sourceTree = "<group>"; };
 		EE39ACEA200CBD9700D084CE /* MobileDeviceAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDeviceAccess.m; sourceTree = "<group>"; };
@@ -142,6 +538,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9655DD920207DDA00FE2D92 /* QuartzCore.framework in Frameworks */,
+				B9655DD720207DCF00FE2D92 /* CoreMedia.framework in Frameworks */,
+				B9655DD520207DC200FE2D92 /* CoreData.framework in Frameworks */,
+				B9655DD320207DB800FE2D92 /* AppKit.framework in Frameworks */,
+				B9655DD120207DAE00FE2D92 /* IOKit.framework in Frameworks */,
+				B9655DCF20207DA600FE2D92 /* Quartz.framework in Frameworks */,
+				B9655DCD20207D9800FE2D92 /* libxml2.dylib in Frameworks */,
+				B9655DCB20207D8800FE2D92 /* libcrypto.dylib in Frameworks */,
+				B9655DC920207D7B00FE2D92 /* libssl.dylib in Frameworks */,
+				B9655DC720207D7100FE2D92 /* libz.1.2.5.dylib in Frameworks */,
+				B9655DC520207D6200FE2D92 /* libz.dylib in Frameworks */,
+				B9655DC320207D5500FE2D92 /* libcurl.dylib in Frameworks */,
+				B9655DC120207D3E00FE2D92 /* libSystem.B.dylib in Frameworks */,
+				B9655DBF20207D1D00FE2D92 /* libiconv.dylib in Frameworks */,
+				B9348088201EFB2500A8CEC3 /* libsqlite3.dylib in Frameworks */,
 				B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */,
 				EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */,
 			);
@@ -150,6 +561,449 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B90D14C820201599002D9F9B /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				B90D14C920201599002D9F9B /* AppInstallProgressFile */,
+				B90D14CA20201599002D9F9B /* IMBAppConfig.h */,
+				B90D14CB20201599002D9F9B /* IMBAppConfig.m */,
+				B90D14CC20201599002D9F9B /* IMBAppEntity.h */,
+				B90D14CD20201599002D9F9B /* IMBAppEntity.m */,
+				B90D14CE20201599002D9F9B /* IMBApplicationManager.h */,
+				B90D14CF20201599002D9F9B /* IMBApplicationManager.m */,
+				B90D14D220201599002D9F9B /* IMBAppSyncModel.h */,
+				B90D14D320201599002D9F9B /* IMBAppSyncModel.m */,
+				B90D14EF20202875002D9F9B /* IMBTransResult.h */,
+				B90D14F020202875002D9F9B /* IMBTransResult.m */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		B9347CB5201ED9BD00A8CEC3 /* iBooks */ = {
+			isa = PBXGroup;
+			children = (
+				B9348B09201F03D500A8CEC3 /* IMBBaseModel.h */,
+				B9348B0A201F03D500A8CEC3 /* IMBBaseModel.m */,
+				B9348B06201F03C700A8CEC3 /* IMBBookCollection.h */,
+				B9348B07201F03C700A8CEC3 /* IMBBookCollection.m */,
+				B9347CBA201ED9BD00A8CEC3 /* IMBBookEntity.h */,
+				B9347CBB201ED9BD00A8CEC3 /* IMBBookEntity.m */,
+				B9347CCB201ED9F600A8CEC3 /* IMBSqliteManager.h */,
+				B9347CCC201ED9F600A8CEC3 /* IMBSqliteManager.m */,
+				B9347CBE201ED9BD00A8CEC3 /* IMBBooksManager.h */,
+				B9347CBF201ED9BD00A8CEC3 /* IMBBooksManager.m */,
+			);
+			path = iBooks;
+			sourceTree = "<group>";
+		};
+		B9348747201EFD2100A8CEC3 /* OopenSource */ = {
+			isa = PBXGroup;
+			children = (
+				B934874C201EFD2100A8CEC3 /* Fmdb */,
+			);
+			path = OopenSource;
+			sourceTree = "<group>";
+		};
+		B934874C201EFD2100A8CEC3 /* Fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				B9348AA9201EFE2D00A8CEC3 /* IMBBaseEntity.h */,
+				B9348AAA201EFE2D00A8CEC3 /* IMBBaseEntity.m */,
+				B9348AA6201EFDFA00A8CEC3 /* IMBProgressCounter.h */,
+				B9348AA7201EFDFA00A8CEC3 /* IMBProgressCounter.m */,
+				B934874D201EFD2100A8CEC3 /* FMDatabase.h */,
+				B934874E201EFD2100A8CEC3 /* FMDatabase.m */,
+				B934874F201EFD2100A8CEC3 /* FMDatabaseAdditions.h */,
+				B9348750201EFD2100A8CEC3 /* FMDatabaseAdditions.m */,
+				B9348751201EFD2100A8CEC3 /* FMDatabasePool.h */,
+				B9348752201EFD2100A8CEC3 /* FMDatabasePool.m */,
+				B9348753201EFD2100A8CEC3 /* FMDatabaseQueue.h */,
+				B9348754201EFD2100A8CEC3 /* FMDatabaseQueue.m */,
+				B9348755201EFD2100A8CEC3 /* fmdb.text */,
+				B9348756201EFD2100A8CEC3 /* FMResultSet.h */,
+				B9348757201EFD2100A8CEC3 /* FMResultSet.m */,
+			);
+			path = Fmdb;
+			sourceTree = "<group>";
+		};
+		B9348AAC201EFED500A8CEC3 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				B9348AD6201EFED600A8CEC3 /* IMBPhotoEntity.h */,
+				B9348AD7201EFED600A8CEC3 /* IMBPhotoEntity.m */,
+				B9348ADA201EFED600A8CEC3 /* IMBPhotoManager.h */,
+				B9348ADB201EFED600A8CEC3 /* IMBPhotoManager.m */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		B9348B2D201F0DAB00A8CEC3 /* FileSystem */ = {
+			isa = PBXGroup;
+			children = (
+				B90D14DA2020214C002D9F9B /* SimpleNode.h */,
+				B90D14DB2020214C002D9F9B /* SimpleNode.m */,
+				B9348B41201F0E0500A8CEC3 /* IMBSession.h */,
+				B9348B42201F0E0500A8CEC3 /* IMBSession.m */,
+				B9348B43201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.h */,
+				B9348B44201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.m */,
+				B9348B2E201F0DAB00A8CEC3 /* IMBAMDeviceInfo.h */,
+				B9348B2F201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m */,
+				B9348B30201F0DAB00A8CEC3 /* IMBAMFileSystem.h */,
+				B9348B31201F0DAB00A8CEC3 /* IMBAMFileSystem.m */,
+				B9348B32201F0DAB00A8CEC3 /* IMBDeviceInfo.h */,
+				B9348B33201F0DAB00A8CEC3 /* IMBDeviceInfo.m */,
+				B9348B34201F0DAB00A8CEC3 /* IMBFileSystem.h */,
+				B9348B35201F0DAB00A8CEC3 /* IMBFileSystem.m */,
+				B9348B36201F0DAB00A8CEC3 /* IMBInformation.h */,
+				B9348B37201F0DAB00A8CEC3 /* IMBInformation.m */,
+				B9348B38201F0DAB00A8CEC3 /* IMBInformationManager.h */,
+				B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */,
+			);
+			path = FileSystem;
+			sourceTree = "<group>";
+		};
+		B9655C9720207C7100FE2D92 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				B9655C9820207C7100FE2D92 /* Artwork */,
+				B9655CBF20207C7100FE2D92 /* Converter */,
+				B9655CD420207C7100FE2D92 /* IMBBaseDatabase.h */,
+				B9655CD520207C7100FE2D92 /* IMBBaseDatabase.m */,
+				B9655CD620207C7100FE2D92 /* IMBBaseDatabaseElement.h */,
+				B9655CD720207C7100FE2D92 /* IMBBaseDatabaseElement.m */,
+				B9655CD820207C7100FE2D92 /* IMBMediaLibraryDBHelper.h */,
+				B9655CD920207C7100FE2D92 /* IMBMediaLibraryDBHelper.m */,
+				B9655CDA20207C7100FE2D92 /* IMBMusicDatabase.h */,
+				B9655CDB20207C7100FE2D92 /* IMBMusicDatabase.m */,
+				B9655CDC20207C7100FE2D92 /* IMBNewTrack.h */,
+				B9655CDD20207C7100FE2D92 /* IMBNewTrack.m */,
+				B9655CDE20207C7100FE2D92 /* IMBVideoImageAcquire.h */,
+				B9655CDF20207C7100FE2D92 /* IMBVideoImageAcquire.m */,
+				B9655CE020207C7100FE2D92 /* IMBVideoImageByOther.h */,
+				B9655CE120207C7100FE2D92 /* IMBVideoImageByOther.m */,
+				B9655CE220207C7100FE2D92 /* iTunesCDB */,
+				B9655CFA20207C7100FE2D92 /* iTunesDB */,
+				B9655D3520207C7100FE2D92 /* iTunesPrefs */,
+				B9655D3820207C7100FE2D92 /* iTunesSD */,
+				B9655D3F20207C7100FE2D92 /* PlayCounts */,
+				B9655D4D20207C7100FE2D92 /* Purchases */,
+				B9655D5420207C7100FE2D92 /* Recordings */,
+				B9655D5920207C7100FE2D92 /* SyncPlaylist */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		B9655C9820207C7100FE2D92 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				B9655C9920207C7100FE2D92 /* IMBArtworkDB.h */,
+				B9655C9A20207C7100FE2D92 /* IMBArtworkDB.m */,
+				B9655C9B20207C7100FE2D92 /* IMBArtworkDBRoot.h */,
+				B9655C9C20207C7100FE2D92 /* IMBArtworkDBRoot.m */,
+				B9655C9D20207C7100FE2D92 /* IMBArtworkEntity.h */,
+				B9655C9E20207C7100FE2D92 /* IMBArtworkEntity.m */,
+				B9655C9F20207C7100FE2D92 /* IMBArtworkHelper.h */,
+				B9655CA020207C7100FE2D92 /* IMBArtworkHelper.m */,
+				B9655CA120207C7100FE2D92 /* IMBArtworkListContainerHeader.h */,
+				B9655CA220207C7100FE2D92 /* IMBArtworkListContainerHeader.m */,
+				B9655CA320207C7100FE2D92 /* IMBArtworkUnknownListContainer.h */,
+				B9655CA420207C7100FE2D92 /* IMBArtworkUnknownListContainer.m */,
+				B9655CA520207C7100FE2D92 /* IMBImageAlbum.h */,
+				B9655CA620207C7100FE2D92 /* IMBImageAlbum.m */,
+				B9655CA720207C7100FE2D92 /* IMBImageAlbumItem.h */,
+				B9655CA820207C7100FE2D92 /* IMBImageAlbumItem.m */,
+				B9655CA920207C7100FE2D92 /* IMBImageAlbumList.h */,
+				B9655CAA20207C7100FE2D92 /* IMBImageAlbumList.m */,
+				B9655CAB20207C7100FE2D92 /* IMBImageAlbumListContainer.h */,
+				B9655CAC20207C7100FE2D92 /* IMBImageAlbumListContainer.m */,
+				B9655CAD20207C7100FE2D92 /* IMBImageList.h */,
+				B9655CAE20207C7100FE2D92 /* IMBImageList.m */,
+				B9655CAF20207C7100FE2D92 /* IMBImageListContainer.h */,
+				B9655CB020207C7100FE2D92 /* IMBImageListContainer.m */,
+				B9655CB120207C7100FE2D92 /* IMBIPodImage.h */,
+				B9655CB220207C7100FE2D92 /* IMBIPodImage.m */,
+				B9655CB320207C7100FE2D92 /* IMBIPodImageFormat.h */,
+				B9655CB420207C7100FE2D92 /* IMBIPodImageFormat.m */,
+				B9655CB520207C7100FE2D92 /* IMBIThmbFile.h */,
+				B9655CB620207C7100FE2D92 /* IMBIThmbFile.m */,
+				B9655CB720207C7100FE2D92 /* IMBIThmbFileList.h */,
+				B9655CB820207C7100FE2D92 /* IMBIThmbFileList.m */,
+				B9655CB920207C7100FE2D92 /* IMBIThmbFileListContainer.h */,
+				B9655CBA20207C7100FE2D92 /* IMBIThmbFileListContainer.m */,
+				B9655CBB20207C7100FE2D92 /* IMBMHODType2.h */,
+				B9655CBC20207C7100FE2D92 /* IMBMHODType2.m */,
+				B9655CBD20207C7100FE2D92 /* IMBSupportedArtworkFormat.h */,
+				B9655CBE20207C7100FE2D92 /* IMBSupportedArtworkFormat.m */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		B9655CBF20207C7100FE2D92 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CC020207C7100FE2D92 /* ConvertTools */,
+				B9655CC320207C7100FE2D92 /* DeviceConfig */,
+				B9655CC820207C7100FE2D92 /* FFMPEGEncoderAsync */,
+				B9655CCF20207C7100FE2D92 /* MediaEntity */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		B9655CC020207C7100FE2D92 /* ConvertTools */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CC120207C7100FE2D92 /* IMBMediaConverter.h */,
+				B9655CC220207C7100FE2D92 /* IMBMediaConverter.m */,
+			);
+			path = ConvertTools;
+			sourceTree = "<group>";
+		};
+		B9655CC320207C7100FE2D92 /* DeviceConfig */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CC420207C7100FE2D92 /* IMBConfig.h */,
+				B9655CC520207C7100FE2D92 /* IMBConfig.m */,
+				B9655CC620207C7100FE2D92 /* IMBRingtoneConfig.h */,
+				B9655CC720207C7100FE2D92 /* IMBRingtoneConfig.m */,
+			);
+			path = DeviceConfig;
+			sourceTree = "<group>";
+		};
+		B9655CC820207C7100FE2D92 /* FFMPEGEncoderAsync */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CC920207C7100FE2D92 /* IMBCvtEncodedMedia.h */,
+				B9655CCA20207C7100FE2D92 /* IMBCvtEncodedMedia.m */,
+				B9655CCB20207C7100FE2D92 /* IMBCvtMediaConvertEncoder.h */,
+				B9655CCC20207C7100FE2D92 /* IMBCvtMediaConvertEncoder.m */,
+				B9655CCD20207C7100FE2D92 /* IMBCvtMediaEncoding.h */,
+				B9655CCE20207C7100FE2D92 /* IMBCvtMediaEncoding.m */,
+			);
+			path = FFMPEGEncoderAsync;
+			sourceTree = "<group>";
+		};
+		B9655CCF20207C7100FE2D92 /* MediaEntity */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CD020207C7100FE2D92 /* IMBCvtDeviceEntity.h */,
+				B9655CD120207C7100FE2D92 /* IMBCvtDeviceEntity.m */,
+				B9655CD220207C7100FE2D92 /* IMBCvtMediaFileEntity.h */,
+				B9655CD320207C7100FE2D92 /* IMBCvtMediaFileEntity.m */,
+			);
+			path = MediaEntity;
+			sourceTree = "<group>";
+		};
+		B9655CE220207C7100FE2D92 /* iTunesCDB */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CE320207C7100FE2D92 /* IMBiTunesCDBRoot.h */,
+				B9655CE420207C7100FE2D92 /* IMBiTunesCDBRoot.m */,
+				B9655CE520207C7100FE2D92 /* iTunesCDB */,
+				B9655CE620207C7100FE2D92 /* Sqlite */,
+			);
+			path = iTunesCDB;
+			sourceTree = "<group>";
+		};
+		B9655CE620207C7100FE2D92 /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CE720207C7100FE2D92 /* IMBSqliteTables.h */,
+				B9655CE820207C7100FE2D92 /* IMBSqliteTables.m */,
+				B9655CE920207C7100FE2D92 /* IMBSqliteTables_31.h */,
+				B9655CEA20207C7100FE2D92 /* IMBSqliteTables_31.m */,
+				B9655CEB20207C7100FE2D92 /* IMBSqliteTables_4.h */,
+				B9655CEC20207C7100FE2D92 /* IMBSqliteTables_4.m */,
+				B9655CED20207C7100FE2D92 /* IMBSqliteTables_Above3.h */,
+				B9655CEE20207C7100FE2D92 /* IMBSqliteTables_Above3.m */,
+				B9655CEF20207C7100FE2D92 /* IMBSqliteTables_Nano5G.h */,
+				B9655CF020207C7100FE2D92 /* IMBSqliteTables_Nano5G.m */,
+				B9655CF120207C7100FE2D92 /* IMBSqliteTables_Nano6G.h */,
+				B9655CF220207C7100FE2D92 /* IMBSqliteTables_Nano6G.m */,
+				B9655CF320207C7100FE2D92 /* Sync */,
+			);
+			path = Sqlite;
+			sourceTree = "<group>";
+		};
+		B9655CF320207C7100FE2D92 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CF420207C7100FE2D92 /* IMBSqliteTables_5.h */,
+				B9655CF520207C7100FE2D92 /* IMBSqliteTables_5.m */,
+				B9655CF620207C7100FE2D92 /* IMBSyncAppBuilder.h */,
+				B9655CF720207C7100FE2D92 /* IMBSyncAppBuilder.m */,
+				B9655CF820207C7100FE2D92 /* IMBSyncPlistBuilder.h */,
+				B9655CF920207C7100FE2D92 /* IMBSyncPlistBuilder.m */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		B9655CFA20207C7100FE2D92 /* iTunesDB */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CFB20207C7100FE2D92 /* DatabaseHash */,
+				B9655D0420207C7100FE2D92 /* IMBAlbumListContainer.h */,
+				B9655D0520207C7100FE2D92 /* IMBAlbumListContainer.m */,
+				B9655D0620207C7100FE2D92 /* IMBIDGenerator.h */,
+				B9655D0720207C7100FE2D92 /* IMBIDGenerator.m */,
+				B9655D0820207C7100FE2D92 /* IMBiTunesDBRoot.h */,
+				B9655D0920207C7100FE2D92 /* IMBiTunesDBRoot.m */,
+				B9655D0A20207C7100FE2D92 /* IMBListContainerHeader.h */,
+				B9655D0B20207C7100FE2D92 /* IMBListContainerHeader.m */,
+				B9655D0C20207C7100FE2D92 /* IMBPlaylist.h */,
+				B9655D0D20207C7100FE2D92 /* IMBPlaylist.m */,
+				B9655D0E20207C7100FE2D92 /* IMBPlaylistItem.h */,
+				B9655D0F20207C7100FE2D92 /* IMBPlaylistItem.m */,
+				B9655D1020207C7100FE2D92 /* IMBPlaylistList.h */,
+				B9655D1120207C7100FE2D92 /* IMBPlaylistList.m */,
+				B9655D1220207C7100FE2D92 /* IMBPlaylistListContainer.h */,
+				B9655D1320207C7100FE2D92 /* IMBPlaylistListContainer.m */,
+				B9655D1420207C7100FE2D92 /* IMBPlaylistListV2Container.h */,
+				B9655D1520207C7100FE2D92 /* IMBPlaylistListV2Container.m */,
+				B9655D1620207C7100FE2D92 /* IMBPodcastListAdapter.h */,
+				B9655D1720207C7100FE2D92 /* IMBPodcastListAdapter.m */,
+				B9655D1820207C7100FE2D92 /* IMBTrack.h */,
+				B9655D1920207C7100FE2D92 /* IMBTrack.m */,
+				B9655D1A20207C7100FE2D92 /* IMBTracklist.h */,
+				B9655D1B20207C7100FE2D92 /* IMBTracklist.m */,
+				B9655D1C20207C7100FE2D92 /* IMBTrackListContainer.h */,
+				B9655D1D20207C7100FE2D92 /* IMBTrackListContainer.m */,
+				B9655D1E20207C7100FE2D92 /* IMBType5Container.h */,
+				B9655D1F20207C7100FE2D92 /* IMBType5Container.m */,
+				B9655D2020207C7100FE2D92 /* IMBType6Container.h */,
+				B9655D2120207C7100FE2D92 /* IMBType6Container.m */,
+				B9655D2220207C7100FE2D92 /* IMBUnknownListContainer.h */,
+				B9655D2320207C7100FE2D92 /* IMBUnknownListContainer.m */,
+				B9655D2420207C7100FE2D92 /* MHOD */,
+			);
+			path = iTunesDB;
+			sourceTree = "<group>";
+		};
+		B9655CFB20207C7100FE2D92 /* DatabaseHash */ = {
+			isa = PBXGroup;
+			children = (
+				B9655CFC20207C7100FE2D92 /* IMBDatabaseHasher.h */,
+				B9655CFD20207C7100FE2D92 /* IMBDatabaseHasher.mm */,
+				B9655CFE20207C7100FE2D92 /* IMBHash58.cpp */,
+				B9655CFF20207C7100FE2D92 /* IMBHash58.h */,
+				B9655D0020207C7100FE2D92 /* IMBHash72.cpp */,
+				B9655D0120207C7100FE2D92 /* IMBHash72.h */,
+				B9655D0220207C7100FE2D92 /* rijndael.c */,
+				B9655D0320207C7100FE2D92 /* rijndael.h */,
+			);
+			path = DatabaseHash;
+			sourceTree = "<group>";
+		};
+		B9655D2420207C7100FE2D92 /* MHOD */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D2520207C7100FE2D92 /* IMBArtworkStringMHOD.h */,
+				B9655D2620207C7100FE2D92 /* IMBArtworkStringMHOD.m */,
+				B9655D2720207C7100FE2D92 /* IMBBaseMHODElement.h */,
+				B9655D2820207C7100FE2D92 /* IMBBaseMHODElement.m */,
+				B9655D2920207C7100FE2D92 /* IMBMenuIndexMHOD.h */,
+				B9655D2A20207C7100FE2D92 /* IMBMenuIndexMHOD.m */,
+				B9655D2B20207C7100FE2D92 /* IMBMHODFactory.h */,
+				B9655D2C20207C7100FE2D92 /* IMBMHODFactory.m */,
+				B9655D2D20207C7100FE2D92 /* IMBPlaylistPositionMHOD.h */,
+				B9655D2E20207C7100FE2D92 /* IMBPlaylistPositionMHOD.m */,
+				B9655D2F20207C7100FE2D92 /* IMBStringMHOD.h */,
+				B9655D3020207C7100FE2D92 /* IMBStringMHOD.m */,
+				B9655D3120207C7100FE2D92 /* IMBUnicodeMHOD.h */,
+				B9655D3220207C7100FE2D92 /* IMBUnicodeMHOD.m */,
+				B9655D3320207C7100FE2D92 /* IMBUnknownMHOD.h */,
+				B9655D3420207C7100FE2D92 /* IMBUnknownMHOD.m */,
+			);
+			path = MHOD;
+			sourceTree = "<group>";
+		};
+		B9655D3520207C7100FE2D92 /* iTunesPrefs */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D3620207C7100FE2D92 /* IMBiTunesPrefs.h */,
+				B9655D3720207C7100FE2D92 /* IMBiTunesPrefs.m */,
+			);
+			path = iTunesPrefs;
+			sourceTree = "<group>";
+		};
+		B9655D3820207C7100FE2D92 /* iTunesSD */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D3920207C7100FE2D92 /* IMBiTunesSD.h */,
+				B9655D3A20207C7100FE2D92 /* IMBiTunesSD.m */,
+				B9655D3B20207C7100FE2D92 /* IMBSDEntry.h */,
+				B9655D3C20207C7100FE2D92 /* IMBSDEntry.m */,
+				B9655D3D20207C7100FE2D92 /* IMBSDHeader.h */,
+				B9655D3E20207C7100FE2D92 /* IMBSDHeader.m */,
+			);
+			path = iTunesSD;
+			sourceTree = "<group>";
+		};
+		B9655D3F20207C7100FE2D92 /* PlayCounts */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D4020207C7100FE2D92 /* IMBPlayCountEntry.h */,
+				B9655D4120207C7100FE2D92 /* IMBPlayCountEntry.m */,
+				B9655D4220207C7100FE2D92 /* IMBPlayCountHeader.h */,
+				B9655D4320207C7100FE2D92 /* IMBPlayCountHeader.m */,
+				B9655D4420207C7100FE2D92 /* IMBPlayCounts.h */,
+				B9655D4520207C7100FE2D92 /* IMBPlayCounts.m */,
+				B9655D4620207C7100FE2D92 /* PlayCountSqlite */,
+			);
+			path = PlayCounts;
+			sourceTree = "<group>";
+		};
+		B9655D4620207C7100FE2D92 /* PlayCountSqlite */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D4720207C7100FE2D92 /* IMBIOS5Sqlite.h */,
+				B9655D4820207C7100FE2D92 /* IMBIOS5Sqlite.m */,
+				B9655D4920207C7100FE2D92 /* IMBIOSSqlite.h */,
+				B9655D4A20207C7100FE2D92 /* IMBIOSSqlite.m */,
+				B9655D4B20207C7100FE2D92 /* IMBPCSqliteTables.h */,
+				B9655D4C20207C7100FE2D92 /* IMBPCSqliteTables.m */,
+			);
+			path = PlayCountSqlite;
+			sourceTree = "<group>";
+		};
+		B9655D4D20207C7100FE2D92 /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D4E20207C7100FE2D92 /* IMBPurchasesInfo.h */,
+				B9655D4F20207C7100FE2D92 /* IMBPurchasesInfo.m */,
+				B9655D5020207C7100FE2D92 /* IMBPurchasesPlist.h */,
+				B9655D5120207C7100FE2D92 /* IMBPurchasesPlist.m */,
+				B9655D5220207C7100FE2D92 /* IMBPurchasesSqlite.h */,
+				B9655D5320207C7100FE2D92 /* IMBPurchasesSqlite.m */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
+		B9655D5420207C7100FE2D92 /* Recordings */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D5520207C7100FE2D92 /* IMBRecording.h */,
+				B9655D5620207C7100FE2D92 /* IMBRecording.m */,
+				B9655D5720207C7100FE2D92 /* IMBRecordingEntry.h */,
+				B9655D5820207C7100FE2D92 /* IMBRecordingEntry.m */,
+			);
+			path = Recordings;
+			sourceTree = "<group>";
+		};
+		B9655D5920207C7100FE2D92 /* SyncPlaylist */ = {
+			isa = PBXGroup;
+			children = (
+				B9655D5A20207C7100FE2D92 /* IMBSyncPlaylistFactory.h */,
+				B9655D5B20207C7100FE2D92 /* IMBSyncPlaylistFactory.m */,
+				B9655D5C20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.h */,
+				B9655D5D20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.m */,
+				B9655D5E20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.h */,
+				B9655D5F20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.m */,
+				B9655D6020207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.h */,
+				B9655D6120207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.m */,
+			);
+			path = SyncPlaylist;
+			sourceTree = "<group>";
+		};
 		EE39AB6B200C5EB300D084CE = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +1024,21 @@
 		EE39AC92200CBBF300D084CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9655DD820207DDA00FE2D92 /* QuartzCore.framework */,
+				B9655DD620207DCF00FE2D92 /* CoreMedia.framework */,
+				B9655DD420207DC200FE2D92 /* CoreData.framework */,
+				B9655DD220207DB800FE2D92 /* AppKit.framework */,
+				B9655DD020207DAE00FE2D92 /* IOKit.framework */,
+				B9655DCE20207DA600FE2D92 /* Quartz.framework */,
+				B9655DCC20207D9800FE2D92 /* libxml2.dylib */,
+				B9655DCA20207D8800FE2D92 /* libcrypto.dylib */,
+				B9655DC820207D7B00FE2D92 /* libssl.dylib */,
+				B9655DC620207D7100FE2D92 /* libz.1.2.5.dylib */,
+				B9655DC420207D6100FE2D92 /* libz.dylib */,
+				B9655DC220207D5500FE2D92 /* libcurl.dylib */,
+				B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */,
+				B9655DBE20207D1D00FE2D92 /* libiconv.dylib */,
+				B9348087201EFB2500A8CEC3 /* libsqlite3.dylib */,
 				B9FBDE13200D927F0004A995 /* MobileDevice.framework */,
 				EE39AC93200CBC1300D084CE /* Cocoa.framework */,
 			);
@@ -185,10 +1054,16 @@
 				EE39ACE2200CBD9700D084CE /* AppDelegate.m */,
 				EE39ACF9200CBD9700D084CE /* main.m */,
 				B9104C97200DB2C300C1ECEA /* iOSFilesPch.pch */,
+				B9348B40201F0DD500A8CEC3 /* IMBNotificationDefine.h */,
 				B996D9CB2019E26900E6991A /* IMBConst.h */,
 				B996D9CC2019E26900E6991A /* IMBConst.m */,
 				EE39ACEB200CBD9700D084CE /* Info.plist */,
+				B9655C9720207C7100FE2D92 /* Media */,
 				EE39ACE6200CBD9700D084CE /* deviceConnection */,
+				B90D14C820201599002D9F9B /* Applications */,
+				B9348747201EFD2100A8CEC3 /* OopenSource */,
+				B9348AAC201EFED500A8CEC3 /* Photo */,
+				B9347CB5201ED9BD00A8CEC3 /* iBooks */,
 				EE39ACEC200CBD9700D084CE /* Log */,
 				EE39ACFA200CBD9700D084CE /* UI */,
 			);
@@ -198,30 +1073,20 @@
 		EE39ACE6200CBD9700D084CE /* deviceConnection */ = {
 			isa = PBXGroup;
 			children = (
+				B9348B2D201F0DAB00A8CEC3 /* FileSystem */,
 				B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */,
 				B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */,
 				EE39ACE9200CBD9700D084CE /* MobileDeviceAccess.h */,
 				EE39ACEA200CBD9700D084CE /* MobileDeviceAccess.m */,
 				EE39ACE8200CBD9700D084CE /* MobileDevice.h */,
-				B9104C9A200DFDFA00C1ECEA /* IMBAMDeviceInfo.h */,
-				B9104C9B200DFDFA00C1ECEA /* IMBAMDeviceInfo.m */,
-				B9104C9C200DFDFA00C1ECEA /* IMBDeviceInfo.h */,
-				B9104C9D200DFDFA00C1ECEA /* IMBDeviceInfo.m */,
-				EE39ACE7200CBD9700D084CE /* IMBNotificationDefine.h */,
 				B9FBDD9E200EF8E300D02B13 /* TempHelper.h */,
 				B9FBDD9F200EF8E300D02B13 /* TempHelper.m */,
-				B9FBDD98200EF7FD00D02B13 /* IMBAMFileSystem.h */,
-				B9FBDD99200EF7FD00D02B13 /* IMBAMFileSystem.m */,
-				B9FBDD9A200EF7FD00D02B13 /* IMBFileSystem.h */,
-				B9FBDD9B200EF7FD00D02B13 /* IMBFileSystem.m */,
 				B9FBDD92200EF73B00D02B13 /* IMBiPod.h */,
 				B9FBDD93200EF73B00D02B13 /* IMBiPod.m */,
-				B9FBDD94200EF73B00D02B13 /* IMBSession.h */,
-				B9FBDD95200EF73B00D02B13 /* IMBSession.m */,
-				B9104CA3200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.h */,
-				B9104CA4200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m */,
 				B9104CA0200DFE1800C1ECEA /* IMBCommonEnum.h */,
 				B9104CA1200DFE1800C1ECEA /* IMBCommonEnum.m */,
+				B90D14E3202021D0002D9F9B /* IMBAnimation.h */,
+				B90D14E4202021D0002D9F9B /* IMBAnimation.m */,
 			);
 			path = deviceConnection;
 			sourceTree = "<group>";
@@ -267,6 +1132,16 @@
 		EE39AD02200CBD9700D084CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B90D14EC20202824002D9F9B /* IMBAnimateProgressBar.h */,
+				B90D14ED20202824002D9F9B /* IMBAnimateProgressBar.m */,
+				B90D14E620202281002D9F9B /* IMBMyDrawCommonly.h */,
+				B90D14E720202281002D9F9B /* IMBMyDrawCommonly.m */,
+				B90D14DD20202198002D9F9B /* HoverButton.h */,
+				B90D14DE20202198002D9F9B /* HoverButton.m */,
+				B90D14E920202803002D9F9B /* IMBHoverBtnCell.h */,
+				B90D14EA20202803002D9F9B /* IMBHoverBtnCell.m */,
+				B90D14DF20202198002D9F9B /* IMBHoverButton.h */,
+				B90D14E020202198002D9F9B /* IMBHoverButton.m */,
 				B996D9AE2019730100E6991A /* IMBSelecedDeviceBtn.h */,
 				B996D9AF2019730100E6991A /* IMBSelecedDeviceBtn.m */,
 				EE39AD04200CBD9700D084CE /* IMBLackCornerView.h */,
@@ -312,6 +1187,8 @@
 		EE39AD9A200F038300D084CE /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				B9348B0C201F042500A8CEC3 /* DateHelper.h */,
+				B9348B0D201F042500A8CEC3 /* DateHelper.m */,
 				EE39AD9B200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.h */,
 				EE39AD9C200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m */,
 				EE39AD9D200F038300D084CE /* NSData+Category.h */,
@@ -386,8 +1263,10 @@
 				EE39AD13200CBD9700D084CE /* Assets.xcassets in Resources */,
 				EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */,
 				EE39AD33200D8CA500D084CE /* IMBDisconnectViewController.xib in Resources */,
+				B90D14D420201599002D9F9B /* AppInstallProgressFile in Resources */,
 				EE39AD16200CBD9700D084CE /* Info.plist in Resources */,
 				EE39AD25200CBD9700D084CE /* IMBMainWindowController.xib in Resources */,
+				B9655D8520207C7100FE2D92 /* iTunesCDB in Resources */,
 				EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */,
 				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
 			);
@@ -400,40 +1279,161 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9347CC8201ED9BD00A8CEC3 /* IMBBooksManager.m in Sources */,
+				B9655D6420207C7100FE2D92 /* IMBArtworkEntity.m in Sources */,
 				EE39ADA5200F038300D084CE /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
-				B9FBDD9C200EF7FD00D02B13 /* IMBAMFileSystem.m in Sources */,
+				B9655DA620207C7100FE2D92 /* IMBMHODFactory.m in Sources */,
+				B9655D6520207C7100FE2D92 /* IMBArtworkHelper.m in Sources */,
+				B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */,
 				B996D9CD2019E26900E6991A /* IMBConst.m in Sources */,
-				B9104CA5200DFE4E00C1ECEA /* IMBSupportedArtworkFormat.m in Sources */,
-				B9FBDD9D200EF7FD00D02B13 /* IMBFileSystem.m in Sources */,
+				B9655D8820207C7100FE2D92 /* IMBSqliteTables_4.m in Sources */,
+				B9348B45201F0E0500A8CEC3 /* IMBSession.m in Sources */,
+				B9655D7B20207C7100FE2D92 /* IMBCvtDeviceEntity.m in Sources */,
+				B90D14D520201599002D9F9B /* IMBAppConfig.m in Sources */,
+				B9655D6D20207C7100FE2D92 /* IMBImageListContainer.m in Sources */,
+				B9655D8320207C7100FE2D92 /* IMBVideoImageByOther.m in Sources */,
+				B9655D9920207C7100FE2D92 /* IMBPlaylistList.m in Sources */,
+				B9655D7820207C7100FE2D92 /* IMBCvtEncodedMedia.m in Sources */,
+				B90D14E120202198002D9F9B /* HoverButton.m in Sources */,
+				B9348B08201F03C700A8CEC3 /* IMBBookCollection.m in Sources */,
+				B90D14E5202021D0002D9F9B /* IMBAnimation.m in Sources */,
+				B9655D9F20207C7100FE2D92 /* IMBTrackListContainer.m in Sources */,
 				B9FBDDA0200EF8E300D02B13 /* TempHelper.m in Sources */,
+				B90D14F120202875002D9F9B /* IMBTransResult.m in Sources */,
+				B9655DAC20207C7100FE2D92 /* IMBiTunesSD.m in Sources */,
+				B9655DB920207C7100FE2D92 /* IMBRecordingEntry.m in Sources */,
 				B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */,
+				B9655D7320207C7100FE2D92 /* IMBMHODType2.m in Sources */,
+				B9655D7720207C7100FE2D92 /* IMBRingtoneConfig.m in Sources */,
+				B9655D8420207C7100FE2D92 /* IMBiTunesCDBRoot.m in Sources */,
+				B9655D8920207C7100FE2D92 /* IMBSqliteTables_Above3.m in Sources */,
+				B9655D7C20207C7100FE2D92 /* IMBCvtMediaFileEntity.m in Sources */,
+				B9655D9C20207C7100FE2D92 /* IMBPodcastListAdapter.m in Sources */,
+				B9348B0E201F042500A8CEC3 /* DateHelper.m in Sources */,
+				B9655D8F20207C7100FE2D92 /* IMBDatabaseHasher.mm in Sources */,
+				B9348B3F201F0DAB00A8CEC3 /* IMBInformationManager.m in Sources */,
+				B9655D9B20207C7100FE2D92 /* IMBPlaylistListV2Container.m in Sources */,
+				B9655DB720207C7100FE2D92 /* IMBPurchasesSqlite.m in Sources */,
+				B9655DB820207C7100FE2D92 /* IMBRecording.m in Sources */,
+				B9655D8020207C7100FE2D92 /* IMBMusicDatabase.m in Sources */,
 				B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */,
-				B9FBDD97200EF73C00D02B13 /* IMBSession.m in Sources */,
+				B9655DA120207C7100FE2D92 /* IMBType6Container.m in Sources */,
+				B9655D8220207C7100FE2D92 /* IMBVideoImageAcquire.m in Sources */,
+				B9348998201EFD2100A8CEC3 /* FMDatabaseAdditions.m in Sources */,
+				B9655D6F20207C7100FE2D92 /* IMBIPodImageFormat.m in Sources */,
+				B9348B0B201F03D500A8CEC3 /* IMBBaseModel.m in Sources */,
+				B9655D7A20207C7100FE2D92 /* IMBCvtMediaEncoding.m in Sources */,
 				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
+				B9655DB320207C7100FE2D92 /* IMBIOSSqlite.m in Sources */,
 				B9FBDD96200EF73B00D02B13 /* IMBiPod.m in Sources */,
+				B9655D9220207C7100FE2D92 /* rijndael.c in Sources */,
+				B9348B3C201F0DAB00A8CEC3 /* IMBDeviceInfo.m in Sources */,
+				B9655DAF20207C7100FE2D92 /* IMBPlayCountEntry.m in Sources */,
+				B9655D8E20207C7100FE2D92 /* IMBSyncPlistBuilder.m in Sources */,
+				B9655D9820207C7100FE2D92 /* IMBPlaylistItem.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,
+				B9655D7520207C7100FE2D92 /* IMBMediaConverter.m in Sources */,
+				B9348B46201F0E0500A8CEC3 /* IMBSupportedArtworkFormat.m in Sources */,
+				B9655D7220207C7100FE2D92 /* IMBIThmbFileListContainer.m in Sources */,
+				B9655DAD20207C7100FE2D92 /* IMBSDEntry.m in Sources */,
+				B9348B3A201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m in Sources */,
+				B9655D6920207C7100FE2D92 /* IMBImageAlbumItem.m in Sources */,
+				B9655DA020207C7100FE2D92 /* IMBType5Container.m in Sources */,
+				B90D14EB20202803002D9F9B /* IMBHoverBtnCell.m in Sources */,
+				B9655DBD20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS5.m in Sources */,
+				B9655D8C20207C7100FE2D92 /* IMBSqliteTables_5.m in Sources */,
+				B9655D6A20207C7100FE2D92 /* IMBImageAlbumList.m in Sources */,
+				B9347CCD201ED9F600A8CEC3 /* IMBSqliteManager.m in Sources */,
+				B9348AAB201EFE2D00A8CEC3 /* IMBBaseEntity.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
+				B9655D7F20207C7100FE2D92 /* IMBMediaLibraryDBHelper.m in Sources */,
+				B9655DB620207C7100FE2D92 /* IMBPurchasesPlist.m in Sources */,
+				B9655DA220207C7100FE2D92 /* IMBUnknownListContainer.m in Sources */,
+				B9655DA920207C7100FE2D92 /* IMBUnicodeMHOD.m in Sources */,
 				B996D9B02019730100E6991A /* IMBSelecedDeviceBtn.m in Sources */,
+				B9655D7E20207C7100FE2D92 /* IMBBaseDatabaseElement.m in Sources */,
+				B9655D7620207C7100FE2D92 /* IMBConfig.m in Sources */,
+				B9655DB220207C7100FE2D92 /* IMBIOS5Sqlite.m in Sources */,
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
-				B9104C9F200DFDFA00C1ECEA /* IMBDeviceInfo.m in Sources */,
+				B9347CC6201ED9BD00A8CEC3 /* IMBBookEntity.m in Sources */,
+				B9655DAB20207C7100FE2D92 /* IMBiTunesPrefs.m in Sources */,
+				B9655DAA20207C7100FE2D92 /* IMBUnknownMHOD.m in Sources */,
 				EE39ADA8200F038300D084CE /* NSString+Category.m in Sources */,
 				EE39AD26200CBD9700D084CE /* IMBNoTitleBarWindow.m in Sources */,
-				B9104C9E200DFDFA00C1ECEA /* IMBAMDeviceInfo.m in Sources */,
+				B9655D8620207C7100FE2D92 /* IMBSqliteTables.m in Sources */,
+				B9655D9A20207C7100FE2D92 /* IMBPlaylistListContainer.m in Sources */,
+				B9655D6B20207C7100FE2D92 /* IMBImageAlbumListContainer.m in Sources */,
+				B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */,
+				B9655D6C20207C7100FE2D92 /* IMBImageList.m in Sources */,
+				B9655D8D20207C7100FE2D92 /* IMBSyncAppBuilder.m in Sources */,
+				B9655D6820207C7100FE2D92 /* IMBImageAlbum.m in Sources */,
+				B9655D9E20207C7100FE2D92 /* IMBTracklist.m in Sources */,
+				B9348997201EFD2100A8CEC3 /* FMDatabase.m in Sources */,
+				B9655DA320207C7100FE2D92 /* IMBArtworkStringMHOD.m in Sources */,
+				B90D14DC2020214C002D9F9B /* SimpleNode.m in Sources */,
+				B9348999201EFD2100A8CEC3 /* FMDatabasePool.m in Sources */,
+				B9655D8720207C7100FE2D92 /* IMBSqliteTables_31.m in Sources */,
 				EE39AD12200CBD9700D084CE /* AppDelegate.m in Sources */,
 				EE39ADA6200F038300D084CE /* NSData+Category.m in Sources */,
+				B9655DA820207C7100FE2D92 /* IMBStringMHOD.m in Sources */,
 				EE39AD21200CBD9700D084CE /* IMBLackCornerView.m in Sources */,
 				EE39AD22200CBD9700D084CE /* IMBNoTitleBarContentView.m in Sources */,
+				B9655DBA20207C7100FE2D92 /* IMBSyncPlaylistFactory.m in Sources */,
 				EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */,
+				B9655DAE20207C7100FE2D92 /* IMBSDHeader.m in Sources */,
+				B9655D7020207C7100FE2D92 /* IMBIThmbFile.m in Sources */,
+				B9655D6320207C7100FE2D92 /* IMBArtworkDBRoot.m in Sources */,
 				EE39AD17200CBD9700D084CE /* DDAbstractDatabaseLogger.m in Sources */,
+				B9655D7120207C7100FE2D92 /* IMBIThmbFileList.m in Sources */,
+				B934899B201EFD2100A8CEC3 /* fmdb.text in Sources */,
+				B9655D6220207C7100FE2D92 /* IMBArtworkDB.m in Sources */,
 				EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */,
+				B9655DB020207C7100FE2D92 /* IMBPlayCountHeader.m in Sources */,
 				EE39AD32200D8CA500D084CE /* IMBDisconnectViewController.m in Sources */,
+				B9655D9720207C7100FE2D92 /* IMBPlaylist.m in Sources */,
+				B90D14E220202198002D9F9B /* IMBHoverButton.m in Sources */,
 				EE39AD37200D8DB000D084CE /* IMBDeviceViewController.m in Sources */,
+				B9348B3B201F0DAB00A8CEC3 /* IMBAMFileSystem.m in Sources */,
+				B9655DA520207C7100FE2D92 /* IMBMenuIndexMHOD.m in Sources */,
+				B9655D6720207C7100FE2D92 /* IMBArtworkUnknownListContainer.m in Sources */,
+				B9655DB520207C7100FE2D92 /* IMBPurchasesInfo.m in Sources */,
+				B9655D8B20207C7100FE2D92 /* IMBSqliteTables_Nano6G.m in Sources */,
+				B9655D9620207C7100FE2D92 /* IMBListContainerHeader.m in Sources */,
 				EE39AD19200CBD9700D084CE /* DDFileLogger.m in Sources */,
+				B9655DBC20207C7100FE2D92 /* IMBSyncPlaylistToCDB_BelowIOS4.m in Sources */,
+				B9655D9120207C7100FE2D92 /* IMBHash72.cpp in Sources */,
+				B9655D9020207C7100FE2D92 /* IMBHash58.cpp in Sources */,
+				B9655D6E20207C7100FE2D92 /* IMBIPodImage.m in Sources */,
+				B9655D9520207C7100FE2D92 /* IMBiTunesDBRoot.m in Sources */,
+				B9655D9420207C7100FE2D92 /* IMBIDGenerator.m in Sources */,
 				EE39AD24200CBD9700D084CE /* IMBMainWindowController.m in Sources */,
+				B9348B3D201F0DAB00A8CEC3 /* IMBFileSystem.m in Sources */,
+				B9655D6620207C7100FE2D92 /* IMBArtworkListContainerHeader.m in Sources */,
+				B90D14D920201599002D9F9B /* IMBAppSyncModel.m in Sources */,
 				EE39AD1D200CBD9700D084CE /* main.m in Sources */,
 				EE39ADA7200F038300D084CE /* NSDictionary+Category.m in Sources */,
+				B90D14D720201599002D9F9B /* IMBApplicationManager.m in Sources */,
+				B9655D7D20207C7100FE2D92 /* IMBBaseDatabase.m in Sources */,
+				B9348B04201EFED600A8CEC3 /* IMBPhotoManager.m in Sources */,
+				B90D14EE20202824002D9F9B /* IMBAnimateProgressBar.m in Sources */,
+				B9655DA420207C7100FE2D92 /* IMBBaseMHODElement.m in Sources */,
+				B9655DB420207C7100FE2D92 /* IMBPCSqliteTables.m in Sources */,
+				B9655DB120207C7100FE2D92 /* IMBPlayCounts.m in Sources */,
 				EE39AD1C200CBD9700D084CE /* IMBLogManager.m in Sources */,
 				EE39ADA9200F038300D084CE /* StringHelper.m in Sources */,
+				B9655D8A20207C7100FE2D92 /* IMBSqliteTables_Nano5G.m in Sources */,
+				B9655DA720207C7100FE2D92 /* IMBPlaylistPositionMHOD.m in Sources */,
+				B9348AA8201EFDFA00A8CEC3 /* IMBProgressCounter.m in Sources */,
+				B90D14D620201599002D9F9B /* IMBAppEntity.m in Sources */,
+				B9655D7420207C7100FE2D92 /* IMBSupportedArtworkFormat.m in Sources */,
+				B9655DBB20207C7100FE2D92 /* IMBSyncPlaylistToCDB_AboveIOS5.m in Sources */,
+				B9655D9D20207C7100FE2D92 /* IMBTrack.m in Sources */,
+				B9655D7920207C7100FE2D92 /* IMBCvtMediaConvertEncoder.m in Sources */,
+				B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */,
+				B9655D9320207C7100FE2D92 /* IMBAlbumListContainer.m in Sources */,
+				B90D14E820202281002D9F9B /* IMBMyDrawCommonly.m in Sources */,
+				B934899A201EFD2100A8CEC3 /* FMDatabaseQueue.m in Sources */,
+				B9655D8120207C7100FE2D92 /* IMBNewTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +1551,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSFiles/iOSFilesPch.pch";
 				INFOPLIST_FILE = iOSFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSFiles/Photo/HeifConvert/OpencvPythonLib",
+				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-U",
@@ -577,6 +1581,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSFiles/iOSFilesPch.pch";
 				INFOPLIST_FILE = iOSFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSFiles/Photo/HeifConvert/OpencvPythonLib",
+				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-U",
