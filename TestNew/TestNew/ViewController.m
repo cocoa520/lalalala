@@ -414,6 +414,10 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     
     
     int ret = AMDeviceStartService(dev,(CFStringRef)@"com.apple.afc", &_service, &dummy);//--有线连接
+    
+    AMDeviceDisconnect(dev);
+    AMDeviceStopSession(dev);
+    
     if (ret == 0) {
         int ret = AFCConnectionOpen(_service,0,&_afc);
         if (ret == 0) {
@@ -423,7 +427,6 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         }
         
     }
-    
     
     _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
     _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
