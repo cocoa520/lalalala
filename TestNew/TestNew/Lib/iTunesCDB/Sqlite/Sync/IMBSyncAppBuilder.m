@@ -20,7 +20,7 @@
 
 - (id)init{
     if (self = [super init]) {
-        _logManager = [IMBLogManager singleton];
+//        _logManager = [IMBLogManager singleton];
         _appSyncPath = @"/PublicStaging/ApplicationSync/";
     }
     return self;
@@ -73,7 +73,7 @@
     result = [plistData writeToFile:appSyncPath atomically:YES];
     
     if (nErr.length > 0) {
-        [_logManager writeErrorLog:[NSString stringWithFormat:@"write book data to plist error:%@",nErr]];
+//        [_logManager writeErrorLog:[NSString stringWithFormat:@"write book data to plist error:%@",nErr]];
         result = FALSE;
     }
     
@@ -85,7 +85,7 @@
         result = [self appendAppIconStatePlist:appSyncs iconStatePath:appIconStatePath];
     }
     else{
-        [_logManager writeErrorLog:@"Create AppSync Plist Error"];
+//        [_logManager writeErrorLog:@"Create AppSync Plist Error"];
     }
     
     [appDics release];
@@ -114,8 +114,8 @@
         result = [plistData writeToFile:filePath atomically:YES];
         
         if (nErr.length > 0) {
-            IMBLogManager *logManager = [IMBLogManager singleton];
-            [logManager writeErrorLog:[NSString stringWithFormat:@"write book data to plist error:%@",nErr]];
+//            IMBLogManager *logManager = [IMBLogManager singleton];
+//            [logManager writeErrorLog:[NSString stringWithFormat:@"write book data to plist error:%@",nErr]];
         }
         
     }

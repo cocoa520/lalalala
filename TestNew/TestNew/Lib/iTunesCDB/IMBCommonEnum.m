@@ -397,6 +397,7 @@
     }
 }
 
+/*
 +(NSString*) categoryNodesEnumToName:(CategoryNodesEnum)categoryEnum {
     switch (categoryEnum) {
         case Category_Summary:
@@ -635,7 +636,7 @@
             
     }
 }
-
+*/
 
 
 +(CategoryNodesEnum) categoryNodesStringToEnum:(NSString*)categoryString {

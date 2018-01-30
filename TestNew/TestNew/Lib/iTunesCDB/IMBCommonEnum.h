@@ -462,30 +462,30 @@ typedef enum{
     AryEnum_existence = 3
 } AryEnum;
 
-union {
-    char   c[8];
-    double d;
-} x;
-
-union {
-    char    c[2];
-    uint16  ui16;
-} uint_16;
-
-union {
-    char    c[4];
-    int32_t i32;
-} int_32;
-
-union {
-    char    c[4];
-    uint32  ui32;
-} uint_32;
-
-union {
-    char    c[8];
-    int64_t i64;
-} int_64;
+//union {
+//    char   c[8];
+//    double d;
+//} x;
+//
+//union {
+//    char    c[2];
+//    uint16  ui16;
+//} uint_16;
+//
+//union {
+//    char    c[4];
+//    int32_t i32;
+//} int_32;
+//
+//union {
+//    char    c[4];
+//    uint32  ui32;
+//} uint_32;
+//
+//union {
+//    char    c[8];
+//    int64_t i64;
+//} int_64;
 
 
 @interface IMBCommonEnum : NSObject {

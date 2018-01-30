@@ -18,9 +18,11 @@
 #import "IMBTracklist.h"
 #import "IMBFileSystem.h"
 #import "IMBDeviceInfo.h"
-#import "IMBMediaLibraryDBHelper.h"
+//#import "IMBMediaLibraryDBHelper.h"
 #import "IMBArtworkHelper.h"
-#import "NSString+Compare.h"
+//#import "NSString+Compare.h"
+
+
 @implementation IMBArtworkDB
 @synthesize artworkList = _artworkList;
 
@@ -126,79 +128,79 @@
     //
 }
 
-- (BOOL)readDeviceArtWorkDirectory{
-    NSString *_basePath = @"/iTunes_Control/iTunes/Artwork";
-    NSString *version = iPod.deviceInfo.productVersion;
-    NSComparisonResult result = [MediaHelper compareVersion:@"8.0" newVersion:version];
-    if (result == NSOrderedSame || result == NSOrderedAscending) {
-        _basePath = @"/iTunes_Control/iTunes/Artwork/Originals";
-    }
-    if ([iPod.fileSystem fileExistsAtPath:_basePath]) {
-        NSArray *mediaTracks = [iPod.trackArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediaType != %d && mediaType != %d && mediaType != %d && mediaType != %d",VoiceMemo,Books,PDFBooks,Ringtone]];
-        
-        if (mediaTracks == nil){
-            NSLog(@"Media Track List Is Null");
-            return false;
-        }
-        IMBMediaLibraryDBHelper *dbHelper = [[IMBMediaLibraryDBHelper alloc] initWithIpod:iPod];
-        if ([dbHelper openDatabase]) {
-            if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.0"]) {
-                if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.0"]) {
-                    if ([iPod.deviceInfo.productVersion hasPrefix:@"8."]&&![iPod.deviceInfo.productVersion hasPrefix:@"8.4"]) {
-                        [dbHelper getArtWorkPathiOS8Point3:mediaTracks];
-                    }else if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.4"])
-                    {
-                        [dbHelper getArtWorkPathiOS9:mediaTracks];
-                    }
-                }else
-                {
-                    [dbHelper readNewIosArtworkItems:mediaTracks];
-
-                }
-            }
-            else{
-                NSArray *formIDs = [dbHelper readArtworkFromatsIDs];
-                if (formIDs == nil || formIDs.count == 0) {
-                    return false;
-                }
-                for (IMBTrack *track in mediaTracks) {
-                    NSString *fileName = [dbHelper readTrackArtworkFileName:track.dbID];
-                    if(IsStringNilOrEmpty(fileName)){
-                        continue;
-                    }
-                    for (NSString *string in formIDs) {
-                        IMBArtworkEntity *artworkItem = [[IMBArtworkEntity alloc] init];
-                        artworkItem.formatType = string;
-                        artworkItem.filePath = [NSString stringWithFormat:@"%@/%@_%@.jpg",_basePath,fileName,string];
-
-                        [track.artwork addObject:artworkItem];
-                        [artworkItem release];
-                        long long filesize = 0;
-                        NSMutableArray *newArray = [track.artwork copy];
-                        for (IMBArtworkEntity *entity in newArray) {
-                            long long curFileSize = [iPod.fileSystem getFileLength:entity.filePath];
-                            if (curFileSize > filesize) {
-                                [track.artwork replaceObjectAtIndex:0 withObject:entity];
-                                filesize = curFileSize;
-                            }
-                        }
-                        [newArray release];
-                    }
-                }
-            }
-            [dbHelper closeDB];
-            [dbHelper release];
-            return true;
-        }
-        else{
-            [dbHelper release];
-            return false;
-        }
-    }
-    else{
-        return false;
-    }
-}
+//- (BOOL)readDeviceArtWorkDirectory{
+//    NSString *_basePath = @"/iTunes_Control/iTunes/Artwork";
+//    NSString *version = iPod.deviceInfo.productVersion;
+//    NSComparisonResult result = [MediaHelper compareVersion:@"8.0" newVersion:version];
+//    if (result == NSOrderedSame || result == NSOrderedAscending) {
+//        _basePath = @"/iTunes_Control/iTunes/Artwork/Originals";
+//    }
+//    if ([iPod.fileSystem fileExistsAtPath:_basePath]) {
+//        NSArray *mediaTracks = [iPod.trackArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mediaType != %d && mediaType != %d && mediaType != %d && mediaType != %d",VoiceMemo,Books,PDFBooks,Ringtone]];
+//        
+//        if (mediaTracks == nil){
+//            NSLog(@"Media Track List Is Null");
+//            return false;
+//        }
+//        IMBMediaLibraryDBHelper *dbHelper = [[IMBMediaLibraryDBHelper alloc] initWithIpod:iPod];
+//        if ([dbHelper openDatabase]) {
+//            if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.0"]) {
+//                if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.0"]) {
+//                    if ([iPod.deviceInfo.productVersion hasPrefix:@"8."]&&![iPod.deviceInfo.productVersion hasPrefix:@"8.4"]) {
+//                        [dbHelper getArtWorkPathiOS8Point3:mediaTracks];
+//                    }else if ([iPod.deviceInfo.productVersion isVersionMajorEqual:@"8.4"])
+//                    {
+//                        [dbHelper getArtWorkPathiOS9:mediaTracks];
+//                    }
+//                }else
+//                {
+//                    [dbHelper readNewIosArtworkItems:mediaTracks];
+//
+//                }
+//            }
+//            else{
+//                NSArray *formIDs = [dbHelper readArtworkFromatsIDs];
+//                if (formIDs == nil || formIDs.count == 0) {
+//                    return false;
+//                }
+//                for (IMBTrack *track in mediaTracks) {
+//                    NSString *fileName = [dbHelper readTrackArtworkFileName:track.dbID];
+//                    if(IsStringNilOrEmpty(fileName)){
+//                        continue;
+//                    }
+//                    for (NSString *string in formIDs) {
+//                        IMBArtworkEntity *artworkItem = [[IMBArtworkEntity alloc] init];
+//                        artworkItem.formatType = string;
+//                        artworkItem.filePath = [NSString stringWithFormat:@"%@/%@_%@.jpg",_basePath,fileName,string];
+//
+//                        [track.artwork addObject:artworkItem];
+//                        [artworkItem release];
+//                        long long filesize = 0;
+//                        NSMutableArray *newArray = [track.artwork copy];
+//                        for (IMBArtworkEntity *entity in newArray) {
+//                            long long curFileSize = [iPod.fileSystem getFileLength:entity.filePath];
+//                            if (curFileSize > filesize) {
+//                                [track.artwork replaceObjectAtIndex:0 withObject:entity];
+//                                filesize = curFileSize;
+//                            }
+//                        }
+//                        [newArray release];
+//                    }
+//                }
+//            }
+//            [dbHelper closeDB];
+//            [dbHelper release];
+//            return true;
+//        }
+//        else{
+//            [dbHelper release];
+//            return false;
+//        }
+//    }
+//    else{
+//        return false;
+//    }
+//}
 
 
 - (void)readIpodImage:(IMBIPodImageFormat *)ipodimageFormat ToArtworkEntity:(IMBArtworkEntity *)artworkEntity{
@@ -372,25 +374,25 @@ return [NSString stringWithFormat:@"<IMBArtworkDB _isDirty=%d,\n nextImageId=%d,
     return result;
 }
 
-- (IMBIPodImage*)getTrackArtForTrack:(IMBTrack*)track{
-    IMBIPodImage *artwork = nil;
-    
-    if ([track artworkIdLink] != 0) {
-        if (_artworkList != nil) {
-            artwork = [_artworkList getArtworkByID:[track artworkIdLink]];
-        }
-        if (artwork != nil) {
-            return artwork;
-        }
-    }
-    
-    if (_artworkList != nil) {
-        artwork = [_artworkList getArtworkByTrackID:[track dbID]];
-        if (artwork != nil) {
-            return artwork;
-        }
-    }
-    return nil;
-}
+//- (IMBIPodImage*)getTrackArtForTrack:(IMBTrack*)track{
+//    IMBIPodImage *artwork = nil;
+//    
+//    if ([track artworkIdLink] != 0) {
+//        if (_artworkList != nil) {
+//            artwork = [_artworkList getArtworkByID:[track artworkIdLink]];
+//        }
+//        if (artwork != nil) {
+//            return artwork;
+//        }
+//    }
+//    
+//    if (_artworkList != nil) {
+//        artwork = [_artworkList getArtworkByTrackID:[track dbID]];
+//        if (artwork != nil) {
+//            return artwork;
+//        }
+//    }
+//    return nil;
+//}
 
 @end

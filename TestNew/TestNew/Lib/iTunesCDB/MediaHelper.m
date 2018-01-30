@@ -11,10 +11,10 @@
 #import "IMBFileSystem.h"
 #import "XMLReader.h"
 #import "IMBSession.h"
-#import "IMBMediaInfo.h"
+//#import "IMBMediaInfo.h"
 #import "IMBNewTrack.h"
-#import "IMBVideoImageAcquire.h"
-#import "IMBSoftWareInfo.h"
+//#import "IMBVideoImageAcquire.h"
+//#import "IMBSoftWareInfo.h"
 #import "IMBDeviceInfo.h"
 #import <openssl/sha.h>
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -85,7 +85,7 @@
 
 +(BOOL)isInternetAvail
 {
-    return [self checkSiteAvail:CustomLocalizedString(@"apple.com", nil)];
+    return NO;//[self checkSiteAvail:CustomLocalizedString(@"apple.com", nil)];
 }
 
 +(BOOL)checkSiteAvail:(NSString*)urlStr
@@ -100,12 +100,12 @@
     return (flags == kSCNetworkFlagsReachable) || (flags == (kSCNetworkFlagsReachable | kSCNetworkFlagsTransientConnection)) ;
 }
 
-+ (NSURL *)getHashWebserviceUri {
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"HCD6AB6S0H.asmx"];
-    NSURL *url = [NSURL URLWithString:netPath];
-    return url;
-}
+//+ (NSURL *)getHashWebserviceUri {
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"HCD6AB6S0H.asmx"];
+//    NSURL *url = [NSURL URLWithString:netPath];
+//    return url;
+//}
 
 + (NSString *)getHashWebserviceNameSpace {
     NSString *nameSpace = @"http://tempuri.org/";
@@ -519,8 +519,8 @@
 }
 
 + (NSMutableArray *)filterSupportArrayWithIpod:(IMBiPod *)ipod isSingleImport:(BOOL)isSingleImport{
-    IMBSoftWareInfo *softwareInfo = [IMBSoftWareInfo singleton];
-    BOOL isSupportConverter = isSingleImport?softwareInfo.isSupportConverter:false;
+//    IMBSoftWareInfo *softwareInfo = [IMBSoftWareInfo singleton];
+    BOOL isSupportConverter = false;
     BOOL isSupportVideo = ipod.deviceInfo.isSupportVideo;
     NSMutableString *totalString = [[NSMutableString alloc] init];
     if(ipod.deviceInfo.isSupportMusic){
@@ -872,76 +872,76 @@
 }
 
 //分析并创建曲目在制定的目录下;
-+ (IMBNewTrack*)analyCreateTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
-    
-    BOOL isvideo = [MediaHelper isVideoFile:filePath];
-    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
-    mediaInfo.isVideo = isvideo;
-    [mediaInfo openWithFilePath:filePath];
-    if (!mediaInfo.isGotMetaData) {
-        return nil;
-    }
-    IMBNewTrack *newTrack = [[IMBNewTrack alloc]init];
-    [newTrack setFilePath:filePath];
-    [newTrack setFileExtension:[filePath pathExtension]];
-    newTrack.fileSize = [mediaInfo.fileSize unsignedIntValue];
-    [newTrack setBitrate:[mediaInfo.bitRate intValue]];
-    [newTrack setLength:[mediaInfo.length intValue]];
-    [newTrack setTrackNumber:[mediaInfo.track intValue]];
-    [newTrack setYear:[mediaInfo.year intValue]];
-    [newTrack setDiscNumber:0];
-    [newTrack setAlbumTrackCount:0];
-    [newTrack setTitle:mediaInfo.title];
-    
-    if (selectCategory == Category_VoiceMemos) {
-        [newTrack setArtist:@"Voice Memos"];
-        [newTrack setAlbum:@"Voice Memos"];
-        [newTrack setAlbumArtist:@"Voice Memos"];
-        [newTrack setIsVideo:NO];
-    }
-    else{
-        //不为空
-        if ([mediaInfo artist].length == 0) {
-            [newTrack setArtist:CustomLocalizedString(@"mediaView_id_3", nil)];
-        }
-        else{
-            [newTrack setArtist:[mediaInfo artist]];
-        }
-        if([mediaInfo album].length == 0){
-            [newTrack setAlbum:CustomLocalizedString(@"mediaView_id_4", nil)];
-        }
-        else{
-            [newTrack setAlbum:[mediaInfo album]];
-        }
-        
-        if([mediaInfo albumArtist].length == 0){
-            [newTrack setAlbumArtist:newTrack.artist];
-        }
-        else{
-            [newTrack setAlbumArtist:[mediaInfo albumArtist]];
-        }
-        [newTrack setIsVideo:isvideo];
-    }
-    [newTrack setGenre:[mediaInfo genre]];
-    [newTrack setSampleRate:[[mediaInfo sampleRate] intValue]];
-    [newTrack setAudioChannels:[[mediaInfo channels] intValue]];
-    [MediaHelper getMediaType:newTrack selectCategory:selectCategory];
-    if([newTrack isVideo])
-    {
-        IMBVideoImageAcquire *videoAC = [[IMBVideoImageAcquire alloc] initwithLocalPath:filePath];
-        if (selectCategory == Category_HomeVideo || selectCategory == Category_MusicVideo|| selectCategory == Category_TVShow) {
-            videoAC.isMovies = NO;
-        }else{
-            videoAC.isMovies = YES;
-        }
-        NSString *artworkPath = [videoAC getVideoArtWork];
-        [newTrack setArtworkFile:artworkPath];
-    }else
-    {
-        [newTrack setArtworkFile:mediaInfo.artworkPath];
-    }
-    return [newTrack autorelease];
-}
+//+ (IMBNewTrack*)analyCreateTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
+//    
+//    BOOL isvideo = [MediaHelper isVideoFile:filePath];
+//    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
+//    mediaInfo.isVideo = isvideo;
+//    [mediaInfo openWithFilePath:filePath];
+//    if (!mediaInfo.isGotMetaData) {
+//        return nil;
+//    }
+//    IMBNewTrack *newTrack = [[IMBNewTrack alloc]init];
+//    [newTrack setFilePath:filePath];
+//    [newTrack setFileExtension:[filePath pathExtension]];
+//    newTrack.fileSize = [mediaInfo.fileSize unsignedIntValue];
+//    [newTrack setBitrate:[mediaInfo.bitRate intValue]];
+//    [newTrack setLength:[mediaInfo.length intValue]];
+//    [newTrack setTrackNumber:[mediaInfo.track intValue]];
+//    [newTrack setYear:[mediaInfo.year intValue]];
+//    [newTrack setDiscNumber:0];
+//    [newTrack setAlbumTrackCount:0];
+//    [newTrack setTitle:mediaInfo.title];
+//    
+//    if (selectCategory == Category_VoiceMemos) {
+//        [newTrack setArtist:@"Voice Memos"];
+//        [newTrack setAlbum:@"Voice Memos"];
+//        [newTrack setAlbumArtist:@"Voice Memos"];
+//        [newTrack setIsVideo:NO];
+//    }
+//    else{
+//        //不为空
+//        if ([mediaInfo artist].length == 0) {
+//            [newTrack setArtist:CustomLocalizedString(@"mediaView_id_3", nil)];
+//        }
+//        else{
+//            [newTrack setArtist:[mediaInfo artist]];
+//        }
+//        if([mediaInfo album].length == 0){
+//            [newTrack setAlbum:CustomLocalizedString(@"mediaView_id_4", nil)];
+//        }
+//        else{
+//            [newTrack setAlbum:[mediaInfo album]];
+//        }
+//        
+//        if([mediaInfo albumArtist].length == 0){
+//            [newTrack setAlbumArtist:newTrack.artist];
+//        }
+//        else{
+//            [newTrack setAlbumArtist:[mediaInfo albumArtist]];
+//        }
+//        [newTrack setIsVideo:isvideo];
+//    }
+//    [newTrack setGenre:[mediaInfo genre]];
+//    [newTrack setSampleRate:[[mediaInfo sampleRate] intValue]];
+//    [newTrack setAudioChannels:[[mediaInfo channels] intValue]];
+//    [MediaHelper getMediaType:newTrack selectCategory:selectCategory];
+//    if([newTrack isVideo])
+//    {
+//        IMBVideoImageAcquire *videoAC = [[IMBVideoImageAcquire alloc] initwithLocalPath:filePath];
+//        if (selectCategory == Category_HomeVideo || selectCategory == Category_MusicVideo|| selectCategory == Category_TVShow) {
+//            videoAC.isMovies = NO;
+//        }else{
+//            videoAC.isMovies = YES;
+//        }
+//        NSString *artworkPath = [videoAC getVideoArtWork];
+//        [newTrack setArtworkFile:artworkPath];
+//    }else
+//    {
+//        [newTrack setArtworkFile:mediaInfo.artworkPath];
+//    }
+//    return [newTrack autorelease];
+//}
 
 + (IMBNewTrack*)createBlankTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
     IMBNewTrack *newTrack = [[IMBNewTrack alloc] init];
@@ -949,13 +949,13 @@
     [newTrack setFileExtension:[filePath pathExtension]];
     NSFileManager *fm = [NSFileManager defaultManager];
     newTrack.fileSize= (uint)[[fm attributesOfItemAtPath:filePath error:nil] fileSize];
-    [newTrack setAlbum:CustomLocalizedString(@"mediaView_id_4", nil)];
-    [newTrack setArtist:CustomLocalizedString(@"mediaView_id_3", nil)];
+    [newTrack setAlbum:@"Unknown Album"];
+    [newTrack setArtist:@"Unknown Artist"];
     [newTrack setBitrate:0];
     [newTrack setGenre:@""];
     [newTrack setLength:0];
     [newTrack setTrackNumber:0];
-    [newTrack setAlbumArtist:CustomLocalizedString(@"mediaView_id_4", nil)];
+    [newTrack setAlbumArtist:@"Unknown Artist"];
     [newTrack setComposer:@""];
     [newTrack setYear:0];
     [newTrack setComments:@""];
@@ -978,19 +978,19 @@
     [newTrack setFileExtension:[track.filePath pathExtension]];
     newTrack.fileSize= track.fileSize;
     if ([track artist].length == 0) {
-        [newTrack setArtist:CustomLocalizedString(@"mediaView_id_3", nil)];
+        [newTrack setArtist:@"Unknown Artist"];
     }
     else{
         [newTrack setArtist:[track artist]];
     }
     if([track album].length == 0){
-        [newTrack setAlbum:CustomLocalizedString(@"mediaView_id_4", nil)];
+        [newTrack setAlbum:@"Unknown Album"];
     }
     else{
         [newTrack setAlbum:[track album]];
     }
     if ([track albumArtist].length == 0) {
-        [newTrack setAlbumArtist:CustomLocalizedString(@"mediaView_id_4", nil)];
+        [newTrack setAlbumArtist:@"Unknown Album"];
     }
     else{
         [newTrack setAlbumArtist:[track albumArtist]];
@@ -1030,15 +1030,15 @@
     return newTrack;
 }
 
-+ (NSString *)getMediaArtwork:(NSString *)filePath {
-    NSString *artworkPath = nil;
-    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
-    [mediaInfo openWithFilePath:filePath];
-    if (mediaInfo.artworkPath != nil) {
-        artworkPath = [NSString stringWithString:mediaInfo.artworkPath];
-    }
-    return artworkPath;
-}
+//+ (NSString *)getMediaArtwork:(NSString *)filePath {
+//    NSString *artworkPath = nil;
+//    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
+//    [mediaInfo openWithFilePath:filePath];
+//    if (mediaInfo.artworkPath != nil) {
+//        artworkPath = [NSString stringWithString:mediaInfo.artworkPath];
+//    }
+//    return artworkPath;
+//}
 
 + (BOOL)isVideoFile:(NSString*)filePath {
     if (filePath != nil && [[filePath.pathExtension lowercaseString] containsString:@"m4v" options:NSCaseInsensitiveSearch] == YES) {
@@ -1203,117 +1203,117 @@
     return nil;
 }
 
-+ (bool) uploadFileContentsWithPlistIdentify:(NSString*) plistIdentify WithData:(NSData*) plistData Offset:(int) offset {
-    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
-    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
-    NSURL *url = [NSURL URLWithString:netPath];
-    NSString *nameSpace = @"http://tempuri.org/";
-    
-    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)@"U3B81FBDEA90F4C", kWSSOAP2001Protocol);
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", plistData, @"data",[NSNumber numberWithInt:offset] , @"offset",nil];
-    
-    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"offset", @"data", nil];
-    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
-    
-    /*NSString *userName = [@"ABCBDAB9460B" sha1];
-     NSString *password = [@"D8D4A9588F78" sha1];
-     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
-    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, @"U3B81FBDEA90F4C"] forKey:@"SOAPAction"];
-    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
-                                  (CFStringRef)nameSpace);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
-                                  (CFDictionaryRef)reqHeaders);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
-                                  kCFBooleanTrue);
-    // set debug props
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
-                                  kCFBooleanTrue);
-    NSDictionary *result = nil;
-    @try {
-        result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
-        NSLog(@"resultDir:%@", [result description]);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"NSException %@", exception.description);
-    }
-    if (result != nil) {
-        // get HTTP response from SOAP request so we can see the status code
-        CFHTTPMessageRef res = nil;
-        res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
-        NSDictionary *resultDir = [result objectForKey:@"/Result"];
-        
-        NSArray *keyArr = [resultDir allKeys];
-        NSString *resStr = nil;
-        for (NSString *key in keyArr) {
-            resStr = [resultDir valueForKey:key];
-        }
-        NSLog(@"resStr:%@",resStr);
-        bool ret = [resStr boolValue];
-        NSLog(@"ret:%d",ret);
-        [result release];
-        return ret;
-    }
-    return false;
-}
-
-+ (bool) uploadPlistCompleteWithPlistIdentify:(NSString*) plistIdentify WithHashSha1:(NSData*) hashSha1 FileLength:(long) fileLength {
-    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
-    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
-    NSURL *url = [NSURL URLWithString:netPath];
-    
-    NSString *nameSpace = @"http://tempuri.org/";
-    
-    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"U4ADC50PC61599C",nil), kWSSOAP2001Protocol);
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", plistIdentify, @"plistIdentify", hashSha1, @"hash",[NSNumber numberWithLong:fileLength] , @"plistFileLength",nil];
-    
-    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"plistFileLength",  @"hash", nil];
-    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
-    
-    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"U4ADC50PC61599C",nil)] forKey:@"SOAPAction"];
-    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
-                                  (CFStringRef)nameSpace);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
-                                  (CFDictionaryRef)reqHeaders);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
-                                  kCFBooleanTrue);
-    // set debug props
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
-                                  kCFBooleanTrue);
-    
-    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
-    NSLog(@"resultDir:%@", [result description]);
-    // get HTTP response from SOAP request so we can see the status code
-    CFHTTPMessageRef res = nil;
-    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
-    NSDictionary *resultDir = [result objectForKey:@"/Result"];
-    
-    NSArray *keyArr = [resultDir allKeys];
-    NSString *resStr = nil;
-    for (NSString *key in keyArr) {
-        resStr = [resultDir valueForKey:key];
-    }
-    bool ret = [resStr boolValue];
-    NSLog(@"ret:%d",ret);
-    [result release];
-    return ret;
-    
-}
+//+ (bool) uploadFileContentsWithPlistIdentify:(NSString*) plistIdentify WithData:(NSData*) plistData Offset:(int) offset {
+//    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
+//    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
+//    NSURL *url = [NSURL URLWithString:netPath];
+//    NSString *nameSpace = @"http://tempuri.org/";
+//    
+//    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)@"U3B81FBDEA90F4C", kWSSOAP2001Protocol);
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", plistData, @"data",[NSNumber numberWithInt:offset] , @"offset",nil];
+//    
+//    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"offset", @"data", nil];
+//    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
+//    
+//    /*NSString *userName = [@"ABCBDAB9460B" sha1];
+//     NSString *password = [@"D8D4A9588F78" sha1];
+//     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
+//    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, @"U3B81FBDEA90F4C"] forKey:@"SOAPAction"];
+//    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
+//                                  (CFStringRef)nameSpace);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
+//                                  (CFDictionaryRef)reqHeaders);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
+//                                  kCFBooleanTrue);
+//    // set debug props
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
+//                                  kCFBooleanTrue);
+//    NSDictionary *result = nil;
+//    @try {
+//        result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
+//        NSLog(@"resultDir:%@", [result description]);
+//    }
+//    @catch (NSException *exception) {
+//        NSLog(@"NSException %@", exception.description);
+//    }
+//    if (result != nil) {
+//        // get HTTP response from SOAP request so we can see the status code
+//        CFHTTPMessageRef res = nil;
+//        res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
+//        NSDictionary *resultDir = [result objectForKey:@"/Result"];
+//        
+//        NSArray *keyArr = [resultDir allKeys];
+//        NSString *resStr = nil;
+//        for (NSString *key in keyArr) {
+//            resStr = [resultDir valueForKey:key];
+//        }
+//        NSLog(@"resStr:%@",resStr);
+//        bool ret = [resStr boolValue];
+//        NSLog(@"ret:%d",ret);
+//        [result release];
+//        return ret;
+//    }
+//    return false;
+//}
+//
+//+ (bool) uploadPlistCompleteWithPlistIdentify:(NSString*) plistIdentify WithHashSha1:(NSData*) hashSha1 FileLength:(long) fileLength {
+//    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
+//    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
+//    NSURL *url = [NSURL URLWithString:netPath];
+//    
+//    NSString *nameSpace = @"http://tempuri.org/";
+//    
+//    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"U4ADC50PC61599C",nil), kWSSOAP2001Protocol);
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", plistIdentify, @"plistIdentify", hashSha1, @"hash",[NSNumber numberWithLong:fileLength] , @"plistFileLength",nil];
+//    
+//    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"plistFileLength",  @"hash", nil];
+//    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
+//    
+//    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"U4ADC50PC61599C",nil)] forKey:@"SOAPAction"];
+//    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
+//                                  (CFStringRef)nameSpace);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
+//                                  (CFDictionaryRef)reqHeaders);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
+//                                  kCFBooleanTrue);
+//    // set debug props
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
+//                                  kCFBooleanTrue);
+//    
+//    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
+//    NSLog(@"resultDir:%@", [result description]);
+//    // get HTTP response from SOAP request so we can see the status code
+//    CFHTTPMessageRef res = nil;
+//    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
+//    NSDictionary *resultDir = [result objectForKey:@"/Result"];
+//    
+//    NSArray *keyArr = [resultDir allKeys];
+//    NSString *resStr = nil;
+//    for (NSString *key in keyArr) {
+//        resStr = [resultDir valueForKey:key];
+//    }
+//    bool ret = [resStr boolValue];
+//    NSLog(@"ret:%d",ret);
+//    [result release];
+//    return ret;
+//    
+//}
 
 /*
  // 注册服务
@@ -1322,59 +1322,59 @@
  array("return"=>"xsd:string") // 返回参数的定义
  );
  */
-+ (NSData*) caclCIGWithPlistIdentify:(NSString*) plistIdentify WithGrappaData:(NSData*) grappa isSuccess:(BOOL *)isSuccess {
-    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
-    NSURL *url = [NSURL URLWithString:netPath];
-    NSString *nameSpace = @"http://tempuri.org/";
-    
-    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"C4822IBA196D46G",nil), kWSSOAP2001Protocol);
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", grappa, @"GrappaData",nil];
-    
-    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"GrappaData", nil];
-    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
-    
-    /*NSString *userName = [@"ABCBDAB9460B" sha1];
-     NSString *password = [@"D8D4A9588F78" sha1];
-     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
-    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"C4822IBA196D46G",nil)] forKey:@"SOAPAction"];
-    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
-                                  (CFStringRef)nameSpace);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
-                                  (CFDictionaryRef)reqHeaders);
-    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
-                                  kCFBooleanTrue);
-    // set debug props
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
-                                  kCFBooleanTrue);
-    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
-                                  kCFBooleanTrue);
-    
-    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
-    NSLog(@"resultDir:%@", [result description]);
-    // get HTTP response from SOAP request so we can see the status code
-    CFHTTPMessageRef res = nil;
-    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
-    NSDictionary *resultDir = [result objectForKey:@"/Result"];
-    NSArray *keyArr = [resultDir allKeys];
-    NSString *hashStr = nil;
-    for (NSString *key in keyArr) {
-        hashStr = [resultDir valueForKey:key];
-    }
-    if (hashStr.length == 0) {
-        *isSuccess = NO;
-    } else {
-        *isSuccess = YES;
-    }
-    NSData *data = [hashStr hexToBytes];
-    [result release];
-    return data;
-}
+//+ (NSData*) caclCIGWithPlistIdentify:(NSString*) plistIdentify WithGrappaData:(NSData*) grappa isSuccess:(BOOL *)isSuccess {
+//    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
+//    NSURL *url = [NSURL URLWithString:netPath];
+//    NSString *nameSpace = @"http://tempuri.org/";
+//    
+//    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"C4822IBA196D46G",nil), kWSSOAP2001Protocol);
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", grappa, @"GrappaData",nil];
+//    
+//    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"GrappaData", nil];
+//    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
+//    
+//    /*NSString *userName = [@"ABCBDAB9460B" sha1];
+//     NSString *password = [@"D8D4A9588F78" sha1];
+//     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
+//    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"C4822IBA196D46G",nil)] forKey:@"SOAPAction"];
+//    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
+//                                  (CFStringRef)nameSpace);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
+//                                  (CFDictionaryRef)reqHeaders);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
+//                                  kCFBooleanTrue);
+//    // set debug props
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
+//                                  kCFBooleanTrue);
+//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
+//                                  kCFBooleanTrue);
+//    
+//    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
+//    NSLog(@"resultDir:%@", [result description]);
+//    // get HTTP response from SOAP request so we can see the status code
+//    CFHTTPMessageRef res = nil;
+//    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
+//    NSDictionary *resultDir = [result objectForKey:@"/Result"];
+//    NSArray *keyArr = [resultDir allKeys];
+//    NSString *hashStr = nil;
+//    for (NSString *key in keyArr) {
+//        hashStr = [resultDir valueForKey:key];
+//    }
+//    if (hashStr.length == 0) {
+//        *isSuccess = NO;
+//    } else {
+//        *isSuccess = YES;
+//    }
+//    NSData *data = [hashStr hexToBytes];
+//    [result release];
+//    return data;
+//}
 
 + (NSString *)getFileDataMd5Hash:(NSData *)data
 {

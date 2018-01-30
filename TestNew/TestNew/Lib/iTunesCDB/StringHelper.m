@@ -7,11 +7,11 @@
 //
 
 #import "StringHelper.h"
-#import "RegexKitLite.h"
-#import "IMBSoftWareInfo.h"
+//#import "RegexKitLite.h"
+//#import "IMBSoftWareInfo.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "NSString+Category.h"
-#import "IMBZipHelper.h"
+//#import "IMBZipHelper.h"
 
 @implementation StringHelper
 
@@ -44,22 +44,22 @@
     return timeStr;
 }
 
-+(NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
-    double mbSize = (double)totalSize / 1048576;
-    double kbSize = (double)totalSize / 1024;
-    if (totalSize < 1024) {
-        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,CustomLocalizedString(@"MSG_Size_B", nil)];
-    } else {
-        if (mbSize > 1024) {
-            double gbSize = (double)totalSize / 1073741824;
-            return [self Rounding:gbSize reserved:1 capacityUnit:CustomLocalizedString(@"MSG_Size_GB", nil)];
-        } else if (kbSize > 1024) {
-            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_MB", nil)];
-        } else {
-            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_KB", nil)];
-        }
-    }
-}
+//+(NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+//    double mbSize = (double)totalSize / 1048576;
+//    double kbSize = (double)totalSize / 1024;
+//    if (totalSize < 1024) {
+//        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,CustomLocalizedString(@"MSG_Size_B", nil)];
+//    } else {
+//        if (mbSize > 1024) {
+//            double gbSize = (double)totalSize / 1073741824;
+//            return [self Rounding:gbSize reserved:1 capacityUnit:CustomLocalizedString(@"MSG_Size_GB", nil)];
+//        } else if (kbSize > 1024) {
+//            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_MB", nil)];
+//        } else {
+//            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_KB", nil)];
+//        }
+//    }
+//}
 
 +(NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
     switch (decimalPoints) {
@@ -466,97 +466,97 @@ char pinyinFirstLetter(unsigned short hanzi) {
     return YES;
 }
 //计算文字的尺寸
-+ (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {
-    NSRect textBounds = NSMakeRect(0, 0, 0, 0);
-    if (text) {
-        NSAttributedString *as = [[NSAttributedString alloc] initWithString:text];
-        NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paragraphStyle setAlignment:NSLeftTextAlignment];
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
-                                    paragraphStyle, NSParagraphStyleAttributeName,
-                                    nil];
-        NSSize textSize = [text sizeWithAttributes:attributes];
-        textBounds = NSMakeRect(0, 0, textSize.width, textSize.height);
-        [as release];
-    }
-    return textBounds;
-}
+//+ (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {
+//    NSRect textBounds = NSMakeRect(0, 0, 0, 0);
+//    if (text) {
+//        NSAttributedString *as = [[NSAttributedString alloc] initWithString:text];
+//        NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+//        [paragraphStyle setAlignment:NSLeftTextAlignment];
+//        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                    [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
+//                                    paragraphStyle, NSParagraphStyleAttributeName,
+//                                    nil];
+//        NSSize textSize = [text sizeWithAttributes:attributes];
+//        textBounds = NSMakeRect(0, 0, textSize.width, textSize.height);
+//        [as release];
+//    }
+//    return textBounds;
+//}
 
-+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color {
-    NSMutableAttributedString *retStr = [[NSMutableAttributedString alloc] initWithString:myString];
-    
-    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
-    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
-    
-    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
-    [layoutManager addTextContainer:textContainer];
-    [textStorage addLayoutManager:layoutManager];
-    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
-    [textParagraph setLineSpacing:lineSpacing];
-    [textParagraph setLineBreakMode:NSLineBreakByWordWrapping];
-    [textParagraph setAlignment:NSCenterTextAlignment];
-    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
-    
-    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
-    [textContainer setLineFragmentPadding:lineSpacing];
-    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
-    (void) [layoutManager glyphRangeForTextContainer:textContainer];
-    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
-    (*size).width = ceil(tmpSize.width);
-    (*size).height = ceil(tmpSize.height);
-    return retStr;
-}
+//+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color {
+//    NSMutableAttributedString *retStr = [[NSMutableAttributedString alloc] initWithString:myString];
+//    
+//    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
+//    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
+//    
+//    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
+//    [layoutManager addTextContainer:textContainer];
+//    [textStorage addLayoutManager:layoutManager];
+//    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
+//    [textParagraph setLineSpacing:lineSpacing];
+//    [textParagraph setLineBreakMode:NSLineBreakByWordWrapping];
+//    [textParagraph setAlignment:NSCenterTextAlignment];
+//    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
+//    
+//    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
+//    [textContainer setLineFragmentPadding:lineSpacing];
+//    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
+//    (void) [layoutManager glyphRangeForTextContainer:textContainer];
+//    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
+//    (*size).width = ceil(tmpSize.width);
+//    (*size).height = ceil(tmpSize.height);
+//    return retStr;
+//}
 
-+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment {
-    NSMutableAttributedString *retStr = [[NSMutableAttributedString alloc] initWithString:myString];
-    
-    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
-    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
-    
-    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
-    [layoutManager addTextContainer:textContainer];
-    [textStorage addLayoutManager:layoutManager];
-    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
-    [textParagraph setLineSpacing:lineSpacing];
-    [textParagraph setLineBreakMode:NSLineBreakByWordWrapping];
-    [textParagraph setAlignment:alignment];
-    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
-    
-    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
-    [textContainer setLineFragmentPadding:lineSpacing];
-    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
-    (void) [layoutManager glyphRangeForTextContainer:textContainer];
-    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
-    (*size).width = ceil(tmpSize.width);
-    (*size).height = ceil(tmpSize.height);
-    return retStr;
-}
+//+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment {
+//    NSMutableAttributedString *retStr = [[NSMutableAttributedString alloc] initWithString:myString];
+//    
+//    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
+//    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
+//    
+//    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
+//    [layoutManager addTextContainer:textContainer];
+//    [textStorage addLayoutManager:layoutManager];
+//    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
+//    [textParagraph setLineSpacing:lineSpacing];
+//    [textParagraph setLineBreakMode:NSLineBreakByWordWrapping];
+//    [textParagraph setAlignment:alignment];
+//    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
+//    
+//    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
+//    [textContainer setLineFragmentPadding:lineSpacing];
+//    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
+//    (void) [layoutManager glyphRangeForTextContainer:textContainer];
+//    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
+//    (*size).width = ceil(tmpSize.width);
+//    (*size).height = ceil(tmpSize.height);
+//    return retStr;
+//}
 //末尾是省略号。。。
-+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment {
-    NSMutableAttributedString *retStr = [[[NSMutableAttributedString alloc] initWithString:myString] autorelease];
-    
-    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
-    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
-    
-    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
-    [layoutManager addTextContainer:textContainer];
-    [textStorage addLayoutManager:layoutManager];
-    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
-    [textParagraph setLineSpacing:lineSpacing];
-    [textParagraph setLineBreakMode:NSLineBreakByTruncatingTail];
-    [textParagraph setAlignment:alignment];
-    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
-    
-    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
-    [textContainer setLineFragmentPadding:lineSpacing];
-    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
-    (void) [layoutManager glyphRangeForTextContainer:textContainer];
-    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
-    (*size).width = ceil(tmpSize.width);
-    (*size).height = ceil(tmpSize.height);
-    return retStr;
-}
+//+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment {
+//    NSMutableAttributedString *retStr = [[[NSMutableAttributedString alloc] initWithString:myString] autorelease];
+//    
+//    NSTextStorage *textStorage = [[[NSTextStorage alloc] initWithString:myString] autorelease];
+//    NSTextContainer *textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(maxWidth, FLT_MAX)] autorelease];
+//    
+//    NSLayoutManager *layoutManager = [[[NSLayoutManager alloc] init] autorelease];
+//    [layoutManager addTextContainer:textContainer];
+//    [textStorage addLayoutManager:layoutManager];
+//    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
+//    [textParagraph setLineSpacing:lineSpacing];
+//    [textParagraph setLineBreakMode:NSLineBreakByTruncatingTail];
+//    [textParagraph setAlignment:alignment];
+//    NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:textParagraph, NSParagraphStyleAttributeName, font, NSFontAttributeName, color,NSForegroundColorAttributeName, [NSColor clearColor], NSBackgroundColorAttributeName, nil];
+//    
+//    [textStorage setAttributes:fontDic range:NSMakeRange(0, [textStorage length])];
+//    [textContainer setLineFragmentPadding:lineSpacing];
+//    [retStr addAttributes:fontDic range:NSMakeRange(0, textStorage.length)];
+//    (void) [layoutManager glyphRangeForTextContainer:textContainer];
+//    NSSize tmpSize = [layoutManager usedRectForTextContainer:textContainer].size;
+//    (*size).width = ceil(tmpSize.width);
+//    (*size).height = ceil(tmpSize.height);
+//    return retStr;
+//}
 
 
 + (NSImage*) getDeviceImage:(IPodFamilyEnum)iPodFamily {
@@ -923,79 +923,79 @@ char pinyinFirstLetter(unsigned short hanzi) {
 	return hexStr;
 }
 
-+ (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color {
-    NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:string];
-    [as addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0,as.length)];
-    [as addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0,as.length)];
-    [as addAttribute:NSFontAttributeName value:font range:NSMakeRange(0,as.length)];
-    return [as autorelease];
-}
+//+ (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color {
+//    NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:string];
+//    [as addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0,as.length)];
+//    [as addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0,as.length)];
+//    [as addAttribute:NSFontAttributeName value:font range:NSMakeRange(0,as.length)];
+//    return [as autorelease];
+//}
 
-+ (NSString*)getCategeryStr:(CategoryNodesEnum)category {
-    NSString *categoryStr = nil;
-    if (category == Category_iTunes_lib ) {
-        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-    }else if (category == Category_iTunes_Playlist || category == Category_Playlist){
-        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-    }else if (category == Category_iTunes_Music || category ==Category_Music || category ==Category_iCloudDriver){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_1", nil);
-    }else if (category ==Category_CloudMusic){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_91", nil);
-    }else if (category == Category_iTunes_Movie || category == Category_Movies){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_70", nil);
-    }else if (category == Category_iTunes_TVShow || category == Category_TVShow){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_71", nil);
-    }else if (category == Category_iTunes_iBooks ||category == Category_iBooks){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_55", nil);
-    }else if (category == Category_iTunes_Audiobook || category ==Category_Audiobook){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_73", nil);
-    }else if (category == Category_iTunes_Ringtone ||category == Category_Ringtone){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_79", nil);
-    }else if (category == Category_iTunes_App || category ==Category_Applications){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_75", nil);
-    }else if (category == Category_iTunes_VoiceMemos || category == Category_VoiceMemos){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_74", nil);
-    }else if (category == Category_iTunes_iTunesU|| category ==Category_iTunesU){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_16", nil);
-    }else if (category == Category_iTunes_PodCasts ||category == Category_PodCasts){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_72", nil);
-    }else if (category == Category_MusicVideo){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_78", nil);
-    }else if (category == Category_HomeVideo){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_50", nil);
-    }else if (category == Category_MyAlbums || category == Category_ContinuousShooting || category == Category_PhotoShare|| category == Category_CameraRoll||category==Category_PhotoStream||category==Category_PhotoLibrary || category == Category_PhotoVideo||category == Category_TimeLapse||category == Category_Panoramas||category == Category_SlowMove||category == Category_LivePhoto||category == Category_Screenshot||category == Category_PhotoSelfies||category == Category_Location||category == Category_Favorite){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_77", nil);
-    }else if (category == Category_Notes){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_60", nil);
-    }else if (category == Category_Message){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_76", nil);
-    }else if (category == Category_Calendar){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_62", nil);
-    }else if (category == Category_Bookmarks){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_59", nil);
-    }else if (category == Category_Contacts){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_61", nil);
-    }else if (category == Category_Voicemail){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_27", nil);
-    }else if (category == Category_SafariHistory){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_37", nil);
-    }else if (category == Category_System||category == Category_Storage){
-        categoryStr = CustomLocalizedString(@"MenuItem_id_81", nil);
-    }else {
-        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-    }
-    return categoryStr;
-}
-
-+ (NSColor *)getColorFromString:(NSString *)str{
-
-    NSArray *array = [str componentsSeparatedByString:@","];
-    float r = [[array objectAtIndex:0] floatValue];
-    float g = [[array objectAtIndex:1] floatValue];
-    float b = [[array objectAtIndex:2] floatValue];
-    float a = [[array objectAtIndex:3] floatValue];
-    return [NSColor colorWithDeviceRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
-}
+//+ (NSString*)getCategeryStr:(CategoryNodesEnum)category {
+//    NSString *categoryStr = nil;
+//    if (category == Category_iTunes_lib ) {
+//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
+//    }else if (category == Category_iTunes_Playlist || category == Category_Playlist){
+//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
+//    }else if (category == Category_iTunes_Music || category ==Category_Music || category ==Category_iCloudDriver){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_1", nil);
+//    }else if (category ==Category_CloudMusic){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_91", nil);
+//    }else if (category == Category_iTunes_Movie || category == Category_Movies){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_70", nil);
+//    }else if (category == Category_iTunes_TVShow || category == Category_TVShow){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_71", nil);
+//    }else if (category == Category_iTunes_iBooks ||category == Category_iBooks){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_55", nil);
+//    }else if (category == Category_iTunes_Audiobook || category ==Category_Audiobook){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_73", nil);
+//    }else if (category == Category_iTunes_Ringtone ||category == Category_Ringtone){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_79", nil);
+//    }else if (category == Category_iTunes_App || category ==Category_Applications){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_75", nil);
+//    }else if (category == Category_iTunes_VoiceMemos || category == Category_VoiceMemos){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_74", nil);
+//    }else if (category == Category_iTunes_iTunesU|| category ==Category_iTunesU){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_16", nil);
+//    }else if (category == Category_iTunes_PodCasts ||category == Category_PodCasts){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_72", nil);
+//    }else if (category == Category_MusicVideo){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_78", nil);
+//    }else if (category == Category_HomeVideo){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_50", nil);
+//    }else if (category == Category_MyAlbums || category == Category_ContinuousShooting || category == Category_PhotoShare|| category == Category_CameraRoll||category==Category_PhotoStream||category==Category_PhotoLibrary || category == Category_PhotoVideo||category == Category_TimeLapse||category == Category_Panoramas||category == Category_SlowMove||category == Category_LivePhoto||category == Category_Screenshot||category == Category_PhotoSelfies||category == Category_Location||category == Category_Favorite){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_77", nil);
+//    }else if (category == Category_Notes){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_60", nil);
+//    }else if (category == Category_Message){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_76", nil);
+//    }else if (category == Category_Calendar){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_62", nil);
+//    }else if (category == Category_Bookmarks){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_59", nil);
+//    }else if (category == Category_Contacts){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_61", nil);
+//    }else if (category == Category_Voicemail){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_27", nil);
+//    }else if (category == Category_SafariHistory){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_37", nil);
+//    }else if (category == Category_System||category == Category_Storage){
+//        categoryStr = CustomLocalizedString(@"MenuItem_id_81", nil);
+//    }else {
+//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
+//    }
+//    return categoryStr;
+//}
+//
+//+ (NSColor *)getColorFromString:(NSString *)str{
+//
+//    NSArray *array = [str componentsSeparatedByString:@","];
+//    float r = [[array objectAtIndex:0] floatValue];
+//    float g = [[array objectAtIndex:1] floatValue];
+//    float b = [[array objectAtIndex:2] floatValue];
+//    float a = [[array objectAtIndex:3] floatValue];
+//    return [NSColor colorWithDeviceRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
+//}
 
 + (NSImage *)imageNamed:(NSString *)name {
     NSImage *image = [[NSBundle mainBundle] imageForResource:name];
@@ -1167,45 +1167,45 @@ char pinyinFirstLetter(unsigned short hanzi) {
     NSString *noteStr = [StringHelper stringFromHexString:contentStr];
     return noteStr;
 }
-+ (NSData *)uncompressZippedData:(NSData *)compressedData
-{
-    if ([compressedData length] == 0) return compressedData;
-    unsigned full_length = [compressedData length];
-    unsigned half_length = [compressedData length] / 2;
-    NSMutableData *decompressed = [NSMutableData dataWithLength: full_length + half_length];
-    BOOL done = NO;
-    int status;
-    z_stream strm;
-    strm.next_in = (Bytef *)[compressedData bytes];
-    strm.avail_in = [compressedData length];
-    strm.total_out = 0;
-    strm.zalloc = Z_NULL;
-    strm.zfree = Z_NULL;
-    if (inflateInit2(&strm, (15+32)) != Z_OK) return nil;
-    while (!done) {
-        // Make sure we have enough room and reset the lengths.
-        if (strm.total_out >= [decompressed length]) {
-            [decompressed increaseLengthBy: half_length];
-        }
-        strm.next_out = [decompressed mutableBytes] + strm.total_out;
-        strm.avail_out = [decompressed length] - strm.total_out;
-        // Inflate another chunk.
-        status = inflate (&strm, Z_SYNC_FLUSH);
-        if (status == Z_STREAM_END) {
-            done = YES;
-        } else if (status != Z_OK) {
-            break;
-        }
-    }
-    if (inflateEnd (&strm) != Z_OK) return nil;
-    // Set real length.
-    if (done) {
-        [decompressed setLength: strm.total_out];
-        return [NSData dataWithData: decompressed];
-    } else {
-        return nil;
-    }
-}
+//+ (NSData *)uncompressZippedData:(NSData *)compressedData
+//{
+//    if ([compressedData length] == 0) return compressedData;
+//    unsigned full_length = [compressedData length];
+//    unsigned half_length = [compressedData length] / 2;
+//    NSMutableData *decompressed = [NSMutableData dataWithLength: full_length + half_length];
+//    BOOL done = NO;
+//    int status;
+//    z_stream strm;
+//    strm.next_in = (Bytef *)[compressedData bytes];
+//    strm.avail_in = [compressedData length];
+//    strm.total_out = 0;
+//    strm.zalloc = Z_NULL;
+//    strm.zfree = Z_NULL;
+//    if (inflateInit2(&strm, (15+32)) != Z_OK) return nil;
+//    while (!done) {
+//        // Make sure we have enough room and reset the lengths.
+//        if (strm.total_out >= [decompressed length]) {
+//            [decompressed increaseLengthBy: half_length];
+//        }
+//        strm.next_out = [decompressed mutableBytes] + strm.total_out;
+//        strm.avail_out = [decompressed length] - strm.total_out;
+//        // Inflate another chunk.
+//        status = inflate (&strm, Z_SYNC_FLUSH);
+//        if (status == Z_STREAM_END) {
+//            done = YES;
+//        } else if (status != Z_OK) {
+//            break;
+//        }
+//    }
+//    if (inflateEnd (&strm) != Z_OK) return nil;
+//    // Set real length.
+//    if (done) {
+//        [decompressed setLength: strm.total_out];
+//        return [NSData dataWithData: decompressed];
+//    } else {
+//        return nil;
+//    }
+//}
 //创建Note的content
 +(NSData *)greadData:(NSString *)noteContent{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"DataPlist" ofType:@"plist"];
@@ -1451,102 +1451,102 @@ char pinyinFirstLetter(unsigned short hanzi) {
     return datas;
 }
 
-+(NSData*) gzipData:(NSData*)pUncompressedData {
-    if (!pUncompressedData || [pUncompressedData length] == 0)
-    {
-        NSLog(@"%s: Error: Can't compress an empty or null NSData object.", __func__);
-        return nil;
-    }
-    
-    z_stream zlibStreamStruct;
-    zlibStreamStruct.zalloc    = Z_NULL; // Set zalloc, zfree, and opaque to Z_NULL so
-    zlibStreamStruct.zfree     = Z_NULL; // that when we call deflateInit2 they will be
-    zlibStreamStruct.opaque    = Z_NULL; // updated to use default allocation functions.
-    zlibStreamStruct.total_out = 0; // Total number of output bytes produced so far
-    zlibStreamStruct.next_in   = (Bytef*)[pUncompressedData bytes]; // Pointer to input bytes
-    zlibStreamStruct.avail_in  = [pUncompressedData length]; // Number of input bytes left to process
-    
-    int initError = deflateInit2(&zlibStreamStruct, Z_DEFAULT_COMPRESSION, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY);
-    if (initError != Z_OK)
-    {
-        NSString *errorMsg = nil;
-        switch (initError)
-        {
-            case Z_STREAM_ERROR:
-                errorMsg = @"Invalid parameter passed in to function.";
-                break;
-            case Z_MEM_ERROR:
-                errorMsg = @"Insufficient memory.";
-                break;
-            case Z_VERSION_ERROR:
-                errorMsg = @"The version of zlib.h and the version of the library linked do not match.";
-                break;
-            default:
-                errorMsg = @"Unknown error code.";
-                break;
-        }
-        NSLog(@"%s: deflateInit2() Error: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
-        [errorMsg release];
-        return nil;
-    }
-    
-    // Create output memory buffer for compressed data. The zlib documentation states that
-    // destination buffer size must be at least 0.1% larger than avail_in plus 12 bytes.
-    NSMutableData *compressedData = [NSMutableData dataWithLength:[pUncompressedData length] * 1.01 + 12];
-    
-    int deflateStatus;
-    do
-    {
-        // Store location where next byte should be put in next_out
-        zlibStreamStruct.next_out = [compressedData mutableBytes] + zlibStreamStruct.total_out;
-        
-        // Calculate the amount of remaining free space in the output buffer
-        // by subtracting the number of bytes that have been written so far
-        // from the buffer's total capacity
-        zlibStreamStruct.avail_out = [compressedData length] - zlibStreamStruct.total_out;
-        deflateStatus = deflate(&zlibStreamStruct, Z_FINISH);
-        
-    } while ( deflateStatus == Z_OK );
-    
-    // Check for zlib error and convert code to usable error message if appropriate
-    if (deflateStatus != Z_STREAM_END)
-    {
-        NSString *errorMsg = nil;
-        switch (deflateStatus)
-        {
-            case Z_ERRNO:
-                errorMsg = @"Error occured while reading file.";
-                break;
-            case Z_STREAM_ERROR:
-                errorMsg = @"The stream state was inconsistent (e.g., next_in or next_out was NULL).";
-                break;
-            case Z_DATA_ERROR:
-                errorMsg = @"The deflate data was invalid or incomplete.";
-                break;
-            case Z_MEM_ERROR:
-                errorMsg = @"Memory could not be allocated for processing.";
-                break;
-            case Z_BUF_ERROR:
-                errorMsg = @"Ran out of output buffer for writing compressed bytes.";
-                break;
-            case Z_VERSION_ERROR:
-                errorMsg = @"The version of zlib.h and the version of the library linked do not match.";
-                break;
-            default:
-                errorMsg = @"Unknown error code.";
-                break;
-        }
-        NSLog(@"%s: zlib error while attempting compression: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
-        [errorMsg release];
-        // Free data structures that were dynamically created for the stream.
-        deflateEnd(&zlibStreamStruct);
-        return nil;
-    }
-    // Free data structures that were dynamically created for the stream.
-    deflateEnd(&zlibStreamStruct);
-    [compressedData setLength: zlibStreamStruct.total_out];
-    return compressedData;
-}
+//+(NSData*) gzipData:(NSData*)pUncompressedData {
+//    if (!pUncompressedData || [pUncompressedData length] == 0)
+//    {
+//        NSLog(@"%s: Error: Can't compress an empty or null NSData object.", __func__);
+//        return nil;
+//    }
+//    
+//    z_stream zlibStreamStruct;
+//    zlibStreamStruct.zalloc    = Z_NULL; // Set zalloc, zfree, and opaque to Z_NULL so
+//    zlibStreamStruct.zfree     = Z_NULL; // that when we call deflateInit2 they will be
+//    zlibStreamStruct.opaque    = Z_NULL; // updated to use default allocation functions.
+//    zlibStreamStruct.total_out = 0; // Total number of output bytes produced so far
+//    zlibStreamStruct.next_in   = (Bytef*)[pUncompressedData bytes]; // Pointer to input bytes
+//    zlibStreamStruct.avail_in  = [pUncompressedData length]; // Number of input bytes left to process
+//    
+//    int initError = deflateInit2(&zlibStreamStruct, Z_DEFAULT_COMPRESSION, Z_DEFLATED, (15+16), 8, Z_DEFAULT_STRATEGY);
+//    if (initError != Z_OK)
+//    {
+//        NSString *errorMsg = nil;
+//        switch (initError)
+//        {
+//            case Z_STREAM_ERROR:
+//                errorMsg = @"Invalid parameter passed in to function.";
+//                break;
+//            case Z_MEM_ERROR:
+//                errorMsg = @"Insufficient memory.";
+//                break;
+//            case Z_VERSION_ERROR:
+//                errorMsg = @"The version of zlib.h and the version of the library linked do not match.";
+//                break;
+//            default:
+//                errorMsg = @"Unknown error code.";
+//                break;
+//        }
+//        NSLog(@"%s: deflateInit2() Error: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
+//        [errorMsg release];
+//        return nil;
+//    }
+//    
+//    // Create output memory buffer for compressed data. The zlib documentation states that
+//    // destination buffer size must be at least 0.1% larger than avail_in plus 12 bytes.
+//    NSMutableData *compressedData = [NSMutableData dataWithLength:[pUncompressedData length] * 1.01 + 12];
+//    
+//    int deflateStatus;
+//    do
+//    {
+//        // Store location where next byte should be put in next_out
+//        zlibStreamStruct.next_out = [compressedData mutableBytes] + zlibStreamStruct.total_out;
+//        
+//        // Calculate the amount of remaining free space in the output buffer
+//        // by subtracting the number of bytes that have been written so far
+//        // from the buffer's total capacity
+//        zlibStreamStruct.avail_out = [compressedData length] - zlibStreamStruct.total_out;
+//        deflateStatus = deflate(&zlibStreamStruct, Z_FINISH);
+//        
+//    } while ( deflateStatus == Z_OK );
+//    
+//    // Check for zlib error and convert code to usable error message if appropriate
+//    if (deflateStatus != Z_STREAM_END)
+//    {
+//        NSString *errorMsg = nil;
+//        switch (deflateStatus)
+//        {
+//            case Z_ERRNO:
+//                errorMsg = @"Error occured while reading file.";
+//                break;
+//            case Z_STREAM_ERROR:
+//                errorMsg = @"The stream state was inconsistent (e.g., next_in or next_out was NULL).";
+//                break;
+//            case Z_DATA_ERROR:
+//                errorMsg = @"The deflate data was invalid or incomplete.";
+//                break;
+//            case Z_MEM_ERROR:
+//                errorMsg = @"Memory could not be allocated for processing.";
+//                break;
+//            case Z_BUF_ERROR:
+//                errorMsg = @"Ran out of output buffer for writing compressed bytes.";
+//                break;
+//            case Z_VERSION_ERROR:
+//                errorMsg = @"The version of zlib.h and the version of the library linked do not match.";
+//                break;
+//            default:
+//                errorMsg = @"Unknown error code.";
+//                break;
+//        }
+//        NSLog(@"%s: zlib error while attempting compression: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
+//        [errorMsg release];
+//        // Free data structures that were dynamically created for the stream.
+//        deflateEnd(&zlibStreamStruct);
+//        return nil;
+//    }
+//    // Free data structures that were dynamically created for the stream.
+//    deflateEnd(&zlibStreamStruct);
+//    [compressedData setLength: zlibStreamStruct.total_out];
+//    return compressedData;
+//}
 
 + (NSSortDescriptor *)creatChineseSortDescriptorWithkey:(NSString *)key WithAscending:(BOOL)ascending {
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending comparator:^NSComparisonResult(id obj1, id obj2) {

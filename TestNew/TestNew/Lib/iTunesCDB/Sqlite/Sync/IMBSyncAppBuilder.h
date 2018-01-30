@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IMBiPod.h"
-#import "IMBLogManager.h"
+//#import "IMBLogManager.h"
 #import "IMBSession.h"
 #import "IMBFileSystem.h"
 
@@ -24,7 +24,7 @@ typedef enum {
     NSString *_appSyncPath;
     NSString *_sbIconStatePath;
     IMBiPod *_ipod;
-    IMBLogManager *_logManager;
+//    IMBLogManager *_logManager;
 }
 
 @property (nonatomic,retain) NSString *appSyncPath;

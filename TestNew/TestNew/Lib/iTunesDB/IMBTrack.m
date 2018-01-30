@@ -1094,15 +1094,15 @@
     _isDirty = TRUE;
 }
 
-- (void)setTitleAttributedString {
-    if (self.title) {
-        NSMutableAttributedString *as = [[[NSMutableAttributedString alloc] initWithString:self.title] autorelease];
-        [as addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] range:NSMakeRange(0, as.length)];
-        [as setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as.length)];
-        [self setTitleAs:as];
-    }
-
-}
+//- (void)setTitleAttributedString {
+//    if (self.title) {
+//        NSMutableAttributedString *as = [[[NSMutableAttributedString alloc] initWithString:self.title] autorelease];
+//        [as addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] range:NSMakeRange(0, as.length)];
+//        [as setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as.length)];
+//        [self setTitleAs:as];
+//    }
+//
+//}
 
 - (void)changeSkin:(NSNotification *)notification
 {

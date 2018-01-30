@@ -172,13 +172,13 @@
             NSString *query = @"insert into track_artist (pid, name, sort_name, has_songs, has_non_compilation_tracks,name_order,is_unknown) values (:pid, :name, :sort_name, 1, 1,4294967295,1)";
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithLongLong:_nextTrackArtistId], @"pid",
-                                   CustomLocalizedString(@"mediaView_id_3", nil), @"name",
-                                   [self getSortString:CustomLocalizedString(@"mediaView_id_3", nil)], @"sort_name",
+                                   @"Unknown Artist", @"name",
+                                   [self getSortString:@"Unknown Artist"], @"sort_name",
                                    nil];
             [_libraryConnection executeUpdate:query withParameterDictionary:param];
             entry = [[IMBEntry alloc] init];
             [entry setID:_nextTrackArtistId++];
-            [entry setValue:CustomLocalizedString(@"mediaView_id_3", nil)];
+            [entry setValue:@"Unknown Artist"];
             entry.isUnknown = TRUE;
             entry.hasSongs = TRUE;
             [_trackArtists addObject:entry];
@@ -248,14 +248,14 @@
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithLongLong:_nextTrackArtistId], @"pid",
                                    [NSNumber numberWithInt:2], @"kind",
-                                   CustomLocalizedString(@"mediaView_id_3", nil), @"name",
-                                   [self getSortString:CustomLocalizedString(@"mediaView_id_3", nil)], @"sort_name",
+                                   @"Unknown Artist", @"name",
+                                   [self getSortString:@"Unknown Artist"], @"sort_name",
                                    [NSNumber numberWithBool:hasMV], @"has_music_videos",
                                    nil];
             [_libraryConnection executeUpdate:query withParameterDictionary:param];
             entry = [[IMBEntry alloc] init];
             [entry setID:_nextArtistId++];
-            [entry setValue:CustomLocalizedString(@"mediaView_id_3", nil)];
+            [entry setValue:@"Unknown Artist"];
             entry.isUnknown = TRUE;
             entry.hasSongs = TRUE;
             entry.hasMusicVideos = hasMV;
@@ -392,7 +392,7 @@
             entry = [preArray objectAtIndex:0];
         }
         if (entry == nil) {
-            NSString *unAlbum = CustomLocalizedString(@"mediaView_id_4", nil);
+            NSString *unAlbum = @"Unknown Album";
             NSString *query = @"insert into album (pid, kind, name, sort_name, artist_pid, artwork_status, artwork_item_pid,name_order,is_unknown,has_music_videos, has_songs) values(:pid, :kind, :name, :sort_name, :artist_pid, 0, :artwork_item_pid,:name_order,1,:has_music_videos,1)";
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithLongLong:_nextAlbumId], @"pid",

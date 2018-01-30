@@ -7,16 +7,16 @@
 //
 
 #import "IMBiPod.h"
-#import "IMBUSBDeviceInfo.h"
-#import "IMBUSBFileSystem.h"
+//#import "IMBUSBDeviceInfo.h"
+//#import "IMBUSBFileSystem.h"
 #import "IMBAMDeviceInfo.h"
 #import "IMBAMFileSystem.h"
 #import "IMBSession.h"
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
-#import "IMBConfig.h"
-#import "IMBAppConfig.h"
-#import "IMBExportSetting.h"
+//#import "IMBConfig.h"
+//#import "IMBAppConfig.h"
+//#import "IMBExportSetting.h"
 
 @implementation IMBiPod
 @synthesize deviceHandle = _deviceHandle;
@@ -35,15 +35,15 @@
 - (id)initWithDevice:(id)device {
     self = [super init];
     if (self) {
-        _logHandle = [IMBLogManager singleton];
+//        _logHandle = [IMBLogManager singleton];
         if ([device isKindOfClass:[AMDevice class]] == TRUE) {
             _deviceHandle = [device retain];
-            _deviceInfo = [[IMBAMDeviceInfo alloc] initWithDevice:_deviceHandle];
-            _fileSystem = [[IMBAMFileSystem alloc] initWithDevice:_deviceHandle];
+//            _deviceInfo = [[IMBAMDeviceInfo alloc] initWithDevice:_deviceHandle];
+//            _fileSystem = [[IMBAMFileSystem alloc] initWithDevice:_deviceHandle];
         } else {
             _deviceHandle = [device retain];
-            _deviceInfo = [[IMBUSBDeviceInfo alloc] initWithDevice:_deviceHandle];
-            _fileSystem = [[IMBUSBFileSystem alloc] initWithDevice:_deviceHandle];
+//            _deviceInfo = [[IMBUSBDeviceInfo alloc] initWithDevice:_deviceHandle];
+//            _fileSystem = [[IMBUSBFileSystem alloc] initWithDevice:_deviceHandle];
         }
         _session = [[IMBSession alloc] initWithIPod:self];
     }
@@ -183,39 +183,39 @@
     }
 }
 
-- (IMBApplicationManager *)applicationManager
-{
-    IMBInformationManager *manager = [IMBInformationManager shareInstance];
-    IMBInformation *infomation = [manager.informationDic objectForKey:_uniqueKey];
-    if (infomation) {
-        return [infomation applicationManager];
-    }else {
-        return nil;
-    }
-}
+//- (IMBApplicationManager *)applicationManager
+//{
+//    IMBInformationManager *manager = [IMBInformationManager shareInstance];
+//    IMBInformation *infomation = [manager.informationDic objectForKey:_uniqueKey];
+//    if (infomation) {
+//        return [infomation applicationManager];
+//    }else {
+//        return nil;
+//    }
+//}
 
-#pragma mark - 配置文件初始化以及取得函数
--(IMBConfig*) transCodingConfig {
-    if (_transCodingConfig == nil) {
-        NSLog(@"init IMBConfig");
-        _transCodingConfig  = [[IMBConfig alloc] initWithIPod:self];
-    }
-    return _transCodingConfig;
-}
-
--(IMBAppConfig*) appConfig {
-    if (_appConfig == nil) {
-        NSLog(@"init IMBAppConfig");
-        _appConfig  = [[IMBAppConfig alloc] initWithIPod:self];
-    }
-    return _appConfig;
-}
-
-- (IMBExportSetting *) exportSetting {
-    if (_exportSetting == nil) {
-        _exportSetting = [[IMBExportSetting alloc] initWithIPod:self];
-    }
-    return _exportSetting;
-}
+//#pragma mark - 配置文件初始化以及取得函数
+//-(IMBConfig*) transCodingConfig {
+//    if (_transCodingConfig == nil) {
+//        NSLog(@"init IMBConfig");
+//        _transCodingConfig  = [[IMBConfig alloc] initWithIPod:self];
+//    }
+//    return _transCodingConfig;
+//}
+//
+//-(IMBAppConfig*) appConfig {
+//    if (_appConfig == nil) {
+//        NSLog(@"init IMBAppConfig");
+//        _appConfig  = [[IMBAppConfig alloc] initWithIPod:self];
+//    }
+//    return _appConfig;
+//}
+//
+//- (IMBExportSetting *) exportSetting {
+//    if (_exportSetting == nil) {
+//        _exportSetting = [[IMBExportSetting alloc] initWithIPod:self];
+//    }
+//    return _exportSetting;
+//}
 
 @end

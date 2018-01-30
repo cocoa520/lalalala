@@ -13,7 +13,7 @@
 #import "IMBTracklist.h"
 #import "IMBPlaylist.h"
 #import "IMBIPod.h"
-#import "NSString+Compare.h"
+//#import "NSString+Compare.h"
 @implementation IMBSqliteTables_5
 @synthesize dbPid=_dbPid;
 @synthesize dirtyTracks=_dirtyTracks;
@@ -89,7 +89,7 @@
         _nextArtistId = 1;
         _nextAlbumArtistId = 1;
         _nextArtworkCacheId = 1;
-        logManger = [IMBLogManager singleton];
+//        logManger = [IMBLogManager singleton];
     }
     return self;
 }
@@ -331,7 +331,7 @@
                     artworkCacheId = [rs longLongIntForColumnIndex:3];
                 }
                 @catch (NSException *exception) {
-                    [logManger writeInfoLog:@"artworkCacheId not exist"];
+//                    [logManger writeInfoLog:@"artworkCacheId not exist"];
                 }
                 represenId = [rs longLongIntForColumnIndex:4];
             }

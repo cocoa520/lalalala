@@ -55,6 +55,7 @@ extern "C" {
     /// This class represents an open file on the device.
     /// The caller can read from or write to the file depending on the
     /// file open mode.
+/*
 @interface AFCFileReference : NSObject
 {
 @private
@@ -113,3 +114,4 @@ extern "C" {
 - (id)initWithPath:(NSString*)path reference:(afc_file_ref)ref afc:(afc_connection)afc;
 
 @end
+ */

@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 #import "IMBDeviceInfo.h"
-#import "IMBLogManager.h"
+//#import "IMBLogManager.h"
 @class IMBiPod;
 @class IMBTrack;
 @class IMBPlaylist;
@@ -41,7 +41,7 @@
     int _nextKindId, _nextBaseLocationId;
     long long _nextAlbumId, _nextArtistId, _nextAlbumArtistId;
     long long _nextArtworkCacheId;
-    IMBLogManager *logManger;
+//    IMBLogManager *logManger;
 }
 
 @property (nonatomic, readwrite) long long dbPid;

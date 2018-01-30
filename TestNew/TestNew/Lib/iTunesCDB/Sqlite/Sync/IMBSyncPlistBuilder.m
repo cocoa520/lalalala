@@ -13,8 +13,8 @@
 #import "IMBCommonEnum.h"
 #import "IMBFileSystem.h"
 #import "IMBDeviceInfo.h"
-#import "IMBBooksPlist.h"
-#import "IMBSyncBookPlistBuilder.h"
+//#import "IMBBooksPlist.h"
+//#import "IMBSyncBookPlistBuilder.h"
 #import "IMBSyncAppBuilder.h"
 #import "NSString+Compare.h"
 @implementation IMBSyncPlistBuilder
@@ -1134,30 +1134,31 @@
     }
 }
 
-- (BOOL)createDelBookContentPlist:(NSString *)path delPidList:(NSArray *)delPidList
-{
-    BOOL result = false;
-    NSMutableDictionary *bookDic = nil;
-    IMBSyncBookPlistBuilder *syncBookPlist = [[IMBSyncBookPlistBuilder alloc] initWithIpod:iPod delPidList:delPidList];
-    bookDic = [syncBookPlist loadBookDataToDictionary];
-    @try {
-        if (bookDic != nil && bookDic.count != 0) {
-            [bookDic writeToFile:path atomically:YES];
-            result = true;
-        }
-        else{
-            result = false;
-        }
-    }
-    @catch (NSException *exception) {
-        result = false;
-    }
-    @finally {
-        [syncBookPlist release];
-        return result;
-    }
-}
+//- (BOOL)createDelBookContentPlist:(NSString *)path delPidList:(NSArray *)delPidList
+//{
+//    BOOL result = false;
+//    NSMutableDictionary *bookDic = nil;
+//    IMBSyncBookPlistBuilder *syncBookPlist = [[IMBSyncBookPlistBuilder alloc] initWithIpod:iPod delPidList:delPidList];
+//    bookDic = [syncBookPlist loadBookDataToDictionary];
+//    @try {
+//        if (bookDic != nil && bookDic.count != 0) {
+//            [bookDic writeToFile:path atomically:YES];
+//            result = true;
+//        }
+//        else{
+//            result = false;
+//        }
+//    }
+//    @catch (NSException *exception) {
+//        result = false;
+//    }
+//    @finally {
+//        [syncBookPlist release];
+//        return result;
+//    }
+//}
 
+/*
 - (BOOL)createBookContentPlist:(NSString *)path{
     BOOL result = false;
     if (sqliteTable_5.dirtyTracks == nil) {
@@ -1231,6 +1232,7 @@
     }
     return result;
 }
+*/
 
 - (BOOL)checkIosIsHighVersion:(IMBiPod *)ipod{
     NSString *version = ipod.deviceInfo.productVersion;

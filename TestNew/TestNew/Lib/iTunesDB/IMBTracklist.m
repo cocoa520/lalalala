@@ -13,7 +13,7 @@
 #import "IMBSession.h"
 #import "IMBFileSystem.h"
 #import "IMBDeviceInfo.h"
-#import "IMBTransferError.h"
+//#import "IMBTransferError.h"
 
 
 @implementation IMBTracklist
@@ -218,7 +218,7 @@
     IMBTrack *existing = [self getExistingTrack:newItem];
     if (existing != nil) {
         NSDictionary *userDic = [NSDictionary dictionaryWithObjectsAndKeys:existing, @"Exsit_Track", [existing title], @"Track_Title", [existing artist], @"Track_Artist", [existing album], @"Track_Album", existing, @"Track",nil];
-        [[IMBTransferError singleton] addAnErrorWithErrorName:existing.title WithErrorReson:CustomLocalizedString(@"Ex_Op_file_exist", nil)];
+//        [[IMBTransferError singleton] addAnErrorWithErrorName:existing.title WithErrorReson:CustomLocalizedString(@"Ex_Op_file_exist", nil)];
         @throw [NSException exceptionWithName:@"EX_Track_Already_Exists" reason:@"Track already exists" userInfo:userDic];
         return nil;
     }
@@ -282,7 +282,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //文件系统中不存在新曲目路径
     if ([fileManager fileExistsAtPath:[newItem filePath]] == NO) {
-        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_File_Not_Exist", nil), [newItem filePath]] userInfo:nil];
+//        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_File_Not_Exist", nil), [newItem filePath]] userInfo:nil];
     }
     IMBTrack *track;
     track = [self addTrack:newItem calcuTotalSize:calcuTotalSize];
@@ -298,7 +298,7 @@
      }*/
     NSString *mediaPath = [srciPod.fileSystem.driveLetter stringByAppendingPathComponent:newItem.filePath];
     if(![srciPod.fileSystem fileExistsAtPath:mediaPath]) {
-        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_File_Not_Exist", nil), [newItem filePath]] userInfo:nil];
+//        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_File_Not_Exist", nil), [newItem filePath]] userInfo:nil];
     }
     IMBTrack *track;
     //Todo: 这个地方需要retain吗。

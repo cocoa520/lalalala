@@ -7,7 +7,7 @@
 //
 
 #import "DateHelper.h"
-#import "IMBSoftWareInfo.h"
+//#import "IMBSoftWareInfo.h"
 #import "NSString+Category.h"
 @implementation DateHelper
 +(NSDate*)dateFrom2001:(double)timeStamp{
@@ -339,67 +339,67 @@
     return returnDate;
 }
 
-+(NSString*)getHistoryDateString:(NSDate*)historyDate {
-    
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
-    
-    //NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
-    
-    [components setHour:-[components hour]];
-    [components setMinute:-[components minute]];
-    [components setSecond:-[components second]];
-    NSDate *today = [cal dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; //This variable should now be pointing at a date object that is the start of today (midnight);
-    
-    [components setHour:-24];
-    [components setMinute:0];
-    [components setSecond:0];
-    NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
-    
-    [components setHour:+24];
-    [components setMinute:0];
-    [components setSecond:0];
-    NSDate *tomorrow = [cal dateByAddingComponents:components toDate: today options:0];
-    
-    components = [cal components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[[NSDate alloc] init]];
-    
-    [components setDay:([components day] - 6)];
-    NSDate *lastWeek  = [cal dateFromComponents:components];
-    
-    NSString* _lastcallStr = @"";
-    if ( [historyDate isGreaterThanOrEqualTo:today] && [historyDate isLessThan:tomorrow]) {
-        //只显示时间
-        _lastcallStr = [NSDateFormatter localizedStringFromDate:historyDate
-                                                      dateStyle:0
-                                                      timeStyle:NSDateFormatterMediumStyle];
-    } else if ([historyDate isGreaterThanOrEqualTo: yesterday] && [historyDate isLessThan:today]) {
-        
-        //显示星期与时间
-        NSString *timeStr = [NSDateFormatter localizedStringFromDate:historyDate
-                                                           dateStyle:0
-                                                           timeStyle:NSDateFormatterMediumStyle];
-        NSString *yesterdayStr = CustomLocalizedString(@"text_id_262", nil);
-        
-        _lastcallStr = [NSString stringWithFormat:@"%@ %@", yesterdayStr, timeStr];
-        
-        
-        
-    } else if ([historyDate isGreaterThanOrEqualTo:lastWeek]){
-        //显示星期与时间
-        NSString *timeStr = [NSDateFormatter localizedStringFromDate:historyDate
-                                                           dateStyle:0
-                                                           timeStyle:NSDateFormatterMediumStyle];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
-        NSString *weekDayStr = [dateFormatter stringFromDate:historyDate];
-        _lastcallStr = [NSString stringWithFormat:@"%@ %@", weekDayStr, timeStr];
-        [dateFormatter release];
-    } else {
-        //显示日期与时间
-        _lastcallStr = [NSDateFormatter localizedStringFromDate:historyDate dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle];
-    }
-    return _lastcallStr;
-}
+//+(NSString*)getHistoryDateString:(NSDate*)historyDate {
+//    
+//    NSCalendar *cal = [NSCalendar currentCalendar];
+//    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
+//    
+//    //NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
+//    
+//    [components setHour:-[components hour]];
+//    [components setMinute:-[components minute]];
+//    [components setSecond:-[components second]];
+//    NSDate *today = [cal dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; //This variable should now be pointing at a date object that is the start of today (midnight);
+//    
+//    [components setHour:-24];
+//    [components setMinute:0];
+//    [components setSecond:0];
+//    NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
+//    
+//    [components setHour:+24];
+//    [components setMinute:0];
+//    [components setSecond:0];
+//    NSDate *tomorrow = [cal dateByAddingComponents:components toDate: today options:0];
+//    
+//    components = [cal components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[[NSDate alloc] init]];
+//    
+//    [components setDay:([components day] - 6)];
+//    NSDate *lastWeek  = [cal dateFromComponents:components];
+//    
+//    NSString* _lastcallStr = @"";
+//    if ( [historyDate isGreaterThanOrEqualTo:today] && [historyDate isLessThan:tomorrow]) {
+//        //只显示时间
+//        _lastcallStr = [NSDateFormatter localizedStringFromDate:historyDate
+//                                                      dateStyle:0
+//                                                      timeStyle:NSDateFormatterMediumStyle];
+//    } else if ([historyDate isGreaterThanOrEqualTo: yesterday] && [historyDate isLessThan:today]) {
+//        
+//        //显示星期与时间
+//        NSString *timeStr = [NSDateFormatter localizedStringFromDate:historyDate
+//                                                           dateStyle:0
+//                                                           timeStyle:NSDateFormatterMediumStyle];
+//        NSString *yesterdayStr = CustomLocalizedString(@"text_id_262", nil);
+//        
+//        _lastcallStr = [NSString stringWithFormat:@"%@ %@", yesterdayStr, timeStr];
+//        
+//        
+//        
+//    } else if ([historyDate isGreaterThanOrEqualTo:lastWeek]){
+//        //显示星期与时间
+//        NSString *timeStr = [NSDateFormatter localizedStringFromDate:historyDate
+//                                                           dateStyle:0
+//                                                           timeStyle:NSDateFormatterMediumStyle];
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"EEEE" options:0 locale:[NSLocale currentLocale]];
+//        NSString *weekDayStr = [dateFormatter stringFromDate:historyDate];
+//        _lastcallStr = [NSString stringWithFormat:@"%@ %@", weekDayStr, timeStr];
+//        [dateFormatter release];
+//    } else {
+//        //显示日期与时间
+//        _lastcallStr = [NSDateFormatter localizedStringFromDate:historyDate dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle];
+//    }
+//    return _lastcallStr;
+//}
 
 +(NSDate*)getDateTimeFromTimeStamp1970:(long long)times timeOffset:(int64_t)offset {
     NSDate *returnDate = nil;
@@ -453,70 +453,70 @@
     return returnString;
 }
 
-+ (NSString*)getShortDateString:(NSDate*)date {
-    NSString* retVal = nil;
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    int unit = kCFCalendarUnitYear | kCFCalendarUnitMonth | kCFCalendarUnitDay;
-    NSDateComponents *selfCmps = [calendar components:unit fromDate:date];
-    NSDate *today = [NSDate date];
-    
-    NSDateComponents *comp = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:today];
-    [comp setHour:-24];
-    [comp setMinute:0];
-    [comp setSecond:0];
-    NSDate *yesterday = [calendar dateByAddingComponents:comp toDate:today options:0];
-    [comp setHour:+24];
-    [comp setMinute:0];
-    [comp setSecond:0];
-    NSDate *tomorrow = [calendar dateByAddingComponents:comp toDate:today options:0];
-    
-    comp = [calendar components:unit fromDate:today];
-    BOOL isToday = (selfCmps.year == comp.year) && (selfCmps. month == comp.month) && (selfCmps.day == comp.day);
-    if (isToday) {
-        NSDateFormatter *df=[[NSDateFormatter alloc] init];
-        [df setDateFormat:@"hh:mm a"];
-        NSString *timeStr = [df stringFromDate:date];
-        [df release];
-        df = nil;
-        retVal = [NSString stringWithFormat:@"%@ %@", CustomLocalizedString(@"MSG_Date_Today", nil), timeStr];
-        return retVal;
-    }
-    
-    comp = [calendar components:unit fromDate:yesterday];
-    BOOL isYesterday = (selfCmps.year == comp.year ) && (selfCmps.month == comp.month ) && (selfCmps.day == comp.day);
-    if (isYesterday) {
-        NSDateFormatter *df=[[NSDateFormatter alloc] init];
-        [df setTimeZone:[NSTimeZone systemTimeZone]];
-        [df setDateFormat:@"hh:mm a"];
-        NSString *timeStr = [df stringFromDate:date];
-        [df release];
-        df = nil;
-        retVal = [NSString stringWithFormat:@"%@ %@",CustomLocalizedString(@"MSG_Date_Yesterday", nil) , timeStr];
-        return retVal;
-    }
-    
-    comp = [calendar components:unit fromDate:tomorrow];
-    BOOL isTomorrow = (selfCmps.year == comp.year) && (selfCmps.month == comp.month) && (selfCmps.day == comp.day);
-    if (isTomorrow) {
-        NSDateFormatter *df=[[NSDateFormatter alloc] init];
-        [df setTimeZone:[NSTimeZone systemTimeZone]];
-        [df setDateFormat:@"hh:mm a"];
-        NSString *timeStr = [df stringFromDate:date];
-        [df release];
-        df = nil;
-        retVal = [NSString stringWithFormat:@"%@ %@", CustomLocalizedString(@"MSG_Date_Tomorrow", nil), timeStr];
-        return retVal;
-    }
-    
-    NSDateFormatter *df=[[NSDateFormatter alloc] init];
-    [df setTimeZone:[NSTimeZone systemTimeZone]];
-    [df setDateFormat:@"yyyy-MM-dd hh:mm a"];
-    retVal = [df stringFromDate:date];
-    [df release];
-    df = nil;
-    
-    return retVal;
-}
+//+ (NSString*)getShortDateString:(NSDate*)date {
+//    NSString* retVal = nil;
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    int unit = kCFCalendarUnitYear | kCFCalendarUnitMonth | kCFCalendarUnitDay;
+//    NSDateComponents *selfCmps = [calendar components:unit fromDate:date];
+//    NSDate *today = [NSDate date];
+//    
+//    NSDateComponents *comp = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:today];
+//    [comp setHour:-24];
+//    [comp setMinute:0];
+//    [comp setSecond:0];
+//    NSDate *yesterday = [calendar dateByAddingComponents:comp toDate:today options:0];
+//    [comp setHour:+24];
+//    [comp setMinute:0];
+//    [comp setSecond:0];
+//    NSDate *tomorrow = [calendar dateByAddingComponents:comp toDate:today options:0];
+//    
+//    comp = [calendar components:unit fromDate:today];
+//    BOOL isToday = (selfCmps.year == comp.year) && (selfCmps. month == comp.month) && (selfCmps.day == comp.day);
+//    if (isToday) {
+//        NSDateFormatter *df=[[NSDateFormatter alloc] init];
+//        [df setDateFormat:@"hh:mm a"];
+//        NSString *timeStr = [df stringFromDate:date];
+//        [df release];
+//        df = nil;
+//        retVal = [NSString stringWithFormat:@"%@ %@", CustomLocalizedString(@"MSG_Date_Today", nil), timeStr];
+//        return retVal;
+//    }
+//    
+//    comp = [calendar components:unit fromDate:yesterday];
+//    BOOL isYesterday = (selfCmps.year == comp.year ) && (selfCmps.month == comp.month ) && (selfCmps.day == comp.day);
+//    if (isYesterday) {
+//        NSDateFormatter *df=[[NSDateFormatter alloc] init];
+//        [df setTimeZone:[NSTimeZone systemTimeZone]];
+//        [df setDateFormat:@"hh:mm a"];
+//        NSString *timeStr = [df stringFromDate:date];
+//        [df release];
+//        df = nil;
+//        retVal = [NSString stringWithFormat:@"%@ %@",CustomLocalizedString(@"MSG_Date_Yesterday", nil) , timeStr];
+//        return retVal;
+//    }
+//    
+//    comp = [calendar components:unit fromDate:tomorrow];
+//    BOOL isTomorrow = (selfCmps.year == comp.year) && (selfCmps.month == comp.month) && (selfCmps.day == comp.day);
+//    if (isTomorrow) {
+//        NSDateFormatter *df=[[NSDateFormatter alloc] init];
+//        [df setTimeZone:[NSTimeZone systemTimeZone]];
+//        [df setDateFormat:@"hh:mm a"];
+//        NSString *timeStr = [df stringFromDate:date];
+//        [df release];
+//        df = nil;
+//        retVal = [NSString stringWithFormat:@"%@ %@", CustomLocalizedString(@"MSG_Date_Tomorrow", nil), timeStr];
+//        return retVal;
+//    }
+//    
+//    NSDateFormatter *df=[[NSDateFormatter alloc] init];
+//    [df setTimeZone:[NSTimeZone systemTimeZone]];
+//    [df setDateFormat:@"yyyy-MM-dd hh:mm a"];
+//    retVal = [df stringFromDate:date];
+//    [df release];
+//    df = nil;
+//    
+//    return retVal;
+//}
 
 +(double)getTotalSecondsFromHHMMSSMS:(NSString*)timeStr {
     double duration = 0.0;

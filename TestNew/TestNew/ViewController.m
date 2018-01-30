@@ -26,7 +26,7 @@
 #import <AppKit/AppKit.h>
 #import <malloc/malloc.h>
 #import "ZLFileTool.h"
-
+#import "MobileDeviceAccess.h"
 
 #pragma mark -------------------------------------Begin --- MobileDevice.framework internals
 // opaque structures
@@ -704,6 +704,7 @@ bail:
 }
 @end
 
+/*
 #pragma mark ------ AFCFileReference
 
 @implementation AFCFileReference
@@ -832,4 +833,4 @@ bail:
 }
 
 @end
-
+*/

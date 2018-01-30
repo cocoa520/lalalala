@@ -449,7 +449,7 @@ static char firstLetterArray[ HANZI_COUNT ] =
 + (NSString *)stringFromHexString:(NSString *)hexString;
 + (NSString *)stringFromHexStringASCII:(NSString *)hexString;
 + (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize;//计算文字的Rect
-+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
+//+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
 + (NSImage*) getDeviceImage:(IPodFamilyEnum)iPodFamily;
 //airbackup的缓存设备图片
 + (NSImage *)getBackupDevcieImage:(IPodFamilyEnum)iPodFamily;
@@ -457,12 +457,12 @@ static char firstLetterArray[ HANZI_COUNT ] =
 + (BOOL)checkFileIsPicture:(NSString *)fileName;
 //NSdata转化为NSString
 + (NSString *)NSDatatoNSString:(NSData*)data;
-+ (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color;
-+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color;
+//+ (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color;
+//+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color;
 //末尾是省略号。。。
-+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
+//+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
 + (NSString*)getCategeryStr:(CategoryNodesEnum)category;
-+ (NSColor *)getColorFromString:(NSString *)str;//将String 转为Color
+//+ (NSColor *)getColorFromString:(NSString *)str;//将String 转为Color
 + (NSImage *)imageNamed:(NSString *)name;
 + (NSString *)md5ForFile:(NSString*)filePath;
 + (BOOL)chirstmasActivity;
