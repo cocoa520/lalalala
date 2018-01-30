@@ -490,7 +490,9 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _amDevice = dev;
     
     self.sizeLabel.stringValue = @"Please Connect Your Device";
+    [_deviceHandle release];
     _deviceHandle = nil;
+    [_ipod release];
     _ipod = nil;
     _deviceName = nil;
     _udid = nil;
@@ -501,7 +503,8 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     _totalDiskCapacity = nil;
     _totalDataAvailable = nil;
     
-    self.dataArray = nil;
+    [_dataArray release];
+    _dataArray = nil;
     [_tableView reloadData];
 }
 
@@ -807,7 +810,7 @@ bail:
 
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.dataArray.count;
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
@@ -822,7 +825,7 @@ bail:
     if ([proposedSelectionIndexes count] == 1) {
         [proposedSelectionIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
             self.selectedIndex = idx;
-            self.selectedTrack = [self.dataArray objectAtIndex:idx];
+            self.selectedTrack = [_dataArray objectAtIndex:idx];
         }];
     }else {
         self.selectedIndex = -1;
@@ -838,7 +841,7 @@ bail:
     else
         for (NSView *view in aView.subviews)[view removeFromSuperview];
     
-    IMBTrack *track = [self.dataArray objectAtIndex:row];
+    IMBTrack *track = [_dataArray objectAtIndex:row];
     NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, labelY, tableColumn.width, rowH - 2*labelY)];
     if (track) {
         if ([@"Name" isEqualToString:tableColumn.identifier] ) {

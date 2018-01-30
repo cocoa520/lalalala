@@ -27,6 +27,10 @@
 #import <malloc/malloc.h>
 #import "ZLFileTool.h"
 #import "MobileDeviceAccess.h"
+#import "IMBiPod.h"
+#import "IMBiTunesCDBRoot.h"
+#import "IMBTracklist.h"
+
 
 #pragma mark -------------------------------------Begin --- MobileDevice.framework internals
 // opaque structures
@@ -264,7 +268,7 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     NSString *_totalDataAvailable;
     NSDictionary *_dataDic;
     
-//    AMDevice *_deviceHandle;
+    AMDevice *_deviceHandle;
     
     afc_connection _afc;
     
@@ -282,7 +286,9 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     int16_t _hashingScheme;
     NSMutableArray *_childSections;
     int unusedHeaderLength;
-
+    
+    NSArray *_dataArray;
+    IMBiPod *_ipod;
 }
 
 @end
@@ -436,6 +442,43 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 
 - (void)disConnectDevice:(am_device)dev {
     _amDevice = dev;
+    
+    [_deviceHandle release];
+    _deviceHandle = nil;
+    
+    [_dataArray release];
+    _dataArray = nil;
+    
+    [_ipod release];
+    _ipod = nil;
+    
+    [_deviceName release];
+    _deviceName = nil;
+    
+    [_udid release];
+    _udid = nil;
+    
+    [_productType release];
+    _productType = nil;
+    
+    [_deviceClass release];
+    _deviceClass = nil;
+    
+    [_productVersion release];
+    _productVersion = nil;
+    
+    [_serialNumber release];
+    _serialNumber = nil;
+    
+    [_totalDiskCapacity release];
+    _totalDiskCapacity = nil;
+    
+    [_totalDataAvailable release];
+    _totalDataAvailable = nil;
+    
+    [_dataDic release];
+    _dataDic = nil;
+    
 }
 
 
@@ -455,8 +498,16 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         reader = [NSData dataWithContentsOfFile:parseFilePath];
         @try {
             /////此处解析ItunesCDB文件
-            //        [root read:iPod reader:reader currPosition:0];
-            [self readDataWithReader:reader currPosition:0];
+            _deviceHandle = [AMDevice deviceFrom:_amDevice];
+            IMBiTunesCDBRoot *databaseRoot = [[IMBiTunesCDBRoot alloc] init];
+            _ipod = [[IMBiPod alloc] initWithDevice:_deviceHandle];
+            [databaseRoot read:_ipod reader:reader currPosition:0];
+            //获取解析出来的tracks数据
+            IMBTrackListContainer *tracksContainer = (IMBTrackListContainer*)[[databaseRoot getChildSection:Tracks] getListContainer];
+            IMBTracklist *tracklist = [tracksContainer getTracklist];
+            
+            _dataArray = tracklist.trackArray;
+//            [_tableView reloadData];
         }
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
