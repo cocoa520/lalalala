@@ -11,7 +11,7 @@
 
 #import "IMBMusicDatabase.h"
 #import "IMBIDGenerator.h"
-//#import "IMBPurchasesInfo.h"
+#import "IMBPurchasesInfo.h"
 //#import "IMBRecording.h"
 //#import "IMBApplicationManager.h"
 //
@@ -49,40 +49,40 @@
     NSMutableDictionary *_recordDic;
     NSMutableDictionary *_passwordDic;
     IMBiPod *_ipod;
-    NSMutableArray *_noteArray;
-    NSMutableArray *_messageArray;
-    NSMutableArray *_calendarArray;
-    NSMutableArray *_bookmarkArray;
+//    NSMutableArray *_noteArray;
+//    NSMutableArray *_messageArray;
+//    NSMutableArray *_calendarArray;
+//    NSMutableArray *_bookmarkArray;
     NSMutableArray *_collecitonArray;
-    NSMutableArray *_phoneArray;
-    NSMutableArray *_contactArray;
-    NSMutableArray *_camerarollArray;
-    NSMutableArray *_photostreamArray;
-    NSMutableArray *_photolibraryArray;
-    NSMutableArray *_photoshareArray;
-    NSMutableArray *_photovideoArray;
-    NSMutableArray *_voicemailArray;
-    NSMutableArray *_myAlbumsArray;
-    NSMutableArray *_timelapseArray;
-    NSMutableArray *_panoramasArray;
-    NSMutableArray *_livePhotoArray;
-    NSMutableArray *_screenshotArray;
-    NSMutableArray *_photoSelfiesArray;
-    NSMutableArray *_locationArray;
-    NSMutableArray *_favoriteArray;
-    NSMutableArray *_allBooksArray;
-    NSMutableArray *_safariHistoryArray;
-    NSMutableArray *_continuousShootingArray;
-    NSMutableArray *_slowMoveArray;
-    NSMutableDictionary *_albumsDic;
-    NSMutableDictionary *_continuousShootingDic;
-    NSMutableDictionary *_shareAlbumDic;
+//    NSMutableArray *_phoneArray;
+//    NSMutableArray *_contactArray;
+//    NSMutableArray *_camerarollArray;
+//    NSMutableArray *_photostreamArray;
+//    NSMutableArray *_photolibraryArray;
+//    NSMutableArray *_photoshareArray;
+//    NSMutableArray *_photovideoArray;
+//    NSMutableArray *_voicemailArray;
+//    NSMutableArray *_myAlbumsArray;
+//    NSMutableArray *_timelapseArray;
+//    NSMutableArray *_panoramasArray;
+//    NSMutableArray *_livePhotoArray;
+//    NSMutableArray *_screenshotArray;
+//    NSMutableArray *_photoSelfiesArray;
+//    NSMutableArray *_locationArray;
+//    NSMutableArray *_favoriteArray;
+//    NSMutableArray *_allBooksArray;
+//    NSMutableArray *_safariHistoryArray;
+//    NSMutableArray *_continuousShootingArray;
+//    NSMutableArray *_slowMoveArray;
+//    NSMutableDictionary *_albumsDic;
+//    NSMutableDictionary *_continuousShootingDic;
+//    NSMutableDictionary *_shareAlbumDic;
 //    IMBiCloudClient *_iCloud;
 //    IMBNotesManager *_notesManager;
-    BOOL noteNeedReload;
-    BOOL calendarNeedReload;
-    BOOL bookmarkNeedReload;
-    BOOL contactNeedReload;
+//    BOOL noteNeedReload;
+//    BOOL calendarNeedReload;
+//    BOOL bookmarkNeedReload;
+//    BOOL contactNeedReload;
     
     BOOL _isiCloudPhoto;
     
@@ -103,33 +103,33 @@
 @property(nonatomic,retain)NSMutableDictionary *recordDic;
 @property(nonatomic,retain)NSMutableDictionary *passwordDic;
 @property(nonatomic,retain)IMBiPod *ipod;
-@property(nonatomic,retain)NSMutableArray *noteArray;
-@property(nonatomic,retain)NSMutableArray *slowMoveArray;
-@property(nonatomic,retain)NSMutableArray *messageArray;
-@property(nonatomic,retain)NSMutableArray *calendarArray;
-@property(nonatomic,retain)NSMutableArray *bookmarkArray;
-@property(nonatomic,retain)NSMutableArray *phoneArray;
-@property(nonatomic,retain)NSMutableArray *contactArray;
-@property(nonatomic,retain)NSMutableArray *timelapseArray;
-@property(nonatomic,retain)NSMutableArray *panoramasArray;
-@property(nonatomic,retain)NSMutableArray *livePhotoArray;
-@property(nonatomic,retain)NSMutableArray *screenshotArray;
-@property(nonatomic,retain)NSMutableArray *photoSelfiesArray;
-@property(nonatomic,retain)NSMutableArray *locationArray;
-@property(nonatomic,retain)NSMutableArray *favoriteArray;
-@property(nonatomic,retain)NSMutableArray *camerarollArray;
-@property(nonatomic,retain)NSMutableArray *photostreamArray;
-@property(nonatomic,retain)NSMutableArray *photolibraryArray;
-@property(nonatomic,retain)NSMutableArray *photoshareArray;
-@property(nonatomic,retain)NSMutableArray *continuousShootingArray;
-@property(nonatomic,retain)NSMutableArray *photovideoArray;
-@property(nonatomic,retain)NSMutableArray *voicemailArray;
-@property(nonatomic,retain)NSMutableArray *myAlbumsArray;
-@property(nonatomic,retain)NSMutableArray *allBooksArray;
-@property(nonatomic,retain)NSMutableArray *safariHistoryArray;
-@property(nonatomic,retain)NSMutableDictionary *albumsDic;
-@property(nonatomic,retain)NSMutableDictionary *shareAlbumDic;
-@property(nonatomic,retain)NSMutableDictionary *continuousShootingDic;
+//@property(nonatomic,retain)NSMutableArray *noteArray;
+//@property(nonatomic,retain)NSMutableArray *slowMoveArray;
+//@property(nonatomic,retain)NSMutableArray *messageArray;
+//@property(nonatomic,retain)NSMutableArray *calendarArray;
+//@property(nonatomic,retain)NSMutableArray *bookmarkArray;
+//@property(nonatomic,retain)NSMutableArray *phoneArray;
+//@property(nonatomic,retain)NSMutableArray *contactArray;
+//@property(nonatomic,retain)NSMutableArray *timelapseArray;
+//@property(nonatomic,retain)NSMutableArray *panoramasArray;
+//@property(nonatomic,retain)NSMutableArray *livePhotoArray;
+//@property(nonatomic,retain)NSMutableArray *screenshotArray;
+//@property(nonatomic,retain)NSMutableArray *photoSelfiesArray;
+//@property(nonatomic,retain)NSMutableArray *locationArray;
+//@property(nonatomic,retain)NSMutableArray *favoriteArray;
+//@property(nonatomic,retain)NSMutableArray *camerarollArray;
+//@property(nonatomic,retain)NSMutableArray *photostreamArray;
+//@property(nonatomic,retain)NSMutableArray *photolibraryArray;
+//@property(nonatomic,retain)NSMutableArray *photoshareArray;
+//@property(nonatomic,retain)NSMutableArray *continuousShootingArray;
+//@property(nonatomic,retain)NSMutableArray *photovideoArray;
+//@property(nonatomic,retain)NSMutableArray *voicemailArray;
+//@property(nonatomic,retain)NSMutableArray *myAlbumsArray;
+//@property(nonatomic,retain)NSMutableArray *allBooksArray;
+//@property(nonatomic,retain)NSMutableArray *safariHistoryArray;
+//@property(nonatomic,retain)NSMutableDictionary *albumsDic;
+//@property(nonatomic,retain)NSMutableDictionary *shareAlbumDic;
+//@property(nonatomic,retain)NSMutableDictionary *continuousShootingDic;
 //@property(nonatomic,retain)IMBiCloudClient *iCloud;
 //@property(nonatomic,retain)IMBNotesManager *notesManager;
 //@property(nonatomic,assign)BOOL noteNeedReload;
@@ -156,28 +156,28 @@
 
 //- (void)loadphotoData;
 //photo refresh
-- (void)refreshCameraRoll;
-- (void)refreshPhotoStream;
-- (void)refreshPhotoLibrary;
-- (void)refreshMyAlbum;
-- (void)refreshVideoAlbum;
-- (void)refreshPhotoShare;
-- (void)refreshTimeLapse;
-- (void)refreshPanoramas;
-- (void)refreshcontinuousShootings;
-- (void)refreshSlowMove;
-- (void)refreshLivePhoto;
-- (void)refreshPhotoSelfies;
-- (void)refreshLocation;
-- (void)refreshScreenshot;
-- (void)refreshFavorite;
+//- (void)refreshCameraRoll;
+//- (void)refreshPhotoStream;
+//- (void)refreshPhotoLibrary;
+//- (void)refreshMyAlbum;
+//- (void)refreshVideoAlbum;
+//- (void)refreshPhotoShare;
+//- (void)refreshTimeLapse;
+//- (void)refreshPanoramas;
+//- (void)refreshcontinuousShootings;
+//- (void)refreshSlowMove;
+//- (void)refreshLivePhoto;
+//- (void)refreshPhotoSelfies;
+//- (void)refreshLocation;
+//- (void)refreshScreenshot;
+//- (void)refreshFavorite;
 
 //- (void)loadiBook;
 //- (void)loadNote;
 //- (void)loadBookmark;
 //- (void)loadCalendar;
 //- (void)loadContact;
-- (void)loadMessage:(BOOL)isFirst;
+//- (void)loadMessage:(BOOL)isFirst;
 
 //- (void)loadSafariHistory:(BOOL)isFirst;
 //- (void)loadVoicemail:(BOOL)isFirst;

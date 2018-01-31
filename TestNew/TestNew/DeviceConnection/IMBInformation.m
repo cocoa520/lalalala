@@ -21,39 +21,39 @@
 //#import "RegexKitLite.h"
 //#import "IMBBookEntity.h"
 @implementation IMBInformation
-@synthesize voicemailArray = _voicemailArray;
+//@synthesize voicemailArray = _voicemailArray;
 @synthesize ipod = _ipod;
 @synthesize recordDic = _recordDic;
-@synthesize noteArray = _noteArray;
-@synthesize messageArray = _messageArray;
-@synthesize calendarArray = _calendarArray;
-@synthesize bookmarkArray = _bookmarkArray;
-@synthesize phoneArray = _phoneArray;
-@synthesize contactArray = _contactArray;
-@synthesize camerarollArray = _camerarollArray;
-@synthesize photostreamArray = _photostreamArray;
-@synthesize photolibraryArray = _photolibraryArray;
-@synthesize photoshareArray = _photoshareArray;
-@synthesize photovideoArray = _photovideoArray;
-@synthesize myAlbumsArray = _myAlbumsArray;
-@synthesize albumsDic = _albumsDic;
-@synthesize allBooksArray = _allBooksArray;
+//@synthesize noteArray = _noteArray;
+//@synthesize messageArray = _messageArray;
+//@synthesize calendarArray = _calendarArray;
+//@synthesize bookmarkArray = _bookmarkArray;
+//@synthesize phoneArray = _phoneArray;
+//@synthesize contactArray = _contactArray;
+//@synthesize camerarollArray = _camerarollArray;
+//@synthesize photostreamArray = _photostreamArray;
+//@synthesize photolibraryArray = _photolibraryArray;
+//@synthesize photoshareArray = _photoshareArray;
+//@synthesize photovideoArray = _photovideoArray;
+//@synthesize myAlbumsArray = _myAlbumsArray;
+//@synthesize albumsDic = _albumsDic;
+//@synthesize allBooksArray = _allBooksArray;
 @synthesize collecitonArray = _collecitonArray;
-@synthesize safariHistoryArray = _safariHistoryArray;
-@synthesize continuousShootingArray = _continuousShootingArray;
+//@synthesize safariHistoryArray = _safariHistoryArray;
+//@synthesize continuousShootingArray = _continuousShootingArray;
 //@synthesize iCloud = _iCloud;
 //@synthesize shareAlbumDic = _shareAlbumDic;
 @synthesize passwordDic = _passwordDic;
 //@synthesize notesManager = _notesManager;
-@synthesize timelapseArray = _timelapseArray;
-@synthesize panoramasArray = _panoramasArray;
-@synthesize livePhotoArray = _livePhotoArray;
-@synthesize screenshotArray = _screenshotArray;
-@synthesize photoSelfiesArray = _photoSelfiesArray;
-@synthesize locationArray = _locationArray;
-@synthesize favoriteArray = _favoriteArray;
-@synthesize continuousShootingDic = _continuousShootingDic;
-@synthesize slowMoveArray = _slowMoveArray;
+//@synthesize timelapseArray = _timelapseArray;
+//@synthesize panoramasArray = _panoramasArray;
+//@synthesize livePhotoArray = _livePhotoArray;
+//@synthesize screenshotArray = _screenshotArray;
+//@synthesize photoSelfiesArray = _photoSelfiesArray;
+//@synthesize locationArray = _locationArray;
+//@synthesize favoriteArray = _favoriteArray;
+//@synthesize continuousShootingDic = _continuousShootingDic;
+//@synthesize slowMoveArray = _slowMoveArray;
 //@synthesize noteNeedReload = noteNeedReload;
 //@synthesize calendarNeedReload = calendarNeedReload;
 //@synthesize bookmarkNeedReload = bookmarkNeedReload;
@@ -130,26 +130,26 @@
     dateFormatter = nil;
 }
 
-//- (void)refreshCloudMusic
-//{
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-////    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    @try {
-//        if (_purchasesInfo != nil) {
-//            [_purchasesInfo refreshPurchases];
-//        }
-//        else{
-//            _purchasesInfo = [[IMBPurchasesInfo alloc] initWithiPod:_ipod];
-//        }
-//    }
-//    @catch (NSException *exception) {
-////        [_logHandle writeInfoLog:[NSString stringWithFormat:@"error:%@",exception.description]];
-//    }
-////    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    [dateFormatter release];
-//    dateFormatter = nil;
-//}
+- (void)refreshCloudMusic
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+//    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    @try {
+        if (_purchasesInfo != nil) {
+            [_purchasesInfo refreshPurchases];
+        }
+        else{
+            _purchasesInfo = [[IMBPurchasesInfo alloc] initWithiPod:_ipod];
+        }
+    }
+    @catch (NSException *exception) {
+//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"error:%@",exception.description]];
+    }
+//    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    [dateFormatter release];
+    dateFormatter = nil;
+}
 
 - (void)saveChanges
 {
@@ -245,25 +245,25 @@
     }
 }
 
-//- (NSMutableArray *)cloudTrackArray
-//{
-//    @try {
-//        if (_cloudTrackArray != nil) {
-//            [_cloudTrackArray release];
-//            _cloudTrackArray = nil;
-//        }
-//        _cloudTrackArray = [[NSMutableArray alloc] init];
-//        if (_purchasesInfo == nil) {
-//            [self refreshCloudMusic];
-//        }
-//        
-//        [_cloudTrackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
-//        return _cloudTrackArray;
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
+- (NSMutableArray *)cloudTrackArray
+{
+    @try {
+        if (_cloudTrackArray != nil) {
+            [_cloudTrackArray release];
+            _cloudTrackArray = nil;
+        }
+        _cloudTrackArray = [[NSMutableArray alloc] init];
+        if (_purchasesInfo == nil) {
+            [self refreshCloudMusic];
+        }
+        
+        [_cloudTrackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
+        return _cloudTrackArray;
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
 
 - (NSArray*)getTrackArrayByMediaTypes:(NSArray*)mediaTypes
 {
@@ -944,35 +944,35 @@
 //    [_messageManager release],_messageManager = nil;
     [_recordDic release],_recordDic = nil;
     [_ipod release],_ipod = nil;
-    [_noteArray release],_noteArray = nil;
-    [_messageArray release],_messageArray = nil;
-    [_camerarollArray release],_camerarollArray = nil;
-    [_calendarArray release],_calendarArray = nil;
-    [_bookmarkArray release],_bookmarkArray = nil;
-    [_contactArray release],_contactArray = nil;
-    [_phoneArray release],_phoneArray = nil;
-    [_panoramasArray release],_panoramasArray = nil;
-    [_timelapseArray release],_timelapseArray = nil;
-    [_continuousShootingArray release],_continuousShootingArray = nil;
-    [_continuousShootingDic release],_continuousShootingDic = nil;
-    [_photolibraryArray release],_photolibraryArray = nil;
-    [_photostreamArray release],_photostreamArray = nil;
-    [_livePhotoArray release],_livePhotoArray = nil;
-    [_locationArray release],_locationArray = nil;
-    [_photoSelfiesArray release],_photoSelfiesArray = nil;
-    [_screenshotArray release],_screenshotArray = nil;
-    [_favoriteArray release], _favoriteArray = nil;
-    [_voicemailArray release],_voicemailArray = nil;
-    [_myAlbumsArray release],_myAlbumsArray = nil;
-    [_albumsDic release],_albumsDic = nil;
-    [_shareAlbumDic release],_shareAlbumDic = nil;
-    [_safariHistoryArray release],_safariHistoryArray = nil;
-    [_allBooksArray release],_allBooksArray = nil;
-    [_photovideoArray release], _photovideoArray = nil;
-    [_photoshareArray release], _photoshareArray = nil;
+//    [_noteArray release],_noteArray = nil;
+//    [_messageArray release],_messageArray = nil;
+//    [_camerarollArray release],_camerarollArray = nil;
+//    [_calendarArray release],_calendarArray = nil;
+//    [_bookmarkArray release],_bookmarkArray = nil;
+//    [_contactArray release],_contactArray = nil;
+//    [_phoneArray release],_phoneArray = nil;
+//    [_panoramasArray release],_panoramasArray = nil;
+//    [_timelapseArray release],_timelapseArray = nil;
+//    [_continuousShootingArray release],_continuousShootingArray = nil;
+//    [_continuousShootingDic release],_continuousShootingDic = nil;
+//    [_photolibraryArray release],_photolibraryArray = nil;
+//    [_photostreamArray release],_photostreamArray = nil;
+//    [_livePhotoArray release],_livePhotoArray = nil;
+//    [_locationArray release],_locationArray = nil;
+//    [_photoSelfiesArray release],_photoSelfiesArray = nil;
+//    [_screenshotArray release],_screenshotArray = nil;
+//    [_favoriteArray release], _favoriteArray = nil;
+//    [_voicemailArray release],_voicemailArray = nil;
+//    [_myAlbumsArray release],_myAlbumsArray = nil;
+//    [_albumsDic release],_albumsDic = nil;
+//    [_shareAlbumDic release],_shareAlbumDic = nil;
+//    [_safariHistoryArray release],_safariHistoryArray = nil;
+//    [_allBooksArray release],_allBooksArray = nil;
+//    [_photovideoArray release], _photovideoArray = nil;
+//    [_photoshareArray release], _photoshareArray = nil;
     [_passwordDic release],_passwordDic = nil;
 //    [_notesManager release],_notesManager = nil;
-    [_slowMoveArray release],_slowMoveArray = nil;
+//    [_slowMoveArray release],_slowMoveArray = nil;
     [_mediaDatabase release],_mediaDatabase = nil;
     [_artworkDB release],_artworkDB = nil;
     [_purchasesInfo release],_purchasesInfo = nil;

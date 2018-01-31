@@ -29,6 +29,9 @@
 		B90D11EA20200DB6002D9F9B /* NSString+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D11E920200DB6002D9F9B /* NSString+Compare.m */; };
 		B90D11ED20200E13002D9F9B /* IMBAppSyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D11EC20200E13002D9F9B /* IMBAppSyncModel.m */; };
 		B90D11F120200E56002D9F9B /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D11F020200E56002D9F9B /* XMLReader.m */; };
+		B92B07D4202153CB002D5E1B /* IMBPurchasesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B92B07CF202153CB002D5E1B /* IMBPurchasesInfo.m */; };
+		B92B07D5202153CB002D5E1B /* IMBPurchasesPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = B92B07D1202153CB002D5E1B /* IMBPurchasesPlist.m */; };
+		B92B07D6202153CB002D5E1B /* IMBPurchasesSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = B92B07D3202153CB002D5E1B /* IMBPurchasesSqlite.m */; };
 		B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4020034D74003948D7 /* AppDelegate.m */; };
 		B92BFD4420034D74003948D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4320034D74003948D7 /* main.m */; };
 		B92BFD4720034D74003948D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4620034D74003948D7 /* ViewController.m */; };
@@ -193,6 +196,12 @@
 		B90D11EC20200E13002D9F9B /* IMBAppSyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppSyncModel.m; sourceTree = "<group>"; };
 		B90D11EF20200E56002D9F9B /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		B90D11F020200E56002D9F9B /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		B92B07CE202153CB002D5E1B /* IMBPurchasesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesInfo.h; sourceTree = "<group>"; };
+		B92B07CF202153CB002D5E1B /* IMBPurchasesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesInfo.m; sourceTree = "<group>"; };
+		B92B07D0202153CB002D5E1B /* IMBPurchasesPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesPlist.h; sourceTree = "<group>"; };
+		B92B07D1202153CB002D5E1B /* IMBPurchasesPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesPlist.m; sourceTree = "<group>"; };
+		B92B07D2202153CB002D5E1B /* IMBPurchasesSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchasesSqlite.h; sourceTree = "<group>"; };
+		B92B07D3202153CB002D5E1B /* IMBPurchasesSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchasesSqlite.m; sourceTree = "<group>"; };
 		B92BFD3C20034D74003948D7 /* TestNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92BFD3F20034D74003948D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B92BFD4020034D74003948D7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -456,6 +465,19 @@
 			path = XMLReader;
 			sourceTree = "<group>";
 		};
+		B92B07CD202153CB002D5E1B /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				B92B07CE202153CB002D5E1B /* IMBPurchasesInfo.h */,
+				B92B07CF202153CB002D5E1B /* IMBPurchasesInfo.m */,
+				B92B07D0202153CB002D5E1B /* IMBPurchasesPlist.h */,
+				B92B07D1202153CB002D5E1B /* IMBPurchasesPlist.m */,
+				B92B07D2202153CB002D5E1B /* IMBPurchasesSqlite.h */,
+				B92B07D3202153CB002D5E1B /* IMBPurchasesSqlite.m */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
 		B92BFD3320034D74003948D7 = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +601,7 @@
 				B90D11E3202002EE002D9F9B /* IMBArtworkUnknownListContainer.m */,
 				B90D11E520200BF1002D9F9B /* IMBATHSync.h */,
 				B90D11E620200BF1002D9F9B /* IMBATHSync.m */,
+				B92B07CD202153CB002D5E1B /* Purchases */,
 				B90D11EE20200E56002D9F9B /* XMLReader */,
 				B90D11CE2020013F002D9F9B /* PlayCounts */,
 				B9348B0F201F0D2000A8CEC3 /* Fmdb */,
@@ -945,6 +968,7 @@
 				B96F354B200CAD720026FC98 /* IMBPlaylistList.m in Sources */,
 				B90D11B1201FFC16002D9F9B /* IMBInformation.m in Sources */,
 				B9E127312004512C008F6854 /* NSData+Category.m in Sources */,
+				B92B07D4202153CB002D5E1B /* IMBPurchasesInfo.m in Sources */,
 				B90D11DF2020013F002D9F9B /* IMBIOS5Sqlite.m in Sources */,
 				FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */,
 				B90D11BB201FFE3C002D9F9B /* IMBImageListContainer.m in Sources */,
@@ -974,6 +998,7 @@
 				B90D11EA20200DB6002D9F9B /* NSString+Compare.m in Sources */,
 				B96F353C200CAD720026FC98 /* IMBSqliteTables_Nano5G.m in Sources */,
 				B96F3557200CAD720026FC98 /* IMBMenuIndexMHOD.m in Sources */,
+				B92B07D6202153CB002D5E1B /* IMBPurchasesSqlite.m in Sources */,
 				B96F3548200CAD720026FC98 /* IMBListContainerHeader.m in Sources */,
 				B96F354F200CAD720026FC98 /* IMBTrack.m in Sources */,
 				B90D11CA201FFEC5002D9F9B /* IMBSupportedArtworkFormat.m in Sources */,
@@ -995,6 +1020,7 @@
 				B96F3577200CAE690026FC98 /* StringHelper.m in Sources */,
 				B96F355C200CAD720026FC98 /* IMBUnknownMHOD.m in Sources */,
 				B9348B58201F11A200A8CEC3 /* IMBAMDeviceInfo.m in Sources */,
+				B92B07D5202153CB002D5E1B /* IMBPurchasesPlist.m in Sources */,
 				B96F3538200CAD720026FC98 /* IMBSqliteTables.m in Sources */,
 				B96F3554200CAD720026FC98 /* IMBUnknownListContainer.m in Sources */,
 				B90D11E12020013F002D9F9B /* IMBPCSqliteTables.m in Sources */,
