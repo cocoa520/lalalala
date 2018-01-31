@@ -766,6 +766,8 @@ enum device_link_file_status_t {
 // 取消锁定的同步操作
 - (void)unLock;
 
+- (id)initWithPath:(NSString*)path reference:(afc_file_ref)ref afc:(afc_connection)afc;
+
 @end
 
 /// This object manages a single file server connection to the connected device.

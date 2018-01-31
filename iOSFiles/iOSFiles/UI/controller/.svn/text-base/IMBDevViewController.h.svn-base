@@ -13,7 +13,6 @@
 {
 @private
     NSMutableArray *_devices;
-    
 }
 
 @property(retain, nonatomic)NSMutableArray *devices;

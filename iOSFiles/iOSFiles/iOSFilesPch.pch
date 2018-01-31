@@ -12,6 +12,7 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#ifdef __OBJC__
 
 #pragma mark -- 引入头文件
 
@@ -32,5 +33,9 @@
 #define IMBRgbAColor(r,g,b,A) [NSColor colorWithDeviceRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(A)]
 #define IMBRgbColor(r,g,b) IMBRgbAColor(r,g,b,1)
 #define IMBGrayColor(n) IMBRgbAColor(n,n,n,1)
+
+
+#endif
+
 
 #endif /* iOSFilesPch_pch */

@@ -7,12 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IMBSelecedDeviceBtn.h"
 
-
-@interface IMBDeviceViewController : NSViewController
+@interface IMBDeviceViewController : NSViewController<NSPopoverDelegate>
 {
-
-    IBOutlet NSBox *_deviceBox;
+    IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
+    NSPopover *_devPopover;
+//    IBOutlet NSBox *_deviceBox;
 }
 
 @end

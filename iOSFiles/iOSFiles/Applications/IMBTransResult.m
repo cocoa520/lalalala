@@ -81,10 +81,10 @@
     [super dealloc];
 }
 
-//- (void)recordMediaResult:(NSString*)fileName resultStatus:(TransResultStateEnum)resultStatus messageID:(NSString *)messageID {
+- (void)recordMediaResult:(NSString*)fileName resultStatus:(TransResultStateEnum)resultStatus messageID:(NSString *)messageID {
 //    NSString *reason = CustomLocalizedString(messageID, nil);
 //    [self recordMediaReult:fileName resultStatus:resultStatus messageID:messageID reason:reason];
-//}
+}
 
 - (void)recordMediaReult:(NSString*)fileName resultStatus:(TransResultStateEnum)resultStatus messageID:(NSString *)messageID reason:(NSString *)reason {
     IMBTransResultEntry *resultInfo = nil;

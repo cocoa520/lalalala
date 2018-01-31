@@ -9,7 +9,7 @@
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
 
-//#import "IMBPlayCounts.h"
+#import "IMBPlayCounts.h"
 //#import "IMBISyncPlaylistToCDB.h"
 #import "IMBDeviceInfo.h"
 #import "NSString+Category.h"
@@ -20,7 +20,10 @@
 #import "IMBBookCollection.h"
 //#import "RegexKitLite.h"
 #import "IMBBookEntity.h"
+
+
 @implementation IMBInformation
+
 //@synthesize voicemailArray = _voicemailArray;
 @synthesize ipod = _ipod;
 @synthesize recordDic = _recordDic;
@@ -28,8 +31,8 @@
 //@synthesize messageArray = _messageArray;
 //@synthesize calendarArray = _calendarArray;
 //@synthesize bookmarkArray = _bookmarkArray;
-@synthesize phoneArray = _phoneArray;
-@synthesize contactArray = _contactArray;
+//@synthesize phoneArray = _phoneArray;
+//@synthesize contactArray = _contactArray;
 @synthesize camerarollArray = _camerarollArray;
 @synthesize photostreamArray = _photostreamArray;
 @synthesize photolibraryArray = _photolibraryArray;
@@ -57,12 +60,12 @@
 //@synthesize noteNeedReload = noteNeedReload;
 //@synthesize calendarNeedReload = calendarNeedReload;
 //@synthesize bookmarkNeedReload = bookmarkNeedReload;
-@synthesize contactNeedReload = contactNeedReload;
-//@synthesize mediaDatabase = _mediaDatabase;
-//@synthesize CDBCorrupted = _CDBCorrupted;
-//@synthesize artworkDB = _artworkDB;
-//@synthesize idGenerator = _idGenerator;
-//@synthesize purchasesInfo = _purchasesInfo;
+//@synthesize contactNeedReload = contactNeedReload;
+@synthesize mediaDatabase = _mediaDatabase;
+@synthesize CDBCorrupted = _CDBCorrupted;
+@synthesize artworkDB = _artworkDB;
+@synthesize idGenerator = _idGenerator;
+@synthesize purchasesInfo = _purchasesInfo;
 //@synthesize messageManager = _messageManager;
 //@synthesize safariManager = _safariManager;
 //@synthesize voicemailManager = _voicemailManager;
@@ -79,73 +82,73 @@
 }
 
 #pragma mark - media数据
-//- (void)refreshMedia
-//{
-//    [_logHandle writeInfoLog:@"refresh media"];
-//    if (_mediaDatabase != nil) {
-//        [_mediaDatabase release];
-//        _mediaDatabase = nil;
-//    }
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-//    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse music database strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    _mediaDatabase = [[IMBMusicDatabase alloc] initWithIPod:_ipod];
-//    @try {
-//        [_mediaDatabase parse];
-//    }
-//    @catch (NSException *exception) {
-//        if ([@"EX_InvalidiPodDriver_DB_Not_Found" isEqualToString:exception.name]) {
-//            [_logHandle writeInfoLog:@"your device database is corrupted (CDB)"];
-//            _CDBCorrupted = YES;
-//            return;
-//        }
-//    }
-//    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse music database end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    
-//    if (_artworkDB != nil) {
-//        [_artworkDB release];
-//        _artworkDB = nil;
-//    }
-//    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork database strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    _artworkDB = [[IMBArtworkDB alloc] initWithIPod:_ipod];
-//    @try {
-//        [_artworkDB parse];
-//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork database end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    }
-//    @catch (NSException *exception) {
-//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork failed, reason is %@", exception.reason]];
-//    }
-//    @finally {
-//        _idGenerator = [[IMBIDGenerator alloc]initWithIPod:_ipod];
-//    }
-//    
-//    if (_mediaDatabase != nil) {
-//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"merge playcount strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//        IMBPlayCounts *playCounts = [[IMBPlayCounts alloc] initWithMusicDB:_mediaDatabase];
-//        [playCounts mergeChanges];
-//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"merge playcount end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    }
-//    
-//    [dateFormatter release];
-//    dateFormatter = nil;
-//}
+- (void)refreshMedia
+{
+    [_logHandle writeInfoLog:@"refresh media"];
+    if (_mediaDatabase != nil) {
+        [_mediaDatabase release];
+        _mediaDatabase = nil;
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse music database strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    _mediaDatabase = [[IMBMusicDatabase alloc] initWithIPod:_ipod];
+    @try {
+        [_mediaDatabase parse];
+    }
+    @catch (NSException *exception) {
+        if ([@"EX_InvalidiPodDriver_DB_Not_Found" isEqualToString:exception.name]) {
+            [_logHandle writeInfoLog:@"your device database is corrupted (CDB)"];
+            _CDBCorrupted = YES;
+            return;
+        }
+    }
+    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse music database end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    
+    if (_artworkDB != nil) {
+        [_artworkDB release];
+        _artworkDB = nil;
+    }
+    [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork database strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    _artworkDB = [[IMBArtworkDB alloc] initWithIPod:_ipod];
+    @try {
+        [_artworkDB parse];
+        [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork database end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    }
+    @catch (NSException *exception) {
+        [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse artwork failed, reason is %@", exception.reason]];
+    }
+    @finally {
+        _idGenerator = [[IMBIDGenerator alloc]initWithIPod:_ipod];
+    }
+    
+    if (_mediaDatabase != nil) {
+        [_logHandle writeInfoLog:[NSString stringWithFormat:@"merge playcount strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+        IMBPlayCounts *playCounts = [[IMBPlayCounts alloc] initWithMusicDB:_mediaDatabase];
+        [playCounts mergeChanges];
+        [_logHandle writeInfoLog:[NSString stringWithFormat:@"merge playcount end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+    }
+    
+    [dateFormatter release];
+    dateFormatter = nil;
+}
 
 - (void)refreshCloudMusic
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
     [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//    @try {
-//        if (_purchasesInfo != nil) {
-//            [_purchasesInfo refreshPurchases];
-//        }
-//        else{
-//            _purchasesInfo = [[IMBPurchasesInfo alloc] initWithiPod:_ipod];
-//        }
-//    }
-//    @catch (NSException *exception) {
-//        [_logHandle writeInfoLog:[NSString stringWithFormat:@"error:%@",exception.description]];
-//    }
+    @try {
+        if (_purchasesInfo != nil) {
+            [_purchasesInfo refreshPurchases];
+        }
+        else{
+            _purchasesInfo = [[IMBPurchasesInfo alloc] initWithiPod:_ipod];
+        }
+    }
+    @catch (NSException *exception) {
+        [_logHandle writeInfoLog:[NSString stringWithFormat:@"error:%@",exception.description]];
+    }
     [_logHandle writeInfoLog:[NSString stringWithFormat:@"parse Purchases end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
     [dateFormatter release];
     dateFormatter = nil;
@@ -157,17 +160,17 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"music database save strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//        if ([_mediaDatabase isDirty] == YES) {
-//            [_ipod startSync];
-//            [_mediaDatabase save];
-//            [_ipod.session clear];
-//        }
+        if ([_mediaDatabase isDirty] == YES) {
+            [_ipod startSync];
+            [_mediaDatabase save];
+            [_ipod.session clear];
+        }
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"music database save end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"artwork save strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-//        if ([_artworkDB isDirty] == YES) {
-//            [_ipod startSync];
-//            [_artworkDB save];
-//        }
+        if ([_artworkDB isDirty] == YES) {
+            [_ipod startSync];
+            [_artworkDB save];
+        }
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"artwork save end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
         [dateFormatter release];
         dateFormatter = nil;
@@ -177,93 +180,93 @@
     }
 }
 
-//- (IMBPlaylistList*)playlists
-//{
-//    @try {
-//        if (_mediaDatabase == nil) {
-//            [self refreshMedia];
-//        }
-//        
-//        return [_mediaDatabase playlistList];
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
-//
-//- (IMBTracklist*)tracks
-//{
-//    @try {
-//        if (_mediaDatabase == nil) {
-//            [self refreshMedia];
-//        }
-//        return [_mediaDatabase tracklist];
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
+- (IMBPlaylistList*)playlists
+{
+    @try {
+        if (_mediaDatabase == nil) {
+            [self refreshMedia];
+        }
+        
+        return [_mediaDatabase playlistList];
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
 
-//- (NSArray*)playlistArray
-//{
-//    @try {
-//        if (_playlistArray != nil) {
-//            [_playlistArray release];
-//            _playlistArray = nil;
-//        }
-//        _playlistArray = [[NSMutableArray alloc] init];
-//        if (_mediaDatabase == nil) {
-//            [self refreshMedia];
-//        }
-//        [_playlistArray addObjectsFromArray:_mediaDatabase.playlistList.playlistArray];
-//        return _playlistArray;
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
-//
-//- (NSArray*)trackArray
-//{
-//    @try {
-//        if (_trackArray != nil) {
-//            [_trackArray release];
-//            _trackArray = nil;
-//        }
-//        _trackArray = [[NSMutableArray alloc] init];
-//        if (_mediaDatabase == nil) {
-//            [self refreshMedia];
-//        }
-//        [_trackArray addObjectsFromArray:_mediaDatabase.tracklist.trackArray] ;
-////        if (_purchasesInfo != nil) {
-////            [trackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
-////        }
-//        return _trackArray;
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
+- (IMBTracklist*)tracks
+{
+    @try {
+        if (_mediaDatabase == nil) {
+            [self refreshMedia];
+        }
+        return [_mediaDatabase tracklist];
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
 
-//- (NSMutableArray *)cloudTrackArray
-//{
-//    @try {
-//        if (_cloudTrackArray != nil) {
-//            [_cloudTrackArray release];
-//            _cloudTrackArray = nil;
+- (NSArray*)playlistArray
+{
+    @try {
+        if (_playlistArray != nil) {
+            [_playlistArray release];
+            _playlistArray = nil;
+        }
+        _playlistArray = [[NSMutableArray alloc] init];
+        if (_mediaDatabase == nil) {
+            [self refreshMedia];
+        }
+        [_playlistArray addObjectsFromArray:_mediaDatabase.playlistList.playlistArray];
+        return _playlistArray;
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
+//
+- (NSArray*)trackArray
+{
+    @try {
+        if (_trackArray != nil) {
+            [_trackArray release];
+            _trackArray = nil;
+        }
+        _trackArray = [[NSMutableArray alloc] init];
+        if (_mediaDatabase == nil) {
+            [self refreshMedia];
+        }
+        [_trackArray addObjectsFromArray:_mediaDatabase.tracklist.trackArray] ;
+//        if (_purchasesInfo != nil) {
+//            [trackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
 //        }
-//        _cloudTrackArray = [[NSMutableArray alloc] init];
-//        if (_purchasesInfo == nil) {
-//            [self refreshCloudMusic];
-//        }
-//        
-//        [_cloudTrackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
-//        return _cloudTrackArray;
-//    }
-//    @catch (NSException *exception) {
-//        return nil;
-//    }
-//}
+        return _trackArray;
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
+
+- (NSMutableArray *)cloudTrackArray
+{
+    @try {
+        if (_cloudTrackArray != nil) {
+            [_cloudTrackArray release];
+            _cloudTrackArray = nil;
+        }
+        _cloudTrackArray = [[NSMutableArray alloc] init];
+        if (_purchasesInfo == nil) {
+            [self refreshCloudMusic];
+        }
+        
+        [_cloudTrackArray addObjectsFromArray:_purchasesInfo.purchasesTracks];
+        return _cloudTrackArray;
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+}
 
 - (NSArray*)getTrackArrayByMediaTypes:(NSArray*)mediaTypes
 {
@@ -295,48 +298,48 @@
     return nil;
 }
 
-//- (NSMutableArray *)getPurchaseRingtong
-//{
-//    // /Purchases/Ringtones.plist
-//    NSMutableArray *trackArray = [NSMutableArray array];
-//    NSString *destinationPath = [[TempHelper getAppTempPath] stringByAppendingPathComponent:@"Ringtones.plist"];
-//    NSString *sourcePath = @"/Purchases/Ringtones.plist";
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    if ([fileManager fileExistsAtPath:destinationPath]) {
-//        
-//        [fileManager removeItemAtPath:destinationPath error:nil];
-//    }
-//    if ([_ipod.fileSystem fileExistsAtPath:sourcePath]) {
-//        BOOL success = [_ipod.fileSystem copyRemoteFile:sourcePath toLocalFile:destinationPath];
-//        if (success) {
-//            //读取plist文件
-//            NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:destinationPath];
-//            NSDictionary *ringtongDic = [dic objectForKey:@"Ringtones"];
-//            [ringtongDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//                NSDictionary *objectDic = (NSDictionary *)obj;
-//                IMBTrack *track = [[IMBTrack alloc] init];
-//                track.album = [objectDic objectForKey:@"Album"];
-//                track.artist = [objectDic objectForKey:@"Artist"];
-//                track.genre = [objectDic objectForKey:@"Genre"];
-//                track.mediaType = Category_Ringtone;
-//                track.title = [objectDic objectForKey:@"Name"];
-//                track.length = [[objectDic objectForKey:@"Total Time"] intValue];
-//                track.isPurchase = [[objectDic objectForKey:@"Purchased"] boolValue];
-//                track.isprotected = [[objectDic objectForKey:@"Protected Content"] boolValue];
-//                track.dbID = [[objectDic objectForKey:@"PID"] longLongValue];
-//                
-//                track.filePath = key;
-//                if ([_ipod.fileSystem fileExistsAtPath:[@"/Purchases" stringByAppendingPathComponent:key]]) {
-//                    track.fileIsExist = YES;
-//                }
-//                [trackArray addObject:track];
-//                [track release];
-//                
-//            }];
-//        }
-//    }
-//    return trackArray;
-//}
+- (NSMutableArray *)getPurchaseRingtong
+{
+    // /Purchases/Ringtones.plist
+    NSMutableArray *trackArray = [NSMutableArray array];
+    NSString *destinationPath = [[TempHelper getAppTempPath] stringByAppendingPathComponent:@"Ringtones.plist"];
+    NSString *sourcePath = @"/Purchases/Ringtones.plist";
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:destinationPath]) {
+        
+        [fileManager removeItemAtPath:destinationPath error:nil];
+    }
+    if ([_ipod.fileSystem fileExistsAtPath:sourcePath]) {
+        BOOL success = [_ipod.fileSystem copyRemoteFile:sourcePath toLocalFile:destinationPath];
+        if (success) {
+            //读取plist文件
+            NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:destinationPath];
+            NSDictionary *ringtongDic = [dic objectForKey:@"Ringtones"];
+            [ringtongDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                NSDictionary *objectDic = (NSDictionary *)obj;
+                IMBTrack *track = [[IMBTrack alloc] init];
+                track.album = [objectDic objectForKey:@"Album"];
+                track.artist = [objectDic objectForKey:@"Artist"];
+                track.genre = [objectDic objectForKey:@"Genre"];
+                track.mediaType = Category_Ringtone;
+                track.title = [objectDic objectForKey:@"Name"];
+                track.length = [[objectDic objectForKey:@"Total Time"] intValue];
+                track.isPurchase = [[objectDic objectForKey:@"Purchased"] boolValue];
+                track.isprotected = [[objectDic objectForKey:@"Protected Content"] boolValue];
+                track.dbID = [[objectDic objectForKey:@"PID"] longLongValue];
+                
+                track.filePath = key;
+                if ([_ipod.fileSystem fileExistsAtPath:[@"/Purchases" stringByAppendingPathComponent:key]]) {
+                    track.fileIsExist = YES;
+                }
+                [trackArray addObject:track];
+                [track release];
+                
+            }];
+        }
+    }
+    return trackArray;
+}
 
 #pragma mark - photo数据
 - (void)loadphotoData
@@ -780,7 +783,7 @@
 //}
 //
 #pragma mark - app数据
-- (IMBApplicationManager*) applicationManager
+- (IMBApplicationManager*)applicationManager
 {
     if (_appManager != nil) {
         return _appManager;
@@ -944,13 +947,13 @@
 //    [_messageManager release],_messageManager = nil;
     [_recordDic release],_recordDic = nil;
     [_ipod release],_ipod = nil;
-    [_noteArray release],_noteArray = nil;
-    [_messageArray release],_messageArray = nil;
+//    [_noteArray release],_noteArray = nil;
+//    [_messageArray release],_messageArray = nil;
     [_camerarollArray release],_camerarollArray = nil;
-    [_calendarArray release],_calendarArray = nil;
-    [_bookmarkArray release],_bookmarkArray = nil;
-    [_contactArray release],_contactArray = nil;
-    [_phoneArray release],_phoneArray = nil;
+//    [_calendarArray release],_calendarArray = nil;
+//    [_bookmarkArray release],_bookmarkArray = nil;
+//    [_contactArray release],_contactArray = nil;
+//    [_phoneArray release],_phoneArray = nil;
     [_panoramasArray release],_panoramasArray = nil;
     [_timelapseArray release],_timelapseArray = nil;
     [_continuousShootingArray release],_continuousShootingArray = nil;
@@ -962,21 +965,21 @@
     [_photoSelfiesArray release],_photoSelfiesArray = nil;
     [_screenshotArray release],_screenshotArray = nil;
     [_favoriteArray release], _favoriteArray = nil;
-    [_voicemailArray release],_voicemailArray = nil;
+//    [_voicemailArray release],_voicemailArray = nil;
     [_myAlbumsArray release],_myAlbumsArray = nil;
     [_albumsDic release],_albumsDic = nil;
     [_shareAlbumDic release],_shareAlbumDic = nil;
-    [_safariHistoryArray release],_safariHistoryArray = nil;
+//    [_safariHistoryArray release],_safariHistoryArray = nil;
     [_allBooksArray release],_allBooksArray = nil;
     [_photovideoArray release], _photovideoArray = nil;
     [_photoshareArray release], _photoshareArray = nil;
     [_passwordDic release],_passwordDic = nil;
 //    [_notesManager release],_notesManager = nil;
     [_slowMoveArray release],_slowMoveArray = nil;
-//    [_mediaDatabase release],_mediaDatabase = nil;
-//    [_artworkDB release],_artworkDB = nil;
-//    [_purchasesInfo release],_purchasesInfo = nil;
-//    [_idGenerator release],_idGenerator = nil;
+    [_mediaDatabase release],_mediaDatabase = nil;
+    [_artworkDB release],_artworkDB = nil;
+    [_purchasesInfo release],_purchasesInfo = nil;
+    [_idGenerator release],_idGenerator = nil;
 //    [_recording release],_recording = nil;
     [_collecitonArray release],_collecitonArray = nil;
 //    [_voicemailManager release],_voicemailManager = nil;

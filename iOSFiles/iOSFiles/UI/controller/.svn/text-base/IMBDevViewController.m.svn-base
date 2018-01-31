@@ -75,8 +75,8 @@ CGFloat const labelY = 10.0f;
 }
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
     if (_devices.count) {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+        IMBBaseInfo *selectBaseInfo = [_devices objectAtIndex:row];
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNotiWithParams object:selectBaseInfo];
         NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
         [queue addOperationWithBlock:^{
             IMBFLog(@"%@",[NSThread currentThread]);

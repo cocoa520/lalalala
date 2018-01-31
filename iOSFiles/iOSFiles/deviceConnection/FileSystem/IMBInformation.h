@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "IMBiPod.h"
 
-//#import "IMBMusicDatabase.h"
-//#import "IMBIDGenerator.h"
-//#import "IMBPurchasesInfo.h"
+#import "IMBMusicDatabase.h"
+#import "IMBIDGenerator.h"
+#import "IMBPurchasesInfo.h"
 //#import "IMBRecording.h"
 #import "IMBApplicationManager.h"
 
@@ -27,15 +27,17 @@
 //#import "IMBVoicemailManager.h"
 #import "IMBPhotoManager.h"
 //#import "IMBiCloudClient.h"
+
+
 @interface IMBInformation : NSObject
 {
     // 纪录日志的句柄
     IMBLogManager *_logHandle;
     //media信息句柄
-//    IMBMusicDatabase *_mediaDatabase;
-//    IMBArtworkDB *_artworkDB;
-//    IMBIDGenerator *_idGenerator;
-//    IMBPurchasesInfo *_purchasesInfo;
+    IMBMusicDatabase *_mediaDatabase;
+    IMBArtworkDB *_artworkDB;
+    IMBIDGenerator *_idGenerator;
+    IMBPurchasesInfo *_purchasesInfo;
     BOOL _CDBCorrupted;
     
     //voiceMemo recording
@@ -49,19 +51,19 @@
     NSMutableDictionary *_recordDic;
     NSMutableDictionary *_passwordDic;
     IMBiPod *_ipod;
-    NSMutableArray *_noteArray;
-    NSMutableArray *_messageArray;
-    NSMutableArray *_calendarArray;
-    NSMutableArray *_bookmarkArray;
+//    NSMutableArray *_noteArray;
+//    NSMutableArray *_messageArray;
+//    NSMutableArray *_calendarArray;
+//    NSMutableArray *_bookmarkArray;
     NSMutableArray *_collecitonArray;
-    NSMutableArray *_phoneArray;
-    NSMutableArray *_contactArray;
+//    NSMutableArray *_phoneArray;
+//    NSMutableArray *_contactArray;
     NSMutableArray *_camerarollArray;
     NSMutableArray *_photostreamArray;
     NSMutableArray *_photolibraryArray;
     NSMutableArray *_photoshareArray;
     NSMutableArray *_photovideoArray;
-    NSMutableArray *_voicemailArray;
+//    NSMutableArray *_voicemailArray;
     NSMutableArray *_myAlbumsArray;
     NSMutableArray *_timelapseArray;
     NSMutableArray *_panoramasArray;
@@ -71,7 +73,7 @@
     NSMutableArray *_locationArray;
     NSMutableArray *_favoriteArray;
     NSMutableArray *_allBooksArray;
-    NSMutableArray *_safariHistoryArray;
+//    NSMutableArray *_safariHistoryArray;
     NSMutableArray *_continuousShootingArray;
     NSMutableArray *_slowMoveArray;
     NSMutableDictionary *_albumsDic;
@@ -79,10 +81,10 @@
     NSMutableDictionary *_shareAlbumDic;
 //    IMBiCloudClient *_iCloud;
 //    IMBNotesManager *_notesManager;
-    BOOL noteNeedReload;
-    BOOL calendarNeedReload;
-    BOOL bookmarkNeedReload;
-    BOOL contactNeedReload;
+//    BOOL noteNeedReload;
+//    BOOL calendarNeedReload;
+//    BOOL bookmarkNeedReload;
+//    BOOL contactNeedReload;
     
     BOOL _isiCloudPhoto;
     
@@ -91,11 +93,11 @@
     NSMutableArray *_trackArray;
     NSMutableArray *_cloudTrackArray;
 }
-//@property (nonatomic, readonly) IMBMusicDatabase *mediaDatabase;
-//@property (nonatomic, readonly) IMBArtworkDB *artworkDB;
-//@property (nonatomic, readonly) IMBIDGenerator *idGenerator;
-//@property (nonatomic, readonly) IMBPurchasesInfo *purchasesInfo;
-//@property (nonatomic, assign) BOOL CDBCorrupted;
+@property (nonatomic, readonly) IMBMusicDatabase *mediaDatabase;
+@property (nonatomic, readonly) IMBArtworkDB *artworkDB;
+@property (nonatomic, readonly) IMBIDGenerator *idGenerator;
+@property (nonatomic, readonly) IMBPurchasesInfo *purchasesInfo;
+@property (nonatomic, assign) BOOL CDBCorrupted;
 //@property(nonatomic,retain) IMBMessagesManager *messageManager;
 //@property(nonatomic,retain) IMBSafariHistoryManager *safariManager;
 //@property(nonatomic,retain) IMBVoicemailManager *voicemailManager;
@@ -108,8 +110,8 @@
 //@property(nonatomic,retain)NSMutableArray *messageArray;
 //@property(nonatomic,retain)NSMutableArray *calendarArray;
 //@property(nonatomic,retain)NSMutableArray *bookmarkArray;
-@property(nonatomic,retain)NSMutableArray *phoneArray;
-@property(nonatomic,retain)NSMutableArray *contactArray;
+//@property(nonatomic,retain)NSMutableArray *phoneArray;
+//@property(nonatomic,retain)NSMutableArray *contactArray;
 @property(nonatomic,retain)NSMutableArray *timelapseArray;
 @property(nonatomic,retain)NSMutableArray *panoramasArray;
 @property(nonatomic,retain)NSMutableArray *livePhotoArray;
@@ -135,17 +137,19 @@
 //@property(nonatomic,assign)BOOL noteNeedReload;
 //@property(nonatomic,assign)BOOL calendarNeedReload;
 //@property(nonatomic,assign)BOOL bookmarkNeedReload;
-@property(nonatomic,assign)BOOL contactNeedReload;
+//@property(nonatomic,assign)BOOL contactNeedReload;
 @property(nonatomic,assign)BOOL isiCloudPhoto;
 @property(nonatomic,retain) NSMutableArray *collecitonArray;
+
+
 - (id)initWithiPod:(IMBiPod *)ipod;
 
 #pragma mark - media数据
 - (void)refreshMedia;
 - (void)refreshCloudMusic;
 - (void)saveChanges;
-//- (IMBPlaylistList*)playlists;
-//- (IMBTracklist*)tracks;
+- (IMBPlaylistList*)playlists;
+- (IMBTracklist*)tracks;
 - (NSArray*)getTrackArrayByMediaTypes:(NSArray*)mediaTypes;
 - (NSArray*)playlistArray;
 - (NSArray*)trackArray;
@@ -155,6 +159,7 @@
 - (IMBApplicationManager*) applicationManager;
 
 - (void)loadphotoData;
+
 //photo refresh
 - (void)refreshCameraRoll;
 - (void)refreshPhotoStream;
@@ -172,12 +177,14 @@
 - (void)refreshScreenshot;
 - (void)refreshFavorite;
 
+
 - (void)loadiBook;
 //- (void)loadNote;
 //- (void)loadBookmark;
 //- (void)loadCalendar;
 //- (void)loadContact;
-- (void)loadMessage:(BOOL)isFirst;
+//- (void)loadMessage:(BOOL)isFirst;
+
 
 //- (void)loadSafariHistory:(BOOL)isFirst;
 //- (void)loadVoicemail:(BOOL)isFirst;

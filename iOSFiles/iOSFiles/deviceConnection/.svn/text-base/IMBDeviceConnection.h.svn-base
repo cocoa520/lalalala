@@ -89,7 +89,7 @@ typedef enum DeviceConnectMode {
 @property(nonatomic, copy)void(^IMBDeviceConnected)(void);
 @property(nonatomic, copy)void(^IMBDeviceDisconnected)(NSString *serialNum);
 @property(nonatomic, copy)void(^IMBDeviceNeededPassword)(am_device device);
-@property(nonatomic, copy)void(^IMBDeviceConnectedCompletion)(IMBiPod *iPod);
+@property(nonatomic, copy)void(^IMBDeviceConnectedCompletion)(IMBBaseInfo *baseInfo);
 
 
 + (instancetype)singleton;

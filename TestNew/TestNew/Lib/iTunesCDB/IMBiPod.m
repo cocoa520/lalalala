@@ -38,8 +38,8 @@
 //        _logHandle = [IMBLogManager singleton];
         if ([device isKindOfClass:[AMDevice class]] == TRUE) {
             _deviceHandle = [device retain];
-//            _deviceInfo = [[IMBAMDeviceInfo alloc] initWithDevice:_deviceHandle];
-//            _fileSystem = [[IMBAMFileSystem alloc] initWithDevice:_deviceHandle];
+            _deviceInfo = [[IMBAMDeviceInfo alloc] initWithDevice:_deviceHandle];
+            _fileSystem = [[IMBAMFileSystem alloc] initWithDevice:_deviceHandle];
         } else {
             _deviceHandle = [device retain];
 //            _deviceInfo = [[IMBUSBDeviceInfo alloc] initWithDevice:_deviceHandle];

@@ -11,9 +11,9 @@
 #import "IMBFileSystem.h"
 #import "XMLReader.h"
 #import "IMBSession.h"
-//#import "IMBMediaInfo.h"
+#import "IMBMediaInfo.h"
 #import "IMBNewTrack.h"
-//#import "IMBVideoImageAcquire.h"
+#import "IMBVideoImageAcquire.h"
 //#import "IMBSoftWareInfo.h"
 #import "IMBDeviceInfo.h"
 #import <openssl/sha.h>
@@ -872,77 +872,76 @@
 }
 
 //分析并创建曲目在制定的目录下;
-//+ (IMBNewTrack*)analyCreateTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
-//    
-//    BOOL isvideo = [MediaHelper isVideoFile:filePath];
-//    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
-//    mediaInfo.isVideo = isvideo;
-//    [mediaInfo openWithFilePath:filePath];
-//    if (!mediaInfo.isGotMetaData) {
-//        return nil;
-//    }
-//    IMBNewTrack *newTrack = [[IMBNewTrack alloc]init];
-//    [newTrack setFilePath:filePath];
-//    [newTrack setFileExtension:[filePath pathExtension]];
-//    newTrack.fileSize = [mediaInfo.fileSize unsignedIntValue];
-//    [newTrack setBitrate:[mediaInfo.bitRate intValue]];
-//    [newTrack setLength:[mediaInfo.length intValue]];
-//    [newTrack setTrackNumber:[mediaInfo.track intValue]];
-//    [newTrack setYear:[mediaInfo.year intValue]];
-//    [newTrack setDiscNumber:0];
-//    [newTrack setAlbumTrackCount:0];
-//    [newTrack setTitle:mediaInfo.title];
-//    
-//    if (selectCategory == Category_VoiceMemos) {
-//        [newTrack setArtist:@"Voice Memos"];
-//        [newTrack setAlbum:@"Voice Memos"];
-//        [newTrack setAlbumArtist:@"Voice Memos"];
-//        [newTrack setIsVideo:NO];
-//    }
-//    else{
-//        //不为空
-//        if ([mediaInfo artist].length == 0) {
-//            [newTrack setArtist:CustomLocalizedString(@"mediaView_id_3", nil)];
-//        }
-//        else{
-//            [newTrack setArtist:[mediaInfo artist]];
-//        }
-//        if([mediaInfo album].length == 0){
-//            [newTrack setAlbum:CustomLocalizedString(@"mediaView_id_4", nil)];
-//        }
-//        else{
-//            [newTrack setAlbum:[mediaInfo album]];
-//        }
-//        
-//        if([mediaInfo albumArtist].length == 0){
-//            [newTrack setAlbumArtist:newTrack.artist];
-//        }
-//        else{
-//            [newTrack setAlbumArtist:[mediaInfo albumArtist]];
-//        }
-//        [newTrack setIsVideo:isvideo];
-//    }
-//    [newTrack setGenre:[mediaInfo genre]];
-//    [newTrack setSampleRate:[[mediaInfo sampleRate] intValue]];
-//    [newTrack setAudioChannels:[[mediaInfo channels] intValue]];
-//    [MediaHelper getMediaType:newTrack selectCategory:selectCategory];
-//    if([newTrack isVideo])
-//    {
-//        IMBVideoImageAcquire *videoAC = [[IMBVideoImageAcquire alloc] initwithLocalPath:filePath];
-//        if (selectCategory == Category_HomeVideo || selectCategory == Category_MusicVideo|| selectCategory == Category_TVShow) {
-//            videoAC.isMovies = NO;
-//        }else{
-//            videoAC.isMovies = YES;
-//        }
-//        NSString *artworkPath = [videoAC getVideoArtWork];
-//        [newTrack setArtworkFile:artworkPath];
-//    }else
-//    {
-//        [newTrack setArtworkFile:mediaInfo.artworkPath];
-//    }
-//    return [newTrack autorelease];
-//}
-
++ (IMBNewTrack*)analyCreateTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
+    
+    BOOL isvideo = [MediaHelper isVideoFile:filePath];
+    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
+    mediaInfo.isVideo = isvideo;
+    [mediaInfo openWithFilePath:filePath];
+    if (!mediaInfo.isGotMetaData) {
+        return nil;
+    }
+    IMBNewTrack *newTrack = [[IMBNewTrack alloc]init];
+    [newTrack setFilePath:filePath];
+    [newTrack setFileExtension:[filePath pathExtension]];
+    newTrack.fileSize = [mediaInfo.fileSize unsignedIntValue];
+    [newTrack setBitrate:[mediaInfo.bitRate intValue]];
+    [newTrack setLength:[mediaInfo.length intValue]];
+    [newTrack setTrackNumber:[mediaInfo.track intValue]];
+    [newTrack setYear:[mediaInfo.year intValue]];
+    [newTrack setDiscNumber:0];
+    [newTrack setAlbumTrackCount:0];
+    [newTrack setTitle:mediaInfo.title];
+    
+    if (selectCategory == Category_VoiceMemos) {
+        [newTrack setArtist:@"Voice Memos"];
+        [newTrack setAlbum:@"Voice Memos"];
+        [newTrack setAlbumArtist:@"Voice Memos"];
+        [newTrack setIsVideo:NO];
+    }
+    else{
+        //不为空
+        if ([mediaInfo artist].length == 0) {
+            [newTrack setArtist:@"Unknown Artist"];
+        }
+        else{
+            [newTrack setArtist:[mediaInfo artist]];
+        }
+        if([mediaInfo album].length == 0){
+            [newTrack setAlbum:@"Unknown Album"];
+        }
+        else{
+            [newTrack setAlbum:[mediaInfo album]];
+        }
+        
+        if([mediaInfo albumArtist].length == 0){
+            [newTrack setAlbumArtist:newTrack.artist];
+        }
+        else{
+            [newTrack setAlbumArtist:[mediaInfo albumArtist]];
+        }
+        [newTrack setIsVideo:isvideo];
+    }
+    [newTrack setGenre:[mediaInfo genre]];
+    [newTrack setSampleRate:[[mediaInfo sampleRate] intValue]];
+    [newTrack setAudioChannels:[[mediaInfo channels] intValue]];
+    [MediaHelper getMediaType:newTrack selectCategory:selectCategory];
+    if([newTrack isVideo])
+    {
+        IMBVideoImageAcquire *videoAC = [[IMBVideoImageAcquire alloc] initwithLocalPath:filePath];
+        if (selectCategory == Category_HomeVideo || selectCategory == Category_MusicVideo|| selectCategory == Category_TVShow) {
+            videoAC.isMovies = NO;
+        }else{
+            videoAC.isMovies = YES;
+        }
+        NSString *artworkPath = [videoAC getVideoArtWork];
+        [newTrack setArtworkFile:artworkPath];
+    }else
+    {
+        [newTrack setArtworkFile:mediaInfo.artworkPath];
+    }
+    return [newTrack autorelease];
+}
 + (IMBNewTrack*)createBlankTrack:(NSString*)filePath selectCategory:(CategoryNodesEnum)selectCategory {
     IMBNewTrack *newTrack = [[IMBNewTrack alloc] init];
     [newTrack setFilePath:filePath];
@@ -1020,25 +1019,25 @@
     }
     else
     {
-        newTrack.PlayCount = 0;
-        newTrack.Rating = 0;
+        newTrack.playCount = 0;
+        newTrack.rating = 0;
         newTrack.lastPalyed = 0;
     }
     newTrack.audioChannels = track.audioChannels;
     newTrack.dBMediaType = track.mediaType;
-    newTrack.ArtworkFile = @"";
+    newTrack.artworkFile = @"";
     return newTrack;
 }
 
-//+ (NSString *)getMediaArtwork:(NSString *)filePath {
-//    NSString *artworkPath = nil;
-//    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
-//    [mediaInfo openWithFilePath:filePath];
-//    if (mediaInfo.artworkPath != nil) {
-//        artworkPath = [NSString stringWithString:mediaInfo.artworkPath];
-//    }
-//    return artworkPath;
-//}
++ (NSString *)getMediaArtwork:(NSString *)filePath {
+    NSString *artworkPath = nil;
+    IMBMediaInfo *mediaInfo = [IMBMediaInfo singleton];
+    [mediaInfo openWithFilePath:filePath];
+    if (mediaInfo.artworkPath != nil) {
+        artworkPath = [NSString stringWithString:mediaInfo.artworkPath];
+    }
+    return artworkPath;
+}
 
 + (BOOL)isVideoFile:(NSString*)filePath {
     if (filePath != nil && [[filePath.pathExtension lowercaseString] containsString:@"m4v" options:NSCaseInsensitiveSearch] == YES) {

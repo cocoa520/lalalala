@@ -16,12 +16,6 @@
     IBOutlet IMBNoTitleBarContentView *_mainContontView;
     IBOutlet IMBLackCornerView *_topView;
     IBOutlet NSBox *_rootBox;
-    IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
-    
-    NSPopover *_devPopover;
-//    IMBPopoverViewController *devPopoverViewController;
 }
-
-- (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType;
 
 @end

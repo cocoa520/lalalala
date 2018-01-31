@@ -30,6 +30,7 @@
 #import "IMBiPod.h"
 #import "IMBiTunesCDBRoot.h"
 #import "IMBTracklist.h"
+#import "IMBInformation.h"
 
 
 #pragma mark -------------------------------------Begin --- MobileDevice.framework internals
@@ -428,15 +429,15 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         
     }
     
-    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
-    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
-    _productType = [[self deviceValueForKey:@"ProductType"] retain];
-    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
-    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
-    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
-    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
-    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
-    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
+//    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
+//    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
+//    _productType = [[self deviceValueForKey:@"ProductType"] retain];
+//    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
+//    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
+//    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
+//    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
+//    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+//    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
     
     
     
@@ -510,8 +511,20 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             IMBTracklist *tracklist = [tracksContainer getTracklist];
             
             _dataArray = tracklist.trackArray;
-//            [_tableView reloadData];
+            for (IMBTrack *track in _dataArray) {
+                NSLog(@"%@",track);
+            }
+            
+//            _ipod = [[IMBiPod alloc] initWithDevice:_deviceHandle];
+//            IMBInformation *inforomation = [[IMBInformation alloc] initWithiPod:_ipod];
+//            _dataArray = [inforomation getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Music]];
+//            for (IMBTrack *track in _dataArray) {
+//                NSLog(@"%@",track);
+//            }
+//             [_tableView reloadData];
         }
+        
+        
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
         }

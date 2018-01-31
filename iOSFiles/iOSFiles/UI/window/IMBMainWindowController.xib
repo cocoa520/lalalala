@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1080" identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
@@ -11,9 +11,7 @@
                 <outlet property="_mainContentView" destination="3LR-3L-mFY" id="cT9-cF-TeB"/>
                 <outlet property="_mainContontView" destination="3LR-3L-mFY" id="d4G-lX-KYO"/>
                 <outlet property="_rootBox" destination="ixW-fu-fjw" id="mqx-sB-hAv"/>
-                <outlet property="_selectedDeviceBtn" destination="vfH-Nk-d4Y" id="4Us-qm-5Mh"/>
                 <outlet property="_topView" destination="0N4-jr-4nX" id="zRT-Jr-ubI"/>
-                <outlet property="selectedDeviceBtn" destination="vfH-Nk-d4Y" id="iCt-KZ-cLO"/>
                 <outlet property="window" destination="eKk-Bw-DTz" id="VKW-RY-kSR"/>
             </connections>
         </customObject>
@@ -22,28 +20,16 @@
         <window title="AnyTrans" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="eKk-Bw-DTz" customClass="IMBNoTitleBarWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="790" y="323" width="1060" height="635"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="1060" height="635"/>
+            <value key="maxSize" type="size" width="1060" height="635"/>
             <view key="contentView" focusRingType="none" id="3LR-3L-mFY" customClass="IMBNoTitleBarContentView">
                 <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <customView identifier="topView" focusRingType="none" id="0N4-jr-4nX" customClass="IMBLackCornerView">
                         <rect key="frame" x="0.0" y="576" width="1060" height="60"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <subviews>
-                            <button autoresizesSubviews="NO" focusRingType="none" id="vfH-Nk-d4Y" customClass="IMBSelecedDeviceBtn">
-                                <rect key="frame" x="83" y="17" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="o35-5G-M7t">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="selectedDeviceBtnClicked:" target="-2" id="Ouf-P2-GBi"/>
-                                </connections>
-                            </button>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <box title="Box" borderType="none" titlePosition="noTitle" id="ixW-fu-fjw">
                         <rect key="frame" x="0.0" y="0.0" width="1060" height="578"/>

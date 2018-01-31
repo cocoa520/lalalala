@@ -181,12 +181,12 @@ static id _instance = nil;
         }
         
         device.isValid = YES;
-        [_processingQueue addOperationWithBlock:^(void){
+//        [_processingQueue addOperationWithBlock:^(void){
             sleep(2.0f);
             if ([_serialArray containsObject:deviceSerialNumber]) {
                 [self getDeviceInfoWithDevice:device];
             }
-        }];
+//        }];
     }else {
         IMBFLog(@"preSerialNumber is nil");
     }
@@ -242,9 +242,7 @@ static id _instance = nil;
 //    IMBAMDeviceInfo *deviceInfo = [[[IMBAMDeviceInfo alloc] initWithDevice:dev] autorelease];
     IMBiPod *ipod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
     ipod.uniqueKey = dev.serialNumber;
-    if (self.IMBDeviceConnectedCompletion) {
-        self.IMBDeviceConnectedCompletion(ipod);
-    }
+
     
     IMBBaseInfo *baseInfo =[[[IMBBaseInfo alloc] init] autorelease];
     [baseInfo setUniqueKey:ipod.uniqueKey];
@@ -260,6 +258,9 @@ static id _instance = nil;
     
     [_allDevices addObject:baseInfo];
     [_alliPods addObject:ipod];
+    if (self.IMBDeviceConnectedCompletion) {
+        self.IMBDeviceConnectedCompletion(baseInfo);
+    }
 }
 /**
  *  重新连接设备
