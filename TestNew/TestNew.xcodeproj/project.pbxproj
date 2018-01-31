@@ -502,7 +502,7 @@
 		B92BFD3E20034D74003948D7 /* TestNew */ = {
 			isa = PBXGroup;
 			children = (
-				B96F34E2200CAD720026FC98 /* Lib */,
+				B96F34E2200CAD720026FC98 /* Media */,
 				B9E1273C20049DB2008F6854 /* CustomDC */,
 				B9E127202004506C008F6854 /* DeviceConnection */,
 				B92BFD3F20034D74003948D7 /* AppDelegate.h */,
@@ -590,7 +590,7 @@
 			path = Fmdb;
 			sourceTree = "<group>";
 		};
-		B96F34E2200CAD720026FC98 /* Lib */ = {
+		B96F34E2200CAD720026FC98 /* Media */ = {
 			isa = PBXGroup;
 			children = (
 				B90D11EB20200E13002D9F9B /* IMBAppSyncModel.h */,
@@ -608,6 +608,7 @@
 				B96F34E3200CAD720026FC98 /* iTunesCDB */,
 				B96F34FB200CAD720026FC98 /* iTunesDB */,
 			);
+			name = Media;
 			path = Lib;
 			sourceTree = "<group>";
 		};
