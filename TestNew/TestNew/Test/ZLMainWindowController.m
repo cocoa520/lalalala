@@ -1,13 +1,19 @@
 //
-//  ViewController.m
-//  TestNew
+//  ZLMainWindowController.m
+//  AnyTrans
 //
-//  Created by iMobie on 18/1/8.
-//  Copyright © 2018年 iMobie. All rights reserved.
+//  Created by iMobie on 18/1/3.
+//  Copyright © 2018年 imobie. All rights reserved.
 //
 
-#import "ViewController.h"
-
+#import "ZLMainWindowController.h"
+#import "IMBNotificationDefine.h"
+#import "IMBiPod.h"
+#import "IMBInformation.h"
+#import "IMBCommonEnum.h"
+#import "IMBInformationManager.h"
+#import "IMBTrack.h"
+#import "StringHelper.h"
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -26,21 +32,7 @@
 #import <AppKit/AppKit.h>
 #import <malloc/malloc.h>
 #import "ZLFileTool.h"
-#import "MobileDeviceAccess.h"
-#import "IMBiPod.h"
-#import "IMBiTunesCDBRoot.h"
-#import "IMBTracklist.h"
-#import "IMBNotificationDefine.h"
-#import "IMBiPod.h"
-#import "IMBInformation.h"
-#import "IMBCommonEnum.h"
-#import "IMBInformationManager.h"
-#import "IMBTrack.h"
-#import "StringHelper.h"
 
-
-CGFloat const rowH = 40.0f;
-CGFloat const labelY = 10.0f;
 
 #pragma mark -------------------------------------Begin --- MobileDevice.framework internals
 // opaque structures
@@ -254,11 +246,11 @@ afc_operation AFCOperationCreateSetConnectionOptions(CFAllocatorRef allocator, C
 afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef filename, uint64_t mtm, void *ctx);
 
 
-#pragma mark -------------------------------------End --- MobileDevice.framework internals
+CGFloat const rowH = 40.0f;
+CGFloat const labelY = 10.0f;
 
-#pragma mark --  ViewController
 
-@interface ViewController()<NSTableViewDelegate,NSTableViewDataSource>
+@interface ZLMainWindowController ()<NSTableViewDelegate,NSTableViewDataSource>
 {
     BOOL _subscribed;
     am_device_notification _notification;
@@ -276,29 +268,12 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
     NSString * _productType;
     NSString *_productVersion;
     NSString *_totalDataAvailable;
-    NSDictionary *_dataDic;
+//    NSDictionary *_dataDic;
     
     AMDevice *_deviceHandle;
+    IMBiPod *_ipod;
     
     afc_connection _afc;
-    
-    char* _identifier;
-    int _headerSize;
-    int _sectionSize;
-    Byte* _unusedHeader;
-    int _requiredHeaderSize;
-    int _unk1;
-    int _versionNumber;
-    int _listContainerCount;
-    UInt64 _iD;
-    Byte *_unk2;
-    int unk2Length;
-    int16_t _hashingScheme;
-    NSMutableArray *_childSections;
-    int unusedHeaderLength;
-    
-    NSArray *_dataArray;
-    IMBiPod *_ipod;
 }
 
 @property (assign) IBOutlet NSTextField *sizeLabel;
@@ -316,19 +291,81 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
 
 @end
 
-@implementation ViewController
+@implementation ZLMainWindowController
 
+- (NSPopover *)popover {
+    if (!_popover) {
+        NSViewController *vc = [[NSViewController alloc] init];
+        vc.view.frame = NSMakeRect(0, 0, 400, 200);
+        NSPopover *popover = [[NSPopover alloc] init];
+        popover.contentViewController = vc;
+        popover.appearance = NSPopoverAppearanceMinimal;
+        popover.behavior = NSPopoverBehaviorSemitransient;
+        _popover = popover;
+    }
+    return _popover;
+}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    
+    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
     [self setupView];
 }
 
+//初始化方法
+- (void)setupView {
+    self.window.title = @"MainWindow";
+    self.sizeLabel.stringValue = @"Please Connect Your Device";
+    self.selectedIndex = -1;
+    self.selectedTrack = nil;
+    
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.scrollView.focusRingType = NSFocusRingTypeNone;
+    self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
+    [self.scrollView setHasHorizontalScroller:NO];
+    
+    [_tableView removeTableColumn:_tableView.tableColumns[0]];
+    [_tableView removeTableColumn:_tableView.tableColumns[0]];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HeaderTitleNames.plist" ofType:nil];
+    _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
+    if (_headerTitleArr.count) {
+        NSInteger count = _headerTitleArr.count;
+        CGFloat cW = 150.0;//self.tableView.frame.size.width/count;
+        for (NSInteger i = 0; i < count; i++) {
+            NSCell *cell = [[NSCell alloc] initTextCell:_headerTitleArr[i]];
+            cell.alignment = NSCenterTextAlignment;
+            NSTableColumn * column = [[NSTableColumn alloc] initWithIdentifier:_headerTitleArr[i]];
+            
+            [column setHeaderCell:cell];
+            [column setWidth:cW];
+            [_tableView addTableColumn:column];
+        }
+        
+    }
+   
+    _subscribed = NO;
+    _isNeedInputPassCode = NO;
+    _connected = NO;
+    _insession = NO;
+    
+    [self startListen];
+}
 
-
-
+//开始监听
 - (void)startListen {
     if (!_subscribed) {
         // try to subscribe for notifications - pass self as the callback_data
@@ -341,22 +378,13 @@ afc_operation AFCOperationCreateSetModTime(CFAllocatorRef allocator, CFStringRef
         }
     }
 }
-
-- (void)stopListen {
-    int ret = AMDeviceNotificationUnsubscribe(_notification);
-    if (ret == 0) {
-        _subscribed = NO;
-    } else {
-        NSLog(@"AMDeviceNotificationUnsubscribe failed: %d", ret);
-    }
-}
 /////////监听回调方法
 // this is called back by AMDeviceNotificationSubscribe()
 // we just punt back into a regular method//我们仅仅是把它放在一个常规的方法里进行回调
 static void notify_callback(struct am_device_notification_callback_info *info, void* arg)
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [(ViewController*)arg notify:info];
+    [(ZLMainWindowController*)arg notify:info];
     [pool drain];
 }
 
@@ -364,7 +392,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
 // whenever something interesting happens//当某些有趣的事情发生的时候就会由AMDeviceNotificationSubscribe()这个方法进行（间接）回调
 - (void)notify:(struct am_device_notification_callback_info *)info
 {
-//    AMDevice *d;
+    //    AMDevice *d;
     switch (info->msg) {
         default: {
             NSLog(@"Ignoring unknown message(忽略不明消息): %d",info->msg);
@@ -372,6 +400,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         }
             
         case ADNCI_MSG_UNSUBSCRIBED: {
+            //注销监听
             return;
         }
             
@@ -392,6 +421,7 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             int connectType = AMDeviceGetInterfaceType(info->dev);
             _amDevice = info->dev;
             if (connectType == 2) {//wifi连接设备断开
+                
             }else {//1则为数据线连接设备断开
                 [self disConnectDevice:info->dev];
             }
@@ -400,13 +430,22 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     }
 }
 
+//设备连接成功做的事情
 - (void)connectDevice:(am_device)dev {
     _amDevice = dev;
     
     
-//    [ZLFileTool zl_writeDataPlsitWithDataDic:_dataDic fileName:@"iTunesData"];
-    //AMDeviceConnect(dev);
-//      int ret = AMDeviceSecureStartService(dev, (CFStringRef)@"com.apple.afc", 0, &_service);
+    _deviceName = [[self deviceValueForKey:@"DeviceName"] retain];
+    _udid = [[self deviceValueForKey:@"UniqueDeviceID"] retain];
+    _productType = [[self deviceValueForKey:@"ProductType"] retain];
+    _deviceClass = [[self deviceValueForKey:@"DeviceClass"] retain];
+    _productVersion = [[self deviceValueForKey:@"ProductVersion"] retain];
+    _serialNumber = [[self deviceValueForKey:@"SerialNumber"] retain];
+    _totalDiskCapacity = [[self deviceValueForKey:@"TotalDiskCapacity" inDomain:@"com.apple.disk_usage"] retain];
+    _totalDataAvailable = [[self deviceValueForKey:@"TotalDataAvailable" inDomain:@"com.apple.disk_usage"] retain];
+//    _dataDic = [self deviceValueForKey:nil inDomain:@"com.apple.mobile.iTunes"];
+    
+//    _deviceHandle = [AMDevice deviceFrom:dev];
     
     int retValue = AMDeviceConnect(dev);
     if (retValue != 0) {
@@ -425,72 +464,55 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         return;
     }
     
+    
     uint32_t dummy = 0;
     
     
     int ret = AMDeviceStartService(dev,(CFStringRef)@"com.apple.afc", &_service, &dummy);//--有线连接
-    
     AMDeviceDisconnect(dev);
     AMDeviceStopSession(dev);
     
     if (ret == 0) {
         int ret = AFCConnectionOpen(_service,0,&_afc);
         if (ret == 0) {
-          [self connectComplete];
+            [self connectComplete];
         }else {
             NSLog(@"AFCConnectionOpen--Failed");
         }
         
     }
     
-
 }
 
+//设备断开连接做的事情
 - (void)disConnectDevice:(am_device)dev {
     _amDevice = dev;
     
+    self.sizeLabel.stringValue = @"Please Connect Your Device";
     [_deviceHandle release];
     _deviceHandle = nil;
+    [_ipod release];
+    _ipod = nil;
+    _deviceName = nil;
+    _udid = nil;
+    _productType = nil;
+    _deviceClass = nil;
+    _productVersion = nil;
+    _serialNumber = nil;
+    _totalDiskCapacity = nil;
+    _totalDataAvailable = nil;
     
     [_dataArray release];
     _dataArray = nil;
-    
-    [_ipod release];
-    _ipod = nil;
-    
-    [_deviceName release];
-    _deviceName = nil;
-    
-    [_udid release];
-    _udid = nil;
-    
-    [_productType release];
-    _productType = nil;
-    
-    [_deviceClass release];
-    _deviceClass = nil;
-    
-    [_productVersion release];
-    _productVersion = nil;
-    
-    [_serialNumber release];
-    _serialNumber = nil;
-    
-    [_totalDiskCapacity release];
-    _totalDiskCapacity = nil;
-    
-    [_totalDataAvailable release];
-    _totalDataAvailable = nil;
-    
-    [_dataDic release];
-    _dataDic = nil;
-    
+    [_tableView reloadData];
 }
 
-
+//设备成功连接、复制CDB文件、解析CDB文件、显示track数据
 - (BOOL)connectComplete {
     BOOL ret = NO;
     
+    
+    self.sizeLabel.stringValue  = [NSString stringWithFormat:@"%@: %.01f GB Free/%.01f GB Total",_deviceName,_totalDataAvailable.integerValue/1024.0f/1024.0f/1024.0f,_totalDiskCapacity.integerValue/1024.0f/1024.0f/1024.0f];
     
     NSString *parseFilePath = [ZLFileTool zl_getParseFilePath];
     NSString *databaseFilePath = [ZLFileTool zl_getItunesPath];
@@ -513,15 +535,8 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
             IMBTracklist *tracklist = [tracksContainer getTracklist];
             
             _dataArray = tracklist.trackArray;
-            for (IMBTrack *track in _dataArray) {
-                NSLog(@"%@",track);
-            }
-            
-
-             [_tableView reloadData];
+            [_tableView reloadData];
         }
-        
-        
         @catch (NSException *exception) {
             NSLog(@"%@",exception);
         }
@@ -530,9 +545,10 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
         }
     }
     return ret;
-
+    
 }
 
+//清空复制到本地的文件
 - (void)cleanParseFile:(NSString*)parseFilePath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:parseFilePath] == YES) {
@@ -547,8 +563,15 @@ static void notify_callback(struct am_device_notification_callback_info *info, v
     
     [super dealloc];
 }
-
-#pragma mark -- Others 
+- (void)stopListen {
+    int ret = AMDeviceNotificationUnsubscribe(_notification);
+    if (ret == 0) {
+        _subscribed = NO;
+    } else {
+        NSLog(@"AMDeviceNotificationUnsubscribe failed: %d", ret);
+    }
+}
+#pragma mark -- Others
 
 - (bool)checkStatus:(int)ret from:(const char *)func
 {
@@ -595,7 +618,7 @@ bail:
     return [result autorelease];
 }
 
-#pragma mark --- deviceConnetion And deviceDisconnection
+#pragma mark --- deviceConnetion And deviceDisconnection  deviceStartSession And deviceStopSession
 - (bool)deviceConnect
 {
     if (![self checkStatus:AMDeviceConnect(_amDevice) from:"AMDeviceConnect"]) return NO;
@@ -630,8 +653,10 @@ bail:
     return NO;
 }
 
+
 #pragma mark --- 文件相关操作
 
+//复制文件
 - (BOOL)copyRemoteFile:(NSString*)path1 toLocalFile:(NSString*)path2
 {
     BOOL result = NO;
@@ -685,6 +710,7 @@ bail:
     return result;
 }
 
+//开启读取文件
 - (AFCFileReference*)openForRead:(NSString*)path
 {
     if (![self ensureConnectionIsOpen]) return nil;
@@ -707,14 +733,15 @@ bail:
     return afcFile;
 }
 
+//连接是否打开
 - (bool)ensureConnectionIsOpen
 {
     if (_afc) return YES;
-//    [self setLastError:@"Connection is not open"];
+    //    [self setLastError:@"Connection is not open"];
     return NO;
 }
 
-
+//获取文件信息
 - (NSDictionary*)getFileInfo:(NSString*)path
 {
     if (!path) {
@@ -736,6 +763,8 @@ bail:
     }
     return nil;
 }
+
+
 -(void)fix_date_entry:(NSString*)key in:(NSMutableDictionary *)dict
 {
     id d = [dict objectForKey:key];
@@ -745,6 +774,8 @@ bail:
         [dict setObject:d forKey:key];
     }
 }
+
+//读取afc信息
 - (NSMutableDictionary*)readAfcDictionary:(afc_dictionary)dict
 {
     NSMutableDictionary *result = [[[NSMutableDictionary alloc] init] autorelease];
@@ -767,56 +798,6 @@ bail:
     return result;
 }
 
-//初始化方法
-- (void)setupView {
-    
-    _subscribed = NO;
-    _isNeedInputPassCode = NO;
-    _connected = NO;
-    _insession = NO;
-    _requiredHeaderSize = 50;
-    
-    [self startListen];
-    
-//    self.view.window.title = @"MainWindow";
-    self.sizeLabel.stringValue = @"Please Connect Your Device";
-    self.selectedIndex = -1;
-    self.selectedTrack = nil;
-    
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.scrollView.focusRingType = NSFocusRingTypeNone;
-    self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
-    [self.scrollView setHasHorizontalScroller:NO];
-    
-    [_tableView removeTableColumn:_tableView.tableColumns[0]];
-    [_tableView removeTableColumn:_tableView.tableColumns[0]];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"HeaderTitleNames.plist" ofType:nil];
-    _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
-    if (_headerTitleArr.count) {
-        NSInteger count = _headerTitleArr.count;
-        CGFloat cW = 150.0;//self.tableView.frame.size.width/count;
-        for (NSInteger i = 0; i < count; i++) {
-            NSCell *cell = [[NSCell alloc] initTextCell:_headerTitleArr[i]];
-            cell.alignment = NSCenterTextAlignment;
-            NSTableColumn * column = [[NSTableColumn alloc] initWithIdentifier:_headerTitleArr[i]];
-            
-            [column setHeaderCell:cell];
-            [column setWidth:cW];
-            [_tableView addTableColumn:column];
-        }
-        
-    }
-    
-    _subscribed = NO;
-    _isNeedInputPassCode = NO;
-    _connected = NO;
-    _insession = NO;
-    
-    [self startListen];
-}
 
 #pragma mark --- NSTableViewDelegate,NSTableViewDataSource
 
@@ -889,6 +870,36 @@ bail:
     return aView;
 }
 
+
+//- (void)showPopoverView:(NSView *)view {
+//    
+//    [self.popover close];
+//    [self.popover showRelativeToRect:view.bounds ofView:view preferredEdge:NSMaxYEdge];
+//}
+//
+//- (IBAction)sendToMac:(NSButton *)sender {
+//    if (-1 == self.selectedIndex) {
+//        NSLog(@"please select one item");
+//        return;
+//    }
+//    
+//    
+//    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+//    openPanel.canChooseFiles = NO;
+//    openPanel.allowsMultipleSelection = NO;
+//    openPanel.canChooseDirectories = YES;
+//    [openPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+//        if (NSFileHandlingPanelOKButton == result) {
+//            [self performSelector:@selector(contentToMac:) withObject:openPanel afterDelay:0.1];
+//        }
+//    }];
+//}
+//
+//- (void)contentToMac:(NSOpenPanel *)openPanel {
+//    NSString *path = openPanel.URL.path;
+//    if (path) {
+//        
+//    }
+//}
+
 @end
-
-

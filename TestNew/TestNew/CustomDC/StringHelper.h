@@ -10,7 +10,7 @@
 #import <sys/stat.h>
 #import <sys/sysctl.h>
 #import "IMBCommonEnum.h"
-#import <AppKit/AppKit.h>
+
 
 
 #define HANZI_START 19968

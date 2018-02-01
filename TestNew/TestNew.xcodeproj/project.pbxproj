@@ -12,9 +12,7 @@
 		B90D11EA20200DB6002D9F9B /* NSString+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = B90D11E920200DB6002D9F9B /* NSString+Compare.m */; };
 		B92BFD4120034D74003948D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4020034D74003948D7 /* AppDelegate.m */; };
 		B92BFD4420034D74003948D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4320034D74003948D7 /* main.m */; };
-		B92BFD4720034D74003948D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD4620034D74003948D7 /* ViewController.m */; };
 		B92BFD4920034D74003948D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B92BFD4820034D74003948D7 /* Assets.xcassets */; };
-		B92BFD4C20034D74003948D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92BFD4A20034D74003948D7 /* Main.storyboard */; };
 		B92BFD5720034D74003948D7 /* TestNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD5620034D74003948D7 /* TestNewTests.m */; };
 		B92BFD6220034D75003948D7 /* TestNewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B92BFD6120034D75003948D7 /* TestNewUITests.m */; };
 		B92BFD7A2003704F003948D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92BFD792003704F003948D7 /* QuartzCore.framework */; };
@@ -366,6 +364,11 @@
 		B9F6743A2022CC8A00D3665E /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F674362022CC8A00D3665E /* StringHelper.m */; };
 		B9F6743B2022CC8A00D3665E /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F674382022CC8A00D3665E /* TempHelper.m */; };
 		B9F6743E2022CCF100D3665E /* IMBAppSyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6743D2022CCF100D3665E /* IMBAppSyncModel.m */; };
+		B9F674502022E71700D3665E /* HeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F674482022E71700D3665E /* HeaderTitleNames.plist */; };
+		B9F674512022E71700D3665E /* NSString+ZLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6744A2022E71700D3665E /* NSString+ZLExtension.m */; };
+		B9F674532022E71700D3665E /* ZLMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6744E2022E71700D3665E /* ZLMainWindowController.m */; };
+		B9F674542022E71700D3665E /* ZLMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F6744F2022E71700D3665E /* ZLMainWindowController.xib */; };
+		B9F674582022EA2700D3665E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F674572022EA2700D3665E /* MainMenu.xib */; };
 		FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE9E10200B65D2002AB92A /* CusArchiever.m */; };
 /* End PBXBuildFile section */
 
@@ -397,10 +400,7 @@
 		B92BFD3F20034D74003948D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B92BFD4020034D74003948D7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B92BFD4320034D74003948D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B92BFD4520034D74003948D7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B92BFD4620034D74003948D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B92BFD4820034D74003948D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B92BFD4B20034D74003948D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B92BFD4D20034D74003948D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B92BFD5220034D74003948D7 /* TestNewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestNewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92BFD5620034D74003948D7 /* TestNewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNewTests.m; sourceTree = "<group>"; };
@@ -1094,6 +1094,13 @@
 		B9F6743C2022CCF100D3665E /* IMBAppSyncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppSyncModel.h; sourceTree = "<group>"; };
 		B9F6743D2022CCF100D3665E /* IMBAppSyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppSyncModel.m; sourceTree = "<group>"; };
 		B9F6743F2022CD5F00D3665E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B9F674482022E71700D3665E /* HeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeaderTitleNames.plist; sourceTree = "<group>"; };
+		B9F674492022E71700D3665E /* NSString+ZLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZLExtension.h"; sourceTree = "<group>"; };
+		B9F6744A2022E71700D3665E /* NSString+ZLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZLExtension.m"; sourceTree = "<group>"; };
+		B9F6744D2022E71700D3665E /* ZLMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLMainWindowController.h; sourceTree = "<group>"; };
+		B9F6744E2022E71700D3665E /* ZLMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLMainWindowController.m; sourceTree = "<group>"; };
+		B9F6744F2022E71700D3665E /* ZLMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLMainWindowController.xib; sourceTree = "<group>"; };
+		B9F674572022EA2700D3665E /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		FACE9E0F200B65D2002AB92A /* CusArchiever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CusArchiever.h; sourceTree = "<group>"; };
 		FACE9E10200B65D2002AB92A /* CusArchiever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CusArchiever.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1165,6 +1172,7 @@
 		B92BFD3E20034D74003948D7 /* TestNew */ = {
 			isa = PBXGroup;
 			children = (
+				B9F674472022E71700D3665E /* Test */,
 				B9F674122022CBDC00D3665E /* Fmdb */,
 				B9F673272022CBBB00D3665E /* Media */,
 				B9655DF22021CB3D00BD7FF5 /* MediaInfo */,
@@ -1172,12 +1180,10 @@
 				B9E127202004506C008F6854 /* DeviceConnection */,
 				B92BFD3F20034D74003948D7 /* AppDelegate.h */,
 				B92BFD4020034D74003948D7 /* AppDelegate.m */,
-				B92BFD4520034D74003948D7 /* ViewController.h */,
-				B92BFD4620034D74003948D7 /* ViewController.m */,
 				B92BFD4820034D74003948D7 /* Assets.xcassets */,
-				B92BFD4A20034D74003948D7 /* Main.storyboard */,
 				B92BFD4D20034D74003948D7 /* Info.plist */,
 				B9F6743F2022CD5F00D3665E /* PrefixHeader.pch */,
+				B9F674572022EA2700D3665E /* MainMenu.xib */,
 				B92BFD4220034D74003948D7 /* Supporting Files */,
 			);
 			path = TestNew;
@@ -2232,6 +2238,19 @@
 			path = Fmdb;
 			sourceTree = "<group>";
 		};
+		B9F674472022E71700D3665E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				B9F674482022E71700D3665E /* HeaderTitleNames.plist */,
+				B9F674492022E71700D3665E /* NSString+ZLExtension.h */,
+				B9F6744A2022E71700D3665E /* NSString+ZLExtension.m */,
+				B9F6744D2022E71700D3665E /* ZLMainWindowController.h */,
+				B9F6744E2022E71700D3665E /* ZLMainWindowController.m */,
+				B9F6744F2022E71700D3665E /* ZLMainWindowController.xib */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2335,9 +2354,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F674542022E71700D3665E /* ZLMainWindowController.xib in Resources */,
+				B9F674582022EA2700D3665E /* MainMenu.xib in Resources */,
 				B9F673E02022CBBB00D3665E /* iTunesCDB in Resources */,
+				B9F674502022E71700D3665E /* HeaderTitleNames.plist in Resources */,
 				B92BFD4920034D74003948D7 /* Assets.xcassets in Resources */,
-				B92BFD4C20034D74003948D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2423,7 +2444,6 @@
 				B96560B62021CB3E00BD7FF5 /* Http_Request.cpp in Sources */,
 				B9F6740E2022CBBB00D3665E /* IMBPurchasesInfo.m in Sources */,
 				B96560A22021CB3E00BD7FF5 /* File_Mpeg4v.cpp in Sources */,
-				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
 				B965607F2021CB3E00BD7FF5 /* File_Id3.cpp in Sources */,
 				B965608F2021CB3E00BD7FF5 /* File_Scc.cpp in Sources */,
 				B96560822021CB3E00BD7FF5 /* File_Lyrics3v2.cpp in Sources */,
@@ -2640,6 +2660,7 @@
 				B96560012021CB3E00BD7FF5 /* File_ExtendedModule.cpp in Sources */,
 				B9F6743A2022CC8A00D3665E /* StringHelper.m in Sources */,
 				B96560162021CB3E00BD7FF5 /* File_Tak.cpp in Sources */,
+				B9F674532022E71700D3665E /* ZLMainWindowController.m in Sources */,
 				B9F673F42022CBBB00D3665E /* IMBPlaylistList.m in Sources */,
 				B9F674092022CBBB00D3665E /* IMBPlayCountHeader.m in Sources */,
 				B9F673F92022CBBB00D3665E /* IMBTracklist.m in Sources */,
@@ -2675,6 +2696,7 @@
 				B96560332021CB3E00BD7FF5 /* File_Ico.cpp in Sources */,
 				B90D11B2201FFC16002D9F9B /* IMBInformationManager.m in Sources */,
 				B9F673D72022CBBB00D3665E /* IMBIPodImageFormat.m in Sources */,
+				B9F674512022E71700D3665E /* NSString+ZLExtension.m in Sources */,
 				B96560962021CB3E00BD7FF5 /* File_AfdBarData.cpp in Sources */,
 				B96560242021CB3E00BD7FF5 /* File__Analyze_Buffer_MinimizeSize.cpp in Sources */,
 				B96560882021CB3E00BD7FF5 /* File_DvbSubtitle.cpp in Sources */,
@@ -2732,17 +2754,6 @@
 			targetProxy = B92BFD5E20034D75003948D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B92BFD4A20034D74003948D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B92BFD4B20034D74003948D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B92BFD6420034D75003948D7 /* Debug */ = {
