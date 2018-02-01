@@ -20,6 +20,8 @@
     unsigned long long _size;
     NSString *_time;
     NSInteger _counts;
+    
+    NSInteger _idx;
 }
 
 @property(nonatomic, copy)NSString *name;
@@ -30,6 +32,7 @@
 @property(nonatomic, retain)NSArray *photoArray;
 @property(nonatomic, retain)NSArray *booksArray;
 @property(nonatomic, retain)NSArray *appsArray;
+@property(nonatomic, assign)NSInteger idx;
 
 
 @end

@@ -112,8 +112,10 @@ static CGFloat const labelY = 10.0f;
     }
     if (_folderNameArray.count) {
         for (NSString *name in _folderNameArray) {
+            static NSInteger idx = 0;
             IMBDevicePageFolderModel *model = [[[IMBDevicePageFolderModel alloc] init] autorelease];
             model.name = name;
+            model.idx = idx++;
             [_dataArray addObject:model];
         }
     }
@@ -233,7 +235,9 @@ static CGFloat const labelY = 10.0f;
             }
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [_tableView endUpdates];
-                [_tableView reloadData];
+                
+                [_tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:model.idx] columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 4)]];
+//                [_tableView reloadData];
             });
             break;
         }
@@ -336,6 +340,7 @@ static CGFloat const labelY = 10.0f;
     return NO;
 }
 
+
 //- (NSIndexSet *)tableView:(NSTableView *)tableView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes {
 //    if ([proposedSelectionIndexes count] == 1) {
 //        [proposedSelectionIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
@@ -359,16 +364,30 @@ static CGFloat const labelY = 10.0f;
     IMBDevicePageFolderModel *model = [_dataArray objectAtIndex:row];
     NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, labelY, tableColumn.width, rowH - 2*labelY)];
     if (model) {
-        if (_headerTitleArr.count) {
-            if ([tableColumn.identifier isEqualToString:_headerTitleArr[0]]) {
-                textField.stringValue = model.name;
-            }else if ([tableColumn.identifier isEqualToString:_headerTitleArr[1]]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.1f MB",model.size/1024.0/1024.0];
-            }else if ([tableColumn.identifier isEqualToString:_headerTitleArr[2]]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.1f MB",model.size/1024.0/1024.0];
-            }else if ([tableColumn.identifier isEqualToString:_headerTitleArr[3]]) {
-                textField.stringValue = [NSString stringWithFormat:@"%lu",model.counts];
+        if ([tableColumn.identifier isEqualToString:@"Name"]) {
+            textField.stringValue = model.name;
+        }else if ([tableColumn.identifier isEqualToString:@"Time"]) {
+            double size = model.size/1024.0/1024.0;
+            NSString *sizeStr = @"";
+            if (size >= 1000) {
+                size /= 1024.0;
+                sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+            }else {
+                sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
             }
+            textField.stringValue = sizeStr;
+        }else if ([tableColumn.identifier isEqualToString:@"Size"]) {
+            double size = model.size/1024.0/1024.0;
+            NSString *sizeStr = @"";
+            if (size >= 1000) {
+                size /= 1024.0;
+                sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+            }else {
+                sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
+            }
+            textField.stringValue = sizeStr;
+        }else if ([tableColumn.identifier isEqualToString:@"Counts"]) {
+            textField.stringValue = [NSString stringWithFormat:@"%lu",model.counts];
         }
         
     }

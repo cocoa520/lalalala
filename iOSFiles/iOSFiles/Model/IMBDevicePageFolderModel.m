@@ -23,6 +23,7 @@
 @synthesize photoArray = _photoArray;
 @synthesize booksArray = _booksArray;
 @synthesize appsArray = _appsArray;
+@synthesize idx = _idx;
 
 
 - (void)setTrackArray:(NSArray *)trackArray {
