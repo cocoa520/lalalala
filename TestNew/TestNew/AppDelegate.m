@@ -26,8 +26,8 @@
     
     _mainWindowController = [[ZLMainWindowController alloc] initWithWindowNibName:@"ZLMainWindowController"];
     [[_mainWindowController window] center];
-    [[_mainWindowController window] makeMainWindow];
-    [[_mainWindowController window] makeKeyWindow];
+    [[_mainWindowController window] setMinSize:NSMakeSize(1024, 568)];
+    [[_mainWindowController window] setMaxSize:NSMakeSize(1024, 568)];
     //    [[_mainWindowController window] orderFront:nil];
     
     [_mainWindowController showWindow:nil];
