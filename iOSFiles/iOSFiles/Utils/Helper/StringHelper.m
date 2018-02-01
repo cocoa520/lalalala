@@ -44,22 +44,22 @@
     return timeStr;
 }
 
-//+(NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
-//    double mbSize = (double)totalSize / 1048576;
-//    double kbSize = (double)totalSize / 1024;
-//    if (totalSize < 1024) {
-//        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,CustomLocalizedString(@"MSG_Size_B", nil)];
-//    } else {
-//        if (mbSize > 1024) {
-//            double gbSize = (double)totalSize / 1073741824;
-//            return [self Rounding:gbSize reserved:1 capacityUnit:CustomLocalizedString(@"MSG_Size_GB", nil)];
-//        } else if (kbSize > 1024) {
-//            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_MB", nil)];
-//        } else {
-//            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:CustomLocalizedString(@"MSG_Size_KB", nil)];
-//        }
-//    }
-//}
++(NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+    double mbSize = (double)totalSize / 1048576;
+    double kbSize = (double)totalSize / 1024;
+    if (totalSize < 1024) {
+        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,@"B"];
+    } else {
+        if (mbSize > 1024) {
+            double gbSize = (double)totalSize / 1073741824;
+            return [self Rounding:gbSize reserved:1 capacityUnit:@"GB"];
+        } else if (kbSize > 1024) {
+            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:@"MB"];
+        } else {
+            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:@"KB"];
+        }
+    }
+}
 
 +(NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
     switch (decimalPoints) {

@@ -11,3 +11,6 @@
 
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNotiWithParams;
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNoti;
+
+APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;
+APPKIT_EXTERN NSString * const IMBDevicePageFolderNamesPlist;

@@ -1447,7 +1447,21 @@ static int fileCount = 0;
             
         }
         return fileCount;
+}
+
+- (long long)getAllAppSize {
+    NSArray *appEntityArray = [[self appEntityArray] retain];
+    long long allAppSize = 0;
+    if (appEntityArray) {
+        for (IMBAppEntity *appEntity in appEntityArray) {
+            allAppSize += appEntity.appSize;
+        }
     }
+    [appEntityArray release];
+    appEntityArray = nil;
+    
+    return allAppSize;
+}
 
 
 @end

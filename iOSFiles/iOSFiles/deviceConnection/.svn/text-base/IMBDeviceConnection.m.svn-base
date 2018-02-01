@@ -181,12 +181,12 @@ static id _instance = nil;
         }
         
         device.isValid = YES;
-//        [_processingQueue addOperationWithBlock:^(void){
+        [_processingQueue addOperationWithBlock:^(void){
             sleep(2.0f);
             if ([_serialArray containsObject:deviceSerialNumber]) {
                 [self getDeviceInfoWithDevice:device];
             }
-//        }];
+        }];
     }else {
         IMBFLog(@"preSerialNumber is nil");
     }

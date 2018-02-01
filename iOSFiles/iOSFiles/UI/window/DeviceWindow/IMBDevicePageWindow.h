@@ -16,6 +16,7 @@
 {
     IBOutlet IMBLackCornerView *_topView;
     IMBiPod *_iPod;
+    IBOutlet NSTextField *_title;
 }
 
 - (id)initWithiPod:(IMBiPod *)ipod;

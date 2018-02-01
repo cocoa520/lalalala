@@ -99,4 +99,6 @@ public delegate void UpdateSingleAppStepHandle();
 /******************此方法只遍历当前结点的一级目录  *******************************/
 
 - (NSArray *)getSystemApplication;
+- (long long)getAllAppSize;
+
 @end

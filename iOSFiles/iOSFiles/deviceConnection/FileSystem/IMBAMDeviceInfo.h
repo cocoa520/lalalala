@@ -71,6 +71,7 @@
 @property (nonatomic, getter = SDIOProductInfo, readonly) NSString *SDIOProductInfo;
 @property (nonatomic, getter = supportedDeviceFamilies, readonly) NSString *supportedDeviceFamilies;
 @property (nonatomic, getter = timeIntervalSince1970, readonly) long timeIntervalSince1970;
+
 - (void)reloadName;
 - (BOOL)isWifiConnect;
 - (BOOL)airSync;

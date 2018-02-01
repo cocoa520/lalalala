@@ -38,6 +38,7 @@
 		B910BF4A20219FFD00849CBB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4720219FFD00849CBB /* AFNetworking.framework */; };
 		B910BF4B20219FFD00849CBB /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4820219FFD00849CBB /* AppAuth.framework */; };
 		B910BF4C20219FFD00849CBB /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4920219FFD00849CBB /* YTKNetwork.framework */; };
+		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
 		B92A179E20215F6200187405 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179920215F6200187405 /* NSData+Category.m */; };
 		B92A179F20215F6200187405 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179B20215F6200187405 /* NSDictionary+Category.m */; };
 		B92A17A020215F6200187405 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179D20215F6200187405 /* NSString+Category.m */; };
@@ -390,6 +391,10 @@
 		B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9C52019CA7600E6991A /* IMBDevViewController.m */; };
 		B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B996D9C62019CA7600E6991A /* IMBDevViewController.xib */; };
 		B996D9CD2019E26900E6991A /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9CC2019E26900E6991A /* IMBConst.m */; };
+		B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */; };
+		B9F6745B2022F8F900D3665E /* DevicePageHeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */; };
+		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
+		B9F6746120230AEA00D3665E /* DevicePageFolderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
@@ -506,6 +511,8 @@
 		B910BF4720219FFD00849CBB /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		B910BF4820219FFD00849CBB /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
 		B910BF4920219FFD00849CBB /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTKNetwork.framework; sourceTree = "<group>"; };
+		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
+		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
 		B92A179820215F6200187405 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
 		B92A179920215F6200187405 /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
 		B92A179A20215F6200187405 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
@@ -1199,6 +1206,12 @@
 		B996D9C62019CA7600E6991A /* IMBDevViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDevViewController.xib; sourceTree = "<group>"; };
 		B996D9CB2019E26900E6991A /* IMBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBConst.h; sourceTree = "<group>"; };
 		B996D9CC2019E26900E6991A /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
+		B9F6730B2022B92C00D3665E /* IMBVideoImageByOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVideoImageByOther.h; sourceTree = "<group>"; };
+		B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
+		B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageHeaderTitleNames.plist; sourceTree = "<group>"; };
+		B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePageFolderModel.h; sourceTree = "<group>"; };
+		B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevicePageFolderModel.m; sourceTree = "<group>"; };
+		B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageFolderNames.plist; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -1490,6 +1503,8 @@
 		B9348B2D201F0DAB00A8CEC3 /* FileSystem */ = {
 			isa = PBXGroup;
 			children = (
+				B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */,
+				B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */,
 				B90D14DA2020214C002D9F9B /* SimpleNode.h */,
 				B90D14DB2020214C002D9F9B /* SimpleNode.m */,
 				B9348B2E201F0DAB00A8CEC3 /* IMBAMDeviceInfo.h */,
@@ -2202,9 +2217,10 @@
 				B96563C62021D47600BD7FF5 /* IMBMusicDatabase.m */,
 				B96563C72021D47600BD7FF5 /* IMBVideoImageAcquire.h */,
 				B96563C82021D47600BD7FF5 /* IMBVideoImageAcquire.m */,
+				B9F6730B2022B92C00D3665E /* IMBVideoImageByOther.h */,
+				B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */,
 				B96563C92021D47600BD7FF5 /* iTunesCDB */,
 				B96564052021D47600BD7FF5 /* iTunesDB */,
-				B96564402021D47600BD7FF5 /* MediaInfo */,
 				B965645B2021D47600BD7FF5 /* NSImage+IMBCropExtensions.h */,
 				B965645C2021D47600BD7FF5 /* NSImage+IMBCropExtensions.m */,
 				B965645D2021D47600BD7FF5 /* NSString+Compare.h */,
@@ -2375,221 +2391,6 @@
 			path = MHOD;
 			sourceTree = "<group>";
 		};
-		B96564402021D47600BD7FF5 /* MediaInfo */ = {
-			isa = PBXGroup;
-			children = (
-				B96564412021D47600BD7FF5 /* glib-2.0 */,
-				B96564452021D47600BD7FF5 /* libmms */,
-				B96564462021D47600BD7FF5 /* MediaInfo */,
-				B96564512021D47600BD7FF5 /* ThirdParty */,
-				B96564552021D47600BD7FF5 /* Utility */,
-				B96564562021D47600BD7FF5 /* ZenLib */,
-			);
-			path = MediaInfo;
-			sourceTree = "<group>";
-		};
-		B96564412021D47600BD7FF5 /* glib-2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				B96564422021D47600BD7FF5 /* gio */,
-				B96564432021D47600BD7FF5 /* glib */,
-				B96564442021D47600BD7FF5 /* gobject */,
-			);
-			path = "glib-2.0";
-			sourceTree = "<group>";
-		};
-		B96564422021D47600BD7FF5 /* gio */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = gio;
-			sourceTree = "<group>";
-		};
-		B96564432021D47600BD7FF5 /* glib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = glib;
-			sourceTree = "<group>";
-		};
-		B96564442021D47600BD7FF5 /* gobject */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = gobject;
-			sourceTree = "<group>";
-		};
-		B96564452021D47600BD7FF5 /* libmms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = libmms;
-			sourceTree = "<group>";
-		};
-		B96564462021D47600BD7FF5 /* MediaInfo */ = {
-			isa = PBXGroup;
-			children = (
-				B96564472021D47600BD7FF5 /* Archive */,
-				B96564482021D47600BD7FF5 /* Audio */,
-				B96564492021D47600BD7FF5 /* Duplicate */,
-				B965644A2021D47600BD7FF5 /* Export */,
-				B965644B2021D47600BD7FF5 /* Image */,
-				B965644C2021D47600BD7FF5 /* Multiple */,
-				B965644D2021D47600BD7FF5 /* Reader */,
-				B965644E2021D47600BD7FF5 /* Tag */,
-				B965644F2021D47600BD7FF5 /* Text */,
-				B96564502021D47600BD7FF5 /* Video */,
-			);
-			path = MediaInfo;
-			sourceTree = "<group>";
-		};
-		B96564472021D47600BD7FF5 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Archive;
-			sourceTree = "<group>";
-		};
-		B96564482021D47600BD7FF5 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
-		B96564492021D47600BD7FF5 /* Duplicate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Duplicate;
-			sourceTree = "<group>";
-		};
-		B965644A2021D47600BD7FF5 /* Export */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Export;
-			sourceTree = "<group>";
-		};
-		B965644B2021D47600BD7FF5 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		B965644C2021D47600BD7FF5 /* Multiple */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Multiple;
-			sourceTree = "<group>";
-		};
-		B965644D2021D47600BD7FF5 /* Reader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reader;
-			sourceTree = "<group>";
-		};
-		B965644E2021D47600BD7FF5 /* Tag */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tag;
-			sourceTree = "<group>";
-		};
-		B965644F2021D47600BD7FF5 /* Text */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Text;
-			sourceTree = "<group>";
-		};
-		B96564502021D47600BD7FF5 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Video;
-			sourceTree = "<group>";
-		};
-		B96564512021D47600BD7FF5 /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				B96564522021D47600BD7FF5 /* base64 */,
-				B96564532021D47600BD7FF5 /* md5 */,
-				B96564542021D47600BD7FF5 /* tinyxml2 */,
-			);
-			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		B96564522021D47600BD7FF5 /* base64 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = base64;
-			sourceTree = "<group>";
-		};
-		B96564532021D47600BD7FF5 /* md5 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = md5;
-			sourceTree = "<group>";
-		};
-		B96564542021D47600BD7FF5 /* tinyxml2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = tinyxml2;
-			sourceTree = "<group>";
-		};
-		B96564552021D47600BD7FF5 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		B96564562021D47600BD7FF5 /* ZenLib */ = {
-			isa = PBXGroup;
-			children = (
-				B96564572021D47600BD7FF5 /* Format */,
-				B965645A2021D47600BD7FF5 /* HTTP_Client */,
-			);
-			path = ZenLib;
-			sourceTree = "<group>";
-		};
-		B96564572021D47600BD7FF5 /* Format */ = {
-			isa = PBXGroup;
-			children = (
-				B96564582021D47600BD7FF5 /* Html */,
-				B96564592021D47600BD7FF5 /* Http */,
-			);
-			path = Format;
-			sourceTree = "<group>";
-		};
-		B96564582021D47600BD7FF5 /* Html */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Html;
-			sourceTree = "<group>";
-		};
-		B96564592021D47600BD7FF5 /* Http */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Http;
-			sourceTree = "<group>";
-		};
-		B965645A2021D47600BD7FF5 /* HTTP_Client */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HTTP_Client;
-			sourceTree = "<group>";
-		};
 		B965645F2021D47600BD7FF5 /* PlayCounts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2637,6 +2438,24 @@
 				B96564762021D47600BD7FF5 /* XMLReader.m */,
 			);
 			path = XMLReader;
+			sourceTree = "<group>";
+		};
+		B9F674592022F8F900D3665E /* SupportedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */,
+				B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */,
+			);
+			path = SupportedFiles;
+			sourceTree = "<group>";
+		};
+		B9F6745C202305E800D3665E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */,
+				B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EE39AB6B200C5EB300D084CE = {
@@ -2688,14 +2507,16 @@
 			children = (
 				EE39ACE3200CBD9700D084CE /* Assets.xcassets */,
 				EE39ACE4200CBD9700D084CE /* MainMenu.xib */,
+				EE39ACF9200CBD9700D084CE /* main.m */,
 				EE39ACE1200CBD9700D084CE /* AppDelegate.h */,
 				EE39ACE2200CBD9700D084CE /* AppDelegate.m */,
-				EE39ACF9200CBD9700D084CE /* main.m */,
 				B9104C97200DB2C300C1ECEA /* iOSFilesPch.pch */,
 				B9348B40201F0DD500A8CEC3 /* IMBNotificationDefine.h */,
 				B996D9CB2019E26900E6991A /* IMBConst.h */,
 				B996D9CC2019E26900E6991A /* IMBConst.m */,
 				EE39ACEB200CBD9700D084CE /* Info.plist */,
+				B9F6745C202305E800D3665E /* Model */,
+				B9F674592022F8F900D3665E /* SupportedFiles */,
 				B96563BC2021D47600BD7FF5 /* Media */,
 				B910BF0E20219E3B00849CBB /* CloudDrive */,
 				B92A179520215EEE00187405 /* Utils */,
@@ -2937,11 +2758,13 @@
 				EE8BA57D20217D9100FECC14 /* windowclose2@2x.png in Resources */,
 				EE39AD25200CBD9700D084CE /* IMBMainWindowController.xib in Resources */,
 				EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */,
+				B9F6746120230AEA00D3665E /* DevicePageFolderNames.plist in Resources */,
 				EE8BA54B202177C500FECC14 /* IMBDevicePageWindow.xib in Resources */,
 				EE8BA57C20217D9100FECC14 /* windowclose2.png in Resources */,
 				EE8BA57B20217D9100FECC14 /* windowclose.png in Resources */,
 				EE8BA58020217D9100FECC14 /* windowclose@2x.png in Resources */,
 				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
+				B9F6745B2022F8F900D3665E /* DevicePageHeaderTitleNames.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3244,6 +3067,7 @@
 				B96562EF2021D2B000BD7FF5 /* File_ChannelGrouping.cpp in Sources */,
 				B96564A22021D47600BD7FF5 /* IMBPlaylist.m in Sources */,
 				B965647D2021D47600BD7FF5 /* IMBArtworkDB.m in Sources */,
+				B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */,
 				B96564852021D47600BD7FF5 /* IMBiPod.m in Sources */,
 				B965648B2021D47600BD7FF5 /* IMBiTunesCDBRoot.m in Sources */,
 				B96563742021D2B000BD7FF5 /* File_VorbisCom.cpp in Sources */,
@@ -3317,8 +3141,10 @@
 				B96564BA2021D47600BD7FF5 /* IMBPlayCounts.m in Sources */,
 				B96563A62021D2B000BD7FF5 /* Http_Handler.cpp in Sources */,
 				B96564802021D47600BD7FF5 /* IMBArtworkListContainerHeader.m in Sources */,
+				B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */,
 				B96563A82021D2B000BD7FF5 /* Http_Utils.cpp in Sources */,
 				B96563512021D2B000BD7FF5 /* File_Mpeg4_Elements.cpp in Sources */,
+				B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */,
 				B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */,
 				B96563372021D2B000BD7FF5 /* File_Aaf.cpp in Sources */,
 				B965637C2021D2B000BD7FF5 /* File_Kate.cpp in Sources */,

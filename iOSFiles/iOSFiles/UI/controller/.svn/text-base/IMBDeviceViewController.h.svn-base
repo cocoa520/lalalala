@@ -13,7 +13,7 @@
 {
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
     NSPopover *_devPopover;
-//    IBOutlet NSBox *_deviceBox;
+    NSMutableDictionary *_windowControllerDic;
 }
-
+- (void)mainWindowClose;
 @end

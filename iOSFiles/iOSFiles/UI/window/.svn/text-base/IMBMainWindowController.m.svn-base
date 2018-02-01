@@ -45,10 +45,8 @@
     [_topView setWantsLayer:YES];
     [_topView.layer setBackgroundColor:IMBGrayColor(255).CGColor];
     
-    IMBDeviceViewController *deviceViewController = [[IMBDeviceViewController alloc]initWithNibName:@"IMBDeviceViewController" bundle:nil];
-    [_rootBox addSubview:deviceViewController.view];
-    [deviceViewController release];
-    deviceViewController = nil;
+    _deviceViewController = [[IMBDeviceViewController alloc]initWithNibName:@"IMBDeviceViewController" bundle:nil];
+    [_rootBox addSubview:_deviceViewController.view];
 }
 
 - (void)windowDidLoad {
@@ -60,9 +58,14 @@
  */
 - (void)closeWindow:(id)sender {
     [self.window close];
+    [_deviceViewController mainWindowClose];
 }
 
 - (void)dealloc {
+    if (_deviceViewController) {
+        [_deviceViewController release];
+        _deviceViewController = nil;
+    }
     //移除通知
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
     

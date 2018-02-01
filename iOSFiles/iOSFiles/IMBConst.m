@@ -10,3 +10,6 @@
 
 NSString * const IMBSelectedDeviceDidChangeNotiWithParams = @"IMBSelectedDeviceDidChangeNotiWithParams";
 NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNoti";
+
+NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
+NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";

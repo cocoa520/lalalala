@@ -10,12 +10,14 @@
 #import "IMBNoTitleBarContentView.h"
 #import "IMBLackCornerView.h"
 #import "IMBSelecedDeviceBtn.h"
+#import "IMBDeviceViewController.h"
 
 @interface IMBMainWindowController : NSWindowController
 {
     IBOutlet IMBNoTitleBarContentView *_mainContontView;
     IBOutlet IMBLackCornerView *_topView;
     IBOutlet NSBox *_rootBox;
+    IMBDeviceViewController *_deviceViewController;
 }
 
 @end

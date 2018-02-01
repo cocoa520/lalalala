@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svn/Mac/!svn/ver/1155/JPProject/iOSFiles/iOSFiles/Media
+/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/Media
 END
 NSString+Compare.h
 K 25
@@ -15,12 +15,6 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Media/NSImage+IMBCropExtensions.h
 END
-IMBVideoImageAcquire.h
-K 25
-svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageAcquire.h
-END
 IMBMusicDatabase.h
 K 25
 svn:wc:ra_dav:version-url
@@ -33,17 +27,17 @@ svn:wc:ra_dav:version-url
 V 75
 /svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Media/NSString+Compare.m
 END
+IMBVideoImageByOther.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageByOther.h
+END
 NSImage+IMBCropExtensions.m
 K 25
 svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Media/NSImage+IMBCropExtensions.m
-END
-IMBVideoImageAcquire.m
-K 25
-svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageAcquire.m
 END
 IMBArtworkUnknownListContainer.h
 K 25
@@ -69,6 +63,12 @@ svn:wc:ra_dav:version-url
 V 75
 /svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBMusicDatabase.m
 END
+IMBVideoImageByOther.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageByOther.m
+END
 IMBArtworkUnknownListContainer.m
 K 25
 svn:wc:ra_dav:version-url
@@ -86,4 +86,16 @@ K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBMediaLibraryDBHelper.m
+END
+IMBVideoImageAcquire.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageAcquire.h
+END
+IMBVideoImageAcquire.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1144/JPProject/iOSFiles/iOSFiles/Media/IMBVideoImageAcquire.m
 END

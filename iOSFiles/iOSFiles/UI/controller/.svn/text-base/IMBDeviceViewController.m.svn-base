@@ -44,6 +44,7 @@
     [self addNotis];
     [(IMBBackgroundBorderView*)self.view setHasRadius:YES];
     [(IMBBackgroundBorderView*)self.view setBackgroundColor:[NSColor whiteColor]];
+    _windowControllerDic = [[NSMutableDictionary alloc]init];
 }
 
 /**
@@ -66,7 +67,6 @@
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     [deviceConnection startListening];
     
-//    __block typeof(self) weakSelf = self;
     deviceConnection.IMBDeviceConnected = ^{
         //设备连接成功
         [self deviceConnectedWithConnection:deviceConnection];
@@ -79,6 +79,7 @@
             [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType];
 //            IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
             [self setDeviceInfosWithiPod:baseInfo];
+            [self deviceDisconnected:serialNum];
         }else {
             [_selectedDeviceBtn configButtonName:@"No Device Connected" WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:NO WithIsDisable:YES withConnectType:0];
             [self deviceDisconnected:serialNum];
@@ -94,10 +95,7 @@
     };
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBBaseInfo *baseInfo) {
         //加载设备信息完成,ipod中含有设备详细信息
-//        _disConnectController.promptTF.stringValue = @"Connected";
-//        if ([_disConnectController.promptLeftTF.stringValue isEqualToString:@""]) {
-            [self setDeviceInfosWithiPod:baseInfo];
-//        }
+        [self setDeviceInfosWithiPod:baseInfo];
     };
 }
 
@@ -115,9 +113,17 @@
 
 - (void)deviceDisconnected:(NSString *)serialNum {
     [[IMBLogManager singleton] writeInfoLog:@"Disconneted"];
-//    _disConnectController.promptTF.stringValue = @"Please plug-in your iPhone,iPad or iPod, Start your journey";
-//    [self emptyDeviceInfo];
-    
+    if (_windowControllerDic.count >0) {
+        IMBDevicePageWindow *devicePageWindow = [_windowControllerDic objectForKey:serialNum];
+        [devicePageWindow.window close];
+        [devicePageWindow release];
+        devicePageWindow = nil;
+    }
+    if (_devPopover != nil) {
+        if (_devPopover.isShown) {
+            [_devPopover close];
+        }
+    }
 }
 
 - (void)deviceNeededPwd:(am_device)device {
@@ -139,19 +145,9 @@
  *  @param iPod iPod
  */
 - (void)setDeviceInfosWithiPod:(IMBBaseInfo *)baseInfo {
-//    if (iPod == nil) return;
-    
-    NSString *availableSize = [NSString stringWithFormat:@"%.01f GB",baseInfo.kyDeviceSize/1024.0/1024.0/1024.0];
-    NSString *totalSize = [NSString stringWithFormat:@"%.01f GB",baseInfo.allDeviceSize/1024.0/1024.0/1024.0];
     dispatch_async(dispatch_get_main_queue(), ^{
          [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType];
     });
-   
-    
-//    _disConnectController.promptLeftTF.stringValue = [NSString stringWithFormat:@"Device Name:\nAvailable Size:\nTotal Size:\nSerial Num:\nDevice Class:\nPhone:\nProduct Type:\nProduct Version:\nPhone Num:\nFirmware Version:\nUnique ChipID:\nActivation State:\nRegion Info:\nModel Number:\nBuild Version:\nHardware Model:\nCPU Architecture:\nBaseband Version:"];
-//    _disConnectController.promptRightTF.stringValue = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",deviceInfo.deviceName,availableSize,totalSize,deviceInfo.serialNumber,deviceInfo.deviceClass,[deviceInfo getIPodFamilyString],deviceInfo.productType,deviceInfo.productVersion,deviceInfo.phoneNumber,deviceInfo.firmwareVersion,deviceInfo.uniqueChipID,deviceInfo.activationState,deviceInfo.regionInfo,deviceInfo.modelNumber,deviceInfo.buildVersion,deviceInfo.hardwareModel,deviceInfo.CPUArchitecture,deviceInfo.basebandVersion];
-//    [deviceInfo release];
-//    deviceInfo = nil;
 }
 
 /**
@@ -223,13 +219,22 @@
         [_devPopover close];
     }
     [self setDeviceInfosWithiPod:baseInfo];
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
     if (!baseInfo.isSelected) {
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-            IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-            IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
             baseInfo.isSelected = YES;
             IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc]initWithiPod:ipod];
+            [[devicePagewindow window] center];
+            [devicePagewindow showWindow:self];
+            [_windowControllerDic setObject:devicePagewindow forKey:ipod.uniqueKey];
+        });
+    }else{
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            IMBDevicePageWindow *devicePagewindow = [_windowControllerDic objectForKey:ipod.uniqueKey];
+            [[devicePagewindow window] center];
             [devicePagewindow showWindow:self];
         });
     }
@@ -246,12 +251,21 @@
     return lastStr;
 }
 
+- (void)mainWindowClose{
+    if (_windowControllerDic.count > 0) {
+        for (NSWindowController * chooseWindow in _windowControllerDic.allValues) {
+            [chooseWindow.window close];
+        }
+    }
+}
+
 - (void)dealloc {
-    //    [_disConnectController release];
-    //    _disConnectController = nil;
     
     [_mainWindowController release];
     _mainWindowController = nil;
+    
+    [_windowControllerDic release];
+    _windowControllerDic = nil;
     
     [[IMBDeviceConnection singleton] stopListening];
     //移除通知

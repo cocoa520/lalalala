@@ -460,7 +460,7 @@ static char firstLetterArray[ HANZI_COUNT ] =
 //+ (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color;
 //+ (NSMutableAttributedString*)measureForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color;
 //末尾是省略号。。。
-//+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
++ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
 + (NSString*)getCategeryStr:(CategoryNodesEnum)category;
 //+ (NSColor *)getColorFromString:(NSString *)str;//将String 转为Color
 + (NSImage *)imageNamed:(NSString *)name;
@@ -477,7 +477,6 @@ static char firstLetterArray[ HANZI_COUNT ] =
 + (NSString *)getSortString:(NSString *)oriStr;
 
 
-+ (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
 
 
 @end

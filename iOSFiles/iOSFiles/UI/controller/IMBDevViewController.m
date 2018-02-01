@@ -10,8 +10,8 @@
 #import "IMBDeviceConnection.h"
 
 
-CGFloat const rowH = 40.0f;
-CGFloat const labelY = 10.0f;
+static CGFloat const rowH = 40.0f;
+static CGFloat const labelY = 10.0f;
 
 @interface IMBDevViewController ()<NSTableViewDelegate,NSTableViewDataSource>
 {
@@ -38,7 +38,6 @@ CGFloat const labelY = 10.0f;
     _tableView.dataSource = self;
 }
 - (void)dealloc {
-//    [super dealloc];
     
     if (_devices) {
         [_devices release];
@@ -49,7 +48,7 @@ CGFloat const labelY = 10.0f;
         _tableView = nil;
     }
     
-    
+//    [super dealloc];
     
 }
 /**
