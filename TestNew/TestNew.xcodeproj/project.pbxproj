@@ -354,6 +354,14 @@
 		B9E1272E20045101008F6854 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1272D20045101008F6854 /* NSString+Category.m */; };
 		B9E127312004512C008F6854 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E127302004512C008F6854 /* NSData+Category.m */; };
 		B9E1273420045148008F6854 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E1273320045148008F6854 /* NSDictionary+Category.m */; };
+		B9F6731F2022CA5600D3665E /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F673112022CA5600D3665E /* FMDatabase.m */; };
+		B9F673202022CA5600D3665E /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F673132022CA5600D3665E /* FMDatabaseAdditions.m */; };
+		B9F673212022CA5600D3665E /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F673152022CA5600D3665E /* FMDatabasePool.m */; };
+		B9F673222022CA5600D3665E /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F673172022CA5600D3665E /* FMDatabaseQueue.m */; };
+		B9F673232022CA5600D3665E /* fmdb.text in Sources */ = {isa = PBXBuildFile; fileRef = B9F673182022CA5600D3665E /* fmdb.text */; };
+		B9F673242022CA5600D3665E /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6731A2022CA5600D3665E /* FMResultSet.m */; };
+		B9F673252022CA5600D3665E /* IMBBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6731C2022CA5600D3665E /* IMBBaseEntity.m */; };
+		B9F673262022CA5600D3665E /* IMBProgressCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6731E2022CA5600D3665E /* IMBProgressCounter.m */; };
 		FACE9E11200B65D2002AB92A /* CusArchiever.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE9E10200B65D2002AB92A /* CusArchiever.m */; };
 /* End PBXBuildFile section */
 
@@ -1058,6 +1066,21 @@
 		B9E1273220045148008F6854 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
 		B9E1273320045148008F6854 /* NSDictionary+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
 		B9E1273520045167008F6854 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		B9F673102022CA5600D3665E /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		B9F673112022CA5600D3665E /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		B9F673122022CA5600D3665E /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		B9F673132022CA5600D3665E /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B9F673142022CA5600D3665E /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		B9F673152022CA5600D3665E /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		B9F673162022CA5600D3665E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		B9F673172022CA5600D3665E /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		B9F673182022CA5600D3665E /* fmdb.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = fmdb.text; sourceTree = "<group>"; };
+		B9F673192022CA5600D3665E /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		B9F6731A2022CA5600D3665E /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		B9F6731B2022CA5600D3665E /* IMBBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseEntity.h; sourceTree = "<group>"; };
+		B9F6731C2022CA5600D3665E /* IMBBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseEntity.m; sourceTree = "<group>"; };
+		B9F6731D2022CA5600D3665E /* IMBProgressCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBProgressCounter.h; sourceTree = "<group>"; };
+		B9F6731E2022CA5600D3665E /* IMBProgressCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBProgressCounter.m; sourceTree = "<group>"; };
 		FACE9E0F200B65D2002AB92A /* CusArchiever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CusArchiever.h; sourceTree = "<group>"; };
 		FACE9E10200B65D2002AB92A /* CusArchiever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CusArchiever.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1939,6 +1962,7 @@
 				B90D11E3202002EE002D9F9B /* IMBArtworkUnknownListContainer.m */,
 				B90D11E520200BF1002D9F9B /* IMBATHSync.h */,
 				B90D11E620200BF1002D9F9B /* IMBATHSync.m */,
+				B9F6730F2022CA5600D3665E /* Fmdb */,
 				B92B07CD202153CB002D5E1B /* Purchases */,
 				B90D11EE20200E56002D9F9B /* XMLReader */,
 				B90D11CE2020013F002D9F9B /* PlayCounts */,
@@ -2165,6 +2189,28 @@
 			path = CustomDC;
 			sourceTree = "<group>";
 		};
+		B9F6730F2022CA5600D3665E /* Fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				B9F673102022CA5600D3665E /* FMDatabase.h */,
+				B9F673112022CA5600D3665E /* FMDatabase.m */,
+				B9F673122022CA5600D3665E /* FMDatabaseAdditions.h */,
+				B9F673132022CA5600D3665E /* FMDatabaseAdditions.m */,
+				B9F673142022CA5600D3665E /* FMDatabasePool.h */,
+				B9F673152022CA5600D3665E /* FMDatabasePool.m */,
+				B9F673162022CA5600D3665E /* FMDatabaseQueue.h */,
+				B9F673172022CA5600D3665E /* FMDatabaseQueue.m */,
+				B9F673182022CA5600D3665E /* fmdb.text */,
+				B9F673192022CA5600D3665E /* FMResultSet.h */,
+				B9F6731A2022CA5600D3665E /* FMResultSet.m */,
+				B9F6731B2022CA5600D3665E /* IMBBaseEntity.h */,
+				B9F6731C2022CA5600D3665E /* IMBBaseEntity.m */,
+				B9F6731D2022CA5600D3665E /* IMBProgressCounter.h */,
+				B9F6731E2022CA5600D3665E /* IMBProgressCounter.m */,
+			);
+			path = Fmdb;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2350,6 +2396,7 @@
 				B96560A22021CB3E00BD7FF5 /* File_Mpeg4v.cpp in Sources */,
 				B92BFD4720034D74003948D7 /* ViewController.m in Sources */,
 				B965607F2021CB3E00BD7FF5 /* File_Id3.cpp in Sources */,
+				B9F6731F2022CA5600D3665E /* FMDatabase.m in Sources */,
 				B965608F2021CB3E00BD7FF5 /* File_Scc.cpp in Sources */,
 				B96560822021CB3E00BD7FF5 /* File_Lyrics3v2.cpp in Sources */,
 				B96560592021CB3E00BD7FF5 /* File_Ibi_Creation.cpp in Sources */,
@@ -2405,6 +2452,7 @@
 				B96560292021CB3E00BD7FF5 /* File__MultipleParsing.cpp in Sources */,
 				B965601E2021CB3E00BD7FF5 /* Export_EbuCore.cpp in Sources */,
 				B9348B2C201F0D5400A8CEC3 /* IMBFileSystem.m in Sources */,
+				B9F673262022CA5600D3665E /* IMBProgressCounter.m in Sources */,
 				B96560522021CB3E00BD7FF5 /* File_Dxw.cpp in Sources */,
 				B96F3547200CAD720026FC98 /* IMBiTunesDBRoot.m in Sources */,
 				B965605E2021CB3E00BD7FF5 /* File_Mpeg4.cpp in Sources */,
@@ -2464,6 +2512,7 @@
 				B9BDB4C820061A0200514704 /* ZLFileTool.m in Sources */,
 				B9655FDF2021CB3E00BD7FF5 /* HowToUse.mm in Sources */,
 				B96560302021CB3E00BD7FF5 /* File_Dpx.cpp in Sources */,
+				B9F673202022CA5600D3665E /* FMDatabaseAdditions.m in Sources */,
 				B96560AC2021CB3E00BD7FF5 /* NSData+Base64.m in Sources */,
 				B96560622021CB3E00BD7FF5 /* File_Mpeg_Descriptors.cpp in Sources */,
 				B96560062021CB3E00BD7FF5 /* File_Module.cpp in Sources */,
@@ -2492,6 +2541,7 @@
 				B9BDB4C5200618ED00514704 /* NSString+ZLExtension.m in Sources */,
 				B9655FE72021CB3E00BD7FF5 /* File_Ace.cpp in Sources */,
 				B96F3577200CAE690026FC98 /* StringHelper.m in Sources */,
+				B9F673222022CA5600D3665E /* FMDatabaseQueue.m in Sources */,
 				B96560482021CB3E00BD7FF5 /* File_Bdmv.cpp in Sources */,
 				B965603D2021CB3E00BD7FF5 /* MediaInfo_Config_Automatic.cpp in Sources */,
 				B965602B2021CB3E00BD7FF5 /* File_Other.cpp in Sources */,
@@ -2523,6 +2573,7 @@
 				B96F3571200CAE4D0026FC98 /* DateHelper.m in Sources */,
 				B96560382021CB3E00BD7FF5 /* File_Rle.cpp in Sources */,
 				B96F3552200CAD720026FC98 /* IMBType5Container.m in Sources */,
+				B9F673232022CA5600D3665E /* fmdb.text in Sources */,
 				B96560B32021CB3E00BD7FF5 /* Html_Request.cpp in Sources */,
 				B96560402021CB3E00BD7FF5 /* MediaInfo_File.cpp in Sources */,
 				B9655FFD2021CB3E00BD7FF5 /* File_Celt.cpp in Sources */,
@@ -2569,6 +2620,7 @@
 				B96F353A200CAD720026FC98 /* IMBSqliteTables_4.m in Sources */,
 				B965602F2021CB3E00BD7FF5 /* File_Dds.cpp in Sources */,
 				B9655FEF2021CB3E00BD7FF5 /* File_Zip.cpp in Sources */,
+				B9F673252022CA5600D3665E /* IMBBaseEntity.m in Sources */,
 				B965600F2021CB3E00BD7FF5 /* File_Ps2Audio.cpp in Sources */,
 				B965602E2021CB3E00BD7FF5 /* File_Bmp.cpp in Sources */,
 				B96F3559200CAD720026FC98 /* IMBPlaylistPositionMHOD.m in Sources */,
@@ -2610,6 +2662,8 @@
 				B9655FFA2021CB3E00BD7FF5 /* File_Amv.cpp in Sources */,
 				B96560752021CB3E00BD7FF5 /* File_Wm.cpp in Sources */,
 				B96560B42021CB3E00BD7FF5 /* Http_Cookies.cpp in Sources */,
+				B9F673212022CA5600D3665E /* FMDatabasePool.m in Sources */,
+				B9F673242022CA5600D3665E /* FMResultSet.m in Sources */,
 				B9655FF82021CB3E00BD7FF5 /* File_Als.cpp in Sources */,
 				B96F3576200CAE690026FC98 /* MediaHelper.m in Sources */,
 				B96560462021CB3E00BD7FF5 /* File_Aaf.cpp in Sources */,
