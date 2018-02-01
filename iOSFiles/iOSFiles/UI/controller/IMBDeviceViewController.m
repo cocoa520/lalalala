@@ -225,10 +225,12 @@
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
             baseInfo.isSelected = YES;
-            IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc]initWithiPod:ipod];
+            IMBDevicePageWindow *devicePagewindow = [[[IMBDevicePageWindow alloc] initWithiPod:ipod] retain];
             [[devicePagewindow window] center];
             [devicePagewindow showWindow:self];
             [_windowControllerDic setObject:devicePagewindow forKey:ipod.uniqueKey];
+            [devicePagewindow release];
+            devicePagewindow = nil;
         });
     }else{
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));

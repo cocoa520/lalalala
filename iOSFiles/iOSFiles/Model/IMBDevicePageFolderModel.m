@@ -24,6 +24,8 @@
 @synthesize booksArray = _booksArray;
 @synthesize appsArray = _appsArray;
 @synthesize idx = _idx;
+@synthesize sizeString = _sizeString;
+
 
 
 - (void)setTrackArray:(NSArray *)trackArray {
@@ -35,6 +37,7 @@
         for (IMBTrack *track in trackArray) {
             _size += track.fileSize;
         }
+        [self setSizeStr];
     }
 }
 
@@ -47,6 +50,7 @@
         for (IMBPhotoEntity *photo in photoArray) {
             _size += photo.photoSize;
         }
+        [self setSizeStr];
     }
 }
 
@@ -59,6 +63,7 @@
         for (IMBBookEntity *book in booksArray) {
             _size += book.size;
         }
+        [self setSizeStr];
     }
 }
 
@@ -71,6 +76,23 @@
         for (IMBAppEntity *app in appsArray) {
             _size += [app appSize];
         }
+        [self setSizeStr];
+    }
+}
+
+- (void)setSizeStr {
+    if (_size == 0) {
+        _sizeString = @"";
+       return;
+    }
+    double size = _size/1024.0/1024.0;
+    if (size >= 1000) {
+        size /= 1024.0;
+        _sizeString = [NSString stringWithFormat:@"%.2f GB",size];
+    }else if (size >= 1){
+        _sizeString = [NSString stringWithFormat:@"%.2f MB",size];
+    }else {
+        _sizeString = [NSString stringWithFormat:@"%.2f KB",size*1024.0];
     }
 }
 

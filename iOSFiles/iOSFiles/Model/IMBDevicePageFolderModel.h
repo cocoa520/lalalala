@@ -18,6 +18,7 @@
     NSArray *_appsArray;
     NSString *_name;
     unsigned long long _size;
+    NSString *_sizeString;
     NSString *_time;
     NSInteger _counts;
     
@@ -33,6 +34,7 @@
 @property(nonatomic, retain)NSArray *booksArray;
 @property(nonatomic, retain)NSArray *appsArray;
 @property(nonatomic, assign)NSInteger idx;
+@property(nonatomic, copy)NSString *sizeString;
 
 
 @end

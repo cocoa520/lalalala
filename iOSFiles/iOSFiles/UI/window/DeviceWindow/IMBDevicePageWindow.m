@@ -116,6 +116,7 @@ static CGFloat const labelY = 10.0f;
             IMBDevicePageFolderModel *model = [[[IMBDevicePageFolderModel alloc] init] autorelease];
             model.name = name;
             model.idx = idx++;
+            model.counts = -1;
             [_dataArray addObject:model];
         }
     }
@@ -230,6 +231,7 @@ static CGFloat const labelY = 10.0f;
 - (void)setDataArrayWithType:(NSString *)type handle:(void(^)(IMBDevicePageFolderModel *model))handleBlock {
     for (IMBDevicePageFolderModel *model in _dataArray) {
         if ([model.name isEqualToString:type]) {
+            model.counts = 0;
             if (handleBlock) {
                 handleBlock(model);
             }
@@ -367,27 +369,41 @@ static CGFloat const labelY = 10.0f;
         if ([tableColumn.identifier isEqualToString:@"Name"]) {
             textField.stringValue = model.name;
         }else if ([tableColumn.identifier isEqualToString:@"Time"]) {
-            double size = model.size/1024.0/1024.0;
-            NSString *sizeStr = @"";
-            if (size >= 1000) {
-                size /= 1024.0;
-                sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+            if (model.counts == -1) {
+                textField.stringValue = @"loading";
             }else {
-                sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
+                double size = model.size/1024.0/1024.0;
+                NSString *sizeStr = @"";
+                if (size >= 1000) {
+                    size /= 1024.0;
+                    sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+                }else {
+                    sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
+                }
+                textField.stringValue = sizeStr;
             }
-            textField.stringValue = sizeStr;
+            
         }else if ([tableColumn.identifier isEqualToString:@"Size"]) {
-            double size = model.size/1024.0/1024.0;
-            NSString *sizeStr = @"";
-            if (size >= 1000) {
-                size /= 1024.0;
-                sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+            if (model.counts == -1) {
+                textField.stringValue = @"loading";
             }else {
-                sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
+                double size = model.size/1024.0/1024.0;
+                NSString *sizeStr = @"";
+                if (size >= 1000) {
+                    size /= 1024.0;
+                    sizeStr = [NSString stringWithFormat:@"%.2f GB",size];
+                }else {
+                    sizeStr = [NSString stringWithFormat:@"%.2f MB",size];
+                }
+                textField.stringValue = sizeStr;
             }
-            textField.stringValue = sizeStr;
         }else if ([tableColumn.identifier isEqualToString:@"Counts"]) {
-            textField.stringValue = [NSString stringWithFormat:@"%lu",model.counts];
+            if (model.counts == -1) {
+                textField.stringValue = @"loading";
+            }else {
+                textField.stringValue = [NSString stringWithFormat:@"%lu",model.counts];
+            }
+            
         }
         
     }
