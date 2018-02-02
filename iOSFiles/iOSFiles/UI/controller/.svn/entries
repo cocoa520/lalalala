@@ -1,14 +1,14 @@
 10
 
 dir
-1175
+1217
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-02-01T02:04:03.632372Z
-1160
+2018-02-02T07:52:02.025596Z
+1217
 longfan
 
 
@@ -28,14 +28,14 @@ a323380f-3d89-8743-8c24-0bf67719c927
 
 IMBDevViewController.m
 file
-1188
 
 
 
-2018-02-01T07:08:56.000000Z
-457ae751b1af8a924250cd82062d95d1
-2018-02-01T09:54:13.988720Z
-1188
+
+2018-02-01T10:29:21.000000Z
+ded456598c1325ae90e6525148b99461
+2018-02-02T01:41:51.548985Z
+1194
 hezhonglin
 
 
@@ -58,18 +58,18 @@ hezhonglin
 
 
 
-3298
+3312
 
 IMBDeviceViewController.m
 file
-1188
 
 
 
-2018-02-01T07:09:34.000000Z
-44e75ccf6c1ec66245245abcd23bbc33
-2018-02-01T09:54:13.988720Z
-1188
+
+2018-02-02T07:46:33.000000Z
+7b374dba12f80246ad7f8509184be29d
+2018-02-02T07:49:16.634106Z
+1215
 hezhonglin
 
 
@@ -92,7 +92,7 @@ hezhonglin
 
 
 
-9872
+10019
 
 IMBDisconnectViewController.xib
 file
@@ -127,6 +127,40 @@ dingming
 
 
 15570
+
+IMBDetailViewControler.h
+file
+
+
+
+
+2018-02-02T06:01:48.000000Z
+1b3e67bb95b20a7bd4df7721a4063085
+2018-02-02T07:49:16.634106Z
+1215
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+387
 
 IMBDevViewController.xib
 file
@@ -202,10 +236,10 @@ file
 
 
 
-2018-01-31T10:43:19.000000Z
-8add209f8703974f5aa46a2e81f8e40b
-2018-01-31T06:04:52.702396Z
-1128
+2018-02-02T07:55:46.000000Z
+e31d712c4e8e98a8697f99ce2b581868
+2018-02-02T07:52:02.025596Z
+1217
 longfan
 
 
@@ -229,6 +263,40 @@ longfan
 
 
 2195
+
+IMBDetailViewControler.m
+file
+
+
+
+
+2018-02-02T07:44:08.000000Z
+2dccf3b85b2faf27dccee9c57ea35911
+2018-02-02T07:49:16.634106Z
+1215
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8498
 
 IMBDevViewController.h
 file
@@ -331,4 +399,38 @@ longfan
 
 
 435
+
+IMBDetailViewControler.xib
+file
+
+
+
+
+2018-02-02T06:38:33.000000Z
+b07e09bb0d632e0cc154b0ac3725ebed
+2018-02-02T07:49:16.634106Z
+1215
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11674
 

@@ -21,7 +21,7 @@
     NSString *_sizeString;
     NSString *_time;
     NSInteger _counts;
-    
+    NSString *_countsString;
     NSInteger _idx;
 }
 
@@ -35,6 +35,7 @@
 @property(nonatomic, retain)NSArray *appsArray;
 @property(nonatomic, assign)NSInteger idx;
 @property(nonatomic, copy)NSString *sizeString;
+@property(nonatomic, copy)NSString *countsString;
 
 
 @end

@@ -38,6 +38,10 @@
 		B910BF4A20219FFD00849CBB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4720219FFD00849CBB /* AFNetworking.framework */; };
 		B910BF4B20219FFD00849CBB /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4820219FFD00849CBB /* AppAuth.framework */; };
 		B910BF4C20219FFD00849CBB /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4920219FFD00849CBB /* YTKNetwork.framework */; };
+		B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B914C19C2023F0EC00B998AC /* DevicePageFolderNames.plist */; };
+		B914C19F2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B914C19D2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist */; };
+		B914C1A520241A7500B998AC /* IMBDetailViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = B914C1A320241A7500B998AC /* IMBDetailViewControler.m */; };
+		B914C1A620241A7500B998AC /* IMBDetailViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */; };
 		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
 		B92A179E20215F6200187405 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179920215F6200187405 /* NSData+Category.m */; };
 		B92A179F20215F6200187405 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179B20215F6200187405 /* NSDictionary+Category.m */; };
@@ -70,6 +74,10 @@
 		B9348B3D201F0DAB00A8CEC3 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B35201F0DAB00A8CEC3 /* IMBFileSystem.m */; };
 		B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B37201F0DAB00A8CEC3 /* IMBInformation.m */; };
 		B9348B3F201F0DAB00A8CEC3 /* IMBInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */; };
+		B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */; };
+		B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */; };
+		B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */; };
+		B95BD52320244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */; };
 		B9655DBF20207D1D00FE2D92 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DBE20207D1D00FE2D92 /* libiconv.dylib */; };
 		B9655DC120207D3E00FE2D92 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */; };
 		B9655DC320207D5500FE2D92 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC220207D5500FE2D92 /* libcurl.dylib */; };
@@ -392,9 +400,7 @@
 		B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B996D9C62019CA7600E6991A /* IMBDevViewController.xib */; };
 		B996D9CD2019E26900E6991A /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9CC2019E26900E6991A /* IMBConst.m */; };
 		B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */; };
-		B9F6745B2022F8F900D3665E /* DevicePageHeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */; };
 		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
-		B9F6746120230AEA00D3665E /* DevicePageFolderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
@@ -511,6 +517,11 @@
 		B910BF4720219FFD00849CBB /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		B910BF4820219FFD00849CBB /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
 		B910BF4920219FFD00849CBB /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTKNetwork.framework; sourceTree = "<group>"; };
+		B914C19C2023F0EC00B998AC /* DevicePageFolderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageFolderNames.plist; sourceTree = "<group>"; };
+		B914C19D2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageHeaderTitleNames.plist; sourceTree = "<group>"; };
+		B914C1A220241A7500B998AC /* IMBDetailViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDetailViewControler.h; sourceTree = "<group>"; };
+		B914C1A320241A7500B998AC /* IMBDetailViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDetailViewControler.m; sourceTree = "<group>"; };
+		B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDetailViewControler.xib; sourceTree = "<group>"; };
 		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
 		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
 		B92A179820215F6200187405 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
@@ -574,6 +585,10 @@
 		B9348B38201F0DAB00A8CEC3 /* IMBInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBInformationManager.h; sourceTree = "<group>"; };
 		B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBInformationManager.m; sourceTree = "<group>"; };
 		B9348B40201F0DD500A8CEC3 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleTrackNames.plist; sourceTree = "<group>"; };
+		B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleAppNames.plist; sourceTree = "<group>"; };
+		B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleBookNames.plist; sourceTree = "<group>"; };
+		B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitlePhotoNames.plist; sourceTree = "<group>"; };
 		B9655DBE20207D1D00FE2D92 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = usr/lib/libSystem.B.dylib; sourceTree = SDKROOT; };
 		B9655DC220207D5500FE2D92 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -1208,10 +1223,8 @@
 		B996D9CC2019E26900E6991A /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
 		B9F6730B2022B92C00D3665E /* IMBVideoImageByOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVideoImageByOther.h; sourceTree = "<group>"; };
 		B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
-		B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageHeaderTitleNames.plist; sourceTree = "<group>"; };
 		B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePageFolderModel.h; sourceTree = "<group>"; };
 		B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevicePageFolderModel.m; sourceTree = "<group>"; };
-		B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageFolderNames.plist; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -1390,6 +1403,19 @@
 				B910BF3320219E3B00849CBB /* OneDUploadAPI.m */,
 			);
 			path = OneDrive;
+			sourceTree = "<group>";
+		};
+		B914C19B2023F0EC00B998AC /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */,
+				B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */,
+				B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */,
+				B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */,
+				B914C19C2023F0EC00B998AC /* DevicePageFolderNames.plist */,
+				B914C19D2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist */,
+			);
+			path = Plists;
 			sourceTree = "<group>";
 		};
 		B92A179520215EEE00187405 /* Utils */ = {
@@ -2443,8 +2469,7 @@
 		B9F674592022F8F900D3665E /* SupportedFiles */ = {
 			isa = PBXGroup;
 			children = (
-				B9F6745A2022F8F900D3665E /* DevicePageHeaderTitleNames.plist */,
-				B9F6746020230AEA00D3665E /* DevicePageFolderNames.plist */,
+				B914C19B2023F0EC00B998AC /* Plists */,
 			);
 			path = SupportedFiles;
 			sourceTree = "<group>";
@@ -2631,6 +2656,9 @@
 				B996D9C42019CA7600E6991A /* IMBDevViewController.h */,
 				B996D9C52019CA7600E6991A /* IMBDevViewController.m */,
 				B996D9C62019CA7600E6991A /* IMBDevViewController.xib */,
+				B914C1A220241A7500B998AC /* IMBDetailViewControler.h */,
+				B914C1A320241A7500B998AC /* IMBDetailViewControler.m */,
+				B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2750,6 +2778,7 @@
 			files = (
 				EE39AD13200CBD9700D084CE /* Assets.xcassets in Resources */,
 				EE8BA57F20217D9100FECC14 /* windowclose3@2x.png in Resources */,
+				B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */,
 				EE8BA57E20217D9100FECC14 /* windowclose3.png in Resources */,
 				B96564902021D47600BD7FF5 /* iTunesCDB in Resources */,
 				EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */,
@@ -2758,13 +2787,17 @@
 				EE8BA57D20217D9100FECC14 /* windowclose2@2x.png in Resources */,
 				EE39AD25200CBD9700D084CE /* IMBMainWindowController.xib in Resources */,
 				EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */,
-				B9F6746120230AEA00D3665E /* DevicePageFolderNames.plist in Resources */,
 				EE8BA54B202177C500FECC14 /* IMBDevicePageWindow.xib in Resources */,
+				B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */,
 				EE8BA57C20217D9100FECC14 /* windowclose2.png in Resources */,
 				EE8BA57B20217D9100FECC14 /* windowclose.png in Resources */,
 				EE8BA58020217D9100FECC14 /* windowclose@2x.png in Resources */,
+				B95BD52320244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist in Resources */,
+				B914C1A620241A7500B998AC /* IMBDetailViewControler.xib in Resources */,
+				B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */,
 				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
-				B9F6745B2022F8F900D3665E /* DevicePageHeaderTitleNames.plist in Resources */,
+				B914C19F2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist in Resources */,
+				B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2928,6 +2961,7 @@
 				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
 				B96563652021D2B000BD7FF5 /* File_Umf.cpp in Sources */,
 				B910BF4420219E3B00849CBB /* OneDriveRefreshTokenAPI.m in Sources */,
+				B914C1A520241A7500B998AC /* IMBDetailViewControler.m in Sources */,
 				B9348B3C201F0DAB00A8CEC3 /* IMBDeviceInfo.m in Sources */,
 				B96564872021D47600BD7FF5 /* IMBIPodImageFormat.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,

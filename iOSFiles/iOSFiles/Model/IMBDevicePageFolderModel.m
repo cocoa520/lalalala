@@ -25,6 +25,7 @@
 @synthesize appsArray = _appsArray;
 @synthesize idx = _idx;
 @synthesize sizeString = _sizeString;
+@synthesize countsString = _countsString;
 
 
 
@@ -37,8 +38,8 @@
         for (IMBTrack *track in trackArray) {
             _size += track.fileSize;
         }
-        [self setSizeStr];
     }
+    [self setSizeStr];
 }
 
 - (void)setPhotoArray:(NSArray *)photoArray {
@@ -50,8 +51,8 @@
         for (IMBPhotoEntity *photo in photoArray) {
             _size += photo.photoSize;
         }
-        [self setSizeStr];
     }
+    [self setSizeStr];
 }
 
 - (void)setBooksArray:(NSArray *)booksArray {
@@ -63,8 +64,8 @@
         for (IMBBookEntity *book in booksArray) {
             _size += book.size;
         }
-        [self setSizeStr];
     }
+    [self setSizeStr];
 }
 
 - (void)setAppsArray:(NSArray *)appsArray {
@@ -76,13 +77,20 @@
         for (IMBAppEntity *app in appsArray) {
             _size += [app appSize];
         }
-        [self setSizeStr];
     }
+    [self setSizeStr];
 }
 
 - (void)setSizeStr {
+    _time = @"2018-1-20 18:02";
+    if (_counts || _counts == 0) {
+        _countsString = [NSString stringWithFormat:@"%lu",_counts];
+    }else {
+        _countsString = @"-";
+    }
+    
     if (_size == 0) {
-        _sizeString = @"";
+        _sizeString = @"0 B";
        return;
     }
     double size = _size/1024.0/1024.0;
@@ -94,6 +102,7 @@
     }else {
         _sizeString = [NSString stringWithFormat:@"%.2f KB",size*1024.0];
     }
+    
 }
 
 - (void)dealloc {

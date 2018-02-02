@@ -13,3 +13,7 @@ NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNo
 
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
 NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";
+NSString * const IMBDetailVCHeaderTitleTrackNamesPlist = @"DetailVCHeaderTitleTrackNames.plist";
+NSString * const DetailVCHeaderTitleAppNamesPlist = @"DetailVCHeaderTitleAppNames.plist";
+NSString * const DetailVCHeaderTitleBookNamesPlist = @"DetailVCHeaderTitleBookNames.plist";
+NSString * const DetailVCHeaderTitlePhotoNamesPlist = @"DetailVCHeaderTitlePhotoNames.plist";
