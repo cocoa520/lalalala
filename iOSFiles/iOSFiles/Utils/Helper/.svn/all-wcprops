@@ -1,19 +1,31 @@
 K 25
 svn:wc:ra_dav:version-url
 V 63
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Utils/Helper
+/svn/Mac/!svn/ver/1241/JPProject/iOSFiles/iOSFiles/Utils/Helper
+END
+SystemHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Helper/SystemHelper.m
 END
 TempHelper.m
 K 25
 svn:wc:ra_dav:version-url
 V 76
-/svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Utils/Helper/TempHelper.m
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Helper/TempHelper.m
 END
 StringHelper.m
 K 25
 svn:wc:ra_dav:version-url
 V 78
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Utils/Helper/StringHelper.m
+/svn/Mac/!svn/ver/1241/JPProject/iOSFiles/iOSFiles/Utils/Helper/StringHelper.m
+END
+IMBHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Helper/IMBHelper.m
 END
 DateHelper.h
 K 25
@@ -39,6 +51,12 @@ svn:wc:ra_dav:version-url
 V 76
 /svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Utils/Helper/DateHelper.m
 END
+SystemHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1227/JPProject/iOSFiles/iOSFiles/Utils/Helper/SystemHelper.h
+END
 MediaHelper.m
 K 25
 svn:wc:ra_dav:version-url
@@ -62,4 +80,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/1114/JPProject/iOSFiles/iOSFiles/Utils/Helper/IMBArtworkHelper.m
+END
+IMBHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Helper/IMBHelper.h
 END

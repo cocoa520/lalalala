@@ -10,6 +10,7 @@
 
 NSString * const IMBSelectedDeviceDidChangeNotiWithParams = @"IMBSelectedDeviceDidChangeNotiWithParams";
 NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNoti";
+NSString * const IMBDevicePageRefreshClickedNoti = @"IMBDevicePageRefreshClickedNoti";
 
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
 NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";
@@ -17,3 +18,6 @@ NSString * const IMBDetailVCHeaderTitleTrackNamesPlist = @"DetailVCHeaderTitleTr
 NSString * const DetailVCHeaderTitleAppNamesPlist = @"DetailVCHeaderTitleAppNames.plist";
 NSString * const DetailVCHeaderTitleBookNamesPlist = @"DetailVCHeaderTitleBookNames.plist";
 NSString * const DetailVCHeaderTitlePhotoNamesPlist = @"DetailVCHeaderTitlePhotoNames.plist";
+NSString * const DetailVCHeaderTitleSubPhotoNamesPlist = @"DetailVCHeaderTitleSubPhotoNames.plist";
+
+

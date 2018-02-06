@@ -8,7 +8,7 @@
 
 #import "IMBApplicationManager.h"
 #import "IMBFileSystem.h"
-//#import "IMBZipHelper.h"
+#import "IMBZipHelper.h"
 #import "IMBSession.h"
 #import "StringHelper.h"
 #import "NSString+Category.h"
@@ -277,7 +277,7 @@ static int fileCount = 0;
                 [fm createDirectoryAtPath:unZipRootPath withIntermediateDirectories:YES attributes:nil error:nil];
             }
             //TODO
-//            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
+            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
             AFCApplicationDirectory *appDir = [_device newAFCApplicationDirectory:deviceApp.appKey];
             if (appDir != nil) {
                 [self recursiveCopyFromLocal:[unZipRootPath stringByAppendingPathComponent:@"Container"] ToApp:appDir ToPath:@"/"];
@@ -318,7 +318,7 @@ static int fileCount = 0;
             //TODO
             //第三步
             [self setCurStep:3];
-//            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
+            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
             AFCApplicationDirectory *appDir = [_device newAFCApplicationDirectory:localApp.appKey];
             if (appDir != nil) {
                 [self recursiveCopyFromLocal:[unZipRootPath stringByAppendingPathComponent:@"Container"] ToApp:appDir ToPath:@"/"];
@@ -367,7 +367,7 @@ static int fileCount = 0;
                 [fm createDirectoryAtPath:unZipRootPath withIntermediateDirectories:YES attributes:nil error:nil];
             }
             //TODO
-//            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
+            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
             AFCApplicationDirectory *appDir = [_device newAFCApplicationDirectory:deviceApp.appKey];
             if (appDir != nil) {
                 [self recursiveCopyFromLocal:[unZipRootPath stringByAppendingPathComponent:@"Container"] ToApp:appDir ToPath:@"/"];
@@ -408,7 +408,7 @@ static int fileCount = 0;
             //TODO
             //第三步
             [self setCurStep:3];
-//            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
+            [IMBZipHelper unZipByFolder:localFilePath folderPath:@"Container" decFolderPath:unZipRootPath];
             AFCApplicationDirectory *appDir = [_device newAFCApplicationDirectory:localApp.appKey];
             if (appDir != nil) {
                 [self recursiveCopyFromLocal:[unZipRootPath stringByAppendingPathComponent:@"Container"] ToApp:appDir ToPath:@"/"];
@@ -463,7 +463,7 @@ static int fileCount = 0;
         NSString *infoPlistPath = nil;
         infoPlistPath = [_iPod.session.sessionFolderPath stringByAppendingPathComponent:@"/iTunesMetadata.plist"];
         
-//        [IMBZipHelper unzipByFile:filepath filePath:@"iTunesMetadata.plist" decFolderPath:metaFolderPath];
+        [IMBZipHelper unzipByFile:filepath filePath:@"iTunesMetadata.plist" decFolderPath:metaFolderPath];
         if ([fm fileExistsAtPath:metaPlistPath]) {
             NSDictionary *metaDic = [[NSDictionary alloc] initWithContentsOfFile:metaPlistPath];
             //TODO 这个地方MinOS的版本号读不了。可能通过导入设备来。
@@ -502,7 +502,7 @@ static int fileCount = 0;
         NSString *infoPlistPath = nil;
         infoPlistPath = [tmpPath stringByAppendingPathComponent:@"/info.plist"];
         
-//        NSArray *iconsArray = [IMBZipHelper unZipAppSyncFile:filepath tmpPath:tmpPath passWord:nil];
+        NSArray *iconsArray = [IMBZipHelper unZipAppSyncFile:filepath tmpPath:tmpPath passWord:nil];
         if ([fm fileExistsAtPath:metaPlistPath]) {
             NSDictionary *metaDic = [[NSDictionary alloc] initWithContentsOfFile:metaPlistPath];
             //TODO 这个地方MinOS的版本号读不了。可能通过导入设备来。
@@ -547,23 +547,23 @@ static int fileCount = 0;
             iconsList = [infoObject objectForKey:@"CFBundleIconFiles"];
         }
         
-//        if (iconsArray.count > 0 && iconsList.count > 0) {
-//            for (NSString *item in iconsArray) {
-//                NSString *name = [item lastPathComponent];
-//                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@",name];
-//                NSArray *result = [iconsList filteredArrayUsingPredicate:predicate];
-//                NSString *iconName = nil;
-//                if (result.count > 0) {
-//                    iconName = [result objectAtIndex:0];
-//                }
-//                if (iconName == nil) {
-//                    NSString *iconPath = [tmpPath stringByAppendingPathComponent:name];
-//                    if ([fm fileExistsAtPath:iconPath]) {
-//                        [fm removeItemAtPath:iconPath error:nil];
-//                    }
-//                }
-//            }
-//        }
+        if (iconsArray.count > 0 && iconsList.count > 0) {
+            for (NSString *item in iconsArray) {
+                NSString *name = [item lastPathComponent];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF == %@",name];
+                NSArray *result = [iconsList filteredArrayUsingPredicate:predicate];
+                NSString *iconName = nil;
+                if (result.count > 0) {
+                    iconName = [result objectAtIndex:0];
+                }
+                if (iconName == nil) {
+                    NSString *iconPath = [tmpPath stringByAppendingPathComponent:name];
+                    if ([fm fileExistsAtPath:iconPath]) {
+                        [fm removeItemAtPath:iconPath error:nil];
+                    }
+                }
+            }
+        }
         
         return appInfo;
         

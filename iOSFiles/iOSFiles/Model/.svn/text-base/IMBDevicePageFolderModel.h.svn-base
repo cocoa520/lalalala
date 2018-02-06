@@ -16,6 +16,8 @@
     NSArray *_photoArray;
     NSArray *_booksArray;
     NSArray *_appsArray;
+    NSArray *_subPhotoArray;
+    
     NSString *_name;
     unsigned long long _size;
     NSString *_sizeString;
@@ -25,17 +27,18 @@
     NSInteger _idx;
 }
 
-@property(nonatomic, copy)NSString *name;
+@property(nonatomic, retain)NSString *name;
 @property(nonatomic, assign)unsigned long long size;
-@property(nonatomic, copy)NSString *time;
+@property(nonatomic, retain)NSString *time;
 @property(nonatomic, assign)NSInteger counts;
 @property(nonatomic, retain)NSArray *trackArray;
 @property(nonatomic, retain)NSArray *photoArray;
 @property(nonatomic, retain)NSArray *booksArray;
 @property(nonatomic, retain)NSArray *appsArray;
+@property(nonatomic, retain)NSArray *subPhotoArray;
 @property(nonatomic, assign)NSInteger idx;
-@property(nonatomic, copy)NSString *sizeString;
-@property(nonatomic, copy)NSString *countsString;
+@property(nonatomic, retain)NSString *sizeString;
+@property(nonatomic, retain)NSString *countsString;
 
 
 @end

@@ -48,7 +48,7 @@ static CGFloat const labelY = 10.0f;
         _tableView = nil;
     }
     
-//    [super dealloc];
+    [super dealloc];
     
 }
 /**

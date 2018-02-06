@@ -43,6 +43,8 @@
 		B914C1A520241A7500B998AC /* IMBDetailViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = B914C1A320241A7500B998AC /* IMBDetailViewControler.m */; };
 		B914C1A620241A7500B998AC /* IMBDetailViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */; };
 		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
+		B925AA1320295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */; };
+		B925AA1620297E670068E540 /* IMBStackBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B925AA1520297E670068E540 /* IMBStackBox.m */; };
 		B92A179E20215F6200187405 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179920215F6200187405 /* NSData+Category.m */; };
 		B92A179F20215F6200187405 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179B20215F6200187405 /* NSDictionary+Category.m */; };
 		B92A17A020215F6200187405 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179D20215F6200187405 /* NSString+Category.m */; };
@@ -323,7 +325,6 @@
 		B96563B42021D2B000BD7FF5 /* ZtringListList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B96562CC2021D2B000BD7FF5 /* ZtringListList.cpp */; };
 		B96563B52021D2B000BD7FF5 /* ZtringListListF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B96562CE2021D2B000BD7FF5 /* ZtringListListF.cpp */; };
 		B96564782021D47600BD7FF5 /* IMBArtworkUnknownListContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B96563C02021D47600BD7FF5 /* IMBArtworkUnknownListContainer.m */; };
-		B96564792021D47600BD7FF5 /* IMBATHSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B96563C22021D47600BD7FF5 /* IMBATHSync.m */; };
 		B965647A2021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B96563C42021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m */; };
 		B965647B2021D47600BD7FF5 /* IMBMusicDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B96563C62021D47600BD7FF5 /* IMBMusicDatabase.m */; };
 		B965647C2021D47600BD7FF5 /* IMBVideoImageAcquire.m in Sources */ = {isa = PBXBuildFile; fileRef = B96563C82021D47600BD7FF5 /* IMBVideoImageAcquire.m */; };
@@ -399,6 +400,120 @@
 		B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9C52019CA7600E6991A /* IMBDevViewController.m */; };
 		B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B996D9C62019CA7600E6991A /* IMBDevViewController.xib */; };
 		B996D9CD2019E26900E6991A /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B996D9CC2019E26900E6991A /* IMBConst.m */; };
+		B9E738FE2027F6B900E1BB3B /* SystemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E738FD2027F6B900E1BB3B /* SystemHelper.m */; };
+		B9E739012027F6EF00E1BB3B /* IMBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739002027F6EF00E1BB3B /* IMBHelper.m */; };
+		B9E739332027FB2100E1BB3B /* heicConvert.py in Resources */ = {isa = PBXBuildFile; fileRef = B9E739072027FB2100E1BB3B /* heicConvert.py */; };
+		B9E739342027FB2100E1BB3B /* IMBPhotoHeicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739092027FB2100E1BB3B /* IMBPhotoHeicManager.m */; };
+		B9E739532027FB2100E1BB3B /* montage in Resources */ = {isa = PBXBuildFile; fileRef = B9E739292027FB2100E1BB3B /* montage */; };
+		B9E739542027FB2100E1BB3B /* MP4Box in Resources */ = {isa = PBXBuildFile; fileRef = B9E7392A2027FB2100E1BB3B /* MP4Box */; };
+		B9E739552027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7392C2027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.m */; };
+		B9E739562027FB2100E1BB3B /* IMBCreateSyncImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7392E2027FB2100E1BB3B /* IMBCreateSyncImage.m */; };
+		B9E739572027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739302027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m */; };
+		B9E739582027FB2100E1BB3B /* IMBSyncPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739322027FB2100E1BB3B /* IMBSyncPhotoData.m */; };
+		B9E739E32028038D00E1BB3B /* host_grappa in Resources */ = {isa = PBXBuildFile; fileRef = B9E7395C2028038D00E1BB3B /* host_grappa */; };
+		B9E739E42028038D00E1BB3B /* IMBAthServiceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7395E2028038D00E1BB3B /* IMBAthServiceInfo.m */; };
+		B9E739E52028038D00E1BB3B /* IMBATHSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739602028038D00E1BB3B /* IMBATHSync.m */; };
+		B9E739E62028038D00E1BB3B /* IMBDistantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739622028038D00E1BB3B /* IMBDistantObject.m */; };
+		B9E739F52028038D00E1BB3B /* IMBBaseTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739802028038D00E1BB3B /* IMBBaseTransfer.m */; };
+		B9E739F62028038D00E1BB3B /* IMBExportSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739822028038D00E1BB3B /* IMBExportSetting.m */; };
+		B9E739F72028038D00E1BB3B /* IMBAddPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739852028038D00E1BB3B /* IMBAddPlaylist.m */; };
+		B9E739F82028038D00E1BB3B /* IMBAddTrackToList.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739872028038D00E1BB3B /* IMBAddTrackToList.m */; };
+		B9E739F92028038D00E1BB3B /* IMBBaseDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739892028038D00E1BB3B /* IMBBaseDelete.m */; };
+		B9E739FA2028038D00E1BB3B /* IMBDeleteApps.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7398B2028038D00E1BB3B /* IMBDeleteApps.m */; };
+		B9E739FB2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7398D2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.m */; };
+		B9E739FC2028038D00E1BB3B /* IMBDeletePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7398F2028038D00E1BB3B /* IMBDeletePlaylist.m */; };
+		B9E739FD2028038D00E1BB3B /* IMBDeleteTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739912028038D00E1BB3B /* IMBDeleteTrack.m */; };
+		B9E739FE2028038D00E1BB3B /* IMBRenamePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739932028038D00E1BB3B /* IMBRenamePlaylist.m */; };
+		B9E739FF2028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739962028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.m */; };
+		B9E73A002028038D00E1BB3B /* IMBAirSyncImportTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739982028038D00E1BB3B /* IMBAirSyncImportTransfer.m */; };
+		B9E73A012028038D00E1BB3B /* IMBBetweenDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7399A2028038D00E1BB3B /* IMBBetweenDeviceHandler.m */; };
+		B9E73A022028038D00E1BB3B /* IMBBookToDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E7399C2028038D00E1BB3B /* IMBBookToDevice.m */; };
+		B9E73A042028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739A02028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m */; };
+		B9E73A052028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739A22028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m */; };
+		B9E73A072028038D00E1BB3B /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739A82028038D00E1BB3B /* file.png */; };
+		B9E73A082028038D00E1BB3B /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739A92028038D00E1BB3B /* folder.png */; };
+		B9E73A092028038D00E1BB3B /* folder2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AA2028038D00E1BB3B /* folder2.png */; };
+		B9E73A0A2028038D00E1BB3B /* left_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AB2028038D00E1BB3B /* left_bottom.png */; };
+		B9E73A0B2028038D00E1BB3B /* left_bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AC2028038D00E1BB3B /* left_bottom2.png */; };
+		B9E73A0C2028038D00E1BB3B /* left_bottom3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AD2028038D00E1BB3B /* left_bottom3.png */; };
+		B9E73A0D2028038D00E1BB3B /* left_top.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AE2028038D00E1BB3B /* left_top.png */; };
+		B9E73A0E2028038D00E1BB3B /* left_top2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739AF2028038D00E1BB3B /* left_top2.png */; };
+		B9E73A0F2028038D00E1BB3B /* left_top3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B02028038D00E1BB3B /* left_top3.png */; };
+		B9E73A102028038D00E1BB3B /* line_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B12028038D00E1BB3B /* line_photo.png */; };
+		B9E73A112028038D00E1BB3B /* right_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B22028038D00E1BB3B /* right_bottom.png */; };
+		B9E73A122028038D00E1BB3B /* right_bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B32028038D00E1BB3B /* right_bottom2.png */; };
+		B9E73A132028038D00E1BB3B /* right_bottom3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B42028038D00E1BB3B /* right_bottom3.png */; };
+		B9E73A142028038D00E1BB3B /* right_mid.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B52028038D00E1BB3B /* right_mid.png */; };
+		B9E73A152028038D00E1BB3B /* right_mid2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B62028038D00E1BB3B /* right_mid2.png */; };
+		B9E73A162028038D00E1BB3B /* right_mid3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B72028038D00E1BB3B /* right_mid3.png */; };
+		B9E73A172028038D00E1BB3B /* right_top.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B82028038D00E1BB3B /* right_top.png */; };
+		B9E73A182028038D00E1BB3B /* right_top2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739B92028038D00E1BB3B /* right_top2.png */; };
+		B9E73A192028038D00E1BB3B /* right_top3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739BA2028038D00E1BB3B /* right_top3.png */; };
+		B9E73A1A2028038D00E1BB3B /* wapp_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739BB2028038D00E1BB3B /* wapp_contact.png */; };
+		B9E73A1B2028038D00E1BB3B /* wapp_map.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739BC2028038D00E1BB3B /* wapp_map.png */; };
+		B9E73A1C2028038D00E1BB3B /* wapp_videos.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739BD2028038D00E1BB3B /* wapp_videos.png */; };
+		B9E73A1D2028038D00E1BB3B /* wapp_voice.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E739BE2028038D00E1BB3B /* wapp_voice.png */; };
+		B9E73A1E2028038D00E1BB3B /* IMBAllFileExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739C02028038D00E1BB3B /* IMBAllFileExport.m */; };
+		B9E73A1F2028038D00E1BB3B /* IMBAppExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739C22028038D00E1BB3B /* IMBAppExport.m */; };
+		B9E73A252028038D00E1BB3B /* IMBFileSystemExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739CE2028038D00E1BB3B /* IMBFileSystemExport.m */; };
+		B9E73A262028038D00E1BB3B /* IMBiBooksExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739D02028038D00E1BB3B /* IMBiBooksExport.m */; };
+		B9E73A272028038D00E1BB3B /* IMBiTunesFileExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739D22028038D00E1BB3B /* IMBiTunesFileExport.m */; };
+		B9E73A282028038D00E1BB3B /* IMBMediaFileExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739D42028038D00E1BB3B /* IMBMediaFileExport.m */; };
+		B9E73A2B2028038D00E1BB3B /* IMBPhotoFileExport.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E739DA2028038D00E1BB3B /* IMBPhotoFileExport.m */; };
+		B9E73A34202803DF00E1BB3B /* ATTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A32202803DF00E1BB3B /* ATTracker.m */; };
+		B9E73A382028040C00E1BB3B /* IMBTransferError.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A372028040C00E1BB3B /* IMBTransferError.m */; };
+		B9E73A3B2028044200E1BB3B /* IMBNoteDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A3A2028044200E1BB3B /* IMBNoteDataEntity.m */; };
+		B9E73A512028054200E1BB3B /* IMBMediaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A3F2028054200E1BB3B /* IMBMediaConverter.m */; };
+		B9E73A522028054200E1BB3B /* IMBConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A422028054200E1BB3B /* IMBConfig.m */; };
+		B9E73A532028054200E1BB3B /* IMBRingtoneConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A442028054200E1BB3B /* IMBRingtoneConfig.m */; };
+		B9E73A542028054200E1BB3B /* IMBCvtEncodedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A472028054200E1BB3B /* IMBCvtEncodedMedia.m */; };
+		B9E73A552028054200E1BB3B /* IMBCvtMediaConvertEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A492028054200E1BB3B /* IMBCvtMediaConvertEncoder.m */; };
+		B9E73A562028054200E1BB3B /* IMBCvtMediaEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A4B2028054200E1BB3B /* IMBCvtMediaEncoding.m */; };
+		B9E73A572028054200E1BB3B /* IMBCvtDeviceEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A4E2028054200E1BB3B /* IMBCvtDeviceEntity.m */; };
+		B9E73A582028054200E1BB3B /* IMBCvtMediaFileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A502028054200E1BB3B /* IMBCvtMediaFileEntity.m */; };
+		B9E73A5B2028067C00E1BB3B /* IMBCategoryInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A5A2028067C00E1BB3B /* IMBCategoryInfoModel.m */; };
+		B9E73A5E2028089500E1BB3B /* IMBToiCloudPhotoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A5D2028089500E1BB3B /* IMBToiCloudPhotoEntity.m */; };
+		B9E73A64202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A63202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m */; };
+		B9E73A6720280AAB00E1BB3B /* IMBHttpWebResponseUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A6620280AAB00E1BB3B /* IMBHttpWebResponseUtility.m */; };
+		B9E73A7920280FC000E1BB3B /* IMBCheckUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A6E20280FC000E1BB3B /* IMBCheckUpdater.m */; };
+		B9E73A7A20280FC000E1BB3B /* IMBSoftware-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9E73A6F20280FC000E1BB3B /* IMBSoftware-Info.plist */; };
+		B9E73A7B20280FC000E1BB3B /* IMBSoftWareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A7120280FC000E1BB3B /* IMBSoftWareInfo.m */; };
+		B9E73A7C20280FC000E1BB3B /* IMBUpdateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A7320280FC000E1BB3B /* IMBUpdateInfo.m */; };
+		B9E73A7D20280FC000E1BB3B /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A7620280FC000E1BB3B /* NSString+SymlinksAndAliases.m */; };
+		B9E73A7E20280FC000E1BB3B /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A7820280FC000E1BB3B /* PFMoveApplication.m */; };
+		B9E73A872028105500E1BB3B /* IMBHWInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A822028105500E1BB3B /* IMBHWInfo.m */; };
+		B9E73A882028105500E1BB3B /* IMBVerifyActivate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A842028105500E1BB3B /* IMBVerifyActivate.m */; };
+		B9E73A892028105500E1BB3B /* IMBVerifyProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A862028105500E1BB3B /* IMBVerifyProduct.m */; };
+		B9E73A8C202811E300E1BB3B /* IMBBooksHelperEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A8B202811E300E1BB3B /* IMBBooksHelperEntry.m */; };
+		B9E73A8F20282C1100E1BB3B /* IMBiTLTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A8E20282C1100E1BB3B /* IMBiTLTrack.m */; };
+		B9E73A9220282C3C00E1BB3B /* IMBiTunesEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A9120282C3C00E1BB3B /* IMBiTunesEnum.m */; };
+		B9E73AC620282FF500E1BB3B /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A9620282FF500E1BB3B /* ioapi.c */; };
+		B9E73AC720282FF500E1BB3B /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A9820282FF500E1BB3B /* mztools.c */; };
+		B9E73AC820282FF500E1BB3B /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A9A20282FF500E1BB3B /* unzip.c */; };
+		B9E73AC920282FF500E1BB3B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73A9C20282FF500E1BB3B /* zip.c */; };
+		B9E73ACA20282FF500E1BB3B /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AA020282FF500E1BB3B /* FileInZipInfo.m */; };
+		B9E73ACB20282FF500E1BB3B /* IMBZipHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AA220282FF500E1BB3B /* IMBZipHelper.m */; };
+		B9E73ACC20282FF500E1BB3B /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AA420282FF500E1BB3B /* ZipException.m */; };
+		B9E73ACD20282FF500E1BB3B /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AA620282FF500E1BB3B /* ZipFile.m */; };
+		B9E73ACE20282FF500E1BB3B /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AA820282FF500E1BB3B /* ZipReadStream.m */; };
+		B9E73ACF20282FF500E1BB3B /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AAA20282FF500E1BB3B /* ZipWriteStream.m */; };
+		B9E73AD020282FF500E1BB3B /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AAC20282FF500E1BB3B /* adler32.c */; };
+		B9E73AD120282FF500E1BB3B /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AAD20282FF500E1BB3B /* compress.c */; };
+		B9E73AD220282FF500E1BB3B /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AAE20282FF500E1BB3B /* crc32.c */; };
+		B9E73AD320282FF500E1BB3B /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB020282FF500E1BB3B /* deflate.c */; };
+		B9E73AD420282FF500E1BB3B /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB220282FF500E1BB3B /* gzclose.c */; };
+		B9E73AD520282FF500E1BB3B /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB420282FF500E1BB3B /* gzlib.c */; };
+		B9E73AD620282FF500E1BB3B /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB520282FF500E1BB3B /* gzread.c */; };
+		B9E73AD720282FF500E1BB3B /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB620282FF500E1BB3B /* gzwrite.c */; };
+		B9E73AD820282FF500E1BB3B /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB720282FF500E1BB3B /* infback.c */; };
+		B9E73AD920282FF500E1BB3B /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AB820282FF500E1BB3B /* inffast.c */; };
+		B9E73ADA20282FF500E1BB3B /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73ABB20282FF500E1BB3B /* inflate.c */; };
+		B9E73ADB20282FF500E1BB3B /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73ABD20282FF500E1BB3B /* inftrees.c */; };
+		B9E73ADC20282FF500E1BB3B /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73ABF20282FF500E1BB3B /* trees.c */; };
+		B9E73ADD20282FF500E1BB3B /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AC120282FF500E1BB3B /* uncompr.c */; };
+		B9E73ADE20282FF500E1BB3B /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E73AC420282FF500E1BB3B /* zutil.c */; };
+		B9E73AE020283BED00E1BB3B /* AirTrafficHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E73ADF20283BED00E1BB3B /* AirTrafficHost.framework */; };
+		B9E73AE22028410F00E1BB3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9E73AE12028410F00E1BB3B /* Localizable.strings */; };
 		B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */; };
 		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
@@ -524,6 +639,9 @@
 		B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDetailViewControler.xib; sourceTree = "<group>"; };
 		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
 		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
+		B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleSubPhotoNames.plist; sourceTree = "<group>"; };
+		B925AA1420297E670068E540 /* IMBStackBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBStackBox.h; sourceTree = "<group>"; };
+		B925AA1520297E670068E540 /* IMBStackBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBStackBox.m; sourceTree = "<group>"; };
 		B92A179820215F6200187405 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
 		B92A179920215F6200187405 /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
 		B92A179A20215F6200187405 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
@@ -1071,8 +1189,6 @@
 		B96562CF2021D2B000BD7FF5 /* ZtringListListF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZtringListListF.h; sourceTree = "<group>"; };
 		B96563BF2021D47600BD7FF5 /* IMBArtworkUnknownListContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBArtworkUnknownListContainer.h; sourceTree = "<group>"; };
 		B96563C02021D47600BD7FF5 /* IMBArtworkUnknownListContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBArtworkUnknownListContainer.m; sourceTree = "<group>"; };
-		B96563C12021D47600BD7FF5 /* IMBATHSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBATHSync.h; sourceTree = "<group>"; };
-		B96563C22021D47600BD7FF5 /* IMBATHSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBATHSync.m; sourceTree = "<group>"; };
 		B96563C32021D47600BD7FF5 /* IMBMediaLibraryDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMediaLibraryDBHelper.h; sourceTree = "<group>"; };
 		B96563C42021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMediaLibraryDBHelper.m; sourceTree = "<group>"; };
 		B96563C52021D47600BD7FF5 /* IMBMusicDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMusicDatabase.h; sourceTree = "<group>"; };
@@ -1221,6 +1337,204 @@
 		B996D9C62019CA7600E6991A /* IMBDevViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDevViewController.xib; sourceTree = "<group>"; };
 		B996D9CB2019E26900E6991A /* IMBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBConst.h; sourceTree = "<group>"; };
 		B996D9CC2019E26900E6991A /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
+		B9E738FC2027F6B900E1BB3B /* SystemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemHelper.h; sourceTree = "<group>"; };
+		B9E738FD2027F6B900E1BB3B /* SystemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemHelper.m; sourceTree = "<group>"; };
+		B9E738FF2027F6EF00E1BB3B /* IMBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHelper.h; sourceTree = "<group>"; };
+		B9E739002027F6EF00E1BB3B /* IMBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBHelper.m; sourceTree = "<group>"; };
+		B9E739072027FB2100E1BB3B /* heicConvert.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = heicConvert.py; sourceTree = "<group>"; };
+		B9E739082027FB2100E1BB3B /* IMBPhotoHeicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoHeicManager.h; sourceTree = "<group>"; };
+		B9E739092027FB2100E1BB3B /* IMBPhotoHeicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoHeicManager.m; sourceTree = "<group>"; };
+		B9E739292027FB2100E1BB3B /* montage */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = montage; sourceTree = "<group>"; };
+		B9E7392A2027FB2100E1BB3B /* MP4Box */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = MP4Box; sourceTree = "<group>"; };
+		B9E7392B2027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCreatePhotoSyncPlist.h; sourceTree = "<group>"; };
+		B9E7392C2027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCreatePhotoSyncPlist.m; sourceTree = "<group>"; };
+		B9E7392D2027FB2100E1BB3B /* IMBCreateSyncImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCreateSyncImage.h; sourceTree = "<group>"; };
+		B9E7392E2027FB2100E1BB3B /* IMBCreateSyncImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCreateSyncImage.m; sourceTree = "<group>"; };
+		B9E7392F2027FB2100E1BB3B /* IMBPhotoExportSettingConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoExportSettingConfig.h; sourceTree = "<group>"; };
+		B9E739302027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoExportSettingConfig.m; sourceTree = "<group>"; };
+		B9E739312027FB2100E1BB3B /* IMBSyncPhotoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncPhotoData.h; sourceTree = "<group>"; };
+		B9E739322027FB2100E1BB3B /* IMBSyncPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncPhotoData.m; sourceTree = "<group>"; };
+		B9E7395B2028038D00E1BB3B /* AirTrafficHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTrafficHost.h; sourceTree = "<group>"; };
+		B9E7395C2028038D00E1BB3B /* host_grappa */ = {isa = PBXFileReference; lastKnownFileType = file; path = host_grappa; sourceTree = "<group>"; };
+		B9E7395D2028038D00E1BB3B /* IMBAthServiceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAthServiceInfo.h; sourceTree = "<group>"; };
+		B9E7395E2028038D00E1BB3B /* IMBAthServiceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAthServiceInfo.m; sourceTree = "<group>"; };
+		B9E7395F2028038D00E1BB3B /* IMBATHSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBATHSync.h; sourceTree = "<group>"; };
+		B9E739602028038D00E1BB3B /* IMBATHSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBATHSync.m; sourceTree = "<group>"; };
+		B9E739612028038D00E1BB3B /* IMBDistantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDistantObject.h; sourceTree = "<group>"; };
+		B9E739622028038D00E1BB3B /* IMBDistantObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDistantObject.m; sourceTree = "<group>"; };
+		B9E7397F2028038D00E1BB3B /* IMBBaseTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseTransfer.h; sourceTree = "<group>"; };
+		B9E739802028038D00E1BB3B /* IMBBaseTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseTransfer.m; sourceTree = "<group>"; };
+		B9E739812028038D00E1BB3B /* IMBExportSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBExportSetting.h; sourceTree = "<group>"; };
+		B9E739822028038D00E1BB3B /* IMBExportSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBExportSetting.m; sourceTree = "<group>"; };
+		B9E739842028038D00E1BB3B /* IMBAddPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAddPlaylist.h; sourceTree = "<group>"; };
+		B9E739852028038D00E1BB3B /* IMBAddPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAddPlaylist.m; sourceTree = "<group>"; };
+		B9E739862028038D00E1BB3B /* IMBAddTrackToList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAddTrackToList.h; sourceTree = "<group>"; };
+		B9E739872028038D00E1BB3B /* IMBAddTrackToList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAddTrackToList.m; sourceTree = "<group>"; };
+		B9E739882028038D00E1BB3B /* IMBBaseDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseDelete.h; sourceTree = "<group>"; };
+		B9E739892028038D00E1BB3B /* IMBBaseDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseDelete.m; sourceTree = "<group>"; };
+		B9E7398A2028038D00E1BB3B /* IMBDeleteApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeleteApps.h; sourceTree = "<group>"; };
+		B9E7398B2028038D00E1BB3B /* IMBDeleteApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeleteApps.m; sourceTree = "<group>"; };
+		B9E7398C2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeleteCameraRollPhotos.h; sourceTree = "<group>"; };
+		B9E7398D2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeleteCameraRollPhotos.m; sourceTree = "<group>"; };
+		B9E7398E2028038D00E1BB3B /* IMBDeletePlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeletePlaylist.h; sourceTree = "<group>"; };
+		B9E7398F2028038D00E1BB3B /* IMBDeletePlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeletePlaylist.m; sourceTree = "<group>"; };
+		B9E739902028038D00E1BB3B /* IMBDeleteTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeleteTrack.h; sourceTree = "<group>"; };
+		B9E739912028038D00E1BB3B /* IMBDeleteTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeleteTrack.m; sourceTree = "<group>"; };
+		B9E739922028038D00E1BB3B /* IMBRenamePlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRenamePlaylist.h; sourceTree = "<group>"; };
+		B9E739932028038D00E1BB3B /* IMBRenamePlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRenamePlaylist.m; sourceTree = "<group>"; };
+		B9E739952028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAirSyncImportBetweenDeviceTransfer.h; sourceTree = "<group>"; };
+		B9E739962028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAirSyncImportBetweenDeviceTransfer.m; sourceTree = "<group>"; };
+		B9E739972028038D00E1BB3B /* IMBAirSyncImportTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAirSyncImportTransfer.h; sourceTree = "<group>"; };
+		B9E739982028038D00E1BB3B /* IMBAirSyncImportTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAirSyncImportTransfer.m; sourceTree = "<group>"; };
+		B9E739992028038D00E1BB3B /* IMBBetweenDeviceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBetweenDeviceHandler.h; sourceTree = "<group>"; };
+		B9E7399A2028038D00E1BB3B /* IMBBetweenDeviceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBetweenDeviceHandler.m; sourceTree = "<group>"; };
+		B9E7399B2028038D00E1BB3B /* IMBBookToDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBookToDevice.h; sourceTree = "<group>"; };
+		B9E7399C2028038D00E1BB3B /* IMBBookToDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBookToDevice.m; sourceTree = "<group>"; };
+		B9E7399F2028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNotAirSyncImportBetweenDeviceTransfer.h; sourceTree = "<group>"; };
+		B9E739A02028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNotAirSyncImportBetweenDeviceTransfer.m; sourceTree = "<group>"; };
+		B9E739A12028038D00E1BB3B /* IMBNotAirSyncImportTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNotAirSyncImportTransfer.h; sourceTree = "<group>"; };
+		B9E739A22028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNotAirSyncImportTransfer.m; sourceTree = "<group>"; };
+		B9E739A82028038D00E1BB3B /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		B9E739A92028038D00E1BB3B /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		B9E739AA2028038D00E1BB3B /* folder2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder2.png; sourceTree = "<group>"; };
+		B9E739AB2028038D00E1BB3B /* left_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_bottom.png; sourceTree = "<group>"; };
+		B9E739AC2028038D00E1BB3B /* left_bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_bottom2.png; sourceTree = "<group>"; };
+		B9E739AD2028038D00E1BB3B /* left_bottom3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_bottom3.png; sourceTree = "<group>"; };
+		B9E739AE2028038D00E1BB3B /* left_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_top.png; sourceTree = "<group>"; };
+		B9E739AF2028038D00E1BB3B /* left_top2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_top2.png; sourceTree = "<group>"; };
+		B9E739B02028038D00E1BB3B /* left_top3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_top3.png; sourceTree = "<group>"; };
+		B9E739B12028038D00E1BB3B /* line_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line_photo.png; sourceTree = "<group>"; };
+		B9E739B22028038D00E1BB3B /* right_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_bottom.png; sourceTree = "<group>"; };
+		B9E739B32028038D00E1BB3B /* right_bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_bottom2.png; sourceTree = "<group>"; };
+		B9E739B42028038D00E1BB3B /* right_bottom3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_bottom3.png; sourceTree = "<group>"; };
+		B9E739B52028038D00E1BB3B /* right_mid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_mid.png; sourceTree = "<group>"; };
+		B9E739B62028038D00E1BB3B /* right_mid2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_mid2.png; sourceTree = "<group>"; };
+		B9E739B72028038D00E1BB3B /* right_mid3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_mid3.png; sourceTree = "<group>"; };
+		B9E739B82028038D00E1BB3B /* right_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_top.png; sourceTree = "<group>"; };
+		B9E739B92028038D00E1BB3B /* right_top2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_top2.png; sourceTree = "<group>"; };
+		B9E739BA2028038D00E1BB3B /* right_top3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_top3.png; sourceTree = "<group>"; };
+		B9E739BB2028038D00E1BB3B /* wapp_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wapp_contact.png; sourceTree = "<group>"; };
+		B9E739BC2028038D00E1BB3B /* wapp_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wapp_map.png; sourceTree = "<group>"; };
+		B9E739BD2028038D00E1BB3B /* wapp_videos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wapp_videos.png; sourceTree = "<group>"; };
+		B9E739BE2028038D00E1BB3B /* wapp_voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wapp_voice.png; sourceTree = "<group>"; };
+		B9E739BF2028038D00E1BB3B /* IMBAllFileExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAllFileExport.h; sourceTree = "<group>"; };
+		B9E739C02028038D00E1BB3B /* IMBAllFileExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAllFileExport.m; sourceTree = "<group>"; };
+		B9E739C12028038D00E1BB3B /* IMBAppExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppExport.h; sourceTree = "<group>"; };
+		B9E739C22028038D00E1BB3B /* IMBAppExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppExport.m; sourceTree = "<group>"; };
+		B9E739CD2028038D00E1BB3B /* IMBFileSystemExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemExport.h; sourceTree = "<group>"; };
+		B9E739CE2028038D00E1BB3B /* IMBFileSystemExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemExport.m; sourceTree = "<group>"; };
+		B9E739CF2028038D00E1BB3B /* IMBiBooksExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiBooksExport.h; sourceTree = "<group>"; };
+		B9E739D02028038D00E1BB3B /* IMBiBooksExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiBooksExport.m; sourceTree = "<group>"; };
+		B9E739D12028038D00E1BB3B /* IMBiTunesFileExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesFileExport.h; sourceTree = "<group>"; };
+		B9E739D22028038D00E1BB3B /* IMBiTunesFileExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesFileExport.m; sourceTree = "<group>"; };
+		B9E739D32028038D00E1BB3B /* IMBMediaFileExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMediaFileExport.h; sourceTree = "<group>"; };
+		B9E739D42028038D00E1BB3B /* IMBMediaFileExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMediaFileExport.m; sourceTree = "<group>"; };
+		B9E739D92028038D00E1BB3B /* IMBPhotoFileExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoFileExport.h; sourceTree = "<group>"; };
+		B9E739DA2028038D00E1BB3B /* IMBPhotoFileExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoFileExport.m; sourceTree = "<group>"; };
+		B9E73A31202803DF00E1BB3B /* ATTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTracker.h; sourceTree = "<group>"; };
+		B9E73A32202803DF00E1BB3B /* ATTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTracker.m; sourceTree = "<group>"; };
+		B9E73A33202803DF00E1BB3B /* CommonEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonEnum.h; sourceTree = "<group>"; };
+		B9E73A362028040C00E1BB3B /* IMBTransferError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTransferError.h; sourceTree = "<group>"; };
+		B9E73A372028040C00E1BB3B /* IMBTransferError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTransferError.m; sourceTree = "<group>"; };
+		B9E73A392028044200E1BB3B /* IMBNoteDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNoteDataEntity.h; sourceTree = "<group>"; };
+		B9E73A3A2028044200E1BB3B /* IMBNoteDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNoteDataEntity.m; sourceTree = "<group>"; };
+		B9E73A3E2028054200E1BB3B /* IMBMediaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMediaConverter.h; sourceTree = "<group>"; };
+		B9E73A3F2028054200E1BB3B /* IMBMediaConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMediaConverter.m; sourceTree = "<group>"; };
+		B9E73A412028054200E1BB3B /* IMBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBConfig.h; sourceTree = "<group>"; };
+		B9E73A422028054200E1BB3B /* IMBConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConfig.m; sourceTree = "<group>"; };
+		B9E73A432028054200E1BB3B /* IMBRingtoneConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRingtoneConfig.h; sourceTree = "<group>"; };
+		B9E73A442028054200E1BB3B /* IMBRingtoneConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRingtoneConfig.m; sourceTree = "<group>"; };
+		B9E73A462028054200E1BB3B /* IMBCvtEncodedMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtEncodedMedia.h; sourceTree = "<group>"; };
+		B9E73A472028054200E1BB3B /* IMBCvtEncodedMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtEncodedMedia.m; sourceTree = "<group>"; };
+		B9E73A482028054200E1BB3B /* IMBCvtMediaConvertEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaConvertEncoder.h; sourceTree = "<group>"; };
+		B9E73A492028054200E1BB3B /* IMBCvtMediaConvertEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaConvertEncoder.m; sourceTree = "<group>"; };
+		B9E73A4A2028054200E1BB3B /* IMBCvtMediaEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaEncoding.h; sourceTree = "<group>"; };
+		B9E73A4B2028054200E1BB3B /* IMBCvtMediaEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaEncoding.m; sourceTree = "<group>"; };
+		B9E73A4D2028054200E1BB3B /* IMBCvtDeviceEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtDeviceEntity.h; sourceTree = "<group>"; };
+		B9E73A4E2028054200E1BB3B /* IMBCvtDeviceEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtDeviceEntity.m; sourceTree = "<group>"; };
+		B9E73A4F2028054200E1BB3B /* IMBCvtMediaFileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCvtMediaFileEntity.h; sourceTree = "<group>"; };
+		B9E73A502028054200E1BB3B /* IMBCvtMediaFileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCvtMediaFileEntity.m; sourceTree = "<group>"; };
+		B9E73A592028067C00E1BB3B /* IMBCategoryInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCategoryInfoModel.h; sourceTree = "<group>"; };
+		B9E73A5A2028067C00E1BB3B /* IMBCategoryInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCategoryInfoModel.m; sourceTree = "<group>"; };
+		B9E73A5C2028089500E1BB3B /* IMBToiCloudPhotoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBToiCloudPhotoEntity.h; sourceTree = "<group>"; };
+		B9E73A5D2028089500E1BB3B /* IMBToiCloudPhotoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBToiCloudPhotoEntity.m; sourceTree = "<group>"; };
+		B9E73A62202809AB00E1BB3B /* IMBExtractDeviceDBFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBExtractDeviceDBFiles.h; sourceTree = "<group>"; };
+		B9E73A63202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBExtractDeviceDBFiles.m; sourceTree = "<group>"; };
+		B9E73A6520280AAB00E1BB3B /* IMBHttpWebResponseUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHttpWebResponseUtility.h; sourceTree = "<group>"; };
+		B9E73A6620280AAB00E1BB3B /* IMBHttpWebResponseUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBHttpWebResponseUtility.m; sourceTree = "<group>"; };
+		B9E73A6820280B2500E1BB3B /* CommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		B9E73A6D20280FC000E1BB3B /* IMBCheckUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCheckUpdater.h; sourceTree = "<group>"; };
+		B9E73A6E20280FC000E1BB3B /* IMBCheckUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCheckUpdater.m; sourceTree = "<group>"; };
+		B9E73A6F20280FC000E1BB3B /* IMBSoftware-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMBSoftware-Info.plist"; sourceTree = "<group>"; };
+		B9E73A7020280FC000E1BB3B /* IMBSoftWareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSoftWareInfo.h; sourceTree = "<group>"; };
+		B9E73A7120280FC000E1BB3B /* IMBSoftWareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSoftWareInfo.m; sourceTree = "<group>"; };
+		B9E73A7220280FC000E1BB3B /* IMBUpdateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUpdateInfo.h; sourceTree = "<group>"; };
+		B9E73A7320280FC000E1BB3B /* IMBUpdateInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUpdateInfo.m; sourceTree = "<group>"; };
+		B9E73A7520280FC000E1BB3B /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
+		B9E73A7620280FC000E1BB3B /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
+		B9E73A7720280FC000E1BB3B /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		B9E73A7820280FC000E1BB3B /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		B9E73A812028105500E1BB3B /* IMBHWInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBHWInfo.h; sourceTree = "<group>"; };
+		B9E73A822028105500E1BB3B /* IMBHWInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBHWInfo.m; sourceTree = "<group>"; };
+		B9E73A832028105500E1BB3B /* IMBVerifyActivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVerifyActivate.h; sourceTree = "<group>"; };
+		B9E73A842028105500E1BB3B /* IMBVerifyActivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVerifyActivate.m; sourceTree = "<group>"; };
+		B9E73A852028105500E1BB3B /* IMBVerifyProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVerifyProduct.h; sourceTree = "<group>"; };
+		B9E73A862028105500E1BB3B /* IMBVerifyProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVerifyProduct.m; sourceTree = "<group>"; };
+		B9E73A8A202811E300E1BB3B /* IMBBooksHelperEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBooksHelperEntry.h; sourceTree = "<group>"; };
+		B9E73A8B202811E300E1BB3B /* IMBBooksHelperEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBooksHelperEntry.m; sourceTree = "<group>"; };
+		B9E73A8D20282C1100E1BB3B /* IMBiTLTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTLTrack.h; sourceTree = "<group>"; };
+		B9E73A8E20282C1100E1BB3B /* IMBiTLTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTLTrack.m; sourceTree = "<group>"; };
+		B9E73A9020282C3C00E1BB3B /* IMBiTunesEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiTunesEnum.h; sourceTree = "<group>"; };
+		B9E73A9120282C3C00E1BB3B /* IMBiTunesEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiTunesEnum.m; sourceTree = "<group>"; };
+		B9E73A9520282FF500E1BB3B /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		B9E73A9620282FF500E1BB3B /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		B9E73A9720282FF500E1BB3B /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		B9E73A9820282FF500E1BB3B /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		B9E73A9920282FF500E1BB3B /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		B9E73A9A20282FF500E1BB3B /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		B9E73A9B20282FF500E1BB3B /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		B9E73A9C20282FF500E1BB3B /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		B9E73A9D20282FF500E1BB3B /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		B9E73A9F20282FF500E1BB3B /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileInZipInfo.h; sourceTree = "<group>"; };
+		B9E73AA020282FF500E1BB3B /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileInZipInfo.m; sourceTree = "<group>"; };
+		B9E73AA120282FF500E1BB3B /* IMBZipHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBZipHelper.h; sourceTree = "<group>"; };
+		B9E73AA220282FF500E1BB3B /* IMBZipHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBZipHelper.m; sourceTree = "<group>"; };
+		B9E73AA320282FF500E1BB3B /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipException.h; sourceTree = "<group>"; };
+		B9E73AA420282FF500E1BB3B /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipException.m; sourceTree = "<group>"; };
+		B9E73AA520282FF500E1BB3B /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
+		B9E73AA620282FF500E1BB3B /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipFile.m; sourceTree = "<group>"; };
+		B9E73AA720282FF500E1BB3B /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipReadStream.h; sourceTree = "<group>"; };
+		B9E73AA820282FF500E1BB3B /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipReadStream.m; sourceTree = "<group>"; };
+		B9E73AA920282FF500E1BB3B /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipWriteStream.h; sourceTree = "<group>"; };
+		B9E73AAA20282FF500E1BB3B /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipWriteStream.m; sourceTree = "<group>"; };
+		B9E73AAC20282FF500E1BB3B /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
+		B9E73AAD20282FF500E1BB3B /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
+		B9E73AAE20282FF500E1BB3B /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
+		B9E73AAF20282FF500E1BB3B /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc32.h; sourceTree = "<group>"; };
+		B9E73AB020282FF500E1BB3B /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
+		B9E73AB120282FF500E1BB3B /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deflate.h; sourceTree = "<group>"; };
+		B9E73AB220282FF500E1BB3B /* gzclose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
+		B9E73AB320282FF500E1BB3B /* gzguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzguts.h; sourceTree = "<group>"; };
+		B9E73AB420282FF500E1BB3B /* gzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
+		B9E73AB520282FF500E1BB3B /* gzread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzread.c; sourceTree = "<group>"; };
+		B9E73AB620282FF500E1BB3B /* gzwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzwrite.c; sourceTree = "<group>"; };
+		B9E73AB720282FF500E1BB3B /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
+		B9E73AB820282FF500E1BB3B /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
+		B9E73AB920282FF500E1BB3B /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffast.h; sourceTree = "<group>"; };
+		B9E73ABA20282FF500E1BB3B /* inffixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffixed.h; sourceTree = "<group>"; };
+		B9E73ABB20282FF500E1BB3B /* inflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
+		B9E73ABC20282FF500E1BB3B /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inflate.h; sourceTree = "<group>"; };
+		B9E73ABD20282FF500E1BB3B /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
+		B9E73ABE20282FF500E1BB3B /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inftrees.h; sourceTree = "<group>"; };
+		B9E73ABF20282FF500E1BB3B /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
+		B9E73AC020282FF500E1BB3B /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trees.h; sourceTree = "<group>"; };
+		B9E73AC120282FF500E1BB3B /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
+		B9E73AC220282FF500E1BB3B /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
+		B9E73AC320282FF500E1BB3B /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
+		B9E73AC420282FF500E1BB3B /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
+		B9E73AC520282FF500E1BB3B /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
+		B9E73ADF20283BED00E1BB3B /* AirTrafficHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AirTrafficHost.framework; sourceTree = "<group>"; };
+		B9E73AE12028410F00E1BB3B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B9F6730B2022B92C00D3665E /* IMBVideoImageByOther.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBVideoImageByOther.h; sourceTree = "<group>"; };
 		B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
 		B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePageFolderModel.h; sourceTree = "<group>"; };
@@ -1311,6 +1625,7 @@
 				B9655DD320207DB800FE2D92 /* AppKit.framework in Frameworks */,
 				B9655DD120207DAE00FE2D92 /* IOKit.framework in Frameworks */,
 				B9655DCF20207DA600FE2D92 /* Quartz.framework in Frameworks */,
+				B9E73AE020283BED00E1BB3B /* AirTrafficHost.framework in Frameworks */,
 				B9655DCD20207D9800FE2D92 /* libxml2.dylib in Frameworks */,
 				B910BF4A20219FFD00849CBB /* AFNetworking.framework in Frameworks */,
 				B9655DCB20207D8800FE2D92 /* libcrypto.dylib in Frameworks */,
@@ -1408,6 +1723,7 @@
 		B914C19B2023F0EC00B998AC /* Plists */ = {
 			isa = PBXGroup;
 			children = (
+				B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */,
 				B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */,
 				B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */,
 				B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */,
@@ -1431,6 +1747,10 @@
 		B92A179620215EEE00187405 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B9E738FC2027F6B900E1BB3B /* SystemHelper.h */,
+				B9E738FD2027F6B900E1BB3B /* SystemHelper.m */,
+				B9E738FF2027F6EF00E1BB3B /* IMBHelper.h */,
+				B9E739002027F6EF00E1BB3B /* IMBHelper.m */,
 				B92A17A520215F7A00187405 /* DateHelper.h */,
 				B92A17A620215F7A00187405 /* DateHelper.m */,
 				B92A17A820215FB100187405 /* IMBArtworkHelper.h */,
@@ -1461,6 +1781,9 @@
 		B92A17A120215F6A00187405 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B9E73A6820280B2500E1BB3B /* CommonDefine.h */,
+				B9E73A62202809AB00E1BB3B /* IMBExtractDeviceDBFiles.h */,
+				B9E73A63202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m */,
 				B92A17A220215F6A00187405 /* NSBezierPath+BezierPathQuartzUtilities.h */,
 				B92A17A320215F6A00187405 /* NSBezierPath+BezierPathQuartzUtilities.m */,
 			);
@@ -1470,6 +1793,8 @@
 		B9347CB5201ED9BD00A8CEC3 /* iBooks */ = {
 			isa = PBXGroup;
 			children = (
+				B9E73A8A202811E300E1BB3B /* IMBBooksHelperEntry.h */,
+				B9E73A8B202811E300E1BB3B /* IMBBooksHelperEntry.m */,
 				B9348B09201F03D500A8CEC3 /* IMBBaseModel.h */,
 				B9348B0A201F03D500A8CEC3 /* IMBBaseModel.m */,
 				B9348B06201F03C700A8CEC3 /* IMBBookCollection.h */,
@@ -1487,6 +1812,7 @@
 		B9348747201EFD2100A8CEC3 /* OopenSource */ = {
 			isa = PBXGroup;
 			children = (
+				B9E73A9320282FF500E1BB3B /* Zip */,
 				B96560E32021D2AF00BD7FF5 /* MediaInfo */,
 				B934874C201EFD2100A8CEC3 /* Fmdb */,
 			);
@@ -1518,10 +1844,21 @@
 		B9348AAC201EFED500A8CEC3 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				B9E739062027FB2100E1BB3B /* HeifConvert */,
+				B9E7392B2027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.h */,
+				B9E7392C2027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.m */,
+				B9E7392D2027FB2100E1BB3B /* IMBCreateSyncImage.h */,
+				B9E7392E2027FB2100E1BB3B /* IMBCreateSyncImage.m */,
+				B9E7392F2027FB2100E1BB3B /* IMBPhotoExportSettingConfig.h */,
+				B9E739302027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m */,
+				B9E739312027FB2100E1BB3B /* IMBSyncPhotoData.h */,
+				B9E739322027FB2100E1BB3B /* IMBSyncPhotoData.m */,
 				B9348AD6201EFED600A8CEC3 /* IMBPhotoEntity.h */,
 				B9348AD7201EFED600A8CEC3 /* IMBPhotoEntity.m */,
 				B9348ADA201EFED600A8CEC3 /* IMBPhotoManager.h */,
 				B9348ADB201EFED600A8CEC3 /* IMBPhotoManager.m */,
+				B9E73A5C2028089500E1BB3B /* IMBToiCloudPhotoEntity.h */,
+				B9E73A5D2028089500E1BB3B /* IMBToiCloudPhotoEntity.m */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -2235,8 +2572,6 @@
 			children = (
 				B96563BF2021D47600BD7FF5 /* IMBArtworkUnknownListContainer.h */,
 				B96563C02021D47600BD7FF5 /* IMBArtworkUnknownListContainer.m */,
-				B96563C12021D47600BD7FF5 /* IMBATHSync.h */,
-				B96563C22021D47600BD7FF5 /* IMBATHSync.m */,
 				B96563C32021D47600BD7FF5 /* IMBMediaLibraryDBHelper.h */,
 				B96563C42021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m */,
 				B96563C52021D47600BD7FF5 /* IMBMusicDatabase.h */,
@@ -2245,12 +2580,13 @@
 				B96563C82021D47600BD7FF5 /* IMBVideoImageAcquire.m */,
 				B9F6730B2022B92C00D3665E /* IMBVideoImageByOther.h */,
 				B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */,
-				B96563C92021D47600BD7FF5 /* iTunesCDB */,
-				B96564052021D47600BD7FF5 /* iTunesDB */,
 				B965645B2021D47600BD7FF5 /* NSImage+IMBCropExtensions.h */,
 				B965645C2021D47600BD7FF5 /* NSImage+IMBCropExtensions.m */,
 				B965645D2021D47600BD7FF5 /* NSString+Compare.h */,
 				B965645E2021D47600BD7FF5 /* NSString+Compare.m */,
+				B9E73A3C2028054200E1BB3B /* Converter */,
+				B96563C92021D47600BD7FF5 /* iTunesCDB */,
+				B96564052021D47600BD7FF5 /* iTunesDB */,
 				B965645F2021D47600BD7FF5 /* PlayCounts */,
 				B965646D2021D47600BD7FF5 /* Purchases */,
 				B96564742021D47600BD7FF5 /* XMLReader */,
@@ -2466,9 +2802,366 @@
 			path = XMLReader;
 			sourceTree = "<group>";
 		};
+		B9E739062027FB2100E1BB3B /* HeifConvert */ = {
+			isa = PBXGroup;
+			children = (
+				B9E739072027FB2100E1BB3B /* heicConvert.py */,
+				B9E739082027FB2100E1BB3B /* IMBPhotoHeicManager.h */,
+				B9E739092027FB2100E1BB3B /* IMBPhotoHeicManager.m */,
+				B9E7390A2027FB2100E1BB3B /* OpencvPythonLib */,
+			);
+			path = HeifConvert;
+			sourceTree = "<group>";
+		};
+		B9E7390A2027FB2100E1BB3B /* OpencvPythonLib */ = {
+			isa = PBXGroup;
+			children = (
+				B9E739292027FB2100E1BB3B /* montage */,
+				B9E7392A2027FB2100E1BB3B /* MP4Box */,
+			);
+			path = OpencvPythonLib;
+			sourceTree = "<group>";
+		};
+		B9E739592028038D00E1BB3B /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A6520280AAB00E1BB3B /* IMBHttpWebResponseUtility.h */,
+				B9E73A6620280AAB00E1BB3B /* IMBHttpWebResponseUtility.m */,
+				B9E7397F2028038D00E1BB3B /* IMBBaseTransfer.h */,
+				B9E739802028038D00E1BB3B /* IMBBaseTransfer.m */,
+				B9E739812028038D00E1BB3B /* IMBExportSetting.h */,
+				B9E739822028038D00E1BB3B /* IMBExportSetting.m */,
+				B9E73A392028044200E1BB3B /* IMBNoteDataEntity.h */,
+				B9E73A3A2028044200E1BB3B /* IMBNoteDataEntity.m */,
+				B9E73A592028067C00E1BB3B /* IMBCategoryInfoModel.h */,
+				B9E73A5A2028067C00E1BB3B /* IMBCategoryInfoModel.m */,
+				B9E73A352028040C00E1BB3B /* Error */,
+				B9E73A30202803DF00E1BB3B /* Tracking */,
+				B9E7395A2028038D00E1BB3B /* ATHSync */,
+				B9E739832028038D00E1BB3B /* ToDelete */,
+				B9E739942028038D00E1BB3B /* ToDevice */,
+				B9E739A62028038D00E1BB3B /* ToMac */,
+			);
+			path = Transfer;
+			sourceTree = "<group>";
+		};
+		B9E7395A2028038D00E1BB3B /* ATHSync */ = {
+			isa = PBXGroup;
+			children = (
+				B9E7395B2028038D00E1BB3B /* AirTrafficHost.h */,
+				B9E7395C2028038D00E1BB3B /* host_grappa */,
+				B9E7395D2028038D00E1BB3B /* IMBAthServiceInfo.h */,
+				B9E7395E2028038D00E1BB3B /* IMBAthServiceInfo.m */,
+				B9E7395F2028038D00E1BB3B /* IMBATHSync.h */,
+				B9E739602028038D00E1BB3B /* IMBATHSync.m */,
+				B9E739612028038D00E1BB3B /* IMBDistantObject.h */,
+				B9E739622028038D00E1BB3B /* IMBDistantObject.m */,
+			);
+			path = ATHSync;
+			sourceTree = "<group>";
+		};
+		B9E739832028038D00E1BB3B /* ToDelete */ = {
+			isa = PBXGroup;
+			children = (
+				B9E739842028038D00E1BB3B /* IMBAddPlaylist.h */,
+				B9E739852028038D00E1BB3B /* IMBAddPlaylist.m */,
+				B9E739862028038D00E1BB3B /* IMBAddTrackToList.h */,
+				B9E739872028038D00E1BB3B /* IMBAddTrackToList.m */,
+				B9E739882028038D00E1BB3B /* IMBBaseDelete.h */,
+				B9E739892028038D00E1BB3B /* IMBBaseDelete.m */,
+				B9E7398A2028038D00E1BB3B /* IMBDeleteApps.h */,
+				B9E7398B2028038D00E1BB3B /* IMBDeleteApps.m */,
+				B9E7398C2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.h */,
+				B9E7398D2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.m */,
+				B9E7398E2028038D00E1BB3B /* IMBDeletePlaylist.h */,
+				B9E7398F2028038D00E1BB3B /* IMBDeletePlaylist.m */,
+				B9E739902028038D00E1BB3B /* IMBDeleteTrack.h */,
+				B9E739912028038D00E1BB3B /* IMBDeleteTrack.m */,
+				B9E739922028038D00E1BB3B /* IMBRenamePlaylist.h */,
+				B9E739932028038D00E1BB3B /* IMBRenamePlaylist.m */,
+			);
+			path = ToDelete;
+			sourceTree = "<group>";
+		};
+		B9E739942028038D00E1BB3B /* ToDevice */ = {
+			isa = PBXGroup;
+			children = (
+				B9E739952028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.h */,
+				B9E739962028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.m */,
+				B9E739972028038D00E1BB3B /* IMBAirSyncImportTransfer.h */,
+				B9E739982028038D00E1BB3B /* IMBAirSyncImportTransfer.m */,
+				B9E739992028038D00E1BB3B /* IMBBetweenDeviceHandler.h */,
+				B9E7399A2028038D00E1BB3B /* IMBBetweenDeviceHandler.m */,
+				B9E7399B2028038D00E1BB3B /* IMBBookToDevice.h */,
+				B9E7399C2028038D00E1BB3B /* IMBBookToDevice.m */,
+				B9E7399F2028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.h */,
+				B9E739A02028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m */,
+				B9E739A12028038D00E1BB3B /* IMBNotAirSyncImportTransfer.h */,
+				B9E739A22028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m */,
+			);
+			path = ToDevice;
+			sourceTree = "<group>";
+		};
+		B9E739A62028038D00E1BB3B /* ToMac */ = {
+			isa = PBXGroup;
+			children = (
+				B9E739A72028038D00E1BB3B /* HtmlImg */,
+				B9E739BF2028038D00E1BB3B /* IMBAllFileExport.h */,
+				B9E739C02028038D00E1BB3B /* IMBAllFileExport.m */,
+				B9E739C12028038D00E1BB3B /* IMBAppExport.h */,
+				B9E739C22028038D00E1BB3B /* IMBAppExport.m */,
+				B9E739CD2028038D00E1BB3B /* IMBFileSystemExport.h */,
+				B9E739CE2028038D00E1BB3B /* IMBFileSystemExport.m */,
+				B9E739CF2028038D00E1BB3B /* IMBiBooksExport.h */,
+				B9E739D02028038D00E1BB3B /* IMBiBooksExport.m */,
+				B9E739D12028038D00E1BB3B /* IMBiTunesFileExport.h */,
+				B9E739D22028038D00E1BB3B /* IMBiTunesFileExport.m */,
+				B9E739D32028038D00E1BB3B /* IMBMediaFileExport.h */,
+				B9E739D42028038D00E1BB3B /* IMBMediaFileExport.m */,
+				B9E739D92028038D00E1BB3B /* IMBPhotoFileExport.h */,
+				B9E739DA2028038D00E1BB3B /* IMBPhotoFileExport.m */,
+			);
+			path = ToMac;
+			sourceTree = "<group>";
+		};
+		B9E739A72028038D00E1BB3B /* HtmlImg */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A9020282C3C00E1BB3B /* IMBiTunesEnum.h */,
+				B9E73A9120282C3C00E1BB3B /* IMBiTunesEnum.m */,
+				B9E73A8D20282C1100E1BB3B /* IMBiTLTrack.h */,
+				B9E73A8E20282C1100E1BB3B /* IMBiTLTrack.m */,
+				B9E739A82028038D00E1BB3B /* file.png */,
+				B9E739A92028038D00E1BB3B /* folder.png */,
+				B9E739AA2028038D00E1BB3B /* folder2.png */,
+				B9E739AB2028038D00E1BB3B /* left_bottom.png */,
+				B9E739AC2028038D00E1BB3B /* left_bottom2.png */,
+				B9E739AD2028038D00E1BB3B /* left_bottom3.png */,
+				B9E739AE2028038D00E1BB3B /* left_top.png */,
+				B9E739AF2028038D00E1BB3B /* left_top2.png */,
+				B9E739B02028038D00E1BB3B /* left_top3.png */,
+				B9E739B12028038D00E1BB3B /* line_photo.png */,
+				B9E739B22028038D00E1BB3B /* right_bottom.png */,
+				B9E739B32028038D00E1BB3B /* right_bottom2.png */,
+				B9E739B42028038D00E1BB3B /* right_bottom3.png */,
+				B9E739B52028038D00E1BB3B /* right_mid.png */,
+				B9E739B62028038D00E1BB3B /* right_mid2.png */,
+				B9E739B72028038D00E1BB3B /* right_mid3.png */,
+				B9E739B82028038D00E1BB3B /* right_top.png */,
+				B9E739B92028038D00E1BB3B /* right_top2.png */,
+				B9E739BA2028038D00E1BB3B /* right_top3.png */,
+				B9E739BB2028038D00E1BB3B /* wapp_contact.png */,
+				B9E739BC2028038D00E1BB3B /* wapp_map.png */,
+				B9E739BD2028038D00E1BB3B /* wapp_videos.png */,
+				B9E739BE2028038D00E1BB3B /* wapp_voice.png */,
+			);
+			path = HtmlImg;
+			sourceTree = "<group>";
+		};
+		B9E73A30202803DF00E1BB3B /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A31202803DF00E1BB3B /* ATTracker.h */,
+				B9E73A32202803DF00E1BB3B /* ATTracker.m */,
+				B9E73A33202803DF00E1BB3B /* CommonEnum.h */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		B9E73A352028040C00E1BB3B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A362028040C00E1BB3B /* IMBTransferError.h */,
+				B9E73A372028040C00E1BB3B /* IMBTransferError.m */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		B9E73A3C2028054200E1BB3B /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A3D2028054200E1BB3B /* ConvertTools */,
+				B9E73A402028054200E1BB3B /* DeviceConfig */,
+				B9E73A452028054200E1BB3B /* FFMPEGEncoderAsync */,
+				B9E73A4C2028054200E1BB3B /* MediaEntity */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		B9E73A3D2028054200E1BB3B /* ConvertTools */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A3E2028054200E1BB3B /* IMBMediaConverter.h */,
+				B9E73A3F2028054200E1BB3B /* IMBMediaConverter.m */,
+			);
+			path = ConvertTools;
+			sourceTree = "<group>";
+		};
+		B9E73A402028054200E1BB3B /* DeviceConfig */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A412028054200E1BB3B /* IMBConfig.h */,
+				B9E73A422028054200E1BB3B /* IMBConfig.m */,
+				B9E73A432028054200E1BB3B /* IMBRingtoneConfig.h */,
+				B9E73A442028054200E1BB3B /* IMBRingtoneConfig.m */,
+			);
+			path = DeviceConfig;
+			sourceTree = "<group>";
+		};
+		B9E73A452028054200E1BB3B /* FFMPEGEncoderAsync */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A462028054200E1BB3B /* IMBCvtEncodedMedia.h */,
+				B9E73A472028054200E1BB3B /* IMBCvtEncodedMedia.m */,
+				B9E73A482028054200E1BB3B /* IMBCvtMediaConvertEncoder.h */,
+				B9E73A492028054200E1BB3B /* IMBCvtMediaConvertEncoder.m */,
+				B9E73A4A2028054200E1BB3B /* IMBCvtMediaEncoding.h */,
+				B9E73A4B2028054200E1BB3B /* IMBCvtMediaEncoding.m */,
+			);
+			path = FFMPEGEncoderAsync;
+			sourceTree = "<group>";
+		};
+		B9E73A4C2028054200E1BB3B /* MediaEntity */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A4D2028054200E1BB3B /* IMBCvtDeviceEntity.h */,
+				B9E73A4E2028054200E1BB3B /* IMBCvtDeviceEntity.m */,
+				B9E73A4F2028054200E1BB3B /* IMBCvtMediaFileEntity.h */,
+				B9E73A502028054200E1BB3B /* IMBCvtMediaFileEntity.m */,
+			);
+			path = MediaEntity;
+			sourceTree = "<group>";
+		};
+		B9E73A6C20280FC000E1BB3B /* Softupate */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A7F2028105500E1BB3B /* Register */,
+				B9E73A6D20280FC000E1BB3B /* IMBCheckUpdater.h */,
+				B9E73A6E20280FC000E1BB3B /* IMBCheckUpdater.m */,
+				B9E73A6F20280FC000E1BB3B /* IMBSoftware-Info.plist */,
+				B9E73A7020280FC000E1BB3B /* IMBSoftWareInfo.h */,
+				B9E73A7120280FC000E1BB3B /* IMBSoftWareInfo.m */,
+				B9E73A7220280FC000E1BB3B /* IMBUpdateInfo.h */,
+				B9E73A7320280FC000E1BB3B /* IMBUpdateInfo.m */,
+				B9E73A7420280FC000E1BB3B /* installer */,
+			);
+			path = Softupate;
+			sourceTree = "<group>";
+		};
+		B9E73A7420280FC000E1BB3B /* installer */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A7520280FC000E1BB3B /* NSString+SymlinksAndAliases.h */,
+				B9E73A7620280FC000E1BB3B /* NSString+SymlinksAndAliases.m */,
+				B9E73A7720280FC000E1BB3B /* PFMoveApplication.h */,
+				B9E73A7820280FC000E1BB3B /* PFMoveApplication.m */,
+			);
+			path = installer;
+			sourceTree = "<group>";
+		};
+		B9E73A7F2028105500E1BB3B /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A802028105500E1BB3B /* ActivateValidation */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		B9E73A802028105500E1BB3B /* ActivateValidation */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A812028105500E1BB3B /* IMBHWInfo.h */,
+				B9E73A822028105500E1BB3B /* IMBHWInfo.m */,
+				B9E73A832028105500E1BB3B /* IMBVerifyActivate.h */,
+				B9E73A842028105500E1BB3B /* IMBVerifyActivate.m */,
+				B9E73A852028105500E1BB3B /* IMBVerifyProduct.h */,
+				B9E73A862028105500E1BB3B /* IMBVerifyProduct.m */,
+			);
+			path = ActivateValidation;
+			sourceTree = "<group>";
+		};
+		B9E73A9320282FF500E1BB3B /* Zip */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A9420282FF500E1BB3B /* MiniZip */,
+				B9E73A9E20282FF500E1BB3B /* ZipHelper */,
+				B9E73AAB20282FF500E1BB3B /* ZLib */,
+			);
+			path = Zip;
+			sourceTree = "<group>";
+		};
+		B9E73A9420282FF500E1BB3B /* MiniZip */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A9520282FF500E1BB3B /* crypt.h */,
+				B9E73A9620282FF500E1BB3B /* ioapi.c */,
+				B9E73A9720282FF500E1BB3B /* ioapi.h */,
+				B9E73A9820282FF500E1BB3B /* mztools.c */,
+				B9E73A9920282FF500E1BB3B /* mztools.h */,
+				B9E73A9A20282FF500E1BB3B /* unzip.c */,
+				B9E73A9B20282FF500E1BB3B /* unzip.h */,
+				B9E73A9C20282FF500E1BB3B /* zip.c */,
+				B9E73A9D20282FF500E1BB3B /* zip.h */,
+			);
+			path = MiniZip;
+			sourceTree = "<group>";
+		};
+		B9E73A9E20282FF500E1BB3B /* ZipHelper */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73A9F20282FF500E1BB3B /* FileInZipInfo.h */,
+				B9E73AA020282FF500E1BB3B /* FileInZipInfo.m */,
+				B9E73AA120282FF500E1BB3B /* IMBZipHelper.h */,
+				B9E73AA220282FF500E1BB3B /* IMBZipHelper.m */,
+				B9E73AA320282FF500E1BB3B /* ZipException.h */,
+				B9E73AA420282FF500E1BB3B /* ZipException.m */,
+				B9E73AA520282FF500E1BB3B /* ZipFile.h */,
+				B9E73AA620282FF500E1BB3B /* ZipFile.m */,
+				B9E73AA720282FF500E1BB3B /* ZipReadStream.h */,
+				B9E73AA820282FF500E1BB3B /* ZipReadStream.m */,
+				B9E73AA920282FF500E1BB3B /* ZipWriteStream.h */,
+				B9E73AAA20282FF500E1BB3B /* ZipWriteStream.m */,
+			);
+			path = ZipHelper;
+			sourceTree = "<group>";
+		};
+		B9E73AAB20282FF500E1BB3B /* ZLib */ = {
+			isa = PBXGroup;
+			children = (
+				B9E73AAC20282FF500E1BB3B /* adler32.c */,
+				B9E73AAD20282FF500E1BB3B /* compress.c */,
+				B9E73AAE20282FF500E1BB3B /* crc32.c */,
+				B9E73AAF20282FF500E1BB3B /* crc32.h */,
+				B9E73AB020282FF500E1BB3B /* deflate.c */,
+				B9E73AB120282FF500E1BB3B /* deflate.h */,
+				B9E73AB220282FF500E1BB3B /* gzclose.c */,
+				B9E73AB320282FF500E1BB3B /* gzguts.h */,
+				B9E73AB420282FF500E1BB3B /* gzlib.c */,
+				B9E73AB520282FF500E1BB3B /* gzread.c */,
+				B9E73AB620282FF500E1BB3B /* gzwrite.c */,
+				B9E73AB720282FF500E1BB3B /* infback.c */,
+				B9E73AB820282FF500E1BB3B /* inffast.c */,
+				B9E73AB920282FF500E1BB3B /* inffast.h */,
+				B9E73ABA20282FF500E1BB3B /* inffixed.h */,
+				B9E73ABB20282FF500E1BB3B /* inflate.c */,
+				B9E73ABC20282FF500E1BB3B /* inflate.h */,
+				B9E73ABD20282FF500E1BB3B /* inftrees.c */,
+				B9E73ABE20282FF500E1BB3B /* inftrees.h */,
+				B9E73ABF20282FF500E1BB3B /* trees.c */,
+				B9E73AC020282FF500E1BB3B /* trees.h */,
+				B9E73AC120282FF500E1BB3B /* uncompr.c */,
+				B9E73AC220282FF500E1BB3B /* zconf.h */,
+				B9E73AC320282FF500E1BB3B /* zlib.h */,
+				B9E73AC420282FF500E1BB3B /* zutil.c */,
+				B9E73AC520282FF500E1BB3B /* zutil.h */,
+			);
+			path = ZLib;
+			sourceTree = "<group>";
+		};
 		B9F674592022F8F900D3665E /* SupportedFiles */ = {
 			isa = PBXGroup;
 			children = (
+				B9E73AE12028410F00E1BB3B /* Localizable.strings */,
 				B914C19B2023F0EC00B998AC /* Plists */,
 			);
 			path = SupportedFiles;
@@ -2503,6 +3196,7 @@
 		EE39AC92200CBBF300D084CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9E73ADF20283BED00E1BB3B /* AirTrafficHost.framework */,
 				B910BF4720219FFD00849CBB /* AFNetworking.framework */,
 				B910BF4820219FFD00849CBB /* AppAuth.framework */,
 				B910BF4920219FFD00849CBB /* YTKNetwork.framework */,
@@ -2540,6 +3234,8 @@
 				B996D9CB2019E26900E6991A /* IMBConst.h */,
 				B996D9CC2019E26900E6991A /* IMBConst.m */,
 				EE39ACEB200CBD9700D084CE /* Info.plist */,
+				B9E73A6C20280FC000E1BB3B /* Softupate */,
+				B9E739592028038D00E1BB3B /* Transfer */,
 				B9F6745C202305E800D3665E /* Model */,
 				B9F674592022F8F900D3665E /* SupportedFiles */,
 				B96563BC2021D47600BD7FF5 /* Media */,
@@ -2626,6 +3322,8 @@
 				EE39AD07200CBD9700D084CE /* IMBNoTitleBarContentView.m */,
 				EE39AD08200CBD9700D084CE /* IMBWhiteView.h */,
 				EE39AD09200CBD9700D084CE /* IMBWhiteView.m */,
+				B925AA1420297E670068E540 /* IMBStackBox.h */,
+				B925AA1520297E670068E540 /* IMBStackBox.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2777,27 +3475,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE39AD13200CBD9700D084CE /* Assets.xcassets in Resources */,
+				B9E73A132028038D00E1BB3B /* right_bottom3.png in Resources */,
 				EE8BA57F20217D9100FECC14 /* windowclose3@2x.png in Resources */,
+				B9E739332027FB2100E1BB3B /* heicConvert.py in Resources */,
+				B9E73A192028038D00E1BB3B /* right_top3.png in Resources */,
 				B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */,
+				B9E73A0F2028038D00E1BB3B /* left_top3.png in Resources */,
 				EE8BA57E20217D9100FECC14 /* windowclose3.png in Resources */,
+				B9E73A7A20280FC000E1BB3B /* IMBSoftware-Info.plist in Resources */,
+				B9E73A0C2028038D00E1BB3B /* left_bottom3.png in Resources */,
+				B9E73A152028038D00E1BB3B /* right_mid2.png in Resources */,
 				B96564902021D47600BD7FF5 /* iTunesCDB in Resources */,
+				B9E73A092028038D00E1BB3B /* folder2.png in Resources */,
 				EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */,
+				B9E73A172028038D00E1BB3B /* right_top.png in Resources */,
+				B9E73A082028038D00E1BB3B /* folder.png in Resources */,
 				B90D14D420201599002D9F9B /* AppInstallProgressFile in Resources */,
 				EE39AD16200CBD9700D084CE /* Info.plist in Resources */,
 				EE8BA57D20217D9100FECC14 /* windowclose2@2x.png in Resources */,
 				EE39AD25200CBD9700D084CE /* IMBMainWindowController.xib in Resources */,
 				EE39AD38200D8DB000D084CE /* IMBDeviceViewController.xib in Resources */,
 				EE8BA54B202177C500FECC14 /* IMBDevicePageWindow.xib in Resources */,
+				B9E739E32028038D00E1BB3B /* host_grappa in Resources */,
 				B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */,
 				EE8BA57C20217D9100FECC14 /* windowclose2.png in Resources */,
+				B9E739542027FB2100E1BB3B /* MP4Box in Resources */,
+				B9E73A142028038D00E1BB3B /* right_mid.png in Resources */,
+				B9E73A1A2028038D00E1BB3B /* wapp_contact.png in Resources */,
+				B9E73A1C2028038D00E1BB3B /* wapp_videos.png in Resources */,
 				EE8BA57B20217D9100FECC14 /* windowclose.png in Resources */,
+				B9E73A0B2028038D00E1BB3B /* left_bottom2.png in Resources */,
+				B925AA1320295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist in Resources */,
 				EE8BA58020217D9100FECC14 /* windowclose@2x.png in Resources */,
+				B9E73A102028038D00E1BB3B /* line_photo.png in Resources */,
 				B95BD52320244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist in Resources */,
+				B9E73AE22028410F00E1BB3B /* Localizable.strings in Resources */,
+				B9E73A122028038D00E1BB3B /* right_bottom2.png in Resources */,
+				B9E73A1D2028038D00E1BB3B /* wapp_voice.png in Resources */,
+				B9E739532027FB2100E1BB3B /* montage in Resources */,
 				B914C1A620241A7500B998AC /* IMBDetailViewControler.xib in Resources */,
 				B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */,
+				B9E73A1B2028038D00E1BB3B /* wapp_map.png in Resources */,
 				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
 				B914C19F2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist in Resources */,
+				B9E73A162028038D00E1BB3B /* right_mid3.png in Resources */,
+				B9E73A0E2028038D00E1BB3B /* left_top2.png in Resources */,
+				B9E73A112028038D00E1BB3B /* right_bottom.png in Resources */,
+				B9E73A0D2028038D00E1BB3B /* left_top.png in Resources */,
 				B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */,
+				B9E73A072028038D00E1BB3B /* file.png in Resources */,
+				B9E73A182028038D00E1BB3B /* right_top2.png in Resources */,
+				B9E73A0A2028038D00E1BB3B /* left_bottom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2808,25 +3536,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9E73ADC20282FF500E1BB3B /* trees.c in Sources */,
 				B965648D2021D47600BD7FF5 /* IMBNewTrack.m in Sources */,
 				B965639D2021D2B000BD7FF5 /* NSData+Base64.m in Sources */,
 				B96563502021D2B000BD7FF5 /* File_Mpeg4_Descriptors.cpp in Sources */,
 				B96562D52021D2B000BD7FF5 /* uri.c in Sources */,
+				B9E73ACB20282FF500E1BB3B /* IMBZipHelper.m in Sources */,
 				B965649D2021D47600BD7FF5 /* rijndael.c in Sources */,
+				B9E739F82028038D00E1BB3B /* IMBAddTrackToList.m in Sources */,
 				B96562FD2021D2B000BD7FF5 /* File_Pcm.cpp in Sources */,
 				B96563162021D2B000BD7FF5 /* File__Analyze_Streams.cpp in Sources */,
 				B965639B2021D2B000BD7FF5 /* md5.c in Sources */,
+				B9E73ACE20282FF500E1BB3B /* ZipReadStream.m in Sources */,
+				B9E73ADD20282FF500E1BB3B /* uncompr.c in Sources */,
+				B9E739572027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m in Sources */,
 				B96563972021D2B000BD7FF5 /* File_Vc1.cpp in Sources */,
 				B965632B2021D2B000BD7FF5 /* File_Tiff.cpp in Sources */,
 				B96562FE2021D2B000BD7FF5 /* File_Pcm_M2ts.cpp in Sources */,
 				B96562D32021D2B000BD7FF5 /* mmsh.c in Sources */,
+				B9E73A382028040C00E1BB3B /* IMBTransferError.m in Sources */,
 				EE8BA56A20217BEC00FECC14 /* IMBCommonButtonCell.m in Sources */,
+				B9E73A882028105500E1BB3B /* IMBVerifyActivate.m in Sources */,
 				B9347CC8201ED9BD00A8CEC3 /* IMBBooksManager.m in Sources */,
 				B96562F82021D2B000BD7FF5 /* File_Mpc.cpp in Sources */,
 				B910BF3D20219E3B00849CBB /* OneDCreateFolderAPI.m in Sources */,
+				B9E739FF2028038D00E1BB3B /* IMBAirSyncImportBetweenDeviceTransfer.m in Sources */,
 				B96562F72021D2B000BD7FF5 /* File_Module.cpp in Sources */,
 				B910BF3720219E3B00849CBB /* BaseDrive.m in Sources */,
+				B9E739F72028038D00E1BB3B /* IMBAddPlaylist.m in Sources */,
 				B96564B92021D47600BD7FF5 /* IMBPlayCountHeader.m in Sources */,
+				B9E73AC920282FF500E1BB3B /* zip.c in Sources */,
 				B965632D2021D2B000BD7FF5 /* MediaInfo_Config.cpp in Sources */,
 				B965639A2021D2B000BD7FF5 /* File_Y4m.cpp in Sources */,
 				B965635C2021D2B000BD7FF5 /* File_P2_Clip.cpp in Sources */,
@@ -2834,11 +3573,13 @@
 				B96563392021D2B000BD7FF5 /* File_Bdmv.cpp in Sources */,
 				EE8BA56C20217BEC00FECC14 /* IMBHoverBtnCell.m in Sources */,
 				B96564A32021D47600BD7FF5 /* IMBPlaylistItem.m in Sources */,
+				B9E73AD920282FF500E1BB3B /* inffast.c in Sources */,
 				B96564A82021D47600BD7FF5 /* IMBTrack.m in Sources */,
 				B96564B12021D47600BD7FF5 /* IMBMHODFactory.m in Sources */,
 				B965649F2021D47600BD7FF5 /* IMBIDGenerator.m in Sources */,
 				B965632F2021D2B000BD7FF5 /* MediaInfo_Config_MediaInfo.cpp in Sources */,
 				B96562F02021D2B000BD7FF5 /* File_DolbyE.cpp in Sources */,
+				B9E73ACD20282FF500E1BB3B /* ZipFile.m in Sources */,
 				B96562D02021D2B000BD7FF5 /* HowToUse.mm in Sources */,
 				B92A17A420215F6A00187405 /* NSBezierPath+BezierPathQuartzUtilities.m in Sources */,
 				B96564922021D47600BD7FF5 /* IMBSqliteTables_31.m in Sources */,
@@ -2862,7 +3603,10 @@
 				B96563B12021D2B000BD7FF5 /* Utils.cpp in Sources */,
 				EE8BA57320217C9900FECC14 /* IMBDrawOneImageBtn.m in Sources */,
 				B96563AC2021D2B000BD7FF5 /* MemoryDebug.cpp in Sources */,
+				B9E73A572028054200E1BB3B /* IMBCvtDeviceEntity.m in Sources */,
 				B96563842021D2B000BD7FF5 /* File_TimedText.cpp in Sources */,
+				B9E73AD720282FF500E1BB3B /* gzwrite.c in Sources */,
+				B9E73A042028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m in Sources */,
 				B96563572021D2B000BD7FF5 /* File_MpegTs_Duplicate.cpp in Sources */,
 				B965637E2021D2B000BD7FF5 /* File_OtherText.cpp in Sources */,
 				B965638E2021D2B000BD7FF5 /* File_Flic.cpp in Sources */,
@@ -2873,6 +3617,10 @@
 				B965636A2021D2B000BD7FF5 /* Reader_Directory.cpp in Sources */,
 				B96563642021D2B000BD7FF5 /* File_Swf.cpp in Sources */,
 				B96563072021D2B000BD7FF5 /* File_Tak.cpp in Sources */,
+				B9E73A052028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m in Sources */,
+				B9E739F52028038D00E1BB3B /* IMBBaseTransfer.m in Sources */,
+				B9E73A532028054200E1BB3B /* IMBRingtoneConfig.m in Sources */,
+				B9E73ADE20282FF500E1BB3B /* zutil.c in Sources */,
 				B96563312021D2B000BD7FF5 /* MediaInfo_File.cpp in Sources */,
 				B96563A22021D2B000BD7FF5 /* FileName.cpp in Sources */,
 				B96563352021D2B000BD7FF5 /* MediaInfoList_Internal.cpp in Sources */,
@@ -2883,11 +3631,14 @@
 				B96563462021D2B000BD7FF5 /* File_Gxf_TimeCode.cpp in Sources */,
 				B96562E22021D2B000BD7FF5 /* File_Aac_GeneralAudio.cpp in Sources */,
 				B96563672021D2B000BD7FF5 /* File_Wm_Elements.cpp in Sources */,
+				B9E739FE2028038D00E1BB3B /* IMBRenamePlaylist.m in Sources */,
 				B965637D2021D2B000BD7FF5 /* File_N19.cpp in Sources */,
 				B96563262021D2B000BD7FF5 /* File_Pcx.cpp in Sources */,
 				B965647F2021D47600BD7FF5 /* IMBArtworkEntity.m in Sources */,
 				EE8BA53E2021605800FECC14 /* IMBBackgroundBorderView.m in Sources */,
+				B9E73AD320282FF500E1BB3B /* deflate.c in Sources */,
 				B96564AE2021D47600BD7FF5 /* IMBArtworkStringMHOD.m in Sources */,
+				B9E73A8F20282C1100E1BB3B /* IMBiTLTrack.m in Sources */,
 				B96564BF2021D47600BD7FF5 /* IMBPurchasesPlist.m in Sources */,
 				B96563992021D2B000BD7FF5 /* File_Vp8.cpp in Sources */,
 				B90D14D520201599002D9F9B /* IMBAppConfig.m in Sources */,
@@ -2896,14 +3647,18 @@
 				B965637F2021D2B000BD7FF5 /* File_Pgs.cpp in Sources */,
 				B96563A42021D2B000BD7FF5 /* Html_Request.cpp in Sources */,
 				B96562EC2021D2B000BD7FF5 /* File_Ape.cpp in Sources */,
+				B9E739E52028038D00E1BB3B /* IMBATHSync.m in Sources */,
 				B910BF3820219E3B00849CBB /* BaseDriveAPI.m in Sources */,
 				B92A17B120215FB100187405 /* MediaHelper.m in Sources */,
+				B9E73A282028038D00E1BB3B /* IMBMediaFileExport.m in Sources */,
 				B96562D92021D2B000BD7FF5 /* File_Bzip2.cpp in Sources */,
 				B90D14E5202021D0002D9F9B /* IMBAnimation.m in Sources */,
 				B96564A42021D47600BD7FF5 /* IMBPlaylistList.m in Sources */,
 				B96564B22021D47600BD7FF5 /* IMBPlaylistPositionMHOD.m in Sources */,
 				B965631F2021D2B000BD7FF5 /* File_Bmp.cpp in Sources */,
 				B910BF3A20219E3B00849CBB /* DriveAPIResponse.m in Sources */,
+				B9E73A6720280AAB00E1BB3B /* IMBHttpWebResponseUtility.m in Sources */,
+				B9E739F92028038D00E1BB3B /* IMBBaseDelete.m in Sources */,
 				B96562EA2021D2B000BD7FF5 /* File_Amr.cpp in Sources */,
 				B96563302021D2B000BD7FF5 /* MediaInfo_Config_PerPackage.cpp in Sources */,
 				B96564B82021D47600BD7FF5 /* IMBPlayCountEntry.m in Sources */,
@@ -2915,6 +3670,7 @@
 				B96563B52021D2B000BD7FF5 /* ZtringListListF.cpp in Sources */,
 				B96563752021D2B000BD7FF5 /* File_AribStdB24B37.cpp in Sources */,
 				B96563012021D2B000BD7FF5 /* File_Rkau.cpp in Sources */,
+				B9E73A7920280FC000E1BB3B /* IMBCheckUpdater.m in Sources */,
 				B965638B2021D2B000BD7FF5 /* File_AvsV.cpp in Sources */,
 				B96564822021D47600BD7FF5 /* IMBBaseDatabaseElement.m in Sources */,
 				B96563A72021D2B000BD7FF5 /* Http_Request.cpp in Sources */,
@@ -2924,6 +3680,7 @@
 				B96562E82021D2B000BD7FF5 /* File_Adpcm.cpp in Sources */,
 				B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */,
 				B96563AB2021D2B000BD7FF5 /* int128u.cpp in Sources */,
+				B9E739FA2028038D00E1BB3B /* IMBDeleteApps.m in Sources */,
 				B965649A2021D47600BD7FF5 /* IMBDatabaseHasher.mm in Sources */,
 				EE8BA54A202177C500FECC14 /* IMBDevicePageWindow.m in Sources */,
 				B965649E2021D47600BD7FF5 /* IMBAlbumListContainer.m in Sources */,
@@ -2934,26 +3691,32 @@
 				B965631B2021D2B000BD7FF5 /* File_Dummy.cpp in Sources */,
 				B96563442021D2B000BD7FF5 /* File_Flv.cpp in Sources */,
 				B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */,
+				B9E73A1F2028038D00E1BB3B /* IMBAppExport.m in Sources */,
 				B96564B52021D47600BD7FF5 /* IMBUnknownMHOD.m in Sources */,
 				B96562EB2021D2B000BD7FF5 /* File_Amv.cpp in Sources */,
+				B9E73AD420282FF500E1BB3B /* gzclose.c in Sources */,
 				B96563202021D2B000BD7FF5 /* File_Dds.cpp in Sources */,
+				B9E73A3B2028044200E1BB3B /* IMBNoteDataEntity.m in Sources */,
 				B965635E2021D2B000BD7FF5 /* File_Ptx.cpp in Sources */,
 				B96563052021D2B000BD7FF5 /* File_SmpteSt0337.cpp in Sources */,
 				B96564B62021D47600BD7FF5 /* NSImage+IMBCropExtensions.m in Sources */,
 				B96564892021D47600BD7FF5 /* IMBIThmbFileList.m in Sources */,
 				B965634A2021D2B000BD7FF5 /* File_Ibi_Creation.cpp in Sources */,
+				B9E73A1E2028038D00E1BB3B /* IMBAllFileExport.m in Sources */,
 				B965633F2021D2B000BD7FF5 /* File_Dpg.cpp in Sources */,
 				B92A17B220215FB100187405 /* StringHelper.m in Sources */,
 				B96563022021D2B000BD7FF5 /* File_ScreamTracker3.cpp in Sources */,
 				B96563552021D2B000BD7FF5 /* File_MpegPs.cpp in Sources */,
 				B96563662021D2B000BD7FF5 /* File_Wm.cpp in Sources */,
 				B96562F52021D2B000BD7FF5 /* File_La.cpp in Sources */,
+				B9E73A9220282C3C00E1BB3B /* IMBiTunesEnum.m in Sources */,
 				B96563382021D2B000BD7FF5 /* File_Ancillary.cpp in Sources */,
 				B92A17B320215FB100187405 /* TempHelper.m in Sources */,
 				B96563362021D2B000BD7FF5 /* File__ReferenceFilesHelper.cpp in Sources */,
 				B9348998201EFD2100A8CEC3 /* FMDatabaseAdditions.m in Sources */,
 				B910BF3920219E3B00849CBB /* DownLoader.m in Sources */,
 				B96563452021D2B000BD7FF5 /* File_Gxf.cpp in Sources */,
+				B9E73A872028105500E1BB3B /* IMBHWInfo.m in Sources */,
 				B96563062021D2B000BD7FF5 /* File_Speex.cpp in Sources */,
 				B9348B0B201F03D500A8CEC3 /* IMBBaseModel.m in Sources */,
 				B96563592021D2B000BD7FF5 /* File_Nut.cpp in Sources */,
@@ -2971,7 +3734,12 @@
 				B96564A12021D47600BD7FF5 /* IMBListContainerHeader.m in Sources */,
 				B96563042021D2B000BD7FF5 /* File_SmpteSt0331.cpp in Sources */,
 				B96563682021D2B000BD7FF5 /* File_Xdcam_Clip.cpp in Sources */,
+				B9E739552027FB2100E1BB3B /* IMBCreatePhotoSyncPlist.m in Sources */,
+				B9E739FB2028038D00E1BB3B /* IMBDeleteCameraRollPhotos.m in Sources */,
+				B9E739012027F6EF00E1BB3B /* IMBHelper.m in Sources */,
 				B965632C2021D2B000BD7FF5 /* MediaInfo.cpp in Sources */,
+				B9E739E62028038D00E1BB3B /* IMBDistantObject.m in Sources */,
+				B9E73A64202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m in Sources */,
 				B96562F42021D2B000BD7FF5 /* File_ImpulseTracker.cpp in Sources */,
 				B9348B3A201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m in Sources */,
 				B965633B2021D2B000BD7FF5 /* File_DashMpd.cpp in Sources */,
@@ -2979,6 +3747,7 @@
 				B96563602021D2B000BD7FF5 /* File_Riff_Elements.cpp in Sources */,
 				B96563B22021D2B000BD7FF5 /* Ztring.cpp in Sources */,
 				B965632E2021D2B000BD7FF5 /* MediaInfo_Config_Automatic.cpp in Sources */,
+				B9E73A582028054200E1BB3B /* IMBCvtMediaFileEntity.m in Sources */,
 				B965633C2021D2B000BD7FF5 /* File_DcpAm.cpp in Sources */,
 				B96564862021D47600BD7FF5 /* IMBIPodImage.m in Sources */,
 				B96562E92021D2B000BD7FF5 /* File_Als.cpp in Sources */,
@@ -2987,9 +3756,11 @@
 				B9348AAB201EFE2D00A8CEC3 /* IMBBaseEntity.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
 				B96563B32021D2B000BD7FF5 /* ZtringList.cpp in Sources */,
+				B9E73A7E20280FC000E1BB3B /* PFMoveApplication.m in Sources */,
 				B96563852021D2B000BD7FF5 /* File_Ttml.cpp in Sources */,
 				B96562F32021D2B000BD7FF5 /* File_Flac.cpp in Sources */,
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
+				B9E73A562028054200E1BB3B /* IMBCvtMediaEncoding.m in Sources */,
 				B96563172021D2B000BD7FF5 /* File__Analyze_Streams_Finish.cpp in Sources */,
 				B96563732021D2B000BD7FF5 /* File_Lyrics3v2.cpp in Sources */,
 				B965637A2021D2B000BD7FF5 /* File_Eia608.cpp in Sources */,
@@ -3004,6 +3775,7 @@
 				B96562D22021D2B000BD7FF5 /* mms.c in Sources */,
 				B965632A2021D2B000BD7FF5 /* File_Tga.cpp in Sources */,
 				B96563A92021D2B000BD7FF5 /* InfoMap.cpp in Sources */,
+				B9E73A7C20280FC000E1BB3B /* IMBUpdateInfo.m in Sources */,
 				B96564AF2021D47600BD7FF5 /* IMBBaseMHODElement.m in Sources */,
 				B96563A32021D2B000BD7FF5 /* Html_Handler.cpp in Sources */,
 				B96564B32021D47600BD7FF5 /* IMBStringMHOD.m in Sources */,
@@ -3018,11 +3790,13 @@
 				B910BF3E20219E3B00849CBB /* OneDDeleteItemAPI.m in Sources */,
 				B965636B2021D2B000BD7FF5 /* Reader_File.cpp in Sources */,
 				EE39AD26200CBD9700D084CE /* IMBNoTitleBarWindow.m in Sources */,
+				B9E739FD2028038D00E1BB3B /* IMBDeleteTrack.m in Sources */,
 				B910BF4120219E3B00849CBB /* OneDMoveToNewParentAPI.m in Sources */,
 				B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */,
 				B96563122021D2B000BD7FF5 /* Export_reVTMD.cpp in Sources */,
 				B96563892021D2B000BD7FF5 /* File_Avc.cpp in Sources */,
 				B96563562021D2B000BD7FF5 /* File_MpegTs.cpp in Sources */,
+				B9E739F62028038D00E1BB3B /* IMBExportSetting.m in Sources */,
 				B96564882021D47600BD7FF5 /* IMBIThmbFile.m in Sources */,
 				B9348997201EFD2100A8CEC3 /* FMDatabase.m in Sources */,
 				B96563402021D2B000BD7FF5 /* File_DvDif.cpp in Sources */,
@@ -3048,6 +3822,7 @@
 				EE8BA56E20217BEC00FECC14 /* IMBMyDrawCommonly.m in Sources */,
 				B965636E2021D2B000BD7FF5 /* File__Tags.cpp in Sources */,
 				B96563542021D2B000BD7FF5 /* File_Mpeg_Psi.cpp in Sources */,
+				B9E73AD820282FF500E1BB3B /* infback.c in Sources */,
 				EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */,
 				EE39AD17200CBD9700D084CE /* DDAbstractDatabaseLogger.m in Sources */,
 				B96564812021D47600BD7FF5 /* IMBBaseDatabase.m in Sources */,
@@ -3058,15 +3833,21 @@
 				B96563B02021D2B000BD7FF5 /* Translation.cpp in Sources */,
 				EE39AD1B200CBD9700D084CE /* DDTTYLogger.m in Sources */,
 				B96563722021D2B000BD7FF5 /* File_Lyrics3.cpp in Sources */,
+				B9E73A512028054200E1BB3B /* IMBMediaConverter.m in Sources */,
 				EE8BA56D20217BEC00FECC14 /* IMBHoverButton.m in Sources */,
+				B9E73A34202803DF00E1BB3B /* ATTracker.m in Sources */,
 				EE39AD37200D8DB000D084CE /* IMBDeviceViewController.m in Sources */,
 				B96563272021D2B000BD7FF5 /* File_Png.cpp in Sources */,
 				B96562E42021D2B000BD7FF5 /* File_Aac_GeneralAudio_Sbr_Ps.cpp in Sources */,
 				B965647B2021D47600BD7FF5 /* IMBMusicDatabase.m in Sources */,
 				B965634D2021D2B000BD7FF5 /* File_Lxf.cpp in Sources */,
+				B9E73ADA20282FF500E1BB3B /* inflate.c in Sources */,
 				B965630D2021D2B000BD7FF5 /* File__Duplicate__Writer.cpp in Sources */,
+				B9E73AD520282FF500E1BB3B /* gzlib.c in Sources */,
 				B965631C2021D2B000BD7FF5 /* File_Other.cpp in Sources */,
 				B9348B3B201F0DAB00A8CEC3 /* IMBAMFileSystem.m in Sources */,
+				B9E73AD620282FF500E1BB3B /* gzread.c in Sources */,
+				B9E739342027FB2100E1BB3B /* IMBPhotoHeicManager.m in Sources */,
 				B96563422021D2B000BD7FF5 /* File_Dvdv.cpp in Sources */,
 				B965638D2021D2B000BD7FF5 /* File_Dirac.cpp in Sources */,
 				B96563922021D2B000BD7FF5 /* File_Lagarith.cpp in Sources */,
@@ -3074,11 +3855,16 @@
 				EE39AD19200CBD9700D084CE /* DDFileLogger.m in Sources */,
 				B96563192021D2B000BD7FF5 /* File__Duplicate.cpp in Sources */,
 				B910BF4320219E3B00849CBB /* OneDrive.m in Sources */,
+				B9E739582027FB2100E1BB3B /* IMBSyncPhotoData.m in Sources */,
 				B96563622021D2B000BD7FF5 /* File_SequenceInfo.cpp in Sources */,
 				B965636D2021D2B000BD7FF5 /* Reader_libmms.cpp in Sources */,
 				B96564982021D47600BD7FF5 /* IMBSyncAppBuilder.m in Sources */,
 				B96563A52021D2B000BD7FF5 /* Http_Cookies.cpp in Sources */,
+				B9E738FE2027F6B900E1BB3B /* SystemHelper.m in Sources */,
 				B96562EE2021D2B000BD7FF5 /* File_Celt.cpp in Sources */,
+				B9E73ADB20282FF500E1BB3B /* inftrees.c in Sources */,
+				B9E73ACA20282FF500E1BB3B /* FileInZipInfo.m in Sources */,
+				B9E739562027FB2100E1BB3B /* IMBCreateSyncImage.m in Sources */,
 				B96564BC2021D47600BD7FF5 /* IMBIOSSqlite.m in Sources */,
 				B96563102021D2B000BD7FF5 /* Export_Mpeg7.cpp in Sources */,
 				B965648F2021D47600BD7FF5 /* IMBSupportedArtworkFormat.m in Sources */,
@@ -3092,10 +3878,12 @@
 				B90D14D920201599002D9F9B /* IMBAppSyncModel.m in Sources */,
 				B96564912021D47600BD7FF5 /* IMBSqliteTables.m in Sources */,
 				B965630F2021D2B000BD7FF5 /* Export_EbuCore.cpp in Sources */,
+				B9E739E42028038D00E1BB3B /* IMBAthServiceInfo.m in Sources */,
 				B96563522021D2B000BD7FF5 /* File_Mpeg4_TimeCode.cpp in Sources */,
 				B910BF4520219E3B00849CBB /* OneDUploadAPI.m in Sources */,
 				B965638C2021D2B000BD7FF5 /* File_Canopus.cpp in Sources */,
 				B96562E12021D2B000BD7FF5 /* File_Aac.cpp in Sources */,
+				B925AA1620297E670068E540 /* IMBStackBox.m in Sources */,
 				B96564BE2021D47600BD7FF5 /* IMBPurchasesInfo.m in Sources */,
 				B96562D12021D2B000BD7FF5 /* IMBMediaInfo.mm in Sources */,
 				B96562EF2021D2B000BD7FF5 /* File_ChannelGrouping.cpp in Sources */,
@@ -3107,23 +3895,30 @@
 				B96563742021D2B000BD7FF5 /* File_VorbisCom.cpp in Sources */,
 				B965639F2021D2B000BD7FF5 /* CriticalSection.cpp in Sources */,
 				EE39AD1D200CBD9700D084CE /* main.m in Sources */,
+				B9E73ACC20282FF500E1BB3B /* ZipException.m in Sources */,
+				B9E73A892028105500E1BB3B /* IMBVerifyProduct.m in Sources */,
 				B96564AA2021D47600BD7FF5 /* IMBTrackListContainer.m in Sources */,
 				B96563702021D2B000BD7FF5 /* File_Id3.cpp in Sources */,
 				B96563692021D2B000BD7FF5 /* PreComp.cpp in Sources */,
 				B96562E52021D2B000BD7FF5 /* File_Aac_Main.cpp in Sources */,
-				B96564792021D47600BD7FF5 /* IMBATHSync.m in Sources */,
 				B90D14D720201599002D9F9B /* IMBApplicationManager.m in Sources */,
 				B96563812021D2B000BD7FF5 /* File_Scte20.cpp in Sources */,
+				B9E73AC620282FF500E1BB3B /* ioapi.c in Sources */,
 				B965635B2021D2B000BD7FF5 /* File_Ogg_SubElement.cpp in Sources */,
 				B96564AB2021D47600BD7FF5 /* IMBType5Container.m in Sources */,
 				B96562D62021D2B000BD7FF5 /* utf.c in Sources */,
 				B9348B04201EFED600A8CEC3 /* IMBPhotoManager.m in Sources */,
+				B9E73A522028054200E1BB3B /* IMBConfig.m in Sources */,
+				B9E73A002028038D00E1BB3B /* IMBAirSyncImportTransfer.m in Sources */,
 				B96563762021D2B000BD7FF5 /* File_Cdp.cpp in Sources */,
+				B9E73AC820282FF500E1BB3B /* unzip.c in Sources */,
 				B96563AE2021D2B000BD7FF5 /* PreComp.cpp in Sources */,
 				B96564B42021D47600BD7FF5 /* IMBUnicodeMHOD.m in Sources */,
 				B96564A72021D47600BD7FF5 /* IMBPodcastListAdapter.m in Sources */,
 				B965631D2021D2B000BD7FF5 /* File_Unknown.cpp in Sources */,
+				B9E73A262028038D00E1BB3B /* IMBiBooksExport.m in Sources */,
 				B96562FC2021D2B000BD7FF5 /* File_Opus.cpp in Sources */,
+				B9E73A252028038D00E1BB3B /* IMBFileSystemExport.m in Sources */,
 				B96563872021D2B000BD7FF5 /* File_AfdBarData.cpp in Sources */,
 				B965649B2021D47600BD7FF5 /* IMBHash58.cpp in Sources */,
 				B965633A2021D2B000BD7FF5 /* File_Cdxa.cpp in Sources */,
@@ -3152,7 +3947,9 @@
 				B96564B72021D47600BD7FF5 /* NSString+Compare.m in Sources */,
 				B96562FB2021D2B000BD7FF5 /* File_OpenMG.cpp in Sources */,
 				B96562DC2021D2B000BD7FF5 /* File_Iso9660.cpp in Sources */,
+				B9E73A2B2028038D00E1BB3B /* IMBPhotoFileExport.m in Sources */,
 				B965638A2021D2B000BD7FF5 /* File_Avc_Duplicate.cpp in Sources */,
+				B9E73AC720282FF500E1BB3B /* mztools.c in Sources */,
 				B96563612021D2B000BD7FF5 /* File_Rm.cpp in Sources */,
 				B96563792021D2B000BD7FF5 /* File_DvbSubtitle.cpp in Sources */,
 				B96562F62021D2B000BD7FF5 /* File_Midi.cpp in Sources */,
@@ -3165,19 +3962,27 @@
 				B965648A2021D47600BD7FF5 /* IMBIThmbFileListContainer.m in Sources */,
 				B96563212021D2B000BD7FF5 /* File_Dpx.cpp in Sources */,
 				B9348AA8201EFDFA00A8CEC3 /* IMBProgressCounter.m in Sources */,
+				B9E73A5E2028089500E1BB3B /* IMBToiCloudPhotoEntity.m in Sources */,
 				B96563AD2021D2B000BD7FF5 /* OS_Utils.cpp in Sources */,
 				B96563712021D2B000BD7FF5 /* File_Id3v2.cpp in Sources */,
 				B90D14D620201599002D9F9B /* IMBAppEntity.m in Sources */,
+				B9E73A7D20280FC000E1BB3B /* NSString+SymlinksAndAliases.m in Sources */,
 				B96563AF2021D2B000BD7FF5 /* Thread.cpp in Sources */,
 				B96563952021D2B000BD7FF5 /* File_ProRes.cpp in Sources */,
+				B9E73ACF20282FF500E1BB3B /* ZipWriteStream.m in Sources */,
 				B96563412021D2B000BD7FF5 /* File_DvDif_Analysis.cpp in Sources */,
 				B96562F92021D2B000BD7FF5 /* File_MpcSv8.cpp in Sources */,
+				B9E73A552028054200E1BB3B /* IMBCvtMediaConvertEncoder.m in Sources */,
 				B96564BA2021D47600BD7FF5 /* IMBPlayCounts.m in Sources */,
+				B9E739FC2028038D00E1BB3B /* IMBDeletePlaylist.m in Sources */,
 				B96563A62021D2B000BD7FF5 /* Http_Handler.cpp in Sources */,
 				B96564802021D47600BD7FF5 /* IMBArtworkListContainerHeader.m in Sources */,
 				B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */,
+				B9E73A012028038D00E1BB3B /* IMBBetweenDeviceHandler.m in Sources */,
 				B96563A82021D2B000BD7FF5 /* Http_Utils.cpp in Sources */,
 				B96563512021D2B000BD7FF5 /* File_Mpeg4_Elements.cpp in Sources */,
+				B9E73AD120282FF500E1BB3B /* compress.c in Sources */,
+				B9E73A7B20280FC000E1BB3B /* IMBSoftWareInfo.m in Sources */,
 				B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */,
 				B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */,
 				B96563372021D2B000BD7FF5 /* File_Aaf.cpp in Sources */,
@@ -3187,15 +3992,22 @@
 				B965630B2021D2B000BD7FF5 /* File_Wvpk.cpp in Sources */,
 				B96564A02021D47600BD7FF5 /* IMBiTunesDBRoot.m in Sources */,
 				B965633E2021D2B000BD7FF5 /* File_DcpPkl.cpp in Sources */,
+				B9E73A542028054200E1BB3B /* IMBCvtEncodedMedia.m in Sources */,
 				B96563082021D2B000BD7FF5 /* File_Tta.cpp in Sources */,
+				B9E73A8C202811E300E1BB3B /* IMBBooksHelperEntry.m in Sources */,
+				B9E73A5B2028067C00E1BB3B /* IMBCategoryInfoModel.m in Sources */,
 				B96562E02021D2B000BD7FF5 /* File_Zip.cpp in Sources */,
+				B9E73AD020282FF500E1BB3B /* adler32.c in Sources */,
 				B96563802021D2B000BD7FF5 /* File_Scc.cpp in Sources */,
 				B965638F2021D2B000BD7FF5 /* File_Fraps.cpp in Sources */,
+				B9E73A272028038D00E1BB3B /* IMBiTunesFileExport.m in Sources */,
 				B96563A12021D2B000BD7FF5 /* File.cpp in Sources */,
 				B96563282021D2B000BD7FF5 /* File_Psd.cpp in Sources */,
 				B96562E62021D2B000BD7FF5 /* File_Aac_Others.cpp in Sources */,
+				B9E73A022028038D00E1BB3B /* IMBBookToDevice.m in Sources */,
 				B96562DB2021D2B000BD7FF5 /* File_Gzip.cpp in Sources */,
 				B934899A201EFD2100A8CEC3 /* FMDatabaseQueue.m in Sources */,
+				B9E73AD220282FF500E1BB3B /* crc32.c in Sources */,
 				B965649C2021D47600BD7FF5 /* IMBHash72.cpp in Sources */,
 				B96562DE2021D2B000BD7FF5 /* File_Rar.cpp in Sources */,
 				B96564952021D47600BD7FF5 /* IMBSqliteTables_Nano5G.m in Sources */,

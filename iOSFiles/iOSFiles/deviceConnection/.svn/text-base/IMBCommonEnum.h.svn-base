@@ -462,6 +462,18 @@ typedef enum{
     AryEnum_existence = 3
 } AryEnum;
 
+typedef enum : NSUInteger {
+    IMBDevicePageWindowFolderEnumPhoto = 10100,
+    IMBDevicePageWindowFolderEnumBook,
+    IMBDevicePageWindowFolderEnumMedia,
+    IMBDevicePageWindowFolderEnumVideo,
+    IMBDevicePageWindowFolderEnumOther,
+    IMBDevicePageWindowFolderEnumApps,
+    IMBDevicePageWindowFolderEnumPhotoCameraRoll,
+    IMBDevicePageWindowFolderEnumPhotoStream,
+    IMBDevicePageWindowFolderEnumPhotoLibrary
+} IMBDevicePageWindowFolderEnum;
+
 //union {
 //    char   c[8];
 //    double d;
@@ -493,7 +505,7 @@ typedef enum{
 }
 +(NSString*) attrackerCategoryNodesEnumToString:(CategoryNodesEnum)categoryEnum;
 + (NSString*) categoryNodesEnumToString:(CategoryNodesEnum)Enum;
-//+ (NSString*) categoryNodesEnumToName:(CategoryNodesEnum)categoryEnum;
++ (NSString*) categoryNodesEnumToName:(CategoryNodesEnum)categoryEnum;
 + (CategoryNodesEnum) categoryNodesStringToEnum:(NSString*)categoryString;
 + (NSArray*)categoryNodeToMediaTyps:(CategoryNodesEnum)category;
 + (CategoryNodesEnum)categoryNodesByMediaType:(MediaTypeEnum)mediatype;

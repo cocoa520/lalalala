@@ -13,6 +13,7 @@
                 <outlet property="_scrollView" destination="4Fl-9G-pba" id="wpF-Xi-43B"/>
                 <outlet property="_tableView" destination="eY5-VY-zih" id="kow-Zk-fTI"/>
                 <outlet property="_title" destination="kX7-Pw-rSy" id="3o8-UL-J5t"/>
+                <outlet property="_toolMenuView" destination="sUl-KU-d8c" id="tiK-Dm-S8T"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -56,6 +57,21 @@
                             <action selector="backClicked:" target="-2" id="XVL-U9-vGJ"/>
                         </connections>
                     </button>
+                    <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-KU-d8c">
+                        <rect key="frame" x="630" y="502" width="367" height="41"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Das-Ir-dzp">
+                                <rect key="frame" x="-1" y="3" width="54" height="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tool_refresh_normal" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="grX-eV-9V7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshBtnClicked:" target="-2" id="Mgk-Wc-r5A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="kX7-Pw-rSy" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Dq1-Uh-wXy"/>
@@ -135,4 +151,7 @@
             </tableHeaderView>
         </scrollView>
     </objects>
+    <resources>
+        <image name="tool_refresh_normal" width="36" height="22"/>
+    </resources>
 </document>

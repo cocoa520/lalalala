@@ -876,6 +876,7 @@
 
 - (BOOL)checkASSETSIdExist:(NSString *)tableName
 {
+    BOOL result = NO;
     NSString *sql = @"select name from sqlite_master where name =:tableName and type = 'table'";
     FMResultSet *set = [_databaseConnection executeQuery:sql withParameterDictionary:[NSDictionary dictionaryWithObject:tableName forKey:@"tableName"]];
     NSString *name = nil;
@@ -883,11 +884,12 @@
         name = [set stringForColumn:@"name"];
     }
     if (name) {
-        return YES;
+        result = YES;
     }else{
-        return NO;
+        result = NO;
     }
     [set close];
+    return result;
 }
 
 

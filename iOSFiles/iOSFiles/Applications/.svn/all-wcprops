@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 63
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Applications
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Applications
 END
 IMBAppEntity.m
 K 25
@@ -9,17 +9,17 @@ svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/Applications/IMBAppEntity.m
 END
+IMBApplicationManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Applications/IMBApplicationManager.m
+END
 IMBAppSyncModel.m
 K 25
 svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/Applications/IMBAppSyncModel.m
-END
-IMBApplicationManager.m
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Applications/IMBApplicationManager.m
 END
 IMBAppConfig.h
 K 25
@@ -57,6 +57,12 @@ svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/Applications/IMBAppEntity.h
 END
+IMBApplicationManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Applications/IMBApplicationManager.h
+END
 AppInstallProgressFile
 K 25
 svn:wc:ra_dav:version-url
@@ -68,12 +74,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/Applications/IMBAppSyncModel.h
-END
-IMBApplicationManager.h
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/Applications/IMBApplicationManager.h
 END
 IMBAppPreapreHandle.m
 K 25

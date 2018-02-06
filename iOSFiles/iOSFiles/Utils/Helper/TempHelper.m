@@ -194,141 +194,141 @@
 }
 
 
-//+ (NSData *)scalingImage:(NSImage *)image withLenght:(int)lenght {
-//    NSData *compressImageData = nil;
-//    if (image != nil) {
-//        if (image.size.width >= image.size.height && image.size.height > 0) {
-//            //按宽=lenght压缩
-//            int w = image.size.width;
-//            int h = image.size.height;
-//            int W = lenght;
-//            int H = (int)(((double)h / w) * W);
-//            if (((double)h / w) * W < 1.0) {
-//                H = 1;
-//            }
-//            @try {
-//                compressImageData = [self suchAsScalingImage:image width:W height:H];
-//            }
-//            @catch (NSException *exception) {
-////                [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"scaling image failed, reason is %@", [exception reason]]];
-//            }
-//        }else if (image.size.height > image.size.width && image.size.width > 0) {
-//            //按高=lenght压缩
-//            int w = image.size.width;
-//            int h = image.size.height;
-//            int H = lenght;
-//            int W = (int)(((double)w / h) * H);
-//            if (((double)w / h) * H < 1.0) {
-//                W = 1;
-//            }
-//            @try {
-//                compressImageData = [self suchAsScalingImage:image width:W height:H];
-//            }
-//            @catch (NSException *exception) {
-////                [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"scaling image failed, reason is %@", [exception reason]]];
-//            }
-//        }
-//    }
-//    return compressImageData;
-//}
++ (NSData *)scalingImage:(NSImage *)image withLenght:(int)lenght {
+    NSData *compressImageData = nil;
+    if (image != nil) {
+        if (image.size.width >= image.size.height && image.size.height > 0) {
+            //按宽=lenght压缩
+            int w = image.size.width;
+            int h = image.size.height;
+            int W = lenght;
+            int H = (int)(((double)h / w) * W);
+            if (((double)h / w) * W < 1.0) {
+                H = 1;
+            }
+            @try {
+                compressImageData = [self suchAsScalingImage:image width:W height:H];
+            }
+            @catch (NSException *exception) {
+                [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"scaling image failed, reason is %@", [exception reason]]];
+            }
+        }else if (image.size.height > image.size.width && image.size.width > 0) {
+            //按高=lenght压缩
+            int w = image.size.width;
+            int h = image.size.height;
+            int H = lenght;
+            int W = (int)(((double)w / h) * H);
+            if (((double)w / h) * H < 1.0) {
+                W = 1;
+            }
+            @try {
+                compressImageData = [self suchAsScalingImage:image width:W height:H];
+            }
+            @catch (NSException *exception) {
+                [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"scaling image failed, reason is %@", [exception reason]]];
+            }
+        }
+    }
+    return compressImageData;
+}
 
 //创建图片
-//+ (NSData *)createThumbnail:(NSImage *)sourceImage withWidth:(int)scalWidth withHeight:(int)scalHeight {
-//    NSImage *cropImage = nil;
-//    NSData *scalingImageData = nil;
-//    if (sourceImage != nil) {
-//        if (sourceImage.size.width > sourceImage.size.height && sourceImage.size.height > 0) {
-//            int h = sourceImage.size.height;
-//            if (h > 400) {//创建缩略图的宽度不大于400；
-//                h = 400;
-//            }
-//            //按高裁剪
-//            cropImage = [self cutImageForSize:sourceImage width:h height:h type:@"H"];
-//        }else if (sourceImage.size.height >= sourceImage.size.width && sourceImage.size.width > 0){
-//            int w = sourceImage.size.width;
-//            if (w > 400) {//创建缩略图的宽度不大于400；
-//                w = 400;
-//            }
-//            //按宽裁剪
-//            cropImage = [self cutImageForSize:sourceImage width:w height:w type:@"W"];
-//        }
-//    }
-//    if (cropImage != nil) {
-//        //等比例压缩图片
-//        scalingImageData = [self suchAsScalingImage:cropImage width:scalWidth height:scalHeight];
-//    }
-//    
-//    return scalingImageData;
-//}
++ (NSData *)createThumbnail:(NSImage *)sourceImage withWidth:(int)scalWidth withHeight:(int)scalHeight {
+    NSImage *cropImage = nil;
+    NSData *scalingImageData = nil;
+    if (sourceImage != nil) {
+        if (sourceImage.size.width > sourceImage.size.height && sourceImage.size.height > 0) {
+            int h = sourceImage.size.height;
+            if (h > 400) {//创建缩略图的宽度不大于400；
+                h = 400;
+            }
+            //按高裁剪
+            cropImage = [self cutImageForSize:sourceImage width:h height:h type:@"H"];
+        }else if (sourceImage.size.height >= sourceImage.size.width && sourceImage.size.width > 0){
+            int w = sourceImage.size.width;
+            if (w > 400) {//创建缩略图的宽度不大于400；
+                w = 400;
+            }
+            //按宽裁剪
+            cropImage = [self cutImageForSize:sourceImage width:w height:w type:@"W"];
+        }
+    }
+    if (cropImage != nil) {
+        //等比例压缩图片
+        scalingImageData = [self suchAsScalingImage:cropImage width:scalWidth height:scalHeight];
+    }
+    
+    return scalingImageData;
+}
 
-//+ (NSData *) suchAsScalingImage:(NSImage *)image width:(int)scalWidth height:(int)scalHeight{
-//    NSImage *scalingimage = [[NSImage alloc] initWithSize:NSMakeSize(scalWidth, scalHeight)];
-//    [scalingimage lockFocus];
-//    NSRectFill(NSMakeRect(0, 0, scalWidth, scalHeight));
-//    [[NSGraphicsContext currentContext]setImageInterpolation:NSImageInterpolationHigh];
-//    [image drawInRect:NSMakeRect(0, 0, scalWidth, scalHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-//    
-//    NSData *tempdata = nil;
-//    NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, scalWidth, scalHeight)];
-//    tempdata = [bitmap representationUsingType:NSJPEGFileType properties:nil];
-//    [bitmap release];
-//    [scalingimage unlockFocus];
-//    [scalingimage release];
-//    
-//    return tempdata;
-//}
++ (NSData *) suchAsScalingImage:(NSImage *)image width:(int)scalWidth height:(int)scalHeight{
+    NSImage *scalingimage = [[NSImage alloc] initWithSize:NSMakeSize(scalWidth, scalHeight)];
+    [scalingimage lockFocus];
+    NSRectFill(NSMakeRect(0, 0, scalWidth, scalHeight));
+    [[NSGraphicsContext currentContext]setImageInterpolation:NSImageInterpolationHigh];
+    [image drawInRect:NSMakeRect(0, 0, scalWidth, scalHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    
+    NSData *tempdata = nil;
+    NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, scalWidth, scalHeight)];
+    tempdata = [bitmap representationUsingType:NSJPEGFileType properties:nil];
+    [bitmap release];
+    [scalingimage unlockFocus];
+    [scalingimage release];
+    
+    return tempdata;
+}
 
 //裁剪图片(此处是先将图片缩放到剪切的最小尺寸，再裁剪)
-//+ (NSData *)scaleCutImage:(NSImage *)image width:(int)cutWidth height:(int)cutHeight type:(NSString *)cutType {
-//    float scalWidth = 0;
-//    float scalHeight = 0;
-//    if (image.size.width / cutWidth > image.size.height / cutHeight) {
-//        scalWidth = image.size.width * 1.0 / (image.size.height / cutHeight);
-//        scalHeight = cutHeight;
-//    }else {
-//        scalWidth = cutWidth;
-//        scalHeight = image.size.height * 1.0 / (image.size.width / cutWidth);
-//    }
-//    
-//    NSImage *scalingimage = nil;
-//    if (scalWidth != 0 && scalHeight != 0) {
-//        scalingimage = [[NSImage alloc] initWithSize:NSMakeSize(scalWidth, scalHeight)];
-//        [scalingimage lockFocus];
-//        NSRectFill(NSMakeRect(0, 0, scalWidth, scalHeight));
-//        [[NSGraphicsContext currentContext]setImageInterpolation:NSImageInterpolationHigh];
-//        [image drawInRect:NSMakeRect(0, 0, scalWidth, scalHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-//        [scalingimage unlockFocus];
-//    }else {
-//        scalingimage = [image retain];
-//    }
-//    
-//    int toWidth = cutWidth;
-//    int toHeight = cutHeight;
-//    int x,y,ow,oh = 0;
-//    if ([cutType isEqualToString: @"H"]) {
-//        x = (scalingimage.size.width - toHeight) / 2;
-//        y = (scalingimage.size.height - toHeight) / 2;
-//    }else{
-//        x = (scalingimage.size.width - toWidth) / 2;
-//        y = (scalingimage.size.height - toWidth) / 2;
-//    }
-//    ow = toWidth;
-//    oh = toHeight;
-//    NSImage *targetImage = [[NSImage alloc] initWithSize:NSMakeSize(ow, oh)];
-//    [targetImage lockFocus];
-//    NSRectFill(NSMakeRect(0, 0, ow, oh));
-//    [scalingimage drawInRect:NSMakeRect(0, 0, toWidth, toHeight) fromRect:NSMakeRect(x, y, ow, oh) operation:NSCompositeSourceOver fraction:1.0];
-//    
-//    NSData *targetData = nil;
-//    NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, ow, oh)];
-//    targetData = [bitmap representationUsingType:NSJPEGFileType properties:nil];
-//    [bitmap release];
-//    [targetImage unlockFocus];
-//    [targetImage release];
-//    [scalingimage release];
-//    
-//    return targetData;
-//}
++ (NSData *)scaleCutImage:(NSImage *)image width:(int)cutWidth height:(int)cutHeight type:(NSString *)cutType {
+    float scalWidth = 0;
+    float scalHeight = 0;
+    if (image.size.width / cutWidth > image.size.height / cutHeight) {
+        scalWidth = image.size.width * 1.0 / (image.size.height / cutHeight);
+        scalHeight = cutHeight;
+    }else {
+        scalWidth = cutWidth;
+        scalHeight = image.size.height * 1.0 / (image.size.width / cutWidth);
+    }
+    
+    NSImage *scalingimage = nil;
+    if (scalWidth != 0 && scalHeight != 0) {
+        scalingimage = [[NSImage alloc] initWithSize:NSMakeSize(scalWidth, scalHeight)];
+        [scalingimage lockFocus];
+        NSRectFill(NSMakeRect(0, 0, scalWidth, scalHeight));
+        [[NSGraphicsContext currentContext]setImageInterpolation:NSImageInterpolationHigh];
+        [image drawInRect:NSMakeRect(0, 0, scalWidth, scalHeight) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        [scalingimage unlockFocus];
+    }else {
+        scalingimage = [image retain];
+    }
+    
+    int toWidth = cutWidth;
+    int toHeight = cutHeight;
+    int x,y,ow,oh = 0;
+    if ([cutType isEqualToString: @"H"]) {
+        x = (scalingimage.size.width - toHeight) / 2;
+        y = (scalingimage.size.height - toHeight) / 2;
+    }else{
+        x = (scalingimage.size.width - toWidth) / 2;
+        y = (scalingimage.size.height - toWidth) / 2;
+    }
+    ow = toWidth;
+    oh = toHeight;
+    NSImage *targetImage = [[NSImage alloc] initWithSize:NSMakeSize(ow, oh)];
+    [targetImage lockFocus];
+    NSRectFill(NSMakeRect(0, 0, ow, oh));
+    [scalingimage drawInRect:NSMakeRect(0, 0, toWidth, toHeight) fromRect:NSMakeRect(x, y, ow, oh) operation:NSCompositeSourceOver fraction:1.0];
+    
+    NSData *targetData = nil;
+    NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect: NSMakeRect(0, 0, ow, oh)];
+    targetData = [bitmap representationUsingType:NSJPEGFileType properties:nil];
+    [bitmap release];
+    [targetImage unlockFocus];
+    [targetImage release];
+    [scalingimage release];
+    
+    return targetData;
+}
 
 + (int)getDeviceVersionNumber:(NSString *)version {
     NSString *versionstrone = nil;
@@ -379,142 +379,142 @@
 }
 
 //创建头像图片
-//+ (NSData *)createHeadThumbnail:(NSImage *)sourceImage withWidth:(int)scalWidth withHeight:(int)scalHeight {
-//    NSImage *cropImage = nil;
-//    NSData *scalingImageData = nil;
-//    if (sourceImage != nil) {
-//        if (sourceImage.size.width > sourceImage.size.height && sourceImage.size.height > 0) {
-//            int h = sourceImage.size.height;
-//            if (h > 800) {//创建缩略图的宽度不大于800；
-//                h = 800;
-//            }
-//            //按高裁剪
-//            cropImage = [self cutImageForSize:sourceImage width:h height:h type:@"H"];
-//        }else if (sourceImage.size.height >= sourceImage.size.width && sourceImage.size.width > 0){
-//            int w = sourceImage.size.width;
-//            if (w > 800) {//创建缩略图的宽度不大于800；
-//                w = 800;
-//            }
-//            //按宽裁剪
-//            cropImage = [self cutImageForSize:sourceImage width:w height:w type:@"W"];
-//        }
-//    }
-//    if (cropImage != nil) {
-//        //等比例压缩图片
-//        scalingImageData = [self suchAsScalingImage:cropImage width:scalWidth height:scalHeight];
-//    }
-//    
-//    return scalingImageData;
-//}
++ (NSData *)createHeadThumbnail:(NSImage *)sourceImage withWidth:(int)scalWidth withHeight:(int)scalHeight {
+    NSImage *cropImage = nil;
+    NSData *scalingImageData = nil;
+    if (sourceImage != nil) {
+        if (sourceImage.size.width > sourceImage.size.height && sourceImage.size.height > 0) {
+            int h = sourceImage.size.height;
+            if (h > 800) {//创建缩略图的宽度不大于800；
+                h = 800;
+            }
+            //按高裁剪
+            cropImage = [self cutImageForSize:sourceImage width:h height:h type:@"H"];
+        }else if (sourceImage.size.height >= sourceImage.size.width && sourceImage.size.width > 0){
+            int w = sourceImage.size.width;
+            if (w > 800) {//创建缩略图的宽度不大于800；
+                w = 800;
+            }
+            //按宽裁剪
+            cropImage = [self cutImageForSize:sourceImage width:w height:w type:@"W"];
+        }
+    }
+    if (cropImage != nil) {
+        //等比例压缩图片
+        scalingImageData = [self suchAsScalingImage:cropImage width:scalWidth height:scalHeight];
+    }
+    
+    return scalingImageData;
+}
 
 //裁剪图片
-//+ (NSImage *) cutImageForSize:(NSImage *)image width:(int)cutWidth height:(int)cutHeight type:(NSString *)cutType{
-//    int toWidth = cutWidth;
-//    int toHeight = cutHeight;
-//    int x,y,ow,oh = 0;
-//    if ([cutType isEqualToString: @"H"]) {
-//        x = (image.size.width - toHeight) / 2;
-//        y = (image.size.height - toHeight) / 2;
-//        //        ow = image.size.height;
-//        //        oh = image.size.height * toHeight / toWidth;
-//        ow = toWidth;
-//        oh = toHeight;
-//    }else{
-//        x = (image.size.width - toWidth) / 2;
-//        y = (image.size.height - toWidth) / 2;
-//        //        ow = image.size.width;
-//        //        oh = image.size.width * toHeight / toWidth;
-//        ow = toWidth;
-//        oh = toHeight;
-//        
-//    }
-//    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(ow, oh)] autorelease];
-//    [targetImage lockFocus];
-//    NSRectFill(NSMakeRect(0, 0, ow, oh));
-//    [image drawInRect:NSMakeRect(0, 0, toWidth, toHeight) fromRect:NSMakeRect(x, y, ow, oh) operation:NSCompositeSourceOver fraction:1.0];
-//    [targetImage unlockFocus];
-//    
-//    return targetImage;
-//}
++ (NSImage *) cutImageForSize:(NSImage *)image width:(int)cutWidth height:(int)cutHeight type:(NSString *)cutType{
+    int toWidth = cutWidth;
+    int toHeight = cutHeight;
+    int x,y,ow,oh = 0;
+    if ([cutType isEqualToString: @"H"]) {
+        x = (image.size.width - toHeight) / 2;
+        y = (image.size.height - toHeight) / 2;
+        //        ow = image.size.height;
+        //        oh = image.size.height * toHeight / toWidth;
+        ow = toWidth;
+        oh = toHeight;
+    }else{
+        x = (image.size.width - toWidth) / 2;
+        y = (image.size.height - toWidth) / 2;
+        //        ow = image.size.width;
+        //        oh = image.size.width * toHeight / toWidth;
+        ow = toWidth;
+        oh = toHeight;
+        
+    }
+    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(ow, oh)] autorelease];
+    [targetImage lockFocus];
+    NSRectFill(NSMakeRect(0, 0, ow, oh));
+    [image drawInRect:NSMakeRect(0, 0, toWidth, toHeight) fromRect:NSMakeRect(x, y, ow, oh) operation:NSCompositeSourceOver fraction:1.0];
+    [targetImage unlockFocus];
+    
+    return targetImage;
+}
 //
 ////裁剪图片
-//+ (NSImage *) cutImageForSize:(NSImage *)image width:(int)cutWidth height:(int)cutHeight x:(int)x y:(int)y {
-//    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(cutWidth, cutHeight)] autorelease];
-//    [targetImage lockFocus];
-//    NSRectFill(NSMakeRect(0, 0, cutWidth, cutHeight));
-//    [image drawInRect:NSMakeRect(0, 0, cutWidth, cutHeight) fromRect:NSMakeRect(x, y, cutWidth, cutHeight) operation:NSCompositeSourceOver fraction:1.0];
-//    [targetImage unlockFocus];
-//    
-//    return targetImage;
-//}
++ (NSImage *) cutImageForSize:(NSImage *)image width:(int)cutWidth height:(int)cutHeight x:(int)x y:(int)y {
+    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(cutWidth, cutHeight)] autorelease];
+    [targetImage lockFocus];
+    NSRectFill(NSMakeRect(0, 0, cutWidth, cutHeight));
+    [image drawInRect:NSMakeRect(0, 0, cutWidth, cutHeight) fromRect:NSMakeRect(x, y, cutWidth, cutHeight) operation:NSCompositeSourceOver fraction:1.0];
+    [targetImage unlockFocus];
+    
+    return targetImage;
+}
 //
 ////裁剪成圆形图片
-//+ (NSImage *)cutImageWithImage:(NSImage *)image border:(int)border{
-//    
-//    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(image.size.width, image.size.height)] autorelease];
-//    [targetImage lockFocus];
-//    
-////    NSSize size = image.size;
-//    
-//    //创建图片上下文
-////    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-//    
-//    //绘制边框的圆
-////    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-////    CGContextAddEllipseInRect(context, CGRectMake(0, 0, size.width, size.height));
-////    
-////    //剪切可视范围
-////    CGContextClip(context);
-//    
-//    //绘制边框图片
-////    [borderImg drawInRect:CGRectMake(0, 0, size.width, size.height)];
-//    
-//    
-//    //设置头像frame
-//    CGFloat iconX = 0;//border / 2;
-//    CGFloat iconY = 0;//border / 2;
-//    CGFloat iconW = image.size.width;
-//    CGFloat iconH = image.size.height;
-//    
-//    //绘制圆形头像范围
-//    CGContextAddEllipseInRect(context, CGRectMake(iconX, iconY, iconW, iconH));
++ (NSImage *)cutImageWithImage:(NSImage *)image border:(int)border{
+    
+    NSImage *targetImage = [[[NSImage alloc] initWithSize:NSMakeSize(image.size.width, image.size.height)] autorelease];
+    [targetImage lockFocus];
+    
+//    NSSize size = image.size;
+    
+    //创建图片上下文
+//    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    
+    //绘制边框的圆
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+//    CGContextAddEllipseInRect(context, CGRectMake(0, 0, size.width, size.height));
 //    
 //    //剪切可视范围
 //    CGContextClip(context);
-//    
-//    [image drawInRect:NSMakeRect(iconX, iconY, iconW, iconH) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-//    
-//    //绘制头像
-////    [image drawInRect:NSMakeRect(iconX, iconY, iconW, iconH)];
-//    
-//    //取出整个图片上下文的图片
-////    NSImage *iconImage = UIGraphicsGetImageFromCurrentImageContext();
-//    
-//    [targetImage unlockFocus];
-//    
-//    return targetImage;
-//    
-////    return iconImage;
-//}
+    
+    //绘制边框图片
+//    [borderImg drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    
+    //设置头像frame
+    CGFloat iconX = 0;//border / 2;
+    CGFloat iconY = 0;//border / 2;
+    CGFloat iconW = image.size.width;
+    CGFloat iconH = image.size.height;
+    
+    //绘制圆形头像范围
+    CGContextAddEllipseInRect(context, CGRectMake(iconX, iconY, iconW, iconH));
+    
+    //剪切可视范围
+    CGContextClip(context);
+    
+    [image drawInRect:NSMakeRect(iconX, iconY, iconW, iconH) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    
+    //绘制头像
+//    [image drawInRect:NSMakeRect(iconX, iconY, iconW, iconH)];
+    
+    //取出整个图片上下文的图片
+//    NSImage *iconImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    [targetImage unlockFocus];
+    
+    return targetImage;
+    
+//    return iconImage;
+}
 
 //计算text的size
-//+ (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {
-//    NSRect textBounds = NSMakeRect(0, 0, 0, 0);
-//    if (text) {
-//        NSAttributedString *as = [[NSAttributedString alloc] initWithString:text];
-//        NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-//        [paragraphStyle setAlignment:NSCenterTextAlignment];
-//        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                    [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
-//                                    paragraphStyle, NSParagraphStyleAttributeName,
-//                                    nil];
-//        NSSize textSize = [as.string sizeWithAttributes:attributes];
-//        textBounds = NSMakeRect(0, 0, textSize.width, textSize.height);
-//        [as release];
-//    }
-//    return textBounds;
-//}
++ (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {
+    NSRect textBounds = NSMakeRect(0, 0, 0, 0);
+    if (text) {
+        NSAttributedString *as = [[NSAttributedString alloc] initWithString:text];
+        NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+        [paragraphStyle setAlignment:NSCenterTextAlignment];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
+                                    paragraphStyle, NSParagraphStyleAttributeName,
+                                    nil];
+        NSSize textSize = [as.string sizeWithAttributes:attributes];
+        textBounds = NSMakeRect(0, 0, textSize.width, textSize.height);
+        [as release];
+    }
+    return textBounds;
+}
 
 + (BOOL)unTarFile:(NSString*)filePath unTarPath:(NSString*)unTarPath toDestFolder:toDestFolder {
     NSMutableArray * args = [NSMutableArray

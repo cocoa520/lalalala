@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Photo
 END
 IMBCreateSyncImage.h
 K 25
@@ -45,11 +45,17 @@ svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo/IMBCreateSyncImage.m
 END
+IMBToiCloudPhotoEntity.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Photo/IMBToiCloudPhotoEntity.h
+END
 IMBPhotoManager.m
 K 25
 svn:wc:ra_dav:version-url
 V 74
-/svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo/IMBPhotoManager.m
+/svn/Mac/!svn/ver/1227/JPProject/iOSFiles/iOSFiles/Photo/IMBPhotoManager.m
 END
 IMBCreatePhotoSyncPlist.m
 K 25
@@ -62,6 +68,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 73
 /svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo/IMBPhotoEntity.m
+END
+IMBToiCloudPhotoEntity.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Photo/IMBToiCloudPhotoEntity.m
 END
 IMBPhotoExportSettingConfig.h
 K 25

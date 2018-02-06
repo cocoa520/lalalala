@@ -15,6 +15,8 @@
 #import "IMBDevViewController.h"
 #import "IMBDevicePageWindow.h"
 #import "NSString+Category.h"
+
+
 @interface IMBDeviceViewController ()
 {
     @private
@@ -183,7 +185,7 @@
         _devPopover.behavior = NSPopoverBehaviorTransient;
         _devPopover.delegate = self;
         
-        IMBDevViewController *devController = [[[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil] autorelease];
+        IMBDevViewController *devController = [[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil];
         CGFloat w = 300.0f;
         CGFloat h = 50.0f*deviceConnection.allDevices.count;
         h = h > 200.0f ? 200.0f : h;
@@ -271,9 +273,16 @@
     [_windowControllerDic release];
     _windowControllerDic = nil;
     
+    if (_devPopover) {
+        [_devPopover release];
+        _devPopover = nil;
+    }
+    
     [[IMBDeviceConnection singleton] stopListening];
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
     [super dealloc];
 }
+
+
 @end

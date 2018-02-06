@@ -25,10 +25,9 @@
 #import "IMBDetailViewControler.h"
 
 
+
 static CGFloat const rowH = 40.0f;
 static CGFloat const labelY = 10.0f;
-
-
 
 @interface IMBDevicePageWindow ()<NSTabViewDelegate,NSTableViewDataSource>
 {
@@ -40,6 +39,7 @@ static CGFloat const labelY = 10.0f;
     NSArray *_folderNameArray;
     
     
+    IBOutlet NSView *_toolMenuView;
     IBOutlet NSButton *_backBtn;
     IBOutlet NSScrollView *_scrollView;
     IBOutlet NSTableView *_tableView;
@@ -116,7 +116,7 @@ static CGFloat const labelY = 10.0f;
         path = [[NSBundle mainBundle] pathForResource:IMBDevicePageFolderNamesPlist ofType:nil];
         _folderNameArray = [NSArray arrayWithContentsOfFile:path];
     }
-    NSInteger idx = 0;
+    NSInteger idx = IMBDevicePageWindowFolderEnumPhoto;
     if (_folderNameArray.count) {
         for (NSString *name in _folderNameArray) {
             
@@ -136,7 +136,7 @@ static CGFloat const labelY = 10.0f;
     
     [_opQueue addOperationWithBlock:^{
         if (_information) {
-            
+            //music
             NSArray *trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Music]]];
             
             [self setDataArrayWithType:@"Media" handle:^(IMBDevicePageFolderModel *model) {
@@ -147,7 +147,7 @@ static CGFloat const labelY = 10.0f;
             for (IMBTrack *track in trackArray) {
                 IMBFLog(@"%@",track);
             }
-            
+            //video
             trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Movies]]];
             
             [self setDataArrayWithType:@"Video" handle:^(IMBDevicePageFolderModel *model) {
@@ -168,14 +168,19 @@ static CGFloat const labelY = 10.0f;
     
     [_opQueue addOperationWithBlock:^{
         if (_information) {
+            //photo
             [_information refreshCameraRoll];
-            [_information refreshPhotoLibrary];
             [_information refreshPhotoStream];
-            
+            [_information refreshPhotoLibrary];
+            [_information refreshVideoAlbum];
             NSMutableArray *photoArray = [[NSMutableArray alloc] init];
-            [photoArray addObjectsFromArray:[_information camerarollArray]];
-            [photoArray addObjectsFromArray:[_information photolibraryArray]];
-            [photoArray addObjectsFromArray:[_information photostreamArray]];
+            NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
+//            NSArray *ary = [_information photovideoArray];
+            [cameraRoll addObjectsFromArray:[_information camerarollArray]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray]];
+            [photoArray addObject:cameraRoll];
+            [photoArray addObject:[_information photostreamArray] ? [_information photostreamArray] : [NSArray array]];
+            [photoArray addObject:[_information photolibraryArray] ? [_information photolibraryArray] : [NSArray array]];
             
             [self setDataArrayWithType:@"Photo" handle:^(IMBDevicePageFolderModel *model) {
                 model.photoArray = [photoArray retain];
@@ -186,6 +191,8 @@ static CGFloat const labelY = 10.0f;
             for (IMBPhotoEntity *photo in photoArray) {
                 IMBFLog(@"%@",photo);
             }
+            [cameraRoll release];
+            cameraRoll = nil;
             [photoArray release];
             photoArray = nil;
         }
@@ -193,6 +200,7 @@ static CGFloat const labelY = 10.0f;
     
     [_opQueue addOperationWithBlock:^{
         if (_information) {
+            //book
             [_information loadiBook];
             NSArray *ibooks = [[_information allBooksArray] retain];
             
@@ -211,6 +219,7 @@ static CGFloat const labelY = 10.0f;
     
     [_opQueue addOperationWithBlock:^{
         if (_information) {
+            //apps
             IMBApplicationManager *appManager = [[_information applicationManager] retain];
             [appManager loadAppArray];
             NSArray *appArray = [appManager appEntityArray];
@@ -235,6 +244,7 @@ static CGFloat const labelY = 10.0f;
     }];
     [_opQueue addOperationWithBlock:^{
         if (_information) {
+            //other
             [self setDataArrayWithType:@"Other" handle:^(IMBDevicePageFolderModel *model) {
                 model.sizeString = @"-";
                 model.counts = 0;
@@ -299,7 +309,7 @@ static CGFloat const labelY = 10.0f;
 
 -(void)dealloc {
     
-//    [self cleanMemory];
+    [self cleanMemory];
     
     [super dealloc];
 }
@@ -362,12 +372,18 @@ static CGFloat const labelY = 10.0f;
     IMBDevicePageFolderModel *model = [_dataArray objectAtIndex:rowNumber];
     if (model && model.size) {
         //显示详情
-        IMBDevicePageFolderModel *model = [_dataArray objectAtIndex:rowNumber];
         [_backBtn setHidden:NO];
+        [_toolMenuView setHidden:NO];
         IMBDetailViewControler *detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
-        detailVc.folderModel = model;
+        if (detailVc.folderModel) {
+            [detailVc.folderModel release];
+            detailVc.folderModel = nil;
+        }
+        detailVc.folderModel = [model retain];
         [_rootBox setContentView:detailVc.view];
         _title.stringValue = model.name;
+        
+
     }
 }
 - (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
@@ -423,7 +439,7 @@ static CGFloat const labelY = 10.0f;
             if (model.counts == -1) {
                 textField.stringValue = @"loading";
             }else {
-                textField.stringValue = model.countsString;//[NSString stringWithFormat:@"%lu",model.counts];
+                textField.stringValue = model.countsString;
             }
         
         }
@@ -444,7 +460,16 @@ static CGFloat const labelY = 10.0f;
 - (IBAction)backClicked:(NSButton *)sender {
     [_rootBox setContentView:_scrollView];
     [_backBtn setHidden:YES];
+    [_toolMenuView setHidden:YES];
     _title.stringValue = _iPod.deviceInfo.deviceName;
+}
+
+
+- (IBAction)refreshBtnClicked:(NSButton *)sender {
+    IMBInformation *information = [_information retain];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
+    [information release];
+    information = nil;
 }
 
 @end

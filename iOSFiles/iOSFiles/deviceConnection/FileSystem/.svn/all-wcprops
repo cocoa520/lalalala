@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 78
-/svn/Mac/!svn/ver/1188/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem
+/svn/Mac/!svn/ver/1244/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem
 END
 IMBAMFileSystem.h
 K 25
@@ -33,23 +33,17 @@ svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/SimpleNode.m
 END
-IMBFileSystemManager.h
-K 25
-svn:wc:ra_dav:version-url
-V 101
-/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBFileSystemManager.h
-END
 IMBAnimation.h
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBAnimation.h
 END
-IMBInformationManager.h
+IMBFileSystemManager.h
 K 25
 svn:wc:ra_dav:version-url
-V 102
-/svn/Mac/!svn/ver/1090/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformationManager.h
+V 101
+/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBFileSystemManager.h
 END
 IMBDeviceInfo.m
 K 25
@@ -57,11 +51,11 @@ svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/1090/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBDeviceInfo.m
 END
-IMBFileSystemManager.m
+IMBInformationManager.h
 K 25
 svn:wc:ra_dav:version-url
-V 101
-/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBFileSystemManager.m
+V 102
+/svn/Mac/!svn/ver/1090/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformationManager.h
 END
 IMBFileSystem.h
 K 25
@@ -75,17 +69,23 @@ svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBAnimation.m
 END
-IMBInformationManager.m
+IMBFileSystemManager.m
 K 25
 svn:wc:ra_dav:version-url
-V 102
-/svn/Mac/!svn/ver/1090/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformationManager.m
+V 101
+/svn/Mac/!svn/ver/1166/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBFileSystemManager.m
 END
 IMBInformation.h
 K 25
 svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/1142/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformation.h
+END
+IMBInformationManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mac/!svn/ver/1090/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformationManager.m
 END
 IMBFileSystem.m
 K 25
@@ -103,7 +103,7 @@ IMBInformation.m
 K 25
 svn:wc:ra_dav:version-url
 V 95
-/svn/Mac/!svn/ver/1143/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformation.m
+/svn/Mac/!svn/ver/1244/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem/IMBInformation.m
 END
 IMBAMDeviceInfo.m
 K 25

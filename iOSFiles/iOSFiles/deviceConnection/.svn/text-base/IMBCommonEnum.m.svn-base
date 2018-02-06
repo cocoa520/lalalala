@@ -397,247 +397,278 @@
     }
 }
 
-/*
+
 +(NSString*) categoryNodesEnumToName:(CategoryNodesEnum)categoryEnum {
     switch (categoryEnum) {
         case Category_Summary:
-            return CustomLocalizedString(@"MenuItem_id_86", nil);
-            //return @"Summary";
+//            return CustomLocalizedString(@"MenuItem_id_86", nil);
+            return @"Content";
             break;
         case Category_Playlist:
-            return CustomLocalizedString(@"MenuItem_id_4", nil);
-            //return @"Playlist";
+//            return CustomLocalizedString(@"MenuItem_id_4", nil);
+            return @"Playlist";
             break;
         case Category_Music:
-            return CustomLocalizedString(@"MenuItem_id_1", nil);
-            //return @"Music";
+//            return CustomLocalizedString(@"MenuItem_id_1", nil);
+            return @"Music";
             break;
         case Category_CloudMusic:
-            return CustomLocalizedString(@"MenuItem_id_91", nil);
-            //return @"Music";
+//            return CustomLocalizedString(@"MenuItem_id_91", nil);
+            return @"Music";
             break;
         case Category_iCloud:
-            return CustomLocalizedString(@"MenuItem_id_39", nil);
-            //return @"Music";
+//            return CustomLocalizedString(@"MenuItem_id_39", nil);
+            return @"Music";
             break;
         case Category_Movies:
-            return CustomLocalizedString(@"MenuItem_id_6", nil);
-            //return @"Movies";
+//            return CustomLocalizedString(@"MenuItem_id_6", nil);
+            return @"Movies";
             break;
         case Category_TVShow:
-            return CustomLocalizedString(@"MenuItem_id_7", nil);
-            //return @"TVShow";
+//            return CustomLocalizedString(@"MenuItem_id_7", nil);
+            return @"TVShow";
             break;
         case Category_MusicVideo:
-            return CustomLocalizedString(@"MenuItem_id_8", nil);
-            //return @"MusicVideo";
+//            return CustomLocalizedString(@"MenuItem_id_8", nil);
+            return @"MusicVideo";
             break;
         case Category_PodCasts:
-            return CustomLocalizedString(@"MenuItem_id_15", nil);
-            //return @"PodCasts";
+//            return CustomLocalizedString(@"MenuItem_id_15", nil);
+            return @"PodCasts";
             break;
         case Category_iTunesU:
-            return CustomLocalizedString(@"MenuItem_id_16", nil);
-            //return @"iTunesU";
+//            return CustomLocalizedString(@"MenuItem_id_16", nil);
+            return @"iTunesU";
             break;
         case Category_iBooks:
-            return CustomLocalizedString(@"MenuItem_id_13", nil);
-            //return @"iBooks";
+//            return CustomLocalizedString(@"MenuItem_id_13", nil);
+            return @"iBooks";
             break;
         case Category_Audiobook:
-            return CustomLocalizedString(@"MenuItem_id_3", nil);
-            //return @"Audiobook";
+//            return CustomLocalizedString(@"MenuItem_id_3", nil);
+            return @"Audiobook";
             break;
         case Category_Ringtone:
-            return CustomLocalizedString(@"MenuItem_id_2", nil);
-            //return @"Ringtone";
+//            return CustomLocalizedString(@"MenuItem_id_2", nil);
+            return @"Ringtone";
             break;
         case Category_VoiceMemos:
-            return CustomLocalizedString(@"MenuItem_id_5", nil);
-            //return @"VoiceMemos";
+//            return CustomLocalizedString(@"MenuItem_id_5", nil);
+            return @"VoiceMemos";
             break;
         case Category_FileSystem:
-            return CustomLocalizedString(@"MenuItem_id_52", nil);
+//            return CustomLocalizedString(@"MenuItem_id_52", nil);
+            return @"File System";
             break;
         case Category_Applications:
-            return CustomLocalizedString(@"MenuItem_id_14", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_14", nil);
+            return @"Apps";
             break;
         case Category_ContinuousShooting:
-            return CustomLocalizedString(@"MenuItem_id_47", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_47", nil);
+            return @"Bursts";
             break;
         case Category_Panoramas:
-            return CustomLocalizedString(@"MenuItem_id_49", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_49", nil);
+            return @"Panoramas";
             break;
         case Category_LivePhoto:
-            return CustomLocalizedString(@"MenuItem_id_63", nil);
+//            return CustomLocalizedString(@"MenuItem_id_63", nil);
+            return @"Live Photos";
             break;
         case Category_PhotoSelfies:
-            return CustomLocalizedString(@"MenuItem_id_65", nil);
+//            return CustomLocalizedString(@"MenuItem_id_65", nil);
+            return @"Photo Selfies";
             break;
         case Category_Screenshot:
-            return CustomLocalizedString(@"MenuItem_id_64", nil);
+//            return CustomLocalizedString(@"MenuItem_id_64", nil);
+            return @"Screenshot";
             break;
         case Category_Location:
-            return CustomLocalizedString(@"MenuItem_id_66", nil);
+//            return CustomLocalizedString(@"MenuItem_id_66", nil);
+            return @"Location";
             break;
         case Category_Favorite:
-            return CustomLocalizedString(@"MenuItem_id_67", nil);
+//            return CustomLocalizedString(@"MenuItem_id_67", nil);
+            return @"Favorite";
             break;
         case Category_TimeLapse:
-            return CustomLocalizedString(@"MenuItem_id_48", nil);
+//            return CustomLocalizedString(@"MenuItem_id_48", nil);
+            return @"TimeLapse";
             break;
         case Category_HomeVideo:
-            return CustomLocalizedString(@"MenuItem_id_50", nil);
+//            return CustomLocalizedString(@"MenuItem_id_50", nil);
+            return @"Home Video";
             break;
         case Category_SlowMove:
-            return CustomLocalizedString(@"MenuItem_id_51", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_51", nil);
+            return @"Slo-Mo";
             break;
         case Category_Notes:
-            return CustomLocalizedString(@"MenuItem_id_17", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_17", nil);
+            return @"Notes";
             break;
         case Category_Calendar:
-            return CustomLocalizedString(@"MenuItem_id_22", nil);
+//            return CustomLocalizedString(@"MenuItem_id_22", nil);
+            return @"Calendars";
         case Category_Reminder:
-            return CustomLocalizedString(@"Reminders_id", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"Reminders_id", nil);
+            return @"Reminders";
             break;
         case Category_System:
-            return CustomLocalizedString(@"MenuItem_id_35", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_35", nil);
+            return @"System";
             break;
         case Category_Bookmarks:
-            return CustomLocalizedString(@"MenuItem_id_21", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_21", nil);
+            return @"Bookmarks";
             break;
         case Category_Contacts:
-            return CustomLocalizedString(@"MenuItem_id_20", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_20", nil);
+            return @"Contacts";
             break;
         case Category_Message:
-            return CustomLocalizedString(@"MenuItem_id_19", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_19", nil);
+            return @"Messages";
             break;
         case Category_PhotoStream:
-            return CustomLocalizedString(@"MenuItem_id_11", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_11", nil);
+            return @"Photo Stream";
             break;
         case Category_CameraRoll:
-            return CustomLocalizedString(@"MenuItem_id_10", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_10", nil);
+            return @"Camera Roll";
             break;
         case Category_PhotoLibrary:
-            return CustomLocalizedString(@"MenuItem_id_12", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_12", nil);
+            return @"Photo Library";
             break;
         case Category_MyAlbums:
-            return CustomLocalizedString(@"MenuItem_id_26", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_26", nil);
+            return @"Albums";
             break;
         case Category_PhotoShare:
-            return CustomLocalizedString(@"MenuItem_id_25", nil);
+//            return CustomLocalizedString(@"MenuItem_id_25", nil);
+            return @"Photo Share";
             break;
         case Category_Photo:
-            return CustomLocalizedString(@"MenuItem_id_9", nil);
+//            return CustomLocalizedString(@"MenuItem_id_9", nil);
+            return @"Cloud Music";
             break;
         case Category_PhotoVideo:
-            return CustomLocalizedString(@"MenuItem_id_24", nil);
+//            return CustomLocalizedString(@"MenuItem_id_24", nil);
+            return @"Photo Video";
             break;
         case Category_Backups:
-            return CustomLocalizedString(@"MenuItem_id_23", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_23", nil);
+            return @"Backups";
             break;
         case Category_Voicemail:
-            return CustomLocalizedString(@"MenuItem_id_27", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_27", nil);
+            return @"Voice Mail";
             break;
         case Category_iBookCollections:
-            return CustomLocalizedString(@"MenuItem_id_13", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_13", nil);
+            return @"Books";
             break;
         case Category_Phone:
-            return CustomLocalizedString(@"MenuItem_id_18", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_18", nil);
+            return @"Call History";
             break;
         case Category_SafariHistory:
-            return CustomLocalizedString(@"MenuItem_id_37", nil);
-            //return @"Applications";
+//            return CustomLocalizedString(@"MenuItem_id_37", nil);
+            return @"History";
             break;
         case Category_Systemlogs:
-            return CustomLocalizedString(@"MenuItem_id_45", nil);
+//            return CustomLocalizedString(@"MenuItem_id_45", nil);
+            return @"Crash logs";
             break;
         case Category_Storage:
-            return CustomLocalizedString(@"MenuItem_id_41", nil);;
+//            return CustomLocalizedString(@"MenuItem_id_41", nil);;
+            return @"Storage";
             break;
         case Category_iTunes_lib:
-            return CustomLocalizedString(@"MenuItem_id_34", nil);
-            //return @"Category_iTunes_lib";
+//            return CustomLocalizedString(@"MenuItem_id_34", nil);
+            return @"iTunes Library";
             break;
         case Category_Clone:
-            return CustomLocalizedString(@"MenuItem_id_52", nil);
-            //return @"Category_iTunes_lib";
+//            return CustomLocalizedString(@"MenuItem_id_52", nil);
+            return @"File System";
             break;
 
         case Category_iTunes_Music:
-            return CustomLocalizedString(@"MenuItem_id_1", nil);
+//            return CustomLocalizedString(@"MenuItem_id_1", nil);
+            return @"Music";
             break;
         case Category_iTunes_Movie:
-            return CustomLocalizedString(@"MenuItem_id_6", nil);
+//            return CustomLocalizedString(@"MenuItem_id_6", nil);
+            return @"Movies";
             break;
         case Category_iTunes_TVShow:
-            return CustomLocalizedString(@"MenuItem_id_7", nil);
+//            return CustomLocalizedString(@"MenuItem_id_7", nil);
+            return @"TV Shows";
             break;
         case Category_iTunes_iBooks:
-            return CustomLocalizedString(@"MenuItem_id_13", nil);
+//            return CustomLocalizedString(@"MenuItem_id_13", nil);
+            return @"Books";
             break;
         case Category_iTunes_Audiobook:
-            return CustomLocalizedString(@"MenuItem_id_3", nil);
+//            return CustomLocalizedString(@"MenuItem_id_3", nil);
+            return @"Other";
             break;
         case Category_iTunes_Ringtone:
-            return CustomLocalizedString(@"MenuItem_id_2", nil);
+//            return CustomLocalizedString(@"MenuItem_id_2", nil);
+            return @"Ringtones";
             break;
         case Category_iTunes_App:
-            return CustomLocalizedString(@"MenuItem_id_14", nil);
+//            return CustomLocalizedString(@"MenuItem_id_14", nil);
+            return @"Apps";
             break;
         case Category_iTunes_VoiceMemos:
-            return CustomLocalizedString(@"MenuItem_id_5", nil);
+//            return CustomLocalizedString(@"MenuItem_id_5", nil);
+            return @"Home Video";
             break;
         case Category_iTunes_iTunesU:
-            return CustomLocalizedString(@"MenuItem_id_16", nil);
+//            return CustomLocalizedString(@"MenuItem_id_16", nil);
+            return @"iTunes U";
             break;
         case Category_iTunes_PodCasts:
-            return CustomLocalizedString(@"MenuItem_id_15", nil);
+//            return CustomLocalizedString(@"MenuItem_id_15", nil);
+            return @"Podcasts";
             break;
         case Category_Photos:
-            return CustomLocalizedString(@"MenuItem_id_53", nil);
+//            return CustomLocalizedString(@"MenuItem_id_53", nil);
+            return @"Category";
             break;
         case Category_iTunes_Playlist:
-            return CustomLocalizedString(@"ItunesLibrary_id_2", nil);
+//            return CustomLocalizedString(@"ItunesLibrary_id_2", nil);
+            return @"Playlists";
             break;
         case Category_Explorer:
-            return CustomLocalizedString(@"MenuItem_id_31", nil);
+//            return CustomLocalizedString(@"MenuItem_id_31", nil);
+            return @"Explorer";
             break;
         case Category_CallHistory:
-            return CustomLocalizedString(@"MenuItem_id_18", nil);
+//            return CustomLocalizedString(@"MenuItem_id_18", nil);
+            return @"Call History";
             break;
         case Catrgory_iTunes_HomeVideo:
-            return CustomLocalizedString(@"MenuItem_id_50", nil);
+//            return CustomLocalizedString(@"MenuItem_id_50", nil);
+            return @"Home Video";
             break;
         case Category_iCloudDriver:
-            return CustomLocalizedString(@"icloud_drive", nil);
+//            return CustomLocalizedString(@"icloud_drive", nil);
+            return @"iCloud Drive";
             break;
         default:
-            return CustomLocalizedString(@"MenuItem_id_86", nil);
+//            return CustomLocalizedString(@"MenuItem_id_86", nil);
+            return @"Content";
             break;
             
     }
 }
 
-*/
+
 
 +(CategoryNodesEnum) categoryNodesStringToEnum:(NSString*)categoryString {
     if ([@"Category_Summary" isEqualToString:categoryString]) {

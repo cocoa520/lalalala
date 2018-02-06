@@ -13,6 +13,7 @@
 #import "IMBBookEntity.h"
 #import "IMBAppEntity.h"
 #import "StringHelper.h"
+#import "IMBInformation.h"
 
 
 static CGFloat const rowH = 40.0f;
@@ -41,38 +42,53 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)awakeFromNib {
+    
+    [self addNotis];
+    
+    [self setupTableView];
+    
+}
+
+- (void)setupTableView {
+    _scrollView.hasHorizontalScroller = NO;
+    
+    _tableView.allowsMultipleSelection = YES;
+    [_tableView setTarget:self];
+    [_tableView setDoubleAction:@selector(tableViewDoubleClicked:)];
+    [_tableView reloadData];
     NSInteger count = _tableView.tableColumns.count;
     for (NSInteger i = 0; i < count; i++) {
         [_tableView removeTableColumn:_tableView.tableColumns[0]];
     }
-    _scrollView.hasHorizontalScroller = NO;
-    
-    if (!_headerTitleArr) {
-        NSString *path = @"";
-        switch (_folderModel.idx) {
-            case 0://photo
-                path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitlePhotoNamesPlist ofType:nil];
-                break;
-            case 1://book
-                path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleBookNamesPlist ofType:nil];
-                break;
-            case 2://media
-            case 3://video
-                path = [[NSBundle mainBundle] pathForResource:IMBDetailVCHeaderTitleTrackNamesPlist ofType:nil];
-            case 4://other
-                
-                break;
-            case 5://apps
-                path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleAppNamesPlist ofType:nil];
-                break;
-                
-            default:
-                
-                break;
-        }
-        
-        _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
+    NSString *path = @"";
+    switch (_folderModel.idx) {
+        case IMBDevicePageWindowFolderEnumPhoto://photo
+//            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleSubPhotoNamesPlist ofType:nil];
+//            break;
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitlePhotoNamesPlist ofType:nil];
+            break;
+        case IMBDevicePageWindowFolderEnumBook://book
+            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleBookNamesPlist ofType:nil];
+            break;
+        case IMBDevicePageWindowFolderEnumMedia://media
+        case IMBDevicePageWindowFolderEnumVideo://video
+            path = [[NSBundle mainBundle] pathForResource:IMBDetailVCHeaderTitleTrackNamesPlist ofType:nil];
+        case IMBDevicePageWindowFolderEnumOther://other
+            
+            break;
+        case IMBDevicePageWindowFolderEnumApps://apps
+            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleAppNamesPlist ofType:nil];
+            break;
+            
+        default:
+            
+            break;
     }
+    
+    _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
     
     if (_headerTitleArr.count) {
         NSInteger count = _headerTitleArr.count;
@@ -89,34 +105,112 @@ static CGFloat const labelY = 10.0f;
         
     }
 }
-
-- (void)setFolderModel:(IMBDevicePageFolderModel *)folderModel {
-    _folderModel = folderModel;
-    
-    
-    [_tableView reloadData];
+- (void)tableViewDoubleClicked:(id)sender
+{
+    NSInteger rowNumber = [_tableView clickedRow];
+    NSLog(@"Double Clicked.%ld ",rowNumber);
+    // ...
+    if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhoto) {
+        IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
+        subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
+        NSArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
+        subPhotoModel.subPhotoArray = subArray ? subArray : [NSArray array];
+        _folderModel = subPhotoModel;
+//        [self setupTableView];
+        [_tableView reloadData];
+    }
     
 }
 
+- (void)addNotis {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshClicked:) name:IMBDevicePageRefreshClickedNoti object:nil];
+}
+
+- (void)refreshClicked:(NSNotification *)noti {
+    IMBInformation *information = [noti object];
+    if (!information) return;
+    if (_folderModel) {
+        NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
+        switch (_folderModel.idx) {
+            case IMBDevicePageWindowFolderEnumPhotoStream:
+            {
+                _folderModel.subPhotoArray = nil;
+                [_tableView reloadData];
+                [opQueue addOperationWithBlock:^{
+                    
+                    [information refreshPhotoStream];
+                    NSArray *photoArr = [information photostreamArray];
+                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:photoArr ? photoArr : [NSArray array]];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [_tableView reloadData];
+                    });
+                    
+                }];
+            }
+                break;
+            case IMBDevicePageWindowFolderEnumPhotoLibrary:
+            {
+                _folderModel.subPhotoArray = nil;
+                [_tableView reloadData];
+                [opQueue addOperationWithBlock:^{
+                    
+                    [information refreshPhotoLibrary];
+                    NSArray *photoArr = [information photolibraryArray];
+                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:photoArr ? photoArr : [NSArray array]];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [_tableView reloadData];
+                    });
+                }];
+            }
+                
+                break;
+            case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+            {
+                _folderModel.subPhotoArray = nil;
+                [_tableView reloadData];
+                [opQueue addOperationWithBlock:^{
+                    
+                    [information refreshCameraRoll];
+                    [information refreshVideoAlbum];
+                    NSArray *photoArr = [information camerarollArray];
+                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:photoArr ? photoArr : [NSArray array]];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [_tableView reloadData];
+                    });
+                }];
+            }
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 #pragma mark -- NSTableViewDelegate,NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-//    return 0;
+    
     if (!_folderModel) return 0;
     switch (_folderModel.idx) {
-        case 0://photo
+        case IMBDevicePageWindowFolderEnumPhoto://photo
             return _folderModel.photoArray.count;
             break;
-        case 1://book
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+            return _folderModel.subPhotoArray.count;
+            break;
+        case IMBDevicePageWindowFolderEnumBook://book
             return _folderModel.booksArray.count;
             break;
-        case 2://media
-        case 3://video
+        case IMBDevicePageWindowFolderEnumMedia://media
+        case IMBDevicePageWindowFolderEnumVideo://video
             return _folderModel.trackArray.count;
-        case 4://other
+        case IMBDevicePageWindowFolderEnumOther://other
             return 0;
             break;
-        case 5://apps
+        case IMBDevicePageWindowFolderEnumApps://apps
             return _folderModel.appsArray.count;
             break;
             
@@ -124,49 +218,8 @@ static CGFloat const labelY = 10.0f;
             return 0;
             break;
     }
-    return _folderModel.appsArray.count;
 }
 
-//- (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
-//{
-//    if (!_folderModel) return nil;
-//   
-//    NSTableCellView *cell = [tableColumn dataCellForRow:row];
-//    switch (_folderModel.idx) {
-//        case 0://photo
-//        {
-//            IMBPhotoEntity *photo = [_folderModel.photoArray objectAtIndex:row];
-//            cell.textField.stringValue = photo.photoName;
-//        }
-//            break;
-//        case 1://book
-//        {
-//            IMBBookEntity *book = [_folderModel.booksArray objectAtIndex:row];
-//            cell.textField.stringValue = book.bookName;
-//        }
-//            break;
-//        case 2://media
-//        case 3://video
-//        {
-//            IMBTrack *track = [_folderModel.trackArray objectAtIndex:row];
-//            cell.textField.stringValue = track.title;
-//        }
-//        case 4://other
-//            return nil;
-//            break;
-//        case 5://apps
-//        {
-//            IMBAppEntity *app = [_folderModel.appsArray objectAtIndex:row];
-//            cell.textField.stringValue = app.appName;
-//        }
-//            break;
-//            
-//        default:
-//            return nil;
-//            break;
-//    }
-//    return cell;
-//}
 
 
 
@@ -204,32 +257,66 @@ static CGFloat const labelY = 10.0f;
     
     
     switch (_folderModel.idx) {
-        case 0://photo
+        case IMBDevicePageWindowFolderEnumPhoto://photo
         {
-            IMBPhotoEntity *photo = [_folderModel.photoArray objectAtIndex:row];
+            if ([strIdt isEqualToString:@"Name"]) {
+                switch (row) {
+                    case 0:
+                    {
+                        textField.stringValue = @"Camera Roll";
+                        
+                    }
+                        break;
+                    case 1:
+                    {
+                        textField.stringValue = @"Photo Stream";
+                    }
+                        break;
+                    case 2:
+                    {
+                        textField.stringValue = @"Photo Library";
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }else {
+                NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
+                textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
+            }
+            
+            
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            IMBPhotoEntity *photo = [_folderModel.subPhotoArray objectAtIndex:row];
             if ([strIdt isEqualToString:@"Name"]) {
                 textField.stringValue = photo.photoName;
             }else if ([strIdt isEqualToString:@"Resolution"]) {
                 NSString *resolutionStr = [NSString stringWithFormat:@"%d*%d",photo.photoWidth,photo.photoHeight];
                 textField.stringValue = resolutionStr ? resolutionStr : @"-";
             }else if ([strIdt isEqualToString:@"Size"]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.2f MB",photo.photoSize/1024.0/1024.0];
+                textField.stringValue = [StringHelper getFileSizeString:photo.photoSize reserved:2];
             }
             
         }
             break;
-        case 1://book
+        case IMBDevicePageWindowFolderEnumBook://book
         {
             IMBBookEntity *book = [_folderModel.booksArray objectAtIndex:row];
             if ([strIdt isEqualToString:@"Name"]) {
                 textField.stringValue = book.bookName;
             }else if ([strIdt isEqualToString:@"Size"]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.2f MB",book.size/1024.0/1024.0];
+                textField.stringValue = [StringHelper getFileSizeString:book.size reserved:2];
             }
         }
             break;
-        case 2://media
-        case 3://video
+        case IMBDevicePageWindowFolderEnumMedia://media
+        case IMBDevicePageWindowFolderEnumVideo://video
         {
             IMBTrack *track = [_folderModel.trackArray objectAtIndex:row];
             if ([strIdt isEqualToString:@"Name"]) {
@@ -237,12 +324,12 @@ static CGFloat const labelY = 10.0f;
             }else if ([strIdt isEqualToString:@"Time"]) {
                 textField.stringValue = [[StringHelper getTimeString:track.length] stringByAppendingString:@" "];//@"-";
             }else if ([strIdt isEqualToString:@"Size"]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.2f MB",track.fileSize/1024.0/1024.0];
+                textField.stringValue = [StringHelper getFileSizeString:track.fileSize reserved:2];
             }
         }
-        case 4://other
+        case IMBDevicePageWindowFolderEnumOther://other
             break;
-        case 5://apps
+        case IMBDevicePageWindowFolderEnumApps://apps
         {
             IMBAppEntity *app = [_folderModel.appsArray objectAtIndex:row];
             if ([strIdt isEqualToString:@"Name"]) {
@@ -250,7 +337,9 @@ static CGFloat const labelY = 10.0f;
             }else if ([strIdt isEqualToString:@"Version"]) {
                 textField.stringValue = app.version;
             }else if ([strIdt isEqualToString:@"Size"]) {
-                textField.stringValue = [NSString stringWithFormat:@"%.2f MB",app.appSize/1024.0/1024.0];
+                textField.stringValue = [StringHelper getFileSizeString:app.appSize reserved:2];
+            }else if ([strIdt isEqualToString:@"DocumentSize"]) {
+                textField.stringValue = [StringHelper getFileSizeString:app.documentSize reserved:2];
             }
         }
             break;
@@ -261,5 +350,13 @@ static CGFloat const labelY = 10.0f;
     return aView;
 }
 
+- (void)dealloc {
+    [_folderModel release];
+    _folderModel = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
+    
+    [super dealloc];
+}
 
 @end
