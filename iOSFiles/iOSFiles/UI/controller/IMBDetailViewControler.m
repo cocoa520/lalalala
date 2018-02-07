@@ -312,10 +312,18 @@ static CGFloat const labelY = 10.0f;
                     }
                     [paths addObject:path];
                 }
-                _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:information.ipod.uniqueKey importFiles:paths CategoryNodesEnum:_category photoAlbum:nil playlistID:0 delegate:self];
+                
+                IMBPhotoEntity *albumEntity = [[IMBPhotoEntity alloc] init];
+                albumEntity.albumZpk = -4;
+                albumEntity.albumKind = 1550;
+                albumEntity.albumTitle = @"From iOSFiles";
+                albumEntity.albumType = SyncAlbum;
+                _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:information.ipod.uniqueKey importFiles:paths CategoryNodesEnum:_category photoAlbum:albumEntity playlistID:0 delegate:self];
                 [(IMBAirSyncImportTransfer *)_baseTransfer startTransfer];
                 [paths release];
                 paths = nil;
+                [albumEntity release];
+                albumEntity = nil;
             }];
         }
     }];
