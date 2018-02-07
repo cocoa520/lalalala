@@ -805,7 +805,7 @@
         collecitonArray = [NSMutableArray array];
     }
     IMBBookCollection *collection = [[IMBBookCollection alloc] init];
-    collection.collectionName = CustomLocalizedString(@"iBook_id_1", nil);
+    collection.collectionName = @"All Books";
     [collecitonArray insertObject:collection atIndex:0];
     [collection release];
     self.allBooksArray = booksArray;

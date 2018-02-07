@@ -116,7 +116,7 @@
                 _currItemIndex++;
                 NSLog(@"sdfs _currItemIndex:%d  _totalItemCount:%d",_currItemIndex,_totalItemCount);
                 if (![TempHelper stringIsNilOrEmpty:FolderPath]) {
-                    NSString *msgStr = [NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_Copying", nil),[FolderPath lastPathComponent]];
+                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",[FolderPath lastPathComponent]];
                     if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
                         [_transferDelegate transferFile:msgStr];
                     }

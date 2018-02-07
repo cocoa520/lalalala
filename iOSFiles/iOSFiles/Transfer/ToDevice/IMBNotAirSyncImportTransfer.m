@@ -46,7 +46,7 @@
 //                if (_limitation.remainderCount == 0) {
 //                    break;
 //                }
-                NSString *msgStr = [NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_Copying", nil),track.title];
+                NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",track.title];
                 if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
                     [_transferDelegate transferFile:msgStr];
                 }

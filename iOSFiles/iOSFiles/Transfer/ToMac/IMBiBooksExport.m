@@ -90,12 +90,12 @@
                                 [task launch];
                             }
                         }else {
-                             [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:CustomLocalizedString(@"Ex_Op_file_copy_error", nil)];
+                             [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"Coping file failed."];
                             _failedCount ++;
                         }
                     }else
                     {
-                        [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:CustomLocalizedString(@"Ex_Op_file_no_exist", nil)];
+                        [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
                         _failedCount ++;
                     }
                 }else if ([book.extension caseInsensitiveCompare:@"epub"] == NSOrderedSame || [book.extension caseInsensitiveCompare:@"ibooks"] == NSOrderedSame ) {

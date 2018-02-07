@@ -51,7 +51,7 @@
 - (void)startDelete
 {
     if ([_delegate respondsToSelector:@selector(setDeleteProgress:withWord:)]) {
-        [_delegate setDeleteProgress:0 withWord:CustomLocalizedString(@"MSG_COM_Deleting", nil)];
+        [_delegate setDeleteProgress:0 withWord:@"Deleting, please wait..."];
     }
     int curIndex = 0;
     int success = 0;
@@ -66,7 +66,7 @@
             curIndex ++;
             if (![TempHelper stringIsNilOrEmpty:track.title]) {
                 if ([_delegate respondsToSelector:@selector(setDeleteProgress:withWord:)]) {
-                    [_delegate setDeleteProgress:((float)curIndex/_deleteArray.count)*96 withWord:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_Delete_Item", nil),track.title]];
+                    [_delegate setDeleteProgress:((float)curIndex/_deleteArray.count)*96 withWord:[NSString stringWithFormat:@"Deleting %@...",track.title]];
                 }
             }
             [self removeTrackByTrack:track];
@@ -83,7 +83,7 @@
         }
         [_ipod endSync];
         if ([_delegate respondsToSelector:@selector(setDeleteProgress:withWord:)]) {
-            [_delegate setDeleteProgress:100 withWord:CustomLocalizedString(@"MSG_COM_Delete_Complete", nil)];
+            [_delegate setDeleteProgress:100 withWord:@"Deletion completed!"];
         }
     }
     @catch (NSException *exception) {
@@ -179,7 +179,7 @@
         return 0;
     }
     if ([_delegate respondsToSelector:@selector(setDeleteProgress:withWord:)]) {
-        [_delegate setDeleteProgress:pro withWord:CustomLocalizedString(@"ImportSync_id_1", nil)];
+        [_delegate setDeleteProgress:pro withWord:@"Preparing to sync, please wait..."];
     }
     [athSync setCurrentThread:[NSThread currentThread]];
     [athSync setSyncTasks:_deleteArray];

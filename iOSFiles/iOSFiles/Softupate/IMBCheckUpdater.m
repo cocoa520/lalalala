@@ -17,8 +17,8 @@
     self = [super init];
     if (self) {
         software = [IMBSoftWareInfo singleton];
-        _updateFileUrlPath =  CustomLocalizedString(@"update_url_1", nil);
-        _updateFileName = CustomLocalizedString(@"update_url_2", nil);
+        _updateFileUrlPath =  @"http://dl.imobie.com/config/anytrans6.xml";
+        _updateFileName = @"anytrans6.xml";
         NSString *tempPath = [TempHelper getAppTempPath];
         _updateFileLocalPath = [[tempPath stringByAppendingPathComponent:_updateFileName] retain];
         _isManual = isManual;
