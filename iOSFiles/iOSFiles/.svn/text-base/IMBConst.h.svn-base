@@ -12,6 +12,7 @@
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNotiWithParams;
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageRefreshClickedNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageToMacClickedNoti;
 
 
 APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;

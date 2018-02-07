@@ -156,7 +156,7 @@
 - (NSMutableArray *)cloudTrackArray;
 
 //- (IMBRecording*)recording;
-- (IMBApplicationManager*) applicationManager;
+- (IMBApplicationManager*)applicationManager;
 
 - (void)loadphotoData;
 
