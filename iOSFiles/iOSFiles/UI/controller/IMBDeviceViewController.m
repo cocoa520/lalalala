@@ -15,6 +15,8 @@
 #import "IMBDevViewController.h"
 #import "IMBDevicePageWindow.h"
 #import "NSString+Category.h"
+#import "IMBInformation.h"
+#import "IMBInformationManager.h"
 
 
 @interface IMBDeviceViewController ()
@@ -97,6 +99,9 @@
     };
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBBaseInfo *baseInfo) {
         //加载设备信息完成,ipod中含有设备详细信息
+        IMBInformation *information = [[IMBInformation alloc] initWithiPod:[[deviceConnection getiPodByKey:baseInfo.uniqueKey] retain]];
+        IMBInformationManager *manager = [IMBInformationManager shareInstance];
+        [manager.informationDic setObject:information forKey:baseInfo.uniqueKey];
         [self setDeviceInfosWithiPod:baseInfo];
     };
 }

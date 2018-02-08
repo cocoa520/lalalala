@@ -23,6 +23,7 @@
 #import "IMBSelectionView.h"
 #import "IMBFolderOrFileButton.h"
 #import "IMBAnimateProgressBar.h"
+#import "StringHelper.h"
 @implementation IMBSystemCollectionViewController
 @synthesize currentArray = _currentArray;
 @synthesize currentDevicePath = _currentDevicePath;
@@ -89,12 +90,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [_mainBox setContentView:_detailView];
-
-
             [_arrayController removeObjects:_dataSourceArray];
-            
-                self.currentDevicePath = @"/" ;
-       
+            self.currentDevicePath = @"/" ;
+
             [_arrayController addObjects:array];
             [_detailView removeFromSuperview];
             [_mainBox setContentView:_detailView];
@@ -308,6 +306,7 @@
                                 }
                                 [_arrayController removeObjects:_dataSourceArray];
                                 superView.forBidClick = NO;
+                                
                                 [_currentArray removeAllObjects];
                                 [_currentArray addObjectsFromArray:array];
                                 currentIndex = 0;
@@ -320,6 +319,9 @@
                     });
                 }else
                 {
+//                    for (NSView *view in superView.subviews) {
+//                        [view removeFromSuperview];
+//                    }
                     [_currentArray removeAllObjects];
                     NSArray *childArray = [systemManager recursiveDirectoryContentsDics:selectedNode.path];
                     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_dataSourceArray],@"array",self.currentDevicePath,@"currentDevicePath", nil];
@@ -330,12 +332,12 @@
                     }
                     [_arrayController removeObjects:_dataSourceArray];
                     superView.forBidClick = NO;
-                    
+                    _arrayController = nil;
+                    [_dataSourceArray removeAllObjects];
                     [_arrayController addObjects:childArray];
                     [_currentArray addObjectsFromArray:childArray];
                     [_collectionView setSelectionIndexes:nil];
                     self.currentDevicePath = selectedNode.path;
-                    [_collectionView setNeedsDisplay:YES];
                 }
                 
                 //屏蔽advanceButton按钮，
@@ -1133,7 +1135,7 @@
                    
                     IMBPhotoEntity *entity = [contentArray objectAtIndex:index];
                     if (entity.isexisted) {
-                        NSString *str1 = [TempHelper getFileSizeString:entity.photoSize reserved:1];
+                        NSString *str1 = [StringHelper getFileSizeString:entity.photoSize reserved:1];
                         NSString *str = [NSString stringWithFormat:@"%@ %@:%@",entity.photoName,@"Size",str1];
                         [self setToolTip:str];
                     }else {
@@ -1333,7 +1335,6 @@
         if (theEvent.clickCount == 1) {
 
                 [[NSNotificationCenter defaultCenter] postNotificationName:BackupItemSingleClick object:superView];
-      
         }
     }else
     {

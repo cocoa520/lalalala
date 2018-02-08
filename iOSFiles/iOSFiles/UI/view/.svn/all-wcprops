@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view
+/svn/Mac/!svn/ver/1271/JPProject/iOSFiles/iOSFiles/UI/view
 END
 IMBWhiteView.h
 K 25
@@ -67,7 +67,7 @@ IMBBlankDraggableCollectionView.h
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.h
+/svn/Mac/!svn/ver/1269/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.h
 END
 IMBHoverBtnCell.h
 K 25
@@ -97,7 +97,7 @@ IMBBlankDraggableCollectionView.m
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.m
+/svn/Mac/!svn/ver/1269/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.m
 END
 IMBHoverBtnCell.m
 K 25
@@ -147,17 +147,29 @@ svn:wc:ra_dav:version-url
 V 75
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/UI/view/IMBHoverButton.h
 END
+LoadingView.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Mac/!svn/ver/1271/JPProject/iOSFiles/iOSFiles/UI/view/LoadingView.h
+END
 IMBStackBox.m
 K 25
 svn:wc:ra_dav:version-url
 V 72
-/svn/Mac/!svn/ver/1241/JPProject/iOSFiles/iOSFiles/UI/view/IMBStackBox.m
+/svn/Mac/!svn/ver/1275/JPProject/iOSFiles/iOSFiles/UI/view/IMBStackBox.m
 END
 IMBHoverButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 75
 /svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/UI/view/IMBHoverButton.m
+END
+LoadingView.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Mac/!svn/ver/1271/JPProject/iOSFiles/iOSFiles/UI/view/LoadingView.m
 END
 ffmpeg
 K 25

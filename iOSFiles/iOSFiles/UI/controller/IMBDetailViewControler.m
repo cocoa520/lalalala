@@ -18,6 +18,10 @@
 #import "IMBPhotoFileExport.h"
 #import "TempHelper.h"
 #import "IMBAirSyncImportTransfer.h"
+#import "IMBDeleteTrack.h"
+#import "IMBStackBox.h"
+#import <objc/runtime.h>
+#import "LoadingView.h"
 
 
 
@@ -37,17 +41,22 @@ static CGFloat const labelY = 10.0f;
     IMBBaseTransfer *_baseTransfer;
     CategoryNodesEnum _category;
     
+    IMBStackBox *_rootBox;
+    LoadingView *_loadingView;
+    
 }
 @end
 
 @implementation IMBDetailViewControler
 
 @synthesize folderModel = _folderModel;
+@synthesize iPod = _iPod;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
 }
 
 - (void)awakeFromNib {
@@ -59,6 +68,10 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)setupTableView {
+    
+    _rootBox = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey);
+    
+    
     _selectedIndexes = nil;
     _scrollView.hasHorizontalScroller = NO;
     
@@ -124,8 +137,8 @@ static CGFloat const labelY = 10.0f;
     if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhoto) {
         IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
         subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
-        NSArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
-        subPhotoModel.subPhotoArray = subArray ? subArray : [NSArray array];
+        NSMutableArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
+        subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
         _folderModel = subPhotoModel;
 //        [self setupTableView];
         [_tableView reloadData];
@@ -138,24 +151,31 @@ static CGFloat const labelY = 10.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshClicked:) name:IMBDevicePageRefreshClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMacClicked:) name:IMBDevicePageToMacClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToDeviceClicked:) name:IMBDevicePageAddToDeviceClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteClicked:) name:IMBDevicePageDeleteClickedNoti object:nil];
 }
 
 - (void)refreshClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
-    if (!information) return;
+    if (![self canContnue:information]) return;
+//    if (!information) return;
+//    if (![information.ipod.uniqueKey isEqualToString:_iPod.uniqueKey]) return;
+    
     if (_folderModel) {
         NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
         switch (_folderModel.idx) {
             case IMBDevicePageWindowFolderEnumPhotoStream:
             {
-                _folderModel.subPhotoArray = nil;
+                [_folderModel.subPhotoArray removeAllObjects];
                 [_tableView reloadData];
+                [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
                     
                     [information refreshPhotoStream];
                     NSArray *photoArr = [information photostreamArray];
-                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:photoArr ? photoArr : [NSArray array]];
+                    
+                    [_folderModel.subPhotoArray addObjectsFromArray:photoArr];
                     dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
                     });
                     
@@ -164,14 +184,16 @@ static CGFloat const labelY = 10.0f;
                 break;
             case IMBDevicePageWindowFolderEnumPhotoLibrary:
             {
-                _folderModel.subPhotoArray = nil;
+                [_folderModel.subPhotoArray removeAllObjects];
                 [_tableView reloadData];
+                [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
                     
                     [information refreshPhotoLibrary];
                     NSArray *photoArr = [information photolibraryArray];
-                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:photoArr ? photoArr : [NSArray array]];
+                    [_folderModel.subPhotoArray addObjectsFromArray:photoArr];
                     dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
                     });
                 }];
@@ -180,8 +202,9 @@ static CGFloat const labelY = 10.0f;
                 break;
             case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
             {
-                _folderModel.subPhotoArray = nil;
+                [_folderModel.subPhotoArray removeAllObjects];
                 [_tableView reloadData];
+                [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
                     
                     [information refreshCameraRoll];
@@ -189,10 +212,11 @@ static CGFloat const labelY = 10.0f;
                     NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
                     [cameraRoll addObjectsFromArray:[information camerarollArray] ? [information camerarollArray] : [NSArray array]];
                     [cameraRoll addObjectsFromArray:[information photovideoArray] ? [information photovideoArray] : [NSArray array]];
-                    _folderModel.subPhotoArray = [[NSArray alloc] initWithArray:cameraRoll];
+                    [_folderModel.subPhotoArray addObjectsFromArray:cameraRoll];
                     [cameraRoll release];
                     cameraRoll = nil;
                     dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
                     });
                 }];
@@ -208,7 +232,8 @@ static CGFloat const labelY = 10.0f;
 
 - (void)toMacClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
-    if (!information) return;
+    if (![self canContnue:information]) return;
+//    if (!information) return;
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoStream:
         {
@@ -238,13 +263,31 @@ static CGFloat const labelY = 10.0f;
 
 - (void)addToDeviceClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
-    if (!information) return;
+    if (![self canContnue:information]) return;
+//    if (!information) return;
     
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoLibrary:
         {
             _category = Category_PhotoLibrary;
             [self addToDeviceSettingsWithInformation:information];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)deleteClicked:(NSNotification *)noti {
+    IMBInformation *information = [noti object];
+    if (![self canContnue:information]) return;
+    
+    switch (_folderModel.idx) {
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            _category = Category_PhotoLibrary;
+            [self deleteSettingsWithInformation:[information.ipod retain]];
         }
             break;
             
@@ -269,25 +312,27 @@ static CGFloat const labelY = 10.0f;
         //                [openPanel setAllowsOtherFileTypes:NO];
         [openPanel beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSInteger result) {
             if (NSModalResponseOK == result) {
-                
-                
-                NSString *path = [[openPanel URL] path];
-                NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:_category]];
-                __block NSString *stringName = @"";
-                NSMutableArray *photos = [NSMutableArray array];
-                [_selectedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                    IMBPhotoEntity *photo = [[_folderModel.subPhotoArray objectAtIndex:idx] retain];
-                    stringName = photo.albumTitle;
-                    if ([TempHelper stringIsNilOrEmpty:stringName]) {
-                        stringName = @"FromiOSFiles";
-                    }
-                    [photos addObject:photo];
+                NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
+                [opQueue addOperationWithBlock:^{
+                    NSString *path = [[openPanel URL] path];
+                    NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:_category]];
+                    __block NSString *stringName = @"";
+                    NSMutableArray *photos = [NSMutableArray array];
+                    [_selectedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                        IMBPhotoEntity *photo = [[_folderModel.subPhotoArray objectAtIndex:idx] retain];
+                        stringName = photo.albumTitle;
+                        if ([TempHelper stringIsNilOrEmpty:stringName]) {
+                            stringName = @"FromiOSFiles";
+                        }
+                        [photos addObject:photo];
+                        [photo release];
+                    }];
+                    
+                    filePath = [TempHelper createCategoryPath:filePath withString:stringName];
+                    _baseTransfer = [[IMBPhotoFileExport alloc] initWithIPodkey:information.ipod.uniqueKey exportTracks:photos exportFolder:filePath withDelegate:self];
+                    [(IMBPhotoFileExport *)_baseTransfer setExportType:1];
+                    [_baseTransfer startTransfer];
                 }];
-                
-                filePath = [TempHelper createCategoryPath:filePath withString:stringName];
-                _baseTransfer = [[IMBPhotoFileExport alloc] initWithIPodkey:information.ipod.uniqueKey exportTracks:photos exportFolder:filePath withDelegate:self];
-                [(IMBPhotoFileExport *)_baseTransfer setExportType:1];
-                [_baseTransfer startTransfer];
             }
         }];
     }
@@ -306,20 +351,18 @@ static CGFloat const labelY = 10.0f;
             [opQueue addOperationWithBlock:^{
                 NSMutableArray *paths = [NSMutableArray array];
                 for (NSURL *urlPath in openPanel.URLs) {
-                    NSString *path = [urlPath relativeString];
-                    if ([path containsString:@"file://"]) {
-                        path = [path stringByReplacingOccurrencesOfString:@"file://" withString:@""];
-                    }
-                    [paths addObject:path];
+                    [paths addObject:urlPath.path];
                 }
                 
                 IMBPhotoEntity *albumEntity = [[IMBPhotoEntity alloc] init];
-                albumEntity.albumZpk = -4;
+                albumEntity.albumZpk = 45;
+                albumEntity.photoCounts = 5;
                 albumEntity.albumKind = 1550;
                 albumEntity.albumTitle = @"From iOSFiles";
                 albumEntity.albumType = SyncAlbum;
+                albumEntity.photoType = CommonType;
                 _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:information.ipod.uniqueKey importFiles:paths CategoryNodesEnum:_category photoAlbum:albumEntity playlistID:0 delegate:self];
-                [(IMBAirSyncImportTransfer *)_baseTransfer startTransfer];
+                [_baseTransfer startTransfer];
                 [paths release];
                 paths = nil;
                 [albumEntity release];
@@ -327,6 +370,48 @@ static CGFloat const labelY = 10.0f;
             }];
         }
     }];
+}
+
+- (void)deleteSettingsWithInformation:(IMBiPod *)iPod {
+    if (!_selectedIndexes || _selectedIndexes.count == 0) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Please select photo" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select photo"];
+        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            
+        }];
+    }else {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Warning" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Are U Sure To Delete?"];
+        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == 1) {
+                IMBFLog(@"clicked OK button");
+                NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
+                [opQueue addOperationWithBlock:^{
+                    
+                    NSMutableArray *delArray = [NSMutableArray array];
+                    [_selectedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                        IMBPhotoEntity *photo = [[_folderModel.subPhotoArray objectAtIndex:idx] retain];
+                        IMBTrack *track = [[IMBTrack alloc] init];
+                        track.photoZpk = photo.photoZpk;
+                        [track setMediaType:Photo];
+                        [delArray addObject:track];
+                        [track release];
+                        [photo release];
+                    }];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
+                    });
+                    IMBDeleteTrack *deleteTrack = [[IMBDeleteTrack alloc] initWithIPod:iPod deleteArray:delArray Category:_category];
+                    [deleteTrack setDelegate:self];
+                    deleteTrack.delegate = self;
+                    [deleteTrack startDelete];
+                    [deleteTrack release];
+                    
+                }];
+            }
+            
+        }];
+        
+    }
+
 }
 
 #pragma mark -- NSTableViewDelegate,NSTableViewDataSource
@@ -519,6 +604,7 @@ static CGFloat const labelY = 10.0f;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToMacClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageAddToDeviceClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageDeleteClickedNoti object:nil];
     
     [super dealloc];
 }
@@ -526,11 +612,17 @@ static CGFloat const labelY = 10.0f;
 #pragma mark -- transferDelegate
 //传输准备进度开始
 - (void)transferPrepareFileStart:(NSString *)file {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
+    });
     
 }
 //传输准备进度结束
 - (void)transferPrepareFileEnd {
-    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:nil];
+//        
+//    });
 }
 //传输进度
 - (void)transferProgress:(float)progress {
@@ -550,20 +642,77 @@ static CGFloat const labelY = 10.0f;
 }
 //全部传输成功
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d",successCount,totalCount];
-    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-        
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",successCount,totalCount];
+            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                
+            }];
+        });
+    });
+    
 }
 
 //传输出现错误
 - (BOOL)transferOccurError:(NSString *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Transfer Error"];
+            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                
+            }];
+        });
+    });
     return YES;
 }
-- (void)cloneOrMergeComplete:(BOOL)success {
-    
-}
+
 - (void)transferCurrentSize:(long long)currenSize {
     
+}
+
+#pragma mark -- 删除代理方法
+- (void)setDeleteProgress:(float)progress withWord:(NSString *)msgStr {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:nil];
+//    });
+}
+
+- (void)setDeleteComplete:(int)success totalCount:(int)totalCount {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Delete Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",success,totalCount];
+            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                
+            }];
+        });
+        
+        
+    });
+}
+
+#pragma mark -- 开始加载动画
+- (void)startLoadingAnim {
+    _loadingView = [[LoadingView alloc] initWithFrame:_rootBox.bounds];
+    [_rootBox pushView:_loadingView];
+    [_loadingView startAnimation];
+}
+
+- (void)stopLoadingAnim {
+    
+    [_loadingView startAnimation];
+    [_rootBox popView];
+    if (_loadingView) {
+        [_loadingView release];
+        _loadingView = nil;
+    }
+    
+}
+
+- (BOOL)canContnue:(IMBInformation *)information {
+    if (!information || ![information.ipod.uniqueKey isEqualToString:_iPod.uniqueKey]) return NO;
+    return YES;
 }
 @end

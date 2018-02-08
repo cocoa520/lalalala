@@ -1,0 +1,1762 @@
+
+//<!--iTunesLibé¡µé¢å¼€å§‹-->
+"ItunesLibrary_id_1" = "كل ملفات الوسائط";
+"ItunesLibrary_id_2" = "قوائم التشغيل";
+"ItunesLibrary_id_3" = "الكتب";
+//<!--iTunesLibé¡µé¢ç»“æŸ-->
+
+//<!--æœªè¿žæŽ¥é¡µé¢å¼€å§‹-->
+"noconnect_welcome_message" = "مرحبا بكم في Device Manager";
+
+"noconnect_plugindevice" = "يرجى توصيل iPhone، iPad، iPod.";
+"noconnect_connecting" = "جارٍ  الاتصال، الرجاء الانتظار...";
+//جارٍ  الاتصال، الرجاء الانتظار...
+//<!--æœªè¿žæŽ¥é¡µé¢ç»“æŸ-->
+
+
+//<!--MainWindowå¼€å§‹-->
+"MainWindow_id_1" = "مجانا";
+"MainWindow_id_2" = "%@ - غير مسجل";
+"MainWindow_id_3" = "لم يتم اكتشاف أي جهاز";
+"MainWindow_id_4" = "سجل";
+//<!--MainWindow(windows)-->
+"MainWindow_id_5" = "مكتبة iTunes";
+
+//<!--æ³¨: Mac Menu_Backup, Menu_iCLoudæ›¿æ¢æˆä¸‹é¢çš„èµ„æºID-->
+"MainWindow_id_6" = "iCloud";
+"MainWindow_id_8" = "تفعيل AnyTrans";
+"MainWindow_id_9" = "لا يوجد حساب iCloud";
+
+//<!--MainWindowç»“æŸ-->
+
+//<!--ToolBaræŒ‰é’®å¼€å§‹-->
+"Menu_DeviceDetail" = "تفاصيل الأجهزة";
+"Menu_Setting" = "الإعدادات";
+"Menu_Exit" = "خروج";
+"Menu_Back" = "خلف";
+"Menu_Find" = "اكتشاف";
+"Menu_Import_Contact" = "استيراد جهات الاتصال";
+"Menu_To_Contact" = "ارسال إلى جهات الاتصال";
+"Menu_About" = "حول AnyTrans";
+"Menu_Home" = "الرئيسية AnyTrans for iOS";
+"Menu_Guide" = "دليل على الإنترنت";
+"Menu_SendLog" = "ارسال السجل";
+"Menu_ContactUs" = "اتصل بنا";
+"Menu_ChooseLanguage" = "اختر اللغة";
+"Menu_Updates" = "تحقق من التحديثات";
+//====================
+"Menu_Product" = "AnyTrans for iOS";
+"Menu_Title" = "®AnyTrans";
+"Menu_Restore" = "استعادة مكتبة الوسائط";
+"Menu_Hide" = "إخفاء AnyTrans for iOS";
+"Menu_HideOthers" = "إخفاء الآخرين";
+"Menu_ShowAll" = "عرض الكل";
+"Menu_Quit" = "إغلاق AnyTrans for iOS";
+"Menu_Edit" = "تحرير";
+"Menu_Undo" = "تراجع";
+"Menu_Redo" = "إعادة";
+"Menu_Cut" = "قص";
+"Menu_Copy" = "نسخ";
+"Menu_Paste" = "لصق";
+"Menu_PasteAndMatchStyle" = "لصق ونمط المطابقة";
+"Menu_Delete" = "حذف";
+"Menu_SelectAll" = "تحديد الكل";
+"Menu_Window" = "نافذة";
+"Menu_Minimize" = "تصغير";
+"Menu_Zoom" = "تكبير";
+"Menu_BringAlltoFront" = "جلب كل إلى الأمام";
+"Menu_Help" = "تعليمات";
+"Menu_FaceBook" = "على فيسبوك iMobie";
+//<!--ToolBaræŒ‰é’®ç»“æŸ-->
+
+//<!--DeviceMainé¡µé¢å¼€å§‹-->
+"Device_Main_id_1" = "دمج الجهاز";
+"Device_Main_id_2" = "المحتوى إلى Mac";
+"Device_Main_id_3" = "المحتوى إلى iTunes";
+"Device_Main_id_4" = "المحتوى إلى iOS";
+"Device_Main_id_5" = "إضافة المحتوى";
+"Device_Main_id_6" = "نسخ البيانات";
+"Device_Main_id_7" = "جارٍ  تحميل...";
+"Device_Main_id_8" = "يرجى اختيار فئة أدناه لإدارة كل الملفات على جهاز iOS";
+"Device_Main_id_9" = "يرجى اختيار اختصار أدناه للبدأ ";
+//<!--DeviceMainé¡µé¢ç»“æŸ-->
+
+//<!--BackupViewé¡µé¢å¼€å§‹-->
+"backup_title" = "(%d) من النسخ الاحتياطية";
+"backup_title_Complex" = "(%d) من النسخ الاحتياطية";
+"backup_id_text_1" = "إنشاء التاريخ";
+"backup_id_text_2" = "تحذير";
+"backup_id_text_3" = "إلى";
+"backup_id_text_4" = "من";
+"backup_id_text_5" = "الرئيسية";
+"backup_id_text_7" = "عرض";
+
+"backup_PasswordWindow_id_1" = "يرجى إدخال كلمة مرورك.";
+"backup_PasswordWindow_id_2" = "أدخل كلمة السر لفك تشفير والتحقق من النسخ الاحتياطي.";
+//<!--Window Add--أدخل كلمة المرور لفك تشفير والتحقق من النسخ الاحتياطي
+"backup_PasswordWindow_id_3" = "كلمة السر غير صحيحة، الرجاء إعادة المحاولة.";
+"backup_PasswordWindow_id_4" = "جارٍ  فك القفل، الرجاء الانتظار...";
+"backup_PasswordWindow_id_5" = "إظهار كلمة السر";
+//<!--BackupViewé¡µé¢ç»“æŸ-->
+
+//<!--Setting Viewé¡µé¢å¼€å§‹-->يمكنك تعيين صيغ الإخراج للعناصر التالية
+"SettingView_id_1" = "يمكنك تعيين صيغ الإخراج للعاناصر التالية";
+"SettingView_id_2" = "سجلات المكالمات:";
+"SettingView_id_3" = "جهات الاتصال:";
+"SettingView_id_4" = "الرسائل:";
+"SettingView_id_5" = "التقويمات:";
+"SettingView_id_6" = "الملاحظات:";
+"SettingView_id_7" = "تاريخ Safari:";
+"SettingView_id_8" = "إشارات مرجعية Safari:";
+"SettingView_id_9" = "مسار التصدير:";
+"SettingView_id_10" = "مسار النسخ الاحتياطي:";
+"SettingView_id_11" = "التذكيرات:";
+//<!--Setting Viewé¡µé¢ç»“æŸ-->
+
+//<!--Contacté¡µé¢å¼€å§‹-->
+"contact_id_1" = "الاسم الأول";
+"contact_id_2" = "اسم العائلة";
+"contact_id_3" = "اسم الشركة";
+"contact_id_4" = "iPhone";
+"contact_id_5" = "بيت";
+"contact_id_6" = "عمل";
+"contact_id_7" = "رئيسي";
+"contact_id_8" = "آخر";
+"contact_id_9" = "جهاز النداء";
+"contact_id_10" = "فاكس المنزل";
+"contact_id_11" = "فاكس العمل";
+"contact_id_12" = "فاكس آخر";
+"contact_id_13" = "إضافة علامة التبويب";
+"contact_id_14" = "الرئيسية";
+"contact_id_15" = "مكان العمل";
+"contact_id_16" = "خاص";
+"contact_id_17" = "أم";
+"contact_id_18" = "أب";
+"contact_id_19" = "أبوان";
+"contact_id_20" = "أخ";
+"contact_id_21" = "أخت";
+"contact_id_22" = "طفل";
+"contact_id_23" = "صديق";
+"contact_id_24" = "زوج";
+"contact_id_25" = "شريك";
+"contact_id_26" = "مساعد";
+"contact_id_27" = "مدير";
+"contact_id_28" = "AIM";
+"contact_id_29" = "Google محادثة";
+"contact_id_30" = "Yahoo";
+"contact_id_31" = "MSN";
+"contact_id_32" = "ICQ";
+"contact_id_33" = "Jabber";
+"contact_id_34" = "Skype";
+"contact_id_35" = "QQ";
+"contact_id_36" = "فيسبوك";
+"contact_id_37" = "Gadu-Gadu";
+"contact_id_38" = "الذكرى السنوية";
+"contact_id_39" = "عيد الميلاد";
+"contact_id_40" = "الهاتف المحمول";
+"contact_id_41" = "هاتف";
+"contact_id_42" = "البريد الإلكتروني";
+"contact_id_43" = "URL";
+"contact_id_44" = "الاسم المرتبط";
+"contact_id_45" = "عنوان الشارع";
+"contact_id_46" = "الرسالة المؤقتة";
+"contact_id_47" = "التاريخ";
+"contact_id_48" = "لا يوجد اسم";
+"contact_id_49" = "بلد";
+"contact_id_50" = "مقاطعة";
+"contact_id_51" = "الرمز البريدي";
+"contact_id_52" = "شارع";
+"contact_id_53" = "مدينة";
+"contact_id_54" = "هاتف";
+"contact_id_55" = "البريد الإلكتروني";
+"contact_id_56" = "url";
+"contact_id_57" = "الاسم المرتبط";
+"contact_id_58" = "IM";
+"contact_id_59" = "إضافة علامة التبويب";
+"contact_id_60" = "إضافة علامة التبويب المخصصة";
+"contact_id_61" = "اسم المستخدم";
+"contact_id_62" = "إضافة المزيد من الأوصاف";
+//<!--mac add-->
+"contact_id_80" = "كود البلد";
+"contact_id_81" = "العنوان";
+"contact_id_82" = "الاسم الأوسط";
+"contact_id_83" = "المسمى الوظيفي";
+"contact_id_84" = "قسم";
+"contact_id_85" = "لقب";
+"contact_id_86" = "الاسم الأول الصوتي";
+"contact_id_87" = "اسم العائلة الصوتية";
+"contact_id_88" = "لاحقة";
+"contact_id_89" = "عيد الميلاد";
+"contact_id_90" = "العنوان";
+"contact_id_91" = "الملاحظة";
+"contact_id_92" = "تم";
+"contact_id_93" = "... المخصص";
+"contact_id_94" = "علامة التبويب";
+"contact_id_95" = "شخص";
+//<!--Contact页面结束-->
+
+//<!--Calendar页面开始-->
+"Calendar_id_1" = "من";
+"Calendar_id_2" = "إلى";
+"Calendar_id_3" = "كل يوم";
+"Calendar_id_4" = "ملخص";
+"Calendar_id_5" = "موقع";
+"Calendar_id_7" = "إغلاق";
+"Calendar_id_8" = "لا يمكن للملخص كون فارغا.";
+"Calendar_id_9" = "حفظ";
+"Calendar_id_10" = "تحرير";
+"Calendar_id_11" = "الملاحظات";
+"Calendar_id_12" = "إلغاء";
+"Calendar_id_13" = "تاريخ البدء";
+"Calendar_id_14" = "تاريخ الانتهاء";
+"Calendar_id_15" = "رقم";
+"Calendar_id_16" = "البريد الإلكتروني";
+"Calendar_id_17" = "شارع";
+"Calendar_id_18" = "يرتبط";
+"Calendar_id_19" = "الخاص URL";
+"Calendar_id_20" = "IM";
+"contact_id_96" = "تعديل";
+//<!--Calendar页面结束-->
+
+//<!--iCloud页面开始-->
+"iCloud_id_1" = "أدخل Apple ID وكلمة المرور الخاص بك لتسجيل الدخول إلى حساب iCloud.";
+"iCloud_id_2" = "لن يحتفظ بأي معلومات حساب آبل أومحتوياته!";
+"iCloud_id_3" = "يقوم بمسح ملفات نسخ iCloud الاحتياطي التي تم تحميلها سابقا بدون تسجيل الدخول>>.";
+"iCloud_id_4" = "كلمة مرورك أوApple ID غير صحيحة! يرجى التحقق من ذلك والرجاء إعادة المحاولة.";
+"iCloud_id_5" = "فشل في الاتصال بالإنترنت! يرجى إعادة ربطه والرجاء إعادة المحاولة.";
+"iCloudBackup_View_Tips1" = "فشل التنزيل";
+"iCloudBackup_View_Tips2" = "تحميل";
+"iCloudBackup_View_Tips3" = "استمرار";
+"iCloudBackup_View_Tips4" = "جارٍ  طلب البيانات";
+"iCloudBackup_View_Tips5" = "الرجاء الانتظار...";
+"iCloudBackup_View_Tips6" = "عرض";
+"iCloudBackup_View_Tips7" = "iCloud (%d  من العناصر)";//判断单复数
+"iCloudBackup_View_Tips7_Complex" = "iCloud (%d  من العناصر)";
+
+"iCloudBackup_View_Tips8" = "نسخ iCloud الاحتياطي (%d  من العناصر)";
+"iCloudBackup_View_Tips8_Complex" = "نسخ iCloud الاحتياطية (%d  من العناصر)";
+"iCloudBackup_View_Selected_Tips" = "يرجى تحديد عنصر واحد على الأقل.";//删除的时候用（除开backup页面）
+
+
+"iCloudBackup_View_Delete_Tips" = "هل أنت متأكد من رغبتك في حذف هذا العنصر؟";
+
+
+"iCloudBackup_View_CancelBtn_Tips" = "إلغاء";
+"iCloudLogin_View_Tips2" = "اتصال الإنترنت غير متوفر، يرجى ربط الشبكة للاستمرار.";
+"iCloudLogin_View_Password" = "كلمة السر:";
+"iCloudLogin_View_AppleID" = "Apple ID:";
+"iCloudLogin_View_Jump" = "يقوم بمسح ملفات نسخ iCloud الاحتياطي التي تم تحميلها سابقا بدون تسجيل الدخول>>";
+"iCloudLogin_View_Tips1" = "تسجيل الدخول إلى iCloud";
+"iCloudBackup_View_Title" = "نسخ iCloud الاحتياطي";
+"iCloudBackup_View_Tips" = "هل أنت متأكد من رغبتك في إيقاف عملية التحميل؟";
+//<!--iCloud页面结束-->
+
+//<!--ibook页面开始-->
+"iBook_id_1" = "كل الكتب";
+"iBook_id_2" = "الكتب التي تم شراؤها";
+"iBook_id_3" = "iBooks";
+//<!--ibook页面结束-->
+
+//<!--callHistory页面开始-->
+"callhistory_id_1" = "المكالمة";
+"callhistory_id_2" = "مكالمة غير معروفة";
+"callhistory_id_3" = "المكالمة الفائتة";
+"callhistory_id_4" = "المكالمة الواردة";
+"callhistory_id_5" = "المكالمة التي تم إلغاؤها";
+"callhistory_id_6" = "المكالمة الصادرة";
+"callhistory_id_7" = "Face Time الفائتة";
+"callhistory_id_8" = "Face Time الصادرة";
+"callhistory_id_9" = "Face Time الواردة";
+"callhistory_id_10" = "Face Time التي تم إلغاؤها ";
+//<!--callHistory页面结束-->
+
+//<!--Close iCloud Window开始-->
+//"CloseiCloud_id_1" = "لا يمكن لبرنامج AnyTrans الوصول إلى %@ الخاص بك بسبب تشغيل خيار %@ على iCloud. يرجى إيقاف تشغيله بالخطوات التالية والرجاء إعادة المحاولة. ";
+"CloseiCloud_id_1" = "لا يمكن لبرنامج AnyTrans الوصول إلى %@ بسبب تشغيل خيار %@ على iCloud. يرجى إيقاف تشغيله بالخطوات التالية والرجاء إعادة المحاولة. ";
+"CloseiCloud_id_3" = "افتح الإعدادات في جهازك";
+"CloseiCloud_id_4" = "اضغط على iCloud";
+"CloseiCloud_id_5" = "إيقاف %@";
+"CloseiCloud_id_6" = "لديك أسئلة؟ يرجى التحقق من هذا الدليل المفصل >";
+//<!--Close iCloud Window结束-->
+
+//<!--Trust Window开始-->
+"TrustView_id_1" = "يرجى فك قفل شاشة جهازك والوثوق بهذا الكمبيوتر.";
+"TrustView_id_2" = "نعم، أعرف";
+//<!--Trust Window结束-->
+
+//<!--传输界面开始-->
+"Transfer_text_id_1" = "جارٍ  إعداد البيانات، الرجاء الانتظار... ";
+"Transfer_text_complete_viewfile" = "يمكنك %@ أو %@";
+"Transfer_text_complete_viewfile_1" = "عرض الملفات";
+"Transfer_text_complete_viewfile_2" = "نقل المزيد من العناصر";
+"Transfer_text_complete_tip" = "تم نقل %@ من العناصر بنجاح."; //表示1
+"Transfer_text_complete_tips" = "تم نقل %@ من العناصر بنجاح.";//判断单复数
+
+//<!--传输界面结束-->
+
+//<!--TableView表头开始-->
+"List_Header_id_Rating" = "تصنيف";
+"List_Header_id_Genre" = "الأسلوب";
+"List_Header_id_Album" = "الألبوم";
+"List_Header_id_Title" = "العنوان";
+"List_Header_id_URL" = "URL";
+"List_Header_id_Type" = "النوع";
+"List_Header_id_Phone" = "الهاتف";
+"List_Header_id_Date" = "التاريخ";
+"List_Header_id_Name" = "الاسم";
+"List_Header_id_Item" = "العنصر";
+"List_Header_id_Format" = "الدقة";
+"List_Header_id_Size" = "الحجم";
+"List_Header_id_Time" = "الوقت";
+"List_Header_id_TimeDate" = "الوقت";
+"List_Header_id_Artist" = "الفنان";
+"List_Header_id_Duration" = "المدة";
+"List_Header_id_State" = "الحالة";
+"List_Header_id_Image" = "الصورة";
+"List_Header_id_Version" = "الإصدار";
+"List_Header_id_Minium" = "أقدم إصدار iOS";
+"List_Header_id_AppSize" = "حجم التطبيق";
+"List_Header_id_DocumentSize" = "حجم المستند";
+"List_Header_id_iOSNub" = "iOS";
+"List_Header_id_SerialNub" = "الرقم المتسلسل";
+"List_Header_id_SerialNumber" = "الرقم المتسلسل";
+"List_Header_id_Document" = "مستند";
+"List_Header_id_Number" = "رقم";
+"List_Header_id_Operate" = "عملية";
+"List_Header_id_Formats" = "صيغة";
+"Detail_Control_Header_SortByName" = "فرز حسب الاسم";
+"Detail_Control_Header_SortByItem" = "فرز حسب العنصر";
+"Detail_Control_Header_SortBySize" = "فرز حسب الحجم";
+"Detail_Control_Header_SortByDate" = "فرز حسب التاريخ";
+"Detail_Control_Header_SortByVersion" = "فرز حسب الإصدار";
+"Detail_Control_Header_SortByTitle" = "فرز حسب العنوان";
+"Collections_id" = "Collections";
+//<!--TableView表头结束-->
+
+//<!--Device菜单开始-->
+"MenuItem_id_1" = "الموسيقى";
+"MenuItem_id_2" = "النغمات";
+"MenuItem_id_3" = "الكتب الصوتية";
+"MenuItem_id_4" = "قوائم التشغيل";
+"MenuItem_id_5" = "المذكرات الصوتية";
+"MenuItem_id_6" = "الأفلام";
+"MenuItem_id_7" = "البرامج التلفزيونية";
+"MenuItem_id_8" = "الفيديوهات الموسيقية";
+"MenuItem_id_9" = "الصور";
+"MenuItem_id_10" = "الكاميرا";
+"MenuItem_id_11" = "تدفق الصور";
+"MenuItem_id_12" = "مكتبة الصور";
+"MenuItem_id_13" = "الكتب";
+"MenuItem_id_14" = "التطبيقات";
+"MenuItem_id_15" = "البودكاست";
+"MenuItem_id_16" = "iTunes U";
+"MenuItem_id_17" = "الملاحظات";
+"MenuItem_id_18" = "سجلات المكالمات";
+"MenuItem_id_19" = "الرسائل";
+"MenuItem_id_20" = "جهات الاتصال";
+"MenuItem_id_21" = "الإشارات المرجعية";
+"MenuItem_id_22" = "التقويمات";
+"MenuItem_id_23" = "النسخ الاحتياطية";
+"MenuItem_id_24" = "الفيديو";
+"MenuItem_id_25" = "مشاركة الصور";
+"MenuItem_id_26" = "الألبومات";
+"MenuItem_id_27" = "البريد الصوتي";
+"MenuItem_id_28" = "الصوت";
+"MenuItem_id_29" = "الفيديو";
+"MenuItem_id_30" = "آخر";
+"MenuItem_id_31" = "مستكشف";
+"MenuItem_id_33" = "الفيديوهات";
+"MenuItem_id_34" = "iTunes مكتبة ";
+"MenuItem_id_35" = "نظام";
+"MenuItem_id_37" = "تاريخ";
+"MenuItem_id_38" = "Safari";
+"MenuItem_id_39" = "iCloud";
+"MenuItem_id_40" = "نظام الملفات";
+"MenuItem_id_41" = "تخزين";
+"MenuItem_id_42" = "أدوات";
+"MenuItem_id_43" = "إعادة التشغيل";
+"MenuItem_id_44" = "إغلاق";
+"MenuItem_id_45" = "سجلات التحطم";
+"MenuItem_id_47" = "تتابع";
+"MenuItem_id_48" = "الفاصل الزمني";
+"MenuItem_id_49" = "بانوراما";
+"MenuItem_id_50" = "الفيديو المنزلي";
+"MenuItem_id_51" = "الحركة البطيئة";
+"MenuItem_id_52" = "نظام الملفات";
+"MenuItem_id_53" = "فئة";
+"MenuItem_id_54" = "ملخص الفئة";
+"MenuItem_id_55" = "iBook";
+"MenuItem_id_56" = "المرفقات";
+"MenuItem_id_57" = "إرسال";
+"MenuItem_id_58" = "تخطي.";
+"MenuItem_id_59" = "الإشارة المرجعية";
+"MenuItem_id_60" = "الملاحظات";
+"MenuItem_id_61" = "جهات الاتصال";
+"MenuItem_id_62" = "التقويمات";
+"MenuItem_id_63" = "Live Photos";//修改 8.28
+"MenuItem_id_64" = "لقطة شاشة";
+"MenuItem_id_65" = "الصورة الذاتية";
+"MenuItem_id_66" = "موقع";
+"MenuItem_id_67" = "مفضل";
+"MenuItem_id_68" = "ورق الحائط";
+"MenuItem_id_69" = "لا يوجد نسخ احتياطي ";
+
+"MenuItem_id_70" = "الفيلم";
+"MenuItem_id_71" = "البرنامج التلفزيوني";
+"MenuItem_id_72" = "البودكاست";
+"MenuItem_id_73" = "الكتب الصوبية";
+"MenuItem_id_74" = "المذكرة الصوتية";
+"MenuItem_id_75" = "التطبيق";
+"MenuItem_id_76" = "الرسالة";
+"MenuItem_id_77" = "الصورة";
+"MenuItem_id_78" = "فيديو الموسقى";
+"MenuItem_id_79" = "النغمة";
+"MenuItem_id_80" = "الألبوم";
+"MenuItem_id_81" = "ملف";
+"MenuItem_id_82" = "الفيديوهات";
+"MenuItem_id_83" = "جهة الاتصال";
+"MenuItem_id_84" = "قائمة التشغيل";
+"MenuItem_id_85" = "النسخ الاحتياطي";
+"Thumbnails_id" = "المصغرات";
+"Reminders_id" = "التذكيرات";
+"MenuItem_id_91" = "Cloud Music";
+//<!--Device菜单结束-->
+
+
+//<!--右键菜单开始-->
+"Menu_Delete" = "إلغاء";
+"Menu_Export" = "تصدير";
+"Menu_Import" = "استيراد";
+"Menu_ToiTunes" = "إرسال إلى iTunes";
+"Menu_Playlist" = "إضافة إلى قائمة التشغيل";
+"Menu_ToDevice" = "إرسال إلى الجهاز";
+"Menu_ToPc" = "إرسال إلى Mac";
+"Menu_Property" = "الملكية";
+"Menu_Select_All" = "تحديد الكل";
+"Menu_Unselect_All" = "إلغاء تحديد الكل";//名字发生变化了
+//<!--右键菜单结束-->
+
+//<!--单位开始-->
+"MSG_Size_MB" = "ميغابابت";
+"MSG_Size_GB" = "جيجابايت";
+"MSG_Size_KB" = "كيلوبايت";
+"MSG_Size_B" = "بايت";
+"MSG_Date_Today" = "اليوم";
+"MSG_Date_Yesterday" = "أمس";
+"MSG_Date_Tomorrow" = "غدا";
+"MSG_Item_id_1" = "من العناصر"; //表示1
+"MSG_Item_id_2" = "من العناصر"; //表示2
+"MSG_Item_id_3" = "من العناصر";
+"MSG_Item_id_4" = "من العناصر";
+//<!--单位结束-->
+
+//<!--按钮开始-->
+"Button_Ok" = "حسنا";
+"Button_Cancel" = "إلغاء";
+"Button_id_1" = "إضافة قائمة التشغيل";
+"Button_id_2" = "إضافة الألبوم";
+"Button_Login" = "تسجيل الدخول";
+//<!--按钮类(Windows)-->
+"Button_Yes" = "نعم";
+"Button_No" = "لا";
+"Button_Continue" = "استمرار";
+"Button_Stop" = "توقف";
+"Button_Select" = "اختيار";
+"Button_Save" = "حفظ";
+"Button_IKnown" = "حسنا، أعرف";
+//<!--按钮结束-->
+
+//<!--Sort开始-->
+"SortBy_Name" = "حسب الاسم";
+"SortBy_Date" = "حسب التاريخ";
+"SortBy_Size" = "حسب الحجم";
+"Sort_Ascend" = "تصاعدي";
+"Sort_Descend" = "تنازلي";
+"SortBy_Item" = "فرز حسب العنصر";
+//<!--Sort结束-->
+
+//<!--noData开始-->
+"NO_DATA_TITLE_1" = "لم يتم العثور على %@ هنا.";
+"NO_DATA_TITLE_2" = "انقر لإضافة محتوى جديد.";//需要修改
+"mediaView_id_3" = "فنان غير معروف";
+"mediaView_id_4" = "ألبوم غير معروف";
+//<!--Windows Add-->
+"mediaView_id_5" = "اسم غير معروف";
+"mediaView_id_6" = "أسلوب غير معروف";
+//<!--noData结束-->
+
+//<!--通用语言提示开始-->
+"Common_id_1" = "إعادة تحميل";
+"Common_id_2" = "جارٍ  تحديث";
+"Common_id_3" = "جارٍ  حذف ";
+"Common_id_4" = "جارٍ  إعادة التحميل";
+"Common_id_5" = "الرجاء الانتظار";
+"Common_id_6" = "جارٍ  إضافة";
+"Common_id_7" = "إضافة";
+"Common_id_8" = "إعادة تسمية";
+"Common_id_9" = "حذف";
+"Common_id_10" = "غير معروف";
+"Common_id_11" = "مقروء";
+"Common_id_12" = "غير مقروء";
+"Common_id_13" = "ليست مساحة حرة كافية على القرص!";
+"Common_id_14" = "تصدير";
+"common_id_16" = "موقع";
+//<!--通用语言提示结束-->
+
+//<!--消息类开始-->
+"MSG_PlaylistResult_Success" = "نجاح.";
+"MSG_Loading" = "جارٍ  تحميل، الرجاء الانتظار...";
+"MSG_Rename" = "جارٍ  إعادة التسمية، الرجاء الانتظار...";
+"MSG_COM_File_Not_Exist" = "لا يوجد ملف %@";
+"MSG_COM_Device_Database_Damaged" = "أصيبت قاعدة البيانات على \"%@\" الخاص بك بأضرار. يمكنك إعادة تعيين جهازك إلى إعداد المصنع أوالاتصال بنا.";
+"MSG_TranResult_Failed_Device_OutofSpace" = "فشل نقل الملفات بسبب عدم كفاية المساحة على جهازك. ";
+"MSG_COM_Copying" = "جارٍ  نسخ %@...";
+"MSG_COM_Prepare" = "جارٍ  إعداد ملف...";
+"MSG_IOS_Not_Support_The_App" = "إصدار نظام iOS قديم جدا، فلا يدعم تطبيقاتك المحددة. يرجى تحديثه إلى أحدث إصدار وإعادة المحاولة مرة أخرى.";
+"MSG_App_TransInfo_CancelsUpgrade" = "تم تعيين الجهاز المستهدف لمنع التطبيق من الرجوع إلى أقدم إصدار. ";
+"MSG_App_TransInfo_CancelsDowngrade" = "تم تعيين الجهاز المستهدف لمنع التطبيق من الرجوع إلى أقدم إصدار.";
+"MSG_App_NotExist" = "لا يوجد هذا التطبيق";
+"MSG_Device_Edition_Too_high" = "يعمل جهازك على نظام iOS 8.3 أوأحدث إصدار، الذي تم تعطيل هذه الميزة في برنامج AnyTrans. ";
+"MSG_Add_To_iTunes" = "جارٍ  إضافة %@ إلى iTunes";
+//<!--消息类结束-->
+
+"BackupSelect_View_FailedDecrypt_Tips" = "فشل في فك تشفير ملف النسخ الاحتياطي.";
+
+//<!--Search Control-->
+"search_control_seraching" = "جارٍ  البحث عن...";
+
+"playlistView_id_0" = "جارٍ  تصدير قائمة التشغيل";
+"playlistView_id_1" = "إضافة إلى قائمة التشغيل ";
+"Playlist_id_1" = "قائمة التشغيل ";
+"Playlist_id_2" = "اسم قائمة التشغيل ";
+"Playlist_id_4" = "هل أنت متأكد من رغبتك في حذف قائمة التشغيل \"%@\"؟";
+"Playlist_id_7" = "هل أنت متأكد من رغبتك في إعادة تسمية قائمة التشغيل \"%@\"؟ ";
+"Playlist_id_8" = "اسم قائمة التشغيل \"%@\" موجود بالفعل.";
+"Playlist_id_9" ="جارٍ  إضافة العناصر إلى قائمة التشغيل...";
+"Playlist_id_10" = "تحرير";
+"Playlist_id_11" = "حذف";
+"Playlist_id_12" = "إضافة";
+"Playlist_id_13" = "مشتريات";
+//<!--photo View-->
+"PhotoView_id_1" = "جارٍ  حذف الصور...";
+"PhotoView_id_2" = "الألبوم";
+"PhotoView_id_3" = "اسم الألبوم";
+"PhotoView_id_4" = "ألبوم \"%@\" موجود.";
+"photoView_id_0" = "جارٍ  تصدير الصور";
+"photoView_id_5" = "الصور الخاصة بي";
+
+"iCloud_id_10" = "جارٍ  التحقق من...";
+"iCloud_id_13" = "جارٍ  التحقق من الحالة";
+"iCloud_id_14" = "جارٍ  تحليل الملفات";
+"iCloud_id_15" = "جارٍ  طلب البيانات";
+
+//<!--Sync or Import Message-->
+"ImportSync_id_1" = "جارٍ  مزامنة البيانات، الرجاء الانتظار...";
+"ImportSync_id_2" = "جارٍ  إعداد بيانات جهازك، الرجاء الانتظار...";
+"ImportSync_id_3" = "جارٍ  تحليل %@";
+"ImportSync_id_4" = "تم التحليل";
+"ImportSync_id_5" = "إيقاف النقل";
+"ImportSync_id_6" = "جارٍ  إعداد نقل ملفات الوسائط";
+"ImportSync_id_7" = "فقدان مكون FFMPEG .";
+"ImportSync_id_8" = "جارٍ  تحويل %@ تخطي.";
+"ImportSync_id_9" = "تم التحويل";
+"ImportSync_id_10" = "تحويل إلى الملفات المدعومة على الجهاز";
+"ImportSync_id_11" = "فشل التحويل, اسم ملف: %@";
+"ImportSync_id_12" = "جارٍ  نقل ملفات الوسائط";
+"ImportSync_id_13" = "جارٍ  تحويل %@";
+"ImportSync_id_14" = "فشل التحليل";
+"ImportSync_id_15" = "جارٍ  نقل جهات الاتصال";
+"ImportSync_id_16" = "جارٍ  نقل الملاحظات";
+"ImportSync_id_17" = "جارٍ  نقل الإشارات المرجعية";
+"ImportSync_id_18" = "جارٍ  نقل الكتب";
+"ImportSync_id_19" = "جارٍ  نقل التطبيقات";
+
+"ImportSync_id_20" = "جارٍ  إعداد نقل...";
+"Message_Ex_NeedInputPasscode" = "يرجى إدخال كلمة المرور لفك قفل شاشة جهازك وتوصيله مرة أخرى.";
+"MSG_COM_Update_DataBase" = "جارٍ  تحديث قاعدة البيانات، الرجاء الانتظار...";
+"common_id_33" = "يرجى إدخال كلمة المرور لفك قفل شاشة الجهاز.";
+"common_id_21" = "المرفق";
+
+
+//<!--BookMark页面开始-->
+"Bookmark_id_1" = "العنوان";
+"Bookmark_id_2" = "URL";
+"Bookmark_id_3" = "إضافة مجلد";
+"Bookmark_id_4" = "إضافة إشارة مرجعية";
+"Bookmark_id_5" = "تحرير";
+"Bookmark_id_6" = "مجلد";
+"Bookmark_id_7" = "لا يكون العنوان أوURL فارغا.";
+"Bookmark_id_8" = "إضافة إشارة مرجعية";
+"Bookmark_id_9" = "استيراد الإشارات المرجعية من أحد المتصفحات التالية";
+"Bookmark_id_10" = "IE";
+"Bookmark_id_11" = "Firefox";
+"Bookmark_id_12" = "Chrome";
+"Bookmark_id_13" = "استيراد";
+"Bookmark_id_14" = "إنشاء جديد";
+"Bookmark_id_15" = "يرجى إغلاق فايرفوكس قبل استيراد الإشارات المرجعية.";
+"Bookmark_id_16" = "الإشارات المرجعية";
+"Bookmark_id_17" = "إضافة الإشارات المرجعية";
+"BookmarkWindow_id_1" = "عنوان:";
+"BookmarkWindow_id_2" = "URL:";
+"BookmarkWindow_id_3" = "ألبوم:";
+"BookmarkWindow_id_4" = "مؤلف:";
+"MSG_COM_Confirm_Before_Delete" = "هل أنت متأكد من رغبتك في حذف العناصر المحددة أبدا؟";
+"MSG_COM_Confirm_Before_Delete_2" = "هل أنت متأكد من رغبتك في حذف العنصر المحدد أبدا؟";
+
+"MSG_COM_Deleting" = "جارٍ  حذف، الرجاء الانتظار...";
+"MSG_COM_Delete_Complete" = "تم الحذف بنجاح!";
+"MSG_COM_Delete_Complete_Description" ="تمت إزالة %d  من العناصر بنجاح.";
+"MSG_COM_Delete_Complete_Description_ComPlex" = "تمت إزالة %d  من العناصر بنجاح.";
+
+"MSG_COM_No_Item_Selected" = "يرجى تحديد عنصر واحد على الأقل للاستمرار.";//to iTunes 和backup页面用这句话
+"MSG_COM_No_Exist_Selected" = "العنصر المحدد موجود في جهازك المستهدف بالفعل.";
+"Export_View_Selected_Tips" = "يرجى تحديد عنصر واحد على الأقل لتصديره إلى الكمبيوتر.";
+"MSG_COM_AddPlaylist_Complete" = "تمت إضافة قائمة التشغيل!";
+"Transfer_text_id_2" = "جارٍ  نقل الموسيقى";
+"Transfer_text_id_3" = "حافظ على فك قفل شاشة الجهاز.";
+"Transfer_text_id_4" = "تم النقل";
+"NonSupport_MiniOS" = "يدعم برنامج AnyTrans إصدار iOS 5.0 وأحدث إصدار فقط.";
+"Recovery_View_Tips3" = "يرجى إلغاء تحديد خيار \"تشفير النسخ الاحتياطي\" على iTunes للسماح لبرنامج AnyTrans بعمل النسخ الاحتياطي لبيانات جهازك.";
+"Recovery_View_Tips4" = "فشل الاستعادة، رمز خاطئ: %d ";
+//aboutWindow
+"about_window_1" = "الدعم";
+"about_window_2" = "الرئيسية";
+"about_window_3" = " العلامة التجارية AnyTrans® وجميع الحقوق محفوظة. © 2018 .iMobie Inc. تم تسجيلها في الولايات المتحدة. ";
+
+//Update Window-->
+"Update_Window_Text1" = "إصدار %@ الخاص بك أحدث.";
+"Update_Window_Text2" = "يرجى تحديث %@ للاستمتاع بالمزيد من الميزات.";
+"Update_Window_Text3" =  "نسخة جديدة: %@، بنيت على: %@";
+"Update_Window_Text4" = "إصدار %@";
+"Update_Window_Text5" = "فشل الاتصال! يرجى التحقق من اتصال الشبكة!";
+"Update_Window_Button1" = "تخطي هذا الإصدار";
+"Update_Window_Button2" = "ذكرني لاحقا";
+"Update_Window_Button3" = "تحيدث الآن";
+"Update_Window_Button4" = "إغلاق";
+//Update Window-- = "
+"UpdateWindow_id_8" = "يرجى تحديث %@، وإلا قد لا يعمل بعض الميزات بشكل جيد.";
+"UpdateWindow_id_9" = "جارٍ  التحقق من التحديثات، الرجاء الانتظار...";
+"UpdateWindow_id_10" = "لا يمكن لبرنامج %@ الوصول إلى معلومات التحديث. يرجى تحميل أحدث إصدار من موقعنا الرسمي.";
+"UpdateWindow_id_11" = "جارٍ  التحميل، الرجاء الانتظار...";
+
+//<!--Register Window-->
+"register_window_title" = "تفعيل AnyTrans";
+"register_window_description" = "برنامج AnyTrans الخاص بك غير مسجل. يرجى شراء الترخيص أوإدخاله إذا كان لديك واحد بالفعل.";
+"register_window_inputBtn" = "أدخل الترخيص";
+"register_window_laterBtn" = "لاحقا";
+"register_window_buyBtn" = "اشتر الترخيص";
+"register_window_activateBtn" = "تفعيل";
+"register_window_tryagainBtn" = "الرجاء إعادة المحاولة";
+"register_text_enterLicense" = "الترخيص:";
+"register_text_eg" = "يرجى إدخال الترخيص الخاص بك";
+"register_text_waiting" = "جارٍ  التفعيل، الرجاء الانتظار...";
+"verification_success_id" = "نجح التحقق!";
+"verification_failed_id" = "فشل التحقق!";
+"Register_failed_id" = "فشل التفعيل!";
+"activate_success" = "نجح التفعيل!";
+"activate_error_disinternet" = "يرجى الاحتفاظ بإتصال الانترنت مستقر ومحاولة لتفعيل برنامج AnyTrans مرة أخرى.";
+"activate_error_expired" = "انتهت مدة الصلاحية لبرنامج AnyTrans الخاص بك! يرجى شراء الترخيص للاستمرار.";
+"activate_error_overPC" = "تم استخدام هذا الترخيص على كمبيوتر آخر.";
+"activate_error_discorrect" = "يرجى التأكد من صحة الترخيص وإعادة المحاولة.";
+"activate_error_onlineFailed" = "فشل التحقق! يرجى الاتصال بنا للمساعدة.";
+"activate_error_registerFailed" = "فشل التسجيل، رمز خاطئ: %d ! الرجاء الاتصال بنا للمساعدة.";
+"activate_error_code_1" = "تم إلغاء تفعيل الترخيص الخاص بك.";
+"activate_error_code_10" = "تم تفعيل برنامج AnyTrans الخاص بك، إذا كان لديك أي أسئلة، الرجاء الاتصال بنا.";
+"activate_error_timeOutofPeriod" = "انتهت مدة صلاحية الترخيص الخاص بك.";
+"activate_error_unknown" = "خطأ غير معروف!";
+
+"Nothave_toDevices" = "يرجى توصيل الجهازين على الأقل للاستمرار.";
+"iTunes_Nothave_toDevices" = "يرجى توصيل جهاز واحد على الأقل للاستمرار.";
+
+//<!--Merge Clone View-->
+"MergeDevice_NO_Item" = "لا يوجد أي بيانات على جهازك المصدر.";
+"MergeDevice_step_selectDeviceTip" = "اختر الجهاز المستهدف";
+"MergeDevice_step_selectItemTip" = "اختر الفئات";
+"MergeDevice_step_selectMergeContentTip" = "دمج المحتوى";
+"MergeDevice_step_selectMergeCompleteTip" = "تم";
+"MergeDevice_SelectTargetDevice_Title" = "اختر الجهاز المستهدف";
+"MergeDevice_SelectTargetDevice_Descript" = "يرجى تحديد الجهاز المستهدف الذي ترغب في دمج المحتوى إليه.";
+"MergeDevice_SelectDeviceItem_Title" = "اختر الفئات";
+"MergeDevice_SelectDeviceItem_Descript" = "يرجى تحديد الفئات التي ترغب في دمجها إلى %@.";
+"MergeDevice_SelectDeviceItem_Caution" = "تحذير:";
+"MergeDevice_SelectDeviceItem_Caution1" = "إذا حددت الرسائل، جهات الاتصال، التقويم، الملاحظات، سجلات المكالمات، إشارات مرجعية Safari، أوالصور، ستتم الكتابة فوق البيانات المطابقة على الجهاز المستهدف، في حين لن يتأثر بالفئات الأخرى.";
+"MergeDevice_SelectDeviceItem_Caution2" = "اقرأ المزيد>>";
+"MergeDevice_Message_Caution" = "الرجاء عدم قطع اتصال جهازك قبل الانتهاء من عملية دمج المحتوى.";
+"TransferDevice_Message_Caution" = "الرجاء عدم قطع اتصال جهازك قبل الانتهاء من عملية نقل المحتوى.";
+"CloneDevice_Message_Title" = "جارٍ  تكرار البيانات إلى \"%@\"، الرجاء الانتظار...";
+"MergeDevice_Message_Title" = "جارٍ  دمج البيانات إلى \"%@\"، الرجاء الانتظار...";
+"CloneMerge_Backup_Message" = "جارٍ  عمل النسخ الاحتياطي ل\"%@\"...";
+"CloneMerge_Analyse_Message" = "جارٍ  تحليل البيانات...";
+"CloneMerge_Restor_Photo_Message" = "جارٍ  استعادة البيانات...";
+"CloneMerge_Message_Id_1" = "لا يمكن الاستمرار في عملية دمج البيانات بسبب جهازك \"%@\" مقفل! الرجاء إدخال كلمة المرور لإزالة قفل الشاشة!";
+"CloneMerge_Message_Id_2" = "فشل في عمل النسخ الاحتياطي ل\"%@\"! الرجاء إعادة المحاولة.";
+"CloneMerge_Message_Id_3" = "فشل عمل النسخ الاحتياطي للـ \"%@\"!";
+"CloneMerge_Message_Id_4" = "فشل استعادة \"%@\"!";
+"CloneMerge_Message_Id_5" = "جارٍ  عمل النسخ الاحتياطي لمكتبة الصور على \"%@\" ";
+"CloneMerge_Message_Id_6" = "جارٍ  استعادة مكتبة الصور على \"%@\"";
+"CloneMerge_Message_Id_7" = "يرجى التحقق مما إذا كان جهازك مقفلا! إذا كان الأمر ذلك، الرجاء إدخال كلمة المرور لفك قفل شاشة جهازك قبل مزامنة البيانات على جهازك.";
+"CloneMerge_Restor_TransferMedia_Message" = "جارٍ  نقل بيانات الوسائط...";
+//clone页面 luolei add
+"Clone_id_5" = "اختر الجهاز المستهدف";
+"Clone_id_6" = "اختر العناصر";
+"Clone_id_7" = "نقل";
+"Clone_id_8" = "تم";
+"Clone_id_9" = "حدث الخطأ، الرجاء إعادة المحاولة!";
+"Clone_id_10" = "تتوفر ميزة \"تكرار الهاتف\" لأجهزة أبل التي تعمل بنظام iOS 6 أو أحدث إصدار فقط.";
+"Clone_id_17" = "فشل عمل النسخ الاحتياطي ل\"%@\"، الرجاء إعادة المحاولة!";
+"Clone_id_23" = "إعادة المحاولة";
+"Clone_id_24" = "يرجى إلغاء تحديد خيار \"تشفير النسخ الاحتياطي\" على iTunes للسماح لبرنامج AnyTrans بعمل النسخ الاحتياطي لبيانات %@.";
+"Clone_id_27" = "لا يمكن الاستمرار في تكرار البيانات بسبب جهازك \"%@\" مقفل! الرجاء إدخال كلمة المرور!";
+"Clone_id_32" = "ليست هناك مساحة حرة كافية على الجهاز المستهدف.";
+
+
+//merge luolei add
+"Merge_id_3" = "لا يمكن دمج الرسائل النصية على \"%@\"، لأن \"%@\" لا يدعم الرسائل النصية.";
+"Merge_id_4" = "ملاحظاتك مرتبطة بالحسابات المتعددة، وسوف نقوم بدمج الملاحظات تحت \"على الـ iPhone/iPad/iPod touch الخاص بي\" على الجهات المستهدف. هل تريد الدمج؟";
+"Merge_id_11" = "تتوفر ميزة \"دمج الهاتف\" لأجهزة أبل التي تعمل بنظام iOS 6 أو أحدث إصدار.";
+
+//<!--Notice Message Window-- = "
+"NoticeMessage_id_1" = "يرجى توصيل الجهازين على الأقل للاستمرار!";
+
+"Version_id" = "إصدار";
+
+/*-- **************LanguageSetWindow***************** --*/
+"LanguageSetWinodw_id_1" = "اختر اللغة المفضلة";
+"Language_id_1" = "English";
+"Language_id_2" = "日本語";
+"Language_id_3" = "Deutsch";
+"Language_id_4" = "Français";
+"Language_id_7" = "Español";
+"Language_id_8" = "العربية";
+"Language_id_9" = "简体中文";
+"language_setting_id" = "ابدء";
+"Close_window" = "هل أنت متأكد من رغبتك في إغلاق برنامج AnyTrans؟";
+
+
+//==============================
+//<!--TO DO:Dingming about Window 8.14-->
+"backup_id_text_9" = "جارٍ  تحميل %d%%";
+
+//8月15号--dingming;
+"backup_id_text_10" = "يرجى إلغاء تحديد خيار \"تشفير النسخ الاحتياطي\" على iTunes لعمل النسخ الاحتياطي للبيانات على جهازك.";
+"reques_menu_title" = "يرجى إرسال لنا سؤالك.";
+//<!--TO DO: HuYuMin New Add  2016.08.16 Start-->
+"MSG_TranResult_Skiped_Existed" = "هذا %@ موجود بالفعل. ";
+"alert_id_1" = "إضافة علامة التبويب المخصصة";
+"BackupDevice_Message_Caution" = "الرجاء عدم قطع اتصال جهازك قبل الانتهاء من عملية النسخ الاحتياطي.";
+"Transfer_text_Backup_complete" = "تم عمل النسخ الاحتياطي";
+"IMBTrans_NO_Internet_MSG" = "اتصال الانترنت غير متوفر. الرجاء ربطه للاستمرار.";
+"IMBTrans_Server_Not_Avail_MSG" = "خادم غير متوفر. الرجاء محاولته لاحقا أواتصل بنا.";
+//<!--TO DO: HuYuMin New Add  2016.08.16 End-->
+
+"Transfer_error_id_1" = "فشل الاستيراد، يرجى التحقق مما إذا كان اتصال الإنترنت صحيحا أم لا.";
+"Transfer_error_id_2" = "فشل الاستيراد، يرجى الاتصال بنا للحصول على المساعدة.";
+"Transfer_text_success" = "نجح النقل!";
+//<!--TO DO: HuYuMin New Add  2016.08.17 start-->
+"MSG_COM_Delete_Item" ="جارٍ  حذف %@...";
+
+//<!--TO DO: HuYuMin New Add  2016.08.17 end-->
+"Seg_First_Title" = "إنشاء جديد";
+"bookMark_id_18" = "إضافة إشارة مرجعية جديدة";
+//<!--TO DO: HuYuMin New Add  2016.08.17 end-->
+
+//<!--TO DO: dingming New Add  2016.08.18 start-->
+"ToPCiTunes_Step_Id_1" = "اختر الفئات";
+"ToPCiTunes_Step_Id_2" = "نقل";
+"ToPCiTunes_Step_Id_3" = "تم";
+//<!--{0}: PC / iTunes -->
+"ToPCiTunes_SelectDeviceItem_Descript" = "يرجى تحديد الفئات التي ترغب في نقلها إلى %@";
+
+"ToPCiTunes_Transfer_Title" = "جارٍ  نقل البيانات إلى %@، الرجاء الانتظار...";
+"Transfer_Item_Title" = "جارٍ  نقل %@...";
+
+"backup_id_text_8" = "مستكشف النسخ الاحتياطي";
+//<!--TO DO: dingming New Add  2016.08.18 end-->
+
+//<!--TO DO: longfan New Add  2016.08.18 start-->
+
+//"setting_id_7" = "لتوفير الوقت التحويل MPEG-4 أود تحويل ملفات العيديو إلى صياغة
+
+//Preferences 界面
+"setting_id_1" = "عام";
+"setting_id_2" = "تحويل";
+"setting_id_3" = "صيغة ملفات الفيديو";
+"setting_id_4" = "حجم الصورة";
+"setting_id_5" = "صيغة ملفات الصوت";
+"setting_id_6" = "جودة التحويل";
+"setting_id_7" = "1. أرغب في تحويل ملفات الفيديو إلى صيغة MPEG-4 لتوفير وقت التحويل. ";
+
+"setting_id_8" = "2. أرغب في تحويل ملفات الفيديو إلى صيغة H.264 للحصول على جودة بصرية أفضل.";
+"setting_id_8_1" = "3. لا أريد تحويل أي فيديو غير متوافق.";
+"setting_id_9" = "1. يستخدم أنسب حجم الصورة افتراضيا.";
+"setting_id_10" = "2. أرغب في الاحتفاظ بحجم الصورة الأصلي عند تحويل ملفات الفيديو.";
+"setting_id_11" = "1. أرغب في تحويل ملفات الصوت إلى صيغة AAC للحصول على جودة الصوت أفضل.";
+"setting_id_12" = "2. أرغب في تحويل ملفات الصوت إلى صيغة MP3 للحصول على الملف بالحجم الأصغر.";
+"setting_id_12_1" = "3. لا أريد تحويل أي فيديو غير متوافق.";
+"setting_id_13" = "1. أرغب في استخدام ملفات الصوت والفيديو عالية الجودة.";
+"setting_id_14" = "2. أرغب في استخدام ملفات الصوت والفيديو عادية الجودة.";
+"setting_id_15" = "التطبيق";
+"setting_id_16" = "النغمة";
+"setting_id_19" = "عند تصدير التطبيقات إلى مكتبة iTunes، أفضل تصدير:";
+"setting_id_20" = "عند تصدير التطبيقات إلى المجلد على الكمبيوتر، أفضل تصدير:";
+"setting_id_21" = "عند نقل التطبيقات إلى جهاز آخر، أفضل نقل:";
+"setting_id_22" = "إعدادات التطبيق فقط";
+"setting_id_23" = "بيانات التطبيق فقط";
+"setting_id_24" = "برنامج التطبيق وبيانات التطبيق";
+"setting_id_25" = "استيراد بيانات التطبيق تلقائيا عند التعرف عليها في ملف .ipa";
+"setting_id_26" = "ترقية التطبيق تلقائيا عند استيراد نفس التطبيق";
+"setting_id_27" = "تخفيض التطبيق تلقائيا عند استيراد نفس التطبيق";
+"setting_id_28" = "تشمل بيانات التطبيق على تقدم اللعبة، الإعدادات الشخصية، وملفات المستخدم الأخرى.";
+"setting_id_29" = "أرغب في استيراد النغمات النصية لمدة 25 ثانية.";
+"setting_id_30" = "أرغب في استيراد النغمات لمدة 40 ثانية.";
+"setting_id_31" = "أرغب في استيراد النغمات في طولها الأصلي.";
+"setting_id_32" = "أرغب في الاحتفاظ بالنسخ الاحتياطي إلى أقصى حد.";
+"setting_menu_title" = "الإعدادات";
+"setting_id_33" = "صيغة إخراج Live Photos";
+"setting_id_34" = "تحويل Lives Photos إلى صيغة JPEG للحصول على الصورة عالية الجودة.";
+"setting_id_35" = "تحويل Live Photos إلى صيغة MOV لحفظ الصور في الفيديو المتحرك.";
+"setting_id_36" = "تحويل Live Photos إلى صيغة GIF للحصول على الصور المتحركة.";
+//<!--TO DO: longfan New Add  2016.08.18 end-->
+
+//<!--TO DO: huyumin New Add  2016.08.19 start-->
+"bookMark_id_19" = "استيراد الإشارات المرجعية من أحد المتصفحات التالية";
+"MSG_Add_To_iTunes_id_1" = "إضافة إلى iTunes";
+//<!--TO DO: huyumin New Add  2016.08.19 end-->
+"MSG_COM_Import_Contact" = "جارٍ  استيراد جهات الاتصال، الرجاء الانتظار...";
+"MSG_COM_Send_To_Contact" = "جارٍ  نقل إلى جهات الاتصال، الرجاء الانتظار... ";
+"MSG_Transfer_Failed" = "فشل النقل!";
+"MSG_COM_iTunesCBD_Damaged" = "أصيبت قاعدة البيانات على \"%@\" بأضرار، يرجى إرسال ملف قاعدة البيانات والسجل إلينا.";
+//<!--TO DO: huyumin New Add  2016.08.20 end-->
+
+"Message_Listen_IPhone_Sevice_FailedA" = "لا يعمل بعض مكونات برنامج تشغيل iTunes. يرجى إعادة تثبيته ومحاولة مرة أخرى.";
+//<!--监听IPhone设备失败-->
+"Message_Listen_IPhone_Sevice_Failed" = "لا يوجد مكونات برنامج تشغيل iTunes. يرجى تحميل الإصدار الكامل من %@ وإعادة المحاولة.";
+
+//<!--TO DO: Dengxinghai New Add 2016.08.21 start-->
+"Playlist_id_14" = "جارٍ  إضافة قائمة التشغيل، الرجاء الانتظار...";
+"Playlist_id_15" = "جارٍ  إعادة تسمية قائمة التشغيل، الرجاء الانتظار...";
+"Playlist_id_16" = "جارٍ  حذف قائمة التشغيل، الرجاء الانتظار...";
+"Playlist_id_17" = "جارٍ  إضافة %@ إلى قائمة التشغيل";
+"Playlist_id_18" = "اسم قائمة التشغيل غير معروف";
+
+//<!--右键菜单功能-->
+"ToolContextMenuButton_id_1" = "تحيدث";
+"ToolContextMenuButton_id_2" = "إلى iTunes";
+"ToolContextMenuButton_id_3" = "إلى Mac";
+"ToolContextMenuButton_id_4" = "إلى الجهاز";
+"ToolContextMenuButton_id_5" = "الملكية";
+"ToolContextMenuButton_id_6" = "توسيع الكل";
+"ToolContextMenuButton_id_7" = "ضغط الكل";
+//<!--用于右键菜单 一个设备的to device功能-->
+"ToolContextMenuButton_id_8" = "إلى \"%@\"";
+
+//<!--TO DO: Dengxinghai New Add 2016.08.21 end-->
+"MSG_AddPhotoToDefaultAlbum" = "من AnyTrans";
+
+
+//<!--TO DO: huyumin New Add 2016.8.23 start-->
+"NoticeBackup_id_1" = "هذا هو النسخ الاحتياطي قبل %@!";
+
+"Backup_id_2" = "لم يتم عمل النسخ الاحتياطي لجهازك إلى هذا الكمبيوتر. الرجاء الضغط على الزر التالي لعمل النسخ الاحتياطي الكامل.";
+"Backup_id_3" = "عمل النسخ الاحتياطى الآن";
+"Backup_id_4" = "انقر لإستكشاف محتوى النسخ الاحتياطى";
+//<!--TO DO: huyumin New Add 2016.8.23 end-->
+
+//<!--TO DO: longfan New Add  2016.08.22 start-->
+"System_selectOne_item" = "يمكنك تحديد عنصر واحد فقط لإعادة التسمية.";
+//<!--TO DO: longfan New Add  2016.08.22 end-->
+
+//<!--TO DO: longfan New Add  2016.08.23 start-->
+"SettingMenu_Name" = "التفضيلات";
+
+//<!--TO DO: longfan New Add  2016.08.23 end-->
+
+//<!--TO DO: huyumin New Add  2016.08.24 start-->
+"MSG_COM_Adding" = "جارٍ  إضافة المحتوى، الرجاء الانتظار...";
+//<!--TO DO: huyumin New Add  2016.08.24 end-->
+
+
+"Transfer_text_merge_complete" = "تم دمج المحتوى";
+"Transfer_text_mergeDescription_complete" = "يمكنك عرض المحتوى على جهازك المستهدف.";
+"Transfer_text_clone_complete" = "تم تكرار المحتوى";
+"Transfer_text_cloneDescription_complete" = "يمكنك عرض المحتوى على جهازك المستهدف.";
+"Above9AppToDeviceTipsSin" = "لا يمكن نقل البيانات على التطبيق التالي، لأنه ليس موجودا في جهازك %@. يرجى تحميله من App Store مع نفس Apple ID الذي يستخدم على %@ وإعادة المحاولة.";
+"Above9AppToDeviceTipsDou" = "لا يمكن نقل البيانات على التطبيقات التالية، لأنها ليست موجودة في جهازك %@. يرجى تحميلها من App Store مع نفس Apple ID الذي يستخدم على %@ وإعادة المحاولة.";
+
+//"Above9AppMergeTipsSin" = "The data on the app below cannot be transferred, because it is not on your %@. Please download it from App Store with the same Apple ID used on %@ and try again.";
+//لا يتم نقل البيانات على التطبيق أدناه، لأنه ليس على%@، الرجاء تحميله من App Store مع نفس Apple ID الذي يستخدم على %@ والرجاء إعادة المحاولة.
+
+//"Above9AppMergeTipsDou" = "The data on the apps below cannot be transferred, because they are not on your %@. Please download them from App Store with the same Apple ID used on %@ and try again.";
+//لا يتم نقل البيانات على التطبيقات أدناه، لأنها ليست على%@، الرجاء تحميلها من App Store مع نفس Apple ID الذي يستخدم على %@ والرجاء إعادة المحاولة.
+
+"Connect_No_Driver_Txt" = "يبدو أنك لم يتم تثبيت برنامج تشغيل Apple iDevice على الكمبيوتر الخاص بك، ولكن برنامج AnyTrans يحتاج إليه للتعرف على جهازك. أوصى بتشغيل برنامج DriverInstall لتثبيته تلقائيا.";
+"Log_id_1" = "نحن آسف جدا لإزعاجكم بسبب هذا، نأمل أن ترسل لنا بعض المعلومات التي سوف تساعدنا على تحليل هذه المشكلة بشكل أفضل.";
+"Log_id_5" = "يا المستخدم عزيزي، شكرا لكم على إرسال ملف السجل لنا، إذا كان ممكنا، يرجى كتابة الوصف الموجز للمشكلة التى واجهتك، سوف تساعدنا على تحليل هذه المشكلة بشكل أفضل.";
+"Log_id_6" = "إرسال ملف السجل لنا";
+"MSG_TranResult_UnknownFailed" = "حدث خطأ غير معروف";
+"Ex_Op_NotAllowed_File_Invalided" = "%@ هو ملف غير صالح.";
+"Ex_OutOfDiskSpace" = "ليست مساحة حرة كافية على جهازك \"%@\".";
+"MSG_TranResult_Failed_Not_Existed" = "فشل النقل. لا يوجد هذا العنصر.";
+//新加的
+"Clone_Message_Caution" = "الرجاء عدم قطع اتصال جهازك قبل الانتهاء من عملية تكرار المحتوى.";
+"CloneDevice_SelectTargetDevice_Descript" = "يرجى تحديد جهاز مستهدف الذي تريد تكرار المحتوى إليه.";
+"ToDevice_SelectTargetDevice_Descript" = "يرجى تحديد جهاز مستهدف الذي تريد نقل المحتوى إليه.";
+
+"ToDevice_Message_Title" = "جارٍ  نقل البيانات إلى \"%@\".، الرجاء الانتظار...";
+"Transfer_text_Todevice_complete" = "تم نقل المحتوى";
+"CloneDevice_step_selectContentTip" = "تكرار المحتوى";
+"ContentToDevice_step_selectContentTip" = "المحتوى إلى الجهاز";
+
+"CloneDevice_SelectDeviceItem_Descript" = "يرجى تحديد الفئات التي تريد تكرارها إلى %@.";
+"ToDeviceiTunes_SelectDeviceItem_Descript" = "يرجى تحديد الفئات التي تريد نقلها إلى \"%@\"";
+
+"Transfer_text_complete_viewfile_3" = "نقل المزيد من الملفات >";
+//新加的
+"harassment_window_title" = "تستخدم نسخة غير مسجلة";
+"buy_id_2_1" = "ستنتهي مدة صلاحية النسخة التجريبية في %@ يوم/أيام! يمكنك تصدير %@ من العناصر فقط يوميا خلال الفترة التجريبية. لديك %@ من الحصص المتبقية اليوم لتقييم برنامج AnyTrans.";
+
+"buy_id_2_2" = "ستنتهي مدة صلاحية النسخة التجريبية في %@ يوم/أيام! يمكنك تصدير %@ من العناصر فقط يوميا خلال الفترة التجريبية. لديك %@ من الحصص المتبقية اليوم لتقييم برنامج AnyTrans.";
+
+"buy_id_2_3" = "ستنتهي مدة صلاحية النسخة التجريبية في %@ يوم/أيام! يمكنك تصدير %@ من العناصر فقط يوميا خلال الفترة التجريبية. لديك %@ من الحصص المتبقية اليوم لتقييم برنامج AnyTrans.";
+"buy_id_2_4" = "ستنتهي مدة صلاحية النسخة التجريبية في %@ يوم/أيام! يمكنك تصدير %@ من العناصر فقط يوميا خلال الفترة التجريبية. لديك %@ من الحصص المتبقية اليوم لتقييم برنامج AnyTrans.";
+"buy_id_3" = "تجريبية مجانية";
+
+"MSG_COM_transfer" = "لم يتم العثور على %@ لنقل هنا.";
+"MSG_COM_delete" = "لم يتم العثور على %@ لحذف هنا.";
+
+"List_Header_id_Author" = "مؤلف";
+"MSG_Loading_devicedata" = "جارٍ  تحميل البيانات، الرجاء الانتظار...";
+
+"sendlog_url" = "support@imobie.com";
+//新加的
+"List_Header_id_DeviceType" = "اسم الجهاز";
+
+//<!--TO DO: dengxinghai New Add  2016.08.29 end-->
+//［注释: 7天，50传输配额］
+//注释:{0}是AnyTrans {1} 剩余天数  既有天数又有个数的title
+"RegisterWindow_limitTitle_id_1" = "إصدار %@ غير مسجل، \n سوف تنتهي مدة صلاحيته في %d يوم/أيام!";//(单数)
+
+"RegisterWindow_limitTitles_id_1" = "إصدار %@ غير مسجل، \n سوف تنتهي مدة صلاحيته في %d يوم/أيام!";// (复数)
+
+"RegisterWindow_limitDetail_id_5" = "لديك %d من الحصص المتبقية لتقييم %@ اليوم. قم بشراء الترخيص وتفعيل برنامج %@ لإزالة كافة القيود والاستمتاع بالترقية المجانية والدعم الفني مدى الحياة.";
+
+//注释:{0}是AnyTrans 过期的title
+"RegisterWindow_limitTilte_id_2" = "إصدار %@ غير مسجل، \n وانتهت مدة الصلاحية للتجريبية المجانية!";
+"RegisterWindow_limitDetail_id_2" = "للاستمرار في استخدام %@، قم بشراء الترخيص وتفعيل برنامج %@ اليوم. ستتم إزالة كافة القيود فورا وتستمتع بالترقية المجانية والدعم الفني مدى الحياة.";
+
+//注释:{0}是AnyTrans 过期的title
+
+//［注释: 7天，50传输配额当天用完］
+//注释:{0}是AnyTrans {1} 剩余天数
+//天数未到 个数为0的title
+"RegisterWindow_limitTilte_id_6" = "لقد نفدت حصتك \n النقل اليوم!";
+
+"RegisterWindow_limitDetail_id_6" = "للاستمرار في استخدام %@، قم بشراء الترخيص وتفعيل برنامج %@ اليوم. سيتم إزالة كافة القيود فورا وتستمتع بالترقية المجانية والدعم الفني مدى الحياة.";
+
+
+//［Clone 限制］
+"RegisterWindow_limitCloneDetail_id_1" = "لا يدعم الإصدار غير المسجل ميزة \"تكرار الجهاز\".";
+
+"RegisterWindow_limitCloneDetail_id_1_1" = "قم بشراء الترخيص وتفعيل برنامج AnyTrans لإزالة كافة القيود والاستمتاع بالترقية المجانية والدعم المجاني مدى الحياة.";
+
+
+//［Merge限制］
+"RegisterWindow_limitMergeDetail_id_1" = "لا يدعم الإصدار غير المسجل ميزة \"دمج الجهاز\".";
+"RegisterWindow_limitMergeDetail_id_1_1" = "اشتر الترخيص وتفعيل برنامج AnyTrans لإزالة كافة القيود والاستمتاع بالترقية المجانية والدعم المجاني مدى الحياة.";
+
+
+"MSG_Item_id_day" = "يوم/أيام";
+"MSG_Item_id_days" = "يوم/أيام";
+//<!--TO DO: dengxinghai New Add   2016.08.29 end-->
+"Button_Retry" = "إعادة المحاولة";
+
+"MSG_Open_iTunes" = "يرجى تشغيل برنامج iTunes أولا.";
+
+"MSG_DeleteLocalPhotoAlbum_Tips" = "لا يمكن حذف الألبومات التي تم إنشاؤها على جهازك.";
+"MSG_DeleteLocalPlaylistTrack_Tips" = "لا يمكن حذف الموسيقى في قائمة التشغيل التي تم إنشاؤها على جهازك.";
+"iTunes_id_1" = "لم يتم تحديد خيار تمكين استخدام القرص للأيبود الخاص بك، وسيتم حذف بعض الموسيقى بواسطة iTunes، نحن نوصى بالتحقق من هذا الخيار على iTunes.";
+
+"ToTransfer_Title_TOPC" = "Mac";
+"ToTransfer_Title_TODevice" = "\"%@\"";
+"ToTransfer_Title_TOiTunes" = "iTunes";
+
+"ToTransfer_Descript_TOPC" = "Mac";
+"ToTransfer_Descript_TODevice" = "\"%@\"";
+"ToTransfer_Descript_TOiTunes" = "iTunes";
+
+"Nothave_iOS_toDevices" = "يرجى توصيل الجهازين على الأقل للاستمرار.";
+"MenuItem_id_86" = "المحتوى";
+
+"NO_DATA_TITLE_3" = "انقر لعمل النسخ الاحتياطي لجهازك.";
+
+
+"Main_Window_Stop_Tips" = "هل أنت متأكد من رغبتك في إيقاف هذه العملية؟";
+"Main_Window_Closing_Merge_Tips" = "جارٍ  دمج بياناتك. هل أنت متأكد من رغبتك في إغلاق برنامج AnyTrans؟";
+"Main_Window_Closing_Clone_Tips" = "جارٍ  تكرار بياناتك. هل أنت متأكد من رغبك في إغلاق برنامج AnyTrans؟";
+"Recovery_View_Tips1" = "يرجى إيقاف تشغيل خيار \"العثور على الـ iPhone/iPad/iPod \" على جهازك.";
+"iCloud_DoubleCheck_Error" = "فشلت المصادقة! إذا كنت تستخدم مصادقة ثنائية للـ iCloud، يرجى إيقاف تشغيله وإعادة المحاولة.";
+"tip_id_1" = "تمرير إلى لأعلى ولأسفل \n للتبديل.";
+"tip_id_2" = "حسنا، أعرف";
+"Main_Window_Stop_WhileBackup" = "هل أنت متأكد من رغبك في إيقاف عملية النسخ الاحتياطي؟";
+"System_id_1" = "يمكنك تحديد عنصر واحد فقط لإعادة التسمية.";
+"System_id_3" = "لا يمكن أن يحتوي الاسم على أي من الأحرف التالية: \"%@\".";
+"Common_id_19" = "ملجد جديد";
+
+"RegisterSoftware_Tips" = "يرجى تفعيل برنامج AnyTrans لتمكين هذه الميزة.";
+//long add
+"FindMyiPhone_Tips" = "العثور على الـ iPhone/iPad/iPod";
+
+"MSG_Note_ios9_edit_tips" = "عذرا، لا يمكن تحرير ملاحظاتك في نظام التشغيل iOS 9 أوأحدث إصدار.";
+"MSG_CloneMerge_IOS10_tips" = "لا يدعم هذه الميزة على نظام التشغيل iOS 10. تابع برنامج AnyTrans للحصول على أحدث إصدار.";
+
+"common_id_31" = "عند تكرار بيانات جهازك، يرجى عدم تشغيل برنامج iTunes في حالة حدوث أي الصراعات.";
+
+"common_id_32" = "عند دمج بيانات جهازك، يرجى عدم فتح iTunes في حالة حدوث أي الصراعات.";
+//骚扰界面文字
+"annoy_id_1" = "تفعيل AnyTrans";
+"annoy_id_2" = "من العناصر";
+"annoy_id_3" = "من العناصر";
+"harassment_buyBtn" = "قم بالشراء الآن";
+
+//url 信息
+//主页地址-- = "
+"imobie_home" = "https://ar.imobie.com/";
+//Support联系邮箱-- =
+"support_url" = "mailto:support@imobie.com";
+//关闭iCloud 连接
+"url_guild_id_1" = "http://imobie.com/guide/anytrans/how-to-turn-off-icloud-connection-in-device.htm";
+
+"url_guild_id_2" = "http://imobie.com/guide/anytrans/how-to-turn-off-two-step-verification-in-icloud.htm";
+//clone链接
+"url_guild_id_3" = "http://www.imobie.com/guide/anytrans/what-data-will-be-overwritten-in-device.htm";
+"Buy_Url" = "https://ar.imobie.com/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+"anytrans_guide" = "https://www.imobie.com/guide/anytrans/get-started.htm";
+"update_url_1" = "http://dl.imobie.com/config/anytrans6.xml";
+"update_url_2" = "anytrans6.xml";
+"Product_Url" = "https://ar.imobie.com/anytrans/iphone-manager.htm";
+"FAQ_Url" = "https://www.imobie.com/faq/anytrans-for-ios-faqs.htm";
+
+
+"MSG_AddData_Tips" = "يرجى تحديد 1000 من العناصر لنقل لتمكين أداء Flash-sync .";
+
+"ToolContextMenuButton_id_9" = "معاينة";
+
+"setting_id_37" = "خيار التصدير";
+"setting_id_38" = "الاحتفاظ بمعلومات التاريخ التي تم إنشاؤها على جهازك في الأصل.";
+
+"deviceInfo_id_1" = "%@ متوفر من %@";
+"deviceInfo_id_2" = "تحرير";
+
+
+"DeviceView_id_4" = "الصوت";
+"DeviceView_id_5" = "الفيديو";
+"DeviceView_id_6" = "الصور";
+"DeviceView_id_7" = "الكتب";
+"DeviceView_id_8" = "التطبيقات";
+"DeviceView_id_9" = "النغمات";
+"DeviceView_id_10" = "المذكرات الصوتية";
+"DeviceView_id_11" = "الآخرون";
+"DeviceView_id_29" = "iOS";
+
+"DeviceDetailed_id_1" = "نسخ إلى الحافظة";
+"DeviceDetailed_id_2" = "فتح في برنامج TextEdit";
+"DeviceDetailed_id_3" = "خطأ في إنشاء ملف Txt المفصل للجهاز.";
+"DeviceDetailed_id_4" = "فشل النسخ إلى الحافظة.";
+
+"DeviceDetailed_DeviceName" = "Device Name";
+"DeviceDetailed_SerialNumber" = "Serial Number";
+"DeviceDetailed_Description" = "Description";
+"DeviceDetailed_DeviceClass" = "Device Class";
+"DeviceDetailed_ProductType" = "Product Type";
+"DeviceDetailed_ProductVersion" = "Product Version";
+"DeviceDetailed_DeviceUUID" = "Device UUID";
+"DeviceDetailed_ModelNumber" = "Model Number";
+"DeviceDetailed_BuildVersion" = "Build Version";
+"DeviceDetailed_HardwareModel" = "Hardware Model";
+"DeviceDetailed_DeviceColor" = "Device Color";
+"DeviceDetailed_RegionInfo" = "Region Info";
+"DeviceDetailed_CPUArchitecture" = "CPU Architecture";
+"DeviceDetailed_WiFiAddress" = "WiFi Address";
+"DeviceDetailed_BluetoothAddress" = "Bluetooth Address";
+"DeviceDetailed_FirmwareVersion" = "Firmware Version";
+"DeviceDetailed_ActivationState" = "Activation State";
+"DeviceDetailed_ActivationStateAcknowledged" = "Activation State Acknowledged";
+"DeviceDetailed_BasebandVersion" = "Baseband Version";
+"DeviceDetailed_BasebandBootloaderVersion" = "Baseband Bootloader Version";
+"DeviceDetailed_BasebandChipId" = "Baseband Chip Id";
+"DeviceDetailed_BasebandGoldCertId" = "Baseband Gold Cert Id";
+
+"DeviceDetailed_IntegratedCircuitCardIdentity" = "Integrated Circuit Card Identity";
+"DeviceDetailed_InternationalMobileEquipmentIdentity" = "International Mobile Equipment Identity";
+"DeviceDetailed_InternationalMobileSubscriberIdentity" = "International Mobile Subscriber Identity";
+"DeviceDetailed_MLBSerialNumber" = "MLB Serial Number";
+"DeviceDetailed_MobileSubscriberCountryCode" = "Mobile Subscriber Country Code";
+"DeviceDetailed_MobileSubscriberNetworkCode" = "Mobile Subscriber";
+"DeviceDetailed_PasswordProtected" = "Password Protected";
+"DeviceDetailed_PhoneNumber" = "Phone Number";
+"DeviceDetailed_ProductionSOC" = "Production SOC";
+"DeviceDetailed_ProtocolVersion" = "Protocol Version";
+"DeviceDetailed_SDIOProductInfo" = "SDIO Product Info";
+"DeviceDetailed_SIMStatus" = "SIM Status";
+"DeviceDetailed_SupportedDeviceFamilies" = "Supported Device Families";
+"DeviceDetailed_TimeIntervalSince1970" = "Time Interval Since 1970";
+"DeviceDetailed_TimeZone" = "Time Zone";
+"DeviceDetailed_TimeZoneOffsetFromUTC" = "Time Zone Offset From UTC";
+"DeviceDetailed_UniqueChipID" = "Unique ChipID";
+"DeviceDetailed_Uses24HourClock" = "Uses 24 Hour Clock";
+"DeviceDetailed_iTunesHasConnected" = "iTunes Has Connected";
+"DeviceDetailed_BatteryIsCharging" = "Battery Is Charging";
+"DeviceDetailed_BatteryCurrentCapacity" = "Battery Current Capacity";
+
+
+//dingming-------------skin------
+
+"SkinWindow_id_id" = "واجهة AnyTrans";
+"SkinWindow_choose_title" = "يرجى اختيار الواجهة المفضلة لبرنامج AnyTrans";
+"SkinWindow_donwload_error" = "فشل التنزيل، %@";
+"SkinWindow_notfound_error" = "لم يتم العثور على المورد، الرجاء التحميل مرة أخرى!";
+"SkinWindow_apply_error" = "أصيبت ملف المورد بأضرار، الرجاء التحميل مرة أخرى!";
+"SkinWindow_apply_error_id1" = "يمكنك تحويل إلى الواجهة المخصصة مع سحب أيقونة AnyTrans وإفلاتها إلى مجلد التطبيقات.";
+"SkinWindow_apply_btn" = "تطبيق";
+"SkinWindow_White_Theme_name" = "Classic White";  //白色皮肤名字
+"SkinWindow_Black_Theme_name" = "Space Black";  //黑色皮肤名字
+"SkinWindow_Rose_Theme_name" = "Rose Pink";  //玫瑰色皮肤名字
+"SkinWindow_Gray_Theme_name" = "Space Gray"; //灰色皮肤名字
+"SkinWindow_Christmas_Theme_name" = "White Christmas"; //圣诞节皮肤名字
+
+"SkinWindow_download_error_id1" = "يبدو أن بعض المكونات مفقودة، يرجى إعادة تثبيت برنامج AnyTrans وحاول مرة أخرى.";//缺少运行组件，请重新安装AnyTrans！
+"SkinWindow_morpt_update" = "لتحميل هذه الواجهة يطلب من أحدث إصدار لبرنامج AnyTrans.";
+
+
+//long -------------------guideView--------------
+"Guide_View_id1" = "إدارة مكتبة iTunes، نسخ iTunes الاحتياطي،محتويات iCloud، جهاز iOS وجهاز Android في مكان واحد.";
+"Guide_View_id2" = "إدارة عدة أجهزة iOS، أجهزة Android، حسابات iCloud في وقت واحد.";
+"Guide_View_id3" = "يقدم لك 7 إختصارات سريعة لإعطائك أسهل حل إدارة جهاز iPhone";
+"Guide_View_id4" = "يرجى إختيار الإختصارات السريعة أوالتبديل إلى لوحة محتوى iOS.";
+"Guide_View_Btn1" = "التالي >";
+"Guide_View_Btn2" = "تخطي >";
+
+"navpagebtnpaneltooltip_id" = "مكتبة iTunes";
+"backuppagebtntooltip_id" = "عمل النسخ الاحتياطي للجهاز";
+"icloudpagebtntooltip_id" = "محتوى iCloud";
+"devicepagebtntooltip_id" = "محتوى الجهاز";
+"skinpagebtntooltip_id" = "الواجهة";
+"buypagebtntooltip_id" = "تفعيل";
+"Menu_ChooseSkin" = "اختر الواجهة";
+"Menu_FAQ" = "FAQ";
+"SP_Download_Url" = "http://ar.imobie.com/anytrans/download.htm";
+
+//以下是阿拉伯语才有的
+"Transfer_text_complete_tips" = "تم نقل %@ من العناصر بنجاح.";//判断单复数
+
+"annoy_id_3" = "من العناصر";
+
+"Fast_Drive_id_1" = "Fast Drive";
+"Fast_Drive_id_2" = "%d من العناصر، %@ متوفر";
+"Fast_Drive_id_3" = "%d من العناصر، %@ متوفر";
+"Fast_Drive_id_4" = "تم تحديد %dمن %d، %@ متوفر";
+
+"icloud_guide" = "https://www.imobie.com/guide/anytrans/how-to-turn-off-two-step-verification-in-icloud.htm";
+
+"AddContent_SelectCatagory_Title" = "اختر الفئات";
+"AddContent_SelectCatagory_Descript" = "يرجى تحديد الفئات التي ترغب في إضافتها إلى \"%@\".";
+
+
+"MainWindow_id_download_id" = "تحميل أشرطة الفيديو";
+"downloadpagebtntooltip_id" = "تحميل";
+"downloadpagebtnAnalyze_id" = "جارٍ  تحليل";
+"DownLoadPage_ChoosePath_Tips" = " أرغب في حفظ ملفات الوسائط إلى";
+"DownLoadCleanTips" = "قائمة التنظيف";
+"DownloadListPageBtnCountTip" = "تم تحميل %d من العناصر";
+"DownloadListPageBtnCountTips" = "تم تحميل %d من العناصر";
+
+"DownloadListPageDownLoadProgressTips" = "جارٍ  تحميل %.1f%%";
+"DownloadListPageImportProgressTips" = "جارٍ  نقل %.1f%%";
+
+"downloadpageNoDataTips" = "لم يتم تحميل أي عنصر.";
+"downloadpageTransferCompleteTips" = "تم النقل";
+"downloadpageTransferFailedTips" = "فشل النقل";
+"downloadVideoPath_Desk" = "سطح المكتب";
+"downloadVideoPath_Document" = "المستندات";
+"downloadVideoPath_Download" = "التنزيلات";
+"VideoDownload_Pop_Music" = "الموسيقى";
+"VideoDownload_Pop_Movies" = "الأفلام";
+"VideoDownload_Pop_Other" = "آخر";
+"downloadVideoInputURLTips" = "يرجى إدخال أونسخ رابط التحميل";
+"VideoDownload_Transfer_Waitting" = "الرجاء الانتظار";
+"downloadVideoFileNotExist" = "تمت إزالة هذه أشرطة الفيديو";
+"AirsyncTips" = "جارٍ  مزامنة جهازك، الرجاء الانتظار...";
+"downloadFailTips" = "فشل التحميل";
+"downloadAnalyzeFailTips" = "فشل التحليل";
+"VideoDownload_parse_Error_Unsupported_URL" = "هذا الرابط غير مدعوم";
+"VideoDownload_parse_Error_Forbidden_URL" = "HTTP Error 403: ممنوع";
+"VideoDownload_parse_Error_NotFound_URL" = "HTTP Error 404: لا توجد صفحة";
+"VideoDownload_Path" = "AnyTrans_Video_Download"; //这个不需要翻译
+"VideoDownload_CleanList_Tip" = "هل أنت متأكد من رغبتك في تنظيف قائمة التاريخ؟";
+"VideoDownload_Stop_Tip" = "هل أنت متأكد من رغبتك في إيقاف عملية التحميل؟";
+"DownLoadWebYoutube" = "YouTube";
+"DownLoadWebYoutubeURL" = "http://www.youtube.com";//url不需要翻译
+"DownLoadWebBBC" = "BBC";
+"DownLoadWebBBCURL" = "http://www.bbc.com";
+"DownLoadWebBreak" = "Break";
+"DownLoadWebBreakURL" = "http://www.break.com";
+"DownLoadWebDailymotion" = "Dailymotion";
+"DownLoadWebDailymotionURL" = "http://www.dailymotion.com";
+"DownLoadWebMetacafe" = "Metacafe";
+"DownLoadWebMetacafeURL" = "http://www.metacafe.com";
+"DownLoadWebVimeo" = "Vimeo";
+"DownLoadWebVimeoURL" = "https://vimeo.com";
+"DownLoadWebinstagram" = "Instagram";
+"DownLoadWebinstagramURL" = "https://www.instagram.com/";
+"DownLoadWebvine" = "Vine";
+"DownLoadWebvineURL" = "https://vine.co/";
+"DownLoadFoxnews" = "Fox News";
+"DownLoadFoxnewsURL" = "http://www.foxnews.com/";
+"DownLoadCompleteTips" = "تم التحميل";
+"DownLoadCompleteDescriptTip" = "مبروك! تم تحميل %d من الفيديوهات بنجاح. هل تعرف برنامج AnyTrans هو أفضل مدير ملفات للأيفون، الأيباد والأيبود، الذي يمكن إدارة الموسيقى، الصور، الرسائل وكافة المحتويات على أجهزة iOS تماما؟ قم بتجربته الآن. ";
+"DownLoadCompleteDescriptTips" = "مبروك! تم تحميل %d من الفيديوهات بنجاح. هل تعرف برنامج AnyTrans هو أفضل مدير ملفات للأيفون، الأيباد والأيبود، الذي يمكن إدارة الموسيقى، الصور، الرسائل وكافة المحتويات على أجهزة iOS تماما؟ قم بتجربته الآن. ";
+"DownLoad_LearnMore" = "اعرف المزيد";
+"DownLoadVideo_LimitTips" = "يرجى اختيار أقل من 10 من أشرطة الفيديو لضمان سرعة التحميل.";
+"VideoDownload_Merging" = "جارٍ  دمج أشرطة الفيديو";
+
+
+
+
+
+"iclouddriver_annoyView_titleStr" = "تم إيقاف مزامنة iCloud.";
+"iclouddriver_annoyView_subtitleStr" = "ميزة \"مزامنة iCloud\" غير مجانية في النسخة التجريبية. يرجى تسجيل برنامج AnyTrans أولا للاستمرار في استخدام هذه الميزة.";
+"iclouddriver_annoyView_tipStr" = "بعد الشراء، لن تظهر هذه النافذة مرة أخرى";
+"icloud_drive" = "iCloud Drive";
+"icloud_sync" = "مزامنة iCloud";
+"icloud_import" = "استيراد iCloud";
+"icloud_export" = "تصدير iCloud";
+"icloud_backup" = "نسخ احتياطي";
+"icloud_toiCloud" = "إلى iCloud";
+"icloud_upLoad" = "تحميل";
+"icloud_DownLoad" = "تنزيل";
+"icloud_greateFile" = "إنشاء مجلد";
+"icloud_reminder_1" = "لا يوجد أي شيء";
+"icloud_reminder_2" = "منخفض";
+"icloud_reminder_3" = "متوسط";
+"icloud_reminder_4" = "عالي";
+"icloud_reminder_5" = "AM";
+"icloud_reminder_6" = "PM";
+"icloud_reminder_7" = "حدث جديد";
+"icloud_reminder_8" = "في يوم واحد";
+"icloud_reminder_9" = "القائمة";
+"icloud_reminder_10" = "الأولوية";
+"icloud_reminder_11" = "وقت البدء";
+"icloud_reminder_12" = "وقت الانتهاء";
+"icloud_reminder_13" = "نوع";
+"icloud_main_title_1" = "يرجى اختيار اختصار أدناه للبدأ في إدارة محتوى iCloud";
+"icloud_main_title_2" = "يرجى اختيار فئة أدناه لإدارة محتوى iCloud";
+//"icloud_addAcount" = "إضافة حساب";
+"icloud_TransferDevice_Message_Caution" = "الرجاء عدم قطع اتصال الإنترنت قبل الانتهاء من عملية نقل المحتوى.";
+"NoAcount_Tips" = "يرجى تسجيل الدخول إلى اثنين من حسابات iCloud على الأقل للاستمرار.";
+"NoAcount_Tip" = "يرجى تسجيل الدخول إلى حساب iCloud واحد للاستمرار.";
+"icloud_delete_tips" = "جارٍ  حذف %@، الرجاء الانتظار...";
+"icloud_modify_tips" = "جارٍ  تعديل %@، الرجاء الانتظار...";
+"icloud_add_tips" = "جارٍ  إضافة %@، الرجاء الانتظار...";
+"MSG_Loading_iclouddata" = "جارٍ  تحميل بيانات iCloud، الرجاء الانتظار...";
+"MSG_iCloud_Add_Failed" = "فشل في إضافة %@ إلى iCloud.";
+"MSG_iCloud_Delete_Failed" = "فشل في حذف %@ من iCloud.";
+"MSG_iCloud_Modify_Failed" = "فشل في تعديل %@ من iCloud.";
+"SynciCloud_SelectTargetiCloudAcount_Title" = "يرجى تحديد حساب iCloud المستهدف";
+"sourceiCloudAcount_NO_Item" = "حساب iCloud الخاص بك فارغ.";
+"icloudDrive_View_dowunload_Tips" = "يرجى تحديد عنصر واحد على الأقل لتحميل.";
+"iCloud_greateFile_FileName" = "اسم الملف:";
+"Sync_text_toicloud_complete" = "تمت مزامنة المحتوى";
+"Sync_text_toicloudDescription_complete" = "يمكنك عرض المحتوى على حساب iCloud المستهدف.";
+"icloud_TargetAccount_Tip" = "اختر حساب المستهدف";
+"icloud_TargetAccount_Title" = "يرجى تحديد حساب المستهدف";
+"icloud_TargetAccount_subTitle" = "مزامنة البيانات من اثنين من حسابات iCloud";
+"icloud_upWarning_message" = "الرجاء عدم تسجيل الخروج من حساب iCloud أثناء عملية النقل.";
+"icloud_Repeat_login_tip" = "تم تسجيل الدخول إلى هذا الحساب، الرجاء تسجيل الدخول إلى حساب آخر.";
+
+"icloud_photo_noactive" = "لقد اكتشفنا أنه لم تتم تهيئة مكتبة صور iCloud، الرجاء الانتقال إلى icloud.com > الصور لتعيين.";
+"icloud_GetReminderGroupListFailed" = "لا يمكن الوصول إلى معلومات المجموعة، الرجاء تحديثه وإعادة المحاولة!";
+"icloud_backup_delete_complete" = "هل أنت متأكد من حذف هذا النسخ الاحتياطي الذي تم تحميله من هذا الكمبيوتر؟";
+"icloud_backup_delete_noComplete" = "لا يمكن حذف النسخ الاحتياطي الذي حددته، لأنه لم يتم تحميله إلى الكمبيوتر الخاص بك.";
+"icloud_backup_find_noComplete" = "لا يمكن معاينة معلومات النسخ الاحتياطي، لأنه لم يتم تحميله إلى الكمبيوتر الخاص بك.";
+
+
+"driver_record_title" = "قائمة التنزيلات";
+"driver_record_description" = "سوف تعرض القائمة أدناه العنصر الذي قمت بإيقاف تنزيله في المرة الأخيرة. يرجى التحقق من ذلك واختياره للاستمرار في تنزيله:";
+"driver_record_descriptions" = "سوف تعرض القائمة أدناه العناصر التى قمت بإيقاف تنزيلها في المرة الأخيرة. يرجى التحقق من ذلك وإختيارها للاستمرار في تنزيلها:";
+"driver_record_resume" = "استعادة";
+"driver_record_cancelItem" = "تم تحميل عنصر جزئيا، هل أنت متأكد من رغبتك في إلغاء تحميله؟";
+"driver_record_downloadtips" = "تم تحميل %.1f%%";
+"driver_record_nodownloadtips" = "تم الإلغاء";
+"devicetoiCloud_TargetAccount_subTitle" = "نقل المحتوى من جهازك إلى iCloud";
+"device_toIcloud_title" = "إضافة إلى iCloud";
+
+
+"MSG_iCloud_AddCollection_Failed" = "فشل في إضافة %@ إلى iCloud.";
+"MSG_iCloud_EditCollection_Failed" = "فشل في تحرير %@ من iCloud.";
+"MSG_iCloud_DeleteCollection_Failed" = "فشل في حذف %@ من iCloud.";
+"icloud_add_calendarList" = "تقويم جديد";
+"iCloud_add_reminderList" = "تذكير جديد";
+"iCloud_delete_calanderList" = "هل أنت متأكد من رغبتك في حذف هذه المجموعة المحددة؟ سيتم حذف جميع الأحداث الخاصة بك فورا.";
+"iCloud_delete_calanderList" = "هل أنت متأكد من رغبتك في حذف هذه المجموعات المحددة؟ سيتم حذف جميع الأحداث الخاصة بك فورا.";
+"iCloud_delete_reminderList" = "هل أنت متأكد من رغبتك في حذف هذه المجموعة المحددة؟ سيتم حذف جميع التذكيرات الخاصة بك بشكل دائم.";
+"iCloud_delete_reminderList" = "هل أنت متأكد من رغبتك في حذف هذه المجموعات المحددة؟ سيتم حذف جميع التذكيرات الخاصة بك بشكل دائم.";
+"iCloud_add_newList_tips" = "جارٍ  إضافة القائمة الجديدة، الرجاء الانتظار...";
+"iCloud_add_newListName" = "اسم القائمة:";
+"iCloud_add_newList" = "إضافة قائمة";
+"iCloud_photomove" = "نقل الصورة إلى \"%@\"...";
+"iCloud_photo_toAlbum" = "إلى الألبوم";
+"iCloud_NoDate" = "لا يوجد تاريخ";
+"ituens_versiontip" = "لقد اكتشفنا أنك تستخدم إصدار 64-bit من iTunes 12.6. الرجاء %@ للاستمرار في استخدامه.";
+"ituens_versiontip_download" = "انقر هنا لتحميل برنامج AnyTrans بإصدار 64-bit.";
+
+
+
+/***********************************   android语言   **********************************************/
+
+"Android_to_iOS"="المحتوى إلى iOS";
+"Android_to_iTunes"="المحتوى إلى iTunes";
+"Android_to_iCloud"="المحتوى إلى iCloud";
+"photoView_id_6" = "صور التطبيق";
+//noData 权限管理  ---shuaimingzhong add 2017.8.8
+"anyTrans_open_usb" = "http://www.imobie.com/faq/android-faqs.htm";
+//安卓设备连接失败
+"ConnectError_UnknownDevice" = "جهاز غير معروف";
+"MoveToIOSNoData_OpenAppLinkTips" = "انقر للوصول إلى صفحة معلومات تطبيق iOS Mover >>";
+"MoveToIOSNoData_Title" = "يرجى السماح لتطبيق AnyTrans بالوصول إلى معلومات التطبيق في إدارة الأذونات.";
+"MoveToIOSNoData_Title_1" = " يرجى العثور على خيار الأذونات على صفحة معلومات تطبيق iOS Mover، ثم انقر للدخول إلى إدارة الأذونات";
+"MoveToIOSNoData_Title_2" = " يسمح لتطبيق AnyTrans بالوصول إلى معلومات التطبيق في صفحة إدارة الأذونات";
+
+/*******************************与window统一的语言***********************************************/
+
+"NonSupport_MinAndroid" = "يتوافق AnyTrans مع الإصدار 4.0 من نظام Android أوإصدار أحدث.";
+"StartAppleService" = "قم بتشغيل \"خدمة أجهزة آبل\" في خيار \"خدمات\" على الكمبيوتر، ثم قم بإعادة تشغيل برنامج AnyTrans.";
+"AndroidNoConnect" = "يرجى توصيل جهاز الأندرويد وجهاز iOS للبدأ.";
+
+//MTP
+"OpenMTPModelHeader" = "يرجى اتباع الخطوات التالية لتشغيل وضع MTP:";
+"OpenMTPModel_1" = "1. قم بتمرير إصبعك من الحافة العلوية من الشاشة لفتح \"الإشعارات\".";
+"OpenMTPModel_2" = "2. اضغط على خيار \"الشحن عبر USB\" في \"الإشعارات\".";
+"OpenMTPModel_3" = "3. قم باختيار خيار \"نقل ملفات الوسائط\".";
+
+//信任弹窗
+"TrustUsbDebug_Tips1" = "السماح بتصحيح USB";
+"TrustUsbDebug_Tips2" = "يرجى تحديد خيار \"السماح دائما من هذا الكمبيوتر\"، والسماح بتوصيل جهازك.";
+//opendebug
+"OpenDebugging_top" = "يرجى اتباع الخطوات لتشغيل خيار \"تصحيح USB\" لتوصيل جهازك.";
+"OpenDebugging_step1" = "\اضغط على خيار \"الإعدادات\" > ثم حدد خيار \"حول\".";
+"OpenDebugging_step2" = "حدد خيار \"معلومات حول البرنامج\".";
+"OpenDebugging_step3" = "\انقر فوق \"رقم الإصدار\" 7 مرات حتى يظهر إشعار \"تم تشغيل وضع المطور\".";
+"OpenDebugging_step4" = "\قم بالرجوع إلى \"الإعدادات\" لاختيار \"خيارات المطور\".";
+"OpenDebugging_step5" = "قم بتشغيل خيار \"تصحيح USB\".";
+"OpenDebugging_Tips" = "إذا لم يتم تشغيل خيار \"تصحيح USB\" ، يرجى تعيين اتصال USB إلى";
+"OpenDebugging_Tips_1" = "وضع MTP";
+"OpenDebugging_down1" = "إذا لم تكن الخطوات أعلاه متوافقة مع جهازك، انقر هنا >>";
+
+
+
+"Log_id_2" = "شكرا لكم على الدعم والتفاهم.";
+"Log_id_3" = "إرسال";
+"Log_id_5" = "يا المستخدم عزيزي، شكرا لكم لإرسال ملف السجل لنا، إذا كان ممكنا، يرجى كتابة الوصف الموجز للمشكلة التى واجهتها، سوف يساعدنا على تحليل هذه المشكلة بشكل أفضل.";
+"Log_loading_Str" = "جارٍ  الضغط، انتظر...";
+"log_id_7" = "ارفاق النسخ الاحتياطي من قاعدة البيانات";
+"Log_id_8" = "نحن آسف جدا لإزعاجكم الذي تسببه برنامج AnyTrans، نرحبكم بارسال ملف السجل لنا لمساعدتنا في تحليل المشكلة. ودعمكم سوف يساعدنا على تحسين أداء برنامج AnyTrans باستمرار. وإذا كان لديك أي أسئلة، لا تتردد في الاتصال بنا. شكرا على دعمكم وتفاهمكم. ";
+//连接流程
+"Connecting_Install_Apk" = "جارٍ  تثبيت تطبيق iOS Mover...";
+"Connecting_Start_Apk" = "جارٍ  تشغيل تطبيق iOS Mover...";
+"MG_connecting_tips" = "جارٍ  توصيل \"%@\"، الرجاء الانتظار...";
+
+"contactLable_phone" = "هاتف";
+"contactLable_email" = "البريد الإلكتروني";
+"contactLable_im" = "رسالة فورية";
+"contactLable_website" = "موقع الويب";
+"contactLable_relation" = "علاقة";
+"contactLable_event" = "حدث";
+"contactLable_postaddress" = "عنوان";
+"Unknown_MG" = "غير معروف";
+
+//提权操作
+"MG_CheckAPK_Tips" = "جارٍ  التحقق من خدمة APK، الرجاء الانتظار...";
+"MG_GetPermission_txt"="يطلب برنامج AnyTrans من السماح بالوصول إلى معلومات جهازك.";
+"RequestPermisson_Txt"="يطلب AnyTrans من الوصول إلى الرسائل، جهات الاتصال، سجلات المكالمات والتقويم على جهازك. يرجى السماح به.";
+"SET_APK_PERMSISION_VIEW" = "إذا لم يظهر، يرجى النقر هنا للدخول إلى \"معلومات التطبيق\". ثم، قم بسماح تطبيق iOS Mover بالوصول إلي جهازك.";
+
+"MenuItem_id_87" = "الملفات المضغوطة";
+"MenuItem_id_88" = "المستندات";
+
+"Calender_No_Title" = "غير معروف";
+"Analysis_View_MediaData_CallType_1" = "واردة";
+"Analysis_View_MediaData_CallType_2" = "صادرة";
+"Analysis_View_MediaData_CallType_3" = "فائتة";
+"Analysis_View_MediaData_CallType_4" = "صوت";
+"Analysis_View_MediaData_CallType_5" = "تم إلغاء";
+"Analysis_View_MediaData_CallType_6" = "ممنوع";
+"Analysis_View_MediaData_CallType_10" = "مرفوض";
+"MSG_Last_Photo" = "الصور";
+"MSG_Last_Voice" = "الصوت";
+"MSG_Last_Video" = "الفيديوهات";
+"MSG_Last_Contact" = "جهات الاتصال";
+"MSG_Last_Location" = "الموقع المشترك";
+"MSG_Last_Doucment" = "المستندات";
+"message_id_1" = "صندوق الوارد";
+"message_id_2" = "إرسال";
+"MG_playlistSameName_tips"="لا يمكن إضافة نفس اسم قائمة التشغيل.";
+"INSTALL_FAILED_ALREADY_EXISTS" = "فشل في تثبيت تطبيق iOS Mover، لأنه موجود في جهازك بالفعل.";
+"INSTALL_FAILED_INVALID_APK" = "فشل في تثبيت تطبيق iOS Mover، لأن هذا التطبيق غير صالح.";
+"INSTALL_FAILED_INVALID_URI" = "فشل في تثبيت تطبيق iOS Mover، لأن هذا التطبيق غير صالح.";
+"INSTALL_FAILED_INSUFFICIENT_STORAGE" = "ليست هناك مساحة كافية على جهازك.";
+"INSTALL_FAILED_DUPLICATE_PACKAGE" = "فشل في تثبيت تطبيق iOS Mover، لأنه موجود في جهازك بالفعل.";
+"INSTALL_FAILED_NO_SHARED_USER" = "فشل في تثبيت تطبيق iOS Mover، لأن المستخدم المشترك غير موجود.";
+"INSTALL_FAILED_UPDATE_INCOMPATIBLE" = "فشل في تثبيت تطبيق iOS Mover، لأن نسختين لا يمكن أن يتعايش على جهازك.";
+"INSTALL_FAILED_SHARED_USER_INCOMPATIBLE" = "فشل في تثبيت تطبيق iOS Mover، لأن حدوث خطأ من توقيع المستخدم المشترك.";
+"INSTALL_FAILED_MISSING_SHARED_LIBRARY" = "فشل في تثبيت تطبيق iOS Mover، لأن المكتبة المشتركة المطلوبة مفقودة.";
+"INSTALL_FAILED_REPLACE_COULDNT_DELETE" = "فشل في تثبيت تطبيق iOS Mover،لأن المكتبة المشتركة المطلوبة غير صالحة.";
+"INSTALL_FAILED_DEXOPT" = "إصدار نظام الجهاز للأندرويد هو قديم جدا.";
+"INSTALL_FAILED_OLDER_SDK" = "فشل في تثبيت تطبيق iOS Mover، لأن هناك مزود المحتوى الذي يحمل نفس الاسم.";
+"INSTALL_FAILED_CONFLICTING_PROVIDER" = "فشل في تثبيت تطبيق iOS Mover، لأن هناك مزود المحتوى الذي يحمل نفس الاسم.";
+"INSTALL_FAILED_NEWER_SDK" = "إصدار النظام الجهاز للأندرويد هو حديث.";
+"INSTALL_FAILED_TEST_ONLY" = "فشل في تثبيت تطبيق iOS Mover، يرجى الاتصال بنا للحصول على حل.";
+"INSTALL_FAILED_CPU_ABI_INCOMPATIBLE" = "فشل في تثبيت تطبيق iOS Mover، يرجى الاتصال بنا للحصول على حل.";
+"CPU_ABIINSTALL_FAILED_MISSING_FEATURE" = "فشل في تثبيت تطبيق iOS Mover، يرجى الاتصال بنا للحصول على حل.";
+"INSTALL_FAILED_CONTAINER_ERROR" = "فشل في تثبيت تطبيق iOS Mover، لأن رفض الوصول من بطاقة SD.";
+"INSTALL_FAILED_INVALID_INSTALL_LOCATION" = "فشل في تثبيت تطبيق iOS Mover، يرجى الاتصال بنا للحصول على حل.";
+"INSTALL_FAILED_MEDIA_UNAVAILABLE" = "بطاقة SD غير متوفرة.";
+"INSTALL_FAILED_INTERNAL_ERROR" = "فشل في تثبيت التطبيق بسبب حدث خطأ ما في المثبت,";
+"INSTALL_CANCELED_BY_USER" = "فشل في تثبيت تطبيق iOS Mover، لأنه يتطلب من السماح.";
+"DEFAULT" = "حدث خطأ غير معروف، وفشل في تثبيت تطبيق iOS Mover. يرجى الاتصال بنا للحصول على حل.";
+"INSTALL_FAILED_USER_RESTRICTED" = "فشل في تثبيت تطبيق iOS Mover، الرجاء منح امتياز تثبيته.";
+"INSTALL_PARSE_FAILED_BAD_MANIFEST" = "فشل في تثبيت تطبيق iOS Mover،يرجى الاتصال بنا للحصول على حل.";
+"UNINSTALL_APK_ERROR" = "فشل في تثبيت تطبيق iOS Mover، يرجى الاتصال بنا للحصول على حل.";
+"ALLOW_INSTALL_APK" = "اسمحوا لتثبيت تطبيق iOS Mover على جهازك.";
+"UNABLE_READ_DEVICE" = "يرجى تعيين اتصال USB إلى وضع MTP وإعادة المحاولة. إذا يظهر هذه الرسالة مرة أخرى، الرجاء الاتصال بنا للمساعدة.";
+"START_APP_FAILED" = "فشل في تثبيت برنامج iOS Mover، الرجاء قطع اتصال كابل USB لإعادة ربطه للوصول إلى معلومات جهازك.";
+"SHAKEHAND_FAILED" = "لا يمكن برنامج AnyTrans الوصول إلى معلومات جهازك، الرجاء قطع اتصال كابل USB لإعادة ربط جهازك.";
+"UNABLE_READ_DEVICEINFO" = "فشل في الوصول إلى معلومات جهازك، الرجاء قطع اتصال كابل USB لإعادة ربط جهازك.";
+"ADBCONNECT_OFFLINE" = "تم قطع اتصال الجهاز، الرجاء قطع اتصال كابل USB لإعادة ربط جهازك.";
+"INSTALLTING_ADB_DRIVE" = "جارٍ  تثبيت برنامج تشغيل  ADB، انتظر...";
+"INSTALLTING_ADB_DRIVE_SUCCESS" = "نجح في تثبيت برنامج تشغيل ADB! الرجاء قطع اتصال كابل USB لإعادة ربط جهازك.";
+"INSTALLTING_ADB_DRIVE_ERROR" = "فشل في تثبيت برنامج تشغيل ADB، الرجاء الاتصال بنا للحصول على حل.";
+"Detail_HeaderButton_Only_Video" = "عرض مقاطع الفيديو فقط";
+"Analysis_View_AppVideo" = "فيديو التطبيق";
+"MG_reDownloadSoftware_tips" = "لقد اكتشفنا أن بعض المكونات لبرنامج AnyTrans مفقودة. الرجاء إعادة تثبيته والمحاولة مرة أخرى.";
+"REGISTRE_MONITOR_FAILED" = "لقد اكتشفنا أن بعض المكونات لبرنامج AnyTrans مشغولة. الرجاء إعادة تشغيله أوالكمبيوتر للمحاولة مرة أخرى.";
+"ADBPORT_OCCUPY" = "يرجى إيقاف عملية \"%@\"، إلا لن يعمل برنامج AnyTrans بشكل صحيح.";
+
+//<!--Unlock backup Window-->
+"text_PasswordWindow_id_1" = "يرجى إدخال كلمة مرورك.";
+"text_PasswordWindow_id_2" = "يرجى إدخال كلمة مرورك لفك تشفير النسخ الاحتياطي والتحقق منه.";
+"text_PasswordWindow_id_3" = "كلمة المرور التي تدخلها غير صحيحة، الرجاء إعادة المحاولة.";
+"text_PasswordWindow_id_4" = "عرض كلمة المرور";
+"text_PasswordWindow_id_5" = "جارٍ  فك قفل الشاشة، الرجاء الانتظار...";
+"text_PasswordWindow_id_6" = "جارٍ  فك قفل شاشة %@%، الرجاء الانتظار...";
+"Analysis_View_BackupText" = "جارٍ  تحليل ملفات النسخ الاحتياطي...";
+
+"ringtone_setting_window_1" = "تعيين مدة من النغمات المستوردة";
+"ringtone_setting_window_2" = "أرغب في استيراد النغمات النصية لمدة 24 ثانية";
+"ringtone_setting_window_3" = "أرغب في استيراد النغمات لمدة 40 ثانية";
+"ringtone_setting_window_4" = "أرغب في استيراد النغمات في طولها الأصلي (يدعم صيغة M4R فقط)";
+"ringtone_setting_window_5" = "تعيين وقت تحويل الصوت للنغمات";
+"ringtone_setting_window_6" = "اعتراض الصوت من:";
+"ringtone_setting_window_7" = "دقيقة (دقائق)";
+"ringtone_setting_window_8" = "ثانية (نوان)";
+"ringtone_setting_window_9" = "الملاحظة: عند وقت البدء أطول من مدة الصوت، ستبدأ النغمات في 0 ثانية تلقائيا.";
+"ringtone_setting_window_10" = "ذكرني لتعيين قبل استيراد النغمات";
+"ringtone_setting_window_11" = "هل تريد تغيير إعدادات الاستيراد للنغمات؟";
+"MSG_Note_not_edit_tips" = "لا يمكن تحرير هذه الملاحظة، لأنها تحتوى المرفقات.";
+
+
+"Message_Ex_DriverVersionTooLow" = "إصدار Apple Mobile Device Driver قديم جدا، يرجى تحميل أحدث إصدار من برنامج iTunes!";
+"MSG_COM_Delete_Failed"="فشل الحذف!";
+"BackupButtonUnlock" = "فتح قفل";
+"backup_error_text_1" = "يرجى إعادة تشغيل جهازك وعمل النسخ الاحتياطي له مرة أخرى.";
+"backup_error_text_2" = "فشل عمل النسخ الاحتياطي لجهازك. يرجى إعادة توصيله للمحاولة مرة أخرى. إذا كان لديك نفس أسئلة، لا تتردد في الاتصال بنا للمساعدة. (كود خاطئ: %d)";
+"backup_error_text_36" = "ليست هنا مساحة كافية لحفظ ملفات النسخ الاحتياطي.";
+"backup_error_text_tips" = "فشل عمل النسخ الاحتياطي";
+"MG_ToDeviceConvertTips"="تم تحويل:";
+"iCloudCalendar_DeletePromptOnlyOne" = "يرجى تحديد تقويم واحد على الأقل. إذا كنت تريد حذف هذا التقويم، الرجاء إنشاء جديد.";
+"iCloudCalendar_DeletePrompt" = "يرجى تحديد تقويم واحد على الأقل.";
+"iCloudReminder_DeletePromptOnlyOne" = "يرجى تحديد تذكير واحد على الأقل. إذا كنت تريد حذف هذا التذكير، الرجاء إنشاء جديد.";
+"iCloudReminder_DeletePrompt" = "يرجى تحديد تذكير واحد على الأقل.";
+"Android_MSG_COM_Prepare"="جار إعداد %@...";
+"MSG_COM_NotExistDisk_Selected" = "لم يتم العثور على العنصر المحدد على الكمبيوتر.";
+
+"AndroidDevice_Main_id_1" = "يرجى تحديد فئة أدناه لنقل محتوى الأنردويد";
+"AndroidDevice_Main_id_2" = "يرجى اختيار إختصار أدناه للبدأ";
+
+"icloud_addAcount" = "إضافة حساب iCloud";
+
+"Android_unlock_iOS_message" = "يرجى إدخال كلمة المرور لفك قفل شاشة جهازك المستهدف.";
+"Android_icloud_iOS_message" = "يرجى تسجيل الدخول إلى حساب iCloud على أجهزة iOS، وتمكين كل التطبيقات \في \"التطبيقات التي تستخدم iCloud\".";
+//<!--图文配合-->
+"Android_to_iOS_message_1" = "لا يمكن نقل سجلات المكالمات إلى الأيفون/الأيباد.";
+"Android_to_iOS_message_2" = "لا يوجد تطبيق %@ على الجهاز المستهدف، يرجى تحميله من App Store.";
+
+//<!--多个APP-->
+"Android_to_iOS_message_2_1" = "لم يتم العثور على %@ على الجهاز المستهدف، يرجى تحميلها من App Store.";
+//<!--%@： Contact Application-->
+"Android_to_iOS_message_3" = "ستتم إعادة تشغيل الجهاز المستهدف عند نقل %@. هل ترغب في نقل أيضا؟";
+//<!--%@: Call Log, Message-->
+"PhotoLoading" = "جارٍ  تحميل...";
+"Photo_NoData" = "فشل تحميل الصور.";
+"Android_NotConnectTitle_Tips"="مرحبا بكم في iOS Mover";
+
+//*************2017.8.22新加********************
+"PortableDevice_Title_1" = "تثبيت برنامج التشغيل المحمول %@ غير صحيح";
+"PortableDevice_Setup_1_Open" = "انقر لفتح \"إدارة الأجهزة\" ";
+"PortableDevice_Setup_1" = "ابحث عن أجهزة Apple المحمولة في \"إدارة الأجهزة\"، والضغط على الزر الأيمن لإلغاء تثبيت برنامج تشغيل الجهاز.";
+"PortableDevice_Setup_2" = "بعد إنهاء إلغاء التثبيت، الرجاء قطع اتصال جهازك وإعادة توصيله.";
+"nav_IOSDevcie" = "جهاز iOS";
+"nav_AndroidDevcie" = "جهاز الأندرويد";
+"nav_iCloudAccount" = "حساب iCloud";
+"ImportSync_id_21" = "جار نقل التقويم";
+"android_toDevices_NoIOSDeviceTips" = "يرجى توصيل واحد جهاز iOS على الأقل للاستمرار.";
+"NavButton_MoveToiOS_Tips" = "جهاز الأندرويد متصل. يرجى النقر هنا لنقل البيانات.";
+
+"Nav_iTunes_Depict_Title" = "مكتبة iTunes";
+"Nav_iTunes_Depict_Content" = "مزامنة البيانات من مكتبة iTunes إلى الجهاز أوالكمبيوتر، أسهل و أسرع من iTunes.";
+"Nav_Backup_Depict_Title" = "Backup Manager";
+"Nav_Backup_Depict_Content" = "عرض واستخراج البيانات الشخصية من النسخ الاحتياطي في الأيتونز، حتى يقوم بفك تشفيره.";
+"Nav_Device_Depict_Title" = "Device Manager";
+"Nav_Device_Depict_Content" = "نقل و إدارة البيانات بين أجهزة iOS، الكمبيوتر، iTunes، وiCloud.";
+"Nav_ToiOS_Depict_Title" = "iOS Mover";
+"Nav_ToiOS_Depict_Content" = "نقل كل أوبعض الملفات من جهاز الأندرويد إلى جهاز iOS.";
+"Nav_iCloud_Depict_Title" = "iCloud Manager";
+"Nav_iCloud_Depict_Content" = "عرض، استيراد وتصدير بيانات iCloud، حتى مزامنة البيانات بين عدة حسابات iCloud. ";
+"Nav_Download_Depict_Title" = "Media Downloader";
+"Nav_Download_Depict_Content" = "تنزيل أشرطة الفيديو من 900+ موقع إلى الأيفون، الأيباد أوالكمبيوتر.";
+"Nav_Skin_Depict_Title" = "واجهات";
+"Nav_Skin_Depict_Content" = "يمكنك تغيير الواجهة المخصصة إلى الواجهة المفضلة عند استخدام AnyTrans.";
+"noData_subTitle1" = "انقر للحصول على المزيد >>";
+"noData_subTitle" = "إنه قد يكون مقيدا بأذونات %@. يرجى السماح به في أذونات التطبيق على هاتفك.";
+
+"MenuItem_CallLog" = "سجلات المكالمات";
+
+
+"InitCloud_account_item_content" = "يرجى تشغيل خيار جهات الاتصال، التقويم، التذكيرات، الملاحظات";
+"InitCloud_account_title" = "يرجى تسجيل الدخول إلى iCloud على جهازك";
+"InitCloud_account_new" = "iOS 10.0 وأحدث إصدار";
+"InitCloud_account_old" = "أقدم إصدار من iOS 10.0";
+
+//icloud传输完成界面（除英语外）
+"Transfer_text_complete_ActivityTitles" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر في المجموع.";
+"Transfer_text_complete_ActivityTitle" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر في المجموع.";
+"Transfer_text_complete_ActivitySubTitle" = "إلى جانب نسخ iCloud الاحتياطي، يمكنك أيضا الوصول إلى كل المحتوى على iPhone، iPad، نسخ iTunes الاحتياطي أوالكمبيوتر - يساعدك أكثر من أي وقت مضى.";
+"TransferComplete_iCloudActivity_1" = "نقل المحتوى من جهاز iOS قديم إلى iPhone أو iPad جديد.";
+"TransferComplete_iCloudActivity_2" = "نقل المحتوى من الكمبيوتر إلى جهاز iPhone/iPad.";
+"TransferComplete_iCloudActivity_3" = "معاينة واستخراج ملفات النسخ الاحتياطي لدى iTunes.";
+"TransferComplete_iCloudActivity_4" = "نقل البيانات إلى iTunes لإثراء مكتبة iTunes.";
+"TransferComplete_iCloudActivity_5" = "نقل المحتوى من جهاز iOS قديم إلى iPhone أو iPad جديد.";
+"TransferComplete_iCloudActivity_Tips" = "مع AnyTrans، افعل كل ما تريد:";
+"TransferComplete_iCloudActivity_Url" = "https://ar.imobie.com/anytrans/buy-mac.htm?i";
+"TransferComplete_iCloudActivity_BtnTitle" = "احصل عليه الآن";
+
+//视频下载完成界面（除英语外）
+"VideosDownLoadCompleteActivity_Title" = "مبروك! لقد قمت بنجاح بتنزيل %@ من أشرطة الفيديو.";
+"VideosDownLoadCompleteActivity_Titles" = "مبروك! لقد قمت بنجاح بتنزيل %@ من أشرطة الفيديو.";
+"VideosDownLoadCompleteActivity_SubTitle" = "مع AnyTrans، يمكنك إدارة والاستمتاع بالمزيد من ملفات الوسائط والملفات الشخصية على جهاز iPhone أو iPad أو الكمبيوتر.";
+"VideosDownLoadCompleteActivity_EnjoyStr" = "الاستمتاع بملفات الوسائط أينما كنت";
+"VideosDownLoadCompleteActivity_EnjoyStr1" = "ملفات الصوت والفيديو بين iPhone/iPad/iTunes/الكمبيوتر.";
+"VideosDownLoadCompleteActivity_AutoStr" = "تحويل ملفات الصوت والفيديو تلقائيا";
+"VideosDownLoadCompleteActivity_AutoStr1" = "يحول تلقائيا ملفات الصوت والفيديو بصيغ غير متوافقة إلى صيغ مناسبة.";
+"VideosDownLoadCompleteActivity_MoveStr" = "إدارة ملفات الوسائط بسهولة";
+"VideosDownLoadCompleteActivity_MoveStr1" = "الموسيقى، قوائم التشغيل، الصور، إلخ. بين جهاز iPhone/iPad والكمبيوتر.";
+"VideosDownLoadCompleteActivity_MigrateStr" = "تحقق من معلوماتك الشخصية";
+"VideosDownLoadCompleteActivity_MigrateStr1" = "يتيح لك تحكما كاملا في جهات الاتصال، الرسائل، الملاحظات والمزيد على جهاز iPhone/iPad.";
+"VideosDownLoadCompleteActivity_BuyBtnTitle" = "احصول عليه الآن";
+"VideosDownLoadCompleteActivity_Url" = "https://ar.imobie.com/anytrans/buy-mac.htm?v";
+
+//move to iOS 完成界面（除英语外）
+"MoveToiOS_CompleteActivity_Title" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى جهازك iPhone في المجموع.";
+"MoveToiOS_CompleteActivity_Titles" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى جهازك iPhone في المجموع.";
+//to iCloud（专用）
+"MoveToiOS_iCCompleteActivity_Title" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى iCloud.";
+"MoveToiOS_iCCompleteActivity_Titles" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى iCloud.";
+//to itunes（专用）
+"MoveToiOS_iTCompleteActivity_Title" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى iTunes.";
+"MoveToiOS_iTCompleteActivity_Titles" = "مبروك! لقد قمت بنجاح بنقل %@ من العناصر إلى iTunes.";
+
+"MoveToiOS_CompleteActivity_FailTitle" = "فشل في النقل بسبب بعض الأخطاء.";
+"MoveToiOS_CompleteActivity_SubTitle" = "نصائح وحيل لمبتدئين جهاز iOS";
+"MoveToiOS_CompleteActivity_Description" = "شكرا لك على استخدام برنامج AnyTrans! ليعرض لك كيفية نقل وإدارة كل الملفات والبيانات على جهاز iPhone أو iPad أو iPod بأمان ومرونة، أعددنا الحيل والنصائح المفيدة لك.";
+"MoveToiOS_CompleteActivity_BtnTitle" = "اعرف المزيد";
+"MoveToiOS_CompleteActivity_Url" = "https://ar.imobie.com/anytrans/upgrade/android-to-ios.htm";
+
+
+"iTunes_Default_Title" = "مرحبا بكم في مكتبة iTunes";
+"iTunes_Default_Describe" = "يرجى توصيل جهاز الأندرويد أو جهاز iOS لبناء مكتبتك iTunes.";
+"iTunes_Default_NoInstall_Describe" = "يرجى تحميل أوتثبيت iTunes على الكمبيوتر الخاص بك.";//win专用
+
+"Backup_Default_Title" = "مرحبا بكم في Backup Manager";
+"Backup_Default_NoInstall_Describe"= "يرجى توصيل جهاز iPhone أو iPad أو iPod touch لعمل نسخ احتياطي جديد.";//win专用
+"Backup_Default_Backup_Describe" = "انقر هنا لعمل النسخ الاحتياطي لمحتوياتك الآن >";
+
+"iCloud_Default_Title" = "مرحبا بكم في iCloud Manager";
+"iCloud_Default_NoInstall_Describe"= "يرجى إدخال كلمة المرور وApple ID لتسجيل الدخول إلى حسابك iCloud.";
+
+"MediaDownloader_Default_Title" = "مرحبا بكم في Media Downloader";
+
+"iCloud_Login" = "تسجيل الدخول إلى iCloud";
+"iCloud_Logining" = "جار تسجيل الدخول...";
+
+"RestartConfirmMsg" = "هل أنت متأكد من رغبتك في إعادة تشغيل الجهاز؟";
+"ShutdownConfirmMsg" = "هل أنت متأكد من رغبتك في إيقاف تشغيل الجهاز؟";
+
+"PhotoCloudMsg" = "اكتشف برنامج AnyTrans عن بعض صورك المخزنة على iCloud. يمكنك تسجيل الدخول إلى iCloud وتحميلها.";
+"PhotoLoginToCloudMsg" = "تسجيل الدخول إلى iCloud >";
+"ListToolTip_path" = "مسار";
+
+"List_Header_id_Reason" = "الأسباب";
+
+"ResultWindow_result_1" = "فشل";
+"ResultWindow_result_2" = "تخطي";
+"Show_Transfer_text_complete_viewfile_2" = "نقل المزيد من العناصر";
+"Show_ResultWindow_linkTips" = "عرض الملفات التي فشل في نقلها";
+"ResultWindow_Title" = "الملفات التي فشل في نقلها";
+
+"Ex_Op_NotSupportConvert_File" = "لا يدعم الجهاز لنقل هذا الملف.";
+"Ex_Op_ConvertFail_File" = "فشل في تحويل صيغة الملف.";
+"Ex_Op_AddAlbumFail_ToiCloud" = "فشل في إضافة الألبوم، فلا يمكن نقل الصور.";
+"Ex_Op_GetARPhotoDataFail" = "فشل في  الحصول على بيانات الأندرويد.";
+"Ex_Op_GetPhotoDataFail" = "فشل في الحصول على الصور.";
+
+"Ex_Op_NoDiskSpaceSkip_ToPCiTunes" = "ليست هنا مساحة كافية على الكمبيوتر";
+"Ex_Op_OutOfSpace_AndroidToIOS_File" = "ليست هنا مساحة كافية على القرص";
+"Ex_Op_SelectediCloudNoType_ToiCloud" = "لا توجد فئة \"التقويمات\" على حساب iCloud المحدد.";
+"Ex_Op_SeleiCloudNotInit_ToiCloud" = "لم تتم تهيئة حساب iCloud المحدد.";
+"Ex_Op_InitiTuensAppFail_ToiTunes" = "فشل في تهيئة مكونة COM.";
+//<!--ArtworkDBNotFound-->
+"Ex_ArtworkDBNotFound" = "لا يوجد \"iPod ArtworkDB\". فلا يمكنك إضافة أو إزالة العمل الفني.";
+
+
+"Ex_Op_file_exist" = "الملف موجود بالفعل.";
+"Ex_Op_file_no_exist" = "لا يوجد الملف في الأيفون أو النسخ الاحتياطي الخاص بك. ";
+"Ex_Op_file_copy_error" = "فشل نسخ الملف.";
+
+
+"transferCalendar_toDevicePrompt" = "لا يوجد \"التقويم\" على جهازك المستهدف. يرجى الاحتفاظ بتقويم واحد على الأقل على جهازك المستهدف وثم تشغيل هذه العملية.";
+
+"Photo_Export_Set_id_1" = "تعيين صيغة التصدير لصور HEIC.";
+"Photo_Export_Set_id_2" = "تصدير الصور بصيغة HEIC (دعم للمعاينة في نظام التشغيل macOS High Sierra وأحدث إصدار). ";
+"Photo_Export_Set_id_3" = "تصدير الصور بصيغة JPG.";
+"Photo_Export_Set_id_4" = "تعيين صيغة التصدير Live Photo";
+"Photo_Export_Set_id_7" = "تصدير Live Photo بصيغة أصلية.";
+"Photo_Export_Set_id_8" = "تحويل Live Photo إلى صيغة GIF ذات جودة عالية. ";
+"Photo_Export_Set_id_9" = "تحويل Live Photo إلى صيغة GIF ذات جودة عادية.";
+"Photo_Export_Set_id_10" = "تحويل Live Photo إلى صيغة GIF ذات جودة منخفضة. ";
+"Photo_Export_Set_id_11" = "تحويل إلى صيغة MP4.";
+"Photo_Export_Set_id_12" = "تحويل إلى صيغة M4V.";
+"Photo_Export_Set_id_13" = "ذكرني قبل تصدير الصور.";
+"Photo_Export_Set_id_14" = "هل ترغب في تغيير إعدادات التصدير للصور؟";
+
+
+//<!--Air backup-->
+"AirBackupNoWifiCard" = "لم يتم اكتشاف أي بطاقة LAN لاسلكية على الكمبيوتر.";
+"AirBackupNoWifiCardDetail" = "لا يمكن إنشاء أو البحث عن نقطة الاتصال بشبكة Wi-Fi لأنه لا توجد شبكة محلية لاسلكية مثبتة على الكمبيوتر.";
+
+"AirBackupGuideHotSpot" = "قم بتوصيل جهازك بالكمبيوتر.";
+"AirBackupGuideHotSpotDetail" = "يمكنك توصيل جهازك عبر";
+"AirBackupNoDevice_OrLabel" = "أو";
+
+"AirBackupPublicWifi" = "WLAN";
+"AirBackupHotWifi" = "نقطة الاتصال بشبكة Wi-Fi";
+
+"AirBackupOpen" = "Air Backup نسخ احتياطي تلقائي";
+"AirBackupOpen_Tips" = "السماح لجهازك \"%@\" بتوصيل بالكمبيوتر عند الاتصال بنفس شبكة Wi-Fi. يقوم بعمل النسخ الاحتياطي لبياناتك الأخيرة تلقائيا ولاسلكيا.";
+"AirBackupOpen_Tips1" = "السماح لجهازك بتوصيل بالكمبيوتر عند الاتصال بنفس شبكة Wi-Fi. يقوم بعمل النسخ الاحتياطي لبياناتك الأخيرة تلقائيا ولاسلكيا.";
+
+"AirBackupInterval" = "Air Backup جدولة النسخ الاحتياطي";
+"AirBackupInterval_Tips" = "قم بجدولة النسخ الاحتياطي لجهازك تلقائيا. إذا لم يتم تنفيذه، سيتم إعلامك.";
+
+"AirBackupTimely" = "نسخ احتياطي فوري";
+"AirBackupTimely_tips" = "يقوم بعمل النسخ الاحتياطي لجهازك الكامل بأمان في أي وقت تريد، حتى للصوتيات والفيديوهات والصور التي تمت مزامنتها. ";
+
+"AirBackupTimelyBackupText" = "نسخ احتياطي الآن";
+"AirBackupSettingText" = "الإعدادات المتقدمة";
+"AirBackupGuideText" = "اعرف المزيد >>";
+
+"AirBackupCompleted_Title" = "آخر نسخ احتياطي:";
+"AirBackupMoreBackup" = "المزيد من النسخ الاحتياطي";
+"AirBackupMoreBackups" = "المزيد من النسخ الاحتياطية";
+
+"AirBackupSettingAlert_Title" = "الإعدادات المتقدمة";
+"AirBackupSettingAlert_SubTitle1" = "خيار Air Backup:";
+"AirBackupSettingAlert_SubTitle2" = "تنبيه انخفاض مستوى شحن البطارية:";
+"AirBackupSettingAlert_SubTitle2_1" = "ذكرني بشحن الجهاز إذا مستوى شحن البطارية هو %@";
+"AirBackupSettingAlert_SubTitle2_Never" = "لن يذكرني بشحن الجهاز.";
+"AirBackupSettingAlert_SubTitle3" = "إعدادات النسخ الاحتياطي:";
+"AirBackupSettingAlert_SubTitle3_1" = "النسخ الاحتياطي تلقائيا لجهازك إذا مستوى شحن البطارية هو %@";
+"AirBackupSettingAlert_ChangeBtn" = "تحديد";
+"AirBackupSettingAlert_BatteryPopBtn_Lower" = "انخفض عن ";
+"AirBackupSettingAlert_BatteryPopBtn_Over" = "تزايد عن";
+
+"AirBackupSettingAlert_BackingupProgress" = "جاري عمل النسخ الاحتياطي لجهازك عبر شبكة لاسلكية (%g%%).";
+"AirBackup_PrepareBackupTips" = "جاري إعداد النسخ الاحتياطي لجهازك عبر Wi-Fi، الرجاء الانتظار...";
+
+"AirBackupSettingFrogetDevice" = "نسيان هذه الأجهزة:";
+"AirBackupSettingNoBackup" = "يبدو أنك لم تتم عمل أي نسخ احتياطي حتى الآن!";
+"AirBackupStopBackupDevice" = "إيقاف النسخ الاحتياطي";
+
+"AirBackupBatteery_Never" = "أبدا";
+"AirBackupWiFiState_OFF" = "إيقاف";
+"AirBackupWiFiState_ON" = "تشغيل";
+
+"AirbackWiFiConnect_Title" = "النسخ الاحتياطي لجهازك عبر نقطة الاتصال بشبكة Wi-Fi.";
+"AirbackPublicWifi_Title1" = "النسخ الاحتياطي لجهازك عبر WLAN.";
+"AirbackPublicWifi_Title2" = "تأكد من توصيل جهازك والكمبيوتر بنفس شبكة Wi-Fi.";
+//<!--20171024 zhangluqi airbackup end-->
+
+"AirBackupAnnoy_Title" = "أنت تستخدم نسخة مجانية من Air Backup، تبقي %@ من المساحة المتوفرة لعمل النسخ الاحتياطي لبياناتك فقط.";
+"AirBackupAnnoy_SubTitle" = "لإزالة جميع القيود، يرجى الترقية إلى النسخة الكاملة من برنامج AnyTrans للاستمتاع بكافة خدمات النسخ الاحتياطي، الترقية المجانية والدعم الفني مدى الحياة.";
+
+"AirBackupAnnoy_Title1" = "لقد نفدت سعة تخزين النسخ الاحتياطي. ";
+"AirBackupAnnoy_SubTitle1" = "للاستمرار بعمل النسح الاحتياطي لجهازك، يرجى الترقية إلى النسخة الكاملة من Air Backup للاستمتاع بكافة خدمات النسخ الاحتياطي، الترقية المجاتية والدعم الفني مدى الحياة.";
+
+"AirbackPublicWifi_Guide" = "انقر هنا لمعرفة المزيد >>";
+
+"AirBackupIntervalType_Day" = "أيام";
+"AirBackupIntervalType_Week" = "أسابيع";
+"AirBackupIntervalType_Daily" = "يوميا";
+"AirBackupIntervalType_Weekly" = "أسبوعيا";
+"AirBackupIntervalType_Monthly" = "شهريا";
+
+"AirBackupBattery" = "سعة البطارية: ";
+"AirBackupUseDiskCapacity" = "مساحة القرص المستخدمة:";
+
+//骚扰界面文字
+//您的AirBackup是Free版本，不能更改定时备份间隔
+"AirBackupAnnoy_Title2" = "أت تستخدم نسخة مجانية من Air Backup، التي لا تسمح لك بتغيير الوقت لجدولة النسخ الاحتياطي.";
+//您的AirBackup是Free版本，不能立即备份设备
+"AirBackupAnnoy_Title3" = "أنت تستخدم نسخة مجانية من Air Backup، التي لا تسمح لك بعمل النسخ الاحتياطي لبياناتك فورا.";
+//请升级到完整版的AirBackup，以享受自定义备份、及时备份服务，终身免费升级，优先支持。
+"AirBackupAnnoy_SubTitle2" = "للاستمتاع بخدمة النسخ الاحتياطي المخصصة، يرجى الترقية إلى النسخة الكاملة من Air Backup، الترقية المجانية والدعم الفني مدى الحياة.";
+
+//引导页面
+"AirbackRindme_Title" = "مرجبا بكم في Air Backup";
+"AirbackRindme_Title1" = "يقوم Air Backup بعمل النسخ الاحتياطي لجهازك iOS تلقائيا عبر Wi-Fi لحماية كاملة بياناتك.";
+"AirbackRindme_step1" = "1. قم بتوصيل جهازك بالكمبيوتر عبر كابل USB.";
+"AirbackRindme_step2" = "2. ثق بهذا الكمبيوتر للوصول إلى جهازك.";
+"AirbackRindme_step3" = "3. قم بتوصيل جهازك و الكمبيوتر بنفس شبكة Wi-Fi.";
+"AirbackRindme_YesButtonText" = "تمكين Air Backup";
+
+"AirbackRindme_Learmore" = "اعرف المزيد >>";
+"AirbackRindme_ButtonText" = "نعم، أعرف";
+
+"Nav_Airbackup_Depict_Title" = "Air Backup Manager";
+"Nav_AirBackup_Depict_Content" = "النسخ الاحتياطي تلقائيا لبياناتك عبر Wi-Fi.";
+
+"AirBackupDeviceInfo_Forget" = "نسيان";
+
+"AirBackupDeviceInfo_NoBackup" = "لا توجد نسخة احتياطية.";
+"AirBackupDeviceInfo_BackupTitle" = "آخر نسخ احتياطي:";
+"AirBackupSettingAlert_BackMediaPhoto" = "النسخ الاحتياطي للصور & ملفات الوسائط:";
+
+"AirWiFiBackup_LearnMore_Url" = "https://ar.imobie.com/anytrans/backup-iphone-ipad-data.htm";
+"AirWiFiBackup_samewifi_Url" = "https://www.imobie.com/support/how-to-connect-device-and-computer-to-the-same-wi-fi.htm";
+"AirWiFiBackup_hotspot_Url" = "https://www.imobie.com/support/how-to-turn-on-wifi-hotspot-on-your-computer.htm";
+
+"AirBackupPhotoMedia_ON" = "تمكين";
+"AirBackupPhotoMedia_Off" = "تعطيل";
+
+"AriBackup_wifi_guide_1" = "الخطوة الأولى: افتح \"تفضيلات النظام\" > انقر فوق \"المشاركة\".";
+"AriBackup_wifi_guide_2" = "الخطوة الثانية: انقر فوق \"مشاركة الإنترنت\" > حدد \"Wi-Fi\" > انقر فوق \"خيارات الـ Wi-Fi...\".";
+"AriBackup_wifi_guide_3" = "الخطوة الثالثة: أدخل اسم الشبكة وكلمة السر > انقر فوق \"موافق\" لحفظ الإعدادات.";
+"AriBackup_wifi_guide_4" = "الخطوة الرابعة: حدد \"مشاركة الإنترنت\" > انقر فوق \"بدأ\".";

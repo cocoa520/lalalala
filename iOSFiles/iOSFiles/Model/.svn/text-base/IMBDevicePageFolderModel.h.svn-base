@@ -16,7 +16,7 @@
     NSArray *_photoArray;
     NSArray *_booksArray;
     NSArray *_appsArray;
-    NSArray *_subPhotoArray;
+    NSMutableArray *_subPhotoArray;
     
     NSString *_name;
     unsigned long long _size;
@@ -35,7 +35,7 @@
 @property(nonatomic, retain)NSArray *photoArray;
 @property(nonatomic, retain)NSArray *booksArray;
 @property(nonatomic, retain)NSArray *appsArray;
-@property(nonatomic, retain)NSArray *subPhotoArray;
+@property(nonatomic, retain)NSMutableArray *subPhotoArray;
 @property(nonatomic, assign)NSInteger idx;
 @property(nonatomic, retain)NSString *sizeString;
 @property(nonatomic, retain)NSString *countsString;

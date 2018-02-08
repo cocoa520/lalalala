@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <development version="5100" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBBackupCollectionViewController">
+            <connections>
+                <outlet property="_addMenuItem" destination="r0j-gG-ndv" id="XP3-z2-m5w"/>
+                <outlet property="_arrayController" destination="kz0-je-XgO" id="OHy-fi-xzC"/>
+                <outlet property="_collectionView" destination="D7H-Lw-e6d" id="Bn0-7I-880"/>
+                <outlet property="_deleteMenuItem" destination="As7-eM-rxP" id="Zxs-Nf-Cgy"/>
+                <outlet property="_detailView" destination="6gX-4A-vd6" id="BeG-8d-V7Q"/>
+                <outlet property="_downLoadMenuItem" destination="yX4-8q-smO" id="SwM-iJ-FOD"/>
+                <outlet property="_loadingAnimationView" destination="ZnM-Ce-czb" id="Mex-eR-GKe"/>
+                <outlet property="_loadingView" destination="HAM-zd-c3f" id="AzC-XF-Xyo"/>
+                <outlet property="_mainBox" destination="Jti-9q-E3b" id="dG7-UF-lWY"/>
+                <outlet property="_noDataCollectionView" destination="eSb-9u-sFU" id="g2x-s5-XO7"/>
+                <outlet property="_noDataImageView" destination="7ZU-Ic-3py" id="INJ-ra-aYx"/>
+                <outlet property="_noDataScrollView" destination="6Dd-bX-ZiI" id="PQy-kl-r21"/>
+                <outlet property="_noDataView" destination="Y8O-2i-tHX" id="WiZ-jm-Poq"/>
+                <outlet property="_photoSelectedView" destination="zJe-EO-FoA" id="SDP-xn-4SV"/>
+                <outlet property="_preViewMenuItem" destination="5kU-3D-Pno" id="jeI-qq-m7e"/>
+                <outlet property="_refreshMenuItem" destination="AIQ-Es-IcR" id="4zr-kx-VN7"/>
+                <outlet property="_scrollView" destination="CTU-3l-5WV" id="bQA-v8-vfy"/>
+                <outlet property="_textView" destination="mjE-JG-f0D" id="9AP-q8-oB1"/>
+                <outlet property="_toAlbumMenuItem" destination="G0Z-LA-Bey" id="XCg-8o-joi"/>
+                <outlet property="_toDeviceMenuItem" destination="YfV-Zt-o0G" id="6WV-Fs-OHj"/>
+                <outlet property="_toMacMenuItem" destination="ogq-Nf-PXW" id="DQ3-tB-0NQ"/>
+                <outlet property="_toiCloudMenuItem" destination="chJ-IL-ySf" id="Fik-UI-Jdo"/>
+                <outlet property="_upLoadMenuItem" destination="leq-km-ZiM" id="ntZ-k4-Ipz"/>
+                <outlet property="collectionViewItem" destination="4z2-XL-9R0" id="ffV-kp-eDi"/>
+                <outlet property="view" destination="KmP-VJ-jOr" id="sYN-SZ-jQj"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="6gX-4A-vd6">
+            <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="6" verticalPageScroll="6" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="CTU-3l-5WV" customClass="IMBScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" id="jQM-s3-vn5">
+                        <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView focusRingType="none" id="D7H-Lw-e6d" customClass="IMBBlankDraggableCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                <connections>
+                                    <binding destination="kz0-je-XgO" name="content" keyPath="arrangedObjects" id="sd3-jx-qG3"/>
+                                    <binding destination="kz0-je-XgO" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="sd3-jx-qG3" id="rDA-bf-QqO"/>
+                                    <outlet property="_collectionItem" destination="4z2-XL-9R0" id="LZ8-Wz-GQy"/>
+                                    <outlet property="itemPrototype" destination="4z2-XL-9R0" id="Olr-tR-Pc0"/>
+                                    <outlet property="menu" destination="pLl-lq-AHL" id="VAM-Sk-CQ1"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0NK-fP-bdh">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PsN-nY-GEM">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+        </customView>
+        <customView id="Y8O-2i-tHX" userLabel="nodataView">
+            <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView id="9ku-W3-AF2">
+                    <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7ZU-Ic-3py">
+                            <rect key="frame" x="367" y="231" width="124" height="124"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="noData_box" id="zcC-SF-wEW"/>
+                        </imageView>
+                        <collectionView id="eSb-9u-sFU">
+                            <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </collectionView>
+                    </subviews>
+                </customView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="6Dd-bX-ZiI">
+                    <rect key="frame" x="129" y="208" width="600" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8R9-cq-2hz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="mjE-JG-f0D">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="minSize" width="600" height="24"/>
+                                <size key="maxSize" width="1000" height="10000000"/>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="600" height="24"/>
+                                <size key="maxSize" width="1000" height="10000000"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="bbl-8L-oif">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WVq-4L-m2D">
+                        <rect key="frame" x="-100" y="-100" width="15" height="24"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <point key="canvasLocation" x="461.5" y="344"/>
+        </customView>
+        <collectionViewItem id="4z2-XL-9R0" customClass="IMBBackupCollectionViewItem">
+            <connections>
+                <outlet property="view" destination="eOe-CD-uRP" id="Toa-pB-KKk"/>
+            </connections>
+        </collectionViewItem>
+        <arrayController objectClassName="IMBPhotoEntity" id="kz0-je-XgO">
+            <declaredKeys>
+                <string>photoImage</string>
+                <string>checkState</string>
+                <string>isHiddenSelectImage</string>
+                <string>iCloudImage</string>
+                <string>toolTip</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.dataArr" id="Gri-Q3-YYK"/>
+            </connections>
+        </arrayController>
+        <menu id="pLl-lq-AHL">
+            <items>
+                <menuItem title="refresh" id="AIQ-Es-IcR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doRefreshItem:" target="-2" id="luy-lh-gd5"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Add" id="r0j-gG-ndv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doAddItem:" target="-2" id="Yzu-RN-OUk"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="upLoad" id="leq-km-ZiM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doUpLoadItem:" target="-2" id="dRk-I1-XEs"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="delete" id="As7-eM-rxP">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doDeleteItem:" target="-2" id="Zp9-mK-ASZ"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="preView" id="5kU-3D-Pno">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doPreViewMenu:" target="-2" id="AL3-It-d0D"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="AeB-zd-ZWB"/>
+                <menuItem title="toMac" id="ogq-Nf-PXW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doToMacItem:" target="-2" id="aQY-IP-ndn"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="downLoad" id="yX4-8q-smO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="doDownLoadItem:" target="-2" id="0S6-Rt-uby"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="todevice" id="YfV-Zt-o0G">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="to Device" id="veC-UF-3Di" userLabel="to Device"/>
+                </menuItem>
+                <menuItem title="to iCloud" id="chJ-IL-ySf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="to iCloud" id="HPn-YS-XMf" userLabel="to iCloud"/>
+                </menuItem>
+                <menuItem title="to Album" id="G0Z-LA-Bey">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="to Album" id="wcT-Hd-jW7" userLabel="to Album"/>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ouc-J8-YrM"/>
+            </connections>
+        </menu>
+        <view id="eOe-CD-uRP" customClass="IMBCollectionItemView">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="178"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <customView id="8Zh-YJ-5xd">
+                    <rect key="frame" x="22" y="14" width="150" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="101" id="C0p-de-KRe" customClass="IMBBackupPhotoImageView">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="photo_show" id="Rrq-i8-T7n"/>
+                            <connections>
+                                <binding destination="4z2-XL-9R0" name="value" keyPath="representedObject.photoImage" id="KLk-v9-y3d"/>
+                            </connections>
+                        </imageView>
+                        <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="102" id="zJe-EO-FoA">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="photo_selected" id="xe3-Oh-iMQ"/>
+                            <connections>
+                                <binding destination="4z2-XL-9R0" name="hidden" keyPath="representedObject.isHiddenSelectImage" id="eRY-sa-ELr"/>
+                            </connections>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="104" id="6S3-MY-K3m">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="DAt-kb-6i9"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="103" id="gVg-o6-FVx">
+                            <rect key="frame" x="120" y="2" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="Yhz-63-zBQ"/>
+                            <connections>
+                                <binding destination="4z2-XL-9R0" name="value" keyPath="representedObject.iCloudImage" id="tZR-1r-IYN"/>
+                            </connections>
+                        </imageView>
+                    </subviews>
+                </customView>
+            </subviews>
+        </view>
+        <customView id="KmP-VJ-jOr" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="Jti-9q-E3b">
+                    <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+            </subviews>
+        </customView>
+        <customView id="HAM-zd-c3f" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="859" height="534"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView id="ZnM-Ce-czb" customClass="LoadingView">
+                    <rect key="frame" x="195" y="40" width="470" height="454"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
+            </subviews>
+        </customView>
+    </objects>
+    <resources>
+        <image name="noData_box" width="124" height="124"/>
+        <image name="photo_selected" width="150" height="150"/>
+        <image name="photo_show" width="150" height="150"/>
+    </resources>
+</document>

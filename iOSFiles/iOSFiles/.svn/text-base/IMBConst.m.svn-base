@@ -13,6 +13,10 @@ NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNo
 NSString * const IMBDevicePageRefreshClickedNoti = @"IMBDevicePageRefreshClickedNoti";
 NSString * const IMBDevicePageToMacClickedNoti = @"IMBDevicePageToMacClickedNoti";
 NSString * const IMBDevicePageAddToDeviceClickedNoti = @"IMBDevicePageAddToDeviceClickedNoti";
+NSString * const IMBDevicePageDeleteClickedNoti = @"IMBDevicePageDeleteClickedNoti";
+
+NSString * const IMBDevicePageStartLoadingAnimNoti = @"IMBDevicePageStartLoadingAnimNoti";
+NSString * const IMBDevicePageStopLoadingAnimNoti = @"IMBDevicePageStopLoadingAnimNoti";
 
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
 NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";
@@ -21,5 +25,7 @@ NSString * const DetailVCHeaderTitleAppNamesPlist = @"DetailVCHeaderTitleAppName
 NSString * const DetailVCHeaderTitleBookNamesPlist = @"DetailVCHeaderTitleBookNames.plist";
 NSString * const DetailVCHeaderTitlePhotoNamesPlist = @"DetailVCHeaderTitlePhotoNames.plist";
 NSString * const DetailVCHeaderTitleSubPhotoNamesPlist = @"DetailVCHeaderTitleSubPhotoNames.plist";
+
+char kIMBDevicePageRootBoxKey;
 
 

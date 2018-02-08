@@ -76,6 +76,8 @@
 		B9348B3D201F0DAB00A8CEC3 /* IMBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B35201F0DAB00A8CEC3 /* IMBFileSystem.m */; };
 		B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B37201F0DAB00A8CEC3 /* IMBInformation.m */; };
 		B9348B3F201F0DAB00A8CEC3 /* IMBInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */; };
+		B9538FDF202BEBB4000BED1C /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9538FDE202BEBB4000BED1C /* LoadingView.m */; };
+		B9538FE2202BEC69000BED1C /* NSColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9538FE1202BEC69000BED1C /* NSColor+Category.m */; };
 		B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */; };
 		B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */; };
 		B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */; };
@@ -518,6 +520,8 @@
 		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
+		EE0FD0BF202C153800B29C11 /* ATHHostSync32.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE0FD0BC202C152B00B29C11 /* ATHHostSync32.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EE0FD0C0202C153800B29C11 /* ATHHostSync64.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE0FD0BE202C152B00B29C11 /* ATHHostSync64.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
 		EE39AD12200CBD9700D084CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACE2200CBD9700D084CE /* AppDelegate.m */; };
 		EE39AD13200CBD9700D084CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE39ACE3200CBD9700D084CE /* Assets.xcassets */; };
@@ -585,7 +589,40 @@
 		EEE447E4202AD53F00221BE0 /* backup_retreat2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447DA202AD53F00221BE0 /* backup_retreat2@2x.png */; };
 		EEE447E5202AD53F00221BE0 /* backup_retreat3.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447DB202AD53F00221BE0 /* backup_retreat3.png */; };
 		EEE447E6202AD53F00221BE0 /* backup_retreat3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447DC202AD53F00221BE0 /* backup_retreat3@2x.png */; };
+		EEE447E9202AE00800221BE0 /* music_show.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447E7202AE00800221BE0 /* music_show.png */; };
+		EEE447EA202AE00800221BE0 /* music_show@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447E8202AE00800221BE0 /* music_show@2x.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE0FD0BB202C152B00B29C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B99A9E291E851B1B00189779;
+			remoteInfo = ATHHostSync32;
+		};
+		EE0FD0BD202C152B00B29C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B93C9CFB1E88F6DD00F0FE08;
+			remoteInfo = ATHHostSync64;
+		};
+		EE0FD0C1202C153C00B29C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B99A9E281E851B1B00189779;
+			remoteInfo = ATHHostSync32;
+		};
+		EE0FD0C3202C153C00B29C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B93C9CE91E88F6DD00F0FE08;
+			remoteInfo = ATHHostSync64;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		812A89662021CDBB00101463 /* CopyFiles */ = {
@@ -597,6 +634,17 @@
 				812A89692021CF2F00101463 /* AppAuth.framework in CopyFiles */,
 				812A89682021CF2700101463 /* YTKNetwork.framework in CopyFiles */,
 				812A89672021CF1F00101463 /* AFNetworking.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEE447FA202BF09400221BE0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/MacOS;
+			dstSubfolderSpec = 1;
+			files = (
+				EE0FD0BF202C153800B29C11 /* ATHHostSync32.app in CopyFiles */,
+				EE0FD0C0202C153800B29C11 /* ATHHostSync64.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +778,10 @@
 		B9348B38201F0DAB00A8CEC3 /* IMBInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBInformationManager.h; sourceTree = "<group>"; };
 		B9348B39201F0DAB00A8CEC3 /* IMBInformationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBInformationManager.m; sourceTree = "<group>"; };
 		B9348B40201F0DD500A8CEC3 /* IMBNotificationDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
+		B9538FDD202BEBB4000BED1C /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		B9538FDE202BEBB4000BED1C /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		B9538FE0202BEC69000BED1C /* NSColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Category.h"; sourceTree = "<group>"; };
+		B9538FE1202BEC69000BED1C /* NSColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Category.m"; sourceTree = "<group>"; };
 		B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleTrackNames.plist; sourceTree = "<group>"; };
 		B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleAppNames.plist; sourceTree = "<group>"; };
 		B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleBookNames.plist; sourceTree = "<group>"; };
@@ -1569,6 +1621,7 @@
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
+		EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ATHHostSync32.xcodeproj; path = ATHHostSync32/ATHHostSync32.xcodeproj; sourceTree = "<group>"; };
 		EE39AB74200C5EB300D084CE /* iOSFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE39AC93200CBC1300D084CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EE39ACE1200CBD9700D084CE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1672,6 +1725,8 @@
 		EEE447DA202AD53F00221BE0 /* backup_retreat2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backup_retreat2@2x.png"; sourceTree = "<group>"; };
 		EEE447DB202AD53F00221BE0 /* backup_retreat3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backup_retreat3.png; sourceTree = "<group>"; };
 		EEE447DC202AD53F00221BE0 /* backup_retreat3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backup_retreat3@2x.png"; sourceTree = "<group>"; };
+		EEE447E7202AE00800221BE0 /* music_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_show.png; sourceTree = "<group>"; };
+		EEE447E8202AE00800221BE0 /* music_show@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_show@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1828,6 +1883,8 @@
 		B92A179720215F6200187405 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B9538FE0202BEC69000BED1C /* NSColor+Category.h */,
+				B9538FE1202BEC69000BED1C /* NSColor+Category.m */,
 				B92A179820215F6200187405 /* NSData+Category.h */,
 				B92A179920215F6200187405 /* NSData+Category.m */,
 				B92A179A20215F6200187405 /* NSDictionary+Category.h */,
@@ -3236,9 +3293,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		EE0FD0B7202C152B00B29C11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FD0BC202C152B00B29C11 /* ATHHostSync32.app */,
+				EE0FD0BE202C152B00B29C11 /* ATHHostSync64.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EE39AB6B200C5EB300D084CE = {
 			isa = PBXGroup;
 			children = (
+				EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */,
 				EE39ACE0200CBD9700D084CE /* iOSFiles */,
 				EE39AC92200CBBF300D084CE /* Frameworks */,
 				EE39AB75200C5EB300D084CE /* Products */,
@@ -3372,6 +3439,8 @@
 		EE39AD02200CBD9700D084CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B9538FDD202BEBB4000BED1C /* LoadingView.h */,
+				B9538FDE202BEBB4000BED1C /* LoadingView.m */,
 				EEE447BC202AA2EA00221BE0 /* IMBFolderOrFileTitleField.h */,
 				EEE447BD202AA2EA00221BE0 /* IMBFolderOrFileTitleField.m */,
 				EEE447B6202AA27900221BE0 /* IMBSelectionView.h */,
@@ -3479,6 +3548,8 @@
 		EE8BA57420217D9100FECC14 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				EEE447E7202AE00800221BE0 /* music_show.png */,
+				EEE447E8202AE00800221BE0 /* music_show@2x.png */,
 				EEE447D3202AD53F00221BE0 /* backup_retreat_enter.png */,
 				EEE447D4202AD53F00221BE0 /* backup_retreat_enter@2x.png */,
 				EEE447D5202AD53F00221BE0 /* backup_retreat_no.png */,
@@ -3520,10 +3591,13 @@
 				EE39AB71200C5EB300D084CE /* Frameworks */,
 				EE39AB72200C5EB300D084CE /* Resources */,
 				812A89662021CDBB00101463 /* CopyFiles */,
+				EEE447FA202BF09400221BE0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EE0FD0C2202C153C00B29C11 /* PBXTargetDependency */,
+				EE0FD0C4202C153C00B29C11 /* PBXTargetDependency */,
 			);
 			name = iOSFiles;
 			productName = "iOS File";
@@ -3555,12 +3629,35 @@
 			mainGroup = EE39AB6B200C5EB300D084CE;
 			productRefGroup = EE39AB75200C5EB300D084CE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EE0FD0B7202C152B00B29C11 /* Products */;
+					ProjectRef = EE0FD0B6202C152B00B29C11 /* ATHHostSync32.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EE39AB73200C5EB300D084CE /* iOSFiles */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EE0FD0BC202C152B00B29C11 /* ATHHostSync32.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ATHHostSync32.app;
+			remoteRef = EE0FD0BB202C152B00B29C11 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE0FD0BE202C152B00B29C11 /* ATHHostSync64.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ATHHostSync64.app;
+			remoteRef = EE0FD0BD202C152B00B29C11 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EE39AB72200C5EB300D084CE /* Resources */ = {
@@ -3629,10 +3726,12 @@
 				B996D9C82019CA7600E6991A /* IMBDevViewController.xib in Resources */,
 				B914C19F2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist in Resources */,
 				B9E73A162028038D00E1BB3B /* right_mid3.png in Resources */,
+				EEE447EA202AE00800221BE0 /* music_show@2x.png in Resources */,
 				B9E73A0E2028038D00E1BB3B /* left_top2.png in Resources */,
 				B9E73A112028038D00E1BB3B /* right_bottom.png in Resources */,
 				B9E73A0D2028038D00E1BB3B /* left_top.png in Resources */,
 				EEE447CE202AD4BF00221BE0 /* backup_advance@2x.png in Resources */,
+				EEE447E9202AE00800221BE0 /* music_show.png in Resources */,
 				EEE447CF202AD4BF00221BE0 /* backup_advance2.png in Resources */,
 				B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */,
 				B9E73A072028038D00E1BB3B /* file.png in Resources */,
@@ -3737,6 +3836,7 @@
 				B9E739F52028038D00E1BB3B /* IMBBaseTransfer.m in Sources */,
 				B9E73A532028054200E1BB3B /* IMBRingtoneConfig.m in Sources */,
 				B9E73ADE20282FF500E1BB3B /* zutil.c in Sources */,
+				B9538FDF202BEBB4000BED1C /* LoadingView.m in Sources */,
 				B96563312021D2B000BD7FF5 /* MediaInfo_File.cpp in Sources */,
 				B96563A22021D2B000BD7FF5 /* FileName.cpp in Sources */,
 				B96563352021D2B000BD7FF5 /* MediaInfoList_Internal.cpp in Sources */,
@@ -3925,6 +4025,7 @@
 				B90D14DC2020214C002D9F9B /* SimpleNode.m in Sources */,
 				B96564962021D47600BD7FF5 /* IMBSqliteTables_Nano6G.m in Sources */,
 				EE8BA56B20217BEC00FECC14 /* IMBCustomButton.m in Sources */,
+				B9538FE2202BEC69000BED1C /* NSColor+Category.m in Sources */,
 				B96563832021D2B000BD7FF5 /* File_Teletext.cpp in Sources */,
 				B965636F2021D2B000BD7FF5 /* File_ApeTag.cpp in Sources */,
 				B96562F12021D2B000BD7FF5 /* File_Dts.cpp in Sources */,
@@ -4136,6 +4237,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EE0FD0C2202C153C00B29C11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ATHHostSync32;
+			targetProxy = EE0FD0C1202C153C00B29C11 /* PBXContainerItemProxy */;
+		};
+		EE0FD0C4202C153C00B29C11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ATHHostSync64;
+			targetProxy = EE0FD0C3202C153C00B29C11 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EE39ACE4200CBD9700D084CE /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
@@ -4239,6 +4353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = NO;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4277,6 +4392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = NO;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

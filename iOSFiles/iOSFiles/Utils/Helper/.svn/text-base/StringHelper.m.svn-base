@@ -987,15 +987,15 @@ char pinyinFirstLetter(unsigned short hanzi) {
 //    return categoryStr;
 //}
 //
-//+ (NSColor *)getColorFromString:(NSString *)str{
-//
-//    NSArray *array = [str componentsSeparatedByString:@","];
-//    float r = [[array objectAtIndex:0] floatValue];
-//    float g = [[array objectAtIndex:1] floatValue];
-//    float b = [[array objectAtIndex:2] floatValue];
-//    float a = [[array objectAtIndex:3] floatValue];
-//    return [NSColor colorWithDeviceRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
-//}
++ (NSColor *)getColorFromString:(NSString *)str{
+
+    NSArray *array = [str componentsSeparatedByString:@","];
+    float r = [[array objectAtIndex:0] floatValue];
+    float g = [[array objectAtIndex:1] floatValue];
+    float b = [[array objectAtIndex:2] floatValue];
+    float a = [[array objectAtIndex:3] floatValue];
+    return [NSColor colorWithDeviceRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a];
+}
 
 + (NSImage *)imageNamed:(NSString *)name {
     NSImage *image = [[NSBundle mainBundle] imageForResource:name];

@@ -1,0 +1,51 @@
+//
+//  ATTracker.h
+//  AnytransTracking
+//
+//  Created by JGehry on 10/13/16.
+//  Copyright (c) 2016 imobie. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "CommonEnum.h"
+
+//@interface ATTracker : NSObject {
+@private
+    NSString *_cid;
+    NSString *_appName;
+    NSString *_appVersion;
+    NSString *_MPVersion;
+    NSString *_ua;
+    NSString *_tid;
+}
+
+/**
+ *   建立Google Analytics连接
+ *
+ *  @param tid = Google Analytics property id
+ */
++ (void)setupWithTrackingID:(NSString *)tid;
+
+/**
+ *  构建事件跟踪
+ *
+ *  @param category      事件类别
+ *  @param action        事件操作
+ *  @param actionParams  事件操作类别
+ *  @param label         事件标签
+ *  @param transferCount 传输个数
+ *  @param screenName   屏幕名称
+ *  @param parameters    默认为nil
+ */
++ (void)event:(EventCategory)category action:(EventAction)action actionParams:(NSString *)actionParams label:(EventLabel)label transferCount:(long)transferCount screenView:(NSString *)screenName screenColor:(EventThemeColor)screenColor userLanguageName:(NSString *)userLanguageName customParameters:(NSDictionary *)parameters;
+
+/**
+ *  事件跟踪异常
+ *
+ *  @param description 异常描述
+ *  @param isFatal     if = YES，发送事件跟踪异常
+ *  @param parameters  默认为nil
+ */
++ (void)excpetionWithDescription:(NSString *)description isFatal:(BOOL)isFatal customParameters:(NSDictionary *)parameters;
+
+@end

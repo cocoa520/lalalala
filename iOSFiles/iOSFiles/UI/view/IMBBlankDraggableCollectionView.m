@@ -8,7 +8,7 @@
 
 #import "IMBBlankDraggableCollectionView.h"
 #import "IMBNotificationDefine.h"
-//#import "IMBTracksCollectionViewController.h"
+#import "IMBSystemCollectionViewController.h"
 #import "StringHelper.h"
 @class IMBCollectionImageView;
 @implementation IMBBlankDraggableCollectionView
@@ -58,36 +58,36 @@
 {
     NSCollectionViewItem *viewItem = [super newItemForRepresentedObject:object];
     NSView *view = viewItem.view;
-    if (_category == Category_Movies) {
-        IMBCollectionImageView *imageView = [view viewWithTag:101];
-        if (_defaultImage == nil) {
-            _defaultImage = [[StringHelper imageNamed:@"movies_show"] retain];
-        }
-        [imageView setImage:_defaultImage];
-    }else if (_category == Category_Music||_category == Category_CloudMusic||_category == Category_MusicVideo)
-    {
-        IMBCollectionImageView *imageView = [view viewWithTag:101];
-        if (_defaultImage == nil) {
-            _defaultImage = [[StringHelper imageNamed:@"music_show"] retain];
-        }
-        [imageView setImage:_defaultImage];
-        
-    }else if (_category == Category_TVShow)
-    {
-        IMBCollectionImageView *imageView = [view viewWithTag:101];
-        if (_defaultImage == nil) {
-            _defaultImage = [[StringHelper imageNamed:@"tv_show"] retain];
-        }
-        [imageView setImage:_defaultImage];
-        
-    }else if (_category == Category_Ringtone)
-    {
+//    if (_category == Category_Movies) {
+//        IMBCollectionImageView *imageView = [view viewWithTag:101];
+//        if (_defaultImage == nil) {
+//            _defaultImage = [[StringHelper imageNamed:@"movies_show"] retain];
+//        }
+//        [imageView setImage:_defaultImage];
+//    }else if (_category == Category_Music||_category == Category_CloudMusic||_category == Category_MusicVideo)
+//    {
+//        IMBCollectionImageView *imageView = [view viewWithTag:101];
+//        if (_defaultImage == nil) {
+//            _defaultImage = [[NSImage imageNamed:@"music_show"] retain];
+//        }
+//        [imageView setImage:_defaultImage];
+//
+//    }else if (_category == Category_TVShow)
+//    {
+//        IMBCollectionImageView *imageView = [view viewWithTag:101];
+//        if (_defaultImage == nil) {
+//            _defaultImage = [[StringHelper imageNamed:@"tv_show"] retain];
+//        }
+//        [imageView setImage:_defaultImage];
+//        
+//    }else if (_category == Category_Ringtone)
+//    {
 //        IMBCollectionImageView *imageView = [view viewWithTag:101];
 //        if (_defaultImage == nil) {
 //            _defaultImage = [[StringHelper imageNamed:@"ringtone_show"] retain];
 //        }
 //        [imageView setImage:_defaultImage];
-    }
+//    }
 //    else if (_category == Category_iCloudDriver)
 //    {
 //        IMBCollectionImageView *imageView = [view viewWithTag:101];

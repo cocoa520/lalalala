@@ -14,6 +14,10 @@ APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageRefreshClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageToMacClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageAddToDeviceClickedNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageDeleteClickedNoti;
+
+APPKIT_EXTERN NSString * const IMBDevicePageStartLoadingAnimNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageStopLoadingAnimNoti;
 
 
 APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;
@@ -23,3 +27,7 @@ APPKIT_EXTERN NSString * const DetailVCHeaderTitleAppNamesPlist;
 APPKIT_EXTERN NSString * const DetailVCHeaderTitleBookNamesPlist;
 APPKIT_EXTERN NSString * const DetailVCHeaderTitlePhotoNamesPlist;
 APPKIT_EXTERN NSString * const DetailVCHeaderTitleSubPhotoNamesPlist;
+
+
+
+APPKIT_EXTERN char kIMBDevicePageRootBoxKey;

@@ -462,7 +462,7 @@ static char firstLetterArray[ HANZI_COUNT ] =
 //末尾是省略号。。。
 + (NSMutableAttributedString*)TruncatingTailForStringDrawing:(NSString*)myString withFont:(NSFont*)font withLineSpacing:(float)lineSpacing withMaxWidth:(float)maxWidth withSize:(NSSize*)size withColor:(NSColor*)color withAlignment:(NSTextAlignment)alignment;
 + (NSString*)getCategeryStr:(CategoryNodesEnum)category;
-//+ (NSColor *)getColorFromString:(NSString *)str;//将String 转为Color
++ (NSColor *)getColorFromString:(NSString *)str;//将String 转为Color
 + (NSImage *)imageNamed:(NSString *)name;
 + (NSString *)md5ForFile:(NSString*)filePath;
 + (BOOL)chirstmasActivity;

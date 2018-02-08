@@ -24,6 +24,9 @@
 #import "IMBDevicePageFolderModel.h"
 #import "IMBDetailViewControler.h"
 #import "IMBSystemCollectionViewController.h"
+#import "LoadingView.h"
+#import "IMBStackBox.h"
+#import <objc/runtime.h>
 
 
 static CGFloat const rowH = 40.0f;
@@ -38,6 +41,7 @@ static CGFloat const labelY = 10.0f;
     NSArray *_headerTitleArr;
     NSArray *_folderNameArray;
     IMBDetailViewControler *_detailVc;
+    LoadingView *_loadingView;
     
     
     IBOutlet NSView *_toolMenuView;
@@ -99,6 +103,10 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)setup {
+    [self addNotis];
+    
+    
+    
     if (_opQueue) {
         [_opQueue release];
         _opQueue = nil;
@@ -278,6 +286,9 @@ static CGFloat const labelY = 10.0f;
  *  设置view
  */
 - (void)setupView {
+    if (_rootBox) {
+        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
     [_rootBox setContentView:_scrollView];
     NSInteger count = _tableView.tableColumns.count;
     for (NSInteger i = 0; i < count; i++) {
@@ -308,9 +319,20 @@ static CGFloat const labelY = 10.0f;
     }
 }
 
+
+- (void)addNotis {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLoadingAnim:) name:IMBDevicePageStartLoadingAnimNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopLoadingAnim:) name:IMBDevicePageStopLoadingAnimNoti object:nil];
+}
+
+- (void)removeNotis {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageStartLoadingAnimNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageStopLoadingAnimNoti object:nil];
+}
 -(void)dealloc {
     
     [self cleanMemory];
+    [self removeNotis];
     [_systemCollectionViewController release];
     _systemCollectionViewController = nil;
     [super dealloc];
@@ -381,12 +403,15 @@ static CGFloat const labelY = 10.0f;
             [_detailVc.folderModel release];
             _detailVc.folderModel = nil;
         }
+        _detailVc.iPod = [_iPod retain];
+        
         _detailVc.folderModel = [model retain];
-        [_rootBox setContentView:_detailVc.view];
+        [_rootBox pushView:_detailVc.view];
         _title.stringValue = model.name;
     }else if (rowNumber == 4) {
+        [_backBtn setHidden:NO];
          _systemCollectionViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
-        [_rootBox setContentView:_systemCollectionViewController.view];
+        [_rootBox pushView:_systemCollectionViewController.view];
     }
 }
 
@@ -462,7 +487,7 @@ static CGFloat const labelY = 10.0f;
 #pragma mark -- 按钮点击
 
 - (IBAction)backClicked:(NSButton *)sender {
-    [_rootBox setContentView:_scrollView];
+    [_rootBox popView];
     [_backBtn setHidden:YES];
     [_toolMenuView setHidden:YES];
     if (_detailVc) {
@@ -493,4 +518,34 @@ static CGFloat const labelY = 10.0f;
     information = nil;
 }
 
+- (IBAction)deleteBtnClicked:(NSButton *)sender {
+     IMBInformation *information = [_information retain];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
+    [information release];
+    information = nil;
+}
+
+#pragma mark -- 通知
+- (void)startLoadingAnim:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (![key isEqualToString:_iPod.uniqueKey]) return;
+    
+    _backBtn.enabled = NO;
+    _loadingView = [[LoadingView alloc] initWithFrame:_rootBox.bounds];
+    _loadingView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    _loadingView.wantsLayer = YES;
+    [_rootBox pushView:_loadingView];
+    [_loadingView startAnimation];
+}
+- (void)stopLoadingAnim:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (![key isEqualToString:_iPod.uniqueKey]) return;
+    
+    _backBtn.enabled = YES;
+    [_loadingView endAnimation];
+    [_rootBox popView];
+    [_loadingView release];
+    _loadingView = nil;
+    
+}
 @end

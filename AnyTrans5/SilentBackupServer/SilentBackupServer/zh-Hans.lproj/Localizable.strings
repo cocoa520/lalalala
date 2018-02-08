@@ -1,0 +1,30 @@
+/* 
+  File.strings
+  SilentBackupServer
+
+  Created by iMobie on 10/20/17.
+  Copyright (c) 2017 iMobie. All rights reserved.
+*/
+"MSG_Size_MB" = "MB";
+"MSG_Size_GB" = "GB";
+"MSG_Size_KB" = "KB";
+"MSG_Size_B" = "B";
+
+//1.开始备份：
+"Backup_Start" = "Backing up your \"%@\" via Wi-Fi. Now, it already completed %d%%.";
+//2.备份失败：
+"Backup_Error" = "An error occurred when backing up your \"%@\". Error code \"%d\".";
+
+//3.备份完成:
+//a.开启AnyTrans的时候就只提示备份完成:
+"Backup_Complete" = "Back up \"%@\" completed.";
+
+//b.没有开启AnyTrans的时候提示：
+//"Backup_Complete" = "Back up \"%@\" completed.";----title 用这句
+"Backup_Complete_Limite1" = "Your are using the free version of Air Backup, which only allows you to back up %@ data.To remove all limitations, please upgrade to the full version of AnyTrans to enjoy an unlimited backup service,lifetime free upgrades with priority support.";
+
+//c.超过备份限制：
+"Backup_Complete_Limite2" = "You have run out of your backup storage. To continue backing up your device data, please upgrade to the full version of Air Backup to enjoy an unlimited backup service, lifetime free upgrades with priority support.";
+
+//剩余电量提醒
+"Backup_Electricity_Reminder" = "剩余电量不足";

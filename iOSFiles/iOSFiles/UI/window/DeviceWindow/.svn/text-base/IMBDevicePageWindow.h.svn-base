@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IMBLackCornerView.h"
 #import "IMBSystemCollectionViewController.h"
-@class IMBiPod;
+@class IMBiPod,IMBStackBox;
 
 
 @interface IMBDevicePageWindow : NSWindowController
@@ -17,7 +17,7 @@
     IBOutlet IMBLackCornerView *_topView;
     IMBiPod *_iPod;
     IBOutlet NSTextField *_title;
-    IBOutlet NSBox *_rootBox;
+    IBOutlet IMBStackBox *_rootBox;
     IMBSystemCollectionViewController *_systemCollectionViewController;
 }
 

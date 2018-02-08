@@ -513,7 +513,7 @@
     //Todo这是什么东东呢
     //??DriveInfo driveRoot = null;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_CVT_PROGRESS_TRANSFER object:[NSString stringWithFormat:CustomLocalizedString(@"ImportSync_id_13",nil),[mediaFile.path lastPathComponent]] userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_CVT_PROGRESS_TRANSFER object:[NSString stringWithFormat:@"Converting %@",[mediaFile.path lastPathComponent]] userInfo:nil];
     
     /*
      if (EncodeTotalProgressEvent != null)
@@ -612,7 +612,7 @@
     if (itemPercentage >100) {
         itemPercentage = 100;
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_CVT_PROGRESS_TRANSFER object:[[NSString stringWithFormat:CustomLocalizedString(@"ImportSync_id_13", nil),mediaName] stringByAppendingString:[NSString stringWithFormat:@"%d%%",itemPercentage]]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_CVT_PROGRESS_TRANSFER object:[[NSString stringWithFormat:@"Converting %@",mediaName] stringByAppendingString:[NSString stringWithFormat:@"%d%%",itemPercentage]]];
 }
 
 /// 单个文件转换的结束处理
@@ -657,7 +657,7 @@
             [_outputCvtMediaList addObject:encodedMedia];
         }
     } else {
-        [[IMBTransferError singleton] addAnErrorWithErrorName:[encodedMedia.encodedMediaPath lastPathComponent] WithErrorReson:CustomLocalizedString(@"Ex_Op_ConvertFail_File", nil)];
+        [[IMBTransferError singleton] addAnErrorWithErrorName:[encodedMedia.encodedMediaPath lastPathComponent] WithErrorReson:@"Failed to convert file format."];
         _faildCount += 1;
         if ([fm fileExistsAtPath:encodedMedia.encodedMediaPath]) {
             [fm removeItemAtPath:encodedMedia.encodedMediaPath error:nil];

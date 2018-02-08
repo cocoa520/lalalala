@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class IMBDevicePageFolderModel;
+@class IMBDevicePageFolderModel,IMBiPod;
 
 
 @interface IMBDetailViewControler : NSViewController
@@ -15,8 +15,10 @@
 {
     @private
     IMBDevicePageFolderModel *_folderModel;
+    IMBiPod *_iPod;
 }
 
 @property(nonatomic, retain)IMBDevicePageFolderModel *folderModel;
+@property(nonatomic, retain)IMBiPod *iPod;
 
 @end

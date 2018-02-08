@@ -56,7 +56,7 @@
 @property (nonatomic, assign) int column;
 
 - (void)setListener:(id<IMBImageRefreshCollectionListener>)listener;
-
+- (void)setSelectionIndexes:(NSIndexSet *)indexes;
 //- (void) _selectWithEvent: (NSEvent *)theEvent index: (NSUInteger)index;
 - (NSInteger) _indexAtPoint: (NSPoint)point;
 //- (BOOL) _startDragOperationWithEvent: (NSEvent*)event

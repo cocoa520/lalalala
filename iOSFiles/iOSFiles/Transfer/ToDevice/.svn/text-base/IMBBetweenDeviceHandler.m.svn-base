@@ -669,7 +669,7 @@
 
 - (void)startProgress{
     if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileStart:)]) {
-        [_transferDelegate transferPrepareFileStart:CustomLocalizedString(@"iCloud_id_10", nil)];
+        [_transferDelegate transferPrepareFileStart:@"Verifying..."];
     }
     if (_isAll) {
         [self filterToNoRepeatItems];
@@ -722,7 +722,7 @@
     }
     if (_toDeviceBookArr.count > 0) {
         if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileStart:)]) {
-            [_transferDelegate transferPrepareFileStart:CustomLocalizedString(@"ImportSync_id_18", nil)];
+            [_transferDelegate transferPrepareFileStart:@"Transferring Books"];
         }
         _bookTransProgress = [[IMBBookToDevice alloc] initWithSrcIpod:_srcIpod desIpod:_ipod bookList:_toDeviceBookArr Delegate:_deviceTransfer];
         if ([_bookTransProgress prepareData]) {
