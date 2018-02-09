@@ -100,6 +100,16 @@
                                     <action selector="deleteBtnClicked:" target="-2" id="DKs-KI-Dr7"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-mb-be3">
+                                <rect key="frame" x="158" y="3" width="46" height="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tool_todevice_normal" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L9M-z7-FxA">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toDeviceBtnClicked:" target="-2" id="mM6-Qf-nW4"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </customView>
                 </subviews>
@@ -186,6 +196,7 @@
         <image name="tool_back_normal" width="30" height="22"/>
         <image name="tool_delete_normal" width="36" height="22"/>
         <image name="tool_refresh_normal" width="36" height="22"/>
+        <image name="tool_todevice_normal" width="36" height="22"/>
         <image name="tool_tomac_normal" width="36" height="22"/>
     </resources>
 </document>

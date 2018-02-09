@@ -14,9 +14,13 @@ NSString * const IMBDevicePageRefreshClickedNoti = @"IMBDevicePageRefreshClicked
 NSString * const IMBDevicePageToMacClickedNoti = @"IMBDevicePageToMacClickedNoti";
 NSString * const IMBDevicePageAddToDeviceClickedNoti = @"IMBDevicePageAddToDeviceClickedNoti";
 NSString * const IMBDevicePageDeleteClickedNoti = @"IMBDevicePageDeleteClickedNoti";
+NSString * const IMBDevicePageToDeviceClickedNoti = @"IMBDevicePageToDeviceClickedNoti";
 
 NSString * const IMBDevicePageStartLoadingAnimNoti = @"IMBDevicePageStartLoadingAnimNoti";
 NSString * const IMBDevicePageStopLoadingAnimNoti = @"IMBDevicePageStopLoadingAnimNoti";
+
+NSString * const IMBDevicePageShowToolbarNoti = @"IMBDevicePageShowToolbarNoti";
+NSString * const IMBDevicePageHideToolbarNoti = @"IMBDevicePageHideToolbarNoti";
 
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
 NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";

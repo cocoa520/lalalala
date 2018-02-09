@@ -22,6 +22,9 @@
 #import "IMBStackBox.h"
 #import <objc/runtime.h>
 #import "LoadingView.h"
+#import "IMBDeviceConnection.h"
+#import "IMBBetweenDeviceHandler.h"
+#import "IMBCategoryInfoModel.h"
 
 
 
@@ -75,6 +78,12 @@ static CGFloat const labelY = 10.0f;
     _selectedIndexes = nil;
     _scrollView.hasHorizontalScroller = NO;
     
+    
+    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
+    [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
+    [_tableView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType,NSFilenamesPboardType,nil]];
+    
+    [_tableView setVerticalMotionCanBeginDrag:YES];
     _tableView.allowsMultipleSelection = YES;
     [_tableView setTarget:self];
     [_tableView setDoubleAction:@selector(tableViewDoubleClicked:)];
@@ -152,6 +161,16 @@ static CGFloat const labelY = 10.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMacClicked:) name:IMBDevicePageToMacClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToDeviceClicked:) name:IMBDevicePageAddToDeviceClickedNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteClicked:) name:IMBDevicePageDeleteClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toDeviceClicked:) name:IMBDevicePageToDeviceClickedNoti object:nil];
+    
+}
+
+- (void)removeNotis {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToMacClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageAddToDeviceClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageDeleteClickedNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToDeviceClickedNoti object:nil];
 }
 
 - (void)refreshClicked:(NSNotification *)noti {
@@ -160,6 +179,10 @@ static CGFloat const labelY = 10.0f;
 //    if (!information) return;
 //    if (![information.ipod.uniqueKey isEqualToString:_iPod.uniqueKey]) return;
     
+    [self refreshWithInfo:information];
+}
+
+- (void)refreshWithInfo:(IMBInformation *)information {
     if (_folderModel) {
         NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
         switch (_folderModel.idx) {
@@ -229,7 +252,6 @@ static CGFloat const labelY = 10.0f;
         }
     }
 }
-
 - (void)toMacClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
     if (![self canContnue:information]) return;
@@ -288,6 +310,35 @@ static CGFloat const labelY = 10.0f;
         {
             _category = Category_PhotoLibrary;
             [self deleteSettingsWithInformation:[information.ipod retain]];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)toDeviceClicked:(NSNotification *)noti {
+    IMBInformation *information = [noti object];
+    if (![self canContnue:information]) return;
+    
+    switch (_folderModel.idx) {
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        {
+            _category = Category_PhotoStream;
+            [self toDeviceSettingsWithInformation:information];
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            _category = Category_PhotoLibrary;
+            [self toDeviceSettingsWithInformation:information];
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        {
+            _category = Category_CameraRoll;
+            [self toDeviceSettingsWithInformation:information];
         }
             break;
             
@@ -355,11 +406,11 @@ static CGFloat const labelY = 10.0f;
                 }
                 
                 IMBPhotoEntity *albumEntity = [[IMBPhotoEntity alloc] init];
-                albumEntity.albumZpk = 45;
-                albumEntity.photoCounts = 5;
-                albumEntity.albumKind = 1550;
+                albumEntity.albumZpk = 46;
+                albumEntity.photoCounts = 1;
+                albumEntity.albumKind = 1551;
                 albumEntity.albumTitle = @"From iOSFiles";
-                albumEntity.albumType = SyncAlbum;
+                albumEntity.albumType = CreateAlbum;
                 albumEntity.photoType = CommonType;
                 _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:information.ipod.uniqueKey importFiles:paths CategoryNodesEnum:_category photoAlbum:albumEntity playlistID:0 delegate:self];
                 [_baseTransfer startTransfer];
@@ -370,6 +421,36 @@ static CGFloat const labelY = 10.0f;
             }];
         }
     }];
+}
+
+- (void)toDeviceSettingsWithInformation:(IMBInformation *)information {
+    IMBDeviceConnection *conn = [IMBDeviceConnection singleton];
+    IMBiPod *desIpod = nil;
+    for (IMBiPod *ipod in conn.alliPods) {
+        if (![ipod.uniqueKey isEqualToString:information.ipod.uniqueKey]) {
+            desIpod = ipod;
+            break;
+        }
+    }
+    if (desIpod.infoLoadFinished) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSMutableArray *selectAry = [NSMutableArray array];
+            [_selectedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                IMBPhotoEntity *pe = [_folderModel.subPhotoArray objectAtIndex:idx];
+                [selectAry addObject:pe];
+            }];
+            IMBCategoryInfoModel *model = [[IMBCategoryInfoModel alloc] init];
+            model.categoryNodes = _category;
+            _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+            [_baseTransfer startTransfer];
+        });
+        
+    }else {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
+        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            
+        }];
+    }
 }
 
 - (void)deleteSettingsWithInformation:(IMBiPod *)iPod {
@@ -415,10 +496,119 @@ static CGFloat const labelY = 10.0f;
 }
 
 #pragma mark -- NSTableViewDelegate,NSTableViewDataSource
+#pragma mark -- drag and drop
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    return YES;
+}
+
+- (BOOL)canDragRowsWithIndexes:(NSIndexSet *)rowIndexes atPoint:(NSPoint)mouseDownPoint {
+    return YES;
+}
+
+- (NSImage *)dragImageForRowsWithIndexes:(NSIndexSet *)dragRows tableColumns:(NSArray<NSTableColumn *> *)tableColumns event:(NSEvent *)dragEvent offset:(NSPointPointer)dragImageOffset {
+    switch (_folderModel.idx) {
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            IMBPhotoEntity *photo = [[_folderModel.subPhotoArray objectAtIndex:dragRows.firstIndex] retain];
+            NSImage *img = [photo.image retain];
+            [photo release];
+            photo = nil;
+            return img;
+        }
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
+- (void)tableView:(NSTableView *)tableView updateDraggingItemsForDrag:(id<NSDraggingInfo>)draggingInfo {
+    
+}
+
+
+//拖文件swf进tableview
+-(NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation{
+    
+//    NSPasteboard *pasteBoard = [info draggingPasteboard];
+//    
+//    if ([[pasteBoard types]containsObject:NSFilenamesPboardType]) {
+//        
+//        NSString *supportFormat = @"swf"; //拉进来的文件只能为swf格式文件；
+//        
+//        NSArray *arrayURL = [pasteBoard propertyListForType:NSFilenamesPboardType];//将剪贴板上的url传进一个数组中
+//        
+//        for ( NSURL *URL in arrayURL) { //遍历
+//            
+//            if ([supportFormat containsString:[URL pathExtension]]) {
+//    
+                return NSDragOperationCopy;//是swf文件，高亮状态；
+//            }
+//        }
+//    }
+////
+//    return NSDragOperationNone;//否则之；
+    
+}
+
+-(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation{
+    
+    NSPasteboard *pastboard = [info draggingPasteboard];
+    NSArray *boarditemsArray = [pastboard pasteboardItems];
+    NSMutableArray *itemArray = [NSMutableArray array];
+    for (NSPasteboardItem *item in boarditemsArray) {
+        NSString *urlPath = [item stringForType:@"public.file-url"];
+        NSURL *url = [NSURL URLWithString:urlPath];
+        NSString *path = [url relativePath];
+        if (path == nil) {
+            return NO;
+        }
+
+            [itemArray addObject:path];
+        
+    }
+//    NSPasteboard *pasteBoard = [info draggingPasteboard];
+//    
+//    if ([[pasteBoard types] containsObject:NSFilenamesPboardType]) {
+//        
+//        NSArray *arrayURL = [pasteBoard propertyListForType:NSFilenamesPboardType];
+//        
+//        for (NSString *strURL in arrayURL) {
+//            
+//            NSURL *URL = [[NSURL alloc] initWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//            
+////            [array_swf_url insertObject:URL atIndex:row];//将拉进来的swf格式文件放在array_swf_url可变数组中；
+//            
+//        }
+//        
+        return YES;
+//    }
+//    return NO;
+}
+
+- (NSArray *)tableView:(NSTableView *)tableView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedRowsWithIndexes:(NSIndexSet *)indexSet {
+    NSArray *namesArray = nil;
+    //获取目的url
+    BOOL iconHide = NO;
+    NSString *url = [dropDestination relativePath];
+    //此处调用导出方法
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:indexSet,@"indexSet",url,@"url",tableView,@"tableView", nil];
+//    [self performSelector:@selector(delayTableViewdragToMac:) withObject:dic afterDelay:0.1];
+    iconHide = YES;
+    return namesArray;
+}
+#pragma mark -- NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     
     if (!_folderModel) return 0;
+    if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhotoCameraRoll || _folderModel.idx == IMBDevicePageWindowFolderEnumPhotoStream || _folderModel.idx == IMBDevicePageWindowFolderEnumPhotoLibrary) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageShowToolbarNoti object:_iPod.uniqueKey];
+    }else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageHideToolbarNoti object:_iPod.uniqueKey];
+    }
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhoto://photo
             return _folderModel.photoArray.count;
@@ -477,7 +667,121 @@ static CGFloat const labelY = 10.0f;
     
     return proposedSelectionIndexes;
 }
-
+/*
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    if (!_folderModel) return nil;
+    NSString *strIdt = [tableColumn identifier];
+    NSTableCellView *aView = [tableView makeViewWithIdentifier:strIdt owner:self];
+    if (!aView)
+        aView = [[NSTableCellView alloc] initWithFrame:CGRectMake(0, 0, tableColumn.width, rowH)];
+    else
+        for (NSView *view in aView.subviews)[view removeFromSuperview];
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, labelY, tableColumn.width, rowH - 2*labelY)];
+    
+    textField.font = [NSFont systemFontOfSize:12.0f];
+    textField.alignment = NSCenterTextAlignment;
+    textField.drawsBackground = NO;
+    textField.bordered = NO;
+    textField.focusRingType = NSFocusRingTypeNone;
+    textField.editable = NO;
+    [aView addSubview:textField];
+    
+    
+    
+    switch (_folderModel.idx) {
+        case IMBDevicePageWindowFolderEnumPhoto://photo
+        {
+            if ([strIdt isEqualToString:@"Name"]) {
+                switch (row) {
+                    case 0:
+                    {
+                        textField.stringValue = @"Camera Roll";
+                        
+                    }
+                        break;
+                    case 1:
+                    {
+                        textField.stringValue = @"Photo Stream";
+                    }
+                        break;
+                    case 2:
+                    {
+                        textField.stringValue = @"Photo Library";
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }else {
+                NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
+                textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
+            }
+            
+            
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            IMBPhotoEntity *photo = [_folderModel.subPhotoArray objectAtIndex:row];
+            if ([strIdt isEqualToString:@"Name"]) {
+                textField.stringValue = photo.photoName;
+            }else if ([strIdt isEqualToString:@"Resolution"]) {
+                NSString *resolutionStr = [NSString stringWithFormat:@"%d*%d",photo.photoWidth,photo.photoHeight];
+                textField.stringValue = resolutionStr ? resolutionStr : @"-";
+            }else if ([strIdt isEqualToString:@"Size"]) {
+                textField.stringValue = [StringHelper getFileSizeString:photo.photoSize reserved:2];
+            }
+            
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumBook://book
+        {
+            IMBBookEntity *book = [_folderModel.booksArray objectAtIndex:row];
+            if ([strIdt isEqualToString:@"Name"]) {
+                textField.stringValue = book.bookName;
+            }else if ([strIdt isEqualToString:@"Size"]) {
+                textField.stringValue = [StringHelper getFileSizeString:book.size reserved:2];
+            }
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumMedia://media
+        case IMBDevicePageWindowFolderEnumVideo://video
+        {
+            IMBTrack *track = [_folderModel.trackArray objectAtIndex:row];
+            if ([strIdt isEqualToString:@"Name"]) {
+                textField.stringValue = track.title;
+            }else if ([strIdt isEqualToString:@"Time"]) {
+                textField.stringValue = [[StringHelper getTimeString:track.length] stringByAppendingString:@" "];//@"-";
+            }else if ([strIdt isEqualToString:@"Size"]) {
+                textField.stringValue = [StringHelper getFileSizeString:track.fileSize reserved:2];
+            }
+        }
+        case IMBDevicePageWindowFolderEnumOther://other
+            break;
+        case IMBDevicePageWindowFolderEnumApps://apps
+        {
+            IMBAppEntity *app = [_folderModel.appsArray objectAtIndex:row];
+            if ([strIdt isEqualToString:@"Name"]) {
+                textField.stringValue = app.appName;
+            }else if ([strIdt isEqualToString:@"Version"]) {
+                textField.stringValue = app.version;
+            }else if ([strIdt isEqualToString:@"Size"]) {
+                textField.stringValue = [StringHelper getFileSizeString:app.appSize reserved:2];
+            }else if ([strIdt isEqualToString:@"DocumentSize"]) {
+                textField.stringValue = [StringHelper getFileSizeString:app.documentSize reserved:2];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return textField.stringValue;
+}
+*/
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (!_folderModel) return nil;
     NSString *strIdt = [tableColumn identifier];
@@ -592,6 +896,7 @@ static CGFloat const labelY = 10.0f;
     return aView;
 }
 
+#pragma mark -- 销毁
 - (void)dealloc {
     [_folderModel release];
     _folderModel = nil;
@@ -601,13 +906,11 @@ static CGFloat const labelY = 10.0f;
         _selectedIndexes = nil;
     }
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToMacClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageAddToDeviceClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageDeleteClickedNoti object:nil];
+    [self removeNotis];
     
     [super dealloc];
 }
+
 
 #pragma mark -- transferDelegate
 //传输准备进度开始
@@ -642,15 +945,21 @@ static CGFloat const labelY = 10.0f;
 }
 //全部传输成功
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",successCount,totalCount];
-            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-                
-            }];
-        });
-    });
+    [self setCompletionWithSuccessCount:successCount totalCount:totalCount title:@"Transfer Completed"];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",successCount,totalCount];
+//            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+//                if (returnCode == 1) {
+//                    IMBInformation *info = [[IMBInformation alloc] initWithiPod:_iPod];
+//                    [self refreshWithInfo:info];
+//                    [info release];
+//                    info = nil;
+//                }
+//            }];
+//        });
+//    });
     
 }
 
@@ -680,12 +989,37 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)setDeleteComplete:(int)success totalCount:(int)totalCount {
+    [self setCompletionWithSuccessCount:success totalCount:totalCount title:@"Delete Completed"];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            NSAlert *alert = [NSAlert alertWithMessageText:@"Delete Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",success,totalCount];
+//            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+//                if (returnCode == 1) {
+//                    IMBInformation *info = [[IMBInformation alloc] initWithiPod:_iPod];
+//                    [self refreshWithInfo:info];
+//                    [info release];
+//                    info = nil;
+//                }
+//            }];
+//        });
+//        
+//        
+//    });
+}
+
+- (void)setCompletionWithSuccessCount:(int)successCount totalCount:(int)totalCount title:(NSString *)title {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Delete Completed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d, please click refresh",success,totalCount];
+            NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d,we're going to refresh again",successCount,totalCount];
             [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
-                
+                if (returnCode == 1) {
+                    IMBInformation *info = [[IMBInformation alloc] initWithiPod:_iPod];
+                    [self refreshWithInfo:info];
+                    [info release];
+                    info = nil;
+                }
             }];
         });
         

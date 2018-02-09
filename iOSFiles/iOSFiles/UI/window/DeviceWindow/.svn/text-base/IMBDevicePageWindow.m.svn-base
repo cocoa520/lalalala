@@ -146,7 +146,10 @@ static CGFloat const labelY = 10.0f;
     [_opQueue addOperationWithBlock:^{
         if (_information) {
             //music
-            NSArray *trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Music]]];
+            NSArray *audioArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Audio],
+                                   nil];
+            
+            NSArray *trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:audioArray]];
             
             [self setDataArrayWithType:@"Media" handle:^(IMBDevicePageFolderModel *model) {
                 model.trackArray = [trackArray retain];
@@ -157,7 +160,12 @@ static CGFloat const labelY = 10.0f;
                 IMBFLog(@"%@",track);
             }
             //video
-            trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:[IMBCommonEnum categoryNodeToMediaTyps:Category_Movies]]];
+            NSArray *videoArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Video],
+                                   [NSNumber numberWithInt:(int)TVShow],
+                                   [NSNumber numberWithInt:(int)MusicVideo],
+                                   [NSNumber numberWithInt:(int)HomeVideo],
+                                   nil];
+            trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:videoArray]];
             
             [self setDataArrayWithType:@"Video" handle:^(IMBDevicePageFolderModel *model) {
                 model.trackArray = [trackArray retain];
@@ -182,6 +190,9 @@ static CGFloat const labelY = 10.0f;
             [_information refreshPhotoStream];
             [_information refreshPhotoLibrary];
             [_information refreshVideoAlbum];
+            
+            [_information.ipod setInfoLoadFinished:YES];
+            
             NSMutableArray *photoArray = [[NSMutableArray alloc] init];
             NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
 //            NSArray *ary = [_information photovideoArray];
@@ -295,6 +306,8 @@ static CGFloat const labelY = 10.0f;
         [_tableView removeTableColumn:_tableView.tableColumns[0]];
     }
     _scrollView.hasHorizontalScroller = NO;
+    //注册该表的拖动类型
+    
     [_tableView setTarget:self];
     [_tableView setDoubleAction:@selector(tableViewDoubleClicked:)];
     
@@ -323,11 +336,15 @@ static CGFloat const labelY = 10.0f;
 - (void)addNotis {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLoadingAnim:) name:IMBDevicePageStartLoadingAnimNoti object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopLoadingAnim:) name:IMBDevicePageStopLoadingAnimNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showToolbar:) name:IMBDevicePageShowToolbarNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideToolbar:) name:IMBDevicePageHideToolbarNoti object:nil];
 }
 
 - (void)removeNotis {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageStartLoadingAnimNoti object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageStopLoadingAnimNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageShowToolbarNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageHideToolbarNoti object:nil];
 }
 -(void)dealloc {
     
@@ -397,7 +414,7 @@ static CGFloat const labelY = 10.0f;
     if (model && model.size) {
         //显示详情
         [_backBtn setHidden:NO];
-        [_toolMenuView setHidden:NO];
+//        [_toolMenuView setHidden:NO];
         _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
         if (_detailVc.folderModel) {
             [_detailVc.folderModel release];
@@ -524,6 +541,12 @@ static CGFloat const labelY = 10.0f;
     [information release];
     information = nil;
 }
+- (IBAction)toDeviceBtnClicked:(NSButton *)sender {
+    IMBInformation *information = [_information retain];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
+    [information release];
+    information = nil;
+}
 
 #pragma mark -- 通知
 - (void)startLoadingAnim:(NSNotification *)noti {
@@ -531,11 +554,13 @@ static CGFloat const labelY = 10.0f;
     if (![key isEqualToString:_iPod.uniqueKey]) return;
     
     _backBtn.enabled = NO;
-    _loadingView = [[LoadingView alloc] initWithFrame:_rootBox.bounds];
-    _loadingView.layer.backgroundColor = [NSColor whiteColor].CGColor;
-    _loadingView.wantsLayer = YES;
-    [_rootBox pushView:_loadingView];
-    [_loadingView startAnimation];
+    if (!_loadingView) {
+        _loadingView = [[LoadingView alloc] initWithFrame:_rootBox.bounds];
+        _loadingView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+        _loadingView.wantsLayer = YES;
+        [_rootBox pushView:_loadingView];
+        [_loadingView startAnimation];
+    }
 }
 - (void)stopLoadingAnim:(NSNotification *)noti {
     NSString *key = [noti object];
@@ -546,6 +571,21 @@ static CGFloat const labelY = 10.0f;
     [_rootBox popView];
     [_loadingView release];
     _loadingView = nil;
+    
+}
+
+- (void)showToolbar:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (![key isEqualToString:_iPod.uniqueKey]) return;
+    
+    [_toolMenuView setHidden:NO];
+}
+
+- (void)hideToolbar:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (![key isEqualToString:_iPod.uniqueKey]) return;
+    
+    [_toolMenuView setHidden:YES];
     
 }
 @end

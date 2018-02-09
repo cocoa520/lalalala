@@ -15,10 +15,13 @@ APPKIT_EXTERN NSString * const IMBDevicePageRefreshClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageToMacClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageAddToDeviceClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageDeleteClickedNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageToDeviceClickedNoti;
 
 APPKIT_EXTERN NSString * const IMBDevicePageStartLoadingAnimNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageStopLoadingAnimNoti;
 
+APPKIT_EXTERN NSString * const IMBDevicePageShowToolbarNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageHideToolbarNoti;
 
 APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;
 APPKIT_EXTERN NSString * const IMBDevicePageFolderNamesPlist;
