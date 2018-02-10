@@ -707,7 +707,14 @@ static int fileCount = 0;
     }
     
     if ([appInfoDic objectForKey:@"CFBundleShortVersionString"] != nil) {
-        appInfo.version = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"] ];
+        NSString *vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
+        if (![vStr contains:@"."]) {
+            vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"]];
+            if (![vStr contains:@"."]) {
+                vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
+            }
+        }
+        appInfo.version = vStr;
     } else if ([appInfoDic objectForKey:@"CFBundleVersion"] != nil) {
         appInfo.version = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"] ];
     }

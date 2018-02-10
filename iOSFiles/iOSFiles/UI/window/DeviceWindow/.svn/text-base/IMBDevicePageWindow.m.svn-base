@@ -26,6 +26,10 @@
 #import "IMBSystemCollectionViewController.h"
 #import "LoadingView.h"
 #import "IMBStackBox.h"
+#import "IMBPhotoCategoryController.h"
+#import "IMBToolBarView.h"
+
+
 #import <objc/runtime.h>
 
 
@@ -44,10 +48,11 @@ static CGFloat const labelY = 10.0f;
     LoadingView *_loadingView;
     
     
-    IBOutlet NSView *_toolMenuView;
+    IBOutlet IMBToolBarView *_toolMenuView;
     IBOutlet NSButton *_backBtn;
     IBOutlet NSScrollView *_scrollView;
     IBOutlet NSTableView *_tableView;
+    IMBPhotoCategoryController *_pcVc;
 }
 @end
 
@@ -300,6 +305,10 @@ static CGFloat const labelY = 10.0f;
     if (_rootBox) {
         objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
+    if (_toolMenuView) {
+        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        _toolMenuView.information = [_information retain];
+    }
     [_rootBox setContentView:_scrollView];
     NSInteger count = _tableView.tableColumns.count;
     for (NSInteger i = 0; i < count; i++) {
@@ -393,15 +402,15 @@ static CGFloat const labelY = 10.0f;
         _dataArray = nil;
     }
     
-//    if (_headerTitleArr) {
-//        [_headerTitleArr release];
-//        _headerTitleArr = nil;
-//    }
-//    if (_tableView) {
-//        [_tableView endUpdates];
-//        [_tableView release];
-//        _tableView = nil;
-//    }
+    if (_pcVc) {
+        [_pcVc release];
+        _pcVc = nil;
+    }
+    
+    if (_detailVc) {
+        [_detailVc release];
+        _detailVc = nil;
+    }
 }
 #pragma mark --  NSTabViewDelegate,NSTableViewDataSource
 
@@ -414,17 +423,33 @@ static CGFloat const labelY = 10.0f;
     if (model && model.size) {
         //显示详情
         [_backBtn setHidden:NO];
-//        [_toolMenuView setHidden:NO];
-        _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
-        if (_detailVc.folderModel) {
-            [_detailVc.folderModel release];
-            _detailVc.folderModel = nil;
-        }
-        _detailVc.iPod = [_iPod retain];
-        
-        _detailVc.folderModel = [model retain];
-        [_rootBox pushView:_detailVc.view];
         _title.stringValue = model.name;
+        
+        if (model.idx == IMBDevicePageWindowFolderEnumPhoto) {
+            
+            if (_pcVc) {
+                [_pcVc release];
+                _pcVc = nil;
+            }
+            _pcVc = [[IMBPhotoCategoryController alloc] initWithNibName:@"IMBPhotoCategoryController" bundle:nil];
+            _pcVc.folderModel = [model retain];
+            _pcVc.iPod = [_iPod retain];
+            [_rootBox pushView:_pcVc.view];
+        }else {
+            if (_detailVc) {
+                [_detailVc release];
+                _detailVc = nil;
+            }
+            _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
+            if (_detailVc.folderModel) {
+                [_detailVc.folderModel release];
+                _detailVc.folderModel = nil;
+            }
+            _detailVc.iPod = [_iPod retain];
+            
+            _detailVc.folderModel = [model retain];
+            [_rootBox pushView:_detailVc.view];
+        }
     }else if (rowNumber == 4) {
         [_backBtn setHidden:NO];
          _systemCollectionViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
@@ -505,13 +530,13 @@ static CGFloat const labelY = 10.0f;
 
 - (IBAction)backClicked:(NSButton *)sender {
     [_rootBox popView];
-    [_backBtn setHidden:YES];
-    [_toolMenuView setHidden:YES];
-    if (_detailVc) {
-        [_detailVc release];
-        _detailVc = nil;
+    if ([_rootBox currentView] == _scrollView) {
+      [_backBtn setHidden:YES];
+        _title.stringValue = _iPod.deviceInfo.deviceName;
     }
-    _title.stringValue = _iPod.deviceInfo.deviceName;
+    [_toolMenuView setHidden:YES];
+    
+    
 }
 
 

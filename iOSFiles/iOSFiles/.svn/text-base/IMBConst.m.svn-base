@@ -31,5 +31,6 @@ NSString * const DetailVCHeaderTitlePhotoNamesPlist = @"DetailVCHeaderTitlePhoto
 NSString * const DetailVCHeaderTitleSubPhotoNamesPlist = @"DetailVCHeaderTitleSubPhotoNames.plist";
 
 char kIMBDevicePageRootBoxKey;
+char kIMBDevicePageToolBarViewKey;
 
 

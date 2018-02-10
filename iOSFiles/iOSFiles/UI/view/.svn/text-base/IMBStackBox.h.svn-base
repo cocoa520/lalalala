@@ -19,5 +19,6 @@
 - (void)pushView:(NSView *)view;
 - (void)popView;
 - (void)popToView:(NSView *)view;
+- (NSView *)currentView;
 
 @end

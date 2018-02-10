@@ -121,4 +121,11 @@
     [super setContentView:contentView];
     
 }
+
+- (NSView *)currentView {
+    if (_contentViewsArray.count) {
+        return [_contentViewsArray.lastObject retain];
+    }
+    return nil;
+}
 @end

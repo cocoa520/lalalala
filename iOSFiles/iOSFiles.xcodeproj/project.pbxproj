@@ -82,6 +82,8 @@
 		B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */; };
 		B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */; };
 		B95BD52320244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */; };
+		B962F130202E812600F83974 /* IMBPhotoCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */; };
+		B962F131202E812600F83974 /* IMBPhotoCategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */; };
 		B9655DBF20207D1D00FE2D92 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DBE20207D1D00FE2D92 /* libiconv.dylib */; };
 		B9655DC120207D3E00FE2D92 /* libSystem.B.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */; };
 		B9655DC320207D5500FE2D92 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DC220207D5500FE2D92 /* libcurl.dylib */; };
@@ -518,6 +520,7 @@
 		B9E73AE22028410F00E1BB3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9E73AE12028410F00E1BB3B /* Localizable.strings */; };
 		B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */; };
 		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
+		B9FA3DDF202EAAE0008353D4 /* IMBToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FA3DDE202EAAE0008353D4 /* IMBToolBarView.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
 		EE0FD0BF202C153800B29C11 /* ATHHostSync32.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE0FD0BC202C152B00B29C11 /* ATHHostSync32.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -786,6 +789,9 @@
 		B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleAppNames.plist; sourceTree = "<group>"; };
 		B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleBookNames.plist; sourceTree = "<group>"; };
 		B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitlePhotoNames.plist; sourceTree = "<group>"; };
+		B962F12D202E812600F83974 /* IMBPhotoCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoCategoryController.h; sourceTree = "<group>"; };
+		B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoCategoryController.m; sourceTree = "<group>"; };
+		B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPhotoCategoryController.xib; sourceTree = "<group>"; };
 		B9655DBE20207D1D00FE2D92 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		B9655DC020207D3E00FE2D92 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = usr/lib/libSystem.B.dylib; sourceTree = SDKROOT; };
 		B9655DC220207D5500FE2D92 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
@@ -1618,6 +1624,8 @@
 		B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
 		B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePageFolderModel.h; sourceTree = "<group>"; };
 		B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevicePageFolderModel.m; sourceTree = "<group>"; };
+		B9FA3DDD202EAAE0008353D4 /* IMBToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBToolBarView.h; sourceTree = "<group>"; };
+		B9FA3DDE202EAAE0008353D4 /* IMBToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBToolBarView.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
 		B9FBDE1B200D9C440004A995 /* IMBDeviceConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDeviceConnection.h; sourceTree = "<group>"; };
 		B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDeviceConnection.m; sourceTree = "<group>"; };
@@ -3461,6 +3469,8 @@
 				EE39AD09200CBD9700D084CE /* IMBWhiteView.m */,
 				B925AA1420297E670068E540 /* IMBStackBox.h */,
 				B925AA1520297E670068E540 /* IMBStackBox.m */,
+				B9FA3DDD202EAAE0008353D4 /* IMBToolBarView.h */,
+				B9FA3DDE202EAAE0008353D4 /* IMBToolBarView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3497,6 +3507,9 @@
 				B914C1A220241A7500B998AC /* IMBDetailViewControler.h */,
 				B914C1A320241A7500B998AC /* IMBDetailViewControler.m */,
 				B914C1A420241A7500B998AC /* IMBDetailViewControler.xib */,
+				B962F12D202E812600F83974 /* IMBPhotoCategoryController.h */,
+				B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */,
+				B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3735,6 +3748,7 @@
 				EEE447CF202AD4BF00221BE0 /* backup_advance2.png in Resources */,
 				B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */,
 				B9E73A072028038D00E1BB3B /* file.png in Resources */,
+				B962F131202E812600F83974 /* IMBPhotoCategoryController.xib in Resources */,
 				B9E73A182028038D00E1BB3B /* right_top2.png in Resources */,
 				EEE447D1202AD4BF00221BE0 /* backup_advance3.png in Resources */,
 				EEE447DF202AD53F00221BE0 /* backup_retreat_no.png in Resources */,
@@ -3978,6 +3992,7 @@
 				EE39AD23200CBD9700D084CE /* IMBWhiteView.m in Sources */,
 				EEE447BE202AA2EA00221BE0 /* IMBFolderOrFileTitleField.m in Sources */,
 				B9E73A562028054200E1BB3B /* IMBCvtMediaEncoding.m in Sources */,
+				B9FA3DDF202EAAE0008353D4 /* IMBToolBarView.m in Sources */,
 				B96563172021D2B000BD7FF5 /* File__Analyze_Streams_Finish.cpp in Sources */,
 				B96563732021D2B000BD7FF5 /* File_Lyrics3v2.cpp in Sources */,
 				B965637A2021D2B000BD7FF5 /* File_Eia608.cpp in Sources */,
@@ -4200,6 +4215,7 @@
 				B96564802021D47600BD7FF5 /* IMBArtworkListContainerHeader.m in Sources */,
 				B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */,
 				B9E73A012028038D00E1BB3B /* IMBBetweenDeviceHandler.m in Sources */,
+				B962F130202E812600F83974 /* IMBPhotoCategoryController.m in Sources */,
 				B96563A82021D2B000BD7FF5 /* Http_Utils.cpp in Sources */,
 				B96563512021D2B000BD7FF5 /* File_Mpeg4_Elements.cpp in Sources */,
 				B9E73AD120282FF500E1BB3B /* compress.c in Sources */,

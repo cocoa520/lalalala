@@ -25,6 +25,7 @@
 #import "IMBDeviceConnection.h"
 #import "IMBBetweenDeviceHandler.h"
 #import "IMBCategoryInfoModel.h"
+#import "IMBToolBarView.h"
 
 
 
@@ -46,7 +47,7 @@ static CGFloat const labelY = 10.0f;
     
     IMBStackBox *_rootBox;
     LoadingView *_loadingView;
-    
+    IMBToolBarView *_toolMenuView;
 }
 @end
 
@@ -73,17 +74,18 @@ static CGFloat const labelY = 10.0f;
 - (void)setupTableView {
     
     _rootBox = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey);
-    
+    _toolMenuView = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageToolBarViewKey);
     
     _selectedIndexes = nil;
     _scrollView.hasHorizontalScroller = NO;
     
-    
+    //设置拖拽
     [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
     [_tableView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
     [_tableView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType,NSFilenamesPboardType,nil]];
-    
     [_tableView setVerticalMotionCanBeginDrag:YES];
+    
+    [_tableView setAllowsColumnSelection:NO];
     _tableView.allowsMultipleSelection = YES;
     [_tableView setTarget:self];
     [_tableView setDoubleAction:@selector(tableViewDoubleClicked:)];
@@ -95,12 +97,23 @@ static CGFloat const labelY = 10.0f;
     NSString *path = @"";
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhoto://photo
-//            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleSubPhotoNamesPlist ofType:nil];
-//            break;
         case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
-        case IMBDevicePageWindowFolderEnumPhotoStream:
-        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            [_toolMenuView setHiddenIndexes:@[@(IMBToolBarViewEnumAddToDevice)]];
             path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitlePhotoNamesPlist ofType:nil];
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoStream:
+        {
+            [_toolMenuView setHiddenIndexes:@[@(IMBToolBarViewEnumAddToDevice),@(IMBToolBarViewEnumDelete)]];
+            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitlePhotoNamesPlist ofType:nil];
+        }
+            break;
+        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+        {
+            [_toolMenuView setHiddenIndexes:@[]];
+            path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitlePhotoNamesPlist ofType:nil];
+        }
             break;
         case IMBDevicePageWindowFolderEnumBook://book
             path = [[NSBundle mainBundle] pathForResource:DetailVCHeaderTitleBookNamesPlist ofType:nil];
@@ -130,7 +143,6 @@ static CGFloat const labelY = 10.0f;
             NSTableHeaderCell *cell = [[NSTableHeaderCell alloc] initTextCell:_headerTitleArr[i]];
             cell.alignment = NSCenterTextAlignment;
             NSTableColumn * column = [[NSTableColumn alloc] initWithIdentifier:_headerTitleArr[i]];
-            
             [column setHeaderCell:cell];
             [column setWidth:cW];
             [_tableView addTableColumn:column];
@@ -143,15 +155,14 @@ static CGFloat const labelY = 10.0f;
     NSInteger rowNumber = [_tableView clickedRow];
     NSLog(@"Double Clicked.%ld ",rowNumber);
     // ...
-    if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhoto) {
-        IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
-        subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
-        NSMutableArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
-        subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
-        _folderModel = subPhotoModel;
-//        [self setupTableView];
-        [_tableView reloadData];
-    }
+//    if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhoto) {
+//        IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
+//        subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
+//        NSMutableArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
+//        subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
+//        _folderModel = subPhotoModel;
+//        [_tableView reloadData];
+//    }
     
 }
 
@@ -188,15 +199,20 @@ static CGFloat const labelY = 10.0f;
         switch (_folderModel.idx) {
             case IMBDevicePageWindowFolderEnumPhotoStream:
             {
-                [_folderModel.subPhotoArray removeAllObjects];
+                if (_folderModel.subPhotoArray.count) {
+                    [_folderModel.subPhotoArray removeAllObjects];
+                }
+                
                 [_tableView reloadData];
                 [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
                     
                     [information refreshPhotoStream];
                     NSArray *photoArr = [information photostreamArray];
+                    if (photoArr.count) {
+                      [_folderModel.subPhotoArray addObjectsFromArray:photoArr];
+                    }
                     
-                    [_folderModel.subPhotoArray addObjectsFromArray:photoArr];
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
@@ -207,7 +223,9 @@ static CGFloat const labelY = 10.0f;
                 break;
             case IMBDevicePageWindowFolderEnumPhotoLibrary:
             {
-                [_folderModel.subPhotoArray removeAllObjects];
+                if (_folderModel.subPhotoArray.count) {
+                    [_folderModel.subPhotoArray removeAllObjects];
+                }
                 [_tableView reloadData];
                 [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
@@ -225,7 +243,9 @@ static CGFloat const labelY = 10.0f;
                 break;
             case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
             {
-                [_folderModel.subPhotoArray removeAllObjects];
+                if (_folderModel.subPhotoArray.count) {
+                    [_folderModel.subPhotoArray removeAllObjects];
+                }
                 [_tableView reloadData];
                 [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
                 [opQueue addOperationWithBlock:^{
@@ -255,7 +275,7 @@ static CGFloat const labelY = 10.0f;
 - (void)toMacClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
     if (![self canContnue:information]) return;
-//    if (!information) return;
+    
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoStream:
         {
@@ -286,7 +306,7 @@ static CGFloat const labelY = 10.0f;
 - (void)addToDeviceClicked:(NSNotification *)noti {
     IMBInformation *information = [noti object];
     if (![self canContnue:information]) return;
-//    if (!information) return;
+    
     
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoLibrary:
@@ -610,9 +630,6 @@ static CGFloat const labelY = 10.0f;
         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageHideToolbarNoti object:_iPod.uniqueKey];
     }
     switch (_folderModel.idx) {
-        case IMBDevicePageWindowFolderEnumPhoto://photo
-            return _folderModel.photoArray.count;
-            break;
         case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
         case IMBDevicePageWindowFolderEnumPhotoStream:
         case IMBDevicePageWindowFolderEnumPhotoLibrary:
@@ -648,9 +665,14 @@ static CGFloat const labelY = 10.0f;
     return NO;
 }
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
-    _selectedIndexes = nil;
+//    _selectedIndexes = nil;
+    
 }
-
+- (nullable NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row  {
+    NSCell *cell = [tableColumn dataCellForRow:row];
+    cell.alignment = NSCenterTextAlignment;
+    return cell;
+}
 - (NSIndexSet *)tableView:(NSTableView *)tableView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes {
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoStream:
@@ -667,7 +689,8 @@ static CGFloat const labelY = 10.0f;
     
     return proposedSelectionIndexes;
 }
-/*
+
+
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (!_folderModel) return nil;
     NSString *strIdt = [tableColumn identifier];
@@ -687,40 +710,7 @@ static CGFloat const labelY = 10.0f;
     [aView addSubview:textField];
     
     
-    
     switch (_folderModel.idx) {
-        case IMBDevicePageWindowFolderEnumPhoto://photo
-        {
-            if ([strIdt isEqualToString:@"Name"]) {
-                switch (row) {
-                    case 0:
-                    {
-                        textField.stringValue = @"Camera Roll";
-                        
-                    }
-                        break;
-                    case 1:
-                    {
-                        textField.stringValue = @"Photo Stream";
-                    }
-                        break;
-                    case 2:
-                    {
-                        textField.stringValue = @"Photo Library";
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
-            }else {
-                NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
-                textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
-            }
-            
-            
-        }
-            break;
         case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
         case IMBDevicePageWindowFolderEnumPhotoStream:
         case IMBDevicePageWindowFolderEnumPhotoLibrary:
@@ -781,7 +771,8 @@ static CGFloat const labelY = 10.0f;
     }
     return textField.stringValue;
 }
-*/
+
+/*
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (!_folderModel) return nil;
     NSString *strIdt = [tableColumn identifier];
@@ -803,38 +794,6 @@ static CGFloat const labelY = 10.0f;
     
     
     switch (_folderModel.idx) {
-        case IMBDevicePageWindowFolderEnumPhoto://photo
-        {
-            if ([strIdt isEqualToString:@"Name"]) {
-                switch (row) {
-                    case 0:
-                    {
-                        textField.stringValue = @"Camera Roll";
-                        
-                    }
-                        break;
-                    case 1:
-                    {
-                        textField.stringValue = @"Photo Stream";
-                    }
-                        break;
-                    case 2:
-                    {
-                        textField.stringValue = @"Photo Library";
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
-            }else {
-                NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
-                textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
-            }
-            
-            
-        }
-            break;
         case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
         case IMBDevicePageWindowFolderEnumPhotoStream:
         case IMBDevicePageWindowFolderEnumPhotoLibrary:
@@ -895,12 +854,16 @@ static CGFloat const labelY = 10.0f;
     }
     return aView;
 }
-
+*/
 #pragma mark -- 销毁
 - (void)dealloc {
     [_folderModel release];
     _folderModel = nil;
     
+    if (_iPod) {
+        [_iPod release];
+        _iPod = nil;
+    }
     if (_selectedIndexes) {
         [_selectedIndexes release];
         _selectedIndexes = nil;
