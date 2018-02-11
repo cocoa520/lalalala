@@ -28,11 +28,6 @@
 #import "IMBToolBarView.h"
 
 
-
-static CGFloat const rowH = 40.0f;
-static CGFloat const labelY = 10.0f;
-
-
 @interface IMBDetailViewControler ()<NSTableViewDelegate,NSTableViewDataSource,TransferDelegate>
 {
     @private
@@ -56,6 +51,9 @@ static CGFloat const labelY = 10.0f;
 @synthesize folderModel = _folderModel;
 @synthesize iPod = _iPod;
 
+
+static CGFloat const rowH = 40.0f;
+static CGFloat const labelY = 10.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

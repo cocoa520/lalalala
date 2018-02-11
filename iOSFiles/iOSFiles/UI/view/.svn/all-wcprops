@@ -7,7 +7,7 @@ IMBToolBarView.m
 K 25
 svn:wc:ra_dav:version-url
 V 75
-/svn/Mac/!svn/ver/1340/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.m
+/svn/Mac/!svn/ver/1345/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.m
 END
 IMBWhiteView.h
 K 25
@@ -87,23 +87,17 @@ svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1039/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelecedDeviceBtn.h
 END
-IMBNoTitleBarContentView.h
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/972/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.h
-END
 IMBScrollView.h
 K 25
 svn:wc:ra_dav:version-url
 V 74
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view/IMBScrollView.h
 END
-IMBHoverBtnCell.m
+IMBNoTitleBarContentView.h
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/UI/view/IMBHoverBtnCell.m
+V 84
+/svn/Mac/!svn/ver/972/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.h
 END
 IMBBlankDraggableCollectionView.m
 K 25
@@ -111,23 +105,29 @@ svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1269/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.m
 END
+IMBHoverBtnCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1099/JPProject/iOSFiles/iOSFiles/UI/view/IMBHoverBtnCell.m
+END
 IMBSelecedDeviceBtn.m
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1063/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelecedDeviceBtn.m
 END
-IMBNoTitleBarContentView.m
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/972/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.m
-END
 IMBScrollView.m
 K 25
 svn:wc:ra_dav:version-url
 V 74
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view/IMBScrollView.m
+END
+IMBNoTitleBarContentView.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/972/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.m
 END
 IMBBackgroundBorderView.h
 K 25
