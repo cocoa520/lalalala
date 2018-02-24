@@ -7,11 +7,13 @@
 //
 #import <Cocoa/Cocoa.h>
 //#import "LoadingView.h"
+#import "IMBTransferViewController.h"
 #import "IMBWhiteView.h"
 #import "IMBScrollView.h"
 #import "IMBBlankDraggableCollectionView.h"
 #import "IMBiPod.h"
 #import "IMBInformation.h"
+#import "IMBToolBarView.h"
 @class HoverButton;
 @class IMBBackgroundBorderView;
 @class IMBFileSystemManager;
@@ -46,29 +48,20 @@
     int _deleteTotalItems;
     IBOutlet NSArrayController *_arrayController;
     id _delegate;
+    NSOpenPanel *_openPanel;
+    BOOL _isOpen;
+    
+    IMBTransferViewController *_transferViewController;
+    IBOutlet IMBToolBarView *_toolBarView;
+   
 }
 @property(nonatomic,retain)NSMutableArray *currentArray;
 @property (nonatomic,retain)NSString *currentDevicePath;
 
+- (void)refresh;
+- (void)addItems;
 - (void)setDeleteCurItems:(int)curItem;
 - (id)initWithIpod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)category withDelegate:(id)delegate;
-@end
-@interface IMBCollectionViewItem : NSCollectionViewItem
-{
-    NSInteger _index;
-}
-@property (assign) NSInteger index;
-@end
-
-@interface IMBCollectionItemView : NSView {
-    IMBBlankDraggableCollectionView *_blankDraggableView;
-    BOOL _done;
-    NSTrackingArea *_trackingArea;
-    IBOutlet NSImageView *_bgImageView;
-    BOOL _hasLargeImage;
-}
-@property (nonatomic,assign) BOOL done;
-
 @end
 
 @interface IMBPhotoCollectionViewItem : NSCollectionViewItem

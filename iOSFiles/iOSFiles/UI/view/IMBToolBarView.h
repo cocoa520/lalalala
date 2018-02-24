@@ -11,18 +11,20 @@
 
 typedef enum : NSUInteger {
     IMBToolBarViewEnumRefresh = 0,
-    IMBToolBarViewEnumToMac,
-    IMBToolBarViewEnumAddToDevice,
-    IMBToolBarViewEnumDelete,
-    IMBToolBarViewEnumToDevice
+    IMBToolBarViewEnumToMac     =1,
+    IMBToolBarViewEnumAddToDevice =2,
+    IMBToolBarViewEnumDelete =3,
+    IMBToolBarViewEnumToDevice =4,
+    IMBToolBarNoData =5
 } IMBToolBarViewEnum;
 
 @interface IMBToolBarView : NSView
 {
     @private
     IMBInformation *_information;
+    id _delegate;
 }
-
+@property(nonatomic, assign) id delegate;
 @property(nonatomic, retain)IMBInformation *information;
 
 - (void)setHiddenIndexes:(NSArray *)indexes;

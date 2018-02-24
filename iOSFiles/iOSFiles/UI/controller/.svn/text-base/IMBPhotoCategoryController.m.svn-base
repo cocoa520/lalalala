@@ -165,6 +165,12 @@ static CGFloat const labelY = 10.0f;
 }
 #pragma mark -- 销毁
 - (void)dealloc {
+    [self clearMemory];
+    
+    [super dealloc];
+}
+
+- (void)clearMemory {
     if (_folderModel) {
         [_folderModel release];
         _folderModel = nil;
@@ -177,8 +183,6 @@ static CGFloat const labelY = 10.0f;
         [_iPod release];
         _iPod = nil;
     }
-    
-    [super dealloc];
 }
 
 @end

@@ -72,7 +72,6 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)awakeFromNib {
-    
     NSButton *btn =  [self.window standardWindowButton:NSWindowCloseButton];
 //    [btn setFrame:NSMakeRect(2,4, 20, 20)];
 //    NSButton *btn1 =  [self.window standardWindowButton:NSWindowMiniaturizeButton];
@@ -100,7 +99,7 @@ static CGFloat const labelY = 10.0f;
 //    [button setBordered:NO];
 //    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:btn2];
     
-    [(IMBToolbarWindow *)self.window setTitleBarHeight:100];
+    [(IMBToolbarWindow *)self.window setTitleBarHeight:20];
 //    [[(IMBToolbarWindow *)self.window titleBarView] setFrameSize:NSMakeSize(self.window.frame.size.width, 300)];
     
     [self setupView];
@@ -191,10 +190,11 @@ static CGFloat const labelY = 10.0f;
     [_opQueue addOperationWithBlock:^{
         if (_information) {
             //photo
-            [_information refreshCameraRoll];
-            [_information refreshPhotoStream];
-            [_information refreshPhotoLibrary];
-            [_information refreshVideoAlbum];
+//            [_information refreshCameraRoll];
+//            [_information refreshPhotoStream];
+//            [_information refreshPhotoLibrary];
+//            [_information refreshVideoAlbum];
+            [_information loadphotoData];
             
             [_information.ipod setInfoLoadFinished:YES];
             
@@ -203,6 +203,10 @@ static CGFloat const labelY = 10.0f;
 //            NSArray *ary = [_information photovideoArray];
             [cameraRoll addObjectsFromArray:[_information camerarollArray] ? [_information camerarollArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photovideoArray] : [NSArray array]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photoSelfiesArray] : [NSArray array]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information screenshotArray] : [NSArray array]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information slowMoveArray] : [NSArray array]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information timelapseArray] : [NSArray array]];
             [photoArray addObject:cameraRoll];
             [photoArray addObject:[_information photostreamArray] ? [_information photostreamArray] : [NSArray array]];
             [photoArray addObject:[_information photolibraryArray] ? [_information photolibraryArray] : [NSArray array]];
@@ -306,8 +310,8 @@ static CGFloat const labelY = 10.0f;
         objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     if (_toolMenuView) {
-        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         _toolMenuView.information = [_information retain];
+        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     [_rootBox setContentView:_scrollView];
     NSInteger count = _tableView.tableColumns.count;
@@ -454,6 +458,7 @@ static CGFloat const labelY = 10.0f;
         [_backBtn setHidden:NO];
          _systemCollectionViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
         [_rootBox pushView:_systemCollectionViewController.view];
+
     }
 }
 
@@ -530,8 +535,8 @@ static CGFloat const labelY = 10.0f;
 
 - (IBAction)backClicked:(NSButton *)sender {
     [_rootBox popView];
-    if ([_rootBox currentView] == _scrollView) {
-      [_backBtn setHidden:YES];
+    if ([_rootBox currentContentView] == _scrollView) {
+        [_backBtn setHidden:YES];
         _title.stringValue = _iPod.deviceInfo.deviceName;
     }
     [_toolMenuView setHidden:YES];

@@ -8,6 +8,7 @@
 
 #import "IMBSystemCollectionViewController.h"
 #import "HoverButton.h"
+#import "IMBDevicePageWindow.h"
 #import "IMBBackgroundBorderView.h"
 #import "IMBFileSystemManager.h"
 #import "IMBBlankDraggableCollectionView.h"
@@ -24,6 +25,7 @@
 #import "IMBFolderOrFileButton.h"
 #import "IMBAnimateProgressBar.h"
 #import "StringHelper.h"
+#import <objc/runtime.h>
 @implementation IMBSystemCollectionViewController
 @synthesize currentArray = _currentArray;
 @synthesize currentDevicePath = _currentDevicePath;
@@ -55,7 +57,8 @@
 }
 
 - (void)awakeFromNib {
-  
+    [_toolBarView setHiddenIndexes:@[@(IMBToolBarNoData)]];
+    [_toolBarView setDelegate:self];
     _collectionView.delegate = self;
     [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
     [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
@@ -89,12 +92,12 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [_mainBox setContentView:_detailView];
+//            [_mainBox setContentView:_detailView];
             [_arrayController removeObjects:_dataSourceArray];
             self.currentDevicePath = @"/" ;
 
             [_arrayController addObjects:array];
-            [_detailView removeFromSuperview];
+//            [_detailView removeFromSuperview];
             [_mainBox setContentView:_detailView];
             [self.view.window makeFirstResponder:_collectionView];
             [_collectionView setNeedsDisplay:YES];
@@ -204,6 +207,26 @@
             [_nextContainer addObject:dic1];
             
         }
+        for (NSView *subview in [_collectionView subviews]) {
+            if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
+                
+                for (NSView *subview1 in [subview subviews]) {
+                    if ([subview1 isKindOfClass:[IMBFolderOrFileButton class]]) {
+                        [(IMBFolderOrFileButton*)subview1 setSelected:NO];
+                        for (id subview2 in [subview1 subviews]) {
+                            if ([subview2 isKindOfClass:[IMBFolderOrFileTitleField class]]) {
+                                [subview2 setStringValue:@""];
+                            }
+                            if ([subview2 isKindOfClass:[IMBSelectionView class]]) {
+                                for (id image in [(NSView*)subview2 subviews]) {
+                                    [(NSImageView *)image setImage:nil];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         [_arrayController removeObjects:_dataSourceArray];
         [_currentArray removeAllObjects];
         NSDictionary *dic = [_backContainer objectAtIndex:[_backContainer count] - 1];
@@ -230,7 +253,7 @@
     {
         [backButton setEnabled:NO];
     }
-    
+    _collectionView.forBidClick = NO;
     [_collectionView setSelectionIndexes:nil];
     [self singlecCick:nil];
     [self reloadBtn];
@@ -247,6 +270,25 @@
         {
             NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_dataSourceArray],@"array",self.currentDevicePath,@"currentDevicePath", nil];
             [_backContainer addObject:dic1];
+        }
+        for (NSView *subview in [_collectionView subviews]) {
+            if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
+                for (NSView *subview1 in [subview subviews]) {
+                    if ([subview1 isKindOfClass:[IMBFolderOrFileButton class]]) {
+                        [(IMBFolderOrFileButton*)subview1 setSelected:NO];
+                        for (id subview2 in [subview1 subviews]) {
+                            if ([subview2 isKindOfClass:[IMBFolderOrFileTitleField class]]) {
+                                [subview2 setStringValue:@""];
+                            }
+                            if ([subview2 isKindOfClass:[IMBSelectionView class]]) {
+                                for (id image in [(NSView*)subview2 subviews]) {
+                                    [(NSImageView *)image setImage:nil];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         [_arrayController removeObjects:_dataSourceArray];
         [_currentArray removeAllObjects];
@@ -279,7 +321,7 @@
         [advanceButton setEnabled:NO];
         [advanceButton setNeedsDisplay:YES];
     }
-    
+    _collectionView.forBidClick = NO;
     [_collectionView setSelectionIndexes:nil];
     [self singlecCick:nil];
     [self reloadBtn];
@@ -319,9 +361,32 @@
                     });
                 }else
                 {
-//                    for (NSView *view in superView.subviews) {
-//                        [view removeFromSuperview];
-//                    }
+                    
+                    for (NSView *subview in [view subviews]) {
+                        if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
+                            for (NSView *subview1 in [subview subviews]) {
+                                if ([subview1 isKindOfClass:[IMBFolderOrFileButton class]]) {
+                                    [(IMBFolderOrFileButton*)subview1 setSelected:NO];
+                                    for (id subview2 in [subview1 subviews]) {
+                                        if ([subview2 isKindOfClass:[IMBFolderOrFileTitleField class]]) {
+                                            [subview2 setStringValue:@""];
+                                        }
+                                        if ([subview2 isKindOfClass:[IMBSelectionView class]]) {
+                                            for (id image in [(NSView*)subview2 subviews]) {
+                                                [(NSImageView *)image setImage:nil];
+                                            }
+                                        }
+                                    }
+//                                    for (NSView *subview in [button subviews]) {
+//                                        if ([subview isKindOfClass:[IMBSelectionView class]]) {
+//                                            selectionView = (IMBSelectionView *)subview;
+//                                        }
+//                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     [_currentArray removeAllObjects];
                     NSArray *childArray = [systemManager recursiveDirectoryContentsDics:selectedNode.path];
                     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_dataSourceArray],@"array",self.currentDevicePath,@"currentDevicePath", nil];
@@ -332,10 +397,8 @@
                     }
                     [_arrayController removeObjects:_dataSourceArray];
                     superView.forBidClick = NO;
-                    _arrayController = nil;
-                    [_dataSourceArray removeAllObjects];
                     [_arrayController addObjects:childArray];
-                    [_currentArray addObjectsFromArray:childArray];
+//                    [_currentArray addObjectsFromArray:childArray];
                     [_collectionView setSelectionIndexes:nil];
                     self.currentDevicePath = selectedNode.path;
                 }
@@ -663,15 +726,33 @@
 }
 
 #pragma mark OperaitonActions
-- (void)reload:(id)sender
-{
+- (void)refresh {
     [_mainBox setContentView:_loadingView];
-//    [_loadingAnimationView startAnimation];
+    for (NSView *subview in [_collectionView subviews]) {
+        if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
+            for (NSView *subview1 in [subview subviews]) {
+                if ([subview1 isKindOfClass:[IMBFolderOrFileButton class]]) {
+                    [(IMBFolderOrFileButton*)subview1 setSelected:NO];
+                    for (id subview2 in [subview1 subviews]) {
+                        if ([subview2 isKindOfClass:[IMBFolderOrFileTitleField class]]) {
+                            [subview2 setStringValue:@""];
+                        }
+                        if ([subview2 isKindOfClass:[IMBSelectionView class]]) {
+                            for (id image in [(NSView*)subview2 subviews]) {
+                                [(NSImageView *)image setImage:nil];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //    [_loadingAnimationView startAnimation];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         NSArray *array = [systemManager recursiveDirectoryContentsDics:_currentDevicePath];
         dispatch_async(dispatch_get_main_queue(), ^{
-//            [self disableFunctionBtn:YES];
+            //            [self disableFunctionBtn:YES];
             [_arrayController removeObjects:_dataSourceArray];
             if ([array count]>120) {
                 currentIndex = 0;
@@ -683,8 +764,8 @@
             
             
             [_mainBox setContentView:_detailView];
-        
-//            [_loadingAnimationView endAnimation];
+            
+            //            [_loadingAnimationView endAnimation];
             [_currentArray removeAllObjects];
             [_currentArray addObjectsFromArray:array];
             [_collectionView setSelectionIndexes:nil];
@@ -692,61 +773,80 @@
             //[_nextContainer removeAllObjects];
             //[backButton setEnabled:NO];
             //[advanceButton setEnabled:NO];
-//            if ([_countDelegate respondsToSelector:@selector(reCaulateItemCount)]) {
-//                
-//                [_countDelegate reCaulateItemCount];
-//            }
+            //            if ([_countDelegate respondsToSelector:@selector(reCaulateItemCount)]) {
+            //
+            //                [_countDelegate reCaulateItemCount];
+            //            }
             [self singlecCick:nil];
             
         });
     });
+
 }
 
-//- (void)addItems:(id)sender {
-//   
-//    _openPanel = [NSOpenPanel openPanel];
-//    _isOpen = YES;
-//    [_openPanel setCanChooseDirectories:YES];
-//    [_openPanel setCanChooseFiles:YES];
-//    [_openPanel setAllowsMultipleSelection:YES];
-//    [_openPanel beginSheetModalForWindow:[(IMBDeviceMainPageViewController *)_delegate view].window completionHandler:^(NSModalResponse returnCode) {
-//        if (returnCode == NSFileHandlingPanelOKButton) {
-//            NSArray *urlArr = [_openPanel URLs];
-//            NSMutableArray *paths = [NSMutableArray array];
-//            for (NSURL *url in urlArr) {
-//                [paths addObject:url.path];
-//            }
-//            [self performSelector:@selector(addItemsDelay:) withObject:paths afterDelay:0.1];
-//        }
-//        _isOpen = NO;
-//    }];
-//}
+- (void)addItems{
+    _openPanel = [NSOpenPanel openPanel];
+    _isOpen = YES;
+    [_openPanel setCanChooseDirectories:YES];
+    [_openPanel setCanChooseFiles:YES];
+    [_openPanel setAllowsMultipleSelection:YES];
+    [_openPanel beginSheetModalForWindow:[_delegate window] completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSFileHandlingPanelOKButton) {
+            NSArray *urlArr = [_openPanel URLs];
+            NSMutableArray *paths = [NSMutableArray array];
+            for (NSURL *url in urlArr) {
+                [paths addObject:url.path];
+            }
+            [self performSelector:@selector(addItemsDelay:) withObject:paths afterDelay:0.1];
+        }
+        _isOpen = NO;
+    }];
+    
+
+}
 
 - (void)addItemsDelay:(NSMutableArray *)paths
 {
     NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        return;
-    }
-    [self importToDevice:paths photoAlbum:nil playlistID:0 Result:result AnnoyVC:annoyVC];
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        return;
+//    }
+    [self importToDevice:paths photoAlbum:nil playlistID:0 Result:1 AnnoyVC:annoyVC];
 }
 
 #pragma mark - import Action
-//- (void)importToDevice:(NSMutableArray *)paths photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID Result:(long long)result AnnoyVC:(NSViewController *)annoyVC{
-//    if (_transferController != nil) {
-//        [_transferController release];
-//        _transferController = nil;
-//    }
+- (void)importToDevice:(NSMutableArray *)paths photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID Result:(long long)result AnnoyVC:(NSViewController *)annoyVC{
+    if (_transferViewController != nil) {
+        [_transferViewController release];
+        _transferViewController = nil;
+    }
+    _transferViewController = [[IMBTransferViewController alloc]initWithToDevicePath:paths WithiPodKey:_ipod.uniqueKey curFolder:self.currentDevicePath];
 //    _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_ipod.uniqueKey Type:_category SelectItems:paths curFolder:self.currentDevicePath];
 //    [_transferController setDelegate:self];
-//    if (result>0) {
+////    if (result>0) {
 //        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
 //    }else{
-//        [self animationAddTransferView:_transferController.view];
+    [_transferViewController.view setFrame:NSMakeRect(0, 0, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.height)];
+    [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
+    [_transferViewController.view setWantsLayer:YES];
+    [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
 //
 //    }
-//}
+}
+
+- (void)animationAddTransferViewfromRight:(NSView *)view AnnoyVC:(NSViewController *)AnnoyVC;
+{
+//    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+//        [view setFrame:NSMakeRect(0, 0, [(IMBDeviceMainPageViewController *)_delegate view].frame.size.width, [_delegate windows].content.frame.size.height)];
+//        [[(IMBDeviceMainPageViewController *)_delegate view] addSubview:view];
+//        [view setWantsLayer:YES];
+//        [view.layer  addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:view.frame.size.width] toX:[NSNumber numberWithInt:0] repeatCount:1 beginTime:0] forKey:@"movex"];
+//    } completionHandler:^{
+//        [(AnnoyVC).view removeFromSuperview];
+//        [(AnnoyVC) release];
+//    }];
+}
 
 //获得选中的item
 - (NSIndexSet *)selectedItems
@@ -917,272 +1017,6 @@
 }
 @end
 
-
-@implementation IMBCollectionViewItem
-@synthesize index = _index;
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-}
-
-- (void)setSelected:(BOOL)selected
-{
-    [super setSelected:selected];
-    //    if (_imageName == nil) {
-    //        NSDate *date = [NSDate date];
-    //        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //        NSString *str = [formatter stringFromDate:date];
-    //        _imageName = [[NSString stringWithFormat:@"%d%@.jpg",i,str]retain];
-    //        [formatter release];
-    //        i++;
-    //    }
-    //    IMBCollectionItemView *itemView = (IMBCollectionItemView *)self.view;
-    //    IMBPhotoImageView *photoimageView = [itemView viewWithTag:101];
-    //    IMBPhotoImageView *photoselectedimageView = [itemView viewWithTag:102];
-    //
-    //    [photoselectedimageView.image setSize:NSMakeSize(150, 150)];
-    //    photoimageView.isSelected = selected;
-    //
-    //    [photoimageView setNeedsDisplay:YES];
-    //    if (selected) {
-    //        [photoselectedimageView setHidden:NO];
-    //    }else
-    //    {
-    //        [photoselectedimageView setHidden:YES];
-    //    }
-    
-    IMBBlankDraggableCollectionView *blankCollectionView = (IMBBlankDraggableCollectionView *)[self.view superview];
-    NSArray *itemArray = [blankCollectionView subviews];
-    NSArray *allArray = [blankCollectionView content];
-    NSUInteger index = [itemArray indexOfObject:self.view];
-    if (allArray.count > index) {
-        IMBTrack *track = [allArray objectAtIndex:index];
-        track.checkState = selected;
-        track.isHiddenSelectImage = !selected;
-    }
-}
-
-
-- (void)dealloc
-{
-    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSCollectionViewBoundsDidChangeNotification object:nil];
-    [super dealloc];
-}
-
-
-@end
-
-@implementation IMBCollectionItemView
-@synthesize done = _done;
-
-
--(void)awakeFromNib {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:NOTIFY_CHANGE_SKIN object:nil];
-    [_bgImageView setImage:[NSImage imageNamed:@"photo_selected"]];
-}
-
-- (void)changeSkin:(NSNotification *)notification {
-    [_bgImageView setImage:[NSImage imageNamed:@"photo_selected"]];
-}
-
-- (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    if (_trackingArea)
-    {
-        [self removeTrackingArea:_trackingArea];
-        [_trackingArea release];
-    }
-    
-    NSTrackingAreaOptions options = NSTrackingInVisibleRect | NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved| NSTrackingActiveInKeyWindow;
-    _trackingArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:options owner:self userInfo:nil];
-    [self addTrackingArea:_trackingArea];
-}
-
-- (void)mouseDown:(NSEvent *)theEvent {
-    NSPoint mousePt = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-    IMBCollectionImageView *imageView = [self viewWithTag:101];
-    BOOL overClose = NSMouseInRect(mousePt,[imageView frame], [self isFlipped]);
-    if (overClose) {
-        if (theEvent.clickCount == 2) {
-            _blankDraggableView = (IMBBlankDraggableCollectionView *)self.superview;
-            if ([_blankDraggableView.collectionItem isKindOfClass:[IMBPhotoCollectionViewItem class]]) {
-                NSArray *contentArray = _blankDraggableView.content;
-                
-                //                NSPoint initialLocation = [theEvent locationInWindow];
-                //                NSPoint location = [_blankDraggableView convertPoint:initialLocation fromView:nil];
-                //                NSInteger index = [_blankDraggableView _indexAtPoint: location];
-                NSIndexSet *set= [_blankDraggableView selectionIndexes];
-                if (set.count <= 0) {
-                    return;
-                }
-                NSInteger index = [set firstIndex];
-                IMBPhotoEntity *entity = [contentArray objectAtIndex:index];
-                
-                NSDictionary *userDic = [NSDictionary dictionaryWithObjectsAndKeys:entity, @"ENTITY", nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_OPEN_PHOTO_PREVIEW object:nil userInfo:userDic];
-            }
-        }else if (theEvent.clickCount == 1) {
-            [super mouseDown:theEvent];
-        }
-    }else
-    {
-        _blankDraggableView = (IMBBlankDraggableCollectionView *)self.superview;
-        [_blankDraggableView setSelectionIndexes:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyDone:) name:NOTIFY_DONE object:nil];
-        NSPoint initialLocation = [theEvent locationInWindow];
-        
-        _done = NO;
-        NSUInteger eventMask = (NSLeftMouseUpMask | NSLeftMouseDownMask | NSLeftMouseDraggedMask | NSPeriodicMask);
-        NSEvent *lastEvent = theEvent;
-        while (!_done) {
-            lastEvent = [NSApp nextEventMatchingMask:eventMask untilDate:[NSDate date] inMode:NSEventTrackingRunLoopMode dequeue:YES];
-            NSEventType eventType = [lastEvent type];
-            NSPoint mouseLocationWin = [lastEvent locationInWindow];
-            switch (eventType)
-            {
-                case NSLeftMouseDown:
-                    break;
-                case NSLeftMouseDragged:
-                    if (fabs(mouseLocationWin.x - initialLocation.x) >= 2
-                        || fabs(mouseLocationWin.y - initialLocation.y) >= 2)
-                    {
-                        [super mouseDown:theEvent];
-                    }
-                    break;
-                case NSLeftMouseUp:
-                    //                    [_blankDraggableView _selectWithEvent:theEvent index: index];
-                    _done = YES;
-                    NSLog(@"mouse up");
-                    break;
-                default:
-                    _done = NO;
-                    break;
-            }
-            
-        }
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_DONE object:nil];
-    }
-}
-
-- (void)notifyDone:(NSNotification *)notification {
-    NSNumber *number = [notification object];
-    BOOL isDone = [number boolValue];
-    [self setDone:isDone];
-}
-
-- (void)mouseUp:(NSEvent *)theEvent {
-    [super mouseUp:theEvent];
-    _done = YES;
-}
-
-- (void)mouseExited:(NSEvent *)theEvent {
-    if (![[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"13"]) {
-        _blankDraggableView = (IMBBlankDraggableCollectionView *)self.superview;
-        if (([_blankDraggableView.collectionItem isKindOfClass:[IMBPhotoCollectionViewItem class]]) && _hasLargeImage) {
-            CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-            animation.fromValue=[NSValue valueWithCATransform3D:
-                                 CATransform3DMakeScale(1.1, 1.1, 1.0)];
-            animation.toValue=[NSValue valueWithCATransform3D:CATransform3DIdentity];
-            animation.duration=0.3;
-            animation.autoreverses=NO;
-            animation.repeatCount=0;
-            animation.removedOnCompletion=NO;
-            animation.fillMode=kCAFillModeForwards;
-            animation.delegate=self;
-            
-            for (NSView *view in self.subviews) {
-                for (NSView *subView in view.subviews) {
-                    if ([subView isKindOfClass:[NSImageView class]]) {
-                        NSImageView *imageView = (NSImageView *)subView;
-                        if (imageView.tag == 101) {
-                            [imageView setWantsLayer:YES];
-                            imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-                            _hasLargeImage = NO;
-                            [imageView.layer addAnimation:animation forKey:@"2"];
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-- (void)mouseMoved:(NSEvent *)theEvent {
-    if (![[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"13"]) {
-        [self largeImage:theEvent];
-    }
-}
-
-- (void)mouseEntered:(NSEvent *)theEvent {
-    
-}
-
-- (void)largeImage:(NSEvent*)theEvent {
-    _blankDraggableView = (IMBBlankDraggableCollectionView *)self.superview;
-    if ([_blankDraggableView.collectionItem isKindOfClass:[IMBPhotoCollectionViewItem class]]) {
-        NSPoint initialLocation = [theEvent locationInWindow];
-        NSPoint location = [_blankDraggableView convertPoint:initialLocation fromView:nil];
-        NSInteger index = [_blankDraggableView _indexAtPoint: location];
-        NSArray *contentArray = _blankDraggableView.content;
-        NSPoint mousePt = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        BOOL inner = NSMouseInRect(mousePt, NSMakeRect(18, 11, 150, 150), [self isFlipped]);
-        if (inner) {
-            if (!_hasLargeImage) {
-                if (index < [_blankDraggableView content].count) {
-                   
-                    IMBPhotoEntity *entity = [contentArray objectAtIndex:index];
-                    if (entity.isexisted) {
-                        NSString *str1 = [StringHelper getFileSizeString:entity.photoSize reserved:1];
-                        NSString *str = [NSString stringWithFormat:@"%@ %@:%@",entity.photoName,@"Size",str1];
-                        [self setToolTip:str];
-                    }else {
-                        [self setToolTip:[NSString stringWithFormat:@"%@ file does not exist",entity.photoName]];
-                    }
-                    
-                    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-                    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-                    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-                    animation.toValue = [NSValue valueWithCATransform3D:
-                                         CATransform3DMakeScale(1.1, 1.1, 1.0)];
-                    animation.duration= 0.3;
-                    animation.autoreverses=NO;
-                    animation.repeatCount=0;
-                    animation.removedOnCompletion=NO;
-                    animation.fillMode=kCAFillModeForwards;
-                    animation.delegate=self;
-                    [self setWantsLayer:YES];
-                    for (NSView *view in self.subviews) {
-                        for (NSView *subView in view.subviews) {
-                            if ([subView isKindOfClass:[NSImageView class]]) {
-                                NSImageView *imageView = (NSImageView *)subView;
-                                if (imageView.tag == 101) {
-                                    [imageView setWantsLayer:YES];
-                                    imageView.layer.position = NSMakePoint(imageView.frame.origin.x + imageView.frame.size.width / 2.0, imageView.frame.origin.y + imageView.frame.size.height / 2.0);
-                                    imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-                                    _hasLargeImage = YES;
-                                    [imageView.layer addAnimation:animation forKey:@"1"];
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            [self mouseExited:nil];
-        }
-    }
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_SKIN object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_OPEN_PHOTO_PREVIEW object:nil];
-    [super dealloc];
-}
-
-@end
 #import "IMBPhotoEntity.h"
 @implementation IMBPhotoCollectionViewItem
 //static int i=0;
@@ -1304,9 +1138,9 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
     IMBBlankDraggableCollectionView *superView = (IMBBlankDraggableCollectionView *)[self superview];
-    if (superView.forBidClick) {
-        return;
-    }
+//    if (superView.forBidClick) {
+//        return;
+//    }
     IMBFolderOrFileButton *button = nil;
     IMBSelectionView *selectionView = nil;
     for (NSView *subview in [self subviews]) {

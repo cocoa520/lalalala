@@ -26,6 +26,7 @@
                 <outlet property="_scrollView" destination="lUT-HU-4rk" id="ovJ-SR-cyS"/>
                 <outlet property="_textView" destination="kRu-qP-Wio" id="FMb-FC-uOU"/>
                 <outlet property="_toMacMenuItem" destination="Iye-Yo-1LH" id="r5F-it-wDl"/>
+                <outlet property="_toolBarView" destination="KDk-ke-lRI" id="hTl-Mr-CFz"/>
                 <outlet property="advanceButton" destination="3te-AC-n8j" id="PfC-X5-fwY"/>
                 <outlet property="backButton" destination="UWw-lq-Atq" id="row-jt-oKp"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -70,6 +71,10 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
+                                <customView id="KDk-ke-lRI" customClass="IMBToolBarView">
+                                    <rect key="frame" x="553" y="4" width="366" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                </customView>
                             </subviews>
                         </customView>
                         <box autoresizesSubviews="NO" transparent="YES" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="q1P-Uz-AKT">
@@ -86,6 +91,7 @@
                     </subviews>
                 </customView>
             </subviews>
+            <point key="canvasLocation" x="242" y="95"/>
         </customView>
         <menu id="ym3-5U-wSO">
             <items>
@@ -227,19 +233,20 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="lUT-HU-4rk" customClass="IMBScrollView">
-                            <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
+                            <rect key="frame" x="-20" y="0.0" width="1060" height="496"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R2q-Ds-T0c">
                                 <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <collectionView selectable="YES" id="ouy-hy-g6W" customClass="IMBBlankDraggableCollectionView">
+                                    <collectionView autoresizesSubviews="NO" selectable="YES" id="ouy-hy-g6W" customClass="IMBBlankDraggableCollectionView">
                                         <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <connections>
                                             <binding destination="3Wx-ye-b0b" name="content" keyPath="arrangedObjects" id="dKe-vQ-vsR"/>
                                             <binding destination="3Wx-ye-b0b" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="dKe-vQ-vsR" id="dO1-9B-ffw"/>
+                                            <outlet property="_collectionItem" destination="pZ2-Zv-CZh" id="r3K-0J-7es"/>
                                             <outlet property="delegate" destination="-2" id="LKf-CS-4y4"/>
                                             <outlet property="itemPrototype" destination="pZ2-Zv-CZh" id="3og-Yv-GNj"/>
                                             <outlet property="menu" destination="ym3-5U-wSO" id="2Xj-c2-bbt"/>

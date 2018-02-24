@@ -56,6 +56,9 @@
 
 - (void)popView {
     if (_contentViewsArray && _contentViewsArray.count > 1) {
+//        NSView *lastView = [_contentViewsArray lastObject];
+//        [lastView release];
+//        lastView = nil;
         [_contentViewsArray removeLastObject];
         NSView *view = [_contentViewsArray lastObject];
         [self zl_setContentView:view];
@@ -68,7 +71,7 @@
         for (NSInteger i = count - 1; i >= 0; i--) {
             NSView *v = [_contentViewsArray lastObject];
             if (v == view) {
-                _contentView = view;
+                [self zl_setContentView:view];
             }else {
                 [_contentViewsArray removeLastObject];
             }
@@ -122,7 +125,7 @@
     
 }
 
-- (NSView *)currentView {
+- (NSView *)currentContentView {
     if (_contentViewsArray.count) {
         return [_contentViewsArray.lastObject retain];
     }

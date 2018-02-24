@@ -27,7 +27,7 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
 @implementation IMBToolBarView
 
 @synthesize information = _information;
-
+@synthesize delegate = _delegate;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -37,12 +37,12 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        [self setupView];
+        [self setupArray];
     }
     return self;
 }
 - (void)awakeFromNib {
-//    [self setupView];
+    [self setupArray];
 }
 
 - (void)setupArray {
@@ -71,14 +71,6 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumDelete),IMBToolBarViewTipName : @"Delete Items"}];
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumToDevice),IMBToolBarViewTipName : @"Send To Device"}];
     
-    
-}
-
-- (void)setHiddenIndexes:(NSArray *)indexes {
-    _hiddenIndexes = indexes;
-    if (!_hiddenIndexes) return;
-    
-    [self setupArray];
     
     NSInteger subCount = self.subviews.count;
     for (NSInteger i = 0; i < subCount; i++) {
@@ -123,6 +115,16 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
         [btn setAction:@selector(btnClicked:)];
         [self addSubview:btn];
     }
+    
+}
+
+- (void)setHiddenIndexes:(NSArray *)indexes {
+    _hiddenIndexes = indexes;
+    if (!_hiddenIndexes) return;
+    
+    [self setupArray];
+    
+    
 }
 
 - (void)btnClicked:(NSButton *)sender {
@@ -130,6 +132,7 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     switch (sender.tag) {
         case IMBToolBarViewEnumRefresh:
         {
+            [_delegate refresh];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
         }
             break;
@@ -140,6 +143,7 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
             break;
         case IMBToolBarViewEnumAddToDevice:
         {
+            [_delegate addItems];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageAddToDeviceClickedNoti object:information];
         }
             break;

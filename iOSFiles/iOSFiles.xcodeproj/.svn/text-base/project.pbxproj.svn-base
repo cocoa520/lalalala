@@ -594,6 +594,8 @@
 		EEE447E6202AD53F00221BE0 /* backup_retreat3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447DC202AD53F00221BE0 /* backup_retreat3@2x.png */; };
 		EEE447E9202AE00800221BE0 /* music_show.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447E7202AE00800221BE0 /* music_show.png */; };
 		EEE447EA202AE00800221BE0 /* music_show@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447E8202AE00800221BE0 /* music_show@2x.png */; };
+		EEF3C174204154E50056B286 /* IMBTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF3C172204154E50056B286 /* IMBTransferViewController.m */; };
+		EEF3C175204154E50056B286 /* IMBTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF3C173204154E50056B286 /* IMBTransferViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1735,6 +1737,9 @@
 		EEE447DC202AD53F00221BE0 /* backup_retreat3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backup_retreat3@2x.png"; sourceTree = "<group>"; };
 		EEE447E7202AE00800221BE0 /* music_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_show.png; sourceTree = "<group>"; };
 		EEE447E8202AE00800221BE0 /* music_show@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_show@2x.png"; sourceTree = "<group>"; };
+		EEF3C171204154E50056B286 /* IMBTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTransferViewController.h; sourceTree = "<group>"; };
+		EEF3C172204154E50056B286 /* IMBTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTransferViewController.m; sourceTree = "<group>"; };
+		EEF3C173204154E50056B286 /* IMBTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBTransferViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3510,6 +3515,9 @@
 				B962F12D202E812600F83974 /* IMBPhotoCategoryController.h */,
 				B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */,
 				B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */,
+				EEF3C171204154E50056B286 /* IMBTransferViewController.h */,
+				EEF3C172204154E50056B286 /* IMBTransferViewController.m */,
+				EEF3C173204154E50056B286 /* IMBTransferViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3711,6 +3719,7 @@
 				B9E739E32028038D00E1BB3B /* host_grappa in Resources */,
 				EEE447CA202AD4BF00221BE0 /* backup_advance_enter@2x.png in Resources */,
 				B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */,
+				EEF3C175204154E50056B286 /* IMBTransferViewController.xib in Resources */,
 				EEE447E6202AD53F00221BE0 /* backup_retreat3@2x.png in Resources */,
 				EE8BA57C20217D9100FECC14 /* windowclose2.png in Resources */,
 				EEE447CB202AD4BF00221BE0 /* backup_advance_no.png in Resources */,
@@ -3869,6 +3878,7 @@
 				B9E73AD320282FF500E1BB3B /* deflate.c in Sources */,
 				B96564AE2021D47600BD7FF5 /* IMBArtworkStringMHOD.m in Sources */,
 				B9E73A8F20282C1100E1BB3B /* IMBiTLTrack.m in Sources */,
+				EEF3C174204154E50056B286 /* IMBTransferViewController.m in Sources */,
 				B96564BF2021D47600BD7FF5 /* IMBPurchasesPlist.m in Sources */,
 				B96563992021D2B000BD7FF5 /* File_Vp8.cpp in Sources */,
 				B90D14D520201599002D9F9B /* IMBAppConfig.m in Sources */,

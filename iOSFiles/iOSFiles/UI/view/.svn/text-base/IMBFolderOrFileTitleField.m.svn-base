@@ -41,6 +41,9 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     NSString *string = self.stringValue;
+    if ([string isEqualToString:@""]||string == nil) {
+        return;
+    }
     NSMutableAttributedString *attiStr = [[NSMutableAttributedString alloc] initWithString:string == nil ? @"":string];
     NSSize size = [string sizeWithAttributes:[self attributed:[NSColor blackColor]]];
     NSRect rect;
