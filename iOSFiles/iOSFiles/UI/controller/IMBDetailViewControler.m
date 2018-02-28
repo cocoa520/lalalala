@@ -145,6 +145,7 @@ static CGFloat const labelY = 10.0f;
             break;
     }
     
+    
     _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
     
     if (_headerTitleArr.count) {
@@ -166,14 +167,6 @@ static CGFloat const labelY = 10.0f;
     NSInteger rowNumber = [_tableView clickedRow];
     NSLog(@"Double Clicked.%ld ",rowNumber);
     // ...
-//    if (_folderModel.idx == IMBDevicePageWindowFolderEnumPhoto) {
-//        IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
-//        subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
-//        NSMutableArray *subArray = [_folderModel.photoArray objectAtIndex:rowNumber];
-//        subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
-//        _folderModel = subPhotoModel;
-//        [_tableView reloadData];
-//    }
     
 }
 
@@ -205,6 +198,7 @@ static CGFloat const labelY = 10.0f;
 - (void)refreshWithInfo:(IMBInformation *)information {
     if (_folderModel) {
         _selectedIndexes = nil;
+        [_toolMenuView enableBtns:NO];
         NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
         switch (_folderModel.idx) {
             case IMBDevicePageWindowFolderEnumPhotoStream:
@@ -226,7 +220,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                     
                 }];
@@ -247,7 +241,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                 }];
             }
@@ -279,7 +273,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                 }];
             }
@@ -304,7 +298,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                     
                 }];
@@ -334,7 +328,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                     
                 }];
@@ -363,7 +357,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                     
                 }];
@@ -392,7 +386,7 @@ static CGFloat const labelY = 10.0f;
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
                         [_tableView reloadData];
-                        [_toolMenuView enableBtns];
+                        [_toolMenuView enableBtns:YES];
                     });
                     
                 }];

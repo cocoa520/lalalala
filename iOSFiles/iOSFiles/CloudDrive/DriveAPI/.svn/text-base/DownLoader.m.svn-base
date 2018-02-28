@@ -24,7 +24,7 @@
         _downloadArray = [[NSMutableArray alloc] init];
         _downloadMaxCount = 3;
         _activedownloadCount = 0;
-        _downloadPath = [@"/Users/luolei/Desktop/pp1" retain];
+        _downloadPath = [@"/Users/JGehry/Desktop/untitled folder" retain];
         _synchronQueue = dispatch_queue_create([@"synchronDownloadQueue" UTF8String],DISPATCH_QUEUE_SERIAL);
         _downloadManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         NSString *authorizationHeaderValue = [NSString stringWithFormat:@"Bearer %@", _accessToken];

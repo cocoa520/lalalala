@@ -20,6 +20,7 @@
 @synthesize childCount = _childCount;
 @synthesize isFolder = _isFolder;
 @synthesize checkState = _checkState;
+@synthesize image = _image;
 - (id)init {
     if ([super init]) {
         _fileLoadURL = @"";
@@ -38,5 +39,13 @@
 - (void)setCheckState:(CheckStateEnum)checkState
 {
     _checkState = checkState;
+}
+
+-(void)dealloc{
+    [super dealloc];
+    if (_image) {
+        [_image release];
+        _image = nil;
+    }
 }
 @end

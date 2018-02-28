@@ -548,7 +548,7 @@ static CGFloat const labelY = 10.0f;
 
 - (IBAction)backClicked:(NSButton *)sender {
     [_rootBox popView];
-    IMBPhotoCategoryController *pc = objc_getAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey);
+//    IMBPhotoCategoryController *pc = objc_getAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey);
     if ([_rootBox currentContentView] == _scrollView) {
         [_tableView reloadData];
         [_backBtn setHidden:YES];
@@ -557,9 +557,9 @@ static CGFloat const labelY = 10.0f;
             _pcVc = nil;
         }
         _title.stringValue = _iPod.deviceInfo.deviceName;
-    }else if ([_rootBox currentContentView] == pc.view) {
+    }else if ([_rootBox currentContentView] == _pcVc.view) {
         _title.stringValue = @"Photo";
-        [pc reloadData];
+        [_pcVc reloadData];
     }
     [_toolMenuView setHidden:YES];
     

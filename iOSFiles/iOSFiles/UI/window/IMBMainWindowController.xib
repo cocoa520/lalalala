@@ -17,12 +17,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="AnyTrans" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="eKk-Bw-DTz" customClass="IMBNoTitleBarWindow">
+        <window title="AnyTrans" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="eKk-Bw-DTz" customClass="IMBNoTitleBarWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="790" y="323" width="1060" height="635"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="1060" height="635"/>
             <value key="maxSize" type="size" width="1060" height="635"/>
+            <value key="minFullScreenContentSize" type="size" width="1060" height="635"/>
+            <value key="maxFullScreenContentSize" type="size" width="1060" height="635"/>
             <view key="contentView" focusRingType="none" id="3LR-3L-mFY" customClass="IMBNoTitleBarContentView">
                 <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>

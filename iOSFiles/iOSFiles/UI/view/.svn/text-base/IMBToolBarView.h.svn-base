@@ -28,6 +28,6 @@ typedef enum : NSUInteger {
 @property(nonatomic, retain)IMBInformation *information;
 
 - (void)setHiddenIndexes:(NSArray *)indexes;
-- (void)enableBtns;
+- (void)enableBtns:(BOOL)isEnable;
 
 @end

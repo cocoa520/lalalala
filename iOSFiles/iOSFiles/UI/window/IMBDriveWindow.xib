@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1611" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1611" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDriveWindow">
             <connections>
                 <outlet property="_arrayController" destination="cMF-NQ-AS6" id="Ctb-xx-4ic"/>
-                <outlet property="_blankCollection" destination="fTn-bA-Rcz" id="oeH-QW-GW5"/>
+                <outlet property="_blankCollection" destination="tGL-xG-D0I" id="ZLU-D2-nOB"/>
+                <outlet property="_detailView" destination="r1F-dh-yI6" id="umC-Er-pf7"/>
+                <outlet property="_loadAnimation" destination="VpW-Yc-5wO" id="5XB-qy-qrQ"/>
+                <outlet property="_loadView" destination="D1x-tB-bYK" id="cAg-lT-lNk"/>
+                <outlet property="_rootBox" destination="cDK-9I-6Yh" id="tMx-Sa-t6w"/>
+                <outlet property="_toolBarView" destination="XQW-E1-yk5" id="5Z6-Dk-1z9"/>
+                <outlet property="advanceButton" destination="yfs-qd-84N" id="apf-KW-lYu"/>
+                <outlet property="backButton" destination="8Gd-bg-IAa" id="lvP-Cj-iuF"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -17,54 +25,38 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBToolbarWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="612" height="432"/>
+            <rect key="contentRect" x="196" y="240" width="1060" height="635"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <value key="minSize" type="size" width="612" height="432"/>
-            <value key="maxSize" type="size" width="612" height="432"/>
-            <value key="minFullScreenContentSize" type="size" width="612" height="432"/>
-            <value key="maxFullScreenContentSize" type="size" width="612" height="432"/>
+            <value key="minSize" type="size" width="1060" height="635"/>
+            <value key="maxSize" type="size" width="1060" height="635"/>
+            <value key="minFullScreenContentSize" type="size" width="1060" height="635"/>
+            <value key="maxFullScreenContentSize" type="size" width="1060" height="635"/>
             <view key="contentView" id="se5-gp-TjO" customClass="IMBWhiteView">
-                <rect key="frame" x="0.0" y="0.0" width="612" height="432"/>
+                <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKi-u2-wfg">
-                        <rect key="frame" x="-1" y="44" width="529" height="384"/>
-                        <clipView key="contentView" ambiguous="YES" id="8mH-6T-9y8">
-                            <rect key="frame" x="1" y="1" width="527" height="382"/>
+                    <box focusRingType="none" title="Box" borderType="none" titlePosition="noTitle" id="cDK-9I-6Yh">
+                        <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" id="KqH-XQ-tGN">
+                            <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <collectionView ambiguous="YES" id="fTn-bA-Rcz" customClass="IMBBlankDraggableCollectionView">
-                                    <rect key="frame" x="0.0" y="0.0" width="527" height="382"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <binding destination="cMF-NQ-AS6" name="content" keyPath="arrangedObjects" id="VgM-q1-1Wx"/>
-                                        <binding destination="cMF-NQ-AS6" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="VgM-q1-1Wx" id="X3c-EP-230"/>
-                                        <outlet property="itemPrototype" destination="gsa-JY-QfS" id="zeA-Ap-zeO"/>
-                                    </connections>
-                                </collectionView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="bbz-PR-cob">
-                            <rect key="frame" x="1" y="144" width="233" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3D9-Oq-ely">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="279" y="262"/>
+            <point key="canvasLocation" x="17" y="201.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="ezY-uE-eHw"/>
         <arrayController objectClassName="IMBDriveEntity" id="cMF-NQ-AS6">
             <declaredKeys>
                 <string>fileName</string>
+                <string>image</string>
             </declaredKeys>
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="bindArray" id="oYI-EG-bQJ"/>
@@ -76,29 +68,108 @@
             </connections>
         </collectionViewItem>
         <view id="DFv-60-LMh" customClass="IMBFolderOrFileCollectionItemView">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="124" height="118"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bi6-d5-qd2">
-                    <rect key="frame" x="2" y="65" width="96" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4Fu-Wq-67S">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="gsa-JY-QfS" name="value" keyPath="representedObject.fileName" id="RT8-jV-wE6"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-jf-uEM">
-                    <rect key="frame" x="2" y="20" width="99" height="22"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="的说法是的发生" drawsBackground="YES" id="dnR-SA-0JZ">
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <customView id="ql7-va-UfX" customClass="IMBFolderOrFileButton">
+                    <rect key="frame" x="13" y="11" width="98" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView focusRingType="none" id="pPz-b1-UMi" customClass="IMBSelectionView">
+                            <rect key="frame" x="11" y="20" width="76" height="76"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="101" id="Ruu-ts-lbl">
+                                    <rect key="frame" x="5" y="12" width="66" height="52"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" id="AIF-5c-FVn"/>
+                                    <connections>
+                                        <binding destination="gsa-JY-QfS" name="value" keyPath="representedObject.image" id="1Z3-iE-RjF"/>
+                                    </connections>
+                                </imageView>
+                            </subviews>
+                        </customView>
+                        <textField focusRingType="none" verticalHuggingPriority="750" tag="100" id="xUP-Cn-pkN" customClass="IMBFolderOrFileTitleField">
+                            <rect key="frame" x="0.0" y="0.0" width="96" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="5C8-B2-Ohz">
+                                <font key="font" size="13" name="HelveticaNeue"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="gsa-JY-QfS" name="value" keyPath="representedObject.fileName" id="uKU-t2-gI3"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                </customView>
             </subviews>
+            <point key="canvasLocation" x="371" y="-85"/>
+        </view>
+        <customView id="D1x-tB-bYK" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView id="VpW-Yc-5wO" customClass="LoadingView">
+                    <rect key="frame" x="319" y="70" width="422" height="357"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
+            </subviews>
+        </customView>
+        <view id="r1F-dh-yI6" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="1060" height="635"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="M4B-64-7xh">
+                    <rect key="frame" x="0.0" y="0.0" width="1060" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" id="W1S-Oh-XpU">
+                        <rect key="frame" x="1" y="1" width="1058" height="598"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="tGL-xG-D0I" customClass="IMBBlankDraggableCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="1058" height="598"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <binding destination="cMF-NQ-AS6" name="content" keyPath="arrangedObjects" id="Tdd-aP-ivY"/>
+                                    <binding destination="cMF-NQ-AS6" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Tdd-aP-ivY" id="az3-xo-6Yf"/>
+                                    <outlet property="itemPrototype" destination="gsa-JY-QfS" id="wIr-Zl-zBK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="qfS-v5-1Jh">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FjT-sA-w9T">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <customView id="XQW-E1-yk5" customClass="IMBToolBarView">
+                    <rect key="frame" x="262" y="601" width="350" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <button id="8Gd-bg-IAa" customClass="HoverButton">
+                    <rect key="frame" x="20" y="604" width="28" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="3yJ-nC-WHn">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button id="yfs-qd-84N" customClass="HoverButton">
+                    <rect key="frame" x="50" y="608" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="xBG-i0-72r">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="275" y="324.5"/>
         </view>
     </objects>
 </document>

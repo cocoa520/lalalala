@@ -77,7 +77,7 @@
 }
 
 
--(void)setMouseEnteredImage:(NSImage *)image1 mouseExitImage:(NSImage *)image2 mouseDownImage:(NSImage *)image3 forBidImage:(NSImage *)forBidImage;{
+-(void)setMouseEnteredImage:(NSImage *)image1 mouseExitImage:(NSImage *)image2 mouseDownImage:(NSImage *)image3 forBidImage:(NSImage *)forBidImage {
    
     if (_status != 1 && _status != 2 && _status != 3 && _status != 4) {
         _status = 1;

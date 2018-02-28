@@ -41,7 +41,7 @@ static CGFloat const labelY = 10.0f;
 - (void)setupView {
     _rootBox = objc_getAssociatedObject(_iPod, &kIMBDevicePageRootBoxKey);
     
-    objc_setAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     _scrollView.hasHorizontalScroller = NO;
     

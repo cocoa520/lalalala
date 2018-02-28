@@ -9,7 +9,7 @@
 #import "IMBToolBarView.h"
 #import "IMBInformation.h"
 #import "IMBiPod.h"
-
+#import "IMBBaseViewController.h"
 static const NSString *IMBToolBarViewIdxName = @"idx";
 static const NSString *IMBToolBarViewImgNameName = @"imgName";
 static const NSString *IMBToolBarViewTipName = @"tipName";
@@ -132,12 +132,6 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     switch (sender.tag) {
         case IMBToolBarViewEnumRefresh:
         {
-            for (id btn in self.subviews) {
-                if ([btn isKindOfClass:[NSButton class]]) {
-                    [(NSButton *)btn setEnabled:NO];
-                }
-            }
-            
             [_delegate refresh];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
         }
@@ -199,11 +193,11 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     [super dealloc];
 }
 
-- (void)enableBtns {
+- (void)enableBtns:(BOOL)isEnable {
     if (self.subviews.count) {
         for (id btn in self.subviews) {
             if ([btn isKindOfClass:[NSButton class]]) {
-                [(NSButton *)btn setEnabled:YES];
+                [(NSButton *)btn setEnabled:isEnable];
             }
         }
     }

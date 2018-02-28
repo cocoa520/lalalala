@@ -232,8 +232,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="lUT-HU-4rk" customClass="IMBScrollView">
-                            <rect key="frame" x="-20" y="0.0" width="1060" height="496"/>
+                        <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="lUT-HU-4rk" customClass="IMBScrollView">
+                            <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R2q-Ds-T0c">
                                 <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>

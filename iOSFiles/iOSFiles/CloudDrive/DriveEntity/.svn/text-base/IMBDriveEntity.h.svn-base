@@ -20,7 +20,8 @@
     NSString *_fileID;
     BOOL _isFolder; //是否是文件夹 yes 是
     int _childCount;
-     CheckStateEnum _checkState;
+    CheckStateEnum _checkState;
+    NSImage  *_image;
 }
 @property (nonatomic, retain) NSString *fileLoadURL;
 @property (nonatomic, retain) NSString *createdDateString;
@@ -33,4 +34,5 @@
 @property (nonatomic, assign) BOOL isFolder;
 @property (nonatomic, assign) int childCount;
 @property(nonatomic, assign)CheckStateEnum checkState;
+@property(nonatomic,retain)NSImage  *image;
 @end

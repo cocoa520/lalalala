@@ -1243,8 +1243,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:BackupItemDoubleClick object:superView];
         }
         if (theEvent.clickCount == 1) {
-
-                [[NSNotificationCenter defaultCenter] postNotificationName:BackupItemSingleClick object:superView];
+            [[NSNotificationCenter defaultCenter] postNotificationName:BackupItemSingleClick object:superView];
         }
     }else
     {
@@ -1335,7 +1334,7 @@
 }
 
 @end
-
+#import "IMBDriveEntity.h"
 @implementation IMBFolderOrFileCollectionViewItem
 
 - (void)awakeFromNib
@@ -1371,6 +1370,28 @@
             }
         }
         
+    }else if ([node isKindOfClass:[IMBDriveEntity class]]){
+        IMBDriveEntity *node = self.representedObject;
+//        if (!node.isCoping) {
+            [super setSelected:selected];
+            [node setCheckState:selected];
+//        }else{
+//            [super setSelected:NO];
+//            [node setCheckState:NO];
+//        }
+        IMBFolderOrFileCollectionItemView *itemView = (IMBFolderOrFileCollectionItemView *)self.view;
+        for (NSView *subview in [itemView subviews]) {
+            if ([subview isKindOfClass:[IMBFolderOrFileButton class]]) {
+//                if (node.isCoping) {
+//                    [node.coprogressBar setIsFastDrive:YES];
+//                    [subview addSubview:node.coprogressBar];
+//                    [subview addSubview:node.coCloseButton];
+//                }
+//                if (!node.isCoping) {
+                    [((IMBFolderOrFileButton *)subview) setSelected:selected];
+//                }
+            }
+        }
     }else {
         [super setSelected:selected];
         [node setCheckState:selected];
