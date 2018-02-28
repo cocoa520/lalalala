@@ -22,4 +22,7 @@
 }
 
 - (id)initWithiPod:(IMBiPod *)ipod;
+
+- (void)setTitleStr:(NSString *)title;
+
 @end

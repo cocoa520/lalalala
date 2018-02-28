@@ -1,25 +1,31 @@
 K 25
 svn:wc:ra_dav:version-url
 V 64
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller
+/svn/Mac/!svn/ver/1393/JPProject/iOSFiles/iOSFiles/UI/controller
 END
 IMBDeviceViewController.m
 K 25
 svn:wc:ra_dav:version-url
 V 90
-/svn/Mac/!svn/ver/1280/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.m
+/svn/Mac/!svn/ver/1391/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.m
 END
 IMBSystemCollectionViewController.m
 K 25
 svn:wc:ra_dav:version-url
 V 100
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.m
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.m
 END
 IMBDevViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 89
-/svn/Mac/!svn/ver/1353/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDevViewController.xib
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDevViewController.xib
+END
+IMBBaseViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Mac/!svn/ver/1404/JPProject/iOSFiles/iOSFiles/UI/controller/IMBBaseViewController.h
 END
 IMBDevViewController.h
 K 25
@@ -33,6 +39,12 @@ svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBTransferViewController.xib
 END
+IMBBaseViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Mac/!svn/ver/1404/JPProject/iOSFiles/iOSFiles/UI/controller/IMBBaseViewController.m
+END
 IMBDetailViewControler.xib
 K 25
 svn:wc:ra_dav:version-url
@@ -45,17 +57,17 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/1238/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDevViewController.m
 END
+IMBTransferViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Mac/!svn/ver/1366/JPProject/iOSFiles/iOSFiles/UI/controller/IMBTransferViewController.h
+END
 IMBDisconnectViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 96
 /svn/Mac/!svn/ver/1103/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDisconnectViewController.xib
-END
-IMBTransferViewController.h
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBTransferViewController.h
 END
 IMBDetailViewControler.h
 K 25
@@ -69,41 +81,41 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/1354/JPProject/iOSFiles/iOSFiles/UI/controller/IMBPhotoCategoryController.xib
 END
+IMBTransferViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Mac/!svn/ver/1366/JPProject/iOSFiles/iOSFiles/UI/controller/IMBTransferViewController.m
+END
 IMBDisconnectViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/1038/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDisconnectViewController.h
 END
-IMBTransferViewController.m
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBTransferViewController.m
-END
 IMBDeviceViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/1217/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.xib
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.xib
 END
 IMBSystemCollectionViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 102
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.xib
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.xib
 END
 IMBDetailViewControler.m
 K 25
 svn:wc:ra_dav:version-url
 V 89
-/svn/Mac/!svn/ver/1361/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDetailViewControler.m
+/svn/Mac/!svn/ver/1413/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDetailViewControler.m
 END
 IMBPhotoCategoryController.h
 K 25
 svn:wc:ra_dav:version-url
 V 93
-/svn/Mac/!svn/ver/1335/JPProject/iOSFiles/iOSFiles/UI/controller/IMBPhotoCategoryController.h
+/svn/Mac/!svn/ver/1403/JPProject/iOSFiles/iOSFiles/UI/controller/IMBPhotoCategoryController.h
 END
 IMBDisconnectViewController.m
 K 25
@@ -115,17 +127,17 @@ IMBDeviceViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 90
-/svn/Mac/!svn/ver/1159/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.h
+/svn/Mac/!svn/ver/1391/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.h
 END
 IMBSystemCollectionViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 100
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.h
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/controller/IMBSystemCollectionViewController.h
 END
 IMBPhotoCategoryController.m
 K 25
 svn:wc:ra_dav:version-url
 V 93
-/svn/Mac/!svn/ver/1355/JPProject/iOSFiles/iOSFiles/UI/controller/IMBPhotoCategoryController.m
+/svn/Mac/!svn/ver/1404/JPProject/iOSFiles/iOSFiles/UI/controller/IMBPhotoCategoryController.m
 END

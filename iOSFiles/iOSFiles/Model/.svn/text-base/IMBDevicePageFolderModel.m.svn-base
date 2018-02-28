@@ -93,9 +93,9 @@
 - (void)setSizeStr {
     _time = @"2018-1-20 18:02";
     if (_counts || _counts == 0) {
-        _countsString = [NSString stringWithFormat:@"%lu",_counts];
+        self.countsString = [NSString stringWithFormat:@"%lu",_counts];
     }else {
-        _countsString = @"-";
+        self.countsString = @"-";
     }
     
     if (_size == 0) {

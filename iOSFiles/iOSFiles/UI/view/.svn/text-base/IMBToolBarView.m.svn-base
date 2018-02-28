@@ -132,12 +132,19 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     switch (sender.tag) {
         case IMBToolBarViewEnumRefresh:
         {
+            for (id btn in self.subviews) {
+                if ([btn isKindOfClass:[NSButton class]]) {
+                    [(NSButton *)btn setEnabled:NO];
+                }
+            }
+            
             [_delegate refresh];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
         }
             break;
         case IMBToolBarViewEnumToMac:
         {
+            [_delegate toMac];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToMacClickedNoti object:information];
         }
             break;
@@ -149,6 +156,7 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
             break;
         case IMBToolBarViewEnumDelete:
         {
+            [_delegate deleteItem];
             [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
         }
             break;
@@ -189,5 +197,15 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
         _information = nil;
     }
     [super dealloc];
+}
+
+- (void)enableBtns {
+    if (self.subviews.count) {
+        for (id btn in self.subviews) {
+            if ([btn isKindOfClass:[NSButton class]]) {
+                [(NSButton *)btn setEnabled:YES];
+            }
+        }
+    }
 }
 @end

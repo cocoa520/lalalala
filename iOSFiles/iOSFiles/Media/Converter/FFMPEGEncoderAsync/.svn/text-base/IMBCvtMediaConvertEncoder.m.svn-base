@@ -10,7 +10,7 @@
 #import "IMBCvtEncodedMedia.h"
 #import "NSString+Category.h"
 #import "StringHelper.h"
-//#import "RegexKitLite.h"
+#import "RegexKitLite.h"
 #import "IMBNewTrack.h"
 #import "SystemHelper.h"
 #import "DateHelper.h"

@@ -282,7 +282,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //文件系统中不存在新曲目路径
     if ([fileManager fileExistsAtPath:[newItem filePath]] == NO) {
-//        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_File_Not_Exist", nil), [newItem filePath]] userInfo:nil];
+        @throw [NSException exceptionWithName:@"EX_File_Not_Exist" reason:[NSString stringWithFormat:@"%@ file does not exist", [newItem filePath]] userInfo:nil];
     }
     IMBTrack *track;
     track = [self addTrack:newItem calcuTotalSize:calcuTotalSize];

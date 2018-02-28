@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */; };
+		7B6BB4D720450B9400BBD6E9 /* IMBDriveManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */; };
+		7B6BB4DB20452B9A00BBD6E9 /* IMBDriveWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */; };
+		7B6BB4DC20452B9A00BBD6E9 /* IMBDriveWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */; };
+		7B8C0B362043EDCA00BE7EF1 /* IMBDrawTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B352043EDCA00BE7EF1 /* IMBDrawTextFiledView.m */; };
+		7B8C0B392043EE5600BE7EF1 /* customTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B382043EE5600BE7EF1 /* customTextFiled.m */; };
+		7B8C0B3C2043EE7800BE7EF1 /* customTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B3B2043EE7800BE7EF1 /* customTextFieldCell.m */; };
+		7B8C0B3F2043EEA600BE7EF1 /* IMBSecireTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B3E2043EEA600BE7EF1 /* IMBSecireTextField.m */; };
+		7B8C0B422043EEC500BE7EF1 /* IMBSecureTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B412043EEC500BE7EF1 /* IMBSecureTextFieldCell.m */; };
 		812A89672021CF1F00101463 /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4720219FFD00849CBB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		812A89682021CF2700101463 /* YTKNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4920219FFD00849CBB /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		812A89692021CF2F00101463 /* AppAuth.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4820219FFD00849CBB /* AppAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,6 +47,11 @@
 		B910BF4A20219FFD00849CBB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4720219FFD00849CBB /* AFNetworking.framework */; };
 		B910BF4B20219FFD00849CBB /* AppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4820219FFD00849CBB /* AppAuth.framework */; };
 		B910BF4C20219FFD00849CBB /* YTKNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B910BF4920219FFD00849CBB /* YTKNetwork.framework */; };
+		B9113C3F2044F80E0023E09F /* ArtworkDB-empty in Resources */ = {isa = PBXBuildFile; fileRef = B9113C3C2044F80E0023E09F /* ArtworkDB-empty */; };
+		B9113C402044F80E0023E09F /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = B9113C3D2044F80E0023E09F /* ffmpeg */; };
+		B9113C412044F80E0023E09F /* iMobieBackupRestoreDevice in Resources */ = {isa = PBXBuildFile; fileRef = B9113C3E2044F80E0023E09F /* iMobieBackupRestoreDevice */; };
+		B9113C452044F8B40023E09F /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = B9113C442044F8B40023E09F /* RegexKitLite.m */; };
+		B9113C472044FA4C0023E09F /* MediaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9113C462044FA4B0023E09F /* MediaLibrary.framework */; };
 		B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B914C19C2023F0EC00B998AC /* DevicePageFolderNames.plist */; };
 		B914C19F2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B914C19D2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist */; };
 		B914C1A520241A7500B998AC /* IMBDetailViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = B914C1A320241A7500B998AC /* IMBDetailViewControler.m */; };
@@ -82,6 +96,9 @@
 		B95BD52120244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */; };
 		B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */; };
 		B95BD52320244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */; };
+		B95F74C22044FF9100D4B7C0 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F74C12044FF9100D4B7C0 /* libicucore.dylib */; };
+		B95F74CB2045637E00D4B7C0 /* NSObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F74CA2045637E00D4B7C0 /* NSObject+Extension.m */; };
+		B95F74CE2045645B00D4B7C0 /* ZLEndMark.m in Sources */ = {isa = PBXBuildFile; fileRef = B95F74CD2045645B00D4B7C0 /* ZLEndMark.m */; };
 		B962F130202E812600F83974 /* IMBPhotoCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */; };
 		B962F131202E812600F83974 /* IMBPhotoCategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */; };
 		B9655DBF20207D1D00FE2D92 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9655DBE20207D1D00FE2D92 /* libiconv.dylib */; };
@@ -520,6 +537,8 @@
 		B9E73AE22028410F00E1BB3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9E73AE12028410F00E1BB3B /* Localizable.strings */; };
 		B9F6730D2022B92C00D3665E /* IMBVideoImageByOther.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */; };
 		B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */; };
+		B9F7A4D82043A2E700BD12CA /* IMBBooksPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F7A4D52043A2E700BD12CA /* IMBBooksPlist.m */; };
+		B9F7A4D92043A2E700BD12CA /* IMBSyncBookPlistBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F7A4D72043A2E700BD12CA /* IMBSyncBookPlistBuilder.m */; };
 		B9FA3DDF202EAAE0008353D4 /* IMBToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FA3DDE202EAAE0008353D4 /* IMBToolBarView.m */; };
 		B9FBDE14200D927F0004A995 /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FBDE13200D927F0004A995 /* MobileDevice.framework */; };
 		B9FBDE1D200D9C440004A995 /* IMBDeviceConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FBDE1C200D9C440004A995 /* IMBDeviceConnection.m */; };
@@ -596,6 +615,7 @@
 		EEE447EA202AE00800221BE0 /* music_show@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE447E8202AE00800221BE0 /* music_show@2x.png */; };
 		EEF3C174204154E50056B286 /* IMBTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF3C172204154E50056B286 /* IMBTransferViewController.m */; };
 		EEF3C175204154E50056B286 /* IMBTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF3C173204154E50056B286 /* IMBTransferViewController.xib */; };
+		EEF3C17820439F0F0056B286 /* IMBBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF3C17720439F0F0056B286 /* IMBBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -656,6 +676,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveEntity.h; sourceTree = "<group>"; };
+		7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveEntity.m; sourceTree = "<group>"; };
+		7B6BB4D520450B9400BBD6E9 /* IMBDriveManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveManage.h; sourceTree = "<group>"; };
+		7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveManage.m; sourceTree = "<group>"; };
+		7B6BB4D820452B9A00BBD6E9 /* IMBDriveWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveWindow.h; sourceTree = "<group>"; };
+		7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveWindow.m; sourceTree = "<group>"; };
+		7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDriveWindow.xib; sourceTree = "<group>"; };
+		7B8C0B342043EDCA00BE7EF1 /* IMBDrawTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDrawTextFiledView.h; sourceTree = "<group>"; };
+		7B8C0B352043EDCA00BE7EF1 /* IMBDrawTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDrawTextFiledView.m; sourceTree = "<group>"; };
+		7B8C0B372043EE5600BE7EF1 /* customTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTextFiled.h; sourceTree = "<group>"; };
+		7B8C0B382043EE5600BE7EF1 /* customTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTextFiled.m; sourceTree = "<group>"; };
+		7B8C0B3A2043EE7800BE7EF1 /* customTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTextFieldCell.h; sourceTree = "<group>"; };
+		7B8C0B3B2043EE7800BE7EF1 /* customTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customTextFieldCell.m; sourceTree = "<group>"; };
+		7B8C0B3D2043EEA600BE7EF1 /* IMBSecireTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSecireTextField.h; sourceTree = "<group>"; };
+		7B8C0B3E2043EEA600BE7EF1 /* IMBSecireTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSecireTextField.m; sourceTree = "<group>"; };
+		7B8C0B402043EEC500BE7EF1 /* IMBSecureTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSecureTextFieldCell.h; sourceTree = "<group>"; };
+		7B8C0B412043EEC500BE7EF1 /* IMBSecureTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSecureTextFieldCell.m; sourceTree = "<group>"; };
+		7B8C0B442043EFC200BE7EF1 /* IMBCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonDefine.h; sourceTree = "<group>"; };
 		B90D14C920201599002D9F9B /* AppInstallProgressFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppInstallProgressFile; sourceTree = "<group>"; };
 		B90D14CA20201599002D9F9B /* IMBAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppConfig.h; sourceTree = "<group>"; };
 		B90D14CB20201599002D9F9B /* IMBAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppConfig.m; sourceTree = "<group>"; };
@@ -712,6 +750,12 @@
 		B910BF4720219FFD00849CBB /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		B910BF4820219FFD00849CBB /* AppAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppAuth.framework; sourceTree = "<group>"; };
 		B910BF4920219FFD00849CBB /* YTKNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTKNetwork.framework; sourceTree = "<group>"; };
+		B9113C3C2044F80E0023E09F /* ArtworkDB-empty */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ArtworkDB-empty"; sourceTree = "<group>"; };
+		B9113C3D2044F80E0023E09F /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
+		B9113C3E2044F80E0023E09F /* iMobieBackupRestoreDevice */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = iMobieBackupRestoreDevice; sourceTree = "<group>"; };
+		B9113C432044F8B40023E09F /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		B9113C442044F8B40023E09F /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		B9113C462044FA4B0023E09F /* MediaLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaLibrary.framework; path = System/Library/Frameworks/MediaLibrary.framework; sourceTree = SDKROOT; };
 		B914C19C2023F0EC00B998AC /* DevicePageFolderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageFolderNames.plist; sourceTree = "<group>"; };
 		B914C19D2023F0EC00B998AC /* DevicePageHeaderTitleNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePageHeaderTitleNames.plist; sourceTree = "<group>"; };
 		B914C1A220241A7500B998AC /* IMBDetailViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDetailViewControler.h; sourceTree = "<group>"; };
@@ -791,6 +835,11 @@
 		B95BD51E20244B6D00297F02 /* DetailVCHeaderTitleAppNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleAppNames.plist; sourceTree = "<group>"; };
 		B95BD51F20244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleBookNames.plist; sourceTree = "<group>"; };
 		B95BD52020244B6D00297F02 /* DetailVCHeaderTitlePhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitlePhotoNames.plist; sourceTree = "<group>"; };
+		B95F74C12044FF9100D4B7C0 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		B95F74C92045637E00D4B7C0 /* NSObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Extension.h"; sourceTree = "<group>"; };
+		B95F74CA2045637E00D4B7C0 /* NSObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Extension.m"; sourceTree = "<group>"; };
+		B95F74CC2045645B00D4B7C0 /* ZLEndMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLEndMark.h; sourceTree = "<group>"; };
+		B95F74CD2045645B00D4B7C0 /* ZLEndMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLEndMark.m; sourceTree = "<group>"; };
 		B962F12D202E812600F83974 /* IMBPhotoCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPhotoCategoryController.h; sourceTree = "<group>"; };
 		B962F12E202E812600F83974 /* IMBPhotoCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPhotoCategoryController.m; sourceTree = "<group>"; };
 		B962F12F202E812600F83974 /* IMBPhotoCategoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPhotoCategoryController.xib; sourceTree = "<group>"; };
@@ -1626,6 +1675,10 @@
 		B9F6730C2022B92C00D3665E /* IMBVideoImageByOther.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBVideoImageByOther.m; sourceTree = "<group>"; };
 		B9F6745D2023061E00D3665E /* IMBDevicePageFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePageFolderModel.h; sourceTree = "<group>"; };
 		B9F6745E2023061E00D3665E /* IMBDevicePageFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevicePageFolderModel.m; sourceTree = "<group>"; };
+		B9F7A4D42043A2E700BD12CA /* IMBBooksPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBooksPlist.h; sourceTree = "<group>"; };
+		B9F7A4D52043A2E700BD12CA /* IMBBooksPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBooksPlist.m; sourceTree = "<group>"; };
+		B9F7A4D62043A2E700BD12CA /* IMBSyncBookPlistBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSyncBookPlistBuilder.h; sourceTree = "<group>"; };
+		B9F7A4D72043A2E700BD12CA /* IMBSyncBookPlistBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSyncBookPlistBuilder.m; sourceTree = "<group>"; };
 		B9FA3DDD202EAAE0008353D4 /* IMBToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBToolBarView.h; sourceTree = "<group>"; };
 		B9FA3DDE202EAAE0008353D4 /* IMBToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBToolBarView.m; sourceTree = "<group>"; };
 		B9FBDE13200D927F0004A995 /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = ../../../../../../../System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<group>"; };
@@ -1740,6 +1793,8 @@
 		EEF3C171204154E50056B286 /* IMBTransferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTransferViewController.h; sourceTree = "<group>"; };
 		EEF3C172204154E50056B286 /* IMBTransferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTransferViewController.m; sourceTree = "<group>"; };
 		EEF3C173204154E50056B286 /* IMBTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBTransferViewController.xib; sourceTree = "<group>"; };
+		EEF3C17620439F0F0056B286 /* IMBBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBaseViewController.h; sourceTree = "<group>"; };
+		EEF3C17720439F0F0056B286 /* IMBBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1747,6 +1802,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B95F74C22044FF9100D4B7C0 /* libicucore.dylib in Frameworks */,
+				B9113C472044FA4C0023E09F /* MediaLibrary.framework in Frameworks */,
 				B9655DD920207DDA00FE2D92 /* QuartzCore.framework in Frameworks */,
 				B9655DD720207DCF00FE2D92 /* CoreMedia.framework in Frameworks */,
 				B9655DD520207DC200FE2D92 /* CoreData.framework in Frameworks */,
@@ -1774,6 +1831,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B6BB4CF2044E8CA00BBD6E9 /* DriveEntity */ = {
+			isa = PBXGroup;
+			children = (
+				7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */,
+				7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */,
+				7B6BB4D520450B9400BBD6E9 /* IMBDriveManage.h */,
+				7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */,
+			);
+			path = DriveEntity;
+			sourceTree = "<group>";
+		};
 		B90D14C820201599002D9F9B /* Applications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1795,6 +1863,7 @@
 		B910BF0E20219E3B00849CBB /* CloudDrive */ = {
 			isa = PBXGroup;
 			children = (
+				7B6BB4CF2044E8CA00BBD6E9 /* DriveEntity */,
 				B910BF1120219E3B00849CBB /* DriveAPI */,
 				B910BF2120219E3B00849CBB /* OneDrive */,
 			);
@@ -1846,6 +1915,25 @@
 				B910BF3320219E3B00849CBB /* OneDUploadAPI.m */,
 			);
 			path = OneDrive;
+			sourceTree = "<group>";
+		};
+		B9113C3B2044F80E0023E09F /* Exe */ = {
+			isa = PBXGroup;
+			children = (
+				B9113C3C2044F80E0023E09F /* ArtworkDB-empty */,
+				B9113C3D2044F80E0023E09F /* ffmpeg */,
+				B9113C3E2044F80E0023E09F /* iMobieBackupRestoreDevice */,
+			);
+			path = Exe;
+			sourceTree = "<group>";
+		};
+		B9113C422044F8B40023E09F /* Regkit */ = {
+			isa = PBXGroup;
+			children = (
+				B9113C432044F8B40023E09F /* RegexKitLite.h */,
+				B9113C442044F8B40023E09F /* RegexKitLite.m */,
+			);
+			path = Regkit;
 			sourceTree = "<group>";
 		};
 		B914C19B2023F0EC00B998AC /* Plists */ = {
@@ -1904,6 +1992,10 @@
 				B92A179B20215F6200187405 /* NSDictionary+Category.m */,
 				B92A179C20215F6200187405 /* NSString+Category.h */,
 				B92A179D20215F6200187405 /* NSString+Category.m */,
+				B95F74C92045637E00D4B7C0 /* NSObject+Extension.h */,
+				B95F74CA2045637E00D4B7C0 /* NSObject+Extension.m */,
+				B95F74CC2045645B00D4B7C0 /* ZLEndMark.h */,
+				B95F74CD2045645B00D4B7C0 /* ZLEndMark.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1923,6 +2015,10 @@
 		B9347CB5201ED9BD00A8CEC3 /* iBooks */ = {
 			isa = PBXGroup;
 			children = (
+				B9F7A4D42043A2E700BD12CA /* IMBBooksPlist.h */,
+				B9F7A4D52043A2E700BD12CA /* IMBBooksPlist.m */,
+				B9F7A4D62043A2E700BD12CA /* IMBSyncBookPlistBuilder.h */,
+				B9F7A4D72043A2E700BD12CA /* IMBSyncBookPlistBuilder.m */,
 				B9E73A8A202811E300E1BB3B /* IMBBooksHelperEntry.h */,
 				B9E73A8B202811E300E1BB3B /* IMBBooksHelperEntry.m */,
 				B9348B09201F03D500A8CEC3 /* IMBBaseModel.h */,
@@ -1942,6 +2038,8 @@
 		B9348747201EFD2100A8CEC3 /* OopenSource */ = {
 			isa = PBXGroup;
 			children = (
+				B9113C422044F8B40023E09F /* Regkit */,
+				B9113C3B2044F80E0023E09F /* Exe */,
 				B9E73A9320282FF500E1BB3B /* Zip */,
 				B96560E32021D2AF00BD7FF5 /* MediaInfo */,
 				B934874C201EFD2100A8CEC3 /* Fmdb */,
@@ -3336,6 +3434,8 @@
 		EE39AC92200CBBF300D084CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B95F74C12044FF9100D4B7C0 /* libicucore.dylib */,
+				B9113C462044FA4B0023E09F /* MediaLibrary.framework */,
 				B9E73ADF20283BED00E1BB3B /* AirTrafficHost.framework */,
 				B910BF4720219FFD00849CBB /* AFNetworking.framework */,
 				B910BF4820219FFD00849CBB /* AppAuth.framework */,
@@ -3364,6 +3464,7 @@
 		EE39ACE0200CBD9700D084CE /* iOSFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7B8C0B442043EFC200BE7EF1 /* IMBCommonDefine.h */,
 				EE39ACE3200CBD9700D084CE /* Assets.xcassets */,
 				EE39ACE4200CBD9700D084CE /* MainMenu.xib */,
 				EE39ACF9200CBD9700D084CE /* main.m */,
@@ -3452,6 +3553,16 @@
 		EE39AD02200CBD9700D084CE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7B8C0B402043EEC500BE7EF1 /* IMBSecureTextFieldCell.h */,
+				7B8C0B412043EEC500BE7EF1 /* IMBSecureTextFieldCell.m */,
+				7B8C0B3D2043EEA600BE7EF1 /* IMBSecireTextField.h */,
+				7B8C0B3E2043EEA600BE7EF1 /* IMBSecireTextField.m */,
+				7B8C0B3A2043EE7800BE7EF1 /* customTextFieldCell.h */,
+				7B8C0B3B2043EE7800BE7EF1 /* customTextFieldCell.m */,
+				7B8C0B372043EE5600BE7EF1 /* customTextFiled.h */,
+				7B8C0B382043EE5600BE7EF1 /* customTextFiled.m */,
+				7B8C0B342043EDCA00BE7EF1 /* IMBDrawTextFiledView.h */,
+				7B8C0B352043EDCA00BE7EF1 /* IMBDrawTextFiledView.m */,
 				B9538FDD202BEBB4000BED1C /* LoadingView.h */,
 				B9538FDE202BEBB4000BED1C /* LoadingView.m */,
 				EEE447BC202AA2EA00221BE0 /* IMBFolderOrFileTitleField.h */,
@@ -3493,6 +3604,9 @@
 				EE39AD0F200CBD9700D084CE /* IMBMainWindowController.xib */,
 				EE39AD10200CBD9700D084CE /* IMBNoTitleBarWindow.h */,
 				EE39AD11200CBD9700D084CE /* IMBNoTitleBarWindow.m */,
+				7B6BB4D820452B9A00BBD6E9 /* IMBDriveWindow.h */,
+				7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */,
+				7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */,
 			);
 			path = window;
 			sourceTree = "<group>";
@@ -3518,6 +3632,8 @@
 				EEF3C171204154E50056B286 /* IMBTransferViewController.h */,
 				EEF3C172204154E50056B286 /* IMBTransferViewController.m */,
 				EEF3C173204154E50056B286 /* IMBTransferViewController.xib */,
+				EEF3C17620439F0F0056B286 /* IMBBaseViewController.h */,
+				EEF3C17720439F0F0056B286 /* IMBBaseViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3696,12 +3812,14 @@
 				B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */,
 				B9E73A0F2028038D00E1BB3B /* left_top3.png in Resources */,
 				EEE447D2202AD4BF00221BE0 /* backup_advance3@2x.png in Resources */,
+				B9113C3F2044F80E0023E09F /* ArtworkDB-empty in Resources */,
 				EE8BA57E20217D9100FECC14 /* windowclose3.png in Resources */,
 				B9E73A7A20280FC000E1BB3B /* IMBSoftware-Info.plist in Resources */,
 				EEE447E3202AD53F00221BE0 /* backup_retreat2.png in Resources */,
 				EEE447C9202AD4BF00221BE0 /* backup_advance_enter.png in Resources */,
 				B9E73A0C2028038D00E1BB3B /* left_bottom3.png in Resources */,
 				B9E73A152028038D00E1BB3B /* right_mid2.png in Resources */,
+				7B6BB4DC20452B9A00BBD6E9 /* IMBDriveWindow.xib in Resources */,
 				B96564902021D47600BD7FF5 /* iTunesCDB in Resources */,
 				B9E73A092028038D00E1BB3B /* folder2.png in Resources */,
 				EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */,
@@ -3756,7 +3874,9 @@
 				EEE447E9202AE00800221BE0 /* music_show.png in Resources */,
 				EEE447CF202AD4BF00221BE0 /* backup_advance2.png in Resources */,
 				B95BD52220244B6D00297F02 /* DetailVCHeaderTitleBookNames.plist in Resources */,
+				B9113C412044F80E0023E09F /* iMobieBackupRestoreDevice in Resources */,
 				B9E73A072028038D00E1BB3B /* file.png in Resources */,
+				B9113C402044F80E0023E09F /* ffmpeg in Resources */,
 				B962F131202E812600F83974 /* IMBPhotoCategoryController.xib in Resources */,
 				B9E73A182028038D00E1BB3B /* right_top2.png in Resources */,
 				EEE447D1202AD4BF00221BE0 /* backup_advance3.png in Resources */,
@@ -3802,6 +3922,7 @@
 				B910BF3720219E3B00849CBB /* BaseDrive.m in Sources */,
 				B9E739F72028038D00E1BB3B /* IMBAddPlaylist.m in Sources */,
 				B96564B92021D47600BD7FF5 /* IMBPlayCountHeader.m in Sources */,
+				EEF3C17820439F0F0056B286 /* IMBBaseViewController.m in Sources */,
 				B9E73AC920282FF500E1BB3B /* zip.c in Sources */,
 				B965632D2021D2B000BD7FF5 /* MediaInfo_Config.cpp in Sources */,
 				B965639A2021D2B000BD7FF5 /* File_Y4m.cpp in Sources */,
@@ -3812,6 +3933,7 @@
 				B96564A32021D47600BD7FF5 /* IMBPlaylistItem.m in Sources */,
 				B9E73AD920282FF500E1BB3B /* inffast.c in Sources */,
 				B96564A82021D47600BD7FF5 /* IMBTrack.m in Sources */,
+				7B8C0B392043EE5600BE7EF1 /* customTextFiled.m in Sources */,
 				B96564B12021D47600BD7FF5 /* IMBMHODFactory.m in Sources */,
 				B965649F2021D47600BD7FF5 /* IMBIDGenerator.m in Sources */,
 				EEE447B5202A8AC400221BE0 /* IMBBlankDraggableCollectionView.m in Sources */,
@@ -3827,6 +3949,7 @@
 				B910BF4220219E3B00849CBB /* OneDReNameAPI.m in Sources */,
 				B96562E72021D2B000BD7FF5 /* File_Ac3.cpp in Sources */,
 				B965648E2021D47600BD7FF5 /* IMBSession.m in Sources */,
+				B9F7A4D92043A2E700BD12CA /* IMBSyncBookPlistBuilder.m in Sources */,
 				EE8BA57020217BEC00FECC14 /* IMBWindowButton.m in Sources */,
 				B96562FA2021D2B000BD7FF5 /* File_Mpega.cpp in Sources */,
 				B96563292021D2B000BD7FF5 /* File_Rle.cpp in Sources */,
@@ -3851,6 +3974,7 @@
 				B96563782021D2B000BD7FF5 /* File_DtvccTransport.cpp in Sources */,
 				B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */,
 				B96563B42021D2B000BD7FF5 /* ZtringListList.cpp in Sources */,
+				7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */,
 				B96564932021D47600BD7FF5 /* IMBSqliteTables_4.m in Sources */,
 				B965636A2021D2B000BD7FF5 /* Reader_Directory.cpp in Sources */,
 				B96563642021D2B000BD7FF5 /* File_Swf.cpp in Sources */,
@@ -3944,9 +4068,11 @@
 				B965634A2021D2B000BD7FF5 /* File_Ibi_Creation.cpp in Sources */,
 				B9E73A1E2028038D00E1BB3B /* IMBAllFileExport.m in Sources */,
 				B965633F2021D2B000BD7FF5 /* File_Dpg.cpp in Sources */,
+				B9F7A4D82043A2E700BD12CA /* IMBBooksPlist.m in Sources */,
 				B92A17B220215FB100187405 /* StringHelper.m in Sources */,
 				B96563022021D2B000BD7FF5 /* File_ScreamTracker3.cpp in Sources */,
 				B96563552021D2B000BD7FF5 /* File_MpegPs.cpp in Sources */,
+				7B8C0B3F2043EEA600BE7EF1 /* IMBSecireTextField.m in Sources */,
 				B96563662021D2B000BD7FF5 /* File_Wm.cpp in Sources */,
 				B96562F52021D2B000BD7FF5 /* File_La.cpp in Sources */,
 				B9E73A9220282C3C00E1BB3B /* IMBiTunesEnum.m in Sources */,
@@ -4100,6 +4226,7 @@
 				B96563192021D2B000BD7FF5 /* File__Duplicate.cpp in Sources */,
 				B910BF4320219E3B00849CBB /* OneDrive.m in Sources */,
 				B9E739582027FB2100E1BB3B /* IMBSyncPhotoData.m in Sources */,
+				B9113C452044F8B40023E09F /* RegexKitLite.m in Sources */,
 				EEE447BB202AA2B200221BE0 /* IMBFolderOrFileButton.m in Sources */,
 				B96563622021D2B000BD7FF5 /* File_SequenceInfo.cpp in Sources */,
 				B965636D2021D2B000BD7FF5 /* Reader_libmms.cpp in Sources */,
@@ -4115,6 +4242,7 @@
 				B96563102021D2B000BD7FF5 /* Export_Mpeg7.cpp in Sources */,
 				B965648F2021D47600BD7FF5 /* IMBSupportedArtworkFormat.m in Sources */,
 				B965647A2021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m in Sources */,
+				B95F74CE2045645B00D4B7C0 /* ZLEndMark.m in Sources */,
 				B96562D72021D2B000BD7FF5 /* File_7z.cpp in Sources */,
 				B92A179F20215F6200187405 /* NSDictionary+Category.m in Sources */,
 				EE39AD24200CBD9700D084CE /* IMBMainWindowController.m in Sources */,
@@ -4126,6 +4254,7 @@
 				B965630F2021D2B000BD7FF5 /* Export_EbuCore.cpp in Sources */,
 				B9E739E42028038D00E1BB3B /* IMBAthServiceInfo.m in Sources */,
 				B96563522021D2B000BD7FF5 /* File_Mpeg4_TimeCode.cpp in Sources */,
+				7B8C0B362043EDCA00BE7EF1 /* IMBDrawTextFiledView.m in Sources */,
 				B910BF4520219E3B00849CBB /* OneDUploadAPI.m in Sources */,
 				B965638C2021D2B000BD7FF5 /* File_Canopus.cpp in Sources */,
 				B96562E12021D2B000BD7FF5 /* File_Aac.cpp in Sources */,
@@ -4143,6 +4272,7 @@
 				EE39AD1D200CBD9700D084CE /* main.m in Sources */,
 				B9E73ACC20282FF500E1BB3B /* ZipException.m in Sources */,
 				B9E73A892028105500E1BB3B /* IMBVerifyProduct.m in Sources */,
+				7B8C0B3C2043EE7800BE7EF1 /* customTextFieldCell.m in Sources */,
 				B96564AA2021D47600BD7FF5 /* IMBTrackListContainer.m in Sources */,
 				B96563702021D2B000BD7FF5 /* File_Id3.cpp in Sources */,
 				B96563692021D2B000BD7FF5 /* PreComp.cpp in Sources */,
@@ -4170,6 +4300,7 @@
 				B965633A2021D2B000BD7FF5 /* File_Cdxa.cpp in Sources */,
 				B96563242021D2B000BD7FF5 /* File_Ico.cpp in Sources */,
 				B910BF3C20219E3B00849CBB /* UpLoader.m in Sources */,
+				7B6BB4D720450B9400BBD6E9 /* IMBDriveManage.m in Sources */,
 				B90D14EE20202824002D9F9B /* IMBAnimateProgressBar.m in Sources */,
 				B96563962021D2B000BD7FF5 /* File_Theora.cpp in Sources */,
 				B96563492021D2B000BD7FF5 /* File_Ibi.cpp in Sources */,
@@ -4214,6 +4345,7 @@
 				B90D14D620201599002D9F9B /* IMBAppEntity.m in Sources */,
 				B9E73A7D20280FC000E1BB3B /* NSString+SymlinksAndAliases.m in Sources */,
 				B96563AF2021D2B000BD7FF5 /* Thread.cpp in Sources */,
+				7B8C0B422043EEC500BE7EF1 /* IMBSecureTextFieldCell.m in Sources */,
 				B96563952021D2B000BD7FF5 /* File_ProRes.cpp in Sources */,
 				B9E73ACF20282FF500E1BB3B /* ZipWriteStream.m in Sources */,
 				B96563412021D2B000BD7FF5 /* File_DvDif_Analysis.cpp in Sources */,
@@ -4231,6 +4363,7 @@
 				B9E73AD120282FF500E1BB3B /* compress.c in Sources */,
 				B9E73A7B20280FC000E1BB3B /* IMBSoftWareInfo.m in Sources */,
 				B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */,
+				7B6BB4DB20452B9A00BBD6E9 /* IMBDriveWindow.m in Sources */,
 				B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */,
 				B96563372021D2B000BD7FF5 /* File_Aaf.cpp in Sources */,
 				B965637C2021D2B000BD7FF5 /* File_Kate.cpp in Sources */,
@@ -4258,6 +4391,7 @@
 				B965649C2021D47600BD7FF5 /* IMBHash72.cpp in Sources */,
 				B96562DE2021D2B000BD7FF5 /* File_Rar.cpp in Sources */,
 				B96564952021D47600BD7FF5 /* IMBSqliteTables_Nano5G.m in Sources */,
+				B95F74CB2045637E00D4B7C0 /* NSObject+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@
 //  Copyright (c) 2016年 imobie. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
-//#import "LoadingView.h"
+#import "LoadingView.h"
 #import "IMBTransferViewController.h"
 #import "IMBWhiteView.h"
 #import "IMBScrollView.h"
@@ -41,7 +41,7 @@
     NSString *_currentDevicePath;
     NSNotificationCenter *nc;
     IBOutlet IMBWhiteView *_loadingView;
-//    IBOutlet LoadingView *_loadingAnimationView;
+    IBOutlet LoadingView *_loadingAnimationView;
     NSMutableArray *_dataSourceArray;
     IMBiPod *_ipod;
     IBOutlet IMBBlankDraggableCollectionView *_collectionView;
@@ -53,6 +53,7 @@
     
     IMBTransferViewController *_transferViewController;
     IBOutlet IMBToolBarView *_toolBarView;
+    NSMutableArray *_delArray;
    
 }
 @property(nonatomic,retain)NSMutableArray *currentArray;
@@ -60,6 +61,7 @@
 
 - (void)refresh;
 - (void)addItems;
+- (void)toMac;
 - (void)setDeleteCurItems:(int)curItem;
 - (id)initWithIpod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)category withDelegate:(id)delegate;
 @end

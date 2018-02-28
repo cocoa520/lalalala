@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 50
-/svn/Mac/!svn/ver/1363/JPProject/iOSFiles/iOSFiles
+/svn/Mac/!svn/ver/1401/JPProject/iOSFiles/iOSFiles
 END
 IMBNotificationDefine.h
 K 25
@@ -27,11 +27,17 @@ svn:wc:ra_dav:version-url
 V 63
 /svn/Mac/!svn/ver/972/JPProject/iOSFiles/iOSFiles/AppDelegate.h
 END
+IMBCommonDefine.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/IMBCommonDefine.h
+END
 IMBConst.h
 K 25
 svn:wc:ra_dav:version-url
 V 61
-/svn/Mac/!svn/ver/1340/JPProject/iOSFiles/iOSFiles/IMBConst.h
+/svn/Mac/!svn/ver/1404/JPProject/iOSFiles/iOSFiles/IMBConst.h
 END
 Info.plist
 K 25
@@ -49,5 +55,5 @@ IMBConst.m
 K 25
 svn:wc:ra_dav:version-url
 V 61
-/svn/Mac/!svn/ver/1340/JPProject/iOSFiles/iOSFiles/IMBConst.m
+/svn/Mac/!svn/ver/1404/JPProject/iOSFiles/iOSFiles/IMBConst.m
 END

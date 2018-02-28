@@ -21,4 +21,6 @@
 @property(nonatomic, retain)IMBDevicePageFolderModel *folderModel;
 @property(nonatomic, retain)IMBiPod *iPod;
 
+- (void)reloadData;
+
 @end

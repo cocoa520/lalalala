@@ -13,7 +13,12 @@
     CALayer *drawingLayer;
     CALayer *drawingLayer2;
     NSColor *_bgColor;
+    
+    BOOL _isAnimating;
 }
+
+@property(nonatomic, assign)BOOL isAnimating;
+
 -(void)startAnimation;
 -(void)endAnimation;
 - (void)setbackColor:(NSColor *)backgroundColor ;

@@ -1264,56 +1264,56 @@
     return false;
 }
 
-//+ (bool) uploadPlistCompleteWithPlistIdentify:(NSString*) plistIdentify WithHashSha1:(NSData*) hashSha1 FileLength:(long) fileLength {
-//    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
-//    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
-//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
-//    NSURL *url = [NSURL URLWithString:netPath];
-//    
-//    NSString *nameSpace = @"http://tempuri.org/";
-//    
-//    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"U4ADC50PC61599C",nil), kWSSOAP2001Protocol);
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", plistIdentify, @"plistIdentify", hashSha1, @"hash",[NSNumber numberWithLong:fileLength] , @"plistFileLength",nil];
-//    
-//    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"plistFileLength",  @"hash", nil];
-//    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
-//    
-//    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"U4ADC50PC61599C",nil)] forKey:@"SOAPAction"];
-//    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
-//                                  (CFStringRef)nameSpace);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
-//                                  (CFDictionaryRef)reqHeaders);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
-//                                  kCFBooleanTrue);
-//    // set debug props
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
-//                                  kCFBooleanTrue);
-//    
-//    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
-//    NSLog(@"resultDir:%@", [result description]);
-//    // get HTTP response from SOAP request so we can see the status code
-//    CFHTTPMessageRef res = nil;
-//    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
-//    NSDictionary *resultDir = [result objectForKey:@"/Result"];
-//    
-//    NSArray *keyArr = [resultDir allKeys];
-//    NSString *resStr = nil;
-//    for (NSString *key in keyArr) {
-//        resStr = [resultDir valueForKey:key];
-//    }
-//    bool ret = [resStr boolValue];
-//    NSLog(@"ret:%d",ret);
-//    [result release];
-//    return ret;
-//    
-//}
++ (bool) uploadPlistCompleteWithPlistIdentify:(NSString*) plistIdentify WithHashSha1:(NSData*) hashSha1 FileLength:(long) fileLength {
+    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
+    //NSURL *url = [NSURL URLWithString:@"http://192.168.1.112/WebApplication1/WebService3.asmx"];
+    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
+    NSURL *url = [NSURL URLWithString:netPath];
+    
+    NSString *nameSpace = @"http://tempuri.org/";
+    
+    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)@"U4ADC50PC61599C", kWSSOAP2001Protocol);
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", plistIdentify, @"plistIdentify", hashSha1, @"hash",[NSNumber numberWithLong:fileLength] , @"plistFileLength",nil];
+    
+    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"plistFileLength",  @"hash", nil];
+    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
+    
+    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, @"U4ADC50PC61599C"] forKey:@"SOAPAction"];
+    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
+                                  (CFStringRef)nameSpace);
+    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
+                                  (CFDictionaryRef)reqHeaders);
+    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
+                                  kCFBooleanTrue);
+    // set debug props
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
+                                  kCFBooleanTrue);
+    
+    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
+    NSLog(@"resultDir:%@", [result description]);
+    // get HTTP response from SOAP request so we can see the status code
+    CFHTTPMessageRef res = nil;
+    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
+    NSDictionary *resultDir = [result objectForKey:@"/Result"];
+    
+    NSArray *keyArr = [resultDir allKeys];
+    NSString *resStr = nil;
+    for (NSString *key in keyArr) {
+        resStr = [resultDir valueForKey:key];
+    }
+    bool ret = [resStr boolValue];
+    NSLog(@"ret:%d",ret);
+    [result release];
+    return ret;
+    
+}
 
 /*
  // 注册服务
@@ -1322,59 +1322,59 @@
  array("return"=>"xsd:string") // 返回参数的定义
  );
  */
-//+ (NSData*)caclCIGWithPlistIdentify:(NSString*) plistIdentify WithGrappaData:(NSData*) grappa isSuccess:(BOOL *)isSuccess {
-//    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
-//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-//    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
-//    NSURL *url = [NSURL URLWithString:netPath];
-//    NSString *nameSpace = @"http://tempuri.org/";
-//    
-//    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)CustomLocalizedString(@"C4822IBA196D46G",nil), kWSSOAP2001Protocol);
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", grappa, @"GrappaData",nil];
-//    
-//    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"GrappaData", nil];
-//    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
-//    
-//    /*NSString *userName = [@"ABCBDAB9460B" sha1];
-//     NSString *password = [@"D8D4A9588F78" sha1];
-//     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
-//    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, CustomLocalizedString(@"C4822IBA196D46G",nil)] forKey:@"SOAPAction"];
-//    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
-//                                  (CFStringRef)nameSpace);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
-//                                  (CFDictionaryRef)reqHeaders);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
-//                                  kCFBooleanTrue);
-//    // set debug props
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
-//                                  kCFBooleanTrue);
-//    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
-//                                  kCFBooleanTrue);
-//    
-//    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
-//    NSLog(@"resultDir:%@", [result description]);
-//    // get HTTP response from SOAP request so we can see the status code
-//    CFHTTPMessageRef res = nil;
-//    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
-//    NSDictionary *resultDir = [result objectForKey:@"/Result"];
-//    NSArray *keyArr = [resultDir allKeys];
-//    NSString *hashStr = nil;
-//    for (NSString *key in keyArr) {
-//        hashStr = [resultDir valueForKey:key];
-//    }
-//    if (hashStr.length == 0) {
-//        *isSuccess = NO;
-//    } else {
-//        *isSuccess = YES;
-//    }
-//    NSData *data = [hashStr hexToBytes];
-//    [result release];
-//    return data;
-//}
++ (NSData*)caclCIGWithPlistIdentify:(NSString*) plistIdentify WithGrappaData:(NSData*) grappa isSuccess:(BOOL *)isSuccess {
+    //NSURL *url = [NSURL URLWithString:@"http://pallas.com.sumdumbo.com/WebService3.asmx"];
+    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+    NSString *netPath = [soft.domainNetwork stringByAppendingString:@"CF8FIE29DG.asmx"];
+    NSURL *url = [NSURL URLWithString:netPath];
+    NSString *nameSpace = @"http://tempuri.org/";
+    
+    WSMethodInvocationRef mySoapRef = WSMethodInvocationCreate((CFURLRef)url, (CFStringRef)@"C4822IBA196D46G", kWSSOAP2001Protocol);
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:plistIdentify, @"plistIdentify", grappa, @"GrappaData",nil];
+    
+    NSArray *paramOrder = [NSArray arrayWithObjects:@"plistIdentify", @"GrappaData", nil];
+    WSMethodInvocationSetParameters(mySoapRef, (CFDictionaryRef)params, (CFArrayRef)paramOrder);
+    
+    /*NSString *userName = [@"ABCBDAB9460B" sha1];
+     NSString *password = [@"D8D4A9588F78" sha1];
+     NSDictionary *reqHeaders = [NSDictionary dictionaryWithObjectsAndKeys:nameSpace, @"MySoapHeader", userName, @"UserName", password, @"PassWord", nil];*/
+    NSDictionary *reqHeaders = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@%@", nameSpace, @"C4822IBA196D46G"] forKey:@"SOAPAction"];
+    WSMethodInvocationSetProperty(mySoapRef, kWSSOAPMethodNamespaceURI,
+                                  (CFStringRef)nameSpace);
+    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPExtraHeaders,
+                                  (CFDictionaryRef)reqHeaders);
+    WSMethodInvocationSetProperty(mySoapRef, kWSHTTPFollowsRedirects,
+                                  kCFBooleanTrue);
+    // set debug props
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingBody,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugIncomingHeaders,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingBody,
+                                  kCFBooleanTrue);
+    WSMethodInvocationSetProperty(mySoapRef, kWSDebugOutgoingHeaders,
+                                  kCFBooleanTrue);
+    
+    NSDictionary *result = (NSDictionary *)WSMethodInvocationInvoke(mySoapRef);
+    NSLog(@"resultDir:%@", [result description]);
+    // get HTTP response from SOAP request so we can see the status code
+    CFHTTPMessageRef res = nil;
+    res = (CFHTTPMessageRef)[result objectForKey:(id)kWSHTTPResponseMessage];
+    NSDictionary *resultDir = [result objectForKey:@"/Result"];
+    NSArray *keyArr = [resultDir allKeys];
+    NSString *hashStr = nil;
+    for (NSString *key in keyArr) {
+        hashStr = [resultDir valueForKey:key];
+    }
+    if (hashStr.length == 0) {
+        *isSuccess = NO;
+    } else {
+        *isSuccess = YES;
+    }
+    NSData *data = [hashStr hexToBytes];
+    [result release];
+    return data;
+}
 
 + (NSString *)getFileDataMd5Hash:(NSData *)data
 {

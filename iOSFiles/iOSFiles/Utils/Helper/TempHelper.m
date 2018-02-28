@@ -923,7 +923,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     exPath = [formatter stringFromDate:date];
     [formatter release];
-    exPath = [path stringByAppendingPathComponent:[@"AnyTrans-Export-" stringByAppendingString:exPath]];
+    exPath = [path stringByAppendingPathComponent:[@"iOSFiles-Export-" stringByAppendingString:exPath]];
     if ([fm fileExistsAtPath:exPath]) {
         exPath = [self getFolderPathAlias:exPath];
     }

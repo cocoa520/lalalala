@@ -14,6 +14,7 @@
 #import "IMBBlankDraggableCollectionView.h"
 #import "IMBNotificationDefine.h"
 //#import "IMBColorDefine.h"
+#import "StringHelper.h"
 #import "IMBAnimation.h"
 #import "TempHelper.h"
 #import "IMBTrack.h"
@@ -59,15 +60,7 @@
 - (void)awakeFromNib {
     [_toolBarView setHiddenIndexes:@[@(IMBToolBarNoData)]];
     [_toolBarView setDelegate:self];
-    _collectionView.delegate = self;
-    [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
-    [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
-    [_collectionView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
-    [_collectionView setSelectable:YES];
-    [_collectionView setAllowsMultipleSelection:YES];
-    
-    [_collectionView setBackgroundColors:[NSArray arrayWithObjects:[NSColor whiteColor], nil]];
-    [_collectionView setFocusRingType:NSFocusRingTypeNone];
+  
     [_loadingView setIsGradientColorNOCornerPart3:YES];//    _bgView.isNOCanDraw = YES;
     [_bgView setBackgroundColor:[NSColor clearColor]];
     _backContainer = [[NSMutableArray alloc] init];
@@ -85,6 +78,15 @@
     [backButton setIsDrawBorder:NO];
 //    ((IMBBlankDraggableCollectionView *)_collectionView).exploreType = FileSystemExploreType;
     ((IMBBlankDraggableCollectionView *)_collectionView).forBidClick = NO;
+    _collectionView.delegate = self;
+    [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
+    [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
+    [_collectionView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
+    [_collectionView setSelectable:YES];
+    [_collectionView setAllowsMultipleSelection:YES];
+    
+    [_collectionView setBackgroundColors:[NSArray arrayWithObjects:[NSColor whiteColor], nil]];
+    [_collectionView setFocusRingType:NSFocusRingTypeNone];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSArray *array = nil;
         array = [systemManager recursiveDirectoryContentsDics:@"/"];
@@ -747,7 +749,7 @@
             }
         }
     }
-    //    [_loadingAnimationView startAnimation];
+    [_loadingAnimationView startAnimation];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         NSArray *array = [systemManager recursiveDirectoryContentsDics:_currentDevicePath];
@@ -765,7 +767,7 @@
             
             [_mainBox setContentView:_detailView];
             
-            //            [_loadingAnimationView endAnimation];
+            [_loadingAnimationView endAnimation];
             [_currentArray removeAllObjects];
             [_currentArray addObjectsFromArray:array];
             [_collectionView setSelectionIndexes:nil];
@@ -831,6 +833,7 @@
     [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
     [_transferViewController.view setWantsLayer:YES];
     [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+    [self refresh];
 //
 //    }
 }
@@ -857,54 +860,128 @@
     }
     return selectedItems;
 }
-//delete
-//-(void)deleteBackupSelectedItems:(id)sender {
-//    if (_delArray != nil) {
-//        [_delArray release];
-//        _delArray = nil;
+
+- (void)deleteItem{
+    [_mainBox setContentView:_loadingView];
+    [_loadingAnimationView startAnimation];
+  
+    if (_delArray != nil) {
+        [_delArray release];
+        _delArray = nil;
+    }
+    _delArray = [[NSMutableArray alloc]init];
+    //    [_alertViewController._removeprogressAnimationView setProgress:0];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSIndexSet *selectedSet = [self selectedItems];
+        NSMutableArray *selectedTracks = [NSMutableArray array];
+        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [selectedTracks addObject:[_dataSourceArray objectAtIndex:idx]];
+        }];
+        AFCMediaDirectory *afcMedia = [_ipod.deviceHandle newAFCMediaDirectory];
+        [systemManager setCurItems:0];
+        _deleteTotalItems = [systemManager caculateTotalFileCount:selectedTracks afcMedia:afcMedia];
+        [systemManager removeFiles:selectedTracks afcMediaDir:afcMedia];
+        [afcMedia close];
+        SimpleNode *node = [selectedTracks objectAtIndex:0];
+        NSArray *newArray = [systemManager recursiveDirectoryContentsDics:node.parentPath];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+                      //            [_alertViewController._removeprogressAnimationView setProgress:100];
+            double delayInSeconds = 2;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                //                [_alertViewController showRemoveSuccessViewAlertText:CustomLocalizedString(@"MSG_COM_Delete_Complete", nil) withCount:(int)selectedSet.count];
+                for (NSView *subview in [_collectionView subviews]) {
+                    if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
+                        for (NSView *subview1 in [subview subviews]) {
+                            if ([subview1 isKindOfClass:[IMBFolderOrFileButton class]]) {
+                                [(IMBFolderOrFileButton*)subview1 setSelected:NO];
+                                for (id subview2 in [subview1 subviews]) {
+                                    if ([subview2 isKindOfClass:[IMBFolderOrFileTitleField class]]) {
+                                        [subview2 setStringValue:@""];
+                                    }
+                                    if ([subview2 isKindOfClass:[IMBSelectionView class]]) {
+                                        for (id image in [(NSView*)subview2 subviews]) {
+                                            [(NSImageView *)image setImage:nil];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                [_arrayController removeObjects:_dataSourceArray];
+                [_currentArray removeAllObjects];
+                [_currentArray addObjectsFromArray:newArray];
+                if ([newArray count]>120) {
+                    currentIndex = 0;
+                    [self loadItem];
+                }else
+                {
+                    [_arrayController addObjects:newArray];
+                    
+                }
+                [_mainBox setContentView:_detailView];
+                [_loadingAnimationView endAnimation];
+
+                [_collectionView setSelectionIndexes:nil];
+                [self singlecCick:nil];
+            });
+            
+        });
+        
+    });
+}
+
+- (void)deleteBackupSelectedItems:(id)sender {
+  
+}
+
+- (void)toMac{
+    //弹出路径选择框
+    _openPanel = [NSOpenPanel openPanel];
+    _isOpen = YES;
+    [_openPanel setAllowsMultipleSelection:NO];
+    [_openPanel setCanChooseFiles:NO];
+    [_openPanel setCanChooseDirectories:YES];
+    [_openPanel beginSheetModalForWindow:[_delegate window] completionHandler:^(NSInteger result) {
+        if (result== NSFileHandlingPanelOKButton) {
+            [self performSelector:@selector(systemtoMacDelay:) withObject:_openPanel afterDelay:0.1];
+        }else{
+            NSLog(@"other other other");
+        }
+        _isOpen = NO;
+    }];
+}
+
+- (void)systemtoMacDelay:(NSOpenPanel *)openPanel
+{
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        return;
 //    }
-//    _delArray = [[NSMutableArray alloc]init];
-//    [_alertViewController._removeprogressAnimationView setProgress:0];
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        NSIndexSet *selectedSet = [self selectedItems];
-//        NSMutableArray *selectedTracks = [NSMutableArray array];
-//        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-//            [selectedTracks addObject:[_dataSourceArray objectAtIndex:idx]];
-//        }];
-//        AFCMediaDirectory *afcMedia = [_ipod.deviceHandle newAFCMediaDirectory];
-//        [systemManager setCurItems:0];
-//        _deleteTotalItems = [systemManager caculateTotalFileCount:selectedTracks afcMedia:afcMedia];
-//        [systemManager removeFiles:selectedTracks afcMediaDir:afcMedia];
-//        [afcMedia close];
-//        SimpleNode *node = [selectedTracks objectAtIndex:0];
-//        NSArray *newArray = [systemManager recursiveDirectoryContentsDics:node.parentPath];
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [_alertViewController._removeprogressAnimationView setProgress:100];
-//            double delayInSeconds = 2;
-//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                [_alertViewController showRemoveSuccessViewAlertText:CustomLocalizedString(@"MSG_COM_Delete_Complete", nil) withCount:(int)selectedSet.count];
-//                
-//                [_arrayController removeObjects:_dataSourceArray];
-//                [_currentArray removeAllObjects];
-//                [_currentArray addObjectsFromArray:newArray];
-//                if ([newArray count]>120) {
-//                    currentIndex = 0;
-//                    [self loadItem];
-//                }else
-//                {
-//                    [_arrayController addObjects:newArray];
-//                    
-//                }
-//                [_collectionView setSelectionIndexes:nil];
-//                [self singlecCick:nil];
-//            });
-//     
-//        });
-//
-//    });
-// 
-//}
+    NSString * path =[[openPanel URL] path];
+    NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:Category_System]];
+    
+    
+    NSIndexSet *selectedSet = [self selectedItems];
+    NSMutableArray *selectedTracks = [NSMutableArray array];
+    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [selectedTracks addObject:[_dataSourceArray objectAtIndex:idx]];
+    }];
+
+//    NSArray *selectedFile = [_arrayController selectedObjects];
+    if (_transferViewController != nil) {
+        [_transferViewController release];
+        _transferViewController = nil;
+    }
+    _transferViewController = [[IMBTransferViewController alloc]initWithUniqueKey:_ipod.uniqueKey withSelectedAry:selectedTracks exportFolder:filePath withDelegate:self];
+    [_transferViewController.view setFrame:NSMakeRect(0, 0, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.height)];
+    [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
+    [_transferViewController.view setWantsLayer:YES];
+    [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+    
+}
 
 //- (void)setDeleteCurItems:(int)curItem {
 //    dispatch_async(dispatch_get_main_queue(), ^{
@@ -919,7 +996,6 @@
 //    });
 //}
 
-//edit
 //-(void)doEdit:(id)sender{
 //    NSIndexSet *selectedItems = [self selectedItems];
 //    if (selectedItems == nil || selectedItems.count>1) {
@@ -1232,7 +1308,7 @@
             if (node.itemSize == 0) {
                 str = [NSString stringWithFormat:@"%@ \n %@:-- \n %@:%@",node.fileName,@"Size",@"Date",node.creatDate];
             }else {
-                str = [NSString stringWithFormat:@"%@ \n %@:%@ \n %@:%@",node.fileName,@"Size",[TempHelper getFileSizeString:node.itemSize reserved:2],@"Date",node.creatDate];
+                str = [NSString stringWithFormat:@"%@ \n %@:%@ \n %@:%@",node.fileName,@"Size",[StringHelper getFileSizeString:node.itemSize reserved:2],@"Date",node.creatDate];
             }
             [self setToolTip:str];
         }

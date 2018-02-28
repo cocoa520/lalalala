@@ -29,7 +29,11 @@
 @synthesize uniqueKey = _uniqueKey;
 @synthesize mediaDBPath = _mediaDBPath;
 @synthesize mediaDamage = _mediaDamage;
-@synthesize infoLoadFinished = _infoLoadFinished;
+@synthesize photoLoadFinished = _photoLoadFinished;
+@synthesize bookLoadFinished = _bookLoadFinished;
+@synthesize appsLoadFinished = _appsLoadFinished;
+@synthesize mediaLoadFinished = _mediaLoadFinished;
+@synthesize videoLoadFinished = _videoLoadFinished;
 @synthesize beingSynchronized = _beingSynchronized;
 @synthesize isAndroidToiOS = _isAndroidToiOS;
 - (id)initWithDevice:(id)device {

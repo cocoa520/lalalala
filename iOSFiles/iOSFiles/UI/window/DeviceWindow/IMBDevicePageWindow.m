@@ -28,6 +28,7 @@
 #import "IMBStackBox.h"
 #import "IMBPhotoCategoryController.h"
 #import "IMBToolBarView.h"
+#import "IMBPhotoCategoryController.h"
 
 
 #import <objc/runtime.h>
@@ -64,7 +65,7 @@ static CGFloat const labelY = 10.0f;
 //}
 
 - (id)initWithiPod:(IMBiPod *)ipod {
-    if ([super initWithWindowNibName:@"IMBDevicePageWindow"]) {
+    if (self = [super initWithWindowNibName:@"IMBDevicePageWindow"]) {
         _iPod = [ipod retain];
         [self setup];
     }
@@ -150,6 +151,7 @@ static CGFloat const labelY = 10.0f;
     [_opQueue addOperationWithBlock:^{
         if (_information) {
             //music
+            [_information refreshMedia];
             NSArray *audioArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Audio],
                                    nil];
             
@@ -170,6 +172,9 @@ static CGFloat const labelY = 10.0f;
                                    [NSNumber numberWithInt:(int)HomeVideo],
                                    nil];
             trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:videoArray]];
+            
+            [_information.ipod setMediaLoadFinished:YES];
+            [_information.ipod setVideoLoadFinished:YES];
             
             [self setDataArrayWithType:@"Video" handle:^(IMBDevicePageFolderModel *model) {
                 model.trackArray = [trackArray retain];
@@ -196,7 +201,7 @@ static CGFloat const labelY = 10.0f;
 //            [_information refreshVideoAlbum];
             [_information loadphotoData];
             
-            [_information.ipod setInfoLoadFinished:YES];
+            [_information.ipod setPhotoLoadFinished:YES];
             
             NSMutableArray *photoArray = [[NSMutableArray alloc] init];
             NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
@@ -207,6 +212,7 @@ static CGFloat const labelY = 10.0f;
             [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information screenshotArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information slowMoveArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information timelapseArray] : [NSArray array]];
+            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information panoramasArray] : [NSArray array]];
             [photoArray addObject:cameraRoll];
             [photoArray addObject:[_information photostreamArray] ? [_information photostreamArray] : [NSArray array]];
             [photoArray addObject:[_information photolibraryArray] ? [_information photolibraryArray] : [NSArray array]];
@@ -232,7 +238,7 @@ static CGFloat const labelY = 10.0f;
             //book
             [_information loadiBook];
             NSArray *ibooks = [[_information allBooksArray] retain];
-            
+            [_information.ipod setBookLoadFinished:YES];
             [self setDataArrayWithType:@"Book" handle:^(IMBDevicePageFolderModel *model) {
                 model.booksArray = [ibooks retain];
             }];
@@ -252,6 +258,7 @@ static CGFloat const labelY = 10.0f;
             IMBApplicationManager *appManager = [[_information applicationManager] retain];
             [appManager loadAppArray];
             NSArray *appArray = [appManager appEntityArray];
+            [_information.ipod setAppsLoadFinished:YES];
             
             [self setDataArrayWithType:@"Apps" handle:^(IMBDevicePageFolderModel *model) {
                 model.appsArray = [appArray retain];
@@ -307,12 +314,15 @@ static CGFloat const labelY = 10.0f;
  */
 - (void)setupView {
     if (_rootBox) {
-        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(_iPod, &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     if (_toolMenuView) {
         _toolMenuView.information = [_information retain];
-        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(_iPod, &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
+    
+    objc_setAssociatedObject(_iPod, &kIMBDevicePageWindowKey, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
     [_rootBox setContentView:_scrollView];
     NSInteger count = _tableView.tableColumns.count;
     for (NSInteger i = 0; i < count; i++) {
@@ -435,6 +445,10 @@ static CGFloat const labelY = 10.0f;
                 [_pcVc release];
                 _pcVc = nil;
             }
+            if (_detailVc) {
+                [_detailVc release];
+                _detailVc = nil;
+            }
             _pcVc = [[IMBPhotoCategoryController alloc] initWithNibName:@"IMBPhotoCategoryController" bundle:nil];
             _pcVc.folderModel = [model retain];
             _pcVc.iPod = [_iPod retain];
@@ -466,7 +480,6 @@ static CGFloat const labelY = 10.0f;
 {
     return nil;
 }
-
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return _dataArray.count;
@@ -535,9 +548,18 @@ static CGFloat const labelY = 10.0f;
 
 - (IBAction)backClicked:(NSButton *)sender {
     [_rootBox popView];
+    IMBPhotoCategoryController *pc = objc_getAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey);
     if ([_rootBox currentContentView] == _scrollView) {
+        [_tableView reloadData];
         [_backBtn setHidden:YES];
+        if (_pcVc) {
+            [_pcVc release];
+            _pcVc = nil;
+        }
         _title.stringValue = _iPod.deviceInfo.deviceName;
+    }else if ([_rootBox currentContentView] == pc.view) {
+        _title.stringValue = @"Photo";
+        [pc reloadData];
     }
     [_toolMenuView setHidden:YES];
     
@@ -595,6 +617,7 @@ static CGFloat const labelY = 10.0f;
 - (void)stopLoadingAnim:(NSNotification *)noti {
     NSString *key = [noti object];
     if (![key isEqualToString:_iPod.uniqueKey]) return;
+    if (_loadingView.isAnimating == NO) return;
     
     _backBtn.enabled = YES;
     [_loadingView endAnimation];
@@ -617,5 +640,9 @@ static CGFloat const labelY = 10.0f;
     
     [_toolMenuView setHidden:YES];
     
+}
+
+- (void)setTitleStr:(NSString *)title {
+    _title.stringValue = title;
 }
 @end

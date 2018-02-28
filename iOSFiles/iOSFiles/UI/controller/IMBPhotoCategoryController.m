@@ -12,6 +12,7 @@
 #import "IMBiPod.h"
 #import "IMBInformation.h"
 #import "IMBDetailViewControler.h"
+#import "IMBDevicePageWindow.h"
 
 #import <objc/runtime.h>
 
@@ -38,7 +39,9 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)setupView {
-    _rootBox = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBDevicePageRootBoxKey);
+    _rootBox = objc_getAssociatedObject(_iPod, &kIMBDevicePageRootBoxKey);
+    
+    objc_setAssociatedObject(_iPod, &kIMBPhotoCategoryControllerKey, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     _scrollView.hasHorizontalScroller = NO;
     
@@ -74,6 +77,21 @@ static CGFloat const labelY = 10.0f;
     NSInteger rowNumber = [_tableView clickedRow];
     NSLog(@"Double Clicked.%ld ",rowNumber);
     // ...
+    IMBDevicePageWindow *pageWindow = objc_getAssociatedObject(_iPod, &kIMBDevicePageWindowKey);
+    switch (rowNumber) {
+        case 0:
+            [pageWindow setTitleStr:@"Camera Roll"];
+            break;
+        case 1:
+            [pageWindow setTitleStr:@"Photo Stream"];
+            break;
+        case 2:
+            [pageWindow setTitleStr:@"Photo Library"];
+            break;
+            
+        default:
+            break;
+    }
     IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
     subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
     NSMutableArray *subArray = (NSMutableArray *)[_folderModel.photoArray objectAtIndex:rowNumber];
@@ -82,6 +100,7 @@ static CGFloat const labelY = 10.0f;
         [_detailVc release];
         _detailVc = nil;
     }
+    
     _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
     _detailVc.folderModel = [subPhotoModel retain];
     _detailVc.iPod = [_iPod retain];
@@ -90,6 +109,7 @@ static CGFloat const labelY = 10.0f;
     [subPhotoModel release];
     subPhotoModel = nil;
 }
+
 
 #pragma mark -- tableviewDelegate,talbeviewDatasource
 
@@ -185,4 +205,9 @@ static CGFloat const labelY = 10.0f;
     }
 }
 
+#pragma mark -- 外部方法
+
+- (void)reloadData {
+    [_tableView reloadData];
+}
 @end

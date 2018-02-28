@@ -14,6 +14,9 @@
 #define sizewith 100
 @implementation LoadingView
 
+@synthesize isAnimating = _isAnimating;
+
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -91,6 +94,7 @@
     [self.layer addSublayer:drawingLayer2];
     [drawingLayer2 setHidden:YES];
     [self animation];
+    _isAnimating = YES;
 }
 
 - (void)animation {
@@ -132,6 +136,8 @@
     [drawingLayer2 removeAllAnimations];
     [drawingLayer removeFromSuperlayer];
     [drawingLayer2 removeFromSuperlayer];
+    
+    _isAnimating = NO;
 }
 
 - (void)setbackColor:(NSColor *)backgroundColor {

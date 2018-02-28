@@ -1,7 +1,7 @@
 10
 
 dir
-1363
+1401
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Transfer
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -103,18 +103,17 @@ has-props
 Error
 dir
 
-IMBExportSetting.h
+IMBBaseTransfer.h
 file
 
 
 
 
 2018-02-06T05:20:00.000000Z
-7623679ee9bd31687bf4648fd7410ccc
+5b83961b5f8bddd957928db037088d8b
 2018-02-05T08:04:10.487107Z
 1229
 hezhonglin
-has-props
 
 
 
@@ -135,7 +134,8 @@ has-props
 
 
 
-2028
+
+3712
 
 IMBCategoryInfoModel.m
 file
@@ -171,17 +171,18 @@ has-props
 
 1188
 
-IMBBaseTransfer.h
+IMBExportSetting.h
 file
 
 
 
 
 2018-02-06T05:20:00.000000Z
-5b83961b5f8bddd957928db037088d8b
+7623679ee9bd31687bf4648fd7410ccc
 2018-02-05T08:04:10.487107Z
 1229
 hezhonglin
+has-props
 
 
 
@@ -202,8 +203,7 @@ hezhonglin
 
 
 
-
-3712
+2028
 
 IMBHttpWebResponseUtility.h
 file
@@ -239,39 +239,11 @@ has-props
 
 1502
 
-IMBExportSetting.m
-file
-
-
-
-
-2018-02-06T05:20:00.000000Z
-016fb266df181679c02d79126c6a0d24
-2018-02-05T08:04:10.487107Z
-1229
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11756
+ToDevice
+dir
+
+Tracking
+dir
 
 IMBBaseTransfer.m
 file
@@ -307,14 +279,39 @@ hezhonglin
 
 29572
 
-Tracking
-dir
-
-ToDevice
-dir
-
-ToMac
-dir
+IMBExportSetting.m
+file
+
+
+
+
+2018-02-06T05:20:00.000000Z
+016fb266df181679c02d79126c6a0d24
+2018-02-05T08:04:10.487107Z
+1229
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11756
 
 IMBHttpWebResponseUtility.m
 file
@@ -349,6 +346,9 @@ hezhonglin
 
 
 17385
+
+ToMac
+dir
 
 ToDelete
 dir

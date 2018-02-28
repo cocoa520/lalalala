@@ -204,7 +204,7 @@
     //设备和媒体路径存在
     if (_cvtDevice != nil && [[NSFileManager defaultManager] fileExistsAtPath:mediaPath]) {
         IMBCvtMediaFileEntity *mediaFile = [[IMBCvtMediaFileEntity alloc] init];
-        mediaFile.path = mediaPath;
+        [mediaFile setPath:mediaPath];
         //将媒体文件编码器中的信息写入媒体文件实体中
         [self getMediaInfo:mediaFile];
         //TODO rmvb,avi等等

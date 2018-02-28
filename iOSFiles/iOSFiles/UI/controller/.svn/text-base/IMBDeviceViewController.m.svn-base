@@ -17,8 +17,12 @@
 #import "NSString+Category.h"
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
-
-
+#import "IMBCommonDefine.h"
+#import "DateHelper.h"
+#import "StringHelper.h"
+#import "IMBDriveEntity.h"
+#import "IMBDriveManage.h"
+#import "IMBDriveWindow.h"
 @interface IMBDeviceViewController ()
 {
     @private
@@ -49,20 +53,33 @@
     [(IMBBackgroundBorderView*)self.view setHasRadius:YES];
     [(IMBBackgroundBorderView*)self.view setBackgroundColor:[NSColor whiteColor]];
     _windowControllerDic = [[NSMutableDictionary alloc]init];
+    _driveControllerDic = [[NSMutableDictionary alloc]init];
 }
 
 /**
  *  初始化
  */
 - (void)setupView {
+    [_loginTextField setTextColor:COLOR_TEXT_ORDINARY];
+    [((customTextFieldCell *)_loginTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
+    
+    NSMutableAttributedString *as5 = [[[NSMutableAttributedString alloc] initWithString:@"LogID"] autorelease];
+    [as5 addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_EXPLAIN range:NSMakeRange(0, as5.string.length)];
+    [as5 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as5.string.length)];
+    [as5 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as5.string.length)];
+    [_loginTextField.cell setPlaceholderAttributedString:as5];
+
     [_selectedDeviceBtn configButtonName:@"No Device Connected" WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:NO WithIsDisable:YES withConnectType:0];
+    [(IMBSecureTextFieldCell *)_passTextField.cell setDelegate:self];
+    [((IMBSecureTextFieldCell *)_passTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
 }
 
 /**
  *  添加通知
  */
 - (void)addNotis {
-      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertTabKey:) name:INSERT_TAB object:nil];
 }
 /**
  *  设备连接监听以及相应的监听方法
@@ -158,6 +175,8 @@
     });
 }
 
+#pragma mark -- action
+
 /**
  *  设备选择按钮点击
  *
@@ -211,6 +230,52 @@
             NSRect rect = NSMakeRect(sender.bounds.origin.x, sender.bounds.origin.y, sender.bounds.size.width, sender.bounds.size.height);
             [_devPopover showRelativeToRect:rect ofView:sender preferredEdge:prefEdge];
         }
+    }
+}
+
+
+- (IBAction)enterTextView:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil userInfo:nil];
+    [self signDown:sender];
+}
+
+- (void)signDown:(id)sender{
+    [_loginTextField.cell setEnabled:NO];
+    [_passTextField.cell setEnabled:NO];
+    NSString *loginTextId = [_loginTextField.stringValue stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    if ([loginTextId isEqualToString: @""]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+        return;
+    }else{
+//        if (_driveManage != nil) {
+            if ([_driveManage.userID isEqualToString:loginTextId]) {
+                if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
+                    IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_driveManage.userID];
+                    [driveWindow showWindow:self];
+                }
+            }else{
+                _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+            }
+//        }else{
+//            _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+//        }
+    }
+    [_loginTextField.cell setEnabled:YES];
+    [_passTextField.cell setEnabled:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+}
+
+- (void)switchViewController {
+    if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
+        IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_driveManage.userID];
+        [driveWindow showWindow:self];
+    }else{
+        IMBDriveWindow *driveWindow = [[IMBDriveWindow alloc]initWithDrivemanage:_driveManage];
+        [_driveControllerDic setObject:driveWindow forKey:_driveManage.userID];
+        //    IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc] initWithiPod:ipod];
+        [[driveWindow window] center];
+        [driveWindow showWindow:self];
+        [driveWindow release];
     }
 }
 
@@ -270,6 +335,11 @@
     }
 }
 
+- (void)insertTabKey:(id)sender {
+    [_passTextField becomeFirstResponder];
+}
+
+
 - (void)dealloc {
     
     [_mainWindowController release];
@@ -283,9 +353,20 @@
         _devPopover = nil;
     }
     
+    if (_driveControllerDic) {
+        [_driveControllerDic release];
+        _driveControllerDic = nil;
+    }
+
+    if (_driveManage) {
+        [_driveManage release];
+        _driveManage = nil;
+    }
+
     [[IMBDeviceConnection singleton] stopListening];
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:INSERT_TAB object:nil];
     [super dealloc];
 }
 

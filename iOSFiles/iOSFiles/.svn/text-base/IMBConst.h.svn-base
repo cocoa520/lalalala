@@ -35,3 +35,5 @@ APPKIT_EXTERN NSString * const DetailVCHeaderTitleSubPhotoNamesPlist;
 
 APPKIT_EXTERN char kIMBDevicePageRootBoxKey;
 APPKIT_EXTERN char kIMBDevicePageToolBarViewKey;
+APPKIT_EXTERN char kIMBPhotoCategoryControllerKey;
+APPKIT_EXTERN char kIMBDevicePageWindowKey;

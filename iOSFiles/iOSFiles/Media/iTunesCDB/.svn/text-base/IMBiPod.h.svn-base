@@ -41,13 +41,21 @@
     IMBLogManager *_logHandle;
     NSString *_mediaDBPath;
     BOOL _mediaDamage;
-    BOOL _infoLoadFinished;
+    BOOL _photoLoadFinished;
+    BOOL _bookLoadFinished;
+    BOOL _appsLoadFinished;
+    BOOL _mediaLoadFinished;
+    BOOL _videoLoadFinished;
     BOOL _beingSynchronized;
     BOOL _isAndroidToiOS;
 }
 @property (nonatomic,assign)BOOL isAndroidToiOS;
 @property (nonatomic,assign)BOOL beingSynchronized;
-@property (nonatomic,assign)BOOL infoLoadFinished;
+@property (nonatomic,assign)BOOL photoLoadFinished;
+@property (nonatomic,assign)BOOL bookLoadFinished;
+@property (nonatomic,assign)BOOL appsLoadFinished;
+@property (nonatomic,assign)BOOL mediaLoadFinished;
+@property (nonatomic,assign)BOOL videoLoadFinished;
 @property (nonatomic, retain) NSString *mediaDBPath;
 @property (nonatomic, readonly) AMDevice *deviceHandle;
 @property (nonatomic, readonly) IMBDeviceInfo *deviceInfo;

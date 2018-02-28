@@ -9,7 +9,10 @@
 #import "IMBToolbarWindow.h"
 #import "IMBWindowButton.h"
 #import "IMBCustomButton.h"
+#import "NSObject+Extension.h"
+
 #import <objc/runtime.h>
+
 
 #if __MAC_OS_X_VERSION_MAX_ALLOWED < 1070
 enum { NSWindowDocumentVersionsButton = 6, NSWindowFullScreenButton = 7 };
@@ -1218,6 +1221,7 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 
 - (NSView *)themeFrameView
 {
+//    self.titlebarAppearsTransparent = YES;
 	return [[self contentView] superview];
 }
 
@@ -1228,10 +1232,15 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 	// Configure the view properties and add it as a subview of the theme frame
 	NSView *firstSubview = [[[self themeFrameView] subviews] objectAtIndex:0];
 	[self _recalculateFrameForTitleBarContainer];
-	[[self themeFrameView] addSubview:container positioned:NSWindowBelow relativeTo:firstSubview];
+    NSView *themeFrameView = [self themeFrameView];
+	[themeFrameView addSubview:container positioned:NSWindowBelow relativeTo:firstSubview];
+//    id themeFrameView = [self themeFrameView];
+//    [themeFrameView performSelector:NSSelectorFromString(@"_addKnownSubview:positioned:relativeTo:") withObjects:container,NSWindowBelow,firstSubview,[ZLEndMark end]];
 	_titlebarContainer = container;
 	self.titleBarView = [[IMBTitlebarView alloc] initWithFrame:NSZeroRect];
 }
+
+
 
 - (void)_hideTitleBarView:(BOOL)hidden
 {
