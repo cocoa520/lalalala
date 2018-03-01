@@ -30,6 +30,8 @@
 @synthesize uploadParent = _uploadParent;
 @synthesize childArray = _childArray;
 @synthesize toDriveName = _toDriveName;
+@synthesize docwsID = _docwsID;
+@synthesize doZone = _doZone;
 
 - (instancetype)init
 {
@@ -490,6 +492,21 @@
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
     return dic;
+}
+
++ (NSString *)getMIMETypeWithCAPIAtFilePath:(NSString *)path
+{
+    if (![[[NSFileManager alloc] init] fileExistsAtPath:path]) {
+        return nil;
+    }
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)[path pathExtension], NULL);
+    CFStringRef MIMEType = UTTypeCopyPreferredTagWithClass (UTI, kUTTagClassMIMEType);
+    CFRelease(UTI);
+    if (!MIMEType) {
+        return @"application/octet-stream";
+    }
+    return (__bridge NSString *)(MIMEType)
+    ;
 }
 
 //将获取文件夹列表改成同步的方式获取

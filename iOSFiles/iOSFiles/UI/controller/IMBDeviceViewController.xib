@@ -8,9 +8,13 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDeviceViewController">
             <connections>
+                <outlet property="_iCloudSecireTextField" destination="nxI-1a-u3g" id="3Ac-d9-sux"/>
+                <outlet property="_iCloudTextFiledView" destination="8t1-NK-JfE" id="wCc-eo-Qic"/>
+                <outlet property="_iCloudUserTextField" destination="U0Q-g9-ITo" id="g27-dG-2RI"/>
                 <outlet property="_loginTextField" destination="t2C-L2-c0n" id="cnm-Bm-Exk"/>
                 <outlet property="_passTextField" destination="1gb-vH-0cz" id="gwi-8C-3gx"/>
                 <outlet property="_selectedDeviceBtn" destination="Nie-uQ-N6Q" id="DLR-eh-8VX"/>
+                <outlet property="_twoCode" destination="RfE-fq-JOR" id="DaP-qd-pgQ"/>
                 <outlet property="drawTextView" destination="8fm-de-xte" id="dVc-7R-Y6m"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -21,8 +25,75 @@
             <rect key="frame" x="0.0" y="0.0" width="1060" height="583"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <customView id="Bxg-Vg-i7h">
+                    <rect key="frame" x="60" y="378" width="368" height="162"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView id="8t1-NK-JfE" customClass="IMBDrawTextFiledView">
+                            <rect key="frame" x="0.0" y="39" width="260" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField focusRingType="none" verticalHuggingPriority="750" id="U0Q-g9-ITo" customClass="customTextFiled">
+                                    <rect key="frame" x="12" y="9" width="242" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="FMI-8F-Lkh" customClass="customTextFieldCell">
+                                        <font key="font" size="13" name="HelveticaNeue"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </customView>
+                        <secureTextField focusRingType="none" verticalHuggingPriority="750" tag="2" id="nxI-1a-u3g" customClass="IMBSecireTextField">
+                            <rect key="frame" x="0.0" y="0.0" width="260" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <secureTextFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" focusRingType="none" placeholderString="pass" drawsBackground="YES" id="Ck5-Bf-3ph">
+                                <font key="font" size="14" name="HelveticaNeue-Light"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <allowedInputSourceLocales>
+                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                </allowedInputSourceLocales>
+                            </secureTextFieldCell>
+                            <connections>
+                                <action selector="enterTextView:" target="-2" id="nt4-XN-r0q"/>
+                            </connections>
+                        </secureTextField>
+                        <button verticalHuggingPriority="750" id="Req-fh-YlK">
+                            <rect key="frame" x="273" y="32" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="01r-5w-hrY">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="iCloudLogIn:" target="-2" id="oHP-85-Pk4"/>
+                            </connections>
+                        </button>
+                        <textField focusRingType="none" verticalHuggingPriority="750" id="RfE-fq-JOR" customClass="customTextFiled">
+                            <rect key="frame" x="11" y="101" width="238" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" bezelStyle="round" id="QZQ-lX-iwT" customClass="customTextFieldCell">
+                                <font key="font" size="13" name="HelveticaNeue"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" id="ewv-zD-3kZ">
+                            <rect key="frame" x="263" y="95" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bep-it-Zca">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="codeDown:" target="-2" id="mcX-e2-Yxj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
                 <customView id="shV-HF-9XY">
-                    <rect key="frame" x="412" y="258" width="389" height="162"/>
+                    <rect key="frame" x="39" y="158" width="389" height="162"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <customView id="8fm-de-xte" customClass="IMBDrawTextFiledView">
@@ -40,7 +111,7 @@
                                 </textField>
                             </subviews>
                         </customView>
-                        <secureTextField focusRingType="none" verticalHuggingPriority="750" id="1gb-vH-0cz" customClass="IMBSecireTextField">
+                        <secureTextField hidden="YES" focusRingType="none" verticalHuggingPriority="750" tag="1" id="1gb-vH-0cz" customClass="IMBSecireTextField">
                             <rect key="frame" x="0.0" y="0.0" width="260" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <secureTextFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" focusRingType="none" placeholderString="pass" drawsBackground="YES" id="YWe-NL-h0Q">
@@ -55,10 +126,21 @@
                                 <action selector="enterTextView:" target="-2" id="AQU-DM-x4l"/>
                             </connections>
                         </secureTextField>
+                        <button verticalHuggingPriority="750" id="YzW-g6-fbZ">
+                            <rect key="frame" x="273" y="32" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uQZ-BV-ofR">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="oneDriveLogin:" target="-2" id="IJb-Js-XbT"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </customView>
                 <button autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
-                    <rect key="frame" x="712" y="138" width="99" height="26"/>
+                    <rect key="frame" x="584" y="420" width="99" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

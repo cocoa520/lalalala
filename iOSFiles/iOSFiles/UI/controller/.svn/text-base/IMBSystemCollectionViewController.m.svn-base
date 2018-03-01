@@ -1214,9 +1214,9 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
     IMBBlankDraggableCollectionView *superView = (IMBBlankDraggableCollectionView *)[self superview];
-//    if (superView.forBidClick) {
-//        return;
-//    }
+    if (superView.forBidClick) {
+        return;
+    }
     IMBFolderOrFileButton *button = nil;
     IMBSelectionView *selectionView = nil;
     for (NSView *subview in [self subviews]) {

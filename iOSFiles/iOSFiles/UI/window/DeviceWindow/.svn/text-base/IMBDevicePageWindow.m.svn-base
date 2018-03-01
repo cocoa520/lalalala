@@ -102,7 +102,7 @@ static CGFloat const labelY = 10.0f;
     
     [(IMBToolbarWindow *)self.window setTitleBarHeight:20];
 //    [[(IMBToolbarWindow *)self.window titleBarView] setFrameSize:NSMakeSize(self.window.frame.size.width, 300)];
-    
+    [self.window setMovableByWindowBackground:YES];
     [self setupView];
 
 }

@@ -23,6 +23,13 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
+    
+//    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+//    [path setLineWidth:2];
+//    [path addClip];
+//    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] setStroke];
+//    [path stroke];
+    
     NSBezierPath *path = [NSBezierPath bezierPath];
     [path moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
     [path lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];

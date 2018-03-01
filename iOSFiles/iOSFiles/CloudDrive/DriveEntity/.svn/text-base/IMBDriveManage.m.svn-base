@@ -20,10 +20,7 @@
     if ([super init]) {
         _driveDataAry = [[NSMutableArray alloc]init];
         _userID = userID;
-        _oneDrive = [[OneDrive alloc]init];
-      
-        
-        
+        _oneDrive = [[OneDrive alloc]initWithFromLocalOAuth:YES];
         _oneDrive.userID = [_userID retain];
         [_oneDrive setDelegate:self];
     

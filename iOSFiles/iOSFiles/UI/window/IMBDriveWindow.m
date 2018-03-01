@@ -33,6 +33,13 @@
     return self;
 }
 
+- (id)initWithiCloudDriveAry:(NSMutableArray *)dataAry {
+    if ([self initWithWindowNibName:@"IMBDriveWindow"]) {
+
+    }
+    return self;
+}
+
 -(void)awakeFromNib {
     NSButton *btn =  [self.window standardWindowButton:NSWindowCloseButton];
     NSButton *btn2 =  [self.window standardWindowButton:NSWindowZoomButton];
@@ -60,6 +67,7 @@
     [_blankCollection registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
     [_blankCollection setSelectable:YES];
     [_blankCollection setAllowsMultipleSelection:YES];
+    [self.window setMovableByWindowBackground:YES];
 }
 
 - (void)loadButton {

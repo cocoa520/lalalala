@@ -19,6 +19,7 @@
     IBOutlet NSTextField *_title;
     IBOutlet IMBStackBox *_rootBox;
     IMBSystemCollectionViewController *_systemCollectionViewController;
+    IBOutlet NSView *_topTextView;
 }
 
 - (id)initWithiPod:(IMBiPod *)ipod;

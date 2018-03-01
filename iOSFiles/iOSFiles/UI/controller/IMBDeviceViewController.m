@@ -22,6 +22,7 @@
 #import "StringHelper.h"
 #import "IMBDriveEntity.h"
 #import "IMBDriveManage.h"
+#import "StringHelper.h"
 #import "IMBDriveWindow.h"
 @interface IMBDeviceViewController ()
 {
@@ -63,15 +64,27 @@
     [_loginTextField setTextColor:COLOR_TEXT_ORDINARY];
     [((customTextFieldCell *)_loginTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
-    NSMutableAttributedString *as5 = [[[NSMutableAttributedString alloc] initWithString:@"LogID"] autorelease];
+    NSMutableAttributedString *as5 = [[[NSMutableAttributedString alloc] initWithString:@"User"] autorelease];
     [as5 addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_EXPLAIN range:NSMakeRange(0, as5.string.length)];
     [as5 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as5.string.length)];
     [as5 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as5.string.length)];
     [_loginTextField.cell setPlaceholderAttributedString:as5];
+    
+    [_iCloudUserTextField setTextColor:COLOR_TEXT_ORDINARY];
+    [((customTextFieldCell *)_iCloudUserTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
+    
+    NSMutableAttributedString *as6 = [[[NSMutableAttributedString alloc] initWithString:@"User"] autorelease];
+    [as6 addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_EXPLAIN range:NSMakeRange(0, as6.string.length)];
+    [as6 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as6.string.length)];
+    [as6 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as6.string.length)];
+    [_iCloudUserTextField.cell setPlaceholderAttributedString:as6];
 
     [_selectedDeviceBtn configButtonName:@"No Device Connected" WithTextColor:IMBGrayColor(51) WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:NO WithIsDisable:YES withConnectType:0];
     [(IMBSecureTextFieldCell *)_passTextField.cell setDelegate:self];
     [((IMBSecureTextFieldCell *)_passTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
+    
+    [(IMBSecureTextFieldCell *)_iCloudSecireTextField.cell setDelegate:self];
+    [((IMBSecureTextFieldCell *)_iCloudSecireTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
 }
 
 /**
@@ -233,20 +246,26 @@
     }
 }
 
-
-- (IBAction)enterTextView:(id)sender {
+- (IBAction)oneDriveLogin:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil userInfo:nil];
     [self signDown:sender];
 }
+
+- (IBAction)enterTextView:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil userInfo:nil];
+//    [self signDown:sender];
+}
+
+#pragma mark -- One Diver Login
 
 - (void)signDown:(id)sender{
     [_loginTextField.cell setEnabled:NO];
     [_passTextField.cell setEnabled:NO];
     NSString *loginTextId = [_loginTextField.stringValue stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    if ([loginTextId isEqualToString: @""]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
-        return;
-    }else{
+//    if ([loginTextId isEqualToString: @""]){
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+//        return;
+//    }else{
 //        if (_driveManage != nil) {
             if ([_driveManage.userID isEqualToString:loginTextId]) {
                 if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
@@ -259,7 +278,7 @@
 //        }else{
 //            _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
 //        }
-    }
+//    }
     [_loginTextField.cell setEnabled:YES];
     [_passTextField.cell setEnabled:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
@@ -279,6 +298,54 @@
     }
 }
 
+#pragma mark -- iCloud Diver Login
+
+- (IBAction)iCloudLogIn:(id)sender {
+//    _iCloudDrive = [[iCloudDrive alloc]init];
+//    [_iCloudDrive setDelegate:self];
+//    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary *cookie = [defaults objectForKey:_iCloudUserTextField.stringValue];
+//    if (cookie) {
+//        [_iCloudDrive loginWithCookie:cookie];
+//    }else{
+//        [_iCloudDrive loginAppleID:_iCloudUserTextField.stringValue password:_iCloudSecireTextField.stringValue rememberMe:YES];
+//    }
+    _iCloudDriveManager = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
+}
+
+//登录错误
+- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode {
+    if (responseCode == ResponseUserNameOrPasswordError) {//密码或者账号错误
+        
+    }else if (responseCode == ResonseSecurityCodeError) {//<沿验证码错误
+        
+    }else if (responseCode == ResponseUnknown) {//未知错误
+        
+    }else if (responseCode == ResponseInvalid) {///<响应无效 一般参数错误
+
+    }
+}
+
+- (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive {
+    
+}
+
+- (IBAction)codeDown:(id)sender {
+    [_iCloudDriveManager  setTwoCodeID:_twoCode.stringValue];
+}
+
+//时间转换
+- (NSString *)dateForm2001DateSting:(NSString *) dateSting {
+    if ([StringHelper stringIsNilOrEmpty:dateSting] ) {
+        return @"";
+    }
+    NSString *replacString = [dateSting stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+    NSString * replacString1 = [replacString substringToIndex:19];
+    NSDate *replacDate = [DateHelper dateFromString:replacString1 Formate:nil];
+    NSString *replacDateString = [DateHelper dateFrom2001ToDate:replacDate withMode:2];
+    return replacDateString;
+}
 #pragma mark -- 通知
 /**
  *  设备选择切换响应方法
@@ -337,8 +404,8 @@
 
 - (void)insertTabKey:(id)sender {
     [_passTextField becomeFirstResponder];
+    [_iCloudSecireTextField becomeFirstResponder];
 }
-
 
 - (void)dealloc {
     

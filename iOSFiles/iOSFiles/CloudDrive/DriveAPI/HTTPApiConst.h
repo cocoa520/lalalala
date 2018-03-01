@@ -17,7 +17,7 @@
 /**
  *  登录访问终结点
  */
-static NSString *const WebEndPointURL = @"https://fuhanwen.cn/api";
+static NSString *const WebEndPointURL = @"https://drive.fuhanwen.cn/api";
 /**
  *  登录
  */
@@ -33,7 +33,7 @@ static NSString *const WebRefreshEndPointURL = @"drive/%@/refresh";
 /**
  *  云服务授权终结点
  */
-static NSString *const CloudStorageEndPointURL = @"https://fuhanwen.cn/auth";
+static NSString *const CloudStorageEndPointURL = @"https://drive.fuhanwen.cn/api/drive/bind";
 /**
  *  Google Drive 授权
  */
@@ -90,8 +90,11 @@ static NSString *const OneDriveDownloadFilePath = @"me/drive/items/%@/content";
  *  上传文件
  */
 static NSString *const OneDriveUploadFilePath = @"me/drive/items/%@:/%@:/content";
-static NSString *const OneDriveUploadBigFilePath = @"/me/drive/items/%@/createUploadSession";
-
+/**
+ *  上传单个大于50MB的文件
+ */
+static NSString *const OneDriveUploadBigFileCreateSession = @"me/drive/items/%@:/%@:/createUploadSession";
+//static NSString *const OneDriveUploadBigFileCreateSession = @"/drive/items/%@:/%@:/createUploadSession";
 /**
  *  进度常量key
  */
@@ -106,6 +109,7 @@ static NSString *const ProgressUserInfoOffsetKey = @"ProgressUserInfoOffsetKey";
  */
 static NSString *const DropboxAPIBaseURL = @"https://api.dropboxapi.com";
 static NSString *const DropboxContentBaseURL = @"https://content.dropboxapi.com";
+static NSString *const DropboxRenameBaseURL = @"https://www.dropbox.com";
 /**
  *  获取文件列表有关路径
  */
@@ -138,9 +142,17 @@ static NSString *const DropboxUploadFilePath = @"2/files/upload";
 /**
  *  上传单个大于150MB的文件
  */
-static NSString *const DropboxUploadBigFilePathStart = @"2/files/upload_session/start";
-static NSString *const DropboxUploadBigFilePathAppend = @"2/files/upload_session/append_v2";
-static NSString *const DropboxUploadBigFilePathFinish = @"2/files/upload_session/finish";
+static NSString *const DropboxUploadSessionStart = @"2/files/upload_session/start";
+static NSString *const DropboxUploadSessionAppend = @"2/files/upload_session/append_v2";
+static NSString *const DropboxUploadSessionFinish = @"2/files/upload_session/finish";
+/**
+ *  移动文件或者文件夹
+ */
+static NSString *const DropboxMove = @"2/files/move_v2";
+/**
+ *  重命名文件或者文件夹
+ */
+static NSString *const DropboxRename = @"cmd/rename/%@";
 
 /**
  *  搜索文件夹及文件
@@ -185,6 +197,16 @@ static NSString *const BoxUploadFilePath = @"api/2.0/files/content";
  *  上传单个大于50MB的文件
  */
 static NSString *const BoxUploadBigFileCreateSession = @"api/2.0/files/upload_sessions";
+/**
+ *  移动文件或者文件夹
+ */
+static NSString *const BoxFilesMove = @"2.0/files/%@";
+static NSString *const BoxFoldersMove = @"2.0/folders/%@";
+/**
+ *  重命名文件或者文件夹
+ */
+static NSString *const BoxFilesRename = @"2.0/files/%@";
+static NSString *const BoxFoldersRename = @"2.0/folders/%@";
 
 /**
  *  GoogleDrive相关常量配置
@@ -236,6 +258,26 @@ static NSString *const  iCloudDriveAuthAcountLoginBaseURL= @"https://setup.iclou
  *  登录最后一步路径
  */
 static NSString *const  iCloudDriveAuthAcountLoginPath= @"setup/ws/1/accountLogin?clientBuildNumber=%@&clientId=%@&clientMasteringNumber=%@";
+
+/**
+ *  注销
+ */
+static NSString *const iCloudDriveLogoutBaseURL = @"https://www.icloud.com";
+
+/**
+ *  上传
+ */
+static NSString *const iCloudDriveUploadOnePath = @"ws/com.apple.CloudDocs/upload/web";
+static NSString *const iCloudDriveUploadThreePath = @"ws/com.apple.CloudDocs/update/documents";
+
+/**
+ *  validate 如果记住密码 第二次通过cookies直接登录
+ */
+static NSString *const iCloudDriveValidateBaseURL = @"https://setup.icloud.com";
+static NSString *const iCloudDriveValidatePath = @"setup/ws/1/validate";
+
+
+
 
 
 

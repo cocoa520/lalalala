@@ -43,11 +43,34 @@
     }
 }
 
+- (instancetype)initWithUserLoginToken:(NSString *)userLogintoken withDriveName:(NSString *)driveName {
+    if (self = [super init]) {
+        _userLogintoken = [userLogintoken retain];
+        _driveName = [driveName retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
 - (id)initWithItemID:(NSString *)folderID accessToken:(NSString *)accessToken
 {
     if (self = [super init]) {
         _folderOrfileID = [folderID retain];
         _accestoken = [accessToken retain];
+    }
+    return self;
+}
+
+- (id)initWithItemID:(NSString *)folderID cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url
+{
+    if (self = [super init]) {
+        _folderOrfileID = [folderID retain];
+        _cookie = [cookie retain];
+        _iCloudDriveUrl = [url retain];
     }
     return self;
 }
@@ -83,8 +106,18 @@
     return self;
 }
 
+- (id)initWithItemID:(NSString *)folderOrfileID newParentIDOrPath:(NSString *)newParentIDOrPath name:(NSString *)name accessToken:(NSString *)accessToken
+{
+    if (self = [super init]) {
+        _folderOrfileID = [folderOrfileID retain];
+        _newParentIDOrPath = [newParentIDOrPath retain];
+        _newName = [name retain];
+        _accestoken = [accessToken retain];
+    }
+    return self;
+}
 
-- (id)initWith:(NSString *)folderName Parent:(NSString *)parent accessToken:(NSString *)accessToken
+- (id)initWithFolderName:(NSString *)folderName Parent:(NSString *)parent accessToken:(NSString *)accessToken
 {
     if (self = [super init]) {
         _folderName = [folderName retain];
@@ -98,6 +131,56 @@
     if (self = [super init]) {
         _fileName = [fileName retain];
         _parent = [parent retain];
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
+- (id)initWithFileName:(NSString *)fileName Parent:(NSString *)parent fileSize:(long long)fileSize fileStart:(long long)start fileEnd:(long long)end accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _fileName = [fileName retain];
+        _parent = [parent retain];
+        _uploadRangeStart = start;
+        _uploadRangeEnd = end;
+        _uploadFileSize = fileSize;
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
+- (id)initWithFileName:(NSString *)fileName Parent:(NSString *)parent uploadFile:(NSString *)filePath offset:(uint64_t)offset sessionID:(NSString *)sessionID accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _fileName = [fileName retain];
+        _parent = [parent retain];
+        _uploadUrl = filePath;
+        _uploadFileSize = offset;
+        _uploadSessionID = [sessionID retain];
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
+- (id)initWithFileName:(NSString *)fileName Parent:(NSString *)parent offset:(uint64_t)offset sessionID:(NSString *)sessionID accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _fileName = [fileName retain];
+        _parent = [parent retain];
+        _uploadFileSize = offset;
+        _uploadSessionID = [sessionID retain];
         _accestoken = [accessToken retain];
         return self;
     }else {
@@ -138,9 +221,23 @@
     }
 }
 
-- (id)initWithClientID:(NSString *)clientID redirectUri:(NSString *)redirectUri clientSecret:(NSString *)clientSecret
+- (id)initWithUploadUrl:(NSString *)uploadUrl fileSize:(long long)fileSize fileStart:(long long)start fileEnd:(long long)end accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _uploadUrl = [uploadUrl retain];
+        _uploadRangeStart = start;
+        _uploadRangeEnd = end;
+        _uploadFileSize = fileSize;
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
 
-          refreshToken:(NSString *)refreshToken
+- (id)initWithClientID:(NSString *)clientID redirectUri:(NSString *)redirectUri clientSecret:(NSString *)clientSecret refreshToken:(NSString *)refreshToken
 {
     if (self == [super init]) {
         _clientID = [clientID retain];
@@ -235,6 +332,15 @@
     return YES;
 }
 
++ (NSString *)createGUID
+{
+    CFUUIDRef    uuidObj = CFUUIDCreate(nil);//create a new UUID
+    //get the string representation of the UUID
+    NSString    *uuidString = (NSString*)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+    return [uuidString autorelease];
+}
+
 - (void)dealloc
 {
     [_userEmail release],_userEmail = nil;
@@ -251,6 +357,9 @@
     [_redirect_uri release],_redirect_uri = nil;
     [_clientID release],_clientID = nil;
     [_refreshToken release],_refreshToken = nil;
+    [_iCloudDriveUrl release],_iCloudDriveUrl = nil;
+    [_cookie release],_cookie = nil;
+    [_dsid release],_dsid = nil;
     [super dealloc];
 }
 @end

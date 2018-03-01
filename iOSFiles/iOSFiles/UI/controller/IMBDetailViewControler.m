@@ -1013,7 +1013,7 @@ static CGFloat const labelY = 10.0f;
                         IMBAppEntity *be = [_folderModel.appsArray objectAtIndex:idx];
                         [selectAry addObject:be];
                     }];
-                    _baseTransfer = [[IMBBookToDevice alloc] initWithSrcIpod:information.ipod desIpod:desIpod bookList:selectAry Delegate:self];
+                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
                     [_baseTransfer startTransfer];
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -1034,7 +1034,7 @@ static CGFloat const labelY = 10.0f;
                         IMBTrack *track = [_folderModel.trackArray objectAtIndex:idx];
                         [selectAry addObject:track];
                     }];
-                    _baseTransfer = [[IMBBookToDevice alloc] initWithSrcIpod:information.ipod desIpod:desIpod bookList:selectAry Delegate:self];
+                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
                     [_baseTransfer startTransfer];
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -1055,8 +1055,7 @@ static CGFloat const labelY = 10.0f;
                         IMBTrack *track = [_folderModel.trackArray objectAtIndex:idx];
                         [selectAry addObject:track];
                     }];
-                    _baseTransfer = [[IMBBookToDevice alloc] initWithSrcIpod:information.ipod desIpod:desIpod bookList:selectAry Delegate:self];
-                    [_baseTransfer startTransfer];
+                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
@@ -1075,7 +1074,7 @@ static CGFloat const labelY = 10.0f;
         [model release];
         model = nil;
     });
-        
+    
     
 }
 
@@ -1139,7 +1138,7 @@ static CGFloat const labelY = 10.0f;
 //            
 //            if ([supportFormat containsString:[URL pathExtension]]) {
 //    
-                return NSDragOperationCopy;//是swf文件，高亮状态；
+    return NSDragOperationCopy;//是swf文件，高亮状态；
 //            }
 //        }
 //    }
@@ -1178,7 +1177,7 @@ static CGFloat const labelY = 10.0f;
 //            
 //        }
 //        
-        return YES;
+    return YES;
 //    }
 //    return NO;
 }

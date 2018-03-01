@@ -43,7 +43,7 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    myWindow=self;
+    myWindow = self;
     [self setHasShadow:YES];
     Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));
     const char *encoding=method_getTypeEncoding(coreUIWidgetStateMethod);
@@ -156,7 +156,7 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
     NSPoint point = [contentView convertPoint:theEvent.locationInWindow fromView:nil];
     NSView *hitView = [contentView hitTest:point];
 
-    if (theEvent.type == 2&&![hitView isKindOfClass:[NSClassFromString(@"NSButton") class]]&&![hitView isKindOfClass:[NSClassFromString(@"IMBTransparentView") class]]&&![hitView isKindOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]) {
+    if (theEvent.type == 2 && ![hitView isKindOfClass:[NSClassFromString(@"NSButton") class]] && ![hitView isKindOfClass:[NSClassFromString(@"IMBTransparentView") class]] && ![hitView isKindOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]) {
          NSDictionary *infor = [NSDictionary dictionaryWithObjectsAndKeys:theEvent,@"theEvent",@"other",@"classType", nil];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"notify_close_popupview" object:nil userInfo:infor];
     }

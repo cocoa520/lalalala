@@ -31,7 +31,12 @@ typedef void(^Callback)(DriveAPIResponse *response);
 typedef void (^RefreshTokenAction)(BOOL refresh);
 
 @interface DownLoadAndUploadItem : NSObject<DownloadAndUploadDelegate>
-
+{
+    NSString *_docwsID;
+    NSString *_doZone;
+}
+@property (nonatomic,retain) NSString *docwsID;
+@property (nonatomic,retain) NSString *doZone;
 @end
 /**
  *@description 登录时传入此类对象，用于完成登录结果的回调和token过期注销的回调
@@ -360,6 +365,8 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
  */
 - (ResponseCode)checkResponseTypeWithFailed:(YTKBaseRequest * _Nonnull)response;
 
+
++ (NSString * _Nullable)getMIMETypeWithCAPIAtFilePath:(NSString * _Nullable)path;
 /**
  *  每次请求前需调用此方法，判断Token是否有效
  *

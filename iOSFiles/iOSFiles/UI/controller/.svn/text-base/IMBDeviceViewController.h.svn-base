@@ -14,7 +14,8 @@
 #import "customTextFiled.h"
 #import "BaseDrive.h"
 #import "IMBDriveManage.h"
-
+#import "iCloudDrive.h"
+#import "IMBiCloudDriveManager.h"
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
@@ -25,7 +26,17 @@
     IBOutlet customTextFiled *_loginTextField;
     IBOutlet IMBDrawTextFiledView *drawTextView;
     IMBDriveManage *_driveManage;
+    iCloudDrive *_iCloudDrive;
+    
+    IBOutlet IMBDrawTextFiledView *_iCloudTextFiledView;
+    IBOutlet customTextFiled *_iCloudUserTextField;
+    IBOutlet IMBSecireTextField *_iCloudSecireTextField;
+
+    IBOutlet customTextFiled *_twoCode;
+    
+    IMBiCloudDriveManager *_iCloudDriveManager;
 }
+- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 - (void)mainWindowClose;
 - (void)switchViewController;
 @end

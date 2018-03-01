@@ -57,7 +57,7 @@
 - (NSCollectionViewItem *)newItemForRepresentedObject:(id)object
 {
     NSCollectionViewItem *viewItem = [super newItemForRepresentedObject:object];
-    NSView *view = viewItem.view;
+//    NSView *view = viewItem.view;
 //    if (_category == Category_Movies) {
 //        IMBCollectionImageView *imageView = [view viewWithTag:101];
 //        if (_defaultImage == nil) {
@@ -306,7 +306,7 @@
 
 - (BOOL)mouseDownCanMoveWindow
 {
-    return NO;
+    return YES;
 }
 
 - (void)dealloc

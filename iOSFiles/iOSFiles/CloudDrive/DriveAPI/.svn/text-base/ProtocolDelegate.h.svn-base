@@ -12,7 +12,11 @@
 
 #endif /* ProtocolDelegate_h */
 
+#if __has_include(<AFNetworking/AFURLRequestSerialization.h>)
 #import <AFNetworking/AFURLRequestSerialization.h>
+#else
+#import "AFURLRequestSerialization.h"
+#endif
 
 typedef NS_ENUM(NSUInteger,TransferState){
     TransferStateNormal = 0,    //默认状态，不会下载 也不会上传
@@ -62,12 +66,21 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonatomic,retain)NSMutableArray *childArray;
 //下载项的id或者路径
 @property (nonatomic,retain)NSString *itemIDOrPath;
+//如果是icloud drive 需要传入docwsid 下载的时候需要用到
+@property (nonatomic,retain)NSString *docwsID;
+
 //是否是目录
 @property (nonatomic,assign)BOOL isFolder;
 //是否需要传入大文件
 @property (nonatomic,assign)BOOL isBigFile;
 //是否需要构建数据（用于部分云文件上传）
 @property (nonatomic,assign)BOOL isConstructingData;
+//构建数据（用于部分云文件上传）
+@property (nonatomic,retain)NSData *constructingData;
+//构建数据云平台名称（用于部分云文件上传）
+@property (nonatomic,retain)NSString *constructingDataDriveName;
+//构建云平台数据长度（用于部分云文件上传）
+@property (nonatomic,assign)long long constructingDataLength;
 //请求api 上传的时候需要
 @property (nonatomic,retain)id requestAPI;
 //上传项本地路径
@@ -78,6 +91,8 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonatomic,retain)NSString *uploadParent;
 //目标云名字
 @property (nonatomic,retain)NSString *toDriveName;
+//iCloud Drive 下载所需要，表明文件所属的域
+@property (nonnull,retain)NSString *zone;
 //唯一标识符
 - (NSString *)identifier;
 @end

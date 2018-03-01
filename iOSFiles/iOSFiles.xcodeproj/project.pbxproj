@@ -8,9 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */; };
-		7B6BB4D720450B9400BBD6E9 /* IMBDriveManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */; };
 		7B6BB4DB20452B9A00BBD6E9 /* IMBDriveWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */; };
 		7B6BB4DC20452B9A00BBD6E9 /* IMBDriveWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */; };
+		7B830C1F2047AFD8000841AE /* iCloudDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830BFE2047AFD8000841AE /* iCloudDrive.m */; };
+		7B830C202047AFD8000841AE /* iCloudDriveAccountLoginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C002047AFD8000841AE /* iCloudDriveAccountLoginAPI.m */; };
+		7B830C212047AFD8000841AE /* iCloudDriveAuthSigninAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C022047AFD8000841AE /* iCloudDriveAuthSigninAPI.m */; };
+		7B830C222047AFD8000841AE /* iCloudDriveCreateFolderAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C042047AFD8000841AE /* iCloudDriveCreateFolderAPI.m */; };
+		7B830C232047AFD8000841AE /* iCloudDriveDeleteItemsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C062047AFD8000841AE /* iCloudDriveDeleteItemsAPI.m */; };
+		7B830C242047AFD8000841AE /* iCloudDriveDownloadOneAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C082047AFD8000841AE /* iCloudDriveDownloadOneAPI.m */; };
+		7B830C252047AFD8000841AE /* iCloudDriveGetListAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C0A2047AFD8000841AE /* iCloudDriveGetListAPI.m */; };
+		7B830C262047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C0C2047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.m */; };
+		7B830C272047AFD8000841AE /* iCloudDriveHeartbeatAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C0E2047AFD8000841AE /* iCloudDriveHeartbeatAPI.m */; };
+		7B830C282047AFD8000841AE /* iCloudDriveLogoutAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C102047AFD8000841AE /* iCloudDriveLogoutAPI.m */; };
+		7B830C292047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C122047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m */; };
+		7B830C2A2047AFD8000841AE /* iCloudDriveRenameAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C142047AFD8000841AE /* iCloudDriveRenameAPI.m */; };
+		7B830C2B2047AFD8000841AE /* iCloudDriveUploadOneAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C162047AFD8000841AE /* iCloudDriveUploadOneAPI.m */; };
+		7B830C2C2047AFD8000841AE /* iCloudDriveUploadThreeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C182047AFD8000841AE /* iCloudDriveUploadThreeAPI.m */; };
+		7B830C2D2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C1A2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m */; };
+		7B830C2E2047AFD8000841AE /* iCloudDriveValidateAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C1C2047AFD8000841AE /* iCloudDriveValidateAPI.m */; };
+		7B830C2F2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C1E2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m */; };
+		7B830C362047FD09000841AE /* IMBDriveManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C342047FD09000841AE /* IMBDriveManage.m */; };
+		7B830C392047FD36000841AE /* IMBiCloudDriveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C382047FD36000841AE /* IMBiCloudDriveManager.m */; };
 		7B8C0B362043EDCA00BE7EF1 /* IMBDrawTextFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B352043EDCA00BE7EF1 /* IMBDrawTextFiledView.m */; };
 		7B8C0B392043EE5600BE7EF1 /* customTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B382043EE5600BE7EF1 /* customTextFiled.m */; };
 		7B8C0B3C2043EE7800BE7EF1 /* customTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B3B2043EE7800BE7EF1 /* customTextFieldCell.m */; };
@@ -679,11 +697,47 @@
 /* Begin PBXFileReference section */
 		7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveEntity.h; sourceTree = "<group>"; };
 		7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveEntity.m; sourceTree = "<group>"; };
-		7B6BB4D520450B9400BBD6E9 /* IMBDriveManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveManage.h; sourceTree = "<group>"; };
-		7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveManage.m; sourceTree = "<group>"; };
 		7B6BB4D820452B9A00BBD6E9 /* IMBDriveWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveWindow.h; sourceTree = "<group>"; };
 		7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveWindow.m; sourceTree = "<group>"; };
 		7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDriveWindow.xib; sourceTree = "<group>"; };
+		7B830BFD2047AFD8000841AE /* iCloudDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDrive.h; sourceTree = "<group>"; };
+		7B830BFE2047AFD8000841AE /* iCloudDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDrive.m; sourceTree = "<group>"; };
+		7B830BFF2047AFD8000841AE /* iCloudDriveAccountLoginAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveAccountLoginAPI.h; sourceTree = "<group>"; };
+		7B830C002047AFD8000841AE /* iCloudDriveAccountLoginAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveAccountLoginAPI.m; sourceTree = "<group>"; };
+		7B830C012047AFD8000841AE /* iCloudDriveAuthSigninAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveAuthSigninAPI.h; sourceTree = "<group>"; };
+		7B830C022047AFD8000841AE /* iCloudDriveAuthSigninAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveAuthSigninAPI.m; sourceTree = "<group>"; };
+		7B830C032047AFD8000841AE /* iCloudDriveCreateFolderAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveCreateFolderAPI.h; sourceTree = "<group>"; };
+		7B830C042047AFD8000841AE /* iCloudDriveCreateFolderAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveCreateFolderAPI.m; sourceTree = "<group>"; };
+		7B830C052047AFD8000841AE /* iCloudDriveDeleteItemsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveDeleteItemsAPI.h; sourceTree = "<group>"; };
+		7B830C062047AFD8000841AE /* iCloudDriveDeleteItemsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveDeleteItemsAPI.m; sourceTree = "<group>"; };
+		7B830C072047AFD8000841AE /* iCloudDriveDownloadOneAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveDownloadOneAPI.h; sourceTree = "<group>"; };
+		7B830C082047AFD8000841AE /* iCloudDriveDownloadOneAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveDownloadOneAPI.m; sourceTree = "<group>"; };
+		7B830C092047AFD8000841AE /* iCloudDriveGetListAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveGetListAPI.h; sourceTree = "<group>"; };
+		7B830C0A2047AFD8000841AE /* iCloudDriveGetListAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveGetListAPI.m; sourceTree = "<group>"; };
+		7B830C0B2047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveGetSecuritycodeAPI.h; sourceTree = "<group>"; };
+		7B830C0C2047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveGetSecuritycodeAPI.m; sourceTree = "<group>"; };
+		7B830C0D2047AFD8000841AE /* iCloudDriveHeartbeatAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveHeartbeatAPI.h; sourceTree = "<group>"; };
+		7B830C0E2047AFD8000841AE /* iCloudDriveHeartbeatAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveHeartbeatAPI.m; sourceTree = "<group>"; };
+		7B830C0F2047AFD8000841AE /* iCloudDriveLogoutAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveLogoutAPI.h; sourceTree = "<group>"; };
+		7B830C102047AFD8000841AE /* iCloudDriveLogoutAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveLogoutAPI.m; sourceTree = "<group>"; };
+		7B830C112047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveMoveToNewParentAPI.h; sourceTree = "<group>"; };
+		7B830C122047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveMoveToNewParentAPI.m; sourceTree = "<group>"; };
+		7B830C132047AFD8000841AE /* iCloudDriveRenameAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveRenameAPI.h; sourceTree = "<group>"; };
+		7B830C142047AFD8000841AE /* iCloudDriveRenameAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveRenameAPI.m; sourceTree = "<group>"; };
+		7B830C152047AFD8000841AE /* iCloudDriveUploadOneAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveUploadOneAPI.h; sourceTree = "<group>"; };
+		7B830C162047AFD8000841AE /* iCloudDriveUploadOneAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveUploadOneAPI.m; sourceTree = "<group>"; };
+		7B830C172047AFD8000841AE /* iCloudDriveUploadThreeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveUploadThreeAPI.h; sourceTree = "<group>"; };
+		7B830C182047AFD8000841AE /* iCloudDriveUploadThreeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveUploadThreeAPI.m; sourceTree = "<group>"; };
+		7B830C192047AFD8000841AE /* iCloudDriveUploadTwoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveUploadTwoAPI.h; sourceTree = "<group>"; };
+		7B830C1A2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveUploadTwoAPI.m; sourceTree = "<group>"; };
+		7B830C1B2047AFD8000841AE /* iCloudDriveValidateAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveValidateAPI.h; sourceTree = "<group>"; };
+		7B830C1C2047AFD8000841AE /* iCloudDriveValidateAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveValidateAPI.m; sourceTree = "<group>"; };
+		7B830C1D2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDriveVerifySecurityCodeAPI.h; sourceTree = "<group>"; };
+		7B830C1E2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDriveVerifySecurityCodeAPI.m; sourceTree = "<group>"; };
+		7B830C332047FD09000841AE /* IMBDriveManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveManage.h; sourceTree = "<group>"; };
+		7B830C342047FD09000841AE /* IMBDriveManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveManage.m; sourceTree = "<group>"; };
+		7B830C372047FD36000841AE /* IMBiCloudDriveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiCloudDriveManager.h; sourceTree = "<group>"; };
+		7B830C382047FD36000841AE /* IMBiCloudDriveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiCloudDriveManager.m; sourceTree = "<group>"; };
 		7B8C0B342043EDCA00BE7EF1 /* IMBDrawTextFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDrawTextFiledView.h; sourceTree = "<group>"; };
 		7B8C0B352043EDCA00BE7EF1 /* IMBDrawTextFiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDrawTextFiledView.m; sourceTree = "<group>"; };
 		7B8C0B372043EE5600BE7EF1 /* customTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customTextFiled.h; sourceTree = "<group>"; };
@@ -1837,14 +1891,73 @@
 		7B6BB4CF2044E8CA00BBD6E9 /* DriveEntity */ = {
 			isa = PBXGroup;
 			children = (
+				7B830C322047FD09000841AE /* iCloudDriveMange */,
+				7B830C352047FD09000841AE /* oneDriveManage */,
 				7B8CD27C2046918F00A936C7 /* DriveItem.h */,
 				7B8CD27D2046918F00A936C7 /* DriveItem.m */,
 				7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */,
 				7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */,
-				7B6BB4D520450B9400BBD6E9 /* IMBDriveManage.h */,
-				7B6BB4D620450B9400BBD6E9 /* IMBDriveManage.m */,
 			);
 			path = DriveEntity;
+			sourceTree = "<group>";
+		};
+		7B830BFC2047AFD8000841AE /* iCloud Drive */ = {
+			isa = PBXGroup;
+			children = (
+				7B830BFD2047AFD8000841AE /* iCloudDrive.h */,
+				7B830BFE2047AFD8000841AE /* iCloudDrive.m */,
+				7B830BFF2047AFD8000841AE /* iCloudDriveAccountLoginAPI.h */,
+				7B830C002047AFD8000841AE /* iCloudDriveAccountLoginAPI.m */,
+				7B830C012047AFD8000841AE /* iCloudDriveAuthSigninAPI.h */,
+				7B830C022047AFD8000841AE /* iCloudDriveAuthSigninAPI.m */,
+				7B830C032047AFD8000841AE /* iCloudDriveCreateFolderAPI.h */,
+				7B830C042047AFD8000841AE /* iCloudDriveCreateFolderAPI.m */,
+				7B830C052047AFD8000841AE /* iCloudDriveDeleteItemsAPI.h */,
+				7B830C062047AFD8000841AE /* iCloudDriveDeleteItemsAPI.m */,
+				7B830C072047AFD8000841AE /* iCloudDriveDownloadOneAPI.h */,
+				7B830C082047AFD8000841AE /* iCloudDriveDownloadOneAPI.m */,
+				7B830C092047AFD8000841AE /* iCloudDriveGetListAPI.h */,
+				7B830C0A2047AFD8000841AE /* iCloudDriveGetListAPI.m */,
+				7B830C0B2047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.h */,
+				7B830C0C2047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.m */,
+				7B830C0D2047AFD8000841AE /* iCloudDriveHeartbeatAPI.h */,
+				7B830C0E2047AFD8000841AE /* iCloudDriveHeartbeatAPI.m */,
+				7B830C0F2047AFD8000841AE /* iCloudDriveLogoutAPI.h */,
+				7B830C102047AFD8000841AE /* iCloudDriveLogoutAPI.m */,
+				7B830C112047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.h */,
+				7B830C122047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m */,
+				7B830C132047AFD8000841AE /* iCloudDriveRenameAPI.h */,
+				7B830C142047AFD8000841AE /* iCloudDriveRenameAPI.m */,
+				7B830C152047AFD8000841AE /* iCloudDriveUploadOneAPI.h */,
+				7B830C162047AFD8000841AE /* iCloudDriveUploadOneAPI.m */,
+				7B830C172047AFD8000841AE /* iCloudDriveUploadThreeAPI.h */,
+				7B830C182047AFD8000841AE /* iCloudDriveUploadThreeAPI.m */,
+				7B830C192047AFD8000841AE /* iCloudDriveUploadTwoAPI.h */,
+				7B830C1A2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m */,
+				7B830C1B2047AFD8000841AE /* iCloudDriveValidateAPI.h */,
+				7B830C1C2047AFD8000841AE /* iCloudDriveValidateAPI.m */,
+				7B830C1D2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.h */,
+				7B830C1E2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m */,
+			);
+			path = "iCloud Drive";
+			sourceTree = "<group>";
+		};
+		7B830C322047FD09000841AE /* iCloudDriveMange */ = {
+			isa = PBXGroup;
+			children = (
+				7B830C332047FD09000841AE /* IMBDriveManage.h */,
+				7B830C342047FD09000841AE /* IMBDriveManage.m */,
+			);
+			path = iCloudDriveMange;
+			sourceTree = "<group>";
+		};
+		7B830C352047FD09000841AE /* oneDriveManage */ = {
+			isa = PBXGroup;
+			children = (
+				7B830C372047FD36000841AE /* IMBiCloudDriveManager.h */,
+				7B830C382047FD36000841AE /* IMBiCloudDriveManager.m */,
+			);
+			path = oneDriveManage;
 			sourceTree = "<group>";
 		};
 		B90D14C820201599002D9F9B /* Applications */ = {
@@ -1868,6 +1981,7 @@
 		B910BF0E20219E3B00849CBB /* CloudDrive */ = {
 			isa = PBXGroup;
 			children = (
+				7B830BFC2047AFD8000841AE /* iCloud Drive */,
 				7B6BB4CF2044E8CA00BBD6E9 /* DriveEntity */,
 				B910BF1120219E3B00849CBB /* DriveAPI */,
 				B910BF2120219E3B00849CBB /* OneDrive */,
@@ -3959,6 +4073,7 @@
 				B96562FA2021D2B000BD7FF5 /* File_Mpega.cpp in Sources */,
 				B96563292021D2B000BD7FF5 /* File_Rle.cpp in Sources */,
 				B96563772021D2B000BD7FF5 /* File_Cmml.cpp in Sources */,
+				7B830C272047AFD8000841AE /* iCloudDriveHeartbeatAPI.m in Sources */,
 				B96563482021D2B000BD7FF5 /* File_Hls.cpp in Sources */,
 				B96564C12021D47600BD7FF5 /* XMLReader.m in Sources */,
 				B96563002021D2B000BD7FF5 /* File_Ps2Audio.cpp in Sources */,
@@ -3969,8 +4084,10 @@
 				B96563B12021D2B000BD7FF5 /* Utils.cpp in Sources */,
 				EE8BA57320217C9900FECC14 /* IMBDrawOneImageBtn.m in Sources */,
 				B96563AC2021D2B000BD7FF5 /* MemoryDebug.cpp in Sources */,
+				7B830C2C2047AFD8000841AE /* iCloudDriveUploadThreeAPI.m in Sources */,
 				B9E73A572028054200E1BB3B /* IMBCvtDeviceEntity.m in Sources */,
 				B96563842021D2B000BD7FF5 /* File_TimedText.cpp in Sources */,
+				7B830C202047AFD8000841AE /* iCloudDriveAccountLoginAPI.m in Sources */,
 				B9E73AD720282FF500E1BB3B /* gzwrite.c in Sources */,
 				B9E73A042028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m in Sources */,
 				B96563572021D2B000BD7FF5 /* File_MpegTs_Duplicate.cpp in Sources */,
@@ -3982,6 +4099,7 @@
 				7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */,
 				B96564932021D47600BD7FF5 /* IMBSqliteTables_4.m in Sources */,
 				B965636A2021D2B000BD7FF5 /* Reader_Directory.cpp in Sources */,
+				7B830C252047AFD8000841AE /* iCloudDriveGetListAPI.m in Sources */,
 				B96563642021D2B000BD7FF5 /* File_Swf.cpp in Sources */,
 				B96563072021D2B000BD7FF5 /* File_Tak.cpp in Sources */,
 				B9E73A052028038D00E1BB3B /* IMBNotAirSyncImportTransfer.m in Sources */,
@@ -4004,6 +4122,7 @@
 				B96563262021D2B000BD7FF5 /* File_Pcx.cpp in Sources */,
 				B965647F2021D47600BD7FF5 /* IMBArtworkEntity.m in Sources */,
 				EE8BA53E2021605800FECC14 /* IMBBackgroundBorderView.m in Sources */,
+				7B830C2D2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m in Sources */,
 				B9E73AD320282FF500E1BB3B /* deflate.c in Sources */,
 				B96564AE2021D47600BD7FF5 /* IMBArtworkStringMHOD.m in Sources */,
 				B9E73A8F20282C1100E1BB3B /* IMBiTLTrack.m in Sources */,
@@ -4025,6 +4144,7 @@
 				B96564A42021D47600BD7FF5 /* IMBPlaylistList.m in Sources */,
 				B96564B22021D47600BD7FF5 /* IMBPlaylistPositionMHOD.m in Sources */,
 				B965631F2021D2B000BD7FF5 /* File_Bmp.cpp in Sources */,
+				7B830C2F2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m in Sources */,
 				B910BF3A20219E3B00849CBB /* DriveAPIResponse.m in Sources */,
 				B9E73A6720280AAB00E1BB3B /* IMBHttpWebResponseUtility.m in Sources */,
 				B9E739F92028038D00E1BB3B /* IMBBaseDelete.m in Sources */,
@@ -4046,6 +4166,7 @@
 				B96563982021D2B000BD7FF5 /* File_Vc3.cpp in Sources */,
 				B96563472021D2B000BD7FF5 /* File_HdsF4m.cpp in Sources */,
 				B96562ED2021D2B000BD7FF5 /* File_Au.cpp in Sources */,
+				7B830C262047AFD8000841AE /* iCloudDriveGetSecuritycodeAPI.m in Sources */,
 				B96562E82021D2B000BD7FF5 /* File_Adpcm.cpp in Sources */,
 				B996D9C72019CA7600E6991A /* IMBDevViewController.m in Sources */,
 				B96563AB2021D2B000BD7FF5 /* int128u.cpp in Sources */,
@@ -4093,6 +4214,7 @@
 				B96563592021D2B000BD7FF5 /* File_Nut.cpp in Sources */,
 				B96562D42021D2B000BD7FF5 /* mmsx.c in Sources */,
 				B9104CA2200DFE1800C1ECEA /* IMBCommonEnum.m in Sources */,
+				7B830C282047AFD8000841AE /* iCloudDriveLogoutAPI.m in Sources */,
 				B96563652021D2B000BD7FF5 /* File_Umf.cpp in Sources */,
 				B910BF4420219E3B00849CBB /* OneDriveRefreshTokenAPI.m in Sources */,
 				B914C1A520241A7500B998AC /* IMBDetailViewControler.m in Sources */,
@@ -4112,6 +4234,7 @@
 				B9E739E62028038D00E1BB3B /* IMBDistantObject.m in Sources */,
 				B9E73A64202809AB00E1BB3B /* IMBExtractDeviceDBFiles.m in Sources */,
 				B96562F42021D2B000BD7FF5 /* File_ImpulseTracker.cpp in Sources */,
+				7B830C292047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m in Sources */,
 				B9348B3A201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m in Sources */,
 				B965633B2021D2B000BD7FF5 /* File_DashMpd.cpp in Sources */,
 				B9347CCD201ED9F600A8CEC3 /* IMBSqliteManager.m in Sources */,
@@ -4150,7 +4273,9 @@
 				B96563A92021D2B000BD7FF5 /* InfoMap.cpp in Sources */,
 				B9E73A7C20280FC000E1BB3B /* IMBUpdateInfo.m in Sources */,
 				B96564AF2021D47600BD7FF5 /* IMBBaseMHODElement.m in Sources */,
+				7B830C222047AFD8000841AE /* iCloudDriveCreateFolderAPI.m in Sources */,
 				B96563A32021D2B000BD7FF5 /* Html_Handler.cpp in Sources */,
+				7B830C362047FD09000841AE /* IMBDriveManage.m in Sources */,
 				B96564B32021D47600BD7FF5 /* IMBStringMHOD.m in Sources */,
 				7B8CD27E2046918F00A936C7 /* DriveItem.m in Sources */,
 				B965631A2021D2B000BD7FF5 /* File__MultipleParsing.cpp in Sources */,
@@ -4167,10 +4292,12 @@
 				B9E739FD2028038D00E1BB3B /* IMBDeleteTrack.m in Sources */,
 				B910BF4120219E3B00849CBB /* OneDMoveToNewParentAPI.m in Sources */,
 				B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */,
+				7B830C392047FD36000841AE /* IMBiCloudDriveManager.m in Sources */,
 				B96563122021D2B000BD7FF5 /* Export_reVTMD.cpp in Sources */,
 				B96563892021D2B000BD7FF5 /* File_Avc.cpp in Sources */,
 				B96563562021D2B000BD7FF5 /* File_MpegTs.cpp in Sources */,
 				B9E739F62028038D00E1BB3B /* IMBExportSetting.m in Sources */,
+				7B830C2A2047AFD8000841AE /* iCloudDriveRenameAPI.m in Sources */,
 				B96564882021D47600BD7FF5 /* IMBIThmbFile.m in Sources */,
 				B9348997201EFD2100A8CEC3 /* FMDatabase.m in Sources */,
 				B96563402021D2B000BD7FF5 /* File_DvDif.cpp in Sources */,
@@ -4181,6 +4308,8 @@
 				B965647E2021D47600BD7FF5 /* IMBArtworkDBRoot.m in Sources */,
 				B90D14DC2020214C002D9F9B /* SimpleNode.m in Sources */,
 				B96564962021D47600BD7FF5 /* IMBSqliteTables_Nano6G.m in Sources */,
+				7B830C1F2047AFD8000841AE /* iCloudDrive.m in Sources */,
+				7B830C2B2047AFD8000841AE /* iCloudDriveUploadOneAPI.m in Sources */,
 				EE8BA56B20217BEC00FECC14 /* IMBCustomButton.m in Sources */,
 				B9538FE2202BEC69000BED1C /* NSColor+Category.m in Sources */,
 				B96563832021D2B000BD7FF5 /* File_Teletext.cpp in Sources */,
@@ -4306,7 +4435,6 @@
 				B965633A2021D2B000BD7FF5 /* File_Cdxa.cpp in Sources */,
 				B96563242021D2B000BD7FF5 /* File_Ico.cpp in Sources */,
 				B910BF3C20219E3B00849CBB /* UpLoader.m in Sources */,
-				7B6BB4D720450B9400BBD6E9 /* IMBDriveManage.m in Sources */,
 				B90D14EE20202824002D9F9B /* IMBAnimateProgressBar.m in Sources */,
 				B96563962021D2B000BD7FF5 /* File_Theora.cpp in Sources */,
 				B96563492021D2B000BD7FF5 /* File_Ibi.cpp in Sources */,
@@ -4316,6 +4444,7 @@
 				B96564A52021D47600BD7FF5 /* IMBPlaylistListContainer.m in Sources */,
 				B96564C02021D47600BD7FF5 /* IMBPurchasesSqlite.m in Sources */,
 				B96562F22021D2B000BD7FF5 /* File_ExtendedModule.cpp in Sources */,
+				7B830C2E2047AFD8000841AE /* iCloudDriveValidateAPI.m in Sources */,
 				B96563252021D2B000BD7FF5 /* File_Jpeg.cpp in Sources */,
 				B965633D2021D2B000BD7FF5 /* File_DcpCpl.cpp in Sources */,
 				B96563582021D2B000BD7FF5 /* File_Mxf.cpp in Sources */,
@@ -4331,6 +4460,7 @@
 				B96562FB2021D2B000BD7FF5 /* File_OpenMG.cpp in Sources */,
 				B96562DC2021D2B000BD7FF5 /* File_Iso9660.cpp in Sources */,
 				B9E73A2B2028038D00E1BB3B /* IMBPhotoFileExport.m in Sources */,
+				7B830C242047AFD8000841AE /* iCloudDriveDownloadOneAPI.m in Sources */,
 				B965638A2021D2B000BD7FF5 /* File_Avc_Duplicate.cpp in Sources */,
 				B9E73AC720282FF500E1BB3B /* mztools.c in Sources */,
 				B96563612021D2B000BD7FF5 /* File_Rm.cpp in Sources */,
@@ -4338,6 +4468,7 @@
 				B96562F62021D2B000BD7FF5 /* File_Midi.cpp in Sources */,
 				B965635F2021D2B000BD7FF5 /* File_Riff.cpp in Sources */,
 				B965639C2021D2B000BD7FF5 /* tinyxml2.cpp in Sources */,
+				7B830C212047AFD8000841AE /* iCloudDriveAuthSigninAPI.m in Sources */,
 				B96563032021D2B000BD7FF5 /* File_SmpteSt0302.cpp in Sources */,
 				B96564AD2021D47600BD7FF5 /* IMBUnknownListContainer.m in Sources */,
 				B96563862021D2B000BD7FF5 /* TimeCode.cpp in Sources */,
@@ -4382,6 +4513,7 @@
 				B96563082021D2B000BD7FF5 /* File_Tta.cpp in Sources */,
 				B9E73A8C202811E300E1BB3B /* IMBBooksHelperEntry.m in Sources */,
 				B9E73A5B2028067C00E1BB3B /* IMBCategoryInfoModel.m in Sources */,
+				7B830C232047AFD8000841AE /* iCloudDriveDeleteItemsAPI.m in Sources */,
 				B96562E02021D2B000BD7FF5 /* File_Zip.cpp in Sources */,
 				B9E73AD020282FF500E1BB3B /* adler32.c in Sources */,
 				B96563802021D2B000BD7FF5 /* File_Scc.cpp in Sources */,
