@@ -179,7 +179,7 @@
 
 +(BOOL)isInternetAvail
 {
-    return [self checkSiteAvail:@"google.com"];
+    return [self checkSiteAvail:@"apple.com"];//google.com
 }
 +(BOOL)checkSiteAvail:(NSString*)urlStr
 {

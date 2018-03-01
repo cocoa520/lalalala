@@ -56,8 +56,9 @@
     
     @public
     IMBSelecedDeviceBtn *_selectDeviceButton;
-    BOOL _isTwoValidation;
+    BOOL _hasTwoStepAuth;
 }
+@property (nonatomic, assign) BOOL hasTwoStepAuth;
 @property (nonatomic, assign) BOOL isLoginIng;
 //@property (nonatomic, assign) NSMutableDictionary *iCloudDic;
 @property (assign) IBOutlet IMBWhiteView *icloudLogView;
@@ -67,5 +68,12 @@
 - (void)onItemClicked:(NSString *)account;
 - (NSDictionary *)getiCloudDic;
 - (void)setRootBoxContentView:(IMBiCloudMainPageViewController *)icloudMainPage;
-
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password;
+- (void)loginiCloudWithSessiontoken:(NSString *)sessiontoken;
+- (void)loginIsSuccess:(BOOL)success withAppleID:(NSString*)appledID;
+- (void)showTwoStepAuthenticationAlertView;
+//再次发送双重验证短信
+- (void)reSendTwoStepAuthenticationMessage;
+//取消双重验证下拉框
+- (void)cancelTwoStepAuthenticationAlertView;
 @end

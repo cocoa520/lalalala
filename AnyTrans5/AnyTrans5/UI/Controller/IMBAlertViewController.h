@@ -28,6 +28,8 @@
 #import "IMBTextBoxView.h"
 #import "IMBSwitchButton.h"
 #import "IMBScrollView.h"
+#import "IMBCodeTextField.h"
+#import "LoadingView.h"
 
 @class CapacityView;
 @class IMBCheckBtn;
@@ -335,6 +337,29 @@
     IBOutlet IMBDotView *_circleView3;
     IBOutlet IMBDotView *_circleView4;
     
+    //双重验证
+    IBOutlet IMBBorderRectAndColorView *_doubleVerificaView;
+    IBOutlet NSTextField *_doubleVerificaTitle;
+    IBOutlet NSTextField *_doubleVerificaSubTitle;
+    IBOutlet IMBCodeTextField *_doubleVerificaFirstNum;
+    IBOutlet IMBCodeTextField *_doubleVerificaSecondNum;
+    IBOutlet IMBCodeTextField *_doubleVerificaThirdNum;
+    IBOutlet IMBCodeTextField *_doubleVerificaFourthNum;
+    IBOutlet IMBCodeTextField *_doubleVerificaFifthNum;
+    IBOutlet IMBCodeTextField *_doubleVerificaSixthNum;
+    IBOutlet IMBCanClickText *_doubleVerificaTextView;
+    IBOutlet IMBGeneralButton *_doubleVerificaOkBtn;
+    IBOutlet IMBGeneralButton *_doubleVerificaCancelBtn;
+    IBOutlet IMBWhiteView *_numBox1;
+    IBOutlet IMBWhiteView *_numBox2;
+    IBOutlet IMBWhiteView *_numBox3;
+    IBOutlet IMBWhiteView *_numBox4;
+    IBOutlet IMBWhiteView *_numBox5;
+    IBOutlet IMBWhiteView *_numBox6;
+    IBOutlet IMBWhiteView *_loadingBgView;
+    IBOutlet NSImageView *_doubleVerificaLoadingView;
+    
+    
     BOOL _endRunloop;
     int _result;
     NSView *_mainView;
@@ -440,5 +465,9 @@
 - (void)showAirBackupHotWiFiAlertViewWithSuperView:(NSView *)superView;
 //删除air backup 备份记录
 - (void)deleteConfigFileWithDeviceKey:(NSString *)devcieKey;
+
+//双重验证
+- (void)showDoubleVerificationAlertView:(NSView *)superView;
+
 
 @end

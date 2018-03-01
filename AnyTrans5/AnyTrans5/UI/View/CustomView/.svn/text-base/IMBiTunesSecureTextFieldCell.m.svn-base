@@ -156,7 +156,7 @@
 
     });
 }
--(void)enterSignin:(NSNotification *)obj{
+-(void)enterSignin:(NSNotification *)obj {
     dispatch_async(dispatch_get_main_queue(), ^{
         _isEnterBtn = YES;
 

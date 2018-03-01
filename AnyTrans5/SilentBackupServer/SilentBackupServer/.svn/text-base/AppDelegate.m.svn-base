@@ -57,6 +57,7 @@
 
     _mainRect = [[NSScreen mainScreen] frame];
     NSLog(@"mainRect:%f,%f,%f,%f",_mainRect.origin.x,_mainRect.origin.y,_mainRect.size.width,_mainRect.size.height);
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage:) name:@"changelanguage" object:nil];
     
     //TODO:测试
 //    NSString *title = [NSString stringWithFormat:CustomLocalizedString(@"Backup_Start", nil),[IMBHelper cutOffString:@"iMobie'iPhone"], (int)100];
@@ -89,6 +90,16 @@
 
     [_logHandle writeInfoLog:@"AirBackupHelper Start!"];
 
+}
+
+- (void)changeLanguage:(NSNotification *)noti {
+    NSDictionary *dic = noti.userInfo;
+    if ([dic.allKeys containsObject:@"language"]) {
+        NSString *str = [dic objectForKey:@"language"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:str, nil] forKey:@"AppleLanguages"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"airbackup current language:%@",str]];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -950,6 +961,11 @@
             [_backupDandle stopBackupRestore];
         }
     }
+}
+
+-(void)dealloc {
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"changelanguage" object:nil];
+    [super dealloc];
 }
 
 @end

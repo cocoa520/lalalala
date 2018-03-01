@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_rose/Toolbar
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -570,40 +570,6 @@ has-props
 
 1193
 
-tool_toitunes_normal.png
-file
-
-
-
-
-2018-02-02T01:41:30.000000Z
-2b56f8295875b4f9a93dd6b46be062ec
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1399
-
 tool_back_normal@2x.png
 file
 
@@ -637,6 +603,40 @@ has-props
 
 
 1413
+
+tool_toitunes_normal.png
+file
+
+
+
+
+2018-02-02T01:41:30.000000Z
+2b56f8295875b4f9a93dd6b46be062ec
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1399
 
 tool_sel_outline_down@2x.png
 file
@@ -672,40 +672,6 @@ has-props
 
 1073
 
-tool_todevice_normal@2x.png
-file
-
-
-
-
-2018-02-02T01:41:30.000000Z
-579c49db772682a0ccb7508579e83dd2
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1400
-
 tool_delete_normal@2x.png
 file
 
@@ -740,14 +706,14 @@ has-props
 
 1376
 
-tool_tomac_normal@2x.png
+tool_todevice_normal@2x.png
 file
 
 
 
 
 2018-02-02T01:41:30.000000Z
-fa73166b19dc7f4127d3a25ebba4e21c
+579c49db772682a0ccb7508579e83dd2
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -772,7 +738,7 @@ has-props
 
 
 
-1352
+1400
 
 tool_setting_normal.png
 file
@@ -807,6 +773,40 @@ has-props
 
 
 1366
+
+tool_tomac_normal@2x.png
+file
+
+
+
+
+2018-02-02T01:41:30.000000Z
+fa73166b19dc7f4127d3a25ebba4e21c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1352
 
 tool_backup_normal@2x.png
 file
@@ -876,40 +876,6 @@ has-props
 
 1257
 
-tool_sel_outline_normal.png
-file
-
-
-
-
-2018-02-02T01:41:30.000000Z
-f59eb3d03630db520078b7edcd547980
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1027
-
 add_item1.png
 file
 
@@ -944,14 +910,14 @@ has-props
 
 1307
 
-add_item2.png
+tool_sel_outline_normal.png
 file
 
 
 
 
 2018-02-02T01:41:30.000000Z
-5adb6284fda40bd148af272112eb6c7e
+f59eb3d03630db520078b7edcd547980
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -976,7 +942,7 @@ has-props
 
 
 
-1311
+1027
 
 tool_exit_normal@2x.png
 file
@@ -1012,14 +978,14 @@ has-props
 
 1392
 
-add_item3.png
+add_item2.png
 file
 
 
 
 
 2018-02-02T01:41:30.000000Z
-7e7574bf684ef961943823a7fcc70a12
+5adb6284fda40bd148af272112eb6c7e
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1044,7 +1010,7 @@ has-props
 
 
 
-1304
+1311
 
 tool_import_normal@2x.png
 file
@@ -1079,6 +1045,40 @@ has-props
 
 
 1355
+
+add_item3.png
+file
+
+
+
+
+2018-02-02T01:41:30.000000Z
+7e7574bf684ef961943823a7fcc70a12
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1304
 
 add_item4.png
 file

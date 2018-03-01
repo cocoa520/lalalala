@@ -1261,7 +1261,7 @@
     }
     NSMutableArray *allPaths = [[NSMutableArray alloc] init];
     NSArray *supportExtension = [[MediaHelper getSupportFileTypeArray:_category supportVideo:_ipod.deviceInfo.isSupportVideo supportConvert:YES withiPod:_ipod] componentsSeparatedByString:@";"];
-    //限制每次只能导入1000首，超过的就不导入
+    //限制每次最多导入1000首，超过的就不导入
     if (_category == Category_Music || _category == Category_Ringtone || _category == Category_Audiobook || _category == Category_VoiceMemos  || _category == Category_Playlist || _category == Category_Movies || _category == Category_HomeVideo || _category == Category_TVShow || _category == Category_MusicVideo || _category == Category_PhotoLibrary || _category == Category_MyAlbums) {
         [self getFileNames:paths byFileExtensions:supportExtension toArray:allPaths];
         if (allPaths.count > 1000) {

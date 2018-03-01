@@ -1791,3 +1791,9 @@
 "AriBackup_wifi_guide_3" = "Step 3: Enter your Network Name and Password > Click “OK” to save the settings.";
 "AriBackup_wifi_guide_4" = "Step 4: Select\"Internet Sharing\" > Click \"Start\". ";
 
+//双重验证
+"iCloudLogin_View_codeTips1" = "Please enter the verification code to continue.";
+"iCloudLogin_View_codeTips2" = "Invalid verification code.";
+"iCloudLogin_View_codeTips3" = "Authentication failed.";
+"iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
+"iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";

@@ -19,7 +19,7 @@
 #import "IMBZipHelper.h"
 #import "IMBNoteListViewController.h"
 #import "CommonDefine.h"
-
+#import "IMBiCloudViewController.h"
 @implementation IMBiCloudManager
 @synthesize photoArray = _photoArray;
 @synthesize calendarArray = _calendarArray;
@@ -107,17 +107,55 @@
 }
 
 - (BOOL)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password {
-    BOOL ret = NO;
-    @try {
-        ret = [_netClient iCloudLoginWithAppleID:appleID withPassword:password];
+    BOOL hasTwoStepAuthentication = NO;//账号是否加了双重验证
+    long statusCode = 0;
+    BOOL trustEligible = NO;
+    NSString *sessiontoken = nil;
+    if (_firstDic != nil) {
+        [_firstDic release];
+        _firstDic = nil;
     }
-    @catch (NSException *exception) {
-        [_logHandle writeInfoLog:[NSString stringWithFormat:@"Login Fail:%@",exception.reason]];
+    _firstDic = [[_netClient verifiAccountHasTwoStepAuthenticationWithAppleID:appleID withPassword:password] retain];
+    if ([_firstDic.allKeys containsObject:@"statusCode"]) {
+        statusCode = [[_firstDic objectForKey:@"statusCode"] longValue];
     }
-    if (ret) {
-        [_netClient startKeepAliveThread];
+    if ([_firstDic.allKeys containsObject:@"headerdic"]) {
+        NSDictionary *headerDic = [_firstDic objectForKey:@"headerdic"];
+        if ([headerDic.allKeys containsObject:@"X-Apple-Session-Token"]) {
+            sessiontoken = [headerDic objectForKey:@"X-Apple-Session-Token"];
+        }
+        if ([headerDic.allKeys containsObject:@"X-Apple-TwoSV-Trust-Eligible"]) {
+            trustEligible = [[headerDic objectForKey:@"X-Apple-TwoSV-Trust-Eligible"] boolValue];
+        }
     }
-    return ret;
+    if (statusCode == 409 && trustEligible) {//加了双重验证
+        hasTwoStepAuthentication = YES;
+        [_delegate setHasTwoStepAuth:YES];
+        [_delegate showTwoStepAuthenticationAlertView];
+        return NO;
+    }else if(statusCode == 200) {//表示成功 并且没有开启双重验证
+        BOOL ret = NO;
+        @try {
+            ret = [_netClient iCloudLoginWithAppleID:appleID withPassword:password WithSessiontoken:sessiontoken];
+        }
+        @catch (NSException *exception) {
+            [_logHandle writeInfoLog:[NSString stringWithFormat:@"Login Fail:%@",exception.reason]];
+        }
+        if (ret) {
+            [_netClient startKeepAliveThread];
+        }
+        return ret;
+    }else if (statusCode == 401) {//401 表示认证错误
+        return NO;
+    }else if (statusCode == 400) {//400 表示请求参数构建错误
+        return NO;
+    }else {
+        return NO;
+    }
+}
+
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password{
+    return [_netClient verifiTwoStepAuthentication:password withFirstDic:_firstDic];
 }
 
 #pragma mark - Photos

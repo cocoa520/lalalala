@@ -1037,26 +1037,31 @@
     //5.把book拆分为audiobook与ibook
     if (iTLPlaylists != nil) {
         NSArray *categoryPlaylists = [iTLPlaylists filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"distinguishedKindId == %d",iTunes_Books]];
-        if (categoryPlaylists.count > 0) {
-           IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];
-            if (bookPlayst.playlistItems != nil && bookPlayst.playlistItems.count > 0) {
-                NSArray *audioBookArray = [bookPlayst.playlistItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"iTunesMediaType == %d",iTunesMedia_Audiobook]];
-                if (audioBookArray.count > 0) {
-                    IMBiTLPlaylist *abPlaylist = [[IMBiTLPlaylist alloc] init];
-                    //TODO 多语言
-                    abPlaylist.name = CustomLocalizedString(@"MenuItem_id_3", nil);
-                    abPlaylist.distinguishedKindId = iTunes_Audiobook;
-                    abPlaylist.iTunesType = iTunes_Audiobook;
-                    [abPlaylist.playlistItems addObjectsFromArray:audioBookArray];
-                    [bookPlayst.playlistItems removeObjectsInArray:audioBookArray];
-                    [iTLPlaylists addObject:abPlaylist];
-                    [abPlaylist release];
+        if([[self getiTunesVersion] isVersionMajorEqual:@"12.5"]){//iTunes具体取消book,改为audiobook的版本大概在12.5，具体的版本不确定
+            IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];
+            bookPlayst.distinguishedKindId = iTunes_Audiobook;
+            bookPlayst.iTunesType = iTunes_Audiobook;
+        }else {
+            if (categoryPlaylists.count > 0) {
+               IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];
+                if (bookPlayst.playlistItems != nil && bookPlayst.playlistItems.count > 0) {
+                    NSArray *audioBookArray = [bookPlayst.playlistItems filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"iTunesMediaType == %d",iTunesMedia_Audiobook]];
+                    if (audioBookArray.count > 0) {
+                        IMBiTLPlaylist *abPlaylist = [[IMBiTLPlaylist alloc] init];
+                        //TODO 多语言
+                        abPlaylist.name = CustomLocalizedString(@"MenuItem_id_3", nil);
+                        abPlaylist.distinguishedKindId = iTunes_Audiobook;
+                        abPlaylist.iTunesType = iTunes_Audiobook;
+                        [abPlaylist.playlistItems addObjectsFromArray:audioBookArray];
+                        [bookPlayst.playlistItems removeObjectsInArray:audioBookArray];
+                        [iTLPlaylists addObject:abPlaylist];
+                        [abPlaylist release];
+                    }
                 }
             }
+            //track
+            [logHandle writeInfoLog:[NSString stringWithFormat:@"iTunes parserLibrary after create audiobook playlist"]];
         }
-        //track
-        [logHandle writeInfoLog:[NSString stringWithFormat:@"iTunes parserLibrary after create audiobook playlist"]];
-        
         
         //6.添加App
         //得到App的目录
@@ -1392,6 +1397,25 @@
     
     return nil;
     
+}
+
+- (NSString*)getiTunesVersion {
+    NSTask *versionTask = [[NSTask alloc] init];
+    versionTask.launchPath = @"/usr/bin/defaults";
+    versionTask.arguments = @[@"read", @"/Applications/iTunes.app/Contents/version.plist", @"CFBundleShortVersionString"];
+    NSPipe *versionPipe = [NSPipe pipe];
+    [versionTask setStandardOutput:versionPipe];
+    [versionTask setStandardInput:[NSPipe pipe]];
+    [versionTask launch];
+    NSData *versionData = [[[versionTask standardOutput] fileHandleForReading] availableData];
+    NSString *version = nil;
+    if (versionData != nil && versionData.length > 0) {
+        version = [[[NSString alloc] initWithData:versionData encoding:NSUTF8StringEncoding] autorelease];
+        if (version != nil && version.length >= 1 && [version hasSuffix:@"\n"]) {
+            version = [version substringToIndex:version.length - 1];
+        }
+    }
+    return version;
 }
 
 @end

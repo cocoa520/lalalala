@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_c/SkinView
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -536,14 +536,14 @@ has-props
 
 1123
 
-skin_right3.png
+skin_default_image@2x.png
 file
 
 
 
 
 2018-02-02T01:40:20.000000Z
-e7181735f917ead78e77637b6ff55be5
+9aec15bef22bd7508c35f8292426eeee
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -568,7 +568,7 @@ has-props
 
 
 
-1118
+26026
 
 rose_thmb_image.png
 file
@@ -604,14 +604,14 @@ has-props
 
 16702
 
-skin_default_image@2x.png
+skin_right3.png
 file
 
 
 
 
 2018-02-02T01:40:20.000000Z
-9aec15bef22bd7508c35f8292426eeee
+e7181735f917ead78e77637b6ff55be5
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -636,7 +636,7 @@ has-props
 
 
 
-26026
+1118
 
 skin_right4.png
 file
@@ -808,40 +808,6 @@ has-props
 
 1022
 
-white_thmb_image.png
-file
-
-
-
-
-2018-02-02T01:40:20.000000Z
-e5aa617bedd7d0c5454270d60bf786e3
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-19049
-
 skin_right1@2x.png
 file
 
@@ -876,14 +842,14 @@ has-props
 
 1247
 
-skin_right3@2x.png
+white_thmb_image.png
 file
 
 
 
 
 2018-02-02T01:40:20.000000Z
-799dc3873d2e7560e7e832033c2803c2
+e5aa617bedd7d0c5454270d60bf786e3
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -908,7 +874,7 @@ has-props
 
 
 
-1249
+19049
 
 rose_thmb_image@2x.png
 file
@@ -944,6 +910,40 @@ has-props
 
 48804
 
+skin_right3@2x.png
+file
+
+
+
+
+2018-02-02T01:40:20.000000Z
+799dc3873d2e7560e7e832033c2803c2
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1249
+
 skin_left1.png
 file
 
@@ -952,6 +952,40 @@ file
 
 2018-02-02T01:40:20.000000Z
 c6ea4c7773bf9b8e007aca59f7172cdc
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1125
+
+skin_left2.png
+file
+
+
+
+
+2018-02-02T01:40:20.000000Z
+fdb594c487c20d5b58548c3eded09b70
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1011,40 +1045,6 @@ has-props
 
 
 1300
-
-skin_left2.png
-file
-
-
-
-
-2018-02-02T01:40:20.000000Z
-fdb594c487c20d5b58548c3eded09b70
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1125
 
 skin_left3.png
 file

@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_rose/Mainframe
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -264,40 +264,6 @@ has-props
 
 3006
 
-mainFrame_gopro_normal.png
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-9aca8a8ef372b02d029503d28a03aa27
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1325
-
 mainFrame_tool1.png
 file
 
@@ -332,14 +298,14 @@ has-props
 
 1780
 
-mainFrame_merge.png
+mainFrame_gopro_normal.png
 file
 
 
 
 
 2018-02-02T01:41:28.000000Z
-a27f31a7f7bdac7470e64b19996b536e
+9aca8a8ef372b02d029503d28a03aa27
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -364,7 +330,7 @@ has-props
 
 
 
-1464
+1325
 
 mainFrame_tool2.png
 file
@@ -399,6 +365,40 @@ has-props
 
 
 1726
+
+mainFrame_merge.png
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+a27f31a7f7bdac7470e64b19996b536e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1464
 
 mainFrame_tool3.png
 file
@@ -1049,40 +1049,6 @@ has-props
 
 2528
 
-mainFrame_backup_enter@2x.png
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-7a0c837b69ca6e1617c12713ddc16d25
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3160
-
 mainFrame_todevice@2x.png
 file
 
@@ -1117,14 +1083,14 @@ has-props
 
 1669
 
-mainFrame_gopro_down.png
+mainFrame_backup_enter@2x.png
 file
 
 
 
 
 2018-02-02T01:41:28.000000Z
-5ade848716257785c3e8de9164244c06
+7a0c837b69ca6e1617c12713ddc16d25
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1149,7 +1115,7 @@ has-props
 
 
 
-1532
+3160
 
 mainFrame_backup_normal.png
 file
@@ -1184,6 +1150,40 @@ has-props
 
 
 1571
+
+mainFrame_gopro_down.png
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+5ade848716257785c3e8de9164244c06
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1532
 
 categoryBtn
 dir
@@ -1222,40 +1222,6 @@ has-props
 
 1381
 
-mainFrame_gopro_down@2x.png
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-c8b48498107d1160dd8c116ab39f9fb3
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2043
-
 mainFrame_backup_normal@2x.png
 file
 
@@ -1289,6 +1255,40 @@ has-props
 
 
 2374
+
+mainFrame_gopro_down@2x.png
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+c8b48498107d1160dd8c116ab39f9fb3
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2043
 
 mainFrame_itunes_normal@2x.png
 file
@@ -1494,40 +1494,6 @@ has-props
 
 1344
 
-mainFrame_backup_enter.png
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-fff132a3d782d4d58e4833826ab4fdc2
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1919
-
 mainFrame_todevice.png
 file
 
@@ -1561,6 +1527,40 @@ has-props
 
 
 1287
+
+mainFrame_backup_enter.png
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+fff132a3d782d4d58e4833826ab4fdc2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1919
 
 mainFrame_tomac.png
 file
@@ -1698,40 +1698,6 @@ has-props
 
 2779
 
-mainFrame_merge@2x.png
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-c727f4f383d407341baa96a9e056d921
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1937
-
 mainFrame_tool2@2x.png
 file
 
@@ -1766,14 +1732,14 @@ has-props
 
 2529
 
-noconnect_bg.jpg
+mainFrame_merge@2x.png
 file
 
 
 
 
 2018-02-02T01:41:28.000000Z
-3d9e38e8349cf25de4c2c3e9a9a65e56
+c727f4f383d407341baa96a9e056d921
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1798,7 +1764,7 @@ has-props
 
 
 
-164928
+1937
 
 mainFrame_skin_enter@2x.png
 file
@@ -1833,6 +1799,40 @@ has-props
 
 
 1763
+
+noconnect_bg.jpg
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+3d9e38e8349cf25de4c2c3e9a9a65e56
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+164928
 
 mainFrame_device_normal@2x.png
 file
@@ -1902,40 +1902,6 @@ has-props
 
 2032
 
-noconnect_bg1.jpg
-file
-
-
-
-
-2018-02-02T01:41:28.000000Z
-620a2169ecb71d29169f9f478a961098
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-164708
-
 mainFrame_device_enter.png
 file
 
@@ -1970,14 +1936,14 @@ has-props
 
 1328
 
-noconnect_bg2.jpg
+noconnect_bg1.jpg
 file
 
 
 
 
 2018-02-02T01:41:28.000000Z
-7bb4049fce5e2c8f772b12dbf5a6e71a
+620a2169ecb71d29169f9f478a961098
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -2002,7 +1968,7 @@ has-props
 
 
 
-165242
+164708
 
 mainFrame_switch2@2x.png
 file
@@ -2037,6 +2003,40 @@ has-props
 
 
 2463
+
+noconnect_bg2.jpg
+file
+
+
+
+
+2018-02-02T01:41:28.000000Z
+7bb4049fce5e2c8f772b12dbf5a6e71a
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+165242
 
 mainFrame_itunes_down.png
 file

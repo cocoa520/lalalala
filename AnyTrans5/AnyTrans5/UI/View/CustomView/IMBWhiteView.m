@@ -157,7 +157,12 @@
         }
         if (_hasCorner) {
             NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-            [[StringHelper getColorFromString:CustomColor(@"lineAlertColor_InputTextBoderColor", nil)] set];
+            if (_borderColor) {
+                [_borderColor set];
+            } else {
+                [[StringHelper getColorFromString:CustomColor(@"lineAlertColor_InputTextBoderColor", nil)] set];
+            }
+            
             [path addClip];
             [path setLineWidth:2];
             [path stroke];
@@ -183,6 +188,10 @@
 }
 
 - (void)setBorderColor:(NSColor *)borderColor {
+    if (_borderColor != nil) {
+        [_borderColor release];
+        _borderColor = nil;
+    }
     _borderColor = [borderColor retain];
 }
 

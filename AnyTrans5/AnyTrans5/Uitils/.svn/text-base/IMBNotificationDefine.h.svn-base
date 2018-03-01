@@ -246,4 +246,7 @@
 //更新WIFI界面
 #define NOTIFY_REFRESH_WIFI_VIEW @"Refresh_Wifi_View"
 
+//输入验证码
+#define NOTIFY_EDIT_CODE @"Edit_code"
+
 #endif

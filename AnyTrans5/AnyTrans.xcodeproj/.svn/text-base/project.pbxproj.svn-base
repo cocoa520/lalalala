@@ -21,6 +21,7 @@
 		0C5AABA61F46A17400978816 /* IMBSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5AABA51F46A17400978816 /* IMBSearchView.m */; };
 		0C6363541E63D0C000828269 /* IMBiCloudCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6363521E63D0C000828269 /* IMBiCloudCalendarViewController.m */; };
 		0C6363551E63D0C000828269 /* IMBiCloudCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6363531E63D0C000828269 /* IMBiCloudCalendarViewController.xib */; };
+		0C63D7262046A14400CCAB29 /* BRNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C63D7252046A14400CCAB29 /* BRNumberFormatter.m */; };
 		0C660A531F4596A400A2B461 /* IMBNavPopSuperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C660A521F4596A400A2B461 /* IMBNavPopSuperView.m */; };
 		0C6C87381F43E43D00172ED2 /* IMBNavIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C87371F43E43D00172ED2 /* IMBNavIconButton.m */; };
 		0C6C873C1F43E45200172ED2 /* IMBNavPopoverWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C873A1F43E45200172ED2 /* IMBNavPopoverWindowController.m */; };
@@ -4263,6 +4264,7 @@
 		F7F3BF721F94AB2000A102C9 /* IMBBackupCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F3BF701F94AB2000A102C9 /* IMBBackupCollectionViewController.xib */; };
 		F7F448091F4AB20500AA7DBA /* IMBGridientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F448081F4AB20500AA7DBA /* IMBGridientButton.m */; };
 		F7F9DB1F1FA9612D00920C24 /* IMBTextLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F9DB1E1FA9612D00920C24 /* IMBTextLinkButton.m */; };
+		F7FD8E3B204640E000BC211F /* IMBCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FD8E3A204640E000BC211F /* IMBCodeTextField.m */; };
 		F7FEB50E1F9877BD0004633A /* IMBCustomPopBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FEB50D1F9877BD0004633A /* IMBCustomPopBtn.m */; };
 /* End PBXBuildFile section */
 
@@ -4384,6 +4386,8 @@
 		0C6363511E63D0C000828269 /* IMBiCloudCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBiCloudCalendarViewController.h; sourceTree = "<group>"; };
 		0C6363521E63D0C000828269 /* IMBiCloudCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBiCloudCalendarViewController.m; sourceTree = "<group>"; };
 		0C6363531E63D0C000828269 /* IMBiCloudCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBiCloudCalendarViewController.xib; sourceTree = "<group>"; };
+		0C63D7242046A14400CCAB29 /* BRNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRNumberFormatter.h; sourceTree = "<group>"; };
+		0C63D7252046A14400CCAB29 /* BRNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNumberFormatter.m; sourceTree = "<group>"; };
 		0C660A511F4596A400A2B461 /* IMBNavPopSuperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNavPopSuperView.h; sourceTree = "<group>"; };
 		0C660A521F4596A400A2B461 /* IMBNavPopSuperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBNavPopSuperView.m; sourceTree = "<group>"; };
 		0C664C871DED148D006A3AA3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -10495,6 +10499,8 @@
 		F7F448081F4AB20500AA7DBA /* IMBGridientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBGridientButton.m; sourceTree = "<group>"; };
 		F7F9DB1D1FA9612D00920C24 /* IMBTextLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTextLinkButton.h; sourceTree = "<group>"; };
 		F7F9DB1E1FA9612D00920C24 /* IMBTextLinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTextLinkButton.m; sourceTree = "<group>"; };
+		F7FD8E39204640E000BC211F /* IMBCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCodeTextField.h; sourceTree = "<group>"; };
+		F7FD8E3A204640E000BC211F /* IMBCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCodeTextField.m; sourceTree = "<group>"; };
 		F7FEB50C1F9877BD0004633A /* IMBCustomPopBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCustomPopBtn.h; sourceTree = "<group>"; };
 		F7FEB50D1F9877BD0004633A /* IMBCustomPopBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCustomPopBtn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -15301,6 +15307,8 @@
 		B96606231D33558600A70786 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				0C63D7242046A14400CCAB29 /* BRNumberFormatter.h */,
+				0C63D7252046A14400CCAB29 /* BRNumberFormatter.m */,
 				F700B7711FA08323003F4177 /* IMBCanClickText.h */,
 				F700B7721FA08323003F4177 /* IMBCanClickText.m */,
 				0C774FDE1F49F55D005BD550 /* iCarousel.h */,
@@ -15531,6 +15539,8 @@
 				F7F05A0D1F99DC45006A8761 /* IMBAirBackupDeviceItemView.m */,
 				F700B76D1FA0754A003F4177 /* IMBDotView.h */,
 				F700B76E1FA0754A003F4177 /* IMBDotView.m */,
+				F7FD8E39204640E000BC211F /* IMBCodeTextField.h */,
+				F7FD8E3A204640E000BC211F /* IMBCodeTextField.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -22441,6 +22451,7 @@
 				B9C492721D41D6E000C57985 /* IMBPlaylistList.m in Sources */,
 				B9C6C6A91F0B6D4600345147 /* PZAssistantLight.m in Sources */,
 				B9C6C68E1F0B6D4600345147 /* FileStreamWriter.m in Sources */,
+				0C63D7262046A14400CCAB29 /* BRNumberFormatter.m in Sources */,
 				B907D5941D90CC8F0089A40E /* AnnoyAnimationViewOne.m in Sources */,
 				B9FE91401D471D7300B1C38E /* IMBContactEntity.m in Sources */,
 				B97C0A711D4637DF00CA44CD /* IMBBooksManager.m in Sources */,
@@ -23532,6 +23543,7 @@
 				2779DA381D38E9E6009F12D5 /* File_Mz.cpp in Sources */,
 				B9C6C3921F0B6D4400345147 /* PKIHeader.m in Sources */,
 				B9C6C3551F0B6D4400345147 /* ASN1Generator.m in Sources */,
+				F7FD8E3B204640E000BC211F /* IMBCodeTextField.m in Sources */,
 				B9FCB4CC1DB8A0C70052BB40 /* IMBDownloadFile.m in Sources */,
 				B9C6C3481F0B6D4400345147 /* ANSSINamedCurves.m in Sources */,
 				B9C6C5771F0B6D4500345147 /* SecP192R1Point.m in Sources */,
@@ -23757,7 +23769,6 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -23806,7 +23817,6 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

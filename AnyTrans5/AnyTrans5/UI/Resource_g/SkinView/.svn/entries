@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_g/SkinView
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -502,14 +502,14 @@ has-props
 
 1127
 
-skin_right3.png
+rose_thmb_image.png
 file
 
 
 
 
 2018-02-02T01:41:20.000000Z
-9c709e46c384ec6a8e485f3f8171c20a
+a6ead04f3835d73db429042660dcd66c
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -534,7 +534,7 @@ has-props
 
 
 
-1130
+16702
 
 skin_default_image@2x.png
 file
@@ -570,14 +570,14 @@ has-props
 
 10429
 
-rose_thmb_image.png
+skin_right3.png
 file
 
 
 
 
 2018-02-02T01:41:20.000000Z
-a6ead04f3835d73db429042660dcd66c
+9c709e46c384ec6a8e485f3f8171c20a
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -602,7 +602,7 @@ has-props
 
 
 
-16702
+1130
 
 skin_right4.png
 file
@@ -774,40 +774,6 @@ has-props
 
 1022
 
-white_thmb_image.png
-file
-
-
-
-
-2018-02-02T01:41:20.000000Z
-25e2c11baba819c660abc8c8a96f9ce9
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-15917
-
 skin_right1@2x.png
 file
 
@@ -842,14 +808,14 @@ has-props
 
 1241
 
-skin_right3@2x.png
+white_thmb_image.png
 file
 
 
 
 
 2018-02-02T01:41:20.000000Z
-98c8abb4856a3658be1fd55a36b118bf
+25e2c11baba819c660abc8c8a96f9ce9
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -874,7 +840,7 @@ has-props
 
 
 
-1256
+15917
 
 rose_thmb_image@2x.png
 file
@@ -910,6 +876,40 @@ has-props
 
 48804
 
+skin_right3@2x.png
+file
+
+
+
+
+2018-02-02T01:41:20.000000Z
+98c8abb4856a3658be1fd55a36b118bf
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1256
+
 skin_left1.png
 file
 
@@ -944,40 +944,6 @@ has-props
 
 1130
 
-skin_right5@2x.png
-file
-
-
-
-
-2018-02-02T01:41:20.000000Z
-b8a1401b65403d29603c04467de4613b
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1290
-
 skin_left2.png
 file
 
@@ -1011,6 +977,40 @@ has-props
 
 
 1135
+
+skin_right5@2x.png
+file
+
+
+
+
+2018-02-02T01:41:20.000000Z
+b8a1401b65403d29603c04467de4613b
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1290
 
 skin_left3.png
 file

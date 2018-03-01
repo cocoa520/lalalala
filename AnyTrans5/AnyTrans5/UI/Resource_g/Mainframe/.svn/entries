@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_g/Mainframe
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -264,40 +264,6 @@ has-props
 
 1691
 
-mainFrame_gopro_normal.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-a793c7b1954b92c18e5f3393db2eff16
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1324
-
 mainFrame_tool1.png
 file
 
@@ -332,14 +298,14 @@ has-props
 
 1394
 
-mainFrame_merge.png
+mainFrame_gopro_normal.png
 file
 
 
 
 
 2018-02-02T01:41:19.000000Z
-a27f31a7f7bdac7470e64b19996b536e
+a793c7b1954b92c18e5f3393db2eff16
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -364,7 +330,7 @@ has-props
 
 
 
-1464
+1324
 
 mainFrame_tool2.png
 file
@@ -399,6 +365,40 @@ has-props
 
 
 1668
+
+mainFrame_merge.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+a27f31a7f7bdac7470e64b19996b536e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1464
 
 mainFrame_tool3.png
 file
@@ -1015,40 +1015,6 @@ has-props
 
 311245
 
-mainFrame_tool3@2x.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-6b531d5242dbe5da74d0b85028046ae2
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2347
-
 mainFrame_toitunes.png
 file
 
@@ -1082,6 +1048,40 @@ has-props
 
 
 2345
+
+mainFrame_tool3@2x.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+6b531d5242dbe5da74d0b85028046ae2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2347
 
 noconnect_bg2@2x.png
 file
@@ -1117,40 +1117,6 @@ has-props
 
 311245
 
-mainFrame_backup_enter@2x.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-fb8791ff9475bab15564cdb6385e1f68
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2897
-
 mainFrame_todevice@2x.png
 file
 
@@ -1185,14 +1151,14 @@ has-props
 
 1669
 
-mainFrame_gopro_down.png
+mainFrame_backup_enter@2x.png
 file
 
 
 
 
 2018-02-02T01:41:19.000000Z
-2e8c689105f2cd5c1cf2ee2930fe6573
+fb8791ff9475bab15564cdb6385e1f68
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1217,7 +1183,7 @@ has-props
 
 
 
-1476
+2897
 
 mainFrame_backup_normal.png
 file
@@ -1252,6 +1218,40 @@ has-props
 
 
 1523
+
+mainFrame_gopro_down.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+2e8c689105f2cd5c1cf2ee2930fe6573
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1476
 
 categoryBtn
 dir
@@ -1290,40 +1290,6 @@ has-props
 
 1395
 
-mainFrame_gopro_down@2x.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-67f2e8222b4d3f8418ec73de2568f689
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1979
-
 mainFrame_backup_normal@2x.png
 file
 
@@ -1357,6 +1323,40 @@ has-props
 
 
 2363
+
+mainFrame_gopro_down@2x.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+67f2e8222b4d3f8418ec73de2568f689
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1979
 
 mainFrame_itunes_normal@2x.png
 file
@@ -1562,40 +1562,6 @@ has-props
 
 1330
 
-mainFrame_backup_enter.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-df6da4cc7d595bcb0250b4eb81def234
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1803
-
 mainFrame_todevice.png
 file
 
@@ -1629,6 +1595,40 @@ has-props
 
 
 1287
+
+mainFrame_backup_enter.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+df6da4cc7d595bcb0250b4eb81def234
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1803
 
 mainFrame_tomac.png
 file
@@ -1766,40 +1766,6 @@ has-props
 
 2613
 
-mainFrame_merge@2x.png
-file
-
-
-
-
-2018-02-02T01:41:19.000000Z
-c727f4f383d407341baa96a9e056d921
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1937
-
 mainFrame_tool2@2x.png
 file
 
@@ -1833,6 +1799,40 @@ has-props
 
 
 2320
+
+mainFrame_merge@2x.png
+file
+
+
+
+
+2018-02-02T01:41:19.000000Z
+c727f4f383d407341baa96a9e056d921
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1937
 
 noconnect_bg1@2x.png
 file

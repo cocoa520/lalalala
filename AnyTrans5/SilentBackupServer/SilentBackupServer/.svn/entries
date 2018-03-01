@@ -1,14 +1,14 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/SilentBackupServer/SilentBackupServer
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-01-26T08:01:27.271578Z
-1059
+2018-02-26T03:10:25.700135Z
+1369
 huyumin
 
 
@@ -25,6 +25,18 @@ huyumin
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
+
+ja.lproj
+dir
+
+Logger
+dir
+
+Helper
+dir
+
+DeviceConnection
+dir
 
 main.m
 file
@@ -60,18 +72,6 @@ dingming
 
 239
 
-DeviceConnection
-dir
-
-Helper
-dir
-
-Logger
-dir
-
-ja.lproj
-dir
-
 Info.plist
 file
 
@@ -106,22 +106,22 @@ dingming
 
 1139
 
-Resource
+en.lproj
 dir
 
 ar.lproj
 dir
 
-en.lproj
+Resource
 dir
 
 Socket
 dir
 
-es.lproj
+fr.lproj
 dir
 
-fr.lproj
+es.lproj
 dir
 
 zh-Hans.lproj
@@ -213,10 +213,10 @@ file
 
 
 
-2018-02-02T01:42:00.000000Z
-af60ffb68199addddb178a9b7e512cf4
-2018-01-26T08:01:27.271578Z
-1059
+2018-02-26T03:27:37.000000Z
+e5494e1693cb531eb45dadf789dd8133
+2018-02-26T03:10:25.700135Z
+1369
 huyumin
 
 
@@ -239,7 +239,7 @@ huyumin
 
 
 
-48420
+49212
 
 com.imobie.airbackuphelper.plist
 file

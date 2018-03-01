@@ -13,6 +13,7 @@
 #import "DateHelper.h"
 #import "CommonDefine.h"
 
+
 @implementation IMBMediaStorageUsageEntity
 @synthesize displayColor = _displayColor;
 @synthesize displayLabel = _displayLabel;
@@ -147,6 +148,8 @@
 
 @end
 
+
+#import "IMBNotificationDefine.h"
 @implementation IMBiCloudNetClient
 @synthesize loginInfo = _loginInfo;
 @synthesize downloadService = _downloadService;
@@ -170,35 +173,109 @@
         [_downloadService release];
         _downloadService = nil;
     }
+    if (_firstDic != nil) {
+        [_firstDic release];
+        _firstDic = nil;
+    }
     [super dealloc];
 }
 
-//登陆iCloud账号；
-- (BOOL)iCloudLoginWithAppleID:(NSString*)appleID withPassword:(NSString*)password {
-    BOOL retVal = NO;
-    NSString *retValStr = nil;
+//账号是否加了双重验证
+- (NSDictionary *)verifiAccountHasTwoStepAuthenticationWithAppleID:(NSString*)appleID withPassword:(NSString*)password {
     //删除cookie历史记录
     [self deleteCookieStorage];
-    
+
     //构建header
-    NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
-    [authHeaders setObject:ICLOUD_HOME_URL forKey:@"Origin"];
-    [authHeaders setObject:ICLOUD_HOME_URL forKey:@"Referer"];
-    [authHeaders setObject:@"text/plain" forKey:@"Content-Type"];
+    NSMutableDictionary *firstAuthHeaders = [[NSMutableDictionary alloc] init];
+    [firstAuthHeaders setObject:@"application/json" forKey:@"Content-Type"];
+    [firstAuthHeaders setObject:@"application/json, text/javascript, */*; q=0.01" forKey:@"Accept"];
+    [firstAuthHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
     //构建postData
-    NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:appleID, @"apple_id", [NSNumber numberWithBool:NO], @"extended_login", password, @"password", nil];
+    NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:appleID, @"accountName",password, @"password",@(NO), @"rememberMe",[NSArray array],@"trustTokens", nil];
     NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
     NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
     
-//    NSMutableArray *cookieArray = [[NSMutableArray alloc] init];
-    NSData *retData = [IMBHttpWebResponseUtility postWithData:loginData withHeaders:authHeaders withHost:ICLOUD_LOGIN_URL withPath:@"/setup/ws/1/login" withCookieArray:nil];
-    retValStr = [[NSString alloc] initWithData:retData encoding:NSUTF8StringEncoding];
     
-    [_logHandle writeInfoLog:[NSString stringWithFormat:@"login post return value:%@",retValStr]];
+    NSDictionary *firstDic = [self postWithData:loginData withHeaders:firstAuthHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/signin" withCookieArray:nil];
+    if (_firstDic != nil) {
+        [_firstDic release];
+        _firstDic = nil;
+    }
+    _firstDic = [[NSMutableDictionary alloc] initWithDictionary:firstDic];
+    return firstDic;
+}
+
+
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password withFirstDic:(NSDictionary *)firstDic {
+    NSString *sessionId = nil;
+    NSString *scnt = nil;
+    NSString *sessiontoken = nil;
+    if ([firstDic.allKeys containsObject:@"headerdic"]) {
+        NSDictionary *headerDic = [firstDic objectForKey:@"headerdic"];
+        if ([headerDic.allKeys containsObject:@"X-Apple-ID-Session-Id"]) {
+            sessionId = [headerDic objectForKey:@"X-Apple-ID-Session-Id"];
+        }
+        if ([headerDic.allKeys containsObject:@"scnt"]) {
+            scnt = [headerDic objectForKey:@"scnt"];
+        }
+        if ([headerDic.allKeys containsObject:@"X-Apple-Session-Token"]) {
+            sessiontoken = [headerDic objectForKey:@"X-Apple-Session-Token"];
+        }
+    }
+
+    //构建header
+    NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
+    [authHeaders setObject:@"application/json" forKey:@"Content-Type"];
+    [authHeaders setObject:@"application/json" forKey:@"Accept"];
+    [authHeaders setObject:scnt forKey:@"scnt"];
+    [authHeaders setObject:sessionId forKey:@"X-Apple-ID-Session-Id"];
+    [authHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
+    //构建postData
+    NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:@{@"code":password}, @"securityCode", nil];
+    NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
+    NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *dic = [self postWithData:loginData withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/trusteddevice/securitycode" withCookieArray:nil];
+    return dic;
+}
+
+//登陆iCloud账号；
+- (BOOL)iCloudLoginWithAppleID:(NSString*)appleID withPassword:(NSString*)password WithSessiontoken:(NSString *)sessiontoken {
+    BOOL retVal = NO;
+    NSData *retData = nil;
+    long statusCode = 0;
+
+//    if ((!hasDoubleVerifi && statusCode == 200)|| (hasDoubleVerifi && doubleLoginStatusCode == 204) ) {
+        //构建header
+        NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
+        [authHeaders setObject:@"text/plain" forKey:@"Content-Type"];
+        [authHeaders setObject:@"*/*" forKey:@"Accept"];
+        [authHeaders setObject:@"https://www.icloud.com" forKey:@"Origin"];
+        [authHeaders setObject:@"https://www.icloud.com/" forKey:@"Refer"];
+        //构建postData
+        NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:sessiontoken, @"dsWebAuthToken",@(NO), @"extended_login", nil];
+        NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
+        NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        NSDictionary *dic = [self postWithData:loginData withHeaders:authHeaders withHost:@"https://setup.icloud.com" withPath:@"/setup/ws/1/accountLogin?clientBuildNumber=17HHotfix8&clientId=2EE5B2EE-281C-48C0-9CA3-17FBDFFBCC90&clientMasteringNumber=17HHotfix8" withCookieArray:nil];
+        if ([dic.allKeys containsObject:@"data"]) {
+            retData = [dic objectForKey:@"data"];
+        }
+        if ([dic.allKeys containsObject:@"statusCode"]) {
+            statusCode = [[dic objectForKey:@"statusCode"] longValue];
+        }
+        
+         NSString *retValStr = [[[NSString alloc] initWithData:retData encoding:NSUTF8StringEncoding] autorelease];
+        
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        [_loginInfo.cookieList addObjectsFromArray:[cookieStorage cookies]];
+        _loginInfo.loginDic = [[NSMutableDictionary alloc] initWithDictionary:[TempHelper dictionaryWithJsonString:retValStr]];
+        
+         [_logHandle writeInfoLog:[NSString stringWithFormat:@"login post return value2:%@",retValStr]];
+//    }
     
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    [_loginInfo.cookieList addObjectsFromArray:[cookieStorage cookies]];
-    _loginInfo.loginDic = [[NSMutableDictionary alloc] initWithDictionary:[TempHelper dictionaryWithJsonString:retValStr]];
+
     if ([self isLoginSuccess]) {
         retVal = YES;
         _loginInfo.loginStatus = YES;
@@ -254,11 +331,140 @@
             }
         }
     }
-    [retValStr release];
-    [authHeaders release];
-//    [cookieArray release];
     return retVal;
 }
+
+
+- (NSDictionary *)postWithData:(NSData*)body withHeaders:(NSDictionary*)headers withHost:(NSString*)host withPath:(NSString*)path withCookieArray:(NSMutableArray **)cookieArray {
+    NSDictionary *dic = nil;
+    NSData *retData = nil;
+    NSString *url = [NSString stringWithFormat:@"%@%@", host, path];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest addValue:[host stringByReplacingOccurrencesOfString:@"https://" withString:@""] forHTTPHeaderField:@"Host"];
+    [urlRequest setHTTPBody:body];
+    if (headers != nil && headers.allKeys.count > 0) {
+        NSArray *allkeys = headers.allKeys;
+        for (NSString *key in allkeys) {
+            [urlRequest addValue:[headers objectForKey:key] forHTTPHeaderField:key];
+        }
+    }
+    
+    
+    NSHTTPURLResponse *urlResponse = nil;
+    NSError *error = nil;
+    NSData *responseData = nil;
+    @try {
+        responseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:&error] ;
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
+    //获取cookie数组
+    if (urlResponse != nil && cookieArray != nil) {
+        NSDictionary *dic = [urlResponse allHeaderFields];
+        if (cookieArray != NULL) {
+            [*cookieArray addObjectsFromArray:[NSHTTPCookie cookiesWithResponseHeaderFields:dic forURL:[NSURL URLWithString:url]]];
+            
+        }
+    }
+    
+    if (responseData != nil && [responseData length] > 0 && error == nil){
+        retData = [NSData dataWithData:responseData];
+    }
+    if (error && [error code] == -1009) {
+        // 网络错误
+        @throw [NSException exceptionWithName:NOTITY_NETWORK_FAULT_INTERRUPT reason:@"Network fault interrupt" userInfo:nil];
+    }
+
+    dic = @{@"data":retData ? retData : [NSNull null],@"statusCode":[NSNumber numberWithLong:urlResponse.statusCode]?[NSNumber numberWithLong:urlResponse.statusCode]:@(0),@"headerdic":[urlResponse allHeaderFields]?[urlResponse allHeaderFields]:@{}};
+    return dic;
+}
+
+
+- (NSDictionary *)putWithData:(NSData*)body withHeaders:(NSDictionary*)headers withHost:(NSString*)host withPath:(NSString*)path withCookieArray:(NSMutableArray **)cookieArray {
+    NSDictionary *dic = nil;
+    NSData *retData = nil;
+    NSString *url = [NSString stringWithFormat:@"%@%@", host, path];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [urlRequest setHTTPMethod:@"PUT"];
+    [urlRequest addValue:[host stringByReplacingOccurrencesOfString:@"https://" withString:@""] forHTTPHeaderField:@"Host"];
+    [urlRequest setHTTPBody:body];
+    if (headers != nil && headers.allKeys.count > 0) {
+        NSArray *allkeys = headers.allKeys;
+        for (NSString *key in allkeys) {
+            [urlRequest addValue:[headers objectForKey:key] forHTTPHeaderField:key];
+        }
+    }
+    
+    
+    NSHTTPURLResponse *urlResponse = nil;
+    NSError *error = nil;
+    NSData *responseData = nil;
+    @try {
+        responseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:&error] ;
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
+    //获取cookie数组
+    if (urlResponse != nil && cookieArray != nil) {
+        NSDictionary *dic = [urlResponse allHeaderFields];
+        if (cookieArray != NULL) {
+            [*cookieArray addObjectsFromArray:[NSHTTPCookie cookiesWithResponseHeaderFields:dic forURL:[NSURL URLWithString:url]]];
+            
+        }
+    }
+    
+    if (responseData != nil && [responseData length] > 0 && error == nil){
+        retData = [NSData dataWithData:responseData];
+    }
+    if (error && [error code] == -1009) {
+        // 网络错误
+        @throw [NSException exceptionWithName:NOTITY_NETWORK_FAULT_INTERRUPT reason:@"Network fault interrupt" userInfo:nil];
+    }
+    
+    dic = @{@"data":retData ? retData : [NSNull null],@"statusCode":[NSNumber numberWithLong:urlResponse.statusCode],@"headerdic":[urlResponse allHeaderFields]};
+    return dic;
+}
+
+//发送双重验证密码（用户没有收到，手动点击）
+- (void)sentTwoStepAuthenticationMessage {
+    NSString *sessionId = nil;
+    NSString *scnt = nil;
+    if ([_firstDic.allKeys containsObject:@"headerdic"]) {
+        NSDictionary *headerDic = [_firstDic objectForKey:@"headerdic"];
+        if ([headerDic.allKeys containsObject:@"X-Apple-ID-Session-Id"]) {
+            sessionId = [headerDic objectForKey:@"X-Apple-ID-Session-Id"];
+        }
+        if ([headerDic.allKeys containsObject:@"scnt"]) {
+            scnt = [headerDic objectForKey:@"scnt"];
+        }
+    }
+    
+    //构建header
+    NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
+    [authHeaders setObject:@"application/json, text/javascript, */*; q=0.01" forKey:@"Accept"];
+    [authHeaders setObject:scnt forKey:@"scnt"];
+    [authHeaders setObject:sessionId forKey:@"X-Apple-ID-Session-Id"];
+    [authHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
+
+    NSDictionary *dic = [self putWithData:nil withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/trusteddevice/securitycode" withCookieArray:nil];
+    if ([dic.allKeys containsObject:@"statusCode"]) {
+        int statusCode = [[dic objectForKey:@"statusCode"] intValue];
+        //响应码为202:表示成功再次发送安全码
+        [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent messag statusCode:%d",statusCode]];
+    }
+}
+
 //退出iCloud账号；
 - (void)logoutiCould {
 //    [_logHandle writeInfoLog:@"logout iCloud"];
@@ -1286,5 +1492,17 @@
 - (NSString*)decode:(NSString*)base64str {
     return [IMBHttpWebResponseUtility decode:base64str];
 }
+
+//- (void)recevieDoubleVerificationPSD:(NSNotification *)noti {
+//    NSDictionary *dic = noti.userInfo;
+//    int result = [[dic objectForKey:@"result"] intValue];
+//    
+//    if (result == 0) {
+//        _result = 0;
+//    }else {
+//        _result = 1;
+//    }
+//    _endRunloop = YES;
+//}
 
 @end

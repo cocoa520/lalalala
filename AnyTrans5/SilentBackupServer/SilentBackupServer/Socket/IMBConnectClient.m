@@ -68,9 +68,10 @@
                 [[IMBDeviceConnection singleton].conArray removeAllObjects];
                 [self closeConnectfd];
             }else if ([msgType hasPrefix:@"ChooseLanguage_"]) {
-                NSString *str = [msgType substringFromIndex:15];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:str, nil] forKey:@"AppleLanguages"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+//                NSString *str = [msgType substringFromIndex:15];
+//                [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:str, nil] forKey:@"AppleLanguages"];
+//                NSLog(@"=====change language=%@",str);
+//                [[NSUserDefaults standardUserDefaults] synchronize];
             }else if ([msgType isEqualToString:@"USBDeviceConnect"]) {
                 if ([dic.allKeys containsObject:@"SerialNumber"]) {
                     NSString *serialNumber = [dic objectForKey:@"SerialNumber"];

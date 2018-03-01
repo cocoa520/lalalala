@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_rose/Cloneormerge
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -502,40 +502,6 @@ has-props
 
 4569
 
-clone_arrow@2x.png
-file
-
-
-
-
-2018-02-02T01:41:25.000000Z
-42827807839cdb0f82ce796688365269
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1432
-
 clone_data1@2x.png
 file
 
@@ -569,6 +535,40 @@ has-props
 
 
 2683
+
+clone_arrow@2x.png
+file
+
+
+
+
+2018-02-02T01:41:25.000000Z
+42827807839cdb0f82ce796688365269
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1432
 
 clone_next_down.png
 file
@@ -672,14 +672,14 @@ has-props
 
 3979
 
-clone_back_normal.png
+clone_iPodTouch@2x.png
 file
 
 
 
 
 2018-02-02T01:41:25.000000Z
-fddd0b39fafaf802b866b22c9b3195a4
+8f153996b442701b284ffbf8b5967820
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -704,7 +704,7 @@ has-props
 
 
 
-2356
+70670
 
 clone_complete.png
 file
@@ -740,14 +740,14 @@ has-props
 
 5506
 
-clone_iPodTouch@2x.png
+clone_back_normal.png
 file
 
 
 
 
 2018-02-02T01:41:25.000000Z
-8f153996b442701b284ffbf8b5967820
+fddd0b39fafaf802b866b22c9b3195a4
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -772,7 +772,7 @@ has-props
 
 
 
-70670
+2356
 
 clone_Circle@2x.png
 file
@@ -808,40 +808,6 @@ has-props
 
 6439
 
-clone_back_normal@2x.png
-file
-
-
-
-
-2018-02-02T01:41:25.000000Z
-91b0c336dff94ca9a431467e7f34a370
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3793
-
 clone_complete@2x.png
 file
 
@@ -876,14 +842,14 @@ has-props
 
 11114
 
-cloning_iPhone@2x.png
+clone_back_normal@2x.png
 file
 
 
 
 
 2018-02-02T01:41:25.000000Z
-ac150207ea50591832c408b9398bdd6c
+91b0c336dff94ca9a431467e7f34a370
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -908,7 +874,7 @@ has-props
 
 
 
-4435
+3793
 
 clone_next_enter@2x.png
 file
@@ -944,6 +910,40 @@ has-props
 
 3846
 
+cloning_iPhone@2x.png
+file
+
+
+
+
+2018-02-02T01:41:25.000000Z
+ac150207ea50591832c408b9398bdd6c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4435
+
 clone_next_normal.png
 file
 
@@ -978,14 +978,14 @@ has-props
 
 2439
 
-cloning_iPodTouch.png
+clone_iPad@2x.png
 file
 
 
 
 
 2018-02-02T01:41:25.000000Z
-b2bf1c7c9517285d88655669c97d6c35
+274fabf2949170fe734342ae27993715
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1010,7 +1010,7 @@ has-props
 
 
 
-2576
+116324
 
 clone_close_normal@2x.png
 file
@@ -1046,14 +1046,14 @@ has-props
 
 2510
 
-clone_iPad@2x.png
+cloning_iPodTouch.png
 file
 
 
 
 
 2018-02-02T01:41:25.000000Z
-274fabf2949170fe734342ae27993715
+b2bf1c7c9517285d88655669c97d6c35
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1078,7 +1078,7 @@ has-props
 
 
 
-116324
+2576
 
 clone_close_down.png
 file

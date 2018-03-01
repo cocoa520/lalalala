@@ -330,25 +330,11 @@
         }
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //连接服务器(后台守护进程)
-        IMBSocketClient *socketClient = [IMBSocketClient singleton];
-        if ([socketClient connectServer]) {
-            socketClient.isConnect = YES;
-            [socketClient recvData];
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"AnyTransStart", @"MsgType", nil];
-            NSString *str = [IMBHelper dictionaryToJson:dic];
-            [socketClient sendData:str];
-        }else {
-            [socketClient closeSocketdfd];
-        }
-        //发送选择的语言
-        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-        NSString *chooseStr = [NSString stringWithFormat:@"ChooseLanguage_%@",[array objectAtIndex:0]];
-        NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:chooseStr, @"MsgType", nil];
-        NSString *str2 = [IMBHelper dictionaryToJson:dic2];
-        [socketClient sendData:str2];
-    });
+    //发送选择的语言
+    NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    NSString *str = [array objectAtIndex:0];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"changelanguage" object:nil userInfo:@{@"language":str}];
+    [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"at current language:%@",str]];
 }
 
 //获得是否更新AirBackupHelper.app

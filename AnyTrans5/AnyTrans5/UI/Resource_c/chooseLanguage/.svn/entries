@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_c/chooseLanguage
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -94,40 +94,6 @@ has-props
 
 88775
 
-language_background1.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-1ff0f47c7f5eadc5cc995658668f93fd
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2475
-
 English@2x.png
 file
 
@@ -161,6 +127,40 @@ has-props
 
 
 10258
+
+language_background1.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+1ff0f47c7f5eadc5cc995658668f93fd
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2475
 
 language_background2.png
 file
@@ -196,14 +196,14 @@ has-props
 
 2810
 
-Arab.png
+Spanish.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-af66619c573dd93760bbb3e4098394bd
+058e65011434620db5d9c1aeb17ab9c8
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -228,7 +228,7 @@ has-props
 
 
 
-2894
+3928
 
 French.png
 file
@@ -264,14 +264,14 @@ has-props
 
 2848
 
-Spanish.png
+Arab.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-058e65011434620db5d9c1aeb17ab9c8
+af66619c573dd93760bbb3e4098394bd
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -296,7 +296,7 @@ has-props
 
 
 
-3928
+2894
 
 German.png
 file
@@ -366,40 +366,6 @@ has-props
 
 4059
 
-language_background2@2x.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-b0b1a1ec41f930400c9e156fd1ae7efb
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5328
-
 chinese.png
 file
 
@@ -434,14 +400,14 @@ has-props
 
 3013
 
-Arab@2x.png
+language_background2@2x.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-6246309d4f6c1e170f4df3f2b8896a25
+b0b1a1ec41f930400c9e156fd1ae7efb
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -466,7 +432,41 @@ has-props
 
 
 
-4944
+5328
+
+Spanish@2x.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+a0707fc7255c832a4029177eb4496c35
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10412
 
 French@2x.png
 file
@@ -502,14 +502,14 @@ has-props
 
 4088
 
-Spanish@2x.png
+Arab@2x.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-a0707fc7255c832a4029177eb4496c35
+6246309d4f6c1e170f4df3f2b8896a25
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -534,7 +534,7 @@ has-props
 
 
 
-10412
+4944
 
 German@2x.png
 file

@@ -21,16 +21,12 @@
 #import "SystemHelper.h"
 #import "IMBBackgroundBorderView.h"
 
-@interface IMBiCloudViewController ()
-
-@end
-
 @implementation IMBiCloudViewController
 //@synthesize iCloudDic = _iCloudDic;
+@synthesize hasTwoStepAuth = _hasTwoStepAuth;
 @synthesize icloudLogView = _icloudLogView;
 @synthesize isLoginIng = _isLoginIng;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
@@ -38,8 +34,7 @@
     return self;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super init]) {
         return self;
     }else {
@@ -68,7 +63,6 @@
         _iCloudManager  = nil;
     }
     [_backupViewController release],_backupViewController = nil;
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:INSERT_TAB object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTITY_ICLOUD_EXIT_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_APPLE_ID_PROTECTED_TWO_STEP_AUTHENTICATION_FAILURE object:nil];
@@ -140,14 +134,13 @@
     
 }
 
-- (void)addobserverNotification{
+- (void)addobserverNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signDown:) name:NOTIFY_ICLOUD_SIGNIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertTabKey:) name:INSERT_TAB object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudExitLogin:) name:NOTITY_ICLOUD_EXIT_LOGIN object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doAppleIDProtectedTwoStepAuthenticationFailure:) name:NOTIFY_APPLE_ID_PROTECTED_TWO_STEP_AUTHENTICATION_FAILURE object:nil];
 }
 
-- (void)loadControl{
+- (void)loadControl {
     [_icloudLogView setIsGradientColorNOCornerPart4:YES];
     [_appleTextFiled setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
     [_icloudImageView setImage:[StringHelper imageNamed:@"iCloud_icon"]];
@@ -197,7 +190,7 @@
     [_passwordTextField.cell setPlaceholderAttributedString:as2];
 }
 
--(void)awakeFromNib{
+-(void)awakeFromNib {
     [super awakeFromNib];
     [self addobserverNotification];
     [self loadControl];
@@ -234,10 +227,14 @@
     [_loginBtn setNeedsDisplay:YES];
     
     [_nonectimageView setImage:[StringHelper imageNamed:@"noconnect_icloud"]];
+////    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+////        [self doAppleIDProtectedTwoStepAuthenticationInputPassword:nil];
+////    });
+//    [self performSelector:@selector(doAppleIDProtectedTwoStepAuthenticationInputPassword:) withObject:nil afterDelay:1.0];
+    
 }
 
-- (void)changeSkin:(NSNotification *)notification
-{
+- (void)changeSkin:(NSNotification *)notification {
     [_icloudLogView setIsGradientColorNOCornerPart4:YES];
     [_icloudImageView setImage:[StringHelper imageNamed:@"iCloud_icon"]];
     [_appleTextFiled setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
@@ -261,7 +258,7 @@
     }
 }
 
--(void)signDown:(id)sender{
+-(void)signDown:(id)sender {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -348,14 +345,10 @@
     }
 }
 
-- (void)loginFail
-{
+- (void)loginFail {
     [_appleTextFiled.cell setEnabled:YES];
     [_passwordTextField.cell setEnabled:YES];
-    if (!_isTwoValidation) {
-        _isTwoValidation = NO;
-        [self showAlertText:CustomLocalizedString(@"iCloud_id_4", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
-    }
+    [self showAlertText:CustomLocalizedString(@"iCloud_id_4", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
 }
 
 - (void)needReLogin{
@@ -371,77 +364,90 @@
             _iCloudManager  = nil;
         }
         _iCloudManager = [[IMBiCloudManager alloc] init];
+        [_iCloudManager setDelegate:self];
+        _hasTwoStepAuth = NO;
         BOOL ret = [_iCloudManager loginiCloudAppleID:appledID WithPassword:passMword];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (ret && !_isTwoValidation) {
-                NSDictionary *dimensionDict = nil;
-                @autoreleasepool {
-                    dimensionDict = [[TempHelper customDimension] copy];
-                }
-                [ATTracker event:iCloud_Content action:ActionNone actionParams:@"iCloud Control Panel Login Successfully" label:Click transferCount:0 screenView:@"iCloud Control Panel Login Successfully" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                if (dimensionDict) {
-                    [dimensionDict release];
-                    dimensionDict = nil;
-                }
-                _isLoginIng = NO;
-                if (_appleID != nil) {
-                    [_appleID release];
-                    _appleID = nil;
-                }
-                _appleID = [appledID retain];
-                IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
-                IMBiCloudMainPageViewController *icloudMainPage = [[IMBiCloudMainPageViewController alloc] initWithClient:_iCloudManager withDelegate:self];
-                [_rootBox setContentView:icloudMainPage.view];
-                [self setIsShowLineView:icloudMainPage.isShowLineView];
-                [icloudMainPage.view setBounds:_rootBox.bounds];
-                NSString *name = _iCloudManager.netClient.loginInfo.loginInfoEntity.fullName;
-                [baseInfo setUniqueKey:_appleID];
-                [baseInfo setConnectType:general_iCloud];
-                [baseInfo setIsicloudView:YES];
-                [[baseInfo accountiCloud] addObject:icloudMainPage];
-                [[_connection iCloudDic] setObject:icloudMainPage forKey:_appleID];
-                if (![StringHelper stringIsNilOrEmpty:name]) {
-                    [baseInfo setDeviceName:name];
-                    [_selectDeviceButton configButtonName:name WithTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] WithTextSize:12 WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType];
-                }
-                [[_connection allDevice] addObject:baseInfo];
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          baseInfo, @"DeviceInfo"
-                                          , nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:DeviceBtnChangeNotification object:[NSNumber numberWithBool:YES] userInfo:userInfo];
-                [baseInfo release];
-                baseInfo = nil;
-                
-                [_appleTextFiled.cell setEnabled:YES];
-                [_passwordTextField.cell setEnabled:YES];
-                [icloudMainPage release];
-                
-                [_loginBtn setButtonTitle:CustomLocalizedString(@"iCloud_Login", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
-                [_loginBtn setNeedsDisplay:YES];
-            }else{
-                _isLoginIng = NO;
-                [self performSelectorOnMainThread:@selector(loginFail) withObject:nil waitUntilDone:NO];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
-                NSDictionary *dimensionDict = nil;
-                @autoreleasepool {
-                    dimensionDict = [[TempHelper customDimension] copy];
-                }
-                [ATTracker event:iCloud_Content action:ActionNone actionParams:@"iCloud Control Panel Login Failed" label:Click transferCount:0 screenView:@"iCloud Control Panel Login Failed" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                if (dimensionDict) {
-                    [dimensionDict release];
-                    dimensionDict = nil;
-                }
-                
-                [_loginBtn setButtonTitle:CustomLocalizedString(@"iCloud_Login", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
-                [_loginBtn setNeedsDisplay:YES];
+        if (_hasTwoStepAuth) {
+            if (_appleID != nil) {
+                [_appleID release];
+                _appleID = nil;
             }
-            [_jumpCompleteBtn setEnabled:YES];
+            _appleID = [appledID retain];
+            return ;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loginIsSuccess:ret withAppleID:appledID];
         });
     });
 }
 
-- (void)onItemClicked:(NSString *)account
-{
+- (void)loginIsSuccess:(BOOL)success withAppleID:(NSString*)appledID {
+    if (success) {
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:iCloud_Content action:ActionNone actionParams:@"iCloud Control Panel Login Successfully" label:Click transferCount:0 screenView:@"iCloud Control Panel Login Successfully" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        _isLoginIng = NO;
+        if (_appleID != nil) {
+            [_appleID release];
+            _appleID = nil;
+        }
+        _appleID = [appledID retain];
+        IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
+        IMBiCloudMainPageViewController *icloudMainPage = [[IMBiCloudMainPageViewController alloc] initWithClient:_iCloudManager withDelegate:self];
+        [_rootBox setContentView:icloudMainPage.view];
+        [self setIsShowLineView:icloudMainPage.isShowLineView];
+        [icloudMainPage.view setBounds:_rootBox.bounds];
+        NSString *name = _iCloudManager.netClient.loginInfo.loginInfoEntity.fullName;
+        [baseInfo setUniqueKey:_appleID];
+        [baseInfo setConnectType:general_iCloud];
+        [baseInfo setIsicloudView:YES];
+        [[baseInfo accountiCloud] addObject:icloudMainPage];
+        [[_connection iCloudDic] setObject:icloudMainPage forKey:_appleID];
+        if (![StringHelper stringIsNilOrEmpty:name]) {
+            [baseInfo setDeviceName:name];
+            [_selectDeviceButton configButtonName:name WithTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] WithTextSize:12 WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType];
+        }
+        [[_connection allDevice] addObject:baseInfo];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  baseInfo, @"DeviceInfo"
+                                  , nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DeviceBtnChangeNotification object:[NSNumber numberWithBool:YES] userInfo:userInfo];
+        [baseInfo release];
+        baseInfo = nil;
+        
+        [_appleTextFiled.cell setEnabled:YES];
+        [_passwordTextField.cell setEnabled:YES];
+        [icloudMainPage release];
+        
+        [_loginBtn setButtonTitle:CustomLocalizedString(@"iCloud_Login", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
+        [_loginBtn setNeedsDisplay:YES];
+    }else{
+        _isLoginIng = NO;
+        [self performSelectorOnMainThread:@selector(loginFail) withObject:nil waitUntilDone:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:iCloud_Content action:ActionNone actionParams:@"iCloud Control Panel Login Failed" label:Click transferCount:0 screenView:@"iCloud Control Panel Login Failed" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        
+        [_loginBtn setButtonTitle:CustomLocalizedString(@"iCloud_Login", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
+        [_loginBtn setNeedsDisplay:YES];
+    }
+    [_jumpCompleteBtn setEnabled:YES];
+}
+
+- (void)onItemClicked:(NSString *)account {
     if (account != nil && [account isEqualToString:CustomLocalizedString(@"icloud_addAcount", nil)]) {
         [self cleanTextField];
         [devPopover close];
@@ -462,7 +468,7 @@
 //    [self setIsShowLineView:icloudMainPage.isShowLineView];
 }
 
--(void)cleanTextField{
+-(void)cleanTextField {
     [_appleTextFiled setStringValue:@""];
     NSMutableAttributedString *as5 = [[[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"iCloudLogin_View_AppleID", nil)] autorelease];
     [as5 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, as5.string.length)];
@@ -489,16 +495,48 @@
     [_passwordTextField becomeFirstResponder];
 }
 
-#pragma mark -- ios9 以后的两步验证代理
-- (void)doAppleIDProtectedTwoStepAuthenticationFailure:(NSNotification *)notify {
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        _isTwoValidation = YES;
-        [self showAlertText:CustomLocalizedString(@"iCloud_DoubleCheck_Error", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
+- (NSDictionary *)getiCloudDic {
+    return [[_connection iCloudDic] copy];
+}
+
+#pragma mark -- 双重验证输入密码
+- (void)showTwoStepAuthenticationAlertView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_alertViewController setDelegate:self];
+        NSView *view = nil;
+        for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
+            if ([subView isMemberOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]) {
+                view = subView;
+                break;
+            }
+        }
+        [view setHidden:NO];
+        [_alertViewController showDoubleVerificationAlertView:view];
     });
 }
 
-- (NSDictionary *)getiCloudDic {
-    return [[_connection iCloudDic] copy];
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password {
+    return [_iCloudManager verifiTwoStepAuthentication:password];
+}
+
+- (void)loginiCloudWithSessiontoken:(NSString *)sessiontoken {
+    BOOL ret = [_iCloudManager.netClient iCloudLoginWithAppleID:_appleID withPassword:_password WithSessiontoken:sessiontoken];
+    if (ret) {
+        [_iCloudManager.netClient startKeepAliveThread];
+    }
+   [self loginIsSuccess:ret withAppleID:_appleID];
+}
+
+- (void)reSendTwoStepAuthenticationMessage {
+    [_iCloudManager.netClient sentTwoStepAuthenticationMessage];
+}
+
+- (void)cancelTwoStepAuthenticationAlertView {
+    _isLoginIng = NO;
+    [_appleTextFiled.cell setEnabled:YES];
+    [_passwordTextField.cell setEnabled:YES];
+    [_loginBtn setButtonTitle:CustomLocalizedString(@"iCloud_Login", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
+    [_loginBtn setNeedsDisplay:YES];
 }
 
 @end

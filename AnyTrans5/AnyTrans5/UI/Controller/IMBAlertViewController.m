@@ -26,7 +26,7 @@
 #import "SystemHelper.h"
 #import "IMBSoftWareInfo.h"
 #import "IMBSoftWareInfo.h"
-
+#import "IMBiCloudViewController.h"
 #define HEIGHT1 18
 #define HEIGHT2 36
 
@@ -58,6 +58,8 @@
 - (void)awakeFromNib {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:NOTIFY_CHANGE_SKIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeOpenPanel:) name:DeviceDisConnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editDoubleVerificationCode:) name:NOTIFY_EDIT_CODE object:nil];
+    
     [_imageView1 setImage:[StringHelper imageNamed:@"alert_icon"]];
     [_imageView2 setImage:[StringHelper imageNamed:@"alert_icon"]];
     [_imageView3 setImage:[StringHelper imageNamed:@"alert_icon"]];
@@ -79,6 +81,7 @@
     [self setupAlertRect:_activationView];
     [self setupAlertRect:_removeprogressView];
     [self setupAlertRect:_airBackupSettingAlertView];
+    [self setupAlertRect:_doubleVerificaView];
     [_activationBommotView setStringValue:@""];
     _confirmTextFieldInitPoint = _confirmTextField.frame.origin;
     _warningTextFieldInitPoint = _warningTextField.frame.origin;
@@ -215,6 +218,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_ITUNES_SIGNIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_SKIN object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DeviceDisConnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_EDIT_CODE object:nil];
 }
 
 - (void)setupAlertRect:(IMBBorderRectAndColorView *)alertView {
@@ -484,6 +488,9 @@
         url = [NSURL URLWithString:CustomLocalizedString(@"AirWiFiBackup_hotspot_Url", nil)];
         NSWorkspace *ws = [NSWorkspace sharedWorkspace];
         [ws openURL:url];
+    }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil)]) {
+        //点击重新发送验证码
+        [_delegate reSendTwoStepAuthenticationMessage];
     }
     return YES;
 }
@@ -3755,7 +3762,6 @@
             _dataArr = nil;
         }
     }];
-    
 }
 
 #pragma mark - 关闭窗口并且保存配置
@@ -3925,7 +3931,7 @@
     [[IMBSoftWareInfo singleton] setIsStartUpAirBackup:NO];
 }
 
-- (void)AirBackupSaveGuideAlertView{
+- (void)AirBackupSaveGuideAlertView {
     NSString *str = @"open";
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ENTER_CHANGELAGUG_IPOD object:str];
     NSDictionary *dimensionDict = nil;
@@ -4318,6 +4324,192 @@
         [[_airBackupHotWiFiAlertView animator] setFrame:rect];
     } completionHandler:^{
         [_airBackupHotWiFiAlertView removeFromSuperview];
+        [self.view removeFromSuperview];
+    }];
+}
+
+#pragma mark - 双重验证
+- (void)showDoubleVerificationAlertView:(NSView *)superView {
+    NSString *str = @"close";
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ENTER_CHANGELAGUG_IPOD object:str];
+    _mainView = superView;
+    [superView setWantsLayer:YES];
+    [self.view setFrameSize:NSMakeSize(NSWidth(superView.frame), NSHeight(superView.frame))];
+    [superView addSubview:self.view];
+    
+    [self setupAlertRect:_doubleVerificaView];
+    if (![self.view.subviews containsObject:_doubleVerificaView]) {
+        [self.view addSubview:_doubleVerificaView];
+    }
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [_doubleVerificaView.layer addAnimation:[IMBAnimation moveY:0.2 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:-_doubleVerificaView.frame.size.height] repeatCount:1] forKey:@"moveY"];
+    } completionHandler:^{
+        [_doubleVerificaView.layer removeAnimationForKey:@"moveY"];
+        [_doubleVerificaView setFrame:NSMakeRect(ceil((NSMaxX(superView.bounds) - NSWidth(_doubleVerificaView.frame)) / 2), NSMaxY(superView.bounds) - NSHeight(_doubleVerificaView.frame) + 10, NSWidth(_doubleVerificaView.frame), NSHeight(_doubleVerificaView.frame))];
+    }];
+    //文本样式
+    [_doubleVerificaTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips1", nil)];
+    [_doubleVerificaTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
+    
+    [_doubleVerificaSubTitle setHidden:YES];
+    [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
+    
+    [_loadingBgView setHidden:YES];
+    
+    [_numBox1 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox1 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox1 setHasCorner:YES];
+    
+    [_numBox2 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox2 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox2 setHasCorner:YES];
+    
+    [_numBox3 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox3 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox3 setHasCorner:YES];
+    
+    [_numBox4 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox4 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox4 setHasCorner:YES];
+    
+    [_numBox5 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox5 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox5 setHasCorner:YES];
+    
+    [_numBox6 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
+    [_numBox6 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
+    [_numBox6 setHasCorner:YES];
+    
+    [_doubleVerificaFirstNum setCodeTag:1];
+    [_doubleVerificaSecondNum setCodeTag:2];
+    [_doubleVerificaThirdNum setCodeTag:3];
+    [_doubleVerificaFourthNum setCodeTag:4];
+    [_doubleVerificaFifthNum setCodeTag:5];
+    [_doubleVerificaSixthNum setCodeTag:6];
+    [_doubleVerificaFirstNum becomeFirstResponder];
+    
+    [_doubleVerificaTextView setNormalString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil) WithLinkString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:12.0]];
+    [_doubleVerificaTextView setDelegate:self];
+    [_doubleVerificaTextView setSelectable:YES];
+
+    //按钮样式
+    NSString *okButtonString = CustomLocalizedString(@"Button_Ok", nil);
+    NSSize okBtnRectSize = [StringHelper calcuTextBounds:okButtonString fontSize:12.0].size;
+    NSString *cancleString = CustomLocalizedString(@"Button_Cancel", nil);
+    NSSize cancelSize = [StringHelper calcuTextBounds:cancleString fontSize:12.0].size;
+    
+    [_doubleVerificaOkBtn reSetInit:okButtonString  WithPrefixImageName:@"pop"];
+    NSMutableAttributedString *attributedTitles = [[[NSMutableAttributedString alloc]initWithString:okButtonString]autorelease];
+    [attributedTitles addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, okButtonString.length)];
+    [attributedTitles addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:14] range:NSMakeRange(0, okButtonString.length)];
+    [attributedTitles addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"generalBtn_enterColor", nil)] range:NSMakeRange(0, okButtonString.length)];
+    [attributedTitles setAlignment:NSCenterTextAlignment range:NSMakeRange(0, attributedTitles.length)];
+    [_doubleVerificaOkBtn setAttributedTitle:attributedTitles];
+    [_doubleVerificaOkBtn setTarget:self];
+    [_doubleVerificaOkBtn setAction:@selector(doubleVerificaOkBtnOperation:)];
+    
+    [_doubleVerificaCancelBtn reSetInit:cancleString  WithPrefixImageName:@"cancal"];
+    [_doubleVerificaCancelBtn setFontSize:12];
+    NSMutableAttributedString *cancelAs = [[[NSMutableAttributedString alloc]initWithString:cancleString] autorelease];
+    [cancelAs addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, cancleString.length)];
+    [cancelAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12] range:NSMakeRange(0, cancleString.length)];
+    [cancelAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] range:NSMakeRange(0, cancleString.length)];
+    [cancelAs setAlignment:NSCenterTextAlignment range:NSMakeRange(0, cancelAs.length)];
+    [_doubleVerificaCancelBtn setAttributedTitle:cancelAs];
+    [_doubleVerificaCancelBtn setIsReslutVeiw:YES];
+    int width = (int)MAX(okBtnRectSize.width, cancelSize.width) + 30;
+    
+    [_doubleVerificaOkBtn setFrame:NSMakeRect(_doubleVerificaView.frame.size.width - 20 - width,_doubleVerificaOkBtn.frame.origin.y,width,_doubleVerificaOkBtn.frame.size.height)];
+    
+    [_doubleVerificaCancelBtn setFrame:NSMakeRect(_doubleVerificaOkBtn.frame.origin.x - 10 - width, _doubleVerificaCancelBtn.frame.origin.y, width, _doubleVerificaCancelBtn.frame.size.height)];
+    
+    [_doubleVerificaCancelBtn setTarget:self];
+    [_doubleVerificaCancelBtn setAction:@selector(doubleVerificaCancelBtnOperation:)];
+    [_doubleVerificaOkBtn setEnabled:YES];
+}
+
+- (void)editDoubleVerificationCode:(NSNotification *)notification {
+    NSDictionary *dic = notification.object;
+    int codeTag = [[dic objectForKey:@"codeTag"] intValue];
+    if (codeTag == 1) {
+        [_doubleVerificaSecondNum becomeFirstResponder];
+    } else if (codeTag == 2) {
+        [_doubleVerificaThirdNum becomeFirstResponder];
+    } else if (codeTag == 3) {
+        [_doubleVerificaFourthNum becomeFirstResponder];
+    } else if (codeTag == 4) {
+        [_doubleVerificaFifthNum becomeFirstResponder];
+    } else if (codeTag == 5) {
+        [_doubleVerificaSixthNum becomeFirstResponder];
+    } else if (codeTag == 6) {
+        return;
+    }
+}
+
+- (void)doubleVerificaOkBtnOperation:(id)sender {
+    if ([StringHelper stringIsNilOrEmpty:_doubleVerificaFirstNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaSecondNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaThirdNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaFourthNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaFifthNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaSixthNum.stringValue]) {
+        return;
+    }
+    [_doubleVerificaOkBtn setEnabled:NO];
+    long statusCode = 0;
+    NSString *sessiontoken = nil;
+    [_loadingBgView setHidden:NO];
+    [_doubleVerificaLoadingView setWantsLayer:YES];
+    [_doubleVerificaLoadingView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
+    [_doubleVerificaLoadingView setImage:[StringHelper imageNamed:@"registedLoading"]];
+    [_doubleVerificaLoadingView.layer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:-2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
+    
+    if ([_delegate respondsToSelector:@selector(verifiTwoStepAuthentication:)]) {
+        NSString *str = [NSString stringWithFormat:@"%@%@%@%@%@%@",_doubleVerificaFirstNum.stringValue,_doubleVerificaSecondNum.stringValue,_doubleVerificaThirdNum.stringValue,_doubleVerificaFourthNum.stringValue,_doubleVerificaFifthNum.stringValue,_doubleVerificaSixthNum.stringValue];
+        NSDictionary *dic = [_delegate verifiTwoStepAuthentication:str];
+        if ([dic.allKeys containsObject:@"statusCode"]) {
+            statusCode = [[dic objectForKey:@"statusCode"] longValue];
+        }
+        if ([dic.allKeys containsObject:@"headerdic"]) {
+            NSDictionary *headerDic = [dic objectForKey:@"headerdic"];
+            if ([headerDic.allKeys containsObject:@"X-Apple-Session-Token"]) {
+                sessiontoken = [headerDic objectForKey:@"X-Apple-Session-Token"];
+            }
+        }
+        /*响应码为204 则表示安全码验证成功
+         401 长时间不输入验证码 导致会话失效 需要重新走登录流程
+         400 安全码验证失败
+         */
+        [_loadingBgView setHidden:YES];
+        if (statusCode == 204) {
+            [self unloaddoubleVerificaAlertView];
+            [_delegate loginiCloudWithSessiontoken:sessiontoken];
+        }else if (statusCode == 400) {
+            [_doubleVerificaSubTitle setHidden:NO];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
+        }else if (statusCode == 401) {
+            [_doubleVerificaSubTitle setHidden:NO];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
+        }else if (statusCode == 423) {
+            [_doubleVerificaSubTitle setHidden:NO];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
+        }else {//重新走登录流程
+            [self unloaddoubleVerificaAlertView];
+            [_delegate loginIsSuccess:NO withAppleID:@""];
+        }
+        [_doubleVerificaOkBtn setEnabled:YES];
+    }
+}
+
+- (void)doubleVerificaCancelBtnOperation:(id)sender {
+    [self unloaddoubleVerificaAlertView];
+    [_delegate cancelTwoStepAuthenticationAlertView];
+}
+
+- (void)unloaddoubleVerificaAlertView {
+    NSString *str = @"open";
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ENTER_CHANGELAGUG_IPOD object:str];
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [_doubleVerificaView.layer addAnimation:[IMBAnimation moveY:0.3 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:_doubleVerificaView.frame.size.height] repeatCount:1] forKey:@"moveY"];
+    } completionHandler:^{
+        [_doubleVerificaView.layer removeAnimationForKey:@"moveY"];
+        [_doubleVerificaView setFrame:NSMakeRect(ceil((NSMaxX(_mainView.bounds) - _doubleVerificaView.frame.size.width) / 2), NSMaxY(_mainView.bounds), _doubleVerificaView.frame.size.width, _doubleVerificaView.frame.size.height)];
         [self.view removeFromSuperview];
     }];
 }

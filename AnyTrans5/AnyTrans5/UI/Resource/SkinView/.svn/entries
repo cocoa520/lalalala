@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/SkinView
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -536,17 +536,17 @@ has-props
 
 68742
 
-skin_default_image@2x.png
+skin_right3.png
 file
 
 
 
 
 2018-02-02T01:40:37.000000Z
-9aec15bef22bd7508c35f8292426eeee
-2017-12-20T11:56:50.311318Z
-543
-huyumin
+96ff88bbe0208887180491d9f9a122e6
+2018-01-03T03:50:42.708986Z
+889
+dingming
 has-props
 
 
@@ -568,7 +568,7 @@ has-props
 
 
 
-26026
+1179
 
 rose_thmb_image.png
 file
@@ -604,17 +604,17 @@ has-props
 
 16702
 
-skin_right3.png
+skin_default_image@2x.png
 file
 
 
 
 
 2018-02-02T01:40:37.000000Z
-96ff88bbe0208887180491d9f9a122e6
-2018-01-03T03:50:42.708986Z
-889
-dingming
+9aec15bef22bd7508c35f8292426eeee
+2017-12-20T11:56:50.311318Z
+543
+huyumin
 has-props
 
 
@@ -636,7 +636,7 @@ has-props
 
 
 
-1179
+26026
 
 skin_right4.png
 file
@@ -808,40 +808,6 @@ has-props
 
 1022
 
-white_thmb_image.png
-file
-
-
-
-
-2018-02-02T01:40:38.000000Z
-e5aa617bedd7d0c5454270d60bf786e3
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-19049
-
 skin_right1@2x.png
 file
 
@@ -876,14 +842,14 @@ has-props
 
 1332
 
-rose_thmb_image@2x.png
+white_thmb_image.png
 file
 
 
 
 
-2018-02-02T01:40:37.000000Z
-b0ab9a027f3d51c6ed6ecc6469b5a13d
+2018-02-02T01:40:38.000000Z
+e5aa617bedd7d0c5454270d60bf786e3
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -908,7 +874,7 @@ has-props
 
 
 
-48804
+19049
 
 skin_right3@2x.png
 file
@@ -944,6 +910,40 @@ has-props
 
 1354
 
+rose_thmb_image@2x.png
+file
+
+
+
+
+2018-02-02T01:40:37.000000Z
+b0ab9a027f3d51c6ed6ecc6469b5a13d
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+48804
+
 skin_left1.png
 file
 
@@ -978,40 +978,6 @@ has-props
 
 1180
 
-skin_right5@2x.png
-file
-
-
-
-
-2018-02-02T01:40:37.000000Z
-d3a73a6d5c2ecbe91fa383610fcd6cf6
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1228
-
 skin_left2.png
 file
 
@@ -1045,6 +1011,40 @@ has-props
 
 
 1193
+
+skin_right5@2x.png
+file
+
+
+
+
+2018-02-02T01:40:37.000000Z
+d3a73a6d5c2ecbe91fa383610fcd6cf6
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1228
 
 skin_left3.png
 file

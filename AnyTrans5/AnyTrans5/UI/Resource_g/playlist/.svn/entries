@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_g/playlist
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -94,14 +94,14 @@ has-props
 
 1090
 
-playlist_ipod2.png
+playlist_ipad.png
 file
 
 
 
 
 2018-02-02T01:41:22.000000Z
-bfc21cdfae4ca46196ed3f73d93f59ba
+110c2c444f70cc5a554f5d68f64ed9a1
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -126,7 +126,7 @@ has-props
 
 
 
-1090
+1100
 
 playlist_iphone1@2x.png
 file
@@ -162,14 +162,14 @@ has-props
 
 1225
 
-playlist_ipad.png
+playlist_ipod2.png
 file
 
 
 
 
 2018-02-02T01:41:22.000000Z
-110c2c444f70cc5a554f5d68f64ed9a1
+bfc21cdfae4ca46196ed3f73d93f59ba
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -194,7 +194,7 @@ has-props
 
 
 
-1100
+1090
 
 playlist_iphone2@2x.png
 file
@@ -230,40 +230,6 @@ has-props
 
 1225
 
-playlist_iphone.png
-file
-
-
-
-
-2018-02-02T01:41:22.000000Z
-8c60e02ff6adc40db74bbc4af6a6d04c
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1110
-
 btn_add_playlist_down.png
 file
 
@@ -297,6 +263,40 @@ has-props
 
 
 971
+
+playlist_iphone.png
+file
+
+
+
+
+2018-02-02T01:41:22.000000Z
+8c60e02ff6adc40db74bbc4af6a6d04c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1110
 
 burst_icon_export2@2x.png
 file
@@ -400,14 +400,14 @@ has-props
 
 1225
 
-playlist_ipod2@2x.png
+btn_add_playlist_no.png
 file
 
 
 
 
 2018-02-02T01:41:22.000000Z
-bc49f1dbe19d862f5e34cd802e981f61
+4de43d8f38e62d20aea590f9b31dbc15
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -432,7 +432,7 @@ has-props
 
 
 
-1225
+1058
 
 playlist_ipad@2x.png
 file
@@ -468,14 +468,14 @@ has-props
 
 1241
 
-btn_add_playlist_no.png
+playlist_ipod2@2x.png
 file
 
 
 
 
 2018-02-02T01:41:22.000000Z
-4de43d8f38e62d20aea590f9b31dbc15
+bc49f1dbe19d862f5e34cd802e981f61
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -500,7 +500,7 @@ has-props
 
 
 
-1058
+1225
 
 playlist_ipod.png
 file

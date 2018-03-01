@@ -326,7 +326,7 @@
             if (result == NO) {//验证失败后，未对界面上做出相应处理
                 //主线程中弹出提示框
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_CHECK_FAIL object:errorStr];
-                softInfo.isRegistered = NO;
+                softInfo.isRegistered = YES;
             }
             [self savePlist];
         }else {//本地认证
@@ -334,7 +334,7 @@
             if (![StringHelper stringIsNilOrEmpty:softInfo.registeredCode]) {
                 KeyStateStruct *ks = [softInfo.verifyLicense verifyProductLicense:softInfo.registeredCode];
                 if (ks->valid == NO) {
-                    softInfo.isRegistered = NO;
+                    softInfo.isRegistered = YES;
                     result = NO;
                     errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);
                 }else {
@@ -342,7 +342,7 @@
                     softInfo.isRegistered = YES;
                 }
             }else {
-                softInfo.isRegistered = NO;
+                softInfo.isRegistered = YES;
                 result = NO;
                 errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);
             }
@@ -357,10 +357,10 @@
         if (![StringHelper stringIsNilOrEmpty:softInfo.registeredCode]) {
             KeyStateStruct *ks = [softInfo.verifyLicense verifyProductLicense:softInfo.registeredCode];
             if (ks->valid == NO) {
-                softInfo.isRegistered = NO;
+                softInfo.isRegistered = YES;
             }
         }else {
-            softInfo.isRegistered = NO;
+            softInfo.isRegistered = YES;
         }
         if (softInfo.isRegistered == NO) {
             NSString *errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);

@@ -10,6 +10,7 @@
 #import "IMBDownloadService.h"
 #import "IMBLogManager.h"
 
+
 @interface IMBMediaStorageUsageEntity : NSObject {
     NSString *_displayColor;
     NSString *_displayLabel;
@@ -110,15 +111,30 @@
     IMBDownloadService *_downloadService;
     NSThread *_keepAliveThread;
     IMBLogManager *_logHandle;
+    NSDictionary *_firstDic;
 }
+
 @property (nonatomic, retain) IMBDownloadService *downloadService;
 @property (nonatomic, readwrite, retain)  IMBiCloudNetLoginInfo *loginInfo;
 
 /*
     登陆iCloud账号.
 */
-- (BOOL)iCloudLoginWithAppleID:(NSString*)appleID withPassword:(NSString*)password;
+- (BOOL)iCloudLoginWithAppleID:(NSString*)appleID withPassword:(NSString*)password WithSessiontoken:(NSString *)sessiontoken;
 
+/*
+ iCloud账号是否加了双重验证
+ */
+- (NSDictionary *)verifiAccountHasTwoStepAuthenticationWithAppleID:(NSString*)appleID withPassword:(NSString*)password;
+/*
+ 验证双重验证的密码
+ */
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password withFirstDic:(NSDictionary *)firstDic;
+
+/*
+ 发送双重验证密码；（用户没有收到，手动点击）
+ */
+- (void)sentTwoStepAuthenticationMessage;
 /*
     退出iCloud账号.
 */

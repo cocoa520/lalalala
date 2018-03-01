@@ -276,12 +276,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_CHANGE_ALLANGUAGE object:nil userInfo:nil];
         [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"chooseLanguages:%@",_langStr ]];
         
-        //向slientBackup发送当前的语言
-        IMBSocketClient *socketClient = [IMBSocketClient singleton];
-        NSString *chooseStr = [NSString stringWithFormat:@"ChooseLanguage_%@",_langStr];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:chooseStr, @"MsgType", nil];
-        NSString *str = [IMBHelper dictionaryToJson:dic];
-        [socketClient sendData:str];
+       //发送当前的语言
+        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"changelanguage" object:nil userInfo:@{@"language":_langStr}];
     }
     [self.window close];
 }

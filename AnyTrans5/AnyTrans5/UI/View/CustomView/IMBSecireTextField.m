@@ -86,15 +86,15 @@
 - (void)textDidEndEditing:(NSNotification *)notification{
     NSLog(@"ENtextDidEndEditingD");
     //    [self.cell setPlaceholderString:@"pass"];
-//    NSDictionary *dic = [notification userInfo];
-//    long tag = [[dic objectForKey:@"NSTextMovement"] longValue];
-//    //tag==16 回车
-//    //tag == 17 Tab键
-//    //0 鼠标点击换行
-//    if (tag == 16) {
-//        
-//    }
-//    [super textDidEndEditing:notification];
+    NSDictionary *dic = [notification userInfo];
+    long tag = [[dic objectForKey:@"NSTextMovement"] longValue];
+    //tag==16 回车
+    //tag == 17 Tab键
+    //0 鼠标点击换行
+    if (tag == 16) {
+        
+    }
+    [super textDidEndEditing:notification];
 }
 
 //用来监听键盘的点击事件
@@ -129,7 +129,9 @@
     [super selectText:sender];
 }
 
-
+- (void)keyDown:(NSEvent *)theEvent {
+    
+}
 
 
 @end

@@ -411,7 +411,7 @@
             {
                 [pdfSource setCurrentPage: page];
                 [source recache];
-                page ++;
+                page++;
             }
             else
             {

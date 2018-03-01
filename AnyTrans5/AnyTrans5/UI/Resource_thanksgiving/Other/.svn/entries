@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_thanksgiving/Other
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -60,40 +60,6 @@ has-props
 
 1686
 
-other_sending@2x.png
-file
-
-
-
-
-2018-02-02T01:41:02.000000Z
-49b11f32a40949a3a526a919e9138a5f
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-685
-
 close3@2x.png
 file
 
@@ -127,6 +93,40 @@ has-props
 
 
 1639
+
+other_sending@2x.png
+file
+
+
+
+
+2018-02-02T01:41:02.000000Z
+49b11f32a40949a3a526a919e9138a5f
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+685
 
 christmas_process_bg.png
 file
@@ -196,40 +196,6 @@ has-props
 
 4007
 
-close.png
-file
-
-
-
-
-2018-02-02T01:41:02.000000Z
-849c20474550546b123ffd6782bb4455
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1227
-
 christmas_bell@2x.png
 file
 
@@ -263,6 +229,40 @@ has-props
 
 
 3034
+
+close.png
+file
+
+
+
+
+2018-02-02T01:41:02.000000Z
+849c20474550546b123ffd6782bb4455
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1227
 
 calendar_select.png
 file
@@ -332,40 +332,6 @@ has-props
 
 1159
 
-christmas_process_bg@2x.png
-file
-
-
-
-
-2018-02-02T01:41:02.000000Z
-c176bc8c018f18cd86d6cc76ae77dcf8
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1303
-
 addcontent_arrowright2.png
 file
 
@@ -400,14 +366,14 @@ has-props
 
 1159
 
-rose_progress_bg@2x.png
+christmas_process_bg@2x.png
 file
 
 
 
 
 2018-02-02T01:41:02.000000Z
-d34bae8f74ffc1d2d41efe231cdeba03
+c176bc8c018f18cd86d6cc76ae77dcf8
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -432,7 +398,41 @@ has-props
 
 
 
-7884
+1303
+
+addcontent_arrowright3.png
+file
+
+
+
+
+2018-02-02T01:41:02.000000Z
+d5a4735f90418274b5b5d1564973083d
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1169
 
 addcontent_arrow1.png
 file
@@ -468,14 +468,14 @@ has-props
 
 1169
 
-addcontent_arrowright3.png
+rose_progress_bg@2x.png
 file
 
 
 
 
 2018-02-02T01:41:02.000000Z
-d5a4735f90418274b5b5d1564973083d
+d34bae8f74ffc1d2d41efe231cdeba03
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -500,7 +500,7 @@ has-props
 
 
 
-1169
+7884
 
 alert_icon.png
 file

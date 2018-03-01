@@ -40,6 +40,7 @@
     NSString *_editReminderNewEtag;
     IMBLogManager *_logHandle;
     id _delegate;
+    NSDictionary *_firstDic;
 }
 
 @property (nonatomic, assign) int photoCount;
@@ -63,6 +64,7 @@
 @property (nonatomic, retain) NSString *editReminderNewEtag;
 
 - (BOOL)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password;
+- (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password;
 
 - (void)getPhotosContent;
 - (void)getPhotoDetail:(IMBToiCloudPhotoEntity *)albumEntity;

@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_g/BookMark/Btn
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -60,40 +60,6 @@ has-props
 
 25576
 
-bookmark_choice1.png
-file
-
-
-
-
-2018-02-02T01:41:16.000000Z
-cf8b5435fd0d6eaa7f08b7a8bda3f0f0
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3017
-
 browser_choice_icon1@2x.png
 file
 
@@ -128,14 +94,14 @@ has-props
 
 2767
 
-browser_choice_icon2@2x.png
+bookmark_choice1.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-8de61af6bc3449df7ca991f487b6e83e
+cf8b5435fd0d6eaa7f08b7a8bda3f0f0
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -160,7 +126,7 @@ has-props
 
 
 
-2336
+3017
 
 bookmark_choice2.png
 file
@@ -196,14 +162,14 @@ has-props
 
 3755
 
-browser_choice_icon3@2x.png
+browser_choice_icon2@2x.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-a54112604d68129d3df9e47eb3e0fc80
+8de61af6bc3449df7ca991f487b6e83e
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -228,7 +194,7 @@ has-props
 
 
 
-2338
+2336
 
 bookmark_choice3.png
 file
@@ -264,14 +230,14 @@ has-props
 
 4674
 
-firefox_icon.png
+browser_choice_icon3@2x.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-5074c430b91fce2ac82c8fd107e7e23e
+a54112604d68129d3df9e47eb3e0fc80
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -296,7 +262,7 @@ has-props
 
 
 
-11197
+2338
 
 bookmark_choice1@2x.png
 file
@@ -332,14 +298,14 @@ has-props
 
 5805
 
-custom_bookmarks_icon1.png
+firefox_icon.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-a88549d38d6fe01ce27fdfd6fad9a48d
+5074c430b91fce2ac82c8fd107e7e23e
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -364,41 +330,7 @@ has-props
 
 
 
-1283
-
-bookmark_choice2@2x.png
-file
-
-
-
-
-2018-02-02T01:41:16.000000Z
-4a0e8c767e2930be547d1ad93763f998
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7592
+11197
 
 bookmark_close1.png
 file
@@ -434,14 +366,14 @@ has-props
 
 1228
 
-custom_bookmarks_icon2.png
+bookmark_choice2@2x.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-d63cea24733ddc134881b59d7b3fa594
+4a0e8c767e2930be547d1ad93763f998
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -466,7 +398,75 @@ has-props
 
 
 
-1193
+7592
+
+custom_bookmarks_icon1.png
+file
+
+
+
+
+2018-02-02T01:41:16.000000Z
+a88549d38d6fe01ce27fdfd6fad9a48d
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1283
+
+bookmark_close2.png
+file
+
+
+
+
+2018-02-02T01:41:16.000000Z
+4c95ba9f893e88eb5ad4b3d2688643b9
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1202
 
 bookmark_choice3@2x.png
 file
@@ -502,14 +502,14 @@ has-props
 
 9433
 
-bookmark_close2.png
+custom_bookmarks_icon2.png
 file
 
 
 
 
 2018-02-02T01:41:16.000000Z
-4c95ba9f893e88eb5ad4b3d2688643b9
+d63cea24733ddc134881b59d7b3fa594
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -534,7 +534,7 @@ has-props
 
 
 
-1202
+1193
 
 bookmark_close3.png
 file

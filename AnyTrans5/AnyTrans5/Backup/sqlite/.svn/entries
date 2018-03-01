@@ -1,7 +1,7 @@
 10
 
 dir
-1262
+1441
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/Backup/sqlite
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-IMBSqliteManager.m
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-367db34b0d048a8c750a6c74f1addeb7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9927
 
 IMBMessageSqliteManager.h
 file
@@ -93,6 +59,40 @@ dingming
 
 
 377
+
+IMBSqliteManager.m
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+367db34b0d048a8c750a6c74f1addeb7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9927
 
 IMBContactBaseInfoManager.m
 file
@@ -230,40 +230,6 @@ dingming
 
 382
 
-IMBContactSqliteManager.m
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-384f96599fc38e4234021924853a402e
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22640
-
 IMBGetThumbnailData.h
 file
 
@@ -297,6 +263,40 @@ dingming
 
 
 285
+
+IMBContactSqliteManager.m
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+384f96599fc38e4234021924853a402e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22640
 
 IMBHistorySqliteManager.h
 file
@@ -366,18 +366,17 @@ dingming
 
 20363
 
-IMBNoteSqliteManager.h
+IMBGetThumbnailData.m
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-c264e8f3bda48bfe4b94b02b9a264894
+2c5d834461d1ff278d3d1c61618efa72
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -398,7 +397,8 @@ has-props
 
 
 
-345
+
+2144
 
 IMBBookMarkSqliteManager.h
 file
@@ -434,17 +434,18 @@ dingming
 
 346
 
-IMBGetThumbnailData.m
+IMBNoteSqliteManager.h
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-2c5d834461d1ff278d3d1c61618efa72
+c264e8f3bda48bfe4b94b02b9a264894
 2017-11-22T04:23:34.702949Z
 9
 dingming
+has-props
 
 
 
@@ -465,8 +466,7 @@ dingming
 
 
 
-
-2144
+345
 
 IMBHistorySqliteManager.m
 file
