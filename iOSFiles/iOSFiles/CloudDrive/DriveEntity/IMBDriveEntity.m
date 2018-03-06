@@ -21,6 +21,9 @@
 @synthesize isFolder = _isFolder;
 @synthesize checkState = _checkState;
 @synthesize image = _image;
+@synthesize docwsid = _docwsid;
+@synthesize zone = _zone;
+@synthesize etag = _etag;
 - (id)init {
     if ([super init]) {
         _fileLoadURL = @"";

@@ -1,14 +1,14 @@
 10
 
 dir
-1457
+1504
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-01T09:53:10.213838Z
-1455
+2018-03-06T04:03:31.806028Z
+1504
 longfan
 
 
@@ -26,39 +26,11 @@ longfan
 
 a323380f-3d89-8743-8c24-0bf67719c927
 
-main.m
-file
-
-
-
-
-2018-02-06T05:20:04.000000Z
-1282ee31b2b0d730458e65c6fe5a792b
-2018-01-15T10:53:13.529906Z
-972
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-235
+Media
+dir
+
+deviceConnection
+dir
 
 IMBNotificationDefine.h
 file
@@ -94,24 +66,17 @@ hezhonglin
 
 9733
 
-deviceConnection
-dir
-
-Media
-dir
-
-IMBCommonDefine.h
+main.m
 file
 
 
 
 
-2018-02-26T10:09:42.000000Z
-22cfb19226c608e1f1426a5476aa2693
-2018-02-26T09:04:05.231805Z
-1377
-longfan
-has-props
+2018-02-06T05:20:04.000000Z
+1282ee31b2b0d730458e65c6fe5a792b
+2018-01-15T10:53:13.529906Z
+972
+dingming
 
 
 
@@ -132,7 +97,11 @@ has-props
 
 
 
-4452
+
+235
+
+Log
+dir
 
 iOSFilesPch.pch
 file
@@ -168,8 +137,39 @@ hezhonglin
 
 1392
 
-Log
-dir
+IMBCommonDefine.h
+file
+
+
+
+
+2018-02-26T10:09:42.000000Z
+22cfb19226c608e1f1426a5476aa2693
+2018-02-26T09:04:05.231805Z
+1377
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4452
 
 Transfer
 dir
@@ -180,11 +180,11 @@ file
 
 
 
-2018-02-06T05:20:04.000000Z
-471ea29362c84ebc43e323292f35c965
-2018-01-31T07:36:42.257673Z
-1137
-dingming
+2018-03-05T09:03:59.000000Z
+93e1b59e3a954bc092ae0171fa90d647
+2018-03-05T08:58:12.218928Z
+1496
+longfan
 
 
 
@@ -206,12 +206,12 @@ dingming
 
 
 
-1324
-
-Applications
-dir
+1422
 
 iBooks
+dir
+
+Applications
 dir
 
 Photo

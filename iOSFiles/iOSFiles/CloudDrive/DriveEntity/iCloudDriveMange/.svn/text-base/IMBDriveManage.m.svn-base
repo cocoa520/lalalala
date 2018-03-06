@@ -13,11 +13,8 @@
 @class IMBDeviceViewController;
 #import "IMBDriveWindow.h"
 @implementation IMBDriveManage
-@synthesize driveDataAry = _driveDataAry;
-@synthesize userID = _userID;
-@synthesize driveWindowDelegate = _driveWindowDelegate;
 - (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate{
-    if ([super init]) {
+    if ([super initWithUserID:userID withDelegate:delegate]) {
         _driveDataAry = [[NSMutableArray alloc]init];
         _userID = userID;
         _oneDrive = [[OneDrive alloc]initWithFromLocalOAuth:YES];
@@ -214,10 +211,7 @@
     [super dealloc];
     [_oneDrive release];
     _oneDrive = nil;
-    [_driveDataAry release];
-    _driveDataAry = nil;
-    [_userID release];
-    _userID = nil;
+
 }
 
 @end

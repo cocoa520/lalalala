@@ -73,6 +73,7 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)awakeFromNib {
+    [self.window setTitle:_iPod.deviceInfo.deviceName];
     NSButton *btn =  [self.window standardWindowButton:NSWindowCloseButton];
 //    [btn setFrame:NSMakeRect(2,4, 20, 20)];
 //    NSButton *btn1 =  [self.window standardWindowButton:NSWindowMiniaturizeButton];
@@ -434,46 +435,49 @@ static CGFloat const labelY = 10.0f;
     NSLog(@"Double Clicked.%ld ",rowNumber);
     // ...
     IMBDevicePageFolderModel *model = [_dataArray objectAtIndex:rowNumber];
-    if (model && model.size) {
-        //显示详情
+    if (rowNumber == 4) {
         [_backBtn setHidden:NO];
-        _title.stringValue = model.name;
-        
-        if (model.idx == IMBDevicePageWindowFolderEnumPhoto) {
-            
-            if (_pcVc) {
-                [_pcVc release];
-                _pcVc = nil;
-            }
-            if (_detailVc) {
-                [_detailVc release];
-                _detailVc = nil;
-            }
-            _pcVc = [[IMBPhotoCategoryController alloc] initWithNibName:@"IMBPhotoCategoryController" bundle:nil];
-            _pcVc.folderModel = [model retain];
-            _pcVc.iPod = [_iPod retain];
-            [_rootBox pushView:_pcVc.view];
-        }else {
-            if (_detailVc) {
-                [_detailVc release];
-                _detailVc = nil;
-            }
-            _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
-            if (_detailVc.folderModel) {
-                [_detailVc.folderModel release];
-                _detailVc.folderModel = nil;
-            }
-            _detailVc.iPod = [_iPod retain];
-            
-            _detailVc.folderModel = [model retain];
-            [_rootBox pushView:_detailVc.view];
-        }
-    }else if (rowNumber == 4) {
-        [_backBtn setHidden:NO];
-         _systemCollectionViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
+        _systemCollectionViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
         [_rootBox pushView:_systemCollectionViewController.view];
-
+        
+    }else {
+        if (model && model.countsString) {
+            //显示详情
+            [_backBtn setHidden:NO];
+            _title.stringValue = model.name;
+            
+            if (model.idx == IMBDevicePageWindowFolderEnumPhoto) {
+                
+                if (_pcVc) {
+                    [_pcVc release];
+                    _pcVc = nil;
+                }
+                if (_detailVc) {
+                    [_detailVc release];
+                    _detailVc = nil;
+                }
+                _pcVc = [[IMBPhotoCategoryController alloc] initWithNibName:@"IMBPhotoCategoryController" bundle:nil];
+                _pcVc.folderModel = [model retain];
+                _pcVc.iPod = [_iPod retain];
+                [_rootBox pushView:_pcVc.view];
+            }else {
+                if (_detailVc) {
+                    [_detailVc release];
+                    _detailVc = nil;
+                }
+                _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
+                if (_detailVc.folderModel) {
+                    [_detailVc.folderModel release];
+                    _detailVc.folderModel = nil;
+                }
+                _detailVc.iPod = [_iPod retain];
+                
+                _detailVc.folderModel = [model retain];
+                [_rootBox pushView:_detailVc.view];
+            }
+        }
     }
+    
 }
 
 - (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row
@@ -567,38 +571,38 @@ static CGFloat const labelY = 10.0f;
 }
 
 
-- (IBAction)refreshBtnClicked:(NSButton *)sender {
-    IMBInformation *information = [_information retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
-    [information release];
-    information = nil;
-}
-
-- (IBAction)toMacBtnClicked:(NSButton *)sender {
-    IMBInformation *information = [_information retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToMacClickedNoti object:information];
-    [information release];
-    information = nil;
-}
-- (IBAction)addToDeviceBtnClicked:(NSButton *)sender {
-    IMBInformation *information = [_information retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageAddToDeviceClickedNoti object:information];
-    [information release];
-    information = nil;
-}
-
-- (IBAction)deleteBtnClicked:(NSButton *)sender {
-     IMBInformation *information = [_information retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
-    [information release];
-    information = nil;
-}
-- (IBAction)toDeviceBtnClicked:(NSButton *)sender {
-    IMBInformation *information = [_information retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
-    [information release];
-    information = nil;
-}
+//- (IBAction)refreshBtnClicked:(NSButton *)sender {
+//    IMBInformation *information = [_information retain];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
+//    [information release];
+//    information = nil;
+//}
+//
+//- (IBAction)toMacBtnClicked:(NSButton *)sender {
+//    IMBInformation *information = [_information retain];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToMacClickedNoti object:information];
+//    [information release];
+//    information = nil;
+//}
+//- (IBAction)addToDeviceBtnClicked:(NSButton *)sender {
+//    IMBInformation *information = [_information retain];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageAddToDeviceClickedNoti object:information];
+//    [information release];
+//    information = nil;
+//}
+//
+//- (IBAction)deleteBtnClicked:(NSButton *)sender {
+//     IMBInformation *information = [_information retain];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
+//    [information release];
+//    information = nil;
+//}
+//- (IBAction)toDeviceBtnClicked:(NSButton *)sender {
+//    IMBInformation *information = [_information retain];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
+//    [information release];
+//    information = nil;
+//}
 
 #pragma mark -- 通知
 - (void)startLoadingAnim:(NSNotification *)noti {

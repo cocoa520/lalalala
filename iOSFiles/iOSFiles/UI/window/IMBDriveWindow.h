@@ -11,9 +11,11 @@
 #import "IMBBlankDraggableCollectionView.h"
 #import "IMBSystemCollectionViewController.h"
 #import "IMBToolBarView.h"
+#import "IMBiCloudDriveManager.h"
+#import "IMBDriveBaseManage.h"
+#import "DriveItem.h"
 @interface IMBDriveWindow : NSWindowController <NSCollectionViewDelegate,IMBImageRefreshCollectionListener>
 {
-    IMBDriveManage *_drivemanage;
     NSMutableArray *_bindArray;
     IBOutlet NSArrayController *_arrayController;
     IBOutlet IMBBlankDraggableCollectionView *_blankCollection;
@@ -30,9 +32,15 @@
     IBOutlet IMBWhiteView *_loadView;
     IBOutlet LoadingView *_loadAnimation;
     NSOpenPanel *_openPanel;
+    IMBDriveBaseManage *_driveBaeManage;
+    BOOL _isiCloudDirve;
+    DriveItem *_downloaditem;
+    IBOutlet NSTextField *_textFieldString;
+    NSString *_oldDocwsid;
 }
+@property (nonatomic,retain) DriveItem *downloaditem;
 @property (nonatomic,retain) NSMutableArray *bindArray;
-- (id)initWithDrivemanage:(IMBDriveManage*)driveManage;
+- (id)initWithDrivemanage:(IMBDriveBaseManage*)driveManage withisiCloudDrive:(BOOL) isiCloudDirve;
 - (void)loadSonAryComplete:(NSMutableArray *) sonAry;
 - (void)refresh;
 - (void)toMac;

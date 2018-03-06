@@ -35,6 +35,7 @@
 		7B8C0B3F2043EEA600BE7EF1 /* IMBSecireTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B3E2043EEA600BE7EF1 /* IMBSecireTextField.m */; };
 		7B8C0B422043EEC500BE7EF1 /* IMBSecureTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C0B412043EEC500BE7EF1 /* IMBSecureTextFieldCell.m */; };
 		7B8CD27E2046918F00A936C7 /* DriveItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CD27D2046918F00A936C7 /* DriveItem.m */; };
+		7B9F276720843FE10054B16C /* IMBDriveBaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F276620843FE10054B16C /* IMBDriveBaseManage.m */; };
 		812A89672021CF1F00101463 /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4720219FFD00849CBB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		812A89682021CF2700101463 /* YTKNetwork.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4920219FFD00849CBB /* YTKNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		812A89692021CF2F00101463 /* AppAuth.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B910BF4820219FFD00849CBB /* AppAuth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -698,7 +699,7 @@
 		7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveEntity.h; sourceTree = "<group>"; };
 		7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveEntity.m; sourceTree = "<group>"; };
 		7B6BB4D820452B9A00BBD6E9 /* IMBDriveWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveWindow.h; sourceTree = "<group>"; };
-		7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveWindow.m; sourceTree = "<group>"; };
+		7B6BB4D920452B9A00BBD6E9 /* IMBDriveWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveWindow.m; sourceTree = "<group>"; wrapsLines = 0; };
 		7B6BB4DA20452B9A00BBD6E9 /* IMBDriveWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDriveWindow.xib; sourceTree = "<group>"; };
 		7B830BFD2047AFD8000841AE /* iCloudDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDrive.h; sourceTree = "<group>"; };
 		7B830BFE2047AFD8000841AE /* iCloudDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudDrive.m; sourceTree = "<group>"; };
@@ -751,6 +752,8 @@
 		7B8C0B442043EFC200BE7EF1 /* IMBCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonDefine.h; sourceTree = "<group>"; };
 		7B8CD27C2046918F00A936C7 /* DriveItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveItem.h; sourceTree = "<group>"; };
 		7B8CD27D2046918F00A936C7 /* DriveItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveItem.m; sourceTree = "<group>"; };
+		7B9F276520843FE10054B16C /* IMBDriveBaseManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveBaseManage.h; sourceTree = "<group>"; };
+		7B9F276620843FE10054B16C /* IMBDriveBaseManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveBaseManage.m; sourceTree = "<group>"; };
 		B90D14C920201599002D9F9B /* AppInstallProgressFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppInstallProgressFile; sourceTree = "<group>"; };
 		B90D14CA20201599002D9F9B /* IMBAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAppConfig.h; sourceTree = "<group>"; };
 		B90D14CB20201599002D9F9B /* IMBAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAppConfig.m; sourceTree = "<group>"; };
@@ -1897,6 +1900,8 @@
 				7B8CD27D2046918F00A936C7 /* DriveItem.m */,
 				7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */,
 				7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */,
+				7B9F276520843FE10054B16C /* IMBDriveBaseManage.h */,
+				7B9F276620843FE10054B16C /* IMBDriveBaseManage.m */,
 			);
 			path = DriveEntity;
 			sourceTree = "<group>";
@@ -4288,6 +4293,7 @@
 				B92A17B020215FB100187405 /* IMBArtworkHelper.m in Sources */,
 				B910BF3E20219E3B00849CBB /* OneDDeleteItemAPI.m in Sources */,
 				B965636B2021D2B000BD7FF5 /* Reader_File.cpp in Sources */,
+				7B9F276720843FE10054B16C /* IMBDriveBaseManage.m in Sources */,
 				EE39AD26200CBD9700D084CE /* IMBNoTitleBarWindow.m in Sources */,
 				B9E739FD2028038D00E1BB3B /* IMBDeleteTrack.m in Sources */,
 				B910BF4120219E3B00849CBB /* OneDMoveToNewParentAPI.m in Sources */,

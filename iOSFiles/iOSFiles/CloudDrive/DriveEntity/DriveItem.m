@@ -40,8 +40,8 @@
 @synthesize driveTodriveProgress = _driveTodriveProgress;
 @synthesize childArray = _childArray;
 @synthesize toDriveName = _toDriveName;
-//@synthesize zone = _zone;
-//@synthesize docwsID = _docwsID;
+@synthesize zone = _zone;
+@synthesize docwsID = _docwsID;
 
 
 - (NSString *)identifier
@@ -50,12 +50,11 @@
     if (_isFolder) {
         identifier = [_itemIDOrPath stringByAppendingString:_toDriveName?:@""];
     }else{
-        identifier = [[_urlString stringByAppendingString:_itemIDOrPath] stringByAppendingString:_toDriveName?:@""];
+        identifier = [[_urlString stringByAppendingString:_itemIDOrPath?:_docwsID] stringByAppendingString:_toDriveName?:@""];
     }
     
     return identifier;
 }
-
 -(void)dealloc
 {
     [_urlString release],_urlString = nil;

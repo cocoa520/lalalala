@@ -267,13 +267,13 @@
 //        return;
 //    }else{
 //        if (_driveManage != nil) {
-            if ([_driveManage.userID isEqualToString:loginTextId]) {
-                if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
-                    IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_driveManage.userID];
+            if ([_baseDriveManage.userID isEqualToString:loginTextId]) {
+                if ([_driveControllerDic.allKeys containsObject:_baseDriveManage.userID]) {
+                    IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_baseDriveManage.userID];
                     [driveWindow showWindow:self];
                 }
             }else{
-                _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+                _baseDriveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
             }
 //        }else{
 //            _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
@@ -285,12 +285,12 @@
 }
 
 - (void)switchViewController {
-    if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
-        IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_driveManage.userID];
+    if ([_driveControllerDic.allKeys containsObject:_baseDriveManage.userID]) {
+        IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_baseDriveManage.userID];
         [driveWindow showWindow:self];
     }else{
-        IMBDriveWindow *driveWindow = [[IMBDriveWindow alloc]initWithDrivemanage:_driveManage];
-        [_driveControllerDic setObject:driveWindow forKey:_driveManage.userID];
+        IMBDriveWindow *driveWindow = [[IMBDriveWindow alloc]initWithDrivemanage:(IMBDriveManage *)_baseDriveManage withisiCloudDrive:NO];
+        [_driveControllerDic setObject:driveWindow forKey:_baseDriveManage.userID];
         //    IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc] initWithiPod:ipod];
         [[driveWindow window] center];
         [driveWindow showWindow:self];
@@ -311,7 +311,7 @@
 //    }else{
 //        [_iCloudDrive loginAppleID:_iCloudUserTextField.stringValue password:_iCloudSecireTextField.stringValue rememberMe:YES];
 //    }
-    _iCloudDriveManager = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
+    _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
 }
 
 //登录错误
@@ -325,6 +325,11 @@
     }else if (responseCode == ResponseInvalid) {///<响应无效 一般参数错误
 
     }
+    
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Error"];
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        
+    }];
 }
 
 - (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive {
@@ -332,7 +337,7 @@
 }
 
 - (IBAction)codeDown:(id)sender {
-    [_iCloudDriveManager  setTwoCodeID:_twoCode.stringValue];
+    [(IMBiCloudDriveManager *)_baseDriveManage  setTwoCodeID:_twoCode.stringValue];
 }
 
 //时间转换
@@ -345,6 +350,20 @@
     NSDate *replacDate = [DateHelper dateFromString:replacString1 Formate:nil];
     NSString *replacDateString = [DateHelper dateFrom2001ToDate:replacDate withMode:2];
     return replacDateString;
+}
+
+- (void)switchiCloudDriveViewController {
+//    if ([_driveControllerDic.allKeys containsObject:_driveManage.userID]) {
+//        IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_driveManage.userID];
+//        [driveWindow showWindow:self];
+//    }else{
+        IMBDriveWindow *driveWindow = [[IMBDriveWindow alloc]initWithDrivemanage:_baseDriveManage withisiCloudDrive:YES];
+        [_driveControllerDic setObject:driveWindow forKey:_baseDriveManage.userID];
+        //    IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc] initWithiPod:ipod];
+        [[driveWindow window] center];
+        [driveWindow showWindow:self];
+        [driveWindow release];
+//    }
 }
 #pragma mark -- 通知
 /**
@@ -425,9 +444,9 @@
         _driveControllerDic = nil;
     }
 
-    if (_driveManage) {
-        [_driveManage release];
-        _driveManage = nil;
+    if (_baseDriveManage) {
+        [_baseDriveManage release];
+        _baseDriveManage = nil;
     }
 
     [[IMBDeviceConnection singleton] stopListening];
@@ -436,6 +455,5 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:INSERT_TAB object:nil];
     [super dealloc];
 }
-
 
 @end

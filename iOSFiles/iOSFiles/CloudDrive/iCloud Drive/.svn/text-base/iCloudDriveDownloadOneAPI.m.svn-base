@@ -10,12 +10,13 @@
 
 @implementation iCloudDriveDownloadOneAPI
 
-- (id)initWithDocumentID:(NSString *)documentID zone:(NSString *)zone iCloudDriveDocwsURL:(NSString *)url
+- (id)initWithDocumentID:(NSString *)documentID zone:(NSString *)zone iCloudDriveDocwsURL:(NSString *)url cookie:(NSMutableDictionary *)cookie
 {
     if (self = [super init]) {
         _documentID = [documentID retain];
         _zone = [zone retain];
         _iCloudDriveDocwsUrl = [url retain];
+        _cookie = [cookie retain];
     }
     return self;
 }

@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "ProtocolDelegate.h"
-
+#if __has_include(<YTKNetwork/YTKNetwork.h>)
+#import <YTKNetwork/YTKNetwork.h>
+#else
+#import "YTKNetwork.h"
+#endif
 /**
  *  上传器专门负责上传文件
  */
@@ -80,5 +84,13 @@
  *  取消所有上传
  */
 - (void)cancelAllUploadItems;
+
+/**
+ *  Description 表单上传文件 iCloud Drive需要
+ *
+ *  @param item    上传项
+ *  @param success 成功回调
+ */
+- (void)uploadmutilPartItem:(id<DownloadAndUploadDelegate>)item  success:(nullable YTKRequestCompletionBlock)success;
 
 @end

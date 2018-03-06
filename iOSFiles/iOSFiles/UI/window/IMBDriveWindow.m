@@ -18,27 +18,37 @@
 @end
 
 @implementation IMBDriveWindow
-
+@synthesize downloaditem = _downloaditem;
 - (void)windowDidLoad {
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-- (id)initWithDrivemanage:(IMBDriveManage*)driveManage {
+//- (id)initWithiCloudDrivemanage:(IMBDriveManage*)iCloudDriveManage {
+//    if ([self initWithWindowNibName:@"IMBDriveWindow"]) {
+//        _driveBaeManage = [iCloudDriveManage retain];
+//        [_driveBaeManage setDriveWindowDelegate:self];
+//        _isiCloudDirve = YES;
+//    }
+//    return self;
+//}
+
+- (id)initWithDrivemanage:(IMBDriveBaseManage*)driveManage withisiCloudDrive:(BOOL) isiCloudDirve{
     if ([self initWithWindowNibName:@"IMBDriveWindow"]) {
-        _drivemanage = [driveManage retain];
-        [_drivemanage setDriveWindowDelegate:self];
+        _driveBaeManage = [driveManage retain];
+        [_driveBaeManage setDriveWindowDelegate:self];
+        _isiCloudDirve = isiCloudDirve;
     }
     return self;
 }
 
-- (id)initWithiCloudDriveAry:(NSMutableArray *)dataAry {
-    if ([self initWithWindowNibName:@"IMBDriveWindow"]) {
-
-    }
-    return self;
-}
+//- (id)initWithiCloudDriveAry:(NSMutableArray *)dataAry {
+//    if ([self initWithWindowNibName:@"IMBDriveWindow"]) {
+//
+//    }
+//    return self;
+//}
 
 -(void)awakeFromNib {
     NSButton *btn =  [self.window standardWindowButton:NSWindowCloseButton];
@@ -50,7 +60,7 @@
     [btn setTarget:self];
     [(IMBToolbarWindow *)self.window setTitleBarHeight:20];
     _bindArray = [[NSMutableArray alloc]init];
-    [_arrayController addObjects:_drivemanage.driveDataAry];
+    [_arrayController addObjects:_driveBaeManage.driveDataAry];
     [self addNotification];
     
     [_toolBarView setDelegate:self];
@@ -122,16 +132,20 @@
         [_blankCollection setSelectionIndexes:nil];
 
     }else{
+        [_rootBox setContentView:_detailView];
+        [_loadAnimation endAnimation];
+        [advanceButton setEnabled:YES];
+        [backButton setEnabled:YES];
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_bindArray],@"array",_currentDevicePath,@"currentDevicePath", nil];
+        [_backContainer addObject:dic];
         if ([_backContainer count]>0) {
             [backButton setEnabled:YES];
             [backButton setNeedsDisplay:YES];
         }
-        [_backContainer addObject:dic];
-        
         [_arrayController removeObjects:_bindArray];
         [_arrayController addObjects:sonAry];
-        
+         IMBBlankDraggableCollectionView *superView = (IMBBlankDraggableCollectionView *)_blankCollection;
+        superView.forBidClick = NO;
         //屏蔽advanceButton按钮，
         NSMutableArray *pathArray = [[NSMutableArray alloc]init];
         for (NSDictionary *dic in _nextContainer) {
@@ -162,6 +176,10 @@
 
 #pragma mark - Notification
 - (void)changeCoDataSource:(NSNotification *)notification {
+    [_rootBox setContentView:_loadView];
+    [_loadAnimation startAnimation];
+    [advanceButton setEnabled:YES];
+    [backButton setEnabled:NO];
     NSCollectionView *view = notification.object;
     if (view == _blankCollection||notification == nil){
         NSInteger selectIndex = [_arrayController selectionIndex];
@@ -173,15 +191,19 @@
                     
                     dispatch_async(dispatch_get_global_queue(0, 0), ^{
                         @autoreleasepool {
-                           [_drivemanage recursiveDirectoryContentsDics:driveEntity.fileID];
+                           [_driveBaeManage recursiveDirectoryContentsDics:driveEntity.fileID];
                             _currentDevicePath = driveEntity.fileID;
                         }
                     });
                 }else
                 {
-                    
                     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                         [_drivemanage recursiveDirectoryContentsDics:driveEntity.fileID];
+                      
+                        if ([_oldDocwsid isEqualToString:driveEntity.docwsid]) {
+                            return ;
+                        }
+                          _oldDocwsid = driveEntity.docwsid;
+                         [_driveBaeManage recursiveDirectoryContentsDics:driveEntity.docwsid];
                          _currentDevicePath = driveEntity.fileID;
                     });
                 }
@@ -214,16 +236,16 @@
 }
 
 #pragma mark - Action
-- (void)refresh {
+- (void)refresh:(IMBInformation *)information {
     [_rootBox setContentView:_loadView];
     [_loadAnimation startAnimation];
     _isReload = YES;
     [advanceButton setEnabled:YES];
     [backButton setEnabled:NO];
-    [_drivemanage recursiveDirectoryContentsDics:_currentDevicePath];
+    [_driveBaeManage recursiveDirectoryContentsDics:_currentDevicePath];
 }
 
-- (void)toMac {
+- (void)toMac:(IMBInformation *)information {
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *selectedTracks = [NSMutableArray array];
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
@@ -233,22 +255,26 @@
 //    for (IMBDriveEntity *driveEntity in selectedTracks) {
 //        
 //    }
-    
     IMBDriveEntity *driveEntity = [selectedTracks objectAtIndex:0];
 
-    DriveItem *downloaditem = [[DriveItem alloc] init];
-    downloaditem.itemIDOrPath = driveEntity.fileID;
-    downloaditem.fileName = driveEntity.fileName;
+    _downloaditem = [[DriveItem alloc] init];
+    _downloaditem.itemIDOrPath = driveEntity.fileID;
+    _downloaditem.fileName = driveEntity.fileName;
     NSUInteger state = driveEntity.isFolder;
-    if (state == 1) {
-        downloaditem.isFolder = YES;
-    }else {
-        downloaditem.isFolder = NO;
+    
+    if (_isiCloudDirve) {
+        _downloaditem.docwsID = driveEntity.fileID;
+        _downloaditem.zone = driveEntity.zone;
     }
-    [_drivemanage oneDriveDownloadOneItem:downloaditem];
+    if (state == 1) {
+        _downloaditem.isFolder = YES;
+    }else {
+        _downloaditem.isFolder = NO;
+    }
+    [_driveBaeManage oneDriveDownloadOneItem:_downloaditem];
 }
 
-- (void)addItems {
+- (void)addToDevice:(IMBInformation *)information {
     _openPanel = [NSOpenPanel openPanel];
 //    _isOpen = YES;
     [_openPanel setCanChooseDirectories:YES];
@@ -268,17 +294,30 @@
 
 }
 
-- (void)deleteItem {
+- (void)deleteItem:(IMBInformation *)information {
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *selectedTracks = [NSMutableArray array];
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [selectedTracks addObject:[_bindArray objectAtIndex:idx]];
     }];
+    
     NSMutableArray *deleteAry = [[NSMutableArray alloc]init];
-    for (IMBDriveEntity *driveEntity in selectedTracks) {
-        [deleteAry addObject:driveEntity.fileID];
+    if (_isiCloudDirve) {
+        for (IMBDriveEntity *driveEntity in selectedTracks) {
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+            [dic setObject:driveEntity.etag forKey:@"etag"];
+            [dic setObject:driveEntity.docwsid forKey:@"drivewsid"];
+            [deleteAry addObject:dic];
+            [dic release];
+            dic = nil;
+        }
+    }else{
+        for (IMBDriveEntity *driveEntity in selectedTracks) {
+            [deleteAry addObject:driveEntity.fileID];
+        }
     }
-    [_drivemanage deleteDriveItem:deleteAry];
+//    @"etag" : @"oz",@"drivewsid" : @"FOLDER::com.apple.CloudDocs::B661E364-426F-4EAF-A2FE-2BAB5BA7CA96"
+    [_driveBaeManage deleteDriveItem:deleteAry];
 }
 
 - (void)addItemsDelay:(NSMutableArray *)paths {
@@ -294,11 +333,12 @@
 //    }else {
         uploaditem.isFolder = NO;
 //    }
-    [_drivemanage oneDriveUploadItem:uploaditem];
+    [_driveBaeManage oneDriveUploadItem:uploaditem];
 }
 
 - (void)backAction:(id)sender {
     NSMutableArray *dataArr = nil;
+    _oldDocwsid = @"backBtn";
     if ([_backContainer count]>0) {
         if ([_currentArray count]>120) {
             NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_bindArray],@"array",_currentDevicePath,@"currentDevicePath", nil];
@@ -335,7 +375,7 @@
         }
     }else
     {
-//        [backButton setEnabled:NO];
+        [backButton setEnabled:NO];
     }
     
     [_blankCollection setSelectionIndexes:nil];
@@ -346,6 +386,7 @@
 
 - (void)nextAction:(id)sender {
     NSMutableArray *dataArr = nil;
+    _oldDocwsid = @"nextBtn";
     if ([_nextContainer count]>0) {
         if ([_currentArray count]>120) {
             NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:_bindArray],@"array",_currentDevicePath,@"currentDevicePath", nil];

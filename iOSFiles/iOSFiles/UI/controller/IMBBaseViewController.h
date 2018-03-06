@@ -7,15 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class IMBiPod;
+@class IMBiPod,IMBInformation;
 
 @interface IMBBaseViewController : NSViewController
 {
     IMBiPod *_iPod;
 }
 
-- (void)refresh;
-- (void)toMac;
-- (void)addItems;
-- (void)deleteItem;
+@property(nonatomic, retain)IMBiPod *iPod;
+
+- (void)refresh:(IMBInformation *)information;
+- (void)toMac:(IMBInformation *)information;
+- (void)addToDevice:(IMBInformation *)information;
+- (void)deleteItem:(IMBInformation *)information;
+- (void)toDevice:(IMBInformation *)information;
+
 @end
