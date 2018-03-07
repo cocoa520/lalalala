@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 71
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer
+V 72
+/svn/Mac/!svn/ver/1513/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer
 END
 boat_animation_cloud2.png
 K 25
@@ -27,17 +27,17 @@ svn:wc:ra_dav:version-url
 V 96
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_music_cd@2x.png
 END
-transfer_windmill_header@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 103
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_windmill_header@2x.png
-END
 transfer_animation_bg@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 100
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_animation_bg@2x.png
+END
+transfer_windmill_header@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_windmill_header@2x.png
 END
 boat_animation_cloud2@2x.png
 K 25
@@ -57,29 +57,29 @@ svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_music.png
 END
-car_animation_line@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 97
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_line@2x.png
-END
 transfer_light@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_light@2x.png
 END
-car_animation_mask@2x.png
+car_animation_line@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 97
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_mask@2x.png
+/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_line@2x.png
 END
 backup_Animation_contact@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 103
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_contact@2x.png
+END
+car_animation_mask@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_mask@2x.png
 END
 transfer_to_macbook@2x.png
 K 25
@@ -146,12 +146,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 104
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_calendar@2x.png
-END
-androidphone.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/androidphone.png
 END
 transfer_animation_complete.png
 K 25
@@ -231,29 +225,29 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/boat_animation_wave.png
 END
-backup_Animation_message.png
-K 25
-svn:wc:ra_dav:version-url
-V 100
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_message.png
-END
 boat_animation_mountain@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 102
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/boat_animation_mountain@2x.png
 END
-backup_Animation_bg.png
+backup_Animation_message.png
 K 25
 svn:wc:ra_dav:version-url
-V 95
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_bg.png
+V 100
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_message.png
 END
 car_animation_bg.png
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_bg.png
+END
+backup_Animation_bg.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_bg.png
 END
 backup_Animation_app@2x.png
 K 25
@@ -267,17 +261,17 @@ svn:wc:ra_dav:version-url
 V 100
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/boat_animation_compelete.png
 END
-car_animation_ground.png
-K 25
-svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_ground.png
-END
 backup_Animation_message@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 103
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_message@2x.png
+END
+car_animation_ground.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_ground.png
 END
 transfer_note@2x.png
 K 25
@@ -291,29 +285,29 @@ svn:wc:ra_dav:version-url
 V 106
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_animation_complete@2x.png
 END
-backup_Animation_bg@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 98
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_bg@2x.png
-END
 car_animation_bg@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_bg@2x.png
 END
-transfer_compelete_CD.png
+backup_Animation_bg@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 97
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_compelete_CD.png
+V 98
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_bg@2x.png
 END
 transfer_to_iTunes@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_to_iTunes@2x.png
+END
+transfer_compelete_CD.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_compelete_CD.png
 END
 transfer_people.png
 K 25
@@ -327,11 +321,11 @@ svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_car.png
 END
-transfer_windmill_header.png
+backup_Animation_callhistory@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 100
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_windmill_header.png
+V 107
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_callhistory@2x.png
 END
 transfer_animation_bg.png
 K 25
@@ -339,11 +333,11 @@ svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_animation_bg.png
 END
-backup_Animation_callhistory@2x.png
+transfer_windmill_header.png
 K 25
 svn:wc:ra_dav:version-url
-V 107
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/backup_Animation_callhistory@2x.png
+V 100
+/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/transfer_windmill_header.png
 END
 scanning_bar_bg.png
 K 25
@@ -446,12 +440,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 99
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/car_animation_envelope2.png
-END
-androidphone@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer/androidphone@2x.png
 END
 backup_Animation_box@2x.png
 K 25

@@ -297,19 +297,11 @@
     [_noDataBackupImageView setImage:[StringHelper imageNamed:@"noconnect_backup"]];
     [self.view setWantsLayer:YES];
     [self.view.layer setCornerRadius:5];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        NSRect frame =  _noDataView.frame;
-        frame.origin.y = self.view.frame.origin.y ;
-        frame.size.width = self.view.frame.size.width;
-        _noDataView.frame = frame;
-        [_noDataImageView.cell setImageAlignment:NSImageAlignBottom];
-    }else {
-        NSRect frame =  _noDataView.frame;
-        frame.origin.y = self.view.frame.origin.y + 5;
-        frame.size.width = self.view.frame.size.width;
-        _noDataView.frame = frame;
-        [_noDataImageView.cell setImageAlignment: NSImageAlignCenter];
-    }
+    NSRect frame =  _noDataView.frame;
+    frame.origin.y = self.view.frame.origin.y + 5;
+    frame.size.width = self.view.frame.size.width;
+    _noDataView.frame = frame;
+    [_noDataImageView.cell setImageAlignment: NSImageAlignCenter];
     [_noDataView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMaxYMargin|NSViewWidthSizable|NSViewHeightSizable];
 }
 
@@ -1529,19 +1521,11 @@
     
     [self.view setWantsLayer:YES];
     [self.view.layer setCornerRadius:5];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        NSRect frame =  _noDataView.frame;
-        frame.origin.y = self.view.frame.origin.y ;
-        frame.size.width = self.view.frame.size.width;
-        _noDataView.frame = frame;
-        [_noDataImageView.cell setImageAlignment:NSImageAlignBottom];
-    }else {
-        NSRect frame =  _noDataView.frame;
-        frame.origin.y = self.view.frame.origin.y + 5;
-        frame.size.width = self.view.frame.size.width;
-        _noDataView.frame = frame;
-        [_noDataImageView.cell setImageAlignment: NSImageAlignCenter];
-    }
+    NSRect frame =  _noDataView.frame;
+    frame.origin.y = self.view.frame.origin.y + 5;
+    frame.size.width = self.view.frame.size.width;
+    _noDataView.frame = frame;
+    [_noDataImageView.cell setImageAlignment: NSImageAlignCenter];
     [_noDataView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMaxYMargin|NSViewWidthSizable|NSViewHeightSizable];
 }
 
@@ -1571,11 +1555,7 @@
         return;
     }
     [(IMBWhiteView *)self.view setIsGradientColorNOCornerPart4:YES];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        [_bellImgView setHidden:YES];
-        [_roseProgressBgImageView setHidden:NO];
-        [_roseProgressBgImageView setImage:[StringHelper imageNamed:@"rose_progress_bg"]];
-    }else if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
+    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
         [_bellImgView setHidden:NO];
         [_bellImgView setImage:[StringHelper imageNamed:@"christmas_bell"]];
         [_bellImgView setFrameOrigin:NSMakePoint(340, _bellImgView.frame.origin.y)];

@@ -248,5 +248,7 @@
 
 //输入验证码
 #define NOTIFY_EDIT_CODE @"Edit_code"
+//删除验证码
+#define NOTIFY_DELETE_CODE @"Delete_code"
 
 #endif

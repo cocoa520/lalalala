@@ -1797,3 +1797,7 @@
 "iCloudLogin_View_codeTips3" = "Authentication failed.";
 "iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
 "iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";
+"iCloudLogin_View_Resend" = "Resend Code";
+"iCloudLogin_View_SendByMessage" = "Text Me";
+"iCloudLogin_View_Help" = "Need Help?";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

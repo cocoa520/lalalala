@@ -249,14 +249,6 @@
     showData10.categoryEnum = Category_PhotoVideo;
     [_dataAry addObject:showData10];
     [showData10 release];
-    
-//    IMBBackupShowEntity *showData11 = [[IMBBackupShowEntity alloc]init];
-//    showData11.name = CustomLocalizedString(@"MenuItem_id_87", nil);
-//    showData11.image = [StringHelper imageNamed:@"thumbnail"];
-//    showData11.categoryEnum = Category_Thumil;
-//    [_dataAry addObject:showData11];
-//    [showData11 release];
-//    }
 }
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

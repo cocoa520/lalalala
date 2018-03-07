@@ -59,6 +59,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:NOTIFY_CHANGE_SKIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeOpenPanel:) name:DeviceDisConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editDoubleVerificationCode:) name:NOTIFY_EDIT_CODE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteDoubleVerificationCode:) name:NOTIFY_DELETE_CODE object:nil];
     
     [_imageView1 setImage:[StringHelper imageNamed:@"alert_icon"]];
     [_imageView2 setImage:[StringHelper imageNamed:@"alert_icon"]];
@@ -93,21 +94,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changFindiPhoneTextFieldBtnState) name:NOTIFY_REGISTER_TEXTFILED_INPUT_CHANGE object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputCode) name:NOTIFY_TEXTFILED_INPUT_CHANGE object:nil];
-    IMBSoftWareInfo *softinfo = [IMBSoftWareInfo singleton];
-    if ([softinfo chooseLanguageType] == EnglishLanguage) {
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_english"]];
-    }else if ([softinfo chooseLanguageType] == JapaneseLanguage){
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_japan"]];
-    }else if ([softinfo chooseLanguageType] == FrenchLanguage){
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_French"]];
-    }else if ([softinfo chooseLanguageType] == GermanLanguage){
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_German"]];
-    }else if ([softinfo chooseLanguageType] == SpanishLanguage){
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_Spanish"]];
-    }else if ([softinfo chooseLanguageType] == ArabLanguage){
-        [_transImageView setImage:[StringHelper imageNamed:@"trust_arab"]];
-    }
-
 }
 
 - (void)changeSkin:(NSNotification *)notification {
@@ -219,6 +205,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_SKIN object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DeviceDisConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_EDIT_CODE object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_DELETE_CODE object:nil];
 }
 
 - (void)setupAlertRect:(IMBBorderRectAndColorView *)alertView {
@@ -489,8 +476,17 @@
         NSWorkspace *ws = [NSWorkspace sharedWorkspace];
         [ws openURL:url];
     }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil)]) {
+        [self showSendCodeMessageHelpView];
+    }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_Resend", nil)]) {
         //点击重新发送验证码
+       [_delegate reSendTwoStepAuthenticationCode];
+    }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_SendByMessage", nil)]) {
+        //点击重新发送短信
         [_delegate reSendTwoStepAuthenticationMessage];
+    }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_Help", nil)]) {
+        NSURL *url = [NSURL URLWithString:CustomLocalizedString(@"iCloudGetDoubleVerificationCodeHelp", nil)];
+        NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+        [ws openURL:url];
     }
     return YES;
 }
@@ -2116,6 +2112,22 @@
     [self.view setWantsLayer:YES];
     [self.view setFrameSize:superView.frame.size];
     [self.view addSubview:_trustView];
+    
+    IMBSoftWareInfo *softinfo = [IMBSoftWareInfo singleton];
+    if ([softinfo chooseLanguageType] == EnglishLanguage) {
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_english"]];
+    }else if ([softinfo chooseLanguageType] == JapaneseLanguage){
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_japan"]];
+    }else if ([softinfo chooseLanguageType] == FrenchLanguage){
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_French"]];
+    }else if ([softinfo chooseLanguageType] == GermanLanguage){
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_German"]];
+    }else if ([softinfo chooseLanguageType] == SpanishLanguage){
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_Spanish"]];
+    }else if ([softinfo chooseLanguageType] == ArabLanguage){
+        [_transImageView setImage:[StringHelper imageNamed:@"trust_arab"]];
+    }
+    
     _endRunloop = NO;
     int result = -1;
     [_trustView setFrame:NSMakeRect(superView.frame.origin.x + floor((superView.frame.size.width - _trustView.frame.size.width) / 2), superView.frame.size.height, _trustView.frame.size.width, _trustView.frame.size.height)];
@@ -4351,6 +4363,13 @@
     [_doubleVerificaTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips1", nil)];
     [_doubleVerificaTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
     
+    [_doubleVerificaFirstNum setStringValue:@""];
+    [_doubleVerificaSecondNum setStringValue:@""];
+    [_doubleVerificaThirdNum setStringValue:@""];
+    [_doubleVerificaFourthNum setStringValue:@""];
+    [_doubleVerificaFifthNum setStringValue:@""];
+    [_doubleVerificaSixthNum setStringValue:@""];
+    
     [_doubleVerificaSubTitle setHidden:YES];
     [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
     
@@ -4388,6 +4407,10 @@
     [_doubleVerificaSixthNum setCodeTag:6];
     [_doubleVerificaFirstNum becomeFirstResponder];
     
+    [_doubleVerificaSendCodeScrollView setHidden:YES];
+    [_doubleVerificaSendmsgScrollView setHidden:YES];
+    [_doubleVerificaHelpScrollView setHidden:YES];
+    [_doubleVerificaTextView setHidden:NO];
     [_doubleVerificaTextView setNormalString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil) WithLinkString:CustomLocalizedString(@"iCloudLogin_View_NotReceiveCode", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:12.0]];
     [_doubleVerificaTextView setDelegate:self];
     [_doubleVerificaTextView setSelectable:YES];
@@ -4426,6 +4449,40 @@
     [_doubleVerificaCancelBtn setTarget:self];
     [_doubleVerificaCancelBtn setAction:@selector(doubleVerificaCancelBtnOperation:)];
     [_doubleVerificaOkBtn setEnabled:YES];
+    
+    NSString *codeStr = [CustomLocalizedString(@"iCloudLogin_View_Resend", nil) stringByAppendingString:@" | "];
+    NSRect rect1 = [IMBHelper calcuTextBounds:codeStr fontSize:12];
+    NSString *msgStr = [CustomLocalizedString(@"iCloudLogin_View_SendByMessage", nil) stringByAppendingString:@" | "];
+    NSRect rect2 = [IMBHelper calcuTextBounds:msgStr fontSize:12];
+    NSString *helpStr = CustomLocalizedString(@"iCloudLogin_View_Help", nil);
+    NSRect rect3 = [IMBHelper calcuTextBounds:helpStr fontSize:12];
+    [_doubleVerificaSendCodeTextView setLinkStrIsFront:YES];
+    [_doubleVerificaSendmsgTextView setLinkStrIsFront:YES];
+    [_doubleVerificaHelpTextView setLinkStrIsFront:YES];
+    
+    [_doubleVerificaSendCodeTextView setNormalString:codeStr WithLinkString:CustomLocalizedString(@"iCloudLogin_View_Resend", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:12.0]];
+    [_doubleVerificaSendmsgTextView setNormalString:msgStr WithLinkString:CustomLocalizedString(@"iCloudLogin_View_SendByMessage", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:12.0]];
+    [_doubleVerificaHelpTextView setNormalString:helpStr WithLinkString:helpStr WithNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:12.0]];
+    
+    [_doubleVerificaSendCodeScrollView setFrame:NSMakeRect(_doubleVerificaScrollView.frame.origin.x, _doubleVerificaScrollView.frame.origin.y, rect1.size.width + 20, _doubleVerificaScrollView.frame.size.height)];
+    [_doubleVerificaSendmsgScrollView setFrame:NSMakeRect(_doubleVerificaSendCodeScrollView.frame.origin.x + rect1.size.width, _doubleVerificaScrollView.frame.origin.y, rect2.size.width + 20, _doubleVerificaScrollView.frame.size.height)];
+    [_doubleVerificaHelpScrollView setFrame:NSMakeRect(_doubleVerificaSendmsgScrollView.frame.origin.x + rect2.size.width, _doubleVerificaScrollView.frame.origin.y, rect3.size.width + 20, _doubleVerificaScrollView.frame.size.height)];
+    
+    [_doubleVerificaSendCodeTextView setDelegate:self];
+    [_doubleVerificaSendmsgTextView setDelegate:self];
+    [_doubleVerificaHelpTextView setDelegate:self];
+    [_doubleVerificaSendCodeTextView setNeedsDisplay:YES];
+    [_doubleVerificaSendmsgTextView setNeedsDisplay:YES];
+    [_doubleVerificaHelpTextView setNeedsDisplay:YES];
+}
+
+//显示sendCode、Text Me、Help的View
+- (void)showSendCodeMessageHelpView {
+    [_doubleVerificaTextView setHidden:YES];
+    [_doubleVerificaSendCodeScrollView setHidden:NO];
+    [_doubleVerificaSendmsgScrollView setHidden:NO];
+    [_doubleVerificaHelpScrollView setHidden:NO];
+
 }
 
 - (void)editDoubleVerificationCode:(NSNotification *)notification {
@@ -4446,53 +4503,94 @@
     }
 }
 
+- (void)deleteDoubleVerificationCode:(NSNotification *)notification {
+    NSDictionary *dic = notification.object;
+    int codeTag = [[dic objectForKey:@"codeTag"] intValue];
+    if (codeTag == 6) {
+        [_doubleVerificaFifthNum becomeFirstResponder];
+    } else if (codeTag == 5) {
+        [_doubleVerificaFourthNum becomeFirstResponder];
+    } else if (codeTag == 4) {
+        [_doubleVerificaThirdNum becomeFirstResponder];
+    } else if (codeTag == 3) {
+        [_doubleVerificaSecondNum becomeFirstResponder];
+    } else if (codeTag == 2) {
+        [_doubleVerificaFirstNum becomeFirstResponder];
+    } else if (codeTag == 1) {
+        return;
+    }
+}
+
 - (void)doubleVerificaOkBtnOperation:(id)sender {
     if ([StringHelper stringIsNilOrEmpty:_doubleVerificaFirstNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaSecondNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaThirdNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaFourthNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaFifthNum.stringValue] || [StringHelper stringIsNilOrEmpty:_doubleVerificaSixthNum.stringValue]) {
         return;
     }
+    [_doubleVerificaSubTitle setHidden:YES];
     [_doubleVerificaOkBtn setEnabled:NO];
-    long statusCode = 0;
-    NSString *sessiontoken = nil;
+    __block long statusCode = 0;
+    __block NSString *sessiontoken = nil;
     [_loadingBgView setHidden:NO];
-    [_doubleVerificaLoadingView setWantsLayer:YES];
-    [_doubleVerificaLoadingView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
-    [_doubleVerificaLoadingView setImage:[StringHelper imageNamed:@"registedLoading"]];
-    [_doubleVerificaLoadingView.layer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:-2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
     
+    _imageLayer = [[CALayer alloc] init];
+    _imageLayer.contents = [StringHelper imageNamed:@"registedLoading"];
+    [_imageLayer setAnchorPoint:CGPointMake(0.5, 0.5)];
+    [_imageLayer setFrame:CGRectMake(1 , 1 ,20,20)];
+    [_loadingBgView setWantsLayer:YES];
+    if (![_loadingBgView.layer.sublayers containsObject:_imageLayer]) {
+        [_loadingBgView.layer addSublayer:_imageLayer];
+    }
+    [_loadingBgView setBackgroundColor:[NSColor clearColor]];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = @(2*M_PI);
+    animation.toValue = 0;
+    animation.repeatCount = MAXFLOAT;
+    animation.duration = 2;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [_imageLayer addAnimation:animation forKey:@""];
+
     if ([_delegate respondsToSelector:@selector(verifiTwoStepAuthentication:)]) {
         NSString *str = [NSString stringWithFormat:@"%@%@%@%@%@%@",_doubleVerificaFirstNum.stringValue,_doubleVerificaSecondNum.stringValue,_doubleVerificaThirdNum.stringValue,_doubleVerificaFourthNum.stringValue,_doubleVerificaFifthNum.stringValue,_doubleVerificaSixthNum.stringValue];
-        NSDictionary *dic = [_delegate verifiTwoStepAuthentication:str];
-        if ([dic.allKeys containsObject:@"statusCode"]) {
-            statusCode = [[dic objectForKey:@"statusCode"] longValue];
-        }
-        if ([dic.allKeys containsObject:@"headerdic"]) {
-            NSDictionary *headerDic = [dic objectForKey:@"headerdic"];
-            if ([headerDic.allKeys containsObject:@"X-Apple-Session-Token"]) {
-                sessiontoken = [headerDic objectForKey:@"X-Apple-Session-Token"];
-            }
-        }
-        /*响应码为204 则表示安全码验证成功
-         401 长时间不输入验证码 导致会话失效 需要重新走登录流程
-         400 安全码验证失败
-         */
-        [_loadingBgView setHidden:YES];
-        if (statusCode == 204) {
-            [self unloaddoubleVerificaAlertView];
-            [_delegate loginiCloudWithSessiontoken:sessiontoken];
-        }else if (statusCode == 400) {
-            [_doubleVerificaSubTitle setHidden:NO];
-            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
-        }else if (statusCode == 401) {
-            [_doubleVerificaSubTitle setHidden:NO];
-            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
-        }else if (statusCode == 423) {
-            [_doubleVerificaSubTitle setHidden:NO];
-            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
-        }else {//重新走登录流程
-            [self unloaddoubleVerificaAlertView];
-            [_delegate loginIsSuccess:NO withAppleID:@""];
-        }
-        [_doubleVerificaOkBtn setEnabled:YES];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSDictionary *dic = [_delegate verifiTwoStepAuthentication:str];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([dic.allKeys containsObject:@"statusCode"]) {
+                    statusCode = [[dic objectForKey:@"statusCode"] longValue];
+                }
+                if ([dic.allKeys containsObject:@"headerdic"]) {
+                    NSDictionary *headerDic = [dic objectForKey:@"headerdic"];
+                    if ([headerDic.allKeys containsObject:@"X-Apple-Session-Token"]) {
+                        sessiontoken = [headerDic objectForKey:@"X-Apple-Session-Token"];
+                    }
+                }
+                /*响应码为204 则表示安全码验证成功
+                 401 长时间不输入验证码 导致会话失效 需要重新走登录流程
+                 400 安全码验证失败
+                 423 登录太频繁
+                 */
+                [_loadingBgView setHidden:YES];
+                if (statusCode == 204) {
+                    [self unloaddoubleVerificaAlertView];
+                    [_delegate loginiCloudWithSessiontoken:sessiontoken];
+                }else if (statusCode == 400) {
+                    [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
+                }else if (statusCode == 401) {
+                    [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
+                }else if (statusCode == 423) {
+                    [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
+                }else {//重新走登录流程
+                    [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
+//                    [self unloaddoubleVerificaAlertView];
+//                    [_delegate loginIsSuccess:NO withAppleID:@""];
+                }
+                [_doubleVerificaOkBtn setEnabled:YES];
+                [_imageLayer removeFromSuperlayer];
+                [_imageLayer release]; _imageLayer = nil;
+            });
+        });
     }
 }
 
@@ -4509,6 +4607,7 @@
         [_doubleVerificaView.layer addAnimation:[IMBAnimation moveY:0.3 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:_doubleVerificaView.frame.size.height] repeatCount:1] forKey:@"moveY"];
     } completionHandler:^{
         [_doubleVerificaView.layer removeAnimationForKey:@"moveY"];
+        [_doubleVerificaView removeFromSuperview];
         [_doubleVerificaView setFrame:NSMakeRect(ceil((NSMaxX(_mainView.bounds) - _doubleVerificaView.frame.size.width) / 2), NSMaxY(_mainView.bounds), _doubleVerificaView.frame.size.width, _doubleVerificaView.frame.size.height)];
         [self.view removeFromSuperview];
     }];

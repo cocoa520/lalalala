@@ -82,11 +82,7 @@
     _androidAlertViewController = [[IMBAndroidAlertViewController alloc] initWithNibName:@"IMBAndroidAlertViewController" bundle:nil];
     [_androidAlertViewController setDelegate:self];
     
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        [_bellImgView setHidden:YES];
-        [_roseProgressBgImageView setHidden:NO];
-        [_roseProgressBgImageView setImage:[StringHelper imageNamed:@"rose_progress_bg"]];
-    }else if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
+    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
         [_bellImgView setHidden:NO];
         [_bellImgView setImage:[StringHelper imageNamed:@"christmas_bell"]];
         [_bellImgView setFrameOrigin:NSMakePoint(340, _bellImgView.frame.origin.y)];
@@ -218,17 +214,17 @@
         if (_category == Category_Photo) {
             [(BoatAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"btn_iCloud_photoNew1"]];
         }else if (_category == Category_iBooks) {
-            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_books"]];
+            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_books1"]];
         }else if (_category == Category_Message) {
-            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_message"]];
+            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_message1"]];
         }else if (_category == Category_Calendar){
-            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_calendar"]];
+            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_calendar1"]];
         }else if (_category == Category_Bookmarks) {
             [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"btn_bookmarksnew1"]];
         }else if (_category == Category_Contacts){
-            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_contact"]];
+            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_contact1"]];
         }else if (_category == Category_CallHistory){
-            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_callhistory"]];
+            [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"toios_callhistory1"]];
         }else if (_category == Category_Reminder){
             [(CarAnimationView *)animationView setCategoryImage:[StringHelper imageNamed:@"btn_remindernew1"]];
         }else {

@@ -100,7 +100,7 @@
     FAQMenuItem.title = CustomLocalizedString(@"Menu_FAQ", nil);
     tologMenuItem.title = CustomLocalizedString(@"reques_menu_title", nil);
     
-    PFMoveToApplicationsFolderIfNecessary();
+//    PFMoveToApplicationsFolderIfNecessary();
     //连接服务器(后台守护进程)
 //    IMBSocketClient *socketClient = [IMBSocketClient singleton];
 //    if ([socketClient connectServer]) {

@@ -132,31 +132,32 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     switch (sender.tag) {
         case IMBToolBarViewEnumRefresh:
         {
-            [_delegate refresh];
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
+            [_delegate refresh:information];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageRefreshClickedNoti object:information];
         }
             break;
         case IMBToolBarViewEnumToMac:
         {
-            [_delegate toMac];
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToMacClickedNoti object:information];
+            [_delegate toMac:information];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToMacClickedNoti object:information];
         }
             break;
         case IMBToolBarViewEnumAddToDevice:
         {
-            [_delegate addItems];
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageAddToDeviceClickedNoti object:information];
+            [_delegate addToDevice:information];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageAddToDeviceClickedNoti object:information];
         }
             break;
         case IMBToolBarViewEnumDelete:
         {
-            [_delegate deleteItem];
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
+            [_delegate deleteItem:information];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageDeleteClickedNoti object:information];
         }
             break;
         case IMBToolBarViewEnumToDevice:
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
+            [_delegate toDevice:information];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
         }
             break;
             

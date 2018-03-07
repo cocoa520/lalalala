@@ -1,7 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/Mac/!svn/ver/1426/AnyTrans/AnyTrans5/AnyTrans5/Uitils
+/svn/Mac/!svn/ver/1517/AnyTrans/AnyTrans5/AnyTrans5/Uitils
+END
+IMBNotificationDefine.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1517/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBNotificationDefine.h
 END
 SystemHelper.m
 K 25
@@ -9,11 +15,11 @@ svn:wc:ra_dav:version-url
 V 73
 /svn/Mac/!svn/ver/1369/AnyTrans/AnyTrans5/AnyTrans5/Uitils/SystemHelper.m
 END
-IMBNotificationDefine.h
+IMBCommonEnum.h
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/1407/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBNotificationDefine.h
+V 71
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBCommonEnum.h
 END
 TempHelper.h
 K 25
@@ -21,23 +27,11 @@ svn:wc:ra_dav:version-url
 V 68
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/TempHelper.h
 END
-IMBCommonEnum.h
-K 25
-svn:wc:ra_dav:version-url
-V 71
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBCommonEnum.h
-END
 StringHelper.h
 K 25
 svn:wc:ra_dav:version-url
 V 70
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/StringHelper.h
-END
-IMBAnimation.h
-K 25
-svn:wc:ra_dav:version-url
-V 70
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBAnimation.h
 END
 IMBHelper.h
 K 25
@@ -45,11 +39,11 @@ svn:wc:ra_dav:version-url
 V 67
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBHelper.h
 END
-TempHelper.m
+IMBAnimation.h
 K 25
 svn:wc:ra_dav:version-url
-V 71
-/svn/Mac/!svn/ver/1426/AnyTrans/AnyTrans5/AnyTrans5/Uitils/TempHelper.m
+V 70
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBAnimation.h
 END
 IMBCommonEnum.m
 K 25
@@ -57,11 +51,11 @@ svn:wc:ra_dav:version-url
 V 71
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBCommonEnum.m
 END
-StringHelper.m
+TempHelper.m
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/Mac/!svn/ver/438/AnyTrans/AnyTrans5/AnyTrans5/Uitils/StringHelper.m
+V 71
+/svn/Mac/!svn/ver/1426/AnyTrans/AnyTrans5/AnyTrans5/Uitils/TempHelper.m
 END
 IMBExtractDeviceDBFiles.h
 K 25
@@ -69,17 +63,23 @@ svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBExtractDeviceDBFiles.h
 END
-IMBAnimation.m
+StringHelper.m
 K 25
 svn:wc:ra_dav:version-url
-V 70
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBAnimation.m
+V 72
+/svn/Mac/!svn/ver/438/AnyTrans/AnyTrans5/AnyTrans5/Uitils/StringHelper.m
 END
 IMBHelper.m
 K 25
 svn:wc:ra_dav:version-url
 V 67
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBHelper.m
+END
+IMBAnimation.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/Uitils/IMBAnimation.m
 END
 DateHelper.h
 K 25

@@ -118,51 +118,6 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self parseDownloadPlist];
     });
-    NSImageView *youtubeImageView = [_youTuBeView viewWithTag:1];
-    NSTextField *youtubeTextField = [_youTuBeView viewWithTag:2];
-    [youtubeImageView setImage:[StringHelper imageNamed:@"download_web_youtube"]];
-    [youtubeTextField setStringValue:CustomLocalizedString(@"DownLoadWebYoutube", nil)];
-    
-    NSImageView *bbcImageView = [_bbcView viewWithTag:1];
-    NSTextField *bbcTextField = [_bbcView viewWithTag:2];
-    [bbcImageView setImage:[StringHelper imageNamed:@"download_web_bbc"]];
-    [bbcTextField setStringValue:CustomLocalizedString(@"DownLoadWebBBC", nil)];
-    
-    NSImageView *foxnewsImageView = [_foxnewsBeView viewWithTag:1];
-    NSTextField *foxnewsTextField = [_foxnewsBeView viewWithTag:2];
-    [foxnewsImageView setImage:[StringHelper imageNamed:@"download_web_foxnews"]];
-    [foxnewsTextField setStringValue:CustomLocalizedString(@"DownLoadFoxnews", nil)];
-
-    
-    NSImageView *breakImageView = [_breakView viewWithTag:1];
-    NSTextField *breakTextField = [_breakView viewWithTag:2];
-    [breakImageView setImage:[StringHelper imageNamed:@"download_web_break"]];
-    [breakTextField setStringValue:CustomLocalizedString(@"DownLoadWebBreak", nil)];
-    
-    NSImageView *dailymotionImageView = [_dailymotionView viewWithTag:1];
-    NSTextField *dailymotionTextField = [_dailymotionView viewWithTag:2];
-    [dailymotionImageView setImage:[StringHelper imageNamed:@"download_web_dailymotion"]];
-    [dailymotionTextField setStringValue:CustomLocalizedString(@"DownLoadWebDailymotion", nil)];
-    
-    NSImageView *metacafeImageView = [_metacafeView viewWithTag:1];
-    NSTextField *metacafeTextField = [_metacafeView viewWithTag:2];
-    [metacafeImageView setImage:[StringHelper imageNamed:@"download_web_Metacafe"]];
-    [metacafeTextField setStringValue:CustomLocalizedString(@"DownLoadWebMetacafe", nil)];
-    
-    NSImageView *vimeoImageView = [_vimeoView viewWithTag:1];
-    NSTextField *vimeoTextField = [_vimeoView viewWithTag:2];
-    [vimeoImageView setImage:[StringHelper imageNamed:@"download_web_vimeo"]];
-    [vimeoTextField setStringValue:CustomLocalizedString(@"DownLoadWebVimeo", nil)];
-    
-    NSImageView *VineImageView = [_vineView viewWithTag:1];
-    NSTextField *VineTextField = [_vineView viewWithTag:2];
-    [VineImageView setImage:[StringHelper imageNamed:@"download_web_vine"]];
-    [VineTextField setStringValue:CustomLocalizedString(@"DownLoadWebvine", nil)];
-    
-    NSImageView *instagramImageView = [_instagramView viewWithTag:1];
-    NSTextField *instagramTextField = [_instagramView viewWithTag:2];
-    [instagramImageView setImage:[StringHelper imageNamed:@"download_web_instagram"]];
-    [instagramTextField setStringValue:CustomLocalizedString(@"DownLoadWebinstagram", nil)];
     
     NSString *str = CustomLocalizedString(@"MediaDownloader_Default_Title", nil);
     NSMutableAttributedString *as = [[NSMutableAttributedString alloc]initWithString:str];
@@ -436,42 +391,9 @@
 
 - (IBAction)clickUrl:(id)sender {
     NSString *url = CustomLocalizedString(@"DownLoadWebYoutubeURL", nil);
-    NSView *superView = [sender superview];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
-    }
-    if (superView == _youTuBeView) {
-        url = CustomLocalizedString(@"DownLoadWebYoutubeURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebYoutube", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _bbcView){
-        url = CustomLocalizedString(@"DownLoadWebBBCURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebBBC", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _breakView){
-        url = CustomLocalizedString(@"DownLoadWebBreakURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebBreak", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _dailymotionView){
-        url = CustomLocalizedString(@"DownLoadWebDailymotionURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebDailymotion", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _metacafeView){
-        url = CustomLocalizedString(@"DownLoadWebMetacafeURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebMetacafe", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _vimeoView){
-        url = CustomLocalizedString(@"DownLoadWebVimeoURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebVimeo", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _vineView){
-        url = CustomLocalizedString(@"DownLoadWebvineURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebvine", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _instagramView){
-        url = CustomLocalizedString(@"DownLoadWebinstagramURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadWebinstagram", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (superView == _foxnewsBeView){
-        url = CustomLocalizedString(@"DownLoadFoxnewsURL", nil);
-        [ATTracker event:Video_Download action:ActionNone actionParams:CustomLocalizedString(@"DownLoadFoxnewsURL", nil) label:Click transferCount:0 screenView:@"Analyze View" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }
-    if (dimensionDict) {
-        [dimensionDict release];
-        dimensionDict = nil;
     }
     NSURL *weburl = [NSURL URLWithString:url];
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];
@@ -1167,30 +1089,6 @@
     [as2 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, as2.length)];
     [_downloadsubTitle setAttributedStringValue:as2];
     [_downloadButton setVariableWidth:YES];
-
-    NSTextField *youtubeTextField = [_youTuBeView viewWithTag:2];
-    [youtubeTextField setStringValue:CustomLocalizedString(@"DownLoadWebYoutube", nil)];
-    
-    NSTextField *bbcTextField = [_bbcView viewWithTag:2];
-    [bbcTextField setStringValue:CustomLocalizedString(@"DownLoadWebBBC", nil)];
-    
-    NSTextField *breakTextField = [_breakView viewWithTag:2];
-    [breakTextField setStringValue:CustomLocalizedString(@"DownLoadWebBreak", nil)];
-    
-    NSTextField *dailymotionTextField = [_dailymotionView viewWithTag:2];
-    [dailymotionTextField setStringValue:CustomLocalizedString(@"DownLoadWebDailymotion", nil)];
-    
-    NSTextField *metacafeTextField = [_metacafeView viewWithTag:2];
-    [metacafeTextField setStringValue:CustomLocalizedString(@"DownLoadWebMetacafe", nil)];
-    
-    NSTextField *vimeoTextField = [_vimeoView viewWithTag:2];
-    [vimeoTextField setStringValue:CustomLocalizedString(@"DownLoadWebVimeo", nil)];
-    
-    NSTextField *VineTextField = [_vineView viewWithTag:2];
-    [VineTextField setStringValue:CustomLocalizedString(@"DownLoadWebvine", nil)];
-    
-    NSTextField *instagramTextField = [_instagramView viewWithTag:2];
-    [instagramTextField setStringValue:CustomLocalizedString(@"DownLoadWebinstagram", nil)];
 
      NSString *path = NSHomeDirectory();
     for (NSMenuItem *item in _popUpButton.itemArray) {

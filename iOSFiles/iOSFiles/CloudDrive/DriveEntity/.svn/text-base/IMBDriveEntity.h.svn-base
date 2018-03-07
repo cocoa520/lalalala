@@ -22,7 +22,12 @@
     int _childCount;
     CheckStateEnum _checkState;
     NSImage  *_image;
+    NSString *_docwsid;
+    NSString *_zone;
+    NSString *_etag;
 }
+@property (nonatomic, retain) NSString *etag;
+@property (nonatomic, retain) NSString *docwsid;
 @property (nonatomic, retain) NSString *fileLoadURL;
 @property (nonatomic, retain) NSString *createdDateString;
 @property (nonatomic, retain) NSString *lastModifiedDateString;
@@ -35,4 +40,5 @@
 @property (nonatomic, assign) int childCount;
 @property(nonatomic, assign)CheckStateEnum checkState;
 @property(nonatomic,retain)NSImage  *image;
+@property (nonatomic, retain) NSString *zone;
 @end

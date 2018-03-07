@@ -3822,8 +3822,14 @@
                 return;
             }
         }
+        
+        //iOS设备正在加载数据
+        if (array.count ==1 && baseInfoArr.count == 0) {
+            [self showAlertText:CustomLocalizedString(@"MSG_Loading_devicedata", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
+            return;
+        }
       
-        if (baseInfoArr.count == 0) {
+        if (baseInfoArr.count == 0 && array.count == 0) {
             [self showAlertText:CustomLocalizedString(@"android_toDevices_NoIOSDeviceTips", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
             return;
         }else if (baseInfoArr.count == 1) {

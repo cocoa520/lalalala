@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 70
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar
+V 73
+/svn/Mac/!svn/ver/1513/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar
 END
 tool_add_normal.png
 K 25
@@ -93,29 +93,29 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_toitunes_normal.png
 END
-tool_delete_normal@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_delete_normal@2x.png
-END
 tool_todevice_normal@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_todevice_normal@2x.png
 END
-tool_setting_normal.png
+tool_delete_normal@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_setting_normal.png
+V 96
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_delete_normal@2x.png
 END
 tool_tomac_normal@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_tomac_normal@2x.png
+END
+tool_setting_normal.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_setting_normal.png
 END
 tool_backup_normal@2x.png
 K 25
@@ -135,23 +135,17 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item1.png
 END
-tool_exit_normal@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_exit_normal@2x.png
-END
 add_item2.png
 K 25
 svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item2.png
 END
-tool_import_normal@2x.png
+tool_exit_normal@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_import_normal@2x.png
+V 94
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_exit_normal@2x.png
 END
 add_item3.png
 K 25
@@ -159,11 +153,11 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item3.png
 END
-add_item4.png
+tool_import_normal@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item4.png
+V 96
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/tool_import_normal@2x.png
 END
 tool_editor_normal.png
 K 25
@@ -200,12 +194,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item2@2x.png
-END
-add_item4@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar/add_item4@2x.png
 END
 tool_back_normal.png
 K 25

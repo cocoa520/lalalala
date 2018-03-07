@@ -258,7 +258,7 @@
     int quota = [self allowActiveCount:ks->quota];
     
     NSString *machineCode = [[IMBHWInfo singleton] platformSerialNumber];
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:license, @"licence", [NSNumber numberWithInt:quota], @"allowactivecount", [NSNumber numberWithInt:ks->activiate], @"activatetype", [NSNumber numberWithInt:ks->license], @"licensetype", endTimeStr, @"allowlastactivedate", productVersionStr, @"productversion", [NSNumber numberWithInt:ks->duration], @"duedate", machineCode, @"machinecode", [NSNumber numberWithBool:timeLimitation], @"timelimitation", [NSNumber numberWithBool:versionlimitation], @"versionlimitation", dateStr, @"localtime", @"AnyTrans", @"productname", @"Family", @"producttype", @"Mac", @"runtime", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:license, @"licence", [NSNumber numberWithInt:quota], @"allowactivecount", [NSNumber numberWithInt:ks->activiate], @"activatetype", [NSNumber numberWithInt:ks->license], @"licensetype", endTimeStr, @"allowlastactivedate", productVersionStr, @"productversion", [NSNumber numberWithInt:ks->duration], @"duedate", machineCode, @"machinecode", [NSNumber numberWithBool:timeLimitation], @"timelimitation", [NSNumber numberWithBool:versionlimitation], @"versionlimitation", dateStr, @"localtime", @"iOSFiles", @"productname", @"Family", @"producttype", @"Mac", @"runtime", nil];
     NSString *str = [TempHelper dictionaryToJson:dic];
     //验证注册码
     NSString *valStr = [self getHashByWebservice:url nameSpace:nameSpace methodName:@"Activate_lience" sha1:str sha2:nil];

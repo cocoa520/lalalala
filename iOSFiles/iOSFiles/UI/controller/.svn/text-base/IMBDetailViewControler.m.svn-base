@@ -59,7 +59,7 @@
 @implementation IMBDetailViewControler
 
 @synthesize folderModel = _folderModel;
-@synthesize iPod = _iPod;
+//@synthesize iPod = _iPod;
 
 
 static CGFloat const rowH = 40.0f;
@@ -84,6 +84,7 @@ static CGFloat const labelY = 10.0f;
     _rootBox = objc_getAssociatedObject(_iPod, &kIMBDevicePageRootBoxKey);
     _toolMenuView = objc_getAssociatedObject(_iPod, &kIMBDevicePageToolBarViewKey);
     
+    _toolMenuView.delegate = self;
     _selectedIndexes = nil;
     _scrollView.hasHorizontalScroller = NO;
     
@@ -172,28 +173,32 @@ static CGFloat const labelY = 10.0f;
 
 #pragma mark -- 通知
 - (void)addNotis {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshClicked:) name:IMBDevicePageRefreshClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMacClicked:) name:IMBDevicePageToMacClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToDeviceClicked:) name:IMBDevicePageAddToDeviceClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteClicked:) name:IMBDevicePageDeleteClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toDeviceClicked:) name:IMBDevicePageToDeviceClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshClicked:) name:IMBDevicePageRefreshClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toMacClicked:) name:IMBDevicePageToMacClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addToDeviceClicked:) name:IMBDevicePageAddToDeviceClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteClicked:) name:IMBDevicePageDeleteClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toDeviceClicked:) name:IMBDevicePageToDeviceClickedNoti object:nil];
     
 }
 
 - (void)removeNotis {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToMacClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageAddToDeviceClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageDeleteClickedNoti object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToDeviceClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageRefreshClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToMacClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageAddToDeviceClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageDeleteClickedNoti object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBDevicePageToDeviceClickedNoti object:nil];
 }
-
-- (void)refreshClicked:(NSNotification *)noti {
-    IMBInformation *information = [noti object];
+- (void)refresh:(IMBInformation *)information {
     if (![self canContnue:information]) return;
     
     [self refreshWithInfo:information];
 }
+//- (void)refreshClicked:(NSNotification *)noti {
+//    IMBInformation *information = [noti object];
+//    if (![self canContnue:information]) return;
+//    
+//    [self refreshWithInfo:information];
+//}
 
 - (void)refreshWithInfo:(IMBInformation *)information {
     if (_folderModel) {
@@ -401,9 +406,7 @@ static CGFloat const labelY = 10.0f;
     
 }
 
-
-- (void)toMacClicked:(NSNotification *)noti {
-    IMBInformation *information = [noti object];
+- (void)toMac:(IMBInformation *)information {
     if (![self canContnue:information]) return;
     
     _isToMac = YES;
@@ -456,16 +459,71 @@ static CGFloat const labelY = 10.0f;
         default:
             break;
     }
-    
-    
-
-    
 }
+//- (void)toMacClicked:(NSNotification *)noti {
+//    IMBInformation *information = [noti object];
+//    if (![self canContnue:information]) return;
+//    
+//    _isToMac = YES;
+//    switch (_folderModel.idx) {
+//        case IMBDevicePageWindowFolderEnumPhotoStream:
+//        {
+//            _category = Category_PhotoStream;
+//            [self toMacSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+//        {
+//            _category = Category_PhotoLibrary;
+//            [self toMacSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+//        {
+//            _category = Category_CameraRoll;
+//            [self toMacSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumBook:
+//        {
+//            _category = Category_iBooks;
+//            [self toMacSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumMedia:
+//        {
+//            _category = Category_Music;
+//            [self toMacSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumApps:
+//        {
+//            _category = Category_Applications;
+//            [self toMacSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumVideo:
+//        {
+//            _category = Category_Movies;
+//            [self toMacSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    
+//
+//    
+//}
 
 - (void)toMacSettingsWithInformation:(IMBInformation *)information {
     if (!_selectedIndexes || _selectedIndexes.count == 0) {
         NSAlert *alert = [NSAlert alertWithMessageText:@"Please select item" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select item"];
-        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             //            if (returnCode == 1) {
             //                IMBFLog(@"clicked OK button");
             //            }
@@ -474,7 +532,7 @@ static CGFloat const labelY = 10.0f;
         if (_category == Category_Applications) {
             if ([_iPod.deviceInfo.getDeviceFloatVersionNumber isVersionMajorEqual:@"8.3"]) {
                 NSAlert *alert = [NSAlert alertWithMessageText:@"Warning" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Your device is running iOS 8.3 or higher version, which has disabled this feature in iOS Files."];
-                [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                     if (returnCode == 1) {
                         
                     }
@@ -487,7 +545,7 @@ static CGFloat const labelY = 10.0f;
         [openPanel setCanChooseDirectories:YES];
         [openPanel setCanCreateDirectories:YES];
         //                [openPanel setAllowsOtherFileTypes:NO];
-        [openPanel beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSInteger result) {
+        [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
             if (NSModalResponseOK == result) {
                 NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
                 [opQueue addOperationWithBlock:^{
@@ -571,8 +629,7 @@ static CGFloat const labelY = 10.0f;
     }
 }
 
-- (void)addToDeviceClicked:(NSNotification *)noti {
-    IMBInformation *information = [noti object];
+- (void)addToDevice:(IMBInformation *)information {
     if (![self canContnue:information]) return;
     
     _isToMac = NO;
@@ -615,8 +672,54 @@ static CGFloat const labelY = 10.0f;
         default:
             break;
     }
-    
+
 }
+//- (void)addToDeviceClicked:(NSNotification *)noti {
+//    IMBInformation *information = [noti object];
+//    if (![self canContnue:information]) return;
+//    
+//    _isToMac = NO;
+//    switch (_folderModel.idx) {
+//        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+//        {
+//            _category = Category_PhotoLibrary;
+//            [self addToDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumBook:
+//        {
+//            _category = Category_iBooks;
+//            [self addToDeviceSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumMedia:
+//        {
+//            _category = Category_Music;
+//            [self addToDeviceSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumApps:
+//        {
+//            _category = Category_Applications;
+//            [self addToDeviceSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumVideo:
+//        {
+//            _category = Category_Movies;
+//            [self addToDeviceSettingsWithInformation:information];
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//}
 
 - (void)addToDeviceSettingsWithInformation:(IMBInformation *)information {
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
@@ -655,7 +758,7 @@ static CGFloat const labelY = 10.0f;
             break;
     }
     
-    [openPanel beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSInteger result) {
+    [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
         if (NSModalResponseOK == result) {
             
             NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
@@ -703,8 +806,7 @@ static CGFloat const labelY = 10.0f;
     }];
 }
 
-- (void)deleteClicked:(NSNotification *)noti {
-    IMBInformation *information = [noti object];
+- (void)deleteItem:(IMBInformation *)information {
     if (![self canContnue:information]) return;
     
     _isToMac = NO;
@@ -750,18 +852,67 @@ static CGFloat const labelY = 10.0f;
         default:
             break;
     }
-    
+
 }
+//- (void)deleteClicked:(NSNotification *)noti {
+//    IMBInformation *information = [noti object];
+//    if (![self canContnue:information]) return;
+//    
+//    _isToMac = NO;
+//    switch (_folderModel.idx) {
+//        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+//        {
+//            _category = Category_PhotoLibrary;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+//            
+//        {
+//            _category = Category_CameraRoll;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumBook:
+//        {
+//            _category = Category_iBooks;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumApps:
+//        {
+//            _category = Category_Applications;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumMedia:
+//        {
+//            _category = Category_Music;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumVideo:
+//        {
+//            _category = Category_Movies;
+//            [self deleteSettingsWithInformation:[information.ipod retain]];
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//}
 
 - (void)deleteSettingsWithInformation:(IMBiPod *)iPod {
     if (!_selectedIndexes || _selectedIndexes.count == 0) {
         NSAlert *alert = [NSAlert alertWithMessageText:@"Please select item" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select item"];
-        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             
         }];
     }else {
         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Are U Sure To Delete?"];
-        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == 1) {
                 IMBFLog(@"clicked OK button");
                 NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
@@ -892,11 +1043,17 @@ static CGFloat const labelY = 10.0f;
     
 }
 
-- (void)toDeviceClicked:(NSNotification *)noti {
-    IMBInformation *information = [noti object];
+- (void)toDevice:(IMBInformation *)information {
     if (![self canContnue:information]) return;
     
-    _isToMac = NO;
+    _isToMac = YES;
+    if (!_selectedIndexes || _selectedIndexes.count == 0) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Please select item" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select item"];
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+            
+        }];
+        return;
+    }
     switch (_folderModel.idx) {
         case IMBDevicePageWindowFolderEnumPhotoStream:
         {
@@ -944,7 +1101,61 @@ static CGFloat const labelY = 10.0f;
         default:
             break;
     }
+
 }
+//- (void)toDeviceClicked:(NSNotification *)noti {
+//    IMBInformation *information = [noti object];
+//    if (![self canContnue:information]) return;
+//    
+//    _isToMac = NO;
+//    switch (_folderModel.idx) {
+//        case IMBDevicePageWindowFolderEnumPhotoStream:
+//        {
+//            _category = Category_PhotoStream;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumPhotoLibrary:
+//        {
+//            _category = Category_PhotoLibrary;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
+//        {
+//            _category = Category_CameraRoll;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumBook:
+//        {
+//            _category = Category_iBooks;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumApps:
+//        {
+//            _category = Category_Applications;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumMedia:
+//        {
+//            _category = Category_Music;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//        case IMBDevicePageWindowFolderEnumVideo:
+//        {
+//            _category = Category_Movies;
+//            [self toDeviceSettingsWithInformation:information];
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 - (void)toDeviceSettingsWithInformation:(IMBInformation *)information {
     IMBDeviceConnection *conn = [IMBDeviceConnection singleton];
@@ -970,12 +1181,15 @@ static CGFloat const labelY = 10.0f;
                         IMBPhotoEntity *pe = [_folderModel.subPhotoArray objectAtIndex:idx];
                         [selectAry addObject:pe];
                     }];
-                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
-                    [_baseTransfer startTransfer];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+                        _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                        [_baseTransfer startTransfer];
+                    });
+                    
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
-                        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                             
                         }];
                     });
@@ -987,17 +1201,23 @@ static CGFloat const labelY = 10.0f;
             {
                 if (desIpod.bookLoadFinished) {
                     [_selectedIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                        IMBBookEntity *be = [_folderModel.subPhotoArray objectAtIndex:idx];
+                        IMBBookEntity *be = [_folderModel.booksArray objectAtIndex:idx];
+//                        be.path = [NSString stringWithFormat:@"%@.pdf",be.bookName];
                         [selectAry addObject:be];
                     }];
-                    _baseTransfer = [[IMBBookToDevice alloc] initWithSrcIpod:information.ipod desIpod:desIpod bookList:selectAry Delegate:self];
-                    if ([(IMBBookToDevice *)_baseTransfer prepareData]) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+                        _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
                         [_baseTransfer startTransfer];
-                    }
+//                        _baseTransfer = [[IMBBookToDevice alloc] initWithSrcIpod:information.ipod desIpod:desIpod bookList:selectAry Delegate:self];
+//                        if ([(IMBBookToDevice *)_baseTransfer prepareData]) {
+//                            [_baseTransfer startTransfer];
+//                        }
+                    });
+                    
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
-                        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                             
                         }];
                     });
@@ -1013,12 +1233,15 @@ static CGFloat const labelY = 10.0f;
                         IMBAppEntity *be = [_folderModel.appsArray objectAtIndex:idx];
                         [selectAry addObject:be];
                     }];
-                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
-                    [_baseTransfer startTransfer];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+                        _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                        [_baseTransfer startTransfer];
+                    });
+                    
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
-                        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                             
                         }];
                     });
@@ -1034,12 +1257,15 @@ static CGFloat const labelY = 10.0f;
                         IMBTrack *track = [_folderModel.trackArray objectAtIndex:idx];
                         [selectAry addObject:track];
                     }];
-                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
-                    [_baseTransfer startTransfer];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+                        _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                        [_baseTransfer startTransfer];
+                    });
+                    
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
-                        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                             
                         }];
                     });
@@ -1055,11 +1281,15 @@ static CGFloat const labelY = 10.0f;
                         IMBTrack *track = [_folderModel.trackArray objectAtIndex:idx];
                         [selectAry addObject:track];
                     }];
-                    _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+                        _baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                        [_baseTransfer startTransfer];
+                    });
+                    
                 }else {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
-                        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                             
                         }];
                     });
@@ -1254,6 +1484,7 @@ static CGFloat const labelY = 10.0f;
         case IMBDevicePageWindowFolderEnumPhotoCameraRoll:
         case IMBDevicePageWindowFolderEnumBook:
         case IMBDevicePageWindowFolderEnumMedia:
+        case IMBDevicePageWindowFolderEnumVideo:
         case IMBDevicePageWindowFolderEnumApps:
         {
             _selectedIndexes = [proposedSelectionIndexes retain];
@@ -1495,7 +1726,7 @@ static CGFloat const labelY = 10.0f;
         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSAlert *alert = [NSAlert alertWithMessageText:@"Transfer Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Transfer Error"];
-            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                 
             }];
         });
@@ -1519,11 +1750,12 @@ static CGFloat const labelY = 10.0f;
 }
 
 - (void)setCompletionWithSuccessCount:(int)successCount totalCount:(int)totalCount title:(NSString *)title {
+    if (![[IMBDeviceConnection singleton] getiPodByKey:_iPod.uniqueKey]) return;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"SuccessCount/TotalCount:%d/%d,we're going to refresh again",successCount,totalCount];
-            [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
                 if (returnCode == 1 && !_isToMac) {
                     IMBInformation *info = [[IMBInformation alloc] initWithiPod:_iPod];
                     [self refreshWithInfo:info];

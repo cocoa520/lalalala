@@ -994,6 +994,8 @@
 "Main_Window_Closing_Merge_Tips" = "جارٍ  دمج بياناتك. هل أنت متأكد من رغبتك في إغلاق برنامج AnyTrans؟";
 "Main_Window_Closing_Clone_Tips" = "جارٍ  تكرار بياناتك. هل أنت متأكد من رغبك في إغلاق برنامج AnyTrans؟";
 "Recovery_View_Tips1" = "يرجى إيقاف تشغيل خيار \"العثور على الـ iPhone/iPad/iPod \" على جهازك.";
+
+"iCloud_Double_verification_guide" = "لديك أسئلة؟ اقرأ هذا الدليل >";
 "iCloud_DoubleCheck_Error" = "فشلت المصادقة! إذا كنت تستخدم مصادقة ثنائية للـ iCloud، يرجى إيقاف تشغيله وإعادة المحاولة.";
 "tip_id_1" = "تمرير إلى لأعلى ولأسفل \n للتبديل.";
 "tip_id_2" = "حسنا، أعرف";
@@ -1766,3 +1768,7 @@
 "iCloudLogin_View_codeTips3" = "فشل المصادقة.";
 "iCloudLogin_SecurityView_codeTips" = "قمت بتشغيل المصادقة ذات العاملين. أدخل رمز التحقق على جهازك للاستمرار.";
 "iCloudLogin_View_NotReceiveCode" = "لم أتلق رمز تحقق على جهازي. ";
+"iCloudLogin_View_Resend" = "إعادة إرسال الرمز";
+"iCloudLogin_View_SendByMessage" = "راسلني";
+"iCloudLogin_View_Help" = "المساعدة؟";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

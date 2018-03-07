@@ -8,17 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "OneDrive.h"
-@interface IMBDriveManage : NSObject <BaseDriveDelegate>
+#import "IMBDriveBaseManage.h"
+@interface IMBDriveManage : IMBDriveBaseManage <BaseDriveDelegate>
 {
-    NSMutableArray *_driveDataAry;
     OneDrive *_oneDrive;
-    NSString *_userID;
-    id _deivceDelegate;
-    id _driveWindowDelegate;
 }
-@property (nonatomic,retain,nullable) NSMutableArray* driveDataAry;
-@property (nonatomic,retain,nullable) NSString *userID;
-@property (nonatomic,assign,nullable) id driveWindowDelegate;
+
+
 /**
  *  初始化
  *
@@ -29,11 +25,11 @@
  *  @param fail      失败回调block
  */
 - (nullable id)initWithUserID:(nullable NSString *)userID withDelegate:(nullable id)delegate;
-- (void)recursiveDirectoryContentsDics:(nullable NSString *)folerID;
-- (void)deleteDriveItem:(nullable NSMutableArray *) deleteItemAry;
-//单个文件下载
-- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
-//上传
-- (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
+//- (void)recursiveDirectoryContentsDics:(nullable NSString *)folerID;
+//- (void)deleteDriveItem:(nullable NSMutableArray *) deleteItemAry;
+////单个文件下载
+//- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
+////上传
+//- (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
 
 @end

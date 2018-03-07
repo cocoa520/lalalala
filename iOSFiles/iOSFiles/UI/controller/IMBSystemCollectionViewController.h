@@ -60,9 +60,15 @@
 @property (nonatomic,retain)NSString *currentDevicePath;
 
 - (void)refresh;
-- (void)addItems;
+- (void)addToDevice;
 - (void)toMac;
 - (void)setDeleteCurItems:(int)curItem;
+
+- (void)refresh:(IMBInformation *)information;
+- (void)toMac:(IMBInformation *)information;
+- (void)addToDevice:(IMBInformation *)information;
+- (void)deleteItem:(IMBInformation *)information;
+- (void)toDevice:(IMBInformation *)information;
 - (id)initWithIpod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)category withDelegate:(id)delegate;
 @end
 

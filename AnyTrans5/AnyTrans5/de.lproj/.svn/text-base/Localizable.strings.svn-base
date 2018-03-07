@@ -1816,4 +1816,8 @@
 "iCloudLogin_View_codeTips2" = "Überprüfungscode ungültig.";
 "iCloudLogin_View_codeTips3" = "Authentifizierung fehlgeschlagen.";
 "iCloudLogin_SecurityView_codeTips" = "Sie haben die Zwei-Faktor-Authentifizierung aktiviert. Bitte geben Sie den Überprüfungscode, der automatisch auf Ihr iPhone angezeigt wird.";
-"iCloudLogin_View_NotReceiveCode" = "Kein Überprüfungscode auf meinem Gerät angezeigt wird.";
+"iCloudLogin_View_NotReceiveCode" = "Kein Überprüfungscode?";
+"iCloudLogin_View_Resend" = "Code resenden";
+"iCloudLogin_View_SendByMessage" = "Textnachricht erhalten";
+"iCloudLogin_View_Help" = "Hilfe";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

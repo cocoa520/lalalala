@@ -985,7 +985,7 @@
 
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml"; //long add
 "update_url_2" = "anytrans6.xml";
-"icloud_guide" = "https://www.imobie.jp/guide/anytrans/desactiver-verification-en-deux-etapes-icloud.htm";
+"icloud_guide" = "https://www.imobie.jp/guide/anytrans/how-to-turn-off-two-step-verification-in-icloud.htm";
 "anytrans_guide" = "https://www.imobie.jp/guide/anytrans/get-started.htm";
 
 "MSG_AddData_Tips" = "転送スピードを快適に保つには、転送する項目を1000個以下にしてください。";
@@ -1701,8 +1701,12 @@
 "AriBackup_wifi_guide_3" = "ステップ 3：ネットワーク名とパスワードを入力 > セキュリティはWPA2を選択 > 「OK」をクリック";
 "AriBackup_wifi_guide_4" = "ステップ 4：「インターネット共有」のチェックボックスにチェックを入れる > 「開始」をクリック";
 
-"iCloudLogin_View_codeTips1" = "続行するには認証コードを入力してください。";
-"iCloudLogin_View_codeTips2" = "無効な認証コード";
+"iCloudLogin_View_codeTips1" = "続行するには確認コードを入力してください。";
+"iCloudLogin_View_codeTips2" = "無効な確認コード";
 "iCloudLogin_View_codeTips3" = "認証失敗";
-"iCloudLogin_SecurityView_codeTips" = "Apple IDの2 ファクタ認証が有効になっています。続行するには、お使いのデバイスに表示されている認証コードを入力してください。";
-"iCloudLogin_View_NotReceiveCode" = "デバイスに認証コードが表示されていません。";
+"iCloudLogin_SecurityView_codeTips" = "Apple IDの2 ファクタ認証が有効になっています。続行するには、お使いのデバイスに表示されている確認コードを入力してください。";
+"iCloudLogin_View_NotReceiveCode" = "デバイスに確認コードが表示されていません。";
+"iCloudLogin_View_Resend" = "コードを再送";
+"iCloudLogin_View_SendByMessage" = "メッセージで送信";
+"iCloudLogin_View_Help" = "ヘルプ";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

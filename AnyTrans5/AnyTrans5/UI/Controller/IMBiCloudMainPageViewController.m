@@ -36,6 +36,8 @@
 @implementation IMBiCloudMainPageViewController
 @synthesize isFail = _isFail;
 @synthesize popUpButton = _popUpButton;
+@synthesize hasTwoStepAuth = _hasTwoStepAuth;
+
 - (id)initWithClient:(IMBiCloudManager *)iCloudManager withDelegate:(id)delegate {
     if (self = [super init]) {
         _iCloudManager = [iCloudManager retain];
@@ -795,7 +797,13 @@
                 viewController = [[IMBiCloudPhotoVideoViewController alloc] initWithiCloudManager:_iCloudManager withDelegate:self withiCloudView:YES withCategory:Category_ContinuousShooting];
                 [(IMBiCloudPhotoVideoViewController *)viewController repToolBarView:_toolBar];
             }else if (categoryEnum == Category_iCloudBackup){
-                viewController = [[IMBiCloudBackUpViewController alloc]initWithClient:nil withDownloadComplete:NO withDelegate:self withIpod:nil with:@"IMBiCloudBackUpViewController" withappleId:[_iCloudManager.netClient loginInfo]];
+                if (_hasTwoStepAuth) {
+                    [self setShowTopLineView:NO];
+                    _alertViewController.isTwoICloud = YES;
+                    [self showAlertText:CustomLocalizedString(@"iCloud_DoubleCheck_Error", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
+                }else {
+                    viewController = [[IMBiCloudBackUpViewController alloc]initWithClient:nil withDownloadComplete:NO withDelegate:self withIpod:nil with:@"IMBiCloudBackUpViewController" withappleId:[_iCloudManager.netClient loginInfo]];
+                }
 //                [(IMBiCloudBackUpViewController *)viewController repToolBarView:_toolBar];
             }else if (categoryEnum == Category_iCloudDriver){
                 if (isViewDisplay) {

@@ -67,19 +67,11 @@
     [_promptTextField setAttributedStringValue:as2];
     [self.view setWantsLayer:YES];
     [self.view.layer setCornerRadius:5];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        NSRect frame =  _noconnectView.frame;
-        frame.origin.y = self.view.frame.origin.y ;
-        frame.size.width = self.view.frame.size.width;
-        _noconnectView.frame = frame;
-        [_nonectimageView1.cell setImageAlignment:NSImageAlignBottom];
-    }else {
-        NSRect frame =  _noconnectView.frame;
-        frame.origin.y = self.view.frame.origin.y + 5;
-        frame.size.width = self.view.frame.size.width;
-        _noconnectView.frame = frame;
-        [_nonectimageView1.cell setImageAlignment: NSImageAlignCenter];
-    }
+    NSRect frame =  _noconnectView.frame;
+    frame.origin.y = self.view.frame.origin.y + 5;
+    frame.size.width = self.view.frame.size.width;
+    _noconnectView.frame = frame;
+    [_nonectimageView1.cell setImageAlignment: NSImageAlignCenter];
     [_noconnectView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMaxYMargin|NSViewWidthSizable|NSViewHeightSizable];
 }
 
@@ -150,19 +142,11 @@
     [_nonectimageView1 setImage:[StringHelper imageNamed:@"noconnect_bg"]];
     [self.view setWantsLayer:YES];
     [self.view.layer setCornerRadius:5];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        NSRect frame =  _noconnectView.frame;
-        frame.origin.y = self.view.frame.origin.y ;
-        frame.size.width = self.view.frame.size.width;
-        _noconnectView.frame = frame;
-        [_nonectimageView1.cell setImageAlignment:NSImageAlignBottom];
-    }else {
-        NSRect frame =  _noconnectView.frame;
-        frame.origin.y = self.view.frame.origin.y + 5;
-        frame.size.width = self.view.frame.size.width;
-        _noconnectView.frame = frame;
-        [_nonectimageView1.cell setImageAlignment: NSImageAlignCenter];
-    }
+    NSRect frame =  _noconnectView.frame;
+    frame.origin.y = self.view.frame.origin.y + 5;
+    frame.size.width = self.view.frame.size.width;
+    _noconnectView.frame = frame;
+    [_nonectimageView1.cell setImageAlignment: NSImageAlignCenter];
     [_noconnectView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMaxYMargin|NSViewWidthSizable|NSViewHeightSizable];
     
 }

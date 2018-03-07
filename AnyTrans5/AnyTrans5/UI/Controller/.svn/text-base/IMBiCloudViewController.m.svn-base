@@ -400,6 +400,9 @@
         _appleID = [appledID retain];
         IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
         IMBiCloudMainPageViewController *icloudMainPage = [[IMBiCloudMainPageViewController alloc] initWithClient:_iCloudManager withDelegate:self];
+        if (_hasTwoStepAuth) {
+            [icloudMainPage setHasTwoStepAuth:YES];
+        }
         [_rootBox setContentView:icloudMainPage.view];
         [self setIsShowLineView:icloudMainPage.isShowLineView];
         [icloudMainPage.view setBounds:_rootBox.bounds];
@@ -429,7 +432,11 @@
         [_loginBtn setNeedsDisplay:YES];
     }else{
         _isLoginIng = NO;
-        [self performSelectorOnMainThread:@selector(loginFail) withObject:nil waitUntilDone:NO];
+        if (!_hasTwoStepAuth) {
+            [self performSelectorOnMainThread:@selector(loginFail) withObject:nil waitUntilDone:NO];
+        }
+        [_appleTextFiled.cell setEnabled:YES];
+        [_passwordTextField.cell setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
         NSDictionary *dimensionDict = nil;
         @autoreleasepool {
@@ -529,6 +536,10 @@
 
 - (void)reSendTwoStepAuthenticationMessage {
     [_iCloudManager.netClient sentTwoStepAuthenticationMessage];
+}
+
+- (void)reSendTwoStepAuthenticationCode {
+    [_iCloudManager.netClient sentTwoStepAuthenticationCode];
 }
 
 - (void)cancelTwoStepAuthenticationAlertView {

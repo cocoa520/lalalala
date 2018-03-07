@@ -41,7 +41,6 @@
 -(void)doChangeLanguage:(NSNotification *)notification{
     dispatch_async(dispatch_get_main_queue(), ^{
          [_toolBar changeBtnTooltipStr];
-        [self setBindCategoryArray:[self createCategoryItems]];
         NSString *str = CustomLocalizedString(@"iTunes_Default_Title", nil);
         NSMutableAttributedString *as = [[NSMutableAttributedString alloc]initWithString:str];
         
@@ -191,19 +190,11 @@
     [_bgImageView setImage:[StringHelper imageNamed:@"noconnect_itunes"]];
     [self.view setWantsLayer:YES];
     [self.view.layer setCornerRadius:5];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        NSRect frame =  _disConnectView.frame;
-        frame.origin.y = self.view.frame.origin.y ;
-        frame.size.width = self.view.frame.size.width;
-        _disConnectView.frame = frame;
-        [_bgImageView.cell setImageAlignment:NSImageAlignBottom];
-    }else {
-        NSRect frame =  _disConnectView.frame;
-        frame.origin.y = self.view.frame.origin.y + 5;
-        frame.size.width = self.view.frame.size.width;
-        _disConnectView.frame = frame;
-        [_bgImageView.cell setImageAlignment: NSImageAlignCenter];
-    }
+    NSRect frame =  _disConnectView.frame;
+    frame.origin.y = self.view.frame.origin.y + 5;
+    frame.size.width = self.view.frame.size.width;
+    _disConnectView.frame = frame;
+    [_bgImageView.cell setImageAlignment: NSImageAlignCenter];
     [_disConnectView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMaxYMargin|NSViewWidthSizable|NSViewHeightSizable];
 }
 
@@ -874,6 +865,19 @@
 //            [view.layer addAnimation:anima1 forKey:@"deviceImageView"];
 //        }];
 //    }];
+}
+
+- (void)animationAddTransferViewfromRight:(NSView *)view AnnoyVC:(NSViewController *)AnnoyVC;
+{
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [view setFrame:NSMakeRect(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.view addSubview:view];
+        [view setWantsLayer:YES];
+        [view.layer  addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:view.frame.size.width] toX:[NSNumber numberWithInt:0] repeatCount:1 beginTime:0] forKey:@"movex"];
+    } completionHandler:^{
+        [(AnnoyVC).view removeFromSuperview];
+        [(AnnoyVC) release];
+    }];
 }
 
 - (long long)checkNeedAnnoy:(NSViewController **)annoyVC;

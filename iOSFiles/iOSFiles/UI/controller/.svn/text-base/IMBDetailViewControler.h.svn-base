@@ -6,19 +6,20 @@
 //  Copyright © 2018年 iMobie. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "IMBBaseViewController.h"
+
 @class IMBDevicePageFolderModel,IMBiPod;
 
 
-@interface IMBDetailViewControler : NSViewController
+@interface IMBDetailViewControler : IMBBaseViewController
 
 {
     @private
     IMBDevicePageFolderModel *_folderModel;
-    IMBiPod *_iPod;
+//    IMBiPod *_iPod;
 }
 
 @property(nonatomic, retain)IMBDevicePageFolderModel *folderModel;
-@property(nonatomic, retain)IMBiPod *iPod;
+//@property(nonatomic, retain)IMBiPod *iPod;
 
 @end

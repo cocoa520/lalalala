@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBVideoDownloadViewController">
             <connections>
-                <outlet property="_bbcView" destination="rhu-VH-2Lf" id="g62-jF-7DX"/>
                 <outlet property="_bgImageView" destination="10u-ze-Oer" id="8Sp-bI-He2"/>
-                <outlet property="_breakView" destination="ofb-1l-klY" id="bha-kc-NTR"/>
                 <outlet property="_cancelButton" destination="FGf-MI-fjb" id="3eD-jD-HHm"/>
                 <outlet property="_contentBox" destination="zRb-yL-woQ" id="vYx-Na-zhK"/>
                 <outlet property="_contentView" destination="Qmg-Vd-8FS" id="FuE-4L-lmr"/>
-                <outlet property="_dailymotionView" destination="eWQ-ja-HX6" id="pHe-UC-c5X"/>
                 <outlet property="_downloadButton" destination="Qo0-b9-v0o" id="D8l-zA-5QM"/>
                 <outlet property="_downloadTitle" destination="mPK-Wg-Hcw" id="Enp-Jf-aLU"/>
-                <outlet property="_instagramView" destination="Bg3-vp-0V7" id="3Lx-wv-MoK"/>
                 <outlet property="_mainView" destination="X6x-VO-EHq" id="Bh7-bg-eXw"/>
-                <outlet property="_metacafeView" destination="TRs-uI-nd8" id="XCb-DP-eUa"/>
                 <outlet property="_popUpButton" destination="wHN-z8-Aje" id="QD3-Tx-t1J"/>
                 <outlet property="_preScrollView" destination="Nqm-2s-TXq" id="zzj-BR-v3G"/>
                 <outlet property="_urlBorderView" destination="12N-QY-sOC" id="eHn-qu-zzG"/>
                 <outlet property="_urlTextField" destination="Wte-Ks-aye" id="iws-Zk-EuZ"/>
-                <outlet property="_vimeoView" destination="cDq-0Y-rg6" id="3RC-ce-GXz"/>
-                <outlet property="_vineView" destination="z3R-FR-ssc" id="2Fy-fF-GPt"/>
                 <outlet property="_wheretosaveText" destination="Chn-Fj-tGc" id="Uwi-IX-60I"/>
-                <outlet property="_youTuBeView" destination="nDs-vW-pXg" id="P4U-o3-3j1"/>
                 <outlet property="downLoad" destination="Qo0-b9-v0o" id="bOy-ML-htA"/>
                 <outlet property="preView" destination="DqO-4e-E9C" id="Vbm-E5-sUH"/>
                 <outlet property="preViewTableView" destination="KbU-ae-lFi" id="bfR-G3-8tw"/>
@@ -149,196 +141,6 @@
                 </customView>
             </subviews>
         </customView>
-        <customView id="YPI-NH-U2Y">
-            <rect key="frame" x="0.0" y="0.0" width="616" height="288"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <customView id="nDs-vW-pXg">
-                    <rect key="frame" x="0.0" y="187" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Vdu-Dw-L3E" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="QGp-ce-YnS"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="JzU-ch-9T9"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="Hlm-I5-2Pl" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="oNl-03-4sd">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="eWQ-ja-HX6">
-                    <rect key="frame" x="162" y="187" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Jbr-9O-z8P" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="bSw-GB-kvU"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="uVV-2F-u4b"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="2gV-mb-1m8" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="qMA-wJ-6cw">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="z3R-FR-ssc">
-                    <rect key="frame" x="324" y="187" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="cgW-9b-pM4" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="hfg-pV-qmI"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="eS3-2r-ks7"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="QIh-mz-4pG" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="gUc-uQ-Qo6">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="cDq-0Y-rg6">
-                    <rect key="frame" x="486" y="187" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="vZk-gV-BtQ" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="F5O-jd-J92"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="aVM-td-55I"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="Fhk-h4-89G" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="R1P-Bt-tVm">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="Bg3-vp-0V7">
-                    <rect key="frame" x="0.0" y="62" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="geC-mR-YRq" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="6xy-B8-t2t"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="iaG-08-atG"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="Ohk-mj-NwF" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="xth-5Q-x4O">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="rhu-VH-2Lf">
-                    <rect key="frame" x="162" y="62" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Cvi-GG-R6v" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="QKf-CO-yRL"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="ryO-1h-VFV"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="cSw-Mm-eZh" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="5gV-4m-URx">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="ofb-1l-klY">
-                    <rect key="frame" x="324" y="62" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="PzX-so-xSZ" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="Gyu-ga-HCp"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="o5X-EH-Mbt"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="Zu8-Eg-UTs" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="y98-CV-UYn">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView id="TRs-uI-nd8">
-                    <rect key="frame" x="486" y="62" width="130" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="1" id="Fz4-UO-7Ug" customClass="IMBClickedImageView">
-                            <rect key="frame" x="0.0" y="31" width="130" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="download_web_youtube" id="HG5-OO-0ud"/>
-                            <connections>
-                                <action selector="clickUrl:" target="-2" id="a6v-Sk-pfD"/>
-                            </connections>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="2" id="wPV-9o-WcP" customClass="SkinTextField">
-                            <rect key="frame" x="20" y="4" width="91" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="9fb-F3-QMp">
-                                <font key="font" size="13" name="HelveticaNeue"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-            </subviews>
-        </customView>
         <customView id="DqO-4e-E9C" customClass="IMBBackgroundBorderView">
             <rect key="frame" x="0.0" y="0.0" width="874" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,6 +153,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" viewBased="YES" id="KbU-ae-lFi" customClass="IMBBasedViewTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="830" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -474,7 +277,4 @@ Gw
             </buttonCell>
         </button>
     </objects>
-    <resources>
-        <image name="download_web_youtube" width="130" height="66"/>
-    </resources>
 </document>

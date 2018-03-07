@@ -1813,4 +1813,8 @@
 "iCloudLogin_View_codeTips2" = "Code de vérification invalide.";
 "iCloudLogin_View_codeTips3" = "Échec de l'authentification.";
 "iCloudLogin_SecurityView_codeTips" = "Vous avez activé l'authentification à deux facteurs. Veuillez entrer le code de vérification affiché sur votre appareil iOS pour continuer.";
-"iCloudLogin_View_NotReceiveCode" = "Aucun code de vérification affiché sur mon appareil.";
+"iCloudLogin_View_NotReceiveCode" = "Aucun code affiché sur mon iPhone.";
+"iCloudLogin_View_Resend" = "Renvoyer le code";
+"iCloudLogin_View_SendByMessage" = "Texte moi";
+"iCloudLogin_View_Help" = "Besoin d'aide?";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

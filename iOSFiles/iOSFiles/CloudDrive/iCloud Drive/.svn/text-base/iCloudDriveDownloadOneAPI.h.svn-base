@@ -15,5 +15,5 @@
     NSString *_zone;          ///< iclouud drive所属zone
 }
 
-- (id)initWithDocumentID:(NSString *)documentID zone:(NSString *)zone iCloudDriveDocwsURL:(NSString *)url;
+- (id)initWithDocumentID:(NSString *)documentID zone:(NSString *)zone iCloudDriveDocwsURL:(NSString *)url cookie:(NSMutableDictionary *)cookie;
 @end

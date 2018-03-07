@@ -37,6 +37,11 @@
         _cookie = [[NSMutableDictionary alloc] init];
         _downLoader = [[DownLoader alloc] initWithAccessToken:nil];
         _upLoader = [[UpLoader alloc] initWithAccessToken:nil];
+        NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        NSArray *cookies = [NSArray arrayWithArray:[cookieJar cookies]];
+        for (NSHTTPCookie *cookie in cookies) {
+            [cookieJar deleteCookie:cookie];
+        }
     }
     return self;
 }
@@ -86,10 +91,13 @@
             if ([resulst isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *resultContent = (NSDictionary *)resulst;
                 if ([resultContent.allKeys containsObject:@"serviceErrors"]) {
-                    NSDictionary *errorDic = [resultContent objectForKey:@"serviceErrors"];
-                    if ([[errorDic objectForKey:@"code"] isEqualToString:@"-20101"]) {
-                        if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
-                            [_delegate drive:self logInFailWithResponseCode:ResponseUserNameOrPasswordError];
+                    NSArray *errorArray = [resultContent objectForKey:@"serviceErrors"];
+                    if ([errorArray count]>0) {
+                        NSDictionary *errorDic = [errorArray objectAtIndex:0];
+                        if ([[errorDic objectForKey:@"code"] isEqualToString:@"-20101"]) {
+                            if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
+                                [_delegate drive:self logInFailWithResponseCode:ResponseUserNameOrPasswordError];
+                            }
                         }
                     }
                 }
@@ -499,7 +507,7 @@
         [self downloadFolder:item];
     }else{
         //第一步先获取下载链接
-        iCloudDriveDownloadOneAPI *downloadAPI = [[iCloudDriveDownloadOneAPI alloc] initWithDocumentID:[item  docwsID] zone:[item zone] iCloudDriveDocwsURL:_iCloudDriveDocwsUrl];
+        iCloudDriveDownloadOneAPI *downloadAPI = [[iCloudDriveDownloadOneAPI alloc] initWithDocumentID:[item  docwsID] zone:[item zone] iCloudDriveDocwsURL:_iCloudDriveDocwsUrl cookie:_cookie];
         __block YTKRequest *weakdownloadAPI = downloadAPI;
         [downloadAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             if (request.responseStatusCode == 200) {

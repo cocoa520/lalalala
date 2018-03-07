@@ -61,11 +61,7 @@
 - (void)awakeFromNib
 {
     [((IMBBackgroundBorderView *)self.view) setIsGradientNoCornerPart4:YES];
-    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"roseSkin"]) {
-        [_bellImgView setHidden:YES];
-        [_roseProgressBgImageView setHidden:NO];
-        [_roseProgressBgImageView setImage:[StringHelper imageNamed:@"rose_progress_bg"]];
-    }else if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
+    if ([[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
         [_bellImgView setHidden:NO];
         [_bellImgView setImage:[StringHelper imageNamed:@"christmas_bell"]];
         [_bellImgView setFrameOrigin:NSMakePoint(340, _bellImgView.frame.origin.y)];

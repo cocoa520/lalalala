@@ -42,11 +42,14 @@
     IMBFunctionButton *_selectedBtn;
     NSPopover *_tipPopover;
     
+    BOOL _hasTwoStepAuth;///如果加了双重验证，iCloudBackup不能用
+    
     IBOutlet NSImageView *_arrowImageView;
     IBOutlet NSImageView *_iCloudBgView;
 }
 @property (nonatomic, assign) BOOL isFail;
 @property (nonatomic, retain) IMBMenuPopupButton *popUpButton;
+@property (nonatomic, assign) BOOL hasTwoStepAuth;
 - (id)initWithClient:(IMBiCloudManager *)iCloudManager withDelegate:(id)delegate;
 //切换账号时，重新设置cookie;
 - (void)setCookieStorage;
@@ -55,4 +58,5 @@
 - (void)loadicloudCount:(int)count;
 - (void)setTrackingAreaEnable:(BOOL)enable;
 - (void)setShowTopLineView:(BOOL)isShow;
+
 @end

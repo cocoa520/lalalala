@@ -10,6 +10,7 @@
 
 @interface IMBCodeTextField : NSTextField<NSTextFieldDelegate> {
     int _codeTag;
+    BOOL _isDeleting;
 }
 @property (nonatomic,assign) int codeTag;
 

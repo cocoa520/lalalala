@@ -33,16 +33,6 @@
     NSMutableArray *_preViewDataSource;
     VDLManager *_vdlManager;
     IBOutlet IMBTextButtonView *_cancelButton;
-    
-    IBOutlet NSView *_youTuBeView;
-    IBOutlet NSView *_bbcView;
-    IBOutlet NSView *_breakView;
-    IBOutlet NSView *_dailymotionView;
-    IBOutlet NSView *_metacafeView;
-    IBOutlet NSView *_vimeoView;
-    IBOutlet NSView *_vineView;
-    IBOutlet NSView *_instagramView;
-    IBOutlet NSView *_foxnewsBeView;
 
     IBOutlet NSView *_contentView;
     IBOutlet NSView *_mainView;

@@ -442,7 +442,7 @@
             break;
         case Category_iBooks:
 //            return CustomLocalizedString(@"MenuItem_id_13", nil);
-            return @"iBooks";
+            return @"Books";
             break;
         case Category_Audiobook:
 //            return CustomLocalizedString(@"MenuItem_id_3", nil);

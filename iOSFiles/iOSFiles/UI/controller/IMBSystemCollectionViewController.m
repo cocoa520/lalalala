@@ -728,7 +728,7 @@
 }
 
 #pragma mark OperaitonActions
-- (void)refresh {
+- (void)refresh:(IMBInformation *)information {
     [_mainBox setContentView:_loadingView];
     for (NSView *subview in [_collectionView subviews]) {
         if ([subview isKindOfClass:[IMBFolderOrFileCollectionItemView class]]) {
@@ -786,7 +786,7 @@
 
 }
 
-- (void)addItems{
+- (void)addToDevice:(IMBInformation *)information {
     _openPanel = [NSOpenPanel openPanel];
     _isOpen = YES;
     [_openPanel setCanChooseDirectories:YES];
@@ -833,7 +833,7 @@
     [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
     [_transferViewController.view setWantsLayer:YES];
     [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
-    [self refresh];
+    [self refresh:nil ];
 //
 //    }
 }
@@ -861,7 +861,8 @@
     return selectedItems;
 }
 
-- (void)deleteItem{
+
+- (void)deleteItem:(IMBInformation *)information {
     [_mainBox setContentView:_loadingView];
     [_loadingAnimationView startAnimation];
   
@@ -936,7 +937,7 @@
   
 }
 
-- (void)toMac{
+- (void)toMac:(IMBInformation *)information{
     //弹出路径选择框
     _openPanel = [NSOpenPanel openPanel];
     _isOpen = YES;

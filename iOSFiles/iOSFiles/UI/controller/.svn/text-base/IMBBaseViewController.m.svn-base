@@ -21,6 +21,8 @@
 
 @implementation IMBBaseViewController
 
+@synthesize iPod = _iPod;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
@@ -31,19 +33,23 @@
     [_toolMenuView setDelegate:self];
 }
 
-- (void)refresh {
-
+- (void)refresh:(IMBInformation *)information {
+    
 }
 
-- (void)toMac {
-
+- (void)toMac:(IMBInformation *)information {
+    
 }
 
-- (void)addItems {
-
+- (void)addToDevice:(IMBInformation *)information {
+    
 }
 
-- (void)deleteItem {
+- (void)deleteItem:(IMBInformation *)information {
+    
+}
 
+- (void)toDevice:(IMBInformation *)information {
+    
 }
 @end

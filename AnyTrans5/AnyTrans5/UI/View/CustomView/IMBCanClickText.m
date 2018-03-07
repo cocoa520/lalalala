@@ -10,7 +10,7 @@
 #import "StringHelper.h"
 
 @implementation IMBCanClickText
-
+@synthesize linkStrIsFront = _linkStrIsFront;
 - (void)setNormalString:(NSString *)normalString WithLinkString:(NSString *)linkString WithNormalColor:(NSColor *)normalColor WithLinkNormalColor:(NSColor *)linkNormalColor WithLinkEnterColor:(NSColor *)linkEnterColor WithLinkDownColor:(NSColor *)linkDownColor WithFont:(NSFont *)font {
     if (_font != nil) {
         [_font release];
@@ -60,29 +60,36 @@
         _linkColor = _linkNormalColor;
     }
     NSString *promptStr = @"";
-    if ([_normalString isEqualToString:_linkString]) {
+    if (_linkStrIsFront) {
         promptStr = _normalString;
-    } else {
-        promptStr = [_normalString stringByAppendingString:_linkString];
+    }else {
+        if ([_normalString isEqualToString:_linkString]) {
+            promptStr = _normalString;
+        } else {
+            promptStr = [_normalString stringByAppendingString:_linkString];
+        }
     }
     
-    NSDictionary *linkAttributes = @{(id)kCTForegroundColorAttributeName:_linkColor, (id)kCTUnderlineStyleAttributeName:[NSNumber numberWithInt:kCTUnderlineStyleNone]};
-    [self setLinkTextAttributes:linkAttributes];
-    
-    NSMutableAttributedString *promptAs = [StringHelper setSingleTextAttributedString:promptStr withFont:_font withColor:_normalColor];
-    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
-    NSRange infoRange = [promptStr rangeOfString:_linkString];
-    [promptAs addAttribute:NSLinkAttributeName value:_linkString range:infoRange];
-    [promptAs addAttribute:NSForegroundColorAttributeName value:_linkColor range:infoRange];
-    [promptAs addAttribute:NSFontAttributeName value:_font range:infoRange];
-    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange];
-    
-    NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
-    [mutParaStyle setAlignment:self.alignment];
-    [mutParaStyle setLineSpacing:3.0];
-    [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
-    [[self textStorage] setAttributedString:promptAs];
-    [mutParaStyle release], mutParaStyle = nil;
+
+    if(![StringHelper stringIsNilOrEmpty:promptStr] && _linkColor) {
+        NSDictionary *linkAttributes = @{(id)kCTForegroundColorAttributeName:_linkColor, (id)kCTUnderlineStyleAttributeName:[NSNumber numberWithInt:kCTUnderlineStyleNone]};
+        [self setLinkTextAttributes:linkAttributes];
+        
+        NSMutableAttributedString *promptAs = [StringHelper setSingleTextAttributedString:promptStr withFont:_font withColor:_normalColor];
+        [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
+        NSRange infoRange = [promptStr rangeOfString:_linkString];
+        [promptAs addAttribute:NSLinkAttributeName value:_linkString range:infoRange];
+        [promptAs addAttribute:NSForegroundColorAttributeName value:_linkColor range:infoRange];
+        [promptAs addAttribute:NSFontAttributeName value:_font range:infoRange];
+        [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange];
+        
+        NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+        [mutParaStyle setAlignment:self.alignment];
+        [mutParaStyle setLineSpacing:3.0];
+        [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+        [[self textStorage] setAttributedString:promptAs];
+        [mutParaStyle release], mutParaStyle = nil;
+    }
     [super drawRect:dirtyRect];
 }
 

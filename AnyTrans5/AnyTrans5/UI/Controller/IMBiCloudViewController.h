@@ -74,6 +74,8 @@
 - (void)showTwoStepAuthenticationAlertView;
 //再次发送双重验证短信
 - (void)reSendTwoStepAuthenticationMessage;
+//再次发送双重验证Code
+- (void)reSendTwoStepAuthenticationCode;
 //取消双重验证下拉框
 - (void)cancelTwoStepAuthenticationAlertView;
 @end

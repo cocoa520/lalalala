@@ -30,6 +30,16 @@
     // Drawing code here.
 }
 
+//用来监听键盘的点击事件
+- (BOOL)textView:(NSTextView *)inTextView doCommandBySelector:(SEL)inSelector {
+    
+    //删除键
+    if (inSelector == @selector(deleteBackward:)) {
+        _isDeleting = YES;
+    }
+    return NO;
+}
+
 - (void)textDidChange:(NSNotification *)notification {
     NSString *str = self.stringValue;
     if (str.length > 1) {
@@ -38,6 +48,11 @@
     if (str.length == 1) {
         NSDictionary *dic = @{@"codeTag":[NSNumber numberWithInt:self.codeTag]};
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_EDIT_CODE object:dic];
+    }
+    if (_isDeleting) {
+        NSDictionary *dic = @{@"codeTag":[NSNumber numberWithInt:self.codeTag]};
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_DELETE_CODE object:dic];
+        _isDeleting = NO;
     }
 }
 
