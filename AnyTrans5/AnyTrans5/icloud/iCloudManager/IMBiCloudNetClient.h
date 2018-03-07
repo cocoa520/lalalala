@@ -132,9 +132,13 @@
 - (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password withFirstDic:(NSDictionary *)firstDic;
 
 /*
- 发送双重验证密码；（用户没有收到，手动点击）
+ 发送双重验证message；（用户没有收到，手动点击）
  */
 - (void)sentTwoStepAuthenticationMessage;
+/*
+ 发送双重验证Code；（用户没有收到，手动点击）
+ */
+- (void)sentTwoStepAuthenticationCode;
 /*
     退出iCloud账号.
 */

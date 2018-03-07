@@ -191,7 +191,7 @@
     [firstAuthHeaders setObject:@"application/json, text/javascript, */*; q=0.01" forKey:@"Accept"];
     [firstAuthHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
     //构建postData
-    NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:appleID, @"accountName",password, @"password",@(NO), @"rememberMe",[NSArray array],@"trustTokens", nil];
+    NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:appleID, @"accountName",password, @"password",@(YES), @"rememberMe",[NSArray array],@"trustTokens", nil];
     NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
     NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -253,7 +253,7 @@
         [authHeaders setObject:@"https://www.icloud.com" forKey:@"Origin"];
         [authHeaders setObject:@"https://www.icloud.com/" forKey:@"Refer"];
         //构建postData
-        NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:sessiontoken, @"dsWebAuthToken",@(NO), @"extended_login", nil];
+        NSDictionary *loginDic = [NSDictionary dictionaryWithObjectsAndKeys:sessiontoken, @"dsWebAuthToken",@(YES), @"extended_login", nil];
         NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
         NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -432,7 +432,7 @@
         @throw [NSException exceptionWithName:NOTITY_NETWORK_FAULT_INTERRUPT reason:@"Network fault interrupt" userInfo:nil];
     }
     
-    dic = @{@"data":retData ? retData : [NSNull null],@"statusCode":[NSNumber numberWithLong:urlResponse.statusCode],@"headerdic":[urlResponse allHeaderFields]};
+    dic = @{@"data":retData ? retData : [NSNull null],@"statusCode":[NSNumber numberWithLong:urlResponse.statusCode] ? [NSNumber numberWithLong:urlResponse.statusCode] : @(0),@"headerdic":[urlResponse allHeaderFields] ? [urlResponse allHeaderFields] : [NSDictionary dictionary]};
     return dic;
 }
 
@@ -452,16 +452,50 @@
     
     //构建header
     NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
+    [authHeaders setObject:@"application/json" forKey:@"Accept"];
+    [authHeaders setObject:@"application/json" forKey:@"Content-Type"];
+    [authHeaders setObject:scnt forKey:@"scnt"];
+    [authHeaders setObject:@"https://idmsa.apple.com" forKey:@"Origin"];
+    [authHeaders setObject:sessionId forKey:@"X-Apple-ID-Session-Id"];
+    [authHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
+    
+    NSDictionary *loginDic = @{@"phoneNumber":@{@"id":@(1)},@"mode":@"sms"};
+    NSString *loginStr = [TempHelper dictionaryToJson:loginDic];
+    NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *dic = [self putWithData:loginData withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/phone" withCookieArray:nil];
+    if ([dic.allKeys containsObject:@"statusCode"]) {
+        int statusCode = [[dic objectForKey:@"statusCode"] intValue];
+        //响应码为200:表示发送message成功
+        [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent message statusCode:%d",statusCode]];
+    }
+}
+
+- (void)sentTwoStepAuthenticationCode {
+    NSString *sessionId = nil;
+    NSString *scnt = nil;
+    if ([_firstDic.allKeys containsObject:@"headerdic"]) {
+        NSDictionary *headerDic = [_firstDic objectForKey:@"headerdic"];
+        if ([headerDic.allKeys containsObject:@"X-Apple-ID-Session-Id"]) {
+            sessionId = [headerDic objectForKey:@"X-Apple-ID-Session-Id"];
+        }
+        if ([headerDic.allKeys containsObject:@"scnt"]) {
+            scnt = [headerDic objectForKey:@"scnt"];
+        }
+    }
+    
+    //构建header
+    NSMutableDictionary *authHeaders = [[NSMutableDictionary alloc] init];
     [authHeaders setObject:@"application/json, text/javascript, */*; q=0.01" forKey:@"Accept"];
     [authHeaders setObject:scnt forKey:@"scnt"];
     [authHeaders setObject:sessionId forKey:@"X-Apple-ID-Session-Id"];
     [authHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
-
+    
     NSDictionary *dic = [self putWithData:nil withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/trusteddevice/securitycode" withCookieArray:nil];
     if ([dic.allKeys containsObject:@"statusCode"]) {
         int statusCode = [[dic objectForKey:@"statusCode"] intValue];
         //响应码为202:表示成功再次发送安全码
-        [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent messag statusCode:%d",statusCode]];
+        [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent code statusCode:%d",statusCode]];
     }
 }
 

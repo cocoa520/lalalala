@@ -347,7 +347,14 @@
     IBOutlet IMBCodeTextField *_doubleVerificaFourthNum;
     IBOutlet IMBCodeTextField *_doubleVerificaFifthNum;
     IBOutlet IMBCodeTextField *_doubleVerificaSixthNum;
+    IBOutlet NSScrollView *_doubleVerificaScrollView;
     IBOutlet IMBCanClickText *_doubleVerificaTextView;
+    IBOutlet NSScrollView *_doubleVerificaSendCodeScrollView;
+    IBOutlet IMBCanClickText *_doubleVerificaSendCodeTextView;
+    IBOutlet NSScrollView *_doubleVerificaSendmsgScrollView;
+    IBOutlet NSScrollView *_doubleVerificaHelpScrollView;
+    IBOutlet IMBCanClickText *_doubleVerificaHelpTextView;
+    IBOutlet IMBCanClickText *_doubleVerificaSendmsgTextView;
     IBOutlet IMBGeneralButton *_doubleVerificaOkBtn;
     IBOutlet IMBGeneralButton *_doubleVerificaCancelBtn;
     IBOutlet IMBWhiteView *_numBox1;
@@ -357,7 +364,7 @@
     IBOutlet IMBWhiteView *_numBox5;
     IBOutlet IMBWhiteView *_numBox6;
     IBOutlet IMBWhiteView *_loadingBgView;
-    IBOutlet NSImageView *_doubleVerificaLoadingView;
+    CALayer *_imageLayer;
     
     
     BOOL _endRunloop;

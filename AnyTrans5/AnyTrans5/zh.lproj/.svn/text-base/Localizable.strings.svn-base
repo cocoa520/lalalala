@@ -990,6 +990,9 @@
 
 "Recovery_View_Tips1" = "请在设备关闭查找我的iPhone/iPad/iPod选项";
 
+"iCloud_Double_verification_guide" = "仍有疑问？请阅读此指南 >";
+
+
 "iCloud_DoubleCheck_Error" = "认证失败！如果您正在使用iCloud的双重认证，请关掉并重试。";
 
 "tip_id_1" = "向上和向下滚动\切换。";
@@ -1026,7 +1029,6 @@
 "support_url" = "mailto:support@imobie.com";
 //关闭iCloud 连接
 "url_guild_id_1" = "http://imobie.com/guide/anytrans/how-to-turn-off-icloud-connection-in-device.htm";
-"iCloud_Double_verification_guide" = "Have questions? Read this guide >";
 "url_guild_id_2" = "http://imobie.com/guide/anytrans/how-to-turn-off-two-step-verification-in-icloud.htm";
 //clone链接
 "url_guild_id_3" = "http://www.imobie.com/guide/anytrans/what-data-will-be-overwritten-in-device.htm";
@@ -1815,3 +1817,7 @@
 "iCloudLogin_View_codeTips3" = "验证失败。";
 "iCloudLogin_SecurityView_codeTips" = "您已开启双重验证，请输入您iOS设备获取的验证码以继续进行操作。";
 "iCloudLogin_View_NotReceiveCode" = "未收到验证码？";
+"iCloudLogin_View_Resend" = "重新发送验证码";
+"iCloudLogin_View_SendByMessage" = "发送短信给我";
+"iCloudLogin_View_Help" = "需要帮助？";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

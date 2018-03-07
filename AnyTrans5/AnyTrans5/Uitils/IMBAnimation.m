@@ -139,13 +139,13 @@
 +(CABasicAnimation *)scale:(NSNumber *)Multiple orgin:(NSNumber *)orginMultiple durTimes:(float)time Rep:(float)repeatTimes beginTime:(float)beginTime //缩放
 {
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale.z"];
-    animation.fromValue=orginMultiple;
-    animation.toValue=Multiple;
-    animation.duration=time;
-    animation.beginTime=CACurrentMediaTime() + beginTime;
-    animation.repeatCount=repeatTimes;
-    animation.removedOnCompletion=NO;
-    animation.fillMode=kCAFillModeForwards;
+    animation.fromValue = orginMultiple;
+    animation.toValue = Multiple;
+    animation.duration = time;
+    animation.beginTime = CACurrentMediaTime() + beginTime;
+    animation.repeatCount = repeatTimes;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
     return animation;
 }
 

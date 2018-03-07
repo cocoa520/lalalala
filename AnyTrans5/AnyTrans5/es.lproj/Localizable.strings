@@ -1728,4 +1728,8 @@
 "iCloudLogin_View_codeTips2" = "Código de verificación inválido.";
 "iCloudLogin_View_codeTips3" = "Error de autenticación.";
 "iCloudLogin_SecurityView_codeTips" = "Usted ha activado el doble autenticación. Por favor introduzca el código de verificación que aparece en su dispositivo iOS para continuar.";
-"iCloudLogin_View_NotReceiveCode" = "No aparece ningún código de verificación en mi dispositivo.";
+"iCloudLogin_View_NotReceiveCode" = "No hay ningún código en mi dispositivo.";
+"iCloudLogin_View_Resend" = "Reenviar código";
+"iCloudLogin_View_SendByMessage" = "Recibir un SMS";
+"iCloudLogin_View_Help" = "¿Necesitas ayuda?";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

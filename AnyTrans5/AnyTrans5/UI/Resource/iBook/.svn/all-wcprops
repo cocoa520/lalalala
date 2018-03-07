@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 68
-/svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook
+V 69
+/svn/Mac/!svn/ver/1513/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook
 END
 ibook_bookback.png
 K 25
@@ -14,12 +14,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_book1.png
-END
-menu_book2.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_book2.png
 END
 menu_buy1.png
 K 25
@@ -45,29 +39,11 @@ svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_book1@2x.png
 END
-menu_book2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_book2@2x.png
-END
 ibook_selected.png
 K 25
 svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/889/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/ibook_selected.png
-END
-menu_pdf1.png
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_pdf1.png
-END
-menu_buy1@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_buy1@2x.png
 END
 menu_book.png
 K 25
@@ -75,17 +51,29 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_book.png
 END
-menu_buy2@2x.png
+menu_buy1@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 85
-/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_buy2@2x.png
+/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_buy1@2x.png
+END
+menu_pdf1.png
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_pdf1.png
 END
 menu_pdf2.png
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_pdf2.png
+END
+menu_buy2@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/543/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/iBook/menu_buy2@2x.png
 END
 ibook_selected@2x.png
 K 25

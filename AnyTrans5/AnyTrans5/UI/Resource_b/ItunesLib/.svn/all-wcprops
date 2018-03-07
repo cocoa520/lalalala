@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib
+V 75
+/svn/Mac/!svn/ver/1513/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib
 END
 list1.png
 K 25
@@ -9,11 +9,11 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list1.png
 END
-list2.png
+iTunes_allmedia.png
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list2.png
+V 92
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_allmedia.png
 END
 iTunes_audiobook2@2x.png
 K 25
@@ -21,29 +21,17 @@ svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_audiobook2@2x.png
 END
-iTunes_allmedia.png
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_allmedia.png
-END
-news_list2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_list2@2x.png
-END
 iTunes_TVshow2.png
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_TVshow2.png
 END
-list1@2x.png
+iTunes_homevideo.png
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list1@2x.png
+V 93
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_homevideo.png
 END
 iTunes_podcats2.png
 K 25
@@ -51,11 +39,11 @@ svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_podcats2.png
 END
-iTunes_homevideo.png
+list1@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 93
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_homevideo.png
+V 85
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list1@2x.png
 END
 iTunes_app.png
 K 25
@@ -75,17 +63,17 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_iTunesU2@2x.png
 END
-news_list@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_list@2x.png
-END
 iTunes_TVshow.png
 K 25
 svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_TVshow.png
+END
+news_list@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_list@2x.png
 END
 iTunes_audiobook2.png
 K 25
@@ -116,12 +104,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_homevideo2.png
-END
-news_list2.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_list2.png
 END
 iTunes_iBook.png
 K 25
@@ -177,12 +159,6 @@ svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_music.png
 END
-news_playlist@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 93
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_playlist@2x.png
-END
 iTunes_allmedia@2x.png
 K 25
 svn:wc:ra_dav:version-url
@@ -207,11 +183,11 @@ svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_tones.png
 END
-news_playlist2.png
+iTunes_allmedia2.png
 K 25
 svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_playlist2.png
+V 93
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_allmedia2.png
 END
 iTunes_app@2x.png
 K 25
@@ -219,29 +195,17 @@ svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_app@2x.png
 END
-iTunes_allmedia2.png
+iTunes_playlist2@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 93
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_allmedia2.png
-END
-thumbnail.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/thumbnail.png
+V 96
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_playlist2@2x.png
 END
 iTunes_podcats.png
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_podcats.png
-END
-iTunes_playlist2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_playlist2@2x.png
 END
 iTunes_iBook2@2x.png
 K 25
@@ -254,12 +218,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_app2.png
-END
-news_playlist.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_playlist.png
 END
 iTunes_podcats@2x.png
 K 25
@@ -279,17 +237,17 @@ svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_voicememos@2x.png
 END
-list.png
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list.png
-END
 iTunes_tones2@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_tones2@2x.png
+END
+list.png
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list.png
 END
 iTunes_voicememos2.png
 K 25
@@ -297,17 +255,17 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_voicememos2.png
 END
-iTunes_podcats2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 95
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_podcats2@2x.png
-END
 iTunes_homevideo@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 96
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_homevideo@2x.png
+END
+iTunes_podcats2@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_podcats2@2x.png
 END
 iTunes_music@2x.png
 K 25
@@ -315,23 +273,17 @@ svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_music@2x.png
 END
-iTunes_tones@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_tones@2x.png
-END
 iTunes_music2.png
 K 25
 svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_music2.png
 END
-news_playlist2@2x.png
+iTunes_tones@2x.png
 K 25
 svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_playlist2@2x.png
+V 92
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_tones@2x.png
 END
 iTunes_voicememos.png
 K 25
@@ -339,29 +291,23 @@ svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_voicememos.png
 END
-thumbnail@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/thumbnail@2x.png
-END
 iTunes_tones2.png
 K 25
 svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_tones2.png
 END
-iTunes_audiobook.png
-K 25
-svn:wc:ra_dav:version-url
-V 93
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_audiobook.png
-END
 iTunes_movies@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_movies@2x.png
+END
+iTunes_audiobook.png
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/iTunes_audiobook.png
 END
 iTunes_iBook@2x.png
 K 25
@@ -374,12 +320,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/news_list.png
-END
-list2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/ItunesLib/list2@2x.png
 END
 iTunes_playlist2.png
 K 25

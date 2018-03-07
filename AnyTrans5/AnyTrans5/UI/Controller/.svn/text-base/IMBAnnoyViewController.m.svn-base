@@ -73,34 +73,7 @@
     }
     if (_limitation.remainderCount>0&&!_isClone&&!_isMerge) {
         //既有天数 又有个数
-        if ([soft.curUseSkin isEqualToString:@"roseSkin"]) {
-            [_animtionBGView addSubview:_annoyAnimaitonViewFour];
-            [_annoyAnimaitonViewFour startAnimation];
-            if (_limitation.remainderCount  == 1) {
-                [_annoyAnimaitonViewFour setRemainderCount:(int)_limitation.remainderCount Unit:CustomLocalizedString(@"annoy_id_2", nil)];
-            }else{
-                [_annoyAnimaitonViewFour setRemainderCount:(int)_limitation.remainderCount Unit:CustomLocalizedString(@"annoy_id_3", nil)];
-            }
-//            if ([StringHelper chirstmasActivity]) {//圣诞节活动，只针对英语版本在圣诞节期间显示
-//                if (_limitation.remainderDays  == 1) {
-//                    [_annoyAnimaitonViewFour setRemainderDays:_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_day", nil)];
-//                }else{
-//                    [_annoyAnimaitonViewFour setRemainderDays:_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_days", nil)];
-//                }
-//                [self setAnnoyZeroTitle:CustomLocalizedString(@"Christmas_Active_id_1", nil) textParagraph:textParagraph];
-////                [self setAnnoyZerosubTitle:CustomLocalizedString(@"Christmas_Active_id_2", nil) textParagraph:textParagraph];
-//                [self setAnnoyChistmasSubTitle:CustomLocalizedString(@"Christmas_Active_id_2", nil) withTaggingTitleOne:CustomLocalizedString(@"Christmas_Active_id_2_1", nil) withOneColor:[NSColor blackColor] withTaggingTitleTwo:CustomLocalizedString(@"Christmas_Active_id_2_2", nil) withTwoColor:[NSColor colorWithDeviceRed:221.f/255 green:54.f/255 blue:53.f/255 alpha:1.f] textParagraph:textParagraph];
-//            }else {
-                if (_limitation.remainderDays  == 1) {
-                    [self setAnnoyTitle:CustomLocalizedString(@"RegisterWindow_limitTitle_id_1", nil) textParagraph:textParagraph];
-                    [_annoyAnimaitonViewFour setRemainderDays:(int)_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_day", nil)];
-                }else{
-                    [self setAnnoyTitle:CustomLocalizedString(@"RegisterWindow_limitTitles_id_1", nil) textParagraph:textParagraph];
-                    [_annoyAnimaitonViewFour setRemainderDays:(int)_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_days", nil)];
-                }
-                [self setAnnoysubTitle:CustomLocalizedString(@"RegisterWindow_limitDetail_id_5", nil) textParagraph:textParagraph];
-//            }
-        }else if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
+        if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
             [_animtionBGView setAutoresizesSubviews:YES];
             [_animtionBGView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMinYMargin|NSViewHeightSizable|NSViewWidthSizable];
             [_animtionBGView addSubview:_annoyAnimaitonViewFive];
@@ -171,17 +144,7 @@
             [self setAnnoyZeroTitle:CustomLocalizedString(@"RegisterWindow_limitTilte_id_6", nil) textParagraph:textParagraph];
             [self setAnnoyZerosubTitle:CustomLocalizedString(@"RegisterWindow_limitDetail_id_6", nil) textParagraph:textParagraph];
         }
-        if ([soft.curUseSkin isEqualToString:@"roseSkin"]) {
-            [_animtionBGView addSubview:_annoyAnimaitonViewFour];
-            [_annoyAnimaitonViewFour startAnimation];
-            [_annoyAnimaitonViewFour setRemainderCount:(int)_limitation.remainderCount Unit:CustomLocalizedString(@"annoy_id_2", nil)];
-            
-            if (_limitation.remainderDays  == 1) {
-                [_annoyAnimaitonViewFour setRemainderDays:(int)_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_day", nil)];
-            }else{
-                [_annoyAnimaitonViewFour setRemainderDays:(int)_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_days", nil)];
-            }
-        }else if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
+        if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
             [_animtionBGView setAutoresizesSubviews:YES];
             [_animtionBGView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMinYMargin|NSViewHeightSizable|NSViewWidthSizable];
             [_animtionBGView addSubview:_annoyAnimaitonViewFive];
@@ -212,18 +175,7 @@
             [self setAnnoyOverDueTitle:CustomLocalizedString(@"RegisterWindow_limitTilte_id_2", nil) textParagraph:textParagraph];
             [self setAnnoyZerosubTitle:CustomLocalizedString(@"RegisterWindow_limitDetail_id_2", nil) textParagraph:textParagraph];
         }
-        if ([soft.curUseSkin isEqualToString:@"roseSkin"]) {
-            [_animtionBGView addSubview:_annoyAnimaitonViewFour];
-            [_annoyAnimaitonViewFour startAnimation];
-            if (_isClone || _isMerge) {
-                [_annoyAnimaitonViewFour setBackgroundImage:[StringHelper imageNamed:@"annoy_bg_merge"]];
-            }else{
-                [_annoyAnimaitonViewFour setRemainderCount:(int)_limitation.remainderCount Unit:CustomLocalizedString(@"annoy_id_2", nil)];
-                
-                
-                [_annoyAnimaitonViewFour setRemainderDays:(int)_limitation.remainderDays Unit:CustomLocalizedString(@"MSG_Item_id_day", nil)];
-            }
-        }else if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
+        if ([soft.curUseSkin isEqualToString:@"christmasSkin"]) {
             [_animtionBGView setAutoresizesSubviews:YES];
             [_animtionBGView setAutoresizingMask:NSViewMinXMargin|NSViewMaxXMargin|NSViewMinYMargin|NSViewHeightSizable|NSViewWidthSizable];
             [_animtionBGView addSubview:_annoyAnimaitonViewFive];

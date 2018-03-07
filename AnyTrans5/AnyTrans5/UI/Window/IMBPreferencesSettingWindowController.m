@@ -55,7 +55,7 @@
     return self;
 }
 
--(void)awakeFromNib{
+-(void)awakeFromNib {
     if ([[[[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode] lowercaseString ]isEqualToString:@"ar"]) {
         [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
         [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];

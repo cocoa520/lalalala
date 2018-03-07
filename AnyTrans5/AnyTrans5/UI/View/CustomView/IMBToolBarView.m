@@ -947,7 +947,7 @@
                     _toiTunes =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toiTunes setAutoresizesSubviews:YES];
                     [_toiTunes setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toiTunes setMouseEnteredImage:[StringHelper imageNamed:@"toios_toitunes_enter"] mouseExitImage:[StringHelper imageNamed:@"toios_toitunes_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_toitunes_normal"]];
+                    [_toiTunes setMouseEnteredImage:[StringHelper imageNamed:@"toios_toitunes_normal"] mouseExitImage:[StringHelper imageNamed:@"toios_toitunes_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_toitunes_normal"]];
                     [_toiTunes setIsDrawBorder:YES];
                     [_toiTunes setToolTip:CustomLocalizedString(@"Menu_ToiTunes", nil)];
                     [_toiTunes setTag:1003];
@@ -986,7 +986,7 @@
                     _androidtoiOS =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_androidtoiOS setAutoresizesSubviews:YES];
                     [_androidtoiOS setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_androidtoiOS setMouseEnteredImage:[StringHelper imageNamed:@"toios_todevice_enter"] mouseExitImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_todevice_normal"]];
+                    [_androidtoiOS setMouseEnteredImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseExitImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_todevice_normal"]];
                     [_androidtoiOS setIsDrawBorder:YES];
                     [_androidtoiOS setToolTip:CustomLocalizedString(@"Menu_ToDevice", nil)];
                     [_androidtoiOS setTag:1005];
@@ -1122,7 +1122,7 @@
                     _upload =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_upload setAutoresizesSubviews:YES];
                     [_upload setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"toios_toiCloud_enter"] mouseExitImage:[StringHelper imageNamed:@"toios_toiCloud_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_toiCloud_normal"]];
+                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"toios_toiCloud_normal"] mouseExitImage:[StringHelper imageNamed:@"toios_toiCloud_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_toiCloud_normal"]];
                     [_upload setIsDrawBorder:YES];
                     [_upload setToolTip:CustomLocalizedString(@"icloud_addAcount", nil)];
                     [_upload setTag:1111];
@@ -1294,7 +1294,7 @@
     } else {
         [_upload setMouseEnteredImage:[StringHelper imageNamed:@"iCloud_addfiles"] mouseExitImage:[StringHelper imageNamed:@"iCloud_addfiles"] mouseDownImage:[StringHelper imageNamed:@"iCloud_addfiles"]];
     }
-    [_androidtoiOS setMouseEnteredImage:[StringHelper imageNamed:@"toios_todevice_enter"] mouseExitImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_todevice_normal"]];
+    [_androidtoiOS setMouseEnteredImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseExitImage:[StringHelper imageNamed:@"toios_todevice_normal"] mouseDownImage:[StringHelper imageNamed:@"toios_todevice_normal"]];
     [_download setMouseEnteredImage:[StringHelper imageNamed:@"iCloud_download"] mouseExitImage:[StringHelper imageNamed:@"iCloud_download"] mouseDownImage:[StringHelper imageNamed:@"iCloud_download"]];
     [self setNeedsDisplay:YES];
 }

@@ -222,7 +222,11 @@
                 if (image) {
                     [skinEntity setSkinImage:image];
                 }else {
-                    [skinEntity setSkinImage:[StringHelper imageNamed:@"skin_default_image"]];
+                    if ([skinPackName isEqualToString:@"blackSkin"]) {
+                        [skinEntity setSkinImage:[StringHelper imageNamed:@"black_default_image"]];
+                    } else {
+                        [skinEntity setSkinImage:[StringHelper imageNamed:@"skin_default_image"]];
+                    }
                     [self downloadFile:thumbPath isDownloadPlist:YES DownloadFileName:skinImageName];
                 }
                 [skinEntity setThumbDownloadPath:thumbPath];

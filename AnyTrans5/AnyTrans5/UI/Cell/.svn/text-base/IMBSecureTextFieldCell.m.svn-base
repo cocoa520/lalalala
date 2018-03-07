@@ -28,21 +28,6 @@
 - (void)awakeFromNib {
     [self setDrawsBackground:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:NOTIFY_CHANGE_SKIN object:nil];
-//    _logBtn = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(0, 0, 24, 24)];
-//    [_logBtn mouseDownImage:[StringHelper imageNamed:@"iCloud_log_in3"] withMouseUpImg:[StringHelper imageNamed:@"iCloud_log_in1"] withMouseExitedImg:[StringHelper imageNamed:@"iCloud_log_in1"] mouseEnterImg:[StringHelper imageNamed:@"iCloud_log_in2"]];
-//    [_logBtn setLongTimeImage:[StringHelper imageNamed:@"iCloud_log_in4"]];
-//    [_logBtn setLongTimeDown:YES];
-//    [_logBtn setEnabled:NO];
-//    [_logBtn setTarget:self];
-//    [_logBtn setAction:@selector(downLog:)];
-//    [_logBtn setBordered:NO];
-//    _loadLayer = [CALayer layer];
-//    _loadLayer.contents = [NSImage imageNamed:@"log_loading"];
-//    _loadingImg = [[NSImageView alloc]init];
-//    [_loadingImg setImage:[StringHelper imageNamed:@"log_loading"]];
-//    [_loadingImg setImageFrameStyle:NSImageFrameNone];
-//    [_loadLayer setHidden:YES];
-    //   [self.controlView setFrame: NSMakeRect(6, 0, self.controlView.frame.size.width -6, self.controlView.frame.size.height)];
     // dirty and you aren't supposed to do this
     [self setEditable:YES];
     // using this until we find a better solution
@@ -65,9 +50,7 @@
 }
 
 - (void)changeSkin:(NSNotification *)notification {
-//    [_logBtn mouseDownImage:[StringHelper imageNamed:@"iCloud_log_in3"] withMouseUpImg:[StringHelper imageNamed:@"iCloud_log_in1"] withMouseExitedImg:[StringHelper imageNamed:@"iCloud_log_in1"] mouseEnterImg:[StringHelper imageNamed:@"iCloud_log_in2"]];
-//    [_logBtn setLongTimeImage:[StringHelper imageNamed:@"iCloud_log_in4"]];
-//    [_logBtn setNeedsDisplay:YES];
+
 }
 
 

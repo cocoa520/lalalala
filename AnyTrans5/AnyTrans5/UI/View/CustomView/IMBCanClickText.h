@@ -19,7 +19,12 @@
     NSFont *_font;
     MouseStatusEnum _mouseType;
     NSColor *_linkColor;
+    
+    BOOL _linkStrIsFront;//链接文字在前面
+    
 }
+@property (nonatomic, assign) BOOL linkStrIsFront;
+
 - (void)setNormalString:(NSString *)normalString WithLinkString:(NSString *)linkString WithNormalColor:(NSColor *)normalColor WithLinkNormalColor:(NSColor *)linkNormalColor WithLinkEnterColor:(NSColor *)linkEnterColor WithLinkDownColor:(NSColor *)linkDownColor WithFont:(NSFont *)font;
 
 @end
