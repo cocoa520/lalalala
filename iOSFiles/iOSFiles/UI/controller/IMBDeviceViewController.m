@@ -24,6 +24,13 @@
 #import "IMBDriveManage.h"
 #import "StringHelper.h"
 #import "IMBDriveWindow.h"
+#import "IMBAppsListViewController.h"
+#import "IMBViewAnimation.h"
+
+
+#import <Quartz/Quartz.h>
+
+
 @interface IMBDeviceViewController ()
 {
     @private
@@ -52,7 +59,7 @@
     [self deviceConnection];
     [self addNotis];
     [(IMBBackgroundBorderView*)self.view setHasRadius:YES];
-    [(IMBBackgroundBorderView*)self.view setBackgroundColor:[NSColor whiteColor]];
+    [(IMBBackgroundBorderView*)self.view setBackgroundColor:COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS];
     _windowControllerDic = [[NSMutableDictionary alloc]init];
     _driveControllerDic = [[NSMutableDictionary alloc]init];
 }
@@ -85,6 +92,81 @@
     
     [(IMBSecureTextFieldCell *)_iCloudSecireTextField.cell setDelegate:self];
     [((IMBSecureTextFieldCell *)_iCloudSecireTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
+    
+    [_icloudDrivebox setContentView:_midiumSizeiCloudView];
+    [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+    
+    
+    _iCloudDriveView.isOriginalFrame = YES;
+    _oneDriveView.isOriginalFrame = YES;
+    _devicesView.isOriginalFrame = YES;
+    
+    /***  界面上的三个view的鼠标点击响应事件 ***/
+    /***  _iCloudDriveView的鼠标点击响应事件 ***/
+    _iCloudDriveView.mouseClicked = ^(void){
+        
+        [_icloudDrivebox setContentView:_bigSizeiCloudView];
+        
+        NSRect cloudF = NSMakeRect(12.f, 85.f, 302.f, 306.f);
+        NSRect oneDriveF = NSMakeRect(12.f, 15.f, 302.f, 54.f);
+        NSRect devicesF = NSMakeRect(327.f, 15.f, 253.f, 376.f);
+        
+        [_iCloudDriveView setViewShadow:0];
+        
+        NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+        NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
+        [IMBViewAnimation animationWithViews:views frames:frames completion:^{
+            _iCloudDriveView.isOriginalFrame = NO;
+            _oneDriveView.isOriginalFrame = NO;
+            _devicesView.isOriginalFrame = NO;
+            
+            [_smallSizeTitle setStringValue:@"DropBox"];
+            [_oneDriveBox setContentView:_smallSizeView];
+        }];
+    };
+    /***  _oneDriveView的鼠标点击响应事件 ***/
+    _oneDriveView.mouseClicked = ^(void){
+        
+        [_oneDriveBox setContentView:_bigSizeOneDriveView];
+        
+        NSRect cloudF = NSMakeRect(12.f, 337.f, 302.f, 54.f);
+        NSRect oneDriveF = NSMakeRect(12.f, 15.f, 302.f, 306.f);
+        NSRect devicesF = NSMakeRect(327.f, 15.f, 253.f, 376.f);
+        
+        [_oneDriveView setViewShadow:0];
+        
+        NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+        NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
+        [IMBViewAnimation animationWithViews:views frames:frames completion:^{
+            _iCloudDriveView.isOriginalFrame = NO;
+            _oneDriveView.isOriginalFrame = NO;
+            _devicesView.isOriginalFrame = NO;
+            
+            [_smallSizeTitle setStringValue:@"iCloud"];
+            [_icloudDrivebox setContentView:_smallSizeView];
+        }];
+    };
+    /***  _devicesView的鼠标点击响应事件 ***/
+    _devicesView.mouseClicked = ^(void){
+        NSRect cloudF = NSMakeRect(12.f, 211.f, 134.f, 180.f);
+        NSRect oneDriveF = NSMakeRect(12.f, 15.f, 134.f, 180.f);
+        NSRect devicesF = NSMakeRect(162.0f, 15.0f, 418.f, 376.f);
+        
+        [_devicesView setViewShadow:0];
+        
+        NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+        NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
+        [IMBViewAnimation animationWithViews:views frames:frames completion:^{
+            _iCloudDriveView.isOriginalFrame = NO;
+            _oneDriveView.isOriginalFrame = NO;
+            _devicesView.isOriginalFrame = NO;
+            
+            [_icloudDrivebox setContentView:_smalliCloudDriveView];
+            [_oneDriveBox setContentView:_smallOneDriveView];
+            
+        }];
+    };
+    
 }
 
 /**
@@ -129,7 +211,9 @@
     };
     deviceConnection.IMBDeviceConnectedCompletion = ^(IMBBaseInfo *baseInfo) {
         //加载设备信息完成,ipod中含有设备详细信息
+        
         IMBInformation *information = [[IMBInformation alloc] initWithiPod:[[deviceConnection getiPodByKey:baseInfo.uniqueKey] retain]];
+        _iPod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
         IMBInformationManager *manager = [IMBInformationManager shareInstance];
         [manager.informationDic setObject:information forKey:baseInfo.uniqueKey];
         [self setDeviceInfosWithiPod:baseInfo];
@@ -219,7 +303,7 @@
         }
     
         _devPopover.animates = YES;
-        _devPopover.behavior = NSPopoverBehaviorTransient;
+        _devPopover.behavior = 0;
         _devPopover.delegate = self;
         
         IMBDevViewController *devController = [[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil];
@@ -301,6 +385,9 @@
 #pragma mark -- iCloud Diver Login
 
 - (IBAction)iCloudLogIn:(id)sender {
+    
+//    IMBAppsListViewController *appp = [[IMBAppsListViewController alloc]initWithIpod:_iPod];
+//    [self.view addSubview:appp.view];
 //    _iCloudDrive = [[iCloudDrive alloc]init];
 //    [_iCloudDrive setDelegate:self];
 //    
@@ -372,6 +459,7 @@
  *  @param noti noti
  */
 - (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
+    
     IMBBaseInfo *baseInfo = [noti object];
     
     if (_devPopover.isShown) {

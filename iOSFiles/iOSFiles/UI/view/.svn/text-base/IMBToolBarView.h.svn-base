@@ -15,7 +15,8 @@ typedef enum : NSUInteger {
     IMBToolBarViewEnumAddToDevice =2,
     IMBToolBarViewEnumDelete =3,
     IMBToolBarViewEnumToDevice =4,
-    IMBToolBarNoData =5
+    IMBToolBarNoData =5,
+    IMBToolBarViewEnumEdit = 6
 } IMBToolBarViewEnum;
 
 @interface IMBToolBarView : NSView

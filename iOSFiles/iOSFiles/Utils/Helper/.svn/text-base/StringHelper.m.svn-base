@@ -562,104 +562,104 @@ char pinyinFirstLetter(unsigned short hanzi) {
 + (NSImage*) getDeviceImage:(IPodFamilyEnum)iPodFamily {
     switch (iPodFamily) {
         case iPod_Gen1_Gen2:
-            return [StringHelper imageNamed:@"device_ipod_gen"];
+            return [NSImage imageNamed:@"device_ipod_gen"];
             break;
         case iPod_Gen3:
-            return [StringHelper imageNamed:@"device_ipod_gen"];
+            return [NSImage imageNamed:@"device_ipod_gen"];
             break;
         case iPod_Gen4:
         case iPod_Gen4_2:
-            return [StringHelper imageNamed:@"device_ipod_gen"];
+            return [NSImage imageNamed:@"device_ipod_gen"];
             break;
         case iPod_Gen5:
-            return [StringHelper imageNamed:@"device_ipod_gen"];
+            return [NSImage imageNamed:@"device_ipod_gen"];
             break;
         case iPod_Mini:
-            return [StringHelper imageNamed:@"device_ipod_mini"];
+            return [NSImage imageNamed:@"device_ipod_mini"];
             break;
         case iPod_Nano_Gen1:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Nano_Gen2:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Classic:
-            return [StringHelper imageNamed:@"device_ipod_classic"];
+            return [NSImage imageNamed:@"device_ipod_classic"];
             break;
         case iPod_Nano_Gen3:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Nano_Gen4:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Nano_Gen5:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Nano_Gen6:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Nano_Gen7:
-            return [StringHelper imageNamed:@"device_ipod_nano"];
+            return [NSImage imageNamed:@"device_ipod_nano"];
             break;
         case iPod_Shuffle_Gen1:
-            return [StringHelper imageNamed:@"device_ipod_shuffle"];
+            return [NSImage imageNamed:@"device_ipod_shuffle"];
             break;
         case iPod_Shuffle_Gen2:
-            return [StringHelper imageNamed:@"device_ipod_shuffle"];
+            return [NSImage imageNamed:@"device_ipod_shuffle"];
             break;
         case iPod_Shuffle_Gen3:
-            return [StringHelper imageNamed:@"device_ipod_shuffle"];
+            return [NSImage imageNamed:@"device_ipod_shuffle"];
             break;
         case iPod_Shuffle_Gen4:
-            return [StringHelper imageNamed:@"device_ipod_shuffle"];
+            return [NSImage imageNamed:@"device_ipod_shuffle"];
             break;
         case iPod_Touch_1:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPod_Touch_2:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPod_Touch_3:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPod_Touch_4:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPod_Touch_5:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPod_Touch_6:
-            return [StringHelper imageNamed:@"device_ipod_touch"];
+            return [NSImage imageNamed:@"device_ipod_touch"];
             break;
         case iPhone:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_3G:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_3GS:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_4:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_4S:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_5:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_5S:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_5C:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_6:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_6_Plus:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
         case iPhone_6S:
         case iPhone_SE:
@@ -668,56 +668,56 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPhone_8:
         case iPhone_8_Plus:
         case iPhone_X:
-            return [StringHelper imageNamed:@"device_iphonex"];
+            return [NSImage imageNamed:@"device_iphonex"];
             break;
         case iPhone_6S_Plus:
-            return [StringHelper imageNamed:@"device_iphone"];
+            return [NSImage imageNamed:@"device_iphone"];
             break;
             
         case iPad_1:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_2:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case The_New_iPad:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_4:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_Air:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_Air2:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_mini:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_mini_2:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
         case iPad_Pro:
-            return [StringHelper imageNamed:@"device_ipad"];
+            return [NSImage imageNamed:@"device_ipad"];
             break;
         case iPod_Unknown:
-            return [StringHelper imageNamed:@"default_ipod"];
+            return [NSImage imageNamed:@"default_ipod"];
             break;
         case general_Android:
-            return [StringHelper imageNamed:@"device_android"];
+            return [NSImage imageNamed:@"device_android"];
             break;
         case general_iCloud:
-            return [StringHelper imageNamed:@"device_icloud"];
+            return [NSImage imageNamed:@"device_icloud"];
             break;
         case general_Add_Content:
-            return [StringHelper imageNamed:@"device_icloudadd"];
+            return [NSImage imageNamed:@"device_icloudadd"];
             break;
         default:
-            return [StringHelper imageNamed:@"default_iphone"];
+            return [NSImage imageNamed:@"default_iphone"];
             break;
     }
 }
@@ -725,104 +725,104 @@ char pinyinFirstLetter(unsigned short hanzi) {
 + (NSImage *)getBackupDevcieImage:(IPodFamilyEnum)iPodFamily {
     switch (iPodFamily) {
         case iPod_Gen1_Gen2:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Gen3:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Gen4:
         case iPod_Gen4_2:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Gen5:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Mini:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen1:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen2:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Classic:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen3:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen4:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen5:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen6:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Nano_Gen7:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Shuffle_Gen1:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Shuffle_Gen2:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Shuffle_Gen3:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Shuffle_Gen4:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_1:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_2:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_3:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_4:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_5:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPod_Touch_6:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_3G:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_3GS:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_4:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_4S:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_5:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_5S:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_5C:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_6:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_6_Plus:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
         case iPhone_6S:
         case iPhone_SE:
@@ -831,44 +831,44 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPhone_8:
         case iPhone_8_Plus:
         case iPhone_X:
-            return [StringHelper imageNamed:@"airbackup_iphonex"];
+            return [NSImage imageNamed:@"airbackup_iphonex"];
             break;
         case iPhone_6S_Plus:
-            return [StringHelper imageNamed:@"airbackup_iphone"];
+            return [NSImage imageNamed:@"airbackup_iphone"];
             break;
             
         case iPad_1:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_2:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case The_New_iPad:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_4:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_Air:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_Air2:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_mini:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_mini_2:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
         case iPad_Pro:
-            return [StringHelper imageNamed:@"airbackup_ipad"];
+            return [NSImage imageNamed:@"airbackup_ipad"];
             break;
         default:
-            return [StringHelper imageNamed:@"airbackup_unrecognized"];
+            return [NSImage imageNamed:@"airbackup_unrecognized"];
             break;
     }
 }

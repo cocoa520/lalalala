@@ -29,7 +29,7 @@
 #import "IMBPhotoCategoryController.h"
 #import "IMBToolBarView.h"
 #import "IMBPhotoCategoryController.h"
-
+#import "IMBAppsListViewController.h"
 
 #import <objc/runtime.h>
 
@@ -102,6 +102,7 @@ static CGFloat const labelY = 10.0f;
 //    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:btn2];
     
     [(IMBToolbarWindow *)self.window setTitleBarHeight:20];
+    [(IMBToolbarWindow *)self.window setBackgroundColor:[NSColor whiteColor]];
 //    [[(IMBToolbarWindow *)self.window titleBarView] setFrameSize:NSMakeSize(self.window.frame.size.width, 300)];
     [self.window setMovableByWindowBackground:YES];
     [self setupView];
@@ -460,7 +461,10 @@ static CGFloat const labelY = 10.0f;
                 _pcVc.folderModel = [model retain];
                 _pcVc.iPod = [_iPod retain];
                 [_rootBox pushView:_pcVc.view];
-            }else {
+            } else if (model.idx == IMBDevicePageWindowFolderEnumApps) {
+                IMBAppsListViewController *listViewController = [[IMBAppsListViewController alloc]initWithIpod:_iPod];
+                [_rootBox pushView:listViewController.view];
+            } else {
                 if (_detailVc) {
                     [_detailVc release];
                     _detailVc = nil;

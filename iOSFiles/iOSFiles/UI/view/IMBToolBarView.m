@@ -64,12 +64,15 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     [_imgArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumAddToDevice),IMBToolBarViewImgNameName : @"tool_add_normal"}];
     [_imgArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumDelete),IMBToolBarViewImgNameName : @"tool_delete_normal"}];
     [_imgArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumToDevice),IMBToolBarViewImgNameName : @"tool_todevice_normal"}];
+    [_imgArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumEdit),IMBToolBarViewImgNameName : @"tool_editor_normal"}];
+    
     
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumRefresh),IMBToolBarViewTipName : @"Refresh"}];
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumToMac),IMBToolBarViewTipName : @"Send To Mac"}];
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumAddToDevice),IMBToolBarViewTipName : @"Add To Device"}];
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumDelete),IMBToolBarViewTipName : @"Delete Items"}];
     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumToDevice),IMBToolBarViewTipName : @"Send To Device"}];
+     [_tipArray addObject:@{IMBToolBarViewIdxName : @(IMBToolBarViewEnumEdit),IMBToolBarViewTipName : @"Edit"}];
     
     
     NSInteger subCount = self.subviews.count;
@@ -158,6 +161,12 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
         {
             [_delegate toDevice:information];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
+        }
+            break;
+        case IMBToolBarViewEnumEdit:
+        {
+            [_delegate doEdit:information];
+            //            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageToDeviceClickedNoti object:information];
         }
             break;
             

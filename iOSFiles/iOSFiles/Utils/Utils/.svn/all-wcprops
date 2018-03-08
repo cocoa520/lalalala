@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 62
-/svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils
+/svn/Mac/!svn/ver/1575/JPProject/iOSFiles/iOSFiles/Utils/Utils
 END
 NSBezierPath+BezierPathQuartzUtilities.h
 K 25
@@ -27,9 +27,21 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBExtractDeviceDBFiles.m
 END
+IMBViewAnimation.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/1564/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.h
+END
 CommonDefine.h
 K 25
 svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils/CommonDefine.h
+END
+IMBViewAnimation.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/1575/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.m
 END

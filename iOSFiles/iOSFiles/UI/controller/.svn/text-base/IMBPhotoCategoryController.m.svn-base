@@ -71,6 +71,8 @@ static CGFloat const labelY = 10.0f;
         
     }
     
+//    NSViewAnimation
+    
 }
 
 - (void)tableViewDoubleClicked:(id)sender {
@@ -92,6 +94,7 @@ static CGFloat const labelY = 10.0f;
         default:
             break;
     }
+    
     IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
     subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
     NSMutableArray *subArray = (NSMutableArray *)[_folderModel.photoArray objectAtIndex:rowNumber];

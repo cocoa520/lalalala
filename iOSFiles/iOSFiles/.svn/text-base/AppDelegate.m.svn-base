@@ -21,7 +21,7 @@
     // Insert code here to initialize your application
     _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
 //    [self.window setContentSize:NSMakeSize(1060, 635)];
-    [_mainWindowController.window setContentSize:NSMakeSize(1060, 635)];
+    [_mainWindowController.window setContentSize:NSMakeSize(592, 430)];
     [_mainWindowController showWindow:nil];
     
     [self checkLanguage];

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
@@ -23,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1000" height="543"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="1100" height="610"/>
             <value key="maxSize" type="size" width="1100" height="610"/>
             <view key="contentView" id="se5-gp-TjO" customClass="IMBNoTitleBarContentView">
@@ -32,17 +32,32 @@
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-Jq-1sc" customClass="IMBWhiteView">
                         <rect key="frame" x="0.0" y="490" width="1000" height="54"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kX7-Pw-rSy">
+                                <rect key="frame" x="301" y="16" width="380" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="I9L-TY-KkR">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-KU-d8c" customClass="IMBToolBarView">
+                                <rect key="frame" x="712" y="7" width="278" height="41"/>
+                            </customView>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUl-KP-K2H">
+                                <rect key="frame" x="20" y="11" width="81" height="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tool_back_normal" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="R7c-ON-3fo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backClicked:" target="-2" id="XVL-U9-vGJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </customView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kX7-Pw-rSy">
-                        <rect key="frame" x="302" y="500" width="380" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="I9L-TY-KkR">
-                            <font key="font" metaFont="system" size="18"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <box fixedFrame="YES" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="aFM-lp-NYF" customClass="IMBStackBox">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="490"/>
+                        <rect key="frame" x="-3" y="3" width="1000" height="490"/>
                         <view key="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="1000" height="490"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,19 +65,6 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUl-KP-K2H">
-                        <rect key="frame" x="20" y="508" width="81" height="32"/>
-                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="tool_back_normal" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="R7c-ON-3fo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system" size="15"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="backClicked:" target="-2" id="XVL-U9-vGJ"/>
-                        </connections>
-                    </button>
-                    <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUl-KU-d8c" customClass="IMBToolBarView">
-                        <rect key="frame" x="713" y="502" width="278" height="41"/>
-                    </customView>
                 </subviews>
             </view>
             <connections>
@@ -75,7 +77,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" id="Gc0-Tt-NfY">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="502"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p3o-CB-Jd9" viewBased="YES" id="eY5-VY-zih">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="479"/>

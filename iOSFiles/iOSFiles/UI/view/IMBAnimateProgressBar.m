@@ -152,7 +152,7 @@
             
         }
     });
-    _backGroundImage = [[StringHelper imageNamed:@"scanning_bar_bg"] retain];
+    _backGroundImage = [[NSImage imageNamed:@"scanning_bar_bg"] retain];
     _progress = 0;
     _beforeProgress = 0;
     _currentProgress = 0;
@@ -166,7 +166,7 @@
 -(void)setLoadAnimation {
     [_animationImgView setHidden:NO];
     [self setProgressWithOutAnimation:100];
-    [_animationImgView setImage:[StringHelper imageNamed:@"transfer_light"]];
+    [_animationImgView setImage:[NSImage imageNamed:@"transfer_light"]];
     [_animationImgView setWantsLayer:YES];
     //    [imageView.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
     CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position"];

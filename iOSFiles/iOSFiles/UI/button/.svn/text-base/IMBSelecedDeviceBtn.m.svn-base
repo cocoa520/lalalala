@@ -63,7 +63,7 @@
     if (_isShowTrangle) {
         NSImage *image = nil;
         if (self.isEnabled) {
-            image = [StringHelper imageNamed:@"arrow"];
+            image = [NSImage imageNamed:@"arrow"];
         }
         arrowWith = image.size.width;
     }
@@ -73,7 +73,7 @@
     if (_isShowIcon) {
         NSImage *iconImage = nil;
         if (_connectTpye == general_Android) {
-            iconImage = [StringHelper imageNamed:@"device_name_android"];
+            iconImage = [NSImage imageNamed:@"device_name_android"];
             int  xPos = 0;
             if (_isShowTrangle) {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
@@ -87,7 +87,7 @@
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }else if (_connectTpye == general_iCloud || _connectTpye == 7000) {
-            iconImage = [StringHelper imageNamed:@"device_name_icloud"];
+            iconImage = [NSImage imageNamed:@"device_name_icloud"];
             int  xPos = 0;
             if (_isShowTrangle) {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
@@ -101,7 +101,7 @@
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }else if (_connectTpye == 0) {
-            iconImage = [StringHelper imageNamed:@"device_name_noconnect"];
+            iconImage = [NSImage imageNamed:@"device_name_noconnect"];
             int  xPos = 0;
             if (_isShowTrangle) {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 16)) / 2 ;
@@ -115,7 +115,7 @@
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }else {
-            iconImage = [StringHelper imageNamed:@"device_name_apple"];
+            iconImage = [NSImage imageNamed:@"device_name_apple"];
             int  xPos = 0;
             if (_isShowTrangle) {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
@@ -161,7 +161,7 @@
     if (_isShowTrangle) {
         NSImage *image = nil;
         if (self.isEnabled) {
-            image = [StringHelper imageNamed:@"arrow"];
+            image = [NSImage imageNamed:@"arrow"];
         }
         NSRect drawingArrowRect;
         NSRect imageRect;

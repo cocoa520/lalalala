@@ -1,14 +1,14 @@
 10
 
 dir
-1504
+1588
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-06T02:12:56.474774Z
-1503
+2018-03-08T10:17:46.374875Z
+1588
 longfan
 
 
@@ -28,116 +28,14 @@ a323380f-3d89-8743-8c24-0bf67719c927
 
 IMBDeviceViewController.m
 file
+1589
 
 
 
-
-2018-03-06T02:29:38.000000Z
-13d5ab42ce33cc9e553016b858624753
-2018-03-06T02:12:56.474774Z
-1503
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-18241
-
-IMBSystemCollectionViewController.m
-file
-
-
-
-
-2018-03-06T01:37:14.000000Z
-a18e858abc419c742022a995ab96fa1b
-2018-03-06T01:02:39.475367Z
-1501
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-62651
-
-IMBDevViewController.xib
-file
-
-
-
-
-2018-02-26T10:09:42.000000Z
-945a32dccb22f7b79a4bf08638dba118
-2018-02-26T09:04:05.231805Z
-1377
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7637
-
-IMBBaseViewController.h
-file
-
-
-
-
-2018-03-05T01:18:19.000000Z
-2c81eb95f3825d5d23f675245f9a5d55
-2018-03-05T03:11:02.641143Z
-1486
+2018-03-08T10:26:49.000000Z
+73dcb62486042192a7fd20bd763483da
+2018-03-08T10:28:10.687971Z
+1589
 hezhonglin
 
 
@@ -160,7 +58,143 @@ hezhonglin
 
 
 
-565
+21844
+
+IMBAppsListViewController.m
+file
+1589
+
+
+
+2018-03-08T09:50:53.000000Z
+fdf96acd46bf7a6515c42d767a339643
+2018-03-08T10:28:10.687971Z
+1589
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+53340
+
+IMBSystemCollectionViewController.m
+file
+
+
+
+
+2018-03-08T10:27:53.000000Z
+461fa5cf8030c9ab919ef77aea15be5f
+2018-03-08T10:17:46.374875Z
+1588
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+42640
+
+IMBDevViewController.xib
+file
+1589
+
+
+
+2018-03-08T09:03:47.000000Z
+6a001635397f899cdb9b5fdadeb1fa36
+2018-03-08T10:28:10.687971Z
+1589
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7677
+
+IMBBaseViewController.h
+file
+
+
+
+
+2018-03-08T10:27:53.000000Z
+7efdce988a762ce8c77b67990376b4ad
+2018-03-08T10:17:46.374875Z
+1588
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7766
 
 IMBDevViewController.h
 file
@@ -196,40 +230,6 @@ longfan
 
 317
 
-IMBBaseViewController.m
-file
-
-
-
-
-2018-03-06T02:29:38.000000Z
-992574c71800239687f85c312b5c9566
-2018-03-06T02:12:56.474774Z
-1503
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-912
-
 IMBTransferViewController.xib
 file
 
@@ -264,17 +264,51 @@ longfan
 
 1147
 
+IMBBaseViewController.m
+file
+
+
+
+
+2018-03-08T10:27:53.000000Z
+4ed8e95b7ec5ab2ff45bf85387086a8c
+2018-03-08T10:17:46.374875Z
+1588
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+74816
+
 IMBDetailViewControler.xib
 file
 
 
 
 
-2018-03-05T09:02:44.000000Z
-dfde55ef34fb133df73f2cd5bd3ba9f7
-2018-03-05T09:11:23.670719Z
-1498
-hezhonglin
+2018-03-07T10:42:20.000000Z
+246361877b33087b8de7405fd10370bb
+2018-03-07T10:42:03.133680Z
+1556
+longfan
 
 
 
@@ -296,7 +330,7 @@ hezhonglin
 
 
 
-7803
+7804
 
 IMBDevViewController.m
 file
@@ -331,40 +365,6 @@ hezhonglin
 
 
 3310
-
-IMBDisconnectViewController.xib
-file
-
-
-
-
-2018-02-06T05:19:54.000000Z
-f7b583727df066002a32f4a22e48e637
-2018-01-30T07:04:02.407678Z
-1103
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-15570
 
 IMBTransferViewController.h
 file
@@ -468,40 +468,6 @@ hezhonglin
 
 7074
 
-IMBDisconnectViewController.h
-file
-
-
-
-
-2018-02-06T05:19:54.000000Z
-81389da5af8691cd4cfa3e369d8d18ea
-2018-01-24T10:10:59.854522Z
-1038
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-350
-
 IMBTransferViewController.m
 file
 
@@ -538,14 +504,48 @@ longfan
 
 IMBDeviceViewController.xib
 file
+1589
+
+
+
+2018-03-08T10:27:26.000000Z
+5308a8eee52ad04414c097d1a0279007
+2018-03-08T10:28:10.687971Z
+1589
+hezhonglin
 
 
 
 
-2018-03-01T10:06:17.000000Z
-a0906de702c1b70291c497f15542a2f2
-2018-03-01T09:53:10.213838Z
-1455
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+29092
+
+IMBAppsListViewController.xib
+file
+
+
+
+
+2018-03-08T08:03:11.000000Z
+93a54d8eab587b2a1743c16ecb7a1dbb
+2018-03-08T07:11:12.637614Z
+1580
 longfan
 
 
@@ -568,11 +568,11 @@ longfan
 
 
 
-13048
+38603
 
 IMBDetailViewControler.m
 file
-1506
+
 
 
 
@@ -610,10 +610,10 @@ file
 
 
 
-2018-02-28T09:59:29.000000Z
-416335edec8346095e883a9d0c889371
-2018-02-28T08:29:29.170466Z
-1424
+2018-03-08T09:18:22.000000Z
+6e42a58c7f29d3b713cd7444afecc3d7
+2018-03-08T09:15:57.437160Z
+1583
 longfan
 
 
@@ -636,7 +636,7 @@ longfan
 
 
 
-21909
+21616
 
 IMBPhotoCategoryController.h
 file
@@ -672,16 +672,16 @@ hezhonglin
 
 484
 
-IMBDisconnectViewController.m
+IMBDeviceViewController.h
 file
+1589
 
 
 
-
-2018-02-06T05:19:54.000000Z
-b3a85a393aca5724eaf038aadc534a52
-2018-01-17T09:24:36.194156Z
-1018
+2018-03-08T10:26:49.000000Z
+98a0068ba2d7381933df83e60f22cd20
+2018-03-08T10:28:10.687971Z
+1589
 hezhonglin
 
 
@@ -704,18 +704,18 @@ hezhonglin
 
 
 
-492
+2060
 
-IMBDeviceViewController.h
+IMBAppsListViewController.h
 file
 
 
 
 
-2018-03-05T09:03:58.000000Z
-1233b59f0abf0264725cbd740472e484
-2018-03-05T08:58:12.218928Z
-1496
+2018-03-08T09:18:22.000000Z
+3294326cfc0af419d0d7561159bb31bb
+2018-03-08T09:16:51.709655Z
+1584
 longfan
 
 
@@ -738,7 +738,7 @@ longfan
 
 
 
-1363
+2494
 
 IMBSystemCollectionViewController.h
 file
@@ -746,10 +746,10 @@ file
 
 
 
-2018-03-06T01:37:14.000000Z
-9b6ef4363d3726bf71ec982bb497f513
-2018-03-06T00:52:39.077112Z
-1500
+2018-03-08T09:18:22.000000Z
+1d0b28f660755464a3fc1ce89564fd40
+2018-03-08T09:15:57.437160Z
+1583
 longfan
 
 
@@ -772,7 +772,7 @@ longfan
 
 
 
-3375
+1677
 
 IMBPhotoCategoryController.m
 file
@@ -780,10 +780,10 @@ file
 
 
 
-2018-02-28T10:17:27.000000Z
-3fb22db46e24a2bd27acb33a5271e2f8
-2018-02-28T10:20:00.773313Z
-1434
+2018-03-07T02:18:13.000000Z
+f43b7cc8831f701f300bac8b54e1e8e4
+2018-03-07T03:03:14.467328Z
+1524
 hezhonglin
 
 
@@ -806,5 +806,5 @@ hezhonglin
 
 
 
-6272
+6304
 

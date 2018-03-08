@@ -907,7 +907,7 @@
             }
         }
         entity = [[IMBPhotoEntity alloc] init];
-        entity.photoImage = [StringHelper imageNamed:@"photo_show"];
+        entity.photoImage = [NSImage imageNamed:@"photo_show"];
         if (![rs columnIsNull:@"ZKIND"]) {
             entity.photoKind = [rs intForColumn:@"ZKIND"];
         }

@@ -53,7 +53,7 @@
     }
     [[NSColor clearColor] set];
     NSRectFill(dirtyRect);
-    NSImage *image = [StringHelper imageNamed:_imageName];
+    NSImage *image = [NSImage imageNamed:_imageName];
     float imageWidth = image.size.width;
     float imageHeight = image.size.height;
     int xCount = ceil(self.frame.size.width / imageWidth);

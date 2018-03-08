@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1611" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -9,10 +9,10 @@
         <customObject id="-2" userLabel="File's Owner" customClass="IMBSystemCollectionViewController">
             <connections>
                 <outlet property="_addMenuItem" destination="Isj-oh-jLE" id="8GL-8C-cPD"/>
-                <outlet property="_arrayController" destination="3Wx-ye-b0b" id="v8P-OZ-kLo"/>
+                <outlet property="_arrayController" destination="3Wx-ye-b0b" id="71h-aq-VcW"/>
                 <outlet property="_backandnextView" destination="Ckz-ip-LAf" id="4nv-TI-tPs"/>
                 <outlet property="_bgView" destination="k8F-qS-VNR" id="xvF-rZ-f9W"/>
-                <outlet property="_collectionView" destination="ouy-hy-g6W" id="yMa-CU-U5k"/>
+                <outlet property="_collectionView" destination="ouy-hy-g6W" id="M2O-pE-u4e"/>
                 <outlet property="_deleteMenuItem" destination="tlR-zb-n2n" id="cgH-hB-7dC"/>
                 <outlet property="_detailView" destination="BAx-J6-ou8" id="QJg-gO-AFL"/>
                 <outlet property="_itemTitleField" destination="IDM-Qw-8W6" id="L5B-sW-3fO"/>
@@ -26,7 +26,7 @@
                 <outlet property="_scrollView" destination="lUT-HU-4rk" id="ovJ-SR-cyS"/>
                 <outlet property="_textView" destination="kRu-qP-Wio" id="FMb-FC-uOU"/>
                 <outlet property="_toMacMenuItem" destination="Iye-Yo-1LH" id="r5F-it-wDl"/>
-                <outlet property="_toolBarView" destination="KDk-ke-lRI" id="hTl-Mr-CFz"/>
+                <outlet property="_toolBarView" destination="3NV-bm-65E" id="KqN-LF-o11"/>
                 <outlet property="advanceButton" destination="3te-AC-n8j" id="PfC-X5-fwY"/>
                 <outlet property="backButton" destination="UWw-lq-Atq" id="row-jt-oKp"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -71,16 +71,16 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                 </button>
-                                <customView id="KDk-ke-lRI" customClass="IMBToolBarView">
-                                    <rect key="frame" x="553" y="4" width="366" height="33"/>
+                                <customView id="3NV-bm-65E" customClass="IMBToolBarView">
+                                    <rect key="frame" x="549" y="0.0" width="300" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 </customView>
                             </subviews>
                         </customView>
                         <box autoresizesSubviews="NO" transparent="YES" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="q1P-Uz-AKT">
-                            <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
+                            <rect key="frame" x="0.0" y="-4" width="1060" height="496"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <view key="contentView" id="6Y9-ka-byR">
+                            <view key="contentView" id="lMd-IX-tGv">
                                 <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
@@ -91,7 +91,6 @@
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="242" y="95"/>
         </customView>
         <menu id="ym3-5U-wSO">
             <items>
@@ -196,9 +195,9 @@
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="rG5-A9-9r3">
                     <rect key="frame" x="262" y="192" width="536" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="hFP-CX-IGf">
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="d6E-BB-qdx">
                         <rect key="frame" x="0.0" y="0.0" width="536" height="24"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="kRu-qP-Wio">
                                 <rect key="frame" x="0.0" y="0.0" width="536" height="24"/>
@@ -232,21 +231,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="lUT-HU-4rk" customClass="IMBScrollView">
+                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="lUT-HU-4rk" customClass="IMBScrollView">
                             <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R2q-Ds-T0c">
+                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="FeV-Zf-Su3">
                                 <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <collectionView autoresizesSubviews="NO" selectable="YES" allowsMultipleSelection="YES" id="ouy-hy-g6W" customClass="IMBBlankDraggableCollectionView">
+                                    <collectionView selectable="YES" id="ouy-hy-g6W" customClass="IMBBlankDraggableCollectionView">
                                         <rect key="frame" x="0.0" y="0.0" width="1060" height="496"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <connections>
                                             <binding destination="3Wx-ye-b0b" name="content" keyPath="arrangedObjects" id="dKe-vQ-vsR"/>
                                             <binding destination="3Wx-ye-b0b" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="dKe-vQ-vsR" id="dO1-9B-ffw"/>
-                                            <outlet property="_collectionItem" destination="pZ2-Zv-CZh" id="r3K-0J-7es"/>
                                             <outlet property="delegate" destination="-2" id="LKf-CS-4y4"/>
                                             <outlet property="itemPrototype" destination="pZ2-Zv-CZh" id="3og-Yv-GNj"/>
                                             <outlet property="menu" destination="ym3-5U-wSO" id="2Xj-c2-bbt"/>

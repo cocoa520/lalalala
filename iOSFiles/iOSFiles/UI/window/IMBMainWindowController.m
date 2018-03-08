@@ -13,7 +13,7 @@
 #import "IMBDeviceConnection.h"
 #import "IMBiPod.h"
 #import "IMBDevViewController.h"
-
+#import "IMBCommonDefine.h"
 
 @interface IMBMainWindowController ()<NSPopoverDelegate>
 
@@ -35,15 +35,17 @@
 - (void)awakeFromNib {
 //    NSRect screenRect = [NSScreen mainScreen].frame;
 //    [self.window setMaxSize:screenRect.size];
-    [self.window setContentSize:NSMakeSize(1060, 635)];
+    [self.window setContentSize:NSMakeSize(592, 430)];
 
-    [(NSView *)((IMBNoTitleBarWindow *)self.window).maxAndminView setFrameOrigin:NSMakePoint(10,NSHeight(_topView.frame) - 36)];
+    [(NSView *)((IMBNoTitleBarWindow *)self.window).maxAndminView setFrameOrigin:NSMakePoint(10,NSHeight(_topView.frame) - 22)];
     [[(IMBNoTitleBarWindow *)self.window closeButton] setAction:@selector(closeWindow:)];
     [[(IMBNoTitleBarWindow *)self.window closeButton] setTarget:self];
     [_topView addSubview:((IMBNoTitleBarWindow *)self.window).maxAndminView];
+    [((IMBNoTitleBarWindow *)self.window).maxAndminView setBackgroundColor:COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS];
     [_topView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
     [_topView setWantsLayer:YES];
-    [_topView.layer setBackgroundColor:IMBGrayColor(255).CGColor];
+    [_topView.layer setBackgroundColor:COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS.CGColor];
+    [_topView setBackgroundColor:COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS];
     
     _deviceViewController = [[IMBDeviceViewController alloc]initWithNibName:@"IMBDeviceViewController" bundle:nil];
     [_rootBox addSubview:_deviceViewController.view];

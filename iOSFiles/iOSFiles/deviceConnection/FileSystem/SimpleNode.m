@@ -108,8 +108,8 @@
     [_listprogressBar setProgress:0.0];
     _listCloseButton = [[HoverButton alloc] initWithFrame:NSMakeRect(0, 0, 14, 14)];
     _coCloseButton = [[HoverButton alloc] initWithFrame:NSMakeRect(10, 80, 14, 14)];
-    [_listCloseButton setMouseEnteredImage:[StringHelper imageNamed:@"fastdriver_close2"] mouseExitImage:[StringHelper imageNamed:@"fastdriver_close1"] mouseDownImage:[StringHelper imageNamed:@"fastdriver_close3"]];
-    [_coCloseButton setMouseEnteredImage:[StringHelper imageNamed:@"fastdriver_close2"] mouseExitImage:[StringHelper imageNamed:@"fastdriver_close1"] mouseDownImage:[StringHelper imageNamed:@"fastdriver_close3"]];
+    [_listCloseButton setMouseEnteredImage:[NSImage imageNamed:@"fastdriver_close2"] mouseExitImage:[NSImage imageNamed:@"fastdriver_close1"] mouseDownImage:[NSImage imageNamed:@"fastdriver_close3"]];
+    [_coCloseButton setMouseEnteredImage:[NSImage imageNamed:@"fastdriver_close2"] mouseExitImage:[NSImage imageNamed:@"fastdriver_close1"] mouseDownImage:[NSImage imageNamed:@"fastdriver_close3"]];
     [_listCloseButton setTarget:self];
     [_listCloseButton setAction:@selector(closeCopy:)];
     [_coCloseButton setTarget:self];

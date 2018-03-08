@@ -81,30 +81,30 @@
 - (void)drawRect:(NSRect)dirtyRect {
     if (self.isEnabled) {
         if (_buttonType == EnteredButton) {
-            _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@2",_leftImageName]];
-            _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@2",_rightImageName]];
-            _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@2",_middleImageName]];
+            _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@2",_leftImageName]];
+            _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@2",_rightImageName]];
+            _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@2",_middleImageName]];
         }else if (_buttonType == ExitButton) {
-            _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
-            _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
-            _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
+            _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
+            _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
+            _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
         }else if (_buttonType == UpButton) {
-            _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
-            _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
-            _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
+            _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
+            _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
+            _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
         }else if (_buttonType == DownButton) {
-            _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@3",_leftImageName]];
-            _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@3",_rightImageName]];
-            _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@3",_middleImageName]];
+            _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@3",_leftImageName]];
+            _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@3",_rightImageName]];
+            _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@3",_middleImageName]];
         }else {
-            _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
-            _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
-            _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
+            _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_leftImageName]];
+            _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_rightImageName]];
+            _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@1",_middleImageName]];
         }
     }else {
-        _btnCell.leftImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@4",_leftImageName]];
-        _btnCell.rightImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@4",_rightImageName]];
-        _btnCell.middleImage = [StringHelper imageNamed:[NSString stringWithFormat:@"%@4",_middleImageName]];
+        _btnCell.leftImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@4",_leftImageName]];
+        _btnCell.rightImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@4",_rightImageName]];
+        _btnCell.middleImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@4",_middleImageName]];
     }
     
     [super drawRect:dirtyRect];

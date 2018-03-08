@@ -5,19 +5,14 @@
 //  Created by iMobie_Market on 16/7/28.
 //  Copyright (c) 2016年 imobie. All rights reserved.
 //
-#import <Cocoa/Cocoa.h>
+
+#import "IMBBaseViewController.h"
 #import "LoadingView.h"
-#import "IMBTransferViewController.h"
-#import "IMBWhiteView.h"
 #import "IMBScrollView.h"
-#import "IMBBlankDraggableCollectionView.h"
-#import "IMBiPod.h"
-#import "IMBInformation.h"
-#import "IMBToolBarView.h"
 @class HoverButton;
 @class IMBBackgroundBorderView;
 @class IMBFileSystemManager;
-@interface IMBSystemCollectionViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,NSCollectionViewDelegate,NSTextViewDelegate,NSPopoverDelegate>
+@interface IMBSystemCollectionViewController : IMBBaseViewController
 {
     IBOutlet IMBBackgroundBorderView *_backandnextView;
     IBOutlet NSTextField *_itemTitleField;
@@ -32,7 +27,6 @@
     IBOutlet NSBox *_mainBox;
     IBOutlet IMBWhiteView *_bgView;
     IMBFileSystemManager *systemManager;
-    IMBInformation *_information;
 //    NSSegmentedControl *backandnext;
     NSMutableArray *_backContainer;
     NSMutableArray *_nextContainer;
@@ -42,69 +36,21 @@
     NSNotificationCenter *nc;
     IBOutlet IMBWhiteView *_loadingView;
     IBOutlet LoadingView *_loadingAnimationView;
-    NSMutableArray *_dataSourceArray;
-    IMBiPod *_ipod;
-    IBOutlet IMBBlankDraggableCollectionView *_collectionView;
+    
     int _deleteTotalItems;
-    IBOutlet NSArrayController *_arrayController;
-    id _delegate;
-    NSOpenPanel *_openPanel;
-    BOOL _isOpen;
     
     IMBTransferViewController *_transferViewController;
-    IBOutlet IMBToolBarView *_toolBarView;
-    NSMutableArray *_delArray;
-   
 }
 @property(nonatomic,retain)NSMutableArray *currentArray;
 @property (nonatomic,retain)NSString *currentDevicePath;
 
-- (void)refresh;
-- (void)addToDevice;
-- (void)toMac;
 - (void)setDeleteCurItems:(int)curItem;
 
-- (void)refresh:(IMBInformation *)information;
-- (void)toMac:(IMBInformation *)information;
-- (void)addToDevice:(IMBInformation *)information;
-- (void)deleteItem:(IMBInformation *)information;
-- (void)toDevice:(IMBInformation *)information;
-- (id)initWithIpod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)category withDelegate:(id)delegate;
 @end
 
-@interface IMBPhotoCollectionViewItem : NSCollectionViewItem
+@interface IMBFolderOrFileCollectionViewItem : NSCollectionViewItem
 
 @end
-
-
-@interface IMBPhotoImageView : NSImageView
-{
-    BOOL _isSected;
-    NSImage *_loadImage;
-    
-    BOOL _isDraw;
-    BOOL _isload; //图片加载了
-    BOOL _isfree;//图片释放了
-    BOOL _exist;//图片是否能取到
-}
-
-@property(nonatomic,assign)BOOL isSelected;
-@property (nonatomic,retain,readwrite) NSImage *loadImage;
-@property(nonatomic,assign)BOOL isload;
-@property(nonatomic,assign)BOOL isfree;
-@property(nonatomic,assign)BOOL exist;
-@end
-
-@interface IMBCollectionImageView :IMBPhotoImageView
-{
-    NSImage *_backgroundImage;
-    
-}
-
-@property(nonatomic,retain)NSImage *backgroundImage;
-
-@end
-
 
 @interface IMBFolderOrFileCollectionItemView : NSView
 {
@@ -112,8 +58,4 @@
     BOOL _done;
 }
 @property (nonatomic,assign) BOOL done;
-@end
-
-@interface IMBFolderOrFileCollectionViewItem : NSCollectionViewItem
-
 @end

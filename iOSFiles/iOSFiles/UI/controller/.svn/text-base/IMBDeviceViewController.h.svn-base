@@ -17,6 +17,9 @@
 #import "iCloudDrive.h"
 #import "IMBiCloudDriveManager.h"
 #import "IMBDriveBaseManage.h"
+#import "IMBGradientComponentView.h"
+#import "IMBiPod.h"
+
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
@@ -36,6 +39,29 @@
     IBOutlet customTextFiled *_twoCode;
     IMBDriveBaseManage *_baseDriveManage;
 
+    IBOutlet IMBGradientComponentView *_iCloudDriveView;
+    IBOutlet IMBGradientComponentView *_oneDriveView;
+    IBOutlet IMBGradientComponentView *_devicesView;
+    IMBiPod *_iPod;
+    
+    IBOutlet NSView *_midiumSizeiCloudView;
+    IBOutlet NSView *_bigSizeiCloudView;
+    
+    
+    IBOutlet NSView *_bigSizeOneDriveView;
+    IBOutlet NSView *_midiumSizeOneDriveView;
+    
+    
+    IBOutlet NSBox *_oneDriveBox;
+    IBOutlet NSBox *_icloudDrivebox;
+    
+    IBOutlet NSView *_smallSizeView;
+    IBOutlet NSTextField *_smallSizeTitle;
+    
+    
+    IBOutlet NSView *_smallOneDriveView;
+    IBOutlet NSView *_smalliCloudDriveView;
+    
 }
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 - (void)mainWindowClose;

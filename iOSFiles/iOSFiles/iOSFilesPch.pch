@@ -28,7 +28,7 @@
 //[[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",[(NSArray *)([[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"]) objectAtIndex:0]] ofType:@"lproj"]] localizedStringForKey:(key) value:key table:nil]
 
 #ifdef DEBUG
-# define IMBFLog(fmt, ...) NSLog((@"[函数名:%s]\n""[行号:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+# define IMBFLog(fmt, ...) NSLog((@"[functionName:%s]\n""[line Num:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
 # define IMBFLog(...);
 #endif

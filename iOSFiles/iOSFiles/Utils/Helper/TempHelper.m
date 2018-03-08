@@ -581,57 +581,57 @@
 
 }
 
-+ (NSString *)checkiCloudInternetAvailble {
-    BOOL isFromServer = NO;
-    NSString *retvalue = [TempHelper pingiCloudDomain:@"http://143.95.78.61/"];
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    if (retvalue) {
-        soft.domainNetwork = @"http://143.95.78.61/";
-    }else{
-        retvalue = [TempHelper pingiCloudDomain:@"http://cal.imobie.us/"];
-        if (retvalue) {
-            soft.domainNetwork = @"http://cal.imobie.us/";
-        }else{
-            retvalue = [TempHelper pingiCloudDomain:@"http://imobie-001-site1.mywindowshosting.com/"];
-            if (retvalue) {
-                soft.domainNetwork = @"http://imobie-001-site1.mywindowshosting.com/";
-            }else{
-                retvalue = [TempHelper pingiCloudDomain:@"http://imobie.us.179.gppnetwork.com/"];
-                if (retvalue) {
-                    soft.domainNetwork = @"http://imobie.us.179.gppnetwork.com/";
-                }else{
-                    retvalue = [TempHelper pingiCloudDomain:@"https://imobie.us/"];
-                    if (retvalue) {
-                        soft.domainNetwork = @"https://imobie.us/";
-                    }else{
-                        retvalue = [TempHelper pingiCloudDomain:@"http://call.imobie.us//"];
-                        if (retvalue) {
-                            soft.domainNetwork = @"http://call.imobie.us//";
-                        }
-                    }
-                }
-            }
-        }
-    }
-    NSDate *localDatetime = nil;
-    [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"retvalue:%@", retvalue]];
-    if (retvalue != nil && ![retvalue isEqualToString:@""]) {
-        isFromServer = YES;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
-        NSDate *greenwishTime = [dateFormatter dateFromString:retvalue];
-        [dateFormatter release];
-        dateFormatter = nil;
-        localDatetime = [self greenwishTime2LocalTime:greenwishTime];
-    } else {
-        isFromServer = NO;
-    }
-    if (isFromServer == YES) {
-        return soft.domainNetwork;
-    }else{
-        return @"";
-    }
-}
+//+ (NSString *)checkiCloudInternetAvailble {
+//    BOOL isFromServer = NO;
+//    NSString *retvalue = [TempHelper pingiCloudDomain:@"http://143.95.78.61/"];
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    if (retvalue) {
+//        soft.domainNetwork = @"http://143.95.78.61/";
+//    }else{
+//        retvalue = [TempHelper pingiCloudDomain:@"http://cal.imobie.us/"];
+//        if (retvalue) {
+//            soft.domainNetwork = @"http://cal.imobie.us/";
+//        }else{
+//            retvalue = [TempHelper pingiCloudDomain:@"http://imobie-001-site1.mywindowshosting.com/"];
+//            if (retvalue) {
+//                soft.domainNetwork = @"http://imobie-001-site1.mywindowshosting.com/";
+//            }else{
+//                retvalue = [TempHelper pingiCloudDomain:@"http://imobie.us.179.gppnetwork.com/"];
+//                if (retvalue) {
+//                    soft.domainNetwork = @"http://imobie.us.179.gppnetwork.com/";
+//                }else{
+//                    retvalue = [TempHelper pingiCloudDomain:@"https://imobie.us/"];
+//                    if (retvalue) {
+//                        soft.domainNetwork = @"https://imobie.us/";
+//                    }else{
+//                        retvalue = [TempHelper pingiCloudDomain:@"http://call.imobie.us//"];
+//                        if (retvalue) {
+//                            soft.domainNetwork = @"http://call.imobie.us//";
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    NSDate *localDatetime = nil;
+//    [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"retvalue:%@", retvalue]];
+//    if (retvalue != nil && ![retvalue isEqualToString:@""]) {
+//        isFromServer = YES;
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
+//        NSDate *greenwishTime = [dateFormatter dateFromString:retvalue];
+//        [dateFormatter release];
+//        dateFormatter = nil;
+//        localDatetime = [self greenwishTime2LocalTime:greenwishTime];
+//    } else {
+//        isFromServer = NO;
+//    }
+//    if (isFromServer == YES) {
+//        return soft.domainNetwork;
+//    }else{
+//        return @"";
+//    }
+//}
 
 +(BOOL)connectedToNetwork{
     struct sockaddr_in zeroAddress;
