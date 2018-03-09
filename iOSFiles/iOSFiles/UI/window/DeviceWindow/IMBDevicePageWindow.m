@@ -462,8 +462,25 @@ static CGFloat const labelY = 10.0f;
                 _pcVc.iPod = [_iPod retain];
                 [_rootBox pushView:_pcVc.view];
             } else if (model.idx == IMBDevicePageWindowFolderEnumApps) {
-                IMBAppsListViewController *listViewController = [[IMBAppsListViewController alloc]initWithIpod:_iPod];
-                [_rootBox pushView:listViewController.view];
+                if ([_iPod.deviceInfo.productVersion isVersionMajor:@"8.3"]) {
+                    if (_detailVc) {
+                        [_detailVc release];
+                        _detailVc = nil;
+                    }
+                    _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
+                    if (_detailVc.folderModel) {
+                        [_detailVc.folderModel release];
+                        _detailVc.folderModel = nil;
+                    }
+                    _detailVc.iPod = [_iPod retain];
+                    
+                    _detailVc.folderModel = [model retain];
+                    [_rootBox pushView:_detailVc.view];
+                }else {
+                    IMBAppsListViewController *listViewController = [[IMBAppsListViewController alloc]initWithIpod:_iPod];
+                    [_rootBox pushView:listViewController.view];
+                }
+                
             } else {
                 if (_detailVc) {
                     [_detailVc release];

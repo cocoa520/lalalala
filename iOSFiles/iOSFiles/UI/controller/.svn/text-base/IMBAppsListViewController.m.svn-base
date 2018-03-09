@@ -1131,6 +1131,8 @@
 
     for (SimpleNode *app in delArray) {
         [appDir copyRemoteFile:app.path toLocalFile:filePath];
+        [appDir asyncCopyRemoteFile:app.path toLocalFile:filePath];
+//        - (BOOL)asyncCopyRemoteFile:(NSString *)path1 toLocalFile:(NSString *)path2;
     }
     
     if (appDir != nil) {

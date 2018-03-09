@@ -1,7 +1,7 @@
 10
 
 dir
-1612
+1613
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Photo
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -162,40 +162,6 @@ hezhonglin
 
 1267
 
-IMBPhotoManager.h
-file
-
-
-
-
-2018-03-09T09:48:47.000000Z
-c1e2c18a950a95c2cbd93a4f54b76dce
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1118
-
 IMBPhotoExportSettingConfig.m
 file
 
@@ -229,6 +195,40 @@ hezhonglin
 
 
 3932
+
+IMBPhotoManager.h
+file
+
+
+
+
+2018-03-09T09:48:47.000000Z
+c1e2c18a950a95c2cbd93a4f54b76dce
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1118
 
 IMBSyncPhotoData.m
 file
@@ -264,40 +264,6 @@ hezhonglin
 
 1054
 
-IMBPhotoEntity.h
-file
-
-
-
-
-2018-03-09T09:48:47.000000Z
-d07efd1e8fc6db68063f0a592963684e
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4949
-
 IMBCreatePhotoSyncPlist.h
 file
 
@@ -332,16 +298,16 @@ hezhonglin
 
 1425
 
-IMBToiCloudPhotoEntity.h
+IMBPhotoEntity.h
 file
 
 
 
 
 2018-03-09T09:48:47.000000Z
-6865f02e4be20fb0bf1fcac5804bb91b
-2018-02-05T08:04:10.487107Z
-1229
+d07efd1e8fc6db68063f0a592963684e
+2018-01-29T07:59:41.886989Z
+1081
 hezhonglin
 
 
@@ -364,7 +330,7 @@ hezhonglin
 
 
 
-1728
+4949
 
 IMBPhotoManager.m
 file
@@ -400,16 +366,16 @@ longfan
 
 82659
 
-IMBPhotoEntity.m
+IMBToiCloudPhotoEntity.h
 file
 
 
 
 
 2018-03-09T09:48:47.000000Z
-12f913321a2e164f74e6337825af38d1
-2018-01-29T07:59:41.886989Z
-1081
+6865f02e4be20fb0bf1fcac5804bb91b
+2018-02-05T08:04:10.487107Z
+1229
 hezhonglin
 
 
@@ -432,7 +398,7 @@ hezhonglin
 
 
 
-1949
+1728
 
 IMBCreatePhotoSyncPlist.m
 file
@@ -468,6 +434,43 @@ hezhonglin
 
 38408
 
+IMBPhotoEntity.m
+file
+
+
+
+
+2018-03-09T09:48:47.000000Z
+12f913321a2e164f74e6337825af38d1
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1949
+
+HeifConvert
+dir
+
 IMBToiCloudPhotoEntity.m
 file
 
@@ -501,7 +504,4 @@ hezhonglin
 
 
 1419
-
-HeifConvert
-dir
 
