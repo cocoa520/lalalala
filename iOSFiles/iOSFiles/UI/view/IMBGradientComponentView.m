@@ -172,37 +172,52 @@
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    
+    IMBFLog(@"IMBGradientComponentView--mouseEntered");
     if (_isMouseEntered == NO && _isOriginalFrame) {
+        
         _isMouseEntered = YES;
         IMBFLog(@"IMBGradientComponentView--mouseEntered");
         NSRect f = self.frame;
-        if (f.origin.y == 15 ) {
-            f.origin.y = 20.0f;
-        }else if (f.origin.y == 211) {
-            f.origin.y = 216.0f;
+        if (f.size.height == 180) {
+            f.size.height = 185.0f;
+            self.frame = f;
+            [self setViewShadow:-5];
         }
-        [self setViewShadow:-5];
-        self.frame = f;
-//        [IMBViewAnimation animationWithView:self frame:f completion:nil];
+        if (f.size.height == 376) {
+            f.size.height = 381.0f;
+            self.frame = f;
+            [self setViewShadow:-5];
+        }
+        if (self.mouseEntered) {
+            self.mouseEntered();
+        }
     }
+    
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     if (_isMouseEntered && _isOriginalFrame) {
+        
         _isMouseEntered = NO;
         IMBFLog(@"IMBGradientComponentView--mouseExited");
         NSRect f = self.frame;
-        if (f.origin.y == 20) {
-            f.origin.y = 15.0f;
-        }else if (f.origin.y == 216) {
-            f.origin.y = 211.0f;
+        if (f.size.height == 185) {
+            f.size.height = 180.0f;
+            self.frame = f;
+            [self setViewShadow:0];
         }
-        self.frame = f;
-        [self setViewShadow:0];
         
-//        [IMBViewAnimation animationWithView:self frame:f completion:nil];
+        if (f.size.height == 381) {
+            f.size.height = 376.0f;
+            self.frame = f;
+            [self setViewShadow:0];
+        }
+        
+        if (self.mouseExited) {
+            self.mouseExited();
+        }
     }
+    
     
 }
 

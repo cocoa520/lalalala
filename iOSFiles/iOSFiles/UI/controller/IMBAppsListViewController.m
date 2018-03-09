@@ -593,6 +593,7 @@
                         [_backandnext setEnabled:YES forSegment:0];
                     }
                     [_arrayController removeObjects:_itemArray];
+                    [_currentArray addObjectsFromArray:childArray];
                     superView.forBidClick = NO;
                     [_arrayController addObjects:childArray];
                     [_collectionView setSelectionIndexes:nil];
@@ -913,47 +914,43 @@
 
 - (void)refresh:(IMBInformation *)information {
     //    [self disableFunctionBtn:NO];
-    [_mainBox setContentView:_loadingDataVeiw];
-    [_loadingAnimationView startAnimation];
+//    [_mainBox setContentView:_loadingDataVeiw];
+//    [_loadingAnimationView startAnimation];
+    NSInteger row = [_leftTableView selectedRow];
+    if (row < 0) {
+        row = 0;
+    }
+    _currentEntity = [_dataSourceArray objectAtIndex:row];
+    
+    _appBundle = _currentEntity.appKey;
+    //            ((IMBBlankDraggableCollectionView *)_collectionView).exploreType = AppDocumentExploreType;
+    ((IMBBlankDraggableCollectionView *)_collectionView).forBidClick = NO;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        @autoreleasepool {
-            if (_iPod != nil) {
-                [_iPod startSync];
-                [_information.applicationManager refreshAppEntityArray];
-                
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    //                    [self refresh];
-                    //                    [self disableFunctionBtn:YES];
-                    if (_dataSourceArray != nil) {
-                        [_dataSourceArray release];
-                        _dataSourceArray = nil;
-                    }
-                    _dataSourceArray = (NSMutableArray *)[[_information.applicationManager appEntityArray] retain];
-                    [_itemTableView deselectAll:nil];
-                    
-                    if (_dataSourceArray.count == 0) {
-                        [_mainBox setContentView:_noDataView];
-                        [self configNoDataView];
-                    }else {
-                        //                        [self doSearchBtn:_searchFieldBtn.stringValue withSearchBtn:_searchFieldBtn];
-                        if ([_iOSVersion isVersionMajorEqual:@"8.3"]) {
-                            [_mainBox setContentView:_containTableView];
-                        }else {
-                            [_mainBox setContentView:_containTableCollectView];
-                        }
-                    }
-                    //                    if (_delegate != nil && [_delegate respondsToSelector:@selector(refeashBadgeConut:WithCategory:)] ) {
-                    //                        [_delegate refeashBadgeConut:(int)_dataSourceArray.count WithCategory:_category];
-                    //                    }
-                    [_loadingAnimationView endAnimation];
-                    
-                    [_itemTableView reloadData];
-                });
-                [_iPod endSync];
-            } 
-        }
-        
+        NSArray *array = [applicationManger recursiveDirectoryContentsDics:_currentDevicePath appBundle:_appBundle];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_arrayController removeObjects:_itemArray];
+//            self.currentDevicePath = @"/" ;
+            [_currentArray removeAllObjects];
+            [_currentArray addObjectsFromArray:array];
+            currentIndex = 0;
+            [self loadItem];
+            [_collectionView setSelectionIndexes:nil];
+            //                [self showloading:NO baseView:_rightView];
+            
+            [self singlecCick:nil];
+            if (_currentEntity.checkState == UnChecked) {
+                [_collectionView setSelectionIndexes:nil];
+            }else if (_currentEntity.checkState == Check) {
+                [_collectionView selectAll:nil];
+                _currentEntity.set = [_collectionView selectionIndexes];
+                [_collectionView setSelectionIndexes:_currentEntity.set];
+            }else {
+                [_collectionView setSelectionIndexes:_currentEntity.set];
+            }
+            
+        });
     });
+    [_leftTableView reloadData];
 }
 
 //- (void)toMac:(IMBInformation *)information {
@@ -1011,7 +1008,6 @@
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel setCanChooseFiles:YES];
     [_openPanel setAllowsMultipleSelection:YES];
-    [_openPanel setAllowedFileTypes:supportFiles];
     [_openPanel beginSheetModalForWindow:[self view].window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSFileHandlingPanelOKButton) {
             NSDictionary *param = nil;
@@ -1027,61 +1023,21 @@
     NSOpenPanel *openPanel = [param objectForKey:@"openPanel"];
     NSArray *urlArr = [openPanel URLs];
     NSMutableArray *paths = [NSMutableArray array];
+    IMBAppEntity *appEntity = [_dataSourceArray objectAtIndex:_leftTableView.selectedRow];
+    AFCApplicationDirectory *appDir = [[_iPod deviceHandle] newAFCApplicationDirectory:[appEntity appKey]];
     for (NSURL *url in urlArr) {
-        [paths addObject:url.path];
-    }
-    IMBAirSyncImportTransfer * _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:_iPod.uniqueKey importFiles:paths CategoryNodesEnum:Category_Applications photoAlbum:nil playlistID:0 delegate:self];
-    [_baseTransfer startTransfer];
-//    [self importToDevice:paths photoAlbum:albumEntity playlistID:playlistID Result:result AnnoyVC:annoyVC];
-}
+//        [paths addObject:url.path];
+        [appDir copyLocalFile:url.path toRemoteFile:_currentDevicePath];
+        [appDir copyLocalFile:url.path toRemoteDir:_currentDevicePath transLength:1];
+//        - (BOOL)copyLocalFile:(NSString*)frompath toRemoteDir:(NSString*)topath transLength:(long*)length;
 
-- (void)deleteItem:(IMBInformation *)information {
-     NSIndexSet *selectedSet =[self selectedItems];
-    if (!selectedSet || selectedSet.count == 0) {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Please select item" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select item"];
-        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
-            
-        }];
-    }else {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Warning" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Are U Sure To Delete?"];
-        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
-            if (returnCode == 1) {
-                IMBFLog(@"clicked OK button");
-                NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
-                [opQueue addOperationWithBlock:^{
-                    
-                    NSMutableArray *delArray = [[NSMutableArray alloc] init];
-                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                        IMBAppEntity *app = [[_dataSourceArray objectAtIndex:idx] retain];
-                        [delArray addObject:app];
-                        [app release];
-                        app = nil;
-                    }];
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
-                    });
-                    IMBDeleteApps *procedure = [[IMBDeleteApps alloc] initWithIPod:_iPod deleteArray:delArray];
-                    [procedure startDelete];
-                    [procedure release];
-                    
-//                    [self setCompletionWithSuccessCount:(int)delArray.count totalCount:(int)delArray.count title:@"Delete Success"];
-                    
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
-                    });
-                    IMBDeleteTrack *deleteTrack = [[IMBDeleteTrack alloc] initWithIPod:_iPod deleteArray:delArray Category:Category_Applications];
-                    [deleteTrack setDelegate:self];
-                    [deleteTrack startDelete];
-                    [deleteTrack release];
-                    [delArray release];
-                    delArray = nil;
-                    
-                }];
-            }
-            
-        }];
-        
     }
+
+//    - (BOOL)copyLocalFile:(NSString*)frompath toRemoteFile:(NSString*)topath;
+//    - (BOOL)copyLocalFile:(NSString*)frompath toRemoteFile:(NSString*)topath;
+//    IMBAirSyncImportTransfer * _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:_iPod.uniqueKey importFiles:paths CategoryNodesEnum:Category_Applications photoAlbum:nil playlistID:0 delegate:self];
+//    [_baseTransfer startTransfer];
+//    [self importToDevice:paths photoAlbum:albumEntity playlistID:playlistID Result:result AnnoyVC:annoyVC];
 }
 
 - (void)toDevice:(IMBInformation *)information {
@@ -1105,7 +1061,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
                 IMBCategoryInfoModel *model = [[IMBCategoryInfoModel alloc] init];
                 model.categoryNodes = Category_Applications;
-               IMBBetweenDeviceHandler *_baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+                IMBBetweenDeviceHandler *_baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
                 [_baseTransfer startTransfer];
             });
             
@@ -1117,7 +1073,7 @@
                 }];
             });
         }
-
+        
     });
     
 }
@@ -1127,7 +1083,7 @@
 - (void)toMac:(IMBInformation *)information{
     //弹出路径选择框
     _openPanel = [NSOpenPanel openPanel];
-//    _isOpen = YES;
+    //    _isOpen = YES;
     [_openPanel setAllowsMultipleSelection:NO];
     [_openPanel setCanChooseFiles:NO];
     [_openPanel setCanChooseDirectories:YES];
@@ -1137,7 +1093,7 @@
         }else{
             NSLog(@"other other other");
         }
-//        _isOpen = NO;
+        //        _isOpen = NO;
     }];
 }
 
@@ -1148,28 +1104,336 @@
     //    if (result == 0) {
     //        return;
     //    }
+    
+    NSMutableArray *disAry = nil;
+    disAry = _currentArray;
+    NSMutableIndexSet *selectedSet = [NSMutableIndexSet indexSet];
+    for (int i = 0;i < disAry.count; i ++) {
+        IMBBaseEntity *entity = [disAry objectAtIndex:i];
+        if (entity.checkState != UnChecked) {
+            [selectedSet addIndex:i];
+        }
+    }
+    NSMutableArray *delArray = [[NSMutableArray alloc] init];
+    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        SimpleNode *app = [[_currentArray objectAtIndex:idx] retain];
+        [delArray addObject:app];
+        [app release];
+        app = nil;
+    }];
+    
     NSString * path =[[openPanel URL] path];
     NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:Category_System]];
     
     
-    NSIndexSet *selectedSet = [self selectedItems];
-    NSMutableArray *selectedTracks = [NSMutableArray array];
-    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [selectedTracks addObject:[_currentArray objectAtIndex:idx]];
-    }];
-    
-    //    NSArray *selectedFile = [_arrayController selectedObjects];
-    if (_transferViewController != nil) {
-        [_transferViewController release];
-        _transferViewController = nil;
+    IMBAppEntity *appEntity = [_dataSourceArray objectAtIndex:_leftTableView.selectedRow];
+    AFCApplicationDirectory *appDir = [[_iPod deviceHandle] newAFCApplicationDirectory:[appEntity appKey]];
+
+    for (SimpleNode *app in delArray) {
+        [appDir copyRemoteFile:app.path toLocalFile:filePath];
     }
-    _transferViewController = [[IMBTransferViewController alloc]initWithUniqueKey:_iPod.uniqueKey withSelectedAry:selectedTracks exportFolder:filePath withDelegate:self];
-    [_transferViewController.view setFrame:NSMakeRect(0, 0, [self.view window].contentView.frame.size.width, [self.view window].contentView.frame.size.height)];
-    [[self.view window].contentView addSubview:_transferViewController.view];
-    [_transferViewController.view setWantsLayer:YES];
-    [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
     
+    if (appDir != nil) {
+        [appDir close];
+    }
 }
+
+- (void)deleteItem:(IMBInformation *)information {
+//    NSIndexSet *selectedSet =[self selectedItems];
+    
+    NSMutableArray *disAry = nil;
+    //    if (_isSearch) {
+    //        disAry = _researchdataSourceArray;
+    //    }else{
+    disAry = _currentArray;
+    //    }
+    NSMutableIndexSet *selectedSet = [NSMutableIndexSet indexSet];
+    for (int i = 0;i < disAry.count; i ++) {
+        IMBBaseEntity *entity = [disAry objectAtIndex:i];
+        if (entity.checkState != UnChecked) {
+            [selectedSet addIndex:i];
+        }
+    }
+
+    NSMutableArray *delArray = [[NSMutableArray alloc] init];
+    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+        SimpleNode *app = [[_currentArray objectAtIndex:idx] retain];
+        [delArray addObject:app];
+        [app release];
+        app = nil;
+    }];
+    IMBAppEntity *appEntity = [_dataSourceArray objectAtIndex:_leftTableView.selectedRow];
+    AFCApplicationDirectory *appDir = [[_iPod deviceHandle] newAFCApplicationDirectory:[appEntity appKey]];
+    for (SimpleNode *app in delArray) {
+        if (app.container) {
+            [appDir unlinkFolder:app.path];
+        }else{
+            [appDir unlink:app.path];
+        }
+    }
+    if (appDir != nil) {
+        [appDir close];
+    }
+}
+
+//- (void)toDevice:(IMBInformation *)information {
+//    NSIndexSet *selectedSet =[self selectedItems];
+//    IMBDeviceConnection *conn = [IMBDeviceConnection singleton];
+//    IMBiPod *desIpod = nil;
+//    for (IMBiPod *ipod in conn.alliPods) {
+//        if (![ipod.uniqueKey isEqualToString:information.ipod.uniqueKey]) {
+//            desIpod = ipod;
+//            break;
+//        }
+//    }
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSMutableArray *selectAry = [NSMutableArray array];
+//        if (desIpod.appsLoadFinished) {
+//            [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+//                //TODO
+//                IMBAppEntity *be = [_dataSourceArray objectAtIndex:idx];
+//                [selectAry addObject:be];
+//            }];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_current_queue(), ^{
+//                IMBCategoryInfoModel *model = [[IMBCategoryInfoModel alloc] init];
+//                model.categoryNodes = Category_Applications;
+//                IMBBetweenDeviceHandler *_baseTransfer = [[IMBBetweenDeviceHandler alloc] initWithSelectedArray:selectAry categoryModel:model srcIpodKey:information.ipod.uniqueKey desIpodKey:desIpod.uniqueKey withPlaylistArray:[NSArray array] albumEntity:nil Delegate:self];
+//                [_baseTransfer startTransfer];
+//            });
+//            
+//        }else {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                NSAlert *alert = [NSAlert alertWithMessageText:@"Warning!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please connect at least 2 devices"];
+//                [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+//                    
+//                }];
+//            });
+//        }
+//        
+//    });
+//    
+//}
+
+
+
+//- (void)toMac:(IMBInformation *)information{
+//    //弹出路径选择框
+//    _openPanel = [NSOpenPanel openPanel];
+//    //    _isOpen = YES;
+//    [_openPanel setAllowsMultipleSelection:NO];
+//    [_openPanel setCanChooseFiles:NO];
+//    [_openPanel setCanChooseDirectories:YES];
+//    [_openPanel beginSheetModalForWindow:[self.view window] completionHandler:^(NSInteger result) {
+//        if (result== NSFileHandlingPanelOKButton) {
+//            [self performSelector:@selector(systemtoMacDelay:) withObject:_openPanel afterDelay:0.1];
+//        }else{
+//            NSLog(@"other other other");
+//        }
+//        //        _isOpen = NO;
+//    }];
+//}
+//
+//- (void)systemtoMacDelay:(NSOpenPanel *)openPanel
+//{
+//    //    NSViewController *annoyVC = nil;
+//    //    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    //    if (result == 0) {
+//    //        return;
+//    //    }
+//    NSString * path =[[openPanel URL] path];
+//    NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:Category_System]];
+//    
+//    
+//    NSIndexSet *selectedSet = [self selectedItems];
+//    NSMutableArray *selectedTracks = [NSMutableArray array];
+//    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+//        [selectedTracks addObject:[_currentArray objectAtIndex:idx]];
+//    }];
+//    
+//    //    NSArray *selectedFile = [_arrayController selectedObjects];
+//    if (_transferViewController != nil) {
+//        [_transferViewController release];
+//        _transferViewController = nil;
+//    }
+//    _transferViewController = [[IMBTransferViewController alloc]initWithUniqueKey:_iPod.uniqueKey withSelectedAry:selectedTracks exportFolder:filePath withDelegate:self];
+//    [_transferViewController.view setFrame:NSMakeRect(0, 0, [self.view window].contentView.frame.size.width, [self.view window].contentView.frame.size.height)];
+//    [[self.view window].contentView addSubview:_transferViewController.view];
+//    [_transferViewController.view setWantsLayer:YES];
+//    [_transferViewController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-_transferViewController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+//    
+//}
+
+//- (void)deleteItem:(IMBInformation *)information {
+//     NSIndexSet *selectedSet =[self selectedItems];
+//    if (!selectedSet || selectedSet.count == 0) {
+//        NSAlert *alert = [NSAlert alertWithMessageText:@"Please select item" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please select item"];
+//        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+//            
+//        }];
+//    }else {
+//        NSAlert *alert = [NSAlert alertWithMessageText:@"Warning" defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Are U Sure To Delete?"];
+//        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+//            if (returnCode == 1) {
+//                IMBFLog(@"clicked OK button");
+//                NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
+//                [opQueue addOperationWithBlock:^{
+//                    
+//                    NSMutableArray *delArray = [[NSMutableArray alloc] init];
+//                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+//                        IMBAppEntity *app = [[_dataSourceArray objectAtIndex:idx] retain];
+//                        [delArray addObject:app];
+//                        [app release];
+//                        app = nil;
+//                    }];
+//                    dispatch_sync(dispatch_get_main_queue(), ^{
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
+//                    });
+//                    IMBDeleteApps *procedure = [[IMBDeleteApps alloc] initWithIPod:_iPod deleteArray:delArray];
+//                    [procedure startDelete];
+//                    [procedure release];
+//                    
+////                    [self setCompletionWithSuccessCount:(int)delArray.count totalCount:(int)delArray.count title:@"Delete Success"];
+//                    
+//                    dispatch_sync(dispatch_get_main_queue(), ^{
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
+//                    });
+//                    IMBDeleteTrack *deleteTrack = [[IMBDeleteTrack alloc] initWithIPod:_iPod deleteArray:delArray Category:Category_Applications];
+//                    [deleteTrack setDelegate:self];
+//                    [deleteTrack startDelete];
+//                    [deleteTrack release];
+//                    [delArray release];
+//                    delArray = nil;
+//                    
+//                }];
+//            }
+//            
+//        }];
+//        
+//    }
+//}
+
+//- (void)reload:(id)sender {
+//    //    [self disableFunctionBtn:NO];
+//    [_mainBox setContentView:_loadingDataVeiw];
+//    [_loadingAnimationView startAnimation];
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        @autoreleasepool {
+//            if (_iPod != nil) {
+//                [_iPod startSync];
+//                [_information.applicationManager refreshAppEntityArray];
+//                
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    //                    [self refresh];
+//                    //                    [self disableFunctionBtn:YES];
+//                    if (_dataSourceArray != nil) {
+//                        [_dataSourceArray release];
+//                        _dataSourceArray = nil;
+//                    }
+//                    _dataSourceArray = (NSMutableArray *)[[_information.applicationManager appEntityArray] retain];
+//                    [_itemTableView deselectAll:nil];
+//                    
+//                    if (_dataSourceArray.count == 0) {
+//                        [_mainBox setContentView:_noDataView];
+//                        [self configNoDataView];
+//                    }else {
+//                        //                        [self doSearchBtn:_searchFieldBtn.stringValue withSearchBtn:_searchFieldBtn];
+//                        if ([_iOSVersion isVersionMajorEqual:@"8.3"]) {
+//                            [_mainBox setContentView:_containTableView];
+//                        }else {
+//                            [_mainBox setContentView:_containTableCollectView];
+//                        }
+//                    }
+//                    //                    if (_delegate != nil && [_delegate respondsToSelector:@selector(refeashBadgeConut:WithCategory:)] ) {
+//                    //                        [_delegate refeashBadgeConut:(int)_dataSourceArray.count WithCategory:_category];
+//                    //                    }
+//                    [_loadingAnimationView endAnimation];
+//                    
+//                    [_itemTableView reloadData];
+//                });
+//                [_iPod endSync];
+//            }
+//        }
+//        
+//    });
+//}
+
+//- (void)refresh:(IMBInformation *)information {
+//    //    [self disableFunctionBtn:NO];
+//    [_mainBox setContentView:_loadingDataVeiw];
+//    [_loadingAnimationView startAnimation];
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        @autoreleasepool {
+//            if (_iPod != nil) {
+//                [_iPod startSync];
+//                [_information.applicationManager refreshAppEntityArray];
+//                
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    //                    [self refresh];
+//                    //                    [self disableFunctionBtn:YES];
+//                    if (_dataSourceArray != nil) {
+//                        [_dataSourceArray release];
+//                        _dataSourceArray = nil;
+//                    }
+//                    _dataSourceArray = (NSMutableArray *)[[_information.applicationManager appEntityArray] retain];
+//                    [_itemTableView deselectAll:nil];
+//                    
+//                    if (_dataSourceArray.count == 0) {
+//                        [_mainBox setContentView:_noDataView];
+//                        [self configNoDataView];
+//                    }else {
+//                        //                        [self doSearchBtn:_searchFieldBtn.stringValue withSearchBtn:_searchFieldBtn];
+//                        if ([_iOSVersion isVersionMajorEqual:@"8.3"]) {
+//                            [_mainBox setContentView:_containTableView];
+//                        }else {
+//                            [_mainBox setContentView:_containTableCollectView];
+//                        }
+//                    }
+//                    //                    if (_delegate != nil && [_delegate respondsToSelector:@selector(refeashBadgeConut:WithCategory:)] ) {
+//                    //                        [_delegate refeashBadgeConut:(int)_dataSourceArray.count WithCategory:_category];
+//                    //                    }
+//                    [_loadingAnimationView endAnimation];
+//                    
+//                    [_itemTableView reloadData];
+//                });
+//                [_iPod endSync];
+//            }
+//        }
+//        
+//    });
+//}
+//
+//- (void)addToDevice:(IMBInformation *)information {
+//    NSArray *supportFiles = [@"ipa;pxl" componentsSeparatedByString:@";"];
+//    
+//    _openPanel = [NSOpenPanel openPanel];
+//    //    _isOpen = YES;
+//    [_openPanel setCanChooseDirectories:YES];
+//    [_openPanel setCanChooseFiles:YES];
+//    [_openPanel setAllowsMultipleSelection:YES];
+//    [_openPanel setAllowedFileTypes:supportFiles];
+//    [_openPanel beginSheetModalForWindow:[self view].window completionHandler:^(NSModalResponse returnCode) {
+//        if (returnCode == NSFileHandlingPanelOKButton) {
+//            NSDictionary *param = nil;
+//            param = [NSDictionary dictionaryWithObjectsAndKeys:_openPanel,@"openPanel",[NSNull null],@"albumEntity",@(0),@"playlistID",@(NO),@"isAlloc",nil];
+//            
+//            [self performSelector:@selector(addItemsDelay:) withObject:param afterDelay:0.1];
+//        }
+//        //        _isOpen = NO;
+//    }];
+//}
+//
+//- (void)addItemsDelay:(NSDictionary *)param {
+//    NSOpenPanel *openPanel = [param objectForKey:@"openPanel"];
+//    NSArray *urlArr = [openPanel URLs];
+//    NSMutableArray *paths = [NSMutableArray array];
+//    for (NSURL *url in urlArr) {
+//        [paths addObject:url.path];
+//    }
+//    IMBAirSyncImportTransfer * _baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:_iPod.uniqueKey importFiles:paths CategoryNodesEnum:Category_Applications photoAlbum:nil playlistID:0 delegate:self];
+//    [_baseTransfer startTransfer];
+//    //    [self importToDevice:paths photoAlbum:albumEntity playlistID:playlistID Result:result AnnoyVC:annoyVC];
+//}
+
 //- (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchBtn{
 //    _isSearch = YES;
 //    _searchFieldBtn = searchBtn;

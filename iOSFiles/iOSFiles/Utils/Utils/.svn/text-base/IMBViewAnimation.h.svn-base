@@ -16,6 +16,7 @@
 + (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion;
 /** 单个view的动画 **/
 + (void)animationWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion;
++ (void)animationWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion;
 
 
 @end

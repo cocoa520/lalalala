@@ -76,8 +76,12 @@
     _appleID = [appleID retain];
     _password = [password retain];
     iCloudDriveAuthSigninAPI *icloudsin = [[iCloudDriveAuthSigninAPI alloc] initWithEmail:_appleID withPassword:_password rememberMe:rememberMe];
+    
     __block iCloudDriveAuthSigninAPI *weakiCloudsin = icloudsin;
     __block iCloudDrive *weakself = self;
+    
+    
+    
     [icloudsin startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         id resulst = [NSJSONSerialization JSONObjectWithData:request.responseData options:
                       NSJSONReadingMutableContainers error:NULL];
@@ -337,7 +341,11 @@
 {
     if (error.code == -1009) {
         if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
-            [_delegate drive:self logInFailWithResponseCode:ResponseNoNetwork];
+            [_delegate drive:self logInFailWithResponseCode:ResponseNotConnectedToInternet];
+        }
+    }else if (error.code == -1005) {
+        if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
+            [_delegate drive:self logInFailWithResponseCode:ResponseNetworkConnectionLost];
         }
     }else{
         if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
@@ -754,7 +762,9 @@
 {
     NSError *error = request.error;
     if (error.code == -1009) {
-        return ResponseNoNetwork;
+        return ResponseNotConnectedToInternet;
+    }else if (error.code == -1005) {
+        return ResponseNetworkConnectionLost;
     }else if (error.code == -1001){
         return ResponseTimeOut;
     }else{

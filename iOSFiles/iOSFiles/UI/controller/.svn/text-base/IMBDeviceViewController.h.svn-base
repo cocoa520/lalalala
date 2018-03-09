@@ -62,6 +62,12 @@
     IBOutlet NSView *_smallOneDriveView;
     IBOutlet NSView *_smalliCloudDriveView;
     
+    
+    IBOutlet NSButton *_midiumiCloudClickLoginBtn;
+    IBOutlet NSButton *_midiumDropBoxClickLoginBtn;
+    IBOutlet NSView *_midiumDropBoxContentView;
+    IBOutlet NSView *_midiumiCloudContentView;
+    
 }
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 - (void)mainWindowClose;

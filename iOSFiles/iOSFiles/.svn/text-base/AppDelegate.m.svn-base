@@ -18,6 +18,12 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+    
+   
+    
+    
+    
     // Insert code here to initialize your application
     _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
 //    [self.window setContentSize:NSMakeSize(1060, 635)];

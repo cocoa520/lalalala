@@ -15,17 +15,17 @@ svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance@2x.png
 END
-backup_retreat_no@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_retreat_no@2x.png
-END
 itu_default2@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/itu_default2@2x.png
+END
+backup_retreat_no@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_retreat_no@2x.png
 END
 backup_retreat@2x.png
 K 25
@@ -57,17 +57,17 @@ svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance3.png
 END
-box_default1.png
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/box_default1.png
-END
 backup_retreat2.png
 K 25
 svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_retreat2.png
+END
+box_default1.png
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/box_default1.png
 END
 backup_retreat3.png
 K 25
@@ -81,17 +81,17 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1269/JPProject/iOSFiles/iOSFiles/UI/resource/button/music_show.png
 END
-backup_advance2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance2@2x.png
-END
 backup_advance_no.png
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance_no.png
+END
+backup_advance2@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance2@2x.png
 END
 box_select1@2x.png
 K 25
@@ -141,12 +141,6 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/1269/JPProject/iOSFiles/iOSFiles/UI/resource/button/music_show@2x.png
 END
-itu_select1@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/itu_select1@2x.png
-END
 backup_retreat.png
 K 25
 svn:wc:ra_dav:version-url
@@ -158,6 +152,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1588/JPProject/iOSFiles/iOSFiles/UI/resource/button/tool_editor_normal.png
+END
+itu_select1@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/itu_select1@2x.png
 END
 backup_advance_no@2x.png
 K 25
@@ -213,17 +213,17 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/itu_select1.png
 END
-backup_advance3@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance3@2x.png
-END
 backup_advance_enter.png
 K 25
 svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance_enter.png
+END
+backup_advance3@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance3@2x.png
 END
 box_mix_select1.png
 K 25
@@ -237,17 +237,17 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_advance.png
 END
-box_default1@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/box_default1@2x.png
-END
 backup_retreat2@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/resource/button/backup_retreat2@2x.png
+END
+box_default1@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/resource/button/box_default1@2x.png
 END
 windowclose3@2x.png
 K 25

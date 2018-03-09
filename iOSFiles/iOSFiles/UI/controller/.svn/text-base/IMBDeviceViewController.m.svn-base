@@ -167,6 +167,74 @@
         }];
     };
     
+    /***  鼠标进出view响应事件 ***/
+    /***  鼠标进入view响应事件 ***/
+    _iCloudDriveView.mouseEntered = ^(void){
+        [self setMouseEnteredMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn];
+    };
+    _oneDriveView.mouseEntered = ^(void){
+        [self setMouseEnteredMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+    };
+    _devicesView.mouseEntered = ^(void){
+        
+    };
+    
+    /***  鼠标移除view响应事件 ***/
+    _iCloudDriveView.mouseExited = ^(void){
+        [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn];
+    };
+    _oneDriveView.mouseExited = ^(void){
+        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+    };
+    _devicesView.mouseExited = ^(void){
+        
+    };
+    
+}
+
+- (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSButton *)btn {
+    NSRect f = view.frame;
+    f.origin.y = 30;
+    [IMBViewAnimation animationWithView:view frame:f timeInterval:0.2f completion:nil];
+    
+    [btn setHidden:NO];
+    NSRect btnF = btn.frame;
+    btnF.size.height = 32.0f;
+    btnF.origin.y = 4;
+    [IMBViewAnimation animationWithView:btn frame:btnF timeInterval:0.2f completion:nil];
+}
+- (void)setMouseExitedMidiumContentViewWithView:(NSView *)view btn:(NSButton *)btn {
+    NSRect f = view.frame;
+    f.origin.y = 10;
+    [IMBViewAnimation animationWithView:view frame:f timeInterval:0.2f completion:nil];
+    
+    [btn setHidden:YES];
+    NSRect btnF = btn.frame;
+    btnF.size.height = 0;
+    btnF.origin.y = 4;
+    btn.frame = btnF;
+}
+
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    
+    NSRect cloudF = NSMakeRect(12.f, 211.f, 302.f, 180.f);
+    NSRect oneDriveF = NSMakeRect(12.f, 15.f, 302.f, 180.f);
+    NSRect devicesF = NSMakeRect(327.f, 15.f, 253.f, 376.f);
+    
+    [_iCloudDriveView setViewShadow:0];
+    
+    NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+    NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
+    [IMBViewAnimation animationWithViews:views frames:frames completion:^{
+        _iCloudDriveView.isOriginalFrame = YES;
+        _oneDriveView.isOriginalFrame = YES;
+        _devicesView.isOriginalFrame = YES;
+        
+        [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+        [_icloudDrivebox setContentView:_midiumSizeiCloudView];
+        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+    }];
 }
 
 /**

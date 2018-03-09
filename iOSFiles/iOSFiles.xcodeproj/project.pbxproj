@@ -122,6 +122,21 @@
 		B92A17B120215FB100187405 /* MediaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A17AB20215FB100187405 /* MediaHelper.m */; };
 		B92A17B220215FB100187405 /* StringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A17AD20215FB100187405 /* StringHelper.m */; };
 		B92A17B320215FB100187405 /* TempHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A17AF20215FB100187405 /* TempHelper.m */; };
+		B932E2FC2052737F0009DD4B /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2DC2052737F0009DD4B /* AFHTTPSessionManager.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E2FD2052737F0009DD4B /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2DF2052737F0009DD4B /* AFNetworkReachabilityManager.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E2FE2052737F0009DD4B /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2E12052737F0009DD4B /* AFSecurityPolicy.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E2FF2052737F0009DD4B /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2E32052737F0009DD4B /* AFURLRequestSerialization.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3002052737F0009DD4B /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2E52052737F0009DD4B /* AFURLResponseSerialization.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3012052737F0009DD4B /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2E72052737F0009DD4B /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3022052737F0009DD4B /* YTKBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2EA2052737F0009DD4B /* YTKBaseRequest.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3032052737F0009DD4B /* YTKBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2EC2052737F0009DD4B /* YTKBatchRequest.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3042052737F0009DD4B /* YTKBatchRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2EE2052737F0009DD4B /* YTKBatchRequestAgent.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3052052737F0009DD4B /* YTKChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2F02052737F0009DD4B /* YTKChainRequest.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3062052737F0009DD4B /* YTKChainRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2F22052737F0009DD4B /* YTKChainRequestAgent.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3072052737F0009DD4B /* YTKNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2F52052737F0009DD4B /* YTKNetworkAgent.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3082052737F0009DD4B /* YTKNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2F72052737F0009DD4B /* YTKNetworkConfig.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B932E3092052737F0009DD4B /* YTKNetworkPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2F92052737F0009DD4B /* YTKNetworkPrivate.m */; settings = {ASSET_TAGS = (); }; };
+		B932E30A2052737F0009DD4B /* YTKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B932E2FB2052737F0009DD4B /* YTKRequest.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B9347CC6201ED9BD00A8CEC3 /* IMBBookEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CBB201ED9BD00A8CEC3 /* IMBBookEntity.m */; };
 		B9347CC8201ED9BD00A8CEC3 /* IMBBooksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CBF201ED9BD00A8CEC3 /* IMBBooksManager.m */; };
 		B9347CCD201ED9F600A8CEC3 /* IMBSqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9347CCC201ED9F600A8CEC3 /* IMBSqliteManager.m */; };
@@ -604,6 +619,17 @@
 		EE2650A22050C3B600142F89 /* box_mix_select1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE2650A02050C3B600142F89 /* box_mix_select1@2x.png */; };
 		EE2650AB205143E300142F89 /* tool_editor_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EE2650A9205143E300142F89 /* tool_editor_normal.png */; };
 		EE2650AC205143E300142F89 /* tool_editor_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE2650AA205143E300142F89 /* tool_editor_normal@2x.png */; };
+		EE2650CA20525FB900142F89 /* Dropbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650B420525FB900142F89 /* Dropbox.m */; };
+		EE2650CB20525FB900142F89 /* DropboxCreateFolderAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650B620525FB900142F89 /* DropboxCreateFolderAPI.m */; };
+		EE2650CC20525FB900142F89 /* DropboxDeleteItemAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650B820525FB900142F89 /* DropboxDeleteItemAPI.m */; };
+		EE2650CD20525FB900142F89 /* DropboxDownloadAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650BA20525FB900142F89 /* DropboxDownloadAPI.m */; };
+		EE2650CE20525FB900142F89 /* DropboxGetListAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650BC20525FB900142F89 /* DropboxGetListAPI.m */; };
+		EE2650CF20525FB900142F89 /* DropboxMoveToNewParentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650BE20525FB900142F89 /* DropboxMoveToNewParentAPI.m */; };
+		EE2650D020525FB900142F89 /* DropboxMultipleDeleteItemsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C020525FB900142F89 /* DropboxMultipleDeleteItemsAPI.m */; };
+		EE2650D120525FB900142F89 /* DropboxUploadAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C220525FB900142F89 /* DropboxUploadAPI.m */; };
+		EE2650D220525FB900142F89 /* DropboxUploadSessionAppendAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C520525FB900142F89 /* DropboxUploadSessionAppendAPI.m */; };
+		EE2650D320525FB900142F89 /* DropboxUploadSessionFinishAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C720525FB900142F89 /* DropboxUploadSessionFinishAPI.m */; };
+		EE2650D420525FB900142F89 /* DropboxUploadSessionStartAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C920525FB900142F89 /* DropboxUploadSessionStartAPI.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
 		EE39AD12200CBD9700D084CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACE2200CBD9700D084CE /* AppDelegate.m */; };
 		EE39AD13200CBD9700D084CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE39ACE3200CBD9700D084CE /* Assets.xcassets */; };
@@ -925,6 +951,38 @@
 		B92A17AD20215FB100187405 /* StringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringHelper.m; sourceTree = "<group>"; };
 		B92A17AE20215FB100187405 /* TempHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempHelper.h; sourceTree = "<group>"; };
 		B92A17AF20215FB100187405 /* TempHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempHelper.m; sourceTree = "<group>"; };
+		B932E2DB2052737F0009DD4B /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		B932E2DC2052737F0009DD4B /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		B932E2DD2052737F0009DD4B /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		B932E2DE2052737F0009DD4B /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		B932E2DF2052737F0009DD4B /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		B932E2E02052737F0009DD4B /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		B932E2E12052737F0009DD4B /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		B932E2E22052737F0009DD4B /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		B932E2E32052737F0009DD4B /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		B932E2E42052737F0009DD4B /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		B932E2E52052737F0009DD4B /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		B932E2E62052737F0009DD4B /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		B932E2E72052737F0009DD4B /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		B932E2E92052737F0009DD4B /* YTKBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBaseRequest.h; sourceTree = "<group>"; };
+		B932E2EA2052737F0009DD4B /* YTKBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBaseRequest.m; sourceTree = "<group>"; };
+		B932E2EB2052737F0009DD4B /* YTKBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBatchRequest.h; sourceTree = "<group>"; };
+		B932E2EC2052737F0009DD4B /* YTKBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBatchRequest.m; sourceTree = "<group>"; };
+		B932E2ED2052737F0009DD4B /* YTKBatchRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBatchRequestAgent.h; sourceTree = "<group>"; };
+		B932E2EE2052737F0009DD4B /* YTKBatchRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBatchRequestAgent.m; sourceTree = "<group>"; };
+		B932E2EF2052737F0009DD4B /* YTKChainRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKChainRequest.h; sourceTree = "<group>"; };
+		B932E2F02052737F0009DD4B /* YTKChainRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKChainRequest.m; sourceTree = "<group>"; };
+		B932E2F12052737F0009DD4B /* YTKChainRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKChainRequestAgent.h; sourceTree = "<group>"; };
+		B932E2F22052737F0009DD4B /* YTKChainRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKChainRequestAgent.m; sourceTree = "<group>"; };
+		B932E2F32052737F0009DD4B /* YTKNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetwork.h; sourceTree = "<group>"; };
+		B932E2F42052737F0009DD4B /* YTKNetworkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkAgent.h; sourceTree = "<group>"; };
+		B932E2F52052737F0009DD4B /* YTKNetworkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkAgent.m; sourceTree = "<group>"; };
+		B932E2F62052737F0009DD4B /* YTKNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkConfig.h; sourceTree = "<group>"; };
+		B932E2F72052737F0009DD4B /* YTKNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkConfig.m; sourceTree = "<group>"; };
+		B932E2F82052737F0009DD4B /* YTKNetworkPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkPrivate.h; sourceTree = "<group>"; };
+		B932E2F92052737F0009DD4B /* YTKNetworkPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkPrivate.m; sourceTree = "<group>"; };
+		B932E2FA2052737F0009DD4B /* YTKRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKRequest.h; sourceTree = "<group>"; };
+		B932E2FB2052737F0009DD4B /* YTKRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKRequest.m; sourceTree = "<group>"; };
 		B9347CBA201ED9BD00A8CEC3 /* IMBBookEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBookEntity.h; sourceTree = "<group>"; };
 		B9347CBB201ED9BD00A8CEC3 /* IMBBookEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBBookEntity.m; sourceTree = "<group>"; };
 		B9347CBE201ED9BD00A8CEC3 /* IMBBooksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBBooksManager.h; sourceTree = "<group>"; };
@@ -1824,6 +1882,28 @@
 		EE2650A02050C3B600142F89 /* box_mix_select1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box_mix_select1@2x.png"; sourceTree = "<group>"; };
 		EE2650A9205143E300142F89 /* tool_editor_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_editor_normal.png; sourceTree = "<group>"; };
 		EE2650AA205143E300142F89 /* tool_editor_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tool_editor_normal@2x.png"; sourceTree = "<group>"; };
+		EE2650B320525FB900142F89 /* Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dropbox.h; sourceTree = "<group>"; };
+		EE2650B420525FB900142F89 /* Dropbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dropbox.m; sourceTree = "<group>"; };
+		EE2650B520525FB900142F89 /* DropboxCreateFolderAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxCreateFolderAPI.h; sourceTree = "<group>"; };
+		EE2650B620525FB900142F89 /* DropboxCreateFolderAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxCreateFolderAPI.m; sourceTree = "<group>"; };
+		EE2650B720525FB900142F89 /* DropboxDeleteItemAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxDeleteItemAPI.h; sourceTree = "<group>"; };
+		EE2650B820525FB900142F89 /* DropboxDeleteItemAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxDeleteItemAPI.m; sourceTree = "<group>"; };
+		EE2650B920525FB900142F89 /* DropboxDownloadAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxDownloadAPI.h; sourceTree = "<group>"; };
+		EE2650BA20525FB900142F89 /* DropboxDownloadAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxDownloadAPI.m; sourceTree = "<group>"; };
+		EE2650BB20525FB900142F89 /* DropboxGetListAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxGetListAPI.h; sourceTree = "<group>"; };
+		EE2650BC20525FB900142F89 /* DropboxGetListAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxGetListAPI.m; sourceTree = "<group>"; };
+		EE2650BD20525FB900142F89 /* DropboxMoveToNewParentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxMoveToNewParentAPI.h; sourceTree = "<group>"; };
+		EE2650BE20525FB900142F89 /* DropboxMoveToNewParentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxMoveToNewParentAPI.m; sourceTree = "<group>"; };
+		EE2650BF20525FB900142F89 /* DropboxMultipleDeleteItemsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxMultipleDeleteItemsAPI.h; sourceTree = "<group>"; };
+		EE2650C020525FB900142F89 /* DropboxMultipleDeleteItemsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxMultipleDeleteItemsAPI.m; sourceTree = "<group>"; };
+		EE2650C120525FB900142F89 /* DropboxUploadAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUploadAPI.h; sourceTree = "<group>"; };
+		EE2650C220525FB900142F89 /* DropboxUploadAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadAPI.m; sourceTree = "<group>"; };
+		EE2650C420525FB900142F89 /* DropboxUploadSessionAppendAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUploadSessionAppendAPI.h; sourceTree = "<group>"; };
+		EE2650C520525FB900142F89 /* DropboxUploadSessionAppendAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadSessionAppendAPI.m; sourceTree = "<group>"; };
+		EE2650C620525FB900142F89 /* DropboxUploadSessionFinishAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUploadSessionFinishAPI.h; sourceTree = "<group>"; };
+		EE2650C720525FB900142F89 /* DropboxUploadSessionFinishAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadSessionFinishAPI.m; sourceTree = "<group>"; };
+		EE2650C820525FB900142F89 /* DropboxUploadSessionStartAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUploadSessionStartAPI.h; sourceTree = "<group>"; };
+		EE2650C920525FB900142F89 /* DropboxUploadSessionStartAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadSessionStartAPI.m; sourceTree = "<group>"; };
 		EE39AB74200C5EB300D084CE /* iOSFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE39AC93200CBC1300D084CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EE39ACE1200CBD9700D084CE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2102,6 +2182,9 @@
 		B910BF0E20219E3B00849CBB /* CloudDrive */ = {
 			isa = PBXGroup;
 			children = (
+				B932E2DA2052737F0009DD4B /* AFNetwork */,
+				B932E2E82052737F0009DD4B /* YTKNetwork */,
+				EE2650B220525FB900142F89 /* Dropbox */,
 				7B830BFC2047AFD8000841AE /* iCloud Drive */,
 				7B6BB4CF2044E8CA00BBD6E9 /* DriveEntity */,
 				B910BF1120219E3B00849CBB /* DriveAPI */,
@@ -2252,6 +2335,52 @@
 				B9430FD12050CA810019C018 /* IMBViewAnimation.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B932E2DA2052737F0009DD4B /* AFNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				B932E2DB2052737F0009DD4B /* AFHTTPSessionManager.h */,
+				B932E2DC2052737F0009DD4B /* AFHTTPSessionManager.m */,
+				B932E2DD2052737F0009DD4B /* AFNetworking.h */,
+				B932E2DE2052737F0009DD4B /* AFNetworkReachabilityManager.h */,
+				B932E2DF2052737F0009DD4B /* AFNetworkReachabilityManager.m */,
+				B932E2E02052737F0009DD4B /* AFSecurityPolicy.h */,
+				B932E2E12052737F0009DD4B /* AFSecurityPolicy.m */,
+				B932E2E22052737F0009DD4B /* AFURLRequestSerialization.h */,
+				B932E2E32052737F0009DD4B /* AFURLRequestSerialization.m */,
+				B932E2E42052737F0009DD4B /* AFURLResponseSerialization.h */,
+				B932E2E52052737F0009DD4B /* AFURLResponseSerialization.m */,
+				B932E2E62052737F0009DD4B /* AFURLSessionManager.h */,
+				B932E2E72052737F0009DD4B /* AFURLSessionManager.m */,
+			);
+			path = AFNetwork;
+			sourceTree = "<group>";
+		};
+		B932E2E82052737F0009DD4B /* YTKNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				B932E2E92052737F0009DD4B /* YTKBaseRequest.h */,
+				B932E2EA2052737F0009DD4B /* YTKBaseRequest.m */,
+				B932E2EB2052737F0009DD4B /* YTKBatchRequest.h */,
+				B932E2EC2052737F0009DD4B /* YTKBatchRequest.m */,
+				B932E2ED2052737F0009DD4B /* YTKBatchRequestAgent.h */,
+				B932E2EE2052737F0009DD4B /* YTKBatchRequestAgent.m */,
+				B932E2EF2052737F0009DD4B /* YTKChainRequest.h */,
+				B932E2F02052737F0009DD4B /* YTKChainRequest.m */,
+				B932E2F12052737F0009DD4B /* YTKChainRequestAgent.h */,
+				B932E2F22052737F0009DD4B /* YTKChainRequestAgent.m */,
+				B932E2F32052737F0009DD4B /* YTKNetwork.h */,
+				B932E2F42052737F0009DD4B /* YTKNetworkAgent.h */,
+				B932E2F52052737F0009DD4B /* YTKNetworkAgent.m */,
+				B932E2F62052737F0009DD4B /* YTKNetworkConfig.h */,
+				B932E2F72052737F0009DD4B /* YTKNetworkConfig.m */,
+				B932E2F82052737F0009DD4B /* YTKNetworkPrivate.h */,
+				B932E2F92052737F0009DD4B /* YTKNetworkPrivate.m */,
+				B932E2FA2052737F0009DD4B /* YTKRequest.h */,
+				B932E2FB2052737F0009DD4B /* YTKRequest.m */,
+			);
+			path = YTKNetwork;
 			sourceTree = "<group>";
 		};
 		B9347CB5201ED9BD00A8CEC3 /* iBooks */ = {
@@ -3654,6 +3783,43 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EE2650B220525FB900142F89 /* Dropbox */ = {
+			isa = PBXGroup;
+			children = (
+				EE2650B320525FB900142F89 /* Dropbox.h */,
+				EE2650B420525FB900142F89 /* Dropbox.m */,
+				EE2650B520525FB900142F89 /* DropboxCreateFolderAPI.h */,
+				EE2650B620525FB900142F89 /* DropboxCreateFolderAPI.m */,
+				EE2650B720525FB900142F89 /* DropboxDeleteItemAPI.h */,
+				EE2650B820525FB900142F89 /* DropboxDeleteItemAPI.m */,
+				EE2650B920525FB900142F89 /* DropboxDownloadAPI.h */,
+				EE2650BA20525FB900142F89 /* DropboxDownloadAPI.m */,
+				EE2650BB20525FB900142F89 /* DropboxGetListAPI.h */,
+				EE2650BC20525FB900142F89 /* DropboxGetListAPI.m */,
+				EE2650BD20525FB900142F89 /* DropboxMoveToNewParentAPI.h */,
+				EE2650BE20525FB900142F89 /* DropboxMoveToNewParentAPI.m */,
+				EE2650BF20525FB900142F89 /* DropboxMultipleDeleteItemsAPI.h */,
+				EE2650C020525FB900142F89 /* DropboxMultipleDeleteItemsAPI.m */,
+				EE2650C120525FB900142F89 /* DropboxUploadAPI.h */,
+				EE2650C220525FB900142F89 /* DropboxUploadAPI.m */,
+				EE2650C320525FB900142F89 /* UploadSession */,
+			);
+			path = Dropbox;
+			sourceTree = "<group>";
+		};
+		EE2650C320525FB900142F89 /* UploadSession */ = {
+			isa = PBXGroup;
+			children = (
+				EE2650C420525FB900142F89 /* DropboxUploadSessionAppendAPI.h */,
+				EE2650C520525FB900142F89 /* DropboxUploadSessionAppendAPI.m */,
+				EE2650C620525FB900142F89 /* DropboxUploadSessionFinishAPI.h */,
+				EE2650C720525FB900142F89 /* DropboxUploadSessionFinishAPI.m */,
+				EE2650C820525FB900142F89 /* DropboxUploadSessionStartAPI.h */,
+				EE2650C920525FB900142F89 /* DropboxUploadSessionStartAPI.m */,
+			);
+			path = UploadSession;
+			sourceTree = "<group>";
+		};
 		EE39AB6B200C5EB300D084CE = {
 			isa = PBXGroup;
 			children = (
@@ -4206,9 +4372,11 @@
 				B965649D2021D47600BD7FF5 /* rijndael.c in Sources */,
 				B96562FD2021D2B000BD7FF5 /* File_Pcm.cpp in Sources */,
 				B96563162021D2B000BD7FF5 /* File__Analyze_Streams.cpp in Sources */,
+				EE2650CC20525FB900142F89 /* DropboxDeleteItemAPI.m in Sources */,
 				B965639B2021D2B000BD7FF5 /* md5.c in Sources */,
 				B9E73ACE20282FF500E1BB3B /* ZipReadStream.m in Sources */,
 				B9E73ADD20282FF500E1BB3B /* uncompr.c in Sources */,
+				B932E2FF2052737F0009DD4B /* AFURLRequestSerialization.m in Sources */,
 				B9E739572027FB2100E1BB3B /* IMBPhotoExportSettingConfig.m in Sources */,
 				7B226CD7204FF5E600B03954 /* IMBAppsListViewController.m in Sources */,
 				B96563972021D2B000BD7FF5 /* File_Vc1.cpp in Sources */,
@@ -4233,11 +4401,13 @@
 				B965636C2021D2B000BD7FF5 /* Reader_libcurl.cpp in Sources */,
 				B96563392021D2B000BD7FF5 /* File_Bdmv.cpp in Sources */,
 				EE8BA56C20217BEC00FECC14 /* IMBHoverBtnCell.m in Sources */,
+				B932E2FC2052737F0009DD4B /* AFHTTPSessionManager.m in Sources */,
 				B96564A32021D47600BD7FF5 /* IMBPlaylistItem.m in Sources */,
 				B9E73AD920282FF500E1BB3B /* inffast.c in Sources */,
 				B96564A82021D47600BD7FF5 /* IMBTrack.m in Sources */,
 				B96564B12021D47600BD7FF5 /* IMBMHODFactory.m in Sources */,
 				B965649F2021D47600BD7FF5 /* IMBIDGenerator.m in Sources */,
+				B932E3082052737F0009DD4B /* YTKNetworkConfig.m in Sources */,
 				EEE447B5202A8AC400221BE0 /* IMBBlankDraggableCollectionView.m in Sources */,
 				B965632F2021D2B000BD7FF5 /* MediaInfo_Config_MediaInfo.cpp in Sources */,
 				B96562F02021D2B000BD7FF5 /* File_DolbyE.cpp in Sources */,
@@ -4266,6 +4436,7 @@
 				B96563902021D2B000BD7FF5 /* File_H263.cpp in Sources */,
 				B96564B02021D47600BD7FF5 /* IMBMenuIndexMHOD.m in Sources */,
 				B96563B12021D2B000BD7FF5 /* Utils.cpp in Sources */,
+				B932E3092052737F0009DD4B /* YTKNetworkPrivate.m in Sources */,
 				EE8BA57320217C9900FECC14 /* IMBDrawOneImageBtn.m in Sources */,
 				B96563AC2021D2B000BD7FF5 /* MemoryDebug.cpp in Sources */,
 				7B830C2C2047AFD8000841AE /* iCloudDriveUploadThreeAPI.m in Sources */,
@@ -4306,6 +4477,7 @@
 				B965647F2021D47600BD7FF5 /* IMBArtworkEntity.m in Sources */,
 				EE8BA53E2021605800FECC14 /* IMBBackgroundBorderView.m in Sources */,
 				7B830C2D2047AFD8000841AE /* iCloudDriveUploadTwoAPI.m in Sources */,
+				EE2650D120525FB900142F89 /* DropboxUploadAPI.m in Sources */,
 				B9E73AD320282FF500E1BB3B /* deflate.c in Sources */,
 				B96564AE2021D47600BD7FF5 /* IMBArtworkStringMHOD.m in Sources */,
 				EEF3C174204154E50056B286 /* IMBTransferViewController.m in Sources */,
@@ -4324,6 +4496,7 @@
 				B96562D92021D2B000BD7FF5 /* File_Bzip2.cpp in Sources */,
 				B90D14E5202021D0002D9F9B /* IMBAnimation.m in Sources */,
 				B96564A42021D47600BD7FF5 /* IMBPlaylistList.m in Sources */,
+				B932E3032052737F0009DD4B /* YTKBatchRequest.m in Sources */,
 				B96564B22021D47600BD7FF5 /* IMBPlaylistPositionMHOD.m in Sources */,
 				B965631F2021D2B000BD7FF5 /* File_Bmp.cpp in Sources */,
 				7B830C2F2047AFD8000841AE /* iCloudDriveVerifySecurityCodeAPI.m in Sources */,
@@ -4336,14 +4509,17 @@
 				B96563132021D2B000BD7FF5 /* File__Analyze.cpp in Sources */,
 				B9430FD22050CA810019C018 /* IMBViewAnimation.m in Sources */,
 				B965630C2021D2B000BD7FF5 /* File__Duplicate__Base.cpp in Sources */,
+				B932E3012052737F0009DD4B /* AFURLSessionManager.m in Sources */,
 				B90D14F120202875002D9F9B /* IMBTransResult.m in Sources */,
 				B965635A2021D2B000BD7FF5 /* File_Ogg.cpp in Sources */,
 				EE8BA56F20217BEC00FECC14 /* IMBSelecedDeviceBtn.m in Sources */,
 				B96563B52021D2B000BD7FF5 /* ZtringListListF.cpp in Sources */,
 				B96563752021D2B000BD7FF5 /* File_AribStdB24B37.cpp in Sources */,
+				B932E3042052737F0009DD4B /* YTKBatchRequestAgent.m in Sources */,
 				B96563012021D2B000BD7FF5 /* File_Rkau.cpp in Sources */,
 				B9E73A7920280FC000E1BB3B /* IMBCheckUpdater.m in Sources */,
 				B965638B2021D2B000BD7FF5 /* File_AvsV.cpp in Sources */,
+				EE2650CE20525FB900142F89 /* DropboxGetListAPI.m in Sources */,
 				B96564822021D47600BD7FF5 /* IMBBaseDatabaseElement.m in Sources */,
 				B96563A72021D2B000BD7FF5 /* Http_Request.cpp in Sources */,
 				B96563982021D2B000BD7FF5 /* File_Vc3.cpp in Sources */,
@@ -4382,6 +4558,7 @@
 				B96563552021D2B000BD7FF5 /* File_MpegPs.cpp in Sources */,
 				B96563662021D2B000BD7FF5 /* File_Wm.cpp in Sources */,
 				B96562F52021D2B000BD7FF5 /* File_La.cpp in Sources */,
+				EE2650D020525FB900142F89 /* DropboxMultipleDeleteItemsAPI.m in Sources */,
 				B93E80CF204F8DC0001018E4 /* customTextFieldCell.m in Sources */,
 				B96563382021D2B000BD7FF5 /* File_Ancillary.cpp in Sources */,
 				B92A17B320215FB100187405 /* TempHelper.m in Sources */,
@@ -4402,6 +4579,7 @@
 				B9348B3C201F0DAB00A8CEC3 /* IMBDeviceInfo.m in Sources */,
 				B96564872021D47600BD7FF5 /* IMBIPodImageFormat.m in Sources */,
 				EE39AD1A200CBD9700D084CE /* DDLog.m in Sources */,
+				EE2650D220525FB900142F89 /* DropboxUploadSessionAppendAPI.m in Sources */,
 				B96563092021D2B000BD7FF5 /* File_TwinVQ.cpp in Sources */,
 				B910BF3B20219E3B00849CBB /* RefreshTokenAPI.m in Sources */,
 				B96563222021D2B000BD7FF5 /* File_Exr.cpp in Sources */,
@@ -4444,6 +4622,7 @@
 				B965634F2021D2B000BD7FF5 /* File_Mpeg4.cpp in Sources */,
 				B96563182021D2B000BD7FF5 /* File__Base.cpp in Sources */,
 				B96563882021D2B000BD7FF5 /* File_Aic.cpp in Sources */,
+				EE2650D420525FB900142F89 /* DropboxUploadSessionStartAPI.m in Sources */,
 				B965631E2021D2B000BD7FF5 /* File_ArriRaw.cpp in Sources */,
 				B96562DF2021D2B000BD7FF5 /* File_Tar.cpp in Sources */,
 				B96564BB2021D47600BD7FF5 /* IMBIOS5Sqlite.m in Sources */,
@@ -4453,6 +4632,7 @@
 				B965632A2021D2B000BD7FF5 /* File_Tga.cpp in Sources */,
 				B96563A92021D2B000BD7FF5 /* InfoMap.cpp in Sources */,
 				B9E73A7C20280FC000E1BB3B /* IMBUpdateInfo.m in Sources */,
+				EE2650CA20525FB900142F89 /* Dropbox.m in Sources */,
 				B96564AF2021D47600BD7FF5 /* IMBBaseMHODElement.m in Sources */,
 				7B830C222047AFD8000841AE /* iCloudDriveCreateFolderAPI.m in Sources */,
 				B96563A32021D2B000BD7FF5 /* Html_Handler.cpp in Sources */,
@@ -4476,6 +4656,8 @@
 				B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */,
 				7B830C392047FD36000841AE /* IMBiCloudDriveManager.m in Sources */,
 				B96563122021D2B000BD7FF5 /* Export_reVTMD.cpp in Sources */,
+				EE2650CF20525FB900142F89 /* DropboxMoveToNewParentAPI.m in Sources */,
+				B932E2FD2052737F0009DD4B /* AFNetworkReachabilityManager.m in Sources */,
 				B96563892021D2B000BD7FF5 /* File_Avc.cpp in Sources */,
 				B96563562021D2B000BD7FF5 /* File_MpegTs.cpp in Sources */,
 				B9E739F62028038D00E1BB3B /* IMBExportSetting.m in Sources */,
@@ -4504,6 +4686,7 @@
 				B96563112021D2B000BD7FF5 /* Export_PBCore.cpp in Sources */,
 				B965648C2021D47600BD7FF5 /* IMBMHODType2.m in Sources */,
 				B96563A02021D2B000BD7FF5 /* Dir.cpp in Sources */,
+				EE2650CB20525FB900142F89 /* DropboxCreateFolderAPI.m in Sources */,
 				EE8BA56E20217BEC00FECC14 /* IMBMyDrawCommonly.m in Sources */,
 				B965636E2021D2B000BD7FF5 /* File__Tags.cpp in Sources */,
 				B96563542021D2B000BD7FF5 /* File_Mpeg_Psi.cpp in Sources */,
@@ -4525,6 +4708,7 @@
 				EE39AD37200D8DB000D084CE /* IMBDeviceViewController.m in Sources */,
 				B96563272021D2B000BD7FF5 /* File_Png.cpp in Sources */,
 				B96562E42021D2B000BD7FF5 /* File_Aac_GeneralAudio_Sbr_Ps.cpp in Sources */,
+				B932E3022052737F0009DD4B /* YTKBaseRequest.m in Sources */,
 				B965647B2021D47600BD7FF5 /* IMBMusicDatabase.m in Sources */,
 				B965634D2021D2B000BD7FF5 /* File_Lxf.cpp in Sources */,
 				B9E73ADA20282FF500E1BB3B /* inflate.c in Sources */,
@@ -4558,6 +4742,7 @@
 				B96564BC2021D47600BD7FF5 /* IMBIOSSqlite.m in Sources */,
 				B96563102021D2B000BD7FF5 /* Export_Mpeg7.cpp in Sources */,
 				B965648F2021D47600BD7FF5 /* IMBSupportedArtworkFormat.m in Sources */,
+				B932E3072052737F0009DD4B /* YTKNetworkAgent.m in Sources */,
 				B965647A2021D47600BD7FF5 /* IMBMediaLibraryDBHelper.m in Sources */,
 				B95F74CE2045645B00D4B7C0 /* ZLEndMark.m in Sources */,
 				B96562D72021D2B000BD7FF5 /* File_7z.cpp in Sources */,
@@ -4574,6 +4759,7 @@
 				B96563522021D2B000BD7FF5 /* File_Mpeg4_TimeCode.cpp in Sources */,
 				7B226CCA204FF5D000B03954 /* IMBCustomHeaderCell.m in Sources */,
 				7B8C0B362043EDCA00BE7EF1 /* IMBDrawTextFiledView.m in Sources */,
+				EE2650D320525FB900142F89 /* DropboxUploadSessionFinishAPI.m in Sources */,
 				B93E80D1204F8DC0001018E4 /* IMBSecireTextField.m in Sources */,
 				B910BF4520219E3B00849CBB /* OneDUploadAPI.m in Sources */,
 				B965638C2021D2B000BD7FF5 /* File_Canopus.cpp in Sources */,
@@ -4610,11 +4796,13 @@
 				B96564B42021D47600BD7FF5 /* IMBUnicodeMHOD.m in Sources */,
 				B96564A72021D47600BD7FF5 /* IMBPodcastListAdapter.m in Sources */,
 				7B226CD3204FF5DC00B03954 /* IMBNoTitleBarContentView.m in Sources */,
+				EE2650CD20525FB900142F89 /* DropboxDownloadAPI.m in Sources */,
 				B965631D2021D2B000BD7FF5 /* File_Unknown.cpp in Sources */,
 				B9E73A262028038D00E1BB3B /* IMBiBooksExport.m in Sources */,
 				B96562FC2021D2B000BD7FF5 /* File_Opus.cpp in Sources */,
 				B9E73A252028038D00E1BB3B /* IMBFileSystemExport.m in Sources */,
 				B96563872021D2B000BD7FF5 /* File_AfdBarData.cpp in Sources */,
+				B932E3002052737F0009DD4B /* AFURLResponseSerialization.m in Sources */,
 				B965649B2021D47600BD7FF5 /* IMBHash58.cpp in Sources */,
 				B965633A2021D2B000BD7FF5 /* File_Cdxa.cpp in Sources */,
 				7B089A8A204FDA6D00D3FCB7 /* IMBCheckButton.m in Sources */,
@@ -4622,6 +4810,7 @@
 				B910BF3C20219E3B00849CBB /* UpLoader.m in Sources */,
 				B90D14EE20202824002D9F9B /* IMBAnimateProgressBar.m in Sources */,
 				B96563962021D2B000BD7FF5 /* File_Theora.cpp in Sources */,
+				B932E3062052737F0009DD4B /* YTKChainRequestAgent.m in Sources */,
 				B96563492021D2B000BD7FF5 /* File_Ibi.cpp in Sources */,
 				B96564AC2021D47600BD7FF5 /* IMBType6Container.m in Sources */,
 				B96564A62021D47600BD7FF5 /* IMBPlaylistListV2Container.m in Sources */,
@@ -4633,6 +4822,7 @@
 				B96563252021D2B000BD7FF5 /* File_Jpeg.cpp in Sources */,
 				B965633D2021D2B000BD7FF5 /* File_DcpCpl.cpp in Sources */,
 				B96563582021D2B000BD7FF5 /* File_Mxf.cpp in Sources */,
+				B932E2FE2052737F0009DD4B /* AFSecurityPolicy.m in Sources */,
 				B910BF4020219E3B00849CBB /* OneDGetListAPI.m in Sources */,
 				B96562DA2021D2B000BD7FF5 /* File_Elf.cpp in Sources */,
 				7B226CC8204FF5D000B03954 /* IMBCheckBoxCell.m in Sources */,
@@ -4647,6 +4837,7 @@
 				B96562DC2021D2B000BD7FF5 /* File_Iso9660.cpp in Sources */,
 				B9E73A2B2028038D00E1BB3B /* IMBPhotoFileExport.m in Sources */,
 				7B830C242047AFD8000841AE /* iCloudDriveDownloadOneAPI.m in Sources */,
+				B932E3052052737F0009DD4B /* YTKChainRequest.m in Sources */,
 				B965638A2021D2B000BD7FF5 /* File_Avc_Duplicate.cpp in Sources */,
 				B9E73AC720282FF500E1BB3B /* mztools.c in Sources */,
 				B96563612021D2B000BD7FF5 /* File_Rm.cpp in Sources */,
@@ -4685,6 +4876,7 @@
 				B9E73A7B20280FC000E1BB3B /* IMBSoftWareInfo.m in Sources */,
 				B9F6745F2023061E00D3665E /* IMBDevicePageFolderModel.m in Sources */,
 				7B6BB4DB20452B9A00BBD6E9 /* IMBDriveWindow.m in Sources */,
+				B932E30A2052737F0009DD4B /* YTKRequest.m in Sources */,
 				B9348B02201EFED600A8CEC3 /* IMBPhotoEntity.m in Sources */,
 				B96563372021D2B000BD7FF5 /* File_Aaf.cpp in Sources */,
 				B965637C2021D2B000BD7FF5 /* File_Kate.cpp in Sources */,

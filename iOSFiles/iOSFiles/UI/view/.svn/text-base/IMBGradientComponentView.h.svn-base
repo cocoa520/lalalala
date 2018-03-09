@@ -31,4 +31,7 @@
 @property(nonatomic, copy)void(^mouseClicked)(void);
 @property(nonatomic, assign)BOOL isOriginalFrame;
 
+@property(nonatomic, copy)void(^mouseEntered)(void);
+@property(nonatomic, copy)void(^mouseExited)(void);
+
 @end

@@ -396,7 +396,7 @@
                 return ResponseUnknown;
             }
         }else {
-            return ResponseNoNetwork;
+            return ResponseNotConnectedToInternet;
         }
     }else if ([[response error] localizedDescription]) {
         NSString *errorDescription = [[response error] localizedDescription];
@@ -413,7 +413,7 @@
             return ResponseSuccess;
         }
     }else {
-        return ResponseNoNetwork;
+        return ResponseNotConnectedToInternet;
     }
 }
 
@@ -438,7 +438,7 @@
                     return ResponseUnknown;
                 }
             }else {
-                return ResponseNoNetwork;
+                return ResponseNotConnectedToInternet;
             }
         }else if ([response responseString] && [[response responseString] isKindOfClass:[NSString class]]) {
             NSString *errorStr = [response responseString];
@@ -450,7 +450,7 @@
                 return ResponseUnknown;
             }
         }else {
-            return ResponseNoNetwork;
+            return ResponseNotConnectedToInternet;
         }
     }else if ([[response error] localizedDescription]) {
         NSString *errorDescription = [[response error] localizedDescription];
@@ -464,10 +464,10 @@
             [response setUserInfo:@{@"errorMessage": errorDescription}];
             return ResponseInvalid;
         }else {
-            return ResponseNoNetwork;
+            return ResponseNotConnectedToInternet;
         }
     }else {
-        return ResponseNoNetwork;
+        return ResponseNotConnectedToInternet;
     }
 }
 

@@ -18,6 +18,11 @@ static CGFloat const IMBViewAnimInterval = 0.15f;
     [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:0.05f completion:completion];
 }
 
++ (void)animationWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
+    [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:timeInterval completion:completion];
+}
+
+
 + (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
     
     [self animationWithViews:views frames:frames timeInterval:IMBViewAnimInterval completion:completion];
