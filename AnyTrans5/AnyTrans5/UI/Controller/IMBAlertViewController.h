@@ -341,6 +341,7 @@
     IBOutlet IMBBorderRectAndColorView *_doubleVerificaView;
     IBOutlet NSTextField *_doubleVerificaTitle;
     IBOutlet NSTextField *_doubleVerificaSubTitle;
+    IBOutlet NSTextField *_doubleVerificaVerfiyTitle;
     IBOutlet IMBCodeTextField *_doubleVerificaFirstNum;
     IBOutlet IMBCodeTextField *_doubleVerificaSecondNum;
     IBOutlet IMBCodeTextField *_doubleVerificaThirdNum;
@@ -392,6 +393,7 @@
     BOOL _isContinue;
     IMBPhotoExportSettingConfig *_photoExportConfig;
     BOOL _isBackupNow;
+    BOOL _isUnlockAccount;
 }
 @property (assign) BOOL is32;
 @property (assign) BOOL is64;
@@ -408,6 +410,8 @@
 @property (nonatomic, retain) IMBBorderRectAndColorView *deleteAnimationView;
 @property (nonatomic, retain) customTextFiled *addCustomLableInputTextFiled;
 @property (nonatomic, assign) BOOL isStopPan;
+@property (nonatomic, assign) BOOL isUnlockAccount;
+
 //解密窗口
 - (int)showAlertText:(NSString *)alertTitleText WithSubTitleStr:(NSString *)subString OKButton:(NSString *)okButtonString    canCelBtn:(NSString *)cancelString SuperView:(NSView *)superView;
 //Icloud 关闭窗口

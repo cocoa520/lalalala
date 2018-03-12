@@ -1,15 +1,15 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-06T12:37:57.279740Z
-1517
-shuaimingzhong
+2018-03-08T03:49:32.133160Z
+1572
+huyumin
 
 
 
@@ -468,74 +468,6 @@ dingming
 
 202
 
-IMBDrawArcView.h
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-896ec123e83dc69ba3d4b4bf653518fb
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-738
-
-IMBLackCornerView.h
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-e64050032cac293fe9a83d0ea002be43
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-637
-
 ObjectTableRowView.m
 file
 
@@ -603,6 +535,74 @@ dingming
 
 
 824
+
+IMBLackCornerView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+e64050032cac293fe9a83d0ea002be43
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+637
+
+IMBDrawArcView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+896ec123e83dc69ba3d4b4bf653518fb
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+738
 
 IMBGrayCapacityView.m
 file
@@ -706,14 +706,14 @@ dingming
 
 399
 
-IMBLackCornerView.m
+IMBMenuItemView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-91af78f58c3ffcb6a1b1cab95c373532
+5b97e7eb4da4b523b71d30a1331e1388
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -738,7 +738,7 @@ dingming
 
 
 
-3482
+6551
 
 IMBDrawArcView.m
 file
@@ -774,14 +774,14 @@ has-props
 
 4907
 
-IMBMenuItemView.m
+IMBLackCornerView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-5b97e7eb4da4b523b71d30a1331e1388
+91af78f58c3ffcb6a1b1cab95c373532
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -806,7 +806,7 @@ dingming
 
 
 
-6551
+3482
 
 ToDeviceViewItem.h
 file
@@ -944,40 +944,6 @@ has-props
 
 210
 
-IMBGuideView.h
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-fd3b77bedd9bb2f6ea28ade8de7833ec
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-282
-
 BoatAnimationView.h
 file
 
@@ -1012,18 +978,17 @@ dingming
 
 801
 
-IMBNoTitleBarContentView.h
+IMBGuideView.h
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-533dd368516a785c6eceb7ba6c80d771
+fd3b77bedd9bb2f6ea28ade8de7833ec
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -1044,7 +1009,8 @@ has-props
 
 
 
-220
+
+282
 
 ToDeviceViewItem.m
 file
@@ -1079,6 +1045,40 @@ dingming
 
 
 6887
+
+IMBNoTitleBarContentView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+533dd368516a785c6eceb7ba6c80d771
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+220
 
 IMBLrregularView.h
 file
@@ -2168,17 +2168,18 @@ dingming
 
 363
 
-IMBClickedImageView.m
+IMBBackupNoteEditView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-9d789ff13f3349b78489b751873c3c5e
+61fcf5dacebf35321d349665c9fea8cb
 2017-11-22T04:23:34.702949Z
 9
 dingming
+has-props
 
 
 
@@ -2199,8 +2200,7 @@ dingming
 
 
 
-
-3185
+6847
 
 IMBAirBackupAnimationView.m
 file
@@ -2236,18 +2236,17 @@ dingming
 
 30639
 
-IMBBackupNoteEditView.m
+IMBClickedImageView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-61fcf5dacebf35321d349665c9fea8cb
+9d789ff13f3349b78489b751873c3c5e
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -2268,7 +2267,8 @@ has-props
 
 
 
-6847
+
+3185
 
 IMBFilpedView.m
 file
@@ -2440,40 +2440,6 @@ has-props
 
 1162
 
-IMBButtonLoadingView.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-54099ad0ca4665777881e2b91a4db538
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4417
-
 numberTextField.h
 file
 
@@ -2507,6 +2473,40 @@ dingming
 
 
 377
+
+IMBButtonLoadingView.m
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+54099ad0ca4665777881e2b91a4db538
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4417
 
 IMBReminderEditView.m
 file
@@ -2542,40 +2542,6 @@ dingming
 
 9042
 
-IMBCategoryView.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-e73e6cd61e931a1a171fe9adb3b4e585
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6218
-
 IMBAutoGrowthNSTextField.h
 file
 
@@ -2609,6 +2575,40 @@ has-props
 
 
 778
+
+IMBCategoryView.m
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+e73e6cd61e931a1a171fe9adb3b4e585
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6218
 
 numberTextField.m
 file
@@ -2848,40 +2848,6 @@ dingming
 
 10392
 
-IMBBlockView.h
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-1670eb48d451fcee5ebe2ce66b586863
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1334
-
 IMBSelectionView.m
 file
 
@@ -2916,48 +2882,14 @@ has-props
 
 2060
 
-IMBLanguageImageView.m
+IMBBlockView.h
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-59c00ea857e268015441eeda216477ed
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3503
-
-IMBHeaderImageView.h
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-07a01676793796d0ca42c7395b15bcf3
+1670eb48d451fcee5ebe2ce66b586863
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -2982,7 +2914,7 @@ has-props
 
 
 
-294
+1334
 
 DriverDownloadCellView.h
 file
@@ -3018,14 +2950,14 @@ dingming
 
 707
 
-IMBBlankDraggableCollectionView.h
+IMBHeaderImageView.h
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-a8ad0ccd8c8dba541c7ba46a0668874c
+07a01676793796d0ca42c7395b15bcf3
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -3050,20 +2982,19 @@ has-props
 
 
 
-2209
+294
 
-IMBRefreshLoadingView.h
+IMBLanguageImageView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-580a81854508d55ec23c6e14c734efe0
+59c00ea857e268015441eeda216477ed
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -3084,7 +3015,8 @@ has-props
 
 
 
-886
+
+3503
 
 IMBiTunesSecureTextFieldCell.h
 file
@@ -3120,14 +3052,14 @@ dingming
 
 517
 
-IMBBasicInfoView.h
+IMBRefreshLoadingView.h
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-56d6799c12d7ac844514de4e79d0ed36
+580a81854508d55ec23c6e14c734efe0
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -3152,7 +3084,41 @@ has-props
 
 
 
-4279
+886
+
+IMBBlankDraggableCollectionView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+a8ad0ccd8c8dba541c7ba46a0668874c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2209
 
 IMBSecireTextField.m
 file
@@ -3187,6 +3153,40 @@ shuaimingzhong
 
 
 3541
+
+IMBBasicInfoView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+56d6799c12d7ac844514de4e79d0ed36
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4279
 
 AnnoyAnimationViewOne.h
 file
@@ -3256,40 +3256,6 @@ has-props
 
 23030
 
-IMBHeaderImageView.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-97a34bbc307ff9c66c2e8584ddec7515
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-901
-
 DriverDownloadCellView.m
 file
 
@@ -3324,14 +3290,14 @@ dingming
 
 1053
 
-IMBBlankDraggableCollectionView.m
+IMBHeaderImageView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-d36b3b4c1a7639f56f2fd9473455b20b
+97a34bbc307ff9c66c2e8584ddec7515
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -3356,7 +3322,41 @@ has-props
 
 
 
-11835
+901
+
+IMBiTunesSecureTextFieldCell.m
+file
+
+
+
+
+2018-03-01T06:19:58.000000Z
+94dae604b0426cd9520a1fc13036bf28
+2018-02-28T10:45:10.356765Z
+1436
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7149
 
 IMBRefreshLoadingView.m
 file
@@ -3392,17 +3392,18 @@ has-props
 
 5473
 
-IMBiTunesSecureTextFieldCell.m
+IMBBlankDraggableCollectionView.m
 file
 
 
 
 
-2018-03-01T06:19:58.000000Z
-94dae604b0426cd9520a1fc13036bf28
-2018-02-28T10:45:10.356765Z
-1436
-shuaimingzhong
+2018-02-02T01:41:13.000000Z
+d36b3b4c1a7639f56f2fd9473455b20b
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
 
 
 
@@ -3423,8 +3424,7 @@ shuaimingzhong
 
 
 
-
-7149
+11835
 
 IMBBasicInfoView.m
 file
@@ -3596,40 +3596,6 @@ dingming
 
 801
 
-IMBMsgDialog.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-b7b685fef721eeeb931831334f6f8dd7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-36609
-
 IMBiTunesSecireTextField.h
 file
 
@@ -3663,6 +3629,40 @@ dingming
 
 
 340
+
+IMBMsgDialog.m
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+b7b685fef721eeeb931831334f6f8dd7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+36609
 
 IMBCanClickText.h
 file
@@ -3732,40 +3732,6 @@ dingming
 
 2669
 
-DownLoadView.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-4615a4fc17d4726be7e89dda65ac6bce
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9693
-
 ASHDatePicker.h
 file
 
@@ -3800,18 +3766,17 @@ has-props
 
 1038
 
-IMBAddressView.h
+DownLoadView.m
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-de977fb50e757782bdd5711675d974f3
+4615a4fc17d4726be7e89dda65ac6bce
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -3832,7 +3797,42 @@ has-props
 
 
 
-2261
+
+9693
+
+LoadingView.h
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+a7eaf954c3d427eec3b1e4e0efd1cb45
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+392
 
 IMBiTunesSecireTextField.m
 file
@@ -3868,17 +3868,18 @@ dingming
 
 3635
 
-LoadingView.h
+IMBAddressView.h
 file
 
 
 
 
 2018-02-02T01:41:13.000000Z
-a7eaf954c3d427eec3b1e4e0efd1cb45
+de977fb50e757782bdd5711675d974f3
 2017-11-22T04:23:34.702949Z
 9
 dingming
+has-props
 
 
 
@@ -3899,8 +3900,7 @@ dingming
 
 
 
-
-392
+2261
 
 IMBCanClickText.m
 file
@@ -4004,40 +4004,6 @@ has-props
 
 3618
 
-IMBAddressView.m
-file
-
-
-
-
-2018-02-02T01:41:13.000000Z
-ed2ab72f3cae71b4608c0c3b8134c804
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-16264
-
 LoadingView.m
 file
 
@@ -4071,6 +4037,40 @@ dingming
 
 
 5946
+
+IMBAddressView.m
+file
+
+
+
+
+2018-02-02T01:41:13.000000Z
+ed2ab72f3cae71b4608c0c3b8134c804
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16264
 
 IMBBGColoerView.h
 file
@@ -6560,11 +6560,11 @@ file
 
 
 
-2018-03-07T00:58:16.000000Z
-24a3a08f9f8c8535e60ea1bea5183169
-2018-03-06T12:37:57.279740Z
-1517
-shuaimingzhong
+2018-03-08T03:57:44.000000Z
+4744d6bea83ad7e0f6e66935e34c7057
+2018-03-08T03:49:32.133160Z
+1572
+huyumin
 
 
 
@@ -6586,7 +6586,7 @@ shuaimingzhong
 
 
 
-1630
+1901
 
 IMBCategoryBarButtonView.h
 file

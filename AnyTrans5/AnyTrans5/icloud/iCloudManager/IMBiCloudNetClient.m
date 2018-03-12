@@ -437,7 +437,7 @@
 }
 
 //发送双重验证密码（用户没有收到，手动点击）
-- (void)sentTwoStepAuthenticationMessage {
+- (int)sentTwoStepAuthenticationMessage {
     NSString *sessionId = nil;
     NSString *scnt = nil;
     if ([_firstDic.allKeys containsObject:@"headerdic"]) {
@@ -464,14 +464,16 @@
     NSData *loginData = [loginStr dataUsingEncoding:NSUTF8StringEncoding];
     
     NSDictionary *dic = [self putWithData:loginData withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/phone" withCookieArray:nil];
+    int statusCode = 0;
     if ([dic.allKeys containsObject:@"statusCode"]) {
-        int statusCode = [[dic objectForKey:@"statusCode"] intValue];
+         statusCode = [[dic objectForKey:@"statusCode"] intValue];
         //响应码为200:表示发送message成功
         [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent message statusCode:%d",statusCode]];
     }
+    return statusCode;
 }
 
-- (void)sentTwoStepAuthenticationCode {
+- (int)sentTwoStepAuthenticationCode {
     NSString *sessionId = nil;
     NSString *scnt = nil;
     if ([_firstDic.allKeys containsObject:@"headerdic"]) {
@@ -492,11 +494,13 @@
     [authHeaders setObject:@"83545bf919730e51dbfba24e7e8a78d2" forKey:@"X-Apple-Widget-Key"];
     
     NSDictionary *dic = [self putWithData:nil withHeaders:authHeaders withHost:@"https://idmsa.apple.com" withPath:@"/appleauth/auth/verify/trusteddevice/securitycode" withCookieArray:nil];
+    int statusCode = 0;
     if ([dic.allKeys containsObject:@"statusCode"]) {
-        int statusCode = [[dic objectForKey:@"statusCode"] intValue];
+         statusCode = [[dic objectForKey:@"statusCode"] intValue];
         //响应码为202:表示成功再次发送安全码
         [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"resent code statusCode:%d",statusCode]];
     }
+    return statusCode;
 }
 
 //退出iCloud账号；

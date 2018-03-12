@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Android/OpenMTP
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -502,40 +502,6 @@ has-props
 
 10217
 
-other_MTP1_fr@2x.png
-file
-
-
-
-
-2018-02-02T01:40:47.000000Z
-a4e7115119db39d4728b35769ff2738d
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-28201
-
 other_MTP2.png
 file
 
@@ -570,14 +536,14 @@ has-props
 
 13612
 
-other_MTP3.png
+other_MTP1_fr@2x.png
 file
 
 
 
 
 2018-02-02T01:40:47.000000Z
-fe68e5c8ca1575f13221d07a1e7b2e0e
+a4e7115119db39d4728b35769ff2738d
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -602,41 +568,7 @@ has-props
 
 
 
-17056
-
-other_MTP2_fr@2x.png
-file
-
-
-
-
-2018-02-02T01:40:47.000000Z
-93a34d5a7fd61f60eeecc919fb1af952
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-35465
+28201
 
 other_MTP1_sp.png
 file
@@ -672,14 +604,14 @@ has-props
 
 10217
 
-other_MTP1_jp@2x.png
+other_MTP2_fr@2x.png
 file
 
 
 
 
 2018-02-02T01:40:47.000000Z
-a4e7115119db39d4728b35769ff2738d
+93a34d5a7fd61f60eeecc919fb1af952
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -704,7 +636,41 @@ has-props
 
 
 
-28201
+35465
+
+other_MTP3.png
+file
+
+
+
+
+2018-02-02T01:40:47.000000Z
+fe68e5c8ca1575f13221d07a1e7b2e0e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17056
 
 other_MTP3_fr@2x.png
 file
@@ -740,14 +706,14 @@ has-props
 
 51470
 
-other_MTP2_jp@2x.png
+other_MTP1_jp@2x.png
 file
 
 
 
 
 2018-02-02T01:40:47.000000Z
-6057ba69686021c972ea5bc89935c83c
+a4e7115119db39d4728b35769ff2738d
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -772,7 +738,7 @@ has-props
 
 
 
-32940
+28201
 
 other_MTP3_sp.png
 file
@@ -807,6 +773,40 @@ has-props
 
 
 17449
+
+other_MTP2_jp@2x.png
+file
+
+
+
+
+2018-02-02T01:40:47.000000Z
+6057ba69686021c972ea5bc89935c83c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+32940
 
 other_MTP3_jp@2x.png
 file
@@ -876,40 +876,6 @@ has-props
 
 10217
 
-other_MTP1@2x.png
-file
-
-
-
-
-2018-02-02T01:40:47.000000Z
-a4e7115119db39d4728b35769ff2738d
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-28201
-
 other_MTP3_de.png
 file
 
@@ -943,6 +909,40 @@ has-props
 
 
 17773
+
+other_MTP1@2x.png
+file
+
+
+
+
+2018-02-02T01:40:47.000000Z
+a4e7115119db39d4728b35769ff2738d
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+28201
 
 other_MTP2_ch.png
 file
@@ -978,40 +978,6 @@ has-props
 
 11582
 
-other_MTP3@2x.png
-file
-
-
-
-
-2018-02-02T01:40:47.000000Z
-a568d498d9770addd003dedbc4ba5bc9
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-43680
-
 other_MTP1_sp@2x.png
 file
 
@@ -1045,6 +1011,40 @@ has-props
 
 
 28201
+
+other_MTP3@2x.png
+file
+
+
+
+
+2018-02-02T01:40:47.000000Z
+a568d498d9770addd003dedbc4ba5bc9
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+43680
 
 other_MTP2_sp@2x.png
 file

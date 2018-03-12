@@ -52,6 +52,7 @@
     IBOutlet NSView *_midiumSizeOneDriveView;
     
     
+    IBOutlet NSBox *_devicesBox;
     IBOutlet NSBox *_oneDriveBox;
     IBOutlet NSBox *_icloudDrivebox;
     
@@ -63,6 +64,7 @@
     IBOutlet NSView *_smalliCloudDriveView;
     
     
+    IBOutlet NSView *_midiumSizeDevicesView;
     IBOutlet NSButton *_midiumiCloudClickLoginBtn;
     IBOutlet NSButton *_midiumDropBoxClickLoginBtn;
     IBOutlet NSView *_midiumDropBoxContentView;

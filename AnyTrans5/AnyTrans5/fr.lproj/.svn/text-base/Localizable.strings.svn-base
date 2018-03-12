@@ -1810,11 +1810,20 @@
 "AriBackup_wifi_guide_4" = "Étape 4: Sélectionnez \"Partage Internet\"> Cliquez sur \"Démarrer\".";
 
 "iCloudLogin_View_codeTips1" = "Veuillez entrer le code de vérification pour continuer.";
-"iCloudLogin_View_codeTips2" = "Code de vérification invalide.";
-"iCloudLogin_View_codeTips3" = "Échec de l'authentification.";
 "iCloudLogin_SecurityView_codeTips" = "Vous avez activé l'authentification à deux facteurs. Veuillez entrer le code de vérification affiché sur votre appareil iOS pour continuer.";
 "iCloudLogin_View_NotReceiveCode" = "Aucun code affiché sur mon iPhone.";
 "iCloudLogin_View_Resend" = "Renvoyer le code";
 "iCloudLogin_View_SendByMessage" = "Texte moi";
 "iCloudLogin_View_Help" = "Besoin d'aide?";
+"iCloudLogin_View_Verify" = "Vérification ...";
+"iCloudLogin_View_codeTips2" = "Le code de vérification invalide, veuillez renvoyer le code de vérification à l'appareil.";
+"iCloudLogin_View_codeTips3" = "La vérification échouée, veuillez vérifier le code de vérification et ré-entrer.";
+"iCloudLogin_View_SendCode_Fail" = "Impossible d'envoyer le code de vérification, veuillez réessayer.";
+"iCloudLogin_View_Login_Fail" = "La connexion échouée, veuillez essayer de vous reconnecter.";
+"iCloudLogin_View_SendCode_Success" = "Un message contenant le code de vérification a été envoyé à votre appareil. Entrez le code pour continuer.";
+"iCloudLogin_View_Input_NewCode" = "Envoyer le code de vérification plusieurs fois. Veuillez entrer votre dernier code de vérification ou réessayer plus tard.";
+"iCloudLogin_View_Account_Locked" = "Apple ID est verrouillé pour des raisons de sécurité. Vous devez déverrouiller votre compte pour vous connecter.";
+"iCloudLogin_View_Unlock_Account" = "Déverrouiller le compte";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "Trop de codes d'erreur que vous avez saisis. Veuillez réessayer plus tard.";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

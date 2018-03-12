@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Controller/androidController
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -536,40 +536,6 @@ dingming
 
 977
 
-IMBAndroidVdoAndAdoViewController.h
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-66e14c7a531d98b97e005d5647d415b5
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-832
-
 IMBAndroidMergeViewController.h
 file
 
@@ -603,6 +569,40 @@ dingming
 
 
 5194
+
+IMBAndroidVdoAndAdoViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+66e14c7a531d98b97e005d5647d415b5
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+832
 
 IMBAndroidDcAndCpAndBkViewController.m
 file
@@ -638,40 +638,6 @@ dingming
 
 17491
 
-IMBAndroidCallHistoryViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-20f32ed100ffc87530a3a4fb6fb5dd29
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-33927
-
 IMBAndroidAlertViewController.xib
 file
 
@@ -706,17 +672,17 @@ shuaimingzhong
 
 226768
 
-IMBAndroidCalendarViewController.xib
+IMBAndroidCallHistoryViewController.m
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-a54d461a1c43441b8931dc0609b8c416
-2017-12-21T11:51:39.561726Z
-577
-shuaimingzhong
+20f32ed100ffc87530a3a4fb6fb5dd29
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -738,7 +704,41 @@ shuaimingzhong
 
 
 
-50255
+33927
+
+IMBAndroidVdoAndAdoViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+af863ae7440772b8bd425baafc85f8c2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+24713
 
 IMBAndroidMergeViewController.m
 file
@@ -774,17 +774,17 @@ shuaimingzhong
 
 105758
 
-IMBAndroidVdoAndAdoViewController.m
+IMBAndroidCalendarViewController.xib
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-af863ae7440772b8bd425baafc85f8c2
-2017-11-22T04:23:34.702949Z
-9
-dingming
+a54d461a1c43441b8931dc0609b8c416
+2017-12-21T11:51:39.561726Z
+577
+shuaimingzhong
 
 
 
@@ -806,7 +806,7 @@ dingming
 
 
 
-24713
+50255
 
 IMBAndroidAlertViewController.h
 file
@@ -944,40 +944,6 @@ shuaimingzhong
 
 52346
 
-IMBAndroidCalendarViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-38f87318d8a476f598c14a9f47976b84
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-54009
-
 IMBAndroidAlbumsViewController.xib
 file
 
@@ -1012,17 +978,17 @@ has-props
 
 106565
 
-IMBAndroidTransferViewController.xib
+IMBAndroidCalendarViewController.m
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-4e98aa9de6d437719e96cc977a6e7460
-2017-12-20T07:23:03.825666Z
-528
-shuaimingzhong
+38f87318d8a476f598c14a9f47976b84
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -1044,7 +1010,7 @@ shuaimingzhong
 
 
 
-136010
+54009
 
 IMBOpenUSBDeugViewController.h
 file
@@ -1079,6 +1045,40 @@ dingming
 
 
 1264
+
+IMBAndroidTransferViewController.xib
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+4e98aa9de6d437719e96cc977a6e7460
+2017-12-20T07:23:03.825666Z
+528
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+136010
 
 IMBAndroidAlbumsViewController.h
 file

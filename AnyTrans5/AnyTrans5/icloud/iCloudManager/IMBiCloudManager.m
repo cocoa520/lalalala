@@ -106,7 +106,7 @@
     [super dealloc];
 }
 
-- (BOOL)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password {
+- (NSDictionary *)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password {
     BOOL hasTwoStepAuthentication = NO;//账号是否加了双重验证
     long statusCode = 0;
     BOOL trustEligible = NO;
@@ -132,7 +132,7 @@
         hasTwoStepAuthentication = YES;
         [_delegate setHasTwoStepAuth:YES];
         [_delegate showTwoStepAuthenticationAlertView];
-        return NO;
+        return @{@"success":[NSNumber numberWithBool:NO],@"statusCode":[NSNumber numberWithLong:statusCode]};
     }else if(statusCode == 200) {//表示成功 并且没有开启双重验证
         BOOL ret = NO;
         @try {
@@ -144,13 +144,15 @@
         if (ret) {
             [_netClient startKeepAliveThread];
         }
-        return ret;
+        return @{@"success":[NSNumber numberWithBool:ret],@"statusCode":[NSNumber numberWithLong:statusCode]};
     }else if (statusCode == 401) {//401 表示认证错误
-        return NO;
+        return @{@"success":[NSNumber numberWithBool:NO],@"statusCode":[NSNumber numberWithLong:statusCode]};
     }else if (statusCode == 400) {//400 表示请求参数构建错误
-        return NO;
+        return @{@"success":[NSNumber numberWithBool:NO],@"statusCode":[NSNumber numberWithLong:statusCode]};
+    }else if (statusCode == 403) {//403 表示请求参数构建错误
+        return @{@"success":[NSNumber numberWithBool:NO],@"statusCode":[NSNumber numberWithLong:statusCode]};
     }else {
-        return NO;
+        return @{@"success":[NSNumber numberWithBool:NO],@"statusCode":[NSNumber numberWithLong:statusCode]};
     }
 }
 

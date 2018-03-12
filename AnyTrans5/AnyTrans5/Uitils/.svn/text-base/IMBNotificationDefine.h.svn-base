@@ -251,4 +251,7 @@
 //删除验证码
 #define NOTIFY_DELETE_CODE @"Delete_code"
 
+//监听软件第一次启动
+#define NOTIFY_FIRST_LAUNCH @"First_Launch"
+
 #endif

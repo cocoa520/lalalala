@@ -1764,11 +1764,20 @@
 "AriBackup_wifi_guide_4" = "الخطوة الرابعة: حدد \"مشاركة الإنترنت\" > انقر فوق \"بدأ\".";
 
 "iCloudLogin_View_codeTips1" = "أدخل رمز التحقق للاستمرار.";
-"iCloudLogin_View_codeTips2" = "رمز التحقق غير صالح.";
-"iCloudLogin_View_codeTips3" = "فشل المصادقة.";
 "iCloudLogin_SecurityView_codeTips" = "قمت بتشغيل المصادقة ذات العاملين. أدخل رمز التحقق على جهازك للاستمرار.";
 "iCloudLogin_View_NotReceiveCode" = "لم أتلق رمز تحقق على جهازي. ";
 "iCloudLogin_View_Resend" = "إعادة إرسال الرمز";
 "iCloudLogin_View_SendByMessage" = "راسلني";
 "iCloudLogin_View_Help" = "المساعدة؟";
+"iCloudLogin_View_Verify" = "جار المصادقة";
+"iCloudLogin_View_codeTips2" = "رمز التحقق غير صالح، قم بالحصول على رمز التحقق مرة أخرى.";
+"iCloudLogin_View_codeTips3" = "فشلت المصادقة، تحقق من الرمز و أدخله مرة أخرى.";
+"iCloudLogin_View_SendCode_Fail" = "فشل إرسال رمز التحقق، حاول مرة أخرى.";
+"iCloudLogin_View_Login_Fail" = "فشل تسجيل الدخول إلى iCloud، حاول مرة أخرى.";
+"iCloudLogin_View_SendCode_Success" = "تم إرسال الرمز إلى جهازك، أدخل الرمز للاستمرار.";
+"iCloudLogin_View_Input_NewCode" = "تم إرسال الرمز العديد من المرات. أدخل الرمز الذي تلقيته مؤخرا، أوحاول لاحقا.";
+"iCloudLogin_View_Account_Locked" = "تم تعطيل Apple ID هذا لأسباب أمنية، لا يمكنك تسجيل الدخول قبل فك القفل.";
+"iCloudLogin_View_Unlock_Account" = "فك قفل Apple ID هذا.";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "تم إدخال رمز الأمان بشكل غير صحيح العديد من المرات. حاول لاحقا.";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

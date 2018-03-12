@@ -46,6 +46,8 @@
 @synthesize isIcloudRemove = _isIcloudRemove;
 @synthesize is32 = _is32;
 @synthesize is64 = _is64;
+@synthesize isUnlockAccount = _isUnlockAccount;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -479,10 +481,29 @@
         [self showSendCodeMessageHelpView];
     }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_Resend", nil)]) {
         //点击重新发送验证码
-       [_delegate reSendTwoStepAuthenticationCode];
+        [_doubleVerificaSubTitle setHidden:NO];
+        int statusCode = [_delegate reSendTwoStepAuthenticationCode];
+        if (statusCode == 202) {
+            [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_SendCode_Success", nil)];
+        }else {
+            [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_SendCode_Fail", nil)];
+        }
     }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_SendByMessage", nil)]) {
         //点击重新发送短信
-        [_delegate reSendTwoStepAuthenticationMessage];
+        [_doubleVerificaSubTitle setHidden:NO];
+        int statusCode = [_delegate reSendTwoStepAuthenticationMessage];
+        if (statusCode == 200) {
+            [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_SendCode_Success", nil)];
+        }else if (statusCode == 423) {
+            [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_Input_NewCode", nil)];
+        }else {
+            [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
+            [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_SendCode_Fail", nil)];
+        }
     }else if ([link isEqualToString:CustomLocalizedString(@"iCloudLogin_View_Help", nil)]) {
         NSURL *url = [NSURL URLWithString:CustomLocalizedString(@"iCloudGetDoubleVerificationCodeHelp", nil)];
         NSWorkspace *ws = [NSWorkspace sharedWorkspace];
@@ -651,9 +672,9 @@
     int width = 0;
     if (cancelBtnRectSize.width > 76 || removeBtnRectSize.width > 76) {
         if (cancelBtnRectSize.width > removeBtnRectSize.width) {
-            width = ceil(cancelBtnRectSize.width + 20);
+            width = ceil(cancelBtnRectSize.width + 30);
         }else {
-            width = ceil(removeBtnRectSize.width + 20);
+            width = ceil(removeBtnRectSize.width + 30);
         }
         [_removeBtn setFrame:NSMakeRect(NSMaxX(_confirmAlertView.bounds) - width - 25, NSMinY(_confirmAlertView.bounds) + 18, width, _removeBtn.frame.size.height)];
         [_cancelBtn setFrame:NSMakeRect(ceil(NSMaxX(_confirmAlertView.bounds) - width*2 - 25 - 15), ceil(NSMinY(_confirmAlertView.bounds) + 18), ceil(width), ceil(_cancelBtn.frame.size.height))];
@@ -1040,7 +1061,14 @@
 - (void)removeBtnOperation:(id)sender {
     _endRunloop = YES;
     _result = 1;
-    if (!_isStopPan) {
+    if (_isUnlockAccount) {
+        NSURL *url = nil;
+        url = [NSURL URLWithString:CustomLocalizedString(@"iCloudLogin_View_Unlock_Accuont_URL", nil)];
+        NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+        [ws openURL:url];
+        _isUnlockAccount = NO;
+        [self unloadAlertView:_confirmAlertView];
+    }else if (!_isStopPan) {
         NSLog(@"_isStopPan:%d",_isOpen);
         [self showRemoveProgressViewAlertText:CustomLocalizedString(@"MSG_COM_Deleting", nil) SuperView:nil];
         if (!_isIcloudRemove) {
@@ -4360,7 +4388,7 @@
         [_doubleVerificaView setFrame:NSMakeRect(ceil((NSMaxX(superView.bounds) - NSWidth(_doubleVerificaView.frame)) / 2), NSMaxY(superView.bounds) - NSHeight(_doubleVerificaView.frame) + 10, NSWidth(_doubleVerificaView.frame), NSHeight(_doubleVerificaView.frame))];
     }];
     //文本样式
-    [_doubleVerificaTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips1", nil)];
+    [_doubleVerificaTitle setStringValue:CustomLocalizedString(@"iCloudLogin_SecurityView_codeTips", nil)];
     [_doubleVerificaTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
     
     [_doubleVerificaFirstNum setStringValue:@""];
@@ -4374,6 +4402,7 @@
     [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
     
     [_loadingBgView setHidden:YES];
+    [_doubleVerificaVerfiyTitle setHidden:YES];
     
     [_numBox1 setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"mainView_bgColor", nil)]];
     [_numBox1 setBorderColor:[StringHelper getColorFromString:CustomColor(@"hoverBtn_normal_borderColor", nil)]];
@@ -4448,7 +4477,7 @@
     
     [_doubleVerificaCancelBtn setTarget:self];
     [_doubleVerificaCancelBtn setAction:@selector(doubleVerificaCancelBtnOperation:)];
-    [_doubleVerificaOkBtn setEnabled:YES];
+    [_doubleVerificaOkBtn setEnabled:NO];
     
     NSString *codeStr = [CustomLocalizedString(@"iCloudLogin_View_Resend", nil) stringByAppendingString:@" | "];
     NSRect rect1 = [IMBHelper calcuTextBounds:codeStr fontSize:12];
@@ -4486,6 +4515,12 @@
 }
 
 - (void)editDoubleVerificationCode:(NSNotification *)notification {
+    if (![StringHelper stringIsNilOrEmpty:_doubleVerificaFirstNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaSecondNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaThirdNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaFourthNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaFifthNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaSixthNum.stringValue]) {
+        [_doubleVerificaOkBtn setEnabled:YES];
+    }else {
+        [_doubleVerificaOkBtn setEnabled:NO];
+    }
+    
     NSDictionary *dic = notification.object;
     int codeTag = [[dic objectForKey:@"codeTag"] intValue];
     if (codeTag == 1) {
@@ -4504,6 +4539,12 @@
 }
 
 - (void)deleteDoubleVerificationCode:(NSNotification *)notification {
+    if (![StringHelper stringIsNilOrEmpty:_doubleVerificaFirstNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaSecondNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaThirdNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaFourthNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaFifthNum.stringValue] && ![StringHelper stringIsNilOrEmpty:_doubleVerificaSixthNum.stringValue]) {
+        [_doubleVerificaOkBtn setEnabled:YES];
+    }else {
+        [_doubleVerificaOkBtn setEnabled:NO];
+    }
+    
     NSDictionary *dic = notification.object;
     int codeTag = [[dic objectForKey:@"codeTag"] intValue];
     if (codeTag == 6) {
@@ -4530,7 +4571,8 @@
     __block long statusCode = 0;
     __block NSString *sessiontoken = nil;
     [_loadingBgView setHidden:NO];
-    
+    [_doubleVerificaVerfiyTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)]];
+    [_doubleVerificaVerfiyTitle setHidden:NO];
     _imageLayer = [[CALayer alloc] init];
     _imageLayer.contents = [StringHelper imageNamed:@"registedLoading"];
     [_imageLayer setAnchorPoint:CGPointMake(0.5, 0.5)];
@@ -4547,7 +4589,7 @@
     animation.duration = 2;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     [_imageLayer addAnimation:animation forKey:@""];
-
+    [_doubleVerificaVerfiyTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_Verify", nil)];
     if ([_delegate respondsToSelector:@selector(verifiTwoStepAuthentication:)]) {
         NSString *str = [NSString stringWithFormat:@"%@%@%@%@%@%@",_doubleVerificaFirstNum.stringValue,_doubleVerificaSecondNum.stringValue,_doubleVerificaThirdNum.stringValue,_doubleVerificaFourthNum.stringValue,_doubleVerificaFifthNum.stringValue,_doubleVerificaSixthNum.stringValue];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -4567,24 +4609,26 @@
                  400 安全码验证失败
                  423 登录太频繁
                  */
+                [_doubleVerificaVerfiyTitle setHidden:YES];
                 [_loadingBgView setHidden:YES];
                 if (statusCode == 204) {
                     [self unloaddoubleVerificaAlertView];
                     [_delegate loginiCloudWithSessiontoken:sessiontoken];
                 }else if (statusCode == 400) {
                     [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
                     [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
                 }else if (statusCode == 401) {
                     [_doubleVerificaSubTitle setHidden:NO];
+                    [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
                     [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
                 }else if (statusCode == 423) {
                     [_doubleVerificaSubTitle setHidden:NO];
-                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips2", nil)];
+                    [_doubleVerificaSubTitle setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
+                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_Input_Toomany_ErrorCode", nil)];
                 }else {//重新走登录流程
-                    [_doubleVerificaSubTitle setHidden:NO];
-                    [_doubleVerificaSubTitle setStringValue:CustomLocalizedString(@"iCloudLogin_View_codeTips3", nil)];
-//                    [self unloaddoubleVerificaAlertView];
-//                    [_delegate loginIsSuccess:NO withAppleID:@""];
+                    [self unloaddoubleVerificaAlertView];
+                    [_delegate loginIsSuccess:NO withAppleID:@""];
                 }
                 [_doubleVerificaOkBtn setEnabled:YES];
                 [_imageLayer removeFromSuperlayer];

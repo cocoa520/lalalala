@@ -1813,11 +1813,20 @@
 
 
 "iCloudLogin_View_codeTips1" = "请输入验证码以继续进行操作。";
-"iCloudLogin_View_codeTips2" = "验证码无效。";
-"iCloudLogin_View_codeTips3" = "验证失败。";
 "iCloudLogin_SecurityView_codeTips" = "您已开启双重验证，请输入您iOS设备获取的验证码以继续进行操作。";
 "iCloudLogin_View_NotReceiveCode" = "未收到验证码？";
 "iCloudLogin_View_Resend" = "重新发送验证码";
 "iCloudLogin_View_SendByMessage" = "发送短信给我";
 "iCloudLogin_View_Help" = "需要帮助？";
+"iCloudLogin_View_Verify" = "正在验证...";
+"iCloudLogin_View_codeTips2" = "验证码无效，请重新发送验证码至设备。";
+"iCloudLogin_View_codeTips3" = "验证失败，请核对验证码并重新输入。";
+"iCloudLogin_View_SendCode_Fail" = "验证码发送失败，请重试。";
+"iCloudLogin_View_Login_Fail" = "登录失败，请尝试重新登录。";
+"iCloudLogin_View_SendCode_Success" = "一条包含验证码的信息已发送至您的设备。输入验证码继续。";
+"iCloudLogin_View_Input_NewCode" = "已多次发送验证码。请输入您最新收到的验证码，或稍后再试。";
+"iCloudLogin_View_Account_Locked" = "出于安全原因，此Apple ID已锁定。您必须解锁账户，才能登录";
+"iCloudLogin_View_Unlock_Account" = "解锁账户";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "您输入的错误验证码的次数太多。请稍后再试。";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

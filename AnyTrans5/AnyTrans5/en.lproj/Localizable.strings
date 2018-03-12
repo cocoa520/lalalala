@@ -1793,11 +1793,22 @@
 
 //双重验证
 "iCloudLogin_View_codeTips1" = "Please enter the verification code to continue.";
-"iCloudLogin_View_codeTips2" = "Invalid verification code.";
-"iCloudLogin_View_codeTips3" = "Authentication failed.";
 "iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
 "iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";
 "iCloudLogin_View_Resend" = "Resend Code";
 "iCloudLogin_View_SendByMessage" = "Text Me";
 "iCloudLogin_View_Help" = "Need Help?";
+"iCloudLogin_View_Verify" = "Verifying…";
+"iCloudLogin_View_codeTips2" = "Invalid verification code, please resend it to your device.";
+"iCloudLogin_View_codeTips3" = "Verification failed, please check and re-enter the verification code.";
+"iCloudLogin_View_SendCode_Fail" = "Failed to send verification code, please try again.";
+"iCloudLogin_View_Login_Fail" = "Failed to log in, please try again.";
+"iCloudLogin_View_SendCode_Success" = "A message with a verification code has been sent to your devices. Please enter the code to continue.";
+"iCloudLogin_View_Input_NewCode" = "Too many verification codes sent. Please enter the last one displayed on one of your devices, or try again later. ";
+"iCloudLogin_View_Account_Locked" = "This Apple ID has been locked for security reasons. You must unlock it before signing in.";
+"iCloudLogin_View_Unlock_Account" = "Unlock Account";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "Verification code incorrectly entered too many times. Please try again later.";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
+
+

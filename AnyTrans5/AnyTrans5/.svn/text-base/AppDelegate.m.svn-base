@@ -62,6 +62,7 @@
 @synthesize HomeMenuItem;
 @synthesize OnlineGuideMenuItem;
 @synthesize FacebookMenuItem;
+@synthesize infoDict = _infoDict;
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return TRUE;
@@ -119,7 +120,7 @@
 //    NSString *str2 = [IMBHelper dictionaryToJson:dic2];
 //    [socketClient sendData:str2];
 
-    [ATTracker setupWithTrackingID:@"UA-85655135-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1
+    [ATTracker setupWithTrackingID:@"UA-85655135-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试)
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -127,11 +128,9 @@
     [ATTracker event:AnyTrans_OpenOrClose action:ActionNone actionParams:@"Open" label:Open transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *infoP = [[bundlePath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"Info.plist"];
-    NSMutableDictionary *infoDict = [[NSDictionary dictionaryWithContentsOfFile:infoP] mutableCopy];
-    if ([[infoDict allKeys] containsObject:@"IsFirstLaunch"]) {
-        if ([[infoDict objectForKey:@"IsFirstLaunch"] intValue] == 0) {
-            [infoDict setObject:[NSNumber numberWithBool:YES] forKey:@"IsFirstLaunch"];
-            [infoDict writeToFile:infoP atomically:YES];
+    _infoDict = [[NSDictionary dictionaryWithContentsOfFile:infoP] mutableCopy];
+    if ([[_infoDict allKeys] containsObject:@"IsFirstLaunch"]) {
+        if ([[_infoDict objectForKey:@"IsFirstLaunch"] intValue] == 0) {
             [ATTracker event:AnyTrans_OpenOrClose action:ActionNone actionParams:@"First Launch" label:FirstLaunch transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         }
     }
@@ -218,9 +217,11 @@
         [_iPod release];
         _iPod = nil;
     }
+    self.infoDict = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_ENTER_CHANGELAGUG_IPOD object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_ALLANGUAGE object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_FIRST_LAUNCH object:nil];
     [super dealloc];
 }
 
@@ -268,6 +269,7 @@
     [SystemHelper createLaunchDaemon];
     
     [self checkLanguage];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveFirstLaunch:) name:NOTIFY_FIRST_LAUNCH object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getIpod:) name:NOTIFY_CHANGE_IPOD object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenLanguageButton:) name:NOTIFY_ENTER_CHANGELAGUG_IPOD object:nil];
     [deviceSettingMenuItem setEnabled:NO];
@@ -733,6 +735,13 @@
     }else {
         [[IMBSoftWareInfo singleton] setChooseLanguageType:EnglishLanguage];
     }
+}
+
+- (void)saveFirstLaunch:(NSNotification *)obj {
+    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+    NSString *infoP = [[bundlePath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"Info.plist"];
+    [_infoDict setObject:[NSNumber numberWithBool:YES] forKey:@"IsFirstLaunch"];
+    [_infoDict writeToFile:infoP atomically:YES];
 }
 
 - (void)screenLanguageButton:(NSNotification *)obj{

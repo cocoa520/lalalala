@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="_bigSizeOneDriveView" destination="ybb-jb-bgT" id="YhM-gp-3NL"/>
                 <outlet property="_bigSizeiCloudView" destination="qvC-vK-Hld" id="Sii-NK-PqE"/>
+                <outlet property="_devicesBox" destination="rnr-Yt-VvE" id="FIw-by-1JY"/>
                 <outlet property="_devicesView" destination="Omd-Wb-YfP" id="Pgg-ww-oTu"/>
                 <outlet property="_iCloudDriveView" destination="t0k-2x-CtM" id="1Qa-Jt-1cD"/>
                 <outlet property="_iCloudSecireTextField" destination="nxI-1a-u3g" id="3Ac-d9-sux"/>
@@ -19,6 +20,7 @@
                 <outlet property="_loginTextField" destination="t2C-L2-c0n" id="cnm-Bm-Exk"/>
                 <outlet property="_midiumDropBoxClickLoginBtn" destination="3jv-BK-Imm" id="2nZ-sH-MFL"/>
                 <outlet property="_midiumDropBoxContentView" destination="e94-ti-MsB" id="shJ-Pa-EnO"/>
+                <outlet property="_midiumSizeDevicesView" destination="zfi-hN-6rv" id="PcT-mC-Gmb"/>
                 <outlet property="_midiumSizeOneDriveView" destination="Cg8-1L-jVw" id="FKF-Mx-i2l"/>
                 <outlet property="_midiumSizeiCloudView" destination="fQv-aR-vvb" id="9Rh-XG-gkZ"/>
                 <outlet property="_midiumiCloudClickLoginBtn" destination="I1q-bg-xM2" id="FUn-6T-MbX"/>
@@ -62,7 +64,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box borderWidth="302" cornerRadius="180" title="Box" borderType="none" titlePosition="noTitle" id="WaV-2w-2rW">
-                            <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <view key="contentView">
                                 <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
@@ -77,40 +79,16 @@
                     <rect key="frame" x="327" y="15" width="253" height="376"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
-                            <rect key="frame" x="55" y="138" width="143" height="19"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Device Manager" id="oxg-MJ-QLC">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gaI-nn-QSw">
-                            <rect key="frame" x="26" y="106" width="201" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Can multi-device management" id="DO0-6l-Cpy">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iPp-8x-sZo">
-                            <rect key="frame" x="47" y="183" width="159" height="158"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-no-device" id="Ckw-GN-3w2"/>
-                        </imageView>
-                        <button autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
-                            <rect key="frame" x="34" y="41" width="99" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="selectedDeviceBtnClicked:" target="-2" id="ncK-id-nuR"/>
-                            </connections>
-                        </button>
+                        <box title="Box" borderType="none" titlePosition="noTitle" id="rnr-Yt-VvE">
+                            <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view key="contentView">
+                                <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
                     </subviews>
                 </customView>
             </subviews>
@@ -130,7 +108,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AHM-XV-tCg">
-                    <rect key="frame" x="87" y="120" width="130" height="126"/>
+                    <rect key="frame" x="87" y="126" width="130" height="126"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dropboxLogin" id="cKb-nI-Z5Y"/>
                 </imageView>
@@ -158,7 +136,7 @@
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Lfs-mn-r6S">
-                    <rect key="frame" x="3" y="92" width="298" height="23"/>
+                    <rect key="frame" x="3" y="101" width="298" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You need to go to the website authorization" id="3qQ-jS-xQl">
                         <font key="font" metaFont="system"/>
@@ -426,6 +404,47 @@
                 </textField>
             </subviews>
             <point key="canvasLocation" x="538" y="1411"/>
+        </customView>
+        <customView id="zfi-hN-6rv">
+            <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
+                    <rect key="frame" x="55" y="145" width="143" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Device Manager" id="oxg-MJ-QLC">
+                        <font key="font" metaFont="system" size="16"/>
+                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gaI-nn-QSw">
+                    <rect key="frame" x="26" y="113" width="201" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Can multi-device management" id="DO0-6l-Cpy">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iPp-8x-sZo">
+                    <rect key="frame" x="47" y="190" width="159" height="158"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-no-device" id="Ckw-GN-3w2"/>
+                </imageView>
+                <button autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
+                    <rect key="frame" x="34" y="48" width="99" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectedDeviceBtnClicked:" target="-2" id="ncK-id-nuR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="913.5" y="716"/>
         </customView>
     </objects>
     <resources>

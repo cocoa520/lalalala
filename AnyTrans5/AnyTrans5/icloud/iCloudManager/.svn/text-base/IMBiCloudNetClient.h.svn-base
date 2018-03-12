@@ -134,11 +134,11 @@
 /*
  发送双重验证message；（用户没有收到，手动点击）
  */
-- (void)sentTwoStepAuthenticationMessage;
+- (int)sentTwoStepAuthenticationMessage;
 /*
  发送双重验证Code；（用户没有收到，手动点击）
  */
-- (void)sentTwoStepAuthenticationCode;
+- (int)sentTwoStepAuthenticationCode;
 /*
     退出iCloud账号.
 */

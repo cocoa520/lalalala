@@ -1,15 +1,15 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Controller
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-06T12:37:57.279740Z
-1517
-shuaimingzhong
+2018-03-08T09:26:15.588246Z
+1585
+huyumin
 
 
 
@@ -536,40 +536,6 @@ dingming
 
 821
 
-IMBDeviceViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-e4a1b0dadcb6c712e5595c6c85dea5ce
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-18211
-
 IMBBrowserBookMarkViewController.xib
 file
 
@@ -604,14 +570,14 @@ dingming
 
 88082
 
-IMBBackupAnimationViewController.h
+IMBDeviceViewController.m
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-0c50c031a5197cc99a08abc08225be53
+e4a1b0dadcb6c712e5595c6c85dea5ce
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -636,7 +602,7 @@ dingming
 
 
 
-1821
+18211
 
 IMBReminderViewController.h
 file
@@ -671,6 +637,40 @@ dingming
 
 
 3204
+
+IMBBackupAnimationViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+0c50c031a5197cc99a08abc08225be53
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1821
 
 IMBPhotosListViewController.h
 file
@@ -740,17 +740,17 @@ dingming
 
 2793
 
-IMBBackupAnimationViewController.m
+IMBiBookCollectionViewController.xib
 file
 
 
 
 
-2018-03-07T00:58:15.000000Z
-a9fe05b8ecaa59fdc6b11488c68052eb
-2018-03-06T10:39:48.611690Z
-1513
-shuaimingzhong
+2018-02-02T01:40:07.000000Z
+36c50c6eee30d98e890712b90bbcc9b3
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -772,7 +772,7 @@ shuaimingzhong
 
 
 
-16901
+108158
 
 IMBReminderViewController.m
 file
@@ -808,17 +808,17 @@ dingming
 
 118944
 
-IMBiBookCollectionViewController.xib
+IMBBackupAnimationViewController.m
 file
 
 
 
 
-2018-02-02T01:40:07.000000Z
-36c50c6eee30d98e890712b90bbcc9b3
-2017-11-22T04:23:34.702949Z
-9
-dingming
+2018-03-07T00:58:15.000000Z
+a9fe05b8ecaa59fdc6b11488c68052eb
+2018-03-06T10:39:48.611690Z
+1513
+shuaimingzhong
 
 
 
@@ -840,41 +840,7 @@ dingming
 
 
 
-108158
-
-IMBPhotosListViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-49a4bfcec7a4d2fc7383d72830fa5a8f
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-68171
+16901
 
 IMBShoppingCarViewController.h
 file
@@ -910,6 +876,40 @@ dingming
 
 1216
 
+IMBPhotosListViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+49a4bfcec7a4d2fc7383d72830fa5a8f
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+68171
+
 IMBiCloudCalendarViewController.m
 file
 
@@ -944,17 +944,17 @@ dingming
 
 94178
 
-IMBMainWindowController.h
+IMBiCloudMainPageViewController.h
 file
 
 
 
 
-2018-02-02T01:40:07.000000Z
-98522103bf3571535a6f9f6109921102
-2017-11-22T04:23:34.702949Z
-9
-dingming
+2018-03-01T07:53:57.000000Z
+87a113de878e6670ecfe85a5a8fa1ee9
+2018-03-01T07:49:07.019565Z
+1443
+huyumin
 
 
 
@@ -976,7 +976,7 @@ dingming
 
 
 
-3521
+2228
 
 IMBBackupCollectionViewController.h
 file
@@ -1012,17 +1012,17 @@ dingming
 
 2312
 
-IMBiCloudMainPageViewController.h
+IMBMainWindowController.h
 file
 
 
 
 
-2018-03-01T07:53:57.000000Z
-87a113de878e6670ecfe85a5a8fa1ee9
-2018-03-01T07:49:07.019565Z
-1443
-huyumin
+2018-02-02T01:40:07.000000Z
+98522103bf3571535a6f9f6109921102
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -1044,7 +1044,7 @@ huyumin
 
 
 
-2228
+3521
 
 IMBShoppingCarViewController.m
 file
@@ -2106,10 +2106,10 @@ file
 
 
 
-2018-03-05T07:42:52.000000Z
-4623219b54ddf6beba21ecb7d8621abc
-2018-03-05T07:00:35.593334Z
-1492
+2018-03-07T07:50:31.000000Z
+c02938196b37069f7bbcc1b23c1a54a4
+2018-03-07T07:45:54.832717Z
+1535
 huyumin
 
 
@@ -2132,7 +2132,7 @@ huyumin
 
 
 
-2740
+2784
 
 IMBDeviceInfoViewController.m
 file
@@ -2168,40 +2168,6 @@ dingming
 
 49384
 
-IMBMergeOrCloneViewController.h
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-2ca41f462e3ba091a99d45874faa64a5
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6402
-
 IMBBackupContactViewController.h
 file
 
@@ -2235,6 +2201,40 @@ dingming
 
 
 1506
+
+IMBMergeOrCloneViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+2ca41f462e3ba091a99d45874faa64a5
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6402
 
 IMBToDevicePopoverViewController.m
 file
@@ -2304,17 +2304,17 @@ dingming
 
 40497
 
-IMBMessageViewController.h
+IMBiCloudViewController.m
 file
 
 
 
 
-2018-02-02T01:40:07.000000Z
-ddeae669980683c4bf9628be8091a1a8
-2017-11-22T04:23:34.702949Z
-9
-dingming
+2018-03-07T10:40:11.000000Z
+e99951c7ec0a946e228471bcc04db003
+2018-03-07T09:57:01.864135Z
+1545
+huyumin
 
 
 
@@ -2336,7 +2336,7 @@ dingming
 
 
 
-1746
+37566
 
 IMBDisconnectViewController.xib
 file
@@ -2372,48 +2372,14 @@ dingming
 
 14915
 
-IMBiCloudViewController.m
-file
-
-
-
-
-2018-03-07T00:58:15.000000Z
-17a31862ad65663243c6ba2170b5efc1
-2018-03-06T11:33:14.682521Z
-1514
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-36326
-
-IMBBackupContactViewController.m
+IMBMessageViewController.h
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-dc859d5d17d7a48736c467861821adb0
+ddeae669980683c4bf9628be8091a1a8
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -2438,7 +2404,7 @@ dingming
 
 
 
-33516
+1746
 
 IMBMergeOrCloneViewController.m
 file
@@ -2473,6 +2439,40 @@ shuaimingzhong
 
 
 117240
+
+IMBBackupContactViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+dc859d5d17d7a48736c467861821adb0
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+33516
 
 IMBitunesLibraryViewController.xib
 file
@@ -2542,40 +2542,6 @@ has-props
 
 2827
 
-IMBMessageViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-855837950b82a7e8f698b00dd67a6ef0
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-95001
-
 IMBiCloudPopViewController.xib
 file
 
@@ -2609,6 +2575,40 @@ dingming
 
 
 1131
+
+IMBMessageViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+855837950b82a7e8f698b00dd67a6ef0
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+95001
 
 IMBDeviceViewController.xib
 file
@@ -2780,6 +2780,40 @@ dingming
 
 999
 
+IMBiTunesTrackViewController.m
+file
+
+
+
+
+2018-03-08T10:28:17.000000Z
+aef6640af8672c2f5cf4ab56f8bfd28d
+2018-03-08T09:26:15.588246Z
+1585
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+25151
+
 IMBVoiceMemosViewController.xib
 file
 
@@ -2813,108 +2847,6 @@ dingming
 
 
 64479
-
-IMBiTunesTrackViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-4f6b2a9127fb591b0dc6f7e1f9a33696
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-24247
-
-IMBDownloadListViewController.h
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-ec4a2fad67c7112a6cecb80b2f61c21d
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3650
-
-IMBVoiceMailViewController.xib
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-0ae6874c517184c5c654b30cffa43094
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-128497
 
 IMBiCloudPopViewController.m
 file
@@ -2950,18 +2882,17 @@ dingming
 
 4644
 
-IMBDevicePlaylistsViewController.h
+IMBVoiceMailViewController.xib
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-ce6ec0ca39cc44ebf347ebec9b2812f2
+0ae6874c517184c5c654b30cffa43094
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -2982,7 +2913,42 @@ has-props
 
 
 
-2382
+
+128497
+
+IMBDownloadListViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+ec4a2fad67c7112a6cecb80b2f61c21d
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3650
 
 IMBBackupCalendarViewController.m
 file
@@ -3017,6 +2983,40 @@ dingming
 
 
 30816
+
+IMBDevicePlaylistsViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+ce6ec0ca39cc44ebf347ebec9b2812f2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2382
 
 IMBVoiceMemosViewController.h
 file
@@ -3058,10 +3058,10 @@ file
 
 
 
-2018-03-07T00:58:15.000000Z
-58a6545cdb3ac9aafde5d5baae5a5215
-2018-03-06T11:33:14.682521Z
-1514
+2018-03-07T07:50:30.000000Z
+7bd77c032f71169f693ca5a23ae04b7c
+2018-03-07T07:45:54.832717Z
+1535
 huyumin
 
 
@@ -3084,7 +3084,7 @@ huyumin
 
 
 
-21458
+21592
 
 IMBDownloadListViewController.m
 file
@@ -3120,40 +3120,6 @@ shuaimingzhong
 
 82340
 
-IMBDevicePlaylistsViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-4ec1d8f50e9403a210790f481948e33f
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-50866
-
 IMBBrowserBookMarkViewController.h
 file
 
@@ -3187,6 +3153,40 @@ dingming
 
 
 2518
+
+IMBDevicePlaylistsViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+4ec1d8f50e9403a210790f481948e33f
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+50866
 
 IMBVoiceMemosViewController.m
 file
@@ -3222,6 +3222,40 @@ dingming
 
 15694
 
+IMBAlertViewController.m
+file
+
+
+
+
+2018-03-08T03:57:44.000000Z
+075da17daf50892a12453337e2f5bf25
+2018-03-08T03:49:32.133160Z
+1572
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+285904
+
 IMBBackupInfoViewController.xib
 file
 
@@ -3256,17 +3290,17 @@ dingming
 
 3227
 
-IMBAlertViewController.m
+IMBBackupCallHistoryViewController.xib
 file
 
 
 
 
-2018-03-07T00:58:15.000000Z
-bf930f10d1229fb853ac826254717074
-2018-03-06T12:37:57.279740Z
-1517
-shuaimingzhong
+2018-02-02T01:40:07.000000Z
+8ebd32f11dc8509f5ed9a522311da69c
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -3288,7 +3322,7 @@ shuaimingzhong
 
 
 
-282289
+73636
 
 IMBBrowserBookMarkViewController.m
 file
@@ -3323,40 +3357,6 @@ dingming
 
 
 18697
-
-IMBBackupCallHistoryViewController.xib
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-8ebd32f11dc8509f5ed9a522311da69c
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-73636
 
 IMBAirWifiBackupViewController.h
 file
@@ -3494,40 +3494,6 @@ dingming
 
 42346
 
-IMBMyAlbumsViewController.h
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-9aa6c5a266c22c069603ed826d05505b
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1860
-
 IMBFastDriverTreeViewController.h
 file
 
@@ -3562,14 +3528,14 @@ dingming
 
 526
 
-IMBContactViewController.h
+IMBMyAlbumsViewController.h
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-9560ae0cd3e09eec13964664bd9c4245
+9aa6c5a266c22c069603ed826d05505b
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -3594,7 +3560,7 @@ has-props
 
 
 
-2057
+1860
 
 IMBSystemCollectionViewController.xib
 file
@@ -3630,6 +3596,40 @@ dingming
 
 65181
 
+IMBContactViewController.h
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+9560ae0cd3e09eec13964664bd9c4245
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2057
+
 IMBNoteListViewController.xib
 file
 
@@ -3663,74 +3663,6 @@ has-props
 
 
 70973
-
-IMBMyAlbumsViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-e21580017944e9da644e4995377a0da8
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-41744
-
-IMBFastDriverTreeViewController.m
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-b86dcfccf9f067904d3aec4ebc307dea
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22071
 
 IMBPopController.xib
 file
@@ -3766,14 +3698,14 @@ dingming
 
 8097
 
-IMBContactViewController.m
+IMBFastDriverTreeViewController.m
 file
 
 
 
 
 2018-02-02T01:40:07.000000Z
-59af476890a8e0c0e216dfd4a9223ba3
+b86dcfccf9f067904d3aec4ebc307dea
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -3798,7 +3730,41 @@ dingming
 
 
 
-112829
+22071
+
+IMBMyAlbumsViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+e21580017944e9da644e4995377a0da8
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+41744
 
 IMBiCloudBackUpViewController.xib
 file
@@ -3833,6 +3799,40 @@ dingming
 
 
 55484
+
+IMBContactViewController.m
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+59af476890a8e0c0e216dfd4a9223ba3
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+112829
 
 IMBPlaylistViewController.h
 file
@@ -3936,40 +3936,6 @@ dingming
 
 3541
 
-IMBDeviceInfoViewController.xib
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-ac5b7dd3a9cee89db7bd62b113cbad68
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-46165
-
 IMBPlaylistViewController.m
 file
 
@@ -4003,6 +3969,40 @@ dingming
 
 
 24393
+
+IMBDeviceInfoViewController.xib
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+ac5b7dd3a9cee89db7bd62b113cbad68
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+46165
 
 IMBAboutWindowController.h
 file
@@ -4038,40 +4038,6 @@ dingming
 
 700
 
-IMBFastDriverSegViewController.h
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-714069f5e3d23b81e87f2d2e558ccbfc
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1389
-
 IMBTracksCollectionViewController.m
 file
 
@@ -4106,17 +4072,17 @@ dingming
 
 48758
 
-IMBBackupViewController.m
+IMBFastDriverSegViewController.h
 file
 
 
 
 
-2018-03-07T00:58:15.000000Z
-295d3192dfda446e3e2b380cb40c585d
-2018-03-06T10:39:48.611690Z
-1513
-shuaimingzhong
+2018-02-02T01:40:07.000000Z
+714069f5e3d23b81e87f2d2e558ccbfc
+2017-11-22T04:23:34.702949Z
+9
+dingming
 
 
 
@@ -4138,7 +4104,7 @@ shuaimingzhong
 
 
 
-83092
+1389
 
 IMBiCloudViewController.xib
 file
@@ -4174,17 +4140,17 @@ dingming
 
 51729
 
-IMBMergeCloneAppViewController.xib
+IMBBackupViewController.m
 file
 
 
 
 
-2018-02-02T01:40:07.000000Z
-18af699464b4b8193c073103bd19e588
-2017-11-22T04:23:34.702949Z
-9
-dingming
+2018-03-07T00:58:15.000000Z
+295d3192dfda446e3e2b380cb40c585d
+2018-03-06T10:39:48.611690Z
+1513
+shuaimingzhong
 
 
 
@@ -4206,7 +4172,7 @@ dingming
 
 
 
-45850
+83092
 
 IMBAboutWindowController.m
 file
@@ -4242,6 +4208,40 @@ shuaimingzhong
 
 8816
 
+IMBMergeCloneAppViewController.xib
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+18af699464b4b8193c073103bd19e588
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45850
+
 IMBFastDriverSegViewController.m
 file
 
@@ -4276,40 +4276,6 @@ dingming
 
 23843
 
-IMBTransferViewController.xib
-file
-
-
-
-
-2018-02-02T01:40:07.000000Z
-88ad69680166bbc64aa024a5ce408ada
-2017-12-21T06:41:40.241858Z
-560
-shuaimingzhong
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-196741
-
 IMBAnnoyViewController.xib
 file
 
@@ -4343,6 +4309,40 @@ shuaimingzhong
 
 
 44387
+
+IMBTransferViewController.xib
+file
+
+
+
+
+2018-02-02T01:40:07.000000Z
+88ad69680166bbc64aa024a5ce408ada
+2017-12-21T06:41:40.241858Z
+560
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+196741
 
 IMBAddContentViewController.h
 file
@@ -4724,10 +4724,10 @@ file
 
 
 
-2018-03-06T07:54:59.000000Z
-5d5525d2e4c343aaaca9ffdb96a3051e
-2018-03-06T07:42:11.218971Z
-1507
+2018-03-08T03:30:18.000000Z
+49a0075bf1743893369a5e7332d9d3c5
+2018-03-08T03:05:18.256499Z
+1565
 huyumin
 
 
@@ -4750,7 +4750,7 @@ huyumin
 
 
 
-756958
+759436
 
 IMBPhotosListViewController.xib
 file

@@ -1702,11 +1702,20 @@
 "AriBackup_wifi_guide_4" = "ステップ 4：「インターネット共有」のチェックボックスにチェックを入れる > 「開始」をクリック";
 
 "iCloudLogin_View_codeTips1" = "続行するには確認コードを入力してください。";
-"iCloudLogin_View_codeTips2" = "無効な確認コード";
-"iCloudLogin_View_codeTips3" = "認証失敗";
 "iCloudLogin_SecurityView_codeTips" = "Apple IDの2 ファクタ認証が有効になっています。続行するには、お使いのデバイスに表示されている確認コードを入力してください。";
 "iCloudLogin_View_NotReceiveCode" = "デバイスに確認コードが表示されていません。";
 "iCloudLogin_View_Resend" = "コードを再送";
 "iCloudLogin_View_SendByMessage" = "メッセージで送信";
 "iCloudLogin_View_Help" = "ヘルプ";
-"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
+"iCloudLogin_View_Verify" = "認証中…";
+"iCloudLogin_View_codeTips2" = "確認コードが無効です。確認コードをデバイスに再送してください。";
+"iCloudLogin_View_codeTips3" = "認証できませんでした。デバイスに表示される確認コードをご確認の上再度入力してください。";
+"iCloudLogin_View_SendCode_Fail" = "確認コードを送信できませんでした。再度お試しください。";
+"iCloudLogin_View_Login_Fail" = "サインインできませんでした。再度お試しください。";
+"iCloudLogin_View_SendCode_Success" = "確認コードをお使いのデバイスに送信しました。続けるには、コードを入力してください。";
+"iCloudLogin_View_Input_NewCode" = "確認コードを複数回送信しました。最新の確認コードを入力してください。または時間をおいてもう一度お試しください。";
+"iCloudLogin_View_Account_Locked" = "この Apple ID はセキュリティ上の理由からロックされています。サインインするには、ロックを解除してください。";
+"iCloudLogin_View_Unlock_Account" = "Apple IDロックを解除";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "無効な確認コードの入力回数が上限に達しました。時間をおいてもう一度お試しください。";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
+"iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.jp/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

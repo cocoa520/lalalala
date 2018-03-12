@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/Android/ConnectToAndroid/Model
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -60,14 +60,14 @@ dingming
 
 264
 
-IMBADGallery.h
+IMBBaseCommunicate.m
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-a42f9a3ccaee61378bc6ec2f5398bf25
+ef8fc87e9b436df1e3cd8a93ca6c8f35
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -92,7 +92,7 @@ dingming
 
 
 
-288
+7812
 
 IMBADDevice.h
 file
@@ -128,14 +128,14 @@ dingming
 
 305
 
-IMBBaseCommunicate.m
+IMBADGallery.h
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-ef8fc87e9b436df1e3cd8a93ca6c8f35
+a42f9a3ccaee61378bc6ec2f5398bf25
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -160,7 +160,7 @@ dingming
 
 
 
-7812
+288
 
 IMBADContact.m
 file
@@ -264,40 +264,6 @@ dingming
 
 27594
 
-IMBADGallery.m
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-4ba2d105451745e491929d8f539913fd
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-28015
-
 IMBADDevice.m
 file
 
@@ -332,14 +298,14 @@ dingming
 
 7312
 
-IMBADAudio.m
+IMBADGallery.m
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-ec77e02834dcb778e3aa43360cec14f4
+4ba2d105451745e491929d8f539913fd
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -364,7 +330,7 @@ dingming
 
 
 
-21303
+28015
 
 IMBADVideo.h
 file
@@ -399,6 +365,40 @@ dingming
 
 
 186
+
+IMBADAudio.m
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+ec77e02834dcb778e3aa43360cec14f4
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+21303
 
 IMBADCalendar.h
 file
@@ -468,40 +468,6 @@ dingming
 
 20183
 
-IMBADDoucment.h
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-7738c531f3308e544b13cf34b4d3d40c
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1150
-
 IMBADCalendar.m
 file
 
@@ -535,6 +501,40 @@ dingming
 
 
 29924
+
+IMBADDoucment.h
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+7738c531f3308e544b13cf34b4d3d40c
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1150
 
 IMBADPermisson.h
 file

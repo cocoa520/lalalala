@@ -31,6 +31,8 @@
 #import <Quartz/Quartz.h>
 
 
+static CGFloat const MidiumSizeAnimationTimeInterval = 0.1f;
+
 @interface IMBDeviceViewController ()
 {
     @private
@@ -95,6 +97,7 @@
     
     [_icloudDrivebox setContentView:_midiumSizeiCloudView];
     [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+    [_devicesBox setContentView:_midiumSizeDevicesView];
     
     
     _iCloudDriveView.isOriginalFrame = YES;
@@ -195,18 +198,18 @@
 - (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn {
     NSRect f = view.frame;
     f.origin.y = 30;
-    [IMBViewAnimation animationWithView:view frame:f timeInterval:0.2f completion:nil];
+    [IMBViewAnimation animationWithView:view frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
     
     [btn setHidden:NO];
     NSRect btnF = btn.frame;
     btnF.size.height = 32.0f;
     btnF.origin.y = 4;
-    [IMBViewAnimation animationWithView:btn frame:btnF timeInterval:0.2f completion:nil];
+    [IMBViewAnimation animationWithView:btn frame:btnF timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
 }
 - (void)setMouseExitedMidiumContentViewWithView:(NSView *)view btn:(NSButton *)btn {
     NSRect f = view.frame;
     f.origin.y = 10;
-    [IMBViewAnimation animationWithView:view frame:f timeInterval:0.2f completion:nil];
+    [IMBViewAnimation animationWithView:view frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
     
     [btn setHidden:YES];
     NSRect btnF = btn.frame;

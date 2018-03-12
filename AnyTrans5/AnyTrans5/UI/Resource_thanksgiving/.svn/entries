@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_thanksgiving
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -74,9 +74,6 @@ dir
 Album
 dir
 
-Toolbar
-dir
-
 start_icon@2x.png
 file
 
@@ -111,22 +108,25 @@ has-props
 
 20558
 
-iBook
+Toolbar
 dir
 
-Backup
+iBook
 dir
 
 BookMark
 dir
 
+Backup
+dir
+
 noData
 dir
 
-exportConfig
+Volume
 dir
 
-Volume
+exportConfig
 dir
 
 FastDriver
@@ -141,10 +141,10 @@ dir
 Android
 dir
 
-Other
+textImg
 dir
 
-textImg
+Other
 dir
 
 Transfer

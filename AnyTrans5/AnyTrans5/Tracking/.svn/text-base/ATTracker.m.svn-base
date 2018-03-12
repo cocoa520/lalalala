@@ -11,6 +11,7 @@
 #include <sys/sysctl.h>
 #include <net/if.h>
 #include <net/if_dl.h>
+#import "IMBNotificationDefine.h"
 
 static ATTracker *_instance = nil;
 
@@ -989,21 +990,23 @@ static ATTracker *_instance = nil;
         NSOperationQueue *queue = [NSOperationQueue mainQueue];
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             //请求成功
-//            if (data) {
-//                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-//                if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-//                    NSLog(@"statusCode=%ld", (long)[httpResponse statusCode]);
-//                }
-//                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-//                NSString *error = [dict objectForKey:@"error"];
-//                if (error) {
+            if ([urlString rangeOfString:@"ea=First%20Launch"].location != NSNotFound) {
+                if (data) {
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                    if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+                        if (httpResponse.statusCode == 200) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_FIRST_LAUNCH object:nil];
+                        }
+                    }
+//                    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//                    NSString *error = [dict objectForKey:@"error"];
+//                    if (error) {
 //#if DEBUG
-//                    NSLog(@"error description:%@", error.description);
+//                        NSLog(@"error description:%@", error.description);
 //#endif
-//                }
-//            }else {
-//                NSLog(@"网络繁忙，请稍后重试！");
-//            }
+//                    }
+                }
+            }
         }];
         
         //以下方式仅支持x86_64

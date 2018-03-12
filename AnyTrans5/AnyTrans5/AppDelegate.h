@@ -56,6 +56,8 @@
     
     IMBDownloadFile *_downloadFile;
     IMBCheckUpdater *_checkUpdater;
+    
+    NSMutableDictionary *_infoDict;
 }
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSMenuItem *deviceSettingMenuItem;
@@ -87,4 +89,6 @@
 @property (assign) IBOutlet NSMenuItem *HomeMenuItem;
 @property (assign) IBOutlet NSMenuItem *OnlineGuideMenuItem;
 @property (assign) IBOutlet NSMenuItem *FacebookMenuItem;
+@property (nonatomic, readwrite, retain) NSMutableDictionary *infoDict;
+
 @end

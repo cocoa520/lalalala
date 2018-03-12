@@ -34,8 +34,28 @@
         _distinguishedKindId = distingushedID;
         _category = category;
         IMBiTLPlaylist *pl = [_iTunes getPlaylistByDistinguished:_distinguishedKindId];
+        NSMutableArray *homeVideos = [NSMutableArray array];
         if (pl != nil) {
-            _dataSourceArray = [pl.playlistItems retain];
+            if(_distinguishedKindId == 2) {
+                NSArray *ary = [_iTunes getiTLPlaylists];
+                for (IMBiTLPlaylist *pl in ary) {
+                    if (pl.playlistID == 137 || [[pl.name lowercaseString] isEqualToString:[@"Home Videos" lowercaseString]]) {
+                        homeVideos = pl.playlistItems;
+                        break;
+                    }
+                }
+                if (homeVideos.count > 0) {
+                    _dataSourceArray = [[NSMutableArray alloc] init];
+                    [_dataSourceArray addObjectsFromArray:homeVideos];
+                    [_dataSourceArray addObjectsFromArray:pl.playlistItems];
+                }else {
+                    _dataSourceArray = [pl.playlistItems retain];
+                }
+                
+            }else {
+               _dataSourceArray = [pl.playlistItems retain];
+            }
+            
         }
 
     }

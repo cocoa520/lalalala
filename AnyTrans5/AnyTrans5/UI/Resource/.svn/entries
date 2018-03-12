@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -71,9 +71,6 @@ dir
 Album
 dir
 
-Toolbar
-dir
-
 start_icon@2x.png
 file
 
@@ -108,13 +105,16 @@ has-props
 
 20558
 
+Toolbar
+dir
+
 iBook
 dir
 
-Backup
+BookMark
 dir
 
-BookMark
+Backup
 dir
 
 noData
@@ -138,13 +138,13 @@ dir
 Other
 dir
 
-Transfer
+Message
 dir
 
 Annoy
 dir
 
-Message
+Transfer
 dir
 
 start_icon.png

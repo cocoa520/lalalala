@@ -36,6 +36,11 @@
     //删除键
     if (inSelector == @selector(deleteBackward:)) {
         _isDeleting = YES;
+        if (self.stringValue.length < 1) {
+            NSDictionary *dic = @{@"codeTag":[NSNumber numberWithInt:self.codeTag]};
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_DELETE_CODE object:dic];
+            _isDeleting = NO;
+        }
     }
     return NO;
 }

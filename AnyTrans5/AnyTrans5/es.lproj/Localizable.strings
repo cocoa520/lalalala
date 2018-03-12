@@ -1725,11 +1725,20 @@
 "AriBackup_wifi_guide_4" = "Step 4: Activar el icono \"Compartir Internet\" > Hacer clic en \"Iniciar\". ";
 
 "iCloudLogin_View_codeTips1" = "Por favor introduzca el código de verificación para continuar.";
-"iCloudLogin_View_codeTips2" = "Código de verificación inválido.";
-"iCloudLogin_View_codeTips3" = "Error de autenticación.";
 "iCloudLogin_SecurityView_codeTips" = "Usted ha activado el doble autenticación. Por favor introduzca el código de verificación que aparece en su dispositivo iOS para continuar.";
 "iCloudLogin_View_NotReceiveCode" = "No hay ningún código en mi dispositivo.";
 "iCloudLogin_View_Resend" = "Reenviar código";
 "iCloudLogin_View_SendByMessage" = "Recibir un SMS";
 "iCloudLogin_View_Help" = "¿Necesitas ayuda?";
+"iCloudLogin_View_Verify" = "Verificando...";
+"iCloudLogin_View_codeTips2" = "Código inválido, por favor reenvíelo al dispositivo.";
+"iCloudLogin_View_codeTips3" = "¡Verificación fallida! Por favor compruébelo y intente de nuevo";
+"iCloudLogin_View_SendCode_Fail" = "Error al enviar el código de verificación, inténtelo de nuevo.";
+"iCloudLogin_View_Login_Fail" = "Error de inicio de sesión, inténtelo de nuevo.";
+"iCloudLogin_View_SendCode_Success" = "Se ha enviado un mensaje con código de verificación a su dispositivo, introdúzcalo para continuar.";
+"iCloudLogin_View_Input_NewCode" = "El código de verificación se ha enviado varias veces, por favor introduzca lo más nuevo o intente más tarde.";
+"iCloudLogin_View_Account_Locked" = "Por razones de seguridad, esta ID de Apple está bloqueada. Debe desbloquear su cuenta para iniciar sesión";
+"iCloudLogin_View_Unlock_Account" = "Desbloquear la cuenta";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "Ha introducido demasiadas veces códigos incorrectos. Por favor intente de nuevo más tarde.";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

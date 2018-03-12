@@ -271,7 +271,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <collectionView selectable="YES" allowsMultipleSelection="YES" id="lai-Rt-DdU" customClass="IMBBlankDraggableCollectionView">
-                                        <rect key="frame" x="0.0" y="0.0" width="748" height="496"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="749" height="496"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <connections>

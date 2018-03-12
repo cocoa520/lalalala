@@ -57,6 +57,8 @@
     @public
     IMBSelecedDeviceBtn *_selectDeviceButton;
     BOOL _hasTwoStepAuth;
+    BOOL _accountIsLocked;//账号被锁
+    
 }
 @property (nonatomic, assign) BOOL hasTwoStepAuth;
 @property (nonatomic, assign) BOOL isLoginIng;
@@ -73,9 +75,9 @@
 - (void)loginIsSuccess:(BOOL)success withAppleID:(NSString*)appledID;
 - (void)showTwoStepAuthenticationAlertView;
 //再次发送双重验证短信
-- (void)reSendTwoStepAuthenticationMessage;
+- (int)reSendTwoStepAuthenticationMessage;
 //再次发送双重验证Code
-- (void)reSendTwoStepAuthenticationCode;
+- (int)reSendTwoStepAuthenticationCode;
 //取消双重验证下拉框
 - (void)cancelTwoStepAuthenticationAlertView;
 @end

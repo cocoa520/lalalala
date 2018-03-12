@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_thanksgiving/NavigationMenu
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -26,14 +26,14 @@ dingming
 
 a323380f-3d89-8743-8c24-0bf67719c927
 
-nav_photo_favorite.png
+nav_video_movies.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-96eaeff30c41e2d249ca80f04517d3f2
+878658c51fa902fba867c14dca2d73df
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -58,41 +58,7 @@ has-props
 
 
 
-1495
-
-nav_audio_cloudmusic.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-d95fa1292943ad196dd1f0e1203a060a
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1565
+1551
 
 nav_filesystem_system.png
 file
@@ -128,14 +94,14 @@ has-props
 
 1289
 
-nav_video_movies.png
+nav_audio_cloudmusic.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-878658c51fa902fba867c14dca2d73df
+d95fa1292943ad196dd1f0e1203a060a
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -160,7 +126,41 @@ has-props
 
 
 
-1551
+1565
+
+nav_photo_favorite.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+96eaeff30c41e2d249ca80f04517d3f2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1495
 
 nav_audio_ringtones.png
 file
@@ -230,40 +230,6 @@ has-props
 
 1451
 
-nav_photo_bursts.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-761fc12eac8991a1c2bb4b723dbef2b7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1629
-
 nav_contact.png
 file
 
@@ -297,6 +263,40 @@ has-props
 
 
 1625
+
+nav_photo_bursts.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+761fc12eac8991a1c2bb4b723dbef2b7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1629
 
 nav_audio_playlist@2x.png
 file
@@ -400,14 +400,14 @@ has-props
 
 1468
 
-nav_photo_favorite@2x.png
+nav_video_movies@2x.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-1ce74cf10c7b00473f859850d3bdb2c5
+deb27b8fe32d0d73586b7bed31516901
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -432,41 +432,7 @@ has-props
 
 
 
-2050
-
-nav_audio_cloudmusic@2x.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-2aad316d4c8a63298e199e0147c56a7d
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2124
+2158
 
 nav_filesystem_system@2x.png
 file
@@ -502,14 +468,14 @@ has-props
 
 1586
 
-nav_video_movies@2x.png
+nav_audio_cloudmusic@2x.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-deb27b8fe32d0d73586b7bed31516901
+2aad316d4c8a63298e199e0147c56a7d
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -534,7 +500,41 @@ has-props
 
 
 
-2158
+2124
+
+nav_photo_favorite@2x.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+1ce74cf10c7b00473f859850d3bdb2c5
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2050
 
 nav_photo_panoramas@2x.png
 file
@@ -1046,40 +1046,6 @@ has-props
 
 1850
 
-nav_podcasts@2x.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-deaa3fef3e4f46abbcb43c6c9fb963a9
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2953
-
 nav_safari_bookmark.png
 file
 
@@ -1113,6 +1079,40 @@ has-props
 
 
 1484
+
+nav_podcasts@2x.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+deaa3fef3e4f46abbcb43c6c9fb963a9
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2953
 
 nav_iPhone@2x.png
 file
@@ -1216,14 +1216,14 @@ has-props
 
 1849
 
-nav_photo_bursts@2x.png
+nav_video_homevideo.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-24d3e45569541a24b6222d39e528fb4b
+1ec68008f9d2f781449fcfd0f0ef2a60
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1248,7 +1248,7 @@ has-props
 
 
 
-2497
+1425
 
 nav_contact@2x.png
 file
@@ -1284,14 +1284,14 @@ has-props
 
 2465
 
-nav_video_homevideo.png
+nav_photo_bursts@2x.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-1ec68008f9d2f781449fcfd0f0ef2a60
+24d3e45569541a24b6222d39e528fb4b
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -1316,41 +1316,7 @@ has-props
 
 
 
-1425
-
-nav_audio_audiobook@2x.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-e52383716451e99118ca2b0e4d7778f1
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1972
+2497
 
 nav_video_musicvideo@2x.png
 file
@@ -1385,6 +1351,40 @@ has-props
 
 
 2056
+
+nav_audio_audiobook@2x.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+e52383716451e99118ca2b0e4d7778f1
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1972
 
 nav_time@2x.png
 file
@@ -1624,40 +1624,6 @@ has-props
 
 1096
 
-nav_video@2x.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-762c7af3574f2236da1235615ea1da85
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1589
-
 nav_video_photovideo@2x.png
 file
 
@@ -1691,6 +1657,40 @@ has-props
 
 
 1905
+
+nav_video@2x.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+762c7af3574f2236da1235615ea1da85
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1589
 
 nav_audio_playlist.png
 file
@@ -1964,40 +1964,6 @@ has-props
 
 1373
 
-nav_audio_audiobook.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-67185f89f9465f0066b305a7d50265e4
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1513
-
 nav_video_musicvideo.png
 file
 
@@ -2031,6 +1997,40 @@ has-props
 
 
 1486
+
+nav_audio_audiobook.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+67185f89f9465f0066b305a7d50265e4
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1513
 
 nav_filesystem@2x.png
 file

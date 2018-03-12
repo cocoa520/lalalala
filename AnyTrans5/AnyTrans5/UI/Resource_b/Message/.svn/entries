@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Message
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-message_default@2x.png
-file
-
-
-
-
-2018-02-02T01:40:52.000000Z
-bdfeec635d2158ec840648e1e2f64a64
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2765
 
 mi_right.png
 file
@@ -94,14 +60,14 @@ has-props
 
 1114
 
-message_audio.png
+message_default@2x.png
 file
 
 
 
 
 2018-02-02T01:40:52.000000Z
-4abbea9e925fee183e515f6ac4314a85
+bdfeec635d2158ec840648e1e2f64a64
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -126,7 +92,41 @@ has-props
 
 
 
-1101
+2765
+
+mu_left@2x.png
+file
+
+
+
+
+2018-02-02T01:40:52.000000Z
+38312f1dd050dfd1690df331c110984e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1189
 
 default_listcontact@2x.png
 file
@@ -162,14 +162,14 @@ has-props
 
 1066
 
-mu_left@2x.png
+message_audio.png
 file
 
 
 
 
 2018-02-02T01:40:52.000000Z
-38312f1dd050dfd1690df331c110984e
+4abbea9e925fee183e515f6ac4314a85
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -194,7 +194,7 @@ has-props
 
 
 
-1189
+1101
 
 default_listvideo.png
 file
@@ -332,40 +332,6 @@ has-props
 
 1220
 
-message_pdf.png
-file
-
-
-
-
-2018-02-02T01:40:52.000000Z
-a61a3dbf101142db08eefe4d5dcb09b7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1259
-
 bulue_ad_right.png
 file
 
@@ -399,6 +365,40 @@ has-props
 
 
 1118
+
+message_pdf.png
+file
+
+
+
+
+2018-02-02T01:40:52.000000Z
+a61a3dbf101142db08eefe4d5dcb09b7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1259
 
 message_audio@2x.png
 file

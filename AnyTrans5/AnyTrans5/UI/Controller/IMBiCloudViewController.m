@@ -351,6 +351,21 @@
     [self showAlertText:CustomLocalizedString(@"iCloud_id_4", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
 }
 
+//apple ID被锁
+- (void)accountIsLocked {
+    [_appleTextFiled.cell setEnabled:YES];
+    [_passwordTextField.cell setEnabled:YES];
+    [_alertViewController setIsUnlockAccount:YES];
+    [self showAlertText:CustomLocalizedString(@"iCloudLogin_View_Account_Locked", nil) OKButton:CustomLocalizedString(@"iCloudLogin_View_Unlock_Account", nil) CancelButton:CustomLocalizedString(@"Menu_Back", nil)];
+}
+
+//双重验证失败，重新走登录流程
+- (void)twoStepAuthFail {
+    [_appleTextFiled.cell setEnabled:YES];
+    [_passwordTextField.cell setEnabled:YES];
+    [self showAlertText:CustomLocalizedString(@"iCloudLogin_View_Login_Fail", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
+}
+
 - (void)needReLogin{
     [self cleanTextField];
     [self setIsLoginIng:NO];
@@ -358,6 +373,7 @@
 }
 
 - (void)loadiCloudLogin:(NSString *)appledID withPassword:(NSString *)passMword {
+    _accountIsLocked = NO;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if (_iCloudManager != nil) {
             [_iCloudManager release];
@@ -366,7 +382,16 @@
         _iCloudManager = [[IMBiCloudManager alloc] init];
         [_iCloudManager setDelegate:self];
         _hasTwoStepAuth = NO;
-        BOOL ret = [_iCloudManager loginiCloudAppleID:appledID WithPassword:passMword];
+        BOOL ret = NO;
+        
+      NSDictionary *dic = [_iCloudManager loginiCloudAppleID:appledID WithPassword:passMword];
+        ret = [[dic objectForKey:@"success"] boolValue];
+        long statusCode = [[dic objectForKey:@"statusCode"] longValue];
+
+        if (statusCode == 403) {
+            _accountIsLocked = YES;
+        }
+
         if (_hasTwoStepAuth) {
             if (_appleID != nil) {
                 [_appleID release];
@@ -432,8 +457,12 @@
         [_loginBtn setNeedsDisplay:YES];
     }else{
         _isLoginIng = NO;
-        if (!_hasTwoStepAuth) {
+        if (_accountIsLocked){
+            [self performSelectorOnMainThread:@selector(accountIsLocked) withObject:nil waitUntilDone:NO];
+        }else if (!_hasTwoStepAuth) {
             [self performSelectorOnMainThread:@selector(loginFail) withObject:nil waitUntilDone:NO];
+        }else {
+            [self performSelector:@selector(twoStepAuthFail) withObject:nil afterDelay:2.0];
         }
         [_appleTextFiled.cell setEnabled:YES];
         [_passwordTextField.cell setEnabled:YES];
@@ -534,12 +563,12 @@
    [self loginIsSuccess:ret withAppleID:_appleID];
 }
 
-- (void)reSendTwoStepAuthenticationMessage {
-    [_iCloudManager.netClient sentTwoStepAuthenticationMessage];
+- (int)reSendTwoStepAuthenticationMessage {
+    return [_iCloudManager.netClient sentTwoStepAuthenticationMessage];
 }
 
-- (void)reSendTwoStepAuthenticationCode {
-    [_iCloudManager.netClient sentTwoStepAuthenticationCode];
+- (int)reSendTwoStepAuthenticationCode {
+    return [_iCloudManager.netClient sentTwoStepAuthenticationCode];
 }
 
 - (void)cancelTwoStepAuthenticationAlertView {

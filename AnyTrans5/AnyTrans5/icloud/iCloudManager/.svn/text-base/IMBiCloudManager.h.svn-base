@@ -63,7 +63,7 @@
 @property (nonatomic,retain) NSString *notesSyncToken;
 @property (nonatomic, retain) NSString *editReminderNewEtag;
 
-- (BOOL)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password;
+- (NSDictionary *)loginiCloudAppleID:(NSString *)appleID WithPassword:(NSString *)password;
 - (NSDictionary *)verifiTwoStepAuthentication:(NSString *)password;
 
 - (void)getPhotosContent;

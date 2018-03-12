@@ -1813,11 +1813,20 @@
 "AriBackup_wifi_guide_4" = "Schritt 4: \"Internetfreigabe\" auswählen > Auf \"Start\" klicken. ";
 
 "iCloudLogin_View_codeTips1" = "Zum Fortfahren geben Sie bitte den Überprüfungscode ein.";
-"iCloudLogin_View_codeTips2" = "Überprüfungscode ungültig.";
-"iCloudLogin_View_codeTips3" = "Authentifizierung fehlgeschlagen.";
 "iCloudLogin_SecurityView_codeTips" = "Sie haben die Zwei-Faktor-Authentifizierung aktiviert. Bitte geben Sie den Überprüfungscode, der automatisch auf Ihr iPhone angezeigt wird.";
 "iCloudLogin_View_NotReceiveCode" = "Kein Überprüfungscode?";
 "iCloudLogin_View_Resend" = "Code resenden";
 "iCloudLogin_View_SendByMessage" = "Textnachricht erhalten";
 "iCloudLogin_View_Help" = "Hilfe";
+"iCloudLogin_View_Verify" = "Überprüfen...";
+"iCloudLogin_View_codeTips2" = "Der Code geht nicht, bitte senden Sie das erneut.";
+"iCloudLogin_View_codeTips3" = "Bestätigung geht nicht, bitte checken Sie den Code und geben Sie das erneut ein.";
+"iCloudLogin_View_SendCode_Fail" = "Der Code kann nicht richtig gesendet werden, bitte versuchen Sie erneut. ";
+"iCloudLogin_View_Login_Fail" = "Es ist beim Anmelden fehlgeschlagen, bitte versuchen Sie erneut.";
+"iCloudLogin_View_SendCode_Success" = "Eine Textnachricht mit dem Überprüfungscode wurde schon auf Ihr Gerät gesendet. Zum Fortfahren bitte geben Sie den Code ein. ";
+"iCloudLogin_View_Input_NewCode" = "Der Überprüfungscode wurde schon vielmals gesendet. Bitte geben Sie der neueste Code ein oder versuchen Sie es kurz darauf. ";
+"iCloudLogin_View_Account_Locked" = "Diese Apple ID wurde aus Sicherheitsgründen gesperrt. Sie müssen das vor dem Anmelden entsperren. ";
+"iCloudLogin_View_Unlock_Account" = "Account entsperren";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "Sie haben den unrichtigen Code vielmals eingegeben, bitte versuchen Sie es kurz darauf. ";
+"iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";

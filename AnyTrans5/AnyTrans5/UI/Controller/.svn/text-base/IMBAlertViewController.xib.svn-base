@@ -532,7 +532,7 @@ Ac0AAA</bytes>
 					<object class="NSTextField" id="635840087">
 						<reference key="NSNextResponder" ref="680255613"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{82, 24}, {294, 84}}</string>
+						<string key="NSFrame">{{82, 29}, {294, 84}}</string>
 						<reference key="NSSuperview" ref="680255613"/>
 						<reference key="NSNextKeyView" ref="831293675"/>
 						<string key="NSHuggingPriority">{251, 750}</string>
@@ -6592,7 +6592,7 @@ Ac0AAA</bytes>
 								<reference key="NSColor" ref="301369205"/>
 							</object>
 							<string key="NSAlternateContents"/>
-							<string key="NSKeyEquivalent"/>
+							<string type="base64-UTF8" key="NSKeyEquivalent">DQ</string>
 							<int key="NSPeriodicDelay">400</int>
 							<int key="NSPeriodicInterval">75</int>
 						</object>
@@ -7218,24 +7218,49 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="NSNextResponder" ref="293965125"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
-						<string key="NSFrame">{{238, 42}, {22, 22}}</string>
+						<string key="NSFrame">{{202, 48}, {22, 22}}</string>
 						<reference key="NSSuperview" ref="293965125"/>
-						<reference key="NSNextKeyView" ref="336980638"/>
+						<reference key="NSNextKeyView" ref="582698562"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">IMBWhiteView</string>
+					</object>
+					<object class="NSTextField" id="582698562">
+						<reference key="NSNextResponder" ref="293965125"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{227, 46}, {192, 25}}</string>
+						<reference key="NSSuperview" ref="293965125"/>
+						<reference key="NSNextKeyView" ref="336980638"/>
+						<string key="NSReuseIdentifierKey">_NS:526</string>
+						<string key="NSHuggingPriority">{251, 750}</string>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSTextFieldCell" key="NSCell" id="564482474">
+							<int key="NSCellFlags">67108928</int>
+							<int key="NSCellFlags2">4196352</int>
+							<string key="NSContents">veryfing..</string>
+							<reference key="NSSupport" ref="938671280"/>
+							<string key="NSCellIdentifier">_NS:526</string>
+							<reference key="NSControlView" ref="582698562"/>
+							<reference key="NSBackgroundColor" ref="657108645"/>
+							<object class="NSColor" key="NSTextColor">
+								<int key="NSColorSpace">1</int>
+								<bytes key="NSRGB">MC44NTg4MjM1Mjk0IDAuMTcyNTQ5MDE5NiAwLjIxOTYwNzg0MzEAA</bytes>
+							</object>
+						</object>
+						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 					</object>
 					<object class="NSTextField" id="228270219">
 						<reference key="NSNextResponder" ref="293965125"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{82, 49}, {334, 25}}</string>
+						<string key="NSFrame">{{58, 40}, {380, 37}}</string>
 						<reference key="NSSuperview" ref="293965125"/>
 						<reference key="NSNextKeyView" ref="1058239548"/>
 						<string key="NSReuseIdentifierKey">_NS:526</string>
 						<string key="NSHuggingPriority">{251, 750}</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="337222258">
-							<int key="NSCellFlags">67108928</int>
-							<int key="NSCellFlags2">138414080</int>
+							<int key="NSCellFlags">67108864</int>
+							<int key="NSCellFlags2">138412032</int>
 							<string key="NSContents">double-verification is failed</string>
 							<reference key="NSSupport" ref="938671280"/>
 							<string key="NSCellIdentifier">_NS:526</string>
@@ -7247,6 +7272,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							</object>
 						</object>
 						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
 						<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 					</object>
 					<object class="NSCustomView" id="420969068">
@@ -7671,7 +7697,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<string key="NSClassName">IMBWhiteView</string>
 							</object>
 						</array>
-						<string key="NSFrame">{{72, 78}, {354, 40}}</string>
+						<string key="NSFrame">{{72, 80}, {354, 40}}</string>
 						<reference key="NSSuperview" ref="293965125"/>
 						<reference key="NSNextKeyView" ref="1009053736"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -10011,6 +10037,14 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 						<reference key="destination" ref="999876916"/>
 					</object>
 					<string key="id">2Qe-fh-epl</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">_doubleVerificaVerfiyTitle</string>
+						<reference key="source" ref="175485265"/>
+						<reference key="destination" ref="582698562"/>
+					</object>
+					<string key="id">BiL-Wi-bGc</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -13531,6 +13565,7 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 							<reference ref="53542617"/>
 							<reference ref="809874758"/>
 							<reference ref="296778573"/>
+							<reference ref="582698562"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -13878,6 +13913,19 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 						<string key="id">9lA-rH-FaR</string>
 						<reference key="object" ref="842444690"/>
 						<reference key="parent" ref="296778573"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">VZb-EZ-2pR</string>
+						<reference key="object" ref="582698562"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="564482474"/>
+						</array>
+						<reference key="parent" ref="293965125"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">FGO-PQ-hbl</string>
+						<reference key="object" ref="564482474"/>
+						<reference key="parent" ref="582698562"/>
 					</object>
 				</array>
 			</object>
@@ -14250,6 +14298,7 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 				<boolean value="NO" key="EyR-5X-rBU.showNotes"/>
 				<string key="F5B-nC-rAg.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="F5B-nC-rAg.showNotes"/>
+				<string key="FGO-PQ-hbl.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="FJL-Bp-PUE.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="FJL-Bp-PUE.showNotes"/>
 				<boolean value="NO" key="FLb-Cz-MkG.IBNSControlSetsMaxLayoutWidthAtFirstLayoutMetadataKey"/>
@@ -14690,6 +14739,7 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 				<string key="VOB-xS-F92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="VOB-xS-F92.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="VOB-xS-F92.showNotes"/>
+				<string key="VZb-EZ-2pR.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="VdS-Uk-fir.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="VdS-Uk-fir.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="VdS-Uk-fir.showNotes"/>
@@ -14891,6 +14941,7 @@ ZXJpZmljYXRpb24gY29kZQ</string>
 				<string key="cAb-P8-qDg.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="cAb-P8-qDg.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="cAb-P8-qDg.showNotes"/>
+				<boolean value="YES" key="cT8-eA-C6a.IBNSControlSetsMaxLayoutWidthAtFirstLayoutMetadataKey"/>
 				<string key="cT8-eA-C6a.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="cTS-Ba-06r.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="cTS-Ba-06r.showNotes"/>

@@ -1,7 +1,7 @@
 10
 
 dir
-1517
+1632
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/Media
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -165,40 +165,6 @@ has-props
 
 1137
 
-IMBMediaLibraryDBHelper.h
-file
-
-
-
-
-2018-02-02T01:41:33.000000Z
-30570601a9f29376d2313528fc20ecd7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-687
-
 IMBMusicDatabase.m
 file
 
@@ -233,8 +199,39 @@ has-props
 
 6035
 
-Artwork
-dir
+IMBMediaLibraryDBHelper.h
+file
+
+
+
+
+2018-02-02T01:41:33.000000Z
+30570601a9f29376d2313528fc20ecd7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+687
 
 IMBVideoImageByOther.m
 file
@@ -270,39 +267,8 @@ has-props
 
 6047
 
-IMBBaseDatabaseElement.m
-file
-
-
-
-
-2018-02-02T01:41:33.000000Z
-fb3db3a36bd32db4c31f38de861cf77a
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2483
+Artwork
+dir
 
 IMBNewTrack.h
 file
@@ -338,8 +304,39 @@ has-props
 
 2924
 
-Purchases
-dir
+IMBBaseDatabaseElement.m
+file
+
+
+
+
+2018-02-02T01:41:33.000000Z
+fb3db3a36bd32db4c31f38de861cf77a
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2483
 
 IMBMediaLibraryDBHelper.m
 file
@@ -375,10 +372,13 @@ dingming
 
 11858
 
-iTunesSD
+Purchases
 dir
 
 SyncPlaylist
+dir
+
+iTunesSD
 dir
 
 Recordings
