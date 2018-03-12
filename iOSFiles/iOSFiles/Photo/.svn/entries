@@ -1,7 +1,7 @@
 10
 
 dir
-1613
+1627
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Photo
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -162,40 +162,6 @@ hezhonglin
 
 1267
 
-IMBPhotoExportSettingConfig.m
-file
-
-
-
-
-2018-03-09T09:48:47.000000Z
-dfd07cc452fab67e2b89e59d892ed973
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3932
-
 IMBPhotoManager.h
 file
 
@@ -229,6 +195,40 @@ has-props
 
 
 1118
+
+IMBPhotoExportSettingConfig.m
+file
+
+
+
+
+2018-03-09T09:48:47.000000Z
+dfd07cc452fab67e2b89e59d892ed973
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3932
 
 IMBSyncPhotoData.m
 file
@@ -264,40 +264,6 @@ hezhonglin
 
 1054
 
-IMBCreatePhotoSyncPlist.h
-file
-
-
-
-
-2018-03-09T09:48:47.000000Z
-2e472e9452270d60dffa986269487317
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1425
-
 IMBPhotoEntity.h
 file
 
@@ -332,17 +298,17 @@ hezhonglin
 
 4949
 
-IMBPhotoManager.m
+IMBCreatePhotoSyncPlist.h
 file
 
 
 
 
 2018-03-09T09:48:47.000000Z
-4b8b145643fe64739121be6c93d01261
-2018-03-07T10:08:58.123793Z
-1547
-longfan
+2e472e9452270d60dffa986269487317
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
 
 
 
@@ -364,7 +330,7 @@ longfan
 
 
 
-82659
+1425
 
 IMBToiCloudPhotoEntity.h
 file
@@ -400,17 +366,17 @@ hezhonglin
 
 1728
 
-IMBCreatePhotoSyncPlist.m
+IMBPhotoManager.m
 file
 
 
 
 
 2018-03-09T09:48:47.000000Z
-33a83719f2813a9dfe7ee4cc647a56fb
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
+4b8b145643fe64739121be6c93d01261
+2018-03-07T10:08:58.123793Z
+1547
+longfan
 
 
 
@@ -432,7 +398,7 @@ hezhonglin
 
 
 
-38408
+82659
 
 IMBPhotoEntity.m
 file
@@ -468,8 +434,39 @@ hezhonglin
 
 1949
 
-HeifConvert
-dir
+IMBCreatePhotoSyncPlist.m
+file
+
+
+
+
+2018-03-09T09:48:47.000000Z
+33a83719f2813a9dfe7ee4cc647a56fb
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38408
 
 IMBToiCloudPhotoEntity.m
 file
@@ -504,4 +501,7 @@ hezhonglin
 
 
 1419
+
+HeifConvert
+dir
 

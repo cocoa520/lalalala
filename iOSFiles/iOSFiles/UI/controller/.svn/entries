@@ -1,41 +1,14 @@
 10
 
 dir
-1613
+1627
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-09T10:04:46.048858Z
-1613
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a323380f-3d89-8743-8c24-0bf67719c927
-
-IMBDeviceViewController.m
-file
-
-
-
-
-2018-03-09T09:48:44.000000Z
-a389b5102bef656992b67d032395d2ec
-2018-03-09T09:47:35.433047Z
-1612
+2018-03-12T08:53:46.555088Z
+1626
 hezhonglin
 
 
@@ -51,14 +24,7 @@ hezhonglin
 
 
 
-
-
-
-
-
-
-
-24475
+a323380f-3d89-8743-8c24-0bf67719c927
 
 IMBAppsListViewController.m
 file
@@ -93,6 +59,40 @@ longfan
 
 
 65378
+
+IMBDeviceViewController.m
+file
+
+
+
+
+2018-03-12T09:47:13.000000Z
+29b3e21510b96e64505eb2b12874ef20
+2018-03-12T08:53:46.555088Z
+1626
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26612
 
 IMBSystemCollectionViewController.m
 file
@@ -230,40 +230,6 @@ longfan
 
 317
 
-IMBTransferViewController.xib
-file
-
-
-
-
-2018-03-09T09:48:44.000000Z
-a2de106a19dd15af1d0e243e85016263
-2018-03-01T01:40:00.971067Z
-1437
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1147
-
 IMBBaseViewController.m
 file
 
@@ -298,16 +264,16 @@ longfan
 
 74816
 
-IMBDetailViewControler.xib
+IMBTransferViewController.xib
 file
 
 
 
 
 2018-03-09T09:48:44.000000Z
-246361877b33087b8de7405fd10370bb
-2018-03-07T10:42:03.133680Z
-1556
+a2de106a19dd15af1d0e243e85016263
+2018-03-01T01:40:00.971067Z
+1437
 longfan
 
 
@@ -330,18 +296,18 @@ longfan
 
 
 
-7804
+1147
 
-IMBDevViewController.m
+IMBDetailViewControler.xib
 file
 
 
 
 
-2018-03-09T09:48:44.000000Z
-66ddf99f8769ab1e9d1d3c66ef834f46
-2018-02-06T05:19:19.932289Z
-1238
+2018-03-12T08:51:08.000000Z
+d7e9aef723ea8817e884f12e6e117096
+2018-03-12T08:53:46.555088Z
+1626
 hezhonglin
 
 
@@ -364,7 +330,41 @@ hezhonglin
 
 
 
-3310
+7788
+
+IMBDevViewController.m
+file
+
+
+
+
+2018-03-12T07:43:21.000000Z
+3d3611547d29539026970a521179a871
+2018-03-12T07:51:15.715700Z
+1623
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3315
 
 IMBTransferViewController.h
 file
@@ -542,10 +542,10 @@ file
 
 
 
-2018-03-09T09:48:44.000000Z
-b9c24f54bf3bbc13e3ea794cf484ac88
-2018-03-09T09:47:35.433047Z
-1612
+2018-03-12T08:53:29.000000Z
+956141df5a301cdb016e682d31e11bd6
+2018-03-12T08:53:46.555088Z
+1626
 hezhonglin
 
 
@@ -568,7 +568,7 @@ hezhonglin
 
 
 
-34090
+36390
 
 IMBDetailViewControler.m
 file

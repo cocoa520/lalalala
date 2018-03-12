@@ -17,6 +17,7 @@ static CGFloat const labelY = 10.0f;
 {
 @private
     IBOutlet NSTableView *_tableView;
+    
 }
 @end
 

@@ -61,6 +61,10 @@
 		B99A9E6A1E851D3A00189779 /* ATHHostSync32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATHHostSync32.m; sourceTree = "<group>"; };
 		B99A9E6C1E851E0300189779 /* AirTrafficHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTrafficHost.h; sourceTree = "<group>"; };
 		B99A9E6D1E851E9B00189779 /* AirTrafficHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirTrafficHost.framework; path = ../../../../../System/Library/PrivateFrameworks/AirTrafficHost.framework; sourceTree = "<group>"; };
+		EE48D15C2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		EE48D15E2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EE48D15F2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
+		EE48D1602056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EEFB521A1E94E3E000FF0B48 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EEFB521B1E94E3E000FF0B48 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = zh; path = zh.lproj/Credits.rtf; sourceTree = "<group>"; };
 		EEFB521C1E94E3E000FF0B48 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				Base,
 				zh,
 				ru,
+				ja,
 			);
 			mainGroup = B99A9E201E851B1B00189779;
 			productRefGroup = B99A9E2A1E851B1B00189779 /* Products */;
@@ -309,6 +314,7 @@
 				B99A9E361E851B1C00189779 /* en */,
 				EEFB521A1E94E3E000FF0B48 /* zh */,
 				0C7B77361F7209FD001EABBA /* ru */,
+				EE48D15E2056308700857BD6 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 				B99A9E3C1E851B1C00189779 /* en */,
 				EEFB521B1E94E3E000FF0B48 /* zh */,
 				0C7B77371F7209FE001EABBA /* ru */,
+				EE48D15F2056308700857BD6 /* ja */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -328,6 +335,7 @@
 			children = (
 				B99A9E421E851B1C00189779 /* Base */,
 				0C7B77341F7209FD001EABBA /* ru */,
+				EE48D15C2056308700857BD6 /* ja */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -338,6 +346,7 @@
 				B99A9E541E851B1C00189779 /* en */,
 				EEFB521C1E94E3E000FF0B48 /* zh */,
 				0C7B77381F7209FE001EABBA /* ru */,
+				EE48D1602056308700857BD6 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

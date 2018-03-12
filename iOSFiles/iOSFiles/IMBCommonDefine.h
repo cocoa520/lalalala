@@ -6,6 +6,17 @@
 //  Copyright (c) 2013年 iMobie Inc. All rights reserved.
 //
 #pragma mark -颜色
+
+
+
+#define COLOR_MAIN_WINDOW_BG IMBRgbColor(248,248,248)
+#define COLOR_BTN_BLUE_BG IMBRgbColor(53,179,251)
+#define COLOR_MAIN_WINDOW_TEXTFIELD_BG IMBRgbColor(248,248,248)
+#define COLOR_MAIN_WINDOW_TEXTFIELD_TEXT IMBRgbColor(184,184,184)
+
+
+
+
 //普通文字
 #define COLOR_TEXT_ORDINARY [NSColor colorWithDeviceRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.000]
 //重点文字

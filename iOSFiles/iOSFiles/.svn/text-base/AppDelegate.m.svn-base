@@ -19,10 +19,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    
-   
-    
-    
+    NSMutableArray *chooseLang = [[NSMutableArray alloc] init];
+    [chooseLang addObject:@"ja"];
+    [[NSUserDefaults standardUserDefaults] setObject:chooseLang forKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     // Insert code here to initialize your application
     _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];

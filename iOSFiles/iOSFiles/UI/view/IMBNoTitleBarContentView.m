@@ -7,6 +7,9 @@
 //
 
 #import "IMBNoTitleBarContentView.h"
+#import "IMBCommonDefine.h"
+
+
 static int R = 5;
 @implementation IMBNoTitleBarContentView
 
@@ -36,6 +39,7 @@ static int R = 5;
 //    [path fill];
     
     
+    
     int c = NSWidth(dirtyRect) / 2;
     
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
@@ -48,19 +52,23 @@ static int R = 5;
      3.<#const CGFloat *locations#>:表示渐变的开始位置
      
      */
-    float r1 = 225.0/255;
-    float g1 = 225.0/255;
-    float b1 = 225.0/255;
+    
+//    [COLOR_MAIN_WINDOW_BG set];
+//    NSRectFill(dirtyRect);
+    
+    float r1 = 248.0f/255;
+    float g1 = 248.0f/255;
+    float b1 = 248.0f/255;
     float a1 = 1;
-    float r2 = 225.0/255;
-    float g2 = 225.0/255;
-    float b2 = 225.0/255;
+    float r2 = 248.0f/255;
+    float g2 = 248.0f/255;
+    float b2 = 248.0f/255;
     float a2 = 1;
     
     
     CGFloat components[8] = {r1,g1,b1,a1,r2,g2,b2,a2};
     CGFloat locations[2] = {0.0,1.0};
-    CGGradientRef gradient=CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
+    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
     //渐变区域裁剪
 
     CGContextMoveToPoint(context, NSWidth(dirtyRect)- R, 0);

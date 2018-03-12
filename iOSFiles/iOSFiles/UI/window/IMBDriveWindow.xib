@@ -168,6 +168,17 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <button verticalHuggingPriority="750" id="k8P-UX-vta">
+                    <rect key="frame" x="614" y="600" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BqP-Qo-B4j">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="jgkldsg:" target="-2" id="F59-DG-JGK"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="275" y="324.5"/>
         </view>

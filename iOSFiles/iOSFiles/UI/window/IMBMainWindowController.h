@@ -11,6 +11,7 @@
 #import "IMBLackCornerView.h"
 #import "IMBSelecedDeviceBtn.h"
 #import "IMBDeviceViewController.h"
+@class IMBWhiteView;
 
 @interface IMBMainWindowController : NSWindowController
 {
@@ -18,6 +19,8 @@
     IBOutlet IMBLackCornerView *_topView;
     IBOutlet NSBox *_rootBox;
     IMBDeviceViewController *_deviceViewController;
+    
+    IBOutlet IMBWhiteView *_whiteView;
 }
 
 @end

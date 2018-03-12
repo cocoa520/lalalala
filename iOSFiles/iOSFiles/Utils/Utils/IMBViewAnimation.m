@@ -74,48 +74,48 @@ static CGFloat const IMBViewAnimInterval = 0.15f;
     
 }
 
-+ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
-    
-    NSInteger count = views.count;
-    
-    for (NSInteger i = 0; i < count; i++) {
-        NSView *view = [views objectAtIndex:i];
-        NSRect frame = [view frame];
-        NSRect newFrame = [[frames objectAtIndex:i] rectValue];
-        view.frame = newFrame;
-        
-        //位移动画
-        CABasicAnimation *anima1 = [CABasicAnimation animationWithKeyPath:@"position"];
-        [anima1 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-        //        anima1.fromValue = [NSValue valueWithPoint:frame.origin];
-        //        anima1.toValue = [NSValue valueWithPoint:newFrame.origin];
-        //        anima1.beginTime = CACurrentMediaTime() + 0.03;
-        //        anima1.fillMode = kCAFillModeBackwards;
-        
-        //缩放动画
-        CABasicAnimation *anima2 = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-        [anima2 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-        anima2.fromValue = [NSNumber numberWithFloat:frame.size.width/newFrame.size.width];
-        anima2.toValue = [NSNumber numberWithFloat:1.0f];
-        //        anima2.beginTime = CACurrentMediaTime() + 0.03;
-        //        anima2.fillMode = kCAFillModeBackwards;
-        
-        CABasicAnimation *anima3 = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-        [anima3 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-        anima3.fromValue = [NSNumber numberWithFloat:frame.size.height/newFrame.size.height];
-        anima3.toValue = [NSNumber numberWithFloat:1.0f];
-        //        anima3.beginTime = CACurrentMediaTime() + 0.03;
-        //        anima3.fillMode = kCAFillModeBackwards;
-        
-        //组动画
-        CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
-        groupAnimation.animations = [NSArray arrayWithObjects:anima1,anima2,anima3, nil];
-        groupAnimation.duration = IMBViewAnimInterval;
-        
-        view.wantsLayer = YES;
-        [view.layer addAnimation:groupAnimation forKey:@"groupAnimation"];
-    }
-    
-}
+//+ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
+//    
+//    NSInteger count = views.count;
+//    
+//    for (NSInteger i = 0; i < count; i++) {
+//        NSView *view = [views objectAtIndex:i];
+//        NSRect frame = [view frame];
+//        NSRect newFrame = [[frames objectAtIndex:i] rectValue];
+//        view.frame = newFrame;
+//        
+//        //位移动画
+//        CABasicAnimation *anima1 = [CABasicAnimation animationWithKeyPath:@"position"];
+//        [anima1 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+//        //        anima1.fromValue = [NSValue valueWithPoint:frame.origin];
+//        //        anima1.toValue = [NSValue valueWithPoint:newFrame.origin];
+//        //        anima1.beginTime = CACurrentMediaTime() + 0.03;
+//        //        anima1.fillMode = kCAFillModeBackwards;
+//        
+//        //缩放动画
+//        CABasicAnimation *anima2 = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
+//        [anima2 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+//        anima2.fromValue = [NSNumber numberWithFloat:frame.size.width/newFrame.size.width];
+//        anima2.toValue = [NSNumber numberWithFloat:1.0f];
+//        //        anima2.beginTime = CACurrentMediaTime() + 0.03;
+//        //        anima2.fillMode = kCAFillModeBackwards;
+//        
+//        CABasicAnimation *anima3 = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+//        [anima3 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+//        anima3.fromValue = [NSNumber numberWithFloat:frame.size.height/newFrame.size.height];
+//        anima3.toValue = [NSNumber numberWithFloat:1.0f];
+//        //        anima3.beginTime = CACurrentMediaTime() + 0.03;
+//        //        anima3.fillMode = kCAFillModeBackwards;
+//        
+//        //组动画
+//        CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
+//        groupAnimation.animations = [NSArray arrayWithObjects:anima1,anima2,anima3, nil];
+//        groupAnimation.duration = IMBViewAnimInterval;
+//        
+//        view.wantsLayer = YES;
+//        [view.layer addAnimation:groupAnimation forKey:@"groupAnimation"];
+//    }
+//    
+//}
 
 @end

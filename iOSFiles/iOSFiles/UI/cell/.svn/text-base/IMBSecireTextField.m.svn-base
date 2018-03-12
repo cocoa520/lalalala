@@ -65,7 +65,10 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    [COLOR_MAIN_WINDOW_TEXTFIELD_BG set];
+    NSRectFill(dirtyRect);
     [super drawRect:dirtyRect];
+    
 }
 
 + (Class)cellClass

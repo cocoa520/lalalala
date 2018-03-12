@@ -150,25 +150,25 @@
 //    [clipPath addClip];
 //    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] set];
 //    [clipPath fill];
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    [path moveToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
-    [path lineToPoint:NSMakePoint(NSMaxX(frame), NSMinY(frame))];
-    [path lineToPoint:NSMakePoint(NSMaxX(frame), NSMaxY(frame) - LINE)];
-    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(frame) - LINE , NSMaxY(frame) - LINE) radius:LINE startAngle:0 endAngle:90];
-    [path lineToPoint:NSMakePoint(NSMinX(frame) + LINE, NSMaxY(frame))];
-    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(frame) + LINE, NSMaxY(frame)-LINE) radius:LINE startAngle:90 endAngle:180];
-    [path lineToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
-    //    [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect)+LINE)];
-    //    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(dirtyRect) + LINE, NSMinY(dirtyRect) ) radius:LINE startAngle:0 endAngle:90];
-    [path setLineWidth:2];
-    [path addClip];
-    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] setStroke];
-    [path stroke];
+//    NSBezierPath *path = [NSBezierPath bezierPath];
+//    [path moveToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
+//    [path lineToPoint:NSMakePoint(NSMaxX(frame), NSMinY(frame))];
+//    [path lineToPoint:NSMakePoint(NSMaxX(frame), NSMaxY(frame) - LINE)];
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(frame) - LINE , NSMaxY(frame) - LINE) radius:LINE startAngle:0 endAngle:90];
+//    [path lineToPoint:NSMakePoint(NSMinX(frame) + LINE, NSMaxY(frame))];
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(frame) + LINE, NSMaxY(frame)-LINE) radius:LINE startAngle:90 endAngle:180];
+//    [path lineToPoint:NSMakePoint(NSMinX(frame), NSMinY(frame))];
+//    //    [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect)+LINE)];
+//    //    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(dirtyRect) + LINE, NSMinY(dirtyRect) ) radius:LINE startAngle:0 endAngle:90];
+//    [path setLineWidth:2];
+//    [path addClip];
+//    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] setStroke];
+//    [path stroke];
     
     NSRect rect = NSMakeRect(12, frame.origin.y, frame.size.width - 50, frame.size.height);
-    //    }
+//        }
     [super drawInteriorWithFrame:rect inView:controlView];
-    
+
 }
 
 // changes focus ring radius to match that of the text cell

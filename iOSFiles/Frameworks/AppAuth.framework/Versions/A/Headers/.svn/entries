@@ -1,7 +1,7 @@
 10
 
 dir
-1613
+1627
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/Frameworks/AppAuth.framework/Versions/A/Headers
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -60,40 +60,6 @@ dingming
 
 1693
 
-OIDTokenResponse.h
-file
-
-
-
-
-2018-03-09T09:48:56.000000Z
-07fcaa27ea94ac299c822f54a666b338
-2018-01-31T07:36:42.257673Z
-1137
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4299
-
 OIDRedirectHTTPHandler.h
 file
 
@@ -127,6 +93,40 @@ dingming
 
 
 3727
+
+OIDTokenResponse.h
+file
+
+
+
+
+2018-03-09T09:48:56.000000Z
+07fcaa27ea94ac299c822f54a666b338
+2018-01-31T07:36:42.257673Z
+1137
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4299
 
 OIDGrantTypes.h
 file
@@ -162,40 +162,6 @@ dingming
 
 1580
 
-OIDAuthState.h
-file
-
-
-
-
-2018-03-09T09:48:56.000000Z
-883044145a59738c0d5b4c675104470e
-2018-01-31T07:36:42.257673Z
-1137
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-14585
-
 OIDAuthorizationUICoordinator.h
 file
 
@@ -229,6 +195,40 @@ dingming
 
 
 2380
+
+OIDAuthState.h
+file
+
+
+
+
+2018-03-09T09:48:56.000000Z
+883044145a59738c0d5b4c675104470e
+2018-01-31T07:36:42.257673Z
+1137
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14585
 
 OIDAuthStateChangeDelegate.h
 file

@@ -1,15 +1,15 @@
 10
 
 dir
-1613
+1627
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/cell
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-08T07:11:12.637614Z
-1580
-longfan
+2018-03-12T07:30:52.704752Z
+1622
+hezhonglin
 
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2018-03-09T09:48:45.000000Z
-8ce39ee8aae200597fdd0a253fff1c54
-2018-03-07T03:03:14.467328Z
-1524
+2018-03-12T06:37:18.000000Z
+7b53915cd13b0bb12ac7ada672c967ee
+2018-03-12T07:30:52.704752Z
+1622
 hezhonglin
 
 
@@ -58,7 +58,7 @@ hezhonglin
 
 
 
-10496
+10520
 
 IMBImageAndTextFieldCell.h
 file
@@ -94,17 +94,17 @@ longfan
 
 1424
 
-IMBImageAndTextFieldCell.m
+IMBSecireTextField.h
 file
 
 
 
 
 2018-03-09T09:48:45.000000Z
-25a55e9362c69cfd16fd2bf32a638fa3
-2018-03-08T07:11:12.637614Z
-1580
-longfan
+928acb75dee90b76d1a8f697e454909d
+2018-03-07T03:03:14.467328Z
+1524
+hezhonglin
 
 
 
@@ -126,7 +126,7 @@ longfan
 
 
 
-12134
+327
 
 IMBCustomHeaderCell.h
 file
@@ -162,50 +162,16 @@ has-props
 
 1192
 
-IMBSecireTextField.h
+IMBImageAndTextFieldCell.m
 file
 
 
 
 
 2018-03-09T09:48:45.000000Z
-928acb75dee90b76d1a8f697e454909d
-2018-03-07T03:03:14.467328Z
-1524
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-327
-
-IMBCheckBoxCell.h
-file
-
-
-
-
-2018-03-09T09:48:45.000000Z
-7b0f9c7890893217aec44f6d2fca284e
-2018-03-07T10:42:03.133680Z
-1556
+25a55e9362c69cfd16fd2bf32a638fa3
+2018-03-08T07:11:12.637614Z
+1580
 longfan
 
 
@@ -228,7 +194,7 @@ longfan
 
 
 
-1129
+12134
 
 IMBCheckHeaderCell.h
 file
@@ -264,6 +230,74 @@ longfan
 
 826
 
+IMBCheckBoxCell.h
+file
+
+
+
+
+2018-03-09T09:48:45.000000Z
+7b0f9c7890893217aec44f6d2fca284e
+2018-03-07T10:42:03.133680Z
+1556
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1129
+
+IMBSecireTextField.m
+file
+
+
+
+
+2018-03-12T04:51:44.000000Z
+bff6ee83346e6e438e658b75a1873f6b
+2018-03-12T05:01:44.747436Z
+1621
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3536
+
 IMBCustomHeaderCell.m
 file
 
@@ -297,40 +331,6 @@ has-props
 
 
 11683
-
-IMBSecireTextField.m
-file
-
-
-
-
-2018-03-09T09:48:45.000000Z
-512eaa84b64c5375679cdb8184c70ff6
-2018-03-07T03:03:14.467328Z
-1524
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3462
 
 IMBCenterTextFieldCell.h
 file
@@ -366,14 +366,14 @@ has-props
 
 842
 
-customTextFiled.h
+customTextFieldCell.h
 file
 
 
 
 
 2018-03-09T09:48:45.000000Z
-c84929bee46dc965973349ab0116d703
+9eaae7e174337e4bd2aca37eddff6736
 2018-03-07T03:03:14.467328Z
 1524
 hezhonglin
@@ -398,41 +398,7 @@ hezhonglin
 
 
 
-371
-
-IMBCheckBoxCell.m
-file
-
-
-
-
-2018-03-09T09:48:45.000000Z
-3861881610093ec616a13ea04accacc9
-2018-03-07T10:42:03.133680Z
-1556
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-10873
+307
 
 IMBCheckHeaderCell.m
 file
@@ -468,14 +434,48 @@ longfan
 
 14588
 
-customTextFieldCell.h
+IMBCheckBoxCell.m
 file
 
 
 
 
 2018-03-09T09:48:45.000000Z
-9eaae7e174337e4bd2aca37eddff6736
+3861881610093ec616a13ea04accacc9
+2018-03-07T10:42:03.133680Z
+1556
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10873
+
+customTextFiled.h
+file
+
+
+
+
+2018-03-09T09:48:45.000000Z
+c84929bee46dc965973349ab0116d703
 2018-03-07T03:03:14.467328Z
 1524
 hezhonglin
@@ -500,7 +500,7 @@ hezhonglin
 
 
 
-307
+371
 
 IMBCenterTextFieldCell.m
 file

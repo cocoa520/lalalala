@@ -11,6 +11,11 @@
 #import "IMBViewAnimation.h"
 
 
+static CGFloat const IMBGradientViewMidiumiCloudViewOriginalHeight = 180.f;
+static CGFloat const IMBGradientViewMidiumDevicesViewOriginalHeight = 376.0f;
+static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
+
+
 @interface IMBGradientComponentView()
 {
     @private
@@ -44,7 +49,7 @@
     NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
     [clipPath setWindingRule:NSEvenOddWindingRule];
     [clipPath addClip];
-    [COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS set];
+    [COLOR_MAIN_WINDOW_BG set];
     [clipPath fill];
     
     
@@ -172,21 +177,21 @@
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    IMBFLog(@"IMBGradientComponentView--mouseEntered");
+//    IMBFLog(@"IMBGradientComponentView--mouseEntered");
     if (_isMouseEntered == NO && _isOriginalFrame) {
         
         _isMouseEntered = YES;
         IMBFLog(@"IMBGradientComponentView--mouseEntered");
         NSRect f = self.frame;
-        if (f.size.height == 180) {
-            f.size.height = 185.0f;
+        if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight) {
+            f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow;
             self.frame = f;
-            [self setViewShadow:-5];
+            [self setViewShadow:-IMBGradientViewMidiumViewShadow];
         }
-        if (f.size.height == 376) {
-            f.size.height = 381.0f;
+        if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight) {
+            f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow;
             self.frame = f;
-            [self setViewShadow:-5];
+            [self setViewShadow:-IMBGradientViewMidiumViewShadow];
         }
         if (self.mouseEntered) {
             self.mouseEntered();
@@ -201,14 +206,14 @@
         _isMouseEntered = NO;
         IMBFLog(@"IMBGradientComponentView--mouseExited");
         NSRect f = self.frame;
-        if (f.size.height == 185) {
-            f.size.height = 180.0f;
+        if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
+            f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight;
             self.frame = f;
             [self setViewShadow:0];
         }
         
-        if (f.size.height == 381) {
-            f.size.height = 376.0f;
+        if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
+            f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight;
             self.frame = f;
             [self setViewShadow:0];
         }

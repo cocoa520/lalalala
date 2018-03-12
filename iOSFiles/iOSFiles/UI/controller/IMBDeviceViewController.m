@@ -27,7 +27,7 @@
 #import "IMBAppsListViewController.h"
 #import "IMBViewAnimation.h"
 
-
+#import "IMBDropBoxManage.h"
 #import <Quartz/Quartz.h>
 
 
@@ -59,7 +59,7 @@
     [self deviceConnection];
     [self addNotis];
     [(IMBBackgroundBorderView*)self.view setHasRadius:YES];
-    [(IMBBackgroundBorderView*)self.view setBackgroundColor:COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS];
+    [(IMBBackgroundBorderView*)self.view setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     _windowControllerDic = [[NSMutableDictionary alloc]init];
     _driveControllerDic = [[NSMutableDictionary alloc]init];
 }
@@ -72,7 +72,7 @@
     [((customTextFieldCell *)_loginTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
     NSMutableAttributedString *as5 = [[[NSMutableAttributedString alloc] initWithString:@"User"] autorelease];
-    [as5 addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_EXPLAIN range:NSMakeRange(0, as5.string.length)];
+    [as5 addAttribute:NSForegroundColorAttributeName value:COLOR_MAIN_WINDOW_TEXTFIELD_TEXT range:NSMakeRange(0, as5.string.length)];
     [as5 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as5.string.length)];
     [as5 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as5.string.length)];
     [_loginTextField.cell setPlaceholderAttributedString:as5];
@@ -80,8 +80,8 @@
     [_iCloudUserTextField setTextColor:COLOR_TEXT_ORDINARY];
     [((customTextFieldCell *)_iCloudUserTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
-    NSMutableAttributedString *as6 = [[[NSMutableAttributedString alloc] initWithString:@"User"] autorelease];
-    [as6 addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_EXPLAIN range:NSMakeRange(0, as6.string.length)];
+    NSMutableAttributedString *as6 = [[[NSMutableAttributedString alloc] initWithString:@"iCloud ID"] autorelease];
+    [as6 addAttribute:NSForegroundColorAttributeName value:COLOR_MAIN_WINDOW_TEXTFIELD_TEXT range:NSMakeRange(0, as6.string.length)];
     [as6 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as6.string.length)];
     [as6 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as6.string.length)];
     [_iCloudUserTextField.cell setPlaceholderAttributedString:as6];
@@ -192,7 +192,7 @@
     
 }
 
-- (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSButton *)btn {
+- (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn {
     NSRect f = view.frame;
     f.origin.y = 30;
     [IMBViewAnimation animationWithView:view frame:f timeInterval:0.2f completion:nil];
@@ -408,12 +408,11 @@
 //    [self signDown:sender];
 }
 
-#pragma mark -- One Diver Login
-
+#pragma mark -- Dropbox Login
 - (void)signDown:(id)sender{
     [_loginTextField.cell setEnabled:NO];
     [_passTextField.cell setEnabled:NO];
-    NSString *loginTextId = [_loginTextField.stringValue stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    NSString *loginTextId = [@"imobie@yahoo.com" stringByReplacingOccurrencesOfString:@"\n" withString:@""];
 //    if ([loginTextId isEqualToString: @""]){
 //        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
 //        return;
@@ -425,7 +424,7 @@
                     [driveWindow showWindow:self];
                 }
             }else{
-                _baseDriveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+                _baseDriveManage = [[IMBDropBoxManage alloc]initWithUserID:loginTextId withDelegate:self];
             }
 //        }else{
 //            _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
@@ -449,6 +448,49 @@
         [driveWindow release];
     }
 }
+
+
+#pragma mark -- One Diver Login
+
+//- (void)signDown:(id)sender{
+//    [_loginTextField.cell setEnabled:NO];
+//    [_passTextField.cell setEnabled:NO];
+//    NSString *loginTextId = [_loginTextField.stringValue stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+////    if ([loginTextId isEqualToString: @""]){
+////        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+////        return;
+////    }else{
+////        if (_driveManage != nil) {
+//            if ([_baseDriveManage.userID isEqualToString:loginTextId]) {
+//                if ([_driveControllerDic.allKeys containsObject:_baseDriveManage.userID]) {
+//                    IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_baseDriveManage.userID];
+//                    [driveWindow showWindow:self];
+//                }
+//            }else{
+//                _baseDriveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+//            }
+////        }else{
+////            _driveManage = [[IMBDriveManage alloc]initWithUserID:loginTextId withDelegate:self];
+////        }
+////    }
+//    [_loginTextField.cell setEnabled:YES];
+//    [_passTextField.cell setEnabled:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
+//}
+//
+//- (void)switchViewController {
+//    if ([_driveControllerDic.allKeys containsObject:_baseDriveManage.userID]) {
+//        IMBDriveWindow *driveWindow = [_driveControllerDic objectForKey:_baseDriveManage.userID];
+//        [driveWindow showWindow:self];
+//    }else{
+//        IMBDriveWindow *driveWindow = [[IMBDriveWindow alloc]initWithDrivemanage:(IMBDriveManage *)_baseDriveManage withisiCloudDrive:NO];
+//        [_driveControllerDic setObject:driveWindow forKey:_baseDriveManage.userID];
+//        //    IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc] initWithiPod:ipod];
+//        [[driveWindow window] center];
+//        [driveWindow showWindow:self];
+//        [driveWindow release];
+//    }
+//}
 
 #pragma mark -- iCloud Diver Login
 

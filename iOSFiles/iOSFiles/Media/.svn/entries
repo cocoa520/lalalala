@@ -1,7 +1,7 @@
 10
 
 dir
-1613
+1627
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Media
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -60,9 +60,6 @@ has-props
 
 596
 
-iTunesCDB
-dir
-
 NSImage+IMBCropExtensions.h
 file
 
@@ -97,7 +94,7 @@ has-props
 
 823
 
-XMLReader
+iTunesCDB
 dir
 
 IMBMusicDatabase.h
@@ -133,6 +130,9 @@ has-props
 
 
 727
+
+XMLReader
+dir
 
 NSString+Compare.m
 file
@@ -236,40 +236,6 @@ has-props
 
 361
 
-IMBMediaLibraryDBHelper.h
-file
-
-
-
-
-2018-03-09T09:48:48.000000Z
-30570601a9f29376d2313528fc20ecd7
-2018-01-31T10:22:05.637903Z
-1144
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-687
-
 IMBMusicDatabase.m
 file
 
@@ -303,6 +269,40 @@ has-props
 
 
 6041
+
+IMBMediaLibraryDBHelper.h
+file
+
+
+
+
+2018-03-09T09:48:48.000000Z
+30570601a9f29376d2313528fc20ecd7
+2018-01-31T10:22:05.637903Z
+1144
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+687
 
 IMBArtworkUnknownListContainer.m
 file
@@ -338,9 +338,6 @@ has-props
 
 1266
 
-Purchases
-dir
-
 IMBMediaLibraryDBHelper.m
 file
 
@@ -375,7 +372,7 @@ hezhonglin
 
 11858
 
-PlayCounts
+Purchases
 dir
 
 IMBVideoImageAcquire.h
@@ -411,6 +408,9 @@ has-props
 
 
 1120
+
+PlayCounts
+dir
 
 IMBVideoImageAcquire.m
 file
