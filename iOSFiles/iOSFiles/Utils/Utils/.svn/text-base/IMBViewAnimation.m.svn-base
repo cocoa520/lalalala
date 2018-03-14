@@ -10,7 +10,8 @@
 #import <Quartz/Quartz.h>
 #import "IMBGradientComponentView.h"
 
-static CGFloat const IMBViewAnimInterval = 0.15f;
+CGFloat const MidiumSizeAnimationTimeInterval = 0.35f;
+static CGFloat const IMBViewAnimInterval = 0.12f;
 
 @implementation IMBViewAnimation
 
@@ -74,11 +75,22 @@ static CGFloat const IMBViewAnimInterval = 0.15f;
     
 }
 
-//+ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
-//    
-//    NSInteger count = views.count;
-//    
-//    for (NSInteger i = 0; i < count; i++) {
++ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
+    
+    NSInteger count = views.count;
+    
+    for (NSInteger i = 0; i < count; i++) {
+        
+        [NSAnimationContext endGrouping];
+        
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            [context setDuration:IMBViewAnimInterval];
+            [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+            NSView *view = [views objectAtIndex:i];
+            NSRect newFrame = [[frames objectAtIndex:i] rectValue];
+            [view.animator setFrame:newFrame];
+        } completionHandler:completion];
+        
 //        NSView *view = [views objectAtIndex:i];
 //        NSRect frame = [view frame];
 //        NSRect newFrame = [[frames objectAtIndex:i] rectValue];
@@ -113,9 +125,53 @@ static CGFloat const IMBViewAnimInterval = 0.15f;
 //        groupAnimation.duration = IMBViewAnimInterval;
 //        
 //        view.wantsLayer = YES;
+//        view.layer.anchorPoint = NSMakePoint(1, 0);
 //        [view.layer addAnimation:groupAnimation forKey:@"groupAnimation"];
-//    }
-//    
-//}
+    }
+    
+}
+
++ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion {
+    [self animationMouseMovedWithView:view frame:frame timeInterval:IMBViewAnimInterval completion:completion];
+}
+
+
++ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
+//    [NSAnimationContext endGrouping];
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:IMBViewAnimInterval];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [view.animator setFrame:frame];
+    } completionHandler:completion];
+    
+    
+    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.beginTime = CACurrentMediaTime();
+    animation.fromValue=[NSNumber numberWithFloat:0.0];
+    animation.toValue=[NSNumber numberWithFloat:1.0];
+    animation.duration = timeInterval;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    
+    [view setWantsLayer:YES];
+    [view.layer addAnimation:animation forKey:@"opacityAnim"];
+}
+
++ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion {
+    [self animationScaleWithView:view frame:frame timeInterval:IMBViewAnimInterval completion:completion];
+}
+
++ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
+    
+    
+    //    [NSAnimationContext endGrouping];
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:timeInterval];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [view.animator setFrame:frame];
+    } completionHandler:completion];
+}
 
 @end

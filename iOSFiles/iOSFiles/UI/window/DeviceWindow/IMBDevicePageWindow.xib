@@ -9,6 +9,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDevicePageWindow">
             <connections>
                 <outlet property="_backBtn" destination="hUl-KP-K2H" id="W4u-SI-Ofs"/>
+                <outlet property="_chooseViewBtn" destination="gLP-ZL-obT" id="1ss-qc-ke3"/>
+                <outlet property="_chooseViewController" destination="gLP-ZL-obT" id="Wz5-gr-JK1"/>
                 <outlet property="_rootBox" destination="aFM-lp-NYF" id="hzP-Nk-axy"/>
                 <outlet property="_scrollView" destination="4Fl-9G-pba" id="wpF-Xi-43B"/>
                 <outlet property="_tableView" destination="eY5-VY-zih" id="kow-Zk-fTI"/>
@@ -20,7 +22,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBToolbarWindow">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1000" height="543"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
@@ -30,8 +32,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="543"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <box fixedFrame="YES" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="aFM-lp-NYF" customClass="IMBStackBox">
+                        <rect key="frame" x="0.0" y="3" width="1000" height="490"/>
+                        <view key="contentView">
+                            <rect key="frame" x="0.0" y="0.0" width="1000" height="490"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jb-Jq-1sc" customClass="IMBWhiteView">
-                        <rect key="frame" x="0.0" y="490" width="1000" height="54"/>
+                        <rect key="frame" x="0.0" y="489" width="1000" height="54"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kX7-Pw-rSy">
                                 <rect key="frame" x="301" y="16" width="380" height="22"/>
@@ -56,15 +67,6 @@
                             </button>
                         </subviews>
                     </customView>
-                    <box fixedFrame="YES" borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="aFM-lp-NYF" customClass="IMBStackBox">
-                        <rect key="frame" x="-3" y="3" width="1000" height="490"/>
-                        <view key="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="1000" height="490"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </box>
                 </subviews>
             </view>
             <connections>
@@ -77,7 +79,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" id="Gc0-Tt-NfY">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="502"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p3o-CB-Jd9" viewBased="YES" id="eY5-VY-zih">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="479"/>
@@ -139,6 +141,14 @@
                 <autoresizingMask key="autoresizingMask"/>
             </tableHeaderView>
         </scrollView>
+        <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="gLP-ZL-obT" customClass="IMBSelecedDeviceBtn">
+            <rect key="frame" x="0.0" y="0.0" width="99" height="26"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="sPu-ui-zp4">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+        </button>
     </objects>
     <resources>
         <image name="tool_back_normal" width="30" height="22"/>

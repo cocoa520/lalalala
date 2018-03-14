@@ -37,26 +37,26 @@
     [super drawRect:dirtyRect];
     
     //背景
-    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:14 yRadius:14];
-    [clipPath setWindingRule:NSEvenOddWindingRule];
-    [clipPath addClip];
-    if (!_isDisable) {
-        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp ) {
-//            [[StringHelper getColorFromString:CustomColor(@"popover_bgEnterColor", nil)] set];
-            [IMBGrayColor(242) set];
-            [clipPath fill];
-            [clipPath closePath];
-        }else if (_mouseStatus == MouseDown) {
-//            [[StringHelper getColorFromString:CustomColor(@"popover_bgDownColor", nil)] set];
-            [IMBGrayColor(235) set];
-            [clipPath fill];
-            [clipPath closePath];
-        }
-    }
+//    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:14 yRadius:14];
+//    [clipPath setWindingRule:NSEvenOddWindingRule];
+//    [clipPath addClip];
+//    if (!_isDisable) {
+//        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp ) {
+////            [[StringHelper getColorFromString:CustomColor(@"popover_bgEnterColor", nil)] set];
+//            [IMBGrayColor(242) set];
+//            [clipPath fill];
+//            [clipPath closePath];
+//        }else if (_mouseStatus == MouseDown) {
+////            [[StringHelper getColorFromString:CustomColor(@"popover_bgDownColor", nil)] set];
+//            [IMBGrayColor(235) set];
+//            [clipPath fill];
+//            [clipPath closePath];
+//        }
+//    }
 //    [[StringHelper getColorFromString:CustomColor(@"popover_borderColor", nil)] set];
-    [IMBGrayColor(204) set];
-    [clipPath stroke];
-    [clipPath closePath];
+//    [IMBGrayColor(204) set];
+//    [clipPath stroke];
+//    [clipPath closePath];
     
     //图片
     int arrowWith = 0;
@@ -115,7 +115,8 @@
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }else {
-            iconImage = [NSImage imageNamed:@"device_name_apple"];
+            iconImage = [NSImage imageNamed:@"symbols-apple.png"];
+            [iconImage setResizingMode:NSImageResizingModeStretch];
             int  xPos = 0;
             if (_isShowTrangle) {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
@@ -125,7 +126,7 @@
             NSRect imageRect;
             imageRect.origin = NSZeroPoint ;
             imageRect.size = iconImage.size;
-            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 4);
+            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 6);
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }
@@ -142,8 +143,6 @@
             }
             drawingRect = textRect;
             [attrStr drawInRect:textRect];
-            //            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:150 withSize:&size withColor:_textColor withAlignment:NSLeftTextAlignment];
-            //            NSRect textRect = NSMakeRect(30 , 1, size.width, 22);
         }else {
             NSSize size;
             NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:155 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
@@ -153,8 +152,6 @@
             }
             drawingRect = textRect;
             [attrStr drawInRect:textRect];
-            //            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:155 withSize:&size withColor:_textColor withAlignment:NSLeftTextAlignment];
-            //            NSRect textRect = NSMakeRect(30 , 1, size.width, 22);
         }
     }
     

@@ -8,22 +8,31 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDeviceViewController">
             <connections>
+                <outlet property="_bigDevicesImageView" destination="iPp-8x-sZo" id="K9e-RT-1BS"/>
                 <outlet property="_bigSizeOneDriveView" destination="ybb-jb-bgT" id="YhM-gp-3NL"/>
                 <outlet property="_bigSizeiCloudView" destination="qvC-vK-Hld" id="Sii-NK-PqE"/>
+                <outlet property="_checkBoxbtn" destination="Vex-jn-KHf" id="hvN-wl-iqu"/>
+                <outlet property="_checkoutPwdBtn" destination="Gel-HP-Z1E" id="mFg-g8-ofp"/>
                 <outlet property="_devicesBox" destination="rnr-Yt-VvE" id="FIw-by-1JY"/>
+                <outlet property="_devicesShadowView" destination="2ui-Iq-Sd2" id="SVr-jR-OlN"/>
                 <outlet property="_devicesView" destination="Omd-Wb-YfP" id="Pgg-ww-oTu"/>
+                <outlet property="_dropboxShadowView" destination="E61-n6-FMT" id="5lG-aC-7Qb"/>
                 <outlet property="_iCloudDriveView" destination="t0k-2x-CtM" id="1Qa-Jt-1cD"/>
                 <outlet property="_iCloudSecireTextField" destination="nxI-1a-u3g" id="3Ac-d9-sux"/>
                 <outlet property="_iCloudTextFiledView" destination="8t1-NK-JfE" id="wCc-eo-Qic"/>
                 <outlet property="_iCloudUserTextField" destination="U0Q-g9-ITo" id="g27-dG-2RI"/>
+                <outlet property="_icloudCustomView" destination="Bxg-Vg-i7h" id="10W-sG-pkJ"/>
                 <outlet property="_icloudDrivebox" destination="WaV-2w-2rW" id="KmP-B3-wGw"/>
+                <outlet property="_icloudLoginPwdTextfield" destination="Poc-8x-y2u" id="zXn-xs-rPW"/>
+                <outlet property="_icloudLoginPwdView" destination="0q6-o8-PWI" id="8Rh-Cc-V6q"/>
+                <outlet property="_icloudShadowView" destination="2KY-Gm-KbF" id="tSM-cs-iHf"/>
                 <outlet property="_loginTextField" destination="t2C-L2-c0n" id="cnm-Bm-Exk"/>
-                <outlet property="_midiumDropBoxClickLoginBtn" destination="3jv-BK-Imm" id="2nZ-sH-MFL"/>
+                <outlet property="_midiumDropBoxClickLoginBtn" destination="ZKB-Vm-WhK" id="j2I-76-2Gh"/>
                 <outlet property="_midiumDropBoxContentView" destination="e94-ti-MsB" id="shJ-Pa-EnO"/>
                 <outlet property="_midiumSizeDevicesView" destination="zfi-hN-6rv" id="PcT-mC-Gmb"/>
                 <outlet property="_midiumSizeOneDriveView" destination="Cg8-1L-jVw" id="FKF-Mx-i2l"/>
                 <outlet property="_midiumSizeiCloudView" destination="fQv-aR-vvb" id="9Rh-XG-gkZ"/>
-                <outlet property="_midiumiCloudClickLoginBtn" destination="I1q-bg-xM2" id="FUn-6T-MbX"/>
+                <outlet property="_midiumiCloudClickLoginBtn" destination="c8z-4W-yGo" id="GAE-Ff-YjU"/>
                 <outlet property="_midiumiCloudContentView" destination="nmA-P9-rEV" id="gvu-TT-CyF"/>
                 <outlet property="_oneDriveBox" destination="VrQ-cg-Jyj" id="UiY-LL-McG"/>
                 <outlet property="_oneDriveView" destination="Q37-tb-ZbD" id="llx-cj-rwK"/>
@@ -34,6 +43,8 @@
                 <outlet property="_smalliCloudDriveView" destination="2nB-1F-jA9" id="1ZR-Wx-LLN"/>
                 <outlet property="_twoCode" destination="RfE-fq-JOR" id="DaP-qd-pgQ"/>
                 <outlet property="drawTextView" destination="8fm-de-xte" id="dVc-7R-Y6m"/>
+                <outlet property="dropboxLoginBtn" destination="YzW-g6-fbZ" id="FkY-NT-cVY"/>
+                <outlet property="icloudLoginbtn" destination="Req-fh-YlK" id="bTM-ih-bXq"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -43,21 +54,17 @@
             <rect key="frame" x="0.0" y="0.0" width="592" height="402"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView id="Q37-tb-ZbD" customClass="IMBGradientComponentView">
+                <customView id="2KY-Gm-KbF" customClass="IMBShadowView">
+                    <rect key="frame" x="12" y="211" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="E61-n6-FMT" customClass="IMBShadowView">
                     <rect key="frame" x="12" y="15" width="302" height="180"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <box title="Box" borderType="none" titlePosition="noTitle" id="VrQ-cg-Jyj">
-                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <view key="contentView">
-                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </box>
-                    </subviews>
+                </customView>
+                <customView id="2ui-Iq-Sd2" customClass="IMBShadowView">
+                    <rect key="frame" x="327" y="15" width="253" height="376"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView id="t0k-2x-CtM" customClass="IMBGradientComponentView">
                     <rect key="frame" x="12" y="211" width="302" height="180"/>
@@ -75,12 +82,28 @@
                         </box>
                     </subviews>
                 </customView>
+                <customView id="Q37-tb-ZbD" customClass="IMBGradientComponentView">
+                    <rect key="frame" x="12" y="15" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <box title="Box" borderType="none" titlePosition="noTitle" id="VrQ-cg-Jyj">
+                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view key="contentView">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                    </subviews>
+                </customView>
                 <customView id="Omd-Wb-YfP" customClass="IMBGradientComponentView">
                     <rect key="frame" x="327" y="15" width="253" height="376"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box title="Box" borderType="none" titlePosition="noTitle" id="rnr-Yt-VvE">
-                            <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
+                            <rect key="frame" x="0.0" y="-1" width="253" height="376"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <view key="contentView">
                                 <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
@@ -98,15 +121,6 @@
             <rect key="frame" x="0.0" y="0.0" width="302" height="306"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fUC-g2-zah">
-                    <rect key="frame" x="92" y="260" width="120" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox Login" id="UdG-YG-jG7">
-                        <font key="font" metaFont="system" size="16"/>
-                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AHM-XV-tCg">
                     <rect key="frame" x="87" y="126" width="130" height="126"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -136,7 +150,7 @@
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Lfs-mn-r6S">
-                    <rect key="frame" x="3" y="101" width="298" height="23"/>
+                    <rect key="frame" x="3" y="101" width="298" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You need to go to the website authorization" id="3qQ-jS-xQl">
                         <font key="font" metaFont="system"/>
@@ -144,7 +158,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="YzW-g6-fbZ" customClass="IMBCustomBlueButton">
+                <button verticalHuggingPriority="750" id="YzW-g6-fbZ" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="18" y="12" width="268" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" title="Login Now" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="uQZ-BV-ofR">
@@ -155,6 +169,15 @@
                         <action selector="oneDriveLogin:" target="-2" id="IJb-Js-XbT"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fUC-g2-zah">
+                    <rect key="frame" x="92" y="260" width="120" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox Login" id="UdG-YG-jG7">
+                        <font key="font" metaFont="system" size="16"/>
+                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="92" y="681"/>
         </customView>
@@ -171,31 +194,57 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="U0Q-g9-ITo" customClass="customTextFiled">
-                                    <rect key="frame" x="8" y="0.0" width="260" height="30"/>
+                                    <rect key="frame" x="10" y="0.0" width="260" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="FMI-8F-Lkh" customClass="customTextFieldCell">
-                                        <font key="font" size="13" name="HelveticaNeue"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="FMI-8F-Lkh" customClass="customTextFieldCell">
+                                        <font key="font" size="14" name="HelveticaNeue-Light"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                             </subviews>
                         </customView>
-                        <secureTextField focusRingType="none" verticalHuggingPriority="750" tag="2" id="nxI-1a-u3g" customClass="IMBSecireTextField">
+                        <customView id="0q6-o8-PWI" customClass="IMBDrawTextFiledView">
                             <rect key="frame" x="0.0" y="0.0" width="268" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <secureTextFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" focusRingType="none" placeholderString="Password" drawsBackground="YES" id="Ck5-Bf-3ph">
-                                <font key="font" size="14" name="HelveticaNeue-Light"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
-                                <allowedInputSourceLocales>
-                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                </allowedInputSourceLocales>
-                            </secureTextFieldCell>
+                            <subviews>
+                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Poc-8x-y2u" customClass="customTextFiled">
+                                    <rect key="frame" x="10" y="0.0" width="260" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Password" id="Fdm-lx-Vtb" customClass="customTextFieldCell">
+                                        <font key="font" size="14" name="HelveticaNeue-Light"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <secureTextField focusRingType="none" verticalHuggingPriority="750" tag="2" id="nxI-1a-u3g" customClass="IMBSecireTextField">
+                                    <rect key="frame" x="0.0" y="1" width="268" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <secureTextFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" focusRingType="none" placeholderString="Password" drawsBackground="YES" id="Ck5-Bf-3ph">
+                                        <font key="font" size="14" name="HelveticaNeue-Light"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                        <allowedInputSourceLocales>
+                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                        </allowedInputSourceLocales>
+                                    </secureTextFieldCell>
+                                    <connections>
+                                        <action selector="enterTextView:" target="-2" id="nt4-XN-r0q"/>
+                                    </connections>
+                                </secureTextField>
+                            </subviews>
+                        </customView>
+                        <button verticalHuggingPriority="750" id="Gel-HP-Z1E" customClass="IMBCustomBtn">
+                            <rect key="frame" x="241" y="12" width="18" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="symbols-eye" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Sy9-X3-pUF">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
                             <connections>
-                                <action selector="enterTextView:" target="-2" id="nt4-XN-r0q"/>
+                                <action selector="checkoutPwdClicked:" target="-2" id="MmG-zg-4Pc"/>
                             </connections>
-                        </secureTextField>
+                        </button>
                     </subviews>
                 </customView>
                 <button hidden="YES" verticalHuggingPriority="750" id="ewv-zD-3kZ">
@@ -210,20 +259,11 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="33K-ea-oZw">
-                    <rect key="frame" x="3" y="32" width="298" height="17"/>
+                    <rect key="frame" x="3" y="36" width="298" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Don't you have an account?Sign up" id="8zx-Ky-3GF">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="PingFangSC-Regular"/>
                         <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2ci-xo-IiQ">
-                    <rect key="frame" x="77" y="262" width="149" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="iCloud Login" id="i0C-yO-L5q">
-                        <font key="font" metaFont="system" size="16"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -237,20 +277,40 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DR5-hk-yOS">
-                    <rect key="frame" x="46" y="115" width="170" height="17"/>
+                    <rect key="frame" x="41" y="115" width="170" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remember me" id="aNu-Ri-Kxc">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="PingFangSC-Regular"/>
                         <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="Req-fh-YlK" customClass="IMBCustomBlueButton">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2ci-xo-IiQ">
+                    <rect key="frame" x="77" y="261" width="149" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iCloud Login" id="i0C-yO-L5q">
+                        <font key="font" metaFont="system" size="16"/>
+                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="Vex-jn-KHf" customClass="IMBCheckBtn">
+                    <rect key="frame" x="20" y="117" width="23" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="checkbox1" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cvy-6b-6a1">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="checkBoxClicked:" target="-2" id="TuN-Ra-8yu"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="Req-fh-YlK" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="17" y="69" width="268" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" title="Login Now" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="01r-5w-hrY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="PingFangSC-Regular"/>
                     </buttonCell>
                     <connections>
                         <action selector="iCloudLogIn:" target="-2" id="oHP-85-Pk4"/>
@@ -263,25 +323,17 @@
             <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button hidden="YES" verticalHuggingPriority="750" id="I1q-bg-xM2">
-                    <rect key="frame" x="88" y="4" width="127" height="0.0"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Click to login →" bezelStyle="rounded" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="qfw-We-tlQ">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <customView id="nmA-P9-rEV">
-                    <rect key="frame" x="0.0" y="10" width="302" height="150"/>
+                    <rect key="frame" x="0.0" y="-2" width="302" height="162"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jUP-IX-LCm">
-                            <rect key="frame" x="74" y="64" width="155" height="70"/>
+                            <rect key="frame" x="74" y="83" width="155" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-icloudDrive" id="Uwp-pn-Cfk"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2kX-w5-I3m">
-                            <rect key="frame" x="39" y="9" width="225" height="17"/>
+                            <rect key="frame" x="39" y="23" width="225" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="For safe keeping.And easy sharing" id="s0c-D1-azg">
                                 <font key="font" metaFont="system"/>
@@ -290,11 +342,20 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ub9-OL-8tP">
-                            <rect key="frame" x="121" y="34" width="60" height="17"/>
+                            <rect key="frame" x="121" y="50" width="60" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iCloud" id="dr4-vV-Lht">
                                 <font key="font" metaFont="system" size="16"/>
                                 <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="c8z-4W-yGo">
+                            <rect key="frame" x="95" y="3" width="113" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Click to login →" id="l4e-ld-kuZ">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -307,20 +368,26 @@
             <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button hidden="YES" verticalHuggingPriority="750" id="3jv-BK-Imm">
-                    <rect key="frame" x="88" y="4" width="127" height="0.0"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Click to login →" bezelStyle="rounded" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="8QI-Ab-ZQ0">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <customView id="e94-ti-MsB">
-                    <rect key="frame" x="0.0" y="12" width="302" height="150"/>
+                    <rect key="frame" x="0.0" y="0.0" width="302" height="162"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Cex-Gs-0dJ">
+                            <rect key="frame" x="74" y="83" width="155" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-dropbox" id="xsI-31-RJr"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="62o-m8-ZB0">
+                            <rect key="frame" x="44" y="23" width="214" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Get to your files from anywhere" id="U6w-2a-AEr">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ywc-uI-eOk">
-                            <rect key="frame" x="116" y="34" width="71" height="17"/>
+                            <rect key="frame" x="111" y="50" width="81" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox" id="aX4-jF-wWh">
                                 <font key="font" metaFont="system" size="16"/>
@@ -328,15 +395,10 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Cex-Gs-0dJ">
-                            <rect key="frame" x="74" y="60" width="155" height="70"/>
+                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZKB-Vm-WhK">
+                            <rect key="frame" x="97" y="3" width="109" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-dropbox" id="xsI-31-RJr"/>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="62o-m8-ZB0">
-                            <rect key="frame" x="44" y="9" width="214" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Get to your files from anywhere" id="U6w-2a-AEr">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Click to login →" id="gV3-bk-9Kg">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -409,30 +471,7 @@
             <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
-                    <rect key="frame" x="55" y="145" width="143" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Device Manager" id="oxg-MJ-QLC">
-                        <font key="font" metaFont="system" size="16"/>
-                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gaI-nn-QSw">
-                    <rect key="frame" x="26" y="113" width="201" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Can multi-device management" id="DO0-6l-Cpy">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iPp-8x-sZo">
-                    <rect key="frame" x="47" y="190" width="159" height="158"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-no-device" id="Ckw-GN-3w2"/>
-                </imageView>
-                <button autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
+                <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
                     <rect key="frame" x="34" y="48" width="99" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
@@ -443,14 +482,70 @@
                         <action selector="selectedDeviceBtnClicked:" target="-2" id="ncK-id-nuR"/>
                     </connections>
                 </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iPp-8x-sZo">
+                    <rect key="frame" x="47" y="189" width="159" height="158"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="phone001" id="Ckw-GN-3w2"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
+                    <rect key="frame" x="55" y="145" width="143" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Device Manager" id="oxg-MJ-QLC">
+                        <font key="font" size="16" name="PingFangSC-Regular"/>
+                        <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gaI-nn-QSw">
+                    <rect key="frame" x="26" y="112" width="201" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Can multi-device management" id="DO0-6l-Cpy">
+                        <font key="font" size="13" name="PingFangSC-Regular"/>
+                        <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="913.5" y="716"/>
         </customView>
+        <customView id="mcZ-FP-Cbb" userLabel="icloud login success">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" id="jOQ-ml-oB7">
+                    <rect key="frame" x="247" y="145" width="36" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="symbols-todevice" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="tQ0-FJ-h6k">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="92" y="1332"/>
+        </customView>
+        <customView id="5lu-CQ-rEc" userLabel="dropbox login success">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" id="Lmq-vK-veU">
+                    <rect key="frame" x="249" y="148" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="symbols-todevice" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="lef-Nd-hfq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="538" y="1332"/>
+        </customView>
     </objects>
     <resources>
+        <image name="checkbox1" width="14" height="14"/>
         <image name="dropboxLogin" width="130" height="126"/>
+        <image name="phone001" width="194" height="166"/>
         <image name="symbols-dropbox" width="144" height="146"/>
+        <image name="symbols-eye" width="26" height="18"/>
         <image name="symbols-icloudDrive" width="132" height="116"/>
-        <image name="symbols-no-device" width="222" height="320"/>
+        <image name="symbols-todevice" width="30" height="30"/>
     </resources>
 </document>

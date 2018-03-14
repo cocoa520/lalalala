@@ -23,17 +23,17 @@
     
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *sessionDic = [defaults objectForKey:@"oneDriveSessionKey"];
-        if (sessionDic) {
-            NSString *accessToken = [sessionDic objectForKey:@"accessToken"];
-            NSString *refreshToken = [sessionDic objectForKey:@"refreshToken"];
-            NSDate *expirationDate = [sessionDic objectForKey:@"expirationDate"];
-            _oneDrive.accessToken = accessToken;
-            _oneDrive.refreshToken = refreshToken;
-            _oneDrive.expirationDate = expirationDate;
-            [self loadDriveData];
-        }else{
+//        if (sessionDic) {
+//            NSString *accessToken = [sessionDic objectForKey:@"accessToken"];
+//            NSString *refreshToken = [sessionDic objectForKey:@"refreshToken"];
+//            NSDate *expirationDate = [sessionDic objectForKey:@"expirationDate"];
+//            _oneDrive.accessToken = accessToken;
+//            _oneDrive.refreshToken = refreshToken;
+//            _oneDrive.expirationDate = expirationDate;
+//            [self loadDriveData];
+//        }else{
             [_oneDrive logIn];
-        }
+//        }
         _deivceDelegate = delegate;
     }
     return self;

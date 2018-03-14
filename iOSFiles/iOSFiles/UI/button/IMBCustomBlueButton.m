@@ -54,8 +54,8 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    [self setAlphaValue:0.75f];
     [super mouseDown:theEvent];
+    [self setAlphaValue:0.75f];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {

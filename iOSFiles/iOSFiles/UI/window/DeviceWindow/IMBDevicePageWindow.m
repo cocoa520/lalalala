@@ -30,9 +30,9 @@
 #import "IMBToolBarView.h"
 #import "IMBPhotoCategoryController.h"
 #import "IMBAppsListViewController.h"
-
+#import "IMBCommonDefine.h"
 #import <objc/runtime.h>
-
+#import "SystemHelper.h"
 
 static CGFloat const rowH = 40.0f;
 static CGFloat const labelY = 10.0f;
@@ -79,9 +79,9 @@ static CGFloat const labelY = 10.0f;
 //    NSButton *btn1 =  [self.window standardWindowButton:NSWindowMiniaturizeButton];
 //    [btn1 setFrame:NSMakeRect(6,10, 20, 20)];
     NSButton *btn2 =  [self.window standardWindowButton:NSWindowZoomButton];
-//    [btn2 setFrame:NSMakeRect(0,0, 20, 20)];
-//    [btn setHidden:YES];
-//    [btn1 setHidden:YES];
+    [btn2 setFrame:NSMakeRect(0,0, 20, 20)];
+    [btn setHidden:YES];
+    [btn2 setHidden:YES];
     
     
     [btn2 setAction:@selector(zoomWindow:)];
@@ -92,21 +92,120 @@ static CGFloat const labelY = 10.0f;
     
     [_title setStringValue:_iPod.deviceInfo.deviceName];
     
+    IMBDrawOneImageBtn *button = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(12, 20, 12, 12)];
+    [button mouseDownImage:[NSImage imageNamed:@"windowclose3"] withMouseUpImg:[NSImage imageNamed:@"windowclose"] withMouseExitedImg:[NSImage imageNamed:@"windowclose"] mouseEnterImg:[NSImage imageNamed:@"windowclose2"]];
+    [button setEnabled:YES];
+    [button setTarget:self];
+    [button setAction:@selector(closeWindow:)];
+    [button setBordered:NO];
+    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:button];
     
-//    IMBDrawOneImageBtn *button = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(12, 2, 12, 12)];
-//    [button mouseDownImage:[NSImage imageNamed:@"windowclose3"] withMouseUpImg:[NSImage imageNamed:@"windowclose"] withMouseExitedImg:[NSImage imageNamed:@"windowclose"] mouseEnterImg:[NSImage imageNamed:@"windowclose2"]];
-//    [button setEnabled:YES];
-//    [button setTarget:self];
-//    [button setAction:@selector(closeWindow:)];
-//    [button setBordered:NO];
-//    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:btn2];
-    
-    [(IMBToolbarWindow *)self.window setTitleBarHeight:20];
+    IMBLackCornerView *whiteView = [[IMBLackCornerView alloc]initWithFrame:NSMakeRect(0, 0, 1000, 50)];
+    [whiteView setBackgroundColor:[NSColor redColor]];
+    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:whiteView];
+    [whiteView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
+    [whiteView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
+    [whiteView addSubview:button];
+   
+    [(IMBToolbarWindow *)self.window setTitleBarHeight:50];
     [(IMBToolbarWindow *)self.window setBackgroundColor:[NSColor whiteColor]];
 //    [[(IMBToolbarWindow *)self.window titleBarView] setFrameSize:NSMakeSize(self.window.frame.size.width, 300)];
     [self.window setMovableByWindowBackground:YES];
     [self setupView];
+    
+//    _selectedDeviceBtn = [[IMBSelecedDeviceBtn alloc]initWithFrame:NSMakeRect(200, 0, 100, 40)];
+//    [_selectedDeviceBtn setBordered:NO];
+////    [_chooseViewBtn setFrame:NSMakeRect(200, 10 , 100, 60)];
+//    [_selectedDeviceBtn configButtonName:@"No Device Connected" WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15 WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:YES withConnectType:0];
+//    [_selectedDeviceBtn setTarget:self];
+//    [_selectedDeviceBtn setAction:@selector(selectedDeviceBtnClicked:)];
+//    [whiteView addSubview:_selectedDeviceBtn];
+    [whiteView release];
+    whiteView = nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+}
 
+- (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
+    
+    IMBBaseInfo *baseInfo = [noti object];
+    
+    if (_devPopover.isShown) {
+        [_devPopover close];
+    }
+//    [self setDeviceInfosWithiPod:baseInfo];
+//    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+//    IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
+//    
+//    if (!baseInfo.isSelected) {
+//        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+//        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//            baseInfo.isSelected = YES;
+//            IMBDevicePageWindow *devicePagewindow = [[IMBDevicePageWindow alloc] initWithiPod:ipod];
+//            [[devicePagewindow window] center];
+//            [devicePagewindow showWindow:self];
+//            [_windowControllerDic setObject:devicePagewindow forKey:ipod.uniqueKey];
+//            [devicePagewindow release];
+//            devicePagewindow = nil;
+//        });
+//    }else{
+//        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+//        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//            IMBDevicePageWindow *devicePagewindow = [_windowControllerDic objectForKey:ipod.uniqueKey];
+//            [[devicePagewindow window] center];
+//            [devicePagewindow showWindow:self];
+//        });
+//    }
+}
+
+- (void)selectedDeviceBtnClicked:(IMBSelecedDeviceBtn *)sender {
+    
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    if (!_selectedDeviceBtn.isDisable) {
+        if (_devPopover != nil) {
+            if (_devPopover.isShown) {
+                [_devPopover close];
+                return;
+            }
+        }
+        if (_devPopover != nil) {
+            [_devPopover release];
+            _devPopover = nil;
+        }
+        _devPopover = [[NSPopover alloc] init];
+        
+        if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"10"]) {
+            _devPopover.appearance = (NSPopoverAppearance)[NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }else {
+            _devPopover.appearance = NSPopoverAppearanceMinimal;
+        }
+        
+        _devPopover.animates = YES;
+        _devPopover.behavior = 0;
+        _devPopover.delegate = self;
+        
+        IMBDevViewController *devController = [[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil];
+        CGFloat w = 300.0f;
+        CGFloat h = 50.0f*deviceConnection.allDevices.count;
+        h = h > 200.0f ? 200.0f : h;
+        
+        devController.view.frame = NSMakeRect(0, 0, w, h);
+        
+        NSMutableArray *allDevices = [[NSMutableArray alloc] init];
+        
+        if (deviceConnection.allDevices.count) {
+            for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
+                [allDevices addObject:baseInfo];
+            }
+            if (_devPopover != nil) {
+                _devPopover.contentViewController = devController;
+            }
+            devController.devices = allDevices;
+            NSRectEdge prefEdge = NSMaxYEdge;
+            NSRect rect = NSMakeRect(sender.bounds.origin.x, sender.bounds.origin.y, sender.bounds.size.width, sender.bounds.size.height);
+            [_devPopover showRelativeToRect:rect ofView:sender preferredEdge:prefEdge];
+        }
+    }
 }
 
 - (void)setup {

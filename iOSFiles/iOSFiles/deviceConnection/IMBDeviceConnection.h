@@ -78,6 +78,7 @@ typedef enum DeviceConnectMode {
     @private
     NSMutableArray *_allDevices;
     NSMutableArray *_alliPods;
+
 }
 
 @property(nonatomic, retain, readonly)NSMutableArray *allDevices;
@@ -93,6 +94,13 @@ typedef enum DeviceConnectMode {
 
 
 + (instancetype)singleton;
+
+/**
+ *  判断当前是否有设备链接上
+ *
+ *  @return 是否链接
+ */
+- (BOOL)isConnectedDevice;
 
 /**
  *  开始监听和注销监听

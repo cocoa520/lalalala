@@ -19,6 +19,10 @@
 #import "IMBDriveBaseManage.h"
 #import "IMBGradientComponentView.h"
 #import "IMBiPod.h"
+#import "IMBShadowView.h"
+#import "IMBCheckBtn.h"
+#import "IMBMyDrawCommonly.h"
+
 
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
@@ -65,14 +69,50 @@
     
     
     IBOutlet NSView *_midiumSizeDevicesView;
-    IBOutlet NSButton *_midiumiCloudClickLoginBtn;
-    IBOutlet NSButton *_midiumDropBoxClickLoginBtn;
+    IBOutlet NSTextField *_midiumiCloudClickLoginBtn;
+    IBOutlet NSTextField *_midiumDropBoxClickLoginBtn;
     IBOutlet NSView *_midiumDropBoxContentView;
     IBOutlet NSView *_midiumiCloudContentView;
     
+    
+    IBOutlet NSImageView *_bigDevicesImageView;
+    
+    
+    IBOutlet IMBShadowView *_icloudShadowView;
+    IBOutlet IMBShadowView *_dropboxShadowView;
+    IBOutlet IMBShadowView *_devicesShadowView;
+    
+    
+    IBOutlet NSButton *_checkoutPwdBtn;
+    
+    
+    
+    IBOutlet IMBDrawTextFiledView *_icloudLoginPwdView;
+    
+    IBOutlet customTextFiled *_icloudLoginPwdTextfield;
+    
+    IBOutlet IMBCheckBtn *_checkBoxbtn;
+    
+    
+    
+    BOOL _isSecureMode;
+    BOOL _isCheckBoxSelected;
+    
+    
+    IBOutlet NSView *_icloudCustomView;
+    
+    
+    IBOutlet IMBMyDrawCommonly *icloudLoginbtn;
+    
+    IBOutlet IMBMyDrawCommonly *dropboxLoginBtn;
+    
+    CALayer *_loadLayer;
 }
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 - (void)mainWindowClose;
 - (void)switchViewController;
+//登录成功 切换页面
 - (void)switchiCloudDriveViewController;
+//登录错误
+- (void)driveLogInFial:(ResponseCode)responseCode;
 @end

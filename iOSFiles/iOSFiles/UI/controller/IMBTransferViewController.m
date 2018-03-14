@@ -50,6 +50,7 @@
 //  _baseTransfer = [[IMBFileSystemExport alloc] initWithIPodkey:_ipodKey exportTracks:_selectedItems exportFolder:_exportFolder withDelegate:self];
 
 -(void)awakeFromNib {
+    [_rootView setBackgroundColor:[NSColor redColor]];
     if (_transferType == TransferToDevice) {
         _baseTransfer = [[IMBBaseTransfer alloc] initWithIPodkey:_uniquekey importTracks:_toDevicePathAry withCurrentPath:_currentPath withDelegate:self];
       
@@ -57,6 +58,7 @@
         _baseTransfer = [[IMBFileSystemExport alloc] initWithIPodkey:_uniquekey exportTracks:_toDevicePathAry exportFolder:_currentPath withDelegate:self];
     }
     [_baseTransfer startTransfer];
+    
 }
 
 @end

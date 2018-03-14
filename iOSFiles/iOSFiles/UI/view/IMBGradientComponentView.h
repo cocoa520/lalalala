@@ -15,6 +15,7 @@
     BOOL _isleftRightGridient;
     
     BOOL _isOriginalFrame;
+    BOOL _isDevicesOriginalFrame;
     NSSize _shadowSize;
 }
 
@@ -26,10 +27,11 @@
  * @param  rightNormalBgColor    右边或者下面的颜色
  */
 - (void)setIsLeftRightGridient:(BOOL)isLeftRightGridient withLeftNormalBgColor:(NSColor *)leftNormalBgColor withRightNormalBgColor:(NSColor *)rightNormalBgColor;
-- (void)setViewShadow:(CGFloat)bottom;
+//- (void)setViewShadow:(CGFloat)bottom left:(CGFloat)left;
 
 @property(nonatomic, copy)void(^mouseClicked)(void);
 @property(nonatomic, assign)BOOL isOriginalFrame;
+@property(nonatomic, assign)BOOL isDevicesOriginalFrame;
 
 @property(nonatomic, copy)void(^mouseEntered)(void);
 @property(nonatomic, copy)void(^mouseExited)(void);

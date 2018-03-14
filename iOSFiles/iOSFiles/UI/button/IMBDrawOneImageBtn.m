@@ -7,7 +7,7 @@
 //
 
 #import "IMBDrawOneImageBtn.h"
-
+#import "IMBCommonDefine.h"
 @implementation IMBDrawOneImageBtn
 @synthesize isDFUGuide = _isDFUGuide;
 @synthesize isEnble = _isEnble;
@@ -102,7 +102,7 @@
     NSBezierPath *clipPath = [NSBezierPath bezierPathWithRect:dirtyRect];
     [clipPath setWindingRule:NSEvenOddWindingRule];
     [clipPath addClip];
-    [[NSColor whiteColor] set];
+    [COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR set];
     [clipPath fill];
     
     if (_longTimeDown) {

@@ -30,6 +30,8 @@ NSString * const DetailVCHeaderTitleBookNamesPlist = @"DetailVCHeaderTitleBookNa
 NSString * const DetailVCHeaderTitlePhotoNamesPlist = @"DetailVCHeaderTitlePhotoNames.plist";
 NSString * const DetailVCHeaderTitleSubPhotoNamesPlist = @"DetailVCHeaderTitleSubPhotoNames.plist";
 
+NSString * const IMBiCloudUserName = @"iCloudUserName";
+
 char kIMBDevicePageRootBoxKey;
 char kIMBDevicePageToolBarViewKey;
 char kIMBPhotoCategoryControllerKey;

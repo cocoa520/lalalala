@@ -11,9 +11,16 @@
 
 #define COLOR_MAIN_WINDOW_BG IMBRgbColor(248,248,248)
 #define COLOR_BTN_BLUE_BG IMBRgbColor(53,179,251)
+//主窗口输入框背景颜色
 #define COLOR_MAIN_WINDOW_TEXTFIELD_BG IMBRgbColor(248,248,248)
+//主窗口输入框文字颜色
 #define COLOR_MAIN_WINDOW_TEXTFIELD_TEXT IMBRgbColor(184,184,184)
-
+//主窗口选择按钮文字颜色
+#define COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT IMBRgbColor(0, 160, 255)
+//主窗口view的阴影颜色
+#define COLOR_MAIN_WINDOW_VIEW_SHADOW IMBGrayColor(242)
+//主窗口view的阴影颜色
+#define COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR IMBGrayColor(220)
 
 
 

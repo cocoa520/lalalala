@@ -31,7 +31,7 @@ APPKIT_EXTERN NSString * const DetailVCHeaderTitleBookNamesPlist;
 APPKIT_EXTERN NSString * const DetailVCHeaderTitlePhotoNamesPlist;
 APPKIT_EXTERN NSString * const DetailVCHeaderTitleSubPhotoNamesPlist;
 
-
+APPKIT_EXTERN NSString * const IMBiCloudUserName;
 
 APPKIT_EXTERN char kIMBDevicePageRootBoxKey;
 APPKIT_EXTERN char kIMBDevicePageToolBarViewKey;

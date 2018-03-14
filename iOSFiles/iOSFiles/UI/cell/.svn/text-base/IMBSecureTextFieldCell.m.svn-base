@@ -14,7 +14,7 @@
 #import "StringHelper.h"
 #define LINE 5
 @implementation IMBSecureTextFieldCell
-//@synthesize logBtn = _logBtn;
+@synthesize logBtn = _logBtn;
 @synthesize isHasLogBtn = _isHasLogBtn;
 @synthesize delegate = _delegate;
 @synthesize cursorColor = _cursorColor;
@@ -116,7 +116,7 @@
 
 - (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject start:(NSInteger)selStart length:(NSInteger)selLength
 {
-    NSRect rect = NSMakeRect(aRect.origin.x+12, aRect.origin.y, aRect.size.width -48, aRect.size.height);
+    NSRect rect = NSMakeRect(aRect.origin.x+10, aRect.origin.y, aRect.size.width -48, aRect.size.height);
 	//aRect = [self titleRectForBounds:aRect];
 	[super selectWithFrame:rect inView:controlView editor:textObj delegate:anObject start:selStart length:selLength];
 }
@@ -124,7 +124,7 @@
 - (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject event:(NSEvent *)theEvent
 {
 	//aRect = [self titleRectForBounds:aRect];
-    NSRect rect = NSMakeRect(aRect.origin.x+12, aRect.origin.y, aRect.size.width -48, aRect.size.height);
+    NSRect rect = NSMakeRect(aRect.origin.x+10, aRect.origin.y, aRect.size.width -48, aRect.size.height);
 	[super editWithFrame:rect inView:controlView editor:textObj delegate:anObject event:theEvent];
 }
 
@@ -164,9 +164,8 @@
 //    [path addClip];
 //    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] setStroke];
 //    [path stroke];
-    
-    NSRect rect = NSMakeRect(12, frame.origin.y, frame.size.width - 50, frame.size.height);
-//        }
+//}
+    NSRect rect = NSMakeRect(10, frame.origin.y, frame.size.width - 50, frame.size.height);
     [super drawInteriorWithFrame:rect inView:controlView];
 
 }
@@ -193,15 +192,15 @@
 }
 -(void)enterSignin:(NSNotification *)obj{
     _isEnterBtn = YES;
-//    [self.logBtn setHidden:YES];
-//    [_loadLayer setHidden:NO];
-//    [_loadingImg setWantsLayer:YES];
-//    [_loadingImg.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
-    //    CGRect rect = CGRectMake(self.logBtn.frame.origin.x + self.logBtn.frame.size.width/2, self.logBtn.frame.origin.y + self.logBtn.frame.size.height/2, self.logBtn.frame.size.width, self.logBtn.frame.size.height);
-    //    NSRect rect = NSMakeRect(self.logBtn.frame.origin.x + self.logBtn.frame.size.width/2, self.logBtn.frame.origin.y + self.logBtn.frame.size.height/2, self.logBtn.frame.size.width, self.logBtn.frame.size.height);
-    //    [_loadingImg.layer setContentsCenter:rect];
-//    [_loadingImg.layer setPosition:CGPointMake(self.logBtn.frame.origin.x + 12, self.logBtn.frame.origin.y + 12)];
-//    [_loadLayer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
+    [self.logBtn setHidden:YES];
+    [_loadLayer setHidden:NO];
+    [_loadingImg setWantsLayer:YES];
+    [_loadingImg.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
+//        CGRect rect = CGRectMake(self.logBtn.frame.origin.x + self.logBtn.frame.size.width/2, self.logBtn.frame.origin.y + self.logBtn.frame.size.height/2, self.logBtn.frame.size.width, self.logBtn.frame.size.height);
+        NSRect rect = NSMakeRect(self.logBtn.frame.origin.x + self.logBtn.frame.size.width/2, self.logBtn.frame.origin.y + self.logBtn.frame.size.height/2, self.logBtn.frame.size.width, self.logBtn.frame.size.height);
+        [_loadingImg.layer setContentsCenter:rect];
+    [_loadingImg.layer setPosition:CGPointMake(self.logBtn.frame.origin.x + 12, self.logBtn.frame.origin.y + 12)];
+    [_loadLayer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
 }
 
 -(void)changePass:(id)sender{

@@ -8,9 +8,12 @@
 
 #import "customTextFiled.h"
 #import "IMBNotificationDefine.h"
+#import "IMBCommonDefine.h"
+#import "IMBCommonTool.h"
 #import "StringHelper.h"
 @implementation customTextFiled
 @synthesize needPasteboardContent = _needPasteboardContent;
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -41,8 +44,10 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+//    [IMBCommonTool setViewBgWithView:self color:COLOR_MAIN_WINDOW_TEXTFIELD_BG delta:0 radius:4.0f dirtyRect:dirtyRect];
     [super drawRect:dirtyRect];
     // Drawing code here.
+    
 }
 
 - (void)textDidChange:(NSNotification *)notification{

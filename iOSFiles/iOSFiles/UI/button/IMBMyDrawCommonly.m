@@ -163,38 +163,47 @@
     [clipPath setWindingRule:NSEvenOddWindingRule];
     [clipPath addClip];
     [clipPath setLineWidth:_lineWidth];
-     if (_buttonType == MouseOut){
-         textColor = _mouseExitedtextColor;
-         [_mouseExitedfillColor set];
-         [clipPath fill];
-         [_mouseExitedLineColor setStroke];
-         [clipPath stroke];
-     }else if (_buttonType == MouseUp){
-         textColor = _mouseUptextColor;
-         [_mouseUpfillColor set];
-         [clipPath fill];
-         [_mouseUpLineColor setStroke];
-         [clipPath stroke];
-     }else if (_buttonType == MouseDown){
-         textColor = _mouseDowntextColor;
-         [_mouseDownfillColor set];
-         [clipPath fill];
-         [_mouseDownLineColor setStroke];
-         [clipPath stroke];
-     }else if (_buttonType == MouseEnter){
-         textColor = _mouseEnteredtextColor;
-         
-         [_mouseEnteredfillColor set];
-         [clipPath fill];
-         [_mouseEnteredLineColor setStroke];
-         [clipPath stroke];
-     }else{
-        textColor = _mouseExitedtextColor;
-        [_mouseExitedfillColor set];
+    if (self.enabled) {
+        if (_buttonType == MouseOut){
+            textColor = _mouseExitedtextColor;
+            [_mouseExitedfillColor set];
+            [clipPath fill];
+            [_mouseExitedLineColor setStroke];
+            [clipPath stroke];
+        }else if (_buttonType == MouseUp){
+            textColor = _mouseUptextColor;
+            [_mouseUpfillColor set];
+            [clipPath fill];
+            [_mouseUpLineColor setStroke];
+            [clipPath stroke];
+        }else if (_buttonType == MouseDown){
+            textColor = _mouseDowntextColor;
+            [_mouseDownfillColor set];
+            [clipPath fill];
+            [_mouseDownLineColor setStroke];
+            [clipPath stroke];
+        }else if (_buttonType == MouseEnter){
+            textColor = _mouseEnteredtextColor;
+            
+            [_mouseEnteredfillColor set];
+            [clipPath fill];
+            [_mouseEnteredLineColor setStroke];
+            [clipPath stroke];
+        }else{
+            textColor = _mouseExitedtextColor;
+            [_mouseExitedfillColor set];
+            [clipPath fill];
+            [_mouseExitedLineColor setStroke];
+            [clipPath stroke];
+        }
+    }else {
+        textColor = [NSColor darkGrayColor];
+        [IMBGrayColor(222) set];
         [clipPath fill];
         [_mouseExitedLineColor setStroke];
         [clipPath stroke];
-     }
+    }
+    
     [clipPath closePath];
     NSAttributedString *as = [[NSAttributedString alloc] initWithString:[_titleName?_titleName:@"" stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];

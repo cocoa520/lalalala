@@ -49,11 +49,15 @@
                         <rect key="frame" x="0.0" y="400" width="592" height="30"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OoN-C0-CG3">
-                                <rect key="frame" x="272" y="0.0" width="48" height="30"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="C4Q-EC-VZG">
+                                <rect key="frame" x="252" y="0.0" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-allfiles" id="1sd-Nz-LLB"/>
-                            </imageView>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AllFiles" id="MIK-4e-2lh">
+                                    <font key="font" size="14" name="PingFangSC-Regular"/>
+                                    <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </customView>
                 </subviews>
@@ -63,7 +67,4 @@
             </connections>
         </window>
     </objects>
-    <resources>
-        <image name="symbols-allfiles" width="92" height="40"/>
-    </resources>
 </document>

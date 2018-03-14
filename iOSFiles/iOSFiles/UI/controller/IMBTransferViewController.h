@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IMBBaseTransfer.h"
-
+#import "IMBWhiteView.h"
 typedef enum TransferMode {
     TransferExport = 1,
     TransferImport = 2,
@@ -32,6 +32,7 @@ typedef enum TransferMode {
     NSString *_currentPath;
     IMBBaseTransfer *_baseTransfer;
     TransferModeType _transferType;
+    IBOutlet IMBWhiteView *_rootView;
 }
 - (id)initWithToDevicePath:(NSMutableArray*)paths WithiPodKey:(NSString *)uniqueKey curFolder:(NSString *)currentPath;
 - (id)initWithUniqueKey:(NSString *)uniqueKey withSelectedAry:(NSMutableArray *)selectedAry exportFolder:(NSString *)exportFolder withDelegate:(id)delegate;

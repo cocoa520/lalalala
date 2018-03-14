@@ -13,7 +13,7 @@
 
 static CGFloat const IMBGradientViewMidiumiCloudViewOriginalHeight = 180.f;
 static CGFloat const IMBGradientViewMidiumDevicesViewOriginalHeight = 376.0f;
-static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
+static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 
 
 @interface IMBGradientComponentView()
@@ -27,6 +27,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
 @implementation IMBGradientComponentView
 
 @synthesize isOriginalFrame = _isOriginalFrame;
+@synthesize isDevicesOriginalFrame = _isDevicesOriginalFrame;
 
 
 - (void)setIsLeftRightGridient:(BOOL)isLeftRightGridient withLeftNormalBgColor:(NSColor *)leftNormalBgColor withRightNormalBgColor:(NSColor *)rightNormalBgColor {
@@ -46,18 +47,19 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
-    [clipPath setWindingRule:NSEvenOddWindingRule];
-    [clipPath addClip];
-    [COLOR_MAIN_WINDOW_BG set];
-    [clipPath fill];
+//    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
+//    [clipPath setWindingRule:NSEvenOddWindingRule];
+//    [clipPath addClip];
+//    [COLOR_MAIN_WINDOW_BG set];
+//    [clipPath fill];
     
     
     NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-    [shadow setShadowColor:COLOR_TEXT_LINE];
+    [shadow setShadowColor:COLOR_MAIN_WINDOW_VIEW_SHADOW];
     [shadow setShadowOffset:_shadowSize];
-    [shadow setShadowBlurRadius:4];
+    [shadow setShadowBlurRadius:6];
     [shadow set];
+    
     dirtyRect.origin.x = 0;
     dirtyRect.origin.y = 0;
     dirtyRect.size.width = self.frame.size.width;
@@ -67,8 +69,8 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
     [[NSColor whiteColor] set];
     [text fill];
     
-    [[NSColor colorWithCalibratedWhite:0.9 alpha:0.0] set];
-    [text stroke];
+//    [[NSColor colorWithCalibratedWhite:0.9 alpha:0.0] set];
+//    [text stroke];
 //    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
 //    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 //    NSBezierPath *path = nil;
@@ -101,7 +103,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
 - (void)awakeFromNib {
     [self addTrackingRect:[self bounds] owner:self userData:nil assumeInside:NO];
     _isMouseEntered = NO;
-    _shadowSize = NSMakeSize(0, 0);
+    _shadowSize = NSMakeSize(0.5f, -0.5);
 }
 
 - (CGPathRef)quartzPath:(NSBezierPath *)bezierPath
@@ -171,13 +173,19 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
 
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (self.mouseClicked) {
-        self.mouseClicked();
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.mouseClicked) {
+            self.mouseClicked();
+        }
+    });
+    
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+    
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-//    IMBFLog(@"IMBGradientComponentView--mouseEntered");
     if (_isMouseEntered == NO && _isOriginalFrame) {
         
         _isMouseEntered = YES;
@@ -185,13 +193,15 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
         NSRect f = self.frame;
         if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow;
-            self.frame = f;
-            [self setViewShadow:-IMBGradientViewMidiumViewShadow];
+//            self.frame = f;
+            [IMBViewAnimation animationWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
+//            [self setViewShadow:-IMBGradientViewMidiumViewShadow left:0.f];
         }
         if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow;
-            self.frame = f;
-            [self setViewShadow:-IMBGradientViewMidiumViewShadow];
+//            self.frame = f;
+            [IMBViewAnimation animationWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
+//            [self setViewShadow:-IMBGradientViewMidiumViewShadow left:0.f];
         }
         if (self.mouseEntered) {
             self.mouseEntered();
@@ -209,13 +219,11 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
         if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight;
             self.frame = f;
-            [self setViewShadow:0];
         }
         
         if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
             f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight;
             self.frame = f;
-            [self setViewShadow:0];
         }
         
         if (self.mouseExited) {
@@ -226,7 +234,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 5.0f;
     
 }
 
-- (void)setViewShadow:(CGFloat)bottom {
-    _shadowSize = NSMakeSize(0, bottom);
+- (void)setViewShadow:(CGFloat)bottom left:(CGFloat)left{
+    _shadowSize = NSMakeSize(left, bottom);
 }
 @end

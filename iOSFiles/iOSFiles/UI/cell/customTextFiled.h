@@ -14,4 +14,5 @@
     BOOL _needPasteboardContent;
 }
 @property (nonatomic,assign)BOOL needPasteboardContent;
+
 @end

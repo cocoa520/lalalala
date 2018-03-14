@@ -11,6 +11,8 @@
 #import "IMBNotificationDefine.h"
 #import "IMBSecureTextFieldCell.h"
 #import "StringHelper.h"
+#import "IMBCommonTool.h"
+
 #define LINE 5
 @implementation IMBSecireTextField
 @synthesize isHasLoginBtn = _isHasLoginBtn;
@@ -65,8 +67,9 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [COLOR_MAIN_WINDOW_TEXTFIELD_BG set];
-    NSRectFill(dirtyRect);
+    [IMBCommonTool setViewBgWithView:self color:COLOR_MAIN_WINDOW_TEXTFIELD_BG delta:0 radius:4.0f dirtyRect:dirtyRect];
+//    [COLOR_MAIN_WINDOW_TEXTFIELD_BG set];
+//    NSRectFill(dirtyRect);
     [super drawRect:dirtyRect];
     
 }

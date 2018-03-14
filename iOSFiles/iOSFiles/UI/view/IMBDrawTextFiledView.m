@@ -9,6 +9,8 @@
 #import "IMBDrawTextFiledView.h"
 #import "StringHelper.h"
 #import "IMBCommonDefine.h"
+#import "IMBCommonTool.h"
+
 
 #define LINE 5
 
@@ -28,14 +30,7 @@
 {
     [super drawRect:dirtyRect];
     
-//    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-//    [path setLineWidth:2];
-//    [path addClip];
-//    [[NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1] setStroke];
-//    [path stroke];
-    
-    [COLOR_MAIN_WINDOW_TEXTFIELD_BG set];
-    NSRectFill(dirtyRect);
+    [IMBCommonTool setViewBgWithView:self color:COLOR_MAIN_WINDOW_TEXTFIELD_BG delta:0 radius:4.0f dirtyRect:dirtyRect];
     
 //    NSBezierPath *path = [NSBezierPath bezierPath];
 //    [path moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
@@ -54,9 +49,5 @@
     
 }
 
-- (void)awakeFromNib {
-    [self setWantsLayer:YES];
-    [self.layer setCornerRadius:2.0f];
-}
 
 @end

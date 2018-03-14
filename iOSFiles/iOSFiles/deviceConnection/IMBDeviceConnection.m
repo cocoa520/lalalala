@@ -144,6 +144,13 @@ static id _instance = nil;
     [_processingQueue setMaxConcurrentOperationCount:4];//设置并发数
 }
 
+- (BOOL)isConnectedDevice {
+    if (_serialArray) {
+        return _serialArray.count;
+    }
+    return NO;
+}
+
 /**
  *  开始监听
  */

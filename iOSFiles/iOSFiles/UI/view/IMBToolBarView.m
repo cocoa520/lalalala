@@ -192,10 +192,6 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
         [_tipArray release];
         _tipArray = nil;
     }
-//    if (_hiddenIndexes) {
-//        [_hiddenIndexes release];
-//        _hiddenIndexes = nil;
-//    }
     if (_information) {
         [_information release];
         _information = nil;

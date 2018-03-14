@@ -9,6 +9,8 @@
 #import "IMBiCloudDriveManager.h"
 #import "DateHelper.h"
 #import "StringHelper.h"
+@class IMBDriveWindow;
+@class IMBDeviceViewController;
 @implementation IMBiCloudDriveManager
 
 - (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate {
@@ -22,11 +24,11 @@
         _deivceDelegate = delegate;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *cookie = [defaults objectForKey:_userID];
-//        if (cookie) {
-//            [_iCloudDrive loginWithCookie:cookie];
-//        }else{
+        if (cookie) {
+            [_iCloudDrive loginWithCookie:cookie];
+        }else{
             [_iCloudDrive loginAppleID:_userID password:_passWordID rememberMe:YES];
-//        }
+        }
     }
     return self;
 }
@@ -82,6 +84,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [_deivceDelegate switchiCloudDriveViewController];
+            
         });
     } fail:^(DriveAPIResponse *response) {
         
@@ -138,7 +141,7 @@
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_driveWindowDelegate loadSonAryComplete:dataAry];
+            [(IMBDriveWindow *)_driveWindowDelegate loadSonAryComplete:dataAry];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
@@ -152,7 +155,7 @@
 }
 
 - (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error{
-    
+   
 }
 //登录错误
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode {
@@ -165,6 +168,7 @@
     }else if (responseCode == ResponseInvalid) {///<响应无效 一般参数错误
         
     }
+    [(IMBDeviceViewController *)_deivceDelegate driveLogInFial:responseCode];
 }
 
 - (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive {
