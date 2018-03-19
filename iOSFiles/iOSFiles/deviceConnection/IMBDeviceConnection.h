@@ -43,8 +43,9 @@ typedef enum DeviceConnectMode {
     BOOL _isNowDisconnect;
     BOOL _isBackuping;//正在备份
     NSMutableArray *_backupRecordAryM;
+    ChooseLoginModelEnum _chooseModelEnum;
 }
-
+@property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;
 @property (nonatomic, assign) int batteryCapacity;
 @property (nonatomic, assign) BOOL isicloudView;
 @property (nonatomic, assign) BOOL *isConnected;
@@ -78,9 +79,9 @@ typedef enum DeviceConnectMode {
     @private
     NSMutableArray *_allDevices;
     NSMutableArray *_alliPods;
-
+    NSMutableDictionary *_allMainControllerDic;
 }
-
+@property(nonatomic, retain, readonly)NSMutableDictionary *allMainControllerDic;
 @property(nonatomic, retain, readonly)NSMutableArray *allDevices;
 @property(nonatomic, retain, readonly)NSMutableArray *alliPods;
 

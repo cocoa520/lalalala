@@ -39,6 +39,10 @@
 @synthesize mainTopLineView = _mainTopLineView;
 @synthesize isShowLineView = _isShowLineView;
 @synthesize iPod = _iPod;
+@synthesize currentSelectView = _currentSelectView;
+@synthesize defaultLayout = _defaultLayout;
+@synthesize hoverLayout = _hoverLayout;
+@synthesize selectionLayout = _selectionLayout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,9 +61,9 @@
 
 - (void)setIsShowLineView:(BOOL)isShowLineView {
     _isShowLineView = isShowLineView;
-    if (_delegate && [_delegate respondsToSelector:@selector(setTopLineViewIsHidden:)]) {
-        [_delegate setTopLineViewIsHidden:!isShowLineView];
-    }
+//    if (_delegate && [_delegate respondsToSelector:@selector(setTopLineViewIsHidden:)]) {
+//        [_delegate setTopLineViewIsHidden:!isShowLineView];
+//    }
 }
 
 - (id)init
@@ -87,10 +91,7 @@
     
 }
 
-- (void)awakeFromNib
-{
-    
-    [_toolBarView setDelegate:self];
+- (void)awakeFromNib {
     _condition = [[NSCondition alloc]init];
     _endRunloop = NO;
     _itemTableViewcanDrag = YES;
@@ -102,9 +103,15 @@
     _isContentToMac = NO;
     _isAddContent = NO;
     _researchdataSourceArray = [[NSMutableArray alloc] init];
+    
+    _defaultLayout = [[CNGridViewItemLayout alloc] init];
+    _hoverLayout = [[CNGridViewItemLayout alloc] init];
+    _selectionLayout = [[CNGridViewItemLayout alloc] init];
+    _hoverLayout.backgroundColor = [[NSColor grayColor] colorWithAlphaComponent:0.42];
+    _selectionLayout.backgroundColor = [NSColor colorWithCalibratedRed:0.542 green:0.699 blue:0.807 alpha:0.420];
+    
     if (_itemTableView != nil && _collectionView == nil) {
         
-      
         _itemTableViewcanDrag = NO;
         _itemTableViewcanDrop = NO;
         _itemTableView.dataSource = self;
@@ -121,7 +128,8 @@
         [_collectionView setSelectable:YES];
         [_collectionView setAllowsMultipleSelection:YES];
     }
-
+    [_toolBarButtonView setHidden:NO];
+    [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:self DisplayMode:YES];
     [_noDataViewScrollView setBackgroundColor:[NSColor clearColor]];
     NSArray *array = @[[NSColor clearColor],[NSColor clearColor]];
     [_noDataCollectionView setBackgroundColors:array];
@@ -153,8 +161,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeOpenPanel:) name:DeviceDisConnectedNotification object:nil];
 }
 
-- (void)setToolBar:(IMBToolBarView *)toolbar{
-    _toolBarView = toolbar;
+- (void)setToolBar:(IMBToolButtonView *)toolbar{
+    _toolBarButtonView = toolbar;
 }
 #pragma mark - NSTableViewDataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -569,8 +577,7 @@
 }
 
 #pragma mark Operaiton Actions
-- (void)reload:(id)sender
-{
+- (void)reload:(id)sender {
     NSLog(@"reload");
 }
 - (void)addItems:(id)sender
@@ -1557,11 +1564,6 @@
     }
 }
 
-- (void)changeSkin:(NSNotification *)notification
-{
-    
-}
-
 //- (int)addAppTodevice:(IMBiPod *)targetiPod withSourceAppArray:(NSMutableArray *)sourceApps{
 //    //判断选择的分类中是否包含App
 //    NSArray *sourceAppArray = [sourceApps retain];
@@ -1614,6 +1616,17 @@
 //        return 1;
 //    }
 //    return 0;
+//}
+
+//- (void)loadLoadingView:(NSBox *)rootBox {
+//    _loadingView = [[LoadingView alloc] initWithFrame:rootBox.bounds];
+//    [_loadingView startAnimation];
+//}
+//
+//- (void)removeLoadingView {
+//    [_loadingView endAnimation];
+//    [_loadingView release];
+//    _loadingView = nil;
 //}
 
 - (void)closeOpenPanel:(NSNotification *)noti {
@@ -1755,8 +1768,7 @@
 
 #pragma mark - select android calendar data
 
--(void)dealloc
-{
+-(void)dealloc {
     if (_annoyTimer != nil) {
         [_annoyTimer invalidate];
         _annoyTimer = nil;
@@ -1765,6 +1777,19 @@
         [_researchdataSourceArray release];
         _researchdataSourceArray = nil;
     }
+    if (_defaultLayout != nil) {
+        [_defaultLayout release];
+        _defaultLayout = nil;
+    }
+    if (_hoverLayout != nil) {
+        [_hoverLayout release];
+        _hoverLayout = nil;
+    }
+    if (_selectionLayout != nil) {
+        [_selectionLayout release];
+        _selectionLayout = nil;
+    }
+    
     [_iPod release],_iPod = nil;
     [_delArray release],_delArray = nil;
     [_playlistArray release],_playlistArray = nil;

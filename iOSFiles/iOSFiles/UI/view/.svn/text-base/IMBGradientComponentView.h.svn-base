@@ -17,6 +17,7 @@
     BOOL _isOriginalFrame;
     BOOL _isDevicesOriginalFrame;
     NSSize _shadowSize;
+    BOOL _disable;
 }
 
 
@@ -33,7 +34,11 @@
 @property(nonatomic, assign)BOOL isOriginalFrame;
 @property(nonatomic, assign)BOOL isDevicesOriginalFrame;
 
+@property(nonatomic, assign)BOOL disable;
+
 @property(nonatomic, copy)void(^mouseEntered)(void);
 @property(nonatomic, copy)void(^mouseExited)(void);
+
+
 
 @end

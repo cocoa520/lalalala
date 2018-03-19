@@ -7,10 +7,11 @@
 //
 
 #import "IMBCheckHeaderCell.h"
+#import "IMBCommonDefine.h"
+#import "StringHelper.h"
 
 @implementation IMBCheckHeaderCell
 @synthesize checkButton = _checkButton;
-//@synthesize selectButton = _selectButton;
 @synthesize backgroundgradient = _backgroundgradient;
 @synthesize hasTitleBorderLine = _hasTitleBorderline;
 
@@ -27,23 +28,19 @@
         [_backgroundgradient release],
         _backgroundgradient = nil;
     }
+    if (_checkButton != nil) {
+        [_checkButton release];
+        _checkButton = nil;
+    }
     [super dealloc];
 }
 
 
 - (id)initWithCell:(NSTableHeaderCell*)cell
 {
-	self = [super initTextCell:[cell stringValue]];
-	if (self) {
-        if (_checkButton != nil) {
-            [_checkButton release];
-            _checkButton = nil;
-        }
-        if (_backgroundgradient != nil) {
-            [_backgroundgradient release];
-            _backgroundgradient = nil;
-        }
-        _checkButton = [[IMBCheckBtn alloc] initWithCheckImg:[NSImage imageNamed:@"sel-true"] unCheckImg:[NSImage imageNamed:@"sel-none"] mixImg:[NSImage imageNamed:@"sel-half"]];
+    self = [super initTextCell:[cell stringValue]];
+    if (self) {
+        _checkButton = [[IMBCheckButton alloc] initWithCheckImg:[StringHelper imageNamed:@"sel_all"] unCheckImg:[StringHelper imageNamed:@"sel_non"] mixImg:[StringHelper imageNamed:@"sel_sem"]];
         [_checkButton setFrameSize:NSMakeSize(14, 14)];
         [_checkButton setButtonType:NSSwitchButton];
         [_checkButton setEnabled:YES];
@@ -51,36 +48,34 @@
         [_checkButton setState:NSOffState];
         
         NSArray* colorArray = [NSArray arrayWithObjects:
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
                                nil];
         if (_backgroundgradient != nil) {
             [_backgroundgradient release];
             _backgroundgradient = nil;
         }
         _backgroundgradient = [[NSGradient alloc] initWithColors:colorArray];
-        
-        _hasTitleBorderline = YES;
-	}
-	return self;
+    }
+    return self;
 }
 
 - (id)initWithSelectCell:(NSTableHeaderCell*)cell{
     self = [super initTextCell:[cell stringValue]];
-	if (self) {
+    if (self) {
         NSArray* colorArray = [NSArray arrayWithObjects:
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
-                               [NSColor colorWithCalibratedWhite:1.00 alpha:1.0],
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
                                nil];
         if (_backgroundgradient != nil) {
             [_backgroundgradient release];
             _backgroundgradient = nil;
         }
         _backgroundgradient = [[NSGradient alloc] initWithColors:colorArray];
-	}
-	return self;
+    }
+    return self;
     
 }
 
@@ -97,21 +92,29 @@
 
 - (void)drawBackgroundInRect:(NSRect)rect hilighted:(BOOL)hilighted
 {
-    //    rect = NSMakeRect(NSMinX(rect) - 1 , NSMinY(rect) + 1, rect.size.width + 1, rect.size.height - 1);
+    rect = NSMakeRect(NSMinX(rect) - 1 , NSMinY(rect) + 1, rect.size.width + 1, rect.size.height - 1);
     if (_hasTitleBorderline) {
-        [_backgroundgradient retain];
-        [_backgroundgradient drawInRect:rect angle:90.0];
+        
+        NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
+        NSGraphicsContext *context = [NSGraphicsContext currentContext];
+        [context saveGraphicsState];
+        [[NSColor whiteColor] set];
+        [context setShouldAntialias:NO];
+        [path setLineWidth:1.0];
+        [path stroke];
+        [context restoreGraphicsState];
+        
         NSGraphicsContext* gc = [NSGraphicsContext currentContext];
         [gc saveGraphicsState];
         [gc setShouldAntialias:NO];
         
-        NSBezierPath* path = [NSBezierPath bezierPath];
+        path = [NSBezierPath bezierPath];
         [path setLineWidth:1.0];
         NSPoint p = NSMakePoint(rect.origin.x , rect.origin.y+2.0);
         [path moveToPoint:p];
         
         p.y += rect.size.height-2.0;
-        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
+        [COLOR_TEXT_LINE setStroke];
         if (_hasLeftTitleBorderLine) {
             [path lineToPoint:p];
             p.x += rect.size.width;
@@ -130,53 +133,10 @@
         [path1 moveToPoint:p];
         p.x += rect.size.width;
         [path1 lineToPoint:p];
-        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
+        [COLOR_TEXT_LINE setStroke];
+        
         [path1 stroke];
         [gc restoreGraphicsState];
-        
-        
-        //        NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
-        //        NSGraphicsContext *context = [NSGraphicsContext currentContext];
-        //        [context saveGraphicsState];
-        //        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] set];
-        //        [context setShouldAntialias:NO];
-        //        [path setLineWidth:1.0];
-        //        [path stroke];
-        //        [context restoreGraphicsState];
-        //
-        //        NSGraphicsContext* gc = [NSGraphicsContext currentContext];
-        //        [gc saveGraphicsState];
-        //        [gc setShouldAntialias:NO];
-        //
-        //       path = [NSBezierPath bezierPath];
-        //        [path setLineWidth:1.0];
-        //        NSPoint p = NSMakePoint(rect.origin.x , rect.origin.y+2.0);
-        //        [path moveToPoint:p];
-        //
-        //        p.y += rect.size.height-2.0;
-        //        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
-        //        if (_hasLeftTitleBorderLine) {
-        //            [path lineToPoint:p];
-        //            p.x += rect.size.width;
-        //            [path lineToPoint:p];
-        //        }
-        //        else{
-        //            [path stroke];
-        //            [path moveToPoint:p];
-        //            p.x += rect.size.width;
-        //            [path lineToPoint:p];
-        //
-        //        }
-        //        [path stroke];
-        //        NSBezierPath* path1 = [NSBezierPath bezierPath];
-        //        p = NSMakePoint(rect.origin.x , rect.origin.y+1.0);
-        //        [path1 moveToPoint:p];
-        //        p.x += rect.size.width;
-        //        [path1 lineToPoint:p];
-        //        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
-        //
-        //        [path1 stroke];
-        //        [gc restoreGraphicsState];
         
     }else
     {
@@ -190,7 +150,7 @@
         NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
         NSGraphicsContext *context = [NSGraphicsContext currentContext];
         [context saveGraphicsState];
-        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] set];
+        [COLOR_TEXT_LINE set];
         [context setShouldAntialias:NO];
         [path setLineWidth:1.0];
         [path stroke];
@@ -209,10 +169,10 @@
     NSRectFill(rect);
     //
     //    return;
-	[self drawBackgroundInRect:rect hilighted:hilighted ];
+    [self drawBackgroundInRect:rect hilighted:hilighted ];
     
-	NSRect stringFrame = rect;
-	if (_priority == 0) {
+    NSRect stringFrame = rect;
+    if (_priority == 0) {
         NSAttributedString *string = [self attributedStringValue];
         if (string.string.length > 0) {
             NSRange range = NSMakeRange(0, string.length);
@@ -227,7 +187,7 @@
             }
         }
         
-	}
+    }
     else{
         NSAttributedString *string = [self attributedStringValue];
         NSRange range = NSMakeRange(0, string.length);
@@ -239,8 +199,8 @@
             }
         }
     }
-	stringFrame.origin.y += LINE_MARGIN_Y;
-	[[self attributedStringValue] drawInRect:stringFrame];
+    stringFrame.origin.y += LINE_MARGIN_Y;
+    [[self attributedStringValue] drawInRect:stringFrame];
     
 }
 
@@ -251,59 +211,44 @@
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
     if (_priority == 0) {
-		[self _drawInRect:cellFrame hilighted:YES];
-	} else {
-		[self _drawInRect:cellFrame hilighted:NO];
-	}
-    //    if (!_hasTitleBorderline) {
-    //        NSRect rect = controlView.frame;
-    //        rect.origin.x = 46;
-    //        rect.size.width = controlView.frame.size.width;
-    //        NSBezierPath *path = [NSBezierPath bezierPath];
-    //
-    //        [path moveToPoint:NSMakePoint(rect.origin.x, rect.origin.y)];
-    //        [path lineToPoint:NSMakePoint(rect.size.width, rect.origin.y)];
-    //        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
-    //        [path stroke];
-    //        NSBezierPath *path1 = [NSBezierPath bezierPath];
-    //        if (_hasLeftTitleBorderLine) {
-    //            [path1 moveToPoint:NSMakePoint(rect.origin.x, rect.origin.y)];
-    //            [path1 lineToPoint:NSMakePoint(rect.origin.x, rect.size.height)];
-    //
-    //        }
-    //        else{
-    //            [path1 moveToPoint:NSMakePoint(rect.origin.x, rect.size.height)];
-    //        }
-    //        [path1 lineToPoint:NSMakePoint(rect.size.width, rect.size.height)];
-    //        [[NSColor colorWithDeviceRed:223.0/255 green:223.0/255 blue:223.0/255 alpha:1.0] setStroke];
-    //        [path1 stroke];
-    //
-    //    }
-//    if(_checkButton){
-//        //[_checkButton removeFromSuperview];
-//        if (![_checkButton superview]) {
-//            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+1, (cellFrame.size.height - _checkButton.frame.size.height)/2.0, _checkButton.frame.size.width, _checkButton.frame.size.height)];
-//            [controlView addSubview:_checkButton];
-//        }
-//        //        if (dev_screen_backing_factor < 2.0) {
-//        //            [_checkButton setFrame:NSMakeRect(ceil((cellFrame.size.width - _checkButton.frame.size.width)/2.0), (cellFrame.size.height - _checkButton.frame.size.height)/2.0, _checkButton.frame.size.width, _checkButton.frame.size.height)];
-//        //        }
-//        else{
-//            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+1, (cellFrame.size.height - _checkButton.frame.size.height)/2.0, _checkButton.frame.size.width, _checkButton.frame.size.height)];
-//        }
-//    }
-    //    if (_selectButton) {
-    //        if (![_selectButton superview]) {
-    //            [controlView addSubview:_selectButton];
-    //        }
-    //        if (dev_screen_backing_factor < 2.0) {
-    //            [_selectButton setFrame:NSMakeRect(ceil((cellFrame.size.width - _selectButton.frame.size.width)/2.0), (cellFrame.size.height - _selectButton.frame.size.height)/2.0, _selectButton.frame.size.width, _selectButton.frame.size.height)];
-    //        }
-    //        else{
-    //            [_selectButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _selectButton.frame.size.width)/2.0), (cellFrame.size.height - _selectButton.frame.size.height)/2.0, _selectButton.frame.size.width, _selectButton.frame.size.height)];
-    //        }
-    //
-    //    }
+        [self _drawInRect:cellFrame hilighted:YES];
+    } else {
+        [self _drawInRect:cellFrame hilighted:NO];
+    }
+    if (!_hasTitleBorderline) {
+        NSRect rect = controlView.frame;
+        rect.origin.x = 46;
+        rect.size.width = controlView.frame.size.width;
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        
+        [path moveToPoint:NSMakePoint(rect.origin.x, rect.origin.y)];
+        [path lineToPoint:NSMakePoint(rect.size.width, rect.origin.y)];
+        [COLOR_TEXT_LINE setStroke];
+        [path stroke];
+        NSBezierPath *path1 = [NSBezierPath bezierPath];
+        if (_hasLeftTitleBorderLine) {
+            [path1 moveToPoint:NSMakePoint(rect.origin.x, rect.origin.y)];
+            [path1 lineToPoint:NSMakePoint(rect.origin.x, rect.size.height)];
+            
+        }
+        else{
+            [path1 moveToPoint:NSMakePoint(rect.origin.x, rect.size.height)];
+        }
+        [path1 lineToPoint:NSMakePoint(rect.size.width, rect.size.height)];
+        [COLOR_TEXT_LINE setStroke];
+        [path1 stroke];
+        
+    }
+    if(_checkButton){
+        if (![_checkButton superview]) {
+            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+1, (cellFrame.size.height - _checkButton.frame.size.height)/2.0+1, _checkButton.frame.size.width, _checkButton.frame.size.height)];
+            [controlView addSubview:_checkButton];
+        }
+        else{
+            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+1, (cellFrame.size.height - _checkButton.frame.size.height)/2.0+1, _checkButton.frame.size.width, _checkButton.frame.size.height)];
+        }
+        
+    }
 }
 
 - (NSRect)titleRectForBounds:(NSRect)theRect{
@@ -327,64 +272,64 @@
 //加了排序后无效了。需要在排序的方法前，显示高亮
 - (void)highlight:(BOOL)flag withFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	[self _drawInRect:cellFrame hilighted:YES];
+    [self _drawInRect:cellFrame hilighted:YES];
     
-	[self drawSortIndicatorWithFrame:cellFrame
-							  inView:controlView
-						   ascending:_ascending
-							priority:_priority];
+    [self drawSortIndicatorWithFrame:cellFrame
+                              inView:controlView
+                           ascending:_ascending
+                            priority:_priority];
     
 }
 
 
 - (void)drawSortIndicatorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView ascending:(BOOL)ascending priority:(NSInteger)priority
 {
-	NSBezierPath* path = [NSBezierPath bezierPath];
-	
-	if (ascending) {
-		NSPoint p = NSMakePoint(cellFrame.origin.x + cellFrame.size.width - TRIANGLE_WIDTH - MARGIN_X,
-								cellFrame.origin.y + cellFrame.size.height - MARGIN_Y);
-		[path moveToPoint:p];
-		
-		
-		p.x += TRIANGLE_WIDTH/2.0;
-		p.y -= TRIANGLE_HEIGHT;
-		[path lineToPoint:p];
-		
-		p.x += TRIANGLE_WIDTH/2.0;
-		p.y += TRIANGLE_HEIGHT;
-		[path lineToPoint:p];
-		
-	} else {
-		NSPoint p = NSMakePoint(cellFrame.origin.x + cellFrame.size.width - TRIANGLE_WIDTH - MARGIN_X,
-								cellFrame.origin.y + MARGIN_Y);
-		[path moveToPoint:p];
-		
-		
-		p.x += TRIANGLE_WIDTH/2.0;
-		p.y += TRIANGLE_HEIGHT;
-		[path lineToPoint:p];
-		
-		p.x += TRIANGLE_WIDTH/2.0;
-		p.y -= TRIANGLE_HEIGHT;
-		[path lineToPoint:p];
-		
-	}
-	
-	[path closePath];
-	
-	if (_priority == 0) {
-		[[NSColor whiteColor] set];
-	} else {
-		[[NSColor clearColor] set];
-	}
-	[path fill];
+    NSBezierPath* path = [NSBezierPath bezierPath];
+    
+    if (ascending) {
+        NSPoint p = NSMakePoint(cellFrame.origin.x + cellFrame.size.width - TRIANGLE_WIDTH - MARGIN_X,
+                                cellFrame.origin.y + cellFrame.size.height - MARGIN_Y);
+        [path moveToPoint:p];
+        
+        
+        p.x += TRIANGLE_WIDTH/2.0;
+        p.y -= TRIANGLE_HEIGHT;
+        [path lineToPoint:p];
+        
+        p.x += TRIANGLE_WIDTH/2.0;
+        p.y += TRIANGLE_HEIGHT;
+        [path lineToPoint:p];
+        
+    } else {
+        NSPoint p = NSMakePoint(cellFrame.origin.x + cellFrame.size.width - TRIANGLE_WIDTH - MARGIN_X,
+                                cellFrame.origin.y + MARGIN_Y);
+        [path moveToPoint:p];
+        
+        
+        p.x += TRIANGLE_WIDTH/2.0;
+        p.y += TRIANGLE_HEIGHT;
+        [path lineToPoint:p];
+        
+        p.x += TRIANGLE_WIDTH/2.0;
+        p.y -= TRIANGLE_HEIGHT;
+        [path lineToPoint:p];
+        
+    }
+    
+    [path closePath];
+    
+    if (_priority == 0) {
+        [[NSColor whiteColor] set];
+    } else {
+        [[NSColor clearColor] set];
+    }
+    [path fill];
 }
 
 - (void)setSortAscending:(BOOL)ascending priority:(NSInteger)priority
 {
-	_ascending = ascending;
-	_priority = priority;
+    _ascending = ascending;
+    _priority = priority;
 }
 
 

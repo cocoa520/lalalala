@@ -28,6 +28,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 
 @synthesize isOriginalFrame = _isOriginalFrame;
 @synthesize isDevicesOriginalFrame = _isDevicesOriginalFrame;
+@synthesize disable = _disable;
 
 
 - (void)setIsLeftRightGridient:(BOOL)isLeftRightGridient withLeftNormalBgColor:(NSColor *)leftNormalBgColor withRightNormalBgColor:(NSColor *)rightNormalBgColor {
@@ -103,7 +104,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 - (void)awakeFromNib {
     [self addTrackingRect:[self bounds] owner:self userData:nil assumeInside:NO];
     _isMouseEntered = NO;
-    _shadowSize = NSMakeSize(0.5f, -0.5);
+    _shadowSize = NSMakeSize(0.5f, -0.5f);
 }
 
 - (CGPathRef)quartzPath:(NSBezierPath *)bezierPath
@@ -173,6 +174,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 
 
 - (void)mouseDown:(NSEvent *)theEvent {
+    if (_disable) return;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.mouseClicked) {
             self.mouseClicked();
@@ -189,19 +191,15 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     if (_isMouseEntered == NO && _isOriginalFrame) {
         
         _isMouseEntered = YES;
-        IMBFLog(@"IMBGradientComponentView--mouseEntered");
+//        IMBFLog(@"IMBGradientComponentView--mouseEntered");
         NSRect f = self.frame;
         if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow;
-//            self.frame = f;
-            [IMBViewAnimation animationWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
-//            [self setViewShadow:-IMBGradientViewMidiumViewShadow left:0.f];
+            [IMBViewAnimation animationMouseEnteredExitedWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
         }
         if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow;
-//            self.frame = f;
-            [IMBViewAnimation animationWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval completion:nil];
-//            [self setViewShadow:-IMBGradientViewMidiumViewShadow left:0.f];
+            [IMBViewAnimation animationMouseEnteredExitedWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
         }
         if (self.mouseEntered) {
             self.mouseEntered();
@@ -214,14 +212,14 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     if (_isMouseEntered && _isOriginalFrame) {
         
         _isMouseEntered = NO;
-        IMBFLog(@"IMBGradientComponentView--mouseExited");
+//        IMBFLog(@"IMBGradientComponentView--mouseExited");
         NSRect f = self.frame;
-        if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
+        if (f.size.height <= IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow && f.size.height >= IMBGradientViewMidiumiCloudViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight;
             self.frame = f;
         }
         
-        if (f.size.height == IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow) {
+        if (f.size.height <= IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow && f.size.height >= IMBGradientViewMidiumDevicesViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight;
             self.frame = f;
         }

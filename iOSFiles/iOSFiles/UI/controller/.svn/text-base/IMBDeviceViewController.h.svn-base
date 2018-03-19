@@ -22,10 +22,12 @@
 #import "IMBShadowView.h"
 #import "IMBCheckBtn.h"
 #import "IMBMyDrawCommonly.h"
-
-
+#import "IMBBookEntity.h"
+#import "IMBBackgroundBorderView.h"
+#import "IMBLackCornerView.h"
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
+    IBOutlet IMBLackCornerView *_topView;
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
     NSPopover *_devPopover;
     NSMutableDictionary *_windowControllerDic;
@@ -107,10 +109,15 @@
     IBOutlet IMBMyDrawCommonly *dropboxLoginBtn;
     
     CALayer *_loadLayer;
+    BOOL _isEnter;
+    id _delegate;
+    IBOutlet NSBox *_rootBox;
+    IBOutlet IMBBackgroundBorderView *_mainView;
 }
-- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
+//- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 - (void)mainWindowClose;
 - (void)switchViewController;
+- (id)initWithDelegate:(id)delegate;
 //登录成功 切换页面
 - (void)switchiCloudDriveViewController;
 //登录错误

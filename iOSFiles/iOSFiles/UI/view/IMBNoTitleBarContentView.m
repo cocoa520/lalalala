@@ -10,7 +10,7 @@
 #import "IMBCommonDefine.h"
 
 
-static int R = 5;
+static int R = 8;
 @implementation IMBNoTitleBarContentView
 
 - (id)initWithFrame:(NSRect)frame {

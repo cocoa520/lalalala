@@ -75,53 +75,53 @@ static CGFloat const labelY = 10.0f;
     
 }
 
-- (void)tableViewDoubleClicked:(id)sender {
-    NSInteger rowNumber = [_tableView clickedRow];
-    NSLog(@"Double Clicked.%ld ",rowNumber);
-    // ...
-    IMBDevicePageWindow *pageWindow = objc_getAssociatedObject(_iPod, &kIMBDevicePageWindowKey);
-    switch (rowNumber) {
-        case 0:
-            [pageWindow setTitleStr:@"Camera Roll"];
-            break;
-        case 1:
-            [pageWindow setTitleStr:@"Photo Stream"];
-            break;
-        case 2:
-            [pageWindow setTitleStr:@"Photo Library"];
-            break;
-            
-        default:
-            break;
-    }
-    
-    IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
-    subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
-    NSMutableArray *subArray = (NSMutableArray *)[_folderModel.photoArray objectAtIndex:rowNumber];
-    subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
-    if (_detailVc) {
-        [_detailVc release];
-        _detailVc = nil;
-    }
-    
-    _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
-    _detailVc.folderModel = [subPhotoModel retain];
-    _detailVc.iPod = [_iPod retain];
-    [_rootBox pushView:_detailVc.view];
-    
-    [subPhotoModel release];
-    subPhotoModel = nil;
-}
+//- (void)tableViewDoubleClicked:(id)sender {
+//    NSInteger rowNumber = [_tableView clickedRow];
+//    NSLog(@"Double Clicked.%ld ",rowNumber);
+//    // ...
+//    IMBDevicePageWindow *pageWindow = objc_getAssociatedObject(_iPod, &kIMBDevicePageWindowKey);
+//    switch (rowNumber) {
+//        case 0:
+//            [pageWindow setTitleStr:@"Camera Roll"];
+//            break;
+//        case 1:
+//            [pageWindow setTitleStr:@"Photo Stream"];
+//            break;
+//        case 2:
+//            [pageWindow setTitleStr:@"Photo Library"];
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    IMBDevicePageFolderModel *subPhotoModel = [[IMBDevicePageFolderModel alloc] init];
+//    subPhotoModel.idx = IMBDevicePageWindowFolderEnumPhotoCameraRoll + rowNumber;
+//    NSMutableArray *subArray = (NSMutableArray *)[_folderModel.photoArray objectAtIndex:rowNumber];
+//    subPhotoModel.subPhotoArray = subArray ? subArray : [[NSMutableArray alloc] init];
+//    if (_detailVc) {
+//        [_detailVc release];
+//        _detailVc = nil;
+//    }
+//    
+//    _detailVc = [[IMBDetailViewControler alloc] initWithNibName:@"IMBDetailViewControler" bundle:nil];
+//    _detailVc.folderModel = [subPhotoModel retain];
+//    _detailVc.iPod = [_iPod retain];
+//    [_rootBox pushView:_detailVc.view];
+//    
+//    [subPhotoModel release];
+//    subPhotoModel = nil;
+//}
 
 
 #pragma mark -- tableviewDelegate,talbeviewDatasource
 
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    if (!_folderModel) return 0;
-    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageHideToolbarNoti object:_iPod.uniqueKey];
-    return _folderModel.photoArray.count;
-}
+//- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+//    if (!_folderModel) return 0;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageHideToolbarNoti object:_iPod.uniqueKey];
+//    return _folderModel.photoArray.count;
+//}
 
 
 
@@ -176,8 +176,8 @@ static CGFloat const labelY = 10.0f;
                 break;
         }
     }else {
-        NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
-        textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
+//        NSArray *subArray = [_folderModel.photoArray objectAtIndex:row];
+//        textField.stringValue = [NSString stringWithFormat:@"%lu",subArray.count];
     }
     
     return aView;

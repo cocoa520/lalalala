@@ -24,6 +24,7 @@
 @synthesize docwsid = _docwsid;
 @synthesize zone = _zone;
 @synthesize etag = _etag;
+@synthesize extension = _extension;
 - (id)init {
     if ([super init]) {
         _fileLoadURL = @"";

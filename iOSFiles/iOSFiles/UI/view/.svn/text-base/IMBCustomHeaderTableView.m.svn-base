@@ -44,7 +44,7 @@
             NSTableHeaderCell *cell = [column headerCell];
             NSTableHeaderCell *newCell;
             if ([@"CheckCol" isEqualToString:column.identifier]) {
-                int state = _headCheckCell.checkButton.state;
+                int state = (int)_headCheckCell.checkButton.state;
                 [_headCheckCell.checkButton setState:state];
                 [_headCheckCell.checkButton setTarget:self];
                 [_headCheckCell.checkButton setAction:@selector(clickHeadCheckButton:)];
@@ -94,7 +94,7 @@
         NSTableHeaderCell *newCell;
         if ([@"CheckCol" isEqualToString:column.identifier]) {
 //            _headCheckCell = [[IMBCheckHeaderCell alloc] initWithCell:cell];
-            int state = _headCheckCell.checkButton.state;
+            int state = (int)_headCheckCell.checkButton.state;
             [_headCheckCell.checkButton setState:state];
             [_headCheckCell.checkButton setTarget:self];
             [_headCheckCell.checkButton setAction:@selector(clickHeadCheckButton:)];
@@ -169,15 +169,8 @@
 }
 
 - (void) doSelectAll:(id)sender {
-    IMBCheckBtn *btn = _checkBoxCell.checkButton;
+    IMBCheckButton *btn = _checkBoxCell.checkButton;
     [[self window] makeFirstResponder:self];
-//    if (btn.state == true) {
-//        _clickCheckBox = NO;
-//        [self selectAll:nil];
-//       
-//    } else {
-//        [self deselectAll:nil];
-//    }
 
     if ([_listener respondsToSelector:@selector(setAllselectState:)]) {
         [_listener setAllselectState:(CheckStateEnum)btn.state];

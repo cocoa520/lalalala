@@ -34,6 +34,8 @@
 #import <objc/runtime.h>
 #import "SystemHelper.h"
 
+
+#import "IMBDevicePageViewController.h"
 static CGFloat const rowH = 40.0f;
 static CGFloat const labelY = 10.0f;
 
@@ -47,9 +49,8 @@ static CGFloat const labelY = 10.0f;
     NSArray *_folderNameArray;
     IMBDetailViewControler *_detailVc;
     LoadingView *_loadingView;
-    
-    
-    IBOutlet IMBToolBarView *_toolMenuView;
+  
+    IBOutlet IMBToolButtonView *_toolBarView;
     IBOutlet NSButton *_backBtn;
     IBOutlet NSScrollView *_scrollView;
     IBOutlet NSTableView *_tableView;
@@ -67,17 +68,20 @@ static CGFloat const labelY = 10.0f;
 - (id)initWithiPod:(IMBiPod *)ipod {
     if (self = [super initWithWindowNibName:@"IMBDevicePageWindow"]) {
         _iPod = [ipod retain];
-        [self setup];
+//        [self setup];
     }
     return self;
 }
 
 - (void)awakeFromNib {
+//    [_topView setIsBommt:YES];
+    
+    IMBToolButtonView *buttonView = [[IMBToolButtonView alloc]initWithFrame:NSMakeRect(0, 0, 400, 50)];
+    [buttonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:self DisplayMode:YES];
+    [_topView addSubview:buttonView];
     [self.window setTitle:_iPod.deviceInfo.deviceName];
     NSButton *btn =  [self.window standardWindowButton:NSWindowCloseButton];
-//    [btn setFrame:NSMakeRect(2,4, 20, 20)];
-//    NSButton *btn1 =  [self.window standardWindowButton:NSWindowMiniaturizeButton];
-//    [btn1 setFrame:NSMakeRect(6,10, 20, 20)];
+
     NSButton *btn2 =  [self.window standardWindowButton:NSWindowZoomButton];
     [btn2 setFrame:NSMakeRect(0,0, 20, 20)];
     [btn setHidden:YES];
@@ -98,32 +102,16 @@ static CGFloat const labelY = 10.0f;
     [button setTarget:self];
     [button setAction:@selector(closeWindow:)];
     [button setBordered:NO];
-    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:button];
-    
-    IMBLackCornerView *whiteView = [[IMBLackCornerView alloc]initWithFrame:NSMakeRect(0, 0, 1000, 50)];
-    [whiteView setBackgroundColor:[NSColor redColor]];
-    [[(IMBToolbarWindow *)self.window titleBarView]addSubview:whiteView];
-    [whiteView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
-    [whiteView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
-    [whiteView addSubview:button];
+    [_topView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
+    [_topView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
+    [_topView addSubview:button];
    
-    [(IMBToolbarWindow *)self.window setTitleBarHeight:50];
+    [(IMBToolbarWindow *)self.window setTitleBarHeight:0];
     [(IMBToolbarWindow *)self.window setBackgroundColor:[NSColor whiteColor]];
-//    [[(IMBToolbarWindow *)self.window titleBarView] setFrameSize:NSMakeSize(self.window.frame.size.width, 300)];
     [self.window setMovableByWindowBackground:YES];
-    [self setupView];
-    
-//    _selectedDeviceBtn = [[IMBSelecedDeviceBtn alloc]initWithFrame:NSMakeRect(200, 0, 100, 40)];
-//    [_selectedDeviceBtn setBordered:NO];
-////    [_chooseViewBtn setFrame:NSMakeRect(200, 10 , 100, 60)];
-//    [_selectedDeviceBtn configButtonName:@"No Device Connected" WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15 WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:YES withConnectType:0];
-//    [_selectedDeviceBtn setTarget:self];
-//    [_selectedDeviceBtn setAction:@selector(selectedDeviceBtnClicked:)];
-//    [whiteView addSubview:_selectedDeviceBtn];
-    [whiteView release];
-    whiteView = nil;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+
+    IMBDevicePageViewController *pageViewController = [[IMBDevicePageViewController alloc]initWithiPod:_iPod];
+    [_rootBox setContentView:pageViewController.view];
 }
 
 - (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
@@ -208,189 +196,189 @@ static CGFloat const labelY = 10.0f;
     }
 }
 
-- (void)setup {
-    [self addNotis];
-    
-    
-    
-    if (_opQueue) {
-        [_opQueue release];
-        _opQueue = nil;
-    }
-    if (_dataArray) {
-        [_dataArray release];
-        _dataArray = nil;
-    }
-    
-    _dataArray = [[NSMutableArray alloc] init];
-    
-    if (!_headerTitleArr) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:IMBDevicePageHeaderTitleNamesPlist ofType:nil];
-        _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
-        
-        path = [[NSBundle mainBundle] pathForResource:IMBDevicePageFolderNamesPlist ofType:nil];
-        _folderNameArray = [NSArray arrayWithContentsOfFile:path];
-    }
-    NSInteger idx = IMBDevicePageWindowFolderEnumPhoto;
-    if (_folderNameArray.count) {
-        for (NSString *name in _folderNameArray) {
-            
-            IMBDevicePageFolderModel *model = [[[IMBDevicePageFolderModel alloc] init] autorelease];
-            model.name = name;
-            model.idx = idx++;
-            model.counts = -1;
-            [_dataArray addObject:model];
-        }
-    }
-    
-    _opQueue = [[NSOperationQueue alloc] init];
-    [_opQueue setMaxConcurrentOperationCount:4];
-    
-    _information = [[IMBInformation alloc] initWithiPod:_iPod];
-    
-    
-    [_opQueue addOperationWithBlock:^{
-        if (_information) {
-            //music
-            [_information refreshMedia];
-            NSArray *audioArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Audio],
-                                   nil];
-            
-            NSArray *trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:audioArray]];
-            
-            [self setDataArrayWithType:@"Media" handle:^(IMBDevicePageFolderModel *model) {
-                model.trackArray = [trackArray retain];
-            }];
-            
-            IMBFLog(@"%@",trackArray);
-            for (IMBTrack *track in trackArray) {
-                IMBFLog(@"%@",track);
-            }
-            //video
-            NSArray *videoArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Video],
-                                   [NSNumber numberWithInt:(int)TVShow],
-                                   [NSNumber numberWithInt:(int)MusicVideo],
-                                   [NSNumber numberWithInt:(int)HomeVideo],
-                                   nil];
-            trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:videoArray]];
-            
-            [_information.ipod setMediaLoadFinished:YES];
-            [_information.ipod setVideoLoadFinished:YES];
-            
-            [self setDataArrayWithType:@"Video" handle:^(IMBDevicePageFolderModel *model) {
-                model.trackArray = [trackArray retain];
-            }];
-            
-            
-            IMBFLog(@"%@",trackArray);
-            for (IMBTrack *track in trackArray) {
-                IMBFLog(@"%@",track);
-            }
-            
-            [trackArray release];
-            trackArray = nil;
-            
-        }
-    }];
-    
-    [_opQueue addOperationWithBlock:^{
-        if (_information) {
-            //photo
-//            [_information refreshCameraRoll];
-//            [_information refreshPhotoStream];
-//            [_information refreshPhotoLibrary];
-//            [_information refreshVideoAlbum];
-            [_information loadphotoData];
-            
-            [_information.ipod setPhotoLoadFinished:YES];
-            
-            NSMutableArray *photoArray = [[NSMutableArray alloc] init];
-            NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
-//            NSArray *ary = [_information photovideoArray];
-            [cameraRoll addObjectsFromArray:[_information camerarollArray] ? [_information camerarollArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photovideoArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photoSelfiesArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information screenshotArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information slowMoveArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information timelapseArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information panoramasArray] : [NSArray array]];
-            [photoArray addObject:cameraRoll];
-            [photoArray addObject:[_information photostreamArray] ? [_information photostreamArray] : [NSArray array]];
-            [photoArray addObject:[_information photolibraryArray] ? [_information photolibraryArray] : [NSArray array]];
-            
-            [self setDataArrayWithType:@"Photo" handle:^(IMBDevicePageFolderModel *model) {
-                model.photoArray = [photoArray retain];
-            }];
-            
-            
-            IMBFLog(@"%@",photoArray);
-            for (IMBPhotoEntity *photo in photoArray) {
-                IMBFLog(@"%@",photo);
-            }
-            [cameraRoll release];
-            cameraRoll = nil;
-            [photoArray release];
-            photoArray = nil;
-        }
-    }];
-    
-    [_opQueue addOperationWithBlock:^{
-        if (_information) {
-            //book
-            [_information loadiBook];
-            NSArray *ibooks = [[_information allBooksArray] retain];
-            [_information.ipod setBookLoadFinished:YES];
-            [self setDataArrayWithType:@"Book" handle:^(IMBDevicePageFolderModel *model) {
-                model.booksArray = [ibooks retain];
-            }];
-            
-            
-            for (IMBBookEntity *book in ibooks) {
-                IMBFLog(@"%@",book);
-            }
-            [ibooks release];
-            ibooks = nil;
-        }
-    }];
-    
-    [_opQueue addOperationWithBlock:^{
-        if (_information) {
-            //apps
-            IMBApplicationManager *appManager = [[_information applicationManager] retain];
-            [appManager loadAppArray];
-            NSArray *appArray = [appManager appEntityArray];
-            [_information.ipod setAppsLoadFinished:YES];
-            
-            [self setDataArrayWithType:@"Apps" handle:^(IMBDevicePageFolderModel *model) {
-                model.appsArray = [appArray retain];
-            }];
-            
-            
-            IMBFLog(@"%@",appArray);
-            for (IMBAppEntity *app in appArray) {
-                IMBFLog(@"%@",app);
-            }
-            
-            
-            [appArray release];
-            appArray = nil;
-            
-            [appManager release];
-            appManager = nil;
-        }
-    }];
-    [_opQueue addOperationWithBlock:^{
-        if (_information) {
-            //other
-            [self setDataArrayWithType:@"Other" handle:^(IMBDevicePageFolderModel *model) {
-                model.sizeString = @"-";
-                model.counts = 0;
-                model.countsString = @"-";
-            }];
-        }
-    }];
-    
-}
+//- (void)setup {
+//    [self addNotis];
+//    
+//    
+//    
+//    if (_opQueue) {
+//        [_opQueue release];
+//        _opQueue = nil;
+//    }
+//    if (_dataArray) {
+//        [_dataArray release];
+//        _dataArray = nil;
+//    }
+//    
+//    _dataArray = [[NSMutableArray alloc] init];
+//    
+//    if (!_headerTitleArr) {
+//        NSString *path = [[NSBundle mainBundle] pathForResource:IMBDevicePageHeaderTitleNamesPlist ofType:nil];
+//        _headerTitleArr = [NSArray arrayWithContentsOfFile:path];
+//        
+//        path = [[NSBundle mainBundle] pathForResource:IMBDevicePageFolderNamesPlist ofType:nil];
+//        _folderNameArray = [NSArray arrayWithContentsOfFile:path];
+//    }
+//    NSInteger idx = IMBDevicePageWindowFolderEnumPhoto;
+//    if (_folderNameArray.count) {
+//        for (NSString *name in _folderNameArray) {
+//            
+//            IMBDevicePageFolderModel *model = [[[IMBDevicePageFolderModel alloc] init] autorelease];
+//            model.name = name;
+//            model.idx = idx++;
+//            model.counts = -1;
+//            [_dataArray addObject:model];
+//        }
+//    }
+//    
+//    _opQueue = [[NSOperationQueue alloc] init];
+//    [_opQueue setMaxConcurrentOperationCount:4];
+//    
+//    _information = [[IMBInformation alloc] initWithiPod:_iPod];
+//    
+//    
+//    [_opQueue addOperationWithBlock:^{
+//        if (_information) {
+//            //music
+//            [_information refreshMedia];
+//            NSArray *audioArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Audio],
+//                                   nil];
+//            
+//            NSArray *trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:audioArray]];
+//            
+//            [self setDataArrayWithType:@"Media" handle:^(IMBDevicePageFolderModel *model) {
+//                model.trackArray = [trackArray retain];
+//            }];
+//            
+//            IMBFLog(@"%@",trackArray);
+//            for (IMBTrack *track in trackArray) {
+//                IMBFLog(@"%@",track);
+//            }
+//            //video
+//            NSArray *videoArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(int)Video],
+//                                   [NSNumber numberWithInt:(int)TVShow],
+//                                   [NSNumber numberWithInt:(int)MusicVideo],
+//                                   [NSNumber numberWithInt:(int)HomeVideo],
+//                                   nil];
+//            trackArray = [[NSMutableArray alloc] initWithArray:[_information getTrackArrayByMediaTypes:videoArray]];
+//            
+//            [_information.ipod setMediaLoadFinished:YES];
+//            [_information.ipod setVideoLoadFinished:YES];
+//            
+//            [self setDataArrayWithType:@"Video" handle:^(IMBDevicePageFolderModel *model) {
+//                model.trackArray = [trackArray retain];
+//            }];
+//            
+//            
+//            IMBFLog(@"%@",trackArray);
+//            for (IMBTrack *track in trackArray) {
+//                IMBFLog(@"%@",track);
+//            }
+//            
+//            [trackArray release];
+//            trackArray = nil;
+//            
+//        }
+//    }];
+//    
+//    [_opQueue addOperationWithBlock:^{
+//        if (_information) {
+//            //photo
+////            [_information refreshCameraRoll];
+////            [_information refreshPhotoStream];
+////            [_information refreshPhotoLibrary];
+////            [_information refreshVideoAlbum];
+//            [_information loadphotoData];
+//            
+//            [_information.ipod setPhotoLoadFinished:YES];
+//            
+//            NSMutableArray *photoArray = [[NSMutableArray alloc] init];
+//            NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
+////            NSArray *ary = [_information photovideoArray];
+//            [cameraRoll addObjectsFromArray:[_information camerarollArray] ? [_information camerarollArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photovideoArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information photoSelfiesArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information screenshotArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information slowMoveArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information timelapseArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[_information photovideoArray] ? [_information panoramasArray] : [NSArray array]];
+//            [photoArray addObject:cameraRoll];
+//            [photoArray addObject:[_information photostreamArray] ? [_information photostreamArray] : [NSArray array]];
+//            [photoArray addObject:[_information photolibraryArray] ? [_information photolibraryArray] : [NSArray array]];
+//            
+//            [self setDataArrayWithType:@"Photo" handle:^(IMBDevicePageFolderModel *model) {
+//                model.photoArray = [photoArray retain];
+//            }];
+//            
+//            
+//            IMBFLog(@"%@",photoArray);
+//            for (IMBPhotoEntity *photo in photoArray) {
+//                IMBFLog(@"%@",photo);
+//            }
+//            [cameraRoll release];
+//            cameraRoll = nil;
+//            [photoArray release];
+//            photoArray = nil;
+//        }
+//    }];
+//    
+//    [_opQueue addOperationWithBlock:^{
+//        if (_information) {
+//            //book
+//            [_information loadiBook];
+//            NSArray *ibooks = [[_information allBooksArray] retain];
+//            [_information.ipod setBookLoadFinished:YES];
+//            [self setDataArrayWithType:@"Book" handle:^(IMBDevicePageFolderModel *model) {
+//                model.booksArray = [ibooks retain];
+//            }];
+//            
+//            
+//            for (IMBBookEntity *book in ibooks) {
+//                IMBFLog(@"%@",book);
+//            }
+//            [ibooks release];
+//            ibooks = nil;
+//        }
+//    }];
+//    
+//    [_opQueue addOperationWithBlock:^{
+//        if (_information) {
+//            //apps
+//            IMBApplicationManager *appManager = [[_information applicationManager] retain];
+//            [appManager loadAppArray];
+//            NSArray *appArray = [appManager appEntityArray];
+//            [_information.ipod setAppsLoadFinished:YES];
+//            
+//            [self setDataArrayWithType:@"Apps" handle:^(IMBDevicePageFolderModel *model) {
+//                model.appsArray = [appArray retain];
+//            }];
+//            
+//            
+//            IMBFLog(@"%@",appArray);
+//            for (IMBAppEntity *app in appArray) {
+//                IMBFLog(@"%@",app);
+//            }
+//            
+//            
+//            [appArray release];
+//            appArray = nil;
+//            
+//            [appManager release];
+//            appManager = nil;
+//        }
+//    }];
+//    [_opQueue addOperationWithBlock:^{
+//        if (_information) {
+//            //other
+//            [self setDataArrayWithType:@"Other" handle:^(IMBDevicePageFolderModel *model) {
+//                model.sizeString = @"-";
+//                model.counts = 0;
+//                model.countsString = @"-";
+//            }];
+//        }
+//    }];
+//    
+//}
 
 - (void)setDataArrayWithType:(NSString *)type handle:(void(^)(IMBDevicePageFolderModel *model))handleBlock {
     for (IMBDevicePageFolderModel *model in _dataArray) {
@@ -416,10 +404,6 @@ static CGFloat const labelY = 10.0f;
 - (void)setupView {
     if (_rootBox) {
         objc_setAssociatedObject(_iPod, &kIMBDevicePageRootBoxKey, _rootBox, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    if (_toolMenuView) {
-        _toolMenuView.information = [_information retain];
-        objc_setAssociatedObject(_iPod, &kIMBDevicePageToolBarViewKey, _toolMenuView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
     objc_setAssociatedObject(_iPod, &kIMBDevicePageWindowKey, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -685,7 +669,7 @@ static CGFloat const labelY = 10.0f;
         _title.stringValue = @"Photo";
         [_pcVc reloadData];
     }
-    [_toolMenuView setHidden:YES];
+
     
     
 }
@@ -755,14 +739,12 @@ static CGFloat const labelY = 10.0f;
     NSString *key = [noti object];
     if (![key isEqualToString:_iPod.uniqueKey]) return;
     
-    [_toolMenuView setHidden:NO];
 }
 
 - (void)hideToolbar:(NSNotification *)noti {
     NSString *key = [noti object];
     if (![key isEqualToString:_iPod.uniqueKey]) return;
-    
-    [_toolMenuView setHidden:YES];
+
     
 }
 

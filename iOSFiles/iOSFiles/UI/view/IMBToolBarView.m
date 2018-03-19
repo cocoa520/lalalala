@@ -41,6 +41,7 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     }
     return self;
 }
+
 - (void)awakeFromNib {
     [self setupArray];
 }
@@ -177,8 +178,6 @@ static const NSString *IMBToolBarViewTipName = @"tipName";
     [information release];
     information = nil;
 }
-
-
 
 - (void)dealloc {
     

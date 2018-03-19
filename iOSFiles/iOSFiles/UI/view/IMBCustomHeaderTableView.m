@@ -38,43 +38,12 @@
     return self;
 }
 
-- (void)doChangeLanguage:(NSNotification *)notification{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        for (NSTableColumn *column in [self tableColumns]) {
-            NSTableHeaderCell *cell = [column headerCell];
-            NSTableHeaderCell *newCell;
-            if ([@"CheckCol" isEqualToString:column.identifier]) {
-                int state = _headCheckCell.checkButton.state;
-                [_headCheckCell.checkButton setState:state];
-                [_headCheckCell.checkButton setTarget:self];
-                [_headCheckCell.checkButton setAction:@selector(clickHeadCheckButton:)];
-                [_headCheckCell.checkButton setNeedsDisplay:YES];
-                newCell = [_headCheckCell retain];
-            }else{
-                NSString *newTitleKey = column.identifier;//[NSString stringWithFormat:CustomLocalizedString(@"List_Header_id_%@", nil),column.identifier];
-                NSString *newTitle = newTitleKey;//CustomLocalizedString(newTitleKey, nil);
-                cell.stringValue = newTitle;//CustomLocalizedString(newTitle, nil);
-                newCell = [[IMBCustomHeaderCell alloc] initWithCell:cell];
-            }
-            [column setHeaderCell:newCell];
-            if ([newCell isKindOfClass:[IMBCheckHeaderCell class]]) {
-                _checkBoxCell = [(IMBCheckHeaderCell *)newCell retain];
-                [[_checkBoxCell checkButton] setTarget:self];
-                [_checkBoxCell.checkButton setAction:@selector(doSelectAll:)];
-            }
-            [newCell release];
-        }
-    });
-
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self setupHeaderCell];
         [self _setupCornerView];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doChangeLanguage:) name:NOTIFY_CHANGE_ALLANGUAGE object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:NOTIFY_CHANGE_SKIN object:nil];
         _selectionColor = [[NSColor colorWithDeviceRed:50.0/255 green:177.0/255 blue:250.0/255 alpha:1.000] retain];
         _alternatingEvenRowBackgroundColor = [COLOR_PROMPTBTN_BORDER retain];
         _alternatingOddRowBackgroundColor = [[NSColor colorWithDeviceRed:248.0/255 green:248.0/255 blue:248.0/255 alpha:1.000] retain];
@@ -83,48 +52,7 @@
     return self;
 }
 
-- (void)changeSkin:(NSNotification *)notification
-{
-    [self setAlternatingEvenRowBackgroundColor:COLOR_PROMPTBTN_BORDER];
-    [self setAlternatingOddRowBackgroundColor:[NSColor colorWithDeviceRed:248.0/255 green:248.0/255 blue:248.0/255 alpha:1.000]];
-    [self setSelectionColor:[NSColor colorWithDeviceRed:50.0/255 green:177.0/255 blue:250.0/255 alpha:1.000]];
-    
-    for (NSTableColumn *column in [self tableColumns]) {
-        NSTableHeaderCell *cell = [column headerCell];
-        NSTableHeaderCell *newCell;
-        if ([@"CheckCol" isEqualToString:column.identifier]) {
-//            _headCheckCell = [[IMBCheckHeaderCell alloc] initWithCell:cell];
-            int state = _headCheckCell.checkButton.state;
-            [_headCheckCell.checkButton setState:state];
-            [_headCheckCell.checkButton setTarget:self];
-            [_headCheckCell.checkButton setAction:@selector(clickHeadCheckButton:)];
-            [_headCheckCell.checkButton setNeedsDisplay:YES];
-            
-            newCell = [_headCheckCell retain];
-        }else{
-            NSString *newTitleKey = column.identifier;//[NSString stringWithFormat:CustomLocalizedString(@"List_Header_id_%@", nil),column.identifier];
-            NSString *newTitle = newTitleKey;//CustomLocalizedString(newTitleKey, nil);
-            cell.stringValue = newTitle;//CustomLocalizedString(newTitle, nil);
-            newCell = [[IMBCustomHeaderCell alloc] initWithCell:cell];
-        }
-        [column setHeaderCell:newCell];
-        if ([newCell isKindOfClass:[IMBCheckHeaderCell class]]) {
-            _checkBoxCell = [(IMBCheckHeaderCell *)newCell retain];
-            [[_checkBoxCell checkButton] setTarget:self];
-            [_checkBoxCell.checkButton setAction:@selector(doSelectAll:)];
-        }
-        [newCell release];
-    }
-    for (NSTableColumn *tableColumn in [self tableColumns]) {
-        NSTextFieldCell *fieldCell = (NSTextFieldCell *)tableColumn.dataCell;
-        if ([fieldCell isKindOfClass:[IMBCenterTextFieldCell class]]) {
-            [((IMBCenterTextFieldCell *)fieldCell) setTitleColor:COLOR_TEXT_ORDINARY];
-             [((IMBCenterTextFieldCell *)fieldCell) setHilightTitleColor:COLOR_PROMPTBTN_BORDER];
-        }else if ([fieldCell isKindOfClass:[IMBCheckBoxCell class]]){
-            [((IMBCheckBoxCell *)fieldCell) reloadImage];
-        }
-    }
-}
+
 
 - (void)setListener:(id<IMBImageRefreshListListener>)listener {
     _listener = listener;
@@ -169,15 +97,8 @@
 }
 
 - (void) doSelectAll:(id)sender {
-    IMBCheckBtn *btn = _checkBoxCell.checkButton;
+    IMBCheckButton *btn = _checkBoxCell.checkButton;
     [[self window] makeFirstResponder:self];
-//    if (btn.state == true) {
-//        _clickCheckBox = NO;
-//        [self selectAll:nil];
-//       
-//    } else {
-//        [self deselectAll:nil];
-//    }
 
     if ([_listener respondsToSelector:@selector(setAllselectState:)]) {
         [_listener setAllselectState:(CheckStateEnum)btn.state];
@@ -462,8 +383,6 @@
     [_checkBoxCell release],_checkBoxCell = nil;
     [_alternatingEvenRowBackgroundColor release],_alternatingEvenRowBackgroundColor = nil;
     [_alternatingOddRowBackgroundColor release],_alternatingOddRowBackgroundColor = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_ALLANGUAGE object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_SKIN object:nil];
     [super dealloc];
 }
 @end

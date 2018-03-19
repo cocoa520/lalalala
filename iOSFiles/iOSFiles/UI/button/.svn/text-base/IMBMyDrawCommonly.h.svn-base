@@ -31,6 +31,7 @@
     NSColor *_mouseUpLineColor;
     NSColor *_mouseEnteredLineColor;
     NSColor *_mouseExitedLineColor;
+    
     //填充的颜色
     NSColor *_mouseDownfillColor;
     NSColor *_mouseUpfillColor;

@@ -11,12 +11,12 @@
 #import "IMBBookEntity.h"
 #import "IMBNewTrack.h"
 #import "IMBFileSystem.h"
-//#import "IMBRecordingEntry.h"
 #import "IMBPlaylistList.h"
 #import "IMBIDGenerator.h"
 #import "IMBCreatePhotoSyncPlist.h"
 #import "IMBSyncPhotoData.h"
 #import "IMBBetweenDeviceHandler.h"
+#import "IMBCommonEnum.h"
 
 @implementation IMBAirSyncImportBetweenDeviceTransfer
 @synthesize infomationCount = _infomationCount;

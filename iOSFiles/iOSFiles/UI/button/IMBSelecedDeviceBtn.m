@@ -12,6 +12,9 @@
 #import "StringHelper.h"
 #define SPOTRADIUS 3
 @implementation IMBSelecedDeviceBtn
+#pragma mark - synthesize
+@synthesize iconX = _iconX;
+@synthesize textX = _textX;
 @synthesize isDisable = _isDisable;
 @synthesize mouseStatus = _mouseStatus;
 @synthesize buttonName = _buttonName;
@@ -20,6 +23,7 @@
 @synthesize isShowIcon = _isShowIcon;
 @synthesize isShowTrangle = _isShowTrangle;
 
+#pragma mark - initialize
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -115,7 +119,7 @@
             drawingRect.size = imageRect.size;
             [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }else {
-            iconImage = [NSImage imageNamed:@"symbols-apple.png"];
+            iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected.png"];
             [iconImage setResizingMode:NSImageResizingModeStretch];
             int  xPos = 0;
             if (_isShowTrangle) {
@@ -123,6 +127,7 @@
             }else {
                 xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
             }
+            _iconX = xPos;
             NSRect imageRect;
             imageRect.origin = NSZeroPoint ;
             imageRect.size = iconImage.size;
@@ -137,9 +142,9 @@
         if (_isShowTrangle) {
             NSSize size;
             NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:100 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
-            NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 4 , 3, size.width, 22);
+            NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 2 , 5, size.width, 22);
             if (_connectTpye == 0) {
-                textRect = NSMakeRect(NSMaxX(drawingRect) + 6 , 3, size.width, 22);
+                textRect = NSMakeRect(NSMaxX(drawingRect) + 5 , 5, size.width, 22);
             }
             drawingRect = textRect;
             [attrStr drawInRect:textRect];
@@ -153,18 +158,19 @@
             drawingRect = textRect;
             [attrStr drawInRect:textRect];
         }
+        _textX = drawingRect.origin.x;
     }
     
     if (_isShowTrangle) {
         NSImage *image = nil;
         if (self.isEnabled) {
-            image = [NSImage imageNamed:@"arrow"];
+            image = [NSImage imageNamed:@"device_icon_arrow.png"];
         }
         NSRect drawingArrowRect;
         NSRect imageRect;
         imageRect.origin = NSZeroPoint ;
         imageRect.size = image.size;
-        drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 12);
+        drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 7);
         drawingArrowRect.size = imageRect.size;
         [image drawInRect:drawingArrowRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
@@ -256,6 +262,12 @@
     _mouseStatus = MouseEnter;
     [[NSNotificationCenter defaultCenter] postNotificationName:REFREASH_TOPVIEW object:nil];
     [self setNeedsDisplay:YES];
+    if (!_isDisable) {
+        if (self.mouseEntered) {
+            self.mouseEntered();
+        }
+    }
+    
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
@@ -307,5 +319,11 @@
     }
     
     [super dealloc];
+}
+
+#pragma mark - 外部方法
+- (void)setHiddenRightImage:(BOOL)rightImage {
+    _isShowTrangle = NO;
+    [self setNeedsDisplay];
 }
 @end

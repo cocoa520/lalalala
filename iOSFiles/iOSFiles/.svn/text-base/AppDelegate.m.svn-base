@@ -18,19 +18,22 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
-    NSMutableArray *chooseLang = [[NSMutableArray alloc] init];
-    [chooseLang addObject:@"ja"];
-    [[NSUserDefaults standardUserDefaults] setObject:chooseLang forKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSMutableArray arrayWithObject:@"ja"] forKey:@"AppleLanguages"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // Insert code here to initialize your application
     _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
-//    [self.window setContentSize:NSMakeSize(1060, 635)];
-    [_mainWindowController.window setContentSize:NSMakeSize(592, 430)];
+//    [_mainWindowController.window setContentSize:NSMakeSize(592, 438)];
+    [_mainWindowController.window setMinSize:NSMakeSize(592, 438)];
+    [_mainWindowController.window setMaxSize:NSMakeSize(592, 438)];
     [_mainWindowController showWindow:nil];
     
-    [self checkLanguage];
+//    IMBMainWindowController *mainWindowController1 = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
+//    //    [self.window setContentSize:NSMakeSize(1060, 635)];
+//    [mainWindowController1.window setContentSize:NSMakeSize(592, 438)];
+//    [mainWindowController1 showWindow:nil];
+    
+//    [self checkLanguage];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

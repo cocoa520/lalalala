@@ -21,7 +21,12 @@
     NSColor *_textColor;
     NSString *_buttonName;
     IPodFamilyEnum _connectTpye;
+    CGFloat _iconX;
+    CGFloat _textX;
 }
+
+@property(nonatomic, assign)CGFloat iconX;
+@property(nonatomic, assign)CGFloat textX;
 @property (nonatomic, retain) NSString *buttonName;
 @property (nonatomic, retain) NSColor *textColor;
 @property (nonatomic, assign) float textSize;
@@ -31,8 +36,15 @@
 @property (nonatomic, setter = setIsShowTangle:) BOOL isShowTrangle;
 @property (nonatomic, assign) IPodFamilyEnum connectType;
 
+@property (nonatomic, copy)void(^mouseEntered)(void);
+
+
 - (void)setIsDisable:(BOOL)isDisable;
 - (void)setMouseStatus:(MouseStatusEnum)mouseStatus;
 - (void)setInitFrame:(NSRect)frameRect withButtonTitle:(NSString *)buttonTitle;
 - (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType;
+
+- (void)setHiddenRightImage:(BOOL)rightImage;
+
+
 @end

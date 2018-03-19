@@ -1,14 +1,14 @@
 10
 
 dir
-1664
+1750
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-13T13:28:04.820949Z
-1644
+2018-03-19T03:25:25.545114Z
+1725
 hezhonglin
 
 
@@ -60,40 +60,6 @@ has-props
 
 556
 
-symbols-no-device.png
-file
-
-
-
-
-2018-03-09T09:10:20.000000Z
-aad8d367ee3d10fe2049c712cbdb83e3
-2018-03-13T01:16:00.369800Z
-1633
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8307
-
 symbols-phone.png
 file
 
@@ -127,6 +93,40 @@ has-props
 
 
 12920
+
+symbols-no-device.png
+file
+
+
+
+
+2018-03-09T09:10:20.000000Z
+aad8d367ee3d10fe2049c712cbdb83e3
+2018-03-13T01:16:00.369800Z
+1633
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8307
 
 symbols-list.png
 file
@@ -264,6 +264,9 @@ has-props
 
 603
 
+1
+dir
+
 symbols-67868678678njmghjgh.png
 file
 
@@ -332,16 +335,16 @@ has-props
 
 4285
 
-symbols-list2.png
+device_icon_arrow.png
 file
 
 
 
 
-2018-03-09T09:10:19.000000Z
-4f337a87bb42e8d407838f6cdc097f23
-2018-03-13T01:16:00.369800Z
-1633
+2018-03-16T06:33:12.000000Z
+7ca843e715eb16e02afa29699a5f7436
+2018-03-16T09:01:11.354884Z
+1703
 hezhonglin
 has-props
 
@@ -364,7 +367,41 @@ has-props
 
 
 
-375
+425
+
+device_icon_iPhone_selected.png
+file
+
+
+
+
+2018-03-16T06:32:03.000000Z
+9afa641b1300235b8ac67c6fa6a00209
+2018-03-16T09:01:11.354884Z
+1703
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+457
 
 symbols-link.png
 file
@@ -399,6 +436,40 @@ has-props
 
 
 328
+
+symbols-list2.png
+file
+
+
+
+
+2018-03-09T09:10:19.000000Z
+4f337a87bb42e8d407838f6cdc097f23
+2018-03-13T01:16:00.369800Z
+1633
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+375
 
 symbols-apple.png
 file
@@ -569,4 +640,38 @@ has-props
 
 
 446
+
+device_icon_iPhone_gray.png
+file
+
+
+
+
+2018-03-16T06:31:23.000000Z
+35738db2169af389c12ae2ab24ff7a7c
+2018-03-16T09:01:11.354884Z
+1703
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+427
 

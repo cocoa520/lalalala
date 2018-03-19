@@ -11,19 +11,21 @@
 #import "IMBSystemCollectionViewController.h"
 #import "IMBSelecedDeviceBtn.h"
 #import "IMBDevViewController.h"
+#import "IMBWhiteView.h"
 @class IMBiPod,IMBStackBox;
 
 
 @interface IMBDevicePageWindow : NSWindowController<NSPopoverDelegate>
 {
-    IBOutlet IMBLackCornerView *_topView;
+//    IBOutlet IMBLackCornerView *_topView;
     IMBiPod *_iPod;
     IBOutlet NSTextField *_title;
-    IBOutlet IMBStackBox *_rootBox;
+    IBOutlet NSBox *_rootBox;
     IMBSystemCollectionViewController *_systemCollectionViewController;
     IBOutlet NSView *_topTextView;
     IMBSelecedDeviceBtn *_selectedDeviceBtn;
     NSPopover *_devPopover;
+    IBOutlet IMBLackCornerView *_topView;
 //    IBOutlet IMBSelecedDeviceBtn *_chooseViewBtn;
 }
 

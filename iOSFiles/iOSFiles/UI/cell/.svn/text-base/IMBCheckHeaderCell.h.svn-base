@@ -7,12 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IMBCheckBtn.h"
-//#import "IMBSelectButton.h"
+#import "IMBCheckButton.h"
 
 @interface IMBCheckHeaderCell : NSTableHeaderCell{
-    IMBCheckBtn *_checkButton;
-    //    IMBSelectButton *_selectButton;
+    IMBCheckButton *_checkButton;
     NSGradient  *_backgroundgradient;
     BOOL _hasTitleBorderline;
     
@@ -21,7 +19,7 @@
     BOOL _hasLeftTitleBorderLine;
 }
 
-@property (nonatomic,assign)  IMBCheckBtn *checkButton;
+@property (nonatomic,assign)  IMBCheckButton *checkButton;
 //@property (nonatomic,assign)  IMBSelectButton *selectButton;
 @property (nonatomic,retain) NSGradient  *backgroundgradient;
 @property (assign,nonatomic) BOOL hasTitleBorderLine;

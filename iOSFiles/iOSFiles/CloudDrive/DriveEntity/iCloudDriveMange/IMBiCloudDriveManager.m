@@ -9,7 +9,8 @@
 #import "IMBiCloudDriveManager.h"
 #import "DateHelper.h"
 #import "StringHelper.h"
-@class IMBDriveWindow;
+#import "IMBiCloudDriverViewController.h"
+
 @class IMBDeviceViewController;
 @implementation IMBiCloudDriveManager
 
@@ -43,8 +44,6 @@
         NSMutableDictionary *dic = [ary objectAtIndex:0];
         NSMutableArray *sonDic = [dic objectForKey:@"items"];
         for (NSDictionary *itemDic in sonDic) {
-            //            NSString *changeDate = [itemDic objectForKey:@"dateChanged"];
-            //            NSString *dateModified = [itemDic objectForKey:@"dateModified"];
             NSString *createdString = [self dateForm2001DateSting:[itemDic objectForKey:@"dateChanged"]];
             NSString *lastModifiedString = [self dateForm2001DateSting:[itemDic objectForKey:@"dateModified"]];
             NSString *docwsid = [itemDic objectForKey:@"docwsid"];
@@ -63,17 +62,17 @@
             drviceEntity.fileSize = size;
             drviceEntity.zone = zone;
             drviceEntity.etag = etag;
-            //            drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
-            //            drviceEntity.fileSystemLastDate = fileSystemLastDate;
             drviceEntity.fileID = docwsid;
             drviceEntity.docwsid = drivewsid;
+            drviceEntity.extension = extension;
+            
             if ([file isEqualToString:@"FOLDER"]) {
                 OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
                 NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
                 drviceEntity.isFolder = YES;
                 drviceEntity.image = [picture retain];
+                drviceEntity.extension = @"Folder";
             }else{
-                NSString *extension = [drviceEntity.fileName pathExtension];
                 NSWorkspace *workSpace = [[NSWorkspace alloc] init];
                 NSImage *icon = [workSpace iconForFileType:extension];
                 drviceEntity.image = [icon retain];
@@ -84,7 +83,6 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [_deivceDelegate switchiCloudDriveViewController];
-            
         });
     } fail:^(DriveAPIResponse *response) {
         
@@ -102,8 +100,6 @@
         NSMutableArray *sonDic = [dic objectForKey:@"items"];
          NSMutableArray *dataAry = [[NSMutableArray alloc]init];
         for (NSDictionary *itemDic in sonDic) {
-            //            NSString *changeDate = [itemDic objectForKey:@"dateChanged"];
-            //            NSString *dateModified = [itemDic objectForKey:@"dateModified"];
             NSString *createdString = [self dateForm2001DateSting:[itemDic objectForKey:@"dateChanged"]];
             NSString *lastModifiedString = [self dateForm2001DateSting:[itemDic objectForKey:@"dateModified"]];
             NSString *docwsid = [itemDic objectForKey:@"docwsid"];
@@ -114,24 +110,23 @@
             NSString *drivewsid = [itemDic objectForKey:@"drivewsid"];
             NSString *etag = [itemDic objectForKey:@"etag"];
             
-            
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
             drviceEntity.createdDateString = createdString;
             drviceEntity.lastModifiedDateString = lastModifiedString;
             drviceEntity.fileName = name;
             drviceEntity.fileSize = size;
             drviceEntity.etag = etag;
-            //            drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
-            //            drviceEntity.fileSystemLastDate = fileSystemLastDate;
             drviceEntity.fileID = docwsid;
             drviceEntity.docwsid = drivewsid;
+            drviceEntity.extension = extension;
+            
             if ([file isEqualToString:@"FOLDER"]) {
                 OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
                 NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
                 drviceEntity.isFolder = YES;
                 drviceEntity.image = [picture retain];
+                drviceEntity.extension = @"Folder";
             }else{
-                NSString *extension = [drviceEntity.fileName pathExtension];
                 NSWorkspace *workSpace = [[NSWorkspace alloc] init];
                 NSImage *icon = [workSpace iconForFileType:extension];
                 drviceEntity.image = [icon retain];
@@ -141,7 +136,7 @@
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [(IMBDriveWindow *)_driveWindowDelegate loadSonAryComplete:dataAry];
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadSonAryComplete:dataAry];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
@@ -168,6 +163,9 @@
     }else if (responseCode == ResponseInvalid) {///<响应无效 一般参数错误
         
     }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary *cookie = [defaults objectForKey:_userID];
+    [defaults removeObjectForKey:_userID];
     [(IMBDeviceViewController *)_deivceDelegate driveLogInFial:responseCode];
 }
 

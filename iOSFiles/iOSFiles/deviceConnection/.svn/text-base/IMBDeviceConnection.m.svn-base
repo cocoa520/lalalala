@@ -26,7 +26,7 @@
 @synthesize isicloudView = _isicloudView;
 @synthesize isiPod = _isiPod;
 @synthesize isAndroid = _isAndroid;
-
+@synthesize chooseModelEnum = _chooseModelEnum;
 #pragma mark -- 初始化操作
 - (id)init {
     self = [super init];
@@ -80,7 +80,7 @@ static id _instance = nil;
 
 @synthesize allDevices = _allDevices;
 @synthesize alliPods = _alliPods;
-
+@synthesize allMainControllerDic = _allMainControllerDic;
 
 #pragma mark -- 单例实现
 + (instancetype)singleton {
@@ -116,6 +116,9 @@ static id _instance = nil;
     [_alliPods release];
     _alliPods = nil;
     
+    [_allMainControllerDic release];
+    _allMainControllerDic = nil;
+    
     [_processingQueue release];
     _processingQueue = nil;
     
@@ -138,6 +141,7 @@ static id _instance = nil;
 - (void)setUp {
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
     _allDevices = [[NSMutableArray alloc] init];
+    _allMainControllerDic = [[NSMutableDictionary alloc]init];
     _alliPods = [[NSMutableArray alloc] init];
     _deviceAccess = [MobileDeviceAccess singleton];
     _processingQueue = [[NSOperationQueue alloc] init];
@@ -227,7 +231,7 @@ static id _instance = nil;
  */
 - (void)deviceNeedPassword:(am_device)device {
     [[IMBLogManager singleton] writeInfoLog:@"DeviceNeededPassword"];
-    IMBFFuncLog;
+//    IMBFFuncLog;
     
     if (self.IMBDeviceNeededPassword) {
         self.IMBDeviceNeededPassword(device);
@@ -250,7 +254,6 @@ static id _instance = nil;
     IMBiPod *ipod = [[[IMBiPod alloc] initWithDevice:dev] autorelease];
     ipod.uniqueKey = dev.serialNumber;
 
-    
     IMBBaseInfo *baseInfo =[[[IMBBaseInfo alloc] init] autorelease];
     [baseInfo setUniqueKey:ipod.uniqueKey];
     [baseInfo setDeviceName:ipod.deviceInfo.deviceName];

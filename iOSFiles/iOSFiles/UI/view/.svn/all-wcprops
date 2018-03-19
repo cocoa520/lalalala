@@ -1,13 +1,25 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/Mac/!svn/ver/1660/JPProject/iOSFiles/iOSFiles/UI/view
+/svn/Mac/!svn/ver/1748/JPProject/iOSFiles/iOSFiles/UI/view
 END
 IMBToolBarView.m
 K 25
 svn:wc:ra_dav:version-url
 V 75
-/svn/Mac/!svn/ver/1654/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.m
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.m
+END
+IMBAlertSupeView.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/view/IMBAlertSupeView.m
+END
+CapacityView.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/CapacityView.m
 END
 IMBWhiteView.h
 K 25
@@ -27,6 +39,12 @@ svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1556/JPProject/iOSFiles/iOSFiles/UI/view/IMBCustomCornerView.h
 END
+IMBDeviceItem.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/IMBDeviceItem.h
+END
 IMBWhiteView.m
 K 25
 svn:wc:ra_dav:version-url
@@ -44,6 +62,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 74
 /svn/Mac/!svn/ver/1646/JPProject/iOSFiles/iOSFiles/UI/view/IMBShadowView.h
+END
+IMBSelectedDeviceTextfield.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelectedDeviceTextfield.h
 END
 IMBFolderOrFileTitleField.h
 K 25
@@ -63,6 +87,12 @@ svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1556/JPProject/iOSFiles/iOSFiles/UI/view/IMBCustomCornerView.m
 END
+IMBDeviceItem.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/IMBDeviceItem.m
+END
 IMBSelectionView.m
 K 25
 svn:wc:ra_dav:version-url
@@ -74,6 +104,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 74
 /svn/Mac/!svn/ver/1654/JPProject/iOSFiles/iOSFiles/UI/view/IMBShadowView.m
+END
+IMBSelectedDeviceTextfield.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1751/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelectedDeviceTextfield.m
 END
 IMBBlankDraggableCollectionView.h
 K 25
@@ -103,13 +139,13 @@ IMBBlankDraggableCollectionView.m
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/1455/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.m
+/svn/Mac/!svn/ver/1704/JPProject/iOSFiles/iOSFiles/UI/view/IMBBlankDraggableCollectionView.m
 END
 IMBNoTitleBarContentView.m
 K 25
 svn:wc:ra_dav:version-url
 V 85
-/svn/Mac/!svn/ver/1622/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.m
+/svn/Mac/!svn/ver/1733/JPProject/iOSFiles/iOSFiles/UI/view/IMBNoTitleBarContentView.m
 END
 IMBScrollView.m
 K 25
@@ -123,11 +159,35 @@ svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/1377/JPProject/iOSFiles/iOSFiles/UI/view/IMBDrawTextFiledView.h
 END
+PopoverRootView.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/PopoverRootView.h
+END
+MyPopoverBackgroundView.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/MyPopoverBackgroundView.h
+END
+IMBSelectConntedDeviceView.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelectConntedDeviceView.h
+END
 IMBDrawTextFiledView.m
 K 25
 svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/1655/JPProject/iOSFiles/iOSFiles/UI/view/IMBDrawTextFiledView.m
+END
+PopoverRootView.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/PopoverRootView.m
 END
 IMBBackgroundBorderView.h
 K 25
@@ -135,11 +195,29 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/view/IMBBackgroundBorderView.h
 END
+MyPopoverBackgroundView.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/MyPopoverBackgroundView.m
+END
+IMBTagImageView.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1716/JPProject/iOSFiles/iOSFiles/UI/view/IMBTagImageView.h
+END
+IMBSelectConntedDeviceView.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelectConntedDeviceView.m
+END
 IMBGradientComponentView.h
 K 25
 svn:wc:ra_dav:version-url
 V 85
-/svn/Mac/!svn/ver/1650/JPProject/iOSFiles/iOSFiles/UI/view/IMBGradientComponentView.h
+/svn/Mac/!svn/ver/1670/JPProject/iOSFiles/iOSFiles/UI/view/IMBGradientComponentView.h
 END
 IMBBackgroundBorderView.m
 K 25
@@ -153,11 +231,17 @@ svn:wc:ra_dav:version-url
 V 72
 /svn/Mac/!svn/ver/1355/JPProject/iOSFiles/iOSFiles/UI/view/IMBStackBox.h
 END
+IMBTagImageView.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1716/JPProject/iOSFiles/iOSFiles/UI/view/IMBTagImageView.m
+END
 IMBGradientComponentView.m
 K 25
 svn:wc:ra_dav:version-url
 V 85
-/svn/Mac/!svn/ver/1668/JPProject/iOSFiles/iOSFiles/UI/view/IMBGradientComponentView.m
+/svn/Mac/!svn/ver/1725/JPProject/iOSFiles/iOSFiles/UI/view/IMBGradientComponentView.m
 END
 LoadingView.h
 K 25
@@ -193,17 +277,29 @@ IMBCustomHeaderTableView.m
 K 25
 svn:wc:ra_dav:version-url
 V 85
-/svn/Mac/!svn/ver/1574/JPProject/iOSFiles/iOSFiles/UI/view/IMBCustomHeaderTableView.m
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/view/IMBCustomHeaderTableView.m
 END
 IMBToolBarView.h
 K 25
 svn:wc:ra_dav:version-url
 V 75
-/svn/Mac/!svn/ver/1588/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.h
+/svn/Mac/!svn/ver/1683/JPProject/iOSFiles/iOSFiles/UI/view/IMBToolBarView.h
 END
 IMBAnimateProgressBar.m
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/1549/JPProject/iOSFiles/iOSFiles/UI/view/IMBAnimateProgressBar.m
+END
+IMBAlertSupeView.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/view/IMBAlertSupeView.h
+END
+CapacityView.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/view/CapacityView.h
 END

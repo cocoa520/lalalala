@@ -15,22 +15,22 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 
 @implementation IMBViewAnimation
 
-+ (void)animationWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion {
-    [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:0.05f completion:completion];
++ (void)animationWithView:(NSView *)view frame:(NSRect)frame disable:(BOOL)disable completion:(void(^)(void))completion {
+    [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:0.05f disable:disable completion:completion];
 }
 
-+ (void)animationWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
-    [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:timeInterval completion:completion];
++ (void)animationWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
+    [self animationWithViews:[NSArray arrayWithObject:view] frames:[NSArray arrayWithObject:[NSValue valueWithRect:frame]] timeInterval:timeInterval disable:disable completion:completion];
 }
 
 
-+ (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
++ (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames disable:(BOOL)disable completion:(void(^)(void))completion {
     
-    [self animationWithViews:views frames:frames timeInterval:IMBViewAnimInterval completion:completion];
+    [self animationWithViews:views frames:frames timeInterval:IMBViewAnimInterval disable:disable completion:completion];
     
 }
 
-+ (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
++ (void)animationWithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
     
     NSMutableArray *animations = [NSMutableArray array];
     
@@ -39,31 +39,44 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     for (NSInteger i = 0; i < count; i++) {
         NSView *view = [views objectAtIndex:i];
         NSRect frame = [view frame];
+        if (disable) {
+            if ([view isKindOfClass:[IMBGradientComponentView class]]) {
+                [(IMBGradientComponentView *)view setDisable:YES];
+            }
+        }
+        
         
         NSMutableDictionary *viewDict = [NSMutableDictionary dictionaryWithCapacity:3];
         
         
         [viewDict setObject:view forKey:NSViewAnimationTargetKey];
         
-        //设置视图的起始位置
+        //set original frame of the view
         [viewDict setObject:[NSValue valueWithRect:frame] forKey:NSViewAnimationStartFrameKey];
         
         
         [viewDict setObject:[frames objectAtIndex:i] forKey:NSViewAnimationEndFrameKey];
-//        [viewDict setObject:NSViewAnimationFadeOutEffect forKey:NSViewAnimationFadeOutEffect];
         [animations addObject:viewDict];
     }
     
     
     NSViewAnimation *theAnim = [[NSViewAnimation alloc] initWithViewAnimations:animations];
     
-    // 设置动画的一些属性.比如持续时间0.5秒
-    [theAnim setDuration:timeInterval];    // a half seconds.
+    // set time interval of the animation
+    [theAnim setDuration:timeInterval];    // .
     [theAnim setAnimationCurve:NSAnimationEaseIn];
     
-    // 启动动画
+    // start animation
     [theAnim startAnimation];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (disable) {
+            for (NSView *view in views) {
+                if ([view isKindOfClass:[IMBGradientComponentView class]]) {
+                    [(IMBGradientComponentView *)view setDisable:NO];
+                }
+            }
+        }
+        
         if (completion) {
             completion();
         }
@@ -75,68 +88,53 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     
 }
 
-+ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames completion:(void(^)(void))completion {
++ (void)animation2WithViews:(NSArray <NSView *>*)views frames:(NSArray *)frames disable:(BOOL)disable completion:(void(^)(void))completion {
     
     NSInteger count = views.count;
     
     for (NSInteger i = 0; i < count; i++) {
         
-        [NSAnimationContext endGrouping];
         
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
             [context setDuration:IMBViewAnimInterval];
             [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
             NSView *view = [views objectAtIndex:i];
+            if (disable) {
+                if ([view isKindOfClass:[IMBGradientComponentView class]]) {
+                    [(IMBGradientComponentView *)view setDisable:YES];
+                }
+            }
             NSRect newFrame = [[frames objectAtIndex:i] rectValue];
             [view.animator setFrame:newFrame];
-        } completionHandler:completion];
-        
-//        NSView *view = [views objectAtIndex:i];
-//        NSRect frame = [view frame];
-//        NSRect newFrame = [[frames objectAtIndex:i] rectValue];
-//        view.frame = newFrame;
-//        
-//        //位移动画
-//        CABasicAnimation *anima1 = [CABasicAnimation animationWithKeyPath:@"position"];
-//        [anima1 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-//        //        anima1.fromValue = [NSValue valueWithPoint:frame.origin];
-//        //        anima1.toValue = [NSValue valueWithPoint:newFrame.origin];
-//        //        anima1.beginTime = CACurrentMediaTime() + 0.03;
-//        //        anima1.fillMode = kCAFillModeBackwards;
-//        
-//        //缩放动画
-//        CABasicAnimation *anima2 = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-//        [anima2 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-//        anima2.fromValue = [NSNumber numberWithFloat:frame.size.width/newFrame.size.width];
-//        anima2.toValue = [NSNumber numberWithFloat:1.0f];
-//        //        anima2.beginTime = CACurrentMediaTime() + 0.03;
-//        //        anima2.fillMode = kCAFillModeBackwards;
-//        
-//        CABasicAnimation *anima3 = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-//        [anima3 setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-//        anima3.fromValue = [NSNumber numberWithFloat:frame.size.height/newFrame.size.height];
-//        anima3.toValue = [NSNumber numberWithFloat:1.0f];
-//        //        anima3.beginTime = CACurrentMediaTime() + 0.03;
-//        //        anima3.fillMode = kCAFillModeBackwards;
-//        
-//        //组动画
-//        CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
-//        groupAnimation.animations = [NSArray arrayWithObjects:anima1,anima2,anima3, nil];
-//        groupAnimation.duration = IMBViewAnimInterval;
-//        
-//        view.wantsLayer = YES;
-//        view.layer.anchorPoint = NSMakePoint(1, 0);
-//        [view.layer addAnimation:groupAnimation forKey:@"groupAnimation"];
+        } completionHandler:nil];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(IMBViewAnimInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (disable) {
+            for (NSView *view in views) {
+                if ([view isKindOfClass:[IMBGradientComponentView class]]) {
+                    [(IMBGradientComponentView *)view setDisable:NO];
+                }
+            }
+        }
+        if (completion) {
+            completion();
+        }
+    });
     
 }
 
-+ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion {
-    [self animationMouseMovedWithView:view frame:frame timeInterval:IMBViewAnimInterval completion:completion];
++ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame disable:(BOOL)disable completion:(void(^)(void))completion {
+    [self animationMouseMovedWithView:view frame:frame timeInterval:IMBViewAnimInterval disable:disable completion:completion];
 }
 
 
-+ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
++ (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
+//    [view setWantsLayer:YES];
+//    [view.layer removeAllAnimations];
+//    [view setWantsLayer:NO];
+    [view setAlphaValue:0];
+    
 //    [NSAnimationContext endGrouping];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
@@ -146,23 +144,114 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     } completionHandler:completion];
     
     
-    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.beginTime = CACurrentMediaTime();
-    animation.fromValue=[NSNumber numberWithFloat:0.0];
-    animation.toValue=[NSNumber numberWithFloat:1.0];
-    animation.duration = timeInterval;
-    animation.removedOnCompletion = NO;
-    animation.fillMode = kCAFillModeForwards;
+    CABasicAnimation *animation0 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation0.beginTime = CACurrentMediaTime();
+    animation0.fromValue=[NSNumber numberWithFloat:0.0];
+    animation0.toValue=[NSNumber numberWithFloat:0.6];
+    animation0.duration = timeInterval*0.85f;
+    animation0.removedOnCompletion = NO;
+    animation0.fillMode = kCAFillModeForwards;
     
     [view setWantsLayer:YES];
-    [view.layer addAnimation:animation forKey:@"opacityAnim"];
+    [view.layer addAnimation:animation0 forKey:@"opacityAnim0"];
+    
+    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation1.beginTime = CACurrentMediaTime() + timeInterval*0.85f;
+    animation1.fromValue=[NSNumber numberWithFloat:0.6];
+    animation1.toValue=[NSNumber numberWithFloat:1.0];
+    animation1.duration = timeInterval*0.35f;
+    animation1.removedOnCompletion = NO;
+    animation1.fillMode = kCAFillModeForwards;
+    
+    [view.layer addAnimation:animation1 forKey:@"opacityAnim1"];
+
 }
 
-+ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame completion:(void(^)(void))completion {
-    [self animationScaleWithView:view frame:frame timeInterval:IMBViewAnimInterval completion:completion];
++ (void)animationMouseMovedAnimWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable isHidden:(BOOL)isHidden completion:(void(^)(void))completion {
+    
+    NSNumber *opacityFromValue;
+    NSNumber *opacityToValue;
+    
+    NSNumber *scaleFromValue;
+    NSNumber *scaleToValue;
+    
+    if (isHidden) {
+        opacityFromValue = [NSNumber numberWithFloat:1.0];
+        opacityToValue = [NSNumber numberWithFloat:0];
+        
+        scaleFromValue = [NSNumber numberWithFloat:1];
+        scaleToValue = [NSNumber numberWithFloat:frame.size.height/view.frame.size.height];
+        
+    }else {
+        opacityFromValue = [NSNumber numberWithFloat:0];
+        opacityToValue = [NSNumber numberWithFloat:1.0];
+        
+        
+        scaleFromValue = [NSNumber numberWithFloat:view.frame.size.height/frame.size.height];
+        scaleToValue = [NSNumber numberWithFloat:1.0f];
+    }
+    
+    CABasicAnimation *animation0 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation0.beginTime = CACurrentMediaTime();
+    animation0.fromValue = opacityFromValue;
+    animation0.toValue = opacityToValue;
+    animation0.duration = timeInterval;
+    animation0.removedOnCompletion = NO;
+    animation0.fillMode = kCAFillModeForwards;
+    
+    [view setWantsLayer:YES];
+    [view.layer removeAllAnimations];
+    [view.layer addAnimation:animation0 forKey:@"opacityAnim0"];
+    
+    if (isHidden == NO) {
+        view.frame = frame;
+    }
+    
+    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+    animation.fromValue = scaleFromValue;
+    animation.toValue = scaleToValue;
+    animation.duration=timeInterval;
+    animation.beginTime=CACurrentMediaTime();
+    animation.repeatCount=1;
+    animation.removedOnCompletion=NO;
+    animation.fillMode=kCAFillModeForwards;
+    view.layer.anchorPoint = NSMakePoint(0.5, 0);
+    [view.layer addAnimation:animation forKey:@"transformScale"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (completion) {
+            completion();
+        }
+    });
+    
 }
 
-+ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval completion:(void(^)(void))completion {
+
++ (void)animationMouseEnteredExitedWithView:(NSView *)view frame:(NSRect)frame disable:(BOOL)disable completion:(void(^)(void))completion {
+    [self animationMouseEnteredExitedWithView:view frame:frame timeInterval:IMBViewAnimInterval disable:disable completion:completion];
+}
+
++ (void)animationMouseEnteredExitedWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
+    [view setWantsLayer:YES];
+    [view.layer removeAllAnimations];
+    [view setWantsLayer:NO];
+    
+    [NSAnimationContext endGrouping];
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:timeInterval];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [view.animator setFrame:frame];
+    } completionHandler:completion];
+    
+    
+}
+
++ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame disable:(BOOL)disable completion:(void(^)(void))completion {
+    [self animationScaleWithView:view frame:frame timeInterval:IMBViewAnimInterval disable:disable completion:completion];
+}
+
++ (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
     
     
     //    [NSAnimationContext endGrouping];

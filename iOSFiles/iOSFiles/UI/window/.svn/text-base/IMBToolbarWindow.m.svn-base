@@ -437,6 +437,10 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 	}
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+    [super mouseDown:theEvent];
+}
+
 @end
 
 @interface IMBTitlebarContainer : NSView {
@@ -450,8 +454,7 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 @implementation IMBTitlebarContainer
 @synthesize mouseDragDetectionThreshold = _mouseDragDetectionThreshold;
 
-- (instancetype)initWithFrame:(NSRect)frameRect
-{
+- (instancetype)initWithFrame:(NSRect)frameRect {
 	self = [super initWithFrame:frameRect];
 	if (self) {
 		_mouseDragDetectionThreshold = 1;
@@ -459,8 +462,7 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 	return self;
 }
 
-- (void)mouseDragged:(NSEvent *)theEvent
-{
+- (void)mouseDragged:(NSEvent *)theEvent {
 	NSWindow *window = [self window];
 	if ([window isMovableByWindowBackground] || ([window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask) {
 		[super mouseDragged:theEvent];
@@ -1222,9 +1224,17 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 - (NSView *)themeFrameView
 {
 //    self.titlebarAppearsTransparent = YES;
+//    [[[self contentView] superview] setWantsLayer:YES];
+//    [[[self contentView] superview].layer setCornerRadius:5];
+//    [[self contentView] setWantsLayer:YES];
+//    [[self contentView] setCornerRadius:5];
 	return [[self contentView] superview];
 }
 
+- (BOOL)canBecomeKeyWindow
+{
+    return YES;
+}
 - (void)_createTitlebarView
 {
 	// Create the title bar view
@@ -1232,15 +1242,13 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 	// Configure the view properties and add it as a subview of the theme frame
 	NSView *firstSubview = [[[self themeFrameView] subviews] objectAtIndex:0];
 	[self _recalculateFrameForTitleBarContainer];
-    NSView *themeFrameView = [self themeFrameView];
-	[themeFrameView addSubview:container positioned:NSWindowBelow relativeTo:firstSubview];
+//    NSView *themeFrameView = [self themeFrameView];
+//	[themeFrameView addSubview:container positioned:NSWindowBelow relativeTo:firstSubview];
 //    id themeFrameView = [self themeFrameView];
 //    [themeFrameView performSelector:NSSelectorFromString(@"_addKnownSubview:positioned:relativeTo:") withObjects:container,NSWindowBelow,firstSubview,[ZLEndMark end]];
 	_titlebarContainer = container;
 	self.titleBarView = [[IMBTitlebarView alloc] initWithFrame:NSZeroRect];
 }
-
-
 
 - (void)_hideTitleBarView:(BOOL)hidden
 {
@@ -1336,31 +1344,32 @@ NS_INLINE CGGradientRef INCreateGradientWithColors(NSColor *startingColor, NSCol
 + (NSColor *)defaultTitleBarStartColor:(BOOL)drawsAsMainWindow
 {
 	if (INRunningLion())
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.66 alpha:1.0] : [NSColor colorWithDeviceWhite:0.878 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.66 alpha:1.0] : [NSColor colorWithDeviceWhite:0.878 alpha:1.0];
 	else
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.659 alpha:1.0] : [NSColor colorWithDeviceWhite:0.851 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.659 alpha:1.0] : [NSColor colorWithDeviceWhite:0.851 alpha:1.0];
 }
 
 + (NSColor *)defaultTitleBarEndColor:(BOOL)drawsAsMainWindow
 {
 	if (INRunningLion())
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.9 alpha:1.0] : [NSColor colorWithDeviceWhite:0.976 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.9 alpha:1.0] : [NSColor colorWithDeviceWhite:0.976 alpha:1.0];
 	else
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.812 alpha:1.0] : [NSColor colorWithDeviceWhite:0.929 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.812 alpha:1.0] : [NSColor colorWithDeviceWhite:0.929 alpha:1.0];
 }
 
 + (NSColor *)defaultBaselineSeparatorColor:(BOOL)drawsAsMainWindow
 {
 	if (INRunningLion())
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.408 alpha:1.0] : [NSColor colorWithDeviceWhite:0.655 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.408 alpha:1.0] : [NSColor colorWithDeviceWhite:0.655 alpha:1.0];
 	else
-		return [NSColor whiteColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.318 alpha:1.0] : [NSColor colorWithDeviceWhite:0.600 alpha:1.0];
+		return [NSColor redColor];//drawsAsMainWindow ? [NSColor colorWithDeviceWhite:0.318 alpha:1.0] : [NSColor colorWithDeviceWhite:0.600 alpha:1.0];
 }
 
 + (NSColor *)defaultTitleTextColor:(BOOL)drawsAsMainWindow
 {
-	return drawsAsMainWindow ? [NSColor colorWithDeviceWhite:56.0/255.0 alpha:1.0] : [NSColor colorWithDeviceWhite:56.0/255.0 alpha:0.5];
+	return drawsAsMainWindow ? [NSColor redColor] : [NSColor redColor];
 }
+
 
 //luo lei add
 //- (void)sendEvent:(NSEvent *)theEvent

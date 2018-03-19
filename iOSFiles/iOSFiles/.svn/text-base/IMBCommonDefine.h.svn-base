@@ -7,8 +7,6 @@
 //
 #pragma mark -颜色
 
-
-
 #define COLOR_MAIN_WINDOW_BG IMBRgbColor(248,248,248)
 #define COLOR_BTN_BLUE_BG IMBRgbColor(53,179,251)
 //主窗口输入框背景颜色
@@ -21,15 +19,42 @@
 #define COLOR_MAIN_WINDOW_VIEW_SHADOW IMBGrayColor(242)
 //主窗口view的阴影颜色
 #define COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR IMBGrayColor(220)
+//主窗口选择设备view的背景颜色
+#define COLOR_MAIN_WINDOW_SELECTE_DEVICE_BG IMBRgbAColor(254,254,254,0.95)
 
+//device 按钮背景颜色
+#define COLOR_DEVICE_Popover_Btn_Bg_COLOR IMBGrayColor(255)
 
+//分割线
+#define COLOR_TEXT_LINE [NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.000]
+
+//分割线
+#define PROGRESS_ANIMATION_COLOR [NSColor colorWithDeviceRed:50.0/255 green:177.0/255 blue:250.0/255 alpha:1.000]
 
 //普通文字
 #define COLOR_TEXT_ORDINARY [NSColor colorWithDeviceRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.000]
-//重点文字
-#define COLOR_TEXT_PRIORITY [NSColor colorWithDeviceRed:24.0/255 green:183.0/255 blue:165.0/255 alpha:1.000]
+
 //解释文字
 #define COLOR_TEXT_EXPLAIN [NSColor colorWithDeviceRed:125.0/255 green:125.0/255 blue:125.0/255 alpha:1.000]
+//设备按钮点击颜色
+#define DEVICEITEMVIEW_DOWN_BGCOLOR [NSColor colorWithDeviceRed:206.0/255 green:228.0/255 blue:248.0/255 alpha:1.000]
+//设备按钮进入颜色
+#define DEVICEITEMVIEW_ENTER_BGCOLOR [NSColor colorWithDeviceRed:206.0/255 green:228.0/255 blue:248.0/255 alpha:1.000]
+
+
+
+#define COLOR_BUTTON_SEG IMBRgbColor(178,223,249)
+#define COLOR_BUTTON_SEGDOWN IMBRgbColor(1,150,235)
+
+
+
+
+
+
+
+//重点文字
+#define COLOR_TEXT_PRIORITY [NSColor colorWithDeviceRed:24.0/255 green:183.0/255 blue:165.0/255 alpha:1.000]
+
 //禁用文字
 #define COLOR_TEXT_DISABLE [NSColor colorWithDeviceRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1.000]
 //删除文字
@@ -40,8 +65,7 @@
 #define COLOR_TEXT_PASSAFTER [NSColor colorWithDeviceRed:26.0/255 green:198.0/255 blue:179.0/255 alpha:1.000]
 //可点击文字  点击
 #define COLOR_TEXT_CLICK [NSColor colorWithDeviceRed:30.0/255 green:161.0/255 blue:146.0/255 alpha:1]
-//分割线
-#define COLOR_TEXT_LINE [NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.000]
+
 //tableView 失去焦点的选中
 #define COLOR_TEXT_TABLEVIEW_CELLLOSEFOCUS [NSColor colorWithDeviceRed:240.0/255 green:240.0/255 blue:240.0/255 alpha:1.000]
 //tableview 选中
@@ -87,3 +111,5 @@
 #define COLOR_HOVERBTN_ENTER [NSColor colorWithDeviceRed:242.0/255 green:242.0/255 blue:242.0/255 alpha:1.0]
 
 
+#define DEVICE_LOADCOMPLETE_CAMERAROLL @"DeviceData_LoadComplete_CameraRoll"
+#define DEVICE_LOADCOMPLETE_BOOKS @"DeviceData_LoadComplete_BOOKS"

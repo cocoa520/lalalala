@@ -33,6 +33,7 @@
 //@synthesize bookmarkArray = _bookmarkArray;
 //@synthesize phoneArray = _phoneArray;
 //@synthesize contactArray = _contactArray;
+@synthesize allPhotoArray = _allPhotoArray;
 @synthesize camerarollArray = _camerarollArray;
 @synthesize photostreamArray = _photostreamArray;
 @synthesize photolibraryArray = _photolibraryArray;
@@ -70,7 +71,9 @@
 //@synthesize safariManager = _safariManager;
 //@synthesize voicemailManager = _voicemailManager;
 @synthesize isiCloudPhoto = _isiCloudPhoto;
-
+@synthesize videoArray = _videoArray;
+@synthesize mediaArray = _mediaArray;
+@synthesize appArray = _appArray;
 - (id)initWithiPod:(IMBiPod *)ipod
 {
     self = [super init];
@@ -950,6 +953,7 @@
 //    [_noteArray release],_noteArray = nil;
 //    [_messageArray release],_messageArray = nil;
     [_camerarollArray release],_camerarollArray = nil;
+    [_allPhotoArray release],_allPhotoArray = nil;
 //    [_calendarArray release],_calendarArray = nil;
 //    [_bookmarkArray release],_bookmarkArray = nil;
 //    [_contactArray release],_contactArray = nil;
@@ -980,6 +984,8 @@
     [_artworkDB release],_artworkDB = nil;
     [_purchasesInfo release],_purchasesInfo = nil;
     [_idGenerator release],_idGenerator = nil;
+    [_mediaArray release],_mediaArray = nil;
+    [_appArray release],_appArray = nil;
 //    [_recording release],_recording = nil;
     [_collecitonArray release],_collecitonArray = nil;
 //    [_voicemailManager release],_voicemailManager = nil;
@@ -995,6 +1001,11 @@
         [_cloudTrackArray release];
         _cloudTrackArray = nil;
     }
+    if (_videoArray != nil) {
+        [_videoArray release];
+        _videoArray = nil;
+    }
+    
     [super dealloc];
 }
 @end

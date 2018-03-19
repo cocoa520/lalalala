@@ -8,6 +8,10 @@
 
 #import "IMBImageAndTextFieldCell.h"
 #import "IMBCommonDefine.h"
+#import <AppKit/NSCell.h>
+#import "StringHelper.h"
+#import "TempHelper.h"
+
 @implementation IMBImageAndTextFieldCell
 @synthesize marginX = _marginX;
 @synthesize paddingX = _paddingX;
@@ -16,15 +20,11 @@
 @synthesize reserveWidth = _reserveWidth;
 @synthesize rightImage = _rightImage;
 @synthesize rightSize = _rightSize;
-@synthesize isDownloadComplete = _isDownloadComplete;
-@synthesize encrytedImg = _encryptedImg;
-@synthesize damageImg = _damageImg;
-@synthesize isOneRow = _isOneRow;
-@synthesize isDrawBgImg = _isDrawBgImg;
-@synthesize deleteImage = _deleteImage;
-@synthesize messageCount = _messageCount;
-@synthesize isShowMessageCount = _isShowMessageCount;
-
+@synthesize lockImg = _lockImg;
+@synthesize iCloudImg = _iCloudImg;
+@synthesize imageStrName = _imageStrName;
+@synthesize imageName = _imageName;
+@synthesize isDataImage = _isDataImage;
 - (id)init {
     if ((self = [super init])) {
         //[self setLineBreakMode:NSLineBreakByTruncatingTail];
@@ -33,13 +33,15 @@
         _marginX = 3;
         _paddingX = 3;
         _reserveWidth = 0;
-        _messageCount = 0;
+        _imageStrName = @"";
     }
     return self;
 }
 
 - (void)dealloc {
     [_image release];
+    [_rightImage release];
+    [_lockImg release];
     [super dealloc];
 }
 
@@ -48,6 +50,7 @@
     // The image ivar will be directly copied; we need to retain or copy it.
     cell->_image = [_image retain];
     cell->_rightImage = [_rightImage retain];
+    cell ->_lockImg = [_lockImg retain];
     return cell;
 }
 
@@ -107,128 +110,49 @@
 }
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    
+    NSRect imageFrame;
     if (_image != nil) {
-        
-        NSRect imageFrame = [self imageRectForBounds:cellFrame];
-    
-        [_image drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        
-        
-        if (self.isHighlighted) {
+        if (self.isHighlighted && self.controlView.window.isKeyWindow) {
             NSImage *surImage = [_image retain];
             NSString *imageName = _image.name;
-            if (_image != nil) {
-                [_image release];
-                _image = nil;
+            if ([StringHelper stringIsNilOrEmpty:imageName]) {
+                imageName = _imageName;
             }
-            _image = [[NSImage imageNamed:[NSString stringWithFormat:@"%@1",imageName]] retain];
+            if(_isDataImage) {
+                
+            }else {
+                if (_image != nil) {
+                    [_image release];
+                    _image = nil;
+                }
+                if (self.backgroundStyle == NSBackgroundStyleDark) {
+                    _image = [[StringHelper imageNamed:[NSString stringWithFormat:@"%@1",imageName]] retain];
+                    
+                }else{
+                    _image = [[StringHelper imageNamed:[NSString stringWithFormat:@"%@2",imageName]] retain];
+                }
+            }
+            
+            
             if (_image == nil) {
                 _image = [surImage retain];
             }
             [surImage release];
-            if (_isDrawBgImg) {
-                NSRect imageFrame = [self imageRectForBounds:cellFrame];
-                NSImage *headImage = [NSImage imageNamed:@"messageBg2"];
-                [headImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-                
-            }
-        } else {
-            if (_isDrawBgImg) {
-                if (_isOneRow) {
-                    NSRect imageFrame = [self imageRectForBounds:cellFrame];
-                    NSImage *headImage = [NSImage imageNamed:@"messageBg1"];
-                    [headImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-                }else{
-                    NSRect imageFrame = [self imageRectForBounds:cellFrame];
-                    NSImage *headImage = [NSImage imageNamed:@"messageBg3"];
-                    [headImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-                }
-                
-                
-            }
         }
-        
-        if (_messageCount > 0 && _isShowMessageCount) {
-            NSString *messageCountStr = nil;
-            if (_messageCount>=999) {
-                messageCountStr = [NSString stringWithFormat:@"%ld+",(long)999];
-            } else
-            {
-                messageCountStr = [NSString stringWithFormat:@"%ld",(long)_messageCount];
-            }
-            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:messageCountStr?messageCountStr:@""];
-            if (_messageCount >= 999) {
-                [str addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:8] range:NSMakeRange(0, str.length)];
-            } else
-            {
-                [str addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:10] range:NSMakeRange(0, str.length)];
-            }
-            
-            [str addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:NSMakeRange(0, str.length)];
-            
-            NSRect rect = imageFrame;
-            NSRect textrect = imageFrame;
-            if (str.length == 1) {
-                rect.origin.x = rect.origin.x + 21;
-                rect.origin.y -= 3;
-                rect.size.width = 22;
-                rect.size.height = 14;
-                //rect = NSMakeRect(40, 2, 20, 20);
-                textrect.origin.x = textrect.origin.x + 21 + (22-str.size.width)/2;
-                textrect.origin.y += 1+(14-str.size.height)/2 - 5 - 1;
-                textrect.size.width = str.size.width;
-                textrect.size.height = str.size.height;
-                
-                
-                //textrect = NSMakeRect(40+(20-str.size.width)/2, 1+(20-str.size.height)/2, str.size.width, str.size.height);
-            } else {
-                rect.origin.x = rect.origin.x + 19;
-                rect.origin.y -= 1;
-                rect.size.width = 24;
-                rect.size.height = 14;
-                textrect.origin.x = textrect.origin.x + 19 + (24-str.size.width)/2;
-                textrect.origin.y += (14-str.size.height)/2 - 2 - 1;
-                textrect.size.width = str.size.width;
-                textrect.size.height = str.size.height;
-            }
-            NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:7 yRadius:7];
-            [COLOR_MESSAGECOUNT_BG setFill];
-            [path fill];
-            //[path setLineWidth:2];
-            //[COLOR_MESSAGECOUNT_BG setStroke];
-            //[path stroke];
-            [str drawInRect:textrect];
-        }
-        
-        if (_encryptedImg != nil) {
-            NSRect rect = NSMakeRect(imageFrame.origin.x+_image.size.width/2, imageFrame.origin.y +_image.size.height - _encryptedImg.size.height, _encryptedImg.size.width, _encryptedImg.size.height);
-            [_encryptedImg drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }else if (_damageImg!= nil) {
-            NSRect rect = NSMakeRect(imageFrame.origin.x + _image.size.width/2, imageFrame.origin.y +_image.size.height - _damageImg.size.height, _damageImg.size.width, _damageImg.size.height);
-            [_damageImg drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }
-        
+        imageFrame = [self imageRectForBounds:cellFrame];
+        [_image drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         NSInteger newX = NSMaxX(imageFrame) + _paddingX;
         cellFrame.size.width = NSMaxX(cellFrame) - newX;
         cellFrame.origin.x = newX;
-        
-    }else{
-        NSRect imageFrame = [self imageRectForBounds:cellFrame];
+    }
+    else{
+        imageFrame = [self imageRectForBounds:cellFrame];
         NSInteger newX = NSMaxX(imageFrame) + _paddingX;
         cellFrame.size.width = NSMaxX(cellFrame) - newX;
         cellFrame.origin.x = newX;
     }
     [super drawWithFrame:cellFrame inView:controlView];
     
-    if (_isDownloadComplete) {
-        NSImage *enImage = [NSImage imageNamed:@"downloaded_icon"];
-        
-        NSRect imageFrame = [self imageRectForBoundsEN:cellFrame];
-        imageFrame.size = enImage.size;
-        imageFrame.origin.x -= 4;
-        [enImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-    }
     //扩展 文字右边的图
     if (_rightImage != nil) {
         
@@ -239,21 +163,21 @@
         [_rightImage drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         
     }
-    
-    
-}
-
--(NSRect)imageRectForBoundsEN:(NSRect)theRect {
-    NSRect result;
-    if (_image != nil) {
-        result.size = [self _imageSize:theRect.size.height];
-        result.origin = theRect.origin;
-        result.origin.x += (_marginX + 13);
-        result.origin.y += ceil((theRect.size.height - result.size.height) / 2 + 19);
-    }else{
-        result = NSZeroRect;
+    if (_lockImg != nil) {
+        NSRect rect;
+        rect.origin.x = cellFrame.origin.x  - 10;
+        rect.origin.y = cellFrame.origin.y + ceilf((cellFrame.size.height - _rightSize.height)/2.0) ;
+        rect.size = _lockImg.size;
+        [_lockImg drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
-    return result;
+    
+    if (_iCloudImg != nil) {
+        NSRect rect;
+        rect.origin.x = cellFrame.origin.x - 18;
+        rect.origin.y = cellFrame.origin.y + 45;
+        rect.size = _iCloudImg.size;
+        [_iCloudImg drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+    }
 }
 
 - (NSSize)cellSize {

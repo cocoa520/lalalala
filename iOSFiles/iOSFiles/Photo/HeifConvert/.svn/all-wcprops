@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 68
-/svn/Mac/!svn/ver/1518/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert
 END
 IMBPhotoHeicManager.m
 K 25
@@ -15,9 +15,21 @@ svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert/heicConvert.py
 END
+IMBDownloadService.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert/IMBDownloadService.h
+END
 IMBPhotoHeicManager.h
 K 25
 svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/1081/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert/IMBPhotoHeicManager.h
+END
+IMBDownloadService.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/Photo/HeifConvert/IMBDownloadService.m
 END

@@ -6,11 +6,28 @@
   Copyright (c) 2014 iMobie Inc. All rights reserved.
 */
 
-///*************chooseNormal and DFU mode view*************/
-"chooseMode_Title_str" = "復元モードを選択してください";
-"Home_Guide_Title_str" = "PhoneRescue for iOS";
-"IMB_Window_Header_ShowAll" = "すべてを表示";
-"IMB_Window_Header_HidePhoneRescue" = "PhoneRescue for iOSを隠す";
-"IMB_Window_Header_HideOther" = "他を隠す";
-"IMB_Window_Header_QuitPhoneRescue" = "PhoneRescue for iOSを終了";
-"Menu_Product" = "PhoneRescue®";
+//********device view main******
+"Device_MainPage_View_photo" = "Photo";
+"Device_MainPage_View_Book" = "Books";
+"Device_MainPage_View_Media" = "Media";
+"Device_MainPage_View_Video" = "Video";
+"Device_MainPage_View_System" = "Other";
+"Device_MainPage_View_App" = "App";
+"Device_MainPage_View_CameraRoll" = "Camera Roll";
+"Device_MainPage_View_PhotoStream" = "Photo Stream";
+"Device_MainPage_View_PhotoLibrary" = "Photo Library";
+
+//********main Window******
+"MainWindow_iCLoudUserPlaceholder_String" = "iCloud ID";
+"mainWindow_iCloudPassWord_String" = "Pass Word";
+"iCloudWindow_clickButton" = "iCloud";
+
+"NO_DATA_String" = "You have no %@ here.";
+"iCloud_content_view_file" = "files";
+"icloud_addAcount" = "添加iCloud账户";
+"icloud_add_DropBox_Acount" = "添加DropBox账户";
+
+"iCloud_detailView_Size" = "サイズ";
+"iCloud_detailView_count" = "ファイル数";
+"iCloud_detailView_lastTime" = "更新日時";
+"iCloud_detailView_creatTime" = "作成日時";

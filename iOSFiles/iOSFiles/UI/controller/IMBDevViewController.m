@@ -8,10 +8,11 @@
 
 #import "IMBDevViewController.h"
 #import "IMBDeviceConnection.h"
+#import "IMBSelectedDeviceTextfield.h"
 
 
-static CGFloat const rowH = 40.0f;
-static CGFloat const labelY = 10.0f;
+CGFloat const IMBDevViewControllerRowH = 30.0f;
+static CGFloat const labelY = 5.0f;
 
 @interface IMBDevViewController ()<NSTableViewDelegate,NSTableViewDataSource>
 {
@@ -23,11 +24,24 @@ static CGFloat const labelY = 10.0f;
 
 @implementation IMBDevViewController
 
+#pragma mark - synthesize
+@synthesize iconX = _iconX;
+@synthesize textX = _textX;
 @synthesize devices = _devices;
 
+#pragma mark - initialize
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [self.view setWantsLayer:YES];
+    [self.view.layer setBackgroundColor:[NSColor clearColor].CGColor];
+    
+    
+    if (_devices.count) {
+        [_tableView reloadData];
+    }
+    
 }
 
 /**
@@ -37,7 +51,11 @@ static CGFloat const labelY = 10.0f;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+//    [_tableView.layer setBackgroundColor:[NSColor clearColor].CGColor];
+    [_tableView setBackgroundColor:[NSColor clearColor]];
+    
 }
+
 - (void)dealloc {
     
     if (_devices) {
@@ -63,7 +81,7 @@ static CGFloat const labelY = 10.0f;
     }
 }
 
-#pragma mark -- tableviewdelegate  tableviewdatasource
+#pragma mark - tableviewdelegate  tableviewdatasource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return _devices.count;
@@ -71,7 +89,7 @@ static CGFloat const labelY = 10.0f;
 
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return rowH;
+    return IMBDevViewControllerRowH;
 }
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
     if (_devices.count) {
@@ -94,23 +112,24 @@ static CGFloat const labelY = 10.0f;
     NSString *strIdt = [tableColumn identifier];
     NSTableCellView *aView = [tableView makeViewWithIdentifier:strIdt owner:self];
     if (!aView) {
-        aView = [[NSTableCellView alloc] initWithFrame:CGRectMake(0, 0, tableColumn.width, rowH)];
+        aView = [[NSTableCellView alloc] initWithFrame:CGRectMake(0, 0, tableColumn.width, IMBDevViewControllerRowH)];
     } else {
         for (NSView *view in aView.subviews)[view removeFromSuperview];
     }
     IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
     
-    NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, labelY, tableColumn.width, rowH - 2*labelY)];
-    
-    textField.stringValue = [NSString stringWithFormat:@"%@: %.01f GB Free/%.01f GB",baseInfo.deviceName,baseInfo.kyDeviceSize/1024.0f/1024.0f/1024.0f,baseInfo.allDeviceSize/1024.0f/1024.0f/1024.0f];
-    
-    textField.font = [NSFont systemFontOfSize:12.0f];
-//    textField.alignment = NSCenterTextAlignment;
+    IMBSelectedDeviceTextfield *textField = [[IMBSelectedDeviceTextfield alloc] initWithFrame:CGRectMake(0, labelY, tableView.frame.size.width, IMBDevViewControllerRowH - 2*labelY)];
+    textField.iconX = _iconX;
+    textField.textX = _textX;
+    textField.textString = [NSString stringWithFormat:@"%@",baseInfo.deviceName];
+    textField.font = [NSFont fontWithName:@"PingFangSC-Regular" size:14.f];
     textField.drawsBackground = NO;
     textField.bordered = NO;
     textField.focusRingType = NSFocusRingTypeNone;
     textField.editable = NO;
+    [textField setTextColor:IMBGrayColor(188)];
     [aView addSubview:textField];
     return aView;
 }
+
 @end

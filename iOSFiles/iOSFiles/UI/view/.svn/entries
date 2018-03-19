@@ -1,15 +1,15 @@
 10
 
 dir
-1664
+1750
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/view
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-14T11:50:58.135669Z
-1660
-hezhonglin
+2018-03-19T10:06:12.176150Z
+1748
+shuaimingzhong
 
 
 
@@ -32,11 +32,11 @@ file
 
 
 
-2018-03-14T06:42:10.000000Z
-d7ea7033361b573ddc5481fc2441b48d
-2018-03-14T06:42:35.052370Z
-1654
-hezhonglin
+2018-03-15T09:29:53.000000Z
+fd4d6d9e97de29d23e82296c0dfaab7d
+2018-03-15T08:01:25.389232Z
+1680
+shuaimingzhong
 
 
 
@@ -58,7 +58,75 @@ hezhonglin
 
 
 
-7006
+7005
+
+IMBAlertSupeView.m
+file
+
+
+
+
+2018-03-15T09:29:53.000000Z
+22b5b8ee7e8c29356512fbc208673864
+2018-03-15T08:01:25.389232Z
+1680
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+491
+
+CapacityView.m
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+738e52c328bfaf5d5ca1882374eda93f
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1243
 
 IMBWhiteView.h
 file
@@ -162,6 +230,40 @@ longfan
 
 183
 
+IMBDeviceItem.h
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+8b4a08d327a6243fb3cb6b2a1ebf537e
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1664
+
 IMBSelectionView.h
 file
 
@@ -263,6 +365,40 @@ hezhonglin
 
 
 198
+
+IMBSelectedDeviceTextfield.h
+file
+
+
+
+
+2018-03-16T08:52:29.000000Z
+1a893ae60a93d578b1417be14698f385
+2018-03-16T09:01:11.354884Z
+1703
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+450
 
 IMBFolderOrFileTitleField.h
 file
@@ -366,6 +502,40 @@ longfan
 
 2322
 
+IMBDeviceItem.m
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+75765d496a1f000cf35c9e92adfa4f61
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16082
+
 IMBSelectionView.m
 file
 
@@ -433,6 +603,40 @@ hezhonglin
 
 
 478
+
+IMBSelectedDeviceTextfield.m
+file
+1751
+
+
+
+2018-03-19T09:04:05.000000Z
+91166ead532a0b60f8fe1b97bf96413b
+2018-03-19T11:18:28.578167Z
+1751
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1642
 
 IMBBlankDraggableCollectionView.h
 file
@@ -576,10 +780,10 @@ file
 
 
 
-2018-03-09T09:48:44.000000Z
+2018-03-16T09:22:13.000000Z
 1b8b1b1a90c172724f70f4ec18a8290f
-2018-03-01T09:53:10.213838Z
-1455
+2018-03-16T09:21:26.519018Z
+1704
 longfan
 has-props
 
@@ -644,11 +848,11 @@ file
 
 
 
-2018-03-12T07:29:57.000000Z
-cf61666dbc4cff51ea010e29a2ec0df0
-2018-03-12T07:30:52.704752Z
-1622
-hezhonglin
+2018-03-19T08:04:11.000000Z
+7f6480d5a2dfe9ddd0e18469f1ac550a
+2018-03-19T07:08:59.493875Z
+1733
+dingming
 
 
 
@@ -706,6 +910,108 @@ longfan
 
 216
 
+PopoverRootView.h
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+4f8bf4f08d49ee01bd758fa4b6312023
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+207
+
+MyPopoverBackgroundView.h
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+00bb3e19908911dd34d6dd2c690c9a27
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+223
+
+IMBSelectConntedDeviceView.h
+file
+
+
+
+
+2018-03-16T07:31:29.000000Z
+fabce8af126f018063e47aeeae8877a2
+2018-03-16T09:01:11.354884Z
+1703
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+538
+
 IMBDrawTextFiledView.m
 file
 
@@ -739,6 +1045,40 @@ hezhonglin
 
 
 1657
+
+PopoverRootView.m
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+3ed8fb68d0002efb703fb1680b23cb4e
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1210
 
 IMBBackgroundBorderView.h
 file
@@ -774,16 +1114,84 @@ longfan
 
 1264
 
-IMBGradientComponentView.h
+MyPopoverBackgroundView.m
 file
 
 
 
 
-2018-03-14T04:10:15.000000Z
-ede90fa6319ea1e5ef85f3d9713f85a5
-2018-03-14T05:58:51.408561Z
-1650
+2018-03-19T03:24:28.000000Z
+31d467300d9a1bae2022afa532a96417
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1852
+
+IMBTagImageView.h
+file
+
+
+
+
+2018-03-19T01:33:37.000000Z
+f00802e8bbd1028cdbc78a93a8580fbc
+2018-03-16T10:23:47.233988Z
+1716
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+266
+
+IMBSelectConntedDeviceView.m
+file
+
+
+
+
+2018-03-16T07:37:52.000000Z
+c6e9e8dd85896353a5ce3d6c5746dda8
+2018-03-16T09:01:11.354884Z
+1703
 hezhonglin
 
 
@@ -806,7 +1214,41 @@ hezhonglin
 
 
 
-1145
+4621
+
+IMBGradientComponentView.h
+file
+
+
+
+
+2018-03-15T02:17:22.000000Z
+b8dc5910f69009779ff2227977c00377
+2018-03-15T02:52:06.301834Z
+1670
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1209
 
 IMBBackgroundBorderView.m
 file
@@ -876,6 +1318,74 @@ hezhonglin
 
 438
 
+IMBTagImageView.m
+file
+
+
+
+
+2018-03-19T01:33:37.000000Z
+15a078eab4b8cb7bb5a53336b9f3ca57
+2018-03-16T10:23:47.233988Z
+1716
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+332
+
+IMBGradientComponentView.m
+file
+
+
+
+
+2018-03-19T02:50:42.000000Z
+674d0929e47ee67f636fe56965048293
+2018-03-19T03:25:25.545114Z
+1725
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9130
+
 LoadingView.h
 file
 
@@ -910,39 +1420,8 @@ hezhonglin
 
 468
 
-IMBGradientComponentView.m
-file
-1668
-
-
-
-2018-03-14T12:42:53.000000Z
-1a29f271a4c238cf75347ab289c5651f
-2018-03-14T12:55:51.746507Z
-1668
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9092
+CNGridView
+dir
 
 IMBStackBox.m
 file
@@ -1086,11 +1565,11 @@ file
 
 
 
-2018-03-09T09:48:44.000000Z
-5035f84d44c24d390cf2a998abbcc07a
-2018-03-08T04:18:16.684989Z
-1574
-longfan
+2018-03-15T09:29:53.000000Z
+e0e53c6405d1cc11001baa739f43ad32
+2018-03-15T08:01:25.389232Z
+1680
+shuaimingzhong
 
 
 
@@ -1112,7 +1591,7 @@ longfan
 
 
 
-19712
+19564
 
 IMBToolBarView.h
 file
@@ -1120,10 +1599,10 @@ file
 
 
 
-2018-03-09T09:48:44.000000Z
-0bb378b7a468f0d0b24ceee3046ce4ae
-2018-03-08T10:17:46.374875Z
-1588
+2018-03-15T11:08:56.000000Z
+78d5934ce76a2ec3b26025497449a640
+2018-03-15T10:20:42.464310Z
+1683
 longfan
 
 
@@ -1146,7 +1625,7 @@ longfan
 
 
 
-754
+774
 
 IMBAnimateProgressBar.m
 file
@@ -1181,4 +1660,72 @@ longfan
 
 
 10929
+
+IMBAlertSupeView.h
+file
+
+
+
+
+2018-03-15T09:29:53.000000Z
+885fa35bd6d8ec12b0c5f71b34d1c9e3
+2018-03-15T08:01:25.389232Z
+1680
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+202
+
+CapacityView.h
+file
+
+
+
+
+2018-03-19T03:24:28.000000Z
+67b248720ad265cb13b420b138125b98
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+363
 

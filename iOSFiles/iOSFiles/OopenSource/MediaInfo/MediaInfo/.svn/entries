@@ -1,7 +1,7 @@
 10
 
 dir
-1664
+1750
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/OopenSource/MediaInfo/MediaInfo
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -684,40 +684,6 @@ has-props
 
 2977
 
-File_Dummy.h
-file
-
-
-
-
-2018-03-09T09:48:54.000000Z
-b0716906b081a547a5417166b8f368c0
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1455
-
 File__Analyze_Streams_Finish.cpp
 file
 
@@ -752,14 +718,14 @@ has-props
 
 37120
 
-MediaInfo_Config_MediaInfo.h
+File_Dummy.h
 file
 
 
 
 
 2018-03-09T09:48:54.000000Z
-0fcefb45b11ec3b93c77d08846853603
+b0716906b081a547a5417166b8f368c0
 2018-01-29T07:59:41.886989Z
 1081
 hezhonglin
@@ -784,7 +750,10 @@ has-props
 
 
 
-18488
+1455
+
+Export
+dir
 
 MediaInfo.h
 file
@@ -820,11 +789,39 @@ has-props
 
 16233
 
-Export
-dir
-
-Image
-dir
+MediaInfo_Config_MediaInfo.h
+file
+
+
+
+
+2018-03-09T09:48:54.000000Z
+0fcefb45b11ec3b93c77d08846853603
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+18488
 
 File__Analyze.cpp
 file
@@ -859,6 +856,9 @@ has-props
 
 
 127570
+
+Image
+dir
 
 File__Analyze_MinimizeSize.h
 file

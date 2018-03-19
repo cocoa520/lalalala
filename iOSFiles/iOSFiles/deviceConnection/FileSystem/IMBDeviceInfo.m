@@ -97,13 +97,26 @@
     } else if (_family > 1000 && _family < 2000) {
         return @"iPod touch";
     } else if (_family > 2000 && _family < 3000) {
+        if (_family == 2021) {
+            return @"iPhoneX";
+        }
         return @"iPhone";
     } else if (_family > 3000) {
         return @"iPad";
     }
     return @"";
 }
-
+- (NSString*)familyNewString {
+    if (_family < 3000) {
+        if (_family == 2021) {
+            return @"iPhoneX";
+        }
+        return @"iPhoneN";
+    } else if (_family > 3000) {
+        return @"iPad";
+    }
+    return @"";
+}
 - (NSString *)getIPodFamilyString {
     NSString *familyTypeStr = nil;
     switch (_family) {

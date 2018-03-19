@@ -39,4 +39,6 @@
 @property(nonatomic, readwrite) BOOL isSubNodeCell;
 @property(nonatomic, readwrite) BOOL isStatue;
 @property(nonatomic, readwrite) BOOL isHaveValue;
+- (void)reloadImage;
+
 @end

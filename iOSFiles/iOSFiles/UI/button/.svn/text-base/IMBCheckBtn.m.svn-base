@@ -71,9 +71,9 @@
 }
 
 - (id)init {
-    NSImage *unCheckImage = [NSImage imageNamed:@"box_default1"];
-    NSImage *checkImg = [NSImage imageNamed:@"box_select1"];
-    NSImage *mixImg = [NSImage imageNamed:@"box_mix_select1"];
+    NSImage *unCheckImage = [NSImage imageNamed:@"mod_icon_checkbox"];
+    NSImage *checkImg = [NSImage imageNamed:@"mod_icon_checkbox_selected"];
+    NSImage *mixImg = [NSImage imageNamed:@"mod_icon_checkbox_selected"];
     if (self = [self initWithCheckImg:checkImg unCheckImg:unCheckImage mixImg:mixImg]) {
         
     }
@@ -133,10 +133,10 @@
             }
         }else{
             if (value == NSOnState) {
-                [self setImage:[NSImage imageNamed:@"box_select1"]];
+                [self setImage:[NSImage imageNamed:@"mod_icon_checkbox_selected"]];
             }
             else if(value == NSOffState){
-                [self setImage:[NSImage imageNamed:@"box_default1"]];
+                [self setImage:[NSImage imageNamed:@"mod_icon_checkbox"]];
             }
             else if(value == NSMixedState){
                 [self setImage:[NSImage imageNamed:@"box_mix_select1"]];

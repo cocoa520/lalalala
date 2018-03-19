@@ -45,10 +45,10 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
     
     myWindow = self;
     [self setHasShadow:YES];
-    Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));
-    const char *encoding=method_getTypeEncoding(coreUIWidgetStateMethod);
-    originalIMP=(void*)method_getImplementation(coreUIWidgetStateMethod);
-    class_replaceMethod([_NSThemeWidgetCell class], @selector(coreUIState), (IMP)myCoreUIWidgetState, encoding);
+//    Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));
+//    const char *encoding=method_getTypeEncoding(coreUIWidgetStateMethod);
+//    originalIMP=(void*)method_getImplementation(coreUIWidgetStateMethod);
+//    class_replaceMethod([_NSThemeWidgetCell class], @selector(coreUIState), (IMP)myCoreUIWidgetState, encoding);
     
     _closeButton=[NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:0 ];
     _minButton=[NSWindow standardWindowButton:NSWindowMiniaturizeButton forStyleMask:0 ];
@@ -164,9 +164,9 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
 }
 
 - (void)dealloc {
-    Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));
-    const char *encoding=method_getTypeEncoding(coreUIWidgetStateMethod);
-    class_replaceMethod([_NSThemeWidgetCell class], @selector(coreUIState), (IMP)originalIMP, encoding);
+//    Method coreUIWidgetStateMethod=class_getInstanceMethod([_NSThemeWidgetCell class], @selector(coreUIState));
+//    const char *encoding=method_getTypeEncoding(coreUIWidgetStateMethod);
+//    class_replaceMethod([_NSThemeWidgetCell class], @selector(coreUIState), (IMP)originalIMP, encoding);
     [super dealloc];
 }
 

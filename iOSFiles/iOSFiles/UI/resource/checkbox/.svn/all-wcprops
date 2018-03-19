@@ -1,13 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 71
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox
-END
-sel_non.png
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_non.png
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox
 END
 sel_all2.png
 K 25
@@ -15,23 +9,23 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_all2.png
 END
+sel_non.png
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_non.png
+END
+list_arrow@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/list_arrow@2x.png
+END
 sel_sem@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_sem@2x.png
-END
-sel_all2@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_all2@2x.png
-END
-checkbox1.png
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/checkbox1.png
 END
 sel_non@2x.png
 K 25
@@ -39,11 +33,23 @@ svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_non@2x.png
 END
-preferBtn1.png
+checkbox1.png
 K 25
 svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/preferBtn1.png
+V 85
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/checkbox1.png
+END
+sel_all2@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_all2@2x.png
+END
+list_arrow2.png
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/list_arrow2.png
 END
 checkbox2.png
 K 25
@@ -51,11 +57,17 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/checkbox2.png
 END
-preferBtn2.png
+preferBtn1.png
 K 25
 svn:wc:ra_dav:version-url
 V 86
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/preferBtn2.png
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/preferBtn1.png
+END
+sel_sem2.png
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_sem2.png
 END
 checkbox3.png
 K 25
@@ -63,11 +75,11 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/checkbox3.png
 END
-sel_sem2.png
+preferBtn2.png
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_sem2.png
+V 86
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/preferBtn2.png
 END
 sel_all.png
 K 25
@@ -86,6 +98,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/checkbox1@2x.png
+END
+list_arrow2@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/list_arrow2@2x.png
 END
 preferBtn1@2x.png
 K 25
@@ -122,6 +140,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/sel_all@2x.png
+END
+list_arrow.png
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox/list_arrow.png
 END
 sel_sem.png
 K 25

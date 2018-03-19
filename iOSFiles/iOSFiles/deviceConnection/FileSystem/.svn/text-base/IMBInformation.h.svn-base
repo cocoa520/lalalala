@@ -92,7 +92,13 @@
     NSMutableArray *_playlistArray;
     NSMutableArray *_trackArray;
     NSMutableArray *_cloudTrackArray;
+    NSMutableArray *_allPhotoArray;
+    NSMutableArray *_videoArray;
+    NSMutableArray *_mediaArray;
+    NSMutableArray *_appArray;
 }
+@property(nonatomic,retain)NSMutableArray *mediaArray;
+@property(nonatomic,retain)NSMutableArray *allPhotoArray;
 @property (nonatomic, readonly) IMBMusicDatabase *mediaDatabase;
 @property (nonatomic, readonly) IMBArtworkDB *artworkDB;
 @property (nonatomic, readonly) IMBIDGenerator *idGenerator;
@@ -140,8 +146,8 @@
 //@property(nonatomic,assign)BOOL contactNeedReload;
 @property(nonatomic,assign)BOOL isiCloudPhoto;
 @property(nonatomic,retain) NSMutableArray *collecitonArray;
-
-
+@property(nonatomic,retain) NSMutableArray *videoArray;
+@property(nonatomic,retain) NSMutableArray *appArray;
 - (id)initWithiPod:(IMBiPod *)ipod;
 
 #pragma mark - media数据

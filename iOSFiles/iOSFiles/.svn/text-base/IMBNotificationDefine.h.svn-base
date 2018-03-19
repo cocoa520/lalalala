@@ -229,6 +229,6 @@
 
 #define NOTIFY_JUMP_ICLOUD_VIEW @"Jump_iCloud_View"
 
-
+#define NOTIFY_HIDE_ICLOUDDETAIL @"hide_iCloud_detail"
 
 #endif

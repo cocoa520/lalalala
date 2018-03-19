@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface IMBDevicePageFolderModel : NSObject
+#import "IMBBaseEntity.h"
+@interface IMBDevicePageFolderModel : IMBBaseEntity
 
 {
     @private
     NSArray *_trackArray;
-    NSArray *_photoArray;
-    NSArray *_booksArray;
-    NSArray *_appsArray;
     NSMutableArray *_subPhotoArray;
     
     NSString *_name;
@@ -25,16 +22,16 @@
     NSInteger _counts;
     NSString *_countsString;
     NSInteger _idx;
+    NSImage *_image;
+    CategoryNodesEnum _nodesEnum;
 }
-
+@property(nonatomic, assign)CategoryNodesEnum nodesEnum;
+@property(nonatomic, retain)NSImage *image;
 @property(nonatomic, retain)NSString *name;
 @property(nonatomic, assign)unsigned long long size;
 @property(nonatomic, retain)NSString *time;
 @property(nonatomic, assign)NSInteger counts;
 @property(nonatomic, retain)NSArray *trackArray;
-@property(nonatomic, retain)NSArray *photoArray;
-@property(nonatomic, retain)NSArray *booksArray;
-@property(nonatomic, retain)NSArray *appsArray;
 @property(nonatomic, retain)NSMutableArray *subPhotoArray;
 @property(nonatomic, assign)NSInteger idx;
 @property(nonatomic, retain)NSString *sizeString;

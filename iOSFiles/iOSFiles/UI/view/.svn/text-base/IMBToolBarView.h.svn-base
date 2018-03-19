@@ -27,7 +27,7 @@ typedef enum : NSUInteger {
 }
 @property(nonatomic, assign) id delegate;
 @property(nonatomic, retain)IMBInformation *information;
-
+//要隐藏的按钮
 - (void)setHiddenIndexes:(NSArray *)indexes;
 - (void)enableBtns:(BOOL)isEnable;
 

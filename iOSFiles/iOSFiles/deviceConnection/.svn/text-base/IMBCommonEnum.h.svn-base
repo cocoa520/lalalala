@@ -59,14 +59,14 @@ typedef enum CategoryNodes {
     Category_iCloudDriver = 47,
     Category_iCloudBackup = 48,
     category_iCloudUp = 49,//iCloud上传
-
+    
     Category_iTunes_lib = 50,
     Category_iTunes_Music = 51,
     Category_iTunes_Movie = 52,
     Category_iTunes_TVShow = 53,
     Category_iTunes_iBooks = 54,
     Category_iTunes_Audiobook = 55,
-    Category_iTunes_Ringtone = 56, 
+    Category_iTunes_Ringtone = 56,
     Category_iTunes_App = 57,
     Category_iTunes_VoiceMemos = 58,
     Category_iTunes_iTunesU = 59,
@@ -89,7 +89,17 @@ typedef enum CategoryNodes {
     Category_PhotoSelfies = 72,
     Category_Location = 73,
     Category_Favorite = 74,
+    
+    
+    Category_Media = 75,
+    Category_Video = 76,
 } CategoryNodesEnum;
+
+typedef enum chooseLog {
+    iCloudLogEnum = 0,
+    DropBoxLogEnum = 1,
+    DeviceLogEnum = 2,
+} ChooseLoginModelEnum;
 
 typedef enum CallingType {
     // 未知通话

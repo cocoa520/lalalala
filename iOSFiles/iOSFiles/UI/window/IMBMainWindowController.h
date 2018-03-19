@@ -7,20 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IMBNoTitleBarContentView.h"
+//#import "IMBNoTitleBarContentView.h"
 #import "IMBLackCornerView.h"
-#import "IMBSelecedDeviceBtn.h"
 #import "IMBDeviceViewController.h"
-@class IMBWhiteView;
+#import "IMBiPod.h"
+#import "IMBCommonEnum.h"
+#import "IMBWhiteView.h"
+#import "IMBDeviceConnection.h"
 
-@interface IMBMainWindowController : NSWindowController
-{
-    IBOutlet IMBNoTitleBarContentView *_mainContontView;
-    IBOutlet IMBLackCornerView *_topView;
+@interface IMBMainWindowController : NSWindowController {
     IBOutlet NSBox *_rootBox;
     IMBDeviceViewController *_deviceViewController;
-    
     IBOutlet IMBWhiteView *_whiteView;
+    IMBiPod *_newiPod;
 }
-
+- (id)initWithNewWindowiPod:(IMBiPod *)ipod;
+- (void)changeMainFrame:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage;
+- (void)backMainViewChooseLoginModelEnum:(ChooseLoginModelEnum) choosemodelEnum withiPod:(IMBiPod *)ipod;
+- (void)closeWindow:(id)sender;
 @end

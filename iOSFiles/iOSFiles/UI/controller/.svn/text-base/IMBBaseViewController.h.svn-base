@@ -28,6 +28,10 @@
 #import "IMBBackgroundBorderView.h"
 #import "CommonDefine.h"
 #import "IMBToolBarView.h"
+#import "CNGridViewItemLayout.h"
+#import "IMBCommonDefine.h"
+#import "IMBToolButtonView.h"
+#import "LoadingView.h"
 @class IMBInformation;
 @class IMBBlankDraggableCollectionView;
 @class IMBBaseViewController;
@@ -50,8 +54,7 @@ typedef NS_ENUM(int, AnimationStyle) {
 @interface IMBBaseViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,IMBImageRefreshListListener,NSCollectionViewDelegate,NSTextViewDelegate,NSPopoverDelegate>
 {
     
-    IBOutlet IMBToolBarView *_toolBarView;
-  
+    IBOutlet IMBToolButtonView *_toolBarButtonView;
     IMBiPod *_iPod;
     id _delegate;
     CategoryNodesEnum _category;
@@ -112,12 +115,18 @@ typedef NS_ENUM(int, AnimationStyle) {
     NSMutableArray *_baseAry;
     AryEnum showEnum;
     NSString *_sortName;
-
+    
+    CNGridViewItemLayout *_defaultLayout;
+    CNGridViewItemLayout *_hoverLayout;
+    CNGridViewItemLayout *_selectionLayout;
+    int _currentSelectView;
+    
     @public
     NSWindow *_mainWindow;
     IMBBackgroundBorderView *_mainTopLineView;
     
     BOOL _isShowLineView;
+//    LoadingView *_loadingView;
 }
 @property (nonatomic,retain) IMBiPod *iPod;
 @property (nonatomic,assign) BOOL isShowLineView;
@@ -135,6 +144,10 @@ typedef NS_ENUM(int, AnimationStyle) {
 @property (nonatomic,assign) BOOL collectionViewcanDrop;
 @property (nonatomic,assign) BOOL isPause;
 @property (nonatomic, retain) IMBBackgroundBorderView *mainTopLineView;
+@property (nonatomic, retain) CNGridViewItemLayout *defaultLayout;
+@property (nonatomic, retain) CNGridViewItemLayout *hoverLayout;
+@property (nonatomic, retain) CNGridViewItemLayout *selectionLayout;
+@property (nonatomic,assign) int currentSelectView;
 
 - (void)setDelegate:(id)delegate;
 
@@ -212,10 +225,22 @@ typedef NS_ENUM(int, AnimationStyle) {
 - (void)setTableViewHeadCheckBtn;
 
 
-- (void)refresh:(IMBInformation *)information;
-- (void)toMac:(IMBInformation *)information;
-- (void)addToDevice:(IMBInformation *)information;
-- (void)deleteItem:(IMBInformation *)information;
-- (void)toDevice:(IMBInformation *)information;
-- (void)doEdit:(IMBInformation *)information;
+//- (void)refresh:(IMBInformation *)information;
+//- (void)toMac:(IMBInformation *)information;
+//- (void)addToDevice:(IMBInformation *)information;
+//- (void)deleteItem:(IMBInformation *)information;
+//- (void)toDevice:(IMBInformation *)information;
+//- (void)doEdit:(IMBInformation *)information;
+
+//iCloudDriver
+- (void)reload:(id)sender;
+- (void)addItems:(id)sender;
+- (void)deleteItems:(id)sender;
+- (void)doSwitchView:(id)sender;
+- (void)refresh:(id)sender;
+- (void)toMac:(id)sender;
+- (void)addToDevice:(id)sender;
+- (void)deleteItem:(id)sender;
+- (void)toDevice:(id)sender;
+- (void)doEdit:(id)sender;
 @end

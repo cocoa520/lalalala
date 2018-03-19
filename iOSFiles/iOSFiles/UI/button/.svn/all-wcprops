@@ -1,19 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 60
-/svn/Mac/!svn/ver/1659/JPProject/iOSFiles/iOSFiles/UI/button
-END
-IMBWindowButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 78
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBWindowButton.h
-END
-IMBCustomButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 78
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomButton.h
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/UI/button
 END
 IMBDrawOneImageBtn.h
 K 25
@@ -21,11 +9,11 @@ svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBDrawOneImageBtn.h
 END
-IMBWindowButton.m
+IMBCustomButton.h
 K 25
 svn:wc:ra_dav:version-url
 V 78
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBWindowButton.m
+/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomButton.h
 END
 IMBFolderOrFileButton.h
 K 25
@@ -33,11 +21,11 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/button/IMBFolderOrFileButton.h
 END
-IMBCheckButton.h
+IMBDrawOneImageBtn.m
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckButton.h
+V 81
+/svn/Mac/!svn/ver/1659/JPProject/iOSFiles/iOSFiles/UI/button/IMBDrawOneImageBtn.m
 END
 IMBCustomButton.m
 K 25
@@ -45,71 +33,17 @@ svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomButton.m
 END
-IMBDrawOneImageBtn.m
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/Mac/!svn/ver/1659/JPProject/iOSFiles/iOSFiles/UI/button/IMBDrawOneImageBtn.m
-END
 IMBFolderOrFileButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/button/IMBFolderOrFileButton.m
 END
-IMBCheckButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 77
-/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckButton.m
-END
-IMBCustomBlueButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/1621/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBlueButton.h
-END
-IMBCustomBtn.h
-K 25
-svn:wc:ra_dav:version-url
-V 75
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBtn.h
-END
-IMBHoverButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 77
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBHoverButton.h
-END
 IMBMyDrawCommonly.h
 K 25
 svn:wc:ra_dav:version-url
 V 80
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBMyDrawCommonly.h
-END
-IMBCheckBtn.h
-K 25
-svn:wc:ra_dav:version-url
-V 74
-/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckBtn.h
-END
-IMBCustomBlueButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/1633/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBlueButton.m
-END
-IMBCustomBtn.m
-K 25
-svn:wc:ra_dav:version-url
-V 75
-/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBtn.m
-END
-IMBHoverButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 77
-/svn/Mac/!svn/ver/1548/JPProject/iOSFiles/iOSFiles/UI/button/IMBHoverButton.m
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/button/IMBMyDrawCommonly.h
 END
 IMBCommonButtonCell.h
 K 25
@@ -117,23 +51,11 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBCommonButtonCell.h
 END
-IMBCheckBtn.m
-K 25
-svn:wc:ra_dav:version-url
-V 74
-/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckBtn.m
-END
 IMBMyDrawCommonly.m
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1667/JPProject/iOSFiles/iOSFiles/UI/button/IMBMyDrawCommonly.m
-END
-HoverButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 74
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/HoverButton.h
 END
 IMBHoverBtnCell.h
 K 25
@@ -145,19 +67,13 @@ IMBSelecedDeviceBtn.h
 K 25
 svn:wc:ra_dav:version-url
 V 82
-/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBSelecedDeviceBtn.h
+/svn/Mac/!svn/ver/1752/JPProject/iOSFiles/iOSFiles/UI/button/IMBSelecedDeviceBtn.h
 END
 IMBCommonButtonCell.m
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBCommonButtonCell.m
-END
-HoverButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 74
-/svn/Mac/!svn/ver/1424/JPProject/iOSFiles/iOSFiles/UI/button/HoverButton.m
 END
 IMBHoverBtnCell.m
 K 25
@@ -169,5 +85,149 @@ IMBSelecedDeviceBtn.m
 K 25
 svn:wc:ra_dav:version-url
 V 82
-/svn/Mac/!svn/ver/1644/JPProject/iOSFiles/iOSFiles/UI/button/IMBSelecedDeviceBtn.m
+/svn/Mac/!svn/ver/1752/JPProject/iOSFiles/iOSFiles/UI/button/IMBSelecedDeviceBtn.m
+END
+IMBiCloudPathSelectBtn.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/1698/JPProject/iOSFiles/iOSFiles/UI/button/IMBiCloudPathSelectBtn.h
+END
+IMBImageAndTitleButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/UI/button/IMBImageAndTitleButton.h
+END
+IMBWindowButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBWindowButton.h
+END
+IMBToolButtonView.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Mac/!svn/ver/1717/JPProject/iOSFiles/iOSFiles/UI/button/IMBToolButtonView.h
+END
+IMBiCloudPathSelectBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/1698/JPProject/iOSFiles/iOSFiles/UI/button/IMBiCloudPathSelectBtn.m
+END
+IMBImageAndTitleButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/UI/button/IMBImageAndTitleButton.m
+END
+IMBWindowButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBWindowButton.m
+END
+IMBCheckButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckButton.h
+END
+IMBToolButtonView.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Mac/!svn/ver/1717/JPProject/iOSFiles/iOSFiles/UI/button/IMBToolButtonView.m
+END
+IMBCustomBtn.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBtn.h
+END
+IMBCustomBlueButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1621/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBlueButton.h
+END
+IMBCheckButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckButton.m
+END
+IMBSegmentedBtn.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/button/IMBSegmentedBtn.h
+END
+IMBHoverButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/IMBHoverButton.h
+END
+IMBCheckBtn.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1553/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckBtn.h
+END
+IMBCustomBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Mac/!svn/ver/1656/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBtn.m
+END
+IMBCustomBlueButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1633/JPProject/iOSFiles/iOSFiles/UI/button/IMBCustomBlueButton.m
+END
+IMBHoverButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/1548/JPProject/iOSFiles/iOSFiles/UI/button/IMBHoverButton.m
+END
+IMBSegmentedBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/button/IMBSegmentedBtn.m
+END
+IMBSignOutButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/button/IMBSignOutButton.h
+END
+IMBCheckBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1725/JPProject/iOSFiles/iOSFiles/UI/button/IMBCheckBtn.m
+END
+HoverButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1128/JPProject/iOSFiles/iOSFiles/UI/button/HoverButton.h
+END
+IMBSignOutButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1724/JPProject/iOSFiles/iOSFiles/UI/button/IMBSignOutButton.m
+END
+HoverButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Mac/!svn/ver/1424/JPProject/iOSFiles/iOSFiles/UI/button/HoverButton.m
 END

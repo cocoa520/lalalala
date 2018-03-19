@@ -7,17 +7,13 @@
 //
 
 #import "IMBMainWindowController.h"
-#import "IMBNoTitleBarWindow.h"
-#import "StringHelper.h"
-#import "IMBDeviceViewController.h"
-#import "IMBDeviceConnection.h"
-#import "IMBiPod.h"
-#import "IMBDevViewController.h"
 #import "IMBCommonDefine.h"
-#import "IMBWhiteView.h"
-
-
-@interface IMBMainWindowController ()<NSPopoverDelegate>
+#import "IMBMainPageViewController.h"
+#define WindowMinSizeWidth 438
+#define WindowMinSizeHigh 592
+#define WindowMaxSizeWidth 644
+#define WindowMaxSizeHigh 1096
+@interface IMBMainWindowController ()<NSPopoverDelegate,NSAnimationDelegate>
 
 @end
 
@@ -31,32 +27,80 @@
     return self;
 }
 
+- (id)initWithNewWindowiPod:(IMBiPod *)ipod {
+    if ([super initWithWindowNibName:@"IMBMainWindowController"]) {
+        _newiPod = [ipod retain];
+    }
+    return self;
+}
+
 /**
  *  初始化操作
  */
 - (void)awakeFromNib {
-//    NSRect screenRect = [NSScreen mainScreen].frame;
-//    [self.window setMaxSize:screenRect.size];
     [_whiteView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
-    [self.window setContentSize:NSMakeSize(592, 430)];
+    [[self window] setMovableByWindowBackground:YES];
 
-    [(NSView *)((IMBNoTitleBarWindow *)self.window).maxAndminView setFrameOrigin:NSMakePoint(10,NSHeight(_topView.frame) - 22)];
-    [[(IMBNoTitleBarWindow *)self.window closeButton] setAction:@selector(closeWindow:)];
-    [[(IMBNoTitleBarWindow *)self.window closeButton] setTarget:self];
-    [_topView addSubview:((IMBNoTitleBarWindow *)self.window).maxAndminView];
-    [((IMBNoTitleBarWindow *)self.window).maxAndminView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
-    [_topView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
-//    [_topView setWantsLayer:YES];
-//    [_topView.layer setBackgroundColor:COLOR_MAIN_WINDOW_BG.CGColor];
-    [_topView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
-    
-    _deviceViewController = [[IMBDeviceViewController alloc]initWithNibName:@"IMBDeviceViewController" bundle:nil];
-    [_rootBox addSubview:_deviceViewController.view];
+    if (_newiPod) {
+        IMBMainPageViewController *mainPageViewController = [[IMBMainPageViewController alloc]initWithiPod:_newiPod withMedleEnum:DeviceLogEnum withiCloudDrvieBase:nil withDelegate:self];
+        [_rootBox setContentView:mainPageViewController.view];
+        IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+        [connection.allMainControllerDic setObject:self forKey:_newiPod.uniqueKey];
+//        [mainPageViewController release];
+//        mainPageViewController = nil;
+        [self.window setMinSize:NSMakeSize(WindowMaxSizeHigh, WindowMaxSizeWidth)];
+        [self.window setMaxSize:NSMakeSize(WindowMaxSizeHigh, WindowMaxSizeWidth)];
+    }else {
+        _deviceViewController = [[IMBDeviceViewController alloc]initWithDelegate:self];
+        [_rootBox setContentView:_deviceViewController.view];
+        [self.window setMinSize:NSMakeSize(WindowMinSizeHigh, WindowMinSizeWidth)];
+        [self.window setMaxSize:NSMakeSize(WindowMinSizeHigh, WindowMinSizeWidth)];
+    }
 }
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
-    [self.window setContentSize:NSMakeSize(1060, 635)];
+- (void)changeMainFrame:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage {
+    IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+    IMBMainPageViewController *mainPageViewController = nil;
+    if (logMedleEnum == iCloudLogEnum) {
+        mainPageViewController = [connection.allMainControllerDic objectForKey:@"iCloud"];
+    }else if (logMedleEnum == DropBoxLogEnum) {
+        mainPageViewController = [connection.allMainControllerDic objectForKey:@"DropBox"];
+    }else if (logMedleEnum == DeviceLogEnum) {
+        mainPageViewController = [connection.allMainControllerDic objectForKey:iPod.uniqueKey];
+    }
+    if (!mainPageViewController) {
+        mainPageViewController = [[IMBMainPageViewController alloc]initWithiPod:iPod withMedleEnum:logMedleEnum withiCloudDrvieBase:baseManage withDelegate:self];
+        if (logMedleEnum == iCloudLogEnum) {
+            [connection.allMainControllerDic setObject:mainPageViewController forKey:@"iCloud"];
+        }else if (logMedleEnum == DropBoxLogEnum) {
+            [connection.allMainControllerDic setObject:mainPageViewController forKey:@"DropBox"];
+        }else if (logMedleEnum == DeviceLogEnum) {
+            [connection.allMainControllerDic setObject:mainPageViewController forKey:iPod.uniqueKey];
+        }
+    }
+    [_rootBox setContentView:mainPageViewController.view];
+
+    NSRect startFrame = [self.window frame];
+    NSRect endFrame = NSMakeRect(startFrame.origin.x - (WindowMaxSizeHigh - startFrame.size.width)/2, startFrame.origin.y - (WindowMaxSizeWidth - startFrame.size.height)/2, WindowMaxSizeHigh, WindowMaxSizeWidth);
+    [self.window setMinSize:endFrame.size];
+    [self.window setMaxSize:endFrame.size];
+    [self.window setFrame:endFrame display:YES animate:YES];
+}
+
+- (void)backMainViewChooseLoginModelEnum:(ChooseLoginModelEnum) choosemodelEnum withiPod:(IMBiPod *)ipod{
+    if (choosemodelEnum == iCloudLogEnum) {
+
+    }else if (choosemodelEnum == DropBoxLogEnum) {
+
+    }else if (choosemodelEnum == DeviceLogEnum) {
+
+    }
+    [_rootBox setContentView:_deviceViewController.view];
+    NSRect startFrame = [self.window frame];
+    NSRect endFrame = NSMakeRect(startFrame.origin.x + (startFrame.size.width - WindowMinSizeWidth)/2, startFrame.origin.y + (startFrame.size.height - WindowMinSizeHigh)/2, WindowMinSizeHigh, WindowMinSizeWidth);
+    [self.window setMinSize:endFrame.size];
+    [self.window setMaxSize:endFrame.size];
+    [self.window setFrame:endFrame display:YES animate:YES];
 }
 /**
  *  关闭window
@@ -72,8 +116,6 @@
         _deviceViewController = nil;
     }
     //移除通知
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
-    
     [super dealloc];
 }
 

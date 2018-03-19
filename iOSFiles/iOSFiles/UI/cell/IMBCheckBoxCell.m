@@ -7,6 +7,8 @@
 //
 
 #import "IMBCheckBoxCell.h"
+#import "StringHelper.h"
+
 @implementation IMBCheckBoxCell
 @synthesize onImage =_onImage;
 @synthesize offIMage = _offImage;
@@ -200,6 +202,21 @@
         }
 
     }
+}
+
+- (void)reloadImage
+{
+    [_onImage release];
+    [_onhigHlightImage release];
+    [_offImage release];
+    [_offhigHlightImage release];
+    [_mixedHighlightImage release];
+    _onImage = [[StringHelper imageNamed:@"sel_all"] retain];
+    _onhigHlightImage = [[StringHelper imageNamed:@"sel_all2"] retain];
+    _offImage = [[StringHelper imageNamed:@"sel_non"] retain];
+    _offhigHlightImage = [[StringHelper imageNamed:@"sel_non2"] retain];
+    _mixedImage = [[StringHelper imageNamed:@"sel_sem"] retain];
+    _mixedHighlightImage = [[StringHelper imageNamed:@"sel_sem2"] retain];
 }
 
 

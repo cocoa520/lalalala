@@ -26,6 +26,21 @@
     }
 }
 
+//计算text的size
++ (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {
+    NSAttributedString *as = [[NSAttributedString alloc] initWithString:text];
+    NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+    [paragraphStyle setAlignment:NSCenterTextAlignment];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSFont fontWithName:@"Helvetica Neue" size:fontSize], NSFontAttributeName,
+                                paragraphStyle, NSParagraphStyleAttributeName,
+                                nil];
+    NSSize textSize = [as.string sizeWithAttributes:attributes];
+    NSRect textBounds = NSMakeRect(0, 0, textSize.width, textSize.height);
+    [as release];
+    return textBounds;
+}
+
 + (NSString*)getTimeString:(long)totalLength {
     if (totalLength < 1000) {
         return @"";

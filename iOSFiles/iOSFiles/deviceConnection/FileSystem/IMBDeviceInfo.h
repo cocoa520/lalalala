@@ -192,6 +192,7 @@
 - (NSString*)familyTypeString;
 // 得到每个设备的FamilyType的字符串
 - (NSString *)getIPodFamilyString;
+- (NSString *)familyNewString;
 
 //2014-8-6
 - (NSString *)modelNumber;

@@ -25,7 +25,9 @@
     NSString *_docwsid;
     NSString *_zone;
     NSString *_etag;
+    NSString *_extension;
 }
+@property (nonatomic, retain) NSString *extension;
 @property (nonatomic, retain) NSString *etag;
 @property (nonatomic, retain) NSString *docwsid;
 @property (nonatomic, retain) NSString *fileLoadURL;

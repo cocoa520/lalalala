@@ -8,13 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+APPKIT_EXTERN CGFloat const IMBDevViewControllerRowH;
 
 @interface IMBDevViewController : NSViewController
 {
 @private
     NSMutableArray *_devices;
+    CGFloat _iconX;
+    CGFloat _textX;
 }
 
+@property(nonatomic, assign)CGFloat iconX;
+@property(nonatomic, assign)CGFloat textX;
 @property(retain, nonatomic)NSMutableArray *devices;
 
 @end

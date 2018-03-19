@@ -13,20 +13,21 @@
                 <outlet property="_bigSizeiCloudView" destination="qvC-vK-Hld" id="Sii-NK-PqE"/>
                 <outlet property="_checkBoxbtn" destination="Vex-jn-KHf" id="hvN-wl-iqu"/>
                 <outlet property="_checkoutPwdBtn" destination="Gel-HP-Z1E" id="mFg-g8-ofp"/>
-                <outlet property="_devicesBox" destination="rnr-Yt-VvE" id="FIw-by-1JY"/>
-                <outlet property="_devicesShadowView" destination="2ui-Iq-Sd2" id="SVr-jR-OlN"/>
-                <outlet property="_devicesView" destination="Omd-Wb-YfP" id="Pgg-ww-oTu"/>
-                <outlet property="_dropboxShadowView" destination="E61-n6-FMT" id="5lG-aC-7Qb"/>
-                <outlet property="_iCloudDriveView" destination="t0k-2x-CtM" id="1Qa-Jt-1cD"/>
+                <outlet property="_devicesBox" destination="YQe-Bz-Lbr" id="qSl-3J-tOC"/>
+                <outlet property="_devicesShadowView" destination="ZGX-7Q-v9i" id="V2I-bN-386"/>
+                <outlet property="_devicesView" destination="4Ig-R0-upj" id="q3x-KA-LY5"/>
+                <outlet property="_dropboxShadowView" destination="y0v-8T-bFb" id="KUb-U2-Jif"/>
+                <outlet property="_iCloudDriveView" destination="5UB-7o-5QN" id="f9Z-ax-aNJ"/>
                 <outlet property="_iCloudSecireTextField" destination="nxI-1a-u3g" id="3Ac-d9-sux"/>
                 <outlet property="_iCloudTextFiledView" destination="8t1-NK-JfE" id="wCc-eo-Qic"/>
                 <outlet property="_iCloudUserTextField" destination="U0Q-g9-ITo" id="g27-dG-2RI"/>
                 <outlet property="_icloudCustomView" destination="Bxg-Vg-i7h" id="10W-sG-pkJ"/>
-                <outlet property="_icloudDrivebox" destination="WaV-2w-2rW" id="KmP-B3-wGw"/>
+                <outlet property="_icloudDrivebox" destination="4V2-qv-Too" id="Svd-sc-JTh"/>
                 <outlet property="_icloudLoginPwdTextfield" destination="Poc-8x-y2u" id="zXn-xs-rPW"/>
                 <outlet property="_icloudLoginPwdView" destination="0q6-o8-PWI" id="8Rh-Cc-V6q"/>
-                <outlet property="_icloudShadowView" destination="2KY-Gm-KbF" id="tSM-cs-iHf"/>
+                <outlet property="_icloudShadowView" destination="cVc-Jl-PiY" id="hfI-wf-gLz"/>
                 <outlet property="_loginTextField" destination="t2C-L2-c0n" id="cnm-Bm-Exk"/>
+                <outlet property="_mainView" destination="FP8-ch-b0o" id="nPe-lV-dFX"/>
                 <outlet property="_midiumDropBoxClickLoginBtn" destination="ZKB-Vm-WhK" id="j2I-76-2Gh"/>
                 <outlet property="_midiumDropBoxContentView" destination="e94-ti-MsB" id="shJ-Pa-EnO"/>
                 <outlet property="_midiumSizeDevicesView" destination="zfi-hN-6rv" id="PcT-mC-Gmb"/>
@@ -34,13 +35,15 @@
                 <outlet property="_midiumSizeiCloudView" destination="fQv-aR-vvb" id="9Rh-XG-gkZ"/>
                 <outlet property="_midiumiCloudClickLoginBtn" destination="c8z-4W-yGo" id="GAE-Ff-YjU"/>
                 <outlet property="_midiumiCloudContentView" destination="nmA-P9-rEV" id="gvu-TT-CyF"/>
-                <outlet property="_oneDriveBox" destination="VrQ-cg-Jyj" id="UiY-LL-McG"/>
-                <outlet property="_oneDriveView" destination="Q37-tb-ZbD" id="llx-cj-rwK"/>
+                <outlet property="_oneDriveBox" destination="8uF-6R-kaj" id="o6v-M8-IUn"/>
+                <outlet property="_oneDriveView" destination="nRg-JI-nvC" id="iW9-hT-prt"/>
+                <outlet property="_rootBox" destination="akc-PD-tgZ" id="IoI-Lz-u1j"/>
                 <outlet property="_selectedDeviceBtn" destination="Nie-uQ-N6Q" id="DLR-eh-8VX"/>
                 <outlet property="_smallOneDriveView" destination="jOf-AN-gcg" id="O1F-KV-dcq"/>
                 <outlet property="_smallSizeTitle" destination="ZL3-Lf-gqH" id="nwV-SQ-Anc"/>
                 <outlet property="_smallSizeView" destination="OO2-OD-QEb" id="vgy-eD-52m"/>
                 <outlet property="_smalliCloudDriveView" destination="2nB-1F-jA9" id="1ZR-Wx-LLN"/>
+                <outlet property="_topView" destination="Kk2-AE-yVo" id="yUz-Mj-tAW"/>
                 <outlet property="_twoCode" destination="RfE-fq-JOR" id="DaP-qd-pgQ"/>
                 <outlet property="drawTextView" destination="8fm-de-xte" id="dVc-7R-Y6m"/>
                 <outlet property="dropboxLoginBtn" destination="YzW-g6-fbZ" id="FkY-NT-cVY"/>
@@ -51,80 +54,34 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY" customClass="IMBBackgroundBorderView">
-            <rect key="frame" x="0.0" y="0.0" width="592" height="402"/>
+            <rect key="frame" x="0.0" y="0.0" width="592" height="438"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView id="2KY-Gm-KbF" customClass="IMBShadowView">
-                    <rect key="frame" x="12" y="211" width="302" height="180"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <customView id="Kk2-AE-yVo" customClass="IMBLackCornerView">
+                    <rect key="frame" x="0.0" y="408" width="592" height="30"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="E61-n6-FMT" customClass="IMBShadowView">
-                    <rect key="frame" x="12" y="15" width="302" height="180"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </customView>
-                <customView id="2ui-Iq-Sd2" customClass="IMBShadowView">
-                    <rect key="frame" x="327" y="15" width="253" height="376"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </customView>
-                <customView id="t0k-2x-CtM" customClass="IMBGradientComponentView">
-                    <rect key="frame" x="12" y="211" width="302" height="180"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <box borderWidth="302" cornerRadius="180" title="Box" borderType="none" titlePosition="noTitle" id="WaV-2w-2rW">
-                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <view key="contentView">
-                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </box>
-                    </subviews>
-                </customView>
-                <customView id="Q37-tb-ZbD" customClass="IMBGradientComponentView">
-                    <rect key="frame" x="12" y="15" width="302" height="180"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <box title="Box" borderType="none" titlePosition="noTitle" id="VrQ-cg-Jyj">
-                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <view key="contentView">
-                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </box>
-                    </subviews>
-                </customView>
-                <customView id="Omd-Wb-YfP" customClass="IMBGradientComponentView">
-                    <rect key="frame" x="327" y="15" width="253" height="376"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <box title="Box" borderType="none" titlePosition="noTitle" id="rnr-Yt-VvE">
-                            <rect key="frame" x="0.0" y="-1" width="253" height="376"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <view key="contentView">
-                                <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </box>
-                    </subviews>
-                </customView>
+                <box title="Box" borderType="none" titlePosition="noTitle" id="akc-PD-tgZ">
+                    <rect key="frame" x="0.0" y="0.0" width="592" height="438"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="438"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
             </subviews>
-            <point key="canvasLocation" x="310" y="244"/>
+            <point key="canvasLocation" x="310" y="132"/>
         </customView>
         <customView id="ybb-jb-bgT">
             <rect key="frame" x="0.0" y="0.0" width="302" height="306"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AHM-XV-tCg">
                     <rect key="frame" x="87" y="126" width="130" height="126"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dropboxLogin" id="cKb-nI-Z5Y"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mod_dropbox_auth_ai" id="cKb-nI-Z5Y"/>
                 </imageView>
                 <customView id="8fm-de-xte" customClass="IMBDrawTextFiledView">
                     <rect key="frame" x="18" y="58" width="268" height="38"/>
@@ -183,7 +140,7 @@
         </customView>
         <customView id="qvC-vK-Hld">
             <rect key="frame" x="0.0" y="0.0" width="302" height="306"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <customView id="Bxg-Vg-i7h">
                     <rect key="frame" x="17" y="140" width="268" height="90"/>
@@ -196,7 +153,7 @@
                                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="U0Q-g9-ITo" customClass="customTextFiled">
                                     <rect key="frame" x="10" y="0.0" width="260" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="FMI-8F-Lkh" customClass="customTextFieldCell">
+                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="FMI-8F-Lkh" customClass="customTextFieldCell">
                                         <font key="font" size="14" name="HelveticaNeue-Light"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -294,17 +251,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="Vex-jn-KHf" customClass="IMBCheckBtn">
-                    <rect key="frame" x="20" y="117" width="23" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="checkbox1" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cvy-6b-6a1">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="checkBoxClicked:" target="-2" id="TuN-Ra-8yu"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" id="Req-fh-YlK" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="17" y="69" width="268" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -316,12 +262,23 @@
                         <action selector="iCloudLogIn:" target="-2" id="oHP-85-Pk4"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" id="Vex-jn-KHf" customClass="IMBCheckBtn">
+                    <rect key="frame" x="20" y="117" width="23" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="mod_icon_checkbox" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cvy-6b-6a1">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="checkBoxClicked:" target="-2" id="TuN-Ra-8yu"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="538" y="681"/>
         </customView>
         <customView id="fQv-aR-vvb">
             <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <customView id="nmA-P9-rEV">
                     <rect key="frame" x="0.0" y="-2" width="302" height="162"/>
@@ -341,21 +298,21 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ub9-OL-8tP">
-                            <rect key="frame" x="121" y="50" width="60" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iCloud" id="dr4-vV-Lht">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="c8z-4W-yGo">
                             <rect key="frame" x="95" y="3" width="113" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Click to login →" id="l4e-ld-kuZ">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ub9-OL-8tP">
+                            <rect key="frame" x="26" y="50" width="251" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iCloud" id="dr4-vV-Lht">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -366,7 +323,7 @@
         </customView>
         <customView id="Cg8-1L-jVw">
             <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <customView id="e94-ti-MsB">
                     <rect key="frame" x="0.0" y="0.0" width="302" height="162"/>
@@ -386,21 +343,21 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ywc-uI-eOk">
-                            <rect key="frame" x="111" y="50" width="81" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox" id="aX4-jF-wWh">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZKB-Vm-WhK">
                             <rect key="frame" x="97" y="3" width="109" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Click to login →" id="gV3-bk-9Kg">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ywc-uI-eOk">
+                            <rect key="frame" x="13" y="50" width="276" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox" id="aX4-jF-wWh">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -427,7 +384,7 @@
         </customView>
         <customView id="2nB-1F-jA9">
             <rect key="frame" x="0.0" y="0.0" width="134" height="183"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vf3-sW-qBC">
                     <rect key="frame" x="34" y="35" width="67" height="17"/>
@@ -469,23 +426,12 @@
         </customView>
         <customView id="zfi-hN-6rv">
             <rect key="frame" x="0.0" y="0.0" width="253" height="376"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
-                    <rect key="frame" x="34" y="48" width="99" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="selectedDeviceBtnClicked:" target="-2" id="ncK-id-nuR"/>
-                    </connections>
-                </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iPp-8x-sZo">
                     <rect key="frame" x="47" y="189" width="159" height="158"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="phone001" id="Ckw-GN-3w2"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mod_device" id="Ckw-GN-3w2"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
                     <rect key="frame" x="55" y="145" width="143" height="25"/>
@@ -505,6 +451,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="Nie-uQ-N6Q" customClass="IMBSelecedDeviceBtn">
+                    <rect key="frame" x="13" y="36" width="233" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="GlM-Te-smO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectedDeviceBtnClicked:" target="-2" id="ncK-id-nuR"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="913.5" y="716"/>
         </customView>
@@ -513,7 +470,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" id="jOQ-ml-oB7">
-                    <rect key="frame" x="247" y="145" width="36" height="21"/>
+                    <rect key="frame" x="246" y="148" width="36" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="symbols-todevice" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="tQ0-FJ-h6k">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -521,11 +478,11 @@
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="92" y="1332"/>
+            <point key="canvasLocation" x="92" y="1658"/>
         </customView>
         <customView id="5lu-CQ-rEc" userLabel="dropbox login success">
             <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" id="Lmq-vK-veU">
                     <rect key="frame" x="249" y="148" width="42" height="21"/>
@@ -536,13 +493,80 @@
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="538" y="1332"/>
+            <point key="canvasLocation" x="538" y="1658"/>
+        </customView>
+        <customView id="FP8-ch-b0o" customClass="IMBBackgroundBorderView">
+            <rect key="frame" x="0.0" y="0.0" width="592" height="438"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView id="cVc-Jl-PiY" customClass="IMBShadowView">
+                    <rect key="frame" x="17" y="215" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
+                <customView id="y0v-8T-bFb" customClass="IMBShadowView">
+                    <rect key="frame" x="17" y="19" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
+                <customView id="ZGX-7Q-v9i" customClass="IMBShadowView">
+                    <rect key="frame" x="335" y="19" width="238" height="376"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
+                <customView id="5UB-7o-5QN" customClass="IMBGradientComponentView">
+                    <rect key="frame" x="17" y="215" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <box borderWidth="302" cornerRadius="180" title="Box" borderType="none" titlePosition="noTitle" id="4V2-qv-Too">
+                            <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view key="contentView">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                    </subviews>
+                </customView>
+                <customView id="nRg-JI-nvC" customClass="IMBGradientComponentView">
+                    <rect key="frame" x="17" y="19" width="302" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <box title="Box" borderType="none" titlePosition="noTitle" id="8uF-6R-kaj">
+                            <rect key="frame" x="0.0" y="-1" width="302" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view key="contentView">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                    </subviews>
+                </customView>
+                <customView id="4Ig-R0-upj" customClass="IMBGradientComponentView">
+                    <rect key="frame" x="335" y="19" width="238" height="376"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <box title="Box" borderType="none" titlePosition="noTitle" id="YQe-Bz-Lbr">
+                            <rect key="frame" x="0.0" y="-1" width="238" height="376"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view key="contentView">
+                                <rect key="frame" x="0.0" y="0.0" width="238" height="376"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                    </subviews>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="951" y="140"/>
         </customView>
     </objects>
     <resources>
-        <image name="checkbox1" width="14" height="14"/>
-        <image name="dropboxLogin" width="130" height="126"/>
-        <image name="phone001" width="194" height="166"/>
+        <image name="mod_device" width="144" height="180"/>
+        <image name="mod_dropbox_auth_ai" width="138" height="130"/>
+        <image name="mod_icon_checkbox" width="24" height="24"/>
         <image name="symbols-dropbox" width="144" height="146"/>
         <image name="symbols-eye" width="26" height="18"/>
         <image name="symbols-icloudDrive" width="132" height="116"/>

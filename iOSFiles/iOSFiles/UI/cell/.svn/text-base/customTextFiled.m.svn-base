@@ -55,6 +55,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_TEXTFILED_INPUT_CHANGE object:self userInfo:nil];
 }
 
+- (void)setEditable:(BOOL)editable {
+    [super setEditable:editable];
+}
+
+
+
 - (BOOL)textView:(NSTextView *)inTextView doCommandBySelector:(SEL)inSelector{
     
     //tab 键
