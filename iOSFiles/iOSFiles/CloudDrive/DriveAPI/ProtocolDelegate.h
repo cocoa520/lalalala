@@ -69,6 +69,8 @@ typedef NS_ENUM(NSUInteger,TransferState){
 //如果是icloud drive 需要传入docwsid 下载的时候需要用到
 @property (nonatomic,retain)NSString *docwsID;
 
+@property (nonatomic,retain)NSString *currentSizeStr;
+
 //是否是目录
 @property (nonatomic,assign)BOOL isFolder;
 //是否需要传入大文件
@@ -93,6 +95,10 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonatomic,retain)NSString *toDriveName;
 //iCloud Drive 下载所需要，表明文件所属的域
 @property (nonnull,retain)NSString *zone;
+
+@property (nonnull,nonatomic,retain)NSMutableArray *dataAry;
+
+@property (nonatomic,assign) BOOL isStart;
 //唯一标识符
 - (NSString *)identifier;
 @end

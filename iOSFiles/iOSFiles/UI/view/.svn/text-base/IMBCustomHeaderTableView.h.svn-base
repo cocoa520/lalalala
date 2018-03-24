@@ -15,6 +15,7 @@
 - (void)loadingThumbnilImage:(NSRange)oldVisibleRows withNewVisibleRows:(NSRange)newVisibleRows;
 - (void)setAllselectState:(CheckStateEnum)checkState;
 - (void)tableView:(NSTableView *)tableView row:(NSInteger)index;
+- (void)tableViewDoubleClick:(NSTableView *)tableView row:(NSInteger)index;
 - (void)tableView:(NSTableView *)tableView rightDownrow:(NSInteger)index;
 -(void)setselectState:(CheckStateEnum)state WithTableView:(NSTableView *)tableView;
 @end

@@ -29,6 +29,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 @synthesize isOriginalFrame = _isOriginalFrame;
 @synthesize isDevicesOriginalFrame = _isDevicesOriginalFrame;
 @synthesize disable = _disable;
+@synthesize loginStatus = _loginStatus;
 
 
 - (void)setIsLeftRightGridient:(BOOL)isLeftRightGridient withLeftNormalBgColor:(NSColor *)leftNormalBgColor withRightNormalBgColor:(NSColor *)rightNormalBgColor {
@@ -48,11 +49,6 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-//    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
-//    [clipPath setWindingRule:NSEvenOddWindingRule];
-//    [clipPath addClip];
-//    [COLOR_MAIN_WINDOW_BG set];
-//    [clipPath fill];
     
     
     NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
@@ -70,40 +66,12 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     [[NSColor whiteColor] set];
     [text fill];
     
-//    [[NSColor colorWithCalibratedWhite:0.9 alpha:0.0] set];
-//    [text stroke];
-//    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//    NSBezierPath *path = nil;
-//    CGContextAddPath(context, [self quartzPath:path]);
-//    CGContextClip(context);
-//    CGContextSaveGState(context);
-//    const CGFloat glossGradientLocations[] = {0.1,1.0};
-//    const CGFloat glossGradientComponents[] = {_leftNormalBgColor.redComponent,_leftNormalBgColor.greenComponent,_leftNormalBgColor.blueComponent,1.0f,_rightNormalBgColor.redComponent,_rightNormalBgColor.greenComponent,_rightNormalBgColor.blueComponent,1.0f};
-//    
-//    CGGradientRef glossCradient = CGGradientCreateWithColorComponents(colorSpace, glossGradientComponents, glossGradientLocations,2);
-//    if (_isleftRightGridient) {
-//        int radius = 5;
-//        CGContextMoveToPoint(context, NSWidth(dirtyRect)- radius, 0);
-//        CGContextAddLineToPoint(context, radius, 0);
-//        CGContextAddArc(context, radius, radius, radius, M_PI_2 , M_PI , YES);
-//        CGContextAddLineToPoint(context,  0, NSHeight(dirtyRect) - radius);
-//        CGContextAddArc(context, radius, NSHeight(dirtyRect) - radius,radius, M_PI, M_PI_2, YES);
-//        CGContextAddLineToPoint(context, NSWidth(dirtyRect) - radius, NSHeight(dirtyRect));
-//        CGContextAddArc(context, NSWidth(dirtyRect) - radius, NSHeight(dirtyRect) - radius, radius, M_PI_2, 0, YES);
-//        CGContextAddLineToPoint(context, NSWidth(dirtyRect), radius);
-//        CGContextAddArc(context, NSWidth(dirtyRect) - radius, radius, radius, 0, M_PI_2, YES);
-//        CGContextClip(context);//context裁剪路径,后续操作的路径
-//        CGContextDrawLinearGradient(context, glossCradient, CGPointMake(dirtyRect.origin.x, dirtyRect.origin.y), CGPointMake(dirtyRect.origin.x, dirtyRect.origin.y+NSHeight(dirtyRect)), kCGGradientDrawsAfterEndLocation);
-//    }else{
-//        CGContextDrawLinearGradient(context, glossCradient, CGPointMake(dirtyRect.origin.x, dirtyRect.origin.y), CGPointMake(dirtyRect.origin.x, dirtyRect.origin.y+NSHeight(dirtyRect)), kCGGradientDrawsAfterEndLocation);
-//    }
-//    CGGradientRelease(glossCradient);
 }
 
 - (void)awakeFromNib {
     [self addTrackingRect:[self bounds] owner:self userData:nil assumeInside:NO];
     _isMouseEntered = NO;
+    _loginStatus = NO;
     _shadowSize = NSMakeSize(0.5f, -0.5f);
 }
 
@@ -175,11 +143,21 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 
 - (void)mouseDown:(NSEvent *)theEvent {
     if (_disable) return;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.mouseClicked) {
-            self.mouseClicked();
-        }
-    });
+    if (_isOriginalFrame) {
+//        if (_loginStatus) return;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.mouseClicked) {
+                self.mouseClicked();
+            }
+        });
+    }else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.mouseClicked) {
+                self.mouseClicked();
+            }
+        });
+    }
+    
     
 }
 
@@ -191,7 +169,6 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     if (_isMouseEntered == NO && _isOriginalFrame) {
         
         _isMouseEntered = YES;
-//        IMBFLog(@"IMBGradientComponentView--mouseEntered");
         NSRect f = self.frame;
         if (f.size.height == IMBGradientViewMidiumiCloudViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow;
@@ -212,18 +189,17 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     if (_isMouseEntered && _isOriginalFrame) {
         
         _isMouseEntered = NO;
-//        IMBFLog(@"IMBGradientComponentView--mouseExited");
         NSRect f = self.frame;
         if (f.size.height <= IMBGradientViewMidiumiCloudViewOriginalHeight + IMBGradientViewMidiumViewShadow && f.size.height >= IMBGradientViewMidiumiCloudViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumiCloudViewOriginalHeight;
-            self.frame = f;
+//            self.frame = f;
         }
         
         if (f.size.height <= IMBGradientViewMidiumDevicesViewOriginalHeight + IMBGradientViewMidiumViewShadow && f.size.height >= IMBGradientViewMidiumDevicesViewOriginalHeight) {
             f.size.height = IMBGradientViewMidiumDevicesViewOriginalHeight;
-            self.frame = f;
+//            self.frame = f;
         }
-        
+        [IMBViewAnimation animationMouseEnteredExitedWithView:self frame:f timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
         if (self.mouseExited) {
             self.mouseExited();
         }

@@ -9,6 +9,11 @@
 #ifndef AnyTrans_IMBNotificationDefine_h
 #define AnyTrans_IMBNotificationDefine_h
 
+#define WindowMinSizeWidth 592
+#define WindowMinSizeHigh 438
+#define WindowMaxSizeWidth 1096
+#define WindowMaxSizeHigh 644
+
 #define DeviceConnectedNotification @"Device_Connected"
 #define DeviceDisConnectedNotification @"Device_DisConnected"
 #define DeviceChangeNotification @"Device_Change"

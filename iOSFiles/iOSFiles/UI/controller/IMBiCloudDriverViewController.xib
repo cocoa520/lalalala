@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBiCloudDriverViewController">
@@ -56,9 +56,24 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </customView>
                         <customView hidden="YES" id="a2F-PG-4RA" customClass="IMBToolButtonView">
-                            <rect key="frame" x="618.99999987942579" y="0.0" width="475" height="46"/>
+                            <rect key="frame" x="619" y="0.0" width="475" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                         </customView>
+                        <customView wantsLayer="YES" id="8zG-0P-SAz" customClass="IMBBackgroundBorderView">
+                            <rect key="frame" x="0.0" y="0.0" width="1096" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        </customView>
+                        <button verticalHuggingPriority="750" id="NtC-ig-Qi1">
+                            <rect key="frame" x="531" y="6" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bEg-Va-6k5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="downLoadDataShow:" target="-2" id="tru-Pv-fi2"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </customView>
                 <customView id="a0K-Q5-K5z" customClass="IMBWhiteView">
@@ -86,9 +101,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         </customView>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xJJ-8Z-cHa">
-                            <rect key="frame" x="90" y="395" width="86" height="84"/>
+                            <rect key="frame" x="101" y="396" width="80" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="noData_box" id="BZS-8G-roo"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="BZS-8G-roo"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4mZ-Co-vXM">
                             <rect key="frame" x="40" y="361" width="202" height="24"/>
@@ -184,10 +199,6 @@
                         </button>
                     </subviews>
                 </customView>
-                <customView wantsLayer="YES" id="8zG-0P-SAz" customClass="IMBBackgroundBorderView">
-                    <rect key="frame" x="0.0" y="548" width="1096" height="1"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                </customView>
             </subviews>
             <point key="canvasLocation" x="-1252" y="848"/>
         </customView>
@@ -200,7 +211,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="Bh3-Sd-hPx">
                         <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view id="48G-ID-xeE" customClass="CNGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
@@ -240,30 +251,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="40" horizontalPageScroll="10" verticalLineScroll="40" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="XYq-na-zjX" customClass="IMBScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
+                    <rect key="frame" x="-1" y="0.0" width="1098" height="549"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="nuX-dK-w9d">
-                        <rect key="frame" x="1" y="17" width="1094" height="530"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="1" y="17" width="1096" height="531"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="40" headerView="Zjp-FH-Phh" id="1xx-hL-Sn7" customClass="IMBCustomHeaderTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="1094" height="40"/>
+                            <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="40" headerView="Zjp-FH-Phh" id="1xx-hL-Sn7" customClass="IMBCustomHeaderTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="1095" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="CheckCol" editable="NO" width="40" minWidth="26" maxWidth="1000" id="Glg-PD-SxA">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                        </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EhV-Eo-4tU" customClass="IMBCheckBoxCell">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </tableColumn>
-                                    <tableColumn identifier="Image" editable="NO" width="100" minWidth="40" maxWidth="1000" id="5DO-eh-d7q">
+                                    <tableColumn identifier="ImageText" editable="NO" width="283" minWidth="40" maxWidth="1000" id="5DO-eh-d7q">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -276,7 +276,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Name" editable="NO" width="273" minWidth="10" maxWidth="3.4028234663852886e+38" id="k1e-4v-3et">
+                                    <tableColumn identifier="CreateTime" editable="NO" width="210" minWidth="10" maxWidth="3.4028234663852886e+38" id="k1e-4v-3et">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -289,7 +289,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Time" editable="NO" width="239" minWidth="10" maxWidth="3.4028234663852886e+38" id="5jS-Lu-Al7">
+                                    <tableColumn identifier="LastTime" editable="NO" width="210" minWidth="10" maxWidth="3.4028234663852886e+38" id="5jS-Lu-Al7">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -302,7 +302,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Formats" editable="NO" width="233" minWidth="10" maxWidth="3.4028234663852886e+38" id="2fV-1I-7U6">
+                                    <tableColumn identifier="Size" editable="NO" width="178" minWidth="10" maxWidth="3.4028234663852886e+38" id="2fV-1I-7U6">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -315,7 +315,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Size" width="209" minWidth="10" maxWidth="3.4028234663852886e+38" id="MzJ-Vl-xsh">
+                                    <tableColumn identifier="Formats" width="214" minWidth="10" maxWidth="3.4028234663852886e+38" id="MzJ-Vl-xsh">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -342,12 +342,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="Zjp-FH-Phh">
-                        <rect key="frame" x="0.0" y="0.0" width="1094" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1096" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="535" y="210"/>
+            <point key="canvasLocation" x="525" y="812"/>
         </customView>
         <customView id="gOT-Py-xbX" userLabel="nodataView" customClass="IMBWhiteView">
             <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
@@ -367,7 +367,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5VM-e2-fjB">
                                 <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="tpW-q2-S1O">
                                         <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
@@ -397,7 +397,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="noData_box" width="124" height="124"/>
         <image name="noData_filesystem" width="124" height="124"/>
     </resources>
 </document>

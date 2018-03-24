@@ -8,6 +8,7 @@
 
 #import <AppKit/AppKit.h>
 
+#pragma mark - notifications
 
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNotiWithParams;
 APPKIT_EXTERN NSString * const IMBSelectedDeviceDidChangeNoti;
@@ -23,6 +24,7 @@ APPKIT_EXTERN NSString * const IMBDevicePageStopLoadingAnimNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageShowToolbarNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageHideToolbarNoti;
 
+#pragma mark - plists
 APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;
 APPKIT_EXTERN NSString * const IMBDevicePageFolderNamesPlist;
 APPKIT_EXTERN NSString * const IMBDetailVCHeaderTitleTrackNamesPlist;
@@ -33,7 +35,14 @@ APPKIT_EXTERN NSString * const DetailVCHeaderTitleSubPhotoNamesPlist;
 
 APPKIT_EXTERN NSString * const IMBiCloudUserName;
 
+#pragma mark - 全局关联key
 APPKIT_EXTERN char kIMBDevicePageRootBoxKey;
 APPKIT_EXTERN char kIMBDevicePageToolBarViewKey;
 APPKIT_EXTERN char kIMBPhotoCategoryControllerKey;
 APPKIT_EXTERN char kIMBDevicePageWindowKey;
+APPKIT_EXTERN char kIMBMainWindowAlertView;
+APPKIT_EXTERN char kIMBMainPageWindowAlertView;
+
+
+#pragma mark - font
+APPKIT_EXTERN NSString * const IMBCommonFont;

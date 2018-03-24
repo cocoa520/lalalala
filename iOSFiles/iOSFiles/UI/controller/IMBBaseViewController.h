@@ -19,7 +19,7 @@
 #import "IMBDeviceInfo.h"
 #import "StringHelper.h"
 #import "NSString+Category.h"
-#import "IMBTransferViewController.h"
+#import "IMBDownloadListViewController.h"
 #import "IMBExportSetting.h"
 #import "IMBSoftWareInfo.h"
 #import "CommonEnum.h"
@@ -78,7 +78,7 @@ typedef NS_ENUM(int, AnimationStyle) {
     BOOL _isAscending;
     IBOutlet IMBWhiteView *_topWhiteView;
     IBOutlet IMBWhiteView *_topwhiteView2;
-    IMBTransferViewController *_transferController;
+
     IMBExportSetting *_exportSetting;
     BOOL _isbackup;
   
@@ -127,6 +127,7 @@ typedef NS_ENUM(int, AnimationStyle) {
     
     BOOL _isShowLineView;
 //    LoadingView *_loadingView;
+
 }
 @property (nonatomic,retain) IMBiPod *iPod;
 @property (nonatomic,assign) BOOL isShowLineView;
@@ -224,14 +225,6 @@ typedef NS_ENUM(int, AnimationStyle) {
 //刷新tableview头上的checkbox
 - (void)setTableViewHeadCheckBtn;
 
-
-//- (void)refresh:(IMBInformation *)information;
-//- (void)toMac:(IMBInformation *)information;
-//- (void)addToDevice:(IMBInformation *)information;
-//- (void)deleteItem:(IMBInformation *)information;
-//- (void)toDevice:(IMBInformation *)information;
-//- (void)doEdit:(IMBInformation *)information;
-
 //iCloudDriver
 - (void)reload:(id)sender;
 - (void)addItems:(id)sender;
@@ -243,4 +236,14 @@ typedef NS_ENUM(int, AnimationStyle) {
 - (void)deleteItem:(id)sender;
 - (void)toDevice:(id)sender;
 - (void)doEdit:(id)sender;
+- (void)createNewFloder:(id)sender;
+- (void)rename:(id)sender;
+- (void)toiCloud:(id)sender;
+- (void)showDetailView:(id)sender;
+- (void)moveToFolder:(id)sender;
+- (void)downloadToMac:(id)sender;
+
+- (void)loadSonAryComplete:(NSMutableArray *)sonAry;
+- (void)loadTransferComplete:(NSMutableArray *)transferAry;
+
 @end

@@ -25,24 +25,23 @@
 #import "IMBBookEntity.h"
 #import "IMBBackgroundBorderView.h"
 #import "IMBLackCornerView.h"
+#import "IMBMainWindowLoginSuccessView.h"
+#import "IMBMainLoginButton.h"
+#import "IMBAlertSupeView.h"
+
+
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
     IBOutlet IMBLackCornerView *_topView;
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
     NSPopover *_devPopover;
-    NSMutableDictionary *_windowControllerDic;
-    NSMutableDictionary *_driveControllerDic;
-    IBOutlet IMBSecireTextField *_passTextField;
-    IBOutlet customTextFiled *_loginTextField;
-    IBOutlet IMBDrawTextFiledView *drawTextView;
   
     iCloudDrive *_iCloudDrive;
     
     IBOutlet IMBDrawTextFiledView *_iCloudTextFiledView;
     IBOutlet customTextFiled *_iCloudUserTextField;
     IBOutlet IMBSecireTextField *_iCloudSecireTextField;
-
-    IBOutlet customTextFiled *_twoCode;
+    
     IMBDriveBaseManage *_baseDriveManage;
 
     IBOutlet IMBGradientComponentView *_iCloudDriveView;
@@ -87,6 +86,7 @@
     
     IBOutlet NSButton *_checkoutPwdBtn;
     
+    IBOutlet NSView *_icloudLogInSuccessView;
     
     
     IBOutlet IMBDrawTextFiledView *_icloudLoginPwdView;
@@ -106,20 +106,36 @@
     
     IBOutlet IMBMyDrawCommonly *icloudLoginbtn;
     
-    IBOutlet IMBMyDrawCommonly *dropboxLoginBtn;
     
     CALayer *_loadLayer;
     BOOL _isEnter;
     id _delegate;
     IBOutlet NSBox *_rootBox;
     IBOutlet IMBBackgroundBorderView *_mainView;
+    BOOL _isNewController;
+    
+    
+    IMBMainWindowLoginSuccessView *_loginSuccessiCloudView;
+    IMBMainWindowLoginSuccessView *_loginSuccessdropboxView;
+    
+    
+    IBOutlet IMBMainLoginButton *_bigSizeIcloudGoNowBtn;
+    
+    IBOutlet IMBAlertSupeView *_alertSuperView;
+    
+    
+    IBOutlet IMBHoverChangeImageBtn *_shoppingCartBtn;
+    IBOutlet IMBHoverChangeImageBtn *_helpBtn;
+    
+    BOOL _isEnable;
 }
+@property (nonatomic,assign) BOOL isNewController;
+@property (nonatomic,assign) id delegate;
 //- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
-- (void)mainWindowClose;
 - (void)switchViewController;
 - (id)initWithDelegate:(id)delegate;
 //登录成功 切换页面
-- (void)switchiCloudDriveViewController;
+- (void)switchiCloudDriveViewControllerWithiCloudDrive:(iCloudDrive *)icloudDrive;
 //登录错误
 - (void)driveLogInFial:(ResponseCode)responseCode;
 @end

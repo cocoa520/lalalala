@@ -31,8 +31,9 @@
 @synthesize childArray = _childArray;
 @synthesize toDriveName = _toDriveName;
 @synthesize docwsID = _docwsID;
-@synthesize doZone = _doZone;
-
+@synthesize zone = _zone;
+@synthesize dataAry = _dataAry;
+@synthesize isStart = _isStart;
 - (instancetype)init
 {
     self = [super init];
@@ -43,6 +44,18 @@
         _currentSize = 0;
     }
     return self;
+}
+
+- (NSComparisonResult)compare:(id <DownloadAndUploadDelegate>)item
+{
+    // 先按照姓排序
+    if (self.parentPath.length < item.parentPath.length) {
+        return NSOrderedAscending;
+    }else if (self.parentPath.length == item.parentPath.length){
+        return NSOrderedSame;
+    }else{
+        return  NSOrderedDescending;
+    }
 }
 
 - (NSString *)identifier
@@ -80,11 +93,13 @@
 @synthesize delegate = _delegate;
 @synthesize driveArray = _driveArray;
 @synthesize refreshToken = _refreshToken;
+@synthesize downLoader = _downLoader;
 
 - (instancetype)init
 {
     if (self = [super init]) {
         _driveArray = [[NSMutableArray alloc] init];
+        _folderItemArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -116,6 +131,7 @@
     [_downLoader release],_downLoader = nil;
     [_upLoader release],_upLoader = nil;
     [_refreshToken release],_refreshToken = nil;
+    [_folderItemArray release],_folderItemArray = nil;
     [self setDriveArray:nil];
     [super dealloc];
 }
@@ -222,7 +238,10 @@
 - (void)downloadItems:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items
 {
     for (id <DownloadAndUploadDelegate> item in items) {
-        [self downloadItem:item];
+        if (!item.isStart) {
+            [self downloadItem:item];
+
+        }
     }
 }
 
@@ -533,7 +552,8 @@
     return dic;
 }
 
-- (void)createFolderWait{}
+- (void)createFolderWait {
+}
 
 - (BOOL)isExecute {
     return NO;
@@ -555,4 +575,12 @@
 - (void)driveRemoveAccessTokenKey {
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    id <DownloadAndUploadDelegate> item = (id <DownloadAndUploadDelegate>)object;
+    if ([item state] == DownloadStateComplete || [item state] == DownloadStateError||[item state] == UploadStateComplete || [item state] == UploadStateError) {
+        [(NSObject *)item removeObserver:self forKeyPath:@"state"];
+        [_folderItemArray removeObject:item];
+    }
+}
 @end

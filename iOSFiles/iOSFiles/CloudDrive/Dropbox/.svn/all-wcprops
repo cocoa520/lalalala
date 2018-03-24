@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 69
-/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox
 END
 DropboxMoveToNewParentAPI.m
 K 25
@@ -33,17 +33,23 @@ svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxDownloadAPI.m
 END
-DropboxMultipleDeleteItemsAPI.h
+DropboxUserSpaceUsageAPI.h
 K 25
 svn:wc:ra_dav:version-url
-V 101
-/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxMultipleDeleteItemsAPI.h
+V 96
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxUserSpaceUsageAPI.h
 END
 DropboxGetListAPI.m
 K 25
 svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxGetListAPI.m
+END
+DropboxMultipleDeleteItemsAPI.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxMultipleDeleteItemsAPI.h
 END
 DropboxDeleteItemAPI.h
 K 25
@@ -57,17 +63,23 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxUploadAPI.h
 END
-DropboxMultipleDeleteItemsAPI.m
+DropboxUserSpaceUsageAPI.m
 K 25
 svn:wc:ra_dav:version-url
-V 101
-/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxMultipleDeleteItemsAPI.m
+V 96
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxUserSpaceUsageAPI.m
 END
 Dropbox.h
 K 25
 svn:wc:ra_dav:version-url
 V 79
-/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/Dropbox.h
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/Dropbox.h
+END
+DropboxMultipleDeleteItemsAPI.m
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxMultipleDeleteItemsAPI.m
 END
 DropboxDeleteItemAPI.m
 K 25
@@ -85,7 +97,13 @@ Dropbox.m
 K 25
 svn:wc:ra_dav:version-url
 V 79
-/svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/Dropbox.m
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/Dropbox.m
+END
+DropboxUserAccountAPI.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxUserAccountAPI.h
 END
 DropboxMoveToNewParentAPI.h
 K 25
@@ -98,4 +116,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/1601/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxCreateFolderAPI.h
+END
+DropboxUserAccountAPI.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1894/JPProject/iOSFiles/iOSFiles/CloudDrive/Dropbox/DropboxUserAccountAPI.m
 END

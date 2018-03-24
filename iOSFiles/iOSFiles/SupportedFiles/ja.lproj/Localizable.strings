@@ -32,6 +32,23 @@
 "mainWindow_iCloudPassWord_String" = "Pass Word";
 "iCloudWindow_clickButton" = "iCloud";
 
+
+"MainWindow_BigSize_Dropbox_TitleString" = "DropBox Login";
+"MainWindow_BigSize_Dropbox_MessageString" = "You need to go to the website authorization";
+
+"MainWindow_BigSize_Icloud_TitleString" = "iCloud Login";
+"MainWindow_BigSize_Icloud_MessageString" = "Don't you have an account?Sign up";
+"MainWindow_BigSize_Icloud_Rememberme" = "Remember me";
+"MainWindow_BigSize_Icloud_LoginBtnString" = "Login Now";
+"MainWindow_BigSize_Icloud_LoginPsdPlaceholder" = "Password";
+"MainWindow_BigSize_Icloud_LoginUserPlaceholder" = "iCloud id";
+
+"MainWindow_BigSize_Devices_Title" = "Device Manager";
+"MainWindow_BigSize_Devices_Login_Title" = "Multiple devices can be managed at the same time";
+"MainWindow_BigSize_Devices_Message" = "Can multi-device management";
+"MainWindow_BigSize_Devices_Login_Message" = "Quick links work efficiently";
+
+
 "NO_DATA_String" = "You have no %@ here.";
 "iCloud_content_view_file" = "files";
 "icloud_addAcount" = "添加iCloud账户";
@@ -41,3 +58,7 @@
 "iCloud_detailView_count" = "ファイル数";
 "iCloud_detailView_lastTime" = "更新日時";
 "iCloud_detailView_creatTime" = "作成日時";
+
+//********Tranfer view ******
+"Transfer_Uploading_BtnString" = "Uploading";
+"Transfer_Downloading_BtnString" = "Downloading";

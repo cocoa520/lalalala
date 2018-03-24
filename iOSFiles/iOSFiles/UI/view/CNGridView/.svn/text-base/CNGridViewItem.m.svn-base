@@ -228,12 +228,12 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 	NSRect dirtyRect = self.bounds;
     //设置选中背景
     if (self.selected && _isFileManager) {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(28, 21, 108, 112) xRadius:5 yRadius:5];
+        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(36, 30, 92, 82) xRadius:5 yRadius:5];
         [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
         [path fill];
     }
     if (_isFileManager) {
-        [self.bgImg setSize:NSMakeSize(86, 90)];
+        [self.bgImg setSize:NSMakeSize(80, 60)];
     }else if (_isAudioView) {
         [self.bgImg setSize:NSMakeSize(150, 150)];
     }else {
@@ -284,7 +284,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             imageRect = NSMakeRect(((W - imgW) / 2)+26 - 15,
                                    (H - imgH)/2  ,
                                    imgW,
-                                   imgH - 10);
+                                   imgH);
         }else if (_isSelectView) {
             
             imageRect = NSMakeRect(((W - imgW) / 2) + 10 + 6,
@@ -345,6 +345,22 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
         }else {
             textRect = NSMakeRect(contentRect.origin.x + 3, H -10, W - 6, 14+4);
         }
+        
+        if (self.selected && _isFileManager) {
+            NSRect titleRect = [StringHelper calcuTextBounds:self.itemTitle fontSize:12.0];
+            if (titleRect.size.width + 6 > 108) {
+                titleRect.size.width = 108;
+            } else {
+                titleRect.size.width = titleRect.size.width + 6;
+            }
+            titleRect.size.height = textRect.size.height - 2;
+            titleRect.origin.x = (154 - titleRect.size.width)/2 + 4;
+            titleRect.origin.y = textRect.origin.y + 2;
+            
+            NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:titleRect xRadius:5 yRadius:5];
+            [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
+            [path fill];
+        }
 		
 		[self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
 
@@ -397,7 +413,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             imageRect = NSMakeRect(((W - imgW) / 2)+26,
                                    (H - imgH)/2  ,
                                    imgW,
-                                   imgH - 10);
+                                   imgH);
         }else if (_isSelectView) {
             
             imageRect = NSMakeRect(((W - imgW) / 2) + 10 + 6,
@@ -460,6 +476,12 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
         }
         
         [self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
+        
+        if (self.selected && _isFileManager) {
+            NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:textRect xRadius:5 yRadius:5];
+            [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
+            [path fill];
+        }
     }
 }
 
@@ -503,6 +525,10 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
     NSTrackingAreaOptions options = NSTrackingInVisibleRect | NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow;
     _trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:options owner:self userInfo:nil];
     [self addTrackingArea:_trackingArea];
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    [super mouseDown:theEvent];
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

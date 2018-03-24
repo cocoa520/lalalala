@@ -270,43 +270,60 @@
 {
     [super drawRect:dirtyRect];
     NSBezierPath *clipPath = nil;
-    if (_isDrawBorder) {
-         if (!_isDrawRectLine) {
-            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-            [clipPath setWindingRule:NSEvenOddWindingRule];
-            [clipPath addClip];
-       
-            [clipPath setLineWidth:2];
-        }else{
-            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:15 yRadius:15];
-            [clipPath setWindingRule:NSEvenOddWindingRule];
-            [clipPath addClip];
-            [clipPath setLineWidth:0];
-        }
-            [clipPath closePath];
-       
-        if (_status == 1) {
-            [IMBGrayColor(255) setFill];
-            [clipPath fill];
-            [IMBRgbColor(216, 235, 223) setStroke];
-            [clipPath stroke];
-        }else if (_status == 2) {
-            [IMBRgbColor(216, 235, 223) setFill];
-            [clipPath fill];
-            [IMBRgbColor(216, 235, 223) setStroke];
-            [clipPath stroke];
-        }else if (_status == 3) {
-            [IMBRgbColor(196, 224, 206) setFill];
-            [clipPath fill];
-            [IMBRgbColor(216, 235, 223) setStroke];
-            [clipPath stroke];
-        }else if (_status == 4) {
-            [IMBGrayColor(255) setFill];
-            [clipPath fill];
-            [IMBRgbColor(216, 235, 223) setStroke];
-            [clipPath stroke];
-        }
+    clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+    [clipPath setWindingRule:NSEvenOddWindingRule];
+    [clipPath addClip];
+    [clipPath closePath];
+    
+    if (_status == 1) {
+        [IMBGrayColor(255) setFill];
+        [clipPath fill];
+    }else if (_status == 2) {
+        [IMBRgbColor(216, 235, 223) setFill];
+        [clipPath fill];
+    }else if (_status == 3) {
+        [IMBRgbColor(196, 224, 206) setFill];
+        [clipPath fill];
+    }else if (_status == 4) {
+        [IMBGrayColor(255) setFill];
+        [clipPath fill];
     }
+//    if (_isDrawBorder) {
+//         if (!_isDrawRectLine) {
+//            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+//            [clipPath setWindingRule:NSEvenOddWindingRule];
+//            [clipPath addClip];
+//            [clipPath setLineWidth:2];
+//        }else{
+//            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:15 yRadius:15];
+//            [clipPath setWindingRule:NSEvenOddWindingRule];
+//            [clipPath addClip];
+//            [clipPath setLineWidth:0];
+//        }
+//            [clipPath closePath];
+//       
+//        if (_status == 1) {
+//            [IMBGrayColor(255) setFill];
+//            [clipPath fill];
+//            [IMBRgbColor(216, 235, 223) setStroke];
+//            [clipPath stroke];
+//        }else if (_status == 2) {
+//            [IMBRgbColor(216, 235, 223) setFill];
+//            [clipPath fill];
+//            [IMBRgbColor(216, 235, 223) setStroke];
+//            [clipPath stroke];
+//        }else if (_status == 3) {
+//            [IMBRgbColor(196, 224, 206) setFill];
+//            [clipPath fill];
+//            [IMBRgbColor(216, 235, 223) setStroke];
+//            [clipPath stroke];
+//        }else if (_status == 4) {
+//            [IMBGrayColor(255) setFill];
+//            [clipPath fill];
+//            [IMBRgbColor(216, 235, 223) setStroke];
+//            [clipPath stroke];
+//        }
+//    }
 
     NSImage *image = nil;
     if (_status == 1) {

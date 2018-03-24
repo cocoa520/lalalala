@@ -12,7 +12,7 @@
 #import "IMBDevViewController.h"
 
 static CGFloat const viewBorderW = 4.f;
-static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.25f;
+static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.2f;
 
 @interface IMBSelectConntedDeviceView()
 {
@@ -38,36 +38,36 @@ static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.25f;
         NSRect upperRect = dirtyRect;
         upperRect.origin.y += height;
         upperRect.size.height -= height;
-        NSBezierPath *upperBezierPath = [NSBezierPath bezierPathWithRoundedRect:upperRect xRadius:4.0f yRadius:4.0f];
+        NSBezierPath *upperBezierPath = [NSBezierPath bezierPathWithRoundedRect:upperRect xRadius:viewBorderW yRadius:viewBorderW];
         [[COLOR_MAIN_WINDOW_SELECTE_DEVICE_BG colorWithAlphaComponent:0.95] set];
         [upperBezierPath fill];
         
         NSRect restRect = dirtyRect;
         restRect.size.height = height;
-        NSBezierPath *restBezierPath = [NSBezierPath bezierPathWithRoundedRect:upperRect xRadius:4.0f yRadius:4.0f];
+        NSBezierPath *restBezierPath = [NSBezierPath bezierPathWithRoundedRect:upperRect xRadius:viewBorderW yRadius:viewBorderW];
         [[NSColor clearColor] set];
         [restBezierPath fill];
     }
     
     
-//    NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-//    [shadow setShadowColor:COLOR_MAIN_WINDOW_VIEW_SHADOW];
-//    [shadow setShadowOffset:NSMakeSize(2, 2)];
-//    [shadow setShadowBlurRadius:6];
-//    [shadow set];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:viewBorderW yRadius:viewBorderW];
+//    [path moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds) + viewBorderW)];
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(self.bounds) + viewBorderW , NSMinY(self.bounds) + viewBorderW) radius:viewBorderW startAngle:180 endAngle:270];
+//    [path lineToPoint:NSMakePoint(NSMaxX(self.bounds) - viewBorderW, NSMinY(self.bounds))];
+//    
+//    
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(self.bounds) - viewBorderW , NSMinY(self.bounds) + viewBorderW) radius:viewBorderW startAngle:270 endAngle:0];
+//    [path lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds) - viewBorderW)];
+//    
+//    
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(self.bounds) - viewBorderW , NSMaxY(self.bounds) - viewBorderW) radius:viewBorderW startAngle:0 endAngle:90];
+//    [path lineToPoint:NSMakePoint(NSMinX(self.bounds) + viewBorderW, NSMaxY(self.bounds))];
+//    
+//    
+//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(self.bounds) + viewBorderW, NSMaxY(self.bounds)-viewBorderW) radius:viewBorderW startAngle:90 endAngle:180];
+//    [path lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds) + viewBorderW)];
     
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    [path moveToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-    [path lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMinY(self.bounds))];
-    [path lineToPoint:NSMakePoint(NSMaxX(self.bounds), NSMaxY(self.bounds) - viewBorderW)];
-    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(self.bounds) - viewBorderW , NSMaxY(self.bounds) - viewBorderW) radius:viewBorderW startAngle:0 endAngle:90];
-    [path lineToPoint:NSMakePoint(NSMinX(self.bounds) + viewBorderW, NSMaxY(self.bounds))];
-    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(self.bounds) + viewBorderW, NSMaxY(self.bounds)-viewBorderW) radius:viewBorderW startAngle:90 endAngle:180];
-    [path lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(self.bounds) + viewBorderW, NSMinY(self.bounds)+viewBorderW) radius:viewBorderW startAngle:0 endAngle:90];
-//    [path lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
-//    [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(self.bounds) - viewBorderW, NSMaxY(self.bounds)-viewBorderW) radius:viewBorderW startAngle:90 endAngle:180];
-//    [path lineToPoint:NSMakePoint(NSMinX(self.bounds), NSMinY(self.bounds))];
+    
     [path setLineWidth:2];
     [path addClip];
     [COLOR_MAIN_WINDOW_VIEW_SHADOW setStroke];
@@ -94,10 +94,11 @@ static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.25f;
     if (_contentView) {
         [_contentView setFrame:NSMakeRect(0, originalF.size.height, finalF.size.width, finalF.size.height - originalF.size.height)];
         [self addSubview:_contentView];
+        [self addTrackingRect:NSMakeRect(0, 0, finalF.size.width, finalF.size.height) owner:self userData:nil assumeInside:0];
     }
     self.frame = originalF;
     
-    [self addTrackingRect:NSMakeRect(0, 0, finalF.size.width, finalF.size.height) owner:self userData:nil assumeInside:0];
+    
     [IMBViewAnimation animationMouseMovedAnimWithView:self frame:finalF timeInterval:IMBSelectConnetctedDeviceAnimInterval disable:YES isHidden:NO completion:nil];
 }
 
@@ -108,17 +109,22 @@ static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.25f;
 - (void)hideWithTimeInterval:(CGFloat)timeInterval {
     NSRect finalF = self.frame;
     finalF.size.height = 10.0f;
+    
     [IMBViewAnimation animationMouseMovedAnimWithView:self frame:_originalF timeInterval:timeInterval disable:YES isHidden:YES completion:^{
-        _isShowing = NO;
-        if (_contentView) {
-            [_contentView removeFromSuperview];
+        if (self) {
+            _isShowing = NO;
+            if (_contentView) {
+                [_contentView removeFromSuperview];
+            }
+            [self removeFromSuperview];
         }
-        [self removeFromSuperview];
+        
         
     }];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
+    IMBFFuncLog
     [self hide];
     
 }

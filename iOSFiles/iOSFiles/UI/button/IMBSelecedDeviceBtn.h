@@ -23,8 +23,11 @@
     IPodFamilyEnum _connectTpye;
     CGFloat _iconX;
     CGFloat _textX;
+    
+    NSString *_rightIcon;
+    BOOL _isMainPageView;
 }
-
+@property (nonatomic, assign) BOOL isMainPageView;
 @property(nonatomic, assign)CGFloat iconX;
 @property(nonatomic, assign)CGFloat textX;
 @property (nonatomic, retain) NSString *buttonName;
@@ -42,7 +45,7 @@
 - (void)setIsDisable:(BOOL)isDisable;
 - (void)setMouseStatus:(MouseStatusEnum)mouseStatus;
 - (void)setInitFrame:(NSRect)frameRect withButtonTitle:(NSString *)buttonTitle;
-- (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType;
+- (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType rightIcon:(NSString *)rightIcon;
 
 - (void)setHiddenRightImage:(BOOL)rightImage;
 

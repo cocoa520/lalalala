@@ -236,7 +236,7 @@
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"Activation" label:Switch transferCount:0 screenView:@"AnyTrans Activation" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"1" label:Activate transferCount:0 screenView:@"AnyTrans Activation" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
     if (dimensionDict) {
         [dimensionDict release];
         dimensionDict = nil;

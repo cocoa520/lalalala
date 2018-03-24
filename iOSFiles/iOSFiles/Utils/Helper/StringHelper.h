@@ -475,8 +475,8 @@ static char firstLetterArray[ HANZI_COUNT ] =
 
 + (NSSortDescriptor *)creatChineseSortDescriptorWithkey:(NSString *)key WithAscending:(BOOL)ascending;
 + (NSString *)getSortString:(NSString *)oriStr;
++(NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit;
 
-
-
++ (FileTypeEnum)getFileFormatWithExtension:(NSString *)extension;
 
 @end

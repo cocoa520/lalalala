@@ -12,7 +12,6 @@
 #import "IMBiPod.h"
 #import "IMBInformation.h"
 #import "IMBDetailViewControler.h"
-#import "IMBDevicePageWindow.h"
 
 #import <objc/runtime.h>
 

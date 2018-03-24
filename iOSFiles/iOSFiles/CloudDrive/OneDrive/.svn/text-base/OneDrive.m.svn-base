@@ -258,6 +258,8 @@ NSString *const TokenEndpointWithOneDrive = @"https://login.microsoftonline.com/
 - (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item
 {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self downloadFolder:item];
     }else{
         [self performActionWithFreshTokens:^(BOOL refresh) {
@@ -286,15 +288,14 @@ NSString *const TokenEndpointWithOneDrive = @"https://login.microsoftonline.com/
             [item setChildArray:allfileArray];
             long long  totalSize = [[item.childArray valueForKeyPath:@"@sum.fileSize"] longLongValue];
             [item setFileSize:totalSize];
-            NSMutableArray *reverseArray = [NSMutableArray array];
-            [allfileArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *sortArray = [item.childArray sortedArrayUsingSelector:@selector(compare:)];            //设置为等待状态
+            [sortArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 id <DownloadAndUploadDelegate> childItem = obj;
                 childItem.parent = item;
-                [reverseArray addObject:childItem];
             }];
             //设置为等待状态
             item.state = DownloadStateWait;
-            [self downloadItems:reverseArray];
+            [self downloadItems:sortArray];
         }
     });
 }
@@ -353,6 +354,8 @@ NSString *const TokenEndpointWithOneDrive = @"https://login.microsoftonline.com/
 
 - (void)uploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self uploadFolder:item];
     }else{
         [self performActionWithFreshTokens:^(BOOL refresh) {

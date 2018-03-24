@@ -26,6 +26,14 @@
 
 -(void)awakeFromNib{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeKeyWindow:) name:@"MainWindowBecomeKeyWindow" object:nil];
+//    if (self.placeholderString) {
+//        NSMutableDictionary *textAttr = [NSMutableDictionary dictionary];
+//        [textAttr setValue:COLOR_MAIN_WINDOW_TEXTFIELD_PLACEHOLDER forKey:NSForegroundColorAttributeName];
+//        NSMutableAttributedString *textAttrString = [[NSMutableAttributedString alloc] initWithString:self.placeholderString attributes:textAttr];
+//        [self setPlaceholderAttributedString:textAttrString];
+////        [textAttr release];
+////        textAttr = nil;
+//    }
 }
 
 - (void)becomeKeyWindow:(NSNotification *)notification

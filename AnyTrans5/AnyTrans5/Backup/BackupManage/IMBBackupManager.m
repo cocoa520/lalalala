@@ -612,21 +612,21 @@ static IMBBackupManager *sigleton = nil;
         if (preArray != nil && [preArray count] > 0) {
             SMSDBFileItem = [preArray objectAtIndex:0];
         }
-        
-        if ([_iosVersion isVersionMajorEqual:@"10"]) {
-            NSString *fd = @"";
-            if (SMSDBFileItem.key.length > 2) {
-                fd = [SMSDBFileItem.key substringWithRange:NSMakeRange(0, 2)];
+        if (SMSDBFileItem) {
+            if ([_iosVersion isVersionMajorEqual:@"10"]) {
+                NSString *fd = @"";
+                if (SMSDBFileItem.key.length > 2) {
+                    fd = [SMSDBFileItem.key substringWithRange:NSMakeRange(0, 2)];
+                }
+                desfilePath = [[_backUpPath stringByAppendingPathComponent:fd] stringByAppendingPathComponent:SMSDBFileItem.key];
+                //                                    currentPath = [_manifestManager.deviceBackupFolderPath stringByAppendingPathComponent:fr.key];
+            }else{
+                desfilePath = [_backUpPath stringByAppendingPathComponent:SMSDBFileItem.key];
             }
-            desfilePath = [[_backUpPath stringByAppendingPathComponent:fd] stringByAppendingPathComponent:SMSDBFileItem.key];
-            //                                    currentPath = [_manifestManager.deviceBackupFolderPath stringByAppendingPathComponent:fr.key];
-        }else{
-            desfilePath = [_backUpPath stringByAppendingPathComponent:SMSDBFileItem.key];
-        }
-        
-        
-        NSFileManager *filemanager = [NSFileManager defaultManager];
-        NSString *appPath = nil;
+            
+            
+            NSFileManager *filemanager = [NSFileManager defaultManager];
+            NSString *appPath = nil;
 //        if ([filemanager fileExistsAtPath:desfilePath]) {
         
             appPath = [[TempHelper getAppTempPath] stringByAppendingPathComponent:SMSDBFileItem.key];
@@ -646,7 +646,9 @@ static IMBBackupManager *sigleton = nil;
 //            NSLog(@"该备份数据库文件已被删除");
 //            return nil;
 //        }
-
+        }else {
+            NSLog(@"======");
+        }
     }
     return desfilePath;
 }

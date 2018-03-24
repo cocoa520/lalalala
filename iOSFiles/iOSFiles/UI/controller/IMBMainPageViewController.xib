@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -8,9 +8,14 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBMainPageViewController">
             <connections>
+                <outlet property="_alertSuperView" destination="6lQ-bS-Z9z" id="ubC-9N-Ide"/>
+                <outlet property="_lineView1" destination="RwI-3p-y1q" id="yOI-wb-8eD"/>
+                <outlet property="_lineView2" destination="mxd-UZ-xdx" id="e6p-Jk-w1o"/>
                 <outlet property="_rootBox" destination="ogG-Fy-WGA" id="dee-dw-nRr"/>
                 <outlet property="_selectedDeviceBtn" destination="eyg-Z1-geY" id="A6m-fB-cpb"/>
+                <outlet property="_shoppingCartBtn" destination="S3e-vi-1nC" id="WxM-gG-yBQ"/>
                 <outlet property="_topView" destination="Vdt-es-Jt1" id="9R7-XQ-qPN"/>
+                <outlet property="_transferBtn" destination="pGc-65-Lfc" id="F6n-fL-yia"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -24,8 +29,49 @@
                     <rect key="frame" x="0.0" y="594" width="1096" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="eyg-Z1-geY" customClass="IMBSelecedDeviceBtn">
-                            <rect key="frame" x="498" y="7" width="99" height="39"/>
+                        <button verticalHuggingPriority="750" id="pGc-65-Lfc" customClass="IMBHoverChangeImageBtn">
+                            <rect key="frame" x="1031" y="0.0" width="68" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_transtion" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="8Vs-AC-swV">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toolbarTransfefClicked:" target="-2" id="URF-FE-nbs"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" id="S3e-vi-1nC" customClass="IMBHoverChangeImageBtn">
+                            <rect key="frame" x="961" y="0.0" width="68" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_transtion copy" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qhC-zr-gDT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toolbarShoppingCartClicked:" target="-2" id="Jlh-3M-qa3"/>
+                            </connections>
+                        </button>
+                        <customView id="RwI-3p-y1q" userLabel="line1" customClass="IMBLineView">
+                            <rect key="frame" x="960" y="0.0" width="1" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                        <customView id="mxd-UZ-xdx" userLabel="line2" customClass="IMBLineView">
+                            <rect key="frame" x="1030" y="0.0" width="1" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                        <button verticalHuggingPriority="750" id="u7e-Pi-tk9" customClass="IMBMainPageWindowBackBtn">
+                            <rect key="frame" x="40" y="15" width="69" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="home" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="9mr-bg-AUq">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" size="14" name="HelveticaNeue"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="backMainView:" target="-2" id="XRH-v0-lDc"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="eyg-Z1-geY" customClass="IMBCustomImageTextBtn">
+                            <rect key="frame" x="454" y="9" width="200" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="x65-aU-vTj">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -33,17 +79,6 @@
                             </buttonCell>
                             <connections>
                                 <action selector="selectedDeviceBtnDown:" target="-2" id="sYJ-u6-Bbt"/>
-                            </connections>
-                        </button>
-                        <button verticalHuggingPriority="750" id="u7e-Pi-tk9">
-                            <rect key="frame" x="100" y="8" width="81" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9mr-bg-AUq">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="backMainView:" target="-2" id="XRH-v0-lDc"/>
                             </connections>
                         </button>
                     </subviews>
@@ -58,7 +93,15 @@
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
+                <customView hidden="YES" id="6lQ-bS-Z9z" customClass="IMBAlertSupeView">
+                    <rect key="frame" x="0.0" y="0.0" width="1096" height="644"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
         </customView>
     </objects>
+    <resources>
+        <image name="navbar_icon_transtion" width="44" height="44"/>
+        <image name="navbar_icon_transtion copy" width="44" height="44"/>
+    </resources>
 </document>

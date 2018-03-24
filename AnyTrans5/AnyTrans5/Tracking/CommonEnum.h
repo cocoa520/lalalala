@@ -66,6 +66,7 @@ typedef enum ActionEnum {
     Login,
     ToiCloud,
     AirBackup,
+    AdAnnoy,
     ActionNone
 }EventAction;
 
@@ -76,6 +77,7 @@ typedef enum LabelEnum {
     FirstLaunch,
     Buy,
     Register,
+    Activate,
     Switch,
     Click,
     Start,

@@ -9,5 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface IMBCustomBtn : NSButton
-
+{
+    @private
+    BOOL _state;
+}
 @end

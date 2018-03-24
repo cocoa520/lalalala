@@ -102,7 +102,7 @@
     NSBezierPath *clipPath = [NSBezierPath bezierPathWithRect:dirtyRect];
     [clipPath setWindingRule:NSEvenOddWindingRule];
     [clipPath addClip];
-    [COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR set];
+    [COLOR_MAIN_WINDOW_BG set];
     [clipPath fill];
     
     if (_longTimeDown) {

@@ -351,6 +351,18 @@ static ATTracker *_instance = nil;
             }
         }
             break;
+        case Activate: {
+            @autoreleasepool {
+                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to activate AnyTrans for Mac", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                if (parameters != nil) {
+                    for (NSString *key in parameters) {
+                        [params setObject:[parameters valueForKey:key] forKey:key];
+                    }
+                }
+                [self send:@"event" andParams:params];
+            }
+        }
+            break;
         case Switch: {
             @autoreleasepool {
                 NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Switch", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
@@ -943,7 +955,17 @@ static ATTracker *_instance = nil;
                         [self send:@"event" andParams:params];
                     }
                     break;
-
+                case AdAnnoy:
+                    @autoreleasepool {
+                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Ad annoy", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                        if (parameters != nil) {
+                            for (NSString *key in parameters) {
+                                [params setObject:[parameters valueForKey:key] forKey:key];
+                            }
+                        }
+                        [self send:@"event" andParams:params];
+                    }
+                    break;
                 default:
                     break;
             }

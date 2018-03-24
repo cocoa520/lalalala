@@ -25,9 +25,10 @@
 @synthesize imageStrName = _imageStrName;
 @synthesize imageName = _imageName;
 @synthesize isDataImage = _isDataImage;
+@synthesize imageText = _imageText;
 - (id)init {
     if ((self = [super init])) {
-        //[self setLineBreakMode:NSLineBreakByTruncatingTail];
+        [self setLineBreakMode:NSLineBreakByTruncatingTail];
         //[self setSelectable:YES];
         _imageSize = NSMakeSize(0, 0);
         _marginX = 3;
@@ -42,6 +43,7 @@
     [_image release];
     [_rightImage release];
     [_lockImg release];
+    [_imageText release];
     [super dealloc];
 }
 
@@ -51,6 +53,7 @@
     cell->_image = [_image retain];
     cell->_rightImage = [_rightImage retain];
     cell ->_lockImg = [_lockImg retain];
+    cell -> _imageText = [_imageText retain];
     return cell;
 }
 
@@ -87,17 +90,15 @@
 // We could manually implement expansionFrameWithFrame:inView: and drawWithExpansionFrame:inView: or just properly implement titleRectForBounds to get expansion tooltips to automatically work for us
 - (NSRect)titleRectForBounds:(NSRect)cellFrame {
     NSRect result;
-    /*
-     if (_image != nil) {
-     CGFloat imageWidth = [self _imageSize:cellFrame.size.height].width;
-     result = cellFrame;
-     result.origin.x += (3 + imageWidth);
-     result.size.width -= (3 + imageWidth);
-     } else {
-     */
-    result = [super titleRectForBounds:cellFrame];
-    result.origin.x += self.paddingX;
-    //}
+    if (![StringHelper stringIsNilOrEmpty:_imageText]) {
+        result.size = [StringHelper calcuTextBounds:_imageText fontSize:12.0].size;
+        result.origin = cellFrame.origin;
+        result.origin.x += 10;
+        result.origin.y += ceil((cellFrame.size.height - result.size.height) / 2);
+    } else {
+        result = [super titleRectForBounds:cellFrame];
+        result.origin.x += self.paddingX;
+    }
     return result;
 }
 
@@ -144,8 +145,7 @@
         NSInteger newX = NSMaxX(imageFrame) + _paddingX;
         cellFrame.size.width = NSMaxX(cellFrame) - newX;
         cellFrame.origin.x = newX;
-    }
-    else{
+    } else {
         imageFrame = [self imageRectForBounds:cellFrame];
         NSInteger newX = NSMaxX(imageFrame) + _paddingX;
         cellFrame.size.width = NSMaxX(cellFrame) - newX;
@@ -178,6 +178,41 @@
         rect.size = _iCloudImg.size;
         [_iCloudImg drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
+    
+    if (![StringHelper stringIsNilOrEmpty:_imageText]) {
+        NSRect rect = [self imageTitleRectForBounds:cellFrame];
+        NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        [paragraphStyle setAlignment:NSLeftTextAlignment];
+        [paragraphStyle setLineBreakMode:NSLineBreakByTruncatingMiddle];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:COLOR_TEXT_ORDINARY,NSForegroundColorAttributeName ,paragraphStyle,NSParagraphStyleAttributeName,[NSFont fontWithName:@"Helvetica Neue" size:12],NSFontAttributeName, nil];
+        NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:_imageText attributes:attributes];
+        [as drawWithRect: rect
+                 options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin];
+        [as release];
+    }
+}
+
+- (NSRect)imageTitleRectForBounds:(NSRect)theRect {
+    /* get the standard text content rectangle */
+    NSRect titleFrame = [super titleRectForBounds:theRect];
+    
+    /* find out how big the rendered text will be */
+    NSMutableAttributedString *titleStr = [[NSMutableAttributedString alloc] initWithString:_imageText];
+    NSRect textRect = NSZeroRect;
+    if (titleStr != nil) {
+        textRect = [titleStr boundingRectWithSize: titleFrame.size
+                                          options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin ];
+        [titleStr release];
+    }
+    /* If the height of the rendered text is less then the available height,
+     * we modify the titleRect to center the text vertically */
+    if (textRect.size.height < titleFrame.size.height) {
+        titleFrame.origin.x = titleFrame.origin.x + 8;
+        titleFrame.origin.y = theRect.origin.y + (theRect.size.height - textRect.size.height) / 2.0;
+        titleFrame.size.height = textRect.size.height + 2;
+        titleFrame.size.width -= 4;
+    }
+    return titleFrame;
 }
 
 - (NSSize)cellSize {

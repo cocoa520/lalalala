@@ -19,9 +19,9 @@
     _buttonName = [buttonName retain];
     _isHomePage = isHomePage;
     if (_isHomePage) {
-        _leftImage = [NSImage imageNamed:@"symbols-apple"];
+        _leftImage = [NSImage imageNamed:@"nav_icon_icloud"];
     } else {
-        _leftImage = [NSImage imageNamed:@"device_name_icloud"];
+        _leftImage = [NSImage imageNamed:@"nav_icon_floder"];
     }
 }
 
@@ -88,19 +88,16 @@
     }
     
     if (_leftImage) {
-        [_leftImage drawInRect:NSMakeRect(5, (dirtyRect.size.height - _leftImage.size.height) / 2.0 - 1, _leftImage.size.width, _leftImage.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        [_leftImage drawInRect:NSMakeRect(5, (dirtyRect.size.height - 24) / 2.0, 24, 24) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
     
     if (_buttonName) {
         NSRect titleRect = [self calcuTextBounds:_buttonName fontSize:12.0];
         NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:12.0];
         NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[font, COLOR_TEXT_ORDINARY] forKeys:@[NSFontAttributeName, NSForegroundColorAttributeName]];
-        NSRect drawRect = NSMakeRect(_leftImage.size.width + 5 + 8,(dirtyRect.size.height - titleRect.size.height) / 2.0 - 1, titleRect.size.width, titleRect.size.height);
+        NSRect drawRect = NSMakeRect(32,(dirtyRect.size.height - titleRect.size.height) / 2.0 - 1, titleRect.size.width, titleRect.size.height);
         [_buttonName drawInRect:drawRect withAttributes:dic];
     }
-    
-    
-    
 }
 
 - (NSRect)calcuTextBounds:(NSString *)text fontSize:(float)fontSize {

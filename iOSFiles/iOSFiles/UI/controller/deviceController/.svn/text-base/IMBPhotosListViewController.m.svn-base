@@ -25,14 +25,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePhotosListLanguage:) name:NOTIFY_PHOTOSLIST_CHANGE_LANGUAGE object:nil];
     }
     return self;
 }
 
-- (id)initWithiPod:(IMBiPod *)ipod {
+- (id)initWithiPod:(IMBiPod *)ipod category:(CategoryNodesEnum)category {
     if ([super initWithNibName:@"IMBPhotosListViewController" bundle:nil]) {
         _iPod = ipod;
+        _category = category;
     }
     return self;
 }
@@ -40,7 +40,6 @@
 
 - (void)dealloc
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_PHOTOSLIST_CHANGE_LANGUAGE object:nil];
     if (queue != nil) {
         [queue release];
         queue = nil;
@@ -53,16 +52,20 @@
     [_loadingView setIsGradientColorNOCornerPart3:YES];
     IMBInformationManager *inforManager = [IMBInformationManager shareInstance];
     _information = [inforManager.informationDic objectForKey:_iPod.uniqueKey];
-    _dataSourceArray = [_information.allPhotoArray retain];
-//    if (_category == Category_MyAlbums || _category == Category_PhotoShare || _category == Category_ContinuousShooting) {
-//        [self.view setFrame:NSMakeRect(0, 0, 830, 534)];
-//        [_containTableView setFrame:NSMakeRect(0, 0, 830, 534)];
-//        [_scrollVeiw setFrame:NSMakeRect(0, 0, 830, 534)];
-//        [_itemTableView setFrame:NSMakeRect(0, 0, 830, 516)];
-//        [_noDataView setFrame:NSMakeRect(0, 0, 830, 534)];
-//        [_noDataImageView setFrameOrigin:NSMakePoint((_noDataView.frame.size.width - _noDataImageView.frame.size.width)/2, _noDataImageView.frame.origin.y)];
-//        [_noDataScrollView setFrameOrigin:NSMakePoint((_noDataView.frame.size.width - _noDataScrollView.frame.size.width)/2, _noDataScrollView.frame.origin.y)];
-//    }
+    if (_category == Category_Media) {
+        _dataSourceArray = [_information.mediaArray retain];
+    }else if (_category == Category_Video) {
+        _dataSourceArray = [_information.videoArray retain];
+    }else if (_category == Category_iBooks) {
+        _dataSourceArray = [_information.allBooksArray retain];
+    }else if (_category == Category_Applications) {
+        _dataSourceArray = [_information.appArray retain];
+    }else if (_category == Category_System) {
+        
+    }else if (_category == Category_PhotoStream||_category == Category_PhotoLibrary||_category == Category_CameraRoll) {
+        _dataSourceArray = [_information.allPhotoArray retain];
+    }
+    
     if (_dataSourceArray.count == 0) {
         [_noDataLable setHidden:YES];
         [_noDataView setFrame:NSMakeRect(0, 0, 1000, 534)];
@@ -106,7 +109,6 @@
 
     NSIndexSet *set = [self selectedItems];
     [_itemTableView showVisibleRextPhoto];
-//    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
 
     if ([set count] == [_dataSourceArray count]&&[_dataSourceArray count]>0) {
         [_itemTableView changeHeaderCheckState:NSOnState];
@@ -232,14 +234,8 @@
 
 #pragma mark - IMBImageRefreshListener
 - (void)loadingThumbnilImage:(NSRange)oldVisibleRows withNewVisibleRows:(NSRange)newVisibleRows {
-//    NSLog(@"newVisibleRows:%d,  %d",newVisibleRows.location,newVisibleRows.length);
     [queue cancelAllOperations];
-//    if (_isSearching && _searchingArray != nil) {
-//         _visibleItems = (NSMutableArray *)[[_searchingArray subarrayWithRange:newVisibleRows] retain];
-//    }else{
-    
-         _visibleItems = (NSMutableArray *)[[_dataSourceArray subarrayWithRange:newVisibleRows] retain];
-//    }
+    _visibleItems = (NSMutableArray *)[[_dataSourceArray subarrayWithRange:newVisibleRows] retain];
    
     
     NSRange range;
@@ -278,6 +274,7 @@
     [_visibleItems release];
 }
 
+/*
 - (void)loadImage:(id)phEntity {
     @synchronized (phEntity) {
         [queue addOperationWithBlock:^(void) {
@@ -363,26 +360,19 @@
                 }
                 [self performSelectorOnMainThread:@selector(reloadRowForTableView:) withObject:entity waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
                 NSLog(@"entity count: %ld", entity.retainCount);
-//                [entity release];
-//                entity = nil;
             }
         }];
     }
 }
+*/
 
 - (void)reloadRowForTableView:(id)object {
     NSInteger row;
-//   if (_isSearching && _searchingArray != nil) {
-//       row = [_searchingArray indexOfObject:object];
-//    }else
-//    {
     if (_isSearch) {
         row = [_researchdataSourceArray indexOfObject:object];
     }else{
         row = [_dataSourceArray indexOfObject:object];
     }
-    
-//    }
    
     if (row != NSNotFound) {
         [_itemTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row] columnIndexes:[NSIndexSet indexSetWithIndex:1]];
@@ -415,24 +405,45 @@
     if (displayArray.count <=0) {
         return @"";
     }
-    IMBPhotoEntity *entity = [displayArray objectAtIndex:row];
-    
-    if ([@"Name" isEqualToString:tableColumn.identifier] ) {
-        return entity.photoName;
-    }
-    
-    if ([@"Format" isEqualToString:tableColumn.identifier]) {
-        return [NSString stringWithFormat:@"%d * %d",entity.photoWidth,entity.photoHeight];
-    }
-    
-    if ([@"TimeDate" isEqualToString:tableColumn.identifier]) {
-        return [DateHelper dateFrom2001ToString:entity.photoDateData withMode:2];
-    }
-    if ([@"Size" isEqualToString:tableColumn.identifier]) {
-        return [StringHelper getFileSizeString:entity.photoSize reserved:2];
-    }
-    if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
-        return [NSNumber numberWithInt:entity.checkState];
+    if (_category == Category_Media || _category == Category_Video) {
+        IMBTrack *entity = [displayArray objectAtIndex:row];
+        
+        if ([@"Name" isEqualToString:tableColumn.identifier] ) {
+            return entity.title;
+        }
+        
+        if ([@"TimeDate" isEqualToString:tableColumn.identifier]) {
+            return [[StringHelper getTimeString:entity.length] stringByAppendingString:@" "];//[DateHelper dateFrom2001ToString:entity.time withMode:2];
+        }
+        if ([@"Size" isEqualToString:tableColumn.identifier]) {
+            return [StringHelper getFileSizeString:entity.fileSize reserved:2];
+        }
+        return @"";
+    }else if (_category == Category_iBooks) {
+        
+    }else if (_category == Category_Applications) {
+        
+    }else if (_category == Category_PhotoStream||_category == Category_PhotoLibrary||_category == Category_CameraRoll) {
+        IMBPhotoEntity *entity = [displayArray objectAtIndex:row];
+        
+        if ([@"Name" isEqualToString:tableColumn.identifier] ) {
+            return entity.photoName;
+        }
+        
+        if ([@"Format" isEqualToString:tableColumn.identifier]) {
+            return [NSString stringWithFormat:@"%d * %d",entity.photoWidth,entity.photoHeight];
+        }
+        
+        if ([@"TimeDate" isEqualToString:tableColumn.identifier]) {
+            return [DateHelper dateFrom2001ToString:entity.photoDateData withMode:2];
+        }
+        if ([@"Size" isEqualToString:tableColumn.identifier]) {
+            return [StringHelper getFileSizeString:entity.photoSize reserved:2];
+        }
+        if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+            return [NSNumber numberWithInt:entity.checkState];
+        }
+        return @"";
     }
     return @"";
 }
@@ -448,13 +459,6 @@
     if (displayArray.count <= 0) {
         return ;
     }
-//    NSArray *bindingArray = nil;
-//    if (_isSearching) {
-//        bindingArray = _searchBindingArray;
-//    }
-//    else{
-//        bindingArray = _bindingArray;
-//    }
     if ([@"Image" isEqualToString:tableColumn.identifier] ) {
     IMBPhotoEntity *entity = [displayArray objectAtIndex:row];
         IMBImageAndTextCell *curCell = (IMBImageAndTextCell*)cell;
@@ -496,35 +500,6 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
-//    NSMutableArray *disPalyAry = nil;
-//    if (_isSearch) {
-//        disPalyAry = _researchdataSourceArray;
-//    }else{
-//        disPalyAry = _dataSourceArray;
-//    }
-//    if (disPalyAry.count <=0) {
-//        return;
-//    }
-//    NSIndexSet *set = [_itemTableView selectedRowIndexes];
-////    for (int i=0; i<[disPalyAry count]; i++) {
-////        IMBPhotoEntity *entity = [disPalyAry objectAtIndex:i];
-////        if ([set containsIndex:i]) {
-////            [entity setCheckState:NSOnState];
-////            [entity setIsHiddenSelectImage:NO];
-////        }else{
-////            [entity setCheckState:NSOffState];
-////            [entity setIsHiddenSelectImage:YES];
-////        }
-////    }
-//    if ([set count] == [_dataSourceArray count]&&[_dataSourceArray count]>0) {
-//        [_itemTableView changeHeaderCheckState:NSOnState];
-//    }else if ([set count] == 0)
-//    {
-//        [_itemTableView changeHeaderCheckState:NSOffState];
-//    }else
-//    {
-//        [_itemTableView changeHeaderCheckState:NSMixedState];
-//    }
     [_itemTableView reloadData];
 }
 
@@ -572,7 +547,6 @@
                 [set addIndex:i];
             }
         }
-//        [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     }
 
     [_itemTableView reloadData];
@@ -620,7 +594,7 @@
         }
     }
     if (entity.checkState == NSOnState) {
-//        [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+        
     }else if (entity.checkState == NSOffState)
     {
         [_itemTableView deselectRow:index];
@@ -654,7 +628,6 @@
             [set addIndex:i];
         }
     }
-//    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     [_itemTableView reloadData];
 }
 

@@ -26,9 +26,6 @@
     MouseStatusEnum _mouseStatus;
     NSNotificationCenter *nc;
     IMBSignOutButton *_signOutBtn;
-    IMBSignOutButton *_deviceInfoBtn;
-    IMBSignOutButton *_deviceRestartBtn;
-    IMBSignOutButton *_deviceShutdownBtn;
     id _delegate;
     NSString *_btnStatus;
     BOOL _isTitle;

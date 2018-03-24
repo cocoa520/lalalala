@@ -1811,4 +1811,64 @@
 "iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
 
+"CameraVideo_convert_title" = "Convert video to M4V format";
+"CameraVideo_convert_subtitle" = "If the video exported from device in iOS 11 or higher won’t play on Mac running macOS 10.12 or higher, please convert the video to M4V format.";
 
+
+//传输开始之前的骚扰窗口
+"Annoy_StartTransfer_Title" = "Thanks for your interest in AnyTrans! Get started with the free trial and mange your iOS devices now!";
+"Annoy_StartTransfer_SubTitle" = "The unique benefits you’re guaranteed with AnyTrans:";
+"Annoy_StartTransfer_Detail_OneTitle" = "Superb experience from fastest transfer";
+"Annoy_StartTransfer_Detail_OneSubTitle" = "Accomplish your data transfer in a flash with AnyTrans’ innovative Flash-Trans technology.";
+"Annoy_StartTransfer_Detail_TwoTitle" = "Full-way transfer without sync block";
+"Annoy_StartTransfer_Detail_TwoSubTitle" = "Move data freely across your iPhone, iPad, iPod, iTunes, iCloud and computer, all as you want.";
+"Annoy_StartTransfer_Detail_ThreeTitle" = "Complete coverage of everything essential";
+"Annoy_StartTransfer_Detail_ThreeSubTitle" = "Take care of all your important iOS data and files with limitless possibilities in management.";
+"Annoy_StartTransfer_Detail_FourTitle" = "The smart manager that you’ve never seen";
+"Annoy_StartTransfer_Detail_FourSubTitle" = "AnyTrans intelligently knows what you want to do and can always get it done decently for you.";
+"Annoy_StartTransfer_BtnTitle" = "Start Your Free Trial Now";
+
+//试用传输完成后的页面
+"Annoy_TransferComplete_Title" = "You’ve successfully transferred %d item(s)! With this trial version, you can transfer only %d more items today.";
+"Annoy_TransferComplete_SecondPart_Title" = "Or, get a full version to remove all limitations and enjoy more benefits:";
+"Annoy_TransferComplete_SecondPart_SubTitle_1" = "Break restrictions to transfer as many data as you want, unlimitedly and smoothly.";
+"Annoy_TransferComplete_SecondPart_SubTitle_2" = "Feel free to export music from iPhone to computer or iTunes, and vice versa.";
+"Annoy_TransferComplete_SecondPart_SubTitle_3" = "With one click, you can instantly export iPhone photos to computer by categories.";
+"Annoy_TransferComplete_SecondPart_SubTitle_4" = "It’s insanely easy to turn any of your favorite songs into your exclusive ringtones.";
+"Annoy_TransferComplete_ThirdPart_Title" = "You will be fully protected by our:";
+"Annoy_TransferComplete_ThirdPart_SubTitle_1" = "Instant Delivery Guarantee";
+"Annoy_TransferComplete_ThirdPart_SubTitle_2" = "Lifetime Free Updates Guarantee";
+"Annoy_TransferComplete_ThirdPart_SubTitle_3" = "24/7/365 Customer Service Guarantee";
+"Annoy_TransferComplete_ThirdPart_SubTitle_4" = "100% Satisfaction Guarantee";
+"Annoy_TransferComplete_BtnTitle" = "Buy A License Online";
+
+//点击Activate后弹出的页面
+"Annoy_Activate_Title" = "Your AnyTrans is not activated yet. If you already have a license, please enter it here to unlock the full version and enjoy your priority:";
+"Annoy_Activate_SecondPart_SubTitle_1" = "Export iPhone music to computer/iTunes, and vice versa";
+"Annoy_Activate_SecondPart_SubTitle_2" = "1 click to export iPhone photos to computer by categories";
+"Annoy_Activate_SecondPart_SubTitle_3" = "Set your favorite songs as your exclusive iPhone ringtones";
+"Annoy_Activate_SecondPart_SubTitle_4" = "Move videos across iPhone, iPad and computer ultra fast";
+"Annoy_Activate_SecondPart_SubTitle_5" = "Transfer iBooks from computer or old phone to the new";
+"Annoy_Activate_SecondPart_SubTitle_6" = "Turn your iPhone/iPad into a flash disk whenever needed";
+"Annoy_Activate_SecondPart_SubTitle_7" = "Break iTunes limits to enjoy simpler & unlimited transfer";
+"Annoy_Activate_SecondPart_SubTitle_8" = "You get 100% guarantee to enjoy lifetime FREE updates";
+"Annoy_Activate_SecondPart_SubTitle_9" = "Enjoy prior access to 24/7/365 customer support service";
+"Annoy_Activate_ThirdPart_SubTitle_1" = "Or, you can get a license here";
+"Annoy_Activate_BtnTitle" = "Buy A License Online";
+"Annoy_Activate_ChooseBrowser_Title" = "Pick your preferred web browser to open the link!";
+
+//试用期内当天传输额度用完后的骚扰页面
+"Annoy_Runout_Number_Title" = "Thanks for trying AnyTrans and we hope you’ve been enjoying your free trial!We’re sorry that you have run out of your transfer quota today. But you can still continue to complete your transfer with a full version – it takes you only 3 minutes to get a full version of AnyTrans.";
+"Annoy_Runout_Number_SecondPart_Title" = "You will be fully protected by our:";
+"Annoy_Runout_Number_SecondPart_SubTitle_1" = "Instant Delivery Guarantee";
+"Annoy_Runout_Number_SecondPart_SubTitle_2" = "Lifetime Free Updates Guarantee";
+"Annoy_Runout_Number_SecondPart_SubTitle_3" = "24/7/365 Customer Service Guarantee";
+"Annoy_Runout_Number_SecondPart_SubTitle_4" = "100% Satisfaction Guarantee";
+"Annoy_Runout_Number_BtnTitle" = "Buy A License Online";
+"Annoy_Runout_Number_ThirdPart_SubTitle_1" = "Already have a license?";
+"Annoy_Runout_Number_ThirdPart_SubTitle_2" = "Activate now";
+
+//试用期到期后的骚扰页面
+"Annoy_Runout_Day_Title" = "Thanks for trying AnyTrans. We hope you have been enjoying your free trial.";
+"Annoy_Runout_Day_SubTitle" = "We’re sorry that your free trial has expired. As our thank you gift for your favor of AnyTrans, you’ll enjoy a %@ membership discount – available in 24 hours.";
+"Annoy_Runout_Day_BtnTitle" = "Get Your Discount Now";

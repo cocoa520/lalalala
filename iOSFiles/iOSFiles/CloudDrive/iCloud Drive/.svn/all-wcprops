@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 76
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive
+/svn/Mac/!svn/ver/1815/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive
 END
 iCloudDriveRenameAPI.h
 K 25
@@ -139,7 +139,13 @@ iCloudDrive.h
 K 25
 svn:wc:ra_dav:version-url
 V 90
-/svn/Mac/!svn/ver/1455/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDrive.h
+/svn/Mac/!svn/ver/1807/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDrive.h
+END
+iCloudDriveUsedStorageAPI.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mac/!svn/ver/1768/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDriveUsedStorageAPI.h
 END
 iCloudDriveAccountLoginAPI.h
 K 25
@@ -163,7 +169,13 @@ iCloudDrive.m
 K 25
 svn:wc:ra_dav:version-url
 V 90
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDrive.m
+/svn/Mac/!svn/ver/1815/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDrive.m
+END
+iCloudDriveUsedStorageAPI.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mac/!svn/ver/1768/JPProject/iOSFiles/iOSFiles/CloudDrive/iCloud%20Drive/iCloudDriveUsedStorageAPI.m
 END
 iCloudDriveAccountLoginAPI.m
 K 25

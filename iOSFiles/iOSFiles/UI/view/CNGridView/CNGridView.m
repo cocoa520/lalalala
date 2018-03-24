@@ -1551,15 +1551,6 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 	return YES;
 }
 
-//- (BOOL)becomeFirstResponder {
-//    return YES;
-//}
-
-//- (BOOL)mouseDownCanMoveWindow {
-//    NSLog(@"----------cngrid view");
-//    return NO;
-//}
-
 - (void)mouseExited:(NSEvent *)theEvent {
 	lastHoveredIndex = NSNotFound;
 }
@@ -1669,11 +1660,9 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-//    [super mouseDown:theEvent];
 	if (!self.allowsSelection)
 		return;
     
-//    [[self window] makeFirstResponder:self];
     _isDrag = NO;
     
 	NSPoint location = [theEvent locationInWindow];
@@ -1691,7 +1680,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
         }else if (_isPhotoView){
             rect = NSMakeRect(keyGridViewItem.frame.origin.x +18 , keyGridViewItem.frame.origin.y + 14 +20, 136, 136);
         }else if (_isFileManager){
-            rect = NSMakeRect(keyGridViewItem.frame.origin.x +15 , keyGridViewItem.frame.origin.y + 6, 90, 84);
+            rect = NSMakeRect(keyGridViewItem.frame.origin.x + 32, keyGridViewItem.frame.origin.y + 36, 102, 100);
         }else{
             rect = NSMakeRect(keyGridViewItem.frame.origin.x +18 , keyGridViewItem.frame.origin.y + 14, 136, 136);
         }

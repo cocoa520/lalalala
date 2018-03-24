@@ -26,7 +26,12 @@
     NSString *_xappleSessionID;   ///< 二次验证和重新请求安全码需要用到
     NSString *_scnt;              ///< 二次验证和重新请求安全码需要用到
     BOOL _stopHearBeat;
+    long long _totalStorageInBytes;//总容量
+    long long _usedStorageInBytes;//使用容量
+    dispatch_queue_t _queue;
 }
+@property (nonatomic, assign) long long totalStorageInBytes;//总容量
+@property (nonatomic, assign) long long usedStorageInBytes;//使用容量
 @property (nonatomic,retain)NSString *userName;
 @property (nonatomic,retain)NSMutableDictionary *cookie;
 /**
@@ -96,6 +101,15 @@
  *  @param success   成功回调block
  *  @param fail      失败回调block
  */
-- (void)moveToNewParent:(NSString *)newParent itemDic:(NSDictionary *)item   success:(Callback)success fail:(Callback)fail;
+- (void)moveToNewParent:(NSString *)newParent itemDic:(NSDictionary *)item success:(Callback)success fail:(Callback)fail;
+
+/**
+ *  Description 获取可用空间
+ *
+ *  @param usedStorage  可用空间
+ *  @param success      成功回调block
+ *  @param fail         失败回调block
+ */
+- (void)getUsedStorage:(NSString *)usedStorage success:(Callback)success fail:(Callback)fail;
 
 @end

@@ -15,6 +15,14 @@
 #import "IMBDeviceViewController.h"
 #import "SystemHelper.h"
 #import "IMBMainWindowController.h"
+#import "IMBViewManager.h"
+#import "IMBCommonTool.h"
+#import "IMBCommonDefine.h"
+
+
+#import <objc/runtime.h>
+
+
 @interface IMBMainPageViewController ()
 
 @end
@@ -38,6 +46,17 @@
 
 -(void)awakeFromNib {
     [super awakeFromNib];
+    if (_alertSuperView) {
+        objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, _alertSuperView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    
+    [_lineView1 setLineColor:COLOR_MAIN_WINDOW_LINE_COLOR];
+    [_lineView2 setLineColor:COLOR_MAIN_WINDOW_LINE_COLOR];
+    
+    //TODO  这里图片暂时未给。等给了再改
+    [_shoppingCartBtn setHoverImage:@"navbar_icon_transtion copy"];
+    [_transferBtn setHoverImage:@"navbar_icon_transtion"];
+    
     IMBDrawOneImageBtn *button = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(12, 18, 12, 12)];
     [button mouseDownImage:[NSImage imageNamed:@"windowclose3"] withMouseUpImg:[NSImage imageNamed:@"windowclose"] withMouseExitedImg:[NSImage imageNamed:@"windowclose"] mouseEnterImg:[NSImage imageNamed:@"windowclose2"]];
     [button setEnabled:YES];
@@ -66,7 +85,8 @@
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn configButtonName:deviceBaseInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType];
+//        [_selectedDeviceBtn configButtonName:deviceBaseInfo.deviceName WithTextColor:COLOR_MAINWINDOW_TITLE_TEXT WithTextSize:12.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAINWINDOW_TITLE_TEXT titleSize:15.0f leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
 
         _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate];
         [_rootBox setContentView:_baseViewController.view];
@@ -77,19 +97,19 @@
                 deviceBaseInfo = baseInfo;
             }
         }
-          [_selectedDeviceBtn configButtonName:deviceBaseInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType];
-     
+        
+//          [_selectedDeviceBtn configButtonName:deviceBaseInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT titleSize:15.0f leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
+        _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate];
+        [_rootBox setContentView:_baseViewController.view];
     }else if (_chooseModelEnum == DeviceLogEnum) {
         for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
             if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn configButtonName:_iPod.deviceInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType];
-
-        //            }
-        //        }
-        //    }
+//        [_selectedDeviceBtn configButtonName:_iPod.deviceInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:15.0f WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:deviceBaseInfo.connectType rightIcon:@"popup_icon_arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT titleSize:15.0f leftIcon:@"symbols-apple" rightIcon:@"popup_icon_arrow"];
         _baseViewController = [[IMBDevicePageViewController alloc]initWithiPod:_iPod withDelegate:_delegate];
         [_rootBox setContentView:_baseViewController.view];
     }
@@ -111,7 +131,17 @@
 - (void)doSwitchView:(id)sender {
     [_baseViewController doSwitchView:sender];
 }
+#pragma mark - toolbar上购 物额车 和 传输  按钮点击事件
 
+- (IBAction)toolbarShoppingCartClicked:(id)sender {
+    IMBFFuncLog
+}
+
+- (IBAction)toolbarTransfefClicked:(id)sender {
+    IMBFFuncLog
+}
+
+#pragma -- mark  DeviceBtn Actions
 - (IBAction)selectedDeviceBtnDown:(id)sender {
     if (_devPopover != nil) {
         [_devPopover release];
@@ -152,6 +182,8 @@
 //        [allDevice release];
 //        allDevice = nil;
         NSButton *targetButton = (NSButton *)sender;
+        NSWindow *window = targetButton.window;
+        
         NSRectEdge prefEdge = NSMaxYEdge;
         NSRect rect = NSMakeRect(targetButton.bounds.origin.x, targetButton.bounds.origin.y, targetButton.bounds.size.width, targetButton.bounds.size.height);
         [_devPopover showRelativeToRect:rect ofView:sender preferredEdge:prefEdge];
@@ -159,26 +191,73 @@
 }
 
 - (void)onItemClicked:(id)sender {
+    IMBViewManager *viewManager = [IMBViewManager singleton];
+    IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
     IMBBaseInfo *baseInfo = (IMBBaseInfo *)sender;
-    [_toDevicePopover close];
+    IMBMainWindowController *windowController = nil;
+    [_devPopover close];
     if (baseInfo.connectType == general_Add_Content) {
-        IMBMainWindowController *mainwindow = [[IMBMainWindowController alloc]initWithWindowNibName:@"IMBMainWindowController"];
-//        _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
-        //    [self.window setContentSize:NSMakeSize(1060, 635)];
-        [mainwindow.window setContentSize:NSMakeSize(592, 430)];
-        [mainwindow showWindow:nil];
+        if (!viewManager.mainWindowController) {
+            viewManager.mainWindowController = [[IMBMainWindowController alloc] initWithNewWindow];
+            [viewManager.mainWindowController.window setContentSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
+        }
+        [viewManager.mainWindowController showWindow:self];
     }else {
-        if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
+        if (_chooseModelEnum == iCloudLogEnum || _chooseModelEnum == DropBoxLogEnum) {
+            if (_chooseModelEnum == baseInfo.chooseModelEnum) {
+                return;
+            }
+        }
+        if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey] || _chooseModelEnum == baseInfo.chooseModelEnum) {
             return;
         }else {
-            IMBiPod *newiPod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
-            IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-//            deviceConnection 
-            IMBMainWindowController *mainwindow = [[IMBMainWindowController alloc]initWithNewWindowiPod:newiPod];
-            //        _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
-            //    [self.window setContentSize:NSMakeSize(1060, 635)];
-            [mainwindow.window setContentSize:NSMakeSize(1096, 644)];
-            [mainwindow showWindow:nil];
+            IMBiPod *ipod = [connection getiPodByKey:baseInfo.uniqueKey];
+            if (_chooseModelEnum == iCloudLogEnum) {
+                if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    return;
+                }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:@"DropBox"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:@"iCloud"];
+                    }
+                }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"iCloud"];
+                    }
+                }
+            }else if (_chooseModelEnum == DropBoxLogEnum) {
+                if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:@"iCloud"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"iCloud" withCloud:@"DropBox"];
+                    }
+                }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                    return;
+                }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"DropBox"];
+                    }
+                }
+            }else if (_chooseModelEnum == DeviceLogEnum) {
+                if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:@"iCloud"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"iCloud" withCloud:_iPod.uniqueKey];
+                    }
+                }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                     windowController = [viewManager.windowDic objectForKey:@"DropBox"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:_iPod.uniqueKey];
+                    }
+                }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                    return;
+                }
+            }
+            if (windowController) {
+                [windowController showWindow:self];
+            }
         }
     }
 }
@@ -187,18 +266,37 @@
     
 }
 
+- (void)backdrive:(IMBBaseInfo *)baseInfo {
+    IMBViewManager *viewManager = [IMBViewManager singleton];
+    IMBMainWindowController *windowController = nil;
+    if ([viewManager.windowDic objectForKey:@"iCloud"] && baseInfo.chooseModelEnum == iCloudLogEnum) {
+        windowController = [viewManager.windowDic objectForKey:@"iCloud"];
+        [windowController showWindow:self];
+    }else if ([viewManager.windowDic objectForKey:@"DropBox"] && baseInfo.chooseModelEnum == DropBoxLogEnum) {
+        windowController = [viewManager.windowDic objectForKey:@"DropBox"];
+        [windowController showWindow:self];
+    }else if ([viewManager.windowDic objectForKey:baseInfo.uniqueKey] && baseInfo.chooseModelEnum == DeviceLogEnum) {
+        windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+        [windowController showWindow:self];
+    }else {
+        IMBiPod *newiPod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
+        IMBMainWindowController *mainwindow = [[IMBMainWindowController alloc]initWithNewWindowiPod:newiPod WithNewWindow:YES withLogMedleEnum:baseInfo.chooseModelEnum];
+        [mainwindow showWindow:self];
+    }
+    [_devPopover close];
+}
+
 - (void)closeWindow:(id)sender {
     [_delegate closeWindow:nil];
 }
 
-- (void)swithViewController {
-}
-
 - (IBAction)backMainView:(id)sender {
-//    _chooseModelEnum
-//    _iPod
-//    [_delegate backMainView:];
-    [_delegate backMainViewChooseLoginModelEnum:_chooseModelEnum withiPod:_iPod];
+//    [IMBCommonTool showTwoBtnsAlertInMainWindow:NO firstBtnTitle:@"Canc" secondBtnTitle:@"Sure" msgText:@"Test" firstBtnClickedBlock:^{
+//        
+//    } secondBtnClickedBlock:^{
+//        
+//    }];
+    [_delegate backMainViewChooseLoginModelEnum];
 }
 
 @end

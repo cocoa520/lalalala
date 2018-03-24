@@ -25,14 +25,13 @@
     IMBPhotoEntity *_curEntity;
     IBOutlet IMBWhiteView *_loadingView;
     IBOutlet LoadingView *_loadingAnimationView;
-//    IMBToiCloudPhotoEntity *_iCloudPhotoEntity;
     id _icloudPhotoDelegate;
     IBOutlet NSTextField *_noDataLable;
 }
 @property (nonatomic, assign) id icloudPhotoDelegate;
 @property (nonatomic, retain) IMBPhotoEntity *curEntity;
 - (void)setToolBar:(IMBToolBarView *)toolBar;
-- (id)initWithiPod:(IMBiPod *)ipod;
+- (id)initWithiPod:(IMBiPod *)ipod category:(CategoryNodesEnum)category;
 
 
 @end

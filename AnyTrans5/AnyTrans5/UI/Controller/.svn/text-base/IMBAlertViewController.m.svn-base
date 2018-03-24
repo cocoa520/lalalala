@@ -2334,10 +2334,22 @@
     [_activationLoadingImageView setImage:[StringHelper imageNamed:@"registedLoading"]];
     [_activationLoadingImageView.layer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:-2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
     
-    if (![_activationloginStr.stringValue contains:@"-"] ||_activationloginStr.stringValue.length < 18) {
+    if (![_activationloginStr.stringValue contains:@"-"] || _activationloginStr.stringValue.length < 18 || [_activationloginStr.stringValue isEqualToString:@""] || _activationloginStr.stringValue.length == 0) {
         [_activationLoadingImageView setHidden:YES];
         [_activationBommotView setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
         [_activationBommotView setStringValue:CustomLocalizedString(@"activate_error_discorrect", nil)];
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+            dimensionMutDict = [TempHelper customDimension];
+            [dimensionMutDict setObject:[IMBSoftWareInfo singleton].selectModular forKey:@"cd7"];
+            dimensionDict = [dimensionMutDict copy];
+        }
+        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@ register result:False",_activationloginStr.stringValue] label:Register transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         return;
     }
 
@@ -2347,6 +2359,18 @@
                 [_activationLoadingImageView setHidden:YES];
                 [_activationBommotView setTextColor:[StringHelper getColorFromString:CustomColor(@"text_deleteColor", nil)]];
                 [_activationBommotView setStringValue:CustomLocalizedString(@"activate_error_disinternet", nil)];
+                NSDictionary *dimensionDict = nil;
+                @autoreleasepool {
+                    NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+                    dimensionMutDict = [TempHelper customDimension];
+                    [dimensionMutDict setObject:[IMBSoftWareInfo singleton].selectModular forKey:@"cd7"];
+                    dimensionDict = [dimensionMutDict copy];
+                }
+                [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@ register result:False",CustomLocalizedString(@"activate_error_disinternet", nil)] label:Register transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                if (dimensionDict) {
+                    [dimensionDict release];
+                    dimensionDict = nil;
+                }
                 return;
             });
         }
@@ -2357,7 +2381,10 @@
            if (registerSuccess) {
                NSDictionary *dimensionDict = nil;
                @autoreleasepool {
-                   dimensionDict = [[TempHelper customDimension] copy];
+                   NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+                   dimensionMutDict = [TempHelper customDimension];
+                   [dimensionMutDict setObject:software.selectModular forKey:@"cd7"];
+                   dimensionDict = [dimensionMutDict copy];
                }
                 [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@ register result:True",_activationloginStr.stringValue] label:Register transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                if (dimensionDict) {
@@ -2400,7 +2427,10 @@
                }
                NSDictionary *dimensionDict = nil;
                @autoreleasepool {
-                   dimensionDict = [[TempHelper customDimension] copy];
+                   NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+                   dimensionMutDict = [TempHelper customDimension];
+                   [dimensionMutDict setObject:software.selectModular forKey:@"cd7"];
+                   dimensionDict = [dimensionMutDict copy];
                }
                [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@ register result:False",_activationloginStr.stringValue] label:Register transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                if (dimensionDict) {

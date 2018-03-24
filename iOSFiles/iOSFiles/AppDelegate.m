@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "IMBSoftWareInfo.h"
 #import "StringHelper.h"
+#import "IMBViewManager.h"
 
 
 @implementation AppDelegate
@@ -22,16 +23,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // Insert code here to initialize your application
-    _mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
-//    [_mainWindowController.window setContentSize:NSMakeSize(592, 438)];
-    [_mainWindowController.window setMinSize:NSMakeSize(592, 438)];
-    [_mainWindowController.window setMaxSize:NSMakeSize(592, 438)];
-    [_mainWindowController showWindow:nil];
-    
-//    IMBMainWindowController *mainWindowController1 = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
-//    //    [self.window setContentSize:NSMakeSize(1060, 635)];
-//    [mainWindowController1.window setContentSize:NSMakeSize(592, 438)];
-//    [mainWindowController1 showWindow:nil];
+    IMBViewManager *viewManager = [IMBViewManager singleton];
+    viewManager.mainWindowController = [[IMBMainWindowController alloc] initWithWindowNibName:@"IMBMainWindowController"];
+    [viewManager.mainWindowController.window setMinSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
+    [viewManager.mainWindowController.window setMaxSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
+    [viewManager.mainWindowController showWindow:self];
     
 //    [self checkLanguage];
 }
@@ -42,10 +38,10 @@
 
 - (void)dealloc {
     [super dealloc];
-    if (_mainWindowController) {
-        [_mainWindowController release];
-        _mainWindowController = nil;
-    }
+//    if (_mainWindowController) {
+//        [_mainWindowController release];
+//        _mainWindowController = nil;
+//    }
 }
 
 - (void)checkLanguage {

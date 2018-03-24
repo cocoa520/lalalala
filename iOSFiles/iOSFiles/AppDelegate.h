@@ -10,7 +10,7 @@
 #import "IMBMainWindowController.h"
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
-    IMBMainWindowController *_mainWindowController;
+//    IMBMainWindowController *_mainWindowController;
 }
 @end
 

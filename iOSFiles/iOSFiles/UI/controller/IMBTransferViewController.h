@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IMBBaseTransfer.h"
 #import "IMBWhiteView.h"
+#import "IMBTransferModel.h"
 typedef enum TransferMode {
     TransferExport = 1,
     TransferImport = 2,
@@ -25,7 +26,7 @@ typedef enum TransferMode {
     TransferAllAndroidToiTunes = 13,
 } TransferModeType;
 
-@interface IMBTransferViewController : NSViewController
+@interface IMBTransferViewController : NSViewController <NSTableViewDelegate>
 {
     NSMutableArray *_toDevicePathAry;
     NSString *_uniquekey;
@@ -33,6 +34,8 @@ typedef enum TransferMode {
     IMBBaseTransfer *_baseTransfer;
     TransferModeType _transferType;
     IBOutlet IMBWhiteView *_rootView;
+    IBOutlet NSTableView *_tableView;
+    NSMutableArray *_dataArray;
 }
 - (id)initWithToDevicePath:(NSMutableArray*)paths WithiPodKey:(NSString *)uniqueKey curFolder:(NSString *)currentPath;
 - (id)initWithUniqueKey:(NSString *)uniqueKey withSelectedAry:(NSMutableArray *)selectedAry exportFolder:(NSString *)exportFolder withDelegate:(id)delegate;

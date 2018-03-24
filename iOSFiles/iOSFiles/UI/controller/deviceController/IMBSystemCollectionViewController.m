@@ -15,7 +15,6 @@
 #import "IMBFolderOrFileButton.h"
 #import "IMBSelectionView.h"
 #import "IMBCommonDefine.h"
-#import "IMBDevicePageWindow.h"
 //#import "IMBColorDefine.h"
 #import "IMBAnimation.h"
 @implementation IMBSystemCollectionViewController
@@ -543,7 +542,6 @@
         [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
     }else{
         [self animationAddTransferView:_transferController.view];
-
     }
 }
 
@@ -672,8 +670,8 @@
         _transferViewController = nil;
     }
     _transferViewController = [[IMBTransferViewController alloc]initWithUniqueKey:_iPod.uniqueKey withSelectedAry:selectedTracks exportFolder:filePath withDelegate:self];
-    [_transferViewController.view setFrame:NSMakeRect([(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width - _transferViewController.view.frame.size.width, 0, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.height)];
-    [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
+//    [_transferViewController.view setFrame:NSMakeRect([(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width - _transferViewController.view.frame.size.width, 0, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.width, [(IMBDevicePageWindow *)_delegate window].contentView.frame.size.height)];
+//    [[(IMBDevicePageWindow *)_delegate window].contentView addSubview:_transferViewController.view];
     [_transferViewController.view setWantsLayer:YES];
     
     

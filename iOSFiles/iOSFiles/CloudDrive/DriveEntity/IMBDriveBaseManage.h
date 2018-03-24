@@ -17,19 +17,30 @@
     //viewControll delegate 用于切换界面
     id _deivceDelegate;
     NSString *_passWordID;
+    NSString *_downloadPath;
 
 }
 @property (nonatomic,assign,nullable) id driveWindowDelegate;
 @property (nonatomic,retain,nullable) NSMutableArray* driveDataAry;
 @property (nonatomic,retain,nullable) NSString *userID;
+@property (nonatomic,retain,nullable) NSString *downloadPath;
 - (_Nullable id)initWithUserID:(NSString * _Nullable ) userID WithPassID:( NSString * _Nullable) passID WithDelegate:(_Nullable id)delegate;
 - (_Nullable id)initWithUserID:( NSString * _Nullable)userID withDelegate:(_Nullable id)delegate;
 //删除
 - (void)deleteDriveItem:(nullable NSMutableArray *) deleteItemAry;
 //单个文件下载
 - (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
-//上传
+
+//多个文件下载到本地
+- (void)driveDownloadItemsToMac:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items;
+
+//上传单个文件、文件夹
 - (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
 
+//多个文件下载到本地
+- (void)driveUploadItems:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items;
+
 - (void)recursiveDirectoryContentsDics:(nullable NSString *)folerID;
+
+- (void)userDidLogout;
 @end

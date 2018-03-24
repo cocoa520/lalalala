@@ -5,9 +5,9 @@
 //  Created by zhang yang on 13-6-14.
 //  Copyright (c) 2013年 iMobie Inc. All rights reserved.
 //
-#pragma mark -颜色
-
-#define COLOR_MAIN_WINDOW_BG IMBRgbColor(248,248,248)
+#pragma mark -颜色\
+//主窗口背景颜色
+#define COLOR_MAIN_WINDOW_BG IMBRgbAColor(248,248,248,0.9)
 #define COLOR_BTN_BLUE_BG IMBRgbColor(53,179,251)
 //主窗口输入框背景颜色
 #define COLOR_MAIN_WINDOW_TEXTFIELD_BG IMBRgbColor(248,248,248)
@@ -17,13 +17,34 @@
 #define COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT IMBRgbColor(0, 160, 255)
 //主窗口view的阴影颜色
 #define COLOR_MAIN_WINDOW_VIEW_SHADOW IMBGrayColor(242)
-//主窗口view的阴影颜色
-#define COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR IMBGrayColor(220)
+//主窗口topView的颜色
+#define COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR IMBRgbColor(246,250,252)
 //主窗口选择设备view的背景颜色
 #define COLOR_MAIN_WINDOW_SELECTE_DEVICE_BG IMBRgbAColor(254,254,254,0.95)
 
+#define Progress_BgColor IMBGrayColor(214)
+
+#define NODATA_NOLIKTITLE_COLOR IMBGrayColor(201)
+
+//主窗口选择设备view的背景颜色
+#define COLOR_DOENLOAD_DETAIL_ENTERBGCOLOR IMBRgbAColor(204,234,251,1)
+//主窗口选择设备view的背景颜色
+#define COLOR_DOENLOAD_PROGRESS_RIGHTFILLCOLOR IMBRgbAColor(115,204,255,1)
+
+//下载失败颜色
+#define COLOR_DOENLOAD_TRANSFERFAIL_TIPCOLOR IMBRgbAColor(223,22,22,1)
+
+//分割线 line_window
+#define COLOR_LINE_WINDOW [NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.000]
+
 //device 按钮背景颜色
 #define COLOR_DEVICE_Popover_Btn_Bg_COLOR IMBGrayColor(255)
+
+//主窗口textfield placeholder颜色
+#define COLOR_MAIN_WINDOW_TEXTFIELD_PLACEHOLDER IMBGrayColor(184)
+//主窗口线view颜色
+#define COLOR_MAIN_WINDOW_LINE_COLOR IMBGrayColor(224)
+
 
 //分割线
 #define COLOR_TEXT_LINE [NSColor colorWithDeviceRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.000]
@@ -41,13 +62,24 @@
 //设备按钮进入颜色
 #define DEVICEITEMVIEW_ENTER_BGCOLOR [NSColor colorWithDeviceRed:206.0/255 green:228.0/255 blue:248.0/255 alpha:1.000]
 
+#define COLOR_TEXTCLICK_DOWNCOLOR IMBRgbColor(16,138,207)
 
+#define COLOR_TEXTCLICK_ENTERCOLOR IMBRgbColor(62,185,255)
 
 #define COLOR_BUTTON_SEG IMBRgbColor(178,223,249)
+
 #define COLOR_BUTTON_SEGDOWN IMBRgbColor(1,150,235)
 
+//mianwindow title color
+#define COLOR_MAINWINDOW_TITLE_TEXT IMBGrayColor(81)
+#define COLOR_MAINWINDOW_MESSAGE_TEXT IMBGrayColor(122)
+#define COLOR_MAINWINDOW_REMEMBENME_TEXT IMBGrayColor(142)
 
+#define COLOR_MAINWINDOW_MESSAGE_BLUE_TEXT IMBRgbColor(0,160,255)
 
+#define COLOR_ALERT_SHADOWCOLOR IMBGrayColor(145)
+
+#define COLOR_MAINPAGE_BACK IMBGrayColor(107)
 
 
 

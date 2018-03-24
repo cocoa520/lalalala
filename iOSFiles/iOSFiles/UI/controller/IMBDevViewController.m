@@ -8,17 +8,17 @@
 
 #import "IMBDevViewController.h"
 #import "IMBDeviceConnection.h"
-#import "IMBSelectedDeviceTextfield.h"
+//#import "IMBSelectedDeviceTextfield.h"
+#import "IMBCommonDefine.h"
 
-
-CGFloat const IMBDevViewControllerRowH = 30.0f;
-static CGFloat const labelY = 5.0f;
+CGFloat const IMBDevViewControllerRowH = 34.0f;
+//static CGFloat const labelY = 5.0f;
 
 @interface IMBDevViewController ()<NSTableViewDelegate,NSTableViewDataSource>
 {
 @private
     IBOutlet NSTableView *_tableView;
-    
+    NSMutableArray *_dataArray;
 }
 @end
 
@@ -39,7 +39,16 @@ static CGFloat const labelY = 5.0f;
     
     
     if (_devices.count) {
-        [_tableView reloadData];
+        _dataArray = [[NSMutableArray alloc] init];
+        for (IMBBaseInfo *baseInfo in _devices) {
+            if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                [_dataArray addObject:[baseInfo retain]];
+            }
+            if (_dataArray.count) {
+                [_tableView reloadData];
+            }
+        }
+        
     }
     
 }
@@ -51,7 +60,6 @@ static CGFloat const labelY = 5.0f;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
-//    [_tableView.layer setBackgroundColor:[NSColor clearColor].CGColor];
     [_tableView setBackgroundColor:[NSColor clearColor]];
     
 }
@@ -66,25 +74,20 @@ static CGFloat const labelY = 5.0f;
         [_tableView release];
         _tableView = nil;
     }
+    if (_dataArray) {
+        [_dataArray release];
+        _dataArray = nil;
+    }
     
     [super dealloc];
     
 }
-/**
- *  属性设置
- */
-- (void)setDevices:(NSMutableArray *)devices {
-    _devices = devices;
-    
-    if (devices.count) {
-        [_tableView reloadData];
-    }
-}
+
 
 #pragma mark - tableviewdelegate  tableviewdatasource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return _devices.count;
+    return _dataArray.count;
 }
 
 
@@ -92,13 +95,13 @@ static CGFloat const labelY = 5.0f;
     return IMBDevViewControllerRowH;
 }
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-    if (_devices.count) {
-        IMBBaseInfo *selectBaseInfo = [_devices objectAtIndex:row];
+    if (_dataArray.count) {
+        IMBBaseInfo *selectBaseInfo = [_dataArray objectAtIndex:row];
         [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNotiWithParams object:selectBaseInfo];
         NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
         [queue addOperationWithBlock:^{
             IMBFLog(@"%@",[NSThread currentThread]);
-            IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
+            IMBBaseInfo *baseInfo = [_dataArray objectAtIndex:row];
             IMBiPod *ipod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
             if (ipod) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:IMBSelectedDeviceDidChangeNoti object:ipod];
@@ -116,19 +119,23 @@ static CGFloat const labelY = 5.0f;
     } else {
         for (NSView *view in aView.subviews)[view removeFromSuperview];
     }
-    IMBBaseInfo *baseInfo = [_devices objectAtIndex:row];
+    IMBBaseInfo *baseInfo = [_dataArray objectAtIndex:row];
     
-    IMBSelectedDeviceTextfield *textField = [[IMBSelectedDeviceTextfield alloc] initWithFrame:CGRectMake(0, labelY, tableView.frame.size.width, IMBDevViewControllerRowH - 2*labelY)];
-    textField.iconX = _iconX;
-    textField.textX = _textX;
-    textField.textString = [NSString stringWithFormat:@"%@",baseInfo.deviceName];
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(_textX,(aView.frame.size.height - 22)/2 + 4, tableView.frame.size.width, 22)];
+    [textField setStringValue:baseInfo.deviceName];
+    [textField setBordered:NO];
     textField.font = [NSFont fontWithName:@"PingFangSC-Regular" size:14.f];
-    textField.drawsBackground = NO;
-    textField.bordered = NO;
-    textField.focusRingType = NSFocusRingTypeNone;
-    textField.editable = NO;
     [textField setTextColor:IMBGrayColor(188)];
     [aView addSubview:textField];
+    
+    NSImageView *imageView = [[NSImageView alloc]initWithFrame:NSMakeRect(_iconX , (aView.frame.size.height - 22)/2, 22, 22)];
+    [imageView setImage:[NSImage imageNamed:@"device_icon_iPhone_gray"]];
+    [aView addSubview:imageView];
+    
+    [textField release];
+    textField = nil;
+    [imageView release];
+    imageView = nil;
     return aView;
 }
 

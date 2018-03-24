@@ -26,11 +26,13 @@
 #import "iCloudDriveHeartbeatAPI.h"
 #import "iCloudDriveLogoutAPI.h"
 #import "iCloudDriveValidateAPI.h"
+#import "iCloudDriveUsedStorageAPI.h"
 
 @implementation iCloudDrive
 @synthesize userName = _userName;
 @synthesize cookie = _cookie;
-
+@synthesize totalStorageInBytes = _totalStorageInBytes;
+@synthesize usedStorageInBytes = _usedStorageInBytes;
 - (instancetype)init
 {
     if (self == [super init]) {
@@ -42,6 +44,7 @@
         for (NSHTTPCookie *cookie in cookies) {
             [cookieJar deleteCookie:cookie];
         }
+        _queue = dispatch_queue_create("iClouddownloadsync", 0);
     }
     return self;
 }
@@ -258,7 +261,6 @@
         }
     }
 }
-
 
 - (void)startHeartbeatPacket
 {
@@ -509,31 +511,51 @@
 }
 
 #pragma mark - downloadActions
-- (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item
-{
+- (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self downloadFolder:item];
-    }else{
-        //第一步先获取下载链接
-        iCloudDriveDownloadOneAPI *downloadAPI = [[iCloudDriveDownloadOneAPI alloc] initWithDocumentID:[item  docwsID] zone:[item zone] iCloudDriveDocwsURL:_iCloudDriveDocwsUrl cookie:_cookie];
-        __block YTKRequest *weakdownloadAPI = downloadAPI;
-        [downloadAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            if (request.responseStatusCode == 200) {
-                //解析返回结果
-                NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:NULL];
-                NSDictionary *data_tokenDic = [resultDic objectForKey:@"data_token"];
-                NSString *url = [data_tokenDic objectForKey:@"url"];
-                item.urlString = url;
-                item.httpMethod = @"GET";
-                [_downLoader downloadItem:item];
-            }else{
-                item.state = DownloadStateError;
+    }else {
+        dispatch_async(_queue, ^{
+            @autoreleasepool {
+                iCloudDriveDownloadOneAPI *downloadAPI = [[iCloudDriveDownloadOneAPI alloc] initWithDocumentID:[item  docwsID] zone:[item zone] iCloudDriveDocwsURL:_iCloudDriveDocwsUrl cookie:_cookie];
+                __block YTKRequest *weakdownloadAPI = downloadAPI;
+                __block BOOL iswait = YES;
+                __block BaseDrive *weakSelf = self;
+                __block NSThread *currentthread = [NSThread currentThread];
+                [downloadAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    iswait = NO;
+                    [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
+                    
+                    if (request.responseStatusCode == 200) {
+                        //解析返回结果
+                        if (request.responseData) {
+                            NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:NULL];
+                            NSDictionary *data_tokenDic = [resultDic objectForKey:@"data_token"];
+                            NSString *url = [data_tokenDic objectForKey:@"url"];
+                            item.urlString = url;
+                            item.httpMethod = @"GET";
+                            NSLog(@"父路径：%@",[item parentPath]);
+                            [_downLoader downloadItem:item];
+                        }else{
+                            item.state = DownloadStateError;
+                        }
+                    }else{
+                        item.state = DownloadStateError;
+                    }
+                    [weakdownloadAPI release];
+                } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                    item.state = DownloadStateError;
+                    iswait = NO;
+                    [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
+                    [weakdownloadAPI release];
+                }];
+                while (iswait) {
+                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+                }
             }
-            [weakdownloadAPI release];
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            item.state = DownloadStateError;
-            [weakdownloadAPI release];
-        }];
+        });
     }
 }
 
@@ -542,19 +564,18 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         @autoreleasepool {
             NSMutableArray *allfileArray = [NSMutableArray array];
-            [self getAllFile:item.itemIDOrPath AllChildArray:allfileArray parentPath:[NSString stringWithFormat:@"/%@",item.fileName]];
+            [self getAllFile:[item itemIDOrPath] AllChildArray:allfileArray parentPath:[NSString stringWithFormat:@"/%@",item.fileName]];
             [item setChildArray:allfileArray];
             long long  totalSize = [[item.childArray valueForKeyPath:@"@sum.fileSize"] longLongValue];
             [item setFileSize:totalSize];
-            NSMutableArray *reverseArray = [NSMutableArray array];
-            [allfileArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *sortArray = [item.childArray sortedArrayUsingSelector:@selector(compare:)];            //设置为等待状态
+            [sortArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 id <DownloadAndUploadDelegate> childItem = obj;
                 childItem.parent = item;
-                [reverseArray addObject:childItem];
             }];
             //设置为等待状态
             item.state = DownloadStateWait;
-            [self downloadItems:reverseArray];
+            [self downloadItems:sortArray];
         }
     });
 }
@@ -574,7 +595,7 @@
             [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
         }
     } fail:^(DriveAPIResponse *response) {
-        NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content forKey:@"error"];
+        NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content?:@"" forKey:@"error"];
         [dic setDictionary:edic];
         iswait = NO;
         [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
@@ -586,8 +607,7 @@
     return dic;
 }
 
-- (void)getAllFile:(NSString *)folderID  AllChildArray:(NSMutableArray *)allChildArray  parentPath:(NSString *)parentPath
-{
+- (void)getAllFile:(NSString *)folderID  AllChildArray:(NSMutableArray *)allChildArray  parentPath:(NSString *)parentPath {
     NSDictionary *dic = [self getList:folderID];
     //解析列表
     NSMutableArray *childArray = [dic objectForKey:@"items"];
@@ -608,7 +628,7 @@
 
             item.fileName =  [NSString stringWithFormat:@"%@.%@",[childDic objectForKey:@"name"],[childDic objectForKey:@"extension"]]   ;
             item.fileSize = [[childDic objectForKey:@"size"] longLongValue];
-            item.doZone = [childDic objectForKey:@"zone"];
+            item.zone = [childDic objectForKey:@"zone"];
             [allChildArray addObject:item];
             [item release];
         }
@@ -617,6 +637,8 @@
 
 - (void)uploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self uploadFolder:item];
     }else{
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -770,6 +792,32 @@
     }else{
         return ResponseUnknown;
     }
+}
+
+- (void)getUsedStorage:(NSString *)usedStorage success:(Callback)success fail:(Callback)fail {
+    YTKRequest *requestAPI = [[iCloudDriveUsedStorageAPI alloc] initWithDsid:_dsid cookie:_cookie];
+    __block YTKRequest *weakRequestAPI = requestAPI;
+    [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        ResponseCode code = [self checkResponseTypeWithSuccess:request];
+        if (code == ResponseSuccess) {
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+            success?success(response):nil;
+            [response release];
+        }else {
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData: nil status:code];
+            fail?fail(response):nil;
+            [response release];
+        }
+        [weakRequestAPI release];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        ResponseCode code = [self checkResponseTypeWithFailed:request];
+        NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+        NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+        DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+        fail?fail(response):nil;
+        [response release];
+        [weakRequestAPI release];
+    }];
 }
 
 - (void)dealloc

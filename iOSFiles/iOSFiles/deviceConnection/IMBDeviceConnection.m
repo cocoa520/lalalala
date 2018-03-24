@@ -80,8 +80,6 @@ static id _instance = nil;
 
 @synthesize allDevices = _allDevices;
 @synthesize alliPods = _alliPods;
-@synthesize allMainControllerDic = _allMainControllerDic;
-
 #pragma mark -- 单例实现
 + (instancetype)singleton {
     static dispatch_once_t onceToken;
@@ -116,9 +114,6 @@ static id _instance = nil;
     [_alliPods release];
     _alliPods = nil;
     
-    [_allMainControllerDic release];
-    _allMainControllerDic = nil;
-    
     [_processingQueue release];
     _processingQueue = nil;
     
@@ -141,7 +136,6 @@ static id _instance = nil;
 - (void)setUp {
     _serialArray = [[NSMutableArray alloc] init];//这里尽量不要用[NSMutableArray array];这种方法进行创建，这种方法容易造成crash
     _allDevices = [[NSMutableArray alloc] init];
-    _allMainControllerDic = [[NSMutableDictionary alloc]init];
     _alliPods = [[NSMutableArray alloc] init];
     _deviceAccess = [MobileDeviceAccess singleton];
     _processingQueue = [[NSOperationQueue alloc] init];
@@ -260,6 +254,7 @@ static id _instance = nil;
     [baseInfo setAllDeviceSize:ipod.deviceInfo.totalDiskCapacity];
     [baseInfo setKyDeviceSize:ipod.deviceInfo.totalDataAvailable];
     [baseInfo setIsLoaded:NO];
+    [baseInfo setChooseModelEnum:DeviceLogEnum];
     if ([dev isKindOfClass:[AMDevice class]]) {
         [baseInfo setIsConnected:dev.isConnected];
     }

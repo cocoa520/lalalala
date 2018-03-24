@@ -12,6 +12,7 @@
 #import "LoadingView.h"
 #import "IMBToolButtonView.h"
 #import "DriveItem.h"
+#import "IMBDriveEntity.h"
 
 @interface IMBiCloudDriverViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource> {
     
@@ -53,17 +54,17 @@
     
     IMBDriveBaseManage *_driveBaseManage;
     NSString *_currentDevicePath;
-    NSString *_oldDocwsid;
     
     NSMutableDictionary *_tempDic;
     int _doubleclickCount;
     BOOL _doubleClick;
     NSMutableDictionary *_oldWidthDic;
+    NSMutableDictionary *_oldDocwsidDic;
     
-    DriveItem *_downloaditem;
+    BOOL _isShow;
+    IMBDriveEntity *_curEntity;
+    BOOL _isShowTranfer;
 }
 - (id)initWithDrivemanage:(IMBDriveBaseManage*)driveManage withDelegete:(id)delegete;
-
-- (void)loadSonAryComplete:(NSMutableArray *)sonAry;
 
 @end

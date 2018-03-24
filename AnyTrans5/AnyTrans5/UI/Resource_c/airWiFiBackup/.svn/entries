@@ -1,7 +1,7 @@
 10
 
 dir
-1632
+1877
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_c/airWiFiBackup
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -536,14 +536,14 @@ has-props
 
 38642
 
-airbackup_hot2fr@2x.png
+airbackup_guide_right4.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-9e54cd14d3f3e8532031cd029bb21001
+44d28571176f395509d21a72760d72cd
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -568,7 +568,7 @@ has-props
 
 
 
-152022
+1729
 
 airbackup_hot1sp.png
 file
@@ -604,14 +604,14 @@ has-props
 
 62380
 
-airbackup_guide_right4.png
+airbackup_hot2fr@2x.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-44d28571176f395509d21a72760d72cd
+9e54cd14d3f3e8532031cd029bb21001
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -636,7 +636,7 @@ has-props
 
 
 
-1729
+152022
 
 airbackup_hot1de.png
 file
@@ -740,40 +740,6 @@ has-props
 
 16775
 
-airbackup_lock.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-dfce882806bf962d9b5e73a8633c491d
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1189
-
 airbackup_public@2x.png
 file
 
@@ -807,6 +773,40 @@ has-props
 
 
 1766
+
+airbackup_lock.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+dfce882806bf962d9b5e73a8633c491d
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1189
 
 airbackup_outline@2x.png
 file
@@ -944,40 +944,6 @@ has-props
 
 149076
 
-airbackup_hot2jp.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-5660a6ff05da9fd3ca2e4fb3f713d934
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-60622
-
 airbackup_hot4fr.png
 file
 
@@ -1011,6 +977,40 @@ has-props
 
 
 61319
+
+airbackup_hot2jp.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+5660a6ff05da9fd3ca2e4fb3f713d934
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+60622
 
 airbackup_hot3ar@2x.png
 file
@@ -2202,14 +2202,14 @@ has-props
 
 99384
 
-airbackup_hot1jp.png
+airbackup_hot3fr.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-b0928a618c96fa8a633cee7812041dde
+7a36bc9ee67cea28376205dd0b16fa35
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -2234,7 +2234,7 @@ has-props
 
 
 
-58420
+52243
 
 airbackup_guide_left4@2x.png
 file
@@ -2270,14 +2270,14 @@ has-props
 
 7195
 
-airbackup_hot3fr.png
+airbackup_hot1jp.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-7a36bc9ee67cea28376205dd0b16fa35
+b0928a618c96fa8a633cee7812041dde
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -2302,7 +2302,7 @@ has-props
 
 
 
-52243
+58420
 
 airbackup_ipad.png
 file
@@ -2372,40 +2372,6 @@ has-props
 
 102966
 
-annoy_airbackup.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-4f2a32aa259ef081f24a8c23425d3f9a
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-377366
-
 airbackup_online.png
 file
 
@@ -2440,14 +2406,14 @@ has-props
 
 1269
 
-airbackup_guide_right2@2x.png
+annoy_airbackup.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-eaa948e723bbc8869297338dcd37dee2
+4f2a32aa259ef081f24a8c23425d3f9a
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -2472,7 +2438,7 @@ has-props
 
 
 
-7366
+377366
 
 airbackup_seticon2.png
 file
@@ -2507,6 +2473,40 @@ has-props
 
 
 2248
+
+airbackup_guide_right2@2x.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+eaa948e723bbc8869297338dcd37dee2
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7366
 
 airbackup_hot3ch.png
 file
@@ -2746,40 +2746,6 @@ has-props
 
 135729
 
-airbackup_guide_left3@2x.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-d1650ffff8e2199eea15cd766d1f28b3
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7195
-
 airbackup_hot@2x.png
 file
 
@@ -2813,6 +2779,40 @@ has-props
 
 
 1480
+
+airbackup_guide_left3@2x.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+d1650ffff8e2199eea15cd766d1f28b3
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7195
 
 airbackup_guide_right1.png
 file
@@ -3018,40 +3018,6 @@ has-props
 
 49278
 
-device_iphonex@2x.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-a7b6666529573c1149b2e50ec8a858f6
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1352
-
 airbackup_hot4jp@2x.png
 file
 
@@ -3085,6 +3051,40 @@ has-props
 
 
 143424
+
+device_iphonex@2x.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+a7b6666529573c1149b2e50ec8a858f6
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1352
 
 airbackup_guide_right1@2x.png
 file
@@ -3222,40 +3222,6 @@ has-props
 
 160297
 
-notice_backup@2x.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-72166490d4405519615eaf741168065f
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-10296
-
 airbackup_hot2de@2x.png
 file
 
@@ -3289,6 +3255,40 @@ has-props
 
 
 147838
+
+notice_backup@2x.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+72166490d4405519615eaf741168065f
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10296
 
 airbackup_seticon2@2x.png
 file
@@ -3460,40 +3460,6 @@ has-props
 
 1434
 
-airbackup_view3@2x.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-85225877bd0a9bfc65285932d2bfa193
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1815
-
 airbackup_wifibg.png
 file
 
@@ -3528,14 +3494,14 @@ has-props
 
 17039
 
-device_iphonex.png
+airbackup_view3@2x.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-11dc000c8a3449b52413b311388c464f
+85225877bd0a9bfc65285932d2bfa193
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -3560,7 +3526,7 @@ has-props
 
 
 
-649
+1815
 
 airbackup_hot4jp.png
 file
@@ -3596,14 +3562,14 @@ has-props
 
 57161
 
-airbackup_iphonex.png
+device_iphonex.png
 file
 
 
 
 
 2018-02-02T01:40:23.000000Z
-dae0634be9e8501d6b923e6dda9ad06c
+11dc000c8a3449b52413b311388c464f
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -3628,7 +3594,7 @@ has-props
 
 
 
-1164
+649
 
 airbackup_view.png
 file
@@ -3663,6 +3629,40 @@ has-props
 
 
 1322
+
+airbackup_iphonex.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+dae0634be9e8501d6b923e6dda9ad06c
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1164
 
 airbackup_guide2.png
 file
@@ -4004,40 +4004,6 @@ has-props
 
 1792
 
-airbackup_hot2sp.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-ff5e143bcd8a41d22c9a3326d3c47f08
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-61534
-
 airbackup_wifi1.png
 file
 
@@ -4071,6 +4037,40 @@ has-props
 
 
 13145
+
+airbackup_hot2sp.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+ff5e143bcd8a41d22c9a3326d3c47f08
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+61534
 
 airbackup_wifi3.png
 file
@@ -4174,40 +4174,6 @@ has-props
 
 14762
 
-notice_backup.png
-file
-
-
-
-
-2018-02-02T01:40:23.000000Z
-1c11ca5bc8049c2a10f041160407d3b0
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4916
-
 airbackup_hot2de.png
 file
 
@@ -4241,6 +4207,40 @@ has-props
 
 
 59328
+
+notice_backup.png
+file
+
+
+
+
+2018-02-02T01:40:23.000000Z
+1c11ca5bc8049c2a10f041160407d3b0
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4916
 
 airbackup_hot3@2x.png
 file

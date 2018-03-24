@@ -68,7 +68,7 @@
     }
 }
 
-- (void)setupHeaderCell{
+- (void)setupHeaderCell {
     NSTableHeaderView *tableHeaderView = [self headerView];
     [tableHeaderView setFrameSize:NSMakeSize(tableHeaderView.frame.size.width, CELL_HEADER_HEIGHT)];
     
@@ -96,7 +96,7 @@
     }
 }
 
-- (void) doSelectAll:(id)sender {
+- (void)doSelectAll:(id)sender {
     IMBCheckButton *btn = _checkBoxCell.checkButton;
     [[self window] makeFirstResponder:self];
 
@@ -134,7 +134,7 @@
             if (_selectionColor) {
                 bgColor = _selectionColor;
             } else {
-                bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:0.2];
+                bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
             }
         }else{
 //            if (_selectionColor) {
@@ -144,20 +144,20 @@
 //            }
             if (self == [[self window] firstResponder] ) {
                 if (_selectionColor) {
-                    bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:0.2];
+                    bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1.0];
 //                    bgColor = _selectionColor;
                 } else {
-                    bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:0.2];
+                    bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
                 }
             }else{
                 if (_isNote) {
                     if (_selectionColor) {
                         bgColor = _selectionColor;
                     } else {
-                        bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:0.2];
+                        bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
                     }
                 }else {
-                   bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:0.2];
+                   bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1.0];
                 }
                 
             }
@@ -203,7 +203,6 @@
                 [_alternatingOddRowBackgroundColor  setFill];
                 NSRectFill(rowRect);
             }
-            
         }
         
         if (rowCount*rowheight<height) {
@@ -226,8 +225,7 @@
     }
 }
 
-
-- (void)updateTrackingAreas{
+- (void)updateTrackingAreas {
     
     [super updateTrackingAreas];
     if (_trackingArea) {
@@ -248,6 +246,7 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
+    NSInteger clickCount = theEvent.clickCount;
     NSPoint point = [self convertPoint:theEvent.locationInWindow fromView:nil];
     int row = (int)[self rowAtPoint:point];
     if ( row <0 ) {
@@ -274,15 +273,14 @@
         if ([_listener respondsToSelector:@selector(tableView:row:)]) {
             [_listener tableView:self row:row];
         }
-//        _clickCheckBox = YES;
     }else {
-//        if (_checkBoxCell.checkButton.state == NSOnState) {
-//             _clickCheckBox = NO;
-//            [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-//        }else {
             _clickCheckBox = NO;
             [super mouseDown:theEvent];
-//        }
+    }
+    if (clickCount == 2) {
+        if ([_listener respondsToSelector:@selector(tableViewDoubleClick:row:)]) {
+            [_listener tableViewDoubleClick:self row:row];
+        }
     }
 }
 
@@ -308,7 +306,7 @@
     [self showVisibleRextPhoto];
 }
 
--(void)showVisibleRextPhoto{
+- (void)showVisibleRextPhoto {
     NSRange newVisibleRows = [self rowsInRect:self.visibleRect];
     BOOL visibleRowsNeedsUpdate = !NSEqualRanges(newVisibleRows, _visibleRows);
     NSRange oldVisibleRows = _visibleRows;

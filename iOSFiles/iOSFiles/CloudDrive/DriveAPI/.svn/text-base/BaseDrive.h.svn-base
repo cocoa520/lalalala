@@ -31,12 +31,6 @@ typedef void(^Callback)(DriveAPIResponse *response);
 typedef void (^RefreshTokenAction)(BOOL refresh);
 
 @interface DownLoadAndUploadItem : NSObject<DownloadAndUploadDelegate>
-{
-    NSString *_docwsID;
-    NSString *_doZone;
-}
-@property (nonatomic,retain) NSString *docwsID;
-@property (nonatomic,retain) NSString *doZone;
 @end
 /**
  *@description 登录时传入此类对象，用于完成登录结果的回调和token过期注销的回调
@@ -67,6 +61,7 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
     NSMutableArray *_driveArray;
     
     BOOL _isFromLocalOAuth;                                     ///<是否是从本地认证
+    NSMutableArray *_folderItemArray;                           ///<保存下载的folder项
 }
 
 @property(nonatomic,retain)NSString *userID;
@@ -75,6 +70,7 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
 @property(nonatomic,retain)NSString *accessToken;
 @property(nonatomic,retain)NSString *refreshToken;
 @property(nonatomic,retain)NSDate *expirationDate;
+@property(nonatomic,retain)DownLoader *downLoader; 
 @property(nonatomic,retain)id<BaseDriveDelegate >delegate;
 
 /**

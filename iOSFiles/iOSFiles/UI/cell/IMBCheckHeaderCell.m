@@ -24,7 +24,7 @@
 
 - (void)dealloc
 {
-    if (_backgroundgradient) {
+    if (_backgroundgradient != nil ) {
         [_backgroundgradient release],
         _backgroundgradient = nil;
     }
@@ -245,7 +245,7 @@
             [controlView addSubview:_checkButton];
         }
         else{
-            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+1, (cellFrame.size.height - _checkButton.frame.size.height)/2.0+1, _checkButton.frame.size.width, _checkButton.frame.size.height)];
+            [_checkButton setFrame:NSMakeRect(ceilf((cellFrame.size.width- 2 - _checkButton.frame.size.width)/2.0)+6, (cellFrame.size.height - _checkButton.frame.size.height)/2.0+1, _checkButton.frame.size.width, _checkButton.frame.size.height)];
         }
         
     }

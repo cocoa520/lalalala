@@ -34,4 +34,8 @@
  *  @param responseCode
  */
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
+/**
+ *  退出登录
+ */
+
 @end

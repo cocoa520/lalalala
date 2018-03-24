@@ -111,6 +111,14 @@ static NSString *const DropboxAPIBaseURL = @"https://api.dropboxapi.com";
 static NSString *const DropboxContentBaseURL = @"https://content.dropboxapi.com";
 static NSString *const DropboxRenameBaseURL = @"https://www.dropbox.com";
 /**
+ *  获取用户信息
+ */
+static NSString *const DropboxGetCurrentAccount = @"2/users/get_current_account";
+/**
+ *  获取用户使用云盘空间
+ */
+static NSString *const DropboxGetSpaceUsage = @"2/users/get_space_usage";
+/**
  *  获取文件列表有关路径
  */
 static NSString *const DropboxGetListPath = @"2/files/list_folder";
@@ -275,6 +283,11 @@ static NSString *const iCloudDriveUploadThreePath = @"ws/com.apple.CloudDocs/upd
  */
 static NSString *const iCloudDriveValidateBaseURL = @"https://setup.icloud.com";
 static NSString *const iCloudDriveValidatePath = @"setup/ws/1/validate";
+
+/**
+ *  可用空间
+ */
+static NSString *const iCloudDriveUsedStorage = @"/setup/ws/1/storageUsageInfo?clientBuildNumber=17AHotfix1&clientMasteringNumber=17AHotfix1&dsid=%@";
 
 
 

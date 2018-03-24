@@ -10,10 +10,9 @@
 #import "HoverButton.h"
 #import "StringHelper.h"
 #import "IMBSegmentedBtn.h"
-//#import "IMBBaseViewController.h"
 #import "IMBMainPageViewController.h"
-#define OperationButtonWidth  36
-#define OperationButtonHeight 22
+#define OperationButtonWidth  30
+#define OperationButtonHeight 30
 #define OperationButtonSeparationWidth 10
 @implementation IMBToolButtonView
 @synthesize segmentedControl = _segmentedControl;
@@ -39,12 +38,13 @@
         [_find setStatus:4];
         [_contactImport setStatus:4];
         [_toContact setStatus:4];
-        [_icloud setStatus:4];
+        [_toiCloud setStatus:4];
         [_upload setStatus:4];
         [_download setStatus:4];
         [_newgroup setStatus:4];
         [_syncTransfer setStatus:4];
         [_createAlbum setStatus:4];
+        [_rename setStatus:4];
         [_segmentedControl setEnabled:NO];
     }else{
         [_syncTransfer setStatus:1];
@@ -68,10 +68,11 @@
         [_find setStatus:1];
         [_contactImport setStatus:1];
         [_toContact setStatus:1];
-        [_icloud setStatus:1];
+        [_toiCloud setStatus:1];
         [_upload setStatus:1];
         [_download setStatus:1];
         [_createAlbum setStatus:1];
+        [_rename setStatus:1];
         [_segmentedControl setEnabled:YES];
     }
     [_reload setEnabled:isenabled];
@@ -94,12 +95,13 @@
     [_contactImport setEnabled:isenabled];
     [_toContact setEnabled:isenabled];
     
-    [_icloud setEnabled:isenabled];
+    [_toiCloud setEnabled:isenabled];
     [_upload setEnabled:isenabled];
     [_download setEnabled:isenabled];
     [_newgroup setEnabled:isenabled];
     [_syncTransfer setEnabled:isenabled];
     [_createAlbum setEnabled:isenabled];
+    [_rename setEnabled:isenabled];
     [_reload setNeedsDisplay:YES];
     [_add setNeedsDisplay:YES];
     [_iCloudAdd setNeedsDisplay:YES];
@@ -119,20 +121,22 @@
     [_contactImport setNeedsDisplay:YES];
     [_toContact setNeedsDisplay:YES];
     [_setting setNeedsDisplay:YES];
-    [_icloud setNeedsDisplay:YES];
+    [_toiCloud setNeedsDisplay:YES];
     [_upload setNeedsDisplay:YES];
     [_download setNeedsDisplay:YES];
     [_newgroup setNeedsDisplay:YES];
     [_syncTransfer setNeedsDisplay:YES];
     [_createAlbum setNeedsDisplay:YES];
+    [_rename setNeedsDisplay:YES];
     [_segmentedControl setNeedsDisplay:YES];
 }
 
 - (void)dealloc {
     [_upload release],_upload = nil;
     [_download release],_download = nil;
-    [_movePicture release],_movePicture = nil;
+    [_moveFile release],_moveFile = nil;
     [_createAlbum release],_createAlbum = nil;
+    [_rename release],_rename = nil;
     [_newgroup release],_newgroup = nil;
     [_syncTransfer release],_syncTransfer = nil;
     [_reload release],_reload = nil;
@@ -150,7 +154,7 @@
     [_exit release],_exit = nil;
     [_edit release],_edit = nil;
     [_backup release],_back = nil;
-    [_icloud release],_icloud = nil;
+    [_toiCloud release],_toiCloud = nil;
     [_segmentedControl release],_segmentedControl = nil;
     [_back release],_back = nil;
     [_find release],_find = nil;
@@ -182,8 +186,7 @@
                     _reload =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_reload setAutoresizesSubviews:YES];
                     [_reload setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_reload setMouseEnteredImage:[StringHelper imageNamed:@"tool_refresh_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_refresh_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_refresh_normal"]];
-                    [_reload setIsDrawBorder:YES];
+                    [_reload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_refresh"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_refresh"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_refresh_hover"]];
                     [_reload setToolTip:CustomLocalizedString(@"Common_id_1", nil)];
                     [_reload setTag:1000];
                     [_reload setTarget:Target];
@@ -202,7 +205,6 @@
                     [_add setAutoresizesSubviews:YES];
                     [_add setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
                     [_add setMouseEnteredImage:[StringHelper imageNamed:@"tool_add_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_add_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_add_normal"]];
-                    [_add setIsDrawBorder:YES];
                     [_add setToolTip:CustomLocalizedString(@"Common_id_7", nil)];
                     [_add setTag:1001];
                     [_add setTarget:Target];
@@ -221,8 +223,7 @@
                     _delete =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_delete setAutoresizesSubviews:YES];
                     [_delete setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_delete setMouseEnteredImage:[StringHelper imageNamed:@"tool_delete_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_delete_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_delete_normal"]];
-                    [_delete setIsDrawBorder:YES];
+                    [_delete setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_del "] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_del "] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_del_hover"]];
                     [_delete setToolTip:CustomLocalizedString(@"Common_id_9", nil)];
                     [_delete setTag:1002];
                     [_delete setTarget:Target];
@@ -240,11 +241,10 @@
                     _toMac =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toMac setAutoresizesSubviews:YES];
                     [_toMac setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toMac setMouseEnteredImage:[StringHelper imageNamed:@"tool_tomac_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_tomac_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_tomac_normal"]];
-                    [_toMac setIsDrawBorder:YES];
+                    [_toMac setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_topc"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_topc"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_topc_hover"]];
                     [_toMac setToolTip:CustomLocalizedString(@"Menu_ToPc", nil)];
                     [_toMac setTag:1004];
-                    [_toMac setTarget:self];
+                    [_toMac setTarget:Target];
                     [_toMac setAction:@selector(toMac:)];
                     [buttonsArray addObject:_toMac];
                 }
@@ -260,8 +260,7 @@
                     _toDevice =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toDevice setAutoresizesSubviews:YES];
                     [_toDevice setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toDevice setMouseEnteredImage:[StringHelper imageNamed:@"tool_todevice_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_todevice_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_todevice_normal"]];
-                    [_toDevice setIsDrawBorder:YES];
+                    [_toDevice setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_todevice"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_todevice"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_todevice_hover"]];
                     [_toDevice setToolTip:CustomLocalizedString(@"Menu_ToDevice", nil)];
                     [_toDevice setTag:1005];
                     [_toDevice setTarget:Target];
@@ -280,11 +279,10 @@
                     [_setting setAutoresizesSubviews:YES];
                     [_setting setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
                     [_setting setMouseEnteredImage:[StringHelper imageNamed:@"tool_setting_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_setting_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_setting_normal"]];
-                    [_setting setIsDrawBorder:YES];
                     [_setting setToolTip:CustomLocalizedString(@"Menu_Setting", nil)];
                     [_setting setTag:1007];
                     [_setting setTarget:Target];
-                    [_setting setAction:@selector(doSetting:)];
+                    //[_setting setAction:@selector(doSetting:)];
                     [buttonsArray addObject:_setting];
                     
                 }
@@ -299,13 +297,120 @@
                     _upload =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_upload setAutoresizesSubviews:YES];
                     [_upload setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"tool_toiCloud_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_toiCloud_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_toiCloud_normal"]];
-                    [_upload setIsDrawBorder:YES];
+                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"]];
                     [_upload setToolTip:CustomLocalizedString(@"device_toIcloud_title", nil)];
                     [_upload setTag:1111];
                     [_upload setTarget:Target];
-                    [_upload setAction:@selector(toiCloud:)];
+                    [_upload setAction:@selector(addItems:)];
                     [buttonsArray addObject:_upload];
+                }
+            }
+                break;
+            case DownLoadFunction:
+            {
+                if (_download) {
+                    [_download setTarget:Target];
+                    [buttonsArray addObject:_download];
+                }else{
+                    _download =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_download setAutoresizesSubviews:YES];
+                    [_download setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_download setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"]];
+                    [_download setToolTip:CustomLocalizedString(@"Menu_ToPc", nil)];
+                    [_download setTag:1004];
+                    [_download setTarget:Target];
+                    [_download setAction:@selector(downloadToMac:)];
+                    [buttonsArray addObject:_download];
+                }
+            }
+                break;
+            case ToiCloudFunction:
+            {
+                if (_toiCloud) {
+                    [_toiCloud setTarget:Target];
+                    [buttonsArray addObject:_toiCloud];
+                }else{
+                    _toiCloud =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_toiCloud setAutoresizesSubviews:YES];
+                    [_toiCloud setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_toiCloud setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_tocloud"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_tocloud"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_tocloud_hover"]];
+                    [_toiCloud setToolTip:CustomLocalizedString(@"Menu_ToiCloud", nil)];
+                    [_toiCloud setTag:1005];
+                    [_toiCloud setTarget:Target];
+                    [_toiCloud setAction:@selector(toiCloud:)];
+                    [buttonsArray addObject:_toiCloud];
+                }
+            }
+                break;
+            case RenameFunctionType:
+            {
+                if (_rename) {
+                    [_rename setTarget:Target];
+                    [buttonsArray addObject:_rename];
+                }else{
+                    _rename =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_rename setAutoresizesSubviews:YES];
+                    [_rename setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_rename setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_rename"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_rename"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_rename_hover"]];
+                    [_rename setToolTip:CustomLocalizedString(@"Menu_rename", nil)];
+                    [_rename setTag:1005];
+                    [_rename setTarget:Target];
+                    [_rename setAction:@selector(rename:)];
+                    [buttonsArray addObject:_rename];
+                }
+            }
+                break;
+            case DeviceDatailFunctionType:
+            {
+                if (_deviceDatail) {
+                    [_deviceDatail setTarget:Target];
+                    [buttonsArray addObject:_deviceDatail];
+                }else{
+                    _deviceDatail =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_deviceDatail setAutoresizesSubviews:YES];
+                    [_deviceDatail setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_deviceDatail setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_getinfo"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_getinfo"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_getinfo_hover"]];
+                    [_deviceDatail setToolTip:CustomLocalizedString(@"Menu_deviceDetail", nil)];
+                    [_deviceDatail setTag:1005];
+                    [_deviceDatail setTarget:Target];
+                    [_deviceDatail setAction:@selector(showDetailView:)];
+                    [buttonsArray addObject:_deviceDatail];
+                }
+            }
+                break;
+            case NewGroupFuntion:
+            {
+                if (_newgroup) {
+                    [_newgroup setTarget:Target];
+                    [buttonsArray addObject:_newgroup];
+                }else{
+                    _newgroup =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_newgroup setAutoresizesSubviews:YES];
+                    [_newgroup setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_newgroup setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_newfloder"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_newfloder"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_newfloder_hover"]];
+                    [_newgroup setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
+                    [_newgroup setTag:1005];
+                    [_newgroup setTarget:Target];
+                    [_newgroup setAction:@selector(createNewFloder:)];
+                    [buttonsArray addObject:_newgroup];
+                }
+            }
+                break;
+            case MoveFileFuntion:
+            {
+                if (_moveFile) {
+                    [_moveFile setTarget:Target];
+                    [buttonsArray addObject:_moveFile];
+                }else{
+                    _moveFile =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_moveFile setAutoresizesSubviews:YES];
+                    [_moveFile setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_moveFile setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_moveto"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_moveto"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_moveto_hover"]];
+                    [_moveFile setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
+                    [_moveFile setTag:1005];
+                    [_moveFile setTarget:Target];
+                    [_moveFile setAction:@selector(moveToFolder:)];
+                    [buttonsArray addObject:_moveFile];
                 }
             }
                 break;

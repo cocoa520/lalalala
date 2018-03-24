@@ -93,6 +93,7 @@ typedef enum CategoryNodes {
     
     Category_Media = 75,
     Category_Video = 76,
+    Category_Normal = 77,
 } CategoryNodesEnum;
 
 typedef enum chooseLog {
@@ -459,11 +460,16 @@ typedef enum ChooseView {
 
 //文件类型
 typedef enum FileType {
-    ImageFile       = 0,
-    AudioFile       = 1,
-    VideoFile       = 2,
-    CummonFile      = 3,
-    BookFile        = 4,
+    CommonFile = 0,
+    ImageFile = 1,
+    MusicFile = 2,
+    MovieFile = 3,
+    DocFile = 4,
+    TxtFile = 5,
+    BookFile = 6,
+    ZIPFile = 7,
+    PPtFile = 8,
+    
 } FileTypeEnum;
 
 typedef enum{

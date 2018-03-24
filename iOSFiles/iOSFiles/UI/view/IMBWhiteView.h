@@ -22,6 +22,7 @@
     BOOL _isGradientColorNOCornerPart4;//有toolbar
     BOOL _isMove;
     BOOL _isDeviceMain;
+    
 }
 @property (nonatomic, assign) BOOL isMove;
 @property (nonatomic, assign) BOOL isRegistedTextView;

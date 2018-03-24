@@ -3445,8 +3445,29 @@
     IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
     _endRunloop = NO;
     if (!soft.isRegistered) {
+        NSDictionary *dimensionDict = nil;
         OperationLImitation *limit = [OperationLImitation singleton];
         long long redminderCount = (long long)limit.remainderCount;
+        if (limit.remainderDays == 0) {
+            @autoreleasepool {
+                NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+                dimensionMutDict = [TempHelper customDimension];
+                [dimensionMutDict setObject:@"Expired" forKey:@"cd6"];
+                dimensionDict = [dimensionMutDict copy];
+            }
+        }else {
+            @autoreleasepool {
+                NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
+                dimensionMutDict = [TempHelper customDimension];
+                [dimensionMutDict setObject:@"Unregister" forKey:@"cd6"];
+                dimensionDict = [dimensionMutDict copy];
+            }
+        }
+        [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"1" label:LabelNone transferCount:0 screenView:@"Ad annoy" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         //弹出骚扰窗口
         (*annoyVC) = [[IMBAnnoyViewController alloc] initWithNibName:@"IMBAnnoyViewController" Delegate:self Result:&redminderCount];
         ((IMBAnnoyViewController *)(*annoyVC)).category = _category;

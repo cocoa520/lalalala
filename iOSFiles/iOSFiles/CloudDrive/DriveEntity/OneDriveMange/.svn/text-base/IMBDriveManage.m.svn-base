@@ -11,7 +11,7 @@
 #import "StringHelper.h"
 #import "DateHelper.h"
 @class IMBDeviceViewController;
-#import "IMBDriveWindow.h"
+
 @implementation IMBDriveManage
 - (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate{
     if ([super initWithUserID:userID withDelegate:delegate]) {
@@ -153,7 +153,7 @@
                 [drviceEntity release];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                [(IMBDriveWindow *)_driveWindowDelegate loadSonAryComplete:dataAry];
+                [(IMBDeviceViewController *)_driveWindowDelegate loadSonAryComplete:dataAry];
             });
         } fail:^(DriveAPIResponse *response) {
             //todo 获取数据失败

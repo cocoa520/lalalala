@@ -9,8 +9,8 @@
 #import "IMBPopoverViewController.h"
 #import "IMBDeviceItem.h"
 
-#define DEVICEITEMTITLEHEIGHT 30 //Title高度
-#define DEVICEITEMHEIGHT 60
+#define DEVICEITEMTITLEHEIGHT 0 //Title高度
+#define DEVICEITEMHEIGHT 42
 
 @interface IMBPopoverViewController ()
 
@@ -66,8 +66,8 @@
 
 - (void)awakeFromNib {
     NSRect f = self.view.frame;
-    f.size.height = itemCount * (DEVICEITEMHEIGHT + 12) ;
-    f.size.width = 248;
+    f.size.height = itemCount * (DEVICEITEMHEIGHT + 8) ;
+    f.size.width = 304;
     self.view.frame = f;
     [self loadDeviceInfo];
 }
@@ -79,7 +79,7 @@
         itemCount = 1;
     }
     NSRect f = self.view.frame;
-    f.size.height = itemCount * (DEVICEITEMHEIGHT + 12) ;
+    f.size.height = itemCount * (DEVICEITEMHEIGHT + 8) ;
     f.size.width = 142;
     self.view.frame = f;
     [self loadDeviceInfo];
@@ -110,12 +110,6 @@
             }
         }
         for (IMBBaseInfo *baseinfonew in deviceInfoArray) {
-            if ([baseinfonew isAndroid] && baseinfonew.uniqueKey) {
-                _isHasAndroid = YES;
-                [deviceMutbAry addObject:baseinfonew];
-            }
-        }
-        for (IMBBaseInfo *baseinfonew in deviceInfoArray) {
             if ([baseinfonew isicloudView] && baseinfonew.uniqueKey) {
                 _isHasiCloud = YES;
                 [deviceMutbAry addObject:baseinfonew];
@@ -127,83 +121,28 @@
     [addBaseInfo setDeviceName:CustomLocalizedString(@"icloud_addAcount", nil)];
     [addBaseInfo setConnectType:general_Add_Content];
     
-//    IMBBaseInfo *addBaseInfo1 = [[IMBBaseInfo alloc] init];
-//    [addBaseInfo1 setIsicloudView:YES];
-//    [addBaseInfo1 setDeviceName:CustomLocalizedString(@"icloud_add_DropBox_Acount", nil)];
-//    [addBaseInfo1 setConnectType:general_Add_Content];
-    
     [deviceMutbAry addObject:addBaseInfo];
     deviceInfoArray = [deviceMutbAry copy];
     [deviceMutbAry release];
     [addBaseInfo release];
+    int roiginY = 8;
     if (deviceInfoArray != nil && deviceInfoArray.count > 0) {
         int deviceCount = (int)deviceInfoArray.count;
-        int iPodY = 0;
-        int androidY = 0;
-        int iCloudY = 0;
         for (int i = 0; i < deviceCount; i++) {
             baseInfo = [deviceInfoArray objectAtIndex:i];
             NSRect itemRect;
             itemRect.origin.x = f.origin.x+4;
-            if ([baseInfo isiPod]) {
-                if (_isHasiPod && _isFirstiPod) {
-                    f.size.height += 30;
-                    self.view.frame = f;
-                    iPodY = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 10;
-                    _isFirstiPod = NO;
-                }
-                if (_isHasAndroid && _isHasAddiCloud) {
-                    itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6 + DEVICEITEMTITLEHEIGHT * 2;
-                }else if (_isHasAndroid || _isHasiCloud || _isHasAddiCloud) {
-                    itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6 + DEVICEITEMTITLEHEIGHT;
-                }else {
-                    itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6 + DEVICEITEMTITLEHEIGHT;
-                }
-            }else if ([baseInfo isAndroid]) {
-                if (_isHasAndroid && _isFirstAndroid) {
-                    f.size.height += 30;
-                    self.view.frame = f;
-                    androidY = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 10 + DEVICEITEMTITLEHEIGHT;
-                    _isFirstAndroid = NO;
-                }
-                if (_isHasiCloud || _isHasAddiCloud) {
-                    itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6 + DEVICEITEMTITLEHEIGHT;
-                }else {
-                    itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6 + DEVICEITEMTITLEHEIGHT;
-                }
-            }else if ([baseInfo connectType] == general_Add_Content) {
-                f.size.height += 30;
-                self.view.frame = f;
-                if (_isFirstiCloud) {
-                    iCloudY = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 10;
-                }
-                itemRect.origin.y = 6;
-            }else if ([baseInfo isicloudView]) {
-                if (_isHasiCloud && _isFirstiCloud) {
-                    iCloudY = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 10;
-                    _isFirstiCloud = NO;
-                }
-                itemRect.origin.y = (deviceCount - i - 1) * (DEVICEITEMHEIGHT + 12) + 6;
-            }
+            itemRect.origin.y = (deviceCount - i - 1) * DEVICEITEMHEIGHT + roiginY;
             itemRect.size.width = f.size.width - 8;
             itemRect.size.height = DEVICEITEMHEIGHT;
+            
             IMBDeviceItem *deviceItem = [[IMBDeviceItem alloc] initWithFrame:itemRect];
             [deviceItem setDelegate:_delegate];
             [deviceItem setIndex:(i + 1)];
-            if ([baseInfo connectType] == general_Add_Content) {
-                [deviceItem setIsiCloudView:YES];
-                [deviceItem setIsAddContent:YES];
-            }else {
-                if ([baseInfo isAndroid]) {
-                    [deviceItem setIsAndroidView:YES];
-                }
-                float i = (baseInfo.allDeviceSize - baseInfo.kyDeviceSize) * 1.0 / baseInfo.allDeviceSize;
-                if (baseInfo.allDeviceSize == 0) {
-                    i = 0;
-                }
-                [deviceItem loadCapacity:i];
+            if (i < deviceCount  && i!=0) {
+                [deviceItem setIsShowLine:YES];
             }
-            
+            [deviceItem setIsiCloudView:NO];
             deviceItem.isSelected = baseInfo.isSelected;
             [deviceItem setBaseInfo:baseInfo];
             [deviceItem setTarget:self.target];
@@ -213,56 +152,10 @@
             [deviceItem release];
             deviceItem = nil;
         }
-        
-        if (_isHasiPod) {
-            NSRect itemRect;
-            itemRect.origin.x = f.origin.x+8;
-            if (_isHasAndroid && _isHasAddiCloud) {
-                itemRect.origin.y = iPodY + DEVICEITEMTITLEHEIGHT * 4;
-            }else if (_isHasAndroid || _isHasiCloud) {
-                itemRect.origin.y = iPodY + DEVICEITEMTITLEHEIGHT * 3;
-            }else {
-                itemRect.origin.y = iPodY + DEVICEITEMTITLEHEIGHT * 3;
-            }
-            itemRect.size.width = f.size.width - 16;
-            itemRect.size.height = DEVICEITEMTITLEHEIGHT;
-            IMBDeviceItem *deviceItem = [[IMBDeviceItem alloc] initWithFrame:itemRect];
-            [deviceItem setIsTitle:YES];
-            [self.view addSubview:deviceItem];
-        }
-        if (_isHasAndroid) {
-            NSRect itemRect;
-            itemRect.origin.x = f.origin.x+8;
-            itemRect.origin.y = androidY + DEVICEITEMTITLEHEIGHT * 2;
-            itemRect.size.width = f.size.width - 16;
-            itemRect.size.height = DEVICEITEMTITLEHEIGHT;
-            IMBDeviceItem *deviceItem = [[IMBDeviceItem alloc] initWithFrame:itemRect];
-            [deviceItem setIsTitle:YES];
-            [deviceItem setIsAndroidView:YES];
-            if (_isHasiPod) {
-                [deviceItem setIsShowLine:YES];
-            }
-            [self.view addSubview:deviceItem];
-        }
-        if (_isHasiCloud) {
-            NSRect itemRect;
-            itemRect.origin.x = f.origin.x+8;
-            itemRect.origin.y = iCloudY + DEVICEITEMTITLEHEIGHT * 2;
-            itemRect.size.width = f.size.width - 16;
-            itemRect.size.height = DEVICEITEMTITLEHEIGHT;
-            IMBDeviceItem *deviceItem = [[IMBDeviceItem alloc] initWithFrame:itemRect];
-            [deviceItem setIsiCloudView:YES];
-            [deviceItem setIsTitle:YES];
-            if (_isHasiPod || _isHasAndroid) {
-                [deviceItem setIsShowLine:YES];
-            }
-            [self.view addSubview:deviceItem];
-            _isHasAddiCloud = NO;
-        }
         if (_isHasAddiCloud) {
             NSRect itemRect;
             itemRect.origin.x = f.origin.x+8;
-            itemRect.origin.y = iCloudY + DEVICEITEMTITLEHEIGHT * 2;
+//            itemRect.origin.y = DEVICEITEMTITLEHEIGHT * 2;
             itemRect.size.width = f.size.width - 16;
             itemRect.size.height = DEVICEITEMTITLEHEIGHT;
             IMBDeviceItem *deviceItem = [[IMBDeviceItem alloc] initWithFrame:itemRect];

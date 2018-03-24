@@ -1,7 +1,7 @@
 10
 
 dir
-1632
+1877
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_c/Annoy
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -94,14 +94,14 @@ has-props
 
 54008
 
-annoyregister_normal_right.png
+annoybuy_down_mid@2x.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-d435f2e1e62df4e6faff2e5f88d2b0fa
+d7877189d204234bbcaeb70685d4082b
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -126,7 +126,7 @@ has-props
 
 
 
-1143
+1057
 
 annoybuy_enter_right.png
 file
@@ -162,14 +162,14 @@ has-props
 
 1107
 
-annoybuy_down_mid@2x.png
+annoyregister_normal_right.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-d7877189d204234bbcaeb70685d4082b
+d435f2e1e62df4e6faff2e5f88d2b0fa
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -194,7 +194,7 @@ has-props
 
 
 
-1057
+1143
 
 annoy_christmas_video@2x.png
 file
@@ -332,14 +332,14 @@ has-props
 
 1037
 
-annoy_christmas_active@2x.png
+annoy_freetry_en.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-0905be1cde03d38112a292f1e2d40417
+e103812131e1903600adb9d83e259aad
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -364,7 +364,7 @@ has-props
 
 
 
-622258
+2647
 
 annoy_freetry_ar.png
 file
@@ -400,14 +400,14 @@ has-props
 
 2489
 
-annoy_freetry_en.png
+annoy_christmas_active@2x.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-e103812131e1903600adb9d83e259aad
+0905be1cde03d38112a292f1e2d40417
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -432,41 +432,7 @@ has-props
 
 
 
-2647
-
-annoy_tool_three.png
-file
-
-
-
-
-2018-02-02T01:40:14.000000Z
-9ac6ae9417faa5ce5f11837ffe505090
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1074
+622258
 
 annoy_freetry_ch@2x.png
 file
@@ -501,6 +467,40 @@ has-props
 
 
 5496
+
+annoy_tool_three.png
+file
+
+
+
+
+2018-02-02T01:40:14.000000Z
+9ac6ae9417faa5ce5f11837ffe505090
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1074
 
 annoy_mask@2x.png
 file
@@ -1250,40 +1250,6 @@ has-props
 
 534841
 
-annoy_freecarwheel_one@2x.png
-file
-
-
-
-
-2018-02-02T01:40:14.000000Z
-f69614c5b005d81b3726058deab74a1a
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2231
-
 annoy_freetry_fr.png
 file
 
@@ -1317,6 +1283,40 @@ has-props
 
 
 2863
+
+annoy_freecarwheel_one@2x.png
+file
+
+
+
+
+2018-02-02T01:40:14.000000Z
+f69614c5b005d81b3726058deab74a1a
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2231
 
 annoy_freetry_jp.png
 file
@@ -1420,14 +1420,14 @@ has-props
 
 521453
 
-annoyregister_enter_right.png
+annoy_thanksgiving_photo@2x.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-434e551bf90c688017b20c229433f26b
+3a36ba813b670376c7a684ccdbd2072d
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1452,7 +1452,7 @@ has-props
 
 
 
-1133
+591981
 
 annoyregister_down_mid@2x.png
 file
@@ -1488,14 +1488,14 @@ has-props
 
 1083
 
-annoy_thanksgiving_photo@2x.png
+annoyregister_enter_right.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-3a36ba813b670376c7a684ccdbd2072d
+434e551bf90c688017b20c229433f26b
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1520,41 +1520,7 @@ has-props
 
 
 
-591981
-
-annoy_carwheel_three.png
-file
-
-
-
-
-2018-02-02T01:40:14.000000Z
-4adea0e8ab76184f27b14757e6a1f3e6
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1580
+1133
 
 annoy_freetry_es@2x.png
 file
@@ -1590,14 +1556,14 @@ has-props
 
 5930
 
-annoyregister_enter_mid@2x.png
+annoy_carwheel_three.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-6933ca322787911628de633846b72ba5
+4adea0e8ab76184f27b14757e6a1f3e6
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1622,7 +1588,41 @@ has-props
 
 
 
-1086
+1580
+
+annoy_freecarwheel_two.png
+file
+
+
+
+
+2018-02-02T01:40:14.000000Z
+06d133bae9ac0517ea1c6409b0102c94
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1890
 
 annoy_vipcar_three@2x.png
 file
@@ -1658,14 +1658,14 @@ has-props
 
 28357
 
-annoy_freecarwheel_two.png
+annoyregister_enter_mid@2x.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-06d133bae9ac0517ea1c6409b0102c94
+6933ca322787911628de633846b72ba5
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1690,7 +1690,7 @@ has-props
 
 
 
-1890
+1086
 
 annoy_freetry_ch.png
 file
@@ -1760,40 +1760,6 @@ has-props
 
 460186
 
-annoy_car_three.png
-file
-
-
-
-
-2018-02-02T01:40:14.000000Z
-4a91042fad355b60de14667afac159e5
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5295
-
 annoy_thanksgiving_music.png
 file
 
@@ -1827,6 +1793,40 @@ has-props
 
 
 279026
+
+annoy_car_three.png
+file
+
+
+
+
+2018-02-02T01:40:14.000000Z
+4a91042fad355b60de14667afac159e5
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5295
 
 annoy_freecarwheel_one.png
 file
@@ -1896,40 +1896,6 @@ has-props
 
 2781
 
-annoyregister_normal_right@2x.png
-file
-
-
-
-
-2018-02-02T01:40:14.000000Z
-82b45b9165b4a32e145376b61c1e63e7
-2018-01-03T04:01:45.834951Z
-891
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1292
-
 annoybuy_enter_right@2x.png
 file
 
@@ -1964,14 +1930,14 @@ has-props
 
 1217
 
-annoyregister_down_mid.png
+annoyregister_normal_right@2x.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-12881909fae94c545164fdb285024994
+82b45b9165b4a32e145376b61c1e63e7
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -1996,7 +1962,7 @@ has-props
 
 
 
-1046
+1292
 
 annoy_thanksgiving_photo.png
 file
@@ -2032,14 +1998,14 @@ has-props
 
 591981
 
-annoy_file_three.png
+annoyregister_down_mid.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-40b27c1dce2c67ba3455d2ed94673d50
+12881909fae94c545164fdb285024994
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -2064,7 +2030,41 @@ has-props
 
 
 
-1260
+1046
+
+annoy_thanksgiving_music@2x.png
+file
+
+
+
+
+2018-02-02T01:40:14.000000Z
+3f74056a1e516a3e0f642f8edb6a6f62
+2018-01-03T04:01:45.834951Z
+891
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+279026
 
 annoy_car_three@2x.png
 file
@@ -2100,14 +2100,14 @@ has-props
 
 9856
 
-annoy_thanksgiving_music@2x.png
+annoy_file_three.png
 file
 
 
 
 
 2018-02-02T01:40:14.000000Z
-3f74056a1e516a3e0f642f8edb6a6f62
+40b27c1dce2c67ba3455d2ed94673d50
 2018-01-03T04:01:45.834951Z
 891
 dingming
@@ -2132,7 +2132,7 @@ has-props
 
 
 
-279026
+1260
 
 annoybuy_enter_left.png
 file

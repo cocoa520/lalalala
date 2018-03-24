@@ -24,8 +24,9 @@
     NSString *_imageStrName;
     NSString *_imageName;
     BOOL _isDataImage;//从data中获取的Image
-    
+    NSString *_imageText;
 }
+@property (nonatomic, retain) NSString *imageText;
 @property (nonatomic, retain) NSString *imageName;
 @property(readwrite, retain) NSImage *lockImg;
 @property(readwrite, retain) NSImage *iCloudImg;

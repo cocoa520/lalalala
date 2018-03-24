@@ -15,7 +15,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     ReloadFunctionType= 0,
     AddFunctionType = 1,
     DeleteFunctionType = 2,
-    ToiTunesFunctionType = 3,
+    RenameFunctionType = 3,
     ToMacFunctionType = 4,
     ToDeviceFunctionType = 5,
     DeviceDatailFunctionType = 6,
@@ -32,12 +32,11 @@ typedef NS_ENUM(int, OperationFunctionType) {
     
     UpLoadFunction = 17,
     DownLoadFunction = 18,
-    MovePictureFuntion = 19,
+    MoveFileFuntion = 19,
     CreateAlbumFuntion = 20,
     NewGroupFuntion = 21,
     SyncTransferFuntion = 22,
-    HidePhotoImageFunction = 23,
-    ShowPhotoImageFunction = 24,
+    ToiCloudFunction = 23,
 };
 
 @interface IMBToolButtonView : NSView
@@ -54,7 +53,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     HoverButton *_exit;
     HoverButton *_edit;
     HoverButton *_backup;
-    HoverButton *_icloud;
+    HoverButton *_toiCloud;
     HoverButton *_back;
     HoverButton *_find;
     HoverButton *_contactImport;
@@ -63,13 +62,14 @@ typedef NS_ENUM(int, OperationFunctionType) {
     
     HoverButton *_upload;
     HoverButton *_download;
-    HoverButton *_movePicture;
+    HoverButton *_moveFile;
     HoverButton *_createAlbum;
     HoverButton *_newgroup;
     HoverButton *_syncTransfer;
     HoverButton *_androidtoiOS;
     HoverButton *_hideImage;
     HoverButton *_showImage;
+    HoverButton *_rename;
     id _delegate;
 }
 @property (nonatomic, assign) id delegate;

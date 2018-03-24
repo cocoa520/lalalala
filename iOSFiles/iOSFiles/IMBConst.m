@@ -8,6 +8,8 @@
 
 #import "IMBConst.h"
 
+#pragma mark - notifications
+
 NSString * const IMBSelectedDeviceDidChangeNotiWithParams = @"IMBSelectedDeviceDidChangeNotiWithParams";
 NSString * const IMBSelectedDeviceDidChangeNoti = @"IMBSelectedDeviceDidChangeNoti";
 NSString * const IMBDevicePageRefreshClickedNoti = @"IMBDevicePageRefreshClickedNoti";
@@ -22,6 +24,8 @@ NSString * const IMBDevicePageStopLoadingAnimNoti = @"IMBDevicePageStopLoadingAn
 NSString * const IMBDevicePageShowToolbarNoti = @"IMBDevicePageShowToolbarNoti";
 NSString * const IMBDevicePageHideToolbarNoti = @"IMBDevicePageHideToolbarNoti";
 
+#pragma mark - plists
+
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";
 NSString * const IMBDevicePageFolderNamesPlist = @"DevicePageFolderNames.plist";
 NSString * const IMBDetailVCHeaderTitleTrackNamesPlist = @"DetailVCHeaderTitleTrackNames.plist";
@@ -32,9 +36,17 @@ NSString * const DetailVCHeaderTitleSubPhotoNamesPlist = @"DetailVCHeaderTitleSu
 
 NSString * const IMBiCloudUserName = @"iCloudUserName";
 
+#pragma mark - 全局关联key
+
 char kIMBDevicePageRootBoxKey;
 char kIMBDevicePageToolBarViewKey;
 char kIMBPhotoCategoryControllerKey;
 char kIMBDevicePageWindowKey;
+char kIMBMainWindowAlertView;
+char kIMBMainPageWindowAlertView;
 
+
+#pragma mark - font
+
+NSString * const IMBCommonFont = @"Helvetica Neue";
 

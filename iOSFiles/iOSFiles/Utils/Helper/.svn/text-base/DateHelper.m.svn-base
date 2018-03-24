@@ -9,6 +9,7 @@
 #import "DateHelper.h"
 #import "IMBSoftWareInfo.h"
 #import "NSString+Category.h"
+#import "StringHelper.h"
 @implementation DateHelper
 +(NSDate*)dateFrom2001:(double)timeStamp{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -516,6 +517,17 @@
     df = nil;
     
     return retVal;
+}
+
++ (NSString *)dateForm2001DateSting:(NSString *) dateSting {
+    if ([StringHelper stringIsNilOrEmpty:dateSting] ) {
+        return @"";
+    }
+    NSString *replacString = [dateSting stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+    NSString * replacString1 = [replacString substringToIndex:19];
+    NSDate *replacDate = [DateHelper dateFromString:replacString1 Formate:nil];
+    NSString *replacDateString = [DateHelper dateFrom2001ToDate:replacDate withMode:2];
+    return replacDateString;
 }
 
 +(double)getTotalSecondsFromHHMMSSMS:(NSString*)timeStr {

@@ -70,7 +70,7 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
     [_maxAndminView addSubview:_minButton];
     [_maxAndminView addSubview:_maxButton];
     [_maxAndminView setBackgroundColor:[NSColor colorWithDeviceRed:255.0/255 green:255.0/255 blue:255.0/255 alpha:1]];
-    [self.contentView addSubview:_maxAndminView];
+//    [self.contentView addSubview:_maxAndminView];
     _maxAndminView.autoresizesSubviews =YES;
     _maxAndminView.autoresizingMask = 8;
     [_closeButton setAction:@selector(closeWindow:)];

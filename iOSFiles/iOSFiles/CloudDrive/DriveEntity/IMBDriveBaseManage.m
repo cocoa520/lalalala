@@ -11,6 +11,7 @@
 @implementation IMBDriveBaseManage
 @synthesize driveWindowDelegate = _driveWindowDelegate;
 @synthesize driveDataAry = _driveDataAry;
+@synthesize downloadPath = _downloadPath;
 
 - (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate {
     if ([self init]) {
@@ -24,6 +25,10 @@
 
     }
     return self;
+}
+
+- (void)userDidLogout {
+
 }
 
 

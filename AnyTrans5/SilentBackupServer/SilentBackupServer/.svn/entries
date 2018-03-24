@@ -1,7 +1,7 @@
 10
 
 dir
-1632
+1877
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/SilentBackupServer/SilentBackupServer
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,6 +25,18 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
+
+ja.lproj
+dir
+
+Logger
+dir
+
+Helper
+dir
+
+DeviceConnection
+dir
 
 main.m
 file
@@ -60,18 +72,6 @@ dingming
 
 239
 
-DeviceConnection
-dir
-
-Helper
-dir
-
-Logger
-dir
-
-ja.lproj
-dir
-
 Info.plist
 file
 
@@ -106,22 +106,22 @@ dingming
 
 1139
 
-Resource
+en.lproj
 dir
 
 ar.lproj
 dir
 
-en.lproj
+Resource
 dir
 
 Socket
 dir
 
-es.lproj
+fr.lproj
 dir
 
-fr.lproj
+es.lproj
 dir
 
 zh-Hans.lproj

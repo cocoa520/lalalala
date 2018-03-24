@@ -29,6 +29,7 @@
     NSString *_driveName;             ///<驱动器名称
     NSString *_userLogintoken;        ///<用户登录令牌，用于获取驱动器ID和刷新过期令牌
     NSString *_accestoken;            ///<访问令牌
+    NSString *_userAccountID;         ///<用户账号信息ID号
     NSString *_folderOrfileID;        ///<需要操作的文件或者目录的ID，有的云盘也可能是相对路径
     NSString *_parent;                ///<需要在哪个父目录下操作
     NSString *_folderName;            ///<创建文件夹的名字
@@ -97,6 +98,16 @@
  *  @return 实例对象
  */
 - (instancetype)initWithUserLoginToken:(NSString *)userLogintoken withDriveName:(NSString *)driveName;
+
+/**
+ *  用户账户信息ID号
+ *
+ *  @param userAccountID ID号
+ *  @param accessToken    访问令牌
+ *
+ *  @return 实例对象
+ */
+- (instancetype)initWithUserAccountID:(NSString *)userAccountID accessToken:(NSString *)accessToken;
 /**
  *  初始化方法
  *
@@ -277,6 +288,17 @@
  *  @return 返回自己
  */
 - (id)initWithItemID:(NSString *)folderID cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url;
+
+/**
+ *  Description iCloudDriveAPI 初始化方法
+ *
+ *  @param dsid     dsid
+ *  @param cookie   cookie
+ *
+ *  @return 返回自己
+ */
+- (id)initWithDsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie;
+
 + (NSString *)createGUID;
 
 @end

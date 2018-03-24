@@ -11,6 +11,14 @@
 @interface Dropbox : BaseDrive
 
 /**
+ *  获取云盘使用空间
+ *
+ *  @param spaceUsage 默认传入0
+ *  @param success    成功回调block
+ *  @param fail       失败回调block
+ */
+- (void)getSpaceUsage:(NSString *)spaceUsage success:(Callback)success fail:(Callback)fail;
+/**
  *  删除指定的文件或者目录
  *
  *  @param filePathOrFolderName      删除的文件路径名或者父目录名称

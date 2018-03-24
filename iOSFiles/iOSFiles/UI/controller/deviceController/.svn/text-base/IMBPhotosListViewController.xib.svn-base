@@ -119,7 +119,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="1060" height="534"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="Yeg-2D-OTb">
-                        <rect key="frame" x="0.0" y="23" width="1060" height="511"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1060" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="64" headerView="5" id="7" customClass="IMBCustomHeaderTableView">
@@ -139,7 +139,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </tableColumn>
-                                    <tableColumn identifier="Name" width="276" minWidth="40" maxWidth="1000" id="14">
+                                    <tableColumn identifier="Name" width="296" minWidth="40" maxWidth="1000" id="14">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="1">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +152,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Format" width="204" minWidth="10" maxWidth="3.4028234663852886e+38" id="13">
+                                    <tableColumn identifier="Format" width="224" minWidth="10" maxWidth="3.4028234663852886e+38" id="13">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="15">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -165,7 +165,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="TimeDate" width="246" minWidth="10" maxWidth="3.4028234663852886e+38" id="12">
+                                    <tableColumn identifier="TimeDate" width="266" minWidth="10" maxWidth="3.4028234663852886e+38" id="12">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="2">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -178,7 +178,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="Size" width="214" minWidth="10" maxWidth="3.4028234663852886e+38" id="11">
+                                    <tableColumn identifier="Size" width="234" minWidth="10" maxWidth="3.4028234663852886e+38" id="11">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="5">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

@@ -15,6 +15,7 @@
 - (id)initWithPath:(NSString *)exportPath exportTracks:(NSArray *)exportTracks withDelegate:(id)delegate backupPath:(NSString *)backupPath backUpDecrypt:(IMBBackupDecryptAbove4 *)backUpDecrypt {
     self = [super initWithPath:exportPath exportTracks:exportTracks withMode:@"" withDelegate:delegate];
     if (self) {
+        _totalItemCount = 0;
         _backupPath = backupPath;
         _backUpDecrypt = backUpDecrypt;
     }

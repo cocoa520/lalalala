@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Dropbox.h"
+#import "DropboxUserAccountAPI.h"
+#import "DropboxUserSpaceUsageAPI.h"
 #import "DropboxCreateFolderAPI.h"
 #import "DropboxDeleteItemAPI.h"
 #import "DropboxGetListAPI.h"
@@ -17,8 +19,8 @@
 #import "DropboxUploadSessionFinishAPI.h"
 #import "DropboxMoveToNewParentAPI.h"
 
-NSString *const kClientIDWithDropbox = @"m58y6oaqc8fsn7j";
-NSString *const kClientSecretWithDropbox = @"anrslgpqh2spuk9";
+NSString *const kClientIDWithDropbox = @"90n4qhgle2681iz";
+NSString *const kClientSecretWithDropbox = @"9dqesogvgatsuaj";
 NSString *const kRedirectURIWithDropbox = @"http://127.0.0.1:58240/";
 NSString *const kSuccessURLStringWithDropbox = @"https://www.imobie.com";
 NSString *const OAuthorizationEndpointWithDropbox = @"https://www.dropbox.com/oauth2/authorize";
@@ -77,6 +79,70 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                                                 }
                                                             }
                                                         }] retain];
+    }
+}
+
+#pragma mark -- 获取云盘用户信息
+- (void)getAccount:(NSString *)accountID success:(Callback)success fail:(Callback)fail {
+    if ([self isExecute]) {
+        YTKRequest *requestAPI = [[DropboxUserAccountAPI alloc] initWithUserAccountID:accountID accessToken:_accessToken];
+        __block YTKRequest *weakRequestAPI = requestAPI;
+        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+            if (code == ResponseSuccess) {
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+                success?success(response):nil;
+                [response release];
+            }else {
+                NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                fail?fail(response):nil;
+                [response release];
+            }
+            [weakRequestAPI release];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            //to do需要更具返回值判断错误
+            ResponseCode code = [self checkResponseTypeWithFailed:request];
+            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+            fail?fail(response):nil;
+            [response release];
+            [weakRequestAPI release];
+        }];
+    }
+}
+
+#pragma mark -- 获取云盘使用空间
+- (void)getSpaceUsage:(NSString *)spaceUsage success:(Callback)success fail:(Callback)fail {
+    if ([self isExecute]) {
+        YTKRequest *requestAPI = [[DropboxUserSpaceUsageAPI alloc] initWithUserAccountID:spaceUsage accessToken:_accessToken];
+        __block YTKRequest *weakRequestAPI = requestAPI;
+        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+            if (code == ResponseSuccess) {
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+                success?success(response):nil;
+                [response release];
+            }else {
+                NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                fail?fail(response):nil;
+                [response release];
+            }
+            [weakRequestAPI release];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            //to do需要更具返回值判断错误
+            ResponseCode code = [self checkResponseTypeWithFailed:request];
+            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+            fail?fail(response):nil;
+            [response release];
+            [weakRequestAPI release];
+        }];
     }
 }
 
@@ -283,6 +349,8 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
 - (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item
 {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self downloadFolder:item];
     }else {
         if ([self isExecute]) {
@@ -315,15 +383,14 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             [item setChildArray:allfileArray];
             long long  totalSize = [[item.childArray valueForKeyPath:@"@sum.fileSize"] longLongValue];
             [item setFileSize:totalSize];
-            NSMutableArray *reverseArray = [NSMutableArray array];
-            [allfileArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *sortArray = [item.childArray sortedArrayUsingSelector:@selector(compare:)];            //设置为等待状态
+            [sortArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 id <DownloadAndUploadDelegate> childItem = obj;
                 childItem.parent = item;
-                [reverseArray addObject:childItem];
             }];
             //设置为等待状态
             item.state = DownloadStateWait;
-            [self downloadItems:reverseArray];
+            [self downloadItems:sortArray];
         }
     });
 }
@@ -380,6 +447,8 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
 
 - (void)uploadItem:(id<DownloadAndUploadDelegate>)item {
     if (item.isFolder) {
+        [_folderItemArray addObject:item];
+        [(NSObject *)item addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [self uploadFolder:item];
     }else {
         if ([self isExecute]) {

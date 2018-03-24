@@ -7,11 +7,6 @@
 //
 
 #import "UpLoader.h"
-#if __has_include(<AFNetworking/AFURLRequestSerialization.h>)
-#import <AFNetworking/AFURLRequestSerialization.h>
-#else
-#import "AFURLRequestSerialization.h"
-#endif
 #import "HTTPApiConst.h"
 
 @implementation UpLoader
@@ -31,9 +26,6 @@
     }
 }
 
-
-#pragma mark - 通过表单方式上传文件
-
 - (void)uploadmutilPartItem:(id<DownloadAndUploadDelegate>)item  success:(nullable YTKRequestCompletionBlock)success
 {
     __block id<DownloadAndUploadDelegate> weakItem = item;
@@ -45,12 +37,10 @@
                 success(request);
             }
         } constructingData:^(id<AFMultipartFormData>  _Nonnull formData) {
-            if ([NSStringFromClass([item.requestAPI class]) isEqualToString:@"iCloudDriveUploadTwoAPI"]){
-                [formData appendPartWithFileURL:[NSURL fileURLWithPath:[item localPath]] name:@"files" error:nil];
-            }
+            [formData appendPartWithFileURL:[NSURL fileURLWithPath:[item localPath]] name:@"files" error:nil];
         } uploadProgress:^(NSProgress * _Nonnull progress) {
             [weakself notifyUploadItem:weakItem withUploadProgress:progress.fractionCompleted*100];
-            weakItem.currentSize = progress.completedUnitCount;
+            [weakself notifyUploadItem:weakItem withUploadcurrentSize:progress.completedUnitCount];
             //计算速度
             NSDictionary *progressInfo = progress.userInfo;
             NSNumber *startTimeValue = progressInfo[ProgressUserInfoStartTimeKey];
@@ -94,7 +84,6 @@
     }
 }
 
-
 #pragma mark -- 上传单个文件
 - (void)uploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     
@@ -102,9 +91,11 @@
     __block UpLoader *weakself = self;
     [weakself notifyUploadItem:item withUploadState:UploadStateLoading];
     if ([item isConstructingData]) {
+        __block NSThread *currentthread = [NSThread currentThread];
         [[item requestAPI] startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             if ([item isBigFile]) {
                 [item setIsBigFile:NO];
+                [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
             }
             [weakself notifyUploadItem:item withUploadState:UploadStateComplete];
             //如果是文件夹
@@ -118,7 +109,6 @@
                     parentItem.state = UploadStateComplete;
                 }
             }
-            NSLog(@"ResponseJsonObject: %@", request.responseJSONObject);
             NSLog(@"Request Complete");
         } constructingData:^(id<AFMultipartFormData>  _Nonnull formData) {
             if ([[item constructingDataDriveName] isEqualToString:BoxCSEndPointURL]) {
@@ -126,16 +116,10 @@
                 NSDictionary *dict = @{@"name": [item fileName], @"parent": @{@"id": [item uploadParent]}};
                 NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
                 [formData appendPartWithFormData:data name:@"attributes"];
-            }else if ([[item constructingDataDriveName] isEqualToString:OneDriveCSEndPointURL]) {
-                [formData appendPartWithFormData:[item constructingData] name:@"file"];
-            }else if ([[item constructingDataDriveName] isEqualToString:DropboxCSEndPointURL]) {
-                
-            }else if ([NSStringFromClass([item.requestAPI class]) isEqualToString:@"iCloudDriveUploadTwoAPI"]){
-                [formData appendPartWithFileURL:[NSURL fileURLWithPath:[item localPath]] name:@"files" error:nil];
             }
         } uploadProgress:^(NSProgress * _Nonnull progress) {
             [weakself notifyUploadItem:weakItem withUploadProgress:progress.fractionCompleted*100];
-            weakItem.currentSize = progress.completedUnitCount;
+            [weakself notifyUploadItem:weakItem withUploadcurrentSize:progress.completedUnitCount];
             //计算速度
             NSDictionary *progressInfo = progress.userInfo;
             NSNumber *startTimeValue = progressInfo[ProgressUserInfoStartTimeKey];
@@ -156,9 +140,13 @@
                 NSInteger speed = [[activeArray valueForKeyPath:@"@sum.speed"] longValue];
                 parentItem.speed = speed;
                 long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
-                parentItem.progress = currentSize/(parentItem.fileSize*1.0)*100;
+                [weakself notifyUploadItem:parentItem withUploadProgress:currentSize/(parentItem.fileSize*1.0)*100];
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            if ([item isBigFile]) {
+                [item setIsBigFile:NO];
+                [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
+            }
             [weakself notifyUploadItem:item withUploadState:UploadStateError];
             if (weakItem.parent != nil) {
                 id <DownloadAndUploadDelegate> parentItem = weakItem.parent;
@@ -169,19 +157,13 @@
                 if ([completeArray count] + [errorArray count] == [parentItem.childArray count]) {
                     parentItem.state = UploadStateComplete;
                 }
-            }
-            if ([request responseString]) {
-                NSLog(@"Request Exception: %@", request.responseString);
-            }else {
-                NSLog(@"Request Exception: %@", request.error.localizedDescription);
             }
         }];
     }else {
+        __block NSThread *currentthread = [NSThread currentThread];
         [[item requestAPI] startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             [weakself notifyUploadItem:item withUploadState:UploadStateComplete];
-            if ([item isBigFile]) {
-                [item setIsBigFile:NO];
-            }
+            
             //如果是文件夹
             if (weakItem.parent != nil) {
                 id <DownloadAndUploadDelegate> parentItem = weakItem.parent;
@@ -194,6 +176,10 @@
                 }
             }
             NSLog(@"Request Complete");
+            if ([item isBigFile]) {
+                [item setIsBigFile:NO];
+                [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
+            }
         } uploadProgress:^(NSProgress * _Nonnull progress) {
             [weakself notifyUploadItem:weakItem withUploadProgress:progress.fractionCompleted*100];
             weakItem.currentSize = progress.completedUnitCount;
@@ -217,9 +203,13 @@
                 NSInteger speed = [[activeArray valueForKeyPath:@"@sum.speed"] longValue];
                 parentItem.speed = speed;
                 long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
-                parentItem.progress = currentSize/(parentItem.fileSize*1.0)*100;
+                [weakself notifyUploadItem:parentItem withUploadProgress:currentSize/(parentItem.fileSize*1.0)*100];
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            if ([item isBigFile]) {
+                [item setIsBigFile:NO];
+                [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
+            }
             [weakself notifyUploadItem:item withUploadState:UploadStateError];
             if (weakItem.parent != nil) {
                 id <DownloadAndUploadDelegate> parentItem = weakItem.parent;
@@ -230,11 +220,6 @@
                 if ([completeArray count] + [errorArray count] == [parentItem.childArray count]) {
                     parentItem.state = UploadStateComplete;
                 }
-            }
-            if ([request responseString]) {
-                NSLog(@"Request Exception: %@", request.responseString);
-            }else {
-                NSLog(@"Request Exception: %@", request.error.localizedDescription);
             }
         }];
     }
@@ -293,39 +278,60 @@
 
 #pragma mark -- 监听上传状态属性值
 - (void)notifyUploadItem:(id<DownloadAndUploadDelegate>)item withUploadState:(TransferState)uploadState {
-    if ([item respondsToSelector:@selector(setState:)]) {
-        [item setState:uploadState];
-    }else{
-        NSAssert(1,@"item未实现setUploadState:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setState:)]) {
+            [item setState:uploadState];
+        }else{
+            NSAssert(1,@"item未实现setUploadState:");
+        }
+    });
 }
 
 - (void)notifyUploadItem:(id<DownloadAndUploadDelegate>)item withUploadProgress:(double)uploadProgress
 {
-    if ([item respondsToSelector:@selector(setProgress:)]) {
-        [item setProgress:uploadProgress];
-    }else{
-        NSAssert(1,@"item未实现setUploadProgress:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setProgress:)]) {
+            [item setProgress:uploadProgress];
+        }else{
+            NSAssert(1,@"item未实现setUploadProgress:");
+        }
+    });
 }
 
 - (void)notifyUploadItem:(id<DownloadAndUploadDelegate>)item withUploadSpeed:(NSInteger)uploadSpeed
 {
-    if ([item respondsToSelector:@selector(setSpeed:)]) {
-        [item setSpeed:uploadSpeed];
-    }else{
-        NSAssert(1,@"item未实现setUploadSpeed:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setSpeed:)]) {
+            [item setSpeed:uploadSpeed];
+        }else{
+            NSAssert(1,@"item未实现setUploadSpeed:");
+        }
+    });
+}
+
+- (void)notifyUploadItem:(id<DownloadAndUploadDelegate>)item withUploadcurrentSize:(long long)currentSize
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setCurrentSize:)]) {
+            [item setCurrentSize:currentSize];
+        }else{
+            NSAssert(1,@"item未实现setCurrentSize:");
+        }
+    });
 }
 
 - (void)notifyUploadItem:(id<DownloadAndUploadDelegate>)item withUploadError:(NSError *)error
 {
-    if ([item respondsToSelector:@selector(setError:)]) {
-        [item setError:error];
-    }else{
-        NSAssert(1,@"item未实现setUploadError:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setError:)]) {
+            [item setError:error];
+        }else{
+            NSAssert(1,@"item未实现setUploadError:");
+        }
+    });
 }
+
+
 
 -(NSString *)getMIMETypeWithCAPIAtFilePath:(NSString *)path
 {
@@ -341,5 +347,7 @@
     return (__bridge NSString *)(MIMEType)
     ;
 }
+
+- (void)uploadWait{}
 
 @end

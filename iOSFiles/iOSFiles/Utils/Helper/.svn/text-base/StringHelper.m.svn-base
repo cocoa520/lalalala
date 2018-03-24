@@ -79,23 +79,23 @@
 +(NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
     switch (decimalPoints) {
         case 1:
-            return [NSString stringWithFormat:@" %.1f %@", numberSize, unit];
+            return [NSString stringWithFormat:@"%.1f %@", numberSize, unit];
             break;
             
         case 2:
-            return [NSString stringWithFormat:@" %.2f %@", numberSize, unit];
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
             break;
             
         case 3:
-            return [NSString stringWithFormat:@" %.3f %@", numberSize, unit];
+            return [NSString stringWithFormat:@"%.3f %@", numberSize, unit];
             break;
             
         case 4:
-            return [NSString stringWithFormat:@" %.4f %@", numberSize, unit];
+            return [NSString stringWithFormat:@"%.4f %@", numberSize, unit];
             break;
             
         default:
-            return [NSString stringWithFormat:@" %.2f %@", numberSize, unit];
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
             break;
     }
 }
@@ -315,7 +315,6 @@ char pinyinFirstLetter(unsigned short hanzi) {
     }
     return unicodeString;
 }
-
 
 + (NSData *)replaceNoUtf8:(NSData *)data {
     char aa[] = {' ',' ',' ',' ',' ',' '};                      //utf8最多6个字符，当前方法未使用
@@ -1616,6 +1615,41 @@ char pinyinFirstLetter(unsigned short hanzi) {
     (*size).width = ceil(tmpSize.width);
     (*size).height = ceil(tmpSize.height);
     return retStr;
+}
+
++ (FileTypeEnum)getFileFormatWithExtension:(NSString *)extension {
+    
+    NSArray *imageArr = @[@"png",@"jpg",@"gif",@"bmp",@"jpeg",@"tiff"];
+    for (NSString *str in imageArr) {
+        if ([str isEqualToString:extension]) {
+            return ImageFile;
+        }
+    }
+    NSArray *musicArr = @[@"mp3",@"m4a",@"wma",@"wav",@"rm",@"mdi",@"m4r",@"m4b",@"m4p",@"flac",@"amr",@"ogg",@"ac3",@"ape",@"aac",@"mka"];
+    for (NSString *str in musicArr) {
+        if ([str isEqualToString:extension]) {
+            return MusicFile;
+        }
+    }
+    
+    NSArray *movieArr = @[@"mp4",@"m4v",@"mov",@"wmv",@"rmvb",@"mkv",@"avi",@"flv",@"rm",@"3gp",@"mpg",@"webm"];
+    for (NSString *str in movieArr) {
+        if ([str isEqualToString:extension]) {
+            return MovieFile;
+        }
+    }
+    if ([extension isEqualToString:@"txt"]) {
+        return TxtFile;
+    }else if ([extension isEqualToString:@"doc"]) {
+        return DocFile;
+    }else if ([extension isEqualToString:@"zip"]) {
+        return ZIPFile;
+    }else if ([extension isEqualToString:@"epub"] || [extension isEqualToString:@"pdf"]) {
+        return BookFile;
+    }else if ([extension isEqualToString:@"ppt"]) {
+        return PPtFile;
+    }
+    return CommonFile;
 }
 
 @end

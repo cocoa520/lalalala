@@ -56,6 +56,20 @@
     }
 }
 
+- (instancetype)initWithUserAccountID:(NSString *)userAccountID  accessToken:(NSString *)accessToken
+{
+    if (self = [super init]) {
+        _userAccountID = [userAccountID retain];
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
 - (id)initWithItemID:(NSString *)folderID accessToken:(NSString *)accessToken
 {
     if (self = [super init]) {
@@ -73,6 +87,16 @@
         _iCloudDriveUrl = [url retain];
     }
     return self;
+}
+
+- (id)initWithDsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie {
+    if (self = [super init]) {
+        _dsid = [dsid retain];
+        _cookie = [cookie retain];
+        return self;
+    }else {
+        return nil;
+    }
 }
 
 - (id)initWithItemID:(NSString *)folderID accessToken:(NSString *)accessToken withIsFolder:(BOOL)isFolder

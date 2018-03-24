@@ -96,8 +96,6 @@
     _endRunloop = NO;
     _itemTableViewcanDrag = YES;
     _itemTableViewcanDrop = YES;
-    _collectionViewcanDrag = YES;
-    _collectionViewcanDrop = YES;
     _isMerge = NO;
     _isClone = NO;
     _isContentToMac = NO;
@@ -110,7 +108,7 @@
     _hoverLayout.backgroundColor = [[NSColor grayColor] colorWithAlphaComponent:0.42];
     _selectionLayout.backgroundColor = [NSColor colorWithCalibratedRed:0.542 green:0.699 blue:0.807 alpha:0.420];
     
-    if (_itemTableView != nil && _collectionView == nil) {
+    if (_itemTableView != nil) {
         
         _itemTableViewcanDrag = NO;
         _itemTableViewcanDrop = NO;
@@ -120,24 +118,10 @@
         [_itemTableView setListener:self];
         [_itemTableView setFocusRingType:NSFocusRingTypeNone];
         
-    } else if (_itemTableView == nil && _collectionView != nil) {
-        _collectionView.delegate = self;
-        [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
-        [_collectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
-        [_collectionView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
-        [_collectionView setSelectable:YES];
-        [_collectionView setAllowsMultipleSelection:YES];
-    }
+    } 
     [_toolBarButtonView setHidden:NO];
     [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:self DisplayMode:YES];
-    [_noDataViewScrollView setBackgroundColor:[NSColor clearColor]];
-    NSArray *array = @[[NSColor clearColor],[NSColor clearColor]];
-    [_noDataCollectionView setBackgroundColors:array];
-    _noDataCollectionView.delegate = self;
-    [_noDataCollectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:NO];
-    [_noDataCollectionView setDraggingSourceOperationMask:NSDragOperationCopy forLocal:YES];
-    [_noDataCollectionView registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
-    [_noDataCollectionView setSelectable:YES];
+    
 //    _alertViewController = [[IMBAlertViewController alloc] initWithNibName:@"IMBAlertViewController" bundle:nil];
 //    [_alertViewController setDelegate:self];
 
@@ -244,8 +228,7 @@
     return YES;
 }
 
-- (NSArray *)tableView:(NSTableView *)tableView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedRowsWithIndexes:(NSIndexSet *)indexSet
-{
+- (NSArray *)tableView:(NSTableView *)tableView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedRowsWithIndexes:(NSIndexSet *)indexSet {
     NSArray *namesArray = nil;
     //获取目的url
     BOOL iconHide = NO;
@@ -257,8 +240,7 @@
     return namesArray;
 }
 
-- (void)delayTableViewdragToMac:(NSDictionary *)param
-{
+- (void)delayTableViewdragToMac:(NSDictionary *)param {
     NSIndexSet *indexSet = [param objectForKey:@"indexSet"];
     NSString *url = [param objectForKey:@"url"];
     NSTableView *tableView = [param objectForKey:@"tableView"];
@@ -580,8 +562,7 @@
 - (void)reload:(id)sender {
     NSLog(@"reload");
 }
-- (void)addItems:(id)sender
-{
+- (void)addItems:(id)sender {
 //    if (_ipod.beingSynchronized) {
 //        [self showAlertText:CustomLocalizedString(@"AirsyncTips", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
 //        return;
@@ -850,18 +831,18 @@
 
 - (void)copyCollectionContentToMac:(NSString *)filePath Result:(long long)result AnnoyVC:(NSViewController *)annoyVC{
     NSArray *selectedFile = [_arrayController selectedObjects];
-    
-    if (_transferController != nil) {
-        [_transferController release];
-        _transferController = nil;
-    }
-    _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:_category SelectItems:(NSMutableArray *)selectedFile ExportFolder:filePath];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
-    }else{
-        [self animationAddTransferView:_transferController.view];
-        
-    }
+//    
+//    if (_transferController != nil) {
+//        [_transferController release];
+//        _transferController = nil;
+//    }
+//    _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:_category SelectItems:(NSMutableArray *)selectedFile ExportFolder:filePath];
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
+//    }else{
+//        [self animationAddTransferView:_transferController.view];
+//        
+//    }
 }
 
 - (void)copyInfomationToMac:(NSString *)filePath indexSet:(NSIndexSet *)set Result:(long long)result AnnoyVC:(NSViewController *)annoyVC{
@@ -953,38 +934,38 @@
             dimensionDict = nil;
         }
     }
-    if (_transferController != nil) {
-        [_transferController release];
-        _transferController = nil;
-    }
-    
-   
-    _transferController = [[IMBTransferViewController alloc] initWithType:_category SelectItems:selectedArray ExportFolder:filePath Mode:mode];
-    
-    
-    if (result>0) {
-        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
-    }else{
-        [self animationAddTransferView:_transferController.view];
-        
-    }
+//    if (_transferController != nil) {
+//        [_transferController release];
+//        _transferController = nil;
+//    }
+//    
+//   
+//    _transferController = [[IMBTransferViewController alloc] initWithType:_category SelectItems:selectedArray ExportFolder:filePath Mode:mode];
+//    
+//    
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
+//    }else{
+//        [self animationAddTransferView:_transferController.view];
+//        
+//    }
 }
 
 #pragma mark - import Action
 - (void)importToDevice:(NSMutableArray *)paths photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID Result:(long long)result AnnoyVC:(NSViewController *)annoyVC{
-    if (_transferController != nil) {
-        [_transferController release];
-        _transferController = nil;
-    }
-    _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:_category importFiles:paths photoAlbum:photoAlbum playlistID:playlistID];
-    [_transferController setDelegate:self];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
-    }else{
-        [self animationAddTransferView:_transferController.view];
-        
-        
-    }
+//    if (_transferController != nil) {
+//        [_transferController release];
+//        _transferController = nil;
+//    }
+//    _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:_category importFiles:paths photoAlbum:photoAlbum playlistID:playlistID];
+//    [_transferController setDelegate:self];
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
+//    }else{
+//        [self animationAddTransferView:_transferController.view];
+//        
+//        
+//    }
 }
 
 #pragma mark - delete Action
@@ -1189,16 +1170,16 @@
 //            }
         }
         
-        if (_transferController != nil) {
-            [_transferController release];
-            _transferController = nil;
-        }
-        _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey DesIpodKey:tarIpod.uniqueKey SelectDic:dictionary];
-        if (result>0) {
-            [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
-        }else {
-            [self animationAddTransferView:_transferController.view];
-        }
+//        if (_transferController != nil) {
+//            [_transferController release];
+//            _transferController = nil;
+//        }
+//        _transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey DesIpodKey:tarIpod.uniqueKey SelectDic:dictionary];
+//        if (result>0) {
+//            [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
+//        }else {
+//            [self animationAddTransferView:_transferController.view];
+//        }
         [model release];
         
     }
@@ -1794,7 +1775,7 @@
     [_delArray release],_delArray = nil;
     [_playlistArray release],_playlistArray = nil;
     [_dataSourceArray release],_dataSourceArray = nil;
-    [_transferController release],_transferController = nil;
+//    [_transferController release],_transferController = nil;
     [_exportSetting release],_exportSetting = nil;
     [camera release], camera = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_ALLANGUAGE object:nil];

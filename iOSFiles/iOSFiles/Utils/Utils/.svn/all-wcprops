@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 62
-/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/Utils/Utils
+/svn/Mac/!svn/ver/1864/JPProject/iOSFiles/iOSFiles/Utils/Utils
 END
 NSBezierPath+BezierPathQuartzUtilities.h
 K 25
@@ -15,11 +15,17 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBExtractDeviceDBFiles.h
 END
+CALayer+Animation.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1864/JPProject/iOSFiles/iOSFiles/Utils/Utils/CALayer+Animation.h
+END
 IMBCommonTool.h
 K 25
 svn:wc:ra_dav:version-url
 V 78
-/svn/Mac/!svn/ver/1654/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBCommonTool.h
+/svn/Mac/!svn/ver/1850/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBCommonTool.h
 END
 NSBezierPath+BezierPathQuartzUtilities.m
 K 25
@@ -33,11 +39,23 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBExtractDeviceDBFiles.m
 END
+CALayer+Animation.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1864/JPProject/iOSFiles/iOSFiles/Utils/Utils/CALayer+Animation.m
+END
 IMBViewAnimation.h
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/Mac/!svn/ver/1684/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.h
+/svn/Mac/!svn/ver/1849/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.h
+END
+IMBCommonTool.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/1842/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBCommonTool.m
 END
 CommonDefine.h
 K 25
@@ -45,15 +63,9 @@ svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Utils/Utils/CommonDefine.h
 END
-IMBCommonTool.m
-K 25
-svn:wc:ra_dav:version-url
-V 78
-/svn/Mac/!svn/ver/1655/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBCommonTool.m
-END
 IMBViewAnimation.m
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.m
+/svn/Mac/!svn/ver/1849/JPProject/iOSFiles/iOSFiles/Utils/Utils/IMBViewAnimation.m
 END

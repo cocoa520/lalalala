@@ -502,7 +502,7 @@ static CGFloat const labelY = 10.0f;
 //            [self toMacSettingsWithInformation:information];
 //            
 //        }
-//            break;
+//            break;tomac
 //        case IMBDevicePageWindowFolderEnumVideo:
 //        {
 //            _category = Category_Movies;
@@ -601,7 +601,7 @@ static CGFloat const labelY = 10.0f;
 //                            }];
 //                            
 //                            _baseTransfer = [[IMBAppExport alloc] initWithIPodkey:information.ipod.uniqueKey exportTracks:exportArray exportFolder:filePath withDelegate:self];
-//                            
+//
 //                        }
 //                            break;
 //                        case Category_Movies:

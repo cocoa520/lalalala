@@ -10,6 +10,7 @@
 #import "IMBDeviceInfo.h"
 #import "IMBFileSystem.h"
 #import "StringHelper.h"
+#import "DriveItem.h"
 #include <sys/stat.h>
 #import "NSString+Compare.h"
 @implementation IMBBaseTransfer
@@ -601,6 +602,7 @@
     if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileEnd)]) {
         [_transferDelegate transferPrepareFileEnd];
     }
+
     for (int i = 0;i<[sourcePathArray count];i++) {
 //        if (_limitation.remainderCount == 0) {
 //            break;

@@ -8,7 +8,7 @@
 
 #import "IMBBlankDraggableCollectionView.h"
 #import "IMBNotificationDefine.h"
-#import "IMBSystemCollectionViewController.h"
+//#import "IMBSystemCollectionViewController.h"
 #import "StringHelper.h"
 @class IMBCollectionImageView;
 @implementation IMBBlankDraggableCollectionView

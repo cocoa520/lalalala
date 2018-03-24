@@ -24,11 +24,13 @@
         _downloadArray = [[NSMutableArray alloc] init];
         _downloadMaxCount = 3;
         _activedownloadCount = 0;
-        _downloadPath = [@"/Users/JGehry/Desktop/untitled folder" retain];
+        _downloadPath = [NSHomeDirectory() retain];
         _synchronQueue = dispatch_queue_create([@"synchronDownloadQueue" UTF8String],DISPATCH_QUEUE_SERIAL);
         _downloadManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        NSString *authorizationHeaderValue = [NSString stringWithFormat:@"Bearer %@", _accessToken];
-        [_downloadManager.requestSerializer setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+        if (_accessToken != nil) {
+            NSString *authorizationHeaderValue = [NSString stringWithFormat:@"Bearer %@", _accessToken];
+            [_downloadManager.requestSerializer setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+        }
     }
     return self;
 }
@@ -99,7 +101,7 @@
         __block DownLoader *weakself = self;
         task = [_downloadManager downloadTaskWithResumeData:data progress:^(NSProgress * _Nonnull downloadProgress) {
             [weakself notifyDownloadItem:weakItem withDownloadProgress:downloadProgress.fractionCompleted*100];
-            weakItem.currentSize = downloadProgress.completedUnitCount;
+            [weakself notifyDownloadItem:weakItem withDownloadCurrentSize:downloadProgress.completedUnitCount];
             //计算速度
             NSDictionary *progressInfo = downloadProgress.userInfo;
             NSNumber *startTimeValue = progressInfo[ProgressUserInfoStartTimeKey];
@@ -122,7 +124,7 @@
                     NSInteger speed = [[activeArray valueForKeyPath:@"@sum.speed"] longValue];
                     parentItem.speed = speed;
                     long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
-                    parentItem.progress = currentSize/(parentItem.fileSize*1.0)*100;
+                    [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
                 }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
@@ -174,7 +176,7 @@
         __block DownLoader *weakself = self;
         task = [_downloadManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
             [weakself notifyDownloadItem:weakItem withDownloadProgress:downloadProgress.fractionCompleted*100];
-            weakItem.currentSize = downloadProgress.completedUnitCount;
+            [weakself notifyDownloadItem:weakItem withDownloadCurrentSize:downloadProgress.completedUnitCount];
             NSLog(@"当前大小:%lld,总大小:%lld",weakItem.currentSize,downloadProgress.totalUnitCount);
             //计算速度
             NSDictionary *progressInfo = downloadProgress.userInfo;
@@ -198,7 +200,7 @@
                     NSInteger speed = [[activeArray valueForKeyPath:@"@sum.speed"] longValue];
                     parentItem.speed = speed;
                     long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
-                    parentItem.progress = currentSize/(parentItem.fileSize*1.0)*100;
+                    [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
                 }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
@@ -226,6 +228,7 @@
                         completionHandler(filePath,error);
                     }
                 }else{
+                
                     //如果是文件夹
                     id <DownloadAndUploadDelegate> parentItem = item.parent;
                     NSPredicate *cate1 =[NSPredicate predicateWithFormat:@"self.state=%d",DownloadStateComplete];
@@ -421,38 +424,57 @@
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadState:(TransferState)downloadState
 {
-    if ([item respondsToSelector:@selector(setState:)]) {
-        item.state = downloadState;
-    }else{
-        NSAssert(1,@"item未实现setDownloadState:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setState:)]) {
+            item.state = downloadState;
+        }else{
+            NSAssert(1,@"item未实现setDownloadState:");
+        }
+    });
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadProgress:(double)downloadProgress
 {
-    if ([item respondsToSelector:@selector(setProgress:)]) {
-        item.progress = downloadProgress;
-    }else{
-        NSAssert(1,@"item未实现setDownloadProgress:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setProgress:)]) {
+            item.progress = downloadProgress;
+        }else{
+            NSAssert(1,@"item未实现setDownloadProgress:");
+        }
+    });
+}
+
+- (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadCurrentSize:(long long)downcurrentSize
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setCurrentSize:)]) {
+            item.currentSize = downcurrentSize;
+        }else{
+            NSAssert(1,@"item未实现setCurrentSize:");
+        }
+    });
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadError:(NSError *)error
 {
-    if ([item respondsToSelector:@selector(setError:)]) {
-        item.error = error;
-    }else{
-        NSAssert(1,@"item未实现setDowndloadError:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setError:)]) {
+            item.error = error;
+        }else{
+            NSAssert(1,@"item未实现setDowndloadError:");
+        }
+    });
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadSpeed:(NSInteger)downloadSpeed
 {
-    if ([item respondsToSelector:@selector(setSpeed:)]) {
-        item.speed = downloadSpeed;
-    }else{
-        NSAssert(1,@"item未实现setDownloadSpeed:");
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([item respondsToSelector:@selector(setSpeed:)]) {
+            item.speed = downloadSpeed;
+        }else{
+            NSAssert(1,@"item未实现setDownloadSpeed:");
+        }
+    });
 }
 
 - (BOOL)isActivityLessMax

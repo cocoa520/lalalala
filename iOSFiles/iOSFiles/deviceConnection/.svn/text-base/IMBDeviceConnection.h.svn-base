@@ -79,9 +79,7 @@ typedef enum DeviceConnectMode {
     @private
     NSMutableArray *_allDevices;
     NSMutableArray *_alliPods;
-    NSMutableDictionary *_allMainControllerDic;
 }
-@property(nonatomic, retain, readonly)NSMutableDictionary *allMainControllerDic;
 @property(nonatomic, retain, readonly)NSMutableArray *allDevices;
 @property(nonatomic, retain, readonly)NSMutableArray *alliPods;
 

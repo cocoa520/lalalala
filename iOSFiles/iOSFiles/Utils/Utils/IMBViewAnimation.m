@@ -130,12 +130,7 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 
 
 + (void)animationMouseMovedWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
-//    [view setWantsLayer:YES];
-//    [view.layer removeAllAnimations];
-//    [view setWantsLayer:NO];
     [view setAlphaValue:0];
-    
-//    [NSAnimationContext endGrouping];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         [context setDuration:IMBViewAnimInterval];
@@ -254,13 +249,38 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 + (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion {
     
     
-    //    [NSAnimationContext endGrouping];
-    
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         [context setDuration:timeInterval];
         [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
         [view.animator setFrame:frame];
     } completionHandler:completion];
+}
+
++ (void)animationOpacityWithView:(NSView *)view timeInterval:(CGFloat)timeInterval isHidden:(BOOL)isHidden {
+    NSNumber *opacityFromValue;
+    NSNumber *opacityToValue;
+    
+    if (isHidden) {
+        opacityFromValue = [NSNumber numberWithFloat:1];
+        opacityToValue = [NSNumber numberWithFloat:0];
+    }else {
+        opacityFromValue = [NSNumber numberWithFloat:0];
+        opacityToValue = [NSNumber numberWithFloat:1];
+    }
+    if (timeInterval == 0) {
+        timeInterval = MidiumSizeAnimationTimeInterval;
+    }
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.beginTime = CACurrentMediaTime();
+    animation.fromValue = opacityFromValue;
+    animation.toValue = opacityToValue;
+    animation.duration = timeInterval;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    
+    [view setWantsLayer:YES];
+    [view.layer removeAllAnimations];
+    [view.layer addAnimation:animation forKey:@"opacityAnim"];
 }
 
 @end

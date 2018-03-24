@@ -12,7 +12,7 @@
 #import "DateHelper.h"
 
 @implementation IMBDropBoxManage
-- (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate{
+- (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate {
     if ([super initWithUserID:userID withDelegate:delegate]) {
         _driveDataAry = [[NSMutableArray alloc]init];
         _userID = userID;
@@ -106,7 +106,7 @@
     
 }
 
-- (void)recursiveDirectoryContentsDics:(NSString *)folerID{
+- (void)recursiveDirectoryContentsDics:(NSString *)folerID {
     [_dropbox getList:folerID success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *ary = [dic objectForKey:@"entries"];
@@ -177,23 +177,29 @@
 
 #pragma mark -- OneDrive Action
 //下载
-- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     [_dropbox downloadItem:item];
 }
+
 //上传
 - (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     [_dropbox uploadItem:item];
 }
 
-- (void)deleteDriveItem:(NSMutableArray *) deleteItemAry {
+- (void)deleteDriveItem:(NSMutableArray *)deleteItemAry {
     [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
         
     } fail:^(DriveAPIResponse *response) {
         
     }];
 }
+
+- (void)userDidLogout {
+    [_dropbox userDidLogout];
+}
+
 //时间转换
-- (NSString *)dateForm2001DateSting:(NSString *) dateSting {
+- (NSString *)dateForm2001DateSting:(NSString *)dateSting {
     if ([StringHelper stringIsNilOrEmpty:dateSting] ) {
         return @"";
     }
@@ -205,8 +211,6 @@
 }
 
 #pragma mark -- iCloudDrive Action
-
-
 -(void)dealloc {
     [super dealloc];
     [_dropbox release];

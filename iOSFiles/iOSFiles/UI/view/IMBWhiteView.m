@@ -55,91 +55,91 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 
-        NSBezierPath *clipPath = [NSBezierPath bezierPathWithRect:dirtyRect];
-        if (_backgroundColor != nil) {
-            //[NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
-            [clipPath setWindingRule:NSEvenOddWindingRule];
-            [clipPath addClip];
-            [_backgroundColor set];
-            [clipPath fill];
+    NSBezierPath *clipPath = [NSBezierPath bezierPathWithRect:dirtyRect];
+    if (_backgroundColor != nil) {
+        //[NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
+        [clipPath setWindingRule:NSEvenOddWindingRule];
+        [clipPath addClip];
+        [_backgroundColor set];
+        [clipPath fill];
+    }else {
+        // Drawing code here.
+        //NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
+ 
+        [clipPath setWindingRule:NSEvenOddWindingRule];
+        [clipPath addClip];
+        [[NSColor colorWithDeviceRed:255.0/255 green:255.0/255 blue:255.0/255 alpha:1] set];
+        [clipPath fill];
+        
+    }
+    [clipPath closePath];
+    
+    if (_isHaveLine) {
+        NSRect rect = dirtyRect;
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        [path moveToPoint:NSMakePoint(0, 0)];
+        [path lineToPoint:NSMakePoint(rect.size.width,0)];
+        [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] setStroke];
+        [path stroke];
+    }
+    //draw top line
+    if (_isUpline) {
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMaxY(dirtyRect))];
+        [path setLineWidth:2.f];
+        [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
+        [path stroke];
+        [path closePath];
+        _isUpline = NO;
+    }
+    //draw fillet
+    if (_isRegistedTextView) {
+        NSBezierPath *cPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
+        [cPath setLineWidth:2];
+        [cPath addClip];
+        [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
+        [cPath stroke];
+        [cPath closePath];
+    }
+    
+    //最下面的线
+    if (_isBommt) {
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMinY(dirtyRect))];
+        [path setLineWidth:2.f];
+        [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
+        [path stroke];
+        [path closePath];
+        //        _isBommt = NO;
+    }
+    
+    //画四条线
+    if (_isDrawFrame) {
+        NSBezierPath *path = [NSBezierPath bezierPath];
+        [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMaxY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMinY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect))];
+        [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
+        [path setLineWidth:2.f];
+        if (_borderColor) {
+            [_borderColor set];
         }else {
-            // Drawing code here.
-            //NSBezierPath *clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
-     
-                [clipPath setWindingRule:NSEvenOddWindingRule];
-                [clipPath addClip];
-                [[NSColor colorWithDeviceRed:255.0/255 green:255.0/255 blue:255.0/255 alpha:1] set];
-                [clipPath fill];
-            
-        }
-        [clipPath closePath];
-        
-        if (_isHaveLine) {
-            NSRect rect = dirtyRect;
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            [path moveToPoint:NSMakePoint(0, 0)];
-            [path lineToPoint:NSMakePoint(rect.size.width,0)];
-            [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] setStroke];
-            [path stroke];
-        }
-        //draw top line
-        if (_isUpline) {
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMaxY(dirtyRect))];
-            [path setLineWidth:2.f];
             [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
-            [path stroke];
-            [path closePath];
-            _isUpline = NO;
         }
-        //draw fillet
-        if (_isRegistedTextView) {
-            NSBezierPath *cPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5.0 yRadius:5.0];
-            [cPath setLineWidth:2];
-            [cPath addClip];
-            [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
-            [cPath stroke];
-            [cPath closePath];
-        }
-        
-        //最下面的线
-        if (_isBommt) {
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMinY(dirtyRect))];
-            [path setLineWidth:2.f];
-            [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
-            [path stroke];
-            [path closePath];
-            //        _isBommt = NO;
-        }
-        
-        //画四条线
-        if (_isDrawFrame) {
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            [path moveToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMaxY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMaxX(dirtyRect), NSMinY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMinY(dirtyRect))];
-            [path lineToPoint:NSMakePoint(NSMinX(dirtyRect), NSMaxY(dirtyRect))];
-            [path setLineWidth:2.f];
-            if (_borderColor) {
-                [_borderColor set];
-            }else {
-                [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
-            }
-            [path stroke];
-            [path closePath];
-        }
-        if (_hasCorner) {
-            NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-            [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
-            [path addClip];
-            [path setLineWidth:2];
-            [path stroke];
-            [path closePath];
-        }
+        [path stroke];
+        [path closePath];
+    }
+    if (_hasCorner) {
+        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+        [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
+        [path addClip];
+        [path setLineWidth:2];
+        [path stroke];
+        [path closePath];
+    }
 }
 
 -(BOOL)mouseDownCanMoveWindow {

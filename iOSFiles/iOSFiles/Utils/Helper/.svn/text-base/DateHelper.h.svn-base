@@ -39,4 +39,5 @@
 + (NSString *)longToDateString:(long)timeStamp withMode:(int)mode;
 + (NSUInteger)getDateLength:(long long)date;
 + (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate;
++ (NSString *)dateForm2001DateSting:(NSString *) dateSting;
 @end

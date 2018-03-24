@@ -107,8 +107,6 @@
     [super dealloc];
 }
 
-
-
 - (void)mouseExited:(NSEvent *)theEvent {
     if (!_isleftBtn) {
         _buttonType = BackExitButton;

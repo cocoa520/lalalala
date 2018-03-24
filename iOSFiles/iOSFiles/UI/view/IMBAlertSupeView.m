@@ -25,7 +25,30 @@
     
 //    NSRectFill(dirtyRect);
     // Drawing code here.
+//    [[NSColor cyanColor] set];
+//    NSRectFill(dirtyRect);
 }
 
+
+- (void)awakeFromNib {
+    [self addTrackingRect:self.bounds owner:self userData:nil assumeInside:0];
+}
+
+#pragma mark - 鼠标响应事件
+- (void)mouseUp:(NSEvent *)theEvent {
+    
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    
+}
 
 @end

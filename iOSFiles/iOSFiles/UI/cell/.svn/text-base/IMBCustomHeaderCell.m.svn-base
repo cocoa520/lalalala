@@ -25,7 +25,6 @@
 
 #define LINE_MARGIN_Y	6
 
-
 - (id)copyWithZone:(NSZone *)zone {
     IMBCustomHeaderCell *cell = (IMBCustomHeaderCell *)[super copyWithZone:zone];
     // The image ivar will be directly copied; we need to retain or copy it.
@@ -46,14 +45,14 @@
          [attributedString setAlignment:NSLeftTextAlignment range:NSMakeRange(0, [attributedString length])];
         [attributedString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:NSMakeRange(0, [attributedString length])];
         [attributedString addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_ORDINARY range:NSMakeRange(0, [attributedString length])];
-         //[attributedString setAlignment:NSCenterTextAlignment range:NSMakeRange(0, [attributedString length])];
+    
         _hasLeftTitleBorderLine = true;
 		[self setAttributedStringValue: attributedString];
                         
         NSArray* colorArray = [NSArray arrayWithObjects:
-                               COLOR_PROMPTBTN_NORMAL,
-                               COLOR_PROMPTBTN_NORMAL,
-                               COLOR_PROMPTBTN_NORMAL,
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
+                               [NSColor whiteColor],
                                nil];
 
         _ascendingImage = [[NSImage imageNamed:@"list_arrow"] retain];
@@ -68,7 +67,7 @@
 	
 }
 
-- (void)setIsShowTriangle:(BOOL)isShowTriangle{
+- (void)setIsShowTriangle:(BOOL)isShowTriangle {
     _isShowTriangle = isShowTriangle;
 }
 
@@ -186,9 +185,6 @@
 	[[self attributedStringValue] drawInRect:stringFrame];
 }
 
-
-
-#pragma mark -
 #pragma mark Overridden methods (NSCell)
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
@@ -198,8 +194,6 @@
 	} else {
 		[self _drawInRect:cellFrame hilighted:NO];
 	}
-    
-    
     if (_isShowTriangle) {
         int dis = 14;
         NSSize imageSize = _ascendingImage.size;

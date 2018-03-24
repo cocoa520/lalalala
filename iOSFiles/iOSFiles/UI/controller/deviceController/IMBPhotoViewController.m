@@ -9,6 +9,8 @@
 #import "IMBPhotoViewController.h"
 #import "IMBTrack.h"
 #import "IMBBookEntity.h"
+#import "IMBAppEntity.h"
+#import "IMBAnimation.h"
 @interface IMBPhotoViewController ()
 
 @end
@@ -34,7 +36,7 @@
     [super awakeFromNib];
     [_gridView setWantsLayer:YES];
     [_gridView.layer setBackgroundColor:[NSColor whiteColor].CGColor];
-    _gridView.itemSize = NSMakeSize(108, 112);
+    _gridView.itemSize = NSMakeSize(154, 150);
     _gridView.backgroundColor = [NSColor whiteColor];
     _gridView.scrollElasticity = NO;
     _gridView.allowsDragAndDrop = YES;
@@ -103,9 +105,7 @@
     
     if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
         IMBTrack *track = [array objectAtIndex:index];
-        OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-        NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-        item.bgImg = picture;
+        item.bgImg = [NSImage imageNamed:@"app_default"];
         item.itemTitle = track.title;
         //    [item setNeedsDisplay:YES];
         item.selected = track.checkState;
@@ -125,9 +125,7 @@
         }
     }else if (_categoryNodeEunm == Category_iBooks) {
         IMBBookEntity *bookEntity = [array objectAtIndex:index];
-        OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-        NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-        item.bgImg = picture;
+        item.bgImg = [NSImage imageNamed:@"app_default"];
         item.itemTitle = bookEntity.bookName;
         //    [item setNeedsDisplay:YES];
         item.selected = bookEntity.checkState;
@@ -143,14 +141,27 @@
             }
         }
     }else if (_categoryNodeEunm == Category_Applications) {
-        _dataSourceArray = _information.appArray;
+        IMBAppEntity *appEntit = [array objectAtIndex:index];
+        item.bgImg = [NSImage imageNamed:@"app_default"];
+        item.itemTitle = appEntit.appName;
+        //    [item setNeedsDisplay:YES];
+        item.selected = appEntit.checkState;
+        item.itemImage = appEntit.appIconImage;
+        item.isFileManager = YES;
+        if (appEntit.checkState == Check) {
+            if (![gridView.selectedItems containsObject:item]) {
+                [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
+            }
+        }else{
+            if ([gridView.selectedItems containsObject:item]) {
+                [[gridView getSelectedItemsDic] removeObjectForKey:@(item.index)];
+            }
+        }
     }else if (_categoryNodeEunm == Category_System) {
         //        _dataSourceArray = _information.;
     }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
         IMBPhotoEntity *photoEntity = [array objectAtIndex:index];
-        OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-        NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-        item.bgImg = picture;
+        item.bgImg = [NSImage imageNamed:@"app_default"];
         item.itemTitle = photoEntity.photoName;
         //    [item setNeedsDisplay:YES];
         item.selected = photoEntity.checkState;
@@ -320,6 +331,8 @@
     
     return [imageData autorelease];
 }
+
+
 
 
 @end

@@ -32,4 +32,6 @@ APPKIT_EXTERN CGFloat const MidiumSizeAnimationTimeInterval;
 + (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame disable:(BOOL)disable completion:(void(^)(void))completion;
 + (void)animationScaleWithView:(NSView *)view frame:(NSRect)frame timeInterval:(CGFloat)timeInterval disable:(BOOL)disable completion:(void(^)(void))completion;
 
++ (void)animationOpacityWithView:(NSView *)view timeInterval:(CGFloat)timeInterval isHidden:(BOOL)isHidden;
+
 @end

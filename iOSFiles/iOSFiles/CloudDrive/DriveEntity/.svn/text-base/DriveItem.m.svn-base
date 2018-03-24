@@ -42,8 +42,9 @@
 @synthesize toDriveName = _toDriveName;
 @synthesize zone = _zone;
 @synthesize docwsID = _docwsID;
-
-
+@synthesize dataAry = _dataAry;
+@synthesize currentSizeStr = _currentSizeStr;
+@synthesize isStart = _isStart;
 - (NSString *)identifier
 {
     NSString *identifier = nil;

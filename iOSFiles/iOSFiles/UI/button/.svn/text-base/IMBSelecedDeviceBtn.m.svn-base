@@ -22,6 +22,7 @@
 @synthesize textColor = _textColor;
 @synthesize isShowIcon = _isShowIcon;
 @synthesize isShowTrangle = _isShowTrangle;
+@synthesize isMainPageView = _isMainPageView;
 
 #pragma mark - initialize
 - (id)initWithFrame:(NSRect)frame {
@@ -61,122 +62,127 @@
 //    [IMBGrayColor(204) set];
 //    [clipPath stroke];
 //    [clipPath closePath];
-    
-    //图片
-    int arrowWith = 0;
-    if (_isShowTrangle) {
-        NSImage *image = nil;
-        if (self.isEnabled) {
-            image = [NSImage imageNamed:@"arrow"];
-        }
-        arrowWith = image.size.width;
-    }
-    
-    //Icon图标
-    NSRect drawingRect = NSMakeRect(0, 0, 0, 0);
-    if (_isShowIcon) {
-        NSImage *iconImage = nil;
-        if (_connectTpye == general_Android) {
-            iconImage = [NSImage imageNamed:@"device_name_android"];
-            int  xPos = 0;
-            if (_isShowTrangle) {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
-            }else {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
-            }
-            NSRect imageRect;
-            imageRect.origin = NSZeroPoint ;
-            imageRect.size = iconImage.size;
-            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 5);
-            drawingRect.size = imageRect.size;
-            [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }else if (_connectTpye == general_iCloud || _connectTpye == 7000) {
-            iconImage = [NSImage imageNamed:@"device_name_icloud"];
-            int  xPos = 0;
-            if (_isShowTrangle) {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
-            }else {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
-            }
-            NSRect imageRect;
-            imageRect.origin = NSZeroPoint ;
-            imageRect.size = iconImage.size;
-            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 5);
-            drawingRect.size = imageRect.size;
-            [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }else if (_connectTpye == 0) {
-            iconImage = [NSImage imageNamed:@"device_name_noconnect"];
-            int  xPos = 0;
-            if (_isShowTrangle) {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 16)) / 2 ;
-            }else {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 18)) / 2 ;
-            }
-            NSRect imageRect;
-            imageRect.origin = NSZeroPoint ;
-            imageRect.size = iconImage.size;
-            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 4);
-            drawingRect.size = imageRect.size;
-            [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }else {
-            iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected.png"];
-            [iconImage setResizingMode:NSImageResizingModeStretch];
-            int  xPos = 0;
-            if (_isShowTrangle) {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
-            }else {
-                xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
-            }
-            _iconX = xPos;
-            NSRect imageRect;
-            imageRect.origin = NSZeroPoint ;
-            imageRect.size = iconImage.size;
-            drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 6);
-            drawingRect.size = imageRect.size;
-            [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        }
-    }
-
-    //文字
-    if (_buttonName != nil) {
+    if (_isMainPageView) {
+        
+    }else {
+        //图片
+        int arrowWith = 0;
         if (_isShowTrangle) {
-            NSSize size;
-            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:100 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
-            NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 2 , 5, size.width, 22);
-            if (_connectTpye == 0) {
-                textRect = NSMakeRect(NSMaxX(drawingRect) + 5 , 5, size.width, 22);
+            NSImage *image = nil;
+            if (self.isEnabled) {
+                image = [NSImage imageNamed:@"arrow"];
             }
-            drawingRect = textRect;
-            [attrStr drawInRect:textRect];
-        }else {
-            NSSize size;
-            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:155 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
-            NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 4 , 3, size.width, 22);
-            if (_connectTpye == 0) {
-                textRect = NSMakeRect(NSMaxX(drawingRect) + 6 , 3, size.width, 22);
+            arrowWith = image.size.width;
+        }
+        
+        //Icon图标
+        NSRect drawingRect = NSMakeRect(0, 0, 0, 0);
+        if (_isShowIcon) {
+            NSImage *iconImage = nil;
+            if (_connectTpye == general_Android) {
+                iconImage = [NSImage imageNamed:@"device_name_android"];
+                int  xPos = 0;
+                if (_isShowTrangle) {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
+                }else {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
+                }
+                NSRect imageRect;
+                imageRect.origin = NSZeroPoint ;
+                imageRect.size = iconImage.size;
+                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 5);
+                drawingRect.size = imageRect.size;
+                [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+            }else if (_connectTpye == general_iCloud || _connectTpye == 7000) {
+                iconImage = [NSImage imageNamed:@"device_name_icloud"];
+                int  xPos = 0;
+                if (_isShowTrangle) {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
+                }else {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
+                }
+                NSRect imageRect;
+                imageRect.origin = NSZeroPoint ;
+                imageRect.size = iconImage.size;
+                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 5);
+                drawingRect.size = imageRect.size;
+                [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+            }else if (_connectTpye == 0) {
+                iconImage = [NSImage imageNamed:@"device_name_noconnect"];
+                int  xPos = 0;
+                if (_isShowTrangle) {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 16)) / 2 ;
+                }else {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 18)) / 2 ;
+                }
+                NSRect imageRect;
+                imageRect.origin = NSZeroPoint ;
+                imageRect.size = iconImage.size;
+                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 4);
+                drawingRect.size = imageRect.size;
+                [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+            }else {
+                iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected.png"];
+                [iconImage setResizingMode:NSImageResizingModeStretch];
+                int  xPos = 0;
+                if (_isShowTrangle) {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 14)) / 2;
+                }else {
+                    xPos = (NSWidth(dirtyRect) - (iconImage.size.width + _sizeWidth.width + arrowWith + 4)) / 2;
+                }
+                _iconX = xPos;
+                NSRect imageRect;
+                imageRect.origin = NSZeroPoint ;
+                imageRect.size = iconImage.size;
+                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 6);
+                drawingRect.size = imageRect.size;
+                [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
             }
-            drawingRect = textRect;
-            [attrStr drawInRect:textRect];
         }
-        _textX = drawingRect.origin.x;
-    }
-    
-    if (_isShowTrangle) {
-        NSImage *image = nil;
-        if (self.isEnabled) {
-            image = [NSImage imageNamed:@"device_icon_arrow.png"];
+        
+        //文字
+        if (_buttonName != nil) {
+            if (_isShowTrangle) {
+                NSSize size;
+                NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:100 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
+                NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 2 , 5, size.width, 22);
+                if (_connectTpye == 0) {
+                    textRect = NSMakeRect(NSMaxX(drawingRect) + 5 , 5, size.width, 22);
+                }
+                drawingRect = textRect;
+                [attrStr drawInRect:textRect];
+            }else {
+                NSSize size;
+                NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:_textSize] withLineSpacing:0 withMaxWidth:155 withSize:&size withColor:_textColor withAlignment:NSCenterTextAlignment];
+                NSRect textRect = NSMakeRect(NSMaxX(drawingRect) + 4 , 3, size.width, 22);
+                if (_connectTpye == 0) {
+                    textRect = NSMakeRect(NSMaxX(drawingRect) + 6 , 3, size.width, 22);
+                }
+                drawingRect = textRect;
+                [attrStr drawInRect:textRect];
+            }
+            _textX = drawingRect.origin.x;
         }
-        NSRect drawingArrowRect;
-        NSRect imageRect;
-        imageRect.origin = NSZeroPoint ;
-        imageRect.size = image.size;
-        drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 7);
-        drawingArrowRect.size = imageRect.size;
-        [image drawInRect:drawingArrowRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-    }
-}
+        
+        if (_isShowTrangle) {
+            NSImage *image = nil;
+            if (self.isEnabled) {
+                image = [NSImage imageNamed:_rightIcon];
+                //            image = [NSImage imageNamed:@"device_icon_arrow.png"];
+            }
+            NSRect drawingArrowRect;
+            NSRect imageRect;
+            imageRect.origin = NSZeroPoint ;
+            imageRect.size = image.size;
+            drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 7);
+            drawingArrowRect.size = imageRect.size;
+            [image drawInRect:drawingArrowRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        }
 
-- (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType {
+    }
+  }
+
+- (void)configButtonName:(NSString *)buttonName WithTextColor:(NSColor *)textColor WithTextSize:(float)size WithIsShowIcon:(BOOL)showIcon WithIsShowTrangle:(BOOL)showTrangle  WithIsDisable:(BOOL)isDisable withConnectType:(IPodFamilyEnum)connectType rightIcon:(NSString *)rightIcon {
     _buttonName = [buttonName retain];
     if (showTrangle) {
         NSSize textsize;
@@ -191,6 +197,7 @@
 //        [StringHelper TruncatingTailForStringDrawing:buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:size] withLineSpacing:0 withMaxWidth:150 withSize:&textsize withColor:textColor withAlignment:NSLeftTextAlignment];
 //        [self setFrameSize:NSMakeSize(44+textsize.width, NSHeight(self.frame))];
     }
+    _rightIcon = rightIcon;
     _textColor = [textColor retain];
     _textSize = size;
     _isShowIcon = showIcon;
@@ -260,9 +267,11 @@
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     _mouseStatus = MouseEnter;
+    IMBFFuncLog
     [[NSNotificationCenter defaultCenter] postNotificationName:REFREASH_TOPVIEW object:nil];
     [self setNeedsDisplay:YES];
     if (!_isDisable) {
+        
         if (self.mouseEntered) {
             self.mouseEntered();
         }

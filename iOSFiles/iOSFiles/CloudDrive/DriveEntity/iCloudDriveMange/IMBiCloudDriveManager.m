@@ -34,11 +34,22 @@
     return self;
 }
 
-- (void)driveDidLogIn:(BaseDrive *)drive{
+- (void)driveDidLogIn:(BaseDrive *)drive {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //保存访问令牌和刷新令牌到本地
     [defaults setObject:_iCloudDrive.cookie forKey:_userID];
     [defaults synchronize];
+    [_iCloudDrive getUsedStorage:@"0" success:^(DriveAPIResponse *response) {
+        NSDictionary *storageDic = [response.content objectForKey:@"storageUsageInfo"];
+        if ([storageDic.allKeys containsObject:@"totalStorageInBytes"]) {
+            _iCloudDrive.totalStorageInBytes = [[storageDic objectForKey:@"totalStorageInBytes"] longLongValue];
+        }
+        if ([storageDic.allKeys containsObject:@"usedStorageInBytes"]) {
+            _iCloudDrive.usedStorageInBytes = [[storageDic objectForKey:@"usedStorageInBytes"] longLongValue];
+        }
+    } fail:^(DriveAPIResponse *response) {
+        NSLog(@"");
+    }];
     [_iCloudDrive getList:@"0" success:^(DriveAPIResponse *response) {
         NSMutableArray *ary = response.content;
         NSMutableDictionary *dic = [ary objectAtIndex:0];
@@ -54,6 +65,9 @@
             NSString *zone = [itemDic objectForKey:@"zone"];
             NSString *drivewsid = [itemDic objectForKey:@"drivewsid"];
             NSString *etag = [itemDic objectForKey:@"etag"];
+            if (![StringHelper stringIsNilOrEmpty:extension]) {
+                extension = [extension lowercaseString];
+            }
             
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
             drviceEntity.createdDateString = createdString;
@@ -62,27 +76,43 @@
             drviceEntity.fileSize = size;
             drviceEntity.zone = zone;
             drviceEntity.etag = etag;
-            drviceEntity.fileID = docwsid;
-            drviceEntity.docwsid = drivewsid;
+            drviceEntity.fileID = drivewsid;
+            drviceEntity.docwsid = docwsid;
             drviceEntity.extension = extension;
             
             if ([file isEqualToString:@"FOLDER"]) {
-                OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-                NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
                 drviceEntity.isFolder = YES;
-                drviceEntity.image = [picture retain];
+                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
                 drviceEntity.extension = @"Folder";
-            }else{
-                NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-                NSImage *icon = [workSpace iconForFileType:extension];
-                drviceEntity.image = [icon retain];
-                [workSpace release];
+            }else {
+                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
+                NSImage *image;
+                if (type == ImageFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
+                } else if (type == MusicFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
+                } else if (type == MovieFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
+                } else if (type == TxtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+                } else if (type == DocFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+                } else if (type == BookFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == PPtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == ZIPFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else {
+                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
+                }
+                drviceEntity.image = image;
             }
             [_driveDataAry addObject:drviceEntity];
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_deivceDelegate switchiCloudDriveViewController];
+            [_deivceDelegate switchiCloudDriveViewControllerWithiCloudDrive:_iCloudDrive];
         });
     } fail:^(DriveAPIResponse *response) {
         
@@ -93,7 +123,13 @@
     //    });
 }
 
-- (void)recursiveDirectoryContentsDics:(NSString *)folerID{
+- (void)userDidLogout {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:_userID];
+    [_iCloudDrive userDidLogout];
+}
+
+- (void)recursiveDirectoryContentsDics:(NSString *)folerID {
     [_iCloudDrive getList:folerID success:^(DriveAPIResponse *response) {
         NSMutableArray *ary = response.content;
         NSMutableDictionary *dic = [ary objectAtIndex:0];
@@ -109,6 +145,9 @@
             NSString *file = [itemDic objectForKey:@"type"];
             NSString *drivewsid = [itemDic objectForKey:@"drivewsid"];
             NSString *etag = [itemDic objectForKey:@"etag"];
+            if (![StringHelper stringIsNilOrEmpty:extension]) {
+                extension = [extension lowercaseString];
+            }
             
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
             drviceEntity.createdDateString = createdString;
@@ -116,21 +155,37 @@
             drviceEntity.fileName = name;
             drviceEntity.fileSize = size;
             drviceEntity.etag = etag;
-            drviceEntity.fileID = docwsid;
-            drviceEntity.docwsid = drivewsid;
+            drviceEntity.docwsid = docwsid;
+            drviceEntity.fileID = drivewsid;
             drviceEntity.extension = extension;
             
             if ([file isEqualToString:@"FOLDER"]) {
-                OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-                NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
                 drviceEntity.isFolder = YES;
-                drviceEntity.image = [picture retain];
+                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
                 drviceEntity.extension = @"Folder";
-            }else{
-                NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-                NSImage *icon = [workSpace iconForFileType:extension];
-                drviceEntity.image = [icon retain];
-                [workSpace release];
+            }else {
+                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
+                NSImage *image;
+                if (type == ImageFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
+                } else if (type == MusicFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
+                } else if (type == MovieFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
+                } else if (type == TxtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+                } else if (type == DocFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+                } else if (type == BookFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == PPtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == ZIPFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else {
+                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
+                }
+                drviceEntity.image = image;
             }
             [dataAry addObject:drviceEntity];
             [drviceEntity release];
@@ -146,7 +201,7 @@
 }
 
 - (void)driveDidLogOut:(BaseDrive *)drive{
-    
+    [_iCloudDrive userDidLogout];
 }
 
 - (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error{
@@ -173,7 +228,7 @@
     
 }
 
-- (void)setTwoCodeID:(NSString *)twoCodeID{
+- (void)setTwoCodeID:(NSString *)twoCodeID {
     [_iCloudDrive verifySecurityCode:twoCodeID rememberMe:YES];
 }
 
@@ -182,22 +237,53 @@
 }
 
 #pragma mark -- OneDrive Action
-//下载
+//下载单个
 - (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+    [[_iCloudDrive downLoader] setDownloadPath:_downloadPath];
     [_iCloudDrive downloadItem:item];
 }
-//上传
+
+//下载多个
+- (void)driveDownloadItemsToMac:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [[_iCloudDrive downLoader] setDownloadPath:_downloadPath];
+    [_iCloudDrive downloadItems:items];
+}
+
+//上传单个
 - (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     [_iCloudDrive uploadItem:item];
 }
 
-- (void)deleteDriveItem:(NSMutableArray *) deleteItemAry {
+//上传多个
+- (void)driveUploadItems:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [_iCloudDrive uploadItems:items];
+}
+
+//删除
+- (void)deleteDriveItem:(NSMutableArray *)deleteItemAry {
     [_iCloudDrive deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
-        
+        NSMutableDictionary *dic = response.content;
+        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+        for (NSDictionary *dic in array) {
+            NSString *status = @"";
+            if ([dic.allKeys containsObject:@"status"]) {
+                status = [dic objectForKey:@"status"];
+            }
+            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
+                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:dataAry];
+            [dataAry release];
+        });
     } fail:^(DriveAPIResponse *response) {
         
     }];
 }
+
+
 
 //时间转换
 - (NSString *)dateForm2001DateSting:(NSString *) dateSting {
