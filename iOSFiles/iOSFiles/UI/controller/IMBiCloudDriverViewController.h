@@ -13,7 +13,7 @@
 #import "IMBToolButtonView.h"
 #import "DriveItem.h"
 #import "IMBDriveEntity.h"
-
+#import "IMBCommonEnum.h"
 @interface IMBiCloudDriverViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource> {
     
     IBOutlet IMBWhiteView *_topView;
@@ -64,7 +64,9 @@
     BOOL _isShow;
     IMBDriveEntity *_curEntity;
     BOOL _isShowTranfer;
+    ChooseLoginModelEnum _chooseLogModelEnmu;
+    BOOL _isEdit;
 }
-- (id)initWithDrivemanage:(IMBDriveBaseManage*)driveManage withDelegete:(id)delegete;
+- (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum;
 
 @end

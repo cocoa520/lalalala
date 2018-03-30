@@ -19,22 +19,22 @@
 @synthesize isShowTips = _isShowTips;
 @synthesize hasSpot = _hasSpot;
 @synthesize isDrawRectLine = _isDrawRectLine;
+@synthesize switchBtnState = _switchBtnState;
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
+        _switchBtnState = 1;
     }
     return self;
 }
-
-
 
 - (void)setForBidImage:(NSImage *)forBidImage
 {
     if (_forBidImage != forBidImage) {
         [_forBidImage release];
         _forBidImage = [forBidImage retain];
-//        [self setImage:_forBidImage];
         [self setNeedsDisplay:YES];
     }
 }
@@ -43,12 +43,9 @@
 {
     [super setEnabled:flag];
     if (flag) {
-//        [self setImage:_mouseExitImage];
         _status = 1;
         [self setAlphaValue:1.0];
-    }else
-    {
-//        [self setImage:_forBidImage];
+    }else {
         _status = 4;
         [self setAlphaValue:0.5];
     }
@@ -88,11 +85,26 @@
     [self setImagePosition:NSImageOnly];
     [self setBordered:NO];
     [self.cell setHighlightsBy:NSNoCellMask];
+    if (_mouseEnteredImage != nil) {
+        [_mouseEnteredImage release];
+        _mouseEnteredImage = nil;
+    }
     _mouseEnteredImage=[image1 retain];
+    if (_mouseExitImage != nil) {
+        [_mouseExitImage release];
+        _mouseExitImage = nil;
+    }
     _mouseExitImage=[image2 retain];
+    if (_mouseDownImage != nil) {
+        [_mouseDownImage release];
+        _mouseDownImage = nil;
+    }
     _mouseDownImage=[image3 retain];
+    if (_forBidImage != nil) {
+        [_forBidImage release];
+        _forBidImage = nil;
+    }
     _forBidImage = [forBidImage retain];
-//    [self setImage:image2];
     [self setNeedsDisplay:YES];
 }
 
@@ -107,22 +119,30 @@
     [self setImagePosition:NSImageOnly];
     [self setBordered:NO];
     [self.cell setHighlightsBy:NSNoCellMask];
-    self.MouseEnteredImage=[image1 retain];
-    self.MouseExitImage=[image2 retain];
-    self.MouseDownImage=[image3 retain];
+    if (_mouseEnteredImage != nil) {
+        [_mouseEnteredImage release];
+        _mouseEnteredImage = nil;
+    }
+    _mouseEnteredImage=[image1 retain];
+    if (_mouseExitImage != nil) {
+        [_mouseExitImage release];
+        _mouseExitImage = nil;
+    }
+    _mouseExitImage=[image2 retain];
+    if (_mouseDownImage != nil) {
+        [_mouseDownImage release];
+        _mouseDownImage = nil;
+    }
+    _mouseDownImage=[image3 retain];
     [self setNeedsDisplay:YES];
 }
 
-- (void)setIsSelected:(BOOL)isSelected
-{
+- (void)setIsSelected:(BOOL)isSelected {
     if (_isSelected != isSelected) {
         _isSelected = isSelected;
         if (_isSelected) {
-//            [self setImage:_mouseEnteredImage];
             _status = 2;
-        }else
-        {
-//            [self setImage:_mouseExitImage];
+        }else {
             _status = 1;
         }
         [self setNeedsDisplay:YES];
@@ -136,11 +156,8 @@
         return;
     }
     if (self.isEnabled&&_mouseEnteredImage != nil) {
-//        [self setImage:_mouseEnteredImage];
         _status = 2;
-    }else if(_mouseEnteredImage != nil)
-    {
-//        [self setImage:_forBidImage];
+    }else if(_mouseEnteredImage != nil) {
         _status = 4;
     }
     [self setNeedsDisplay:YES];
@@ -162,11 +179,8 @@
     }
     if (self.isEnabled) {
         _status = 1;
-//        [self setImage:_mouseExitImage];
-    }else
-    {
+    }else {
         _status = 4;
-//        [self setImage:_forBidImage];
     }
 
     [self setNeedsDisplay:YES];
@@ -204,16 +218,10 @@
         return;
     }
     if (self.isEnabled) {
-//        [self setImage:_mouseDownImage];
         [self setStatus:3];
-    }else
-    {
-//        [self setImage:_forBidImage];
+    }else {
         _status = 4;
     }
-//    if (!self.isSelected&&self.isEnabled) {
-//        [self setImage:_mouseExitImage];
-//    }
     [self setNeedsDisplay:YES];
 }
 
@@ -222,11 +230,8 @@
         return;
     }
     if (self.isEnabled) {
-//        [self setImage:_mouseExitImage];
         [self setStatus:1];
-    }else
-    {
-//        [self setImage:_forBidImage];
+    }else {
         _status = 4;
     }
     [self setNeedsDisplay:YES];
@@ -288,42 +293,6 @@
         [IMBGrayColor(255) setFill];
         [clipPath fill];
     }
-//    if (_isDrawBorder) {
-//         if (!_isDrawRectLine) {
-//            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-//            [clipPath setWindingRule:NSEvenOddWindingRule];
-//            [clipPath addClip];
-//            [clipPath setLineWidth:2];
-//        }else{
-//            clipPath = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:15 yRadius:15];
-//            [clipPath setWindingRule:NSEvenOddWindingRule];
-//            [clipPath addClip];
-//            [clipPath setLineWidth:0];
-//        }
-//            [clipPath closePath];
-//       
-//        if (_status == 1) {
-//            [IMBGrayColor(255) setFill];
-//            [clipPath fill];
-//            [IMBRgbColor(216, 235, 223) setStroke];
-//            [clipPath stroke];
-//        }else if (_status == 2) {
-//            [IMBRgbColor(216, 235, 223) setFill];
-//            [clipPath fill];
-//            [IMBRgbColor(216, 235, 223) setStroke];
-//            [clipPath stroke];
-//        }else if (_status == 3) {
-//            [IMBRgbColor(196, 224, 206) setFill];
-//            [clipPath fill];
-//            [IMBRgbColor(216, 235, 223) setStroke];
-//            [clipPath stroke];
-//        }else if (_status == 4) {
-//            [IMBGrayColor(255) setFill];
-//            [clipPath fill];
-//            [IMBRgbColor(216, 235, 223) setStroke];
-//            [clipPath stroke];
-//        }
-//    }
 
     NSImage *image = nil;
     if (_status == 1) {

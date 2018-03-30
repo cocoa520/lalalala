@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C93D39C1EFA093B00D37CD7 /* PhoneRescue.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0C93D39B1EFA093B00D37CD7 /* PhoneRescue.icns */; };
 		0C93D3AB1EFA0CA800D37CD7 /* IMBDistantObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C93D3AA1EFA0CA800D37CD7 /* IMBDistantObject.m */; };
 		B93C9CEB1E88F6DD00F0FE08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B99A9E3F1E851B1C00189779 /* AppDelegate.m */; };
 		B93C9CEC1E88F6DD00F0FE08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B99A9E381E851B1C00189779 /* main.m */; };
@@ -27,6 +26,8 @@
 		B99A9E451E851B1C00189779 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B99A9E441E851B1C00189779 /* Images.xcassets */; };
 		B99A9E6B1E851D3A00189779 /* ATHHostSync32.m in Sources */ = {isa = PBXBuildFile; fileRef = B99A9E6A1E851D3A00189779 /* ATHHostSync32.m */; };
 		B99A9E6E1E851E9B00189779 /* AirTrafficHost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99A9E6D1E851E9B00189779 /* AirTrafficHost.framework */; };
+		B9AF615C206E020A00F181C3 /* allfiles.icns in Resources */ = {isa = PBXBuildFile; fileRef = B9AF615B206E020A00F181C3 /* allfiles.icns */; };
+		B9AF615D206E021900F181C3 /* allfiles.icns in Resources */ = {isa = PBXBuildFile; fileRef = B9AF615B206E020A00F181C3 /* allfiles.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +35,9 @@
 		0C7B77361F7209FD001EABBA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C7B77371F7209FE001EABBA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ru; path = ru.lproj/Credits.rtf; sourceTree = "<group>"; };
 		0C7B77381F7209FE001EABBA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0C93D39B1EFA093B00D37CD7 /* PhoneRescue.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PhoneRescue.icns; sourceTree = "<group>"; };
 		0C93D3A91EFA0CA800D37CD7 /* IMBDistantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDistantObject.h; sourceTree = "<group>"; };
 		0C93D3AA1EFA0CA800D37CD7 /* IMBDistantObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDistantObject.m; sourceTree = "<group>"; };
 		B93C9CFB1E88F6DD00F0FE08 /* ATHHostSync64.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATHHostSync64.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B93C9CFC1E88F6DD00F0FE08 /* ATHHostSync32 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ATHHostSync32 copy-Info.plist"; path = "/Users/iMobie/Desktop/AnyTrans5/ATHHostSync32/ATHHostSync32 copy-Info.plist"; sourceTree = "<absolute>"; };
 		B99A9E291E851B1B00189779 /* ATHHostSync32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATHHostSync32.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99A9E2C1E851B1B00189779 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B99A9E2F1E851B1B00189779 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,6 +60,7 @@
 		B99A9E6A1E851D3A00189779 /* ATHHostSync32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATHHostSync32.m; sourceTree = "<group>"; };
 		B99A9E6C1E851E0300189779 /* AirTrafficHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTrafficHost.h; sourceTree = "<group>"; };
 		B99A9E6D1E851E9B00189779 /* AirTrafficHost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirTrafficHost.framework; path = ../../../../../System/Library/PrivateFrameworks/AirTrafficHost.framework; sourceTree = "<group>"; };
+		B9AF615B206E020A00F181C3 /* allfiles.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = allfiles.icns; sourceTree = "<group>"; };
 		EE48D15C2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		EE48D15E2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EE48D15F2056308700857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -95,12 +95,11 @@
 		B99A9E201E851B1B00189779 = {
 			isa = PBXGroup;
 			children = (
-				0C93D39B1EFA093B00D37CD7 /* PhoneRescue.icns */,
+				B9AF615B206E020A00F181C3 /* allfiles.icns */,
 				B99A9E321E851B1B00189779 /* ATHHostSync32 */,
 				B99A9E501E851B1C00189779 /* ATHHostSync32Tests */,
 				B99A9E2B1E851B1B00189779 /* Frameworks */,
 				B99A9E2A1E851B1B00189779 /* Products */,
-				B93C9CFC1E88F6DD00F0FE08 /* ATHHostSync32 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +263,7 @@
 			files = (
 				B93C9CF31E88F6DD00F0FE08 /* InfoPlist.strings in Resources */,
 				B93C9CF51E88F6DD00F0FE08 /* Images.xcassets in Resources */,
+				B9AF615C206E020A00F181C3 /* allfiles.icns in Resources */,
 				B93C9CF61E88F6DD00F0FE08 /* Credits.rtf in Resources */,
 				B93C9CF71E88F6DD00F0FE08 /* MainMenu.xib in Resources */,
 			);
@@ -275,8 +275,8 @@
 			files = (
 				B99A9E371E851B1C00189779 /* InfoPlist.strings in Resources */,
 				B99A9E451E851B1C00189779 /* Images.xcassets in Resources */,
+				B9AF615D206E021900F181C3 /* allfiles.icns in Resources */,
 				B99A9E3D1E851B1C00189779 /* Credits.rtf in Resources */,
-				0C93D39C1EFA093B00D37CD7 /* PhoneRescue.icns in Resources */,
 				B99A9E431E851B1C00189779 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

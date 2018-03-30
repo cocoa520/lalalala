@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 80
-/svn/Mac/!svn/ver/1850/JPProject/iOSFiles/iOSFiles/UI/controller/alertController
+/svn/Mac/!svn/ver/2143/JPProject/iOSFiles/iOSFiles/UI/controller/alertController
 END
 IMBSingleBtnAlertController.h
 K 25
@@ -15,11 +15,23 @@ svn:wc:ra_dav:version-url
 V 108
 /svn/Mac/!svn/ver/1842/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBTwoBtnsAlertController.m
 END
+IMBAlertViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mac/!svn/ver/2143/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBAlertViewController.xib
+END
 IMBSingleBtnAlertController.m
 K 25
 svn:wc:ra_dav:version-url
 V 110
 /svn/Mac/!svn/ver/1842/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBSingleBtnAlertController.m
+END
+IMBAlertViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mac/!svn/ver/2143/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBAlertViewController.h
 END
 IMBTwoBtnsAlertController.xib
 K 25
@@ -27,11 +39,17 @@ svn:wc:ra_dav:version-url
 V 110
 /svn/Mac/!svn/ver/1842/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBTwoBtnsAlertController.xib
 END
+IMBAlertViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mac/!svn/ver/2143/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBAlertViewController.m
+END
 IMBSingleBtnAlertController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 112
-/svn/Mac/!svn/ver/1850/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBSingleBtnAlertController.xib
+/svn/Mac/!svn/ver/2014/JPProject/iOSFiles/iOSFiles/UI/controller/alertController/IMBSingleBtnAlertController.xib
 END
 IMBTwoBtnsAlertController.h
 K 25

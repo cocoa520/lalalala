@@ -153,7 +153,7 @@
                 [drviceEntity release];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                [(IMBDeviceViewController *)_driveWindowDelegate loadSonAryComplete:dataAry];
+                [(IMBDeviceViewController *)_driveWindowDelegate loadSonAryComplete:dataAry ];
             });
         } fail:^(DriveAPIResponse *response) {
             //todo 获取数据失败

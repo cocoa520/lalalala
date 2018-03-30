@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ProtocolDelegate.h"
+#import "BaseDrive.h"
+
 @interface IMBDriveBaseManage : NSObject <DownloadAndUploadDelegate>
 {
     //window delegate   用于window功能按钮
@@ -41,6 +43,29 @@
 - (void)driveUploadItems:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items;
 
 - (void)recursiveDirectoryContentsDics:(nullable NSString *)folerID;
+
+/**
+ *  Description  云到云传输
+ *
+ *  @param targetDrive 目标云
+ *  @param item        传输项
+ */
+- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(_Nonnull id <DownloadAndUploadDelegate>)item;
+/**
+ *  Description 创建文件夹
+ *
+ *  @param folderName 文件夹名字
+ *  @param parentID   文件夹所在父目录ID或者路径 @"0"表示根目录ID
+ *
+ */
+- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID;
+
+//取消下载
+- (void)cancelDownloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
+
+//取消上次
+- (void)cancelUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
+
 
 - (void)userDidLogout;
 @end

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -51,7 +51,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" viewBased="YES" id="TK5-Nc-WY2" customClass="IMBBasedViewTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="358" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -79,7 +79,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="bYT-GX-ESt"/>
                                             </imageView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jN6-Yj-LPc">
-                                                <rect key="frame" x="70" y="63" width="200" height="20"/>
+                                                <rect key="frame" x="68" y="63" width="182" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="MrX-E9-sw3">
                                                     <font key="font" size="14" name="HelveticaNeue"/>
@@ -88,15 +88,15 @@
                                                 </textFieldCell>
                                             </textField>
                                             <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="bar" id="qXe-gK-vGL" customClass="ProgressView">
-                                                <rect key="frame" x="70" y="43" width="276" height="12"/>
+                                                <rect key="frame" x="70" y="43" width="250" height="12"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             </progressIndicator>
                                             <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="bar" id="r4u-lm-eRZ" customClass="ProgressView">
-                                                <rect key="frame" x="70" y="43" width="276" height="12"/>
+                                                <rect key="frame" x="70" y="43" width="250" height="12"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             </progressIndicator>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y5b-do-kJd">
-                                                <rect key="frame" x="68" y="18" width="100" height="18"/>
+                                                <rect key="frame" x="206" y="18" width="140" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="Zf9-lP-thh">
                                                     <font key="font" size="12" name="HelveticaNeue"/>
@@ -104,37 +104,24 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button hidden="YES" id="SxT-yT-IYr" customClass="HoverButton">
-                                                <rect key="frame" x="306" y="59" width="10" height="10"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="twJ-fx-e94">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
                                             <button id="O9j-RD-YvQ" customClass="HoverButton">
-                                                <rect key="frame" x="328" y="59" width="10" height="10"/>
+                                                <rect key="frame" x="296" y="58" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="bET-WQ-MSk">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
-                                            <button hidden="YES" id="24Y-vC-O88" customClass="HoverButton">
-                                                <rect key="frame" x="-2" y="32" width="36" height="36"/>
+                                            <button id="6ud-J3-rw0" customClass="HoverButton">
+                                                <rect key="frame" x="270" y="58" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="sdW-JI-tIg">
+                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hs1-Vo-kmZ">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="101" id="Miu-Cu-T8i">
-                                                <rect key="frame" x="-2" y="39" width="14" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" id="Uj3-UR-ens"/>
-                                            </imageView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y0u-1I-U2H">
-                                                <rect key="frame" x="70" y="18" width="190" height="20"/>
+                                                <rect key="frame" x="68" y="18" width="151" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Download Faild" id="8Yu-uJ-Rrd">
                                                     <font key="font" size="12" name="HelveticaNeue"/>
@@ -142,27 +129,24 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button hidden="YES" id="6ud-J3-rw0" customClass="HoverButton">
-                                                <rect key="frame" x="282" y="59" width="10" height="10"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hs1-Vo-kmZ">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                            </button>
+                                            <customView id="2VG-ks-gmZ" customClass="IMBWhiteView">
+                                                <rect key="frame" x="0.0" y="2" width="358" height="96"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <binding destination="zUc-am-oAq" name="hidden" keyPath="objectValue._bgView" id="y6V-M4-Ll3"/>
+                                                </connections>
+                                            </customView>
                                         </subviews>
                                         <connections>
+                                            <outlet property="_bgView" destination="2VG-ks-gmZ" id="3r8-D0-Avz"/>
                                             <outlet property="_closeButton" destination="O9j-RD-YvQ" id="g36-2R-Xgp"/>
-                                            <outlet property="_deleteButton" destination="SxT-yT-IYr" id="3wr-hh-wtA"/>
                                             <outlet property="_downloadFaildField" destination="y0u-1I-U2H" id="kqx-jF-Y03"/>
                                             <outlet property="_finderButton" destination="6ud-J3-rw0" id="U6h-mL-3YC"/>
                                             <outlet property="_icon" destination="R18-aG-MuE" id="ZMP-2u-M9T"/>
                                             <outlet property="_progessField" destination="y5b-do-kJd" id="xwr-qm-zP9"/>
                                             <outlet property="_progessView" destination="qXe-gK-vGL" id="Mtb-O6-8fH"/>
-                                            <outlet property="_reDownLoad" destination="24Y-vC-O88" id="8kC-AR-iiS"/>
                                             <outlet property="_titleField" destination="jN6-Yj-LPc" id="SxK-Md-Ypc"/>
                                             <outlet property="_transferProgressView" destination="r4u-lm-eRZ" id="qfB-ow-zVj"/>
-                                            <outlet property="_transferResultImageView" destination="Miu-Cu-T8i" id="r3a-JW-s9v"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
@@ -176,27 +160,27 @@
                 <rect key="frame" x="-100" y="-100" width="985" height="15"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Q6W-I9-B1y" customClass="IMBNoteScroller">
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Q6W-I9-B1y">
                 <rect key="frame" x="985" y="0.0" width="15" height="494"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <point key="canvasLocation" x="-250" y="38.5"/>
+            <point key="canvasLocation" x="-250" y="38"/>
         </scrollView>
         <customView id="h0M-If-2t3">
-            <rect key="frame" x="0.0" y="0.0" width="1060" height="516"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <customView id="BdZ-9Z-oJg">
-                    <rect key="frame" x="228" y="85" width="605" height="346"/>
+                    <rect key="frame" x="0.0" y="67" width="360" height="346"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TEQ-71-FS6">
-                            <rect key="frame" x="240" y="188" width="124" height="124"/>
+                            <rect key="frame" x="118" y="187" width="124" height="124"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" id="CSd-S2-Mkk"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OFP-49-dw2">
-                            <rect key="frame" x="32" y="150" width="541" height="22"/>
+                            <rect key="frame" x="25" y="152" width="310" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="VBN-mZ-JID">
                                 <font key="font" size="14" name="HelveticaNeue"/>

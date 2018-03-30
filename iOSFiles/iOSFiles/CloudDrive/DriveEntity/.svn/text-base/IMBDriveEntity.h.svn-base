@@ -26,7 +26,13 @@
     NSString *_zone;
     NSString *_etag;
     NSString *_extension;
+    BOOL _isEdit;
+    BOOL _isEditing;
+    BOOL _isCreate;
 }
+@property (nonatomic, assign) BOOL isCreate;
+@property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, assign) BOOL isEdit;
 @property (nonatomic, retain) NSString *extension;
 @property (nonatomic, retain) NSString *etag;
 @property (nonatomic, retain) NSString *docwsid;

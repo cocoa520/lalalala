@@ -30,7 +30,7 @@
 }
 @property (nonatomic, assign) id icloudPhotoDelegate;
 @property (nonatomic, retain) IMBPhotoEntity *curEntity;
-- (void)setToolBar:(IMBToolBarView *)toolBar;
+
 - (id)initWithiPod:(IMBiPod *)ipod category:(CategoryNodesEnum)category;
 
 

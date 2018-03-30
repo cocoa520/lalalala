@@ -67,8 +67,6 @@
     [super setEditable:editable];
 }
 
-
-
 - (BOOL)textView:(NSTextView *)inTextView doCommandBySelector:(SEL)inSelector{
     
     //tab 键

@@ -22,17 +22,22 @@
         if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileStart:)]) {
             [_transferDelegate transferPrepareFileStart:@"Preparing file..."];
         }
-        _totalSize = [self caculateTransferTotalSize:_exportTracks];
+//        _totalSize = [self caculateTransferTotalSize:_exportTracks];
         if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileEnd)]) {
             [_transferDelegate transferPrepareFileEnd];
         }
       
         AFCMediaDirectory *afcDir = [_ipod.fileSystem afcMediaDirectory];
-        for (IMBBookEntity *book in _exportTracks) {
+        for (DriveItem *book in _exportTracks) {
 //            if (_limitation.remainderCount == 0) {
 //                [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
 //                continue;
 //            }
+            if (book.state) {
+                continue;
+            }
+            book.isStart = YES;
+            _currentDriveItem = book;
             [_condition lock];
             if (_isPause) {
                 [_condition wait];
@@ -40,11 +45,11 @@
             [_condition unlock];
             if (!_isStop) {
                 _currItemIndex ++;
-                if (![TempHelper stringIsNilOrEmpty:book.bookName]) {
+                if (![TempHelper stringIsNilOrEmpty:book.fileName]) {
                     if ([TempHelper stringIsNilOrEmpty:book.extension]) {
-                        book.extension = [book.bookName pathExtension];
+                        book.extension = [book.fileName pathExtension];
                     }
-                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",book.bookName];
+                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",book.fileName];
                     if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
                         [_transferDelegate transferFile:msgStr];
                     }
@@ -54,10 +59,10 @@
 //                        [_transferDelegate transferProgress:progress];
 //                    }
                 if ([book.extension caseInsensitiveCompare:@"pdf"] == NSOrderedSame) {
-                    NSString *filePath = [@"Books" stringByAppendingPathComponent:book.path];
+                    NSString *filePath = [@"Books" stringByAppendingPathComponent:book.oriPath];
                     if ([afcDir fileExistsAtPath:filePath]) {
                         //将电子书考到指定的目录下
-                        NSString *desfilePath = [_exportPath stringByAppendingFormat:@"/%@.pdf",book.bookName];
+                        NSString *desfilePath = [_exportPath stringByAppendingFormat:@"/%@.pdf",book.fileName];
                         if ([_fileManager fileExistsAtPath:desfilePath]) {
                             //如果存在，创建一个新的名字
                             desfilePath = [StringHelper createDifferentfileName:desfilePath];
@@ -67,10 +72,11 @@
                         if (issuccess) {
 //                            [_limitation reduceRedmainderCount];
                             _successCount ++;
+                            book.state = DownloadStateComplete;
                             IMBExportSetting *exportSetting = [[IMBExportSetting alloc]initWithIPod:_ipod];
                             [exportSetting readDictionary];
                             if (exportSetting.isCreadPhotoDate) {
-                                NSDictionary *dice3= [_ipod.fileSystem getFileInfo:book.fullPath];
+                                NSDictionary *dice3= [_ipod.fileSystem getFileInfo:book.allPath];
                                 NSDate *creadDate = [dice3 objectForKey:@"st_birthtime"];
                                 NSTask *task;
                                 task = [[NSTask alloc] init];
@@ -90,20 +96,22 @@
                                 [task launch];
                             }
                         }else {
-                             [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"Coping file failed."];
+                             [[IMBTransferError singleton] addAnErrorWithErrorName:book.fileName WithErrorReson:@"Coping file failed."];
                             _failedCount ++;
+                            book.state = DownloadStateError;
                         }
                     }else
                     {
-                        [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
+                        [[IMBTransferError singleton] addAnErrorWithErrorName:book.fileName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
                         _failedCount ++;
+                        book.state = DownloadStateError;
                     }
                 }else if ([book.extension caseInsensitiveCompare:@"epub"] == NSOrderedSame || [book.extension caseInsensitiveCompare:@"ibooks"] == NSOrderedSame ) {
-                    NSString *filePath = [_exportPath stringByAppendingFormat:@"/%@.epub",book.bookName];
+                    NSString *filePath = [_exportPath stringByAppendingFormat:@"/%@.epub",book.fileName];
                     if ([book.extension caseInsensitiveCompare:@"epub"] == NSOrderedSame) {
-                        filePath = [_exportPath stringByAppendingFormat:@"/%@.epub",book.bookName];
+                        filePath = [_exportPath stringByAppendingFormat:@"/%@.epub",book.fileName];
                     }else if ([book.extension caseInsensitiveCompare:@"ibooks"] == NSOrderedSame) {
-                        filePath = [_exportPath stringByAppendingFormat:@"/%@.ibooks",book.bookName];
+                        filePath = [_exportPath stringByAppendingFormat:@"/%@.ibooks",book.fileName];
                     }
                     if ([_fileManager fileExistsAtPath:filePath]) {
                         //如果存在，创建一个新的名字
@@ -113,19 +121,20 @@
                     BOOL issuccess = [_fileManager createFileAtPath:filePath contents:nil attributes:nil];
                     if (issuccess) {
                         NSString *rootPath = nil;
-                        if (book.isPurchase) {
-                            rootPath = [@"Books/Purchases" stringByAppendingFormat:@"/%@",book.path];
+                        if (book.isBigFile) {
+                            rootPath = [@"Books/Purchases" stringByAppendingFormat:@"/%@",book.oriPath];
                         }else {
-                            rootPath = [@"Books" stringByAppendingPathComponent:book.path];
+                            rootPath = [@"Books" stringByAppendingPathComponent:book.oriPath];
                         }
                         if ([afcDir fileExistsAtPath:rootPath]) {
                             _successCount ++;
+                            book.state = DownloadStateComplete;
                             ZipFile *zipFile= [[ZipFile alloc] initWithFileName:filePath mode:ZipFileModeCreate];
                             [self exportepubBook:afcDir zipFile:zipFile rootPath:rootPath basefolder:@""];
                             IMBExportSetting *exportSetting = [[IMBExportSetting alloc]initWithIPod:_ipod];
                             [exportSetting readDictionary];
                             if (exportSetting.isCreadPhotoDate) {
-                                NSDictionary *dice3= [_ipod.fileSystem getFileInfo:book.fullPath];
+                                NSDictionary *dice3= [_ipod.fileSystem getFileInfo:book.allPath];
                                 NSDate *creadDate = [dice3 objectForKey:@"st_birthtime"];
                                 NSTask *task;
                                 task = [[NSTask alloc] init];
@@ -143,7 +152,6 @@
                                 NSFileHandle *file;
                                 file = [pipe fileHandleForReading];
                                 [task launch];
-
                             }
                             NSLog(@"@@");
                             [zipFile close];
@@ -152,15 +160,17 @@
                             
 //                            [_limitation reduceRedmainderCount];
                         }else {
-                            [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
+                            [[IMBTransferError singleton] addAnErrorWithErrorName:book.fileName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
                             _failedCount ++;
+                            book.state = DownloadStateError;
                         }
                     }else {
+                        book.state = DownloadStateError;
                         _failedCount ++;
                     }
                 }
             }else {
-                [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:@"Skipped"];
+                [[IMBTransferError singleton] addAnErrorWithErrorName:book.fileName WithErrorReson:@"Skipped"];
                 _skipCount ++;
             }
         }

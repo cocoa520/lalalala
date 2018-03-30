@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 #import "IMBDeviceInfo.h"
 #import "TempHelper.h"
+#import "DriveItem.h"
 @implementation IMBApplicationManager
 static int fileCount = 0;
 @synthesize appEntityArray = _appEntityArray;
@@ -84,13 +85,13 @@ static int fileCount = 0;
 //备份文件到本地
 //TODO 1.进度信息没追加
 //2.未把instalProxy放到最外层
-- (bool) backupAppTolocal:(IMBAppEntity*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath {
+- (bool) backupAppTolocal:(DriveItem*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath {
     
     if (![_iPod.fileSystem fileExistsAtPath:@"/ApplicationArchives"]) {
         [_iPod.fileSystem mkDir:@"/ApplicationArchives"];
     }
     
-    AFCApplicationDirectory* appDir = [_device newAFCApplicationDirectory:appEntity.appKey];
+    AFCApplicationDirectory* appDir = [_device newAFCApplicationDirectory:appEntity.zone];
     //如果一些默认的文件夹不存在的话，就创建。
     if (appDir != nil) {
         if (![appDir fileExistsAtPath:@"/Documents"]) {
@@ -109,31 +110,31 @@ static int fileCount = 0;
     AMInstallationProxy *instalProxy = [_device newAMInstallationProxyWithDelegate:self];
     
     //如果存在则删除备份
-    NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.appKey] stringByAppendingPathExtension:@"zip"];
+    NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.zone] stringByAppendingPathExtension:@"zip"];
     if ([_iPod.fileSystem fileExistsAtPath:archivedFilePath]) {
-        [instalProxy removeArchive:appEntity.appKey];
+        [instalProxy removeArchive:appEntity.zone];
     }
     
     //第一步
     [self setCurStep:1];
     switch (archiveType) {
         case AppTransferType_All:
-            result = [instalProxy archive:appEntity.appKey container:true payload:true uninstall:false];
+            result = [instalProxy archive:appEntity.zone container:true payload:true uninstall:false];
             break;
         case AppTransferType_DocumentsOnly:
-            result = [instalProxy archive:appEntity.appKey container:true payload:false uninstall:false];
+            result = [instalProxy archive:appEntity.zone container:true payload:false uninstall:false];
             break;
         case AppTransferType_ApplicationOnly:
-            result = [instalProxy archive:appEntity.appKey container:false payload:true uninstall:false];
+            result = [instalProxy archive:appEntity.zone container:false payload:true uninstall:false];
             break;
         default:
-            result = [instalProxy archive:appEntity.appKey container:true payload:true uninstall:false];
+            result = [instalProxy archive:appEntity.zone container:true payload:true uninstall:false];
             break;
     }
     if (result == true) {
         //第二步
         [self setCurStep:2];
-        NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.appKey] stringByAppendingPathExtension:@"zip"];
+        NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.zone] stringByAppendingPathExtension:@"zip"];
         NSFileManager *fm = [NSFileManager defaultManager];
         if ([fm fileExistsAtPath:LocalFilePath] ) {
             [fm removeItemAtPath:LocalFilePath error:nil];
@@ -142,7 +143,7 @@ static int fileCount = 0;
             [_iPod.fileSystem copyRemoteFile:archivedFilePath toLocalFile:LocalFilePath];
             //第三步
             [self setCurStep:3];
-            [instalProxy removeArchive:appEntity.appKey];
+            [instalProxy removeArchive:appEntity.zone];
             return true;
         }
     } else {

@@ -4,8 +4,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@interface HoverButton : NSButton
-{
+@interface HoverButton : NSButton {
 	NSTrackingArea *trackingArea;
     NSImage *_mouseExitImage;
     NSImage *_mouseEnteredImage;
@@ -21,7 +20,9 @@
     BOOL _hasExite;
     BOOL _hasSpot;
     BOOL _isDrawRectLine;
+    int _switchBtnState;// 0为listView  1为collectionView
 }
+@property (nonatomic, assign) int switchBtnState;
 @property (assign) int status;
 @property (assign,nonatomic)BOOL isSelected;
 @property (retain) NSImage *MouseExitImage;

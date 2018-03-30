@@ -24,6 +24,12 @@ NSString * const IMBDevicePageStopLoadingAnimNoti = @"IMBDevicePageStopLoadingAn
 NSString * const IMBDevicePageShowToolbarNoti = @"IMBDevicePageShowToolbarNoti";
 NSString * const IMBDevicePageHideToolbarNoti = @"IMBDevicePageHideToolbarNoti";
 
+NSString * const DeviceDataLoadCompletePhoto = @"DeviceDataLoadCompletePhoto";
+NSString * const deviceDataLoadCompleteBooks = @"deviceDataLoadCompleteBooks";
+NSString * const DeviceDataLoadCompleteApp = @"DeviceDataLoadCompleteApp";
+NSString * const deviceDataLoadCompleteMedia = @"deviceDataLoadCompleteMedia";
+NSString * const DeviceDataLoadCompleteVideo = @"DeviceDataLoadCompleteVideo";
+
 #pragma mark - plists
 
 NSString * const IMBDevicePageHeaderTitleNamesPlist = @"DevicePageHeaderTitleNames.plist";

@@ -9,7 +9,10 @@
 #import "IMBAlertSupeView.h"
 
 @implementation IMBAlertSupeView
+#pragma mark - synthesize
+@synthesize isShowing = _isShowing;
 
+#pragma mark - initialization
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];

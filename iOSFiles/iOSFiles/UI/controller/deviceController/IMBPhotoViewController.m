@@ -34,8 +34,6 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    [_gridView setWantsLayer:YES];
-    [_gridView.layer setBackgroundColor:[NSColor whiteColor].CGColor];
     _gridView.itemSize = NSMakeSize(154, 150);
     _gridView.backgroundColor = [NSColor whiteColor];
     _gridView.scrollElasticity = NO;

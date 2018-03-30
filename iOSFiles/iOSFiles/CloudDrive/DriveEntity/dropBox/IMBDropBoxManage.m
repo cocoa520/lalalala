@@ -10,6 +10,8 @@
 #import "IMBDriveEntity.h"
 #import "StringHelper.h"
 #import "DateHelper.h"
+#import "IMBDeviceViewController.h"
+#import "IMBBaseViewController.h"
 
 @implementation IMBDropBoxManage
 - (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate {
@@ -68,6 +70,10 @@
             NSString *fileSystemLastDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"lastModifiedDateTime"]];
             NSString *fileID = [resDic objectForKey:@"id"];
             NSString *isFolder = [resDic objectForKey:@".tag"];
+            NSString *extension = [fileName pathExtension];
+            if (![StringHelper stringIsNilOrEmpty:extension]) {
+                extension = [extension lowercaseString];
+            }
             
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
             drviceEntity.fileLoadURL = downFileLoadURL;
@@ -80,19 +86,38 @@
             drviceEntity.fileID = fileID;
             drviceEntity.docwsid = fileID;
             if ([isFolder isEqualToString:@"folder"]) {
-                NSMutableDictionary *folderDic = [resDic objectForKey:@"folder"];
-                int childCount = [[folderDic objectForKey:@"childCount"] intValue];
                 drviceEntity.isFolder = YES;
-                drviceEntity.childCount = childCount;
-                OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-                NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-                drviceEntity.image = [picture retain];
+                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+                drviceEntity.extension = @"Folder";
             }else{
-                NSString *extension = [drviceEntity.fileName pathExtension];
-                NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-                NSImage *icon = [workSpace iconForFileType:extension];
-                drviceEntity.image = [icon retain];
-                [workSpace release];
+                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
+                NSImage *image;
+                if (type == ImageFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
+                } else if (type == MusicFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
+                } else if (type == MovieFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
+                } else if (type == TxtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+                } else if (type == DocFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+                } else if (type == BookFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
+                } else if (type == PPtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == ZIPFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else if (type == dmgFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+                } else if (type == contactFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+                } else if (type == excelFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
+                } else {
+                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
+                }
+                drviceEntity.image = image;
             }
             [_driveDataAry addObject:drviceEntity];
             [drviceEntity release];
@@ -112,8 +137,7 @@
         NSMutableArray *ary = [dic objectForKey:@"entries"];
         NSMutableArray *dataAry = [[NSMutableArray alloc]init];
         for (NSMutableDictionary *resDic in ary) {
-            //文件下载路径
-//            NSString *downFileLoadURL = [resDic objectForKey:@"@microsoft.graph.downloadUrl"];
+
             NSString *createdString = [self dateForm2001DateSting:[resDic objectForKey:@"client_modified"]];
             NSString *lastModifiedString = [self dateForm2001DateSting:[resDic objectForKey:@"server_modified"]];
             
@@ -123,9 +147,12 @@
             NSString *fileSystemCreatedDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"client_modified"]];
             NSString *fileSystemLastDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"server_modified"]];
             NSString *fileID = [resDic objectForKey:@"id"];
+            NSString *extension = [fileName pathExtension];
+            if (![StringHelper stringIsNilOrEmpty:extension]) {
+                extension = [extension lowercaseString];
+            }
             
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
-//            drviceEntity.fileLoadURL = downFileLoadURL;
             drviceEntity.createdDateString = createdString;
             drviceEntity.lastModifiedDateString = lastModifiedString;
             drviceEntity.fileName = fileName;
@@ -133,27 +160,50 @@
             drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
             drviceEntity.fileSystemLastDate = fileSystemLastDate;
             drviceEntity.fileID = fileID;
+            drviceEntity.extension = extension;
             
             if ([resDic.allKeys containsObject:@"folder"]) {
                 NSMutableDictionary *folderDic = [resDic objectForKey:@"folder"];
                 int childCount = [[folderDic objectForKey:@"childCount"] intValue];
                 drviceEntity.isFolder = YES;
                 drviceEntity.childCount = childCount;
-                OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-                NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-                drviceEntity.image = [picture retain];
+                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+                drviceEntity.extension = @"Folder";
             }else{
-                NSString *extension = [drviceEntity.fileName pathExtension];
-                NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-                NSImage *icon = [workSpace iconForFileType:extension];
-                drviceEntity.image = [icon retain];
-                [workSpace release];
+                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
+                NSImage *image;
+                if (type == ImageFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
+                } else if (type == MusicFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
+                } else if (type == MovieFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
+                } else if (type == TxtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+                } else if (type == DocFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+                } else if (type == BookFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
+                } else if (type == PPtFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                } else if (type == ZIPFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else if (type == dmgFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+                } else if (type == contactFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+                } else if (type == excelFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
+                } else {
+                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
+                }
+                drviceEntity.image = image;
             }
             [dataAry addObject:drviceEntity];
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_driveWindowDelegate loadSonAryComplete:dataAry];
+            [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:loadAction];
         });
     } fail:^(DriveAPIResponse *response) {
         //todo 获取数据失败
@@ -176,22 +226,100 @@
 }
 
 #pragma mark -- OneDrive Action
-//下载
+//下载单个
 - (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
+    [[_dropbox downLoader] setDownloadPath:_downloadPath];
     [_dropbox downloadItem:item];
 }
 
-//上传
+//下载多个
+- (void)driveDownloadItemsToMac:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [[_dropbox downLoader] setDownloadPath:_downloadPath];
+    [_dropbox downloadItems:items];
+}
+
+//上传单个
 - (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     [_dropbox uploadItem:item];
 }
 
+//上传多个
+- (void)driveUploadItems:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [_dropbox uploadItems:items];
+}
+
+//删除
 - (void)deleteDriveItem:(NSMutableArray *)deleteItemAry {
     [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
+        NSMutableDictionary *dic = response.content;
+        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+        for (NSDictionary *dic in array) {
+            NSString *status = @"";
+            if ([dic.allKeys containsObject:@"status"]) {
+                status = [dic objectForKey:@"status"];
+            }
+            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
+                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+            [dataAry release];
+        });
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+//重命名
+- (void)reName:(NSString *)newName idOrPath:(NSString *)idOrPath {
+    [_dropbox reName:newName idOrPath:idOrPath success:^(DriveAPIResponse *response) {
         
     } fail:^(DriveAPIResponse *response) {
         
     }];
+}
+
+- (void)cancelDownloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+    [_dropbox cancelDownloadItem:item];
+}
+
+//新建文件夹
+- (void)createFolder:(NSString *)folderName parent:(NSString *)parentID {
+    [_dropbox createFolder:folderName parent:parentID success:^(DriveAPIResponse *response) {
+        
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+//移动文件
+- (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths {
+    [_dropbox moveToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
+        NSMutableDictionary *dic = response.content;
+        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+        for (NSDictionary *dic in array) {
+            NSString *status = @"";
+            if ([dic.allKeys containsObject:@"status"]) {
+                status = [dic objectForKey:@"status"];
+            }
+            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
+                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+            [dataAry release];
+        });
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+- (void)cancelUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+    [_dropbox cancelUploadItem:item];
 }
 
 - (void)userDidLogout {

@@ -31,8 +31,43 @@
 
 }
 
+//删除
+- (void)deleteDriveItem:(nullable NSMutableArray *) deleteItemAry {
+    
+}
+//单个文件下载
+- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
+    
+}
 
--(void)dealloc {
+//多个文件下载到本地
+- (void)driveDownloadItemsToMac:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items {
+    
+}
+
+//上传单个文件、文件夹
+- (void)oneDriveUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
+    
+}
+
+//多个文件下载到本地
+- (void)driveUploadItems:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items {
+    
+}
+
+- (void)recursiveDirectoryContentsDics:(nullable NSString *)folerID {
+    
+}
+
+- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(_Nonnull id <DownloadAndUploadDelegate>)item {
+    
+}
+
+- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID {
+    
+}
+
+- (void)dealloc {
     [super dealloc];
     [_driveDataAry release];
     _driveDataAry = nil;

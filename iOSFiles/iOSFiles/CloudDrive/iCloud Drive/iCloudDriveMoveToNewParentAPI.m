@@ -10,10 +10,10 @@
 
 @implementation iCloudDriveMoveToNewParentAPI
 
-- (id)initWithMoveItemDic:(NSDictionary *)dic newParentIDOrPathdsid:(NSString *)parent dsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url
+- (id)initWithMoveItemDic:(NSArray *)dic newParentIDOrPathdsid:(NSString *)parent dsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url
 {
     if (self = [super init]) {
-        _itemDic = [dic retain];
+        _itemDics = [dic retain];
         _newParentIDOrPath = [parent retain];
         _dsid = [dsid retain];
         _cookie = [cookie retain];
@@ -37,9 +37,9 @@
 - (id)requestArgument
 {
     if ([_newParentIDOrPath isEqualToString:@"0"]) {
-        return @{@"destinationDrivewsId":@"FOLDER::com.apple.CloudDocs::root",@"items":@[_itemDic]};
+        return @{@"destinationDrivewsId":@"FOLDER::com.apple.CloudDocs::root",@"items":_itemDics};
     }else {
-        return @{@"destinationDrivewsId":_newParentIDOrPath,@"items":@[_itemDic]};
+        return @{@"destinationDrivewsId":_newParentIDOrPath,@"items":_itemDics};
     }
 }
 
@@ -58,7 +58,7 @@
 
 - (void)dealloc
 {
-    [_itemDic release],_itemDic = nil;
+    [_itemDics release],_itemDics = nil;
     [super dealloc];
 }
 @end

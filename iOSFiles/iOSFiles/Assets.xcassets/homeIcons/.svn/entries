@@ -1,7 +1,7 @@
 10
 
 dir
-1896
+2171
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Assets.xcassets/homeIcons
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -26,22 +26,22 @@ hezhonglin
 
 a323380f-3d89-8743-8c24-0bf67719c927
 
-symbols-link.imageset
-dir
-
 symbols-list2.imageset
 dir
 
-symbols-todevice.imageset
+symbols-link.imageset
 dir
 
 symbols-delete.imageset
 dir
 
-symbols-car.imageset
+symbols-todevice.imageset
 dir
 
 symbols-close.imageset
+dir
+
+symbols-car.imageset
 dir
 
 symbols-down.imageset
@@ -50,13 +50,13 @@ dir
 symbols-devicebox.imageset
 dir
 
-symbols-phone.imageset
+symbols-no-device.imageset
 dir
 
 symbols-icloudDrive.imageset
 dir
 
-symbols-no-device.imageset
+symbols-phone.imageset
 dir
 
 symbols-list.imageset
@@ -80,7 +80,7 @@ file
 
 
 
-2018-03-22T08:08:41.000000Z
+2018-03-28T02:24:31.000000Z
 31cc68f34934a99c0b0c1bebde56309c
 2018-03-09T09:31:35.329361Z
 1610

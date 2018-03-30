@@ -880,12 +880,6 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 	if (gridViewItem) {
 		if (self.allowsMultipleSelection) {
-            //选中方式为点击选中，在点击同一个就取消，点击另一个继续选中，其他不取消；
-            if (gridViewItem.selected && modifierFlags) {
-                [self deSelectItem:gridViewItem];
-            }else {
-                [self selectItem:gridViewItem];
-            }
             
             if (!_allowClickMultipleSelection) {
                 //选中方式为点击一个取消其他，按住command key和shift key可以多选
@@ -940,6 +934,13 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
                 
                 else if (gridViewItem.selected) {
                     [self deselectAllItems];
+                    [self selectItem:gridViewItem];
+                }
+            } else {
+                //选中方式为点击选中，在点击同一个就取消，点击另一个继续选中，其他不取消；
+                if (gridViewItem.selected && modifierFlags) {
+                    [self deSelectItem:gridViewItem];
+                }else {
                     [self selectItem:gridViewItem];
                 }
             }

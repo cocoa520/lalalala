@@ -38,7 +38,7 @@
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="atX-3W-46T" customClass="IMBHoverChangeImageBtn">
                     <rect key="frame" x="254" y="140" width="28" height="28"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="main_view_signout " imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="CNd-Gb-T8T">
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="mod_icon_signout" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="CNd-Gb-T8T">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -47,7 +47,7 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37F-Fi-Wio">
-                    <rect key="frame" x="74" y="81" width="155" height="70"/>
+                    <rect key="frame" x="108" y="80" width="90" height="90"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="symbols-icloudDrive" id="W11-Ah-sSY"/>
                 </imageView>
             </subviews>
@@ -55,7 +55,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="main_view_signout " width="28" height="28"/>
+        <image name="mod_icon_signout" width="28" height="28"/>
         <image name="symbols-icloudDrive" width="132" height="116"/>
     </resources>
 </document>

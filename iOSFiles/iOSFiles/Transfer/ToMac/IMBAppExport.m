@@ -29,11 +29,16 @@
         IMBInformation *mation = [[IMBInformationManager shareInstance].informationDic objectForKey:_ipod.uniqueKey];
         IMBApplicationManager *appManager = [mation applicationManager];
         [appManager setListener:self];
-        for (IMBAppEntity *app in _exportTracks) {
+        for (DriveItem *app in _exportTracks) {
 //            if (_limitation.remainderCount == 0) {
 //                [[IMBTransferError singleton] addAnErrorWithErrorName:app.appName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
 //                continue;
 //            }
+            if (app.state) {
+                continue;
+            }
+            app.isStart = YES;
+            _currentDriveItem = app;
             [_condition lock];
             if (_isPause) {
                 [_condition wait];
@@ -41,9 +46,9 @@
             [_condition unlock];
             if (!_isStop) { //appManager.StartServiceStatus可以不用哈
                 _currItemIndex += 1;
-                if (![TempHelper stringIsNilOrEmpty:app.appName]) {
+                if (![TempHelper stringIsNilOrEmpty:app.fileName]) {
                     if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
-                        [_transferDelegate transferFile:[NSString stringWithFormat:@"Copying %@...",app.appName]];
+                        [_transferDelegate transferFile:[NSString stringWithFormat:@"Copying %@...",app.fileName]];
                     }
                 }
 //                NSString *expInfo = @"";
@@ -52,16 +57,18 @@
 //                else
 //                { expInfo = @"app only"; }
                 NSString *appFilePath = @"";
-                appFilePath = [NSString stringWithFormat:@"%@/%@(v%@).ipa",_exportPath,app.appName,app.version];
+                appFilePath = [NSString stringWithFormat:@"%@/%@(v%@).ipa",_exportPath,app.fileName,app.docwsID];
                 if ([appManager backupAppTolocal:app ArchiveType:_archiveType LocalFilePath:appFilePath]) {
 //                    [_limitation reduceRedmainderCount];
                     _successCount += 1;
+                    app.state = DownloadStateComplete;
                 } else {
-                     [[IMBTransferError singleton] addAnErrorWithErrorName:app.appName WithErrorReson:@"Coping file failed."];
+                     [[IMBTransferError singleton] addAnErrorWithErrorName:app.fileName WithErrorReson:@"Coping file failed."];
                     _failedCount +=1;
+                    app.state = DownloadStateError;
                 }
             } else {
-                 [[IMBTransferError singleton] addAnErrorWithErrorName:app.appName WithErrorReson:@"Skipped"];
+                 [[IMBTransferError singleton] addAnErrorWithErrorName:app.fileName WithErrorReson:@"Skipped"];
                 _skipCount += 1;
             }
         }

@@ -25,6 +25,10 @@
 @synthesize zone = _zone;
 @synthesize etag = _etag;
 @synthesize extension = _extension;
+@synthesize isEdit = _isEdit;
+@synthesize isEditing = _isEditing;
+@synthesize isCreate = _isCreate;
+
 - (id)init {
     if ([super init]) {
         _fileLoadURL = @"";
@@ -36,6 +40,9 @@
         _fileSize = 0;
         _isFolder = NO;
         _childCount = 0;
+        _isEdit = NO;
+        _isEditing = NO;
+        _isCreate = NO;
     }
     return self;
 }

@@ -4,7 +4,7 @@
 //
 //  Created by iMobie on 18/1/25.
 //  Copyright © 2018年 iMobie. All rights reserved.
-//
+//  字符串常量之间可以直接用 == 来进行判断两个字符串是否一样，这样的效率远比  isEqualToString:  高多了
 
 #import <AppKit/AppKit.h>
 
@@ -16,13 +16,19 @@ APPKIT_EXTERN NSString * const IMBDevicePageRefreshClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageToMacClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageAddToDeviceClickedNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageDeleteClickedNoti;
-APPKIT_EXTERN NSString * const IMBDevicePageToDeviceClickedNoti;
+APPKIT_EXTERN NSString * const IMBDevicePageToDeviceClicxkedNoti;
 
 APPKIT_EXTERN NSString * const IMBDevicePageStartLoadingAnimNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageStopLoadingAnimNoti;
 
 APPKIT_EXTERN NSString * const IMBDevicePageShowToolbarNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageHideToolbarNoti;
+//设备数据加载完成
+APPKIT_EXTERN NSString * const DeviceDataLoadCompletePhoto;
+APPKIT_EXTERN NSString * const deviceDataLoadCompleteBooks;
+APPKIT_EXTERN NSString * const DeviceDataLoadCompleteApp;
+APPKIT_EXTERN NSString * const deviceDataLoadCompleteMedia;
+APPKIT_EXTERN NSString * const DeviceDataLoadCompleteVideo;
 
 #pragma mark - plists
 APPKIT_EXTERN NSString * const IMBDevicePageHeaderTitleNamesPlist;

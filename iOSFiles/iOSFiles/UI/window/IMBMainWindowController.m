@@ -46,10 +46,9 @@
  *  初始化操作
  */
 - (void)awakeFromNib {
-    
+    NSRect screenRect = [NSScreen mainScreen].frame;
     [_whiteView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     [[self window] setMovableByWindowBackground:YES];
-    [self.window setContentSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
     IMBViewManager *viewManager = [IMBViewManager singleton];
     if (_isNewWindow) {
         IMBViewManager *viewManager = [IMBViewManager singleton];
@@ -61,7 +60,9 @@
         }else if (_loginModelEnum == DeviceLogEnum) {
             mainPageViewController = [viewManager.allMainControllerDic objectForKey:_newiPod.uniqueKey];
         }
+        BOOL isRelease = NO;
         if (!mainPageViewController) {
+            isRelease = YES;
             mainPageViewController = [[IMBMainPageViewController alloc]initWithiPod:_newiPod withMedleEnum:_loginModelEnum withiCloudDrvieBase:nil withDelegate:self];
             if (_loginModelEnum == iCloudLogEnum) {
                 NSLog(@"========iCloudLogEnum========");
@@ -85,31 +86,45 @@
                 [viewManager.windowDic setObject:self forKey:_newiPod.uniqueKey];
             }
         }
-        
-        [_rootBox setContentView:mainPageViewController.view];
-//        [mainPageViewController release];
-//        mainPageViewController = nil;
         [self.window setMinSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
         [self.window setMaxSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
+        [_rootBox setContentView:mainPageViewController.view];
         [self.window setContentSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
+        NSRect oriRect = NSMakeRect((screenRect.size.width-WindowMaxSizeWidth)/2, (screenRect.size.height-WindowMaxSizeHigh)/2, WindowMaxSizeWidth, WindowMaxSizeHigh+1);
+        [self.window setFrame:oriRect display:YES animate:YES];
+        if (isRelease) {
+            [mainPageViewController release];
+            mainPageViewController = nil;
+        }
     }else {
         if (!viewManager.mainViewController) {
             viewManager.mainViewController = [[IMBDeviceViewController alloc] initWithDelegate:self];
         }else {
             [viewManager.mainViewController setDelegate:self];
         }
-        [_rootBox setContentView:viewManager.mainViewController.view];
+        [self.window setFrameAutosaveName:@"minWindowFrame"];
+        
         [self.window setMinSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
         [self.window setMaxSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
         [self.window setContentSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
+        
+        [self.window setFrame:NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh)) display:YES animate:YES];
+        [[NSUserDefaults standardUserDefaults] setObject:NSStringFromRect(NSMakeRect((screenRect.size.width-WindowMinSizeWidth)/2, (screenRect.size.height-WindowMinSizeHigh)/2, WindowMinSizeWidth, WindowMinSizeHigh)) forKey:@"minWindowFrame"];
+        
+        NSLog(@"===========111%@",NSStringFromRect(NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh))));
+        
+        NSLog(@"===========3333%@",NSStringFromRect(self.window.frame));
+        
+        [self performSelector:@selector(setWindowFrame) withObject:nil afterDelay:0.1];
+        [_rootBox setContentView:viewManager.mainViewController.view];
     }
 //    [self.window setStyleMask:NSPopUpMenuWindowLevel];
 }
 
-//-(void)windowDidLoad {
-//    [super windowDidLoad];
-////    [self.window setContentSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
-//}
+- (void)setWindowFrame {
+     NSRect screenRect = [NSScreen mainScreen].frame;
+     [self.window setFrame:NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh)) display:YES animate:YES];
+}
 
 - (void)changeMainFrame:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage {
     IMBViewManager *viewManager = [IMBViewManager singleton];

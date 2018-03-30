@@ -210,7 +210,9 @@
                     char *buff = (char*)malloc(bufsz);
                     while (1) {
                         uint64_t n = [in readN:bufsz bytes:buff];
-                        if (n==0) break;
+                        if (n==0) {
+                            break;
+                        }
                         NSData *b2 = [[NSData alloc]
                                       initWithBytesNoCopy:buff length:n freeWhenDone:NO];
                         [out writeData:b2];
@@ -507,11 +509,24 @@
                                 NSData *nextblock = [in readDataOfLength:bufsz];
                                 uint64_t n = [nextblock length];
                                 if (n==0) break;
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    _currentDriveItem.currentSize = n;
+                                    _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_totalSize *100;
+                                    _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:n reserved:2],[self getFileSizeString:_totalSize reserved:2]];
+                                    _currentDriveItem.fileSize = _totalSize;
+
+                                });
+                                
                                 [out writeNSData:nextblock];
                                 done += n;
                                 [self sendCopyProgress:n];
                             }
                         }
+                        _currentDriveItem.currentSize = 0;
+                        _currentDriveItem.progress = 100;
+                        _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_currentDriveItem.fileSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+                        _currentDriveItem.state = DownloadStateComplete;
+
                         [out closeFile];
                         result = YES;
                     }
@@ -569,10 +584,14 @@
     if ([_transferDelegate respondsToSelector:@selector(transferProgress:)]) {
         [_transferDelegate transferProgress:progress];
     }
+//    dispatch_async(dispatch_get_main_queue(), ^{
+        _currentDriveItem.currentSize = _curSize;
+        _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
+        _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_curSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+//    });
     if ([_transferDelegate respondsToSelector:@selector(transferCurrentSize:)]) {
         [_transferDelegate transferCurrentSize:_curSize];
     }
-    
 }
 
 - (int64_t)caculateTransferTotalSize:(NSArray *)array {
@@ -787,6 +806,48 @@
     }
     return _totalItemCount;
 }
+
+- (NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+    double mbSize = (double)totalSize / 1048576;
+    double kbSize = (double)totalSize / 1024;
+    if (totalSize < 1024) {
+        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,@"B"];
+    } else {
+        if (mbSize > 1024) {
+            double gbSize = (double)totalSize / 1073741824;
+            return [self Rounding:gbSize reserved:decimalPoints capacityUnit:@"GB"];
+        } else if (kbSize > 1024) {
+            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:@"MB"];
+        } else {
+            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:@"KB"];
+        }
+    }
+}
+
+- (NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
+    switch (decimalPoints) {
+        case 1:
+            return [NSString stringWithFormat:@"%.1f %@", numberSize, unit];
+            break;
+            
+        case 2:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+            
+        case 3:
+            return [NSString stringWithFormat:@"%.3f %@", numberSize, unit];
+            break;
+            
+        case 4:
+            return [NSString stringWithFormat:@"%.4f %@", numberSize, unit];
+            break;
+            
+        default:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+    }
+}
+
 
 #pragma mark - 暂停方法
 - (void)pauseScan {

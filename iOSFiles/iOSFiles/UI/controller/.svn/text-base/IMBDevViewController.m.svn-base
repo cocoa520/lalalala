@@ -121,7 +121,7 @@ CGFloat const IMBDevViewControllerRowH = 34.0f;
     }
     IMBBaseInfo *baseInfo = [_dataArray objectAtIndex:row];
     
-    NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(_textX,(aView.frame.size.height - 22)/2 + 4, tableView.frame.size.width, 22)];
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(_textX,(aView.frame.size.height - 22)/2 + 4, NSWidth(tableView.frame) - _textX - 2, 22)];
     [textField setStringValue:baseInfo.deviceName];
     [textField setBordered:NO];
     textField.font = [NSFont fontWithName:@"PingFangSC-Regular" size:14.f];

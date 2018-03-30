@@ -48,7 +48,5 @@
 
 - (void)refresh;
 -(void)signOutDrive;
-- (void)loadCapacity:(float)percent;
-- (void)loadiCloudCapacity:(float)percent;
 
 @end

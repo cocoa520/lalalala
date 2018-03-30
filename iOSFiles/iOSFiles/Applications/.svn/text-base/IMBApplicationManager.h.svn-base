@@ -16,6 +16,7 @@
 #import "SimpleNode.h"
 #import "IMBTransResult.h"
 #import "IMBProgressCounter.h"
+#import "DriveItem.h"
 //这个地方需要声明通知机制，以便于UI接收这些东东。
 /*
 public delegate void AppProgressMessageHandle(int percentComplete, String status);
@@ -62,7 +63,7 @@ public delegate void UpdateSingleAppStepHandle();
 - (AFCApplicationDirectory*) appDirectoryByDevice:(AMDevice*)device AppKey:(NSString*)appKey;
 //PhoneBrowse用，ExportAppFileToPc
 
-- (bool) backupAppTolocal:(IMBAppEntity*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath;
+- (bool) backupAppTolocal:(DriveItem*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath;
 
 - (bool) InstallApplication:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)localFilePath;
 - (bool) InstallApplication:(IMBAppTransferTypeEnum)archiveType appEntity:(IMBAppEntity *)appEntity ;

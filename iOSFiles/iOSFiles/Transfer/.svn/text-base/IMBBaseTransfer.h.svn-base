@@ -15,7 +15,7 @@
 #import "IMBExportSetting.h"
 #import "ATTracker.h"
 #import "IMBTransferError.h"
-
+#import "DriveItem.h"
 
 @protocol TransferDelegate <NSObject>
 
@@ -90,6 +90,7 @@
     //总共传输的size
     int64_t _totalSize;
     BOOL _isReminder;
+    DriveItem *_currentDriveItem;
 }
 @property (nonatomic, assign) BOOL isAllExport;
 @property (nonatomic, assign) float percent;

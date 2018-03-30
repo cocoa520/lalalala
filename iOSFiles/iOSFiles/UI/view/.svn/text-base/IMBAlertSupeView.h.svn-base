@@ -9,5 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 @interface IMBAlertSupeView : NSView
+{
+    @private
+    BOOL _isShowing;
+}
+
+@property(nonatomic, assign)BOOL isShowing;
+
 
 @end

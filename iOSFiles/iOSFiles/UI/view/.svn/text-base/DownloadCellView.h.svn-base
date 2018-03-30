@@ -12,13 +12,14 @@
 #import "HoverButton.h"
 #import "IMBGeneralButton.h"
 #import "DriveItem.h"
+#import "IMBWhiteView.h"
 @interface DownloadCellView : NSTableCellView
 {
     IBOutlet NSImageView *_icon;
     IBOutlet ProgressView *_progessView;
     IBOutlet ProgressView *_transferProgressView;
   
-
+    IBOutlet IMBWhiteView *_bgView;
     IBOutlet NSTextField *_titleField;
     IBOutlet NSTextField *_progessField;
     IBOutlet NSTextField *_transferResultField;
@@ -30,7 +31,10 @@
     IBOutlet HoverButton *_closeButton;
     IBOutlet HoverButton *_closeTransferButton;
     IBOutlet HoverButton *_reDownLoad;
+    long long _downSize;
     DriveItem *_downLoadDriveItem;
+        NSTrackingArea *_trackingArea;
+    BOOL _isEnter;
     NSMutableArray *_propertityViewArray;//属性不为空的控件集合
 }
 @property (nonatomic,retain)DriveItem *downLoadDriveItem;
@@ -48,7 +52,6 @@
 @property (nonatomic,assign)ProgressView *progessView;
 @property (nonatomic,assign)ProgressView *transferProgressView;
 @property (nonatomic,assign)HoverButton *finderButton;
-@property (nonatomic,assign)HoverButton *toDeviceButton;
 @property (nonatomic,assign)HoverButton *deleteButton;
 @property (nonatomic,assign)HoverButton *closeButton;
 @property (nonatomic,assign)HoverButton *closeTransferButton;

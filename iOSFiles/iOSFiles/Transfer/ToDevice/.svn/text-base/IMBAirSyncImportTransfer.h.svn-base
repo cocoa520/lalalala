@@ -60,7 +60,7 @@
  importFilePath为导入文件的路径数组
  CategoryNodesEnum 为导入文件类型，如果各种文件一起导入则传入Category_Summary即可
  */
-- (id)initWithIPodkey:(NSString *)ipodKey importFiles:(NSArray*)importFilePath CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate;
+- (id)initWithIPodkey:(NSString *)ipodKey importFiles:(DriveItem*)importFilePath CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate;
 - (id)initWithIPodkey:(NSString *)ipodKey TransferDic:(NSMutableDictionary *)transferDic delegate:(id)delegate;
 //重命名相册
 - (id)initWithIPodkey:(NSString *)ipodKey Rename:(NSString *)rename AlbumEntity:(IMBPhotoEntity *)albumEntity;

@@ -39,7 +39,7 @@
     playlistID ---- 导入到指定playlist的id，不需要导入到playlist中传0；
     delegate ---- 进度返回代理
  */
-- (id)initWithIPodkey:(NSString *)ipodKey importFiles:(NSArray*)importFilePath CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate
+- (id)initWithIPodkey:(NSString *)ipodKey importFiles:(DriveItem*)importFilePath CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate
 {
     self = [super initWithIPodkey:ipodKey withDelegate:delegate];
     if (self) {
@@ -57,7 +57,8 @@
         }
         _mediaConverter = [IMBMediaConverter singleton];
         [_mediaConverter reInitWithiPod:_ipod];
-        _importFilePath = [importFilePath  retain];
+        _currentDriveItem = importFilePath;
+        _importFilePath = [importFilePath.childArray retain];
         _toConvertFiles = [[NSMutableArray alloc] init];
         _toConvertCategoryEnums = [[NSMutableArray alloc] init];
         _importFiles = [[NSMutableArray alloc] init];
@@ -224,6 +225,13 @@
             }
         }
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (_successCount == _totalItemCount) {
+            _currentDriveItem.state = UploadStateComplete;
+        }else {
+            _currentDriveItem.state = UploadStateError;
+        }
+    });
     if ([_transferDelegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
         [_transferDelegate transferComplete:_successCount TotalCount:_totalItemCount];
     }
@@ -1112,6 +1120,7 @@
                             if (![StringHelper stringIsNilOrEmpty:bookPath]) {
                                 if (bookInfoDic != nil && [bookInfoDic count] > 0) {
                                     IMBNewTrack *newTrack = [self createTrack:bookInfoDic bookFilePath:[epubItem epubLocalPath] bookName:bookName];
+                                    _currentDriveItem.fileSize = _totalSize;
                                     IMBTrack *track = nil;
                                     @try {
                                         //创建track对象
@@ -1885,6 +1894,10 @@
 //            [_loghandle writeInfoLog:[NSString stringWithFormat:@"Transfering %@ (IMBAirSyncImportTransfer photo)", track.photoFilePath]];
             reslut = [_ipod.fileSystem copyDataToFile:srcData toRemoteFile:desPath];
             [self sendCopyProgress:track.fileSize];
+            _currentDriveItem.currentSize = track.fileSize;
+            _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
+            _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:track.fileSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+            _currentDriveItem.state = DownloadStateComplete;
             [track setFileIsExist:YES];
         }
         else{
@@ -1938,6 +1951,47 @@
     }
     [_condition signal];
     [_condition unlock];
+}
+
+- (NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+    double mbSize = (double)totalSize / 1048576;
+    double kbSize = (double)totalSize / 1024;
+    if (totalSize < 1024) {
+        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,@"B"];
+    } else {
+        if (mbSize > 1024) {
+            double gbSize = (double)totalSize / 1073741824;
+            return [self Rounding:gbSize reserved:decimalPoints capacityUnit:@"GB"];
+        } else if (kbSize > 1024) {
+            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:@"MB"];
+        } else {
+            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:@"KB"];
+        }
+    }
+}
+
+- (NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
+    switch (decimalPoints) {
+        case 1:
+            return [NSString stringWithFormat:@"%.1f %@", numberSize, unit];
+            break;
+            
+        case 2:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+            
+        case 3:
+            return [NSString stringWithFormat:@"%.3f %@", numberSize, unit];
+            break;
+            
+        case 4:
+            return [NSString stringWithFormat:@"%.4f %@", numberSize, unit];
+            break;
+            
+        default:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+    }
 }
 
 - (void)dealloc {

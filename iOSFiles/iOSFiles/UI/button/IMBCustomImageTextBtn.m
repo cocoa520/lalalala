@@ -50,6 +50,7 @@
 }
 
 - (void)setTitle:(NSString *)title titleColor:(NSColor *)titleColor titleSize:(CGFloat)titleSize leftIcon:(NSString *)leftIcon rightIcon:(NSString *)rightIcon {
+    [self emptyMemory];
     _titleLabel = [[NSTextField alloc] init];
     [_titleLabel setBordered:NO];
     [_titleLabel setDrawsBackground:NO];
@@ -60,9 +61,10 @@
     _titleLabel.stringValue = title;
     
     NSDictionary *textAttr = @{NSForegroundColorAttributeName : _titleLabel.textColor, NSFontAttributeName : _titleLabel.font};
-    NSSize textSize = [title boundingRectWithSize:NSMakeSize(MAXFLOAT, 0) options:NSStringDrawingUsesFontLeading attributes:textAttr].size;
-    textSize.width += 5.f;
+    NSSize textSize = [title boundingRectWithSize:NSMakeSize(MAXFLOAT, 0) options:NSStringDrawingTruncatesLastVisibleLine attributes:textAttr].size;
+    
 //    NSSize textSize = [StringHelper calcuTextBounds:title fontSize:titleSize > 0 ? titleSize : 14.f].size;
+    textSize.width += 5.f;
     _titleLabel.frame = NSMakeRect((NSWidth(self.frame) - textSize.width)/2.f, (NSHeight(self.frame) - textSize.height)/2.f, textSize.width, textSize.height);
     [self addSubview:_titleLabel];
     
@@ -79,6 +81,7 @@
         _rightIconImageView.frame = NSMakeRect(NSMaxX(_titleLabel.frame) + 5, (NSHeight(self.frame) - _rightIconImageView.image.size.height)/2.f, _rightIconImageView.image.size.width, _rightIconImageView.image.size.height);
         [self addSubview:_rightIconImageView];
     }
+
 }
 
 #pragma mark - mosueAction
@@ -93,18 +96,25 @@
 
 #pragma mark - dealloc方法
 - (void)dealloc {
+    [self emptyMemory];
+    [super dealloc];
+}
+
+- (void)emptyMemory {
     if (_titleLabel) {
+        [_titleLabel removeFromSuperview];
         [_titleLabel release];
         _titleLabel = nil;
     }
     if (_leftIconImageView) {
+        [_leftIconImageView removeFromSuperview];
         [_leftIconImageView release];
         _leftIconImageView = nil;
     }
     if (_rightIconImageView) {
+        [_rightIconImageView removeFromSuperview];
         [_rightIconImageView release];
         _rightIconImageView = nil;
     }
-    [super dealloc];
 }
 @end

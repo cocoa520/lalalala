@@ -38,12 +38,12 @@
             [_transferDelegate transferPrepareFileStart:@"Preparing file..."];
         }
         //计算totalSize
-        _totalSize = [self caculateTransferTotalSize:_exportTracks];
+//        _totalSize = [self caculateTransferTotalSize:_exportTracks];
         
         if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileEnd)]) {
             [_transferDelegate transferPrepareFileEnd];
         }
-        for (IMBTrack *track in _exportTracks) {
+        for (DriveItem *track in _exportTracks) {
 //            if (_limitation.remainderCount == 0) {
 //                [[IMBTransferError singleton] addAnErrorWithErrorName:track.title WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
 //                continue;
@@ -53,12 +53,17 @@
                 [_condition wait];
             }
             [_condition unlock];
+            if (track.state) {
+                continue;
+            }
+            track.isStart = YES;
+            _currentDriveItem = track;
             if (!_isStop) {
                 _currItemIndex++;
                 //获得设备中的文件路径
-                NSString *remotingFilePath = [[[_ipod fileSystem] driveLetter] stringByAppendingPathComponent:[track filePath]];
-                if (![TempHelper stringIsNilOrEmpty:track.title]) {
-                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",track.title];
+                NSString *remotingFilePath = [[[_ipod fileSystem] driveLetter] stringByAppendingPathComponent:[track oriPath]];
+                if (![TempHelper stringIsNilOrEmpty:track.fileName]) {
+                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",track.fileName];
                     if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
                         [_transferDelegate transferFile:msgStr];
                     }
@@ -67,8 +72,8 @@
 //                if ([_transferDelegate respondsToSelector:@selector(transferProgress:)]) {
 //                    [_transferDelegate transferProgress:progress];
 //                }
-                if ([[_ipod fileSystem] fileExistsAtPath:remotingFilePath] && ![MediaHelper stringIsNilOrEmpty:track.filePath]) {
-                    NSString *fileName = [[TempHelper replaceSpecialChar:[track title]] stringByAppendingPathExtension:[[track filePath] pathExtension]];
+                if ([[_ipod fileSystem] fileExistsAtPath:remotingFilePath] && ![MediaHelper stringIsNilOrEmpty:track.oriPath]) {
+                    NSString *fileName = [[TempHelper replaceSpecialChar:[track fileName]] stringByAppendingPathExtension:[[track oriPath] pathExtension]];
                      NSString *destFilePath = [_exportPath stringByAppendingPathComponent:fileName];
                     if ([_fileManager fileExistsAtPath:destFilePath]) {
                         destFilePath = [TempHelper getFilePathAlias:destFilePath];
@@ -77,6 +82,7 @@
 //                    if ([self asyncCopyRemoteFile:remotingFilePath toLocalFile:destFilePath]) {
 //                        [_limitation reduceRedmainderCount];
                         _successCount += 1;
+                        track.state = DownloadStateComplete;
                         IMBExportSetting *exportSetting = [[IMBExportSetting alloc]initWithIPod:_ipod];
                         [exportSetting readDictionary];
                         if (exportSetting.isCreadPhotoDate) {
@@ -84,7 +90,7 @@
                             task = [[NSTask alloc] init];
                             [task setLaunchPath: @"/usr/bin/touch"];
                             NSArray *arguments;
-                            NSString *str = [DateHelper dateFrom2001ToString:track.dateLastModified withMode:3];
+                            NSString *str = [DateHelper dateFrom2001ToString:track.photoDateData withMode:3];
                             NSString *strData = [TempHelper replaceSpecialChar:str];
                             strData = [strData stringByReplacingOccurrencesOfString:@" " withString:@""];
                             strData = [strData stringByReplacingOccurrencesOfString:@"-" withString:@""];
@@ -98,15 +104,17 @@
                             [task launch];
                         }
                     }else {
-                         [[IMBTransferError singleton] addAnErrorWithErrorName:track.title WithErrorReson:@"Coping file failed."];
+                         [[IMBTransferError singleton] addAnErrorWithErrorName:track.fileName WithErrorReson:@"Coping file failed."];
                         _failedCount += 1;
+                        track.state = DownloadStateError;
                     }
                 } else {
-                    [[IMBTransferError singleton] addAnErrorWithErrorName:track.title WithErrorReson:@"The file does not exist in your iPhone or your backups"];
+                    [[IMBTransferError singleton] addAnErrorWithErrorName:track.fileName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
                     _failedCount += 1;
+                    track.state = DownloadStateError;
                 }
             }else {
-                [[IMBTransferError singleton] addAnErrorWithErrorName:track.title WithErrorReson:@"Skipped"];
+                [[IMBTransferError singleton] addAnErrorWithErrorName:track.fileName WithErrorReson:@"Skipped"];
                 _skipCount ++;
             }
         }

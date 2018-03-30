@@ -141,6 +141,7 @@
                 parentItem.speed = speed;
                 long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
                 [weakself notifyUploadItem:parentItem withUploadProgress:currentSize/(parentItem.fileSize*1.0)*100];
+                
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             if ([item isBigFile]) {
@@ -175,14 +176,17 @@
                     parentItem.state = UploadStateComplete;
                 }
             }
-            NSLog(@"Request Complete");
+            NSLog(@" Request Complete");
             if ([item isBigFile]) {
+                weakItem.currentTotalSize += 10485760;
                 [item setIsBigFile:NO];
                 [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
             }
         } uploadProgress:^(NSProgress * _Nonnull progress) {
-            [weakself notifyUploadItem:weakItem withUploadProgress:progress.fractionCompleted*100];
-            weakItem.currentSize = progress.completedUnitCount;
+            weakItem.currentSize = weakItem.currentTotalSize + progress.completedUnitCount;
+            double fractionCompleted = (double)weakItem.currentSize / weakItem.fileSize;
+            [weakself notifyUploadItem:weakItem withUploadProgress:fractionCompleted*100];
+            
             //计算速度
             NSDictionary *progressInfo = progress.userInfo;
             NSNumber *startTimeValue = progressInfo[ProgressUserInfoStartTimeKey];
@@ -204,13 +208,19 @@
                 parentItem.speed = speed;
                 long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
                 [weakself notifyUploadItem:parentItem withUploadProgress:currentSize/(parentItem.fileSize*1.0)*100];
+                [weakself notifyUploadItem:parentItem withUploadcurrentSize:currentSize];
+            }else{
+                [weakself notifyUploadItem:weakItem withUploadcurrentSize:weakItem.currentSize];
             }
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             if ([item isBigFile]) {
+                weakItem.currentTotalSize += 10485760;
                 [item setIsBigFile:NO];
                 [weakself performSelector:@selector(uploadWait) onThread:currentthread withObject:nil waitUntilDone:NO];
             }
-            [weakself notifyUploadItem:item withUploadState:UploadStateError];
+            if ([[request error] code] != 3840) {
+                [weakself notifyUploadItem:item withUploadState:UploadStateError];
+            }
             if (weakItem.parent != nil) {
                 id <DownloadAndUploadDelegate> parentItem = weakItem.parent;
                 NSPredicate *cate1 =[NSPredicate predicateWithFormat:@"self.state=%d",UploadStateComplete];
@@ -314,6 +324,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([item respondsToSelector:@selector(setCurrentSize:)]) {
             [item setCurrentSize:currentSize];
+            if (!item.parent) {
+                  [item setCurrentSizeStr:[self getFileSizeString:currentSize reserved:2]];
+            }
         }else{
             NSAssert(1,@"item未实现setCurrentSize:");
         }
@@ -329,6 +342,47 @@
             NSAssert(1,@"item未实现setUploadError:");
         }
     });
+}
+
+- (NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+    double mbSize = (double)totalSize / 1048576;
+    double kbSize = (double)totalSize / 1024;
+    if (totalSize < 1024) {
+        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,@"B"];
+    } else {
+        if (mbSize > 1024) {
+            double gbSize = (double)totalSize / 1073741824;
+            return [self Rounding:gbSize reserved:decimalPoints capacityUnit:@"GB"];
+        } else if (kbSize > 1024) {
+            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:@"MB"];
+        } else {
+            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:@"KB"];
+        }
+    }
+}
+
+- (NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
+    switch (decimalPoints) {
+        case 1:
+            return [NSString stringWithFormat:@"%.1f %@", numberSize, unit];
+            break;
+            
+        case 2:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+            
+        case 3:
+            return [NSString stringWithFormat:@"%.3f %@", numberSize, unit];
+            break;
+            
+        case 4:
+            return [NSString stringWithFormat:@"%.4f %@", numberSize, unit];
+            break;
+            
+        default:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+    }
 }
 
 

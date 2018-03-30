@@ -1,0 +1,391 @@
+/* 
+  Localizable.strings
+  DataRecovery
+
+  Created by iMobie on 5/4/14.
+  Copyright (c) 2014 iMobie Inc. All rights reserved.
+*/
+
+"MainWindow_id_1" = "Device manager";
+"MainWindow_id_2" = "Can multi-device management";
+"MainWindow_id_3" = "Please link...";
+"MainWindow_id_4" = "You have not linked any devices please uese after link";
+"MainWindow_id_5" = "Multiple devices can be managed at the same time";
+"MainWindow_id_6" = "Quick links work efficiently";
+
+"Menu_About" = "About iOSFiles";
+"Menu_Home" = "AnyTrans Home";
+"Menu_Guide" = "Online Guide";
+"Menu_SendLog" = "Send Log";
+"Menu_ContactUs" = "Contact Us";
+"Menu_ChooseLanguage" = "Choose Language";
+"Menu_Updates" = "Check for Updates";
+"Menu_Exit" = "Exit";
+"Menu_NewFloder" = "Open in new floder";
+"Menu_DefaultName" = "My Device";
+
+"LanguageSetWinodw_id_1" = "Please choose your preferred language";
+"language_setting_id" = "Getting Started";
+
+"register_window_title" = "AnyTrans Activation";
+"register_window_description" = "Your AnyTrans is the unregistered version. Please buy a license code or enter yours if you already have one.";
+"register_window_buyBtn" = "Buy A License Code";
+"activate_error_disinternet" = "Please keep your Internet connection stable and try to active AnyTrans again.";
+
+"register_window_activateBtn" = "Activate";
+"register_text_waiting" = "Activating, please wait…";
+"verification_success_id" = "Verification succeeded!";
+"verification_failed_id" = "Verification failed!";
+"Register_failed_id" = "Activation failed!";
+"activate_success" = "Activation succeeded!";
+"activate_error_discorrect" = "Please make sure your license code is correct and try again.";
+"register_window_tryagainBtn" = "Try Again";
+"register_text_eg" = "Please enter your license code";
+
+"Button_Ok" = "OK";
+"Button_Yes" = "Yes";
+"Button_No" = "No";
+"Button_Retry" = "Retry";
+"Button_Login" = "Login";
+"Button_IKnown" = "OK, I know";
+"Button_Continue" = "Continue";
+"Button_Cancel" = "Cancel";
+"Button_Select" = "Select";
+"Button_Save" = "Save";
+
+"iCloudBackup_View_Selected_Tips" = "Please select at least one item.";
+"iCloudBackup_View_Loggin_Tips" = "Please log in at least one more account.";
+
+"iCloudBackup_View_Tips2" = "Download";
+"iCloudBackup_View_Tips6" = "View";
+
+"about_window_1" = "Support:";
+"about_window_2" = "Homepage:";
+"about_window_3" = "Copyright© iPhoneUtility All rights reserved.";
+
+"connect_help_Tips" = "If you failed to connect your device, please try the solution below:";
+"connect_help_Tips1" = "Make sure your computer has installed the latest version of iTunes and your device can be recognized by iTunes. If not, uninstall iTunes first, and then reinstall it.";
+"connect_help_Tips2" = "Unplug your device first, and then reconnect it. If this won't work, reboot the device and plug in again to retry.";
+"connect_help_Tips3" = "Use another computer to retry.";
+
+"Update_Window_Text1" = "Your AnyTrans is up to date.";
+"Update_Window_Text2" = "Please update AnyTrans to enjoy more features.";
+"Update_Window_Text3" = "New Version: %@, built on: %@";
+"Update_Window_Text4" = "Version %@";
+"Update_Window_Text5" = "Connection error! Please check your network!";
+"Update_Window_Button1" = "Skip this version";
+"Update_Window_Button2" = "Remind me later";
+"Update_Window_Button3" = "Update Now";
+"UpdateWindow_id_8" = "Please update %@, otherwise some functions may not work properly.";
+"UpdateWindow_id_9" = "Checking for updates, please wait...";
+"UpdateWindow_id_10" = "%@ cannot access the latest version info, so we recommend you download the up-to-date version from our website.";
+"UpdateWindow_id_11" = "Loading, please wait...";
+
+"TrustView_id_1" = "Please unlock your device and trust this computer.";
+
+"Nothave_toDevices" = "Please connect at least two devices to continue.";
+"AirsyncTips" = "Syncing your device. Please wait...";
+
+"MSG_Size_MB" = "MB";
+"MSG_Size_GB" = "GB";
+"MSG_Size_KB" = "KB";
+"MSG_Size_B" = "B";
+"MSG_Date_Today" = "Today";
+"MSG_Date_Yesterday" = "Yesterday";
+"MSG_Date_Tomorrow" = "Tomorrow";
+"MSG_Item_id_1" = "item";
+"MSG_Item_id_2" = "items";
+"MSG_Loading" = "Loading, please wait...";
+"MSG_COM_No_Item_Selected" = "Please select at least one item to continue.";
+"MSG_Device_Edition_Too_high" = "Your device is running iOS 8.3 or higher version, which doesn't support this feature in AnyTrans.";
+"MSG_App_Installing_Progres" = "Installing \"%@\", %@...";
+"MSG_App_Installing" = "Installing %@ App";
+"MSG_COM_delete" = "NO %@ to delete.";
+
+"List_Header_id_Date" = "Date";
+"List_Header_id_Type" = "Type";
+"List_Header_id_Name" = "Name";
+"List_Header_id_Item" = "Item";
+"List_Header_id_Format" = "Resolution";
+"List_Header_id_Size" = "Size";
+"List_Header_id_Time" = "Time";
+"List_Header_id_Artist" = "Artist";
+"List_Header_id_Duration" = "Duration";
+"List_Header_id_State" = "State";
+"List_Header_id_Image" = "Image";
+"List_Header_id_Version" = "Version";
+"List_Header_id_Count" = "Files";
+
+"List_Header_id_Minium" = "Minium iOS version";
+"List_Header_id_AppSize" = "App Size";
+"List_Header_id_DocumentSize" = "Document Size";
+"List_Header_id_iOSNub" = "iOS";
+"List_Header_id_SerialNub" = "Serial number";
+"List_Header_id_SerialNumber" = "Serial Number";
+"List_Header_id_Operate" = "Operation";
+"List_Header_id_Formats" = "Format";
+"MenuItem_id_1" = "Music";
+"MenuItem_id_6" = "Movies";
+"MenuItem_id_9" = "Photos";
+"MenuItem_id_10" = "Camera Roll";
+"MenuItem_id_13" = "Books";
+"MenuItem_id_14" = "Apps";
+"MenuItem_id_28" = "Audio";
+"MenuItem_id_29" = "Video";
+"MenuItem_id_30" = "Other";
+"MenuItem_id_35" = "System";
+"MenuItem_id_81" = "file";
+"MenuItem_id_23" = "Music";
+"MenuItem_id_33" = "App";
+"MenuItem_id_18" = "iCloud Drive";
+"MenuItem_id_19" = "Dropbox";
+"Bookmark_id_6" = "Folder";
+"BookmarkWindow_id_1" = "Title:";
+"BookmarkWindow_id_3" = "Album:";
+"BookmarkWindow_id_4" = "Author:";
+
+"ToolContextMenuButton_id_1" = "Refresh";
+"ToolContextMenuButton_id_3" = "To PC";
+
+
+"Common_id_1" = "Refresh";
+"Common_id_7" = "Add";
+"Common_id_8" = "Rename";
+"Common_id_9" = "Delete";
+"Common_id_10" = "Cut";
+"Common_id_11" = "Copy";
+"Common_id_12" = "Move to";
+"Common_id_13" = "Paste";
+"Common_id_14" = "Export";
+"Common_id_19" = "New Folder";
+"Common_id_20" = "to iCloud";
+"Menu_ToPc" = "Send to PC";
+"Menu_ToDevice" = "Send to Device";
+
+"icloud_addAcount" = "Add iCloud Account";
+
+"MSG_COM_Deleting" = "Deleting, please wait...";
+"MSG_TranResult_UnknownFailed" = "Unknown error occurred";
+"MSG_COM_Confirm_Before_Delete" = "Are you sure you want to permanently delete the selected items?";
+"MSG_COM_Confirm_Before_Delete_2" = "Are you sure you want to permanently delete the selected item?";
+"MSG_COM_Delete_Complete" = "Deleted successfully!";
+"MSG_COM_Delete_Failed" = "Deleted Failed!";
+"MSG_COM_Delete_Complete_Description_ComPlex" = "Successfully removed %@ items";
+"MSG_COM_Delete_Complete_Description" = "Successfully removed %@ item";
+"MSG_AddData_Tips" = "To enable the Flash-sync performance, please select less than %@ items to transfer.";
+"MSG_AddPhotoToDefaultAlbum" = "From AnyTrans";
+"MSG_COM_Update_DataBase" = "Updating database, please wait…";
+
+"TransferDevice_Message_Caution" = "Please don't disconnect your device before the content transferring process finished.";
+"ImportSync_id_1" = "Preparing to sync, please wait...";
+"ImportSync_id_2" = "Preparing device data, please wait...";
+"ImportSync_id_3" = "Analyzing %@...";
+"ImportSync_id_4" = "Analyzing Completed";
+"ImportSync_id_5" = "Transferring Stopped";
+"ImportSync_id_6" = "Preparing Media Transfer";
+"ImportSync_id_7" = "Missing FFMPEG component.";
+"ImportSync_id_8" = "Converting %@ Skipped.";
+"ImportSync_id_9" = "Conversion Completed";
+"ImportSync_id_10" = "Convert to Device Supported Files";
+"ImportSync_id_11" = "Conversion Failed. File Name: %@";
+"ImportSync_id_12" = "Transferring Media";
+"ImportSync_id_13" = "Converting %@";
+"ImportSync_id_14" = "Analyzing Failed";
+"ImportSync_id_15" = "Transferring Contacts";
+"ImportSync_id_16" = "Transferring Notes";
+"ImportSync_id_17" = "Transferring Bookmarks";
+"ImportSync_id_18" = "Transferring Books";
+"ImportSync_id_19" = "Transferring Apps";
+"ImportSync_id_20" = "Preparing Transfer...";
+
+"Transfer_text_complete_tips" = "Successfully transferred XXXX items.";
+"Transfer_text_complete_tip" = "Successfully transferred XXXX item.";
+"ToDevice_Message_Title" = "Transferring data to \"%@\", Please wait...";
+"Transfer_text_id_1" = "Preparing data, please wait...";
+"Transfer_Item_Title" = "Transferring %@...";
+
+
+"Transfer_error_id_1" = "Importing failed, please make sure your internet connection is working.";
+"Transfer_error_id_2" = "Importing failed, please contact us for a solution.";
+"Transfer_text_success" = "Transferring Success!";
+
+"mediaView_id_4" = "Unknown Album";
+"mediaView_id_6" = "Unknown Genre";
+
+"Photo_Export_Set_id_1" = "Set export format for HEIC photo.";
+"Photo_Export_Set_id_2" = "Export photo in HEIC format (Support to preview in macOS High Sierra and higher).";
+"Photo_Export_Set_id_3" = "Export photo in JPG format.";
+"Photo_Export_Set_id_4" = "Set export format for Live Photo.";
+"Photo_Export_Set_id_7" = "Export Live Photo in original format.";
+"Photo_Export_Set_id_8" = "Convert Live Photo to GIF format with high quality.";
+"Photo_Export_Set_id_9" = "Convert Live Photo to GIF format with equal quality.";
+"Photo_Export_Set_id_10" = "Convert Live Photo to GIF format with low quality.";
+"Photo_Export_Set_id_11" = "Convert to MP4 format.";
+"Photo_Export_Set_id_12" = "Convert to M4V format.";
+"Photo_Export_Set_id_13" = "Remind me to set before exporting photo.";
+"Photo_Export_Set_id_14" = "Do you want to change photo export setting?";
+"Photo_Export_Set_id_15" = "Keep the date info that was originally created on your device.";
+"SettingView_id_9" = "Export Path:";
+
+"Connect_No_Driver_Txt" = "It seems you didn't install Apple iDevice driver on your PC, but AnyTrans needs them to communicate with your device. It's recommended to launch DriverInstall program to install them automatically.";
+"Playlist_id_2" = "Playlist Name:";
+"System_id_6" = "Import files";
+"CreateFileError" = "Cannot copy files to this folder. Please choose another one and retry.";
+
+"ToTransfer_Title_TODevice" = "\"%@\"";
+"ToPCiTunes_Transfer_Title" = "Transferring to %@, please wait...";
+"Ex_Op_NoDiskSpaceSkip_ToPCiTunes" = "Not enough disk space on your computer.";
+"Ex_Op_InitiTuensAppFail_ToiTunes" = "Failed to initialize COM components.";
+
+"Cloud_LogginDefault_Title" = "Welcome to Cloud Driver";
+"Cloud_LogginDefault_Declare" = "We never retain any of your Apple account info or content!";
+"CloudLogin_Password_Txt" = "Password:";
+"CloudLogin_AppleID_Txt" = "Apple ID:";
+"Cloud_Login" = "Login to Cloud";
+"Cloud_Logining" = "Logging in...";
+
+"iCloud_id_1" = "Please enter your Apple ID and password to log into your iCloud account.";
+"iCloud_id_2" = "We never retain any of your Apple account info or content!";
+"iCloud_id_3" = "Scan previously downloaded iCloud backup files without logging in >>";
+"iCloud_id_4" = "Your Apple ID or Password is incorrect. Please check it and try again.";
+"iCloud_id_14" = "Analyzing files";
+"iCloudLogin_View_Remeberme" = "Remeber me";
+"iCloudLogin_View_codeTips1" = "Please enter the verification code to continue.";
+"iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
+"iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";
+"iCloudLogin_View_Resend" = "Resend Code";
+"iCloudLogin_View_SendByMessage" = "Text Me";
+"iCloudLogin_View_Help" = "Need Help?";
+"iCloudLogin_View_ForbidenTip" = "你的账户已被禁用";
+"iCloudLogin_View_FrequetlyTip" = "频繁使用，请过一会再登录";
+
+"iCloudLogin_View_Verify" = "Verifying…";
+"iCloudLogin_View_codeTips2" = "Invalid verification code, please resend it to your device.";
+"iCloudLogin_View_codeTips3" = "Verification failed, please check and re-enter the verification code.";
+"iCloudLogin_View_SendCode_Fail" = "Failed to send verification code, please try again.";
+"iCloudLogin_View_Login_Fail" = "Failed to log in, please try again.";
+"iCloudLogin_View_SendCode_Success" = "A message with a verification code has been sent to your devices. Please enter the code to continue.";
+"iCloudLogin_View_Input_NewCode" = "Too many verification codes sent. Please enter the last one displayed on one of your devices, or try again later.";
+"iCloudLogin_View_Account_Locked" = "This Apple ID has been locked for security reasons. You must unlock it before signing in.";
+"iCloudLogin_View_Unlock_Account" = "Unlock Account";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "Verification code incorrectly entered too many times. Please try again later.";
+"iCloudLogin_View_Waitting" = "正在登录，请等待...";
+
+"MSG_COM_Moving" = "Moving, please wait...";
+"MoveFileWindowTitle" = "Select the target location you want move:";
+"common_id_33" = "Please enter the password to unlock the device.";
+"MSG_COM_transfer" = "No %@ to transfer.";
+
+"UIMSG_COM_NoDevice" = "My device";
+"UIMSG_COM_NoiCloud" = "iCloud";
+"UIMSG_COM_NoDropbox" = "Dropbox";
+
+"FileManagerMenuItem_MoveConfirm1" = "Are you sure you want to move the selected items?";
+"FileManagerMenuItem_MoveConfirm" = "Are you sure you want to move the selected item?";
+
+"NotConnectiCLoudTitle" = "iCloud";
+"NotConnectiCloudTips" = "iCloud描述";
+"NotConnectiCloudLoginingTips" = "正在登录iCloud....";
+"NotConnectiCloudMouseEnter" = "iCloud ->";
+"NotConnectDropBoxTitle" = "Dropbox";
+"NotConnectDropBoxTips" = "Dropbox描述";
+"NotConnectDropBoxLoginingTips" = "正在登录Dropbox....";
+"ConnectedDropBoxTips" = "已经登录Dropbox描述";
+"NotConnectDropBoxMouseEnter" = "Dropbox ->";
+"NotConnectDeviceTitle" = "Device";
+"NotConnectDeviceTips" = "Device描述";
+"ConnectedDeviceTips" = "已经连接了设备";
+"NotConnectDeviceMouseEnter" = "Device ->";
+"System_id_1" = "You can only select one item to rename.";
+
+
+"search_control_seraching" = "Searching...";
+
+"InputNewName" = "InputNewName";
+
+"UIParentNodeName" = "Cloud";
+"CloudNotLogin" = "未登录";
+"CloudLogined" = "已登录";
+"DeviceConnected" = "已连接";
+
+"TransferDetails_Upload" = "Upload";
+"TransferDetails_Sync" = "Sync";
+
+"BackWordBtn" = "&lt; 后退";
+"MenuItem_id_11" = "Photo Stream";
+"MenuItem_id_12" = "Photo Library";
+"TransferDetails_StopAll" = "All Stop";
+"TransferDetails_History" = "History";
+"SearchControlDefaultText" = "请输入要搜索的内容";
+"DuplicateName" = "此位置已经包含同名文件。";
+"BackHomeReturn" = "Back Home";
+"cloud_NoFolders_MoveConfirm" = "There is no folder you can move.";
+"cloud_NoItems_MoveConfirm" = "There is no folder you can move.";
+
+"iCloudLogin_Load_Error" = "Can't load icloud drive.";
+"Common_id_2" = "FileInfo";
+"PortableDevice_Title_1" = "The installation of your %@ portable driver is not correct";
+"PortableDevice_Setup_1_Open" = "Click to open the device manager";
+"PortableDevice_Setup_1" = "Please find Apple portable device in device manager, and right-click to uninstall the device driver.";
+"PortableDevice_Setup_2" = "After uninstall completed, please unplug your device and reconnect it.";
+
+"TransferUploading" = "Uploading";
+"TransferDownloading" = "Downloading";
+"TransferPaused" = "Paused";
+"TransferCompelete" = "已下载完成";
+"TransferHistoryTittle" = "Completed transfer list";
+"Clearall" = "Clear all";
+"TransferGridTittleStatus" = "状态";
+"TransferGridTittleOperation" = "操作";
+"TransferFailed" = "传输失败";
+"Common_id_3" = "Preview";
+"TransferToPCView_NotExist_tips" = "文件已经不存在";
+"MenuItem_id_2" = "AppDoc";
+"MG_Transfering_tips" = "包含正在传输的项，请您重新选择操作";
+"MG_TransferingItem_tips" = "预览的项正在传输，请稍后再试";
+"MG_Preview_tips" = "正在生成预览";
+"ConnectediCloudTips" = "已经登录iCloud描述";
+"ConnectedOneDriveTips" = "已经登录OneDrive描述";
+
+/******************** window没有的(需要确认并替换) ************************/
+"Device_MainPage_View_Media" = "Media";
+"NO_DATA_TITLE_1" = "You have no %@ here.";
+"NO_DATA_TITLE_2" = " Click to add new content.";
+"MainWindow_iCLoudUserPlaceholder_String" = "iCloud ID";
+"mainWindow_iCloudPassWord_String" = "Pass Word";
+"MainWindow_BigSize_Dropbox_TitleString" = "DropBox Login";
+"MainWindow_BigSize_Dropbox_MessageString" = "You need to go to the website authorization";
+
+"MainWindow_BigSize_Icloud_TitleString" = "iCloud Login";
+"MainWindow_BigSize_Icloud_MessageString" = "Don't you have an account?Sign up";
+"MainWindow_BigSize_Icloud_Rememberme" = "Remember me";
+"MainWindow_BigSize_Icloud_LoginBtnString" = "Login Now";
+<<<<<<< .mine
+"MainWindow_BigSize_Icloud_LoginPsdPlaceholder" = "Password";
+"MainWindow_BigSize_Icloud_LoginUserPlaceholder" = "iCloud id";
+
+"MainWindow_BigSize_Devices_Title" = "Device Manager";
+"MainWindow_BigSize_Devices_Login_Title" = "Multiple devices can be managed at the same time";
+"MainWindow_BigSize_Devices_Message" = "Can multi-device management";
+"MainWindow_BigSize_Devices_Login_Message" = "Quick links work efficiently";
+
+"MainWindow_iCloud_ClickTo_Login" = "Click to login →";
+"MainWindow_iCloud_Msg_String" = "For safe keeping.And easy sharing";
+"MainWindow_Dropbox_Msg_String" = "Get to your files from anywhere";
+"MainWindow_iCloud_Title_String" = "iCloud";
+"MainWindow_Dropbox_Title_String" = "Dropbox";
+
+
+"NO_DATA_String" = "You have no %@ here.";
+"iCloud_content_view_file" = "files";
+"icloud_addAcount" = "添加iCloud账户";
+"icloud_add_DropBox_Acount" = "添加DropBox账户";
+
+"iCloud_detailView_Size" = "サイズ";
+=======
+>>>>>>> .r2113
+"iCloud_detailView_count" = "ファイル数";
+"iCloud_detailView_lastTime" = "更新日時";
+"iCloud_detailView_creatTime" = "作成日時";
+"Transfer_completeView_transferState_Upload_Complete" = "上传完成";
+/******************** window没有的(需要确认并替换) ************************/

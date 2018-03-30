@@ -8,10 +8,19 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBTranferViewController">
             <connections>
+                <outlet property="_bottomBoxs" destination="6hM-ET-G9s" id="Zjo-4H-aNm"/>
+                <outlet property="_bottomCompleteView" destination="bH5-sU-VrD" id="FSJ-rq-Kdm"/>
+                <outlet property="_bottomLineView" destination="80w-jv-bTW" id="OJh-SD-4BG"/>
                 <outlet property="_bottomView" destination="ZTT-7v-ZPZ" id="1qp-nF-mfa"/>
                 <outlet property="_boxView" destination="Hbg-Nr-a74" id="SaY-Jb-UUG"/>
-                <outlet property="_downViewBtn" destination="6Gn-CN-eWi" id="OxF-ko-6AI"/>
+                <outlet property="_closeCompleteView" destination="wk2-ST-NCW" id="TFq-wH-nHj"/>
+                <outlet property="_completeBottomViewTopLine" destination="aXb-YW-OX6" id="2gD-Vl-nYH"/>
+                <outlet property="_deleteAllBtn" destination="eix-AW-ddC" id="S0n-0m-LrY"/>
+                <outlet property="_historyBtn" destination="INX-lM-WiC" id="5kZ-jR-7VY"/>
+                <outlet property="_removeAllCompleDataBtn" destination="uRv-Fj-4yC" id="Yf7-8q-Vj1"/>
                 <outlet property="_topBottomLine" destination="Tyj-Gi-f9S" id="YcL-Ef-qoC"/>
+                <outlet property="_topBoxs" destination="flX-SZ-8nW" id="Rsc-Za-r9y"/>
+                <outlet property="_topCompletVIew" destination="h9s-vp-bQ0" id="wev-zz-Wbf"/>
                 <outlet property="_topLeftBtn" destination="6Gn-CN-eWi" id="0xA-Ho-CHK"/>
                 <outlet property="_topLeftLine" destination="kxI-GI-INP" id="oTo-Ip-cRa"/>
                 <outlet property="_topRightBtn" destination="Tu5-v3-dUp" id="Sce-3a-JKg"/>
@@ -23,56 +32,36 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY" customClass="IMBBorderRectAndColorView">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="606"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="606"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView id="Z5a-Qt-1yc">
-                    <rect key="frame" x="0.0" y="0.0" width="360" height="606"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <rect key="frame" x="6" y="0.0" width="360" height="606"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <customView id="Fbl-TQ-UcD" customClass="IMBBackgroundBorderView">
+                        <box title="Box" borderType="none" titlePosition="noTitle" id="6hM-ET-G9s">
+                            <rect key="frame" x="0.0" y="14" width="360" height="66"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <view key="contentView" id="Isx-JS-g74">
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                        <box borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="flX-SZ-8nW">
                             <rect key="frame" x="0.0" y="560" width="360" height="46"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <subviews>
-                                <button verticalHuggingPriority="750" id="Tu5-v3-dUp">
-                                    <rect key="frame" x="180" y="4" width="180" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="fcF-aN-d1C">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="downLoadBtn:" target="-2" id="8un-pb-O4U"/>
-                                    </connections>
-                                </button>
-                                <customView id="Tyj-Gi-f9S" customClass="IMBWhiteView">
-                                    <rect key="frame" x="5" y="0.0" width="358" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </customView>
-                                <customView id="kxI-GI-INP" customClass="IMBWhiteView">
-                                    <rect key="frame" x="5" y="0.0" width="180" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </customView>
-                                <customView id="D3N-mW-mMI" customClass="IMBWhiteView">
-                                    <rect key="frame" x="180" y="0.0" width="181" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </customView>
-                                <button verticalHuggingPriority="750" id="6Gn-CN-eWi">
-                                    <rect key="frame" x="5" y="4" width="180" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="yt7-SD-giw">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="upLoadBtn:" target="-2" id="Ebr-DK-MNb"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </customView>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <view key="contentView" id="UXB-2f-hsj">
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="46"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
                         <box autoresizesSubviews="NO" borderWidth="0.0" title="Box" boxType="custom" borderType="none" id="Hbg-Nr-a74">
                             <rect key="frame" x="0.0" y="80" width="360" height="480"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <view key="contentView" id="wd5-sz-32l">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,12 +75,128 @@
                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </box>
-                        <customView id="ZTT-7v-ZPZ">
-                            <rect key="frame" x="0.0" y="14" width="360" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </customView>
                     </subviews>
                 </customView>
+            </subviews>
+        </customView>
+        <customView id="Fbl-TQ-UcD" customClass="IMBBackgroundBorderView">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="46"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" id="Tu5-v3-dUp">
+                    <rect key="frame" x="180" y="4" width="180" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="fcF-aN-d1C">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="downLoadBtn:" target="-2" id="8un-pb-O4U"/>
+                    </connections>
+                </button>
+                <customView id="Tyj-Gi-f9S" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="0.0" width="358" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="kxI-GI-INP" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="0.0" width="180" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView id="D3N-mW-mMI" customClass="IMBWhiteView">
+                    <rect key="frame" x="180" y="0.0" width="181" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <button verticalHuggingPriority="750" id="6Gn-CN-eWi">
+                    <rect key="frame" x="0.0" y="4" width="180" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="yt7-SD-giw">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="upLoadBtn:" target="-2" id="Ebr-DK-MNb"/>
+                    </connections>
+                </button>
+            </subviews>
+        </customView>
+        <customView id="ZTT-7v-ZPZ" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" id="INX-lM-WiC" customClass="IMBImageAndTitleButton">
+                    <rect key="frame" x="295" y="20" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="vnP-qS-D52">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showHistoryBtnDown:" target="-2" id="Mz3-xL-98d"/>
+                    </connections>
+                </button>
+                <customView id="80w-jv-bTW" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="65" width="360" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </customView>
+                <button verticalHuggingPriority="750" id="eix-AW-ddC" customClass="IMBImageAndTitleButton">
+                    <rect key="frame" x="233" y="20" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="GMe-GN-29S">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeAllDataBtnDown:" target="-2" id="YyM-GL-zyD"/>
+                    </connections>
+                </button>
+            </subviews>
+        </customView>
+        <customView id="h9s-vp-bQ0">
+            <rect key="frame" x="0.0" y="0.0" width="1094" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="PJK-5i-FQu">
+                    <rect key="frame" x="414" y="28" width="267" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iOSFiles" id="ljc-9b-4wt">
+                        <font key="font" size="14" name="HelveticaNeue"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="wk2-ST-NCW" customClass="IMBImageAndTitleButton">
+                    <rect key="frame" x="20" y="24" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="GFK-iP-ixh">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closeCompleteView:" target="-2" id="qy0-xG-XDn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="401" y="145"/>
+        </customView>
+        <customView id="bH5-sU-VrD">
+            <rect key="frame" x="0.0" y="0.0" width="1094" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <customView id="aXb-YW-OX6" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="65" width="1094" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </customView>
+                <button verticalHuggingPriority="750" id="uRv-Fj-4yC" customClass="IMBMyDrawCommonly">
+                    <rect key="frame" x="966" y="22" width="74" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="YFR-ht-AB6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeAllCompleteDataBtnDown:" target="-2" id="nR3-Zz-OII"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
     </objects>

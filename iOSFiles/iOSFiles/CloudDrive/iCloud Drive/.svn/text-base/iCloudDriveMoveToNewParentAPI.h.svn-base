@@ -10,8 +10,8 @@
 
 @interface iCloudDriveMoveToNewParentAPI : BaseDriveAPI
 {
-    NSDictionary *_itemDic; ///< 重命名项字典
+    NSArray *_itemDics; ///< 重命名项字典
 }
 
-- (id)initWithMoveItemDic:(NSDictionary *)dic newParentIDOrPathdsid:(NSString *)parent dsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url;
+- (id)initWithMoveItemDic:(NSArray *)dics newParentIDOrPathdsid:(NSString *)parent dsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url;
 @end

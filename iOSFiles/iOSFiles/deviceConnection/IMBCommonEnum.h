@@ -284,6 +284,7 @@ typedef enum IPodFamily {
     iPad_mini_4 = 4004,
     iPad_Pro = 4005,
     iPad_5 = 4006,
+    iPad_6 = 4007,
     general_Android = 5000,
     general_iCloud = 6000,
     general_Add_Content = 7000,
@@ -469,6 +470,9 @@ typedef enum FileType {
     BookFile = 6,
     ZIPFile = 7,
     PPtFile = 8,
+    excelFile = 9,
+    contactFile = 10,
+    dmgFile = 11,
     
 } FileTypeEnum;
 
@@ -490,30 +494,11 @@ typedef enum : NSUInteger {
     IMBDevicePageWindowFolderEnumPhotoLibrary
 } IMBDevicePageWindowFolderEnum;
 
-//union {
-//    char   c[8];
-//    double d;
-//} x;
-//
-//union {
-//    char    c[2];
-//    uint16  ui16;
-//} uint_16;
-//
-//union {
-//    char    c[4];
-//    int32_t i32;
-//} int_32;
-//
-//union {
-//    char    c[4];
-//    uint32  ui32;
-//} uint_32;
-//
-//union {
-//    char    c[8];
-//    int64_t i64;
-//} int_64;
+//时间类型
+typedef enum actionType {
+    loadAction = 0,
+    deleteAction = 1,
+} ActionTypeEnum;
 
 
 @interface IMBCommonEnum : NSObject {

@@ -660,6 +660,14 @@
 //            return CustomLocalizedString(@"icloud_drive", nil);
             return @"iCloud Drive";
             break;
+        case Category_Video:
+            //            return CustomLocalizedString(@"icloud_drive", nil);
+            return @"Video";
+            break;
+        case Category_Media:
+            //            return CustomLocalizedString(@"icloud_drive", nil);
+            return @"Media";
+            break;
         default:
 //            return CustomLocalizedString(@"MenuItem_id_86", nil);
             return @"Content";
@@ -1076,6 +1084,9 @@
             break;
         case iPad_5:
             return @"iPad 5";
+            break;
+        case iPad_6:
+            return @"iPad 6";
             break;
         case iPad_mini:
             return @"iPad mini";

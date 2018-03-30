@@ -92,7 +92,7 @@
  *  Description 移动
  *
  *  @param newParent 新的父目录id
- *  @param item      移动项的dic  eg
+ *  @param items      移动项的dic数组  eg
  *                               @{@"drivewsid":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB",
  *                               @"etag":@"pp",
  *                               @"clientId":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB"}
@@ -101,7 +101,7 @@
  *  @param success   成功回调block
  *  @param fail      失败回调block
  */
-- (void)moveToNewParent:(NSString *)newParent itemDic:(NSDictionary *)item success:(Callback)success fail:(Callback)fail;
+- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail;
 
 /**
  *  Description 获取可用空间

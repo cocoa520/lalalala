@@ -26,7 +26,6 @@
 @synthesize alternatingOddRowBackgroundColor = _alternatingOddRowBackgroundColor;
 @synthesize isHighLight = _isHighLight;
 @synthesize canSelect = _canSelect;
-@synthesize clickCheckBox = _clickCheckBox;
 @synthesize refresh = _refresh;
 @synthesize isNote = _isNote;
 
@@ -44,15 +43,13 @@
     if (self) {
         [self setupHeaderCell];
         [self _setupCornerView];
-        _selectionColor = [[NSColor colorWithDeviceRed:50.0/255 green:177.0/255 blue:250.0/255 alpha:1.000] retain];
-        _alternatingEvenRowBackgroundColor = [COLOR_PROMPTBTN_BORDER retain];
+        _selectionColor = [COLOR_TRABLEVIEW_ENTER_BG retain];
+        _alternatingEvenRowBackgroundColor = [COLOR_View_NORMAL retain];
         _alternatingOddRowBackgroundColor = [[NSColor colorWithDeviceRed:248.0/255 green:248.0/255 blue:248.0/255 alpha:1.000] retain];
         _canSelect = YES;
     }
     return self;
 }
-
-
 
 - (void)setListener:(id<IMBImageRefreshListListener>)listener {
     _listener = listener;
@@ -129,44 +126,39 @@
 - (void)drawRow:(NSInteger)row clipRect:(NSRect)clipRect {
     if (!_isHighLight) {
         NSColor* bgColor = Nil;
-        if (self == [[self window] firstResponder] && [[self window] isMainWindow] && [[self window] isKeyWindow])
-        {
-            if (_selectionColor) {
-                bgColor = _selectionColor;
-            } else {
-                bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
-            }
-        }else{
-//            if (_selectionColor) {
-//                bgColor = TableView_Cell_isNOFirstResponder;
-//            } else {
-//                bgColor = TableView_Cell_isNOFirstResponder;
-//            }
-            if (self == [[self window] firstResponder] ) {
-                if (_selectionColor) {
-                    bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1.0];
-//                    bgColor = _selectionColor;
-                } else {
-                    bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
-                }
-            }else{
-                if (_isNote) {
+        if (self == [[self window] firstResponder] && [[self window] isMainWindow] && [[self window] isKeyWindow]) {
+            if (_isTranferView) {
+                if (row == _moveRow) {
+                    bgColor = COLOR_TRABLEVIEW_SELECTE_BG;
+                }else{
                     if (_selectionColor) {
                         bgColor = _selectionColor;
                     } else {
                         bgColor = [NSColor colorWithDeviceRed:181.0/255 green:214.0/255 blue:244.0/255 alpha:1.0];
                     }
-                }else {
-                   bgColor = [NSColor colorWithDeviceRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1.0];
                 }
+            }else {
+                if (_clickSpace) {
+                    bgColor = COLOR_TABLEVIEW_CLICK;
+                } else {
+                    bgColor = COLOR_TABLEVIEW_CLICK;
+                }
+            }
+        }else {
+
+            if (self == [[self window] firstResponder] ) {
                 
+                bgColor = COLOR_TABLEVIEW_CLICK;
+                
+            }else {
+                
+                bgColor = COLOR_TABLEVIEW_CLICK;
             }
   
         }
         
         NSIndexSet* selectedRowIndexes = [self selectedRowIndexes];
-        if ([selectedRowIndexes containsIndex:row])
-        {
+        if ([selectedRowIndexes containsIndex:row]||(row == _moveRow && _isTranferView) ) {
             [[NSColor clearColor] setFill];
             NSRectFill([self rectOfRow:row]);
             [bgColor setFill];
@@ -174,7 +166,7 @@
         }
         [super drawRow:row clipRect:clipRect];
         
-    }else{
+    }else {
         
         [super drawRow:row clipRect:clipRect];
     }
@@ -238,49 +230,51 @@
 }
 
 - (void)selectRowIndexes:(NSIndexSet *)indexes byExtendingSelection:(BOOL)extend {
-    if (!_clickCheckBox&&_canSelect) {
+    if (_canSelect) {
         [super selectRowIndexes:indexes byExtendingSelection:extend];
         [self setNeedsDisplay:YES];
+        if ([_listener respondsToSelector:@selector(tableView:WithSelectIndexSet:)]) {
+            [_listener tableView:self WithSelectIndexSet:indexes];
+        }
     }
-    _clickCheckBox = NO;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
     NSInteger clickCount = theEvent.clickCount;
     NSPoint point = [self convertPoint:theEvent.locationInWindow fromView:nil];
     int row = (int)[self rowAtPoint:point];
-    if ( row <0 ) {
-        return;
-    }
-    NSRect rect = [self rectOfRow:row];
-    int column1 = (int)[self columnWithIdentifier:@"CheckCol"];
-    NSRect columRect = [self rectOfColumn:column1];
-   IMBCheckBoxCell *cell = (IMBCheckBoxCell *)[self preparedCellAtColumn:column1 row:row];
-    NSSize size = /*NSMakeSize(14, 14);/*/[cell cellSize];
-    
-    NSRect chekRect = NSMakeRect(0, 0, size.width, size.height);
-    if (cell.outlineCheck) {
-        chekRect.origin.x = rect.origin.x +(columRect.size.width - size.width)/2 +6;
-        chekRect.origin.y = rect.origin.y + (rect.size.height - size.height)/2.0+1;
-    }else {
-        chekRect.origin.x = rect.origin.x +(columRect.size.width - size.width)/2;
-        chekRect.origin.y = rect.origin.y + (rect.size.height - size.height)/2.0+1;
-    }
-    
-    if (NSMouseInRect(point, chekRect, [self isFlipped])) {
-        _clickCheckBox = YES;
-        [super mouseDown:theEvent];
-        if ([_listener respondsToSelector:@selector(tableView:row:)]) {
-            [_listener tableView:self row:row];
-        }
-    }else {
-            _clickCheckBox = NO;
+    if ( row >=0 ) {
+        NSRect rect = [self rectOfRow:row];
+        _clickSpace = NO;
+        if (NSMouseInRect(point, rect, [self isFlipped])) {
             [super mouseDown:theEvent];
-    }
-    if (clickCount == 2) {
-        if ([_listener respondsToSelector:@selector(tableViewDoubleClick:row:)]) {
-            [_listener tableViewDoubleClick:self row:row];
+            
+        }else {
+            [super mouseDown:theEvent];
         }
+        if (clickCount == 2) {
+            if ([_listener respondsToSelector:@selector(tableViewDoubleClick:row:)]) {
+                [_listener tableViewDoubleClick:self row:row];
+            }
+        }
+    } else {
+        _clickSpace = YES;
+        if ([_listener respondsToSelector:@selector(tableView:WithSelectIndexSet:)]) {
+            [_listener tableView:self WithSelectIndexSet:nil];
+        }
+    }
+    
+}
+
+- (void)mouseMoved:(NSEvent *)theEvent {
+    if (_isTranferView) {
+        NSPoint point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        int row = (int)[self rowAtPoint:point];
+        _moveRow = row;
+        //add to Gehry
+        [self setNeedsDisplay:YES];
+    }else{
+        [super mouseMoved:theEvent];
     }
 }
 
@@ -293,7 +287,6 @@
     NSRect rect = [self rectOfRow:row];
     
     if (NSMouseInRect(point, rect, [self isFlipped])) {
-        _clickCheckBox = NO;
         if ([_listener respondsToSelector:@selector(tableView:rightDownrow:)]) {
             [_listener tableView:self rightDownrow:row];
         }
@@ -343,7 +336,7 @@
     NSString *countstr = [NSString stringWithFormat:@"%d",count];
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:countstr?:@""];
     [str addAttribute:NSFontAttributeName value:[NSFont boldSystemFontOfSize:12] range:NSMakeRange(0, str.length)];
-    [str addAttribute:NSForegroundColorAttributeName value:COLOR_PROMPTBTN_BORDER range:NSMakeRange(0, str.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:COLOR_View_NORMAL range:NSMakeRange(0, str.length)];
 //    NSRect drawRect = NSMakeRect((scalingimage.size.width-(str.size.width+8))/2.0+15, scalingimage.size.height/2.0-10, str.size.width+8, 20);
     NSRect drawRect = NSMakeRect((scalingimage.size.width - (str.size.width + 8) )/2.0, (scalingimage.size.height - (str.size.width + 8))/2.0, str.size.width + 8, str.size.width + 8);
     NSBezierPath *path = nil;
@@ -356,7 +349,7 @@
     
     [[NSColor colorWithDeviceRed:255.0/255 green:0 blue:0 alpha:1] setFill];
     [path fill];
-    [COLOR_PROMPTBTN_BORDER setStroke];
+    [COLOR_View_NORMAL setStroke];
     [path stroke];
     
     [str drawInRect: NSMakeRect(drawRect.origin.x+4,drawRect.origin.y +(drawRect.size.height - str.size.height )/2.0, str.size.width+8, str.size.height)];

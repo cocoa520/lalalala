@@ -313,11 +313,18 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
     }
 }
 
-- (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPath:(NSString *)idOrPath success:(Callback)success fail:(Callback)fail {
+- (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths success:(Callback)success fail:(Callback)fail {
     if ([self isExecute]) {
-        YTKRequest *requestAPI = [[DropboxMoveToNewParentAPI alloc] initWithItemID:parent newParentIDOrPath:newParent parent:@"" accessToken:_accessToken];
-        __block YTKRequest *weakRequestAPI = requestAPI;
-        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSMutableArray *requestArray = [NSMutableArray array];
+        for (NSString *itemID in idOrPaths ) {
+            YTKRequest *requestAPI = [[DropboxMoveToNewParentAPI alloc] initWithItemID:itemID newParentIDOrPath:newParent parent:@"" accessToken:_accessToken];
+            [requestArray addObject:requestAPI];
+            [requestAPI release];
+        }
+        YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc] initWithRequestArray:requestArray];
+        __block YTKBatchRequest *weakBatchRequest = batchRequest;
+        [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
+            YTKRequest *request = [batchRequest.requestArray lastObject];
             ResponseCode code = [self checkResponseTypeWithSuccess:request];
             if (code == ResponseSuccess) {
                 DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
@@ -330,16 +337,17 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                 fail?fail(response):nil;
                 [response release];
             }
-            [weakRequestAPI release];
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [weakBatchRequest release];
+        } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
             //to do需要更具返回值判断错误
+            YTKRequest *request = [batchRequest.requestArray lastObject];
             ResponseCode code = [self checkResponseTypeWithFailed:request];
             NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
             NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
             DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
             fail?fail(response):nil;
             [response release];
-            [weakRequestAPI release];
+            [weakBatchRequest release];
         }];
     }
 }
@@ -390,14 +398,22 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             }];
             //设置为等待状态
             item.state = DownloadStateWait;
-            [self downloadItems:sortArray];
-        }
+            if ([sortArray count] > 0) {
+                [self downloadItems:sortArray];
+            }else{
+                item.progress = 100;
+                item.state = DownloadStateComplete;
+            }        }
     });
 }
 
 - (void)getAllFile:(NSString *)folderID  AllChildArray:(NSMutableArray *)allChildArray parentPath:(NSString *)parentPath
 {
     NSDictionary *dic = [self getList:folderID];
+    NSString *folderPath = [_downLoader.downloadPath stringByAppendingString:parentPath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
     //解析列表
     NSMutableArray *childArray = [self parseListDic:dic];
     for (NSDictionary *childDic in childArray) {

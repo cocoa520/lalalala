@@ -204,11 +204,11 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
  *
  *  @param newParent 父目录的id或者路径
  *  @param parent 原父目录 视情况而定有的平台 不需要parent参数 传nil即可 比如onedrive 不需要parent参数
- *  @param idOrPath  自身的id或者路径
+ *  @param idOrPaths  自身的id或者路径数组
  *  @param success   成功回调block
  *  @param fail      失败回调block
  */
-- (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPath:(NSString *)idOrPath  success:(Callback)success fail:(Callback)fail;
+- (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths success:(Callback)success fail:(Callback)fail;
 
 /**
  ***************************** @description 下载相关方法

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/Mac/!svn/ver/1868/JPProject/iOSFiles/iOSFiles/UI/cell
+/svn/Mac/!svn/ver/2138/JPProject/iOSFiles/iOSFiles/UI/cell
 END
 IMBTranferViewCell.m
 K 25
@@ -15,11 +15,23 @@ svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/1660/JPProject/iOSFiles/iOSFiles/UI/cell/IMBSecureTextFieldCell.m
 END
+IMBSearchFieldCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/2136/JPProject/iOSFiles/iOSFiles/UI/cell/IMBSearchFieldCell.h
+END
 IMBImageAndTextCell.h
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/1742/JPProject/iOSFiles/iOSFiles/UI/cell/IMBImageAndTextCell.h
+END
+IMBSearchFieldCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/2136/JPProject/iOSFiles/iOSFiles/UI/cell/IMBSearchFieldCell.m
 END
 IMBImageAndTextFieldCell.h
 K 25
@@ -63,17 +75,23 @@ svn:wc:ra_dav:version-url
 V 76
 /svn/Mac/!svn/ver/1680/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCheckBoxCell.h
 END
-IMBSecireTextField.m
+IMBTableViewBtnCell.h
 K 25
 svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/1654/JPProject/iOSFiles/iOSFiles/UI/cell/IMBSecireTextField.m
+V 80
+/svn/Mac/!svn/ver/1998/JPProject/iOSFiles/iOSFiles/UI/cell/IMBTableViewBtnCell.h
 END
 IMBCustomHeaderCell.m
 K 25
 svn:wc:ra_dav:version-url
 V 80
-/svn/Mac/!svn/ver/1760/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCustomHeaderCell.m
+/svn/Mac/!svn/ver/2137/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCustomHeaderCell.m
+END
+IMBSecireTextField.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/1654/JPProject/iOSFiles/iOSFiles/UI/cell/IMBSecireTextField.m
 END
 IMBCenterTextFieldCell.h
 K 25
@@ -81,11 +99,11 @@ svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/1554/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCenterTextFieldCell.h
 END
-customTextFiled.h
+IMBMessageNameTextCell.h
 K 25
 svn:wc:ra_dav:version-url
-V 76
-/svn/Mac/!svn/ver/1655/JPProject/iOSFiles/iOSFiles/UI/cell/customTextFiled.h
+V 83
+/svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/cell/IMBMessageNameTextCell.h
 END
 IMBCheckBoxCell.m
 K 25
@@ -98,6 +116,18 @@ K 25
 svn:wc:ra_dav:version-url
 V 79
 /svn/Mac/!svn/ver/1775/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCheckHeaderCell.m
+END
+IMBTableViewBtnCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Mac/!svn/ver/2016/JPProject/iOSFiles/iOSFiles/UI/cell/IMBTableViewBtnCell.m
+END
+customTextFiled.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Mac/!svn/ver/1655/JPProject/iOSFiles/iOSFiles/UI/cell/customTextFiled.h
 END
 customTextFieldCell.h
 K 25
@@ -117,6 +147,12 @@ svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/1554/JPProject/iOSFiles/iOSFiles/UI/cell/IMBCenterTextFieldCell.m
 END
+IMBMessageNameTextCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/cell/IMBMessageNameTextCell.m
+END
 IMBSecureTextFieldCell.h
 K 25
 svn:wc:ra_dav:version-url
@@ -127,7 +163,7 @@ customTextFiled.m
 K 25
 svn:wc:ra_dav:version-url
 V 76
-/svn/Mac/!svn/ver/1757/JPProject/iOSFiles/iOSFiles/UI/cell/customTextFiled.m
+/svn/Mac/!svn/ver/2138/JPProject/iOSFiles/iOSFiles/UI/cell/customTextFiled.m
 END
 customTextFieldCell.m
 K 25

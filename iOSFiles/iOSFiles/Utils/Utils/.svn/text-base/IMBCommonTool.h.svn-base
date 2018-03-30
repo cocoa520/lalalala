@@ -7,6 +7,7 @@
 //
 
 #import <AppKit/AppKit.h>
+@class IMBiPod;
 
 @interface IMBCommonTool : NSObject
 /**
@@ -21,18 +22,18 @@
 + (void)setViewBgWithView:(NSView *)view color:(NSColor *)bgColor delta:(CGFloat)delta radius:(CGFloat)radius dirtyRect:(NSRect)dirtyRect;
 
 /**
- *  显示单个ok按钮的下拉提示框
+ *  显示单个ok按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 @"DropBox"  当界面是iCloud时，isDetailWindow参数传入 @"iCloud"  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
  *
  *  @param isMainWindow    是否显示在mainwindow上
  *  @param btnTitle        btn的title
  *  @param msgText         显示的提示信息
  *  @param btnClickedBlock 按钮点击响应事件
  */
-+ (void)showSingleBtnAlertInMainWindow:(BOOL)isMainWindow btnTitle:(NSString *)btnTitle msgText:(NSString *)msgText btnClickedBlock:(void(^)(void))btnClickedBlock;
-+ (void)showSingleBtnAlertInMainWindow:(BOOL)isMainWindow alertTitle:(NSString *)alertTitle btnTitle:(NSString *)btnTitle msgText:(NSString *)msgText btnClickedBlock:(void(^)(void))btnClickedBlock;
++ (void)showSingleBtnAlertInMainWindow:(NSString *)isDetailWindow btnTitle:(NSString *)btnTitle msgText:(NSString *)msgText btnClickedBlock:(void(^)(void))btnClickedBlock;
++ (void)showSingleBtnAlertInMainWindow:(NSString *)isDetailWindow alertTitle:(NSString *)alertTitle btnTitle:(NSString *)btnTitle msgText:(NSString *)msgText btnClickedBlock:(void(^)(void))btnClickedBlock;
 
 /**
- *  显示单个两个按钮的下拉提示框
+ *  显示单个两个按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 @"DropBox"  当界面是iCloud时，isDetailWindow参数传入 @"iCloud"  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
  *
  *  @param isMainWindow          是否显示在mainwindow上
  *  @param firstTitle            第一个btn的title
@@ -41,7 +42,24 @@
  *  @param firstBtnClickedBlock  第一个按钮点击响应事件
  *  @param secondBtnClickedBlock 第二个按钮点击响应事件
  */
-+ (void)showTwoBtnsAlertInMainWindow:(BOOL)isMainWindow firstBtnTitle:(NSString *)firstTitle secondBtnTitle:(NSString *)secondTitle msgText:(NSString *)msgText firstBtnClickedBlock:(void(^)(void))firstBtnClickedBlock secondBtnClickedBlock:(void(^)(void))secondBtnClickedBlock;
-+ (void)showTwoBtnsAlertInMainWindow:(BOOL)isMainWindow alertTitle:(NSString *)alertTitle firstBtnTitle:(NSString *)firstTitle secondBtnTitle:(NSString *)secondTitle msgText:(NSString *)msgText firstBtnClickedBlock:(void(^)(void))firstBtnClickedBlock secondBtnClickedBlock:(void(^)(void))secondBtnClickedBlock;
++ (void)showTwoBtnsAlertInMainWindow:(NSString *)isDetailWindow firstBtnTitle:(NSString *)firstTitle secondBtnTitle:(NSString *)secondTitle msgText:(NSString *)msgText firstBtnClickedBlock:(void(^)(void))firstBtnClickedBlock secondBtnClickedBlock:(void(^)(void))secondBtnClickedBlock;
++ (void)showTwoBtnsAlertInMainWindow:(NSString *)isDetailWindow alertTitle:(NSString *)alertTitle firstBtnTitle:(NSString *)firstTitle secondBtnTitle:(NSString *)secondTitle msgText:(NSString *)msgText firstBtnClickedBlock:(void(^)(void))firstBtnClickedBlock secondBtnClickedBlock:(void(^)(void))secondBtnClickedBlock;
+/**
+ *  上传文件时，对于openpanel能打开什么样的文件进行判断返回
+ *
+ *  @param category 传入的分类进行筛选返回
+ *
+ *  @return 返回能打开的文件类型数组
+ */
++ (NSArray <NSString *>*)getOpenPanelSuffxiWithCategory:(CategoryNodesEnum)category;
+
+/**
+ *  加载book封面
+ *
+ *  @param array iBooks array
+ *  @param ipod  ipod
+ */
++ (void)loadbookCover:(NSArray *)array ipod:(IMBiPod *)ipod;
+
 
 @end

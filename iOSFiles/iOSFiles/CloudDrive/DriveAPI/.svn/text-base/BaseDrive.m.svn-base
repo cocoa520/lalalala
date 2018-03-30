@@ -21,6 +21,7 @@
 @synthesize itemIDOrPath = _itemIDOrPath;
 @synthesize fileSize = _fileSize;
 @synthesize currentSize = _currentSize;
+@synthesize currentTotalSize = _currentTotalSize;
 @synthesize parent = _parent;
 @synthesize isFolder = _isFolder;
 @synthesize isBigFile = _isBigFile;
@@ -42,6 +43,7 @@
         _progress = 0.0;
         _fileSize = 0;
         _currentSize = 0;
+        _currentTotalSize = 0;
     }
     return self;
 }
@@ -239,8 +241,8 @@
 {
     for (id <DownloadAndUploadDelegate> item in items) {
         if (!item.isStart) {
+            item.isStart = YES;
             [self downloadItem:item];
-
         }
     }
 }

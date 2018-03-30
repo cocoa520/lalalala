@@ -14,7 +14,7 @@
 @optional
 - (void)loadingThumbnilImage:(NSRange)oldVisibleRows withNewVisibleRows:(NSRange)newVisibleRows;
 - (void)setAllselectState:(CheckStateEnum)checkState;
-- (void)tableView:(NSTableView *)tableView row:(NSInteger)index;
+- (void)tableView:(NSTableView *)tableView WithSelectIndexSet:(NSIndexSet *)indexSet;
 - (void)tableViewDoubleClick:(NSTableView *)tableView row:(NSInteger)index;
 - (void)tableView:(NSTableView *)tableView rightDownrow:(NSInteger)index;
 -(void)setselectState:(CheckStateEnum)state WithTableView:(NSTableView *)tableView;
@@ -29,15 +29,16 @@
     NSColor *_alternatingEvenRowBackgroundColor;   //偶数行背景颜色
     NSColor *_alternatingOddRowBackgroundColor;    //奇数行背景颜色
     BOOL _isHighLight;
-    BOOL _clickCheckBox;
+    BOOL _clickSpace;
     BOOL _canSelect;
     BOOL _refresh;
     BOOL _isNote;
-  
+    int _moveRow;
+    BOOL _isTranferView;
+    
 }
-
+@property (nonatomic, assign) BOOL isTranferView;
 @property (nonatomic, assign) BOOL isHighLight;
-@property (nonatomic, assign) BOOL clickCheckBox;
 @property (nonatomic, retain) IMBCheckHeaderCell *checkBoxCell;
 @property (nonatomic, retain) IMBCheckHeaderCell *headCheckCell;
 @property (nonatomic, assign) BOOL canSelect;

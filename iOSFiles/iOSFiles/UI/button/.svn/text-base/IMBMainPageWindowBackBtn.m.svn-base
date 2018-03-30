@@ -10,23 +10,32 @@
 #import "IMBCommonDefine.h"
 
 
+@interface IMBMainPageWindowBackBtn()
+{
+    NSString *_imgStirng;
+}
+
+@end
+
 @implementation IMBMainPageWindowBackBtn
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
     // Drawing code here.
-    NSImage *iconImage =[[NSImage alloc] initWithSize:NSMakeSize(10.f, 10.f)];
-    iconImage = [NSImage imageNamed:@"nav_icon_back"];
-    [iconImage setResizingMode:NSImageResizingModeTile];
-    int xPos = -2;
-    NSRect imageRect;
-    imageRect.origin = NSZeroPoint ;
-    imageRect.size = NSMakeSize(iconImage.size.width , iconImage.size.height );
-    NSRect drawingRect = NSZeroRect;
-    drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos - 2.f , (dirtyRect.size.height - imageRect.size.height)/2.f + 2 );
-    drawingRect.size = imageRect.size;
-    [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+    if (_imgStirng) {
+        NSImage *iconImage =[[NSImage alloc] initWithSize:NSMakeSize(10.f, 10.f)];
+        iconImage = [NSImage imageNamed:_imgStirng];
+        [iconImage setResizingMode:NSImageResizingModeTile];
+        int xPos = 0;
+        NSRect imageRect;
+        imageRect.origin = NSZeroPoint ;
+        imageRect.size = NSMakeSize(iconImage.size.width , iconImage.size.height );
+        NSRect drawingRect = NSZeroRect;
+        drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , (dirtyRect.size.height - imageRect.size.height)/2.f + 2 );
+        drawingRect.size = imageRect.size;
+        [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+    }
     
     
 }
@@ -35,6 +44,7 @@
     [self addTrackingRect:self.bounds owner:self userData:nil assumeInside:NO];
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
     
+    _imgStirng = @"navbar_icon_rt_back";
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
@@ -44,16 +54,19 @@
 - (void)mouseUp:(NSEvent *)theEvent {
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
     [NSApp sendAction:self.action to:self.target from:self];
+    _imgStirng = @"navbar_icon_rt_back";
     
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     
     [self setTitleAttrWithTitleColor:COLOR_MAINWINDOW_MESSAGE_BLUE_TEXT];
+    _imgStirng = @"navbar_icon_rt_back_hover";
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
+    _imgStirng = @"navbar_icon_rt_back";
 }
 #pragma mark - other methods
 - (void)setTitleAttrWithTitleColor:(NSColor *)color {

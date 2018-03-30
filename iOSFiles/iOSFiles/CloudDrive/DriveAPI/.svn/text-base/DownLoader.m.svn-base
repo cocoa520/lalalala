@@ -125,6 +125,7 @@
                     parentItem.speed = speed;
                     long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
                     [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
+                     [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
                 }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
@@ -201,7 +202,11 @@
                     parentItem.speed = speed;
                     long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
                     [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
+                    [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
                 }
+//                else {
+//                    [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
+//                }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
             if (weakItem.parentPath == nil) {
@@ -424,13 +429,21 @@
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadState:(TransferState)downloadState
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if ([[NSThread currentThread] isMainThread]) {
         if ([item respondsToSelector:@selector(setState:)]) {
             item.state = downloadState;
         }else{
             NSAssert(1,@"item未实现setDownloadState:");
         }
-    });
+    }else{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([item respondsToSelector:@selector(setState:)]) {
+                item.state = downloadState;
+            }else{
+                NSAssert(1,@"item未实现setDownloadState:");
+            }
+        });
+    }
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadProgress:(double)downloadProgress
@@ -449,6 +462,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([item respondsToSelector:@selector(setCurrentSize:)]) {
             item.currentSize = downcurrentSize;
+            if (item.parent == nil){
+                item.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:downcurrentSize reserved:2],[self getFileSizeString:item.fileSize reserved:2]];
+            }else{
+                NSString *downCurrentSize = [self getFileSizeString:item.parent.currentSize reserved:2];
+                NSString *fileSize = [self getFileSizeString:item.parent.fileSize reserved:2];
+                item.currentSize = downcurrentSize;
+                NSString *currenSize = [NSString stringWithFormat:@"%@/%@",downCurrentSize,fileSize];
+//                NSLog(@"downCurrentSize:%@ fileSize:%@",downCurrentSize,fileSize);
+                item.parent.currentSizeStr = currenSize;
+            }
+            
         }else{
             NSAssert(1,@"item未实现setCurrentSize:");
         }
@@ -480,6 +504,47 @@
 - (BOOL)isActivityLessMax
 {
     return self.activedownloadCount <= self.downloadMaxCount;
+}
+
+- (NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {
+    double mbSize = (double)totalSize / 1048576;
+    double kbSize = (double)totalSize / 1024;
+    if (totalSize < 1024) {
+        return [NSString stringWithFormat:@" %.0f%@", (double)totalSize,@"B"];
+    } else {
+        if (mbSize > 1024) {
+            double gbSize = (double)totalSize / 1073741824;
+            return [self Rounding:gbSize reserved:decimalPoints capacityUnit:@"GB"];
+        } else if (kbSize > 1024) {
+            return [self Rounding:mbSize reserved:decimalPoints capacityUnit:@"MB"];
+        } else {
+            return [self Rounding:kbSize reserved:decimalPoints capacityUnit:@"KB"];
+        }
+    }
+}
+
+- (NSString*)Rounding:(double)numberSize reserved:(int)decimalPoints capacityUnit:(NSString*)unit {
+    switch (decimalPoints) {
+        case 1:
+            return [NSString stringWithFormat:@"%.1f %@", numberSize, unit];
+            break;
+            
+        case 2:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+            
+        case 3:
+            return [NSString stringWithFormat:@"%.3f %@", numberSize, unit];
+            break;
+            
+        case 4:
+            return [NSString stringWithFormat:@"%.4f %@", numberSize, unit];
+            break;
+            
+        default:
+            return [NSString stringWithFormat:@"%.2f %@", numberSize, unit];
+            break;
+    }
 }
 
 - (void)dealloc

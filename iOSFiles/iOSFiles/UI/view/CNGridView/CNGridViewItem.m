@@ -31,6 +31,7 @@
 #import "CNGridViewItem.h"
 #import "NSColor+CNGridViewPalette.h"
 #import "CNGridViewItemLayout.h"
+#import "TempHelper.h"
 //#import "CNGridView.h"
 
 //#if !__has_feature(objc_arc)
@@ -178,6 +179,8 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 @synthesize isSecond = _isSecond;
 @synthesize seledImgFrame = _seledImgFrame;
 @synthesize entity = _entity;
+@synthesize isEdit = _isEdit;
+@synthesize editText = _editText;
 
 #pragma mark - Initialzation
 
@@ -214,7 +217,6 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 }
 
 #pragma mark - Reusing Grid View Items
-
 - (void)prepareForReuse {
 	[super prepareForReuse];
 
@@ -346,7 +348,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             textRect = NSMakeRect(contentRect.origin.x + 3, H -10, W - 6, 14+4);
         }
         
-        if (self.selected && _isFileManager) {
+        if (self.selected && _isFileManager && !_isEdit) {
             NSRect titleRect = [StringHelper calcuTextBounds:self.itemTitle fontSize:12.0];
             if (titleRect.size.width + 6 > 108) {
                 titleRect.size.width = 108;
@@ -361,8 +363,38 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
             [path fill];
         }
-		
-		[self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
+        if (_isEdit && ![(IMBDriveEntity *)_entity isEditing]) {
+            [_entity setIsEditing:YES];
+            if (_editText != nil) {
+                [_editText release];
+                _editText = nil;
+            }
+            _editText = [[NSTextField alloc] initWithFrame:NSZeroRect];
+            NSRect titleRect = [StringHelper calcuTextBounds:self.itemTitle fontSize:12.0];
+            titleRect.size.height = 24;
+            titleRect.size.width = 108;
+            titleRect.origin.x = (154 - titleRect.size.width)/2 + 4;
+            titleRect.origin.y = textRect.origin.y + 4;
+            
+            [_editText setFrame:titleRect];
+            
+            NSMutableAttributedString *promptAs = [TempHelper setSingleTextAttributedString:self.itemTitle withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withColor:[NSColor blackColor]];
+            NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+            [mutParaStyle setAlignment:NSCenterTextAlignment];
+            [mutParaStyle setLineBreakMode:NSLineBreakByTruncatingMiddle];
+            [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+            [_editText setEditable:YES];
+            [_editText setSelectable:YES];
+            [_editText setFocusRingType:NSFocusRingTypeDefault];
+            [_editText setAttributedStringValue:promptAs];
+            [mutParaStyle release];
+            mutParaStyle = nil;
+
+            [self addSubview:_editText];
+            
+        } else {
+            [self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
+        }
 
 	} else if (self.currentLayout.visibleContentMask & CNGridViewItemVisibleContentImage) {
 		if (W >= imgW && H >= imgH) {
@@ -532,8 +564,6 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    _isMouseEnter = YES;
-    [self setNeedsDisplay:YES];
     [super mouseEntered:theEvent];
 //    if (_entity) {
 //        NSString *toolStr = nil;
@@ -581,8 +611,6 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    _isMouseEnter = NO;
-    [self setNeedsDisplay:YES];
     [super mouseExited:theEvent];
 }
 
@@ -593,6 +621,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
     }
     [super dealloc];
 }
+
 //- (BOOL)mouseDownCanMoveWindow {
 //    NSLog(@"----------cngrid view item");
 //    return NO;

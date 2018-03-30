@@ -106,6 +106,8 @@ APPKIT_EXTERN NSString* const kCNDefaultItemIdentifier;
 
 
 #import "StringHelper.h"
+#import "IMBCommonDefine.h"
+#import "IMBDriveEntity.h"
 
 #pragma mark - CNGridViewItem
 @interface CNGridViewItem : CNGridViewItemBase {
@@ -134,8 +136,12 @@ APPKIT_EXTERN NSString* const kCNDefaultItemIdentifier;
     NSRect _seledImgFrame;
     id _entity;
     CategoryNodesEnum _category;
-    
+    BOOL _isEdit;
+    NSTextField *_editText;
+    BOOL _isEditing;
 }
+@property (nonatomic, retain) NSTextField *editText;
+@property (nonatomic, assign) BOOL isEdit;
 @property (nonatomic, assign) BOOL isAppPhoto;
 @property (nonatomic, assign) BOOL isPhotoView;
 @property (nonatomic, assign) BOOL isFileManager;

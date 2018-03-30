@@ -482,9 +482,9 @@
     }];
 }
 
-- (void)moveToNewParent:(NSString *)newParent itemDic:(NSDictionary *)item   success:(Callback)success fail:(Callback)fail
+- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail
 {
-    YTKRequest *requestAPI = [[iCloudDriveMoveToNewParentAPI alloc] initWithMoveItemDic:item newParentIDOrPathdsid:newParent dsid:_dsid cookie:_cookie iCloudDriveURL:_iCloudDriveUrl];
+    YTKRequest *requestAPI = [[iCloudDriveMoveToNewParentAPI alloc] initWithMoveItemDic:items newParentIDOrPathdsid:newParent dsid:_dsid cookie:_cookie iCloudDriveURL:_iCloudDriveUrl];
     __block YTKRequest *weakRequestAPI = requestAPI;
     [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         ResponseCode code = [self checkResponseTypeWithSuccess:request];
@@ -575,7 +575,12 @@
             }];
             //设置为等待状态
             item.state = DownloadStateWait;
-            [self downloadItems:sortArray];
+            if ([sortArray count] > 0) {
+                [self downloadItems:sortArray];
+            }else{
+                item.progress = 100;
+                item.state = DownloadStateComplete;
+            }
         }
     });
 }
@@ -609,6 +614,10 @@
 
 - (void)getAllFile:(NSString *)folderID  AllChildArray:(NSMutableArray *)allChildArray  parentPath:(NSString *)parentPath {
     NSDictionary *dic = [self getList:folderID];
+    NSString *folderPath = [_downLoader.downloadPath stringByAppendingString:parentPath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
     //解析列表
     NSMutableArray *childArray = [dic objectForKey:@"items"];
     for (NSDictionary *childDic in childArray) {

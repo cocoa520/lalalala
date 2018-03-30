@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "IMBBackgroundBorderView.h"
 #import "IMBBasedViewTableView.h"
-#import "DownLoadView.h"
 @class IMBCustomPopupButton;
 #import "IMBBaseViewController.h"
 @class VideoBaseInfoEntity;
@@ -21,13 +20,9 @@
 #import "IMBiPod.h"
 @interface IMBDownloadListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,NSTextViewDelegate>
 {
-    
-    IBOutlet NSBox *_rootBox;
     IBOutlet IMBBorderRectAndColorView *mainBgView;
-    IBOutlet IMBTextButtonView *_cleanList;
     IBOutlet IMBBasedViewTableView *_tableView;
-    IBOutlet IMBBackgroundBorderView *_titleView;
-    IBOutlet NSTextField *_titleTextField;
+
     NSMutableArray *_downloadDataSource;
     NSMutableArray *_uploadDataSource;
     NSOperationQueue *_operationQueue;
@@ -42,15 +37,19 @@
     
     int _tempCount;
 @public
-    DownLoadView *_rightUpDownbgView;
     IMBCustomPopupButton *_popUpButton;
     IMBDriveBaseManage *_deviceManager;
     IMBiPod *_iPod;
     int _downCount;
     int _upCount;
     NSString *_exportPath;
+    ChooseLoginModelEnum _chooseModeEnum;
+    BOOL _isDownLoadData;
+    id _delegate;
+    BOOL _isdeiveData;
 }
-@property (nonatomic, retain)NSString *exportPath;
+@property (nonatomic,assign) id delagete;
+@property (nonatomic,retain)NSString *exportPath;
 @property (nonatomic,retain)IMBiPod *iPod;
 @property (nonatomic,retain)NSMutableArray *downloadDataSource;
 @property (nonatomic,retain)IMBDriveBaseManage *deviceManager;
@@ -64,15 +63,14 @@
  */
 - (void)addDataSource:(NSMutableArray *)addDataSource withIsDown:(BOOL)isdown withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum withipod:(IMBiPod *)ipod withIsiCloudDrive:(BOOL) isiCloudDrive;
 
-
-
-
-- (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum;
-- (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage;
-- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage;
+- (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath;
+- (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
+- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
 
 - (void)reloadData:(BOOL)isAdd;
 - (void)reloadBgview;
 
 - (void)switchUpDownViewAndDownView;
+
+- (void)removeAllUpOrDownData;
 @end

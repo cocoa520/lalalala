@@ -11,23 +11,22 @@
 #import "IMBiPod.h"
 #import "IMBInformation.h"
 #import "CNGridView.h"
-#import "IMBPhotoViewController.h"
 #import "IMBLackCornerView.h"
 #import "HoverButton.h"
-#import "IMBPhotosListViewController.h"
+
 @interface IMBDevicePageViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource>
 {
     IBOutlet NSBox *_rootBox;
     IBOutlet CNGridView *_gridView;
-    IBOutlet NSView *_mainView;
-    IBOutlet IMBWhiteView *_toolView;
-//    IBOutlet IMBLackCornerView *_topView;
+    IBOutlet IMBWhiteView *_mainView;
     IMBBaseViewController *_baseViewController;
 
+    IBOutlet IMBBackgroundBorderView *_topLineView;
     IBOutlet IMBWhiteView *_topView;
     IBOutlet HoverButton *_backButton;
-//    id delegate;
+    IBOutlet NSBox *_contenBox;
 }
 - (void)backAction:(id)sender;
 - (id)initWithiPod:(IMBiPod *)ipod withDelegate:(id)delegate;
+
 @end

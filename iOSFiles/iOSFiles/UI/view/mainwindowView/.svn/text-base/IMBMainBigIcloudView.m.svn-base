@@ -35,13 +35,13 @@
     
     [_loginBtn setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginBtnString", nil)];
     
-    [_icloudLoginPwdTF setPlaceholderString:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginPsdPlaceholder", nil)];
+    [_icloudLoginPwdTF setPlaceholderString:CustomLocalizedString(@"CloudLogin_Password_Txt", nil)];
     [_icloudLoginPwdTF setFont:[NSFont fontWithName:IMBCommonFont size:14.0]];
     
-    [_icloudSecireTF setPlaceholderString:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginPsdPlaceholder", nil)];
+    [_icloudSecireTF setPlaceholderString:CustomLocalizedString(@"CloudLogin_Password_Txt", nil)];
     [_icloudSecireTF setFont:[NSFont fontWithName:IMBCommonFont size:14.0]];
     
-    [_icloudUserTF setPlaceholderString:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginUserPlaceholder", nil)];
+    [_icloudUserTF setPlaceholderString:CustomLocalizedString(@"CloudLogin_AppleID_Txt", nil)];
     [_icloudUserTF setFont:[NSFont fontWithName:IMBCommonFont size:14.0]];
     
     

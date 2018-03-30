@@ -127,6 +127,12 @@
     IBOutlet IMBHoverChangeImageBtn *_shoppingCartBtn;
     IBOutlet IMBHoverChangeImageBtn *_helpBtn;
     
+    
+    IBOutlet NSTextField *_midiumIcloudMsgLabel;
+    IBOutlet NSTextField *_midiumDropboxMsgLabel;
+    IBOutlet NSTextField *_midiumDropboxTitleLabel;
+    IBOutlet NSTextField *_midiumIcloudTitleLabel;
+    
     BOOL _isEnable;
 }
 @property (nonatomic,assign) BOOL isNewController;

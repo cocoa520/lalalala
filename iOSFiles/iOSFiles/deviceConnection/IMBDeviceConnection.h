@@ -129,4 +129,11 @@ typedef enum DeviceConnectMode {
  */
 - (IMBBaseInfo *)getDeviceByKey:(NSString *)key;
 
+/**
+ *  根据serialNum删除设备
+ *
+ *  @param key serialNum
+ */
+- (void)removeDeviceByKey:(NSString *)key;
+
 @end

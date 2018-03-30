@@ -17,7 +17,6 @@
 @synthesize TypeTextField = _TypeTextField;
 @synthesize icon = _icon;
 @synthesize finderButton = _finderButton;
-@synthesize toDeviceButton = _toDeviceButton;
 @synthesize deleteButton = _deleteButton;
 @synthesize progessField = _progessField;
 @synthesize progessView = _progessView;
@@ -43,15 +42,15 @@
 
 - (void)awakeFromNib
 {
-    [_TypeTextField setBorderColor:COLOR_LINE_WINDOW];
+    [_TypeTextField setBorderColor:COLOR_TEXT_LINE];
     [_TypeTextField setTextColor:COLOR_TEXT_DISABLE];
-    [_DurationTextField setBorderColor:COLOR_LINE_WINDOW];
+    [_DurationTextField setBorderColor:COLOR_TEXT_LINE];
     [_DurationTextField setTextColor:COLOR_TEXT_DISABLE];
     [_titleField setTextColor:COLOR_TEXT_ORDINARY];
     [_progessField setTextColor:COLOR_BUTTON_SEGDOWN];
-    [_finderButton setMouseEnteredImage:[StringHelper imageNamed:@"download_finder2"] mouseExitImage:[StringHelper imageNamed:@"download_finder1"] mouseDownImage:[StringHelper imageNamed:@"download_finder3"]];
-    [_deleteButton setMouseEnteredImage:[StringHelper imageNamed:@"download_delete2"] mouseExitImage:[StringHelper imageNamed:@"download_delete1"] mouseDownImage:[StringHelper imageNamed:@"download_delete3"]];
-    [_reDownLoad setMouseEnteredImage:[StringHelper imageNamed:@"download_again2"] mouseExitImage:[StringHelper imageNamed:@"download_again1"] mouseDownImage:[StringHelper imageNamed:@"download_again3"]];
+    [_finderButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"]];
+    [_deleteButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"]];
+    [_reDownLoad setMouseEnteredImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"]];
     [_progessView setLeftFillColor:COLOR_BUTTON_SEGDOWN];
     [_progessView setRightFillColor:COLOR_DOENLOAD_PROGRESS_RIGHTFILLCOLOR];
     [_transferProgressView setLeftFillColor:PROGRESS_ANIMATION_COLOR];
@@ -59,44 +58,24 @@
     [_transferProgressView setFillimage:[NSImage imageNamed:@"download_process_bg"]];
     
     NSString *cancelStr = CustomLocalizedString(@"downloadpagebtntooltip_id", nil);
-    [_downloadButton reSetInit:cancelStr WithPrefixImageName:@"cancal"];
-    [_downloadButton setFontSize:12];
     NSMutableAttributedString *attributedTitles = [[[NSMutableAttributedString alloc]initWithString:cancelStr]autorelease];
     [attributedTitles addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, cancelStr.length)];
     [attributedTitles addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12] range:NSMakeRange(0, cancelStr.length)];
     [attributedTitles addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_ORDINARY range:NSMakeRange(0, cancelStr.length)];
     [attributedTitles setAlignment:NSCenterTextAlignment range:NSMakeRange(0, attributedTitles.length)];
     [_downloadButton setAttributedTitle:attributedTitles];
-    [_downloadButton setIsReslutVeiw:YES];
     [_downloadButton setTarget:self];
     NSRect rect1 = [TempHelper calcuTextBounds:cancelStr fontSize:14];
     [_downloadButton setFrameSize:NSMakeSize((int)rect1.size.width + 20, _downloadButton.frame.size.height)];
-    [_closeButton setMouseEnteredImage:[StringHelper imageNamed:@"icloudClose2"] mouseExitImage:[StringHelper imageNamed:@"icloudClose1"] mouseDownImage:[StringHelper imageNamed:@"icloudClose3"]];
-    [_closeTransferButton setMouseEnteredImage:[StringHelper imageNamed:@"icloudClose2"] mouseExitImage:[StringHelper imageNamed:@"icloudClose1"] mouseDownImage:[StringHelper imageNamed:@"icloudClose3"]];
+    [_closeButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_icon_del_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_icon_del"] mouseDownImage:[NSImage imageNamed:@"transferlist_icon_del_hover"]];
+    [_closeTransferButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"]];
     _propertityViewArray = [[NSMutableArray alloc] init];
     [_TypeTextField setHidden:YES];
     [_DurationTextField setHidden:YES];
-    [_downloadFaildField setTextColor:COLOR_DOENLOAD_TRANSFERFAIL_TIPCOLOR];
+    [_downloadFaildField setTextColor:COLOR_TEXT_ORDINARY];
 }
 
-- (void)setDownLoadDriveItem:(DriveItem *)downLoadDriveItem
-{
-    if (_downLoadDriveItem != downLoadDriveItem) {
-        [_downLoadDriveItem release];
-        _downLoadDriveItem = [downLoadDriveItem retain];
-        [_downLoadDriveItem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
-    }
-}
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    id <DownloadAndUploadDelegate> item = object;
-    if (item.state == DownloadStateComplete) {
-        [_progessView setHidden:YES];
-    }else if (item.state == DownloadStateError){
-//        []
-    }
-}
 
 - (void)adjustSpaceX:(float)x Y:(float)y
 {
@@ -125,7 +104,7 @@
     [topBorderPath lineToPoint:NSMakePoint(dirtyRect.size.width, 0)];
     [[NSColor clearColor] setStroke];
     [topBorderPath stroke];
-    [COLOR_LINE_WINDOW setStroke];
+    [COLOR_TEXT_LINE setStroke];
     [topBorderPath stroke];
 }
 

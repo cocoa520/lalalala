@@ -13,8 +13,11 @@
     NSColor *_selectionHighlightColor;
     NSColor *_borderColor;
     BOOL _canSelect;
+    BOOL _clickCheckBox;
+    id _listener;
 }
 @property (nonatomic,assign)NSColor *borderColor;
 @property (nonatomic, assign) BOOL canSelect;
 @property (nonatomic,retain)NSColor *selectionHighlightColor;
+@property (nonatomic, assign) id listener;
 @end

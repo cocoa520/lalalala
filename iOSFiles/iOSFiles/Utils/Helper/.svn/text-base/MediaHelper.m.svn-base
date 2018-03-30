@@ -412,6 +412,7 @@
             }
             break;
         case Category_Music:
+        case Category_Media:
             if (isSupportConvert) {
                 _supportFile = @"mp3;m4a;wma;wav;rm;mdi;m4r;m4b;m4p;flac;amr;ogg;ac3;ape;aac;mka";
             } else {
@@ -423,7 +424,7 @@
             }
             break;
             
-        case Category_Movies:
+        case Category_Video:
             if (isSupportConvert) {
                 _supportFile = @"mp4;m4v;mov;wmv;rmvb;mkv;avi;flv;rm;3gp;mpg;webm";
             } else {

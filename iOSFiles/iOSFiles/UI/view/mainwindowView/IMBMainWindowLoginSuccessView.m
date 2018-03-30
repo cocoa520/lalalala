@@ -12,11 +12,13 @@
 
 
 @implementation IMBMainWindowLoginSuccessView
+
 #pragma mark - @synthesize
 @synthesize imageView = _imageView;
 @synthesize nameLabel = _nameLabel;
 @synthesize sizeLabel = _sizeLabel;
 @synthesize logoutBtn = _logoutBtn;
+
 #pragma mark - initialize
 
 
@@ -28,7 +30,7 @@
     [_nameLabel setTextColor:COLOR_MAINWINDOW_TITLE_TEXT];
     [_nameLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.f]];
     
-    [_logoutBtn setHoverImage:[NSImage imageNamed:@"main_view_signout_blue"]];
+    [_logoutBtn setHoverImage:@"mod_icon_signout_hover"];
     _logoutBtn.alphaValue = 0;
 }
 

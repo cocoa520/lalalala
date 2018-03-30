@@ -18,7 +18,7 @@
 #import "IMBAlertSupeView.h"
 #import "IMBLineView.h"
 #import "IMBHoverChangeImageBtn.h"
-
+@class IMBSearchView;
 
 @interface IMBMainPageViewController : IMBBaseViewController
 {
@@ -40,8 +40,14 @@
     IBOutlet IMBHoverChangeImageBtn *_transferBtn;
     IBOutlet IMBHoverChangeImageBtn *_shoppingCartBtn;
 
+    IBOutlet IMBSearchView *_searchView;
+    BOOL _isLoadSearchView;//正在打开或者合拢SearchView
+    BOOL _isShowTranfer;
+    BOOL _isShowCompleteView;
 }
-
+- (void)setIsShowCompletView;
 - (id)initWithiPod:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage withDelegate:(id)delegate;
 - (void)backdrive:(IMBBaseInfo *)baseInfo;
+- (void)closeCompteleTranferView ;
+- (void)setIsShowCompletView:(BOOL)isShowCompleteView ;
 @end

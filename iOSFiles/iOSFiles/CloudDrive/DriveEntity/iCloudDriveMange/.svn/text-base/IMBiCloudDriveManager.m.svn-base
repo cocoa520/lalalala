@@ -10,8 +10,8 @@
 #import "DateHelper.h"
 #import "StringHelper.h"
 #import "IMBiCloudDriverViewController.h"
+#import "IMBDeviceViewController.h"
 
-@class IMBDeviceViewController;
 @implementation IMBiCloudDriveManager
 
 - (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate {
@@ -98,11 +98,17 @@
                 } else if (type == DocFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_doc"];
                 } else if (type == BookFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
                 } else if (type == PPtFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
                 } else if (type == ZIPFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else if (type == dmgFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+                } else if (type == contactFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+                } else if (type == excelFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
                 } else {
                     image = [NSImage imageNamed:@"cnt_fileicon_common"];
                 }
@@ -117,10 +123,6 @@
     } fail:^(DriveAPIResponse *response) {
         
     }];
-    
-    //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-    //        [self loadDriveData];
-    //    });
 }
 
 - (void)userDidLogout {
@@ -177,11 +179,17 @@
                 } else if (type == DocFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_doc"];
                 } else if (type == BookFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
                 } else if (type == PPtFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
                 } else if (type == ZIPFile) {
                     image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+                } else if (type == dmgFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+                } else if (type == contactFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+                } else if (type == excelFile) {
+                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
                 } else {
                     image = [NSImage imageNamed:@"cnt_fileicon_common"];
                 }
@@ -191,7 +199,7 @@
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadSonAryComplete:dataAry];
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:dataAry WithEvent:loadAction];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
@@ -200,11 +208,11 @@
 
 }
 
-- (void)driveDidLogOut:(BaseDrive *)drive{
+- (void)driveDidLogOut:(BaseDrive *)drive {
     [_iCloudDrive userDidLogout];
 }
 
-- (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error{
+- (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error {
    
 }
 //登录错误
@@ -238,7 +246,7 @@
 
 #pragma mark -- OneDrive Action
 //下载单个
-- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+- (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
     [[_iCloudDrive downLoader] setDownloadPath:_downloadPath];
     [_iCloudDrive downloadItem:item];
 }
@@ -275,7 +283,7 @@
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:dataAry];
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
@@ -283,10 +291,60 @@
     }];
 }
 
+//重命名
+- (void)reNameWithDic:(NSDictionary *)dic {
+    [_iCloudDrive reName:dic success:^(DriveAPIResponse *response) {
+        
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+- (void)cancelDownloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+    [_iCloudDrive cancelDownloadItem:item];
+}
+
+//新建文件夹
+- (void)createFolder:(NSString *)folderName parent:(NSString *)parentID {
+    [_iCloudDrive createFolder:folderName parent:parentID success:^(DriveAPIResponse *response) {
+        
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+//移动文件
+- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items {
+    [_iCloudDrive moveToNewParent:newParent itemDics:items success:^(DriveAPIResponse *response) {
+        NSMutableDictionary *dic = response.content;
+        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+        for (NSDictionary *dic in array) {
+            NSString *status = @"";
+            if ([dic.allKeys containsObject:@"status"]) {
+                status = [dic objectForKey:@"status"];
+            }
+            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
+                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+            [dataAry release];
+        });
+        
+    } fail:^(DriveAPIResponse *response) {
+        
+    }];
+}
+
+- (void)cancelUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
+    [_iCloudDrive cancelUploadItem:item];
+}
 
 
 //时间转换
-- (NSString *)dateForm2001DateSting:(NSString *) dateSting {
+- (NSString *)dateForm2001DateSting:(NSString *)dateSting {
     if ([StringHelper stringIsNilOrEmpty:dateSting] ) {
         return @"";
     }

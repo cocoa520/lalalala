@@ -715,6 +715,7 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
+        case iPad_6:
         case iPad_Pro:
             return [NSImage imageNamed:@"device_ipad"];
             break;
@@ -878,6 +879,7 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
+        case iPad_6:
         case iPad_Pro:
             return [NSImage imageNamed:@"airbackup_ipad"];
             break;
@@ -1625,7 +1627,7 @@ char pinyinFirstLetter(unsigned short hanzi) {
             return ImageFile;
         }
     }
-    NSArray *musicArr = @[@"mp3",@"m4a",@"wma",@"wav",@"rm",@"mdi",@"m4r",@"m4b",@"m4p",@"flac",@"amr",@"ogg",@"ac3",@"ape",@"aac",@"mka"];
+    NSArray *musicArr = @[@"mp3",@"m4a",@"wma",@"wav",@"rm",@"mdi",@"m4r",@"m4b",@"m4p",@"flac",@"amr",@"ogg",@"ac3",@"ape",@"aac",@"mka",@"wv"];
     for (NSString *str in musicArr) {
         if ([str isEqualToString:extension]) {
             return MusicFile;
@@ -1640,14 +1642,20 @@ char pinyinFirstLetter(unsigned short hanzi) {
     }
     if ([extension isEqualToString:@"txt"]) {
         return TxtFile;
-    }else if ([extension isEqualToString:@"doc"]) {
+    }else if ([extension isEqualToString:@"doc"] || [extension isEqualToString:@"docx"]) {
         return DocFile;
     }else if ([extension isEqualToString:@"zip"]) {
         return ZIPFile;
+    }else if ([extension isEqualToString:@"dmg"]) {
+        return dmgFile;
     }else if ([extension isEqualToString:@"epub"] || [extension isEqualToString:@"pdf"]) {
         return BookFile;
-    }else if ([extension isEqualToString:@"ppt"]) {
+    }else if ([extension isEqualToString:@"ppt"] || [extension isEqualToString:@"pptx"]) {
         return PPtFile;
+    }else if ([extension isEqualToString:@"xlsx"]) {
+        return excelFile;
+    }else if ([extension isEqualToString:@"vcf"]) {
+        return contactFile;
     }
     return CommonFile;
 }

@@ -340,6 +340,10 @@
             familyTypeStr = @"iPad_5";
             break;
         }
+        case iPad_6: {
+            familyTypeStr = @"iPad_6";
+            break;
+        }
 
         default: {
             familyTypeStr = @"Unknown";
@@ -619,7 +623,7 @@
 }
 
 - (BOOL)isSupportRingtone {
-    if (_isIOSDevice && (_family == iPad_1 || _family == iPad_2 || _family == iPad_Pro || _family == iPad_5 || _family == The_New_iPad || _family == iPad_4 || _family == iPad_Air || _family == iPad_Air2 || _family == iPad_mini || _family == iPad_mini_2 || _family == iPad_mini_3 ||
+    if (_isIOSDevice && (_family == iPad_1 || _family == iPad_2 || _family == iPad_Pro || _family == iPad_5 || _family == iPad_6 || _family == The_New_iPad || _family == iPad_4 || _family == iPad_Air || _family == iPad_Air2 || _family == iPad_mini || _family == iPad_mini_2 || _family == iPad_mini_3 ||
                          _family == iPhone_3GS || _family == iPhone_4 || _family == iPhone_4S ||
                          _family == iPod_Touch_4 ||
                          _family == iPhone_5 || _family == iPod_Touch_5 ||
@@ -633,7 +637,7 @@
 }
 
 - (BOOL)isSupportApplication {
-    if (_isIOSDevice && (_family == iPad_1 || _family == iPad_2 || _family == iPad_Pro || _family == iPad_5 || _family == The_New_iPad || _family == iPad_4 || _family == iPad_Air || _family == iPad_Air2 || _family == iPad_mini || _family == iPad_mini_2 || _family == iPad_mini_3 ||
+    if (_isIOSDevice && (_family == iPad_1 || _family == iPad_2 || _family == iPad_Pro || _family == iPad_5 || _family == iPad_6 || _family == The_New_iPad || _family == iPad_4 || _family == iPad_Air || _family == iPad_Air2 || _family == iPad_mini || _family == iPad_mini_2 || _family == iPad_mini_3 ||
                          _family == iPhone_3GS || _family == iPhone_4 || _family == iPhone_4S ||
                          _family == iPod_Touch_4 ||
                          _family == iPhone_5 || _family == iPod_Touch_5 ||
@@ -666,7 +670,7 @@
 }
 
 - (BOOL)isSupportVoiceMemo {//iPad不支持VoiceMemos
-    if (_isIOSDevice && [@"4.0" isVersionAscending:_productVersion] && _family != iPad_1 && _family != iPad_2 && _family != The_New_iPad && _family != iPad_4 && _family != iPad_Air && _family != iPad_Air2 && _family != iPad_mini && _family != iPad_mini_2 && _family != iPad_mini_3 && _family != iPad_mini_4 && _family != iPad_Pro && _family != iPad_5) {
+    if (_isIOSDevice && [@"4.0" isVersionAscending:_productVersion] && _family != iPad_1 && _family != iPad_2 && _family != The_New_iPad && _family != iPad_4 && _family != iPad_Air && _family != iPad_Air2 && _family != iPad_mini && _family != iPad_mini_2 && _family != iPad_mini_3 && _family != iPad_mini_4 && _family != iPad_Pro && _family != iPad_5 && _family != iPad_6) {
         _isSupportVoiceMemo = YES;
     } else {
         _isSupportVoiceMemo = NO;
@@ -699,7 +703,7 @@
 
 - (BOOL)isiPad
 {
-   if (_family == iPad_1||_family == iPad_2||_family == The_New_iPad||_family == iPad_4||_family == iPad_Air||_family == iPad_Air2||_family == iPad_Pro||_family == iPad_5||_family == iPad_mini||_family == iPad_mini_2||_family == iPad_mini_3||_family == iPad_mini_4) {
+   if (_family == iPad_1||_family == iPad_2||_family == The_New_iPad||_family == iPad_4||_family == iPad_Air||_family == iPad_Air2||_family == iPad_Pro||_family == iPad_5||_family == iPad_6||_family == iPad_mini||_family == iPad_mini_2||_family == iPad_mini_3||_family == iPad_mini_4) {
         return YES;
     }else
     {

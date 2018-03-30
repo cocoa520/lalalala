@@ -8,11 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IMBCustomHeaderTableView.h"
-#import "IMBToolBarView.h"
 #import "IMBWhiteView.h"
 #import "IMBCommonEnum.h"
 #import "IMBiPod.h"
-
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
 #import "MediaHelper.h"
@@ -27,15 +25,15 @@
 #import "IMBCustomHeaderCell.h"
 #import "IMBBackgroundBorderView.h"
 #import "CommonDefine.h"
-#import "IMBToolBarView.h"
 #import "CNGridViewItemLayout.h"
 #import "IMBCommonDefine.h"
 #import "IMBToolButtonView.h"
 #import "LoadingView.h"
-@class IMBInformation;
-@class IMBBlankDraggableCollectionView;
+#import "IMBAlertViewController.h"
+#import "IMBSortPopoverViewController.h"
+
+@class IMBSearchView;
 @class IMBBaseViewController;
-@class IMBDeleteCameraRollPhotos;
 typedef NS_ENUM(int, AnimationStyle) {
      EaseInEaseOutStyle,
 };
@@ -51,10 +49,11 @@ typedef NS_ENUM(int, AnimationStyle) {
 - (void)popRootViewController:(AnimationStyle)animationStyle;
 @end
 
-@interface IMBBaseViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,IMBImageRefreshListListener,NSCollectionViewDelegate,NSTextViewDelegate,NSPopoverDelegate>
+@interface IMBBaseViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,IMBImageRefreshListListener,NSTextViewDelegate,NSPopoverDelegate>
 {
     
     IBOutlet IMBToolButtonView *_toolBarButtonView;
+    NSArray *_toolBarArr;
     IMBiPod *_iPod;
     id _delegate;
     CategoryNodesEnum _category;
@@ -66,18 +65,11 @@ typedef NS_ENUM(int, AnimationStyle) {
     
     IBOutlet NSCollectionView *_noDataCollectionView;
     
-    IBOutlet NSScrollView *_noDataViewScrollView;
-    
     BOOL _itemTableViewcanDrag; //是否支持拖;
     BOOL _itemTableViewcanDrop; //是否支持放
-    BOOL _collectionViewcanDrag; //是否支持拖;
-    BOOL _collectionViewcanDrop; //是否支持放
     IMBInformation *_information;
-
-    IBOutlet NSBox *_box;
+    
     BOOL _isAscending;
-    IBOutlet IMBWhiteView *_topWhiteView;
-    IBOutlet IMBWhiteView *_topwhiteView2;
 
     IMBExportSetting *_exportSetting;
     BOOL _isbackup;
@@ -88,6 +80,7 @@ typedef NS_ENUM(int, AnimationStyle) {
     BOOL _isDeletePlaylist;
     NSMutableArray *_delArray;
     NSPopover *_toDevicePopover;
+    
     @public
     BOOL _endRunloop;
     BOOL _isClone;
@@ -95,10 +88,9 @@ typedef NS_ENUM(int, AnimationStyle) {
     BOOL _isContentToMac;
     BOOL _isAddContent;
     SimpleNode *_simpleNode;
-    IMBDeleteCameraRollPhotos *camera;
+    
     @public
-    IBOutlet  IMBBlankDraggableCollectionView  *_collectionView;
-    IBOutlet  NSArrayController *_arrayController;
+    
     IBOutlet  IMBCustomHeaderTableView *_itemTableView;//通用列表对象
     NSOpenPanel *_openPanel;
     BOOL _openPanelIsExite;
@@ -124,25 +116,23 @@ typedef NS_ENUM(int, AnimationStyle) {
     @public
     NSWindow *_mainWindow;
     IMBBackgroundBorderView *_mainTopLineView;
-    
-    BOOL _isShowLineView;
-//    LoadingView *_loadingView;
 
+    IMBAlertViewController *_alertViewController;
+    
+    IMBSearchView *_searhView;
+    IMBSortPopoverViewController *_sortPopoverViewController;
 }
 @property (nonatomic,retain) IMBiPod *iPod;
-@property (nonatomic,assign) BOOL isShowLineView;
 @property (nonatomic,assign) BOOL isStop;
 @property (nonatomic,assign) BOOL isSearch;
 @property (nonatomic,retain) NSCondition *condition;
 @property (nonatomic,assign)id<InnerViewSwitchDelegate> navigationController;///<弱引用
-@property(nonatomic,retain)NSMutableArray *dataSourceArray;
-@property(nonatomic,retain)NSMutableArray *researchdataSourceArray;
+@property(nonatomic,retain) NSMutableArray *dataSourceArray;
+@property(nonatomic,retain) NSMutableArray *researchdataSourceArray;
 @property (nonatomic,assign) CategoryNodesEnum category;
 
 @property (nonatomic,assign) BOOL itemTableViewcanDrag;
 @property (nonatomic,assign) BOOL itemTableViewcanDrop;
-@property (nonatomic,assign) BOOL collectionViewcanDrag;
-@property (nonatomic,assign) BOOL collectionViewcanDrop;
 @property (nonatomic,assign) BOOL isPause;
 @property (nonatomic, retain) IMBBackgroundBorderView *mainTopLineView;
 @property (nonatomic, retain) CNGridViewItemLayout *defaultLayout;
@@ -153,97 +143,52 @@ typedef NS_ENUM(int, AnimationStyle) {
 - (void)setDelegate:(id)delegate;
 
 - (id)initWithIpod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)category withDelegate:(id)delegate;
-- (void)setTableViewHeadOrCollectionViewCheck;
-- (void)doOkBtnOperation:(id)sender;
-#pragma mark rightKeyClick
-- (IBAction)doDeleteItem:(id)sender;
-- (IBAction)doToDeviceItem:(id)sender;
-- (IBAction)doToMacItem:(id)sender;
-- (IBAction)doToiTunesItem:(id)sender;
-- (void)setToolBar:(IMBToolBarView *)toolbar;
-//切换页面时刷新界面
-- (void)reloadTableView;
-- (void)loadCollectionView:(BOOL)isFrist;
-- (void)ShowWindowControllerCategory;
-#pragma mark drop and drag Actions
-- (void)dragToMac:(NSIndexSet *)indexSet withDestination:(NSString *)destinationPath withView:(NSView *)view;//拖入到电脑
-- (void)dropToTabView:(NSTableView *)tableView paths:(NSArray *)pathArray;//拖入到设备
+
+- (void)loadToolBarView:(CategoryNodesEnum) nodesEnum WithDisplayMode:(BOOL)displayMode;
+
+///搜索
+- (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView;
 
 
-- (void)dropToCollectionView:(NSCollectionView *)collectionView paths:(NSMutableArray *)pathArray;
+- (void)setToolBar:(IMBToolButtonView *)toolbar;
 
+- (void)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText;
 
-- (void)reloadData;
-- (void)cancelReload;
-//内页返回按钮
-- (void)doBack:(id)sender;
-- (void)back:(id)sender;
--(void)loadData:(NSMutableArray *)ary;
-//获得选中的item
-- (NSIndexSet *)selectedItems;
-- (void)animationAddTransferView:(NSView *)view;
-- (void)animationAddTransferViewfromRight:(NSView *)view AnnoyVC:(NSViewController *)AnnoyVC;
-
-#pragma alert
-//返回-1 表示点击cancel 返回1 表示点击ok
-- (int)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText;
-- (int)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText CancelButton:(NSString *)cancelText;
-
-
-// 检查备份是否被加密
-- (BOOL)checkBackupEncrypt;
-//检查网络和服务器是否正常连接
-- (BOOL)checkInternetAvailble;
-//检查数据库是否损坏
-- (void)checkCDBcorrupted;
-//检查是否有另一个设备准备好 可以clone和merge、todevcie
-- (BOOL)checkDeviceReady:(BOOL)todevice;
-//iclud拖拽上传下载
-- (void)copyInfomationToMac:(NSString *)filePath indexSet:(NSIndexSet *)set;
-- (void)copyInPhotofomationToMac:(NSString *)filePath indexSet:(NSIndexSet *)set;
-- (void)dropUpLoad:(NSMutableArray *)pathArray;
-//屏蔽按钮
-- (void)disableFunctionBtn:(BOOL)isDisable;
-
-#pragma mark - delete Action
--(void)deleteBackupSelectedItems:(id)sender;
-- (void)setDeleteProgress:(float)progress withWord:(NSString *)msgStr;
-- (void)setDeleteComplete:(int)success totalCount:(int)totalCount;
-- (void)toDeviceWithSelectArray:(NSMutableArray *)selectArry WithView:(NSView *)view;
-
-#pragma mark - import Action
-- (void)importToDevice:(NSMutableArray *)paths photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID Result:(long long)result AnnoyVC:(NSViewController *)annoyVC;
-
-#pragma mark - CheckNeedAnnoy;
-//核查是否需要弹出骚扰窗口 -1表示已注册 0表示剩余为0 无法传输 如果大于0表示能够传输
-- (long long)checkNeedAnnoy:(NSViewController **)annoyVC;
-- (void)changeSkin:(NSNotification *)notification;
-- (void)showAlert;
-
-
-- (NSData *)readFileData:(NSString *)filePath;
-//刷新tableview头上的checkbox
-- (void)setTableViewHeadCheckBtn;
-
-//iCloudDriver
 - (void)reload:(id)sender;
+
 - (void)addItems:(id)sender;
+
 - (void)deleteItems:(id)sender;
+
 - (void)doSwitchView:(id)sender;
-- (void)refresh:(id)sender;
+
 - (void)toMac:(id)sender;
-- (void)addToDevice:(id)sender;
+
 - (void)deleteItem:(id)sender;
+
 - (void)toDevice:(id)sender;
+
 - (void)doEdit:(id)sender;
+
 - (void)createNewFloder:(id)sender;
+
 - (void)rename:(id)sender;
+
 - (void)toiCloud:(id)sender;
+
 - (void)showDetailView:(id)sender;
+
 - (void)moveToFolder:(id)sender;
+
 - (void)downloadToMac:(id)sender;
 
+- (void)sortBtnClick:(id)sender;
+
 - (void)loadSonAryComplete:(NSMutableArray *)sonAry;
-- (void)loadTransferComplete:(NSMutableArray *)transferAry;
+
+- (void)loadTransferComplete:(NSMutableArray *)transferAry WithEvent:(ActionTypeEnum)actionType;
+
+//开始移动文件
+- (void)startMoveTransferWith:(IMBDriveEntity *)entity;
 
 @end

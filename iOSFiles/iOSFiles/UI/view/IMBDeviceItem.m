@@ -122,21 +122,6 @@
     }
 }
 
-- (void)loadCapacity:(float)percent {
-    CapacityView *view = [[CapacityView alloc] initWithFrame:NSMakeRect(0, 0, percent*178-4, 4) WithFillColor:PROGRESS_ANIMATION_COLOR withPercent:(float)percent];
-    [view setFrameOrigin:NSMakePoint(54, 28)];
-    [self addSubview:view];
-    [view setWantsLayer:YES];
-    CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale.x"];//transform.scale.x = 闊的比例轉換
-    animation.fromValue=@0;
-    animation.toValue=@1;
-    animation.duration=1.0;
-    animation.autoreverses=NO;
-    animation.removedOnCompletion=NO;
-    animation.fillMode=kCAFillModeForwards;
-    [view.layer addAnimation:animation forKey:nil];
-}
-
 - (void)setExitbutton:(NSButton *)exitbutton {
     if (_exitbutton != exitbutton) {
         if (_exitbutton != nil) {

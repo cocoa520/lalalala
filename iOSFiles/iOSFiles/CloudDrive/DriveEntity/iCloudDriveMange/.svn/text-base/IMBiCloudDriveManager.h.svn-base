@@ -35,7 +35,29 @@
  */
 - (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
 /**
- *  退出登录
+ *  Description 重命名
+ *
+ *  @param item    重名项  eg:
+ *
+ *  @{
+ *  @"drivewsid": @"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB",
+ *  @"etag": @"pi",
+ *  @"name": @"hhh22"
+ *  }
  */
+- (void)reNameWithDic:(nullable NSDictionary *)dic;
+/**
+ *  Description 移动
+ *
+ *  @param newParent 新的父目录id
+ *  @param items      移动项的dic数组  eg
+ *                               @{@"drivewsid":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB",
+ *                               @"etag":@"pp",
+ *                               @"clientId":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB"}
+ *
+ */
+- (void)moveToNewParent:(nullable NSString *)newParent itemDics:(nullable NSArray *)items;
+
+
 
 @end

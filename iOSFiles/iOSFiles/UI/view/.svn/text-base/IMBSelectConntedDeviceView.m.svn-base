@@ -124,7 +124,6 @@ static CGFloat const IMBSelectConnetctedDeviceAnimInterval = 0.2f;
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    IMBFFuncLog
     [self hide];
     
 }

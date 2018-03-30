@@ -25,7 +25,6 @@
 #import "IMBDriveEntity.h"
 #import "IMBDriveManage.h"
 #import "StringHelper.h"
-#import "IMBAppsListViewController.h"
 #import "IMBViewAnimation.h"
 #import "IMBSelectConntedDeviceView.h"
 #import "IMBDropBoxManage.h"
@@ -125,6 +124,28 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     
     [_shoppingCartBtn setHoverImage:@"nav_icon_cart_hover"];
     [_helpBtn setHoverImage:@"nav_icon_help_hover"];
+    
+    [_midiumiCloudClickLoginBtn setStringValue:CustomLocalizedString(@"MainWindow_iCloud_ClickTo_Login", nil)];
+    [_midiumDropBoxClickLoginBtn setStringValue:CustomLocalizedString(@"MainWindow_iCloud_ClickTo_Login", nil)];
+    _midiumiCloudClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumDropBoxClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumiCloudClickLoginBtn.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumDropBoxClickLoginBtn.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    
+    _midiumIcloudMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Msg_String", nil);
+    _midiumDropboxMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Msg_String", nil);
+    _midiumIcloudMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumDropboxMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumIcloudMsgLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumDropboxMsgLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    
+    _midiumIcloudTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Title_String", nil);
+    _midiumDropboxTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Title_String", nil);
+    _midiumIcloudTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumDropboxTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    _midiumIcloudTitleLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumDropboxTitleLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    
     
     [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"MainWindow_iCLoudUserPlaceholder_String", nil)];
     [icloudLoginbtn WithMouseExitedtextColor:[NSColor whiteColor] WithMouseUptextColor:[NSColor whiteColor] WithMouseDowntextColor:IMBGrayColor(240) withMouseEnteredtextColor:IMBGrayColor(245)];
@@ -259,7 +280,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             if ([[IMBDeviceConnection singleton] isConnectedDevice]) {
                 [_bigDevicesImageView setImage:[NSImage imageNamed:_bigDevicesConnectedImageName]];
             }else {
-                [_bigDevicesImageView setImage:[NSImage imageNamed:@"symbols-no-device"]];
+                [_bigDevicesImageView setImage:[NSImage imageNamed:@"mod_device_no"]];
             }
             
             
@@ -299,7 +320,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:YES];
         }else {
             _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn];
+            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
         }
         
     };
@@ -308,7 +329,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:YES];
         }else {
             _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
         }
         
     };
@@ -341,14 +362,14 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
 }
 
-- (void)setMouseExitedMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn {
+- (void)setMouseExitedMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn timeInterval:(CGFloat)timeInterval {
     NSRect f = view.frame;
     f.origin.y = 0;
-    [IMBViewAnimation animationMouseEnteredExitedWithView:view frame:f timeInterval:MidiumSizeAnimationTimeInterval - 0.2f disable:NO completion:nil];
+    [IMBViewAnimation animationMouseEnteredExitedWithView:view frame:f timeInterval:timeInterval disable:NO completion:nil];
     
     
     NSRect btnF = btn.frame;
-    [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:MidiumSizeAnimationTimeInterval - 0.2f disable:NO completion:^{
+    [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:timeInterval disable:NO completion:^{
         [btn setHidden:YES];
     }];
 }
@@ -365,6 +386,9 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     if (_isEnable == NO) return;
     
     [self setShadowHidden:NO];
+    
+    
+    
     _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
     _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
     _devicesShadowView.frame = NSMakeRect(336.0f, 20.0f, 238.0f, 376.0f);
@@ -392,9 +416,22 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [_icloudDrivebox setContentView:_midiumSizeiCloudView];
         }
         
-        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
         
         [self setDeviceViewConnecteStatus];
+        
+        if (_iCloudDriveView.loginStatus) {
+            [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:0 isHidden:YES];
+        }else {
+            _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
+            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:0];
+        }
+        if (_oneDriveView.loginStatus) {
+            [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:0 isHidden:YES];
+        }else {
+            _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
+            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:0];
+        }
     }];
 }
 
@@ -442,13 +479,15 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [self deviceDisconnected:serialNum];
             _selectedBaseInfo = nil;
         }
-        //————————处理有问题————————
         
         //设备断开时，窗口的操作
         IMBViewManager *viewManager = [IMBViewManager singleton];
         if ([viewManager.windowDic.allKeys containsObject:serialNum]) {
             IMBMainWindowController *windowController = [viewManager.windowDic objectForKey:serialNum];
             [windowController backMainViewChooseLoginModelEnum];
+        }
+        if ([viewManager.allMainControllerDic.allKeys containsObject:serialNum]) {
+            [viewManager.allMainControllerDic removeObjectForKey:serialNum];
         }
     };
     deviceConnection.IMBDeviceNeededPassword = ^(am_device device){
@@ -482,7 +521,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         if (_devicesView.isDevicesOriginalFrame) {
             [_bigDevicesImageView setImage:[NSImage imageNamed:@"mod_device"]];
         }else {
-            [_bigDevicesImageView setImage:[NSImage imageNamed:@"symbols-no-device"]];
+            [_bigDevicesImageView setImage:[NSImage imageNamed:@"mod_device_no"]];
         }
     }
     
@@ -497,7 +536,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [[IMBLogManager singleton] writeInfoLog:@"Connetion Needs Password"];
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [IMBCommonTool showTwoBtnsAlertInMainWindow:YES firstBtnTitle:@"Cancel" secondBtnTitle:@"OK" msgText:@"Device Needs Password" firstBtnClickedBlock:nil secondBtnClickedBlock:^{
+        [IMBCommonTool showTwoBtnsAlertInMainWindow:nil firstBtnTitle:@"Cancel" secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"AlertView_Device_Need_Pwd", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
             //点击确定，重新链接设备
             [[IMBDeviceConnection singleton] performSelector:@selector(reConnectDevice:) withObject:(id)device afterDelay:1.0f];
         }];
@@ -550,18 +589,18 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [cameraRoll release];
             [information.ipod setPhotoLoadFinished:YES];
             [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DEVICE_LOADCOMPLETE_CAMERAROLL object:_iPod];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompletePhoto object:_iPod];
         });
     });
 
     dispatch_async(spatchqueue, ^{
         [information loadiBook];
         NSArray *ibooks = [information allBooksArray] ;
-        [self loadbookCover:ibooks];
+        [IMBCommonTool loadbookCover:ibooks ipod:_iPod];
         dispatch_sync(dispatch_get_main_queue(), ^{
             [_iPod setBookLoadFinished:YES];
             [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DEVICE_LOADCOMPLETE_BOOKS object:_iPod];
+            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteBooks object:_iPod];
         });
     });
 
@@ -584,6 +623,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [_iPod setMediaLoadFinished:YES];
             [_iPod setVideoLoadFinished:YES];
             [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteMedia object:_iPod];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteVideo object:_iPod];
         });
     });
 
@@ -595,6 +636,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             information.appArray = [appArray retain];
             [_iPod setAppsLoadFinished:YES];
             [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteApp object:_iPod];
         });
     });
     
@@ -624,6 +666,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     _iCloudDriveView.loginStatus = NO;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:_baseDriveManage.userID];
+    [[IMBDeviceConnection singleton] removeDeviceByKey:_baseDriveManage.userID];
     IMBViewManager *viewManger = [IMBViewManager singleton];
     [viewManger.allMainControllerDic removeObjectForKey:@"iCloud"];
     [_baseDriveManage userDidLogout];
@@ -632,6 +675,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 
 - (void)signoutDropboxClicked {
     _oneDriveView.loginStatus = NO;
+    [[IMBDeviceConnection singleton] removeDeviceByKey:_baseDriveManage.userID];
     [_baseDriveManage userDidLogout];
     IMBViewManager *viewManger = [IMBViewManager singleton];
     [viewManger.allMainControllerDic removeObjectForKey:@"DropBox"];
@@ -662,6 +706,10 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     _isEnter = YES;
     [self iCloudLogIn:sender];
 }
+
+- (IBAction)enterText:(id)sender {
+    [self iCloudLogIn:nil];
+}
 /**
  *  查看密码 按钮 点击
  */
@@ -671,10 +719,12 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         [_iCloudSecireTextField setHidden:YES];
       
         _icloudLoginPwdTextfield.stringValue = _iCloudSecireTextField.stringValue;
+        _iCloudSecireTextField.stringValue = @"";
         [_icloudLoginPwdTextfield becomeFirstResponder];
     }else {
         _isSecureMode = YES;
         _iCloudSecireTextField.stringValue = _icloudLoginPwdTextfield.stringValue;
+        _icloudLoginPwdTextfield.stringValue = @"";
         [_iCloudSecireTextField setHidden:NO];
         [_iCloudSecireTextField becomeFirstResponder];
         
@@ -731,7 +781,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         
         [self signoutDropboxClicked];
     };
-    [_loginSuccessdropboxView.imageView setImage:[NSImage imageNamed:@"symbols-67868678678njmghjgh"]];
+    [_loginSuccessdropboxView.imageView setImage:[NSImage imageNamed:@"mod_dropboxdrive"]];
     [_loginSuccessdropboxView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:baseInfo.allDeviceSize reserved:2],[StringHelper getFileSizeString:baseInfo.kyDeviceSize reserved:2]]];
     [_oneDriveView setLoginStatus:YES];
     
@@ -752,7 +802,12 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
     _isEnable = NO;
     [self addLoginLoadingAnimation];
-    _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
+    if ([_icloudLoginPwdTextfield.stringValue isEqualToString:@""]) {
+        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
+    }else {
+        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_icloudLoginPwdTextfield.stringValue WithDelegate:self];
+    }
+    
 }
 
 - (void)switchiCloudDriveViewControllerWithiCloudDrive:(iCloudDrive *)icloudDrive {
@@ -778,7 +833,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         
         [self signoutiCloudClicked];
     };
-    [_loginSuccessiCloudView.imageView setImage:[NSImage imageNamed:@"symbols-gfhr5757567657676867"]];
+    [_loginSuccessiCloudView.imageView setImage:[NSImage imageNamed:@"mod_iclouddrive"]];
     [_loginSuccessiCloudView.nameLabel setStringValue:_baseDriveManage.userID];
     [_loginSuccessiCloudView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:baseInfo.kyDeviceSize reserved:2],[StringHelper getFileSizeString:baseInfo.allDeviceSize reserved:2]]];
     
@@ -799,23 +854,37 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_iCloudUserTextField.cell setEnabled:YES];
     [_iCloudUserTextField setEditable:YES];
     _isEnter = NO;
-    if (responseCode == ResponseUserNameOrPasswordError) {//密码或者账号错误
-        [self removeLoginLoadingAnimation];
-    }else if (responseCode == ResonseSecurityCodeError) {//<沿验证码错误
-        [self removeLoginLoadingAnimation];
-    }else if (responseCode == ResponseUnknown) {//未知错误
-        [self removeLoginLoadingAnimation];
-    }else if (responseCode == ResponseInvalid) {///<响应无效 一般参数错误
-        [self removeLoginLoadingAnimation];
+    NSString *errStr = @"Error";
+    switch (responseCode) {
+        case ResponseUserNameOrPasswordError://密码或者账号错误
+        {
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Wrong_UsernameOrPwd", nil);
+        }
+            break;
+        case ResonseSecurityCodeError://<沿验证码错误
+        {
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Wrong_Passcode", nil);
+        }
+            break;
+        case ResponseUnknown://未知错误
+        {
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Uknown_Error", nil);
+        }
+            break;
+        case ResponseInvalid://<响应无效 一般参数错误
+        {
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_No_Reponse", nil);
+        }
+            break;
+            
+        default:
+            break;
     }
-    [IMBCommonTool showSingleBtnAlertInMainWindow:YES btnTitle:@"OK" msgText:@"Error" btnClickedBlock:^{
-        
-    }];
-//    [IMBCommonTool showTwoBtnsAlertInMainWindow:YES firstBtnTitle:@"oo" secondBtnTitle:@"xx" msgText:@"hahahalalala" firstBtnClickedBlock:^{
-//        
-//    } secondBtnClickedBlock:^{
-//        
-//    }];
+    [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:errStr btnClickedBlock:nil];
 }
 
 - (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive {
@@ -938,227 +1007,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_loadLayer addAnimation:animation forKey:@""];
 }
 
-- (void)loadbookCover:(NSArray *)array {
-
-//    [queue addOperationWithBlock:^{
-        for (IMBBookEntity *book in array ) {
-            
-            __block NSString *filePath = nil;
-            @synchronized(self){
-                NSData *data = nil;
-                if ([book.extension isEqualToString:@"epub"]) {
-                    filePath = book.coverPath;
-                    data = [self loadEpubCover:filePath];
-                }else if ([book.extension isEqualToString:@"pdf"]&&!book.isPurchase)
-                {
-                    filePath = [NSString stringWithFormat:@"Books/%@",book.path];
-                    data = [self loadPdfCover:filePath];
-                }else
-                {
-                    filePath = [NSString stringWithFormat:@"Books/Purchases/%@",book.path];
-                    data = [self loadPdfCover:filePath];
-                }
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    NSImage *image = [[NSImage alloc] initWithData:data];
-                    if (image != nil) {
-                        [image setSize:NSMakeSize(110, 168)];
-                        book.coverImage = image;
-                    }else
-                    {
-                        book.bookTitle = book.bookName;
-                    }
-                    [image release];
-                    
-                });
-            }
-        }
-
-//    }];
-}
-
-//加载epub的封面
-- (NSData *)loadEpubCover:(NSString *)filePath {
-    AFCDirectoryAccess *afcDir = [_iPod.deviceHandle newAFCMediaDirectory];
-    AFCFileReference *infile = [afcDir openForRead:filePath];
-    NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
-    const uint32_t bufsz = 10240;
-    char *buff = malloc(bufsz);
-    uint32_t done = 0;
-    while (1) {
-        uint64_t n = [infile readN:bufsz bytes:buff];
-        if (n==0) break;
-        NSData *b2 = [[NSData alloc]
-                      initWithBytesNoCopy:buff length:n freeWhenDone:NO];
-        [data appendData:b2];
-        [b2 release];
-        done += n;
-    }
-    
-    free(buff);
-    // close output file
-    [infile closeFile];
-    [afcDir close];
-    return data;
-}
-
-//加载pdf的封面 pdf的封面默认是第一页
-- (NSMutableData *)loadPdfCover:(NSString *)filePath {
-    
-    NSMutableData *pdfData = [NSMutableData data];
-    int desiredResolution = 200; // in DPI
-    
-    BOOL morePages = YES;
-    int page = 1;
-    
-    // Package all arguments as NSStrings in an NSArray
-    NSMutableArray* args = [NSMutableArray array];
-    [args addObject:@"--page"];
-    [args addObject:@"1"];
-    // If we have a "--dpi" along with a corresponding argument ...
-    NSUInteger index = NSNotFound;
-    if ( (index = [args indexOfObject: @"--dpi"]) != NSNotFound && index + 1 < [args count] )
-    {
-        // Parse it as an integer
-        desiredResolution = [[args objectAtIndex: index + 1] intValue];
-        [args removeObjectAtIndex: index + 1];
-        [args removeObjectAtIndex: index];
-    }
-    // If we have a "--page" along with a corresponding argument ...
-    if ( (index = [args indexOfObject: @"--page"]) != NSNotFound && index + 1 < [args count] )
-    {
-        // Parse it as an integer
-        page = [[args objectAtIndex: index + 1] intValue];
-        morePages = NO;
-        [args removeObjectAtIndex: index + 1];
-        [args removeObjectAtIndex: index];
-    }
-    // --transparent    Do not fill background white color, keep transparency from PDF.
-    BOOL keepTransparent = NO;
-    if ( (index = [args indexOfObject: @"--transparent"]) != NSNotFound )
-    {
-        keepTransparent = YES;
-        [args removeObjectAtIndex: index];
-    }
-    
-    AFCDirectoryAccess *afcDir = [_iPod.deviceHandle newAFCMediaDirectory];
-    AFCFileReference *infile = [afcDir openForRead:filePath];
-    NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
-    const uint32_t bufsz = 10240;
-    char *buff = malloc(bufsz);
-    uint32_t done = 0;
-    while (1) {
-        uint64_t n = [infile readN:bufsz bytes:buff];
-        if (n==0) break;
-        NSData *b2 = [[NSData alloc]
-                      initWithBytesNoCopy:buff length:n freeWhenDone:NO];
-        [data appendData:b2];
-        [b2 release];
-        done += n;
-    }
-    
-    free(buff);
-    // close output file
-    [infile closeFile];
-    [afcDir close];
-    
-    
-    NSImage* source = [ [NSImage alloc] initWithData:data];
-    [source setScalesWhenResized: YES];
-    
-    
-    // Allows setCurrentPage to do anything
-    [source setDataRetained: YES];
-    
-    if ( source == nil )
-    {
-        return nil;
-    }
-    
-    // The output file name
-    NSString* outputFileFormat = @"%@-p%01d";
-    
-    // Find the PDF representation
-    NSPDFImageRep* pdfSource = NULL;
-    NSArray* reps = [source representations];
-    [source release];
-    for ( int i = 0; i < [reps count] && pdfSource == NULL; ++ i )
-    {
-        if ( [[reps objectAtIndex: i] isKindOfClass: [NSPDFImageRep class]] )
-        {
-            pdfSource = [reps objectAtIndex: i];
-            [pdfSource setCurrentPage: page-1];
-            
-            // Set the output format to have the correct number of leading zeros
-            NSString *string0 = [NSString stringWithFormat: @"%ld", (long)[pdfSource pageCount]];
-            long numDigits = [string0 length];
-            outputFileFormat = [NSString stringWithFormat: @"%%@-p%%0%ldd", numDigits];
-        }
-    }
-    
-    [NSApplication sharedApplication];
-    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-    NSSize sourceSize = [pdfSource size];
-    if (sourceSize.height == 0 && sourceSize.width == 0) {
-        return nil;
-    }
-    do
-    {
-        // Set up a temporary release pool so memory will get cleaned up properly
-        NSAutoreleasePool *loopPool = [[NSAutoreleasePool alloc] init];
-        NSSize sourceSize = [pdfSource size];
-        // int pixels = [ [source bestRepresentationForDevice: nil] pixelsWide];
-        // if ( pixels != 0 ) sourceResolution = ((double)pixels / sourceSize.width) * 72.0;
-        
-        NSSize size = NSMakeSize( sourceSize.width * 0.2, sourceSize.width * 0.2*159/104 );
-        
-        //	[source setSize: size];
-        NSRect sourceRect = NSMakeRect( 0, 0, sourceSize.width, sourceSize.height );
-        NSRect destinationRect = NSMakeRect( 0, 0, size.width, size.height );
-        
-        NSImage* image = [[NSImage alloc] initWithSize:size];
-        [image lockFocus];
-        
-        
-        if (keepTransparent) {
-            [pdfSource drawInRect: destinationRect
-                         fromRect: sourceRect
-                        operation: NSCompositeCopy fraction: 1.0 respectFlipped: NO hints: [NSDictionary dictionary] ];
-        } else {
-            [[NSColor whiteColor] set];
-            NSRectFill( destinationRect );
-            [pdfSource drawInRect: destinationRect
-                         fromRect: sourceRect
-                        operation: NSCompositeSourceOver fraction: 1.0 respectFlipped: NO hints: [NSDictionary dictionary] ];
-        }
-        
-        NSBitmapImageRep* bitmap = [ [NSBitmapImageRep alloc]
-                                    initWithFocusedViewRect: destinationRect ];
-        
-        [pdfData appendData:[bitmap representationUsingType:NSPNGFileType properties:nil]];
-        [bitmap release];
-        if ( morePages == YES )
-        {
-            // Go get the next page
-            if ( pdfSource != NULL && page < [pdfSource pageCount] )
-            {
-                [pdfSource setCurrentPage: page];
-                [source recache];
-                page ++;
-            }
-            else
-            {
-                morePages = NO;
-            }
-        }
-        
-        [image unlockFocus];
-        [image release];
-        [loopPool release];
-    }
-    while ( morePages == YES );
-    return pdfData;
-    
-}
 
 - (void)closeWindow:(id)sender {
     [_delegate closeWindow:sender];

@@ -34,7 +34,6 @@
 @synthesize filePath = _filePath;
 @synthesize dBMediaType = _dBMediaType;
 @synthesize bookFileName = _bookFileName;
-@synthesize fileSize = _fileSize;
 @synthesize durationFrame = _durationFrame;
 @synthesize fileExtension = _fileExtension;
 @synthesize uuid = _uuid;

@@ -27,6 +27,7 @@
 @synthesize itemIDOrPath = _itemIDOrPath;
 @synthesize fileSize = _fileSize;
 @synthesize currentSize = _currentSize;
+@synthesize currentTotalSize = _currentTotalSize;
 @synthesize parent = _parent;
 @synthesize isFolder = _isFolder;
 @synthesize isBigFile = _isBigFile;
@@ -45,6 +46,19 @@
 @synthesize dataAry = _dataAry;
 @synthesize currentSizeStr = _currentSizeStr;
 @synthesize isStart = _isStart;
+@synthesize completeDate = _completeDate;
+@synthesize findFileBtn = _findFileBtn;
+@synthesize deleteFileBtn = _deleteFileBtn;
+@synthesize isAddCompleteView = _isAddCompleteView;
+@synthesize photoImage = _photoImage;
+@synthesize allPath = _allPath;
+@synthesize photoPath = _photoPath;
+@synthesize kindSubType = _kindSubType;
+@synthesize thumbPath = _thumbPath;
+@synthesize oriPath = _oriPath;
+@synthesize photoDateData = _photoDateData;
+@synthesize isDriveDataComplete = _isDriveDataComplete;
+@synthesize extension = _extension;
 - (NSString *)identifier
 {
     NSString *identifier = nil;
@@ -58,6 +72,9 @@
 }
 -(void)dealloc
 {
+    [_photoImage release],_photoImage = nil;
+    [_findFileBtn release],_findFileBtn = nil;
+    [_deleteFileBtn release],_deleteFileBtn = nil;
     [_urlString release],_urlString = nil;
     [_headerParam  release],_headerParam = nil;
     [_fileName release],_fileName = nil;

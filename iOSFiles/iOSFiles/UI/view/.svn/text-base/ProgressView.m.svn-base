@@ -37,7 +37,7 @@
     _lightLayer = [[CALayer layer] retain];
     [_lightLayer setAnchorPoint:CGPointMake(0, 0)];
     [_lightLayer setFrame:CGRectMake(0, 0, 100, 6)];
-    _lightLayer.contents = [StringHelper imageNamed:@"download_light"];
+    _lightLayer.contents = [NSImage imageNamed:@"download_light"];
     
     _tansferFinishlightLayer = [[CALayer layer] retain];
     [_tansferFinishlightLayer setAnchorPoint:CGPointMake(0, 0)];

@@ -12,6 +12,7 @@
 @synthesize selectionHighlightColor = _selectionHighlightColor;
 @synthesize canSelect = _canSelect;
 @synthesize borderColor = _borderColor;
+@synthesize listener = _listener;
 - (void)awakeFromNib
 {
     [self setGridColor:[NSColor colorWithCalibratedRed:208.0/255 green:208.0/255 blue:208.0/255 alpha:1.0]];
@@ -53,12 +54,44 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:0 yRadius:0];
     if (_borderColor != nil) {
         [_borderColor setStroke];
         [path addClip];
         [path stroke];
     }
+}
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    NSPoint point = [self convertPoint:theEvent.locationInWindow fromView:nil];
+    int row = (int)[self rowAtPoint:point];
+    if ( row <0 ) {
+        return;
+    }
+    NSRect rect = [self rectOfRow:row];
+    int column1 = (int)[self columnWithIdentifier:@"CheckCol"];
+    NSRect columRect = [self rectOfColumn:column1];
+    //    IMBCheckBoxCell *cell = (IMBCheckBoxCell *)[self preparedCellAtColumn:column1 row:row];
+    NSSize size = NSMakeSize(14, 14);//[cell cellSize];
+    
+    NSRect chekRect = NSMakeRect(0, 0, size.width, size.height);
+    chekRect.origin.x = rect.origin.x +(columRect.size.width - size.width)/2+8;
+    chekRect.origin.y = rect.origin.y + (rect.size.height - size.height)/2.0;
+    if (NSMouseInRect(point, chekRect, [self isFlipped])) {
+        _clickCheckBox = YES;
+        [super mouseDown:theEvent];
+        if ([_listener respondsToSelector:@selector(tableView:row:)]) {
+            [_listener tableView:self row:row];
+        }
+    }else {
+        _clickCheckBox = NO;
+        [super mouseDown:theEvent];
+    }
+    //    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    //    if ([_listener respondsToSelector:@selector(loadViewBtn)]) {
+    //        [_listener loadViewBtn];
+    //    }
 }
 
 - (void)dealloc

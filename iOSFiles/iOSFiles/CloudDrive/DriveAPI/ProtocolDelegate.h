@@ -8,7 +8,7 @@
 
 #ifndef ProtocolDelegate_h
 #define ProtocolDelegate_h
-
+#import "IMBImageAndTitleButton.h"
 
 #endif /* ProtocolDelegate_h */
 
@@ -58,7 +58,8 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonatomic,assign)long long fileSize;
 //当前的下载或者上传的大小
 @property (nonatomic,assign)long long currentSize;
-
+//当前的总下载或者上传的大小
+@property (nonatomic,assign)long long currentTotalSize;
 @required
 //如果是文件 其父目录对象
 @property (nonatomic,assign)id <DownloadAndUploadDelegate> parent;
@@ -96,9 +97,33 @@ typedef NS_ENUM(NSUInteger,TransferState){
 //iCloud Drive 下载所需要，表明文件所属的域
 @property (nonnull,retain)NSString *zone;
 
-@property (nonnull,nonatomic,retain)NSMutableArray *dataAry;
 
+
+
+@property (nonnull,nonatomic,retain)NSMutableArray *dataAry;
+//用于用户多次选者下载数据下载
 @property (nonatomic,assign) BOOL isStart;
+//传输完成的时间
+@property (nonnull,nonatomic,retain) NSString * completeDate;
+
+@property (nonnull,nonatomic,retain) IMBImageAndTitleButton * findFileBtn;
+
+@property (nonnull,nonatomic,retain) IMBImageAndTitleButton * deleteFileBtn;
+
+@property (nonatomic,assign) BOOL isAddCompleteView;
+
+@property (nonnull,nonatomic,retain) NSImage * photoImage;
+
+@property (nonatomic,assign) BOOL isDriveDataComplete;
+//photo
+@property (nonnull,nonatomic,retain) NSString * allPath;
+@property (nonnull,nonatomic,retain) NSString * photoPath;
+@property (nonatomic,assign) int kindSubType;
+@property (nonnull,nonatomic,retain) NSString * thumbPath;
+@property (nonnull,nonatomic,retain) NSString * oriPath;
+@property(assign, nonatomic) long long photoDateData;
+@property (nonnull,nonatomic,retain) NSString * extension;
+
 //唯一标识符
 - (NSString *)identifier;
 @end

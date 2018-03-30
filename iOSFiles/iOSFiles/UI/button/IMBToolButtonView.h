@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IMBWhiteView.h"
 
 @class HoverButton;
-@class IMBSegmentedBtn;
 @class IMBBaseViewController;
+
 typedef NS_ENUM(int, OperationFunctionType) {
     ReloadFunctionType= 0,
     AddFunctionType = 1,
@@ -37,6 +38,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     NewGroupFuntion = 21,
     SyncTransferFuntion = 22,
     ToiCloudFunction = 23,
+    SortFunctionType = 24,
 };
 
 @interface IMBToolButtonView : NSView
@@ -45,7 +47,6 @@ typedef NS_ENUM(int, OperationFunctionType) {
     HoverButton *_add;
     HoverButton *_iCloudAdd;
     HoverButton *_delete;
-    HoverButton *_toiTunes;
     HoverButton *_toMac;
     HoverButton *_toDevice;
     HoverButton *_deviceDatail;
@@ -58,7 +59,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     HoverButton *_find;
     HoverButton *_contactImport;
     HoverButton *_toContact;
-    IMBSegmentedBtn *_segmentedControl;
+    HoverButton *_switchButton;
     
     HoverButton *_upload;
     HoverButton *_download;
@@ -70,10 +71,13 @@ typedef NS_ENUM(int, OperationFunctionType) {
     HoverButton *_hideImage;
     HoverButton *_showImage;
     HoverButton *_rename;
+    HoverButton *_sortBtn;
+    
     id _delegate;
+    IMBWhiteView *_lineView;
 }
 @property (nonatomic, assign) id delegate;
-@property (nonatomic, retain)IMBSegmentedBtn *segmentedControl;
+@property (nonatomic, retain) HoverButton *switchButton;
 //屏蔽 toolBar 上button点击按钮
 - (void)toolBarButtonIsEnabled:(BOOL) isenabled;
 

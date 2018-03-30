@@ -20,12 +20,10 @@
 #import "IMBCommonEnum.h"
 #import "IMBLogManager.h"
 #import "IMBConst.h"
+#import "NSView+Extension.h"
 #import <AppKit/AppKit.h>
 
 #pragma mark -- 自定义宏
-
-//#define CustomLocalizedString(key, comment) \
-//[[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",[(NSArray *)([[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"]) objectAtIndex:0]] ofType:@"lproj"]] localizedStringForKey:(key) value:key table:nil]
 
 #ifdef DEBUG
 # define IMBFLog(fmt, ...) NSLog((@"[functionName:%s]\n""[line Num:%d] \n" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);

@@ -122,7 +122,7 @@
                 drawingRect.size = imageRect.size;
                 [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
             }else {
-                iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected.png"];
+                iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected"];
                 [iconImage setResizingMode:NSImageResizingModeStretch];
                 int  xPos = 0;
                 if (_isShowTrangle) {
@@ -174,7 +174,7 @@
             NSRect imageRect;
             imageRect.origin = NSZeroPoint ;
             imageRect.size = image.size;
-            drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 7);
+            drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 5);
             drawingArrowRect.size = imageRect.size;
             [image drawInRect:drawingArrowRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }
@@ -194,8 +194,6 @@
         [StringHelper TruncatingTailForStringDrawing:buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:size] withLineSpacing:0 withMaxWidth:100 withSize:&textsize withColor:textColor withAlignment:NSLeftTextAlignment];
         [self setFrameSize:NSMakeSize(180, NSHeight(self.frame))];
         _sizeWidth = textsize;
-//        [StringHelper TruncatingTailForStringDrawing:buttonName withFont:[NSFont fontWithName:@"Helvetica Neue" size:size] withLineSpacing:0 withMaxWidth:150 withSize:&textsize withColor:textColor withAlignment:NSLeftTextAlignment];
-//        [self setFrameSize:NSMakeSize(44+textsize.width, NSHeight(self.frame))];
     }
     _rightIcon = rightIcon;
     _textColor = [textColor retain];
@@ -267,7 +265,6 @@
 
 - (void)mouseEntered:(NSEvent *)theEvent {
     _mouseStatus = MouseEnter;
-    IMBFFuncLog
     [[NSNotificationCenter defaultCenter] postNotificationName:REFREASH_TOPVIEW object:nil];
     [self setNeedsDisplay:YES];
     if (!_isDisable) {

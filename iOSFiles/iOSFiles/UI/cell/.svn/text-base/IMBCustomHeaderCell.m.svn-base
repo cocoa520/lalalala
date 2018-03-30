@@ -317,7 +317,7 @@
 	[path closePath];
 	
 	if (_priority == 0) {
-		[COLOR_PROMPTBTN_BORDER set];
+		[COLOR_View_NORMAL set];
 	} else {
 		[[NSColor clearColor] set];
 	}

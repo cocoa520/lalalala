@@ -8,14 +8,14 @@
 
 #import "IMBDevicePageViewController.h"
 #import "IMBDevicePageFolderModel.h"
-//#import "IMBSystemCollectionViewController.h"
 #import "IMBDrawOneImageBtn.h"
-#import "IMBSegmentedBtn.h"
+#import "IMBDeviceAllDataViewController.h"
 @interface IMBDevicePageViewController ()
 
 @end
 
 @implementation IMBDevicePageViewController
+
 - (id)initWithiPod:(IMBiPod *)ipod withDelegate:(id)delegate{
     if ([super initWithNibName:@"IMBDevicePageViewController" bundle:nil]) {
         _iPod = [ipod retain];
@@ -27,9 +27,8 @@
 - (void)awakeFromNib {
     [self loadData];
     [super awakeFromNib];
-    [_gridView setWantsLayer:YES];
-    [_gridView.layer setBackgroundColor:[NSColor whiteColor].CGColor];
-    _gridView.itemSize = NSMakeSize(154, 150);
+    [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
+    _gridView.itemSize = NSMakeSize(154, 154);
     _gridView.backgroundColor = [NSColor whiteColor];
     _gridView.scrollElasticity = NO;
     _gridView.allowsDragAndDrop = YES;
@@ -40,10 +39,6 @@
     [_gridView reloadData];
     [_rootBox setContentView:_mainView];
     
-    [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:self DisplayMode:YES];
-    
-    [_topView setIsBommt:YES];
-    [_topView setIsUpline:YES];
     [_backButton setMouseEnteredImage:[StringHelper imageNamed:@"backup_retreat_enter"]  mouseExitImage:[StringHelper imageNamed:@"backup_retreat"] mouseDownImage:[StringHelper imageNamed:@"backup_retreat2"]  forBidImage:[StringHelper imageNamed:@"backup_retreat3"]];
     [_backButton setIsDrawBorder:NO];
     [_backButton setTarget:self];
@@ -51,57 +46,51 @@
 }
 
 - (void)loadData {
-    _dataSourceArray = [[NSMutableArray alloc]init];
-    OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-    NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-
+    _dataSourceArray = [[NSMutableArray alloc] init];
     _information = [[IMBInformation alloc] initWithiPod:_iPod];
     IMBDevicePageFolderModel *devicePagePhoto = [[IMBDevicePageFolderModel alloc]init];
-    devicePagePhoto.name = CustomLocalizedString(@"Device_MainPage_View_photo", nil);
-    devicePagePhoto.image = picture;
+    devicePagePhoto.name = CustomLocalizedString(@"MenuItem_id_9", nil);
+    devicePagePhoto.image = [NSImage imageNamed:@"folder_icon_img"];
     devicePagePhoto.nodesEnum = Category_Photos;
     
     IMBDevicePageFolderModel *devicePageBook = [[IMBDevicePageFolderModel alloc]init];
-    devicePageBook.name = CustomLocalizedString(@"Device_MainPage_View_Book", nil);
-    devicePageBook.image = picture;
+    devicePageBook.name = CustomLocalizedString(@"MenuItem_id_13", nil);
+    devicePageBook.image = [NSImage imageNamed:@"folder_icon_books"];
     devicePageBook.nodesEnum = Category_iBooks;
     
     IMBDevicePageFolderModel *devicePageMedia = [[IMBDevicePageFolderModel alloc]init];
     devicePageMedia.name = CustomLocalizedString(@"Device_MainPage_View_Media", nil);
-    devicePageMedia.image = picture;
+    devicePageMedia.image = [NSImage imageNamed:@"folder_icon_media"];
     devicePageMedia.nodesEnum = Category_Media;
     
     IMBDevicePageFolderModel *devicePageVideo = [[IMBDevicePageFolderModel alloc]init];
-    devicePageVideo.name = CustomLocalizedString(@"Device_MainPage_View_Video", nil);
-    devicePageVideo.image = picture;
+    devicePageVideo.name = CustomLocalizedString(@"MenuItem_id_29", nil);
+    devicePageVideo.image = [NSImage imageNamed:@"folder_icon_video"];
     devicePageVideo.nodesEnum = Category_Video;
     
-    IMBDevicePageFolderModel *devicePageOther  = [[IMBDevicePageFolderModel alloc]init];
-    devicePageOther.name = CustomLocalizedString(@"Device_MainPage_View_System", nil);
-    devicePageOther.image = picture;
-    devicePageOther.nodesEnum = Category_System;
-    
     IMBDevicePageFolderModel *devicePageApp = [[IMBDevicePageFolderModel alloc]init];
-    devicePageApp.name = CustomLocalizedString(@"Device_MainPage_View_App", nil);
-    devicePageApp.image = picture;
+    devicePageApp.name = CustomLocalizedString(@"MenuItem_id_33", nil);
+    devicePageApp.image = [NSImage imageNamed:@"folder_icon_app"];
     devicePageApp.nodesEnum = Category_Applications;
     
-    
+    IMBDevicePageFolderModel *devicePageOther  = [[IMBDevicePageFolderModel alloc]init];
+    devicePageOther.name = CustomLocalizedString(@"MenuItem_id_30", nil);
+    devicePageOther.image = [NSImage imageNamed:@"folder_icon_others"];
+    devicePageOther.nodesEnum = Category_System;
     
     IMBDevicePageFolderModel *cameraRollModel = [[IMBDevicePageFolderModel alloc]init];
-    cameraRollModel.name = CustomLocalizedString(@"Device_MainPage_View_CameraRoll", nil);
-    cameraRollModel.image = picture;
+    cameraRollModel.name = CustomLocalizedString(@"MenuItem_id_10", nil);
+    cameraRollModel.image = [NSImage imageNamed:@"folder_icon_img"];
     cameraRollModel.nodesEnum = Category_CameraRoll;
     
     IMBDevicePageFolderModel *photoStreamModel = [[IMBDevicePageFolderModel alloc]init];
-    photoStreamModel.name = CustomLocalizedString(@"Device_MainPage_View_PhotoStream", nil);
-    photoStreamModel.image = picture;
+    photoStreamModel.name = CustomLocalizedString(@"MenuItem_id_11", nil);
+    photoStreamModel.image = [NSImage imageNamed:@"folder_icon_img"];
     photoStreamModel.nodesEnum = Category_PhotoStream;
     
-    
     IMBDevicePageFolderModel *photoLibraryModel = [[IMBDevicePageFolderModel alloc]init];
-    photoLibraryModel.name = CustomLocalizedString(@"Device_MainPage_View_PhotoLibrary", nil);
-    photoLibraryModel.image = picture;
+    photoLibraryModel.name = CustomLocalizedString(@"MenuItem_id_12", nil);
+    photoLibraryModel.image = [NSImage imageNamed:@"folder_icon_img"];
     photoLibraryModel.nodesEnum = Category_PhotoLibrary;
     
     [devicePagePhoto.subPhotoArray addObject:cameraRollModel];
@@ -111,8 +100,8 @@
     [_dataSourceArray addObject:devicePageBook];
     [_dataSourceArray addObject:devicePageMedia];
     [_dataSourceArray addObject:devicePageVideo];
-    [_dataSourceArray addObject:devicePageOther];
     [_dataSourceArray addObject:devicePageApp];
+    [_dataSourceArray addObject:devicePageOther];
 
     [devicePagePhoto release];
     [devicePageBook release];
@@ -156,9 +145,7 @@
     IMBDevicePageFolderModel *fileEntity = [array objectAtIndex:index];
     item.bgImg = fileEntity.image;
     item.itemTitle = fileEntity.name;
-//    [item setNeedsDisplay:YES];
     item.selected = fileEntity.checkState;
-    item.itemImage = fileEntity.image;
     item.isFileManager = YES;
     if (fileEntity.checkState == Check) {
         if (![gridView.selectedItems containsObject:item]) {
@@ -173,7 +160,7 @@
 }
 
 #pragma mark - CNGridView Delegate
-- (void)gridView:(CNGridView *)gridView didSelectItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section{
+- (void)gridView:(CNGridView *)gridView didSelectItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
     NSArray *array = nil;
     if (_isSearch) {
         array = _researchdataSourceArray;
@@ -183,12 +170,6 @@
     if (index < array.count) {
         IMBDevicePageFolderModel *fielEntity = [array objectAtIndex:index];
         fielEntity.checkState = Check;
-        int count = 0;
-        for (IMBDevicePageFolderModel *entity in array) {
-            if (entity.checkState == Check) {
-                count ++ ;
-            }
-        }
     }
 }
 
@@ -216,7 +197,6 @@
     for (IMBDevicePageFolderModel *fileEntity in array) {
         fileEntity.checkState = UnChecked;
     }
-    //_resultEntity.selectedCount = 0;
     [_gridView reloadSelecdImage];
 }
 
@@ -229,95 +209,45 @@
     }
     IMBDevicePageFolderModel *fielEntity = [array objectAtIndex:index];
     _category = fielEntity.nodesEnum;
-    if (fielEntity.nodesEnum == Category_Photos) {
+    if (_category == Category_Photos) {
         _isSearch = YES;
         [_researchdataSourceArray addObjectsFromArray:fielEntity.subPhotoArray];
         [_gridView reloadData];
         return;
-    }else if (fielEntity.nodesEnum == Category_Media) {
-        _baseViewController = [[IMBPhotoViewController alloc]initWithCategoryNodesEnum:fielEntity.nodesEnum withiPod:_iPod];
-    }else if (fielEntity.nodesEnum == Category_Video) {
-        _baseViewController = [[IMBPhotoViewController alloc]initWithCategoryNodesEnum:fielEntity.nodesEnum withiPod:_iPod];
-    }else if (fielEntity.nodesEnum == Category_iBooks) {
-        _baseViewController = [[IMBPhotoViewController alloc]initWithCategoryNodesEnum:fielEntity.nodesEnum withiPod:_iPod];
-    }else if (fielEntity.nodesEnum == Category_Applications) {
-        _baseViewController = [[IMBPhotoViewController alloc]initWithCategoryNodesEnum:fielEntity.nodesEnum withiPod:_iPod];
-    }else if (fielEntity.nodesEnum == Category_System) {
-//        _baseViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
-    }else if (fielEntity.nodesEnum == Category_PhotoStream||fielEntity.nodesEnum == Category_PhotoLibrary||fielEntity.nodesEnum == Category_CameraRoll) {
-        _baseViewController = [[IMBPhotoViewController alloc]initWithCategoryNodesEnum:fielEntity.nodesEnum withiPod:_iPod];
+    }else {
+        _baseViewController = [[IMBDeviceAllDataViewController alloc] initWithCategoryNodesEnum:_category withiPod:_iPod WithDelegete:self];
     }
-    [_rootBox setContentView:_baseViewController.view];
+    [_baseViewController loadToolBarView:_category WithDisplayMode:YES];
+    [_rootBox setContentView:nil];
+    [_contenBox setContentView:_baseViewController.view];
 }
 
-- (void)loadToolBarView:(CategoryNodesEnum) nodesEnum{
-    if (nodesEnum == Category_Media) {
-        [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:_baseViewController DisplayMode:YES];
-    }else if (nodesEnum == Category_Video) {
-         [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:_baseViewController DisplayMode:YES];
-    }else if (nodesEnum == Category_iBooks) {
-         [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:_baseViewController DisplayMode:YES];
-    }else if (nodesEnum == Category_Applications) {
-         [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:_baseViewController DisplayMode:YES];
-    }else if (nodesEnum == Category_System) {
-//        _baseViewController = [[IMBSystemCollectionViewController alloc] initWithIpod:_iPod withCategoryNodesEnum:0 withDelegate:self];
-    }else if (nodesEnum == Category_PhotoStream||nodesEnum == Category_PhotoLibrary||nodesEnum == Category_CameraRoll) {
-         [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(12),nil] Target:_baseViewController DisplayMode:YES];
-    }
-}
-
-#pragma -- mark  Actions
-- (void)toMac:(IMBInformation *)information{
-
-}
-
-- (void)addItems:(id)sender  {
-
-}
-
-- (void)doSwitchView:(id)sender {
-     IMBSegmentedBtn *segBtn = (IMBSegmentedBtn *)sender;
-    if (segBtn.selectedSegment == 0) {
-        if (_category == Category_Media) {
-        }else if (_category == Category_Video) {
-        }else if (_category == Category_iBooks) {
-        }else if (_category == Category_Applications) {
-            
-        }else if (_category == Category_System) {
-            
-        }else if (_category == Category_PhotoStream||_category == Category_PhotoLibrary||_category == Category_CameraRoll) {
-            
-        }
-    }else if (segBtn.selectedSegment == 1) {
-        if (_category == Category_Media) {
-            _baseViewController = [[IMBPhotosListViewController alloc] initWithiPod:_iPod category:_category];
-        }else if (_category == Category_Video) {
-            _baseViewController = [[IMBPhotosListViewController alloc] initWithiPod:_iPod category:_category];
-        }else if (_category == Category_iBooks) {
-            _baseViewController = [[IMBPhotosListViewController alloc] initWithiPod:_iPod category:_category];
-        }else if (_category == Category_Applications) {
-            _baseViewController = [[IMBPhotosListViewController alloc] initWithiPod:_iPod category:_category];
-        }else if (_category == Category_System) {
-            
-        }else if (_category == Category_PhotoStream||_category == Category_PhotoLibrary||_category == Category_CameraRoll) {
-            _baseViewController = [[IMBPhotosListViewController alloc] initWithiPod:_iPod category:_category];
-        }
-    }
-    [_rootBox setContentView:_baseViewController.view];
-}
-
+#pragma - mark back Actions
 - (void)backAction:(id)sender {
     _isSearch = NO;
     [_researchdataSourceArray removeAllObjects];
     [_gridView reloadData];
     [_rootBox setContentView:_mainView];
+    [_contenBox setContentView:nil];
 }
 
 - (void)closeWindow:(id)sender {
     [_delegate closeWindow:sender];
 }
 
+#pragma mark - 搜索
+- (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
+    _searhView = searchView;
+    if (_category != Category_Photos) {
+        [_baseViewController doSearchBtn:searchStr withSearchBtn:searchView];
+    }
+}
+
 -(void)dealloc {
+    if (_baseViewController != nil) {
+        [_baseViewController release];
+        _baseViewController = nil;
+    }
     [super dealloc];
 }
 
