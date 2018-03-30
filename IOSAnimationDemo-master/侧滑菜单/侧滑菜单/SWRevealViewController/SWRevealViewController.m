@@ -1350,7 +1350,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-#pragma mark Enqueued position and controller setup
+#pragma mark - Enqueued position and controller setup
 
 - (void)_dispatchSetFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
 {
@@ -1393,7 +1393,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-#pragma mark Animated view controller deployment and layout
+#pragma mark - Animated view controller deployment and layout
 
 // Primitive method for view controller deployment and animated layout to the given position.
 - (void)_setFrontViewPosition:(FrontViewPosition)newPosition withDuration:(NSTimeInterval)duration
@@ -1499,7 +1499,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-#pragma mark Position based view controller deployment
+#pragma mark - Position based view controller deployment
 
 // Deploy/Undeploy of the front view controller following the containment principles. Returns a block
 // that must be invoked on animation completion in order to finish deployment
@@ -1611,7 +1611,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-#pragma mark Containment view controller deployment and transition
+#pragma mark - Containment view controller deployment and transition
 
 // Containment Deploy method. Returns a block to be invoked at the
 // animation completion, or right after return in case of non-animated deployment.
@@ -1717,7 +1717,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-#pragma mark state preservation / restoration
+#pragma mark - state preservation / restoration
 
 + (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder*)coder
 {
