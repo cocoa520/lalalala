@@ -26,7 +26,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setAutoresizesSubviews:YES];
-    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,-8, self.frame.size.width -19.6, self.frame.size.height - 6)];
+    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,0, self.frame.size.width -18, self.frame.size.height - 6)];
     [_searchField setBordered:NO];
     [_searchField setDrawsBackground:YES];
     [[_searchField cell] setBackgroundColor:[NSColor grayColor]];
@@ -42,7 +42,7 @@
     [[[_searchField cell] cancelButtonCell] setImagePosition:NSNoImage];
 
     [self addSubview:_searchField];
-    NSImage *closeImage = [StringHelper imageNamed:@"fastdriver_close1"];
+    NSImage *closeImage = [StringHelper imageNamed:@"nav_icon_close"];
     _closeBtn = [[HoverButton alloc] initWithFrame:NSMakeRect(self.frame.size.width - closeImage.size.width - 6, (self.frame.size.height - closeImage.size.height)/2.0, closeImage.size.width, closeImage.size.height)];
     [_closeBtn setAutoresizingMask:NSViewMinXMargin];
     [_closeBtn setHidden:YES];
@@ -69,14 +69,14 @@
     [super drawRect:dirtyRect];
     if (!_isOPen) {
         if (_mouseState == MouseDown || _mouseState == MouseEnter) {
-            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search1_hover"];
-            [image drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search_1"];
+            [image drawInRect:NSMakeRect(0, (dirtyRect.size.height - image.size.height) / 2.0, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         }else {
             NSImage *image = [StringHelper imageNamed:@"navbar_icon_search_1"];
-            [image drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+            [image drawInRect:NSMakeRect(0, (dirtyRect.size.height - image.size.height) / 2.0, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         }
     }else {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(0, 10, dirtyRect.size.width - 10, dirtyRect.size.height - 20) xRadius:(dirtyRect.size.height - 20) / 2.0 yRadius:(dirtyRect.size.height - 20) / 2.0];
+        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(0, 0, dirtyRect.size.width, dirtyRect.size.height) xRadius:dirtyRect.size.height / 2.0 yRadius:dirtyRect.size.height / 2.0];
         if (_backGroundColor) {
             [_backGroundColor setFill];
             [path fill];
@@ -85,7 +85,7 @@
         [COLOR_BTN_BORDER setStroke];
         [path stroke];
         
-        NSImage *image = [StringHelper imageNamed:@"nav_search"];
+        NSImage *image = [StringHelper imageNamed:@"navbar_icon_search"];
         [image drawInRect:NSMakeRect(0, (dirtyRect.size.height - image.size.height) / 2.0, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }
 }

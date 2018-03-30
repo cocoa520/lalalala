@@ -1,14 +1,14 @@
 10
 
 dir
-2171
+2175
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-30T09:44:19.754859Z
-2171
+2018-03-30T10:14:52.461678Z
+2175
 huyumin
 
 
@@ -25,49 +25,6 @@ huyumin
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-ja.lproj
-dir
-
-deviceConnection
-dir
-
-Media
-dir
-
-IMBNotificationDefine.h
-file
-
-
-
-
-2018-03-28T02:24:36.000000Z
-dbfe5d9be23b49d4ebe6eaab499d67d5
-2018-03-20T03:34:03.749778Z
-1758
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9911
 
 main.m
 file
@@ -103,8 +60,82 @@ dingming
 
 235
 
-Log
+IMBNotificationDefine.h
+file
+
+
+
+
+2018-03-28T02:24:36.000000Z
+dbfe5d9be23b49d4ebe6eaab499d67d5
+2018-03-20T03:34:03.749778Z
+1758
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9911
+
+Media
 dir
+
+deviceConnection
+dir
+
+ja.lproj
+dir
+
+iOSFilesPch.pch
+file
+
+
+
+
+2018-03-30T02:44:14.000000Z
+b1917851f3249d8841e5515c084da917
+2018-03-30T02:44:07.505376Z
+2137
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1472
 
 IMBCommonDefine.h
 file
@@ -140,39 +171,8 @@ has-props
 
 4845
 
-iOSFilesPch.pch
-file
-
-
-
-
-2018-03-30T02:44:14.000000Z
-b1917851f3249d8841e5515c084da917
-2018-03-30T02:44:07.505376Z
-2137
-shuaimingzhong
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1472
+Log
+dir
 
 Transfer
 dir
@@ -211,10 +211,10 @@ dingming
 
 1430
 
-Applications
+iBooks
 dir
 
-iBooks
+Applications
 dir
 
 Photo

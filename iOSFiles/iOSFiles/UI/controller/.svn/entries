@@ -1,14 +1,14 @@
 10
 
 dir
-2171
+2175
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-30T09:44:19.754859Z
-2171
+2018-03-30T10:14:52.461678Z
+2175
 huyumin
 
 
@@ -338,10 +338,10 @@ file
 
 
 
-2018-03-30T09:48:09.000000Z
-b8e69f85e48f86c44b4bfbdc64b77d36
-2018-03-30T09:44:19.754859Z
-2171
+2018-03-30T10:15:45.000000Z
+60aa4520cb9cb8d1954b68bb6c91d975
+2018-03-30T10:14:52.461678Z
+2175
 huyumin
 
 
@@ -402,7 +402,7 @@ longfan
 
 IMBDeviceViewController.xib
 file
-2172
+
 
 
 
@@ -536,40 +536,6 @@ dingming
 
 17788
 
-IMBAppsListViewController.h
-file
-
-
-
-
-2018-03-28T02:24:28.000000Z
-3294326cfc0af419d0d7561159bb31bb
-2018-03-08T09:16:51.709655Z
-1584
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2494
-
 IMBDeviceViewController.h
 file
 
@@ -603,6 +569,40 @@ hezhonglin
 
 
 4072
+
+IMBAppsListViewController.h
+file
+
+
+
+
+2018-03-28T02:24:28.000000Z
+3294326cfc0af419d0d7561159bb31bb
+2018-03-08T09:16:51.709655Z
+1584
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2494
 
 IMBTranferViewController.h
 file
@@ -672,6 +672,40 @@ shuaimingzhong
 
 2988
 
+IMBDeviceViewController.m
+file
+
+
+
+
+2018-03-30T09:45:11.000000Z
+ea700904adb9bf109b68c33891a6f4fa
+2018-03-30T09:48:30.150899Z
+2172
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+43992
+
 IMBAppsListViewController.m
 file
 
@@ -705,40 +739,6 @@ longfan
 
 
 65378
-
-IMBDeviceViewController.m
-file
-2172
-
-
-
-2018-03-30T09:45:11.000000Z
-ea700904adb9bf109b68c33891a6f4fa
-2018-03-30T09:48:30.150899Z
-2172
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-43992
 
 IMBTranferViewController.m
 file
@@ -944,43 +944,6 @@ longfan
 
 1181
 
-IMBiCloudDriverViewController.xib
-file
-
-
-
-
-2018-03-30T08:12:55.000000Z
-5836d47be73541cf1a231eb868f66060
-2018-03-30T08:11:01.794227Z
-2164
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-34718
-
-deviceController
-dir
-
 IMBTranferShowCompleteViewController.xib
 file
 
@@ -1014,6 +977,43 @@ longfan
 
 
 15228
+
+deviceController
+dir
+
+IMBiCloudDriverViewController.xib
+file
+
+
+
+
+2018-03-30T08:12:55.000000Z
+5836d47be73541cf1a231eb868f66060
+2018-03-30T08:11:01.794227Z
+2164
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+34718
 
 IMBPopoverViewController.h
 file

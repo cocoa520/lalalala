@@ -470,11 +470,11 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     if (_isLoadSearchView) {
         return;
     }
-    if (_searchView.frame.size.width <= 44 && _searchView.searchField.isEnabled) {
+    if (_searchView.frame.size.width <= 26 && _searchView.searchField.isEnabled) {
         _isLoadSearchView = YES;
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
             context.duration = 0.5;
-            NSRect newRect = NSMakeRect(_searchView.frame.origin.x - 108 + 44, _searchView.frame.origin.y, 108, _searchView.frame.size.height);
+            NSRect newRect = NSMakeRect(_searchView.frame.origin.x - 108 + 26, _searchView.frame.origin.y, 108, _searchView.frame.size.height);
             [[_searchView animator] setFrame:newRect];
             [_searchView setBackGroundColor:[NSColor whiteColor]];
             [_searchView setIsOpen:YES];
@@ -519,7 +519,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     NSView *superView = _searchView.superview;
     BOOL inSearchView = NSMouseInRect(point, NSMakeRect(_searchView.frame.origin.x, superView.frame.origin.y + _searchView.frame.origin.y, _searchView.frame.size.width, _searchView.frame.size.height), [[self.view.window contentView] isFlipped]);
     if (!inSearchView) {
-        if ([StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue] && ![_searchView isHidden] && (_searchView.frame.size.width > 44)) {
+        if ([StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue] && ![_searchView isHidden] && (_searchView.frame.size.width > 26)) {
             [self closeSearchView];
         }
     }
@@ -530,11 +530,11 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     if (_isLoadSearchView) {
         return;
     }
-    if (_searchView.frame.size.width > 44 && _searchView.searchField.isEnabled && [StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue]) {
+    if (_searchView.frame.size.width > 26 && _searchView.searchField.isEnabled && [StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue]) {
         _isLoadSearchView = YES;
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
             context.duration = 0.5;
-            NSRect newRect = NSMakeRect(_searchView.frame.origin.x + 108 - 44, _searchView.frame.origin.y, 44, _searchView.frame.size.height);
+            NSRect newRect = NSMakeRect(_searchView.frame.origin.x + 108 - 26, _searchView.frame.origin.y, 26, _searchView.frame.size.height);
             [[_searchView animator] setFrame:newRect];
             [_searchView setBackGroundColor:COLOR_MAIN_WINDOW_BG];
             [_searchView.searchField setHidden:YES];
@@ -544,7 +544,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
             _isLoadSearchView = NO;
             [_searchView mouseExited:nil];
             [_searchView setNeedsDisplay:YES];
-            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 188, _searchView.frame.origin.y, 44, _searchView.frame.size.height);
+            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 188, _searchView.frame.origin.y, 26, _searchView.frame.size.height);
             [_searchView setFrame:newRect];
         }];
     }
