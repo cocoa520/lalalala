@@ -15,6 +15,7 @@
 #import "IMBAlertSupeView.h"
 #import "IMBViewManager.h"
 #import "IMBiPod.h"
+#import "IMBHelper.h"
 
 #import <objc/runtime.h>
 
@@ -226,15 +227,19 @@ static CGFloat IMBAlertShowInterval = 0.2f;
                 data = [self loadPdfCover:filePath ipod:ipod];
             }
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSImage *image = [[NSImage alloc] initWithData:data];
+                
+                NSImage *sourceImage = [[NSImage alloc] initWithData:data];
+                NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
+                NSImage *image = [[NSImage alloc] initWithData:imageData];
+                
                 if (image != nil) {
-                    [image setSize:NSMakeSize(110, 168)];
                     book.coverImage = image;
-                }else
-                {
-                    book.bookTitle = book.bookName;
+                }else {
+                    book.coverImage = [NSImage imageNamed:@"cnt_fileicon_books"];
                 }
+                book.bookTitle = book.bookName;
                 [image release];
+                [sourceImage release];
                 
             });
         }

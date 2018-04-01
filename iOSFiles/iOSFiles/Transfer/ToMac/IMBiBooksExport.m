@@ -29,15 +29,11 @@
       
         AFCMediaDirectory *afcDir = [_ipod.fileSystem afcMediaDirectory];
         for (DriveItem *book in _exportTracks) {
-//            if (_limitation.remainderCount == 0) {
-//                [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
-//                continue;
-//            }
             if (book.state) {
                 continue;
             }
             book.isStart = YES;
-            _currentDriveItem = book;
+            _currentDriveItem = book ;
             [_condition lock];
             if (_isPause) {
                 [_condition wait];

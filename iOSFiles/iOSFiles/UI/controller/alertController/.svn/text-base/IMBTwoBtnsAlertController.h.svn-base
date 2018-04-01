@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "IMBGeneralButton.h"
+#import "IMBMyDrawCommonly.h"
 #import "IMBBorderRectAndColorView.h"
 
 
@@ -16,15 +16,15 @@
     
     IMBBorderRectAndColorView *_twoBtnsView;
     IBOutlet NSTextField *_twoBtnsViewMsgView;
-    IBOutlet IMBGeneralButton *_twoBtnsViewCancelBtn;
-    IBOutlet IMBGeneralButton *_twoBtnsViewOKBtn;
+    IBOutlet IMBMyDrawCommonly *_twoBtnsViewCancelBtn;
+    IBOutlet IMBMyDrawCommonly *_twoBtnsViewOKBtn;
     
 }
 
 @property(nonatomic, retain)IMBBorderRectAndColorView *twoBtnsView;
 @property(nonatomic, retain)NSTextField *twoBtnsViewMsgView;
-@property(nonatomic, retain)IMBGeneralButton *twoBtnsViewCancelBtn;
-@property(nonatomic, retain)IMBGeneralButton *twoBtnsViewOKBtn;
+@property(nonatomic, retain)IMBMyDrawCommonly *twoBtnsViewCancelBtn;
+@property(nonatomic, retain)IMBMyDrawCommonly *twoBtnsViewOKBtn;
 
 
 @property(nonatomic, copy)void(^twoBtnsViewOKClicked)(void);

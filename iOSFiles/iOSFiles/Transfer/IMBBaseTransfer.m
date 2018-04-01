@@ -85,9 +85,10 @@
     return self;
 }
 #pragma mark - 导入file system文件初始化函数
-- (id)initWithIPodkey:(NSString *)ipodKey importTracks:(NSArray *)importTracks withCurrentPath:(NSString *)curPath withDelegate:(id)delegate {
+- (id)initWithIPodkey:(NSString *)ipodKey importTracks:(DriveItem *)importTracks withCurrentPath:(NSString *)curPath withDelegate:(id)delegate {
     if (self = [self initWithIPodkey:ipodKey withDelegate:delegate]) {
-        _exportTracks = [importTracks retain];
+        _currentDriveItem = [importTracks retain];
+        _exportTracks = [importTracks.childArray retain];
         _exportPath = [curPath retain];
     }
     return self;
@@ -509,24 +510,29 @@
                                 NSData *nextblock = [in readDataOfLength:bufsz];
                                 uint64_t n = [nextblock length];
                                 if (n==0) break;
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    _currentDriveItem.currentSize = n;
-                                    _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_totalSize *100;
-                                    _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:n reserved:2],[self getFileSizeString:_totalSize reserved:2]];
-                                    _currentDriveItem.fileSize = _totalSize;
-
-                                });
-                                
+//                                dispatch_async(dispatch_get_main_queue(), ^{
+//                                    _currentDriveItem.currentSize = n;
+//                                    _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_totalSize *100;
+//                                    _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:n reserved:2],[self getFileSizeString:_totalSize reserved:2]];
+//                                    _currentDriveItem.fileSize = _totalSize;
+//
+//                                });
+//                                
                                 [out writeNSData:nextblock];
                                 done += n;
                                 [self sendCopyProgress:n];
                             }
                         }
-                        _currentDriveItem.currentSize = 0;
-                        _currentDriveItem.progress = 100;
-                        _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_currentDriveItem.fileSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
-                        _currentDriveItem.state = DownloadStateComplete;
-
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
+//                            _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_curSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+//
+//                            
+////                            _currentDriveItem.currentSize = 0;
+////                            _currentDriveItem.progress = 100;
+////                            _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_currentDriveItem.fileSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+////                            _currentDriveItem.state = DownloadStateComplete;
+//                        });
                         [out closeFile];
                         result = YES;
                     }
@@ -584,11 +590,11 @@
     if ([_transferDelegate respondsToSelector:@selector(transferProgress:)]) {
         [_transferDelegate transferProgress:progress];
     }
-//    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         _currentDriveItem.currentSize = _curSize;
         _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
         _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:_curSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
-//    });
+    });
     if ([_transferDelegate respondsToSelector:@selector(transferCurrentSize:)]) {
         [_transferDelegate transferCurrentSize:_curSize];
     }
@@ -607,6 +613,10 @@
         [_exportPath release];
         _exportPath = nil;
     }
+    if (_currentDriveItem) {
+        [_currentDriveItem release];
+        _currentDriveItem = nil;
+    }
     [_ipod release],_ipod = nil;
     [super dealloc];
 }
@@ -618,6 +628,7 @@
         [[_ipod.fileSystem afcMediaDirectory] mkdir:@"Preparing Transfer..."];
     }
     [self caculateTotalFileCount:sourcePathArray];
+    _currentDriveItem.fileSize = _totalSize;
     if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileEnd)]) {
         [_transferDelegate transferPrepareFileEnd];
     }
@@ -635,6 +646,7 @@
             _skipCount += sourcePathArray.count - i - 1;
             break;
         }
+        _currentDriveItem.currentSize = 0;
         NSString *sourcePath = [sourcePathArray objectAtIndex:i];
         NSString *fileName = [sourcePath lastPathComponent];
         
@@ -660,7 +672,7 @@
                     [subSoucePathArray addObject:filePath];
                 }
                 [self copyFileToDevice:destinationPath withsourcePathArray:subSoucePathArray];
-                
+                _currentDriveItem.state = UploadStateComplete;
             }else
             {
                 if ([[_ipod.fileSystem afcMediaDirectory] fileExistsAtPath:destinationPath]) {
@@ -677,16 +689,19 @@
                 if (success) {
 //                    [_limitation reduceRedmainderCount];
                     _successCount++;
+                    _currentDriveItem.state = UploadStateComplete;
                 }else
                 {
                     _failedCount ++;
+                    _currentDriveItem.state = UploadStateError;
                     continue;
                     
                 }
             }
         }
+//         _curSize = 1;
     }
-    
+   
     if ([_transferDelegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
         [_transferDelegate transferComplete:_successCount TotalCount:_totalItemCount];
     }

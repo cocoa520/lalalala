@@ -33,14 +33,11 @@
 @synthesize decryptKey = _decryptKey;
 @synthesize parentPath = _parentPath;
 @synthesize isLoading = _isLoading;
-//@synthesize backupDecrypt = _backupDecrypt;
 @synthesize type = _type;
-
 @synthesize itemSize = _itemSize;
 @synthesize serialNumber = _serialNumber;
 @synthesize deleteBtn = _deleteBtn;
 @synthesize decryptPath = _decryptPath;
-
 @synthesize checkState = _checkState;
 @synthesize iosProductTye = _iosProductTye;
 @synthesize listprogressBar = _listprogressBar;
@@ -51,8 +48,10 @@
 @synthesize creatDate = _creatDate;
 @synthesize controller = _controller;
 @synthesize isStop = _isStop;
-//@synthesize transfer = _transfer;
 @synthesize sourcePath = _sourcePath;
+@synthesize extension = _extension;
+@synthesize lastDate = _lastDate;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -67,6 +66,8 @@
         _type = @"";
         _itemSize= 0;
         _creatDate = @"";
+        _extension = @"";
+        _lastDate = @"";
         [self setCheckState:UnChecked];
         _checkState = NSOffState;
     }

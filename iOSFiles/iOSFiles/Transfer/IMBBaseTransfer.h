@@ -107,7 +107,7 @@
 
 - (id)initWithPath:(NSString *)exportPath exportTracks:(NSArray *)exportTracks withMode:(NSString *)mode withDelegate:(id)delegate;
 
-- (id)initWithIPodkey:(NSString *)ipodKey importTracks:(NSArray *)importTracks withCurrentPath:(NSString *)curPath withDelegate:(id)delegate;
+- (id)initWithIPodkey:(NSString *)ipodKey importTracks:(DriveItem *)importTracks withCurrentPath:(NSString *)curPath withDelegate:(id)delegate;
 
 //传输开始入口
 - (void)startTransfer;

@@ -13,19 +13,22 @@
 #import "CNGridView.h"
 #import "IMBLackCornerView.h"
 #import "HoverButton.h"
+#import "IMBiCloudPathSelectBtn.h"
+#import "IMBTagImageView.h"
 
 @interface IMBDevicePageViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource>
 {
-    IBOutlet NSBox *_rootBox;
     IBOutlet CNGridView *_gridView;
     IBOutlet IMBWhiteView *_mainView;
-    IMBBaseViewController *_baseViewController;
-
     IBOutlet IMBBackgroundBorderView *_topLineView;
     IBOutlet IMBWhiteView *_topView;
-    IBOutlet HoverButton *_backButton;
     IBOutlet NSBox *_contenBox;
+    NSMutableDictionary *_sonControllerDic;
+    IMBiCloudPathSelectBtn *_button1;
+    IMBiCloudPathSelectBtn *_button2;
+    IMBTagImageView *_tagImageView;
 }
+
 - (void)backAction:(id)sender;
 - (id)initWithiPod:(IMBiPod *)ipod withDelegate:(id)delegate;
 

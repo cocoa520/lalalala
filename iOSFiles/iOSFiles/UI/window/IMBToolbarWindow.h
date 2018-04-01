@@ -22,6 +22,7 @@
 
 typedef void (^IMBToolbarWindowTitleBarDrawingBlock)(BOOL drawsAsMainWindow, CGRect drawingRect, CGPathRef clippingPath);
 
+#import "IMBCommonDefine.h"
 @interface IMBToolbarWindow : NSWindow {
 @private
     CGFloat _titleBarHeight;

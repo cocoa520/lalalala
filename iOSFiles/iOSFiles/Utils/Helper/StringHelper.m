@@ -947,62 +947,32 @@ char pinyinFirstLetter(unsigned short hanzi) {
 //    return [as autorelease];
 //}
 
-//+ (NSString*)getCategeryStr:(CategoryNodesEnum)category {
-//    NSString *categoryStr = nil;
-//    if (category == Category_iTunes_lib ) {
-//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-//    }else if (category == Category_iTunes_Playlist || category == Category_Playlist){
-//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-//    }else if (category == Category_iTunes_Music || category ==Category_Music || category ==Category_iCloudDriver){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_1", nil);
-//    }else if (category ==Category_CloudMusic){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_91", nil);
-//    }else if (category == Category_iTunes_Movie || category == Category_Movies){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_70", nil);
-//    }else if (category == Category_iTunes_TVShow || category == Category_TVShow){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_71", nil);
-//    }else if (category == Category_iTunes_iBooks ||category == Category_iBooks){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_55", nil);
-//    }else if (category == Category_iTunes_Audiobook || category ==Category_Audiobook){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_73", nil);
-//    }else if (category == Category_iTunes_Ringtone ||category == Category_Ringtone){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_79", nil);
-//    }else if (category == Category_iTunes_App || category ==Category_Applications){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_75", nil);
-//    }else if (category == Category_iTunes_VoiceMemos || category == Category_VoiceMemos){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_74", nil);
-//    }else if (category == Category_iTunes_iTunesU|| category ==Category_iTunesU){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_16", nil);
-//    }else if (category == Category_iTunes_PodCasts ||category == Category_PodCasts){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_72", nil);
-//    }else if (category == Category_MusicVideo){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_78", nil);
-//    }else if (category == Category_HomeVideo){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_50", nil);
-//    }else if (category == Category_MyAlbums || category == Category_ContinuousShooting || category == Category_PhotoShare|| category == Category_CameraRoll||category==Category_PhotoStream||category==Category_PhotoLibrary || category == Category_PhotoVideo||category == Category_TimeLapse||category == Category_Panoramas||category == Category_SlowMove||category == Category_LivePhoto||category == Category_Screenshot||category == Category_PhotoSelfies||category == Category_Location||category == Category_Favorite){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_77", nil);
-//    }else if (category == Category_Notes){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_60", nil);
-//    }else if (category == Category_Message){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_76", nil);
-//    }else if (category == Category_Calendar){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_62", nil);
-//    }else if (category == Category_Bookmarks){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_59", nil);
-//    }else if (category == Category_Contacts){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_61", nil);
-//    }else if (category == Category_Voicemail){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_27", nil);
-//    }else if (category == Category_SafariHistory){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_37", nil);
-//    }else if (category == Category_System||category == Category_Storage){
-//        categoryStr = CustomLocalizedString(@"MenuItem_id_81", nil);
-//    }else {
-//        categoryStr = CustomLocalizedString(@"MSG_Item_id_1", nil);
-//    }
-//    return categoryStr;
-//}
-//
++ (NSString*)getCategeryStr:(CategoryNodesEnum)category {
+    NSString *categoryStr = nil;
+    if (category == Category_CameraRoll){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_10", nil);
+    }else if (category == Category_PhotoLibrary){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_12", nil);
+    }else if (category == Category_PhotoStream){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_11", nil);
+    }else if (category == Category_Applications){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_14", nil);
+    }else if (category == Category_iBooks){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_13", nil);
+    }else if (category == Category_System){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_30", nil);
+    }else if (category == Category_Media){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_28", nil);
+    }else if (category == Category_Video){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_29", nil);
+    }else if (category == Category_Photos){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_9", nil);
+    }else {
+        categoryStr = CustomLocalizedString(@"MenuItem_id_81", nil);
+    }
+    return categoryStr;
+}
+
 + (NSColor *)getColorFromString:(NSString *)str{
 
     NSArray *array = [str componentsSeparatedByString:@","];

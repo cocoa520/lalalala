@@ -178,10 +178,6 @@
         stringFrame.origin.y += LINE_MARGIN_Y -_diviationY;
     }
     
-    if ([[IMBSoftWareInfo singleton] chooseLanguageType] == JapaneseLanguage || [[IMBSoftWareInfo singleton] chooseLanguageType] == ArabLanguage) {
-        stringFrame.origin.y = 3;
-    }
-    
 	[[self attributedStringValue] drawInRect:stringFrame];
 }
 

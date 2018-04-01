@@ -18,6 +18,8 @@
     if ([super initWithUserID:userID WithPassID:passID WithDelegate:delegate]) {
         _userID = [userID retain];
         _passWordID = [passID retain];
+        NSLog(@"userID:%@",userID);
+        NSLog(@"password:%@",_passWordID);
         _driveDataAry = [[NSMutableArray alloc]init];
         _iCloudDrive = [[iCloudDrive alloc]init];
         [_iCloudDrive setDelegate:self];

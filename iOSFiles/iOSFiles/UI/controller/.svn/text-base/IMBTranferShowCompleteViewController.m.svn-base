@@ -37,7 +37,7 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setListener:self];
-    [_tableView setCanSelect:YES];
+    [_tableView setCanSelect:NO];
     [_tableView setIsTranferView:YES];
     _dataAry = [[NSMutableArray alloc] init];
     //    _alertViewController = [[IMBAlertViewController alloc] initWithNibName:@"IMBAlertViewController" bundle:nil];
@@ -155,7 +155,7 @@
 //            driveitem.appIconImage = [StringHelper imageNamed:@"app_default"];
 //            curCell.imageName = @"app_default";
 //        }
-        [curCell setImageSize:NSMakeSize(30, 36)];
+        [curCell setImageSize:NSMakeSize(40, 30)];
         if (driveitem.photoImage){
             curCell.image = driveitem.photoImage;
         }
@@ -181,9 +181,8 @@
     for (DriveItem *driveItem in _dataAry) {
         if (driveItem.deleteFileBtn.tag == imageBtn.tag) {
             NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-            [ws openFile:driveItem.localPath];
-//            NSURL *fileURL = [NSURL fileURLWithPath: driveItem.localPath];
-//             [ws selectFile:[fileURL path] inFileViewerRootedAtPath:nil];
+//            [ws openFile:driveItem.localPath];
+            [ws selectFile:nil inFileViewerRootedAtPath:driveItem.localPath];
             break;
         }
     }

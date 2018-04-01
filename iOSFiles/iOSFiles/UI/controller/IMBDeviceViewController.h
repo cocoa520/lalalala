@@ -28,7 +28,7 @@
 #import "IMBMainWindowLoginSuccessView.h"
 #import "IMBMainLoginButton.h"
 #import "IMBAlertSupeView.h"
-
+@class IMBDevicePopoverViewController;
 
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
@@ -126,6 +126,8 @@
     
     IBOutlet IMBHoverChangeImageBtn *_shoppingCartBtn;
     IBOutlet IMBHoverChangeImageBtn *_helpBtn;
+    
+    IMBDevicePopoverViewController *_devicePopoverViewController;
     
     
     IBOutlet NSTextField *_midiumIcloudMsgLabel;

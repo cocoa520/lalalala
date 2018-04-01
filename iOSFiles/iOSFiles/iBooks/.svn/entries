@@ -1,15 +1,15 @@
 10
 
 dir
-2175
+2207
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/iBooks
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-07T10:08:58.123793Z
-1547
-longfan
+2018-03-31T02:32:55.131549Z
+2185
+shuaimingzhong
 
 
 
@@ -236,11 +236,11 @@ file
 
 
 
-2018-03-28T02:24:31.000000Z
-ece032e72dd051a5d38b45e2dfb1f74d
-2018-03-07T10:08:58.123793Z
-1547
-longfan
+2018-04-01T01:02:23.000000Z
+297a4dfe12c4e4dd46bc9203235b35ad
+2018-03-31T02:32:55.131549Z
+2185
+shuaimingzhong
 has-props
 
 
@@ -262,7 +262,7 @@ has-props
 
 
 
-16628
+16632
 
 IMBSyncBookPlistBuilder.m
 file
@@ -400,40 +400,6 @@ has-props
 
 528
 
-IMBBookEntity.m
-file
-
-
-
-
-2018-03-28T02:24:31.000000Z
-882e6380ef8bf264c08e4022db7b00ff
-2018-01-29T07:59:41.886989Z
-1081
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2117
-
 IMBSqliteManager.h
 file
 
@@ -467,6 +433,40 @@ has-props
 
 
 2578
+
+IMBBookEntity.m
+file
+
+
+
+
+2018-03-28T02:24:31.000000Z
+882e6380ef8bf264c08e4022db7b00ff
+2018-01-29T07:59:41.886989Z
+1081
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2117
 
 IMBBooksPlist.m
 file

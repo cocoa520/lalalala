@@ -10,7 +10,7 @@
 #import <Quartz/Quartz.h>
 #import "IMBGradientComponentView.h"
 
-CGFloat const MidiumSizeAnimationTimeInterval = 0.35f;
+CGFloat const MidiumSizeAnimationTimeInterval = 0.5f;
 static CGFloat const IMBViewAnimInterval = 0.12f;
 
 @implementation IMBViewAnimation

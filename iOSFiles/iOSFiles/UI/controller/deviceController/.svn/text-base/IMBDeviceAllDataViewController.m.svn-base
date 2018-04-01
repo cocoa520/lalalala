@@ -29,6 +29,7 @@
 #import "IMBMediaFileExport.h"
 #import "IMBAppExport.h"
 #import "IMBCommonTool.h"
+#import "IMBDevicePageViewController.h"
 
 @interface IMBDeviceAllDataViewController ()
 {
@@ -76,49 +77,66 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self configNoDataView];
+    _currentSelectView = 1;
     [self changeToolButtonsIsSelectedIntems:NO];
-    [_leftContentView setFrame:NSMakeRect(0, 0, 1096, 548)];
-    [_rightContentView setFrame:NSMakeRect(1096, 0, 282, 548)];
+    [_leftContentView setFrame:NSMakeRect(0, 0, 1100, 547)];
+    [_rightContentView setFrame:NSMakeRect(1100, 0, 282, 547)];
     
     _oldWidthDic = [[NSMutableDictionary alloc] init];
     _oldDocwsidDic = [[NSMutableDictionary alloc] init];
-    [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:CustomLocalizedString(@"NotConnectiCLoudTitle", nil)];
+    _tempDic = [[NSMutableDictionary alloc] init];
+    [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:_iPod.deviceInfo.deviceName];
+    if (_categoryNodeEunm == Category_CameraRoll || _categoryNodeEunm == Category_PhotoStream || _categoryNodeEunm == Category_PhotoStream) {
+        [self configSelectPathButtonWithButtonTag:2 WithButtonTitle:[StringHelper getCategeryStr:Category_Photos]];
+        [self configSelectPathButtonWithButtonTag:3 WithButtonTitle:[StringHelper getCategeryStr:_categoryNodeEunm]];
+    } else {
+        [self configSelectPathButtonWithButtonTag:2 WithButtonTitle:[StringHelper getCategeryStr:_categoryNodeEunm]];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     
-    _doubleclickCount = 1;
-    _currentDevicePath = @"0";
+    _doubleclickCount = 2;
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
     
     _gridView.itemSize = NSMakeSize(154, 154);
-    _gridView.backgroundColor = [NSColor whiteColor];
+//    _gridView.backgroundColor = [NSColor whiteColor];
     _gridView.scrollElasticity = NO;
     _gridView.allowsDragAndDrop = YES;
     _gridView.allowsMultipleSelection = YES;
     _gridView.allowsMultipleSelectionWithDrag = YES;
-    _gridView.allowClickMultipleSelection = YES;
+    _gridView.allowClickMultipleSelection = NO;
     [_gridView setIsFileManager:YES];
     [_tableViewBgView setBackgroundColor:[NSColor whiteColor]];
     
-    [self loadDataAry];
-    _currentSelectView = 1;
+  
     if (_categoryNodeEunm == Category_System) {
+        _currentDevicePath = @"/";
         [_loadAnimationView startAnimation];
         [_contentBox setContentView:_loadingView];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             _systemManager = [[IMBFileSystemManager alloc] initWithiPodByExport:_iPod];
             [_systemManager setDelegate:self];
             _dataSourceArray = [(NSMutableArray *)[_systemManager recursiveDirectoryContentsDics:@"/"] retain];
+            _currentDevicePath = @"/";
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+                [_tempDic setObject:_dataSourceArray forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+                
                 if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
+                    [_itemTableView reloadData];
+                    [_gridView reloadData];
                     [_contentBox setContentView:_gridBgView];
                 } else {
                     [_contentBox setContentView:_nodataView];
                 }
                 [_loadAnimationView endAnimation];
+                [_itemTableView reloadData];
+                [_gridView reloadData];
             });
         });
     }else {
+        [self loadDataAry];
         if (_categoryNodeEunm == Category_Media) {
             [self setInitlializationViewWithIsDataLoadCompleted:_iPod.mediaLoadFinished];
         }else if (_categoryNodeEunm == Category_Video) {
@@ -140,9 +158,11 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookLoadFinished:) name:deviceDataLoadCompleteBooks object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaLoadFinished:) name:deviceDataLoadCompleteMedia object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoLoadFinished:) name:DeviceDataLoadCompleteVideo object:nil];
+
+        [_itemTableView reloadData];
+        [_gridView reloadData];
     }
-    [_itemTableView reloadData];
-    [_gridView reloadData];
+
 }
 
 - (void)setInitlializationViewWithIsDataLoadCompleted:(BOOL)isCompleted {
@@ -251,8 +271,12 @@
 
 #pragma mark - path button config
 - (void)configSelectPathButtonWithButtonTag:(int)buttonTag WithButtonTitle:(NSString *)buttonTitle {
-    NSRect textRect = [StringHelper calcuTextBounds:buttonTitle fontSize:12.0];
-    int width = textRect.size.width + 24 + 5 + 6 + 5;
+    NSString *fileName = buttonTitle;
+    if (fileName.length > 15) {
+        fileName = [[fileName substringWithRange:NSMakeRange(0, 13)] stringByAppendingString:@"..."];
+    }
+    NSRect textRect = [StringHelper calcuTextBounds:fileName fontSize:14.0];
+    int width = textRect.size.width + 10;
     [_oldWidthDic setObject:[NSString stringWithFormat:@"%d",width] forKey:[NSString stringWithFormat:@"%d",buttonTag]];
     int height = textRect.size.height + 4;
     int oldWidth = 0;
@@ -261,68 +285,99 @@
             oldWidth += [[_oldWidthDic objectForKey:[NSString stringWithFormat:@"%d",i - 1]] intValue];
         }
     }
-    IMBiCloudPathSelectBtn *button = [[IMBiCloudPathSelectBtn alloc] initWithFrame:NSMakeRect(38 + (buttonTag - 1)*10 + oldWidth, (_topView.frame.size.height - height)/2 - 2, width, height)];
-    if (buttonTag == 1) {
-        [button setButtonTitle:buttonTitle WithIsHomePage:YES];
+    
+    IMBiCloudPathSelectBtn *button = [[IMBiCloudPathSelectBtn alloc] initWithFrame:NSMakeRect(20 + (buttonTag - 1)*10 + oldWidth, (_topView.frame.size.height - height)/2 - 2, width, height)];
+    if (_categoryNodeEunm == Category_CameraRoll || _categoryNodeEunm == Category_PhotoStream || _categoryNodeEunm == Category_PhotoStream) {
+        if (buttonTag == 3) {
+            [button setEnabled:NO];
+        }
     } else {
-        [button setButtonTitle:buttonTitle WithIsHomePage:NO];
+        if (buttonTag == 2 && _categoryNodeEunm != Category_System) {
+            [button setEnabled:NO];
+        }
     }
+    [button setButtonName:fileName];
+    [button setToolTip:buttonTitle];
     [button setTag:buttonTag];
     [button setTarget:self];
     [button setAction:@selector(iCloudButtonClick:)];
     [_topView addSubview:button];
-    
-    IMBTagImageView *arrowImageView = [[IMBTagImageView alloc] initWithFrame:NSMakeRect(button.frame.origin.x + button.frame.size.width, (_topView.frame.size.height - 9)/2.0 - 3, 10, 9)];
-    [arrowImageView setImage:[NSImage imageNamed:@"addcontent_arrowright1"]];
-    [arrowImageView setViewTag:buttonTag];
-    [_topView addSubview:arrowImageView];
+    if (buttonTag - 1) {
+        IMBTagImageView *arrowImageView = [[IMBTagImageView alloc] initWithFrame:NSMakeRect(button.frame.origin.x - 10, (_topView.frame.size.height - 9)/2.0 - 3, 10, 9)];
+        [arrowImageView setImage:[NSImage imageNamed:@"addcontent_arrowright1"]];
+        [arrowImageView setViewTag:buttonTag];
+        [_topView addSubview:arrowImageView];
+        [arrowImageView release];
+        arrowImageView = nil;
+    }
     [button release];
     button = nil;
-    [arrowImageView release];
-    arrowImageView = nil;
 }
 
 - (void)iCloudButtonClick:(id)sender {
     int tag = (int)((IMBiCloudPathSelectBtn *)sender).tag;
-    int viewCount = (int)[_topView subviews].count;
-    for (int i = viewCount - 1; i > 0; i--) {
-        NSView *subView = [[_topView subviews] objectAtIndex:i];
-        if ([subView isKindOfClass:[NSClassFromString(@"IMBiCloudPathSelectBtn") class]]) {
-            if (subView.tag > tag) {
-                [subView removeFromSuperview];
-            }
-        }
-        if ([subView isKindOfClass:[NSClassFromString(@"IMBTagImageView") class]]) {
-            if (((IMBTagImageView *)subView).viewTag > tag) {
-                [subView removeFromSuperview];
-            }
-        }
-    }
-    
-    for (int i = 1; i <= _doubleclickCount; i++) {
-        if (tag == i) {
-            [self changeContentViewWithDataArr:[_tempDic objectForKey:[NSString stringWithFormat:@"%d",i]]];
-            for (int j = i + 1; j <= _doubleclickCount; j++) {
-                if ([_tempDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
-                    [_tempDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
-                }
-                if ([_oldWidthDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
-                    [_oldWidthDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
-                }
-                if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
-                    [_oldDocwsidDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
+    if (tag == 1 || _categoryNodeEunm == Category_CameraRoll || _categoryNodeEunm == Category_PhotoStream || _categoryNodeEunm == Category_PhotoStream) {
+        [_delegate backAction:sender];
+    } else {
+        int viewCount = (int)[_topView subviews].count;
+        for (int i = viewCount - 1; i > 0; i--) {
+            NSView *subView = [[_topView subviews] objectAtIndex:i];
+            if ([subView isKindOfClass:[NSClassFromString(@"IMBiCloudPathSelectBtn") class]]) {
+                if (subView.tag > tag) {
+                    [subView removeFromSuperview];
                 }
             }
-            _doubleclickCount = i;
-            
-            break;
+            if ([subView isKindOfClass:[NSClassFromString(@"IMBTagImageView") class]]) {
+                if (((IMBTagImageView *)subView).viewTag > tag) {
+                    [subView removeFromSuperview];
+                }
+            }
+        }
+        
+        for (int i = 1; i <= _doubleclickCount; i++) {
+            if (tag == i) {
+                [self changeContentViewWithDataArr:[_tempDic objectForKey:[NSString stringWithFormat:@"%d",i]]];
+                for (int j = i + 1; j <= _doubleclickCount; j++) {
+                    if ([_tempDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
+                        [_tempDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
+                    }
+                    if ([_oldWidthDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
+                        [_oldWidthDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
+                    }
+                    if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
+                        [_oldDocwsidDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
+                    }
+                }
+                _doubleclickCount = i;
+                
+                break;
+            }
+        }
+        
+        if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",tag]]) {
+            _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
         }
     }
-    
-    if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",tag]]) {
-        _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
+}
+
+- (void)changeContentViewWithDataArr:(NSMutableArray *)dataArr {
+    if (_dataSourceArray != nil) {
+        [_dataSourceArray release];
+        _dataSourceArray = nil;
     }
-    
+    _dataSourceArray = [dataArr retain];
+    [_gridView reloadData];
+    [_itemTableView reloadData];
+    [self changeToolButtonsIsSelectedIntems:NO];
+    if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
+        if (_currentSelectView == 0) {
+            [_contentBox setContentView:_tableViewBgView];
+        } else {
+            [_contentBox setContentView:_gridBgView];
+        }
+    } else {
+        [_contentBox setContentView:_nodataView];
+    }
 }
 
 #pragma mark - CNGridView DataSource
@@ -352,17 +407,31 @@
     if (index >= array.count) {
         return item;
     }
+    item.isFileManager = YES;
     
-    if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
+    if (_categoryNodeEunm == Category_Media || _categoryNodeEunm == Category_Video) {
         IMBTrack *track = [array objectAtIndex:index];
-        item.bgImg = [NSImage imageNamed:@"app_default"];
+        if (_categoryNodeEunm == Category_Media) {
+            item.bgImg = [NSImage imageNamed:@"cnt_fileicon_music"];
+        } else {
+            item.bgImg = [NSImage imageNamed:@"cnt_fileicon_video"];
+        }
         item.itemTitle = track.title;
         item.selected = track.checkState;
         
-        NSData *data = [[self createThumbImage:track] retain];
-        NSImage *image = [[NSImage alloc] initWithData:data];
-        item.itemImage = image;
-        item.isFileManager = YES;
+        if (track.thumbImage) {
+            item.itemImage = track.thumbImage;
+        } else {
+            NSData *data = [self createThumbImage:track];
+            NSImage *itemImage = [[NSImage alloc] initWithData:data];
+            item.itemImage = itemImage;
+            if (itemImage) {
+                track.thumbImage = itemImage;
+            } else {
+                track.thumbImage = item.bgImg;
+            }
+        }
+        
         if (track.checkState == Check) {
             if (![gridView.selectedItems containsObject:item]) {
                 [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
@@ -373,12 +442,12 @@
             }
         }
     }else if (_categoryNodeEunm == Category_iBooks) {
+        
         IMBBookEntity *bookEntity = [array objectAtIndex:index];
-        item.bgImg = [NSImage imageNamed:@"app_default"];
+        item.bgImg = [NSImage imageNamed:@"cnt_fileicon_books"];
         item.itemTitle = bookEntity.bookName;
         item.selected = bookEntity.checkState;
         item.itemImage = bookEntity.coverImage;
-        item.isFileManager = YES;
         if (bookEntity.checkState == Check) {
             if (![gridView.selectedItems containsObject:item]) {
                 [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
@@ -389,12 +458,12 @@
             }
         }
     }else if (_categoryNodeEunm == Category_Applications) {
+        
         IMBAppEntity *appEntit = [array objectAtIndex:index];
-        item.bgImg = [NSImage imageNamed:@"app_default"];
+        item.bgImg = [NSImage imageNamed:@"folder_icon_app"];
         item.itemTitle = appEntit.appName;
         item.selected = appEntit.checkState;
         item.itemImage = appEntit.appIconImage;
-        item.isFileManager = YES;
         if (appEntit.checkState == Check) {
             if (![gridView.selectedItems containsObject:item]) {
                 [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
@@ -406,11 +475,10 @@
         }
     }else if (_categoryNodeEunm == Category_System) {
         SimpleNode *simpleNode = [array objectAtIndex:index];
-        item.bgImg = [NSImage imageNamed:@"app_default"];
+        item.bgImg = [NSImage imageNamed:@"cnt_fileicon_common"];
         item.itemTitle = simpleNode.fileName;
         item.selected = simpleNode.checkState;
         item.itemImage = simpleNode.image;
-        item.isFileManager = YES;
         if (simpleNode.checkState == Check) {
             if (![gridView.selectedItems containsObject:item]) {
                 [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
@@ -422,15 +490,24 @@
         }
     }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
         IMBPhotoEntity *photoEntity = [array objectAtIndex:index];
-        item.bgImg = [NSImage imageNamed:@"app_default"];
+        item.bgImg = [NSImage imageNamed:@"cnt_fileicon_img"];
         item.itemTitle = photoEntity.photoName;
         item.selected = photoEntity.checkState;
-        NSData *imageData = [self createImageToTableView:photoEntity];
-        NSImage *photoImage = [[NSImage alloc]initWithData:imageData];
-        item.itemImage = photoImage;
-        [photoImage release];
-        photoImage = nil;
-        item.isFileManager = YES;
+        if (photoEntity.photoImage) {
+            item.itemImage = photoEntity.photoImage;
+        } else {
+            NSData *imageData = [self createImageToTableView:photoEntity];
+            NSImage *photoImage = [[NSImage alloc]initWithData:imageData];
+            item.itemImage = photoImage;
+            if (photoImage) {
+                photoEntity.photoImage = photoImage;
+            } else {
+                photoEntity.photoImage = item.bgImg;
+            }
+            
+            [photoImage release];
+        }
+        
         if (photoEntity.checkState == Check) {
             if (![gridView.selectedItems containsObject:item]) {
                 [[gridView getSelectedItemsDic] setObject:item forKey:@(item.index)];
@@ -523,46 +600,30 @@
             [_contentBox setContentView:_loadingView];
             SimpleNode *selectedNode = [_dataSourceArray objectAtIndex:index];
             if (selectedNode.container) {
-                if ([self cacuCount:selectedNode.path]>120) {
-                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                        @autoreleasepool {
-                            NSArray *array = [_systemManager recursiveDirectoryContentsDics:selectedNode.path];
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                if (_dataSourceArray) {
-                                    [_dataSourceArray release];
-                                    _dataSourceArray = nil;
-                                }
-                                _dataSourceArray = [(NSMutableArray *)array retain];
-                                if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
-                                    [_contentBox setContentView:_gridBgView];
-                                } else {
-                                    [_contentBox setContentView:_nodataView];
-                                }
-                                [_gridView reloadData];
-                            });
-                        }
-                    });
-                }else
-                {
-                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                        @autoreleasepool {
-                            NSArray *array = [_systemManager recursiveDirectoryContentsDics:selectedNode.path];
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                if (_dataSourceArray) {
-                                    [_dataSourceArray release];
-                                    _dataSourceArray = nil;
-                                }
-                                _dataSourceArray = [(NSMutableArray *)array retain];
-                                if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
-                                    [_contentBox setContentView:_gridBgView];
-                                } else {
-                                    [_contentBox setContentView:_nodataView];
-                                }
-                                [_gridView reloadData];
-                            });
-                        }
-                    });
-                }
+                _doubleclickCount ++;
+                [self configSelectPathButtonWithButtonTag:_doubleclickCount WithButtonTitle:selectedNode.fileName];
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    @autoreleasepool {
+                        NSArray *array = [_systemManager recursiveDirectoryContentsDics:selectedNode.path];
+                        _currentDevicePath = selectedNode.path;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (_dataSourceArray) {
+                                [_dataSourceArray release];
+                                _dataSourceArray = nil;
+                            }
+                            _dataSourceArray = [(NSMutableArray *)array retain];
+                            [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+                            [_tempDic setObject:_dataSourceArray forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+                            
+                            if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
+                                [_contentBox setContentView:_gridBgView];
+                            } else {
+                                [_contentBox setContentView:_nodataView];
+                            }
+                            [_gridView reloadData];
+                        });
+                    }
+                });
             }
         }
     }
@@ -655,16 +716,9 @@
 
 - (void)showFileDetailViewWithEntity:(IMBBaseEntity *)entity {
     [_rightLineView setBackgroundColor:COLOR_TEXT_LINE];
-    
-    [_rightContentView setWantsLayer:YES];
-    [_leftContentView setWantsLayer:YES];
-    [_rightContentView.layer removeAllAnimations];
-    [_leftContentView.layer removeAllAnimations];
-    
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        
-        NSRect rect= NSMakeRect(814, 0, 282, 548);
-        NSRect rect2 = NSMakeRect(0, 0, 814, 548);
+        NSRect rect= NSMakeRect(814, 0, 282, 556);
+        NSRect rect2 = NSMakeRect(0, 0, 814, 556);
         [context setDuration:0.3];
         [[_rightContentView animator] setFrame:rect];
         [[_leftContentView animator] setFrame:rect2];
@@ -675,18 +729,13 @@
 }
 
 - (IBAction)hideFileDetailView:(id)sender {
-    
-    [_rightContentView.layer removeAllAnimations];
-    [_leftContentView.layer removeAllAnimations];
-    
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         NSRect rect;
-        rect = NSMakeRect(1096, 0, 282,548);
-        NSRect rect2 = NSMakeRect(0, 0, 1096, 548);
+        rect = NSMakeRect(1100, 0, 282,556);
+        NSRect rect2 = NSMakeRect(0, 0, 1100, 556);
         [context setDuration:0.3];
         [[_rightContentView animator] setFrame:rect];
         [[_leftContentView animator] setFrame:rect2];
-        
     } completionHandler:^{
         _isShow = NO;
     }];
@@ -711,10 +760,12 @@
         [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8/*延迟执行时间*/ * NSEC_PER_SEC));
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+
             [view setHidden:YES];
             [view.layer removeAllAnimations];
             [tranferView.view removeFromSuperview];
             [tranferView.view.layer removeAllAnimations];
+            [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
         });
     }
 }
@@ -756,7 +807,7 @@
     }else {
         array = _dataSourceArray;
     }
-    if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
+    if (_categoryNodeEunm == Category_Media || _categoryNodeEunm == Category_Video) {
         IMBTrack *track = [array objectAtIndex:row];
         if ([@"Formats" isEqualToString:tableColumn.identifier]){
             if (![StringHelper stringIsNilOrEmpty:@""]) {
@@ -764,17 +815,11 @@
             }else {
                 return @"--";
             }
-        }else if ([@"CreateTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
-                return @"--";
-            }else{
-                return @"";
-            }
         }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
+            if (track.dateLastModified == 0) {
                 return @"--";
             }else{
-                return @"";
+                return [DateHelper dateFrom1970ToString:track.dateLastModified withMode:2];
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:track.fileSize reserved:2];
@@ -783,16 +828,10 @@
     }else if (_categoryNodeEunm == Category_iBooks) {
         IMBBookEntity *bookEntity = [array objectAtIndex:row];
         if ([@"Formats" isEqualToString:tableColumn.identifier]){
-            if (![StringHelper stringIsNilOrEmpty:@""]) {
-                return @"";
+            if (![StringHelper stringIsNilOrEmpty:bookEntity.extension]) {
+                return bookEntity.extension;
             }else {
-                return @"book";
-            }
-        }else if ([@"CreateTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
                 return @"--";
-            }else{
-                return @"";
             }
         }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
             if ([StringHelper stringIsNilOrEmpty:@""]) {
@@ -811,12 +850,6 @@
             if (![StringHelper stringIsNilOrEmpty:@""]) {
                 return @"";
             }else {
-                return @"book";
-            }
-        }else if ([@"CreateTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
-                return @"--";
-            }else{
                 return @"";
             }
         }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
@@ -833,22 +866,16 @@
     }else if (_categoryNodeEunm == Category_System) {
         SimpleNode *simpleNode = [array objectAtIndex:row];
         if ([@"Formats" isEqualToString:tableColumn.identifier]){
-            if (![StringHelper stringIsNilOrEmpty:simpleNode.fileName]) {
-                return simpleNode.fileName;
+            if (![StringHelper stringIsNilOrEmpty:simpleNode.extension]) {
+                return simpleNode.extension;
             }else {
-                return @"book";
-            }
-        }else if ([@"CreateTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
                 return @"--";
-            }else{
-                return @"";
             }
         }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
-                return @"--";
+            if (![StringHelper stringIsNilOrEmpty:simpleNode.creatDate]) {
+                return simpleNode.creatDate;
             }else{
-                return @"";
+                return @"--";
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:simpleNode.itemSize reserved:2];
@@ -858,27 +885,21 @@
     }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
         IMBPhotoEntity *photoEnity = [array objectAtIndex:row];
         if ([@"Formats" isEqualToString:tableColumn.identifier]){
-            if (![StringHelper stringIsNilOrEmpty:@""]) {
-                return @"";
+            if (![StringHelper stringIsNilOrEmpty:photoEnity.photoName]) {
+                return [[photoEnity.photoName lastPathComponent] lowercaseString];
             }else {
-                return @"book";
-            }
-        }else if ([@"CreateTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
                 return @"--";
-            }else{
-                return @"";
             }
         }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
-            if ([StringHelper stringIsNilOrEmpty:@""]) {
+            if (photoEnity.photoDateData == 0) {
                 return @"--";
             }else{
-                return @"";
+                return [DateHelper dateFrom1970ToString:photoEnity.photoDateData withMode:2];
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:photoEnity.photoSize reserved:2];
         }
-        return @"";
+        return @"--";
         
         
     }
@@ -898,7 +919,7 @@
             IMBTrack *track = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
             [curCell setImageSize:NSMakeSize(24, 24)];
-            //            curCell.image = track.image;
+            curCell.image = track.thumbImage;
             curCell.imageText = track.title;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
@@ -906,7 +927,7 @@
             IMBBookEntity *bookEntity = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
             [curCell setImageSize:NSMakeSize(24, 24)];
-            //            curCell.image = track.image;
+            curCell.image = bookEntity.coverImage;
             curCell.imageText = bookEntity.bookName;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
@@ -914,7 +935,7 @@
             IMBAppEntity *appEntity = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
             [curCell setImageSize:NSMakeSize(24, 24)];
-            //            curCell.image = track.image;
+            curCell.image = appEntity.appIconImage;
             curCell.imageText = appEntity.appName;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
@@ -922,7 +943,7 @@
             SimpleNode *simpleNode = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
             [curCell setImageSize:NSMakeSize(24, 24)];
-            //            curCell.image = track.image;
+            curCell.image = simpleNode.image;
             curCell.imageText = simpleNode.fileName;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
@@ -930,7 +951,7 @@
             IMBPhotoEntity *photoEnity = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
             [curCell setImageSize:NSMakeSize(24, 24)];
-            //            curCell.image = track.image;
+            curCell.image = photoEnity.photoImage;
             curCell.imageText = photoEnity.photoName;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
@@ -946,7 +967,7 @@
     return 40;
 }
 
-- (void)tableView:(NSTableView *)tableView row:(NSInteger)index {
+- (void)tableView:(NSTableView *)tableView WithSelectIndexSet:(NSIndexSet *)indexSet {
     NSMutableArray *disPalyAry = nil;
     if (_isSearch) {
         disPalyAry = _researchdataSourceArray;
@@ -956,61 +977,6 @@
     if (disPalyAry.count <=0) {
         return;
     }
-    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
-    if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
-        IMBTrack *track = [disPalyAry objectAtIndex:index];
-        track.checkState = !track.checkState;
-        for (int i=0;i<[disPalyAry count]; i++) {
-            IMBTrack *item= [disPalyAry objectAtIndex:i];
-            if (item.checkState == NSOnState) {
-                [set addIndex:i];
-            }
-        }
-    }else if (_categoryNodeEunm == Category_iBooks) {
-        IMBBookEntity *bookEntity = [disPalyAry objectAtIndex:index];
-        bookEntity.checkState = !bookEntity.checkState;
-        for (int i=0;i<[disPalyAry count]; i++) {
-            IMBBookEntity *item= [disPalyAry objectAtIndex:i];
-            if (item.checkState == NSOnState) {
-                [set addIndex:i];
-            }
-        }
-    }else if (_categoryNodeEunm == Category_Applications) {
-        IMBAppEntity *appEntity = [disPalyAry objectAtIndex:index];
-        appEntity.checkState = !appEntity.checkState;
-        for (int i=0;i<[disPalyAry count]; i++) {
-            IMBAppEntity *item= [disPalyAry objectAtIndex:i];
-            if (item.checkState == NSOnState) {
-                [set addIndex:i];
-            }
-        }
-    }else if (_categoryNodeEunm == Category_System) {
-        SimpleNode *simpleNode = [disPalyAry objectAtIndex:index];
-        simpleNode.checkState = !simpleNode.checkState;
-        for (int i=0;i<[disPalyAry count]; i++) {
-            IMBAppEntity *item= [disPalyAry objectAtIndex:i];
-            if (item.checkState == NSOnState) {
-                [set addIndex:i];
-            }
-        }
-    }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
-        IMBPhotoEntity *photoEnity = [disPalyAry objectAtIndex:index];
-        photoEnity.checkState = !photoEnity.checkState;
-        for (int i=0;i<[disPalyAry count]; i++) {
-            IMBPhotoEntity *item= [disPalyAry objectAtIndex:i];
-            if (item.checkState == NSOnState) {
-                [set addIndex:i];
-            }
-        }
-    }
-    if (set.count == disPalyAry.count) {
-        [_itemTableView changeHeaderCheckState:Check];
-    }else if (set.count == 0){
-        [_itemTableView changeHeaderCheckState:UnChecked];
-    }else{
-        [_itemTableView changeHeaderCheckState:SemiChecked];
-    }
-    [_itemTableView reloadData];
 }
 
 - (void)tableViewDoubleClick:(NSTableView *)tableView row:(NSInteger)index {
@@ -1127,82 +1093,49 @@
         NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
         for (int i=0;i<[_dataSourceArray count]; i++) {
             
-            
-            if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
+            if (_categoryNodeEunm == Category_Media || _categoryNodeEunm == Category_Video) {
                 
                 IMBTrack *item= [_dataSourceArray objectAtIndex:i];
-                if (item.checkState == NSOnState) {
+                if (item.checkState == Check) {
                     [set addIndex:i];
                 }
             }else if (_categoryNodeEunm == Category_iBooks) {
                 IMBBookEntity *item= [_dataSourceArray objectAtIndex:i];
-                if (item.checkState == NSOnState) {
+                if (item.checkState == Check) {
                     [set addIndex:i];
                 }
             }else if (_categoryNodeEunm == Category_Applications) {
                 IMBAppEntity *item= [_dataSourceArray objectAtIndex:i];
-                if (item.checkState == NSOnState) {
+                if (item.checkState == Check) {
                     [set addIndex:i];
                 }
             }else if (_categoryNodeEunm == Category_System) {
                 SimpleNode *simpleNode = [_dataSourceArray objectAtIndex:i];
-                if (simpleNode.checkState == NSOnState) {
+                if (simpleNode.checkState == Check) {
                     [set addIndex:i];
                 }
             }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
                 IMBPhotoEntity *item= [_dataSourceArray objectAtIndex:i];
-                if (item.checkState == NSOnState) {
+                if (item.checkState == Check) {
                     [set addIndex:i];
                 }
             }
         }
-        if (set.count == _dataSourceArray.count && _dataSourceArray.count > 0) {
-            [_itemTableView changeHeaderCheckState:Check];
-        }else if (set.count == 0){
-            [_itemTableView changeHeaderCheckState:UnChecked];
-        }else{
-            [_itemTableView changeHeaderCheckState:SemiChecked];
-        }
         _currentSelectView = 0;
+        [_itemTableView selectRowIndexes:set byExtendingSelection:YES];
         [_itemTableView reloadData];
+        
     }else if (segBtn.switchBtnState == 0) {
-        [_gridView reloadData];
         _currentSelectView = 1;
         if (_dataSourceArray.count > 0) {
             [_contentBox setContentView:_gridBgView];
+            [_gridView reloadData];
         }else {
             [_contentBox setContentView:_nodataView];
         }
-    }
-    
-}
 
-- (void)changeContentViewWithDataArr:(NSMutableArray *)dataArr {
-    if (_dataSourceArray != nil) {
-        [_dataSourceArray release];
-        _dataSourceArray = nil;
     }
-    _dataSourceArray = [dataArr retain];
-    [_gridView reloadData];
-    [_itemTableView reloadData];
-    if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
-        if (_currentSelectView == 0) {
-            [_contentBox setContentView:_tableViewBgView];
-        } else {
-            [_contentBox setContentView:_gridBgView];
-        }
-    } else {
-        [_contentBox setContentView:_nodataView];
-    }
-}
-
-- (void)loadSonAryComplete:(NSMutableArray *)sonAry {
-    if (_doubleClick) {
-        [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
-        [_tempDic setObject:sonAry forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
-    }
-    [self changeContentViewWithDataArr:sonAry];
-    [_loadAnimationView endAnimation];
+    [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:_currentSelectView];
 }
 
 - (NSIndexSet *)selectedItems {
@@ -1386,7 +1319,6 @@
                     
                     [self reloadEnd];
                 });
-                
             }];
         }
             break;
@@ -1505,8 +1437,20 @@
                 if (photoArr.count) {
                     [_dataSourceArray addObjectsFromArray:photoArr];
                 }
-                
-                
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self reloadEnd];
+                });
+            }];
+        }
+            break;
+        case Category_System:
+        {
+            [opQueue addOperationWithBlock:^{
+                [_dataSourceArray removeAllObjects];
+                NSArray *array = [_systemManager recursiveDirectoryContentsDics:_currentDevicePath];
+                if (array.count) {
+                    [_dataSourceArray addObjectsFromArray:array];
+                }
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self reloadEnd];
                 });
@@ -1516,7 +1460,6 @@
         default:
             break;
     }
-//    [_driveBaseManage recursiveDirectoryContentsDics:_currentDevicePath];
 }
 
 - (void)reloadEnd {
@@ -1524,68 +1467,26 @@
     [_loadAnimationView endAnimation];
     [_gridView reloadData];
     [_itemTableView reloadData];
-    if (_toolBarArr != nil) {
-        [_toolBarArr release];
-        _toolBarArr = nil;
-    }
-    
-    switch (_categoryNodeEunm) {
-        case Category_Media:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_Video:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_iBooks:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_Applications:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_PhotoStream:
-        case Category_CameraRoll:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_System:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(ToDeviceFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-        case Category_PhotoLibrary:
-        {
-            _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
-        if (_currentSelectView == 0) {
-            [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
+    [self changeToolButtonsIsSelectedIntems:NO];
+    if (_currentSelectView == 0) {
+        if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
             [_contentBox setContentView:_tableViewBgView];
         } else {
-            [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
-            [_contentBox setContentView:_gridBgView];
+            [_contentBox setContentView:_nodataView];
         }
+        
     } else {
-        [_contentBox setContentView:_nodataView];
+        if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
+            [_contentBox setContentView:_gridBgView];
+        } else {
+            [_contentBox setContentView:_nodataView];
+        }
     }
-    
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
+    
 }
 
+#pragma mark - reload toolButton
 - (void)changeToolButtonsIsSelectedIntems:(BOOL)isSelected {
     if (isSelected) {
         if (_toolBarArr != nil) {
@@ -1635,44 +1536,14 @@
         }
     }else {
         switch (_categoryNodeEunm) {
-            case Category_Media:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
-            case Category_Video:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
-            case Category_iBooks:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
-            case Category_Applications:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
             case Category_PhotoStream:
             case Category_CameraRoll:
             {
                 _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
             }
                 break;
-            case Category_System:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(ToDeviceFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
-            case Category_PhotoLibrary:
-            {
-                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(DeviceDatailFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
-            }
-                break;
-                
             default:
+                _toolBarArr = [[NSArray alloc] initWithObjects:@(ReloadFunctionType),@(AddFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
                 break;
         }
     }
@@ -1727,7 +1598,7 @@
                             
                             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
                      
-                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath];
+                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:nil];
                         }
                             break;
                         case Category_iBooks:
@@ -1739,7 +1610,7 @@
                             }];
                             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
                             
-                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath];
+                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:nil];
                             
                         }
                             break;
@@ -1753,7 +1624,7 @@
                             
                             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
                             
-                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath];
+                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:nil];
                             
                         }
                             break;
@@ -1780,8 +1651,21 @@
                             }];
                             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
                             
-                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath];
+                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:nil];
                             
+                        }
+                            break;
+                        case Category_System:
+                        {
+                            [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                SimpleNode *track = [[displayArr objectAtIndex:idx] retain];
+                                [exportArray addObject:track];
+                                [track release];
+                            }];
+                            IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+                            
+                            [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:_currentDevicePath];
+//                                    _baseTransfer = [[IMBFileSystemExport alloc] initWithIPodkey:_ipodKey exportTracks:_selectedItems exportFolder:_exportFolder withDelegate:self];
                         }
                             break;
                         default:
@@ -1790,7 +1674,7 @@
                     }
                     
                     
-                    [_baseTransfer startTransfer];
+//                    [_baseTransfer startTransfer];
             }
         }];
     }
@@ -1830,7 +1714,6 @@
     }];
     
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
-    
     [tranferView deviceAddDataSoure:preparedArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:pathStr];
 }
 /**
@@ -1888,7 +1771,7 @@
                     });
                     
                 }else {
-                    [self showAlertWithoutMultiDevices];
+                    [self showAlertLoadingAnotherDeviceData];
                 }
                 
             }
@@ -1911,7 +1794,7 @@
                     });
                     
                 }else {
-                    [self showAlertWithoutMultiDevices];
+                    [self showAlertLoadingAnotherDeviceData];
                 }
                 
             }
@@ -1930,7 +1813,7 @@
                     });
                     
                 }else {
-                    [self showAlertWithoutMultiDevices];
+                    [self showAlertLoadingAnotherDeviceData];
                 }
                 
             }
@@ -1949,7 +1832,7 @@
                     });
                     
                 }else {
-                    [self showAlertWithoutMultiDevices];
+                    [self showAlertLoadingAnotherDeviceData];
                 }
                 
             }
@@ -1968,7 +1851,7 @@
                     });
                     
                 }else {
-                    [self showAlertWithoutMultiDevices];
+                    [self showAlertLoadingAnotherDeviceData];
                 }
                 
             }
@@ -1991,6 +1874,11 @@
        [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"AlertView_RemindTo_Connect_Multi_Devices", nil) btnClickedBlock:nil];
     });
 }
+- (void)showAlertLoadingAnotherDeviceData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"AlertView_RemindTo_Loading_Data", nil) btnClickedBlock:nil];
+    });
+}
 /**
  *  添加
  */
@@ -2009,21 +1897,17 @@
     
     [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
         if (NSModalResponseOK == result) {
+//            [_contentBox setContentView:_loadAnimationView];
+//            [_loadAnimationView startAnimation];
             
-            NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
-            [opQueue addOperationWithBlock:^{
-                NSMutableArray *paths = [NSMutableArray array];
-                for (NSURL *urlPath in openPanel.URLs) {
-                    [paths addObject:urlPath.path];
-                }
-                IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
-                [tranferView deviceAddDataSoure:paths WithIsDown:NO WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:nil];
-                
-                [_baseTransfer startTransfer];
-                [paths release];
-                paths = nil;
-                
-            }];
+            NSMutableArray *paths = [NSMutableArray array];
+            for (NSURL *urlPath in openPanel.URLs) {
+                [paths addObject:urlPath.path];
+            }
+            IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+            [tranferView deviceAddDataSoure:paths WithIsDown:NO WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:nil withSystemPath:_currentDevicePath];
+            [paths release];
+            paths = nil;
         }
     }];
 }
@@ -2050,190 +1934,157 @@
     if (!preparedArray || preparedArray.count == 0) {
         [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"AlertView_Select_Items", nil) btnClickedBlock:nil];
     }else {
+
         [IMBCommonTool showTwoBtnsAlertInMainWindow:_iPod.uniqueKey firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"AlertView_AskSureToDelete", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
             IMBFLog(@"clicked OK button");
-            NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
-            [opQueue addOperationWithBlock:^{
-                
-                NSMutableArray *delArray = [[NSMutableArray alloc] init];
-                switch (_categoryNodeEunm) {
-                    case Category_CameraRoll:
-                        return;
-                        break;
-                    case Category_PhotoLibrary:
-                    {
-                        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                            IMBPhotoEntity *photo = [[displayArr objectAtIndex:idx] retain];
-                            IMBTrack *track = [[IMBTrack alloc] init];
-                            track.photoZpk = photo.photoZpk;
-                            [track setMediaType:Photo];
-                            [delArray addObject:track];
-                            [track release];
-                            [photo release];
-                        }];
-                    }
-                        break;
-                    case Category_iBooks:
-                    {
-                        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                            IMBBookEntity *bookEntity = [[displayArr objectAtIndex:idx] retain];
-                            IMBTrack *newTrack = [[IMBTrack alloc] init];
-                            int64_t dbid = 0;
-                            if ([self isUnusualPersistentID:bookEntity.bookID]) {
-                                [newTrack setIsUnusual:YES];
-                                [newTrack setHexPersistentID:bookEntity.bookID];
-                            }else{
-                                dbid = [bookEntity.bookID longLongValue];
+            
+                if (_categoryNodeEunm == Category_System) {
+    
+//                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            [_loadAnimationView startAnimation];
+                            [_contentBox setContentView:_loadingView];
+//                        });
+
+                    AFCMediaDirectory *afcMedia = [_iPod.deviceHandle newAFCMediaDirectory];
+                    [_systemManager setCurItems:0];
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        int deleteTotalItems = [_systemManager caculateTotalFileCount:preparedArray afcMedia:afcMedia];
+                        [_systemManager removeFiles:preparedArray afcMediaDir:afcMedia];
+                        [afcMedia close];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [_loadAnimationView startAnimation];
+                        [_contentBox setContentView:_gridBgView];
+                        [_gridView reloadData];
+                    });
+    
+                    });
+                }else {
+                    NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
+                    [opQueue addOperationWithBlock:^{
+                            NSMutableArray *delArray = [[NSMutableArray alloc] init];
+                            switch (_categoryNodeEunm) {
+                                case Category_CameraRoll:
+                                    return;
+                                    break;
+                                case Category_PhotoLibrary:
+                                {
+                                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                        IMBPhotoEntity *photo = [[displayArr objectAtIndex:idx] retain];
+                                        IMBTrack *track = [[IMBTrack alloc] init];
+                                        track.photoZpk = photo.photoZpk;
+                                        [track setMediaType:Photo];
+                                        [delArray addObject:track];
+                                        [track release];
+                                        [photo release];
+                                    }];
+                                }
+                                    break;
+                                case Category_iBooks:
+                                {
+                                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                        IMBBookEntity *bookEntity = [[displayArr objectAtIndex:idx] retain];
+                                        IMBTrack *newTrack = [[IMBTrack alloc] init];
+                                        int64_t dbid = 0;
+                                        if ([self isUnusualPersistentID:bookEntity.bookID]) {
+                                            [newTrack setIsUnusual:YES];
+                                            [newTrack setHexPersistentID:bookEntity.bookID];
+                                        }else{
+                                            dbid = [bookEntity.bookID longLongValue];
+                                        }
+                                        [newTrack setArtist:bookEntity.author];
+                                        [newTrack setGenre:bookEntity.genre];
+                                        
+                                        NSString *path = [NSString stringWithFormat:@"Books/%@",[bookEntity.path lastPathComponent]];
+                                        
+                                        [newTrack setAlbumArtist:bookEntity.album];
+                                        [newTrack setTitle:bookEntity.bookName.length == 0 ? @"0":bookEntity.bookName];
+                                        [newTrack setFilePath:path];
+                                        [newTrack setIsVideo:NO];
+                                        NSString *publisherUniqueID = bookEntity.publisherUniqueID;
+                                        NSString *packageHash = bookEntity.packageHash;
+                                        MediaTypeEnum type;
+                                        if ([[path pathExtension].lowercaseString isEqualToString:@"epub"]) {
+                                            type = Books;
+                                            [newTrack setFileSize:(uint)[[_iPod fileSystem] getFolderSize:[[[_iPod fileSystem] driveLetter] stringByAppendingPathComponent:[NSString stringWithFormat:@"Books/%@",[path lastPathComponent]]]]];
+                                        }
+                                        else{
+                                            type = PDFBooks;
+                                            [newTrack setFileSize:(uint)[[_iPod fileSystem] getFileLength:[[[_iPod fileSystem] driveLetter] stringByAppendingPathComponent:[NSString stringWithFormat:@"Books/%@",[path lastPathComponent]]]]];
+                                        }
+                                        [newTrack setMediaType:type];
+                                        newTrack.dbID = dbid;
+                                        newTrack.uuid = publisherUniqueID;
+                                        newTrack.mediaType = type;
+                                        newTrack.packageHash = packageHash;
+                                        [delArray addObject:newTrack];
+                                        [newTrack release];
+                                        newTrack = nil;
+                                    }];
+                                }
+                                    break;
+                                case Category_Applications:
+                                {
+                                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                        IMBAppEntity *app = [[displayArr objectAtIndex:idx] retain];
+                                        [delArray addObject:app];
+                                        [app release];
+                                        app = nil;
+                                    }];
+                                    dispatch_sync(dispatch_get_main_queue(), ^{
+                                        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
+                                    });
+                                    IMBDeleteApps *procedure = [[IMBDeleteApps alloc] initWithIPod:_iPod deleteArray:delArray];
+                                    [procedure startDelete];
+                                    [procedure release];
+                                    
+                                    //                            [self setCompletionWithSuccessCount:(int)delArray.count totalCount:(int)delArray.count title:@"Delete Success"];
+                                    
+                                    return;
+                                }
+                                    break;
+                                case Category_Media:
+                                {
+                                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                        IMBTrack *track = [[displayArr objectAtIndex:idx] retain];
+                                        [delArray addObject:track];
+                                        [track release];
+                                        track = nil;
+                                    }];
+                                }
+                                    break;
+                                case Category_Video:
+                                {
+                                    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                                        IMBTrack *track = [[displayArr objectAtIndex:idx] retain];
+                                        [delArray addObject:track];
+                                        [track release];
+                                        track = nil;
+                                    }];
+                                }
+                                    break;
+                                case Category_System:
+                                    break;
+                                default:
+                                    break;
                             }
-                            [newTrack setArtist:bookEntity.author];
-                            [newTrack setGenre:bookEntity.genre];
                             
-                            NSString *path = [NSString stringWithFormat:@"Books/%@",[bookEntity.path lastPathComponent]];
+                            dispatch_sync(dispatch_get_main_queue(), ^{
+                                [_contentBox setContentView:_loadingView];
+                                [_loadAnimationView startAnimation];
+                            });
+                            IMBDeleteTrack *deleteTrack = [[IMBDeleteTrack alloc] initWithIPod:_iPod deleteArray:delArray Category:_categoryNodeEunm];
+                            [deleteTrack setDelegate:self];
+                            [deleteTrack startDelete];
+                            [deleteTrack release];
+                            [delArray release];
+                            delArray = nil;
                             
-                            [newTrack setAlbumArtist:bookEntity.album];
-                            [newTrack setTitle:bookEntity.bookName.length == 0 ? @"0":bookEntity.bookName];
-                            [newTrack setFilePath:path];
-                            [newTrack setIsVideo:NO];
-                            NSString *publisherUniqueID = bookEntity.publisherUniqueID;
-                            NSString *packageHash = bookEntity.packageHash;
-                            MediaTypeEnum type;
-                            if ([[path pathExtension].lowercaseString isEqualToString:@"epub"]) {
-                                type = Books;
-                                [newTrack setFileSize:(uint)[[_iPod fileSystem] getFolderSize:[[[_iPod fileSystem] driveLetter] stringByAppendingPathComponent:[NSString stringWithFormat:@"Books/%@",[path lastPathComponent]]]]];
-                            }
-                            else{
-                                type = PDFBooks;
-                                [newTrack setFileSize:(uint)[[_iPod fileSystem] getFileLength:[[[_iPod fileSystem] driveLetter] stringByAppendingPathComponent:[NSString stringWithFormat:@"Books/%@",[path lastPathComponent]]]]];
-                            }
-                            [newTrack setMediaType:type];
-                            newTrack.dbID = dbid;
-                            newTrack.uuid = publisherUniqueID;
-                            newTrack.mediaType = type;
-                            newTrack.packageHash = packageHash;
-                            [delArray addObject:newTrack];
-                            [newTrack release];
-                            newTrack = nil;
-                        }];
-                    }
-                        break;
-                    case Category_Applications:
-                    {
-                        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                            IMBAppEntity *app = [[displayArr objectAtIndex:idx] retain];
-                            [delArray addObject:app];
-                            [app release];
-                            app = nil;
-                        }];
-                        dispatch_sync(dispatch_get_main_queue(), ^{
-                            [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStartLoadingAnimNoti object:_iPod.uniqueKey];
-                        });
-                        IMBDeleteApps *procedure = [[IMBDeleteApps alloc] initWithIPod:_iPod deleteArray:delArray];
-                        [procedure startDelete];
-                        [procedure release];
                         
-                        //                            [self setCompletionWithSuccessCount:(int)delArray.count totalCount:(int)delArray.count title:@"Delete Success"];
-                        
-                        return;
-                    }
-                        break;
-                    case Category_Media:
-                    {
-                        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                            IMBTrack *track = [[displayArr objectAtIndex:idx] retain];
-                            [delArray addObject:track];
-                            [track release];
-                            track = nil;
-                        }];
-                    }
-                        break;
-                    case Category_Video:
-                    {
-                        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
-                            IMBTrack *track = [[displayArr objectAtIndex:idx] retain];
-                            [delArray addObject:track];
-                            [track release];
-                            track = nil;
-                        }];
-                    }
-                        break;
-                        
-                    default:
-                        break;
+                    }];
+
                 }
-                
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [_contentBox setContentView:_loadingView];
-                    [_loadAnimationView startAnimation];
-                });
-                IMBDeleteTrack *deleteTrack = [[IMBDeleteTrack alloc] initWithIPod:_iPod deleteArray:delArray Category:_categoryNodeEunm];
-                [deleteTrack setDelegate:self];
-                [deleteTrack startDelete];
-                [deleteTrack release];
-                [delArray release];
-                delArray = nil;
-                
             }];
-        }];
     }
-    
-}
-
-
-#pragma mark -- transferDelegate
-
-//传输准备进度开始
-- (void)transferPrepareFileStart:(NSString *)file {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-    });
-    
-}
-
-//传输准备进度结束
-- (void)transferPrepareFileEnd {
-    
-}
-
-//传输进度
-- (void)transferProgress:(float)progress {
-    
-}
-
-//当前传输文件的名字或者路径
-- (void)transferFile:(NSString *)file {
-    
-}
-
-//分析进度
-- (void)parseProgress:(float)progress {
-    
-}
-
-//当前分析文件的名字或者路径
-- (void)parseFile:(NSString *)file {
-    
-}
-
-//全部传输成功
-- (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
-    
-    [self setCompletionWithSuccessCount:successCount totalCount:totalCount title:@"Transfer Completed"];
-    
-}
-
-//传输出现错误
-- (BOOL)transferOccurError:(NSString *)error {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:IMBDevicePageStopLoadingAnimNoti object:_iPod.uniqueKey];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"AlertView_Transfer_Error", nil) btnClickedBlock:nil];
-        });
-    });
-    return YES;
-}
-
-- (void)transferCurrentSize:(long long)currenSize {
-    
 }
 
 #pragma mark -- 删除代理方法
@@ -2259,34 +2110,6 @@
     });
 }
 
-#pragma mark -
-//- (void)loadTransferComplete:(NSMutableArray *)transferAry {
-//    if (transferAry.count > 0) {
-//        for (NSString *foldId in transferAry) {
-//            [_dataSourceArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                if ([[(IMBDriveEntity *)obj fileID] isEqualToString:foldId]) {
-//                    [_dataSourceArray removeObject:obj];
-//                }
-//            }];
-//        }
-//
-//        [_gridView reloadData];
-//        [_itemTableView reloadData];
-//    }
-//    if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
-//        if (_currentSelectView == 0) {
-//            [_contentBox setContentView:_tableViewBgView];
-//        } else {
-//            [_contentBox setContentView:_gridBgView];
-//        }
-//    } else {
-//        [_contentBox setContentView:_nodataView];
-//    }
-//    [_loadAnimationView endAnimation];
-//
-//}
-
-
 //medie 和video图片获取
 - (NSData *)createThumbImage:(IMBTrack *)track {
     NSString *filePath = nil;
@@ -2302,22 +2125,13 @@
     }else{
         filePath =track.artworkPath;
     }
-    NSString *extension = [filePath pathExtension].lowercaseString;
-    BOOL isVideo = false;
-    if ([extension isEqualToString:@"mov"] || [extension isEqualToString:@"m4v"] || [extension isEqualToString:@"mp4"]) {
-        isVideo = true;
-    }
-    NSData *data = nil;
-    if (!isVideo) {
-        data = [[self readFileData:filePath] retain];
-    }
+    NSData *data = [self readFileData:filePath];;
     if (data) {
         NSImage *sourceImage = [[NSImage alloc] initWithData:data];
-        NSMutableData *imageData = [(NSMutableData *)[TempHelper scalingImage:sourceImage withLenght:60] retain];
+        NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
         [sourceImage release];
-        [data release];
         
-        return [imageData autorelease];
+        return imageData;
     }else {
         return nil;
     }
@@ -2355,15 +2169,10 @@
     NSData *data = [self readFileData:filePath];
     NSImage *sourceImage = [[NSImage alloc] initWithData:data];
     
-    NSMutableData *imageData = nil;
-    if ([_iPod.deviceHandle.productVersion isVersionMajorEqual:@"7"]) {
-        imageData = [(NSMutableData *)[TempHelper scalingImage:sourceImage withLenght:60] retain];
-    }else {
-        imageData = [(NSMutableData *)[TempHelper createThumbnail:sourceImage withWidth:60 withHeight:60] retain];
-    }
+    NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
     [sourceImage release];
     
-    return [imageData autorelease];
+    return imageData;
 }
 
 - (int)cacuCount:(NSString *)nodePath{
@@ -2398,13 +2207,12 @@
             uint64_t n = [openFile readN:bufsz bytes:buff];
             if (n==0) break;
             //将字节数据转化为NSdata
-            NSData *b2 = [[NSData alloc]
-                          initWithBytesNoCopy:buff length:n freeWhenDone:NO];
+            NSData *b2 = [[NSData alloc] initWithBytesNoCopy:buff length:n freeWhenDone:NO];
             [totalData appendData:b2];
             [b2 release];
         }
         if (totalData.length == fileLength) {
-            // NSLog(@"success readData 1111");
+            
         }
         free(buff);
         [openFile closeFile];

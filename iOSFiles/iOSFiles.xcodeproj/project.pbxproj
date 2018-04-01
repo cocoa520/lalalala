@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3428994C206CD02800969DD9 /* nav_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 3428994A206CD02800969DD9 /* nav_search.png */; };
-		3428994D206CD02800969DD9 /* nav_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3428994B206CD02800969DD9 /* nav_search@2x.png */; };
 		34289951206CDF3700969DD9 /* IMBSearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34289950206CDF3700969DD9 /* IMBSearchFieldCell.m */; };
 		34289978206CE05000969DD9 /* IMBSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428996C206CE05000969DD9 /* IMBSearchView.m */; };
+		3429B728206F47C80019C13A /* IMBDevicePopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3429B726206F47C80019C13A /* IMBDevicePopoverViewController.m */; };
+		3429B729206F47C80019C13A /* IMBDevicePopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3429B727206F47C80019C13A /* IMBDevicePopoverViewController.xib */; };
 		34486391206DE5E6001B9971 /* IMBSortPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3448638F206DE5E6001B9971 /* IMBSortPopoverViewController.m */; };
 		34486392206DE5E6001B9971 /* IMBSortPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34486390206DE5E6001B9971 /* IMBSortPopoverViewController.xib */; };
 		7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */; };
@@ -974,12 +974,26 @@
 		F7BD44E6206B7FE700E08F71 /* cnt_fileicon_excel.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BD44E5206B7FE700E08F71 /* cnt_fileicon_excel.png */; };
 		F7BD44EA206BAB0600E08F71 /* cnt_fileicon_contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BD44E8206BAB0600E08F71 /* cnt_fileicon_contacts.png */; };
 		F7BD44EB206BAB0600E08F71 /* cnt_fileicon_dmg.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BD44E9206BAB0600E08F71 /* cnt_fileicon_dmg.png */; };
+		F7C52B46206F8856006532D8 /* IMBAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B3E206F8856006532D8 /* IMBAboutWindowController.m */; };
+		F7C52B47206F8856006532D8 /* IMBAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C52B3F206F8856006532D8 /* IMBAboutWindowController.xib */; };
+		F7C52B48206F8856006532D8 /* IMBSendLogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B41206F8856006532D8 /* IMBSendLogWindowController.m */; };
+		F7C52B49206F8856006532D8 /* IMBSendLogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C52B42206F8856006532D8 /* IMBSendLogWindowController.xib */; };
+		F7C52B4A206F8856006532D8 /* IMBUpgradeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B44206F8856006532D8 /* IMBUpgradeWindowController.m */; };
+		F7C52B4B206F8856006532D8 /* IMBUpgradeWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C52B45206F8856006532D8 /* IMBUpgradeWindowController.xib */; };
+		F7C52B4E206F8889006532D8 /* IMBDottedlLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B4D206F8889006532D8 /* IMBDottedlLineView.m */; };
+		F7C52B51206F8C81006532D8 /* IMBLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B50206F8C81006532D8 /* IMBLinkButton.m */; };
+		F7C52B54206F8DAA006532D8 /* IMBSendLogFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B53206F8DAA006532D8 /* IMBSendLogFile.m */; };
+		F7C52B57206F8E26006532D8 /* IMBDBFileBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C52B56206F8E26006532D8 /* IMBDBFileBackup.m */; };
 		F7CAC141206E1F490029236D /* folder_icon_app.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC13B206E1F490029236D /* folder_icon_app.png */; };
 		F7CAC142206E1F490029236D /* folder_icon_books.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC13C206E1F490029236D /* folder_icon_books.png */; };
 		F7CAC143206E1F490029236D /* folder_icon_img.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC13D206E1F490029236D /* folder_icon_img.png */; };
 		F7CAC144206E1F490029236D /* folder_icon_media.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC13E206E1F490029236D /* folder_icon_media.png */; };
 		F7CAC145206E1F490029236D /* folder_icon_others.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC13F206E1F490029236D /* folder_icon_others.png */; };
 		F7CAC146206E1F490029236D /* folder_icon_video.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC140206E1F490029236D /* folder_icon_video.png */; };
+		F7CAC14C206E45A80029236D /* folder_icon_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC148206E45A80029236D /* folder_icon_camera.png */; };
+		F7CAC14D206E45A80029236D /* folder_icon_library.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC149206E45A80029236D /* folder_icon_library.png */; };
+		F7CAC14E206E45A80029236D /* folder_icon_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC14A206E45A80029236D /* folder_icon_screen.png */; };
+		F7CAC14F206E45A80029236D /* folder_icon_storage.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CAC14B206E45A80029236D /* folder_icon_storage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1040,12 +1054,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3428994A206CD02800969DD9 /* nav_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_search.png; sourceTree = "<group>"; };
-		3428994B206CD02800969DD9 /* nav_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_search@2x.png"; sourceTree = "<group>"; };
 		3428994F206CDF3700969DD9 /* IMBSearchFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSearchFieldCell.h; sourceTree = "<group>"; };
 		34289950206CDF3700969DD9 /* IMBSearchFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSearchFieldCell.m; sourceTree = "<group>"; };
 		3428996B206CE05000969DD9 /* IMBSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSearchView.h; sourceTree = "<group>"; };
 		3428996C206CE05000969DD9 /* IMBSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSearchView.m; sourceTree = "<group>"; };
+		3429B725206F47C80019C13A /* IMBDevicePopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDevicePopoverViewController.h; sourceTree = "<group>"; };
+		3429B726206F47C80019C13A /* IMBDevicePopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDevicePopoverViewController.m; sourceTree = "<group>"; };
+		3429B727206F47C80019C13A /* IMBDevicePopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBDevicePopoverViewController.xib; sourceTree = "<group>"; };
 		3448638E206DE5E6001B9971 /* IMBSortPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSortPopoverViewController.h; sourceTree = "<group>"; };
 		3448638F206DE5E6001B9971 /* IMBSortPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSortPopoverViewController.m; sourceTree = "<group>"; };
 		34486390206DE5E6001B9971 /* IMBSortPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBSortPopoverViewController.xib; sourceTree = "<group>"; };
@@ -2634,12 +2649,33 @@
 		F7BD44E5206B7FE700E08F71 /* cnt_fileicon_excel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cnt_fileicon_excel.png; sourceTree = "<group>"; };
 		F7BD44E8206BAB0600E08F71 /* cnt_fileicon_contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cnt_fileicon_contacts.png; sourceTree = "<group>"; };
 		F7BD44E9206BAB0600E08F71 /* cnt_fileicon_dmg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cnt_fileicon_dmg.png; sourceTree = "<group>"; };
+		F7C52B3D206F8856006532D8 /* IMBAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBAboutWindowController.h; sourceTree = "<group>"; };
+		F7C52B3E206F8856006532D8 /* IMBAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBAboutWindowController.m; sourceTree = "<group>"; };
+		F7C52B3F206F8856006532D8 /* IMBAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBAboutWindowController.xib; sourceTree = "<group>"; };
+		F7C52B40206F8856006532D8 /* IMBSendLogWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSendLogWindowController.h; sourceTree = "<group>"; };
+		F7C52B41206F8856006532D8 /* IMBSendLogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSendLogWindowController.m; sourceTree = "<group>"; };
+		F7C52B42206F8856006532D8 /* IMBSendLogWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBSendLogWindowController.xib; sourceTree = "<group>"; };
+		F7C52B43206F8856006532D8 /* IMBUpgradeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBUpgradeWindowController.h; sourceTree = "<group>"; };
+		F7C52B44206F8856006532D8 /* IMBUpgradeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBUpgradeWindowController.m; sourceTree = "<group>"; };
+		F7C52B45206F8856006532D8 /* IMBUpgradeWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBUpgradeWindowController.xib; sourceTree = "<group>"; };
+		F7C52B4C206F8889006532D8 /* IMBDottedlLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDottedlLineView.h; sourceTree = "<group>"; };
+		F7C52B4D206F8889006532D8 /* IMBDottedlLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDottedlLineView.m; sourceTree = "<group>"; };
+		F7C52B4F206F8C81006532D8 /* IMBLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBLinkButton.h; sourceTree = "<group>"; };
+		F7C52B50206F8C81006532D8 /* IMBLinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBLinkButton.m; sourceTree = "<group>"; };
+		F7C52B52206F8DAA006532D8 /* IMBSendLogFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBSendLogFile.h; sourceTree = "<group>"; };
+		F7C52B53206F8DAA006532D8 /* IMBSendLogFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBSendLogFile.m; sourceTree = "<group>"; };
+		F7C52B55206F8E26006532D8 /* IMBDBFileBackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDBFileBackup.h; sourceTree = "<group>"; };
+		F7C52B56206F8E26006532D8 /* IMBDBFileBackup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDBFileBackup.m; sourceTree = "<group>"; };
 		F7CAC13B206E1F490029236D /* folder_icon_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_app.png; sourceTree = "<group>"; };
 		F7CAC13C206E1F490029236D /* folder_icon_books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_books.png; sourceTree = "<group>"; };
 		F7CAC13D206E1F490029236D /* folder_icon_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_img.png; sourceTree = "<group>"; };
 		F7CAC13E206E1F490029236D /* folder_icon_media.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_media.png; sourceTree = "<group>"; };
 		F7CAC13F206E1F490029236D /* folder_icon_others.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_others.png; sourceTree = "<group>"; };
 		F7CAC140206E1F490029236D /* folder_icon_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_video.png; sourceTree = "<group>"; };
+		F7CAC148206E45A80029236D /* folder_icon_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_camera.png; sourceTree = "<group>"; };
+		F7CAC149206E45A80029236D /* folder_icon_library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_library.png; sourceTree = "<group>"; };
+		F7CAC14A206E45A80029236D /* folder_icon_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_screen.png; sourceTree = "<group>"; };
+		F7CAC14B206E45A80029236D /* folder_icon_storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_storage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4087,8 +4123,6 @@
 		B9E3DEBE2063D6A2008DDF92 /* button */ = {
 			isa = PBXGroup;
 			children = (
-				3428994A206CD02800969DD9 /* nav_search.png */,
-				3428994B206CD02800969DD9 /* nav_search@2x.png */,
 				B91847992068F4A100B83DDC /* navbar_icon_search_1.png */,
 				B918479A2068F4A100B83DDC /* navbar_icon_search1_hover.png */,
 				B91847952068A45D00B83DDC /* symbols-eye-hover.png */,
@@ -4195,6 +4229,10 @@
 		B9E3DF0E2063D6A3008DDF92 /* collectionView */ = {
 			isa = PBXGroup;
 			children = (
+				F7CAC148206E45A80029236D /* folder_icon_camera.png */,
+				F7CAC149206E45A80029236D /* folder_icon_library.png */,
+				F7CAC14A206E45A80029236D /* folder_icon_screen.png */,
+				F7CAC14B206E45A80029236D /* folder_icon_storage.png */,
 				F7CAC13B206E1F490029236D /* folder_icon_app.png */,
 				F7CAC13C206E1F490029236D /* folder_icon_books.png */,
 				F7CAC13D206E1F490029236D /* folder_icon_img.png */,
@@ -4589,6 +4627,10 @@
 		B9E73A6C20280FC000E1BB3B /* Softupate */ = {
 			isa = PBXGroup;
 			children = (
+				F7C52B55206F8E26006532D8 /* IMBDBFileBackup.h */,
+				F7C52B56206F8E26006532D8 /* IMBDBFileBackup.m */,
+				F7C52B52206F8DAA006532D8 /* IMBSendLogFile.h */,
+				F7C52B53206F8DAA006532D8 /* IMBSendLogFile.m */,
 				B9E73A7F2028105500E1BB3B /* Register */,
 				B9E73A6D20280FC000E1BB3B /* IMBCheckUpdater.h */,
 				B9E73A6E20280FC000E1BB3B /* IMBCheckUpdater.m */,
@@ -4939,6 +4981,8 @@
 		EEF456162063D1F80078BB23 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				F7C52B4F206F8C81006532D8 /* IMBLinkButton.h */,
+				F7C52B50206F8C81006532D8 /* IMBLinkButton.m */,
 				EEF45A332063D3780078BB23 /* IMBHoverChangeImageBtn.h */,
 				EEF45A342063D3780078BB23 /* IMBHoverChangeImageBtn.m */,
 				EEF456172063D1F80078BB23 /* HoverButton.h */,
@@ -5054,6 +5098,9 @@
 				3448638E206DE5E6001B9971 /* IMBSortPopoverViewController.h */,
 				3448638F206DE5E6001B9971 /* IMBSortPopoverViewController.m */,
 				34486390206DE5E6001B9971 /* IMBSortPopoverViewController.xib */,
+				3429B725206F47C80019C13A /* IMBDevicePopoverViewController.h */,
+				3429B726206F47C80019C13A /* IMBDevicePopoverViewController.m */,
+				3429B727206F47C80019C13A /* IMBDevicePopoverViewController.xib */,
 				EEF4568D2063D1F80078BB23 /* IMBPopoverViewController.m */,
 				EEF4568E2063D1F80078BB23 /* IMBPopoverViewController.xib */,
 				EEF456922063D1F80078BB23 /* IMBTranferViewController.h */,
@@ -5092,6 +5139,8 @@
 		EEF457F52063D1F80078BB23 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F7C52B4C206F8889006532D8 /* IMBDottedlLineView.h */,
+				F7C52B4D206F8889006532D8 /* IMBDottedlLineView.m */,
 				3428996B206CE05000969DD9 /* IMBSearchView.h */,
 				3428996C206CE05000969DD9 /* IMBSearchView.m */,
 				F7BD44DF206B253500E08F71 /* IMBScreenClickView.h */,
@@ -5210,6 +5259,15 @@
 		EEF458522063D1F90078BB23 /* window */ = {
 			isa = PBXGroup;
 			children = (
+				F7C52B3D206F8856006532D8 /* IMBAboutWindowController.h */,
+				F7C52B3E206F8856006532D8 /* IMBAboutWindowController.m */,
+				F7C52B3F206F8856006532D8 /* IMBAboutWindowController.xib */,
+				F7C52B40206F8856006532D8 /* IMBSendLogWindowController.h */,
+				F7C52B41206F8856006532D8 /* IMBSendLogWindowController.m */,
+				F7C52B42206F8856006532D8 /* IMBSendLogWindowController.xib */,
+				F7C52B43206F8856006532D8 /* IMBUpgradeWindowController.h */,
+				F7C52B44206F8856006532D8 /* IMBUpgradeWindowController.m */,
+				F7C52B45206F8856006532D8 /* IMBUpgradeWindowController.xib */,
 				EEF458532063D1F90078BB23 /* _NSThemeWidget.h */,
 				EEF458542063D1F90078BB23 /* _NSThemeWidgetCell.h */,
 				EEF458552063D1F90078BB23 /* IMBiCloudNoTitleBarWinodw.h */,
@@ -5350,6 +5408,7 @@
 				B9E3E0C42063D6A3008DDF92 /* tool_editor_normal.png in Resources */,
 				EEF45A322063D3590078BB23 /* IMBTwoBtnsAlertController.xib in Resources */,
 				B9E3DFDA2063D6A3008DDF92 /* backup_advance.png in Resources */,
+				F7CAC14F206E45A80029236D /* folder_icon_storage.png in Resources */,
 				B9E3E0E12063D6A3008DDF92 /* tool_toiCloud_normal@2x.png in Resources */,
 				B90BDE9D20665EA2007E84EA /* mod_device_no.png in Resources */,
 				B9E3E0802063D6A3008DDF92 /* device_icon_iPhone_selected.png in Resources */,
@@ -5434,6 +5493,7 @@
 				B9E3E0DC2063D6A3008DDF92 /* tool_to_contacts.png in Resources */,
 				B918479020688BEC00B83DDC /* navbar_icon_transtion.png in Resources */,
 				B9E3E0B52063D6A3008DDF92 /* wapp_voice.png in Resources */,
+				F7CAC14E206E45A80029236D /* folder_icon_screen.png in Resources */,
 				B90BDEE620665F2A007E84EA /* toolbar_icon_list1.png in Resources */,
 				EEF4589B2063D1F90078BB23 /* IMBMainPageViewController.xib in Resources */,
 				B9E3E0AF2063D6A3008DDF92 /* right_top.png in Resources */,
@@ -5552,8 +5612,10 @@
 				34486392206DE5E6001B9971 /* IMBSortPopoverViewController.xib in Resources */,
 				B9E3E00E2063D6A3008DDF92 /* checkbox2.png in Resources */,
 				B9E3DFE52063D6A3008DDF92 /* backup_retreat2.png in Resources */,
+				F7CAC14D206E45A80029236D /* folder_icon_library.png in Resources */,
 				B9E3DFDE2063D6A3008DDF92 /* backup_advance3@2x.png in Resources */,
 				EEF458862063D1F90078BB23 /* IMBPhotosListViewController.xib in Resources */,
+				F7C52B4B206F8856006532D8 /* IMBUpgradeWindowController.xib in Resources */,
 				B90BDEF720665F2A007E84EA /* toolbar_icon_topc_hover.png in Resources */,
 				B90BDEDA20665F2A007E84EA /* nav_icon_close_hover.png in Resources */,
 				B9E3E0A22063D6A3008DDF92 /* left_bottom.png in Resources */,
@@ -5570,8 +5632,10 @@
 				B9E3E0102063D6A3008DDF92 /* checkbox3.png in Resources */,
 				B918478B20688B8B00B83DDC /* navbar_icon_cart_big_hover.png in Resources */,
 				B9E73A1B2028038D00E1BB3B /* wapp_map.png in Resources */,
+				F7CAC14C206E45A80029236D /* folder_icon_camera.png in Resources */,
 				B9E3E0972063D6A3008DDF92 /* noData_box.png in Resources */,
 				B9E3E0D72063D6A3008DDF92 /* tool_sel_list_down@2x.png in Resources */,
+				F7C52B49206F8856006532D8 /* IMBSendLogWindowController.xib in Resources */,
 				EEF458842063D1F90078BB23 /* IMBDevicePageViewController.xib in Resources */,
 				EEF458932063D1F90078BB23 /* IMBDeviceViewController.xib in Resources */,
 				B9E3E0E32063D6A3008DDF92 /* tool_tomac_normal@2x.png in Resources */,
@@ -5598,6 +5662,7 @@
 				B90BDEE320665F2A007E84EA /* toolbar_icon_del_hover.png in Resources */,
 				B90BDEEB20665F2A007E84EA /* toolbar_icon_moveto_hover.png in Resources */,
 				B90BDEF520665F2A007E84EA /* toolbar_icon_todevice_hover.png in Resources */,
+				3429B729206F47C80019C13A /* IMBDevicePopoverViewController.xib in Resources */,
 				EEF458972063D1F90078BB23 /* IMBDownloadListViewController.xib in Resources */,
 				B9E3E0042063D6A3008DDF92 /* tool_editor_normal.png in Resources */,
 				B9E3E0022063D6A3008DDF92 /* music_show.png in Resources */,
@@ -5630,7 +5695,6 @@
 				EE3C43A42068A4F50098AE9D /* transferlist_history_icon_close_hover.png in Resources */,
 				B9E3E0A92063D6A3008DDF92 /* right_bottom.png in Resources */,
 				B9E3E0952063D6A3008DDF92 /* other_sending.png in Resources */,
-				3428994C206CD02800969DD9 /* nav_search.png in Resources */,
 				B90BDED420665F2A007E84EA /* mod_icon_link_arrow.png in Resources */,
 				EEF4589F2063D1F90078BB23 /* IMBPopoverViewController.xib in Resources */,
 				B9E3E0382063D6A3008DDF92 /* download_process_bg@2x.png in Resources */,
@@ -5639,7 +5703,6 @@
 				B9E73A182028038D00E1BB3B /* right_top2.png in Resources */,
 				B9E3DFF12063D6A3008DDF92 /* box_mix_select1@2x.png in Resources */,
 				B90BDEA320665EC1007E84EA /* mod_dropboxdrive.png in Resources */,
-				3428994D206CD02800969DD9 /* nav_search@2x.png in Resources */,
 				EE3C439E20689D0D0098AE9D /* transferlist_icon_delall_hover.png in Resources */,
 				B9E3E0D42063D6A3008DDF92 /* tool_sel_icons_normal.png in Resources */,
 				B9E3E0232063D6A3008DDF92 /* sel_sem2.png in Resources */,
@@ -5659,6 +5722,7 @@
 				B9E3E0CA2063D6A3008DDF92 /* tool_iCloudexit_normal.png in Resources */,
 				B9E3E0A52063D6A3008DDF92 /* left_top.png in Resources */,
 				EEF45A1F2063D1F90078BB23 /* IMBMainWindowController.xib in Resources */,
+				F7C52B47206F8856006532D8 /* IMBAboutWindowController.xib in Resources */,
 				EEF458A32063D1F90078BB23 /* IMBTranferViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5727,6 +5791,7 @@
 				B96563532021D2B000BD7FF5 /* File_Mpeg_Descriptors.cpp in Sources */,
 				B96564842021D47600BD7FF5 /* IMBImageListContainer.m in Sources */,
 				34486391206DE5E6001B9971 /* IMBSortPopoverViewController.m in Sources */,
+				F7C52B48206F8856006532D8 /* IMBSendLogWindowController.m in Sources */,
 				F7BD44E1206B253500E08F71 /* IMBScreenClickView.m in Sources */,
 				B96563332021D2B000BD7FF5 /* MediaInfo_Internal.cpp in Sources */,
 				B910BF4220219E3B00849CBB /* OneDReNameAPI.m in Sources */,
@@ -5763,12 +5828,15 @@
 				EEF4589E2063D1F90078BB23 /* IMBPopoverViewController.m in Sources */,
 				B9E73A042028038D00E1BB3B /* IMBNotAirSyncImportBetweenDeviceTransfer.m in Sources */,
 				B96563572021D2B000BD7FF5 /* File_MpegTs_Duplicate.cpp in Sources */,
+				F7C52B4A206F8856006532D8 /* IMBUpgradeWindowController.m in Sources */,
 				B965637E2021D2B000BD7FF5 /* File_OtherText.cpp in Sources */,
 				F7BD44DD206B215F00E08F71 /* IMBAlertViewController.m in Sources */,
 				B965638E2021D2B000BD7FF5 /* File_Flic.cpp in Sources */,
 				B96563782021D2B000BD7FF5 /* File_DtvccTransport.cpp in Sources */,
 				B9348B3E201F0DAB00A8CEC3 /* IMBInformation.m in Sources */,
+				3429B728206F47C80019C13A /* IMBDevicePopoverViewController.m in Sources */,
 				B96563B42021D2B000BD7FF5 /* ZtringListList.cpp in Sources */,
+				F7C52B57206F8E26006532D8 /* IMBDBFileBackup.m in Sources */,
 				7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */,
 				B96564932021D47600BD7FF5 /* IMBSqliteTables_4.m in Sources */,
 				B965636A2021D2B000BD7FF5 /* Reader_Directory.cpp in Sources */,
@@ -5953,6 +6021,7 @@
 				B9348AAB201EFE2D00A8CEC3 /* IMBBaseEntity.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
 				EEF45A0D2063D1F90078BB23 /* IMBShadowView.m in Sources */,
+				F7C52B51206F8C81006532D8 /* IMBLinkButton.m in Sources */,
 				B96563B32021D2B000BD7FF5 /* ZtringList.cpp in Sources */,
 				B9E73A7E20280FC000E1BB3B /* PFMoveApplication.m in Sources */,
 				B96563852021D2B000BD7FF5 /* File_Ttml.cpp in Sources */,
@@ -6157,6 +6226,7 @@
 				B96563762021D2B000BD7FF5 /* File_Cdp.cpp in Sources */,
 				EEF45A1B2063D1F90078BB23 /* PopoverRootView.m in Sources */,
 				B9E73AC820282FF500E1BB3B /* unzip.c in Sources */,
+				F7C52B54206F8DAA006532D8 /* IMBSendLogFile.m in Sources */,
 				B96563AE2021D2B000BD7FF5 /* PreComp.cpp in Sources */,
 				B96564B42021D47600BD7FF5 /* IMBUnicodeMHOD.m in Sources */,
 				B96564A72021D47600BD7FF5 /* IMBPodcastListAdapter.m in Sources */,
@@ -6193,6 +6263,7 @@
 				B96562DA2021D2B000BD7FF5 /* File_Elf.cpp in Sources */,
 				B96563152021D2B000BD7FF5 /* File__Analyze_Buffer_MinimizeSize.cpp in Sources */,
 				EEF45A0E2063D1F90078BB23 /* IMBStackBox.m in Sources */,
+				F7C52B46206F8856006532D8 /* IMBAboutWindowController.m in Sources */,
 				B96564992021D47600BD7FF5 /* IMBSyncPlistBuilder.m in Sources */,
 				B96564942021D47600BD7FF5 /* IMBSqliteTables_Above3.m in Sources */,
 				B96563632021D2B000BD7FF5 /* File_Skm.cpp in Sources */,
@@ -6236,6 +6307,7 @@
 				B9E73A552028054200E1BB3B /* IMBCvtMediaConvertEncoder.m in Sources */,
 				B96564BA2021D47600BD7FF5 /* IMBPlayCounts.m in Sources */,
 				EEF4586B2063D1F90078BB23 /* IMBHoverButton.m in Sources */,
+				F7C52B4E206F8889006532D8 /* IMBDottedlLineView.m in Sources */,
 				EEF458622063D1F90078BB23 /* IMBCustomBlueButton.m in Sources */,
 				EE59D6F12063D62D00B00046 /* DropboxUserAccountAPI.m in Sources */,
 				B96563A62021D2B000BD7FF5 /* Http_Handler.cpp in Sources */,

@@ -10,7 +10,7 @@
 #import "IMBCommonDefine.h"
 #import "IMBMainPageViewController.h"
 #import "IMBViewManager.h"
-
+#import "IMBNoTitleBarWindow.h"
 
 @interface IMBMainWindowController ()<NSPopoverDelegate,NSAnimationDelegate>
 
@@ -49,6 +49,7 @@
     NSRect screenRect = [NSScreen mainScreen].frame;
     [_whiteView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     [[self window] setMovableByWindowBackground:YES];
+    [[(IMBNoTitleBarWindow *)self.window maxAndminView] setHidden:YES];
     IMBViewManager *viewManager = [IMBViewManager singleton];
     if (_isNewWindow) {
         IMBViewManager *viewManager = [IMBViewManager singleton];
@@ -110,11 +111,7 @@
         
         [self.window setFrame:NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh)) display:YES animate:YES];
         [[NSUserDefaults standardUserDefaults] setObject:NSStringFromRect(NSMakeRect((screenRect.size.width-WindowMinSizeWidth)/2, (screenRect.size.height-WindowMinSizeHigh)/2, WindowMinSizeWidth, WindowMinSizeHigh)) forKey:@"minWindowFrame"];
-        
-        NSLog(@"===========111%@",NSStringFromRect(NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh))));
-        
-        NSLog(@"===========3333%@",NSStringFromRect(self.window.frame));
-        
+
         [self performSelector:@selector(setWindowFrame) withObject:nil afterDelay:0.1];
         [_rootBox setContentView:viewManager.mainViewController.view];
     }
@@ -126,6 +123,7 @@
      [self.window setFrame:NSMakeRect(ceil((screenRect.size.width-WindowMinSizeWidth)/2), ceil((screenRect.size.height-WindowMinSizeHigh)/2),ceil( WindowMinSizeWidth), ceil(WindowMinSizeHigh)) display:YES animate:YES];
 }
 
+//放大主window
 - (void)changeMainFrame:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage {
     IMBViewManager *viewManager = [IMBViewManager singleton];
     IMBMainPageViewController *mainPageViewController = nil;
@@ -168,10 +166,11 @@
        
         [_rootBox setContentView:mainPageViewController.view];
         NSRect startFrame = [self.window frame];
-        NSRect endFrame = NSMakeRect(startFrame.origin.x - (WindowMaxSizeWidth - startFrame.size.width)/2, startFrame.origin.y - (WindowMaxSizeHigh - startFrame.size.height)/2, WindowMaxSizeWidth, WindowMaxSizeHigh);
-        [self.window setMinSize:endFrame.size];
-        [self.window setMaxSize:endFrame.size];
+        NSRect endFrame = NSMakeRect(startFrame.origin.x - (WindowMaxSizeWidth - startFrame.size.width)/2, startFrame.origin.y - (WindowMaxSizeHigh - startFrame.size.height)/2, WindowMaxSizeWidth, WindowMaxSizeHigh+1);
+        [self.window setMinSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
+        [self.window setMaxSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
         [self.window setFrame:endFrame display:YES animate:YES];
+        [self.window setContentSize:NSMakeSize(WindowMaxSizeWidth, WindowMaxSizeHigh)];
         
         if (viewManager.mainWindowController) {
             [viewManager.mainWindowController release];
@@ -180,6 +179,7 @@
     }
 }
 
+//缩小主window
 - (void)backMainViewChooseLoginModelEnum {
     IMBViewManager *viewManager = [IMBViewManager singleton];
     if (viewManager.mainWindowController) {

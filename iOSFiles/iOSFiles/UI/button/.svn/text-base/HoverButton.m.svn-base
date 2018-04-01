@@ -25,7 +25,6 @@
 {
     self = [super init];
     if (self) {
-        _switchBtnState = 1;
     }
     return self;
 }

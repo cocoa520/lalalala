@@ -35,6 +35,7 @@ typedef enum {
     NSString *_path;
     NSMutableArray *_childrenArray;
     NSString *_domain;
+    NSString *_extension;
     
     BOOL _isLoading;
     
@@ -71,12 +72,12 @@ typedef enum {
     HoverButton *_listCloseButton;
     HoverButton *_coCloseButton;
     id _controller;
-//    IMBBaseTransfer *_transfer;
     NSString *_sourcePath;
+    NSString *_lastDate;
 }
+@property (nonatomic, retain) NSString *extension;
 @property(nonatomic,retain) NSString *decryptPath;
 @property(nonatomic,retain) NSString *sourcePath;
-//@property(nonatomic,assign) IMBBaseTransfer *transfer;
 @property(nonatomic,assign) id controller;
 @property(nonatomic,assign) BOOL isStop;
 @property(nonatomic,retain) IMBAnimateProgressBar *listprogressBar;
@@ -109,10 +110,10 @@ typedef enum {
 @property(nonatomic, assign) BOOL isEncrypt;
 @property(nonatomic, readwrite, copy) NSString *decryptKey;
 @property(nonatomic,copy)NSString *parentPath;
-//@property(nonatomic,retain)IMBBackupDecrypt *backupDecrypt;
 @property(nonatomic,copy)NSString   *type;
 @property(nonatomic, assign)CheckStateEnum checkState;
 @property (nonatomic, retain)NSString *creatDate;//创建时间
+@property (nonatomic, retain)NSString *lastDate;//修改时间
 - (id)initWithName:(NSString *)name;
 + (SimpleNode *)nodeDataWithName:(NSString *)name;
 - (void)createProgressBar;

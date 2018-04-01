@@ -10,19 +10,14 @@
 #import "IMBCommonDefine.h"
 
 @implementation IMBiCloudPathSelectBtn
+@synthesize buttonName = _buttonName;
 
-- (void)setButtonTitle:(NSString *)buttonName WithIsHomePage:(BOOL)isHomePage {
+- (void)setButtonName:(NSString *)buttonName {
     if (_buttonName != nil) {
         [_buttonName release];
         _buttonName = nil;
     }
     _buttonName = [buttonName retain];
-    _isHomePage = isHomePage;
-    if (_isHomePage) {
-        _leftImage = [NSImage imageNamed:@"nav_icon_icloud"];
-    } else {
-        _leftImage = [NSImage imageNamed:@"nav_icon_floder"];
-    }
 }
 
 - (void)updateTrackingAreas
@@ -75,28 +70,21 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     if (_buttonType == MouseDown || _buttonType == MouseEnter) {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-        [path addClip];
-        [path setWindingRule:NSEvenOddWindingRule];
-        if (_buttonType == MouseEnter) {
-            [COLOR_TEXT_BUTTON_PASSAFTER setFill];
-        } else if (_buttonType == MouseDown) {
-            [COLOR_TEXT_BUTTON_CELLCLICK setFill];
+        if (_buttonName) {
+            NSRect titleRect = [self calcuTextBounds:_buttonName fontSize:14.0];
+            NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+            NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[font, COLOR_TEXT_PASSAFTER] forKeys:@[NSFontAttributeName, NSForegroundColorAttributeName]];
+            NSRect drawRect = NSMakeRect(5,(dirtyRect.size.height - titleRect.size.height) / 2.0 - 1, titleRect.size.width, titleRect.size.height);
+            [_buttonName drawInRect:drawRect withAttributes:dic];
         }
-        [path fill];
-        [path closePath];
-    }
-    
-    if (_leftImage) {
-        [_leftImage drawInRect:NSMakeRect(5, (dirtyRect.size.height - 24) / 2.0, 24, 24) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-    }
-    
-    if (_buttonName) {
-        NSRect titleRect = [self calcuTextBounds:_buttonName fontSize:12.0];
-        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:12.0];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[font, COLOR_TEXT_ORDINARY] forKeys:@[NSFontAttributeName, NSForegroundColorAttributeName]];
-        NSRect drawRect = NSMakeRect(32,(dirtyRect.size.height - titleRect.size.height) / 2.0 - 1, titleRect.size.width, titleRect.size.height);
-        [_buttonName drawInRect:drawRect withAttributes:dic];
+    } else {
+        if (_buttonName) {
+            NSRect titleRect = [self calcuTextBounds:_buttonName fontSize:14.0];
+            NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+            NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[font, COLOR_TEXT_ORDINARY] forKeys:@[NSFontAttributeName, NSForegroundColorAttributeName]];
+            NSRect drawRect = NSMakeRect(5,(dirtyRect.size.height - titleRect.size.height) / 2.0 - 1, titleRect.size.width, titleRect.size.height);
+            [_buttonName drawInRect:drawRect withAttributes:dic];
+        }
     }
 }
 

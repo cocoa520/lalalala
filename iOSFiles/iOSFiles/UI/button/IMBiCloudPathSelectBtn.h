@@ -15,6 +15,6 @@
     BOOL _isHomePage;
     MouseStatusEnum _buttonType;
 }
-- (void)setButtonTitle:(NSString *)buttonName WithIsHomePage:(BOOL)isHomePage;
+@property (nonatomic, retain) NSString *buttonName;
 
 @end

@@ -23,11 +23,11 @@
 - (void)awakeFromNib {
     _titleLabel.stringValue = CustomLocalizedString(@"MainWindow_BigSize_Icloud_TitleString", nil);
     [_titleLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.0]];
-    [_titleLabel setTextColor:COLOR_MAINWINDOW_TITLE_TEXT];
+    [_titleLabel setTextColor:COLOR_TEXT_ORDINARY];
     
     [_messageLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_MessageString", nil)];
     [_messageLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
-    [_messageLabel setTextColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
+    [_messageLabel setTextColor:COLOR_TEXT_EXPLAIN];
     
     [_rememberMeLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_Rememberme", nil)];
     [_rememberMeLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];

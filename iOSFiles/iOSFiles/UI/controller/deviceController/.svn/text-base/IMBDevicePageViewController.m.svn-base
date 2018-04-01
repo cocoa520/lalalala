@@ -10,6 +10,9 @@
 #import "IMBDevicePageFolderModel.h"
 #import "IMBDrawOneImageBtn.h"
 #import "IMBDeviceAllDataViewController.h"
+#import "IMBiCloudPathSelectBtn.h"
+#import "IMBTagImageView.h"
+
 @interface IMBDevicePageViewController ()
 
 @end
@@ -27,6 +30,9 @@
 - (void)awakeFromNib {
     [self loadData];
     [super awakeFromNib];
+    _sonControllerDic = [[NSMutableDictionary alloc]init];
+    [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:_iPod.deviceInfo.deviceName];
+
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
     _gridView.itemSize = NSMakeSize(154, 154);
     _gridView.backgroundColor = [NSColor whiteColor];
@@ -34,15 +40,10 @@
     _gridView.allowsDragAndDrop = YES;
     _gridView.allowsMultipleSelection = YES;
     _gridView.allowsMultipleSelectionWithDrag = YES;
-    _gridView.allowClickMultipleSelection = YES;
+    _gridView.allowClickMultipleSelection = NO;
     [_gridView setIsFileManager:YES];
     [_gridView reloadData];
-    [_rootBox setContentView:_mainView];
-    
-    [_backButton setMouseEnteredImage:[StringHelper imageNamed:@"backup_retreat_enter"]  mouseExitImage:[StringHelper imageNamed:@"backup_retreat"] mouseDownImage:[StringHelper imageNamed:@"backup_retreat2"]  forBidImage:[StringHelper imageNamed:@"backup_retreat3"]];
-    [_backButton setIsDrawBorder:NO];
-    [_backButton setTarget:self];
-    [_backButton setAction:@selector(backAction:)];
+    [_contenBox setContentView:_mainView];
 }
 
 - (void)loadData {
@@ -80,17 +81,17 @@
     
     IMBDevicePageFolderModel *cameraRollModel = [[IMBDevicePageFolderModel alloc]init];
     cameraRollModel.name = CustomLocalizedString(@"MenuItem_id_10", nil);
-    cameraRollModel.image = [NSImage imageNamed:@"folder_icon_img"];
+    cameraRollModel.image = [NSImage imageNamed:@"folder_icon_camera"];
     cameraRollModel.nodesEnum = Category_CameraRoll;
     
     IMBDevicePageFolderModel *photoStreamModel = [[IMBDevicePageFolderModel alloc]init];
     photoStreamModel.name = CustomLocalizedString(@"MenuItem_id_11", nil);
-    photoStreamModel.image = [NSImage imageNamed:@"folder_icon_img"];
+    photoStreamModel.image = [NSImage imageNamed:@"folder_icon_screen"];
     photoStreamModel.nodesEnum = Category_PhotoStream;
     
     IMBDevicePageFolderModel *photoLibraryModel = [[IMBDevicePageFolderModel alloc]init];
     photoLibraryModel.name = CustomLocalizedString(@"MenuItem_id_12", nil);
-    photoLibraryModel.image = [NSImage imageNamed:@"folder_icon_img"];
+    photoLibraryModel.image = [NSImage imageNamed:@"folder_icon_library"];
     photoLibraryModel.nodesEnum = Category_PhotoLibrary;
     
     [devicePagePhoto.subPhotoArray addObject:cameraRollModel];
@@ -210,25 +211,87 @@
     IMBDevicePageFolderModel *fielEntity = [array objectAtIndex:index];
     _category = fielEntity.nodesEnum;
     if (_category == Category_Photos) {
+        [self configSelectPathButtonWithButtonTag:2 WithButtonTitle:[StringHelper getCategeryStr:_category]];
         _isSearch = YES;
         [_researchdataSourceArray addObjectsFromArray:fielEntity.subPhotoArray];
         [_gridView reloadData];
         return;
     }else {
-        _baseViewController = [[IMBDeviceAllDataViewController alloc] initWithCategoryNodesEnum:_category withiPod:_iPod WithDelegete:self];
+        IMBDeviceAllDataViewController *baseViewController = nil;
+        baseViewController = [_sonControllerDic objectForKey:[NSString stringWithFormat:@"%d",_category]];
+        if (!baseViewController) {
+            baseViewController = [[IMBDeviceAllDataViewController alloc] initWithCategoryNodesEnum:_category withiPod:_iPod WithDelegete:self];
+            [baseViewController loadToolBarView:_category WithDisplayMode:YES];
+            [_contenBox setContentView:baseViewController.view];
+            [_sonControllerDic setObject:baseViewController forKey:[NSString stringWithFormat:@"%d",_category]];
+        }else {
+            [_contenBox setContentView:baseViewController.view];
+        }
     }
-    [_baseViewController loadToolBarView:_category WithDisplayMode:YES];
-    [_rootBox setContentView:nil];
-    [_contenBox setContentView:_baseViewController.view];
+}
+
+#pragma mark - path button config
+- (void)configSelectPathButtonWithButtonTag:(int)buttonTag WithButtonTitle:(NSString *)buttonTitle {
+    NSString *fileName = buttonTitle;
+    if (fileName.length > 50) {
+        fileName = [[fileName substringWithRange:NSMakeRange(0, 50)] stringByAppendingString:@"..."];
+    }
+    NSRect textRect = [StringHelper calcuTextBounds:fileName fontSize:14.0];
+    int width = textRect.size.width + 10;
+    int height = textRect.size.height + 4;
+    
+    if (buttonTag == 1) {
+        if (_button1 != nil) {
+            [_button1 release];
+            _button1 = nil;
+        }
+        _button1 = [[IMBiCloudPathSelectBtn alloc] initWithFrame:NSMakeRect(20, (_topView.frame.size.height - height)/2 - 2, width, height)];
+        [_button1 setButtonName:fileName];
+        [_button1 setToolTip:buttonTitle];
+        [_button1 setTag:buttonTag];
+        [_button1 setTarget:self];
+        [_button1 setAction:@selector(backAction:)];
+        [_topView addSubview:_button1];
+        
+    } else {
+        if (_button2 != nil) {
+            [_button2 release];
+            _button2 = nil;
+        }
+        _button2 = [[IMBiCloudPathSelectBtn alloc] initWithFrame:NSMakeRect(20 + _button1.frame.size.width + 10, (_topView.frame.size.height - height)/2 - 2, width, height)];
+        [_button2 setButtonName:fileName];
+        [_button2 setEnabled:NO];
+        [_button2 setToolTip:buttonTitle];
+        [_button2 setTag:buttonTag];
+        [_button2 setTarget:self];
+        [_button2 setAction:@selector(backAction:)];
+        [_topView addSubview:_button2];
+        
+        if (_tagImageView != nil) {
+            [_tagImageView release];
+            _tagImageView = nil;
+        }
+        _tagImageView = [[IMBTagImageView alloc] initWithFrame:NSMakeRect(_button1.frame.origin.x + _button1.frame.size.width, (_topView.frame.size.height - 9)/2.0 - 3, 10, 9)];
+        [_tagImageView setImage:[NSImage imageNamed:@"addcontent_arrowright1"]];
+        [_tagImageView setViewTag:buttonTag];
+        [_topView addSubview:_tagImageView];
+    }
+    
 }
 
 #pragma - mark back Actions
 - (void)backAction:(id)sender {
-    _isSearch = NO;
-    [_researchdataSourceArray removeAllObjects];
+    int tag = (int)[(IMBiCloudPathSelectBtn *)sender tag];
+    if (tag == 1) {
+        if (_button2) {
+            [_button2 removeFromSuperview];
+            [_tagImageView removeFromSuperview];
+        }
+        _isSearch = NO;
+        [_researchdataSourceArray removeAllObjects];
+    }
     [_gridView reloadData];
-    [_rootBox setContentView:_mainView];
-    [_contenBox setContentView:nil];
+    [_contenBox setContentView:_mainView];
 }
 
 - (void)closeWindow:(id)sender {
@@ -239,16 +302,18 @@
 - (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
     _searhView = searchView;
     if (_category != Category_Photos) {
-        [_baseViewController doSearchBtn:searchStr withSearchBtn:searchView];
+        IMBDeviceAllDataViewController *baseViewController = nil;
+        baseViewController = [_sonControllerDic objectForKey:[NSString stringWithFormat:@"%d",_category]];
+        [baseViewController doSearchBtn:searchStr withSearchBtn:searchView];
     }
 }
 
 -(void)dealloc {
-    if (_baseViewController != nil) {
-        [_baseViewController release];
-        _baseViewController = nil;
-    }
     [super dealloc];
+    if (_sonControllerDic) {
+        [_sonControllerDic release];
+        _sonControllerDic = nil;
+    }
 }
 
 @end

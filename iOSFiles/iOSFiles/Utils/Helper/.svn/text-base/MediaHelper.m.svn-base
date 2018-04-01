@@ -318,7 +318,7 @@
         case Category_MyAlbums:
             _supportFile = @"*.png;*.jpg;*.gif;*.bmp;*.jpeg";
             break;
-        case Category_Music:
+        case Category_Media:
             if (ipod && [ipod.deviceInfo.productVersion isVersionMajorEqual:@"11"]) {
                 _supportFile =@"*.mp3;*.m4a;*.m4b;*.m4r;*.m4p;*.flac;*.wav";
             }else {
@@ -332,7 +332,7 @@
             break;
             
         case Category_MusicVideo:
-        case Category_HomeVideo:
+        case Category_Video:
             _supportFile = @"*.mp4;*.m4v;*.mov";
             break;
             

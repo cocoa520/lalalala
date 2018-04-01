@@ -23,7 +23,8 @@
         [_transferDelegate transferPrepareFileStart:@"Preparing file..."];
     }
     //先用递归算法算出文件的总的个数
-    [self caculateTotalFileCount:_exportTracks afcMedia:afcMedia];
+//    [self caculateTotalFileCount:_exportTracks afcMedia:afcMedia];
+    
     if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileEnd)]) {
         [_transferDelegate transferPrepareFileEnd];
     }
@@ -38,21 +39,34 @@
             [_condition wait];
         }
         [_condition unlock];
+    
         if (!_isStop) {
-            SimpleNode *node = [_exportTracks objectAtIndex:i];
+            DriveItem *node = [_exportTracks objectAtIndex:i];
+           
+            if (node.isStart) {
+                continue;
+            }
+            node.isStart = YES;
+            if (_currentDriveItem) {
+                [_currentDriveItem release];
+                _currentDriveItem = nil;
+            }
+            _currentDriveItem = [node retain];
+           _totalSize = _currentDriveItem.fileSize;
             NSString *destinationPath = [_exportPath stringByAppendingPathComponent:node.fileName];
-            if (node.container) {
+            if (node.isFolder) {
                 [_fileManager createDirectoryAtPath:destinationPath withIntermediateDirectories:YES attributes:nil error:nil];
-                NSArray *arr = [self getFirstContent:node.path afcMedia:afcMedia];
+                NSArray *arr = [self getFirstContent:node.oriPath afcMedia:afcMedia];
                 [self copyFileToMac:destinationPath withNodeArray:arr afcMedia:afcMedia];
+                _currentDriveItem.state = DownloadStateComplete;
             }else {
                 _currItemIndex++;
                 NSLog(@"_currItemIndex:%d  _totalItemCount:%d",_currItemIndex,_totalItemCount);
                 if ([_fileManager fileExistsAtPath:destinationPath]) {
                     destinationPath = [_exportPath stringByAppendingPathComponent:[StringHelper createDifferentfileName:node.fileName]];
                 }
-                if (![TempHelper stringIsNilOrEmpty:node.path]) {
-                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",[node.path lastPathComponent]];
+                if (![TempHelper stringIsNilOrEmpty:node.oriPath]) {
+                    NSString *msgStr = [NSString stringWithFormat:@"Copying %@...",[node.oriPath lastPathComponent]];
                     if ([_transferDelegate respondsToSelector:@selector(transferFile:)]) {
                         [_transferDelegate transferFile:msgStr];
                     }
@@ -61,20 +75,29 @@
 //                if ([_transferDelegate respondsToSelector:@selector(transferProgress:)]) {
 //                    [_transferDelegate transferProgress:progress];
 //                }
-                if ([afcMedia fileExistsAtPath:node.path]) {
-                    BOOL success = [self copyRemoteFile:node.path toLocalFile:destinationPath];
+                if ([afcMedia fileExistsAtPath:node.oriPath]) {
+                    BOOL success = [self copyRemoteFile:node.oriPath toLocalFile:destinationPath];
                     if (success) {
 //                        [_limitation reduceRedmainderCount];
                         _successCount ++;
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+                             _currentDriveItem.state = DownloadStateComplete;
+//                        });
+                       
                     }else
                     {
                         [[IMBTransferError singleton] addAnErrorWithErrorName:node.fileName WithErrorReson:@"Coping file failed."];
                         _failedCount ++;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            _currentDriveItem.state = DownloadStateError;
+                        });
+                        
                         continue;
                     }
                 }else {
                      [[IMBTransferError singleton] addAnErrorWithErrorName:node.fileName WithErrorReson:@"The file does not exist in your iPhone or your backups"];
                     _failedCount ++;
+                    _currentDriveItem.state = DownloadStateError;
                 }
             }
         }else {
@@ -150,13 +173,13 @@
 
 - (void)caculateTotalFileCount:(NSArray *)nodeArray afcMedia:(AFCMediaDirectory *)afcMedia
 {
-    for (SimpleNode *node in nodeArray) {
-        if (!node.container) {
+    for (DriveItem *node in nodeArray) {
+        if (!node.isFolder) {
             _totalItemCount ++;
-            _totalSize += node.itemSize;
+            _totalSize += node.fileSize;
         }else
         {
-            NSArray *arr = [self getFirstContent:node.path afcMedia:afcMedia];
+            NSArray *arr = [self getFirstContent:node.oriPath afcMedia:afcMedia];
             [self caculateTotalFileCount:arr afcMedia:afcMedia];
         }
     }

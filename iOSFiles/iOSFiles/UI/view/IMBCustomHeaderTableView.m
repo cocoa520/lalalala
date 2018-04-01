@@ -28,6 +28,7 @@
 @synthesize canSelect = _canSelect;
 @synthesize refresh = _refresh;
 @synthesize isNote = _isNote;
+@synthesize curEvent = _curEvent;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -243,6 +244,11 @@
     NSInteger clickCount = theEvent.clickCount;
     NSPoint point = [self convertPoint:theEvent.locationInWindow fromView:nil];
     int row = (int)[self rowAtPoint:point];
+    if (clickCount == 1) {
+        if ([_listener respondsToSelector:@selector(tableViewSingleClick:row:)]) {
+            [_listener tableViewSingleClick:self row:row];
+        }
+    }
     if ( row >=0 ) {
         NSRect rect = [self rectOfRow:row];
         _clickSpace = NO;
@@ -263,7 +269,6 @@
             [_listener tableView:self WithSelectIndexSet:nil];
         }
     }
-    
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
@@ -367,6 +372,18 @@
 
 - (void)clickHeadCheckButton:(id)sender {
     
+}
+//
+//- (void)textDidBeginEditing:(NSNotification *)notification {
+//    NSLog(@"textDidBeginEditing");
+//}
+//
+- (void)textDidEndEditing:(NSNotification *)notification {
+    [super textDidEndEditing:notification];
+    NSLog(@"textDidEndEditing");
+    if ([_listener respondsToSelector:@selector(tableView:textDidEndEditing:)]) {
+        [_listener tableView:self textDidEndEditing:notification];
+    }
 }
 
 - (void)dealloc {

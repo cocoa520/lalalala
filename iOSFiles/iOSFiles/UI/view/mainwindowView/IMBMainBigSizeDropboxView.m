@@ -21,15 +21,14 @@
 - (void)awakeFromNib {
     _titleLabel.stringValue = CustomLocalizedString(@"MainWindow_BigSize_Dropbox_TitleString", nil);
     [_titleLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.0]];
-    [_titleLabel setTextColor:COLOR_MAINWINDOW_TITLE_TEXT];
+    [_titleLabel setTextColor:COLOR_TEXT_ORDINARY];
     
     [_messageLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Dropbox_MessageString", nil)];
     [_messageLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
-    [_messageLabel setTextColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
+    [_messageLabel setTextColor:COLOR_TEXT_EXPLAIN];
     
     [_goNowBtn setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Dropbox_MessageString", nil)];
     [_goNowBtn setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
-//    [_goNowBtn setTextColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
 }
 
 @end

@@ -15,25 +15,17 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-    CGFloat blurRadius = 6.0f;
-    [IMBCommonTool setViewBgWithView:self color:COLOR_MAIN_WINDOW_VIEW_SHADOW delta:5.0 radius:blurRadius dirtyRect:dirtyRect];
-    
     //投影效果
-//    NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-//    [shadow setShadowColor:COLOR_ALERT_SHADOWCOLOR];
-//    [shadow setShadowOffset:NSMakeSize(0.0, -2.0)];
-//    [shadow setShadowBlurRadius:blurRadius];
-//    [shadow set];
+    NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
+    [shadow setShadowColor:COLOR_ALERT_SHADOWCOLOR];
+    [shadow setShadowOffset:NSMakeSize(0.0, -2.0)];
+    [shadow setShadowBlurRadius:4];
+    [shadow set];
     
-//    NSRect newRect = NSMakeRect(dirtyRect.origin.x+5, dirtyRect.origin.y+5, self.frame.size.width-10, self.frame.size.height -10);
-//    NSBezierPath *text = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:5 yRadius:5];
-//    [text fill];
-//    [[NSColor clearColor] setStroke];
-//    [text addClip];
-//    [COLOR_MAIN_WINDOW_VIEW_SHADOW setStroke];
-//    [text stroke];
+    NSRect newRect = NSMakeRect(dirtyRect.origin.x+5, dirtyRect.origin.y+5, self.frame.size.width-10, self.frame.size.height -5);
+    NSBezierPath *text = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:5 yRadius:5];
+    [IMBGrayColor(255) setFill];
+    [text fill];
 }
 
 

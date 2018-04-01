@@ -296,7 +296,7 @@
     
        }
     }
-    NSImage *coverImage = [NSImage imageNamed:@"ibook_bookback"];
+    NSImage *coverImage = [NSImage imageNamed:@"cnt_fileicon_books"];
     for (IMBBookEntity *book in bookArray) {
         
         book.coverImage = coverImage;

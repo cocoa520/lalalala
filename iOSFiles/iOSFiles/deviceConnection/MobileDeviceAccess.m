@@ -22,6 +22,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "IMBNotificationDefine.h"
 #import <Cocoa/Cocoa.h>
+#import "IMBHelper.h"
+
 #pragma mark MobileDevice.framework internals
 // opaque structures
 typedef struct _afc_directory			*afc_directory;
@@ -3210,8 +3212,11 @@ static void AMNotificationProxy_callback(CFStringRef notification, void* data)
 	if (reply) {
 		NSData *pngdata = [reply objectForKey:@"pngData"];
 		if (pngdata) {
-			return [[[NSImage alloc] initWithData:pngdata] autorelease];
-		}
+            NSImage *sourceImage = [[NSImage alloc] initWithData:pngdata];
+            NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
+            [sourceImage release];
+			return [[[NSImage alloc] initWithData:imageData] autorelease];
+        } 
 	}
 	return nil;
 }

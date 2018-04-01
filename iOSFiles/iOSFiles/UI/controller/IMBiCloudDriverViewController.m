@@ -20,6 +20,7 @@
 #import "IMBAnimation.h"
 #import "IMBTranferViewController.h"
 #import "IMBAlertViewController.h"
+#import "IMBiCloudDriveManager.h"
 
 @interface IMBiCloudDriverViewController ()
 
@@ -65,6 +66,10 @@
         [_toolBarArr release];
         _toolBarArr = nil;
     }
+    if (_editTextField) {
+        [_editTextField release];
+        _editTextField = nil;
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     [super dealloc];
 }
@@ -79,8 +84,10 @@
     _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(0),@(24),@(12), nil];
     [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
     
-    [_leftContentView setFrame:NSMakeRect(0, 0, 1096, 545)];
-    [_rightContentView setFrame:NSMakeRect(1096, 0, 282, 545)];
+    [_rightContentView setWantsLayer:YES];
+    [_leftContentView setWantsLayer:YES];
+    [_leftContentView setFrame:NSMakeRect(0, 0, 1096, 548)];
+    [_rightContentView setFrame:NSMakeRect(1096, 0, 282, 548)];
     
     _oldWidthDic = [[NSMutableDictionary alloc] init];
     _oldDocwsidDic = [[NSMutableDictionary alloc] init];
@@ -124,6 +131,8 @@
     } else {
         [_contentBox setContentView:_nodataView];
     }
+    
+    _editTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 306, 40)];
 }
 
 - (void)configNoDataView {
@@ -146,11 +155,11 @@
 #pragma mark - path button config
 - (void)configSelectPathButtonWithButtonTag:(int)buttonTag WithButtonTitle:(NSString *)buttonTitle {
     NSString *fileName = buttonTitle;
-    if (fileName.length > 10) {
-        fileName = [[fileName substringWithRange:NSMakeRange(0, 9)] stringByAppendingString:@"..."];
+    if (fileName.length > 15) {
+        fileName = [[fileName substringWithRange:NSMakeRange(0, 13)] stringByAppendingString:@"..."];
     }
-    NSRect textRect = [StringHelper calcuTextBounds:fileName fontSize:12.0];
-    int width = textRect.size.width + 24 + 5 + 6 + 5;
+    NSRect textRect = [StringHelper calcuTextBounds:fileName fontSize:14.0];
+    int width = textRect.size.width + 10;
     [_oldWidthDic setObject:[NSString stringWithFormat:@"%d",width] forKey:[NSString stringWithFormat:@"%d",buttonTag]];
     int height = textRect.size.height + 4;
     int oldWidth = 0;
@@ -161,25 +170,24 @@
     }
     
     IMBiCloudPathSelectBtn *button = [[IMBiCloudPathSelectBtn alloc] initWithFrame:NSMakeRect(20 + (buttonTag - 1)*10 + oldWidth, (_topView.frame.size.height - height)/2 - 2, width, height)];
-    if (buttonTag == 1) {
-        [button setButtonTitle:fileName WithIsHomePage:YES];
-    } else {
-        [button setButtonTitle:fileName WithIsHomePage:NO];
-    }
+
+    [button setButtonName:fileName];
     [button setToolTip:buttonTitle];
     [button setTag:buttonTag];
     [button setTarget:self];
     [button setAction:@selector(iCloudButtonClick:)];
     [_topView addSubview:button];
-    
-    IMBTagImageView *arrowImageView = [[IMBTagImageView alloc] initWithFrame:NSMakeRect(button.frame.origin.x + button.frame.size.width, (_topView.frame.size.height - 9)/2.0 - 3, 10, 9)];
-    [arrowImageView setImage:[NSImage imageNamed:@"addcontent_arrowright1"]];
-    [arrowImageView setViewTag:buttonTag];
-    [_topView addSubview:arrowImageView];
+    if (buttonTag - 1) {
+        IMBTagImageView *arrowImageView = [[IMBTagImageView alloc] initWithFrame:NSMakeRect(button.frame.origin.x - 10, (_topView.frame.size.height - 9)/2.0 - 3, 10, 9)];
+        [arrowImageView setImage:[NSImage imageNamed:@"addcontent_arrowright1"]];
+        [arrowImageView setViewTag:buttonTag];
+        [_topView addSubview:arrowImageView];
+        [arrowImageView release];
+        arrowImageView = nil;
+    }
     [button release];
     button = nil;
-    [arrowImageView release];
-    arrowImageView = nil;
+    
 }
 
 - (void)iCloudButtonClick:(id)sender {
@@ -316,25 +324,34 @@
         NSArray *selectArr = [_gridView keyedVisibleItems];
         NSDictionary *dic = nil;
         NSString *newName = @"";
+        CNGridViewItem *curItem = nil;
         for (CNGridViewItem *item in selectArr) {
             if (item.isEdit) {
-                if (![StringHelper stringIsNilOrEmpty:item.editText.stringValue]) {
-                    _curEntity.fileName = item.editText.stringValue;
-                    if (_curEntity.extension && !_curEntity.isFolder){
-                        newName = [[_curEntity.fileName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
-                    }else {
-                        newName = _curEntity.fileName;
-                    }
-                }
+                curItem = item;
                 break;
             }
         }
-        if (_curEntity.isCreate) {
-            [_driveBaseManage createFolder:newName parent:_currentDevicePath];
-        } else {
-            dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
-            if (dic != nil) {
-                [_driveBaseManage reNameWithDic:dic];
+        if (curItem) {
+            if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] && ![curItem.editText.stringValue isEqualToString:_curEntity.fileName]) {
+                _curEntity.fileName = curItem.editText.stringValue;
+                if (_curEntity.extension && !_curEntity.isFolder){
+                    newName = [[_curEntity.fileName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
+                }else {
+                    newName = _curEntity.fileName;
+                }
+                if (_curEntity.isCreate) {
+                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                } else {
+                    dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+                    if (dic != nil) {
+                        [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                    }
+                }
+            }else {
+                if (_curEntity.isCreate) {
+                    _curEntity.fileName = curItem.editText.stringValue;
+                    [_driveBaseManage createFolder:_curEntity.fileName parent:_currentDevicePath];
+                }
             }
         }
         _curEntity.isEditing = NO;
@@ -368,7 +385,7 @@
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
     if ((int)index >= 0 && index < _dataSourceArray.count) {
         IMBDriveEntity *driveEntity = [_dataSourceArray objectAtIndex:index];
-        if (driveEntity.isFolder && !driveEntity.isEdit) {
+        if (driveEntity.isFolder/*&& !driveEntity.isEdit*/) {
             [_contentBox setContentView:_loadingView];
             [_loadAnimationView startAnimation];
             _doubleclickCount ++;
@@ -434,8 +451,6 @@
     }
 }
 
-
-
 #pragma mark - NSTableViewDataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     if (_isSearch) {
@@ -470,6 +485,8 @@
         }else {
             return @"--";
         }
+    }else if ([@"FileName" isEqualToString:tableColumn.identifier]){
+        return fileEntity.fileName;
     }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
         if ([StringHelper stringIsNilOrEmpty:fileEntity.lastModifiedDateString]) {
             return @"--";
@@ -495,13 +512,19 @@
         IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
         [curCell setImageSize:NSMakeSize(24, 24)];
         curCell.image = fileEntity.image;
-        curCell.imageText = fileEntity.fileName;
+        curCell.imageText = @"";//fileEntity.fileName;
         [curCell setIsDataImage:YES];
         curCell.marginX = 12;
     }
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSLog(@"shouldEditTableColumn");
+    if (!_curEntity.isEdit) {
+        _curEntity.isEdit = YES;
+        _curEntity.isEditing = NO;
+        [_toolBarButtonView toolBarButtonIsEnabled:NO];
+    }
     return YES;
 }
 
@@ -510,6 +533,7 @@
 }
 
 - (void)tableView:(NSTableView *)tableView WithSelectIndexSet:(NSIndexSet *)indexSet {
+    NSLog(@"WithSelectIndexSet");
     NSMutableArray *disPalyAry = nil;
     if (_isSearch) {
         disPalyAry = _researchdataSourceArray;
@@ -519,6 +543,9 @@
     if (disPalyAry.count <=0) {
         return;
     }
+    
+//    [self executeRenameOrCreate];
+    
     NSArray *dataArr = nil;
     if (indexSet.count > 0) {
         dataArr = [disPalyAry objectsAtIndexes:indexSet];
@@ -555,8 +582,51 @@
     [self gridView:_gridView didDoubleClickItemAtIndex:index inSection:0];
 }
 
+- (void)tableViewSingleClick:(NSTableView *)tableView row:(NSInteger)index {
+    [self executeRenameOrCreate];
+}
+
+- (void)tableView:(NSTableView *)tableView textDidEndEditing:(NSNotification *)notification {
+    if (_curEntity) {
+        _curEntity.isEditing = NO;
+        _curEntity.isEdit = NO;
+        _curEntity.isCreate = NO;
+    }
+    [_toolBarButtonView toolBarButtonIsEnabled:YES];
+}
+
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSLog(@"setObjectValue");
+    if (_dataSourceArray.count > row) {
+        IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:row];
+        if (entity.isEdit) {
+            NSString *newName = (NSString *)object;
+            entity.fileName = newName;
+            if (entity.extension && !entity.isFolder){
+                newName = [[newName stringByAppendingString:@"."] stringByAppendingString:entity.extension];
+            }
+            if (entity.isCreate) {
+                [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+            } else {
+                NSDictionary *dic = @{@"drivewsid":entity.fileID,@"etag":entity.etag,@"name":newName};
+                if (dic != nil) {
+                    [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                }
+            }
+            entity.isEditing = NO;
+            entity.isEdit = NO;
+            entity.isCreate = NO;
+            [_toolBarButtonView toolBarButtonIsEnabled:YES];
+            [_itemTableView reloadData];
+        }
+    }
+}
+
 //排序
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
+    //在重命名或者创建文件夹时，点击排序执行相应操作
+    [self executeRenameOrCreate];
+    
     id cell = [tableColumn headerCell];
     NSString *identify = [tableColumn identifier];
     NSArray *array = [tableView tableColumns];
@@ -581,7 +651,7 @@
         
     }
     
-    if ([@"ImageText" isEqualToString:identify] || [@"Formats" isEqualToString:identify] || [@"LastTime" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
+    if ([@"FileName" isEqualToString:identify] || [@"Formats" isEqualToString:identify] || [@"LastTime" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
         if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
             IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
             if (customHeaderCell.ascending) {
@@ -596,7 +666,7 @@
 }
 
 - (void)sort:(BOOL)isAscending key:(NSString *)key dataSource:(NSMutableArray *)array {
-    if ([key isEqualToString:@"ImageText"]) {
+    if ([key isEqualToString:@"FileName"]) {
         key = @"fileName";
     } else if ([key isEqualToString:@"Formats"]) {
         key = @"extension";
@@ -732,15 +802,13 @@
 }
 
 - (void)showFileDetailViewWithEntity:(IMBDriveEntity *)entity {
-    [_rightContentView setWantsLayer:YES];
-    [_leftContentView setWantsLayer:YES];
     [_rightContentView.layer removeAllAnimations];
     [_leftContentView.layer removeAllAnimations];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         
-        NSRect rect= NSMakeRect(814, 0, 282, 545);
-        NSRect rect2 = NSMakeRect(0, 0, 814, 545);
+        NSRect rect= NSMakeRect(814, 0, 282, 544);
+        NSRect rect2 = NSMakeRect(0, 0, 814, 544);
         [context setDuration:0.3];
         [[_rightContentView animator] setFrame:rect];
         [[_leftContentView animator] setFrame:rect2];
@@ -756,8 +824,8 @@
         [_leftContentView.layer removeAllAnimations];
         
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            NSRect rect = NSMakeRect(1096, 0, 282,545);
-            NSRect rect2 = NSMakeRect(0, 0, 1096, 545);
+            NSRect rect = NSMakeRect(1096, 0, 282,544);
+            NSRect rect2 = NSMakeRect(0, 0, 1096, 544);
             [context setDuration:0.3];
             [[_rightContentView animator] setFrame:rect];
             [[_leftContentView animator] setFrame:rect2];
@@ -943,7 +1011,7 @@
         
         _currentSelectView = 0;
         [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
-        [_itemTableView reloadData];
+//        [_itemTableView reloadData];
     }else if (segBtn.switchBtnState == 0) {
         [_gridView reloadData];
         _currentSelectView = 1;
@@ -1007,25 +1075,29 @@
 
 - (void)rename:(id)sender {
     NSIndexSet *selectedSet = [self selectedItems];
-    NSMutableArray *preparedArray = [NSMutableArray array];
-    NSArray *displayArr = nil;
-    if (_isSearch) {
-        displayArr = _researchdataSourceArray;
-    }else {
-        displayArr = _dataSourceArray;
-    }
-    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [preparedArray addObject:[displayArr objectAtIndex:idx]];
-    }];
-    if (preparedArray.count > 1) {
+    if (selectedSet.count > 1) {
         [self showAlertText:CustomLocalizedString(@"System_id_1", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
         return;
     }
-    _curEntity.isEdit = YES;
-    _curEntity.isEditing = NO;
-    [_gridView reloadData];
-    [_toolBarButtonView toolBarButtonIsEnabled:NO];
     
+    if (_currentSelectView == 1) {
+        _curEntity.isEdit = YES;
+        _curEntity.isEditing = NO;
+        [_gridView reloadData];
+    }else {
+        _isTableViewEdit = YES;
+        NSUInteger row = [_itemTableView selectedRow];
+        [_editTextField setFont:[NSFont fontWithName:@"Helvetica Neue" size:12]];
+        [_editTextField setFocusRingType:NSFocusRingTypeDefault];
+        [_editTextField setStringValue:_curEntity.fileName];
+        [_editTextField setEditable:YES];
+        [_editTextField setSelectable:YES];
+        
+        [_editTextField setFrameOrigin:NSMakePoint(44, row*40)];
+        [_itemTableView addSubview:_editTextField];
+        [_editTextField becomeFirstResponder];
+    }
+    [_toolBarButtonView toolBarButtonIsEnabled:NO];
 }
 
 - (void)createNewFloder:(id)sender {
@@ -1042,10 +1114,58 @@
         newEntity.checkState = Check;
         _curEntity = newEntity;
         [_dataSourceArray insertObject:newEntity atIndex:0];
-        [_gridView reloadData];
+        if (_currentSelectView == 1) {
+            [_gridView reloadData];
+        }else {
+            [_itemTableView reloadData];
+            NSMutableIndexSet *set = [NSMutableIndexSet indexSetWithIndex:0];
+            [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+            
+            _isTableViewEdit = YES;
+            [_editTextField setFont:[NSFont fontWithName:@"Helvetica Neue" size:12]];
+            [_editTextField setFocusRingType:NSFocusRingTypeDefault];
+            [_editTextField setStringValue:_curEntity.fileName];
+            [_editTextField setEditable:YES];
+            [_editTextField setSelectable:YES];
+
+            [_editTextField setFrameOrigin:NSMakePoint(44, 0)];
+            [_itemTableView addSubview:_editTextField];
+            [_editTextField becomeFirstResponder];
+        }
         [_toolBarButtonView toolBarButtonIsEnabled:NO];
         [newEntity release];
         newEntity = nil;
+    }
+}
+
+- (void)executeRenameOrCreate {
+    [_editTextField removeFromSuperview];
+    if (_isTableViewEdit) {
+        _isTableViewEdit = NO;
+        if (_curEntity) {
+            NSString *newName = _editTextField.stringValue;
+            if (![StringHelper stringIsNilOrEmpty:newName] && ![_curEntity.fileName isEqualToString:newName]) {
+                _curEntity.fileName = newName;
+                if (_curEntity.extension && !_curEntity.isFolder){
+                    newName = [[newName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
+                }
+                if (_curEntity.isCreate) {
+                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                } else {
+                    NSDictionary *dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+                    if (dic != nil) {
+                        [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                    }
+                }
+            }else {
+                if (_curEntity.isCreate) {
+                    _curEntity.fileName = newName;
+                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                }
+            }
+            _curEntity.isCreate = NO;
+            [_toolBarButtonView toolBarButtonIsEnabled:YES];
+        }
     }
 }
 

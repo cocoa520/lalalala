@@ -1,7 +1,7 @@
 10
 
 dir
-2175
+2207
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/checkbox
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ shuaimingzhong
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-sel_non.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-7bf918ae1e51024eebe22bd834d14b05
-2018-03-14T09:53:48.139321Z
-1656
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1103
 
 sel_all2.png
 file
@@ -93,6 +59,40 @@ has-props
 
 
 1169
+
+sel_non.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+7bf918ae1e51024eebe22bd834d14b05
+2018-03-14T09:53:48.139321Z
+1656
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1103
 
 list_arrow@2x.png
 file
@@ -162,14 +162,14 @@ has-props
 
 1304
 
-sel_non@2x.png
+checkbox1.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-77c5f8f516cfb16c2bb4ce64f53d8638
+9a3425d3c24d4d335b2543b30838e39e
 2018-03-14T09:53:48.139321Z
 1656
 hezhonglin
@@ -194,41 +194,7 @@ has-props
 
 
 
-1280
-
-sel_all2@2x.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-1b54e2686aa0352ecbfedcbf8f1771e1
-2018-03-14T09:53:48.139321Z
-1656
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1392
+1128
 
 list_arrow2.png
 file
@@ -264,14 +230,14 @@ has-props
 
 1032
 
-checkbox1.png
+sel_all2@2x.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-9a3425d3c24d4d335b2543b30838e39e
+1b54e2686aa0352ecbfedcbf8f1771e1
 2018-03-14T09:53:48.139321Z
 1656
 hezhonglin
@@ -296,16 +262,16 @@ has-props
 
 
 
-1128
+1392
 
-checkbox2.png
+sel_non@2x.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-c6107cdcba34dcf79be6c62f1daa3b32
+77c5f8f516cfb16c2bb4ce64f53d8638
 2018-03-14T09:53:48.139321Z
 1656
 hezhonglin
@@ -330,7 +296,7 @@ has-props
 
 
 
-1249
+1280
 
 preferBtn1.png
 file
@@ -366,14 +332,14 @@ has-props
 
 1252
 
-sel_sem2.png
+checkbox2.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-375e589c8056a6697b2c9fabbfa4d5b5
+c6107cdcba34dcf79be6c62f1daa3b32
 2018-03-14T09:53:48.139321Z
 1656
 hezhonglin
@@ -398,7 +364,41 @@ has-props
 
 
 
-1107
+1249
+
+preferBtn2.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+1961dfbe4752a0c458061e2dc2de99ba
+2018-03-14T09:53:48.139321Z
+1656
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1382
 
 checkbox3.png
 file
@@ -434,14 +434,14 @@ has-props
 
 1146
 
-preferBtn2.png
+sel_sem2.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-1961dfbe4752a0c458061e2dc2de99ba
+375e589c8056a6697b2c9fabbfa4d5b5
 2018-03-14T09:53:48.139321Z
 1656
 hezhonglin
@@ -466,7 +466,7 @@ has-props
 
 
 
-1382
+1107
 
 sel_all.png
 file

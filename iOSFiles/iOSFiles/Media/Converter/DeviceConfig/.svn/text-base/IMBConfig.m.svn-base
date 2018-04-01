@@ -155,11 +155,8 @@
     [cvtConfigDic setObject:[self convertFormatEnumToString:converFormat] forKey:@"MediaFormat"];
     [cvtConfigDic setObject:[NSNumber numberWithBool:autoSize] forKey:@"AutoSize"];
     [cvtConfigDic setObject:[self convertFormatEnumToString:audioFormat] forKey:@"AudioFormat"];
-    if (qt == CvtMediaQuality_HighQuality) {
-        [cvtConfigDic setObject:@"HighQuality" forKey:@"Quality"];
-    } else {
-        [cvtConfigDic setObject:@"LowQuality" forKey:@"Quality"];
-    }
+    [cvtConfigDic setObject:@"HighQuality" forKey:@"Quality"];
+  
     NSMutableDictionary *plistDic = [[NSMutableDictionary alloc] init];
     [plistDic setObject:cvtConfigDic forKey:@"iMobieConvertConfig"];
     if (_ipod != nil) {

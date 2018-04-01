@@ -23,7 +23,7 @@
     
     [self addTrackingRect:self.bounds owner:self userData:nil assumeInside:NO];
     
-    [self setTitleAttrWithTitleColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
+    [self setTitleAttrWithTitleColor:COLOR_TEXT_EXPLAIN];
 }
 
 #pragma mark - mouseEnvent
@@ -32,7 +32,7 @@
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
-    [self setTitleAttrWithTitleColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
+    [self setTitleAttrWithTitleColor:COLOR_TEXT_EXPLAIN];
     
 }
 - (void)mouseDown:(NSEvent *)theEvent {
@@ -40,7 +40,6 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-//    [self setTitleAttrWithTitleColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
     [NSApp sendAction:self.action to:self.target from:self];
 }
 

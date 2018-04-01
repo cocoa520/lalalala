@@ -105,7 +105,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAINWINDOW_TITLE_TEXT titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
 
         _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate withChooseLoginModelEnum:_chooseModelEnum];
         [_rootBox setContentView:_baseViewController.view];
@@ -117,7 +117,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
             }
         }
         
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
         _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate withChooseLoginModelEnum:_chooseModelEnum];
         [_rootBox setContentView:_baseViewController.view];
     }else if (_chooseModelEnum == DeviceLogEnum) {
@@ -126,7 +126,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT titleSize:kSelectedBtnfontSize leftIcon:@"device_icon_iPhone_selected" rightIcon:@"popup_icon_arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_icon_iPhone_selected" rightIcon:@"popup_icon_arrow"];
         _baseViewController = [[IMBDevicePageViewController alloc]initWithiPod:_iPod withDelegate:_delegate];
         [_rootBox setContentView:_baseViewController.view];
     }
@@ -444,6 +444,15 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
         [tranferView.view setWantsLayer:YES];
         
         [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8/*延迟执行时间*/ * NSEC_PER_SEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            
+            [view setHidden:YES];
+            [view.layer removeAllAnimations];
+            [tranferView.view removeFromSuperview];
+            [tranferView.view.layer removeAllAnimations];
+            [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
+        });
     }
 }
 

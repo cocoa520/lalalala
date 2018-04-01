@@ -15,6 +15,8 @@
 #import "IMBDeviceInfo.h"
 #import "TempHelper.h"
 #import "DriveItem.h"
+#import "IMBHelper.h"
+
 @implementation IMBApplicationManager
 static int fileCount = 0;
 @synthesize appEntityArray = _appEntityArray;
@@ -752,16 +754,19 @@ static int fileCount = 0;
     }
     
 
-    /*NSString *appIconPath = [self getAppIconPath:amApp.bundleid];
+    NSString *appIconPath = [self getAppIconPath:amApp.bundleid];
     NSFileManager *fm = [NSFileManager defaultManager];
     if ([fm fileExistsAtPath:appIconPath]) {
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:appIconPath];
-        appInfo.appIconImage = image;
+        NSData *imageData = [IMBHelper createThumbnail:image withWidth:80 withHeight:60];
+        NSImage *iconImage = [[NSImage alloc] initWithData:imageData];
+        appInfo.appIconImage = iconImage;
         [image release];
+        [iconImage release];
     } else {
-        appInfo.appIconImage = [StringHelper imageNamed:@"NSApplicationIcon"];
+        appInfo.appIconImage = [StringHelper imageNamed:@"folder_icon_app"];
 
-    }*/
+    }
     
     NSDictionary *appDic = nil;
     NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {

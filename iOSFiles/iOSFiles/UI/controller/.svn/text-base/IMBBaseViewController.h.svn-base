@@ -31,6 +31,7 @@
 #import "LoadingView.h"
 #import "IMBAlertViewController.h"
 #import "IMBSortPopoverViewController.h"
+#import "DateHelper.h"
 
 @class IMBSearchView;
 @class IMBBaseViewController;

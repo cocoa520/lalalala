@@ -77,24 +77,53 @@ static int fileCount = 0;
         node.parentPath = path;
         NSDictionary *fileDic = [afcMedia getFileInfo:filePath];
         NSString *fileType = [fileDic objectForKey:@"st_ifmt"];
-        NSDate *createDate = [fileDic objectForKey:@"st_mtime"];
+        NSDate *createDate = [fileDic objectForKey:@"st_birthtime"];
+        int64_t fileSize = (int)[fileDic objectForKey:@"st_size"];
+        NSDate *lastDate = [fileDic objectForKey:@"st_mtime"];
+        node.itemSize = fileSize;
+        NSString *extension = [node.path pathExtension];
+        if (![StringHelper stringIsNilOrEmpty:extension]) {
+            extension = [extension lowercaseString];
+        }
+        node.extension = extension;
         node.creatDate = [DateHelper stringFromFomate:createDate formate:@"yyyy-MM-dd HH:mm"];
+        node.lastDate = [DateHelper stringFromFomate:lastDate formate:@"yyyy-MM-dd HH:mm"];
         if ([fileType isEqualToString:@"S_IFDIR"]) {
             node.container = YES;
-            OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-            NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-            [picture setSize:_folderIconSize];
-           node.image = picture;
-        }else
-        {
+            NSImage *picture = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+            node.image = picture;
+            node.extension = @"Folder";
+        }else {
             node.container = NO;
             node.itemSize = [[fileDic objectForKey:@"st_size"] longLongValue];
-            NSString *extension = [node.path pathExtension];
-            NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-            NSImage *icon = [workSpace iconForFileType:extension];
-            [icon setSize:_fileIconSize];
-            node.image = icon;
-            [workSpace release];
+            FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
+            NSImage *image;
+            if (type == ImageFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_img"];
+            } else if (type == MusicFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_music"];
+            } else if (type == MovieFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_video"];
+            } else if (type == TxtFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+            } else if (type == DocFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+            } else if (type == BookFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_books"];
+            } else if (type == PPtFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+            } else if (type == ZIPFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+            } else if (type == dmgFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+            } else if (type == contactFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+            } else if (type == excelFile) {
+                image = [NSImage imageNamed:@"cnt_fileicon_excel"];
+            } else {
+                image = [NSImage imageNamed:@"cnt_fileicon_common"];
+            }
+            node.image = image;
         }
         [nodeArray addObject:node];
         [node release];

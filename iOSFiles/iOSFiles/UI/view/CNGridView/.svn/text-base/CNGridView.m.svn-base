@@ -239,6 +239,37 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
     //drop
     [self registerForDraggedTypes];
     
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSLeftMouseDownMask | NSRightMouseDownMask | NSMouseMovedMask | NSLeftMouseDraggedMask | NSRightMouseDraggedMask | NSLeftMouseUpMask
+                                          handler:^NSEvent*(NSEvent* event) {
+                                              switch (event.type) {
+                                                  case NSLeftMouseDown:
+                                                      break;
+                                                  case NSLeftMouseUp:
+                                                      if (_isMouseDrag) {
+                                                          [self mouseUp:event];
+                                                      }
+                                                      break;
+                                                  case NSRightMouseDown:
+                                                      break;
+                                                  case NSMouseMoved:
+                                                      break;
+                                                  case NSLeftMouseDragged:
+                                                      if (_isMouseDrag) {
+                                                          [self mouseDragged:event];
+                                                      }
+
+                                                      break;
+                                                  case NSRightMouseDragged:
+
+                                                      break;
+                                                  default:
+                                                      break;
+                                              }
+                                              //返回事件，让事件继续传递
+                                              return event;
+                                          }];
+    _isMouseDrag = NO;
+    
 
 }
 

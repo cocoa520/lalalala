@@ -63,10 +63,10 @@ static id _instance = nil;
     
     [_topBottomLine setBackgroundColor:COLOR_TEXT_LINE];
     [_bottomLineView setBorderColor:COLOR_TEXT_LINE];
-    [_topLeftLine setBackgroundColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT];
+    [_topLeftLine setBackgroundColor:COLOR_TEXT_PRIORITY];
     [_completeBottomViewTopLine setBackgroundColor:COLOR_TEXT_LINE];
     [_topLeftLine setHidden:YES];
-    [_topRightLine setBackgroundColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT];
+    [_topRightLine setBackgroundColor:COLOR_TEXT_PRIORITY];
     if (_downLoadViewController&&![_downLoadViewController.view superview]) {
         [_boxView setContentView:_downLoadViewController.view];
     }else {
@@ -240,7 +240,7 @@ static id _instance = nil;
     }
 }
 
-- (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath{
+- (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{
     if (isDown) {
         if (!_downLoadViewController) {
             _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
@@ -248,57 +248,23 @@ static id _instance = nil;
             [_boxView setContentView:_downLoadViewController.view];
             //                [_downLoadViewController setDeviceManager:_driveBaseManage];
         }
-        [_downLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath];
+        [_downLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
     }else {
         if (!_upLoadViewController) {
             _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
             [_upLoadViewController setDelagete:self];
             [_boxView setContentView:_upLoadViewController.view];
         }
-        [_upLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath];
+        [_upLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
     }
 }
 
-
-- (void)loadDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withSelectedAry:(NSMutableArray *)selectedAry withIsDownItem:(BOOL)isDownItem withiPod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum withIsiCloudDrive:(BOOL)isiCloudDrive{
-        _driveBaseManage = [driveBaseManage retain];
-        if (isDownItem) {
-            if (!_downLoadViewController) {
-                _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-                [_boxView setContentView:_downLoadViewController.view];
-                [_downLoadViewController setDelagete:self];
-//                [_downLoadViewController setDeviceManager:_driveBaseManage];
-            }
-            if (isiCloudDrive) {
-                [_downLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:nil withIsiCloudDrive:YES];
-            }else if (ipod){
-                [_downLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:ipod withIsiCloudDrive:NO];
-                [_downLoadViewController setExportPath:_deviceExportPath];
-            }else {
-                [_downLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:nil withIsiCloudDrive:NO];
-            }
-        }else{
-            if (!_upLoadViewController) {
-                _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-                [_upLoadViewController setDelagete:self];
-                [_boxView setContentView:_upLoadViewController.view];
-                [_upLoadViewController setDeviceManager:_driveBaseManage];
-            }
-            if (isiCloudDrive) {
-                [_upLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:nil withIsiCloudDrive:YES];
-            }else if (ipod){
-                [_upLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:ipod withIsiCloudDrive:NO];
-            }else {
-                [_upLoadViewController addDataSource:selectedAry withIsDown:isDownItem withCategoryNodesEnum:categoryNodesEnum withipod:nil withIsiCloudDrive:NO];
-            }
-        }
-}
 
 #pragma mark - operation action
 
 - (IBAction)upLoadBtn:(id)sender {
     _isDownLoadView = NO;
-    [_topLeftLine setBackgroundColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT];
+    [_topLeftLine setBackgroundColor:COLOR_TEXT_PRIORITY];
     [_topRightLine setHidden:YES];
     [_topLeftLine setHidden:NO];
     
@@ -312,7 +278,7 @@ static id _instance = nil;
 
 - (IBAction)downLoadBtn:(id)sender {
     _isDownLoadView = YES;
-    [_topRightLine setBackgroundColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT];
+    [_topRightLine setBackgroundColor:COLOR_TEXT_PRIORITY];
     [_topLeftLine setHidden:YES];
     [_topRightLine setHidden:NO];
     if (!_downLoadViewController) {

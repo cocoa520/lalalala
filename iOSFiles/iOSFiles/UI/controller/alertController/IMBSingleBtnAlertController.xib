@@ -22,6 +22,16 @@
                     <rect key="frame" x="20" y="74" width="46" height="46"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="alert_icon" id="LdE-IR-1Cp"/>
                 </imageView>
+                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-cW-n84" customClass="IMBMyDrawCommonly">
+                    <rect key="frame" x="293" y="20" width="80" height="22"/>
+                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="87FCEC75-ED9A-45BF-AB6C-F945E56A4406" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0pT-3D-Mly">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="singleBtnViewOKClicked:" target="-2" id="EPL-0J-KdM"/>
+                    </connections>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6z-ug-QDK">
                     <rect key="frame" x="86" y="36" width="294" height="84"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Do you really want to delete the selec-ted files?" id="WHR-f1-lfP">
@@ -30,22 +40,12 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-cW-n84" customClass="IMBGeneralButton">
-                    <rect key="frame" x="293" y="20" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="42E6C214-6246-4DE4-A12A-6761F8079ACD" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0pT-3D-Mly">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="12" name="HelveticaNeue"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="singleBtnViewOKClicked:" target="-2" id="EPL-0J-KdM"/>
-                    </connections>
-                </button>
             </subviews>
             <point key="canvasLocation" x="-334" y="-409"/>
         </customView>
     </objects>
     <resources>
-        <image name="42E6C214-6246-4DE4-A12A-6761F8079ACD" width="1" height="1">
+        <image name="87FCEC75-ED9A-45BF-AB6C-F945E56A4406" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

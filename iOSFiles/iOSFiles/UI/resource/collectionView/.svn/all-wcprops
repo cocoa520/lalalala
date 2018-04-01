@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 77
-/svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView
+/svn/Mac/!svn/ver/2176/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView
 END
 cnt_fileicon_music.png
 K 25
@@ -21,6 +21,18 @@ svn:wc:ra_dav:version-url
 V 100
 /svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_others.png
 END
+folder_icon_library.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mac/!svn/ver/2176/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_library.png
+END
+folder_icon_storage.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mac/!svn/ver/2176/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_storage.png
+END
 folder_icon_video.png
 K 25
 svn:wc:ra_dav:version-url
@@ -39,17 +51,17 @@ svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_zip.png
 END
-cnt_fileicon_ppt.png
-K 25
-svn:wc:ra_dav:version-url
-V 98
-/svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_ppt.png
-END
 folder_icon_img.png
 K 25
 svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_img.png
+END
+cnt_fileicon_ppt.png
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_ppt.png
 END
 folder_icon_books.png
 K 25
@@ -57,23 +69,17 @@ svn:wc:ra_dav:version-url
 V 99
 /svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_books.png
 END
-mac_cnt_fileicon_myfile.png
-K 25
-svn:wc:ra_dav:version-url
-V 105
-/svn/Mac/!svn/ver/1820/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/mac_cnt_fileicon_myfile.png
-END
 cnt_fileicon_doc.png
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_doc.png
 END
-cnt_fileicon_video.png
+mac_cnt_fileicon_myfile.png
 K 25
 svn:wc:ra_dav:version-url
-V 100
-/svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_video.png
+V 105
+/svn/Mac/!svn/ver/1820/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/mac_cnt_fileicon_myfile.png
 END
 folder_icon_media.png
 K 25
@@ -81,17 +87,29 @@ svn:wc:ra_dav:version-url
 V 99
 /svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_media.png
 END
-folder_icon_app.png
+cnt_fileicon_video.png
 K 25
 svn:wc:ra_dav:version-url
-V 97
-/svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_app.png
+V 100
+/svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_video.png
+END
+folder_icon_screen.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mac/!svn/ver/2176/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_screen.png
 END
 cnt_fileicon_dmg.png
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2076/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_dmg.png
+END
+folder_icon_app.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mac/!svn/ver/2163/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_app.png
 END
 cnt_fileicon_img.png
 K 25
@@ -116,4 +134,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2052/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/cnt_fileicon_txt.png
+END
+folder_icon_camera.png
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mac/!svn/ver/2176/JPProject/iOSFiles/iOSFiles/UI/resource/collectionView/folder_icon_camera.png
 END

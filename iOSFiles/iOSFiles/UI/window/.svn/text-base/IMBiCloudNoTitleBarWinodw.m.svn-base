@@ -36,7 +36,6 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
     if ((self = [super initWithContentRect:contentRect styleMask:NSResizableWindowMask backing:bufferingType defer:YES])) {
         [self setMovableByWindowBackground:YES];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeSkin:) name:@"Change_Skin" object:nil];
     }
     return self;
 }
@@ -51,35 +50,35 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
     ioriginalIMP=(void*)method_getImplementation(coreUIWidgetStateMethod);
     class_replaceMethod([_NSThemeWidgetCell class], @selector(coreUIState), (IMP)myCoreUIWidgetState, encoding);
     
-//    _closeButton=[NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:0 ];
-//    _minButton=[NSWindow standardWindowButton:NSWindowMiniaturizeButton forStyleMask:0 ];
-//    _maxButton=[NSWindow standardWindowButton:NSWindowZoomButton forStyleMask:0 ];
+    _closeButton=[NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:0 ];
+    _minButton=[NSWindow standardWindowButton:NSWindowMiniaturizeButton forStyleMask:0 ];
+    _maxButton=[NSWindow standardWindowButton:NSWindowZoomButton forStyleMask:0 ];
     
     self.opaque = NO;
     self.backgroundColor=[NSColor clearColor];
     
-//    _maxAndminView = [[BackGroundView alloc] initWithFrame:NSMakeRect(10, [self.contentView frame].size.height-31, 56, 16)];
-//    [_maxAndminView setWantsLayer:YES];
-//    [_maxAndminView.layer setAnchorPointZ:-1];
+    _maxAndminView = [[BackGroundView alloc] initWithFrame:NSMakeRect(10, [self.contentView frame].size.height-31, 56, 16)];
+    [_maxAndminView setWantsLayer:YES];
+    [_maxAndminView.layer setAnchorPointZ:-1];
     
-//    [_maxAndminView setCanDrawConcurrently:NO];
-//    [_closeButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(0, 0))];
-//    [_minButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(20,0))];
-//    [_maxButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(40, 0))];
-//    
-//    [_maxAndminView addSubview:_closeButton];
-//    [_maxAndminView addSubview:_minButton];
-//    [_maxAndminView addSubview:_maxButton];
-//    [_maxAndminView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
-//    [self.contentView addSubview:_maxAndminView];
-//    _maxAndminView.autoresizesSubviews =YES;
-//    _maxAndminView.autoresizingMask = 8;
-//    [_closeButton setAction:@selector(closeWindow:)];
-//    [_closeButton setTarget:self];
-//    [_minButton setAction:@selector(minWindow:)];
-//    [_minButton setTarget:self];
-//    _closeButton.autoresizesSubviews =YES;
-//    _closeButton.autoresizingMask = 8;
+    [_maxAndminView setCanDrawConcurrently:NO];
+    [_closeButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(0, 0))];
+    [_minButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(20,0))];
+    [_maxButton setFrameOrigin:NSPointFromCGPoint(CGPointMake(40, 0))];
+    
+    [_maxAndminView addSubview:_closeButton];
+    [_maxAndminView addSubview:_minButton];
+    [_maxAndminView addSubview:_maxButton];
+    [_maxAndminView setBackgroundColor:COLOR_View_NORMAL];
+    [self.contentView addSubview:_maxAndminView];
+    _maxAndminView.autoresizesSubviews =YES;
+    _maxAndminView.autoresizingMask = 8;
+    [_closeButton setAction:@selector(closeWindow:)];
+    [_closeButton setTarget:self];
+    [_minButton setAction:@selector(minWindow:)];
+    [_minButton setTarget:self];
+    _closeButton.autoresizesSubviews =YES;
+    _closeButton.autoresizingMask = 8;
     _minButton.autoresizesSubviews =YES;
     _minButton.autoresizingMask = 8;
     _maxButton.autoresizesSubviews =YES;
@@ -130,6 +129,10 @@ static CFStringRef myCoreUIWidgetState(id self, SEL _cmd) {
     [_closeButton setNeedsDisplay:YES];
     [_maxButton setNeedsDisplay:YES];
     [_minButton setNeedsDisplay:YES];
+}
+
+- (void)closeWindow:(id)sender {
+    [self close];
 }
 
 - (void)minWindow:(id)sender {

@@ -24,10 +24,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [_sizeLabel setTextColor:COLOR_MAINWINDOW_MESSAGE_TEXT];
+    [_sizeLabel setTextColor:COLOR_TEXT_EXPLAIN];
     [_sizeLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.f]];
     
-    [_nameLabel setTextColor:COLOR_MAINWINDOW_TITLE_TEXT];
+    [_nameLabel setTextColor:COLOR_TEXT_ORDINARY];
     [_nameLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.f]];
     
     [_logoutBtn setHoverImage:@"mod_icon_signout_hover"];

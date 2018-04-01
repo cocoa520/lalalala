@@ -33,7 +33,8 @@
 #import "IMBViewManager.h"
 #import "IMBCommonTool.h"
 #import <objc/runtime.h>
-
+#import "SystemHelper.h"
+#import "IMBDevicePopoverViewController.h"
 
 static CGFloat const SelectedBtnTextFont = 15.0f;
 
@@ -80,18 +81,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [(IMBBackgroundBorderView*)self.view setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     [_rootBox setContentView:_mainView];
     
-    
-//    NSMutableDictionary *attrText = [[NSMutableDictionary alloc] init];
-//    [attrText setValue:COLOR_MAINWINDOW_MESSAGE_TEXT forKey:NSForegroundColorAttributeName];
-//    [attrText setValue:IMBCommonFont forKey:NSFontAttributeName];
-//    
-//    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:_bigSizeIcloudGoNowBtn.stringValue attributes:attrText];
-//    [_bigSizeIcloudGoNowBtn setAttributedStringValue:attrString];
-    
-//    [attrText release];
-//    attrText = nil;
-//    [attrString release];
-//    attrString = nil;
     _bigDevicesConnectedImageName = @"mod_device_no";
     _selectedBaseInfo = nil;
     
@@ -110,7 +99,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
         IMBBaseInfo *baseInfo = [deviceConnection.allDevices firstObject];
         [_selectedDeviceBtn setHidden:NO];
-        [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"arrow"];
+        [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"arrow"];
     }
 //    [self mouseDown:nil];
 }
@@ -129,22 +118,22 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_midiumDropBoxClickLoginBtn setStringValue:CustomLocalizedString(@"MainWindow_iCloud_ClickTo_Login", nil)];
     _midiumiCloudClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropBoxClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
-    _midiumiCloudClickLoginBtn.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
-    _midiumDropBoxClickLoginBtn.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumiCloudClickLoginBtn.textColor = COLOR_TEXT_EXPLAIN;
+    _midiumDropBoxClickLoginBtn.textColor = COLOR_TEXT_EXPLAIN;
     
     _midiumIcloudMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Msg_String", nil);
     _midiumDropboxMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Msg_String", nil);
     _midiumIcloudMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropboxMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
-    _midiumIcloudMsgLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
-    _midiumDropboxMsgLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumIcloudMsgLabel.textColor = COLOR_TEXT_EXPLAIN;
+    _midiumDropboxMsgLabel.textColor = COLOR_TEXT_EXPLAIN;
     
     _midiumIcloudTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Title_String", nil);
     _midiumDropboxTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Title_String", nil);
     _midiumIcloudTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropboxTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
-    _midiumIcloudTitleLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
-    _midiumDropboxTitleLabel.textColor = COLOR_MAINWINDOW_MESSAGE_TEXT;
+    _midiumIcloudTitleLabel.textColor = COLOR_TEXT_ORDINARY;
+    _midiumDropboxTitleLabel.textColor = COLOR_TEXT_ORDINARY;
     
     
     [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"MainWindow_iCLoudUserPlaceholder_String", nil)];
@@ -164,43 +153,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [as6 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as6.string.length)];
     [_iCloudUserTextField.cell setPlaceholderAttributedString:as6];
 
-    /****  选择设备按钮鼠标进入显示已连接设备view  ****/
-    _selectedDeviceBtn.mouseEntered = ^(void){
-        if (_selectView.isShowing) {//如果selectView正在显示，则不执行下面的代码
-            return;
-        }
-        IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-        if (_devController) {
-            [_devController release];
-            _devController = nil;
-        }
-        _devController = [[IMBDevViewController alloc] initWithNibName:@"IMBDevViewController" bundle:nil];
-        
-        NSMutableArray *allDevices = [NSMutableArray array];
-        
-        if (deviceConnection.allDevices.count) {
-            for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
-                if (baseInfo.chooseModelEnum == DeviceLogEnum) {
-                    [allDevices addObject:baseInfo];
-                }
-            }
-        }
-        _devController.devices = allDevices;
-        _devController.iconX = _selectedDeviceBtn.iconX;
-        _devController.textX = _selectedDeviceBtn.textX;
-        if (_selectView) {
-            [_selectView release];
-            _selectView = nil;
-        }
-        
-        _selectView = [[IMBSelectConntedDeviceView alloc] init];
-        [_selectView setContentView:_devController.view];
-        NSRect finalF = _selectedDeviceBtn.frame;
-        finalF.size.height += (IMBDevViewControllerRowH*allDevices.count + 6.0f);
-        [_midiumSizeDevicesView addSubview:_selectView];
-        [_selectView showWithOriginalFrame:_selectedDeviceBtn.frame finalF:finalF];
-    };
-    
     [(IMBSecureTextFieldCell *)_iCloudSecireTextField.cell setDelegate:self];
     [((IMBSecureTextFieldCell *)_iCloudSecireTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
@@ -233,6 +185,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 _devicesView.isDevicesOriginalFrame = YES;
                 
                 [_smallSizeTitle setStringValue:@"DropBox"];
+                [_smallSizeTitle setTextColor:COLOR_TEXT_ORDINARY];
                 [_oneDriveBox setContentView:_smallSizeView];
                 [self setDeviceViewConnecteStatus];
             }];
@@ -291,36 +244,38 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     /***  鼠标进入view响应事件 ***/
     _iCloudDriveView.mouseEntered = ^(void){
         if (_iCloudDriveView.loginStatus) {
-            [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:NO];
+            [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:NO];
         }else {
-            NSRect newFrame = NSMakeRect(15.0f, 212.0f, 308.0f, 188.0f);
-            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+            NSRect newFrame = NSMakeRect(12.0f, 208.0f, 312.0f, 190.0f);
+            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
             [self setMouseEnteredMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn];
         }
         
     };
     _oneDriveView.mouseEntered = ^(void){
         if (_oneDriveView.loginStatus) {
-            [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:NO];
+            [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:NO];
         }else {
-            NSRect newFrame = NSMakeRect(15.0f, 16.0f, 308.0f, 188.0f);
-            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+            NSRect newFrame = NSMakeRect(12.0f, 13.0f, 312.0f, 190.0f);
+            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
             [self setMouseEnteredMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
         }
        
     };
     _devicesView.mouseEntered = ^(void){
-        NSRect newFrame = NSMakeRect(333.f, 16.0f, 244.0f, 384.0f);
-        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+        NSRect newFrame = NSMakeRect(330.f, 14.0f, 248.0f, 386.0f);
+        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
     };
     
     /***  鼠标移除view响应事件 ***/
     _iCloudDriveView.mouseExited = ^(void){
         if (_iCloudDriveView.loginStatus) {
-            [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:YES];
+            [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:YES];
         }else {
-            _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
+            NSRect newFrame = NSMakeRect(17.0f, 213.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+
+            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         }
         
     };
@@ -328,16 +283,35 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         if (_oneDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:YES];
         }else {
-            _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
+            NSRect newFrame = NSMakeRect(17.0f, 18.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         }
         
     };
     _devicesView.mouseExited = ^(void){
-        _devicesShadowView.frame = NSMakeRect(336.0f, 20.0f, 238.0f, 376.0f);
+        NSRect newFrame = NSMakeRect(335.0f, 19.0f, 238.0f, 376);
+        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
     };
+    
+//    _selectedDeviceBtn.mouseEntered = ^(void){
+//
+//    };
 }
 
+- (void)chooseDeviceClick:(id)sender {
+    if (_devPopover != nil) {
+        if (_devPopover.isShown) {
+            [_devPopover close];
+        }
+    }
+    if ([sender isKindOfClass:[IMBBaseInfo class]]) {
+        IMBBaseInfo *baseInfo = (IMBBaseInfo *)sender;
+        IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+        IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
+        [_delegate changeMainFrame:ipod withMedleEnum:DeviceLogEnum withiCloudDrvieBase:nil];
+    }
+}
 
 #pragma mark - 鼠标响应事件
 - (void)setOriginalFrame:(BOOL)isOriginalFrame {
@@ -358,8 +332,19 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [IMBViewAnimation animationMouseEnteredExitedWithView:view frame:f timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
     
     [btn setHidden:NO];
-    NSRect btnF = btn.frame;
-    [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+    [btn setWantsLayer:YES];
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animation1.beginTime = CACurrentMediaTime();
+        animation1.fromValue=[NSNumber numberWithFloat:0.0];
+        animation1.toValue=[NSNumber numberWithFloat:1.0];
+        animation1.duration = MidiumSizeAnimationTimeInterval;
+        animation1.removedOnCompletion = NO;
+        animation1.fillMode = kCAFillModeForwards;
+        [btn.layer addAnimation:animation1 forKey:@"1"];
+    } completionHandler:^{
+        [btn setHidden:NO];
+    }];
 }
 
 - (void)setMouseExitedMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn timeInterval:(CGFloat)timeInterval {
@@ -368,10 +353,36 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [IMBViewAnimation animationMouseEnteredExitedWithView:view frame:f timeInterval:timeInterval disable:NO completion:nil];
     
     
-    NSRect btnF = btn.frame;
-    [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:timeInterval disable:NO completion:^{
+    [btn setWantsLayer:YES];
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animation1.beginTime = CACurrentMediaTime();
+        animation1.fromValue=[NSNumber numberWithFloat:1.0];
+        animation1.toValue=[NSNumber numberWithFloat:0.0];
+        animation1.duration = timeInterval;
+        animation1.removedOnCompletion = NO;
+        animation1.fillMode = kCAFillModeForwards;
+        [btn.layer addAnimation:animation1 forKey:@"1"];
+    } completionHandler:^{
         [btn setHidden:YES];
     }];
+    
+    
+    
+//    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+//        [context setDuration:timeInterval];
+//        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+//        [view.animator setFrame:frame];
+//    } completionHandler:completion];
+    
+
+    
+//    [view.layer addAnimation:animation1 forKey:@"opacityAnim1"];
+    
+//    NSRect btnF = btn.frame;
+//    [IMBViewAnimation animationMouseMovedWithView:btn frame:btnF timeInterval:timeInterval disable:NO completion:^{
+//        [btn setHidden:YES];
+//    }];
 }
 
 - (void)setDeviceViewConnecteStatus {
@@ -389,13 +400,13 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     
     
     
-    _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
-    _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
-    _devicesShadowView.frame = NSMakeRect(336.0f, 20.0f, 238.0f, 376.0f);
+    _icloudShadowView.frame = NSMakeRect(17.0f, 213.0f, 302.0f, 180.0f);
+    _dropboxShadowView.frame = NSMakeRect(17.0f, 18.0f, 302.0f, 180.0f);
+    _devicesShadowView.frame = NSMakeRect(335.0f, 19.0f, 238.0f, 376.0f);
     
-    NSRect cloudF = NSMakeRect(18.f, 216.f, 302.f, 180.f);
-    NSRect oneDriveF = NSMakeRect(18.f, 20.f, 302.f, 180.f);
-    NSRect devicesF = NSMakeRect(336.f, 20.f, 238.f, 376.f);
+    NSRect cloudF = NSMakeRect(17.0f, 213.0f, 302.0f, 180.0f);
+    NSRect oneDriveF = NSMakeRect(17.0f, 18.0f, 302.0f, 180.0f);
+    NSRect devicesF = NSMakeRect(335.0f, 19.0f, 238.0f, 376.0f);
     
     
     NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
@@ -416,21 +427,24 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [_icloudDrivebox setContentView:_midiumSizeiCloudView];
         }
         
-        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval - 0.2f];
+        [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         
         [self setDeviceViewConnecteStatus];
         
         if (_iCloudDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:0 isHidden:YES];
         }else {
-            _icloudShadowView.frame = NSMakeRect(18.0f, 216.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:0];
+            NSRect newFrame = NSMakeRect(17.0f, 213.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
+            [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         }
         if (_oneDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:0 isHidden:YES];
         }else {
-            _dropboxShadowView.frame = NSMakeRect(18.0f, 20.0f, 302.0f, 180.0f);
-            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:0];
+            NSRect newFrame = NSMakeRect(17.0f, 18.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+            [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         }
     }];
 }
@@ -439,7 +453,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  *  添加通知
  */
 - (void)addNotis {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedDeviceDidChangeNoti:) name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertTabKey:) name:INSERT_TAB object:nil];
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changBtnState) name:NOTIFY_TEXTFILED_INPUT_CHANGE object:nil];
 }
@@ -465,7 +479,11 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 if (![baseInfo.uniqueKey isEqualToString:_selectedBaseInfo.uniqueKey]) {
                     [self setDeviceInfosWithiPod:baseInfo];
                     [self deviceDisconnected:serialNum];
-                    _selectedBaseInfo = baseInfo;
+                    if (_selectedBaseInfo) {
+                        [_selectedBaseInfo release];
+                        _selectedBaseInfo = nil;
+                    }
+                    _selectedBaseInfo = [baseInfo retain];
                 }
             }else {
                 [_selectedDeviceBtn setHidden:YES];
@@ -553,10 +571,10 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     dispatch_async(dispatch_get_main_queue(), ^{
         [_selectedDeviceBtn setHidden:NO];
         if (!_selectedBaseInfo) {
-            _selectedBaseInfo = baseInfo;
+            _selectedBaseInfo = [baseInfo retain];
             
         }
-        [_selectedDeviceBtn configButtonName:_selectedBaseInfo.deviceName WithTextColor:COLOR_MAIN_WINDOW_SELECTEDBTN_TEXT WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
+        [_selectedDeviceBtn configButtonName:_selectedBaseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
         [_selectedDeviceBtn setFrame:NSMakeRect((_midiumSizeDevicesView.frame.size.width - _selectedDeviceBtn.frame.size.width)/2, _selectedDeviceBtn.frame.origin.y, _selectedDeviceBtn.frame.size.width, _selectedDeviceBtn.frame.size.height)];
         NSString *familyString = _iPod.deviceInfo.familyNewString;
         if ([familyString isEqualToString:@"iPhoneN"]) {
@@ -684,11 +702,49 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 #pragma mark - 其他按钮点击
 - (IBAction)selectedDeviceBtnClicked:(IMBSelecedDeviceBtn *)sender {
     IMBFFuncLog;
-    if (_selectView.isShowing) {
-        if (_selectView) {
-            [_selectView hideWithTimeInterval:0.2];
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    NSMutableArray *allDevices = [NSMutableArray array];
+    if (deviceConnection.allDevices.count) {
+        for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
+            if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                [allDevices addObject:baseInfo];
+            }
         }
+    }
+    
+    if (allDevices.count == 1) {
         [self selectedDeviceDidChange];
+    }else if (allDevices.count >= 2) {
+        if (_devPopover.isShown) {
+            return;
+        }
+        
+        if (_devPopover != nil) {
+            [_devPopover release];
+            _devPopover = nil;
+        }
+        _devPopover = [[NSPopover alloc] init];
+        
+        if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"10"]) {
+            _devPopover.appearance = (NSPopoverAppearance)[NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }else {
+            _devPopover.appearance = NSPopoverAppearanceMinimal;
+        }
+        
+        _devPopover.animates = YES;
+        _devPopover.behavior = NSPopoverBehaviorTransient;
+        _devPopover.delegate = self;
+        
+        _devicePopoverViewController = [[IMBDevicePopoverViewController alloc]  initWithNibName:@"IMBDevicePopoverViewController" bundle:nil withDeviceAry:allDevices];
+        if (_devPopover != nil) {
+            _devPopover.contentViewController = _devicePopoverViewController;
+        }
+        [_devicePopoverViewController setTarget:self];
+        [_devicePopoverViewController setAction:@selector(chooseDeviceClick:)];
+        [_devicePopoverViewController release];
+        NSRectEdge prefEdge = NSMinYEdge;
+        NSRect rect = NSMakeRect(_selectedDeviceBtn.bounds.origin.x, _selectedDeviceBtn.bounds.origin.y, _selectedDeviceBtn.bounds.size.width, _selectedDeviceBtn.bounds.size.height);
+        [_devPopover showRelativeToRect:rect ofView:_selectedDeviceBtn preferredEdge:prefEdge];
     }
 }
 
@@ -910,31 +966,22 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
 }
 
-- (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
-    
-    if (_selectView) {
-        [_selectView hideWithTimeInterval:0.2];
-    }
-    IMBBaseInfo *baseInfo = [noti object];
-    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-//    for (IMBBaseInfo *baseInfo1 in deviceConnection.allDevices) {
-//        if ([baseInfo.uniqueKey isEqualToString:baseInfo1.uniqueKey]) {
-//            baseInfo.isSelected = YES;
-//        }else{
-//            
-//        }
+//- (void)selectedDeviceDidChangeNoti:(NSNotification *)noti {
+//    
+//    if (_selectView) {
+//        [_selectView hideWithTimeInterval:0.2];
 //    }
-    _selectedBaseInfo = baseInfo;
-//    [baseInfo setIsSelected:YES];
-    [self selectedDeviceDidChange];
-}
+//    IMBBaseInfo *baseInfo = [noti object];
+//    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+//    _selectedBaseInfo = baseInfo;
+//    [self selectedDeviceDidChange];
+//}
 
 // 选择设备按钮 切换界面
 - (void)selectedDeviceDidChange {
     if (_devPopover.isShown) {
         [_devPopover close];
     }
-//    [self setDeviceInfosWithiPod:_selectedBaseInfo];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     IMBiPod *ipod = [deviceConnection getiPodByKey:_selectedBaseInfo.uniqueKey];
 
@@ -975,10 +1022,14 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         [_baseDriveManage release];
         _baseDriveManage = nil;
     }
+    if (_devicePopoverViewController) {
+        [_devicePopoverViewController release];
+        _devicePopoverViewController = nil;
+    }
 
     [[IMBDeviceConnection singleton] stopListening];
     //移除通知
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:INSERT_TAB object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_TEXTFILED_INPUT_CHANGE object:nil];
     [super dealloc];

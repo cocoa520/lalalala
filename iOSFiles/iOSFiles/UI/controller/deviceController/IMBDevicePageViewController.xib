@@ -1,18 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="14F2511" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBDevicePageViewController">
             <connections>
-                <outlet property="_backButton" destination="5tK-ph-b1s" id="cGB-co-Cgk"/>
                 <outlet property="_contenBox" destination="cAr-6W-GfE" id="pJY-Hm-0v5"/>
                 <outlet property="_gridView" destination="yQ7-Aq-bTZ" id="KN6-AO-4ck"/>
                 <outlet property="_mainView" destination="UXw-s3-c9m" id="ubG-wP-wxv"/>
-                <outlet property="_rootBox" destination="1dD-gi-lEm" id="gak-Mm-ig6"/>
                 <outlet property="_topLineView" destination="lLk-Og-0c3" id="Wsk-EP-vgu"/>
                 <outlet property="_topView" destination="QB6-MG-0PQ" id="Dfy-Rd-SX1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -24,39 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1096" height="594"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView id="QB6-MG-0PQ" customClass="IMBWhiteView">
-                    <rect key="frame" x="0.0" y="548" width="1096" height="46"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <button id="5tK-ph-b1s" customClass="HoverButton">
-                            <rect key="frame" x="20" y="7" width="28" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Gbd-Ay-K0I">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
-                        <customView wantsLayer="YES" id="lLk-Og-0c3" customClass="IMBBackgroundBorderView">
-                            <rect key="frame" x="0.0" y="0.0" width="1096" height="1"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        </customView>
-                    </subviews>
-                </customView>
-                <box borderWidth="0.0" borderType="none" titlePosition="noTitle" id="1dD-gi-lEm">
-                    <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <view key="contentView" id="fHM-2f-mXc">
-                        <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </box>
                 <box borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="cAr-6W-GfE">
-                    <rect key="frame" x="0.0" y="0.0" width="1096" height="594"/>
+                    <rect key="frame" x="-3" y="-4" width="1096" height="600"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <view key="contentView" id="xBw-JE-D99">
-                        <rect key="frame" x="0.0" y="0.0" width="1096" height="594"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1096" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -67,14 +37,24 @@
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="aNX-uZ-tx8"/>
         <customView id="UXw-s3-c9m" customClass="IMBWhiteView">
-            <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
+            <rect key="frame" x="0.0" y="0.0" width="1096" height="594"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <customView id="QB6-MG-0PQ" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="548" width="1096" height="46"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView wantsLayer="YES" id="lLk-Og-0c3" customClass="IMBBackgroundBorderView">
+                            <rect key="frame" x="0.0" y="0.0" width="1096" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        </customView>
+                    </subviews>
+                </customView>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="q3I-U6-diR" customClass="IMBScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="UM2-tL-bRY">
-                        <rect key="frame" x="0.0" y="0.0" width="1081" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view id="yQ7-Aq-bTZ" customClass="CNGridView">
@@ -92,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GR8-zx-IKe">
-                        <rect key="frame" x="1081" y="0.0" width="15" height="548"/>
+                        <rect key="frame" x="1080" y="0.0" width="16" height="548"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

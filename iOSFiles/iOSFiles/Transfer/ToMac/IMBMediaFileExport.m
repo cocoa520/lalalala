@@ -57,7 +57,13 @@
                 continue;
             }
             track.isStart = YES;
-            _currentDriveItem = track;
+            if (_currentDriveItem) {
+                [_currentDriveItem release];
+                _currentDriveItem = nil;
+            }
+            _currentDriveItem = [track retain];
+            _currentDriveItem.progress = 0;
+            _currentDriveItem.currentSize = 0;
             if (!_isStop) {
                 _currItemIndex++;
                 //获得设备中的文件路径
@@ -82,6 +88,8 @@
 //                    if ([self asyncCopyRemoteFile:remotingFilePath toLocalFile:destFilePath]) {
 //                        [_limitation reduceRedmainderCount];
                         _successCount += 1;
+                        track.currentSize = 0;
+                        _curSize  = 0;
                         track.state = DownloadStateComplete;
                         IMBExportSetting *exportSetting = [[IMBExportSetting alloc]initWithIPod:_ipod];
                         [exportSetting readDictionary];

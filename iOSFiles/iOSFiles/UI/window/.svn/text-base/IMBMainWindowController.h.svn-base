@@ -20,7 +20,6 @@
 
 @interface IMBMainWindowController : NSWindowController {
     IBOutlet NSBox *_rootBox;
-//    IMBDeviceViewController *_deviceViewController;
     IBOutlet IMBWhiteView *_whiteView;
     IMBiPod *_newiPod;
     BOOL _isNewWindow;

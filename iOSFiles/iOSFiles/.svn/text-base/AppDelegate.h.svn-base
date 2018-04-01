@@ -8,9 +8,40 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IMBMainWindowController.h"
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-{
-//    IMBMainWindowController *_mainWindowController;
+#import "IMBUpgradeWindowController.h"
+#import "IMBCheckUpdater.h"
+
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    
+    IBOutlet NSMenu *ProductMenuItem;
+    IBOutlet NSMenuItem *AboutMenuItem;
+    IBOutlet NSMenuItem *CheckUpdate;
+    IBOutlet NSMenuItem *SendLogMenuItem;
+    IBOutlet NSMenuItem *SubmitRqMenuItem;
+    IBOutlet NSMenuItem *FAQMenuItem;
+    IBOutlet NSMenuItem *HideMenuItem;
+    IBOutlet NSMenuItem *hideOtherMenuItem;
+    IBOutlet NSMenuItem *showAllMenuItem;
+    IBOutlet NSMenuItem *quitMenuItem;
+    
+    IBOutlet NSMenu *editMenuItem;
+    
+    IBOutlet NSMenu *windowMenuItem;
+    IBOutlet NSMenuItem *minimizeMenuItem;
+    IBOutlet NSMenuItem *zoomMenuItem;
+    IBOutlet NSMenuItem *bringAllToFrontMenuItem;
+    
+    IBOutlet NSMenu *helpMenuItem;
+    IBOutlet NSMenuItem *HomeMenuItem;
+    IBOutlet NSMenuItem *OnlineGuideMenuItem;
+    
+    BOOL _hasCheckUpdateBymanual;
+    IMBUpgradeWindowController *_checkUpdateController;
+    IMBCheckUpdater *_checkUpdater;
+    
+    IMBLogManager *_logHandle;
+   
 }
+@property (assign) IBOutlet NSWindow *window;
 @end
 

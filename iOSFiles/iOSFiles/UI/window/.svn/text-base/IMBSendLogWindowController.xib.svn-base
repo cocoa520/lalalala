@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="14F2511" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBSendLogWindowController">
+            <connections>
+                <outlet property="_bottomTextStr" destination="DbD-kM-BTQ" id="ape-6a-UAP"/>
+                <outlet property="_canCelBtn" destination="SDB-YV-NX4" id="gWK-1f-458"/>
+                <outlet property="_checkBoxBtn" destination="5mn-cN-KqZ" id="Jpc-m0-m4L"/>
+                <outlet property="_checkTitleStr" destination="mHy-Hv-iJI" id="mQx-BD-BeS"/>
+                <outlet property="_dottedLineView" destination="fuq-XO-7Rv" id="hDJ-vA-VdS"/>
+                <outlet property="_loadingImg" destination="7O3-qq-gLq" id="48U-3b-0jN"/>
+                <outlet property="_loadingString" destination="i8N-J5-dUQ" id="P4a-yt-ojI"/>
+                <outlet property="_middleTitleStr" destination="weo-zU-PkK" id="s54-C4-vcU"/>
+                <outlet property="_sendLogBtn" destination="OTG-Vr-k74" id="Ino-mE-FjN"/>
+                <outlet property="_titleStr" destination="FuZ-er-jEQ" id="L9f-Ll-Ic4"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBiCloudNoTitleBarWinodw">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="300"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <value key="minSize" type="size" width="480" height="300"/>
+            <value key="maxSize" type="size" width="480" height="300"/>
+            <view key="contentView" id="se5-gp-TjO" customClass="IMBNoTitleBarContentView">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FuZ-er-jEQ">
+                        <rect key="frame" x="0.0" y="254" width="480" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="We'd love to here from you" id="Zz5-ZO-DiG">
+                            <font key="font" size="26" name="HelveticaNeue-Light"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="fuq-XO-7Rv" customClass="IMBDottedlLineView">
+                        <rect key="frame" x="20" y="54" width="440" height="190"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="weo-zU-PkK">
+                                <rect key="frame" x="18" y="14" width="404" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="GcE-fm-1pm">
+                                    <font key="font" size="12" name="Helvetica"/>
+                                    <string key="title">We'd love to here from youWe'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you We'd love to here from you. We'd love to here from you. We'd love to here from you</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </customView>
+                    <button focusRingType="none" id="SDB-YV-NX4" customClass="IMBGridientButton">
+                        <rect key="frame" x="187" y="18" width="70" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="B62-2L-QGp">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button focusRingType="none" id="OTG-Vr-k74" customClass="IMBGridientButton">
+                        <rect key="frame" x="288" y="18" width="70" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="Z19-oa-747">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button hidden="YES" tag="2" id="5mn-cN-KqZ" customClass="IMBCheckBtn">
+                        <rect key="frame" x="28" y="26" width="20" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" state="on" allowsMixedState="YES" inset="2" id="wU5-hO-FO6">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="i8N-J5-dUQ">
+                        <rect key="frame" x="68" y="18" width="425" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="PHd-5H-TB9">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7O3-qq-gLq">
+                        <rect key="frame" x="457" y="11" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="other_sending" id="f3v-Id-B4s"/>
+                    </imageView>
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mHy-Hv-iJI">
+                        <rect key="frame" x="52" y="26" width="443" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="bYU-eI-BnE">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DbD-kM-BTQ">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="22"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="oKV-cF-JU6">
+                <font key="font" size="12" name="HelveticaNeue"/>
+                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+        </textField>
+    </objects>
+    <resources>
+        <image name="other_sending" width="14" height="14"/>
+    </resources>
+</document>

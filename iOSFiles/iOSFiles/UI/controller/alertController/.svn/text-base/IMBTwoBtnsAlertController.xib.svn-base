@@ -32,19 +32,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1m-Zq-nRN" customClass="IMBGeneralButton">
-                    <rect key="frame" x="188" y="18" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="0ED26276-EAE8-486D-AD21-0241BDDEB874" alignment="center" imageScaling="proportionallyDown" inset="2" id="1i6-Rb-S3e">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="12" name="HelveticaNeue"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="twoBtnsViewCancelClicked:" target="-2" id="hrh-Ls-lD5"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8j-6F-GUu" customClass="IMBGeneralButton">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8j-6F-GUu" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="293" y="18" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Remove" bezelStyle="smallSquare" image="0ED26276-EAE8-486D-AD21-0241BDDEB874" alignment="center" imageScaling="proportionallyDown" inset="2" id="ror-qs-qBe">
+                    <buttonCell key="cell" type="smallSquare" title="Remove" bezelStyle="smallSquare" image="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" alignment="center" imageScaling="proportionallyDown" inset="2" id="ror-qs-qBe">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="12" name="HelveticaNeue"/>
                     </buttonCell>
@@ -52,12 +42,22 @@
                         <action selector="rwoBtnsViewOKClicked:" target="-2" id="r7x-zc-f6a"/>
                     </connections>
                 </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1m-Zq-nRN" customClass="IMBMyDrawCommonly">
+                    <rect key="frame" x="188" y="18" width="80" height="22"/>
+                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" alignment="center" imageScaling="proportionallyDown" inset="2" id="1i6-Rb-S3e">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="twoBtnsViewCancelClicked:" target="-2" id="hrh-Ls-lD5"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-82" y="-121"/>
         </customView>
     </objects>
     <resources>
-        <image name="0ED26276-EAE8-486D-AD21-0241BDDEB874" width="1" height="1">
+        <image name="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

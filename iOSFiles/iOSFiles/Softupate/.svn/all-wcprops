@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 60
-/svn/Mac/!svn/ver/1486/JPProject/iOSFiles/iOSFiles/Softupate
+/svn/Mac/!svn/ver/2201/JPProject/iOSFiles/iOSFiles/Softupate
 END
 IMBCheckUpdater.h
 K 25
@@ -39,9 +39,33 @@ svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/1486/JPProject/iOSFiles/iOSFiles/Softupate/IMBSoftWareInfo.m
 END
+IMBDBFileBackup.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/2201/JPProject/iOSFiles/iOSFiles/Softupate/IMBDBFileBackup.h
+END
+IMBSendLogFile.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/2201/JPProject/iOSFiles/iOSFiles/Softupate/IMBSendLogFile.h
+END
 IMBUpdateInfo.h
 K 25
 svn:wc:ra_dav:version-url
 V 76
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Softupate/IMBUpdateInfo.h
+END
+IMBDBFileBackup.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Mac/!svn/ver/2201/JPProject/iOSFiles/iOSFiles/Softupate/IMBDBFileBackup.m
+END
+IMBSendLogFile.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Mac/!svn/ver/2201/JPProject/iOSFiles/iOSFiles/Softupate/IMBSendLogFile.m
 END

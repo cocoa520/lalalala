@@ -16,7 +16,9 @@
 - (void)setAllselectState:(CheckStateEnum)checkState;
 - (void)tableView:(NSTableView *)tableView WithSelectIndexSet:(NSIndexSet *)indexSet;
 - (void)tableViewDoubleClick:(NSTableView *)tableView row:(NSInteger)index;
+- (void)tableViewSingleClick:(NSTableView *)tableView row:(NSInteger)index;
 - (void)tableView:(NSTableView *)tableView rightDownrow:(NSInteger)index;
+- (void)tableView:(NSTableView *)tableView textDidEndEditing:(NSNotification *)notification;
 -(void)setselectState:(CheckStateEnum)state WithTableView:(NSTableView *)tableView;
 @end
 @interface IMBCustomHeaderTableView : NSTableView<NSAnimationDelegate>{
@@ -37,6 +39,7 @@
     BOOL _isTranferView;
     
 }
+@property (nonatomic,retain) NSEvent *curEvent;
 @property (nonatomic, assign) BOOL isTranferView;
 @property (nonatomic, assign) BOOL isHighLight;
 @property (nonatomic, retain) IMBCheckHeaderCell *checkBoxCell;

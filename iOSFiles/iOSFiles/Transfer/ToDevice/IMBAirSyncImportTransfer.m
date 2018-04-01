@@ -57,7 +57,7 @@
         }
         _mediaConverter = [IMBMediaConverter singleton];
         [_mediaConverter reInitWithiPod:_ipod];
-        _currentDriveItem = importFilePath;
+        _currentDriveItem = [importFilePath retain];
         _importFilePath = [importFilePath.childArray retain];
         _toConvertFiles = [[NSMutableArray alloc] init];
         _toConvertCategoryEnums = [[NSMutableArray alloc] init];
@@ -1267,6 +1267,7 @@
                         [newTrack setDBMediaType:PDFBooks];
                         [newTrack setBookFileName:bookName];
                         newTrack.fileSize= (uint)[[_fileManager attributesOfItemAtPath:pdfItem error:nil] fileSize];
+                        _currentDriveItem.fileSize = newTrack.fileSize;
                        // [self calculateItemSize:pdfItem];
                         IMBTrack *track = nil;
                         @try {
@@ -1897,7 +1898,6 @@
             _currentDriveItem.currentSize = track.fileSize;
             _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
             _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:track.fileSize reserved:2],[self getFileSizeString:_currentDriveItem.fileSize reserved:2]];
-            _currentDriveItem.state = DownloadStateComplete;
             [track setFileIsExist:YES];
         }
         else{
@@ -1999,8 +1999,12 @@
         [_maxUUIDStr release];
         _maxUUIDStr = nil;
     }
+    if (_currentDriveItem) {
+        [_currentDriveItem release];
+        _currentDriveItem = nil;
+    }
     [_transferDic release],_transferDic = nil;
-    [_importFilePath release],_importFilePath = nil;
+//    [_importFilePath release],_importFilePath = nil;
     [_toConvertFiles release],_toConvertFiles = nil;
     [_toConvertCategoryEnums release],_toConvertCategoryEnums = nil;
     [_importFiles release],_importFiles = nil;

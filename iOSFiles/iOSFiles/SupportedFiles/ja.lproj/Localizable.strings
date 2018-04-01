@@ -18,7 +18,6 @@
 "Menu_Guide" = "Online Guide";
 "Menu_SendLog" = "Send Log";
 "Menu_ContactUs" = "Contact Us";
-"Menu_ChooseLanguage" = "Choose Language";
 "Menu_Updates" = "Check for Updates";
 "Menu_Exit" = "Exit";
 "Menu_NewFloder" = "Open in new floder";
@@ -380,6 +379,7 @@
 "AlertView_Transfer_Error" = "Transfer Error" ;
 "AlertView_Transfer_Success_Format" = "SuccessCount/TotalCount:%d/%d,we're going to refresh again";
 "AlertView_RemindTo_Connect_Multi_Devices" = "Please connecet at least 2 devices";
+"AlertView_RemindTo_Loading_Data" = "Another device is loading data";
 "AlertView_Device_Need_Pwd" = "Device Needs Password";
 
 
@@ -399,4 +399,15 @@
 "iCloud_detailView_lastTime" = "更新日時";
 "iCloud_detailView_creatTime" = "作成日時";
 "Transfer_completeView_transferState_Upload_Complete" = "上传完成";
+"Menu_Title" = "iOSFiles";
+"Menu_Submit" = "Submit a request";
+"Menu_Hide" = "Hide iOSFiles";
+"Menu_HideOthers" = "Hide Others";
+"Menu_ShowAll" = "Show All";
+"Menu_Quit" = "Quit iOSFiles";
+"Menu_Window" = "Window";
+"Menu_Minimize" = "Minimize";
+"Menu_Zoom" = "Zoom";
+"Menu_BringAlltoFront" = "Bring All to Front";
+"Menu_Help" = "Help";
 /******************** window没有的(需要确认并替换) ************************/

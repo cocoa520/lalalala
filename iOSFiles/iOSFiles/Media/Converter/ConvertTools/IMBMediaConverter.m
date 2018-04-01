@@ -211,20 +211,20 @@
         //媒体类型为音频，支持音频，需要转换为音频，支持扩展名
         if (isSupportExt) {
             if (mediaFile.mediaType == CvtMediaFile_Video && isSprtVideo == true && isCvtVideo == true) {
-                if (mediaFile.videoFormat == CvtMediaFormat_H264) {
-                    if (_cvtDevice.isSupportH264 == false) {
-                        isNeedConvert = true;
-                    } else {
-                        if (_cvtDevice.H264VideoMaxBitrate < mediaFile.videoBitRate)
-                        {
-                            isNeedConvert = YES;
-                        }else {
-                            if (mediaFile.videoBitRate <= 0) {
-                                isNeedConvert = YES;
-                            }
-                        }
-                    }
-                } else if (mediaFile.videoFormat == CvtMediaFormat_MPEG4) {
+//                if (mediaFile.videoFormat == CvtMediaFormat_H264) {
+//                    if (_cvtDevice.isSupportH264 == false) {
+//                        isNeedConvert = true;
+//                    } else {
+//                        if (_cvtDevice.H264VideoMaxBitrate < mediaFile.videoBitRate)
+//                        {
+//                            isNeedConvert = YES;
+//                        }else {
+//                            if (mediaFile.videoBitRate <= 0) {
+//                                isNeedConvert = YES;
+//                            }
+//                        }
+//                    }
+//                } else if (mediaFile.videoFormat == CvtMediaFormat_MPEG4) {
                     if (_cvtDevice.isSupportMPEG4 == false) {
                         isNeedConvert = true;
                     } else {
@@ -233,19 +233,14 @@
                             isNeedConvert = true;
                         }
                     }
-                }
+//                }
     //            if (!isNeedConvert && (_cvtDevice.videoMaxWidth < mediaFile.width || _cvtDevice.videoMaxHeight < mediaFile.height))
     //            {
     //                isNeedConvert = YES;
     //            }
      
             } else if (mediaFile.mediaType == CvtMediaFile_Audio && isSprtAudio == true && isCvtAudio == true) {
-                if (mediaFile.audioFormat == CvtMediaFormat_MP)
-                {
-                    if (!_cvtDevice.isSupportMP3)
-                        isNeedConvert = true;
-                }
-                else if (mediaFile.audioFormat == CvtMediaFormat_AAC)
+                if (mediaFile.audioFormat == CvtMediaFormat_AAC)
                 {
                     if (!_cvtDevice.isSupportAAC)
                         isNeedConvert = true;
@@ -384,14 +379,14 @@
             }
             if ([StringHelper stringIsNilOrEmpty:mediaSize]) thumbnailSize = mediaSize;
         } else {
-            if (audioFmt == CvtMediaFormat_MP)
-            {
+//            if (audioFmt == CvtMediaFormat_MP)
+//            {
+//                params = [IMBCvtMediaEncoding CreateMediaParamsMediaType:audioFmt Quality:qt BitRate:nil Size:nil];
+//            }
+//            else if (audioFmt == CvtMediaFormat_AAC)
+//            {
                 params = [IMBCvtMediaEncoding CreateMediaParamsMediaType:audioFmt Quality:qt BitRate:nil Size:nil];
-            }
-            else if (audioFmt == CvtMediaFormat_AAC)
-            {
-                params = [IMBCvtMediaEncoding CreateMediaParamsMediaType:audioFmt Quality:qt BitRate:nil Size:nil];
-            }
+//            }
         }
     }
     return params;

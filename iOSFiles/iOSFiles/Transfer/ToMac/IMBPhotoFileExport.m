@@ -41,7 +41,7 @@
         }
         
         pe.isStart = YES;
-   
+    
         _currentDriveItem = pe;
         if (_exportTracks != nil && _exportTracks.count > 0 && ![TempHelper stringIsNilOrEmpty:_exportPath]) {
             if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileStart:)]) {

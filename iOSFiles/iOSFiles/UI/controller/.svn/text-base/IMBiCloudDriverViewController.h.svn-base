@@ -65,7 +65,9 @@
     IMBDriveEntity *_curEntity;
     BOOL _isShowTranfer;
     ChooseLoginModelEnum _chooseLogModelEnmu;
-    BOOL _isEdit;
+//    BOOL _isEdit;
+    BOOL _isTableViewEdit;
+    NSTextField *_editTextField;
 }
 - (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum;
 
