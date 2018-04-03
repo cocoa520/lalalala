@@ -629,7 +629,7 @@ const int FrontViewPositionNone = 0xff;
 - (id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
 {
     self = [super init];
-    if ( self )
+    if (self)
     {
         [self _initDefaultProperties];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceRearController withViewController:rearViewController animated:NO];
