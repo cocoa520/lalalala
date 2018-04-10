@@ -52,7 +52,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
     
     
     NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-    [shadow setShadowColor:COLOR_MAIN_WINDOW_VIEW_SHADOW];
+    [shadow setShadowColor:COLOR_VIEW_SHADOWCOLOR];
     [shadow setShadowOffset:NSMakeSize(0.0, -2.0)];
     [shadow setShadowBlurRadius:5];
     [shadow set];
@@ -64,6 +64,7 @@ static CGFloat const IMBGradientViewMidiumViewShadow = 4.0f;
 //    NSRect newRect = NSMakeRect(dirtyRect.origin.x+5, dirtyRect.origin.y+5, dirtyRect.size.width-10, dirtyRect.size.height -20);
     NSBezierPath *text = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
     [[NSColor whiteColor] set];
+    [text addClip];
     [text fill];
 }
 

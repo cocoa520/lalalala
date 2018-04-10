@@ -43,5 +43,4 @@
  *  @param idOrPaths  自身的id或者路径数组
  */
 - (void)moveToNewParent:(nullable NSString *)newParent sourceParent:(nullable NSString *)parent idOrPaths:(nullable NSArray *)idOrPaths;
-
 @end

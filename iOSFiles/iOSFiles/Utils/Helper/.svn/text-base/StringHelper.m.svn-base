@@ -967,6 +967,8 @@ char pinyinFirstLetter(unsigned short hanzi) {
         categoryStr = CustomLocalizedString(@"MenuItem_id_29", nil);
     }else if (category == Category_Photos){
         categoryStr = CustomLocalizedString(@"MenuItem_id_9", nil);
+    }else if (category == Category_Photos){
+        categoryStr = CustomLocalizedString(@"MenuItem_id_20", nil);
     }else {
         categoryStr = CustomLocalizedString(@"MenuItem_id_81", nil);
     }

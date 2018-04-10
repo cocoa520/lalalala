@@ -436,7 +436,7 @@
         if (result == 0) {
             return;
         }
-        [((IMBAnnoyViewController *)annoyVC) closeWindow:nil];
+        [((IMBNewAnnoyViewController *)annoyVC) closeWindow:nil];
 //        destinationPath = [TempHelper createCategoryPath:[TempHelper createExportPath:destinationPath] withString:CustomLocalizedString(@"Fast_Drive_id_1", nil)];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self exportSelectedItems:destinationPath];

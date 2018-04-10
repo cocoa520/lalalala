@@ -329,6 +329,7 @@
             case iPad_Air2:
             case iPad_Pro:
             case iPad_5:
+            case iPad_6:
                 _isSupportMPEG4 = true;
                 _MPEG4VideoMaxBitrate = 2500000;
                 _MPEG4AudioFormat = CvtMediaFormat_AAC;
@@ -702,6 +703,7 @@
             case iPad_Air2:
             case iPad_Pro:
             case iPad_5:
+            case iPad_6:
                 _isSupportMPEG4 = true;
                 _MPEG4VideoMaxBitrate = 2500000;
                 _MPEG4AudioFormat = CvtMediaFormat_AAC;

@@ -12,6 +12,9 @@
 #import "LoadingView.h"
 #import "IMBToolButtonView.h"
 #import "IMBFileSystemManager.h"
+#import "IMBDevicePopoverViewController.h"
+#import "LoadingViewTwo.h"
+#import "IMBGrideView.h"
 
 @interface IMBDeviceAllDataViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource> {
     
@@ -25,7 +28,10 @@
     IBOutlet IMBWhiteView *_tableViewBgView;
     
     IBOutlet IMBWhiteView *_loadingView;
-    IBOutlet LoadingView *_loadAnimationView;
+    IBOutlet LoadingViewTwo *_loadAnimationView;
+    
+    IBOutlet IMBGrideView *_loadLeftMaskView;
+    IBOutlet IMBGrideView *_loadRightMaskView;
     
     IBOutlet IMBBackgroundBorderView *_topLineView;
     
@@ -42,14 +48,14 @@
     IBOutlet NSTextField *_detailTitle;
     
     IBOutlet NSTextField *_detailSize;
-    IBOutlet NSTextField *_detailCount;
-    IBOutlet NSTextField *_detailLastTime;
     IBOutlet NSTextField *_detailCreateTime;
     
     IBOutlet NSTextField *_detailSizeContent;
-    IBOutlet NSTextField *_detailCountContent;
-    IBOutlet NSTextField *_detailLastTimeContent;
     IBOutlet NSTextField *_detailCreateTimeContent;
+    
+    IBOutlet IMBBorderRectAndColorView *_promptCustomView;
+    IBOutlet NSTextField *_promptLabel;
+    IBOutlet NSImageView *_promptImageView;
     
     IMBDriveBaseManage *_driveBaseManage;
     NSString *_currentDevicePath;
@@ -59,14 +65,27 @@
     BOOL _doubleClick;
     NSMutableDictionary *_oldWidthDic;
     NSMutableDictionary *_oldDocwsidDic;
-    
+    NSPopover *_devChoosePopover;
     BOOL _isShow;
-    IMBBaseEntity *_curEntity;
+    id _curEntity;
     BOOL _isShowTranfer;
     IMBBaseEntity *_baseEntity;
     
-    CategoryNodesEnum _categoryNodeEunm;
+//    CategoryNodesEnum _categoryNodeEunm;
     IMBFileSystemManager *_systemManager;
+    IMBDevicePopoverViewController *_devicePopoverViewController;
+    int downCount;
+    
+    IBOutlet NSButton *_closeDetailBtn;
+    
+    BOOL _isSmipNode;
+    NSString *_appKey;
+    BOOL _isTableViewEdit;
+    NSTextField *_editTextField;
+    BOOL _isPreview;//如果是预览 就不掉完成代理
 }
 - (id)initWithCategoryNodesEnum:(CategoryNodesEnum )nodeEnum withiPod:(IMBiPod *)iPod WithDelegete:(id)delegete;
+- (void)loadApplicationsData;
+- (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
+- (void)moveitemsToIndex:(int)index;
 @end

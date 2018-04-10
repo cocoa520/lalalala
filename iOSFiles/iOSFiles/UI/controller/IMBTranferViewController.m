@@ -21,6 +21,9 @@ static id _instance = nil;
 @synthesize selectedAry = _selectedAry;
 @synthesize deviceExportPath = _deviceExportPath;
 @synthesize delegate = _delegate;
+@synthesize appKey = _appKey;
+@synthesize showWindowDelegate = _showWindowDelegate;
+@synthesize reloadDelegate = _reloadDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
@@ -43,48 +46,50 @@ static id _instance = nil;
 }
 
 - (void)awakeFromNib {
-//    [_topLeftBtn setTitle:CustomLocalizedString(@"TransferUploading", nil)];
-//    [_topRightBtn setTitle:CustomLocalizedString(@"TransferDownloading", nil)];
-//    [_topLeftBtn setStringValue:CustomLocalizedString(@"TransferUploading", nil)];
-//    [_topRightBtn setStringValue:CustomLocalizedString(@"TransferDownloading", nil)];
     NSMutableParagraphStyle *pghStyle = [[NSMutableParagraphStyle alloc] init];
     pghStyle.alignment = NSTextAlignmentCenter;
     NSMutableDictionary *attrText = [[NSMutableDictionary alloc] init];
     [attrText setValue:COLOR_TEXT_ORDINARY forKey:NSForegroundColorAttributeName];
     [attrText setValue:[NSFont fontWithName:IMBCommonFont size:14.0] forKey:NSFontAttributeName];
     [attrText setValue:pghStyle forKey:NSParagraphStyleAttributeName];
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"TransferUploading", nil) attributes:attrText];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"Transfer_list", nil) attributes:attrText];
     [_topLeftBtn setAttributedTitle:attrString];
     
-    NSMutableAttributedString *attrString2 = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"TransferDownloading", nil) attributes:attrText];
-    [_topRightBtn setAttributedTitle:attrString2];
+
+    [_topRightBtn setHasBorder:NO];
+    [_topRightBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_View_NORMAL withRightNormalBgColor:COLOR_View_NORMAL withLeftEnterBgColor:COLOR_View_NORMAL withRightEnterBgColor:COLOR_View_NORMAL withLeftDownBgColor:COLOR_View_NORMAL withRightDownBgColor:COLOR_View_NORMAL withLeftForbiddenBgColor:COLOR_View_NORMAL withRightForbiddenBgColor:COLOR_View_NORMAL];
+    [_topRightBtn setButtonTitle:CustomLocalizedString(@"Transfer_ClearAll", nil) withNormalTitleColor:COLOR_TEXT_EXPLAIN withEnterTitleColor:COLOR_TEXT_PASSAFTER withDownTitleColor:COLOR_TEXT_CLICK withForbiddenTitleColor:COLOR_TEXT_EXPLAIN withTitleSize:12 WithLightAnimation:NO];
+    
+    [_historyBtn setHasBorder:NO];
+    [_historyBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_View_NORMAL withRightNormalBgColor:COLOR_View_NORMAL withLeftEnterBgColor:COLOR_View_NORMAL withRightEnterBgColor:COLOR_View_NORMAL withLeftDownBgColor:COLOR_View_NORMAL withRightDownBgColor:COLOR_View_NORMAL withLeftForbiddenBgColor:COLOR_View_NORMAL withRightForbiddenBgColor:COLOR_View_NORMAL];
+    [_historyBtn setButtonTitle:CustomLocalizedString(@"Transfer_History", nil) withNormalTitleColor:COLOR_TEXT_EXPLAIN withEnterTitleColor:COLOR_TEXT_PASSAFTER withDownTitleColor:COLOR_TEXT_CLICK withForbiddenTitleColor:COLOR_TEXT_EXPLAIN withTitleSize:14 WithLightAnimation:NO];
+    
     [_topBoxs setContentView:_topView];
     [_bottomBoxs setContentView:_bottomView];
     
     [_topBottomLine setBackgroundColor:COLOR_TEXT_LINE];
     [_bottomLineView setBorderColor:COLOR_TEXT_LINE];
-    [_topLeftLine setBackgroundColor:COLOR_TEXT_PRIORITY];
     [_completeBottomViewTopLine setBackgroundColor:COLOR_TEXT_LINE];
-    [_topLeftLine setHidden:YES];
-    [_topRightLine setBackgroundColor:COLOR_TEXT_PRIORITY];
+    
     if (_downLoadViewController&&![_downLoadViewController.view superview]) {
         [_boxView setContentView:_downLoadViewController.view];
     }else {
         _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
         [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
         [_boxView setContentView:_downLoadViewController.view];
     }
     [_bottomLineView setBackgroundColor:COLOR_TEXT_LINE];
     
     _isDownLoadView = YES;
     [_deleteAllBtn mouseDownImage:[NSImage imageNamed:@"transferlist_icon_delall_hover"] withMouseUpImg:[NSImage imageNamed:@"transferlist_icon_delall"]  withMouseExitedImg:[StringHelper imageNamed:@"transferlist_icon_delall"]  mouseEnterImg:[NSImage imageNamed:@"transferlist_icon_delall_hover"]  withButtonName:@""];
-    [_historyBtn mouseDownImage:[NSImage imageNamed:@"transferlist_icon_history_hover"] withMouseUpImg:[StringHelper imageNamed:@"transferlist_icon_history"]  withMouseExitedImg:[NSImage imageNamed:@"transferlist_icon_history"]  mouseEnterImg:[NSImage imageNamed:@"transferlist_icon_history_hover"]  withButtonName:@""];
+    
     [_closeCompleteView mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_close_hover"] withMouseUpImg:[StringHelper imageNamed:@"transferlist_history_icon_close"]  withMouseExitedImg:[NSImage imageNamed:@"transferlist_history_icon_close"]  mouseEnterImg:[NSImage imageNamed:@"transferlist_history_icon_close_hover"]  withButtonName:@""];
     
     [_removeAllCompleDataBtn WithMouseExitedfillColor:COLOR_BOTTN_Exited_COLOR WithMouseUpfillColor:COLOR_BOTTN_Exited_COLOR WithMouseDownfillColor:COLOR_BOTTN_Down_COLOR withMouseEnteredfillColor:COLOR_BOTTN_Down_COLOR];
     [_removeAllCompleDataBtn WithMouseExitedLineColor:[NSColor clearColor] WithMouseUpLineColor:[NSColor clearColor] WithMouseDownLineColor:[NSColor clearColor] withMouseEnteredLineColor:[NSColor clearColor]];
     [_removeAllCompleDataBtn WithMouseExitedtextColor:[NSColor whiteColor] WithMouseUptextColor:[NSColor whiteColor] WithMouseDowntextColor:[NSColor whiteColor] withMouseEnteredtextColor:[NSColor whiteColor]];
-    [_removeAllCompleDataBtn setTitleName:@"Clear All" WithDarwRoundRect:4 WithLineWidth:0 withFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
+    [_removeAllCompleDataBtn setTitleName:CustomLocalizedString(@"Clearall", nil) WithDarwRoundRect:4 WithLineWidth:0 withFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
     [self.view setWantsLayer:YES];
     [self.view.layer setMasksToBounds:YES];
     [self.view.layer setCornerRadius:5];
@@ -94,14 +99,8 @@ static id _instance = nil;
 - (void)reparinitialization {
     [_topBoxs setContentView:_topView];
     [_bottomBoxs setContentView:_bottomView];
-    if (_isDownLoadView){
-        if (_downLoadViewController) {
-            [_boxView setContentView:_downLoadViewController.view];
-        }
-    }else {
-        if (_upLoadViewController) {
-            [_boxView setContentView:_upLoadViewController.view];
-        }
+    if (_downLoadViewController) {
+        [_boxView setContentView:_downLoadViewController.view];
     }
 }
 
@@ -141,38 +140,13 @@ static id _instance = nil;
         if (![StringHelper stringIsNilOrEmpty:extension]) {
             extension = [extension lowercaseString];
         }
-        FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
-        NSImage *image;
         if (folder) {
-            image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
-        }else{
-            if (type == ImageFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_img"];
-            } else if (type == MusicFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_music"];
-            } else if (type == MovieFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_video"];
-            } else if (type == TxtFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_txt"];
-            } else if (type == DocFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_doc"];
-            } else if (type == BookFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_books"];
-            } else if (type == PPtFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
-            } else if (type == ZIPFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_zip"];
-            } else if (type == dmgFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
-            } else if (type == contactFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
-            } else if (type == excelFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_excel"];
-            } else {
-                image = [NSImage imageNamed:@"cnt_fileicon_common"];
-            }
+            driveItem.photoImage = [NSImage imageNamed:@"transferlist_history_icon_list_folder"];
+
+        }else {
+            driveItem.photoImage = [[TempHelper loadTransferFileImage:extension] retain];
         }
-        driveItem.photoImage = [image retain];
+        
         
         int size =sqlite3_column_int(stmt, 4);
         driveItem.fileSize = size;
@@ -195,68 +169,99 @@ static id _instance = nil;
 }
 
 #pragma mark - loadData
-- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent{
+- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID{
+    _chooseLoginModelEnum = iCloudLogEnum;
     if (isDown) {
          [self downLoadBtn:nil];
         if (!_downLoadViewController) {
             _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
             [_downLoadViewController setDelagete:self];
-           
-            //                [_downLoadViewController setDeviceManager:_driveBaseManage];
+            [_downLoadViewController transferBtn:_tranferBtn];
         }
         [_boxView setContentView:_downLoadViewController.view];
-        [_downLoadViewController icloudDriveAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+        [_downLoadViewController icloudDriveAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent withUploadDocID:docID];
        
     }else {
-          [self upLoadBtn:nil];
-        if (!_upLoadViewController) {
-            _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-            [_upLoadViewController setDelagete:self];
+        [self upLoadBtn:nil];
+        if (!_downLoadViewController) {
+            _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+            [_downLoadViewController setDelagete:self];
+            [_downLoadViewController transferBtn:_tranferBtn];
         }
-        [_boxView setContentView:_upLoadViewController.view];
-        [_upLoadViewController icloudDriveAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+        [_boxView setContentView:_downLoadViewController.view];
+        [_downLoadViewController icloudDriveAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent withUploadDocID:docID];
     }
 }
 
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent{
+    _chooseLoginModelEnum = DropBoxLogEnum;
     if (isDown) {
         if (!_downLoadViewController) {
             _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
             [_downLoadViewController setDelagete:self];
+            [_downLoadViewController transferBtn:_tranferBtn];
             [_boxView setContentView:_downLoadViewController.view];
         }
         [_downLoadViewController dropBoxAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
            [self downLoadBtn:nil];
     }else {
         
-        if (!_upLoadViewController) {
-            _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-            [_upLoadViewController setDelagete:self];
+        if (!_downLoadViewController) {
+            _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+            [_downLoadViewController setDelagete:self];
+            [_downLoadViewController transferBtn:_tranferBtn];
             
         }
-        [_upLoadViewController dropBoxAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
-        [_boxView setContentView:_upLoadViewController.view];
+        [_downLoadViewController dropBoxAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+        [_boxView setContentView:_downLoadViewController.view];
         [self upLoadBtn:nil];
     }
 }
 
 - (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{
+    _categoryNodesEnum = categoryNodesEnum;
+    _chooseLoginModelEnum = DeviceLogEnum;
     if (isDown) {
         if (!_downLoadViewController) {
             _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
             [_downLoadViewController setDelagete:self];
+            [_downLoadViewController transferBtn:_tranferBtn];
             [_boxView setContentView:_downLoadViewController.view];
             //                [_downLoadViewController setDeviceManager:_driveBaseManage];
         }
+        [_downLoadViewController setAppKey:_appKey];
         [_downLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
     }else {
-        if (!_upLoadViewController) {
-            _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-            [_upLoadViewController setDelagete:self];
-            [_boxView setContentView:_upLoadViewController.view];
+        if (!_downLoadViewController) {
+            _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+            [_downLoadViewController setDelagete:self];
+            [_downLoadViewController setAppKey:_appKey];
+            [_downLoadViewController transferBtn:_tranferBtn];
+            [_boxView setContentView:_downLoadViewController.view];
         }
-        [_upLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
+        [_downLoadViewController deviceAddDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
     }
+}
+
+- (void)downDeviceDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{
+    if (!_downLoadViewController) {
+        _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+        [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
+        [_boxView setContentView:_downLoadViewController.view];
+    }
+    [_downLoadViewController setAppKey:_appKey];
+    [_downLoadViewController downDeviceDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
+}
+
+- (void)toDeviceAddDataSorue:(NSMutableArray *)addDataSource withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum srciPodKey:(NSString *)srcIpodKey desiPodKey:(NSString *)desiPodKey {
+    if (!_downLoadViewController) {
+        _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+        [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
+        [_boxView setContentView:_downLoadViewController.view];
+    }
+    [_downLoadViewController toDeviceAddDataSorue:addDataSource withCategoryNodesEnum:categoryNodesEnum srciPodKey:srcIpodKey desiPodKey:desiPodKey];
 }
 
 
@@ -264,38 +269,53 @@ static id _instance = nil;
 
 - (IBAction)upLoadBtn:(id)sender {
     _isDownLoadView = NO;
-    [_topLeftLine setBackgroundColor:COLOR_TEXT_PRIORITY];
-    [_topRightLine setHidden:YES];
-    [_topLeftLine setHidden:NO];
     
-    if (!_upLoadViewController) {
-        _upLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
-        [_upLoadViewController setDelagete:self];
+    if (!_downLoadViewController) {
+        _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+        [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
     }
-    [_boxView setContentView:_upLoadViewController.view];
-    [_upLoadViewController icloudDriveAddDataSource:nil WithIsDown:NO WithDriveBaseManage:nil withUploadParent:nil];
+    [_boxView setContentView:_downLoadViewController.view];
+    [_downLoadViewController icloudDriveAddDataSource:nil WithIsDown:NO WithDriveBaseManage:nil withUploadParent:nil withUploadDocID:nil];
 }
 
 - (IBAction)downLoadBtn:(id)sender {
     _isDownLoadView = YES;
-    [_topRightLine setBackgroundColor:COLOR_TEXT_PRIORITY];
-    [_topLeftLine setHidden:YES];
-    [_topRightLine setHidden:NO];
     if (!_downLoadViewController) {
         _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
         [_downLoadViewController setDelagete:self];
-//        [_boxView setContentView:_downLoadViewController.view];
-//        [_downLoadViewController setDeviceManager:_driveBaseManage];
+        [_downLoadViewController transferBtn:_tranferBtn];
     }
     [_boxView setContentView:_downLoadViewController.view];
 }
 
 - (IBAction)removeAllDataBtnDown:(id)sender {
-    if (_downLoadViewController ) {
+    if (_downLoadViewController) {
         [_downLoadViewController removeAllUpOrDownData];
-    }
-    if (_upLoadViewController) {
-        [_upLoadViewController removeAllUpOrDownData];
+        NSDictionary *dimensionDict = nil;
+        if ([_showWindowDelegate chooseModelEnum] == iCloudLogEnum) {
+            @autoreleasepool {
+                [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:CiCloud action:AClearRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if ([_showWindowDelegate chooseModelEnum] == DropBoxLogEnum) {
+            @autoreleasepool {
+                [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:CDropbox action:AClearRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else {
+            @autoreleasepool {
+                [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:CDevice action:AClearRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     }
 }
 
@@ -304,38 +324,72 @@ static id _instance = nil;
 }
 
 - (IBAction)showHistoryBtnDown:(id)sender {
+    NSDictionary *dimensionDict = nil;
+    if ([_showWindowDelegate chooseModelEnum] == iCloudLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CiCloud action:AViewRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if ([_showWindowDelegate chooseModelEnum] == DropBoxLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDropbox action:AViewRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:AViewRecord label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     NSRect startFrame = [self.view frame];
-//    - (void)setIsShowCompletView:(BOOL)isShowCompleteView
-    [_delegate setIsShowCompletView:YES];
-    NSRect endFrame = NSMakeRect(-4, -5, 1104, 606);
-//    [self.view setWantsLayer:YES];
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:self.view,NSViewAnimationTargetKey,NSViewAnimationFadeInEffect,NSViewAnimationEffectKey,[NSValue valueWithRect:startFrame],NSViewAnimationStartFrameKey,[NSValue valueWithRect:endFrame],NSViewAnimationEndFrameKey,nil];
-    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:dictionary]];
-
-    animation.duration = 0.5;
-    [animation setAnimationBlockingMode:NSAnimationNonblocking];
-    [animation startAnimation];
+    [_showWindowDelegate setIsShowCompletView:YES];
+    
     [_topBoxs setContentView:_topCompletVIew];
     [_bottomBoxs setContentView:_bottomCompleteView];
     [self.view setWantsLayer:YES];
-    [self.view setFrame:endFrame];
     if (!_tranferCompleteViewController) {
         _tranferCompleteViewController = [[IMBTranferShowCompleteViewController alloc]initWithNibName:@"IMBTranferShowCompleteViewController" bundle:nil];
         [_tranferCompleteViewController setDelegate:self];
     }
-//    [_tranferCompleteViewController.view setFrame:NSMakeRect(-8, -8, 1104, 606)];
+    //    [_tranferCompleteViewController.view setFrame:NSMakeRect(-8, -8, 1104, 606)];
     [_boxView setContentView:_tranferCompleteViewController.view];
     [_tranferCompleteViewController addDataAry:_allHistoryArray];
+    NSRect endFrame = NSMakeRect(-4, -5, 1104, 606);
+       NSMutableArray *animations = [NSMutableArray array];
+    NSMutableDictionary *viewDict = [NSMutableDictionary dictionaryWithCapacity:3];
+    [viewDict setObject:self.view forKey:NSViewAnimationTargetKey];
+    //set original frame of the view
+    [viewDict setObject:[NSValue valueWithRect:startFrame] forKey:NSViewAnimationStartFrameKey];
+    [viewDict setObject:[NSValue valueWithRect:endFrame] forKey:NSViewAnimationEndFrameKey];
+    [animations addObject:viewDict];
+    NSViewAnimation *theAnim = [[NSViewAnimation alloc] initWithViewAnimations:animations];
+    // set time interval of the animation
+    [theAnim setDuration:0.5];    // .
+    [theAnim setAnimationCurve:NSAnimationEaseIn];
+    [theAnim startAnimation];
+    [theAnim release];
+    theAnim = nil;
 }
 
 - (IBAction)closeCompleteView:(id)sender {
-    [_delegate setIsShowCompletView:NO];
-    [_delegate closeCompteleTranferView];
+    [_showWindowDelegate setIsShowCompletView:NO];
+    [_showWindowDelegate closeCompteleTranferView];
     if (_isDownLoadView) {
         [_boxView setContentView:_downLoadViewController.view];
     }else {
-        [_boxView setContentView:_upLoadViewController.view];
+        [_boxView setContentView:_downLoadViewController.view];
     }
+}
+
+- (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn {
+    _tranferBtn = transferBtn;
 }
 
 - (void)loadCompleteData:(DriveItem *) driveItem{
@@ -346,13 +400,42 @@ static id _instance = nil;
 }
 
 - (void)removeAllHistoryAry {
+    NSDictionary *dimensionDict = nil;
+    if ([_showWindowDelegate chooseModelEnum] == iCloudLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CiCloud action:AClearAll label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if ([_showWindowDelegate chooseModelEnum] == DropBoxLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDropbox action:AClearAll label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else {
+        @autoreleasepool {
+            [TempHelper customViewType:[_showWindowDelegate chooseModelEnum] withCategoryEnum:[_reloadDelegate categoryNodeEunm]];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:AClearAll label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     [_allHistoryArray removeAllObjects];
 }
 
+- (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
+    if (_reloadDelegate &&[_reloadDelegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
+        [_reloadDelegate transferComplete:successCount TotalCount:totalCount];
+    }
+}
+
+
 -(void)dealloc  {
     [_allHistoryArray release],_allHistoryArray = nil;
-    [_downAry release],_downAry = nil;
-    [_upAry release],_upAry = nil;
     [_driveBaseManage release],_driveBaseManage = nil;
     [super dealloc];
 }

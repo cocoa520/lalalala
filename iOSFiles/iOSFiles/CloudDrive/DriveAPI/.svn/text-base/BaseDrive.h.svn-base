@@ -15,7 +15,11 @@
 #import "UpLoader.h"
 #import "RefreshTokenAPI.h"
 #import "NotificationConst.h"
+#import "ATTracker.h"
+#import "TempHelper.h"
 
+//#import "DriveToDrive.h"
+@class DriveToDrive;
 static NSString *const kAppAuthDropboxStateKey = @"kAppAuthDropboxStateKey";
 //static NSString *const kAppAuthFacebookStateKey = @"kAppAuthFacebookStateKey";
 //static NSString *const kAppAuthGmailStateKey = @"kAppAuthGmailStateKey";
@@ -62,6 +66,19 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
     
     BOOL _isFromLocalOAuth;                                     ///<是否是从本地认证
     NSMutableArray *_folderItemArray;                           ///<保存下载的folder项
+    
+    DriveToDrive *_driveTodrive;                                 ///云到云传输器
+    
+    
+    /**
+     *  最大同时上传数限制，由于api接口限制，同时上传的个数有限制，超出限制请求会失败，同时下载个数限制已经在Downloader里做了限制
+     *  由于很多云盘上传分了几个步骤，所以将同时上传个数限制加入到云盘类里
+     */
+    
+    NSInteger _uploadMaxCount;                  ///<最大上传数
+    NSInteger _activeUploadCount;
+    NSMutableArray *_uploadArray;               ///<上传数组
+    dispatch_queue_t _synchronQueue;
 }
 
 @property(nonatomic,retain)NSString *userID;
@@ -391,5 +408,24 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
  *  移除访问Token令牌Key值
  */
 - (void)driveRemoveAccessTokenKey;
+
+/**
+ *  Description 看正在上传的最大值
+ *
+ *  @return 返回值
+ */
+- (BOOL)isUploadActivityLessMax;
+
+/**
+ *  Description 从上传数组中移除上传项
+ *
+ *  @param item 上传项
+ */
+- (void)removeUploadTaskForItem:(id<DownloadAndUploadDelegate>)item;
+
+/**
+ *  Description 如果条件允许开始执行下一个上传任务
+ */
+- (void)startNextTaskIfAllow;
 
 @end

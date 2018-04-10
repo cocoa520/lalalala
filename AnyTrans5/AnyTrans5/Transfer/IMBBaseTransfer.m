@@ -12,6 +12,7 @@
 #import "StringHelper.h"
 #include <sys/stat.h>
 #import "NSString+Compare.h"
+
 @implementation IMBBaseTransfer
 @synthesize isAllExport = _isAllExport;
 @synthesize percent = _percent;
@@ -21,6 +22,7 @@
 @synthesize isPause = _isPause;
 @synthesize condition = _condition;
 @synthesize isReminder = _isReminder;
+@synthesize successCount = _successCount;
 - (void)setCondition:(NSCondition *)condition {
     if (_condition != nil) {
         [_condition release];

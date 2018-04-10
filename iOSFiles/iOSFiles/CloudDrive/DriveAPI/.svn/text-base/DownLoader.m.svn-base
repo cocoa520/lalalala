@@ -125,7 +125,7 @@
                     parentItem.speed = speed;
                     long long  currentSize = [[parentItem.childArray valueForKeyPath:@"@sum.currentSize"] longLongValue];
                     [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
-                     [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
+                    [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
                 }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
@@ -146,12 +146,7 @@
                     [weakself notifyDownloadItem:weakItem withDownloadState:DownloadStateComplete];
                     [weakself.downloadArray removeObject:weakItem];
                 }
-                if (weakItem.parent == nil) {
-                    //如果是文件直接回调
-                    if (completionHandler != nil) {
-                        completionHandler(filePath,error);
-                    }
-                }else{
+                if (weakItem.parent != nil) {
                     //如果是文件夹
                     id <DownloadAndUploadDelegate> parentItem = item.parent;
                     NSPredicate *cate1 =[NSPredicate predicateWithFormat:@"self.state=%d",DownloadStateComplete];
@@ -161,8 +156,10 @@
                     if ([completeArray count] + [errorArray count] == [parentItem.childArray count]) {
                         parentItem.localPath = [_downloadPath stringByAppendingPathComponent:parentItem.fileName];
                         parentItem.state = DownloadStateComplete;
-                        
                     }
+                }
+                if (completionHandler != nil) {
+                    completionHandler(filePath,error);
                 }
             });
         }];
@@ -178,7 +175,7 @@
         task = [_downloadManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
             [weakself notifyDownloadItem:weakItem withDownloadProgress:downloadProgress.fractionCompleted*100];
             [weakself notifyDownloadItem:weakItem withDownloadCurrentSize:downloadProgress.completedUnitCount];
-            NSLog(@"当前大小:%lld,总大小:%lld",weakItem.currentSize,downloadProgress.totalUnitCount);
+            //            NSLog(@"当前大小:%lld,总大小:%lld",weakItem.currentSize,downloadProgress.totalUnitCount);
             //计算速度
             NSDictionary *progressInfo = downloadProgress.userInfo;
             NSNumber *startTimeValue = progressInfo[ProgressUserInfoStartTimeKey];
@@ -204,9 +201,9 @@
                     [weakself notifyDownloadItem:parentItem withDownloadProgress:currentSize/(parentItem.fileSize*1.0)*100];
                     [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
                 }
-//                else {
-//                    [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
-//                }
+                //                else {
+                //                    [weakself notifyDownloadItem:parentItem withDownloadCurrentSize:currentSize];
+                //                }
             }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
             if (weakItem.parentPath == nil) {
@@ -227,13 +224,7 @@
                     [weakself notifyDownloadItem:weakItem withDownloadState:DownloadStateComplete];
                     [weakself.downloadArray removeObject:weakItem];
                 }
-                if (weakItem.parent == nil) {
-                    //如果是文件直接回调
-                    if (completionHandler != nil) {
-                        completionHandler(filePath,error);
-                    }
-                }else{
-                
+                if (weakItem.parent != nil) {
                     //如果是文件夹
                     id <DownloadAndUploadDelegate> parentItem = item.parent;
                     NSPredicate *cate1 =[NSPredicate predicateWithFormat:@"self.state=%d",DownloadStateComplete];
@@ -244,6 +235,9 @@
                         parentItem.localPath = [_downloadPath stringByAppendingPathComponent:parentItem.fileName];
                         parentItem.state = DownloadStateComplete;
                     }
+                }
+                if (completionHandler != nil) {
+                    completionHandler(filePath,error);
                 }
             });
         }];
@@ -469,7 +463,7 @@
                 NSString *fileSize = [self getFileSizeString:item.parent.fileSize reserved:2];
                 item.currentSize = downcurrentSize;
                 NSString *currenSize = [NSString stringWithFormat:@"%@/%@",downCurrentSize,fileSize];
-//                NSLog(@"downCurrentSize:%@ fileSize:%@",downCurrentSize,fileSize);
+                //                NSLog(@"downCurrentSize:%@ fileSize:%@",downCurrentSize,fileSize);
                 item.parent.currentSizeStr = currenSize;
             }
             

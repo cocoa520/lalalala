@@ -1033,6 +1033,9 @@
 //clone链接
 "url_guild_id_3" = "http://www.imobie.com/guide/anytrans/what-data-will-be-overwritten-in-device.htm";
 "Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+//折扣购买链接
+"discount_Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+
 "anytrans_guide" = "https://www.imobie.com/guide/anytrans/get-started.htm";
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml";
 "update_url_2" = "anytrans6.xml";
@@ -1563,7 +1566,6 @@
 "log_id_7" = "包含数据库的备份";
 "Log_id_8" = "对于AnyTrans给您带来的不便我们表示非常抱歉。同时，我们也希望您能够把奔溃日志发送给我们，帮助我们更好的分析并解决问题。AnyTrans正是因为有你们的帮助才能得到持续的提升。所以，您的任何反馈及建议我们都不胜感激。感谢您的支持和理解！";
 "Log_loading_Str" = "正在压缩，请等待...";
-"icloud_TransferDevice_Message_Caution" = "在数据传输过程完成之前请不要断开您的网络连接。";
 "Transfer_text_id_4" = "传输完成";
 "devicetoiCloud_TargetAccount_subTitle" = "从设备传输数据至iCloud";
 
@@ -1830,3 +1832,66 @@
 "iCloudLogin_View_Input_Toomany_ErrorCode" = "您输入的错误验证码的次数太多。请稍后再试。";
 "iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
+
+
+"Annoy_StartTransfer_Title"="感谢您对AnyTrans的关注！立即免费试用AnyTrans以管理您的iOS设备";
+"Annoy_StartTransfer_SubTitle"="使用AnyTrans的独有好处";
+"Annoy_StartTransfer_Detail_OneTitle"="极速传输的超凡体验";
+"Annoy_StartTransfer_Detail_OneSubTitle"="使用创新型Flash-Trans技术，实现数据的极速传输";
+"Annoy_StartTransfer_Detail_TwoTitle"="不受同步限制的全方位传输";
+"Annoy_StartTransfer_Detail_TwoSubTitle"="根据您的实际需求，可在iPhone，iPad，iPod，iTunes，iCloud和电脑间任意传输数据";
+"Annoy_StartTransfer_Detail_ThreeTitle"="管理一切重要数据";
+"Annoy_StartTransfer_Detail_ThreeSubTitle"="致力于所有重要iOS数据和文件管理";
+"Annoy_StartTransfer_Detail_FourTitle"="最智能的管理专家";
+"Annoy_StartTransfer_Detail_FourSubTitle"="知道您想做什么，且随时为您做好对应的事情";
+"Annoy_StartTransfer_BtnTitle"="开始试用";
+"Annoy_TransferComplete_Title"="您已成功传输%d个项目。您正使用试用版本，今天还可以传输%d个项目。";
+"Annoy_TransferComplete_Title_1"="您已成功传输%d个项目。您正使用试用版本，今天还可以传输%d个项目。";
+"Annoy_TransferComplete_SecondPart_Title"="或请购买付费版本以移除所有限制，享受更多功能。";
+"Annoy_TransferComplete_SecondPart_SubTitle_1"="不受限制地传输更多数据";
+"Annoy_TransferComplete_SecondPart_SubTitle_2"="实现iPhone、电脑和iTunes三者间的音乐传输";
+"Annoy_TransferComplete_SecondPart_SubTitle_3"="按类别一键将iPhone照片导出至电脑";
+"Annoy_TransferComplete_SecondPart_SubTitle_4"="将您最喜爱的歌曲设置为专属铃声";
+"Annoy_TransferComplete_ThirdPart_Title"="我们提供全方位保证";
+"Annoy_TransferComplete_ThirdPart_SubTitle_1"="即时交易保证";
+"Annoy_TransferComplete_ThirdPart_SubTitle_2"="终身免费升级保证";
+"Annoy_TransferComplete_ThirdPart_SubTitle_3"="24/7/365技术支持保证";
+"Annoy_TransferComplete_ThirdPart_SubTitle_4"="百分之百满意保证";
+"Annoy_TransferComplete_BtnTitle"="在线购买";
+"Annoy_TransferComplete_Title_2"="您已成功传输%d个项目，希望您享用我们的试用版本。";
+"Annoy_TransferComplete_Title_2_1"="您已成功传输%d个项目，希望您享用我们的试用版本。";
+"Annoy_TransferComplete_SubTitle_2"="很抱歉您今天已经使用完试用限额，但您可以使用付费版本继续进行传输- 获取付费版本仅需3分钟。";
+"Annoy_Activate_Title"="您";
+"Annoy_Activate_Title1"="尚未注册";
+"Annoy_Activate_Title2"="AnyTrans。如果您已有注册码，请直接在此次输入注册码升级至付费版本，以享受更多功能。";
+"Annoy_Activate_SecondPart_SubTitle"="付费版本的好处";
+"Annoy_Activate_SecondPart_SubTitle_1"="实现iPhone、电脑和iTunes三者间的音乐传输";
+"Annoy_Activate_SecondPart_SubTitle_2"="按类别一键导出iPhone图片至电脑";
+"Annoy_Activate_SecondPart_SubTitle_3"="将您最喜爱的歌曲设置为iPhone专属铃声";
+"Annoy_Activate_SecondPart_SubTitle_4"="在iPhone，iPad和电脑间极速传输视频";
+"Annoy_Activate_SecondPart_SubTitle_5"="将电脑或旧手机的iBooks传输至新手机";
+"Annoy_Activate_SecondPart_SubTitle_6"="可根据您的需要，将iPhone，iPad变为闪存盘";
+"Annoy_Activate_SecondPart_SubTitle_7"="打破iTunes限制，享受更为简单且没有任何限制的传输过程";
+"Annoy_Activate_SecondPart_SubTitle_8"="享受百分之百终身免费更新保证";
+"Annoy_Activate_SecondPart_SubTitle_9"="享受24/7/365技术支持服务";
+"Annoy_Activate_ThirdPart_SubTitle_1"="或从此处获取注册码";
+"Annoy_Activate_ChooseBrowser_Title"="选择您喜爱的浏览器打开该链接！";
+"Annoy_Go_Btn"="前往";
+"Annoy_Activate_ChooseBrowser_Google"="谷歌";
+"Annoy_Activate_ChooseBrowser_Safari"="Safari";
+"Annoy_Activate_ChooseBrowser_Firfox"="火狐";
+"Annoy_Activate_ChooseBrowser_Opera"="Opera";
+"Annoy_Runout_Number_Title"="感谢您使用AnyTrans，并诚挚希望试用版本已为您带来良好的体验。";
+"Annoy_Runout_Number_SubTitle"="很抱歉您今天已经使用完您的试用限额，但您可以使用付费版本继续进行传输- 获取付费版本仅需3分钟。";
+"Annoy_Runout_Number_SecondPart_Title"="您将受到我们的全面保护";
+"Annoy_Runout_Number_SecondPart_SubTitle_1"="即时交易保证";
+"Annoy_Runout_Number_SecondPart_SubTitle_2"="终身免费升级保证";
+"Annoy_Runout_Number_SecondPart_SubTitle_3"="4/7/365技术支持服务";
+"Annoy_Runout_Number_SecondPart_SubTitle_4"="百分之百满意度保证";
+"Annoy_Runout_Number_BtnTitle"="在线购买";
+"Annoy_Runout_Number_ThirdPart_SubTitle_1"="已有注册码？";
+"Annoy_Runout_Number_ThirdPart_SubTitle_2"="现在激活";
+"Annoy_Runout_Day_Title"="感谢您使用AnyTrans，并诚挚希望试用版本已为您带来良好的体验。";
+"Annoy_Runout_Day_SubTitle"="很抱歉试用版已到期。为感谢您对AnyTrans的喜爱，您将获得%@折扣- 24小时内有效。";
+"Annoy_Runout_Day_BtnTitle"="获取折扣";
+"Annoy_Activate_BtnTitle"="在线购买";

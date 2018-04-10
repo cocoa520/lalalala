@@ -28,7 +28,7 @@
         if ([_parent rangeOfString:@"0"].location != NSNotFound) {
             folderName = [NSString stringWithFormat:@"/%@", _folderName];
         }else {
-            folderName = [NSString stringWithFormat:@"/%@/%@", _parent, _folderName];
+            folderName = [NSString stringWithFormat:@"%@/%@", _parent, _folderName];
         }
     }else {
         folderName = [NSString stringWithFormat:@"/%@", _folderName];

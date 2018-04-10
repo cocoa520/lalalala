@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ProtocolDelegate.h"
 #import "BaseDrive.h"
+#import "IMBDriveEntity.h"
+#import "ATTracker.h"
 
 @interface IMBDriveBaseManage : NSObject <DownloadAndUploadDelegate>
 {
@@ -50,22 +52,24 @@
  *  @param targetDrive 目标云
  *  @param item        传输项
  */
-- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(_Nonnull id <DownloadAndUploadDelegate>)item;
+//- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(NSMutableArray *) item;
 /**
  *  Description 创建文件夹
  *
  *  @param folderName 文件夹名字
  *  @param parentID   文件夹所在父目录ID或者路径 @"0"表示根目录ID
+ *  @param entity     接收返回的实体
  *
  */
-- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID;
+- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID withEntity:(nullable IMBDriveEntity *)drviceEntity;
 
+
+- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(NSMutableArray *)item;
 //取消下载
 - (void)cancelDownloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
 
 //取消上次
 - (void)cancelUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item;
-
 
 - (void)userDidLogout;
 @end

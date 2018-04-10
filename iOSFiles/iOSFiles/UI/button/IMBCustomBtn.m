@@ -25,11 +25,10 @@
     [self setNeedsDisplay:YES];
     [NSApp sendAction:self.action to:self.target from:self];
     _state = !_state;
-//    给的图片尺寸太小了，必须得等图片大了之后再设置这个功能
     if (_state) {
-        [self setImage:[NSImage imageNamed:@"symbols-eye-hover"]];
+        [self setImage:[NSImage imageNamed:@"mod_icon_psd_eye_hover"]];
     }else {
-        [self setImage:[NSImage imageNamed:@"symbols-eye"]];
+        [self setImage:[NSImage imageNamed:@"mod_icon_psd_eye"]];
     }
     
 }

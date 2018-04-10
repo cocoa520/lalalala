@@ -59,11 +59,11 @@
     
 }
 
-- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(_Nonnull id <DownloadAndUploadDelegate>)item {
-    
+- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(NSMutableArray *)item {
+
 }
 
-- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID {
+- (void)createFolder:(nullable NSString *)folderName parent:(nullable NSString *)parentID withEntity:(nullable IMBDriveEntity *)drviceEntity {
     
 }
 

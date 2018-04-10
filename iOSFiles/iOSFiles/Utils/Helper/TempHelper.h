@@ -21,6 +21,7 @@
 +(NSString *)currentSelectionLanguage;
 //自定义维度，用于事件跟踪
 + (NSMutableDictionary *)customDimension;
++ (void)customViewType:(ChooseLoginModelEnum)loginEnum withCategoryEnum:(CategoryNodesEnum)categoryEnum;
 + (NSMutableDictionary*)getPlistFileDir:(NSString*)Path;
 + (BOOL)stringIsNilOrEmpty:(NSString*)string;
 + (NSString *)getSoftwareBackupFolderPath:(NSString *)name withUuid:(NSString *)uuid;
@@ -65,4 +66,7 @@
 + (BOOL)runApp:(NSString*)appName;
 + (void)exoprtPdfWithPath:(NSString *)path withcontrol:(id)control withmakeSizew:(int )width withhigh:(int )high;
 + (NSMutableAttributedString *)setSingleTextAttributedString:(NSString *)string withFont:(NSFont *)font withColor:(NSColor *)color;
++ (BOOL)isDirectory:(NSString *)filePath;
++ (NSImage *)loadFileImage:(NSString *)extension;
++ (NSImage *)loadTransferFileImage:(NSString *)extension;
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IMBiPod.h"
 
-#define DeviceConfigPath @"iMobieConfig"
+#define DeviceConfigPath @"config"
 #define ExportConfigName @"exportSetting.plist"
 
 @interface IMBExportSetting : NSObject {

@@ -15,6 +15,9 @@
     int _totalStep;
     int _curStep;
     int _singleStep;
+    NSString *_appKey;
 }
-
+@property (nonatomic,retain) NSString *appKey;
+- (void)fileStartTransfer;
+- (void)sendCopyProgress:(uint64_t)progress;
 @end

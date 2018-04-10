@@ -120,7 +120,7 @@
 //    NSString *str2 = [IMBHelper dictionaryToJson:dic2];
 //    [socketClient sendData:str2];
 
-    [ATTracker setupWithTrackingID:@"UA-85655135-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试)
+    [ATTracker setupWithTrackingID:@"UA-115743684-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试) UA-115743684-1
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -181,6 +181,10 @@
                 [_downloadFile downloadSpecifiedFile];
             });
         }
+//        //启动时加载一次
+//        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+//        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+//        NSArray *allApplications = [workspace performSelector:@selector(allApplications)];
     });
     
     delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.7/*延迟执行时间*/ * NSEC_PER_SEC));

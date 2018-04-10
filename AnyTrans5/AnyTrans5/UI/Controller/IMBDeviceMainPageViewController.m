@@ -43,6 +43,7 @@
 #import "IMBSoftWareInfo.h"
 #import "IMBFastDriverSegViewController.h"
 #import "IMBMainWindowController.h"
+#import "IMBAnnoyViewController.h"
 @interface IMBDeviceMainPageViewController ()
 
 @end
@@ -2020,6 +2021,8 @@
     if ([self checkTargetDevice:NO]) {
         return;
     }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Merge Device"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2033,12 +2036,12 @@
     _isMerge = YES;
     _isContentToMac = NO;
     _isAddContent = NO;
-    NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
     NSMutableArray *cagetoryArray = [[NSMutableArray alloc] init];
     if (_categoryBtnBarView.allcategoryArr.count > 0) {
         for (IMBFunctionButton *btn in _categoryBtnBarView.allcategoryArr) {
@@ -2074,15 +2077,15 @@
     IMBMergeOrCloneViewController *controller = [[IMBMergeOrCloneViewController alloc] initWithiPod:_ipod CategoryInfoModelArrary:cagetoryArray TransferType:MergeType];
     [controller setDelegate:self];
     [self setShowTopLineView:YES];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
-    }else{
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
+//    }else{
         [controller.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
         [controller.view setWantsLayer:YES];
         [self.view addSubview:controller.view];
         CABasicAnimation *anima1 = [IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-controller.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1];
         [controller.view.layer addAnimation:anima1 forKey:@"deviceImageView"];
-    }
+//    }
     [cagetoryArray release];
     [self setTrackingAreaEnable:NO];
 }
@@ -2125,12 +2128,14 @@
     _isMerge = NO;
     _isContentToMac = NO;
     _isAddContent = NO;
-    NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Clone Device"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2185,16 +2190,16 @@
     IMBMergeOrCloneViewController *controller = [[IMBMergeOrCloneViewController alloc] initWithiPod:_ipod CategoryInfoModelArrary:cagetoryArray TransferType:CloneType];
     [controller setDelegate:self];
     [self setShowTopLineView:YES];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
-    }else{
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
+//    }else{
         [controller.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
         [controller.view setWantsLayer:YES];
         [self.view addSubview:controller.view];
         
         CABasicAnimation *anima1 = [IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-controller.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1];
         [controller.view.layer addAnimation:anima1 forKey:@"deviceImageView"];
-    }
+//    }
     [cagetoryArray release];
     [self setTrackingAreaEnable:NO];
 
@@ -2210,11 +2215,13 @@
     _isContentToMac = NO;
     _isAddContent = NO;
     NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Content to iTunes"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2260,14 +2267,14 @@
     IMBToMacViewController *controller = [[IMBToMacViewController alloc] initWithiPod:_ipod CategoryInfoModelArrary:cagetoryArray isToMac:NO WithIsiCoudView:NO];
     [controller setDelegate:self];
     [self setShowTopLineView:YES];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
-    }else{
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
+//    }else{
         [controller.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
         [controller.view setWantsLayer:YES];
         [self.view addSubview:controller.view];
         [controller.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-controller.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
-    }
+//    }
     
     [cagetoryArray release];
     [self setTrackingAreaEnable:NO];
@@ -2303,6 +2310,8 @@
     if (![self checkInternetAvailble]) {
         return;
     }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Content to Device"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2316,12 +2325,12 @@
     _isMerge = NO;
     _isContentToMac = NO;
     _isAddContent = NO;
-    NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
    
     NSMutableArray *cagetoryArray = [[NSMutableArray alloc] init];
     for (IMBFunctionButton *btn in _categoryBtnBarView.allcategoryArr) {
@@ -2342,16 +2351,16 @@
     IMBMergeOrCloneViewController *controller = [[IMBMergeOrCloneViewController alloc] initWithiPod:_ipod CategoryInfoModelArrary:cagetoryArray TransferType:ToDeviceType];
     [controller setDelegate:self];
     [self setShowTopLineView:YES];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
-    }else{
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
+//    }else{
         [controller.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
         [controller.view setWantsLayer:YES];
         [self.view addSubview:controller.view];
         CABasicAnimation *anima1 = [IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-controller.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1];
         [controller.view.layer addAnimation:anima1 forKey:@"deviceImageView"];
 
-    }
+//    }
     [cagetoryArray release];
     [self setTrackingAreaEnable:NO];
 }
@@ -2365,12 +2374,14 @@
     _isMerge = NO;
     _isContentToMac = YES;
     _isAddContent = NO;
-    NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Content to Mac"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2403,14 +2414,14 @@
     IMBToMacViewController *controller = [[IMBToMacViewController alloc] initWithiPod:_ipod CategoryInfoModelArrary:cagetoryArray isToMac:YES WithIsiCoudView:NO];
     [controller setDelegate:self];
     [self setShowTopLineView:YES];
-    if (result>0) {
-        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
-    }else{
+//    if (result>0) {
+//        [self animationAddTransferViewfromRight:controller.view AnnoyVC:annoyVC];
+//    }else{
         [controller.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
         [controller.view setWantsLayer:YES];
         [self.view addSubview:controller.view];
         [controller.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-controller.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
-    }
+//    }
     [cagetoryArray release];
     [self setTrackingAreaEnable:NO];
 }
@@ -2431,6 +2442,8 @@
     _isMerge = NO;
     _isContentToMac = NO;
     _isAddContent = YES;
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Add Content"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2463,12 +2476,12 @@
 }
 
 - (void)addItemsDelay:(NSMutableArray *)paths {
-    NSViewController *annoyVC = nil;
-    long long result = [self checkNeedAnnoy:&(annoyVC)];
-    if (result == 0) {
-        [self setShowTopLineView:NO];
-        return;
-    }
+//    NSViewController *annoyVC = nil;
+//    long long result = [self checkNeedAnnoy:&(annoyVC)];
+//    if (result == 0) {
+//        [self setShowTopLineView:NO];
+//        return;
+//    }
     if (_transferController != nil) {
         [_transferController release];
         _transferController = nil;
@@ -2498,15 +2511,15 @@
         IMBAddContentViewController  *addController = [[IMBAddContentViewController alloc ]initWithiPod:_ipod withAllPaths:paths WithPhotoAlbum:albumEntity playlistID:0];
         addController.delegate = self;
         [self setShowTopLineView:YES];
-        if (result>0) {
-            [self animationAddTransferViewfromRight:addController.view AnnoyVC:annoyVC];
-        }else{
+//        if (result>0) {
+//            [self animationAddTransferViewfromRight:addController.view AnnoyVC:annoyVC];
+//        }else{
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_TRANSFERING object:[NSNumber numberWithBool:NO]];
             [addController.view setFrameSize:NSMakeSize(NSWidth(_contentBox.frame), NSHeight(_contentBox.frame))];
             [addController.view setWantsLayer:YES];
             [self.view addSubview:addController.view];
             [addController.view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-addController.view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
-        }
+//        }
         if (albumEntity != nil) {
             [albumEntity release];
             albumEntity = nil;
@@ -2521,6 +2534,8 @@
         [self showLoadPromptPopover:CustomLocalizedString(@"MSG_Loading_devicedata", nil) withSuperView:sender];
         return;
     }
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [softWare setSelectModular:@"Fast Drive"];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -2543,37 +2558,46 @@
     [self setTrackingAreaEnable:NO];
 }
 
-- (long long)checkNeedAnnoy:(NSViewController **)annoyVC {
-    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
-    _endRunloop = NO;
-    if (!soft.isRegistered) {
-        [self setShowTopLineView:YES];
-        OperationLImitation *limit = [OperationLImitation singleton];
-        long long redminderCount = (long long)limit.remainderCount;
-        //弹出骚扰窗口
-        (*annoyVC) = [[IMBAnnoyViewController alloc] initWithNibName:@"IMBAnnoyViewController" Delegate:self Result:&redminderCount];
-        ((IMBAnnoyViewController *)(*annoyVC)).category = _category;
-        ((IMBAnnoyViewController *)(*annoyVC)).isClone = _isClone;
-        ((IMBAnnoyViewController *)(*annoyVC)).isMerge = _isMerge;
-        ((IMBAnnoyViewController *)(*annoyVC)).isContentToMac = _isContentToMac;
-        ((IMBAnnoyViewController *)(*annoyVC)).isAddContent = _isAddContent;
-        [(*annoyVC).view setFrameSize:NSMakeSize(NSWidth([self view].frame), NSHeight([self view].frame))];
-        [(*annoyVC).view setWantsLayer:YES];
-        [[self view] addSubview:(*annoyVC).view];
-        [(*annoyVC).view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-(*annoyVC).view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
-        NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
-        NSInteger result1 = NSRunContinuesResponse;
-        while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop)
-        {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-        [NSApp endModalSession:session];
-        _endRunloop = NO;
-        return redminderCount;
-    }else{
-        return -1;
-    }
-}
+//- (long long)checkNeedAnnoy:(NSViewController **)annoyVC {
+//    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+//    _endRunloop = NO;
+//    OperationLImitation *limit = [OperationLImitation singleton];
+//    if (!soft.isRegistered && (limit.remainderCount==0 || limit.remainderDays==0 || !soft.isOpenAnnoy || _isMerge || _isClone)) {
+//        [self setShowTopLineView:YES];
+//        long long redminderCount = (long long)limit.remainderCount;
+//        //弹出骚扰窗口
+//        if (_isMerge || _isClone) {//clone、merge还是用之前的骚扰界面
+//            (*annoyVC) = [[IMBAnnoyViewController alloc] initWithNibName:@"IMBAnnoyViewController" Delegate:self Result:&redminderCount];
+//            ((IMBAnnoyViewController *)(*annoyVC)).category = _category;
+//            ((IMBAnnoyViewController *)(*annoyVC)).isClone = _isClone;
+//            ((IMBAnnoyViewController *)(*annoyVC)).isMerge = _isMerge;
+//            ((IMBAnnoyViewController *)(*annoyVC)).isContentToMac = _isContentToMac;
+//            ((IMBAnnoyViewController *)(*annoyVC)).isAddContent = _isAddContent;
+//        }else {
+//            (*annoyVC) = [[IMBNewAnnoyViewController alloc] initWithNibName:@"IMBNewAnnoyViewController" Delegate:self Result:&redminderCount];
+//            ((IMBNewAnnoyViewController *)(*annoyVC)).category = _category;
+//            ((IMBNewAnnoyViewController *)(*annoyVC)).isClone = _isClone;
+//            ((IMBNewAnnoyViewController *)(*annoyVC)).isMerge = _isMerge;
+//            ((IMBNewAnnoyViewController *)(*annoyVC)).isContentToMac = _isContentToMac;
+//            ((IMBNewAnnoyViewController *)(*annoyVC)).isAddContent = _isAddContent;
+//        }
+//        [(*annoyVC).view setFrameSize:NSMakeSize(NSWidth([self view].frame), NSHeight([self view].frame))];
+//        [(*annoyVC).view setWantsLayer:YES];
+//        [[self view] addSubview:(*annoyVC).view];
+//        [(*annoyVC).view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-(*annoyVC).view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+//        NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
+//        NSInteger result1 = NSRunContinuesResponse;
+//        while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop)
+//        {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//        [NSApp endModalSession:session];
+//        _endRunloop = NO;
+//        return redminderCount;
+//    }else{
+//        return -1;
+//    }
+//}
 
 - (void)showLoadPromptPopover:(NSString *)promptName withSuperView:(NSView *)view {
     if (_loadPopover != nil) {

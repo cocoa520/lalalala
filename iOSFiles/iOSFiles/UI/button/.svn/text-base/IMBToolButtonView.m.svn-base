@@ -49,6 +49,7 @@
         [_rename setStatus:4];
         [_moveFile setStatus:4];
         [_switchButton setStatus:4];
+        [_preBtn setStatus:4];
     }else{
         [_syncTransfer setStatus:1];
         [_newgroup setStatus:1];
@@ -78,6 +79,7 @@
         [_rename setStatus:1];
         [_moveFile setStatus:1];
         [_switchButton setStatus:1];
+        [_preBtn setStatus:1];
     }
     [_reload setEnabled:isenabled];
     [_add setEnabled:isenabled];
@@ -108,6 +110,7 @@
     [_rename setEnabled:isenabled];
     [_moveFile setEnabled:isenabled];
     [_switchButton setEnabled:isenabled];
+    [_preBtn setEnabled:isenabled];
     
     [_reload setNeedsDisplay:YES];
     [_add setNeedsDisplay:YES];
@@ -137,6 +140,7 @@
     [_rename setNeedsDisplay:YES];
     [_moveFile setNeedsDisplay:YES];
     [_switchButton setNeedsDisplay:YES];
+    [_preBtn setNeedsDisplay:YES];
 }
 
 - (void)dealloc {
@@ -194,7 +198,7 @@
                     _reload =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_reload setAutoresizesSubviews:YES];
                     [_reload setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_reload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_refresh"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_refresh"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_refresh_hover"]];
+                    [_reload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_refresh_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_refresh"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_refresh_hover"]];
                     [_reload setToolTip:CustomLocalizedString(@"Common_id_1", nil)];
                     [_reload setTag:1000];
                     [_reload setTarget:Target];
@@ -212,7 +216,7 @@
                     _add =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_add setAutoresizesSubviews:YES];
                     [_add setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_add setMouseEnteredImage:[StringHelper imageNamed:@"tool_add_normal"] mouseExitImage:[StringHelper imageNamed:@"tool_add_normal"] mouseDownImage:[StringHelper imageNamed:@"tool_add_normal"]];
+                    [_add setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"]];
                     [_add setToolTip:CustomLocalizedString(@"Common_id_7", nil)];
                     [_add setTag:1001];
                     [_add setTarget:Target];
@@ -231,7 +235,7 @@
                     _delete =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_delete setAutoresizesSubviews:YES];
                     [_delete setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_delete setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_del "] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_del "] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_del_hover"]];
+                    [_delete setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_del_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_del"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_del_hover"]];
                     [_delete setToolTip:CustomLocalizedString(@"Common_id_9", nil)];
                     [_delete setTag:1002];
                     [_delete setTarget:Target];
@@ -249,7 +253,7 @@
                     _toMac =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toMac setAutoresizesSubviews:YES];
                     [_toMac setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toMac setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_topc"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_topc"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_topc_hover"]];
+                    [_toMac setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"]];
                     [_toMac setToolTip:CustomLocalizedString(@"Menu_ToPc", nil)];
                     [_toMac setTag:1003];
                     [_toMac setTarget:Target];
@@ -268,7 +272,7 @@
                     _toDevice =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toDevice setAutoresizesSubviews:YES];
                     [_toDevice setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toDevice setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_todevice"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_todevice"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_todevice_hover"]];
+                    [_toDevice setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_todevice_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_todevice"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_todevice_hover"]];
                     [_toDevice setToolTip:CustomLocalizedString(@"Menu_ToDevice", nil)];
                     [_toDevice setTag:1004];
                     [_toDevice setTarget:Target];
@@ -286,7 +290,7 @@
                     _upload =[[HoverButton alloc] initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_upload setAutoresizesSubviews:YES];
                     [_upload setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"]];
+                    [_upload setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_upload"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_upload_hover"]];
                     [_upload setToolTip:CustomLocalizedString(@"Common_id_7", nil)];
                     [_upload setTag:1005];
                     [_upload setTarget:Target];
@@ -304,7 +308,7 @@
                     _download =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_download setAutoresizesSubviews:YES];
                     [_download setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_download setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"]];
+                    [_download setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_download"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_download_hover"]];
                     [_download setToolTip:CustomLocalizedString(@"Menu_ToPc", nil)];
                     [_download setTag:1006];
                     [_download setTarget:Target];
@@ -322,7 +326,7 @@
                     _toiCloud =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_toiCloud setAutoresizesSubviews:YES];
                     [_toiCloud setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_toiCloud setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_tocloud"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_tocloud"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_tocloud_hover"]];
+                    [_toiCloud setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_tocloud_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_tocloud"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_tocloud_hover"]];
                     [_toiCloud setToolTip:CustomLocalizedString(@"Common_id_20", nil)];
                     [_toiCloud setTag:1007];
                     [_toiCloud setTarget:Target];
@@ -340,7 +344,7 @@
                     _rename =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_rename setAutoresizesSubviews:YES];
                     [_rename setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_rename setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_rename"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_rename"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_rename_hover"]];
+                    [_rename setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_rename_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_rename"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_rename_hover"]];
                     [_rename setToolTip:CustomLocalizedString(@"Common_id_8", nil)];
                     [_rename setTag:1008];
                     [_rename setTarget:Target];
@@ -358,8 +362,8 @@
                     _deviceDatail =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_deviceDatail setAutoresizesSubviews:YES];
                     [_deviceDatail setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_deviceDatail setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_getinfo"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_getinfo"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_getinfo_hover"]];
-                    [_deviceDatail setToolTip:CustomLocalizedString(@"Menu_deviceDetail", nil)];
+                    [_deviceDatail setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_getinfo_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_getinfo"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_getinfo_hover"]];
+                    [_deviceDatail setToolTip:CustomLocalizedString(@"Common_id_2", nil)];
                     [_deviceDatail setTag:1009];
                     [_deviceDatail setTarget:Target];
                     [_deviceDatail setAction:@selector(showDetailView:)];
@@ -376,7 +380,7 @@
                     _newgroup =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_newgroup setAutoresizesSubviews:YES];
                     [_newgroup setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_newgroup setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_newfloder"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_newfloder"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_newfloder_hover"]];
+                    [_newgroup setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_newfloder_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_newfloder"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_newfloder_hover"]];
                     [_newgroup setToolTip:CustomLocalizedString(@"Common_id_19", nil)];
                     [_newgroup setTag:1010];
                     [_newgroup setTarget:Target];
@@ -394,7 +398,7 @@
                     _moveFile =[[HoverButton alloc]initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_moveFile setAutoresizesSubviews:YES];
                     [_moveFile setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_moveFile setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_moveto"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_moveto"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_moveto_hover"]];
+                    [_moveFile setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_moveto_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_moveto"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_moveto_hover"]];
                     [_moveFile setToolTip:CustomLocalizedString(@"Common_id_12", nil)];
                     [_moveFile setTag:1011];
                     [_moveFile setTarget:Target];
@@ -414,8 +418,8 @@
                     _sortBtn  = [[HoverButton alloc] initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
                     [_sortBtn setAutoresizesSubviews:YES];
                     [_sortBtn setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
-                    [_sortBtn setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list2"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list2"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"]];
-                    [_sortBtn setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
+                    [_sortBtn setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_sort_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_sort"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_sort_hover"]];
+                    [_sortBtn setToolTip:CustomLocalizedString(@"Common_sort_23", nil)];
                     [_sortBtn setTag:1012];
                     [_sortBtn setTarget:Target];
                     [_sortBtn setAction:@selector(sortBtnClick:)];
@@ -429,12 +433,10 @@
                 if (_switchButton) {
                     if (displayMode) {
                         [_switchButton setSwitchBtnState:1];
-                        [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list1_selected"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list1_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list1"]];
-                        [_switchButton setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
+                        [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list1"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list1_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list1"]];
                     }else {
                         [_switchButton setSwitchBtnState:0];
-                        [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list2"]];
-                        [_switchButton setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
+                        [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list2"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list2"]];
                     }
                     [_switchButton setTarget:Target];
                     [buttonsArray addObject:_switchButton];
@@ -446,16 +448,34 @@
                     if (displayMode) {
                         [_switchButton setSwitchBtnState:1];
                         [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list1_selected"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list1_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list1"]];
-                        [_switchButton setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
                     }else {
                         [_switchButton setSwitchBtnState:0];
                         [_switchButton setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_list2_selected"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_list2"]];
-                        [_switchButton setToolTip:CustomLocalizedString(@"Menu_newGroup", nil)];
                     }
                     [_switchButton setTag:1013];
                     [_switchButton setTarget:Target];
                     [_switchButton setAction:@selector(doSwitchView:)];
                     [buttonsArray addObject:_switchButton];
+                    
+                }
+            }
+                break;
+            case PreviewFunctionType:
+            {
+                if (_preBtn) {
+                    [_preBtn setTarget:Target];
+                    [buttonsArray addObject:_preBtn];
+                    
+                }else{
+                    _preBtn  = [[HoverButton alloc] initWithFrame:NSMakeRect(0, 0, OperationButtonWidth, OperationButtonHeight)];
+                    [_preBtn setAutoresizesSubviews:YES];
+                    [_preBtn setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin];
+                    [_preBtn setMouseEnteredImage:[StringHelper imageNamed:@"toolbar_icon_preview_hover"] mouseExitImage:[StringHelper imageNamed:@"toolbar_icon_preview"] mouseDownImage:[StringHelper imageNamed:@"toolbar_icon_preview_hover"]];
+                    [_preBtn setToolTip:CustomLocalizedString(@"Common_id_3", nil)];
+                    [_preBtn setTag:1014];
+                    [_preBtn setTarget:Target];
+                    [_preBtn setAction:@selector(preBtnClick:)];
+                    [buttonsArray addObject:_preBtn];
                     
                 }
             }

@@ -33,7 +33,7 @@
                 continue;
             }
             book.isStart = YES;
-            _currentDriveItem = book ;
+            _currentDriveItem = [book retain];
             [_condition lock];
             if (_isPause) {
                 [_condition wait];

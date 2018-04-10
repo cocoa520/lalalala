@@ -1398,6 +1398,9 @@
     }else if ([productType isEqualToString:@"iPad6,11"] ||
               [productType isEqualToString:@"iPad6,12"]) {
         family = iPad_5;
+    }else if ([productType isEqualToString:@"iPad7,5"] ||
+              [productType isEqualToString:@"iPad7,6"]) {
+        family = iPad_6;
     }
     return family;
 }

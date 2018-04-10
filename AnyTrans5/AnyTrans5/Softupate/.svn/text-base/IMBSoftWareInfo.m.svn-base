@@ -75,6 +75,8 @@
 @synthesize isStartUpAirBackup = _isStartUpAirBackup;
 @synthesize selectModular = _selectModular;
 @synthesize buyId = _buyId;
+@synthesize discount = _discount;
+@synthesize isOpenAnnoy = _isOpenAnnoy;
 
 + (IMBSoftWareInfo*) singleton {
     static IMBSoftWareInfo *_singleton = nil;
@@ -111,13 +113,14 @@
         _isCopySyncPlistFile = YES;
         _productName = @"AnyTrans";
         _resProductName = @"AnyTrans";
-        _buildDate = @"20180306";
+        _buildDate = @"20180315";
 
+        _discount = @"25%";//默认值为25
         _buyId = 1;
         _selectModular = @"";
         _activityInfo = [[IMBActivityInfo alloc] init];
         
-//        [[NSUserDefaults standardUserDefaults] setObject:@"blackSkin" forKey:@"customColor"];
+//        [[NSUserDefaults standardUserDefaults] setObject:@"whiteSkin" forKey:@"customColor"];
         _deviceArray = [[NSMutableArray alloc] init];
         [self checkSystemDateFormatter];
         //获取当前使用皮肤

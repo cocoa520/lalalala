@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 72
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork
+/svn/Mac/!svn/ver/2597/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork
 END
 YTKNetworkAgent.h
 K 25
@@ -25,7 +25,7 @@ YTKNetworkAgent.m
 K 25
 svn:wc:ra_dav:version-url
 V 90
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkAgent.m
+/svn/Mac/!svn/ver/2597/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkAgent.m
 END
 YTKBatchRequestAgent.m
 K 25
@@ -33,17 +33,17 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKBatchRequestAgent.m
 END
-YTKNetworkConfig.h
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkConfig.h
-END
 YTKChainRequestAgent.m
 K 25
 svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKChainRequestAgent.m
+END
+YTKNetworkConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkConfig.h
 END
 YTKBaseRequest.h
 K 25
@@ -51,23 +51,17 @@ svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKBaseRequest.h
 END
-YTKNetworkPrivate.h
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkPrivate.h
-END
 YTKNetworkConfig.m
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkConfig.m
 END
-YTKBaseRequest.m
+YTKNetworkPrivate.h
 K 25
 svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKBaseRequest.m
+V 92
+/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkPrivate.h
 END
 YTKRequest.h
 K 25
@@ -75,17 +69,23 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKRequest.h
 END
-YTKNetwork.h
+YTKBaseRequest.m
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetwork.h
+V 89
+/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKBaseRequest.m
 END
 YTKNetworkPrivate.m
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetworkPrivate.m
+END
+YTKNetwork.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/1605/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork/YTKNetwork.h
 END
 YTKBatchRequest.h
 K 25

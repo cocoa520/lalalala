@@ -157,7 +157,6 @@
                     [fm removeItemAtPath:filePath error:nil];
                 }
                 [_ipod.fileSystem copyRemoteFile:Photosqliteshm toLocalFile:filePath];
-                
             }
             if ([_ipod.fileSystem fileExistsAtPath:Photosqlitewal]) {
                 

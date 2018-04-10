@@ -1,7 +1,7 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Android/OpenUSB
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ huyumin
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-guide_step5_sar@2x.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-70d33cac1e727a67abe5ad526ca305f6
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-48800
 
 guide_step2_s.png
 file
@@ -94,6 +60,40 @@ has-props
 
 21481
 
+guide_step5_sar@2x.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+70d33cac1e727a67abe5ad526ca305f6
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+48800
+
 guide_step1_sfr@2x.png
 file
 
@@ -127,40 +127,6 @@ has-props
 
 
 56494
-
-guide_step4_s.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-48eb581464b38b75483e37da461b121a
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21756
 
 guide_step1_ssp.png
 file
@@ -196,6 +162,40 @@ has-props
 
 21076
 
+guide_step4_s.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+48eb581464b38b75483e37da461b121a
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+21756
+
 guide_step2_ssp.png
 file
 
@@ -230,14 +230,14 @@ has-props
 
 22621
 
-guide_step4_ssp.png
+guide_step5_sfr@2x.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-ebfc4593bae854512f93dfff596dd7fe
+f6d6ab9fa965b40a67a3e82069569c3b
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -262,7 +262,7 @@ has-props
 
 
 
-22491
+60954
 
 guide_step3_sjp@2x.png
 file
@@ -298,14 +298,14 @@ has-props
 
 54324
 
-guide_step5_sfr@2x.png
+guide_step4_ssp.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-f6d6ab9fa965b40a67a3e82069569c3b
+ebfc4593bae854512f93dfff596dd7fe
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -330,7 +330,7 @@ has-props
 
 
 
-60954
+22491
 
 guide_step5_ssp.png
 file
@@ -434,40 +434,6 @@ has-props
 
 22127
 
-guide_step3_sde.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-8745bb1606d080f692a7e245c9d06ea7
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-20089
-
 guide_step2_s@2x.png
 file
 
@@ -501,6 +467,40 @@ has-props
 
 
 56072
+
+guide_step3_sde.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+8745bb1606d080f692a7e245c9d06ea7
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20089
 
 guide_step4_sde.png
 file
@@ -1250,14 +1250,14 @@ has-props
 
 19960
 
-guide_step5_s.png
+guide_step1_sjp@2x.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-fcaf9a1141b8afb95758e425ee20478c
+962e435e442cd0e782c7a0a0e8ac4a00
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1282,7 +1282,7 @@ has-props
 
 
 
-21270
+51438
 
 guide_step3_sfr@2x.png
 file
@@ -1318,14 +1318,14 @@ has-props
 
 57652
 
-guide_step1_sjp@2x.png
+guide_step5_s.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-962e435e442cd0e782c7a0a0e8ac4a00
+fcaf9a1141b8afb95758e425ee20478c
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1350,7 +1350,7 @@ has-props
 
 
 
-51438
+21270
 
 guide_step@2x.png
 file
@@ -1420,40 +1420,6 @@ has-props
 
 63534
 
-guide_step4_s@2x.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-1f8f590f4c9d5056b7bfa54efe1bcbac
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-56267
-
 guide_step1_ssp@2x.png
 file
 
@@ -1487,6 +1453,40 @@ has-props
 
 
 55835
+
+guide_step4_s@2x.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+1f8f590f4c9d5056b7bfa54efe1bcbac
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+56267
 
 guide_step5_ssp@2x.png
 file
@@ -1556,40 +1556,6 @@ has-props
 
 54869
 
-guide_step4_sch@2x.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-0e8357b1fc0a46b33ffefc2421f6c495
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-50241
-
 guide_step1_sfr.png
 file
 
@@ -1623,6 +1589,40 @@ has-props
 
 
 21787
+
+guide_step4_sch@2x.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+0e8357b1fc0a46b33ffefc2421f6c495
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+50241
 
 guide_step2_sfr.png
 file
@@ -1658,40 +1658,6 @@ has-props
 
 24563
 
-guide_step3_sfr.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-c5cff776fa3c43b029c92dc95f958664
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21256
-
 guide_step1_sjp.png
 file
 
@@ -1726,14 +1692,14 @@ has-props
 
 20125
 
-guide_step4_sfr.png
+guide_step3_sfr.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-17b88a7145473187c384ae7872c03ae8
+c5cff776fa3c43b029c92dc95f958664
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1758,7 +1724,7 @@ has-props
 
 
 
-22750
+21256
 
 guide_step2_sjp.png
 file
@@ -1794,14 +1760,14 @@ has-props
 
 19690
 
-guide_step3_sp@2x.png
+guide_step4_sfr.png
 file
 
 
 
 
 2018-02-02T01:40:27.000000Z
-a0fcfbea6640c5a11f5fdf5ec366dfb7
+17b88a7145473187c384ae7872c03ae8
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1826,75 +1792,7 @@ has-props
 
 
 
-58080
-
-guide_step3_sjp.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-e5836157cd552e45dbeb2d1f11206e55
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21100
-
-guide_step5_sfr.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-b222ae6c093dc71e99d46b56d6b820c5
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-23265
+22750
 
 other_allowdebugging_s@2x.png
 file
@@ -1930,6 +1828,108 @@ has-props
 
 82718
 
+guide_step5_sfr.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+b222ae6c093dc71e99d46b56d6b820c5
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+23265
+
+guide_step3_sjp.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+e5836157cd552e45dbeb2d1f11206e55
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+21100
+
+guide_step3_sp@2x.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+a0fcfbea6640c5a11f5fdf5ec366dfb7
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+58080
+
 guide_step4_sjp.png
 file
 
@@ -1964,40 +1964,6 @@ has-props
 
 21909
 
-guide_step2_sar@2x.png
-file
-
-
-
-
-2018-02-02T01:40:27.000000Z
-3edf8e1fc1289fd190e8e3c8041dda35
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-47933
-
 guide_step5_sjp.png
 file
 
@@ -2031,6 +1997,40 @@ has-props
 
 
 24298
+
+guide_step2_sar@2x.png
+file
+
+
+
+
+2018-02-02T01:40:27.000000Z
+3edf8e1fc1289fd190e8e3c8041dda35
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+47933
 
 guide_step2_sfr@2x.png
 file

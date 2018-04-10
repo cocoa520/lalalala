@@ -26,6 +26,7 @@
     MouseStatusEnum _mouseStatus;
     NSNotificationCenter *nc;
     IMBSignOutButton *_signOutBtn;
+    IMBSignOutButton *_openWindowBtn;
     id _delegate;
     NSString *_btnStatus;
     BOOL _isTitle;

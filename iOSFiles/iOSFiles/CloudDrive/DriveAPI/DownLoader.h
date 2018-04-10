@@ -43,12 +43,12 @@
 - (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item ;
 
 /**
- *  Description  下载一个item 具有完成回调
+ *  Description 下载一个item 具有完成回调
  *
  *  @param item              item
- *  @param completionHandler completionHandler 完成回调
+ *  @param completionHandler completionHandler 完成回调  此方法具有下载个数限制
  */
-- (void)startDownload:(_Nonnull id <DownloadAndUploadDelegate>)item completionHandler:(nullable void (^)(NSURL * _Nullable filePath, NSError * _Nullable error))completionHandler;
+- (void)downloadItem:(_Nonnull id<DownloadAndUploadDelegate>)item completionHandler:(nullable void (^)(NSURL * _Nullable filePath, NSError * _Nullable error))completionHandler;
 
 /**
  *  @description 同时下载多个

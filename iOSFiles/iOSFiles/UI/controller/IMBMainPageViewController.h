@@ -18,7 +18,11 @@
 #import "IMBAlertSupeView.h"
 #import "IMBLineView.h"
 #import "IMBHoverChangeImageBtn.h"
+#import "IMBMainPageWindowBackBtn.h"
+
+
 @class IMBSearchView;
+
 
 @interface IMBMainPageViewController : IMBBaseViewController
 {
@@ -37,14 +41,18 @@
     IBOutlet IMBLineView *_lineView1;
     IBOutlet IMBLineView *_lineView2;
     
-    IBOutlet IMBHoverChangeImageBtn *_transferBtn;
     IBOutlet IMBHoverChangeImageBtn *_shoppingCartBtn;
 
     IBOutlet IMBSearchView *_searchView;
     BOOL _isLoadSearchView;//正在打开或者合拢SearchView
     BOOL _isShowTranfer;
     BOOL _isShowCompleteView;
+    
+    IBOutlet IMBMainPageWindowBackBtn *_backHomeBtn;
+    
 }
+@property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;
+@property (nonatomic, assign) BOOL isShowTranfer;
 - (void)setIsShowCompletView;
 - (id)initWithiPod:(IMBiPod *)iPod withMedleEnum:(ChooseLoginModelEnum )logMedleEnum withiCloudDrvieBase:(IMBDriveBaseManage*)baseManage withDelegate:(id)delegate;
 - (void)backdrive:(IMBBaseInfo *)baseInfo;

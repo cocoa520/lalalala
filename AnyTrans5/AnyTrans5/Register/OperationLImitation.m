@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 #import "IMBSoftWareInfo.h"
 @implementation OperationLImitation
+@synthesize limitStatus = _limitStatus;
 
 - (instancetype)init
 {
@@ -124,6 +125,15 @@
 {
     if (_needLimit) {
         _remainderCount--;
+    }
+    if (_remainderCount <= 0) {
+        _remainderCount = 0;
+    }
+}
+
+- (void)reduceRedmainderCount:(int)count {
+    if (_needLimit) {
+        _remainderCount -= count;
     }
     if (_remainderCount <= 0) {
         _remainderCount = 0;

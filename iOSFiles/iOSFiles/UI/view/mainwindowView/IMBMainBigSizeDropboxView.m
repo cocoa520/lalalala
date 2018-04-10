@@ -19,16 +19,16 @@
 }
 
 - (void)awakeFromNib {
-    _titleLabel.stringValue = CustomLocalizedString(@"MainWindow_BigSize_Dropbox_TitleString", nil);
+    _titleLabel.stringValue = CustomLocalizedString(@"NotConnectDropBoxTitle", nil);
     [_titleLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.0]];
     [_titleLabel setTextColor:COLOR_TEXT_ORDINARY];
     
-    [_messageLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Dropbox_MessageString", nil)];
+    [_messageLabel setStringValue:CustomLocalizedString(@"NotConnectDropBoxTips", nil)];
     [_messageLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
     [_messageLabel setTextColor:COLOR_TEXT_EXPLAIN];
     
-    [_goNowBtn setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Dropbox_MessageString", nil)];
-    [_goNowBtn setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
+    [_goNowBtn setButtonTitle:CustomLocalizedString(@"DropBox_Login", nil)];
+    [_goNowBtn setFont:[NSFont fontWithName:IMBCommonFont size:14.0]];
 }
 
 @end

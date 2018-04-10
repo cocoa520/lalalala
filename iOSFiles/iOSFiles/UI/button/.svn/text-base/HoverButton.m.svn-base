@@ -279,19 +279,19 @@
     [clipPath addClip];
     [clipPath closePath];
     
-    if (_status == 1) {
-        [IMBGrayColor(255) setFill];
-        [clipPath fill];
-    }else if (_status == 2) {
-        [IMBRgbColor(216, 235, 223) setFill];
-        [clipPath fill];
-    }else if (_status == 3) {
-        [IMBRgbColor(196, 224, 206) setFill];
-        [clipPath fill];
-    }else if (_status == 4) {
-        [IMBGrayColor(255) setFill];
-        [clipPath fill];
-    }
+//    if (_status == 1) {
+//        [IMBGrayColor(255) setFill];
+//        [clipPath fill];
+//    }else if (_status == 2) {
+//        [IMBRgbColor(216, 235, 223) setFill];
+//        [clipPath fill];
+//    }else if (_status == 3) {
+//        [IMBRgbColor(196, 224, 206) setFill];
+//        [clipPath fill];
+//    }else if (_status == 4) {
+//        [IMBGrayColor(255) setFill];
+//        [clipPath fill];
+//    }
 
     NSImage *image = nil;
     if (_status == 1) {

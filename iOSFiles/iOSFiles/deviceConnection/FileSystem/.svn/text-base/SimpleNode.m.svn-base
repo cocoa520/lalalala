@@ -51,6 +51,10 @@
 @synthesize sourcePath = _sourcePath;
 @synthesize extension = _extension;
 @synthesize lastDate = _lastDate;
+@synthesize isEdit = _isEdit;
+@synthesize isEditing = _isEditing;
+@synthesize isCreate = _isCreate;
+@synthesize isCreating = _isCreating;
 
 - (id)init {
     self = [super init];
@@ -70,6 +74,11 @@
         _lastDate = @"";
         [self setCheckState:UnChecked];
         _checkState = NSOffState;
+        
+        _isEdit = NO;
+        _isEditing = NO;
+        _isCreate = NO;
+        _isCreating = NO;
     }
     return self;
 }

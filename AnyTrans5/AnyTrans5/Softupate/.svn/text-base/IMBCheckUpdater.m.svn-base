@@ -160,6 +160,15 @@
                     }
                 }
             }
+            if ([macRootDic.allKeys containsObject:@"limit"]) {
+                IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+                NSDictionary *limitDic = [macRootDic objectForKey:@"limit"];
+                if (limitDic != nil) {
+                    if ([limitDic.allKeys containsObject:@"discount"]) {
+                        soft.discount = [limitDic objectForKey:@"discount"];
+                    }
+                }
+            }
         }
     }
     if (!_isManual) {

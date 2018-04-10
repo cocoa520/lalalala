@@ -26,12 +26,14 @@
     NSString *_xappleSessionID;   ///< 二次验证和重新请求安全码需要用到
     NSString *_scnt;              ///< 二次验证和重新请求安全码需要用到
     BOOL _stopHearBeat;
-    long long _totalStorageInBytes;//总容量
-    long long _usedStorageInBytes;//使用容量
     dispatch_queue_t _queue;
+    
+   
+    long long _totalStorageInBytes;
+    long long _usedStorageInBytes;
 }
-@property (nonatomic, assign) long long totalStorageInBytes;//总容量
-@property (nonatomic, assign) long long usedStorageInBytes;//使用容量
+@property (nonatomic,assign) long long totalStorageInBytes;
+@property (nonatomic,assign) long long usedStorageInBytes;
 @property (nonatomic,retain)NSString *userName;
 @property (nonatomic,retain)NSMutableDictionary *cookie;
 /**
@@ -64,7 +66,12 @@
 - (void)resendGetSecurity;
 
 /**
- *  Description  删除指定的文件或者目录
+ *  Description 如果用户没有收到安全码，则调用此方法，可以重新通过短信的方式发送获取安全码请求
+ */
+- (void)resendGetSMSSecurity;
+
+/**
+ *  Description  删除指定的文件或者目
  *  @param success 成功回调block
  *  @param fail    失败回调block
  *
@@ -101,14 +108,14 @@
  *  @param success   成功回调block
  *  @param fail      失败回调block
  */
-- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail;
+- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items   success:(Callback)success fail:(Callback)fail;
+
 
 /**
- *  Description 获取可用空间
+ *  Description 获取icloud 空间大小
  *
- *  @param usedStorage  可用空间
- *  @param success      成功回调block
- *  @param fail         失败回调block
+ *  @param success 成功回调block
+ *  @param fail    失败回调block
  */
 - (void)getUsedStorage:(NSString *)usedStorage success:(Callback)success fail:(Callback)fail;
 

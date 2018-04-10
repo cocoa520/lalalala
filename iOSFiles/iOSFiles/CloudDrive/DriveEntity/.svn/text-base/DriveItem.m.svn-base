@@ -59,6 +59,24 @@
 @synthesize photoDateData = _photoDateData;
 @synthesize isDriveDataComplete = _isDriveDataComplete;
 @synthesize extension = _extension;
+@synthesize isDownLoad = _isDownLoad;
+@synthesize uploadDocwsID = _uploadDocwsID;
+@synthesize exportPath = _exportPath;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _speed = 0;
+        _progress = 0.0;
+        _fileSize = 0;
+        _currentSize = 0;
+        _currentTotalSize = 0;
+        
+    }
+    return self;
+}
+
 - (NSString *)identifier
 {
     NSString *identifier = nil;
@@ -88,6 +106,7 @@
     [_uploadParent release],_uploadParent = nil;
     [_childArray release],_childArray = nil;
 //    [_constructingData release],_constructingData = nil;
+    [_uploadDocwsID release],_uploadDocwsID = nil;
     [super dealloc];
 }
 @end

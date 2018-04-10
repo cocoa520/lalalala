@@ -10,7 +10,7 @@
 #import "IMBCvtMediaFileEntity.h"
 
 #define RtCvtConfigName @"RingtoneConvertConfig.plist"
-#define RtDeviceConfigPath @"iMobieConfig"
+#define RtDeviceConfigPath @"config"
 
 typedef enum
 {

@@ -20,16 +20,19 @@
 #import "IMBCommonDefine.h"
 #import "IMBTranferViewController.h"
 #import "IMBAnimation.h"
+
 #import <objc/runtime.h>
 #import "IMBSearchView.h"
 
-static CGFloat const kSelectedBtnfontSize = 15.0f;
+static CGFloat const kSelectedBtnfontSize = 14.0f;
 
 @interface IMBMainPageViewController ()
 
 @end
 
 @implementation IMBMainPageViewController
+@synthesize isShowTranfer = _isShowTranfer;
+@synthesize chooseModelEnum = _chooseModelEnum;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,49 +56,65 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
         if (!obArr) {
             obArr = [NSMutableArray array];
         }
+        NSString *key = nil;
         switch (_chooseModelEnum) {
             case iCloudLogEnum:
             {
-                [obArr addObject:@{@"key" : @"iCloud", @"alertView" : _alertSuperView}];
-                objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, obArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                key = IMBAlertViewiCloudKey;
             }
                 break;
             case DropBoxLogEnum:
             {
-                [obArr addObject:@{@"key" : @"DropBox", @"alertView" : _alertSuperView}];
-                objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, obArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                key = IMBAlertViewDropBoxKey;
             }
                 break;
             case DeviceLogEnum:
             {
-                [obArr addObject:@{@"key" : _iPod.uniqueKey, @"alertView" : _alertSuperView}];
-                objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, obArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                key = _iPod.uniqueKey;
             }
                 break;
                 
             default:
                 break;
         }
+        if (key) {
+            [obArr addObject:@{@"key" : key, @"alertView" : _alertSuperView}];
+            objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, obArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }else {
+            IMBFLog(@"Warning----alertView associated failed----");
+        }
         
     }
+    
+    IMBTranferViewController *tranferVC = [IMBTranferViewController singleton];
+    tranferVC.showWindowDelegate = self;
     [_rootBox setWantsLayer:YES];
     [_lineView1 setLineColor:COLOR_MAIN_WINDOW_LINE_COLOR];
     [_lineView2 setLineColor:COLOR_MAIN_WINDOW_LINE_COLOR];
     
     //设置toolbar上右上角3个按钮的高亮图片
-    [_shoppingCartBtn setHoverImage:@"navbar_icon_cart_big_hover"];
-    [_transferBtn setHoverImage:@"navbar_icon_transtion_hover"];
-   
+    [_shoppingCartBtn setHoverImage:@"navbar_icon_cart_big_hover" withSelfImage:[NSImage imageNamed:@"navbar_icon_cart_big"]];
+    [_transferBtn setHoverImage:@"navbar_icon_transtion_hover" withSelfImage:[NSImage imageNamed:@"navbar_icon_transtion"]];
+    
     IMBDrawOneImageBtn *button = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(12, 18, 12, 12)];
     [button mouseDownImage:[NSImage imageNamed:@"windowclose3"] withMouseUpImg:[NSImage imageNamed:@"windowclose"] withMouseExitedImg:[NSImage imageNamed:@"windowclose"] mouseEnterImg:[NSImage imageNamed:@"windowclose2"]];
     [button setEnabled:YES];
     [button setTarget:self];
     [button setAction:@selector(closeWindow:)];
     [button setBordered:NO];
+    
+    IMBDrawOneImageBtn *minButton = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(32, 18, 12, 12)];
+    [minButton mouseDownImage:[NSImage imageNamed:@"windowmin3"] withMouseUpImg:[NSImage imageNamed:@"windowmin"] withMouseExitedImg:[NSImage imageNamed:@"windowmin"] mouseEnterImg:[NSImage imageNamed:@"windowmin2"]];
+    [minButton setEnabled:YES];
+    [minButton setTarget:self];
+    [minButton setAction:@selector(minWindow:)];
+    [minButton setBordered:NO];
+    
     [_topView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
     [_topView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
     [_topView addSubview:button];
-    [_topView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
+    [_topView addSubview:minButton];
+//    [_topView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     [_selectedDeviceBtn setHidden:NO];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     IMBBaseInfo *deviceBaseInfo = nil;
@@ -105,20 +124,25 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_ORDINARY titleSize:kSelectedBtnfontSize leftIcon:nil rightIcon:@"navbar_icon_dropdown_triangle"];
 
         _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate withChooseLoginModelEnum:_chooseModelEnum];
+        IMBiCloudDriverViewController *icloudVC = (IMBiCloudDriverViewController *)_baseViewController;
+        [icloudVC setBaseInfo:deviceBaseInfo];
+        [_baseViewController transferBtn:_transferBtn];
         [_rootBox setContentView:_baseViewController.view];
-        
+    
     }else if (_chooseModelEnum == DropBoxLogEnum) {
         for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
             if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
                 deviceBaseInfo = baseInfo;
             }
         }
-        
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_name_icloud" rightIcon:@"arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_ORDINARY titleSize:kSelectedBtnfontSize leftIcon:nil rightIcon:@"navbar_icon_dropdown_triangle"];
         _baseViewController = [[IMBiCloudDriverViewController alloc] initWithDrivemanage:_driveBaseManage withDelegete:_delegate withChooseLoginModelEnum:_chooseModelEnum];
+        IMBiCloudDriverViewController *icloudVC = (IMBiCloudDriverViewController *)_baseViewController;
+        [icloudVC setBaseInfo:deviceBaseInfo];
+        [_baseViewController transferBtn:_transferBtn];
         [_rootBox setContentView:_baseViewController.view];
     }else if (_chooseModelEnum == DeviceLogEnum) {
         for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
@@ -126,8 +150,9 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
                 deviceBaseInfo = baseInfo;
             }
         }
-        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_PRIORITY titleSize:kSelectedBtnfontSize leftIcon:@"device_icon_iPhone_selected" rightIcon:@"popup_icon_arrow"];
+        [_selectedDeviceBtn setTitle:deviceBaseInfo.deviceName titleColor:COLOR_TEXT_ORDINARY titleSize:kSelectedBtnfontSize leftIcon:nil rightIcon:@"navbar_icon_dropdown_triangle"];
         _baseViewController = [[IMBDevicePageViewController alloc]initWithiPod:_iPod withDelegate:_delegate];
+        [_baseViewController transferBtn:_transferBtn];
         [_rootBox setContentView:_baseViewController.view];
     }
     
@@ -144,6 +169,7 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     [self.view.layer setCornerRadius:5];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
 }
+
 #pragma -- mark  Actions
 - (void)toMac:(IMBInformation *)information {
 
@@ -208,24 +234,8 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
             _isShowCompleteView = NO;
             _isShowTranfer = NO;
              IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+            [tranferView setDelegate:self];
             [tranferView closeCompleteView:nil];
-//            [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
-//            NSView *view = nil;
-//            for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
-//                if ([subView isMemberOfClass:[NSClassFromString(@"IMBTranferBackgroundView") class]]) {
-//                    view = subView;
-//                    break;
-//                }
-//            }
-//            for (NSView *subView in view.subviews) {
-//                [subView removeFromSuperview];
-//            }
-//            [view setHidden:NO];
-//            [view setWantsLayer:YES];
-//            [view addSubview:tranferView.view];
-//            [tranferView.view setWantsLayer:YES];
-//            [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
-
         }else{
             _isShowTranfer = NO;
             [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
@@ -249,11 +259,10 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
             dispatch_after(delayTime, dispatch_get_main_queue(), ^{
                 [view setHidden:YES];
                 [view.layer removeAllAnimations];
-                [tranferView.view removeFromSuperview];
                 [tranferView.view.layer removeAllAnimations];
+                [tranferView.view removeFromSuperview];
                 [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
             });
-
         }
     }
 }
@@ -287,7 +296,6 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     }
     if (deviceConnection.allDevices) {
         _popoverViewController = [[IMBPopoverViewController alloc] initWithNibName:@"IMBPopoverViewController" bundle:nil withSelectedValue:deviceBaseInfo.uniqueKey WithDevice:deviceConnection.allDevices withConnectType:deviceBaseInfo.connectType];
-        
         [_popoverViewController setTarget:self];
         [_popoverViewController setAction:@selector(onItemClicked:)];
         
@@ -314,6 +322,22 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     IMBMainWindowController *windowController = nil;
     [_devPopover close];
     if (baseInfo.connectType == general_Add_Content) {
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:_chooseModelEnum withCategoryEnum:_baseViewController.category];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        if (_chooseModelEnum == iCloudLogEnum) {
+            [ATTracker event:CiCloud action:AAddAccount label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (_chooseModelEnum == DropBoxLogEnum) {
+            [ATTracker event:CDropbox action:AAddAccount label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else {
+            [ATTracker event:CDevice action:AAddAccount label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         if (!viewManager.mainWindowController) {
             viewManager.mainWindowController = [[IMBMainWindowController alloc] initWithNewWindow];
             [viewManager.mainWindowController.window setContentSize:NSMakeSize(WindowMinSizeWidth, WindowMinSizeHigh)];
@@ -383,7 +407,216 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     
 }
 
-- (void)backdrive:(IMBBaseInfo *)baseInfo {
+//弹出设备
+- (void)backdrive:(IMBBaseInfo *)baseInfo{
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:_baseViewController.category];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+        [ATTracker event:CiCloud action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+        [ATTracker event:CDropbox action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+        [ATTracker event:CDevice action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
+    [_devPopover close];
+    NSMutableArray *deviceAry = [[NSMutableArray alloc]init];;
+     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    
+//    [deviceConnection removeIPodByKey:baseInfo.uniqueKey];
+    [deviceConnection removeDeviceByKey:baseInfo.uniqueKey];
+    for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
+        if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+            [deviceAry addObject:baseInfo];
+        }
+    }
+    IMBViewManager *viewManager = [IMBViewManager singleton];
+    if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+        if (_chooseModelEnum == DeviceLogEnum) {
+            if ([_iPod.uniqueKey isEqualToString:baseInfo.uniqueKey]) {
+                if (viewManager.windowDic.count >1) {
+                    NSWindow *window = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                    [window close];
+                    [viewManager.windowDic removeObjectForKey:baseInfo.uniqueKey];
+                    [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                }else {
+                    [self backMainView:nil];
+                    [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                }
+            }else {
+                NSWindow *window = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                if (window) {
+                    [window close];
+                    [viewManager.windowDic removeObjectForKey:baseInfo.uniqueKey];
+                    [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                }else {
+                    if ([viewManager.allMainControllerDic objectForKey:baseInfo.uniqueKey]) {
+                        [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                    }
+                }
+            }
+        }else if (_chooseModelEnum == DropBoxLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:baseInfo.uniqueKey];
+                [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:baseInfo.uniqueKey]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                }
+            }
+        }else if (_chooseModelEnum == iCloudLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:baseInfo.uniqueKey];
+                [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:baseInfo.uniqueKey]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:baseInfo.uniqueKey];
+                }
+            }
+        }
+        if (deviceAry.count >0) {
+            IMBBaseInfo *baseInfo = [deviceAry objectAtIndex:0];
+            [viewManager.mainViewController chooseDeviceBtn:baseInfo];
+        }else {
+            [viewManager.mainViewController chooseDeviceBtn:nil];
+        }
+    }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+        if (_chooseModelEnum == DeviceLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:@"DropBox"];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:@"DropBox"];
+                [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:@"DropBox"]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                }
+            }
+        }else if (_chooseModelEnum == DropBoxLogEnum) {
+            if (viewManager.windowDic.count >1) {
+                NSWindow *window = [viewManager.windowDic objectForKey:@"DropBox"];
+                if (window) {
+                    [window close];
+                    [viewManager.windowDic removeObjectForKey:@"DropBox"];
+                    [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                }else {
+                    if ([viewManager.allMainControllerDic objectForKey:@"DropBox"]) {
+                        [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                    }
+                }
+            }else {
+                [self backMainView:nil];
+                NSWindow *window = [viewManager.windowDic objectForKey:@"DropBox"];
+                if (window) {
+                    [viewManager.windowDic removeObjectForKey:@"DropBox"];
+                    [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                }else {
+                    if ([viewManager.allMainControllerDic objectForKey:@"DropBox"]) {
+                        [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                    }
+                }
+                
+            }
+        }else if (_chooseModelEnum == iCloudLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:@"DropBox"];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:@"DropBox"];
+                [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:@"DropBox"]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:@"DropBox"];
+                }
+            }
+        }
+        [viewManager.mainViewController signoutDropboxClicked];
+    }else if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+        if (_chooseModelEnum == DeviceLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:@"iCloud"];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:@"iCloud"];
+                [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:@"iCloud"]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                }
+            }
+        }else if (_chooseModelEnum == DropBoxLogEnum) {
+            NSWindow *window = [viewManager.windowDic objectForKey:@"iCloud"];
+            if (window) {
+                [window close];
+                [viewManager.windowDic removeObjectForKey:@"iCloud"];
+                [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+            }else {
+                if ([viewManager.allMainControllerDic objectForKey:@"iCloud"]) {
+                    [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                }
+            }
+        }else if (_chooseModelEnum == iCloudLogEnum) {
+            if  (viewManager.windowDic.count > 1) {
+                NSWindow *window = [viewManager.windowDic objectForKey:@"iCloud"];
+                if (window) {
+                    [window close];
+                    [viewManager.windowDic removeObjectForKey:@"iCloud"];
+                    [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                }else {
+                    if ([viewManager.allMainControllerDic objectForKey:@"iCloud"]) {
+                        [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                    }
+                }
+            }else {
+                [self backMainView:nil];
+                NSWindow *window = [viewManager.windowDic objectForKey:@"iCloud"];
+                if (window) {
+                    [viewManager.windowDic removeObjectForKey:@"iCloud"];
+                    [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                }else {
+                    if ([viewManager.allMainControllerDic objectForKey:@"iCloud"]) {
+                        [viewManager.allMainControllerDic removeObjectForKey:@"iCloud"];
+                    }
+                }
+            }
+        }
+        [viewManager.mainViewController signoutiCloudClicked];
+    }
+ 
+//    [self changeSelectDeviceBtn:_curFunctionType];
+
+//        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                  baseInfo.uniqueKey, @"UniqueKey"
+//                                  , nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDisConnectedNotification object:baseInfo.uniqueKey userInfo:userInfo];
+    
+}
+
+- (void)openWindow:(IMBBaseInfo *)baseInfo {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:_baseViewController.category];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+        [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+        [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+        [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     if (_devPopover) {
         [_devPopover close];
     }
@@ -407,6 +640,10 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
 
 - (void)closeWindow:(id)sender {
     [_delegate closeWindow:nil];
+}
+
+- (void)minWindow:(id)sender {
+    [_delegate minWindow:nil];
 }
 
 - (IBAction)backMainView:(id)sender {
@@ -446,7 +683,6 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
         [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
         dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8/*延迟执行时间*/ * NSEC_PER_SEC));
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-            
             [view setHidden:YES];
             [view.layer removeAllAnimations];
             [tranferView.view removeFromSuperview];
@@ -460,9 +696,6 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
     _isShowTranfer = NO;
-//    [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
-//    [[_delegate window].contentView addSubview:tranferView.view];
-//    [tranferView.view setWantsLayer:YES];
     
     [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
     [self performSelector:@selector(closeCompleteOver) withObject:self afterDelay:0.5];
@@ -470,6 +703,8 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
 
 - (void)closeCompleteOver {
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+    [tranferView.view removeFromSuperview];
+    [tranferView.view.layer removeAllAnimations];
     [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
 
 }
@@ -479,11 +714,11 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     if (_isLoadSearchView) {
         return;
     }
-    if (_searchView.frame.size.width <= 26 && _searchView.searchField.isEnabled) {
+    if (_searchView.frame.size.width <= 21 && _searchView.searchField.isEnabled) {
         _isLoadSearchView = YES;
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
             context.duration = 0.5;
-            NSRect newRect = NSMakeRect(_searchView.frame.origin.x - 108 + 26, _searchView.frame.origin.y, 108, _searchView.frame.size.height);
+            NSRect newRect = NSMakeRect(_searchView.frame.origin.x - 130 + 21, _searchView.frame.origin.y, 130, _searchView.frame.size.height);
             [[_searchView animator] setFrame:newRect];
             [_searchView setBackGroundColor:[NSColor whiteColor]];
             [_searchView setIsOpen:YES];
@@ -493,6 +728,31 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
             _isLoadSearchView = NO;
         }];
         
+    }
+}
+
+//合拢searchView
+- (void)closeSearchView {
+    if (_isLoadSearchView) {
+        return;
+    }
+    if (_searchView.frame.size.width > 21 && _searchView.searchField.isEnabled && [StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue]) {
+        _isLoadSearchView = YES;
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            context.duration = 0.5;
+            NSRect newRect = NSMakeRect(_searchView.frame.origin.x + 130 - 21, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
+            [[_searchView animator] setFrame:newRect];
+            [_searchView setBackGroundColor:COLOR_MAIN_WINDOW_BG];
+            [_searchView.searchField setHidden:YES];
+            [_searchView.closeBtn setHidden:YES];
+        } completionHandler:^{
+            [_searchView setIsOpen:NO];
+            _isLoadSearchView = NO;
+            [_searchView mouseExited:nil];
+            [_searchView setNeedsDisplay:YES];
+            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 114, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
+            [_searchView setFrame:newRect];
+        }];
     }
 }
 
@@ -528,36 +788,13 @@ static CGFloat const kSelectedBtnfontSize = 15.0f;
     NSView *superView = _searchView.superview;
     BOOL inSearchView = NSMouseInRect(point, NSMakeRect(_searchView.frame.origin.x, superView.frame.origin.y + _searchView.frame.origin.y, _searchView.frame.size.width, _searchView.frame.size.height), [[self.view.window contentView] isFlipped]);
     if (!inSearchView) {
-        if ([StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue] && ![_searchView isHidden] && (_searchView.frame.size.width > 26)) {
+        if ([StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue] && ![_searchView isHidden] && (_searchView.frame.size.width > 21)) {
             [self closeSearchView];
         }
     }
 }
 
-//合拢searchView
-- (void)closeSearchView {
-    if (_isLoadSearchView) {
-        return;
-    }
-    if (_searchView.frame.size.width > 26 && _searchView.searchField.isEnabled && [StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue]) {
-        _isLoadSearchView = YES;
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            context.duration = 0.5;
-            NSRect newRect = NSMakeRect(_searchView.frame.origin.x + 108 - 26, _searchView.frame.origin.y, 26, _searchView.frame.size.height);
-            [[_searchView animator] setFrame:newRect];
-            [_searchView setBackGroundColor:COLOR_MAIN_WINDOW_BG];
-            [_searchView.searchField setHidden:YES];
-            [_searchView.closeBtn setHidden:YES];
-        } completionHandler:^{
-            [_searchView setIsOpen:NO];
-            _isLoadSearchView = NO;
-            [_searchView mouseExited:nil];
-            [_searchView setNeedsDisplay:YES];
-            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 188, _searchView.frame.origin.y, 26, _searchView.frame.size.height);
-            [_searchView setFrame:newRect];
-        }];
-    }
-}
+
 
 - (void)dealloc {
     [super dealloc];

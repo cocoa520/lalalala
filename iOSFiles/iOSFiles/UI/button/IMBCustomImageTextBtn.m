@@ -57,15 +57,30 @@
     _titleLabel.editable = NO;
     _titleLabel.textColor = titleColor ? titleColor : [NSColor darkGrayColor];
     _titleLabel.font = titleSize > 0 ? [NSFont systemFontOfSize:titleSize] : [NSFont systemFontOfSize:14.f];//[NSFont fontWithName:IMBCommonFont size:titleSize] : [NSFont fontWithName:IMBCommonFont size:14.f]
-    [_titleLabel.cell setLineBreakMode:NSLineBreakByCharWrapping];
+    
     _titleLabel.stringValue = title;
     
     NSDictionary *textAttr = @{NSForegroundColorAttributeName : _titleLabel.textColor, NSFontAttributeName : _titleLabel.font};
     NSSize textSize = [title boundingRectWithSize:NSMakeSize(MAXFLOAT, 0) options:NSStringDrawingTruncatesLastVisibleLine attributes:textAttr].size;
-    
-//    NSSize textSize = [StringHelper calcuTextBounds:title fontSize:titleSize > 0 ? titleSize : 14.f].size;
     textSize.width += 5.f;
-    _titleLabel.frame = NSMakeRect((NSWidth(self.frame) - textSize.width)/2.f, (NSHeight(self.frame) - textSize.height)/2.f, textSize.width, textSize.height);
+    if (!rightIcon) {
+        _rightIconImageView.image = [NSImage imageNamed:rightIcon];
+        if (textSize.width + 5 + _rightIconImageView.frame.size.width >  NSWidth(self.frame)) {
+            _titleLabel.frame = NSMakeRect(0, (NSHeight(self.frame) - textSize.height)/2.f, NSWidth(self.frame) - 20, textSize.height);
+        }else {
+            _titleLabel.frame = NSMakeRect(ceil((NSWidth(self.frame) -textSize.width + 5 + _rightIconImageView.frame.size.width)/2.0), (NSHeight(self.frame) - textSize.height)/2.f, NSWidth(self.frame) - 20, textSize.height);
+        }
+    }else {
+        if (textSize.width < NSWidth(self.frame) - 45) {
+            _titleLabel.frame = NSMakeRect((NSWidth(self.frame) - textSize.width)/2.f, (NSHeight(self.frame) - textSize.height)/2.f, textSize.width, textSize.height);
+        }else {
+            _titleLabel.frame = NSMakeRect(25, (NSHeight(self.frame) - textSize.height)/2.f, NSWidth(self.frame) - 45, textSize.height);
+        }
+    }
+
+//    [_titleLabel.cell setLineBreakMode:NSLineBreakByTruncatingTail];
+    [_titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+
     [self addSubview:_titleLabel];
     
     if (leftIcon) {

@@ -24,8 +24,7 @@
 @property(nonatomic, retain)IMBBorderRectAndColorView *singleBtnView;
 @property(nonatomic, retain)NSTextField *singleBtnViewMsgLabel;
 @property(nonatomic, retain)IMBMyDrawCommonly *singleBtnViewOKBtn;
-
-
 @property(nonatomic, copy)void(^singleBtnOKClicked)(void);
+- (void)resetMsgPostion;
 
 @end

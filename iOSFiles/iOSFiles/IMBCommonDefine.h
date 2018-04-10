@@ -23,6 +23,9 @@
 //禁用文字
 #define COLOR_TEXT_DISABLE IMBGrayColor(178)
 
+//错误信息文字
+#define COLOR_TEXT_ERROR IMBRgbColor(255,0 ,0)
+
 //可点击文字  常驻
 #define COLOR_TEXT_PERMANENT IMBGrayColor(0)
 
@@ -74,7 +77,7 @@
 /******************  颜色规范（如有新增颜色，请问设计要,不要直接就随便添加进来）  *************************/
 
 //主窗口背景颜色
-#define COLOR_MAIN_WINDOW_BG IMBRgbAColor(248,248,248,0.9)
+#define COLOR_MAIN_WINDOW_BG IMBRgbAColor(248,248,248,1)
 
 #define COLOR_BTN_BLUE_BG IMBRgbColor(53,179,251)
 

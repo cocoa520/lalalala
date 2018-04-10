@@ -96,6 +96,7 @@
     NSMutableArray *_videoArray;
     NSMutableArray *_mediaArray;
     NSMutableArray *_appArray;
+    NSMutableArray *_appDoucmentArray;
 }
 @property(nonatomic,retain)NSMutableArray *mediaArray;
 @property(nonatomic,retain)NSMutableArray *allPhotoArray;
@@ -148,6 +149,8 @@
 @property(nonatomic,retain) NSMutableArray *collecitonArray;
 @property(nonatomic,retain) NSMutableArray *videoArray;
 @property(nonatomic,retain) NSMutableArray *appArray;
+@property(nonatomic,retain) NSMutableArray *appDoucmentArray;
+
 - (id)initWithiPod:(IMBiPod *)ipod;
 
 #pragma mark - media数据

@@ -1,7 +1,7 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/Transfer/CloneOrMerge
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-IMBAppClone.h
-file
-
-
-
-
-2018-02-02T01:41:58.000000Z
-89f99ac35950ce13e77cf71db6e12cab
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-455
 
 DataPlist.plist
 file
@@ -93,6 +59,40 @@ dingming
 
 
 1388
+
+IMBAppClone.h
+file
+
+
+
+
+2018-02-02T01:41:58.000000Z
+89f99ac35950ce13e77cf71db6e12cab
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+455
 
 IMBSystemSettingClone.h
 file
@@ -230,14 +230,14 @@ has-props
 
 22560
 
-IMBCategoryInfoModel.h
+IMBPhotoClone.h
 file
 
 
 
 
 2018-02-02T01:41:58.000000Z
-71e1cbf1ee27dffb76b40e8062d9c40c
+d334f6b7c221f5aa798bb90f1bda7c3a
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -262,7 +262,7 @@ has-props
 
 
 
-749
+393
 
 IMBMessageClone.m
 file
@@ -298,52 +298,18 @@ dingming
 
 118036
 
-IMBPhotoClone.h
+IMBCategoryInfoModel.h
 file
 
 
 
 
 2018-02-02T01:41:58.000000Z
-d334f6b7c221f5aa798bb90f1bda7c3a
+71e1cbf1ee27dffb76b40e8062d9c40c
 2017-11-22T04:23:34.702949Z
 9
 dingming
 has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-393
-
-IMBCloneOrMergeManager.h
-file
-
-
-
-
-2018-02-02T01:41:58.000000Z
-0709eb151a5309be76907418829ad5e2
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
 
 
 
@@ -400,6 +366,40 @@ has-props
 
 557
 
+IMBCloneOrMergeManager.h
+file
+
+
+
+
+2018-02-02T01:41:58.000000Z
+0709eb151a5309be76907418829ad5e2
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+749
+
 IMBCallHistoryClone.h
 file
 
@@ -434,40 +434,6 @@ has-props
 
 387
 
-IMBCategoryInfoModel.m
-file
-
-
-
-
-2018-02-02T01:41:58.000000Z
-f28fa193078cb60ab836613c2a116d90
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1243
-
 IMBPhotoClone.m
 file
 
@@ -501,6 +467,40 @@ has-props
 
 
 6043
+
+IMBCategoryInfoModel.m
+file
+
+
+
+
+2018-02-02T01:41:58.000000Z
+f28fa193078cb60ab836613c2a116d90
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1243
 
 IMBCloneOrMergeManager.m
 file

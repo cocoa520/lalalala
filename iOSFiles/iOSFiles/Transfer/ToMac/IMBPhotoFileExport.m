@@ -41,8 +41,13 @@
         }
         
         pe.isStart = YES;
-    
-        _currentDriveItem = pe;
+        _curSize = 0;
+        if (_currentDriveItem) {
+            [_currentDriveItem release];
+            _currentDriveItem = nil;
+        }
+        _currentDriveItem = [pe retain];
+        _currentDriveItem.currentSize = 0;
         if (_exportTracks != nil && _exportTracks.count > 0 && ![TempHelper stringIsNilOrEmpty:_exportPath]) {
             if ([_transferDelegate respondsToSelector:@selector(transferPrepareFileStart:)]) {
                 [_transferDelegate transferPrepareFileStart:@"Preparing file..."];
@@ -183,25 +188,27 @@
                                 }
                             });
                             
-                        }else if ([[[pe.fileName pathExtension] lowercaseString] isEqualToString:@"heic"]){
-                            success = [_ipod.fileSystem copyRemoteFile:[pe.photoPath stringByAppendingPathComponent:pe.fileName] toLocalFile:filePath];
-                            nowPath = filePath;
-                            IMBPhotoExportSettingConfig *exportSeetingConfig = [IMBPhotoExportSettingConfig singleton];
-                            if (!exportSeetingConfig.isHEICState) {
-                                IMBPhotoHeicManager *pM = [IMBPhotoHeicManager singleton];
-                                NSString *heicFilePath = filePath;
-                                NSString *inputFilePath = [TempHelper getAppTempPath];
-                                NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
-                                NSString *fileType = @"jpg";
-                                nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
-                                [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
-                                [pM startConvert];
-                                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
-                                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                                    [_fileManager removeItemAtPath:heicFilePath error:nil];
-                                });
-                            }
-                        }else{
+                        }
+//                        else if ([[[pe.fileName pathExtension] lowercaseString] isEqualToString:@"heic"]){
+//                            success = [_ipod.fileSystem copyRemoteFile:[pe.photoPath stringByAppendingPathComponent:pe.fileName] toLocalFile:filePath];
+//                            nowPath = filePath;
+//                            IMBPhotoExportSettingConfig *exportSeetingConfig = [IMBPhotoExportSettingConfig singleton];
+//                            if (!exportSeetingConfig.isHEICState) {
+//                                IMBPhotoHeicManager *pM = [IMBPhotoHeicManager singleton];
+//                                NSString *heicFilePath = filePath;
+//                                NSString *inputFilePath = [TempHelper getAppTempPath];
+//                                NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
+//                                NSString *fileType = @"jpg";
+//                                nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+//                                [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
+//                                [pM startConvert];
+//                                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
+//                                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//                                    [_fileManager removeItemAtPath:heicFilePath error:nil];
+//                                });
+//                            }
+//                        }
+                        else{
                             nowPath = filePath;
                             success = [self copyRemoteFile:remotingFilePath toLocalFile:filePath];
                         }
@@ -286,27 +293,29 @@
                                         [_fileManager removeItemAtPath:filePath error:nil];
                                     }
                                 });
-                            }else if ([[[pe.fileName pathExtension] lowercaseString] isEqualToString:@"heic"]){
-                                success =  [fileManager copyItemAtPath:pe.oriPath toPath:filePath error:nil];
-                                IMBPhotoExportSettingConfig *exportSeetingConfig = [IMBPhotoExportSettingConfig singleton];
-                                nowPath = filePath;
-                                if (!exportSeetingConfig.isHEICState) {
-                                    IMBPhotoHeicManager *pM = [IMBPhotoHeicManager singleton];
-                                    NSString *heicFilePath = filePath;
-                                    NSString *inputFilePath = [TempHelper getAppTempPath];
-                                    NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
-                                    NSString *fileType = @"jpg";
-                                    [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
-                                    [pM startConvert];
-                                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
-                                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                                        if([_fileManager fileExistsAtPath:heicFilePath]){
-                                            [_fileManager removeItemAtPath:heicFilePath error:nil];
-                                        }
-                                        
-                                    });
-                                }
-                            }else{
+                            }
+//                            else if ([[[pe.fileName pathExtension] lowercaseString] isEqualToString:@"heic"]){
+//                                success =  [fileManager copyItemAtPath:pe.oriPath toPath:filePath error:nil];
+//                                IMBPhotoExportSettingConfig *exportSeetingConfig = [IMBPhotoExportSettingConfig singleton];
+//                                nowPath = filePath;
+//                                if (!exportSeetingConfig.isHEICState) {
+//                                    IMBPhotoHeicManager *pM = [IMBPhotoHeicManager singleton];
+//                                    NSString *heicFilePath = filePath;
+//                                    NSString *inputFilePath = [TempHelper getAppTempPath];
+//                                    NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
+//                                    NSString *fileType = @"jpg";
+//                                    [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
+//                                    [pM startConvert];
+//                                    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
+//                                    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+//                                        if([_fileManager fileExistsAtPath:heicFilePath]){
+//                                            [_fileManager removeItemAtPath:heicFilePath error:nil];
+//                                        }
+//                                        
+//                                    });
+//                                }
+//                            }
+                            else{
                                 nowPath = filePath;
                                 //success = [self copyRemoteFile:remotingFilePath toLocalFile:filePath];
                                 success =  [fileManager copyItemAtPath:pe.oriPath toPath:filePath error:nil];

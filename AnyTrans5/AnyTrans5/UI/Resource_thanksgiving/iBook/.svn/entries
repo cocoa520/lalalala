@@ -1,7 +1,7 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_thanksgiving/iBook
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -264,14 +264,14 @@ has-props
 
 2275
 
-menu_pdf1.png
+menu_book.png
 file
 
 
 
 
 2018-02-02T01:41:11.000000Z
-80fbf99a3d2b8fb80ed3bcf6cf51b520
+11c53e4c09ff2dd5c50abe525dad154c
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -296,7 +296,7 @@ has-props
 
 
 
-1215
+1205
 
 menu_buy1@2x.png
 file
@@ -332,14 +332,14 @@ has-props
 
 1396
 
-menu_book.png
+menu_pdf1.png
 file
 
 
 
 
 2018-02-02T01:41:11.000000Z
-11c53e4c09ff2dd5c50abe525dad154c
+80fbf99a3d2b8fb80ed3bcf6cf51b520
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -364,41 +364,7 @@ has-props
 
 
 
-1205
-
-menu_buy2@2x.png
-file
-
-
-
-
-2018-02-02T01:41:11.000000Z
-6552c8cb2ad250af271fb033e52b98ff
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1358
+1215
 
 menu_pdf2.png
 file
@@ -434,6 +400,40 @@ has-props
 
 1174
 
+menu_buy2@2x.png
+file
+
+
+
+
+2018-02-02T01:41:11.000000Z
+6552c8cb2ad250af271fb033e52b98ff
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1358
+
 ibook_selected@2x.png
 file
 
@@ -468,40 +468,6 @@ has-props
 
 3816
 
-menu_book@2x.png
-file
-
-
-
-
-2018-02-02T01:41:11.000000Z
-8024c8db59739026c625079f6947c8d4
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1426
-
 menu_pdf1@2x.png
 file
 
@@ -535,6 +501,40 @@ has-props
 
 
 1435
+
+menu_book@2x.png
+file
+
+
+
+
+2018-02-02T01:41:11.000000Z
+8024c8db59739026c625079f6947c8d4
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1426
 
 menu_pdf2@2x.png
 file

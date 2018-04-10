@@ -36,12 +36,21 @@
         _isAndroidView = NO;
         _isiCloudView = NO;
         _isShowLine = NO;
-        _signOutBtn = [[IMBSignOutButton alloc] initWithFrame:NSMakeRect(217 , 40, 24, 24)];
-        _signOutBtn.mouseEnteredImage = [StringHelper imageNamed:@"icon_newwindow_hover"];
-        _signOutBtn.mouseDownImage = [StringHelper imageNamed:@"icon_newwindow_default"];
-        _signOutBtn.mouseExitedImage = [StringHelper imageNamed:@"icon_newwindow_default"];
+        _openWindowBtn = [[IMBSignOutButton alloc] initWithFrame:NSMakeRect(217 , 40, 24, 24)];
+        _openWindowBtn.mouseEnteredImage = [StringHelper imageNamed:@"icon_newwindow_hover"];
+        _openWindowBtn.mouseDownImage = [StringHelper imageNamed:@"icon_newwindow_hover"];
+        _openWindowBtn.mouseExitedImage = [StringHelper imageNamed:@"icon_newwindow_default"];
+        [_openWindowBtn setTarget:self];
+        [_openWindowBtn setAction:@selector(openWindow)];
+        
+        _signOutBtn = [[IMBSignOutButton alloc] initWithFrame:NSMakeRect(200 , 40, 24, 24)];
+        _signOutBtn.mouseEnteredImage = [StringHelper imageNamed:@" topbox_icon_signout_hover"];
+        _signOutBtn.mouseDownImage = [StringHelper imageNamed:@" topbox_icon_signout_default"];
+        _signOutBtn.mouseExitedImage = [StringHelper imageNamed:@" topbox_icon_signout_default"];
         [_signOutBtn setTarget:self];
         [_signOutBtn setAction:@selector(signOutDrive)];
+
+        
     }
     return self;
 }
@@ -77,9 +86,9 @@
     //背景
     NSBezierPath *path1 = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:3 yRadius:3];
     if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp) {
-        [DEVICEITEMVIEW_ENTER_BGCOLOR set];
+        [COLOR_TABLEVIEW_ENTER set];
     }else if (_mouseStatus == MouseDown) {
-        [DEVICEITEMVIEW_DOWN_BGCOLOR set];
+        [COLOR_TABLEVIEW_CLICK set];
     }else {
         [[NSColor clearColor] set];
     }
@@ -93,31 +102,51 @@
     //画设备的名字
     if (_baseInfo.deviceName != nil) {
         NSSize size ;
-        NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_baseInfo.deviceName withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:112 withSize:&size withColor:COLOR_TEXT_ORDINARY withAlignment:NSLeftTextAlignment];
-        NSRect textRect2 = NSMakeRect(10 , 8, size.width, 22);
+        NSColor *color = nil;
+        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
+            color = COLOR_TEXT_PRIORITY;
+        }else {
+            color = COLOR_TEXT_ORDINARY;
+        }
+        NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_baseInfo.deviceName withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:112 withSize:&size withColor:color withAlignment:NSLeftTextAlignment];
+        NSRect textRect2 = NSMakeRect(20 , 8, size.width, 22);
         [attrStr drawInRect:textRect2];
     }
-        if (_baseInfo.chooseModelEnum == DeviceLogEnum) {
-            NSRect sizeRect = NSMakeRect(138, 14, 124, 16);
-            NSString *str = nil;
-            if (_baseInfo.kyDeviceSize) {
-                str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/" ] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
-
-                [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:COLOR_TEXT_EXPLAIN];
-            }
-            
+    if (_baseInfo.chooseModelEnum == DeviceLogEnum) {
+         NSColor *color = nil;
+        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
+            color = COLOR_TEXT_PRIORITY;
         }else {
-            NSRect sizeRect = NSMakeRect(138, 14, 124, 16);
-            NSString *str = nil;
-            if (_baseInfo.kyDeviceSize) {
-                str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/"] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
-                
-                [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:COLOR_TEXT_EXPLAIN];
-            }
+            color = COLOR_TEXT_ORDINARY;
         }
+        NSRect sizeRect = NSMakeRect(130, 14, 100, 16);
+        NSString *str = nil;
+        if (_baseInfo.kyDeviceSize) {
+            str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/" ] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
+
+            [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:color];
+        }
+    }else {
+        NSColor *color = nil;
+        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
+            color = COLOR_TEXT_PRIORITY;
+        }else {
+            color = COLOR_TEXT_ORDINARY;
+        }
+        NSRect sizeRect = NSMakeRect(130, 14, 100, 16);
+        NSString *str = nil;
+        if (_baseInfo.kyDeviceSize) {
+            str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/"] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
+            
+            [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:color];
+        }
+    }
     if (![_baseInfo.deviceName isEqualToString:CustomLocalizedString(@"icloud_addAcount", nil)]) {
         //退出按钮
-        [_signOutBtn setFrame:NSMakeRect(260 , 8, 24, 24)];
+        [_openWindowBtn setFrame:NSMakeRect(268 , 9, 24, 24)];
+        [self addSubview:_openWindowBtn];
+        
+        [_signOutBtn setFrame:NSMakeRect(244 , 9, 24, 24)];
         [self addSubview:_signOutBtn];
     }
 }
@@ -257,6 +286,10 @@
     [_delegate backdrive:_baseInfo];
 }
 
+- (void)openWindow {
+    [_delegate openWindow:_baseInfo];
+}
+
 - (int)getDeviceCapcityType:(long long)totalSize {
     double type = (double)(totalSize/(1024*1024*1024));
     if (type>0.0&&type<=8.0) {
@@ -282,6 +315,14 @@
 }
 
 - (void)dealloc {
+    if (_openWindowBtn != nil) {
+        [_openWindowBtn release];
+        _openWindowBtn = nil;
+    }
+    if (_signOutBtn != nil) {
+        [_signOutBtn release];
+        _signOutBtn = nil;
+    }
     [_trackingArea release],_trackingArea = nil;
     [super dealloc];
 }

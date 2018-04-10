@@ -32,7 +32,7 @@
 #import "IMBAlertViewController.h"
 #import "IMBSortPopoverViewController.h"
 #import "DateHelper.h"
-
+#import "IMBHoverChangeImageBtn.h"
 @class IMBSearchView;
 @class IMBBaseViewController;
 typedef NS_ENUM(int, AnimationStyle) {
@@ -58,6 +58,8 @@ typedef NS_ENUM(int, AnimationStyle) {
     IMBiPod *_iPod;
     id _delegate;
     CategoryNodesEnum _category;
+    CategoryNodesEnum _categoryNodeEunm;
+    ChooseLoginModelEnum _chooseLogModelEnmu;
     id<InnerViewSwitchDelegate> _navigationController;
     NSMutableArray *_dataSourceArray; ///<表格数据源,通常指左边表格的数据源 此数据源是所有的数据
     NSMutableArray *_researchdataSourceArray;///<此数据源是指搜索之后的数据源
@@ -81,6 +83,20 @@ typedef NS_ENUM(int, AnimationStyle) {
     BOOL _isDeletePlaylist;
     NSMutableArray *_delArray;
     NSPopover *_toDevicePopover;
+    
+    //右键menu
+    IBOutlet NSMenuItem *_itemsReloadItem;
+    IBOutlet NSMenuItem *_itemsAddItem;
+    IBOutlet NSMenuItem *_itemsDeleteItem;
+    IBOutlet NSMenuItem *_itemsToMacItem;
+    IBOutlet NSMenuItem *_itemsToDeviceItem;
+    IBOutlet NSMenuItem *_itemsToiCloudItem;
+    IBOutlet NSMenuItem *_itemsShowDetailItem;
+    IBOutlet NSMenuItem *_itemsMoveToFolderItem;
+    IBOutlet NSMenuItem *_itemsDownloadToMacItem;
+    IBOutlet NSMenuItem *_itemsCreateFolderItem;
+    IBOutlet NSMenuItem *_itemsReNameItem;
+    IBOutlet NSMenuItem *_itemsPreviewItem;
     
     @public
     BOOL _endRunloop;
@@ -122,6 +138,7 @@ typedef NS_ENUM(int, AnimationStyle) {
     
     IMBSearchView *_searhView;
     IMBSortPopoverViewController *_sortPopoverViewController;
+    IBOutlet IMBHoverChangeImageBtn *_transferBtn;
 }
 @property (nonatomic,retain) IMBiPod *iPod;
 @property (nonatomic,assign) BOOL isStop;
@@ -131,6 +148,7 @@ typedef NS_ENUM(int, AnimationStyle) {
 @property(nonatomic,retain) NSMutableArray *dataSourceArray;
 @property(nonatomic,retain) NSMutableArray *researchdataSourceArray;
 @property (nonatomic,assign) CategoryNodesEnum category;
+@property (nonatomic, assign) CategoryNodesEnum categoryNodeEunm;
 
 @property (nonatomic,assign) BOOL itemTableViewcanDrag;
 @property (nonatomic,assign) BOOL itemTableViewcanDrop;
@@ -150,46 +168,48 @@ typedef NS_ENUM(int, AnimationStyle) {
 ///搜索
 - (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView;
 
+- (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn;
 
 - (void)setToolBar:(IMBToolButtonView *)toolbar;
 
 - (void)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText;
 
+#pragma mark - toolBarButton action
 - (void)reload:(id)sender;
-
 - (void)addItems:(id)sender;
-
 - (void)deleteItems:(id)sender;
-
 - (void)doSwitchView:(id)sender;
-
 - (void)toMac:(id)sender;
-
 - (void)deleteItem:(id)sender;
-
 - (void)toDevice:(id)sender;
-
-- (void)doEdit:(id)sender;
-
 - (void)createNewFloder:(id)sender;
-
 - (void)rename:(id)sender;
-
 - (void)toiCloud:(id)sender;
-
 - (void)showDetailView:(id)sender;
-
+- (void)preBtnClick:(id)sender;//预览
 - (void)moveToFolder:(id)sender;
-
 - (void)downloadToMac:(id)sender;
-
 - (void)sortBtnClick:(id)sender;
-
 - (void)loadSonAryComplete:(NSMutableArray *)sonAry;
-
 - (void)loadTransferComplete:(NSMutableArray *)transferAry WithEvent:(ActionTypeEnum)actionType;
-
 //开始移动文件
 - (void)startMoveTransferWith:(IMBDriveEntity *)entity;
+
+#pragma mark - rightKeyClick
+- (IBAction)itemsRightKeyReload:(id)sender;
+- (IBAction)itemsRightKeyAddItems:(id)sender;
+- (IBAction)itemsRightKeyDeleteItems:(id)sender;
+- (IBAction)itemsRightKeyToMac:(id)sender;
+- (IBAction)itemsRightKeyToDevice:(id)sender;
+- (IBAction)itemsRightKeyToiCloud:(id)sender;
+- (IBAction)itemsRightKeyShowDetailView:(id)sender;
+- (IBAction)itemsRightKeyMoveToFolder:(id)sender;
+- (IBAction)itemsRightKeyDownloadToMac:(id)sender;
+- (IBAction)itemsRightKeyCreateFolder:(id)sender;
+- (IBAction)itemsRightKeyReName:(id)sender;
+- (IBAction)itemsRightKeyPreview:(id)sender;
+
+//右键显示
+- (void)configRightKeyMenuItemWithConfigArr:(NSArray *)configArr;
 
 @end

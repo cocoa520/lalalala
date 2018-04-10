@@ -25,8 +25,7 @@
 @property(nonatomic, retain)NSTextField *twoBtnsViewMsgView;
 @property(nonatomic, retain)IMBMyDrawCommonly *twoBtnsViewCancelBtn;
 @property(nonatomic, retain)IMBMyDrawCommonly *twoBtnsViewOKBtn;
-
-
 @property(nonatomic, copy)void(^twoBtnsViewOKClicked)(void);
 @property(nonatomic, copy)void(^twoBtnsViewCancelClicked)(void);
+- (void)resetMsgPostion;
 @end

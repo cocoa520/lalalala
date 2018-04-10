@@ -35,6 +35,7 @@
 @synthesize zone = _zone;
 @synthesize dataAry = _dataAry;
 @synthesize isStart = _isStart;
+@synthesize uploadDocwsID = _uploadDocwsID;
 - (instancetype)init
 {
     self = [super init];
@@ -44,6 +45,7 @@
         _fileSize = 0;
         _currentSize = 0;
         _currentTotalSize = 0;
+    
     }
     return self;
 }
@@ -68,6 +70,7 @@
 
 - (void)dealloc
 {
+    [_uploadDocwsID release],_uploadDocwsID = nil;
     [_urlString release],_urlString = nil;
     [_headerParam  release],_headerParam = nil;
     [_fileName release],_fileName = nil;
@@ -101,7 +104,12 @@
 {
     if (self = [super init]) {
         _driveArray = [[NSMutableArray alloc] init];
+        _driveTodrive = [[DriveToDrive alloc]init];
         _folderItemArray = [[NSMutableArray alloc] init];
+        _uploadMaxCount = 3;
+        _activeUploadCount = 0;
+        _uploadArray = [[NSMutableArray alloc] init];
+        _synchronQueue = dispatch_queue_create([@"synchronUploadQueue" UTF8String],DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -124,6 +132,7 @@
 
 - (void)dealloc
 {
+    [_driveTodrive release],_driveTodrive = nil;
     [_userID release],_userID = nil;
     [_driveID release],_driveID = nil;
     [_userLoginToken release],_userLoginToken = nil;
@@ -135,6 +144,7 @@
     [_refreshToken release],_refreshToken = nil;
     [_folderItemArray release],_folderItemArray = nil;
     [self setDriveArray:nil];
+    [_uploadArray release],_uploadArray = nil;
     [super dealloc];
 }
 
@@ -304,6 +314,10 @@
 
 - (void)uploadItems:(NSArray <id<DownloadAndUploadDelegate>>* _Nonnull)items {
     for (id <DownloadAndUploadDelegate> item in items) {
+        if (item.isStart) {
+            continue;
+        }
+        item.isStart = YES;
         [self uploadItem:item];
     }
 }
@@ -335,19 +349,21 @@
 }
 
 - (void)cancelAllUploadItems {
-    [_upLoader cancelAllUploadItems];
+    for (id<DownloadAndUploadDelegate>item in _uploadArray) {
+        [self cancelUploadItem:item];
+    }
 }
-
 #pragma mark DriveToDrive
 
 - (void)toDrive:(BaseDrive *)targetDrive item:(id <DownloadAndUploadDelegate>)item
 {
     //先下载到本地,然后再上传
+    [_driveTodrive transferFromDrive:self targetDrive:targetDrive item:item];
 }
 
 - (void)cancelDriveToDriveItem:(id<DownloadAndUploadDelegate>)item
 {
-    
+    [_driveTodrive cancelDriveToDriveItem:item];
 }
 #pragma mark -- 检查请求响应的数据类型
 - (ResponseCode)checkResponseTypeWithSuccess:(YTKBaseRequest * _Nonnull)response {
@@ -503,8 +519,10 @@
         iswait = NO;
         [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
     } fail:^(DriveAPIResponse *response) {
-        NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content forKey:@"error"];
-        [dic setDictionary:edic];
+        if (response.content != nil) {
+            NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content forKey:@"error"];
+            [dic setDictionary:edic];
+        }
         iswait = NO;
         [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
         NSLog(@"获取list失败");
@@ -542,8 +560,10 @@
         iswait = NO;
         [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
     } fail:^(DriveAPIResponse *response) {
-        NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content forKey:@"error"];
-        [dic setDictionary:edic];
+        if (response.content != nil) {
+            NSDictionary *edic = [NSDictionary dictionaryWithObject:response.content forKey:@"error"];
+            [dic setDictionary:edic];
+        }
         iswait = NO;
         [weakSelf performSelector:@selector(createFolderWait) onThread:currentthread withObject:nil waitUntilDone:NO];
         NSLog(@"创建文件夹失败");
@@ -585,4 +605,31 @@
         [_folderItemArray removeObject:item];
     }
 }
+
+#pragma makr - 最大上传数限制
+- (BOOL)isUploadActivityLessMax
+{
+    return _activeUploadCount <= _uploadMaxCount;
+}
+
+- (void)removeUploadTaskForItem:(id<DownloadAndUploadDelegate>)item
+{
+    [_uploadArray removeObject:item];
+    _activeUploadCount--;
+}
+
+- (void)startNextTaskIfAllow
+{
+    for (id <DownloadAndUploadDelegate>item in _uploadArray ) {
+        if ([self isUploadActivityLessMax]) {
+            if (item.state == UploadStateWait) {
+                [self startUploadItem:item];
+            }
+        }else{
+            break;
+        }
+    }
+}
+
+- (void)startUploadItem:(id<DownloadAndUploadDelegate>)item{};
 @end

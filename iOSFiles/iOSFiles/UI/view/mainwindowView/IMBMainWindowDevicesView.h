@@ -16,4 +16,8 @@
     IBOutlet NSImageView *_imageView;
     
 }
+
+@property(nonatomic, retain)NSTextField *titleLabel;
+@property(nonatomic, retain)NSTextField *messageLabel;
+
 @end

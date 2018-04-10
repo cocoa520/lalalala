@@ -26,18 +26,18 @@
 }
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-    NSAttributedString *attrString = self.attributedStringValue;
-    NSMutableAttributedString *titleStr = [attrString mutableCopy];
-    [titleStr addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_ORDINARY range:NSMakeRange(0, titleStr.length)];
-    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
-    [textParagraph setLineBreakMode:self.lineBreakMode];
-    if (titleStr != nil) {
-        [titleStr addAttribute:NSParagraphStyleAttributeName value:textParagraph range:NSMakeRange(0, [titleStr length])];
-        NSRect rect = [self titleRectForBounds:cellFrame];
-        [titleStr drawWithRect: rect
-                       options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin];
-        [titleStr release];
-    }
+//    NSAttributedString *attrString = self.attributedStringValue;
+//    NSMutableAttributedString *titleStr = [attrString mutableCopy];
+//    [titleStr addAttribute:NSForegroundColorAttributeName value:COLOR_TEXT_ORDINARY range:NSMakeRange(0, titleStr.length)];
+//    NSMutableParagraphStyle *textParagraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
+//    [textParagraph setLineBreakMode:self.lineBreakMode];
+//    if (titleStr != nil) {
+//        [titleStr addAttribute:NSParagraphStyleAttributeName value:textParagraph range:NSMakeRange(0, [titleStr length])];
+//        NSRect rect = [self titleRectForBounds:cellFrame];
+//        [titleStr drawWithRect: rect
+//                       options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin];
+//        [titleStr release];
+//    }
 }
 
 - (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject event:(NSEvent *)theEvent
@@ -77,7 +77,7 @@
         titleFrame.size.height = textRect.size.height;
         titleFrame.size.width -= 4;
     }
-    titleFrame.size.width -= 2;
+//    titleFrame.size.width -= 2;
     return titleFrame;
 }
 

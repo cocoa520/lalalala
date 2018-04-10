@@ -128,8 +128,8 @@ CGFloat const IMBDevViewControllerRowH = 34.0f;
     [textField setTextColor:IMBGrayColor(188)];
     [aView addSubview:textField];
     
-    NSImageView *imageView = [[NSImageView alloc]initWithFrame:NSMakeRect(_iconX , (aView.frame.size.height - 22)/2, 22, 22)];
-    [imageView setImage:[NSImage imageNamed:@"device_icon_iPhone_gray"]];
+    NSImageView *imageView = [[NSImageView alloc]initWithFrame:NSMakeRect(_iconX , (aView.frame.size.height - 22)/2, 24, 24)];
+    [imageView setImage:[NSImage imageNamed:@"popup_icon_iphone_gray"]];
     [aView addSubview:imageView];
     
     [textField release];

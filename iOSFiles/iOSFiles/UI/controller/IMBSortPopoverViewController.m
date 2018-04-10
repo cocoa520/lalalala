@@ -8,7 +8,7 @@
 
 #import "IMBSortPopoverViewController.h"
 #import "IMBCommonDefine.h"
-#define DEVICEITEMHEIGHT 20
+#define DEVICEITEMHEIGHT 30
 
 @implementation IMBSortPopoverViewController
 @synthesize delegate = _delegate;
@@ -83,8 +83,10 @@
     [_textField setEditable:NO];
     [_textField setBackgroundColor:[NSColor clearColor]];
     [_textField setStringValue:_title];
+    [_textField setFont:[NSFont fontWithName:IMBCommonFont size:14]];
     [_textField setTextColor:COLOR_TEXT_ORDINARY];
-    [_textField setFrame:NSMakeRect(10, 0, self.frame.size.width - 20, self.frame.size.height)];
+    [_textField setAlignment:NSCenterTextAlignment];
+    [_textField setFrame:NSMakeRect(10, -2, self.frame.size.width - 20, self.frame.size.height)];
     [self addSubview:_textField];
     [_textField release];
 }
@@ -132,10 +134,13 @@
     NSBezierPath *path = [NSBezierPath bezierPathWithRect:dirtyRect];
     if (_mouseSatue == MouseEnter || _mouseSatue == MouseUp) {
         [COLOR_TABLEVIEW_ENTER setFill];
+        [_textField setTextColor:COLOR_TEXT_PRIORITY];
     }else if (_mouseSatue == MouseDown ) {
         [COLOR_TABLEVIEW_CLICK setFill];
+        [_textField setTextColor:COLOR_TEXT_PRIORITY];
     }else {
         [[NSColor whiteColor] setFill];
+        [_textField setTextColor:COLOR_TEXT_ORDINARY];
     }
     [path fill];
 }

@@ -25,7 +25,8 @@ class HEICConverter:
         self.heicFFmpegFilePath = self.tmpheicFilePath + "/Resources"
         self.numbTiles = self.findNumberOfTiles()
         self.fileType = fileType
-        self.newNameExtension = self.nameNoExtentsion + "." + self.fileType
+        self.newNameExtension = self.nameNoExtentsion + ".bmp"
+        self.convertNewNameExtension = self.nameNoExtentsion + "." + self.fileType
         self.outputPath = outputPath + "/"
         self.tempPath = inputPath + "/" + self.nameNoExtentsion
         # cleanup old files first
@@ -42,6 +43,8 @@ class HEICConverter:
         self.rotateMetadata()
         self.cropMetadata()
         self.rotateReverseMetadata()
+
+        self.convertBMPToPNG()
 
         self.copyMetadata()  # does nothing at the moment, see todo below
 
@@ -62,7 +65,7 @@ class HEICConverter:
     #     cv2.imwrite(self.tempPath + "/" + self.newNameExtension, crop)
 
     def cropMetadata(self):
-        if self.numbTiles is 48:
+        if self.numbTiles is 48 or self.numbTiles is 49:
             command = '"%s/ffmpeg" -i "%s/%s" -vf crop=4032:3024:4096:3072 -y "%s/%s"' % (
                 self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
         elif self.numbTiles is 36 or self.numbTiles is 35:
@@ -73,22 +76,13 @@ class HEICConverter:
                 command = '"%s/ffmpeg" -i "%s/%s" -vf crop=3088:2320:3584:2560 -y "%s/%s"' % (
                 self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
         else:
-            if self.numbTiles % 8 is 0:
+            if self.numbTiles > 200 and self.numbTiles % 8 == 0:
                 command = '"%s/ffmpeg" -i "%s/%s" -vf crop=16384:3634:16384:4096 -y "%s/%s"' % (
                     self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
-                # command = '%s/ffmpeg -i "%s/%s" -vf crop=6348:3634:6656:4096 -y "%s/%s"' % (
-                #     self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
         subprocess.call(shlex.split(command))
-
-        # command = '%s/ffmpeg -i "%s/%s" -vf crop=4032:3024:4096:3072 -y "%s/%s"' % (
-        # self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
-        # subprocess.call(shlex.split(command))
 
     def rotateMetadata(self):
-        command = '"%s/ffmpeg" -i "%s/%s" -vf "transpose=1" -y "%s/%s"' % (
-        self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
-        subprocess.call(shlex.split(command))
-        command = '"%s/ffmpeg" -i "%s/%s" -vf "transpose=1" -y "%s/%s"' % (
+        command = '"%s/ffmpeg" -i "%s/%s" -vf "transpose=1, transpose=1" -y "%s/%s"' % (
         self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
         subprocess.call(shlex.split(command))
 
@@ -96,7 +90,7 @@ class HEICConverter:
         command = '"%s/ffmpeg" -i "%s/%s" -vf "transpose=2" -y "%s/%s"' % (
         self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
         subprocess.call(shlex.split(command))
-        if self.numbTiles % 8 is 0:
+        if self.numbTiles > 200 and self.numbTiles % 8 == 0:
             command = '"%s/ffmpeg" -i "%s/%s" -vf "transpose=2" -y "%s/%s"' % (
             self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.newNameExtension)
             subprocess.call(shlex.split(command))
@@ -132,7 +126,7 @@ class HEICConverter:
         for i in range(1, self.numbTiles+1):
             title += '"%s/bmps/tile%s.bmp" ' % (self.tempPath, str(i).zfill(2))
         # title = title[:-1]
-        if self.numbTiles is 48:
+        if self.numbTiles is 48 or self.numbTiles is 49:
             command = '"%s/montage" %s-tile 8x -geometry +0+0 "%s/%s"' % (
                 self.heicFilePath, title, self.tempPath, self.newNameExtension)
         elif self.numbTiles is 36 or self.numbTiles is 35:
@@ -144,15 +138,19 @@ class HEICConverter:
                 command = '"%s/montage" %s-tile 7x -geometry +0+0 "%s/%s"' % (
                 self.heicFilePath, title, self.tempPath, self.newNameExtension)
         else:
-            if self.numbTiles % 8 is 0:
+            if self.numbTiles > 200 and self.numbTiles % 8 == 0:
                 command = '"%s/montage" %s-tile %sx -geometry +0+0 "%s/%s"' % (
                     self.heicFilePath, title, self.numbTiles/8, self.tempPath, self.newNameExtension)
         subprocess.call(shlex.split(command))
 
+    def convertBMPToPNG(self):
+        command = '"%s/ffmpeg" -i "%s/%s" -y "%s/%s"' % (
+        self.heicFFmpegFilePath, self.tempPath, self.newNameExtension, self.tempPath, self.convertNewNameExtension)
+        subprocess.call(shlex.split(command))
     def copyMetadata(self):
         # TODO: grab the metadata from the last tile in the set, and write it to the output file
-        if os.path.isfile(self.tempPath + "/" + self.newNameExtension):
-            shutil.copy2(self.tempPath + "/" + self.newNameExtension, self.outputPath)
+        if os.path.isfile(self.tempPath + "/" + self.convertNewNameExtension):
+            shutil.copy2(self.tempPath + "/" + self.convertNewNameExtension, self.outputPath)
         return
 
 

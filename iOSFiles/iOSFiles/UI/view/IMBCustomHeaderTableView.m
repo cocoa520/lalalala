@@ -79,10 +79,13 @@
             [_headCheckCell.checkButton setAction:@selector(clickHeadCheckButton:)];
             newCell = _headCheckCell ;
         }else{
-            NSString *newTitleKey = column.identifier;//[NSString stringWithFormat:CustomLocalizedString(@"List_Header_id_%@", nil),column.identifier];
-            NSString *newTitle = newTitleKey;//CustomLocalizedString(newTitleKey, nil);
+            NSString *newTitleKey = [NSString stringWithFormat:CustomLocalizedString(@"List_Header_id_%@", nil),column.identifier];
+            NSString *newTitle = CustomLocalizedString(newTitleKey, nil);
             cell.stringValue = newTitle;//CustomLocalizedString(newTitle, nil);
             newCell = [[IMBCustomHeaderCell alloc] initWithCell:cell];
+            IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)newCell;
+            customHeaderCell.hasDiviation = YES;
+            [customHeaderCell setDiviationY:9.0];
         }
         [column setHeaderCell:newCell];
         if ([newCell isKindOfClass:[IMBCheckHeaderCell class]]) {

@@ -13,7 +13,7 @@
 #import "StringHelper.h"
 #import "TempHelper.h"
 #import "HoverButton.h"
-#import "IMBToolbarWindow.h"
+#import "IMBiCloudNoTitleBarWinodw.h"
 #import "IMBCommonDefine.h"
 
 @implementation IMBUpgradeWindowController
@@ -50,6 +50,9 @@
 
 - (void)awakeFromNib {
     
+    [[(IMBiCloudNoTitleBarWinodw *)self.window maxButton] setHidden:YES];
+    [[(IMBiCloudNoTitleBarWinodw *)self.window minButton] setHidden:YES];
+    
     [self.window center];
     [self loadButton];
     [_UpdateTextView setBackgroundColor:COLOR_View_NORMAL];
@@ -61,14 +64,14 @@
     [btnRemindLater setHidden:YES];
     [btnUpdateNow setHidden:YES];
     
-    [logoIconImgView setImage:[StringHelper imageNamed:@"update_logo"]];
+    [logoIconImgView setImage:[StringHelper imageNamed:@"window_logo"]];
     
-     NSString *currVersion = [NSString stringWithFormat:@"%@ %@.%@",CustomLocalizedString(@"Version_id", nil),softInfo.version,softInfo.buildDate];
+     NSString *currVersion = [NSString stringWithFormat:@"%@ %@.%@",CustomLocalizedString(@"List_Header_id_Version", nil),softInfo.version,softInfo.buildDate];
     [lbCurrVersion setStringValue:currVersion];
     [lbCurrVersion setTextColor:COLOR_TEXT_EXPLAIN];
     
     //窗口title
-    NSString *promptStr = @"iOSFiles";
+    NSString *promptStr = CustomLocalizedString(@"MainWindow_id_7", nil);
     NSMutableAttributedString *promptAs = [TempHelper setSingleTextAttributedString:promptStr withFont:[NSFont fontWithName:@"Helvetica Neue Light" size:30] withColor:COLOR_TEXT_ORDINARY];
     NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
     [mutParaStyle setAlignment:NSLeftTextAlignment];
@@ -240,7 +243,7 @@
 }
 
 - (void)onUpdateNow:(id)sender {
-    NSString *url = CustomLocalizedString(@"SP_Download_Url", nil);
+    NSString *url = CustomLocalizedString(@"Download_Url", nil);
     if (_updateInfo) {
         NSArray *langArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
         NSString *firstLang = @"en";

@@ -9,8 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 @interface IMBGeneralButton : NSButton {
-    
+    NSColor *_bgColor;
+    NSColor *_titleColor;
+    BOOL _hasBorder;
 }
-
-
+@property (nonatomic, retain) NSColor *bgColor;
+@property (nonatomic, retain) NSColor *titleColor;
+@property (nonatomic, assign) BOOL hasBorder;
 @end

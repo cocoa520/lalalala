@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 68
-/svn/Mac/!svn/ver/1205/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection
+/svn/Mac/!svn/ver/2301/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection
 END
 IMBDBFileBackup.h
 K 25
@@ -15,17 +15,17 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBDeviceConnection.h
 END
-IMBDBFileBackup.m
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBDBFileBackup.m
-END
 IMBInformationManager.h
 K 25
 svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformationManager.h
+END
+IMBDBFileBackup.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBDBFileBackup.m
 END
 MobileDeviceAccess.h
 K 25
@@ -45,17 +45,17 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBDeviceConnection.m
 END
-IMBInformation.h
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformation.h
-END
 IMBInformationManager.m
 K 25
 svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformationManager.m
+END
+IMBInformation.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformation.h
 END
 MobileDeviceAccess.m
 K 25
@@ -72,8 +72,8 @@ END
 IMBInformation.m
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformation.m
+V 85
+/svn/Mac/!svn/ver/2301/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection/IMBInformation.m
 END
 IMBiPod.h
 K 25

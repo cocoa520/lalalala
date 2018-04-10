@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 70
-/svn/Mac/!svn/ver/1572/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView
+/svn/Mac/!svn/ver/2096/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView
 END
 IMBChangeTextColorField.m
 K 25
@@ -81,18 +81,6 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBNavPopSuperView.h
 END
-IMBMenuItemView.h
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBMenuItemView.h
-END
-ObjectTableRowView.m
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ObjectTableRowView.m
-END
 IMBDrawArcView.h
 K 25
 svn:wc:ra_dav:version-url
@@ -104,6 +92,18 @@ K 25
 svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBLackCornerView.h
+END
+ObjectTableRowView.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ObjectTableRowView.m
+END
+IMBMenuItemView.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBMenuItemView.h
 END
 IMBGrayCapacityView.m
 K 25
@@ -123,11 +123,11 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBNavPopSuperView.m
 END
-IMBMenuItemView.m
+IMBLackCornerView.m
 K 25
 svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBMenuItemView.m
+V 87
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBLackCornerView.m
 END
 IMBDrawArcView.m
 K 25
@@ -135,11 +135,11 @@ svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBDrawArcView.m
 END
-IMBLackCornerView.m
+IMBMenuItemView.m
 K 25
 svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBLackCornerView.m
+V 85
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBMenuItemView.m
 END
 ToDeviceViewItem.h
 K 25
@@ -165,29 +165,29 @@ svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBVolumeBarView.h
 END
-BoatAnimationView.h
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/BoatAnimationView.h
-END
 IMBGuideView.h
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBGuideView.h
 END
-ToDeviceViewItem.m
+BoatAnimationView.h
 K 25
 svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ToDeviceViewItem.m
+V 87
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/BoatAnimationView.h
 END
 IMBNoTitleBarContentView.h
 K 25
 svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBNoTitleBarContentView.h
+END
+ToDeviceViewItem.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/2096/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ToDeviceViewItem.m
 END
 IMBLrregularView.h
 K 25
@@ -381,11 +381,11 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/CapacityView.h
 END
-IMBBackupNoteEditView.m
+IMBClickedImageView.m
 K 25
 svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBackupNoteEditView.m
+V 89
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBClickedImageView.m
 END
 IMBAirBackupAnimationView.m
 K 25
@@ -393,11 +393,11 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAirBackupAnimationView.m
 END
-IMBClickedImageView.m
+IMBBackupNoteEditView.m
 K 25
 svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBClickedImageView.m
+V 91
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBackupNoteEditView.m
 END
 IMBFilpedView.m
 K 25
@@ -429,17 +429,17 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBCategoryView.h
 END
-numberTextField.h
-K 25
-svn:wc:ra_dav:version-url
-V 85
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/numberTextField.h
-END
 IMBButtonLoadingView.m
 K 25
 svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBButtonLoadingView.m
+END
+numberTextField.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/numberTextField.h
 END
 IMBReminderEditView.m
 K 25
@@ -447,23 +447,29 @@ svn:wc:ra_dav:version-url
 V 89
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBReminderEditView.m
 END
-IMBAutoGrowthNSTextField.h
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAutoGrowthNSTextField.h
-END
 IMBCategoryView.m
 K 25
 svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBCategoryView.m
 END
+IMBAutoGrowthNSTextField.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAutoGrowthNSTextField.h
+END
 numberTextField.m
 K 25
 svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/numberTextField.m
+END
+IMBChooseBrowserView.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1970/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBChooseBrowserView.h
 END
 AnnoyAnimationViewThree.h
 K 25
@@ -495,17 +501,17 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBSecireTextField.h
 END
+IMBChooseBrowserView.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1970/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBChooseBrowserView.m
+END
 AnnoyAnimationViewThree.m
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/AnnoyAnimationViewThree.m
-END
-IMBSelectionView.m
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBSelectionView.m
 END
 IMBBlockView.h
 K 25
@@ -513,17 +519,11 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBlockView.h
 END
-DriverDownloadCellView.h
+IMBSelectionView.m
 K 25
 svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DriverDownloadCellView.h
-END
-IMBHeaderImageView.h
-K 25
-svn:wc:ra_dav:version-url
-V 88
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBHeaderImageView.h
+V 86
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBSelectionView.m
 END
 IMBLanguageImageView.m
 K 25
@@ -531,17 +531,17 @@ svn:wc:ra_dav:version-url
 V 90
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBLanguageImageView.m
 END
-IMBiTunesSecureTextFieldCell.h
+IMBHeaderImageView.h
 K 25
 svn:wc:ra_dav:version-url
-V 98
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecureTextFieldCell.h
+V 88
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBHeaderImageView.h
 END
-IMBRefreshLoadingView.h
+DriverDownloadCellView.h
 K 25
 svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBRefreshLoadingView.h
+V 92
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DriverDownloadCellView.h
 END
 IMBBlankDraggableCollectionView.h
 K 25
@@ -549,17 +549,29 @@ svn:wc:ra_dav:version-url
 V 101
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBlankDraggableCollectionView.h
 END
-IMBSecireTextField.m
+IMBRefreshLoadingView.h
 K 25
 svn:wc:ra_dav:version-url
 V 91
-/svn/Mac/!svn/ver/1436/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBSecireTextField.m
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBRefreshLoadingView.h
+END
+IMBiTunesSecureTextFieldCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecureTextFieldCell.h
 END
 IMBBasicInfoView.h
 K 25
 svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBasicInfoView.h
+END
+IMBSecireTextField.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Mac/!svn/ver/1436/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBSecireTextField.m
 END
 AnnoyAnimationViewOne.h
 K 25
@@ -573,23 +585,23 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBlockView.m
 END
-DriverDownloadCellView.m
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DriverDownloadCellView.m
-END
 IMBHeaderImageView.m
 K 25
 svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBHeaderImageView.m
 END
-IMBiTunesSecureTextFieldCell.m
+DriverDownloadCellView.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DriverDownloadCellView.m
+END
+IMBBlankDraggableCollectionView.m
 K 25
 svn:wc:ra_dav:version-url
 V 101
-/svn/Mac/!svn/ver/1436/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecureTextFieldCell.m
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBlankDraggableCollectionView.m
 END
 IMBRefreshLoadingView.m
 K 25
@@ -597,11 +609,11 @@ svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBRefreshLoadingView.m
 END
-IMBBlankDraggableCollectionView.m
+IMBiTunesSecureTextFieldCell.m
 K 25
 svn:wc:ra_dav:version-url
 V 101
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBlankDraggableCollectionView.m
+/svn/Mac/!svn/ver/1436/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecureTextFieldCell.m
 END
 IMBBasicInfoView.m
 K 25
@@ -633,17 +645,17 @@ svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DownLoadView.h
 END
-IMBiTunesSecireTextField.h
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecireTextField.h
-END
 IMBMsgDialog.m
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBMsgDialog.m
+END
+IMBiTunesSecireTextField.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecireTextField.h
 END
 IMBCanClickText.h
 K 25
@@ -657,23 +669,23 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBBorderRectAndColorView.m
 END
-ASHDatePicker.h
-K 25
-svn:wc:ra_dav:version-url
-V 83
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ASHDatePicker.h
-END
 DownLoadView.m
 K 25
 svn:wc:ra_dav:version-url
 V 82
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/DownLoadView.m
 END
-LoadingView.h
+ASHDatePicker.h
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/LoadingView.h
+V 83
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ASHDatePicker.h
+END
+IMBAddressView.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAddressView.h
 END
 IMBiTunesSecireTextField.m
 K 25
@@ -681,11 +693,11 @@ svn:wc:ra_dav:version-url
 V 94
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBiTunesSecireTextField.m
 END
-IMBAddressView.h
+LoadingView.h
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAddressView.h
+V 81
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/LoadingView.h
 END
 IMBCanClickText.m
 K 25
@@ -705,17 +717,17 @@ svn:wc:ra_dav:version-url
 V 85
 /svn/Mac/!svn/ver/528/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ASHDatePicker.m
 END
-LoadingView.m
-K 25
-svn:wc:ra_dav:version-url
-V 81
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/LoadingView.m
-END
 IMBAddressView.m
 K 25
 svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBAddressView.m
+END
+LoadingView.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/LoadingView.m
 END
 IMBBGColoerView.h
 K 25
@@ -1182,8 +1194,8 @@ END
 IMBTextBoxView.m
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBTextBoxView.m
+V 87
+/svn/Mac/!svn/ver/1911/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBTextBoxView.m
 END
 IMBTextField.m
 K 25
@@ -1194,8 +1206,8 @@ END
 IMBCategoryBarButtonView.m
 K 25
 svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBCategoryBarButtonView.m
+V 97
+/svn/Mac/!svn/ver/2028/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBCategoryBarButtonView.m
 END
 IMBPopupView.h
 K 25
@@ -1239,6 +1251,12 @@ svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBChoosePathTextField.h
 END
+IMBGradientTextField.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1929/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBGradientTextField.h
+END
 CarAnimationView.h
 K 25
 svn:wc:ra_dav:version-url
@@ -1274,6 +1292,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBChoosePathTextField.m
+END
+IMBGradientTextField.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mac/!svn/ver/1929/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/IMBGradientTextField.m
 END
 IMBMsgContentView.h
 K 25
@@ -1344,8 +1368,8 @@ END
 ShopLineView.h
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ShopLineView.h
+V 85
+/svn/Mac/!svn/ver/1929/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ShopLineView.h
 END
 IMBScreenClickView.m
 K 25
@@ -1380,8 +1404,8 @@ END
 ShopLineView.m
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ShopLineView.m
+V 85
+/svn/Mac/!svn/ver/1929/AnyTrans/AnyTrans5/AnyTrans5/UI/View/CustomView/ShopLineView.m
 END
 IMBCustomShapeView.m
 K 25

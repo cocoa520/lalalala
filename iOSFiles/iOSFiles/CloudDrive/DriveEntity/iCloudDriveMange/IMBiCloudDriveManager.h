@@ -13,6 +13,7 @@
 @interface IMBiCloudDriveManager : IMBDriveBaseManage <BaseDriveDelegate>
 {
     iCloudDrive *_iCloudDrive;
+    BOOL _isRememberPassCode;
 }
 /**
  *  初始化
@@ -20,7 +21,7 @@
  *  @param userID id
  *  @param passID 密码
  */
-- (id)initWithUserID:(NSString *)userID WithPassID:(NSString*)passID WithDelegate:(id)delegate ;
+- (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate isRememberPassCode:(BOOL)passCode ;
 /**
  *  二次验证
  *
@@ -58,6 +59,16 @@
  */
 - (void)moveToNewParent:(nullable NSString *)newParent itemDics:(nullable NSArray *)items;
 
-
+/**
+ *  Description 移动
+ *
+ *  @param newParent 新的父目录id
+ *  @param items      移动项的dic数组  eg
+ *                               @{@"drivewsid":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB",
+ *                               @"etag":@"pp",
+ *                               @"clientId":@"FOLDER::com.apple.CloudDocs::E0860A26-B413-457D-81F2-FDBCD79DFFCB"}
+ *
+ */
+- (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive;
 
 @end

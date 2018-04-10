@@ -90,9 +90,18 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [button setTarget:self];
     [button setAction:@selector(closeWindow:)];
     [button setBordered:NO];
+    
+    IMBDrawOneImageBtn *minButton = [[IMBDrawOneImageBtn alloc]initWithFrame:NSMakeRect(32, 10, 12, 12)];
+    [minButton mouseDownImage:[NSImage imageNamed:@"windowmin3"] withMouseUpImg:[NSImage imageNamed:@"windowmin"] withMouseExitedImg:[NSImage imageNamed:@"windowmin"] mouseEnterImg:[NSImage imageNamed:@"windowmin2"]];
+    [minButton setEnabled:YES];
+    [minButton setTarget:self];
+    [minButton setAction:@selector(minWindow:)];
+    [minButton setBordered:NO];
+    
     [_topView initWithLuCorner:YES LbCorner:NO RuCorner:YES RbConer:NO CornerRadius:5];
     [_topView setBackgroundColor:COLOR_DEVICE_Main_WINDOW_TOPVIEW_COLOR];
     [_topView addSubview:button];
+    [_topView addSubview:minButton];
     [_topView setBackgroundColor:COLOR_MAIN_WINDOW_BG];
     
     if (_isNewController) {
@@ -101,7 +110,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         [_selectedDeviceBtn setHidden:NO];
         [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"arrow"];
     }
-//    [self mouseDown:nil];
+    [_iCloudLoginAnimationView setHidden:YES];
 }
 
 #pragma mark - 初始化，view的点击事件，鼠标进出view的响应事件
@@ -109,45 +118,54 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  *  初始化
  */
 - (void)setupView {
+    [_mainTitle setStringValue:CustomLocalizedString(@"MainWindow_id_7", nil)];
     _isEnable = YES;
     
-    [_shoppingCartBtn setHoverImage:@"nav_icon_cart_hover"];
-    [_helpBtn setHoverImage:@"nav_icon_help_hover"];
+    [_shoppingCartBtn setHoverImage:@"nav_icon_cart_hover" withSelfImage:[NSImage imageNamed:@"nav_icon_cart"]];
+    [_helpBtn setHoverImage:@"nav_icon_help_hover" withSelfImage:[NSImage imageNamed:@"nav_icon_help"]];
     
-    [_midiumiCloudClickLoginBtn setStringValue:CustomLocalizedString(@"MainWindow_iCloud_ClickTo_Login", nil)];
-    [_midiumDropBoxClickLoginBtn setStringValue:CustomLocalizedString(@"MainWindow_iCloud_ClickTo_Login", nil)];
+    [_midiumiCloudClickLoginBtn setStringValue:CustomLocalizedString(@"NotConnectiCloudMouseEnter", nil)];
+    [_midiumDropBoxClickLoginBtn setStringValue:CustomLocalizedString(@"NotConnectDropBoxMouseEnter", nil)];
     _midiumiCloudClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropBoxClickLoginBtn.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumiCloudClickLoginBtn.textColor = COLOR_TEXT_EXPLAIN;
     _midiumDropBoxClickLoginBtn.textColor = COLOR_TEXT_EXPLAIN;
     
-    _midiumIcloudMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Msg_String", nil);
-    _midiumDropboxMsgLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Msg_String", nil);
+    _midiumIcloudMsgLabel.stringValue = CustomLocalizedString(@"NotConnectiCloudTips", nil);
+    _midiumDropboxMsgLabel.stringValue = CustomLocalizedString(@"NotConnectDropBoxTips", nil);
     _midiumIcloudMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropboxMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumIcloudMsgLabel.textColor = COLOR_TEXT_EXPLAIN;
     _midiumDropboxMsgLabel.textColor = COLOR_TEXT_EXPLAIN;
     
-    _midiumIcloudTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_iCloud_Title_String", nil);
-    _midiumDropboxTitleLabel.stringValue = CustomLocalizedString(@"MainWindow_Dropbox_Title_String", nil);
+    _midiumIcloudTitleLabel.stringValue = CustomLocalizedString(@"NotConnectiCLoudTitle", nil);
+    _midiumDropboxTitleLabel.stringValue = CustomLocalizedString(@"NotConnectDropBoxTitle", nil);
     _midiumIcloudTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumDropboxTitleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
     _midiumIcloudTitleLabel.textColor = COLOR_TEXT_ORDINARY;
     _midiumDropboxTitleLabel.textColor = COLOR_TEXT_ORDINARY;
     
     
-    [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"MainWindow_iCLoudUserPlaceholder_String", nil)];
-    [icloudLoginbtn WithMouseExitedtextColor:[NSColor whiteColor] WithMouseUptextColor:[NSColor whiteColor] WithMouseDowntextColor:IMBGrayColor(240) withMouseEnteredtextColor:IMBGrayColor(245)];
-    [icloudLoginbtn WithMouseExitedfillColor:COLOR_BTN_BLUE_BG WithMouseUpfillColor:[COLOR_BTN_BLUE_BG colorWithAlphaComponent:0.8] WithMouseDownfillColor:[COLOR_BTN_BLUE_BG colorWithAlphaComponent:0.7] withMouseEnteredfillColor:[COLOR_BTN_BLUE_BG colorWithAlphaComponent:0.8]];
-    [icloudLoginbtn setTitleName:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginBtnString" , nil)WithDarwRoundRect:4.f WithLineWidth:0 withFont:[NSFont systemFontOfSize:14.f]];
     
+    [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"CloudLogin_AppleID_Txt", nil)];
+    [icloudLoginbtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_LOGIN_LEFTCOLOR withRightNormalBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftEnterBgColor:COLOR_LOGIN_LEFTCOLOR withRightEnterBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftDownBgColor:COLOR_LOGIN_LEFTCOLOR withRightDownBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftForbiddenBgColor:COLOR_LOGIN_LEFT_FORBIDDENCOLOR withRightForbiddenBgColor:COLOR_LOGIN_RIGHT_FORBIDDENCOLOR];
     
+    [icloudLoginbtn setBordered:NO];
+    
+    [icloudLoginbtn setButtonTitle:CustomLocalizedString(@"Cloud_Login" , nil) withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
+    
+    [_bigSizeIcloudGoNowBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_LOGIN_LEFTCOLOR withRightNormalBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftEnterBgColor:COLOR_LOGIN_LEFTCOLOR withRightEnterBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftDownBgColor:COLOR_LOGIN_LEFTCOLOR withRightDownBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftForbiddenBgColor:COLOR_LOGIN_LEFTCOLOR withRightForbiddenBgColor:COLOR_LOGIN_RIGHTCOLOR];
+    
+    [_bigSizeIcloudGoNowBtn setBordered:NO];
+    
+    [_bigSizeIcloudGoNowBtn setButtonTitle:CustomLocalizedString(@"DropBox_Login" , nil) withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
+
     [_devicesView setIsDevicesOriginalFrame:YES];
     
     [_iCloudUserTextField setTextColor:COLOR_TEXT_ORDINARY];
     [((customTextFieldCell *)_iCloudUserTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
-    NSMutableAttributedString *as6 = [[[NSMutableAttributedString alloc] initWithString:@"iCloud ID"] autorelease];
+    NSMutableAttributedString *as6 = [[[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"CloudLogin_AppleID_Txt", nil)] autorelease];
     [as6 addAttribute:NSForegroundColorAttributeName value:COLOR_MAIN_WINDOW_TEXTFIELD_TEXT range:NSMakeRange(0, as6.string.length)];
     [as6 setAlignment:NSLeftTextAlignment range:NSMakeRange(0, as6.string.length)];
     [as6 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range:NSMakeRange(0, as6.string.length)];
@@ -157,19 +175,28 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [((IMBSecureTextFieldCell *)_iCloudSecireTextField.cell) setCursorColor:COLOR_TEXT_ORDINARY];
     
     [_icloudDrivebox setContentView:_midiumSizeiCloudView];
-    [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+    [_dropboxBox setContentView:_midiumSizeOneDriveView];
     [_devicesBox setContentView:_midiumSizeDevicesView];
     
     
     _iCloudDriveView.isOriginalFrame = YES;
-    _oneDriveView.isOriginalFrame = YES;
+    _dropboxView.isOriginalFrame = YES;
     _devicesView.isOriginalFrame = YES;
     
+#pragma mark - view的点击事件，鼠标进出view的响应事件
     /***  界面上的三个view的鼠标点击响应事件 ***/
     /***  _iCloudDriveView的鼠标点击响应事件 ***/
     _iCloudDriveView.mouseClicked = ^(void){
-        if (_iCloudDriveView.loginStatus) {//如果icloud登陆成功，则直接进入详情界面
-            [self icloudViewClicked];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSMutableDictionary *cookie = [defaults objectForKey:@"iCloud"];
+        if (_iCloudDriveView.loginStatus||cookie) {//如果icloud登陆成功，则直接进入详情界面
+            if (_iCloudDriveView.loginStatus) {
+                [self icloudViewClicked];
+            }else {
+                _isEnable = NO;
+                [self addLoginLoadingAnimation];
+                _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_icloudLoginPwdTextfield.stringValue WithDelegate:self isRememberPassCode:_isCheckBoxSelected];
+            }
         }else {
             [self setShadowHidden:YES];
             [_icloudDrivebox setContentView:_bigSizeiCloudView];
@@ -178,7 +205,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             NSRect oneDriveF = NSMakeRect(18.f, 20.f, 302.f, 56.f);
             NSRect devicesF = NSMakeRect(336.f, 20.f, 238.f, 376.f);
             
-            NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+            NSArray *views = @[_iCloudDriveView,_dropboxView,_devicesView];
             NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
             [IMBViewAnimation animationWithViews:views frames:frames disable:YES completion:^{
                 [self setOriginalFrame:NO];
@@ -186,25 +213,25 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 
                 [_smallSizeTitle setStringValue:@"DropBox"];
                 [_smallSizeTitle setTextColor:COLOR_TEXT_ORDINARY];
-                [_oneDriveBox setContentView:_smallSizeView];
-                [self setDeviceViewConnecteStatus];
+                [_dropboxBox setContentView:_smallSizeView];
+                [self setDeviceViewConnectedStatus];
             }];
         }
         
     };
     /***  _oneDriveView的鼠标点击响应事件 ***/
-    _oneDriveView.mouseClicked = ^(void){
-        if (_oneDriveView.loginStatus) {//如果dropbox登陆成功，则直接进入详情界面
+    _dropboxView.mouseClicked = ^(void){
+        if (_dropboxView.loginStatus) {//如果dropbox登陆成功，则直接进入详情界面
             [self dropboxViewClicked];
         }else {
             [self setShadowHidden:YES];
-            [_oneDriveBox setContentView:_bigSizeOneDriveView];
+            [_dropboxBox setContentView:_bigSizeOneDriveView];
             
             NSRect cloudF = NSMakeRect(18.f, 340.f, 302.f, 56.f);
             NSRect oneDriveF = NSMakeRect(18.f, 20.f, 302.f, 304.f);
             NSRect devicesF = NSMakeRect(336.f, 20.f, 238.f, 376.f);
             
-            NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+            NSArray *views = @[_iCloudDriveView,_dropboxView,_devicesView];
             NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
             [IMBViewAnimation animationWithViews:views frames:frames disable:YES completion:^{
                 [self setOriginalFrame:NO];
@@ -212,7 +239,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 
                 [_smallSizeTitle setStringValue:@"iCloud"];
                 [_icloudDrivebox setContentView:_smallSizeView];
-                [self setDeviceViewConnecteStatus];
+                [self setDeviceViewConnectedStatus];
             }];
         }
     };
@@ -222,21 +249,20 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         NSRect cloudF = NSMakeRect(18.f, 216.f, 122.f, 180.f);
         NSRect oneDriveF = NSMakeRect(18.f, 20.f, 122.f, 180.f);
         NSRect devicesF = NSMakeRect(156.0f, 20.0f, 418.f, 376.f);
-        NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+        NSArray *views = @[_iCloudDriveView,_dropboxView,_devicesView];
         NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
         [IMBViewAnimation animationWithViews:views frames:frames disable:YES completion:^{
             [self setOriginalFrame:NO];
             _devicesView.isDevicesOriginalFrame = NO;
             
             [_icloudDrivebox setContentView:_smalliCloudDriveView];
-            [_oneDriveBox setContentView:_smallOneDriveView];
+            [_dropboxBox setContentView:_smallOneDriveView];
             if ([[IMBDeviceConnection singleton] isConnectedDevice]) {
                 [_bigDevicesImageView setImage:[NSImage imageNamed:_bigDevicesConnectedImageName]];
             }else {
                 [_bigDevicesImageView setImage:[NSImage imageNamed:@"mod_device_no"]];
             }
-            
-            
+            [_devicesView setFrame:devicesF];
         }];
     };
     
@@ -246,25 +272,34 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         if (_iCloudDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:NO];
         }else {
-            NSRect newFrame = NSMakeRect(12.0f, 208.0f, 312.0f, 190.0f);
-            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
-            [self setMouseEnteredMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn];
+            NSRect newFrame = NSMakeRect(17, 212 + 8, 302, 180);
+            [IMBViewAnimation animationScaleWithView:_iCloudDriveView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
+            NSRect newFrame2 = NSMakeRect(12, 212, 312, 188);
+            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            [self setMouseEnteredMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn withTextField:_midiumIcloudMsgLabel];
         }
         
     };
-    _oneDriveView.mouseEntered = ^(void){
-        if (_oneDriveView.loginStatus) {
+    _dropboxView.mouseEntered = ^(void){
+        if (_dropboxView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:NO];
         }else {
-            NSRect newFrame = NSMakeRect(12.0f, 13.0f, 312.0f, 190.0f);
-            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
-            [self setMouseEnteredMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn];
+            NSRect newFrame = NSMakeRect(17, 18 + 8, 302, 180);
+            [IMBViewAnimation animationScaleWithView:_dropboxView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
+            NSRect newFrame2 = NSMakeRect(12, 18, 312.0f, 188);
+            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            [self setMouseEnteredMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn withTextField:_midiumDropboxMsgLabel];
         }
        
     };
     _devicesView.mouseEntered = ^(void){
-        NSRect newFrame = NSMakeRect(330.f, 14.0f, 248.0f, 386.0f);
-        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+        NSRect newFrame = NSMakeRect(335, 19 + 8, 238, 376);
+        [IMBViewAnimation animationScaleWithView:_devicesView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+        
+        NSRect newFrame2 = NSMakeRect(330.f, 19, 248, 384);
+        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
     };
     
     /***  鼠标移除view响应事件 ***/
@@ -272,31 +307,44 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         if (_iCloudDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval isHidden:YES];
         }else {
-            NSRect newFrame = NSMakeRect(17.0f, 213.0f, 302.0f, 180);
-            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            NSRect newFrame = NSMakeRect(17, 212, 302, 180);
+            [IMBViewAnimation animationScaleWithView:_iCloudDriveView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
+            NSRect newFrame2 = NSMakeRect(17.0f, 212.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_icloudShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
 
             [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
+            
+            [IMBViewAnimation animationMouseEnteredExitedWithView:_midiumIcloudMsgLabel frame:NSMakeRect(41, 20 , 221, 25) timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
         }
         
     };
-    _oneDriveView.mouseExited = ^(void){
-        if (_oneDriveView.loginStatus) {
+    _dropboxView.mouseExited = ^(void){
+        if (_dropboxView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:MidiumSizeAnimationTimeInterval + 0.15f isHidden:YES];
         }else {
-            NSRect newFrame = NSMakeRect(17.0f, 18.0f, 302.0f, 180);
-            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
+            NSRect newFrame = NSMakeRect(17, 18, 302, 180);
+            [IMBViewAnimation animationScaleWithView:_dropboxView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+            
+            
+            NSRect newFrame2 = NSMakeRect(17.0f, 18.0f, 302.0f, 180);
+            [IMBViewAnimation animationScaleWithView:_dropboxShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval + 0.15f disable:NO completion:nil];
             [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
+            
+            [IMBViewAnimation animationMouseEnteredExitedWithView:_midiumDropboxMsgLabel frame:NSMakeRect(46, 23 , 210, 25) timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
         }
         
     };
     _devicesView.mouseExited = ^(void){
-        NSRect newFrame = NSMakeRect(335.0f, 19.0f, 238.0f, 376);
-        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+        NSRect newFrame = NSMakeRect(335, 19, 238, 376);
+        [IMBViewAnimation animationScaleWithView:_devicesView frame:newFrame timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+        
+        
+        NSRect newFrame2 = NSMakeRect(335.0f, 19.0f, 238.0f, 376);
+        [IMBViewAnimation animationScaleWithView:_devicesShadowView frame:newFrame2 timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
     };
     
-//    _selectedDeviceBtn.mouseEntered = ^(void){
-//
-//    };
 }
 
 - (void)chooseDeviceClick:(id)sender {
@@ -309,6 +357,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         IMBBaseInfo *baseInfo = (IMBBaseInfo *)sender;
         IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
         IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
+        [_devicesView mouseExited:nil];
         [_delegate changeMainFrame:ipod withMedleEnum:DeviceLogEnum withiCloudDrvieBase:nil];
     }
 }
@@ -316,7 +365,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 #pragma mark - 鼠标响应事件
 - (void)setOriginalFrame:(BOOL)isOriginalFrame {
     _iCloudDriveView.isOriginalFrame = isOriginalFrame;
-    _oneDriveView.isOriginalFrame = isOriginalFrame;
+    _dropboxView.isOriginalFrame = isOriginalFrame;
     _devicesView.isOriginalFrame = isOriginalFrame;
 }
 
@@ -326,10 +375,17 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_devicesShadowView setHidden:hidden];
 }
 
-- (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn {
+- (void)setMouseEnteredMidiumContentViewWithView:(NSView *)view btn:(NSView *)btn withTextField:(NSTextField *)textfiled{
     NSRect f = view.frame;
-    f.origin.y = 18;
+    f.origin.y = 6;
     [IMBViewAnimation animationMouseEnteredExitedWithView:view frame:f timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+    
+    if ([textfiled isEqual:_midiumDropboxMsgLabel]) {
+        [IMBViewAnimation animationMouseEnteredExitedWithView:textfiled frame:NSMakeRect(46, 23  + 2, 210, 25) timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+    }else if ([textfiled isEqual:_midiumIcloudMsgLabel]) {
+        [IMBViewAnimation animationMouseEnteredExitedWithView:textfiled frame:NSMakeRect(41, 20 + 3, 221, 25) timeInterval:MidiumSizeAnimationTimeInterval disable:NO completion:nil];
+    }
+
     
     [btn setHidden:NO];
     [btn setWantsLayer:YES];
@@ -385,7 +441,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 //    }];
 }
 
-- (void)setDeviceViewConnecteStatus {
+- (void)setDeviceViewConnectedStatus {
     if ([[IMBDeviceConnection singleton] isConnectedDevice]) {
         [_bigDevicesImageView setImage:[NSImage imageNamed:_bigDevicesConnectedImageName]];
     }else {
@@ -393,33 +449,33 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
 }
 
-- (void)mouseUp:(NSEvent *)theEvent {
+- (void)mouseDown:(NSEvent *)theEvent {
     if (_isEnable == NO) return;
     
     [self setShadowHidden:NO];
-    
     
     
     _icloudShadowView.frame = NSMakeRect(17.0f, 213.0f, 302.0f, 180.0f);
     _dropboxShadowView.frame = NSMakeRect(17.0f, 18.0f, 302.0f, 180.0f);
     _devicesShadowView.frame = NSMakeRect(335.0f, 19.0f, 238.0f, 376.0f);
     
+    
     NSRect cloudF = NSMakeRect(17.0f, 213.0f, 302.0f, 180.0f);
     NSRect oneDriveF = NSMakeRect(17.0f, 18.0f, 302.0f, 180.0f);
     NSRect devicesF = NSMakeRect(335.0f, 19.0f, 238.0f, 376.0f);
     
     
-    NSArray *views = @[_iCloudDriveView,_oneDriveView,_devicesView];
+    NSArray *views = @[_iCloudDriveView,_dropboxView,_devicesView];
     NSArray *frames = @[[NSValue valueWithRect:cloudF],[NSValue valueWithRect:oneDriveF],[NSValue valueWithRect:devicesF]];
     [IMBViewAnimation animationWithViews:views frames:frames disable:YES completion:^{
         _iCloudDriveView.isOriginalFrame = YES;
-        _oneDriveView.isOriginalFrame = YES;
+        _dropboxView.isOriginalFrame = YES;
         _devicesView.isOriginalFrame = YES;
         
-        if (_oneDriveView.loginStatus) {
-            [_oneDriveBox setContentView:_loginSuccessdropboxView.view];
+        if (_dropboxView.loginStatus) {
+            [_dropboxBox setContentView:_loginSuccessdropboxView.view];
         }else {
-            [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+            [_dropboxBox setContentView:_midiumSizeOneDriveView];
         }
         if (_iCloudDriveView.loginStatus) {
             [_icloudDrivebox setContentView:_loginSuccessiCloudView.view];
@@ -429,7 +485,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         
         [self setMouseExitedMidiumContentViewWithView:_midiumDropBoxContentView btn:_midiumDropBoxClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         
-        [self setDeviceViewConnecteStatus];
+        [self setDeviceViewConnectedStatus];
         
         if (_iCloudDriveView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessiCloudView.logoutBtn timeInterval:0 isHidden:YES];
@@ -439,7 +495,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             
             [self setMouseExitedMidiumContentViewWithView:_midiumiCloudContentView btn:_midiumiCloudClickLoginBtn timeInterval:MidiumSizeAnimationTimeInterval];
         }
-        if (_oneDriveView.loginStatus) {
+        if (_dropboxView.loginStatus) {
             [IMBViewAnimation animationOpacityWithView:_loginSuccessdropboxView.logoutBtn timeInterval:0 isHidden:YES];
         }else {
             NSRect newFrame = NSMakeRect(17.0f, 18.0f, 302.0f, 180);
@@ -457,16 +513,36 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertTabKey:) name:INSERT_TAB object:nil];
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changBtnState) name:NOTIFY_TEXTFILED_INPUT_CHANGE object:nil];
 }
-#pragma mark - 设备连接断开
+#pragma mark - 设备  连接 和 断开
 - (void)deviceConnection {
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     
     deviceConnection.IMBDeviceConnected = ^{
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:2 withCategoryEnum:0];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:ALogin label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         //设备连接成功
         [self deviceConnectedWithConnection:deviceConnection];
     };
     deviceConnection.IMBDeviceDisconnected = ^(NSString *serialNum){
-        //设备断开连接----TODO:处理有问题    已修改
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:2 withCategoryEnum:0];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        //设备断开连接
         NSMutableArray *allDevices = [NSMutableArray array];
         if (deviceConnection.allDevices.count) {
             for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
@@ -477,13 +553,14 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             if (allDevices.count) {
                 IMBBaseInfo *baseInfo = [allDevices firstObject];
                 if (![baseInfo.uniqueKey isEqualToString:_selectedBaseInfo.uniqueKey]) {
-                    [self setDeviceInfosWithiPod:baseInfo];
                     [self deviceDisconnected:serialNum];
                     if (_selectedBaseInfo) {
                         [_selectedBaseInfo release];
                         _selectedBaseInfo = nil;
                     }
                     _selectedBaseInfo = [baseInfo retain];
+                    [_selectedDeviceBtn configButtonName:_selectedBaseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
+                    [_selectedDeviceBtn setFrame:NSMakeRect((_midiumSizeDevicesView.frame.size.width - _selectedDeviceBtn.frame.size.width)/2, _selectedDeviceBtn.frame.origin.y, _selectedDeviceBtn.frame.size.width, _selectedDeviceBtn.frame.size.height)];
                 }
             }else {
                 [_selectedDeviceBtn setHidden:YES];
@@ -509,6 +586,16 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         }
     };
     deviceConnection.IMBDeviceNeededPassword = ^(am_device device){
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:2 withCategoryEnum:0];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:ALogin label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         //设备连接需要密码
         if (deviceConnection.allDevices.count == 0) {
             
@@ -552,11 +639,17 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 
 - (void)deviceNeededPwd:(am_device)device {
     [[IMBLogManager singleton] writeInfoLog:@"Connetion Needs Password"];
+    static NSUInteger needPwdCount = 0;
+    if (needPwdCount > 0) return;
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [IMBCommonTool showTwoBtnsAlertInMainWindow:nil firstBtnTitle:@"Cancel" secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"AlertView_Device_Need_Pwd", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
+        needPwdCount = 1;
+        [IMBCommonTool showTwoBtnsAlertInMainWindow:nil firstBtnTitle:@"Cancel" secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"TrustView_id_1", nil) firstBtnClickedBlock:^{
+            needPwdCount = 0;
+        } secondBtnClickedBlock:^{
             //点击确定，重新链接设备
             [[IMBDeviceConnection singleton] performSelector:@selector(reConnectDevice:) withObject:(id)device afterDelay:1.0f];
+            needPwdCount = 0;
         }];
     });
     
@@ -568,7 +661,10 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  *  @param iPod iPod
  */
 - (void)setDeviceInfosWithiPod:(IMBBaseInfo *)baseInfo {
+    IMBiPod *iPod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
+    [iPod startSync];
     dispatch_async(dispatch_get_main_queue(), ^{
+      
         [_selectedDeviceBtn setHidden:NO];
         if (!_selectedBaseInfo) {
             _selectedBaseInfo = [baseInfo retain];
@@ -576,21 +672,21 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         }
         [_selectedDeviceBtn configButtonName:_selectedBaseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
         [_selectedDeviceBtn setFrame:NSMakeRect((_midiumSizeDevicesView.frame.size.width - _selectedDeviceBtn.frame.size.width)/2, _selectedDeviceBtn.frame.origin.y, _selectedDeviceBtn.frame.size.width, _selectedDeviceBtn.frame.size.height)];
-        NSString *familyString = _iPod.deviceInfo.familyNewString;
+        NSString *familyString = iPod.deviceInfo.familyNewString;
         if ([familyString isEqualToString:@"iPhoneN"]) {
-            _bigDevicesConnectedImageName = @"mod_device_detail_iphoneN.png";
+            _bigDevicesConnectedImageName = @"mod_device_detail_iphoneN";
             
         }else if ([familyString isEqualToString:@"iPhoneX"]) {
-            _bigDevicesConnectedImageName = @"mod_device_detail_iphoneX.png";
+            _bigDevicesConnectedImageName = @"mod_device_detail_iphoneX";
         }else if ([familyString isEqualToString:@"iPad"]) {
-            _bigDevicesConnectedImageName = @"mod_device_detail_ipad.png";
+            _bigDevicesConnectedImageName = @"mod_device_detail_ipad";
         }else {
             _bigDevicesConnectedImageName = @"";
         }
         [_bigDevicesImageView setImage:[NSImage imageNamed:_bigDevicesConnectedImageName]];
     });
     IMBInformationManager *inforManager = [IMBInformationManager shareInstance];
-    IMBInformation *information = [[[IMBInformation alloc]initWithiPod:_iPod] autorelease];
+    IMBInformation *information = [[[IMBInformation alloc]initWithiPod:iPod] autorelease];
     dispatch_queue_t spatchqueue = dispatch_queue_create("load", NULL);
     dispatch_async(spatchqueue, ^{
         [information loadphotoData];
@@ -606,19 +702,19 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             information.allPhotoArray = [cameraRoll retain];
             [cameraRoll release];
             [information.ipod setPhotoLoadFinished:YES];
-            [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompletePhoto object:_iPod];
+            [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompletePhoto object:iPod];
         });
     });
 
     dispatch_async(spatchqueue, ^{
         [information loadiBook];
         NSArray *ibooks = [information allBooksArray] ;
-        [IMBCommonTool loadbookCover:ibooks ipod:_iPod];
+        [IMBCommonTool loadbookCover:ibooks ipod:iPod];
         dispatch_sync(dispatch_get_main_queue(), ^{
-            [_iPod setBookLoadFinished:YES];
-            [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteBooks object:_iPod];
+            [iPod setBookLoadFinished:YES];
+            [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteBooks object:iPod];
         });
     });
 
@@ -638,11 +734,11 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             information.videoArray = [trackArray retain];
             [trackArray release];
             trackArray = nil;
-            [_iPod setMediaLoadFinished:YES];
-            [_iPod setVideoLoadFinished:YES];
-            [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteMedia object:_iPod];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteVideo object:_iPod];
+            [iPod setMediaLoadFinished:YES];
+            [iPod setVideoLoadFinished:YES];
+            [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:deviceDataLoadCompleteMedia object:iPod];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteVideo object:iPod];
         });
     });
 
@@ -652,12 +748,23 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSMutableArray *appArray = (NSMutableArray *)[appManager appEntityArray];
             information.appArray = [appArray retain];
-            [_iPod setAppsLoadFinished:YES];
-            [inforManager.informationDic setObject:information forKey:_iPod.uniqueKey];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteApp object:_iPod];
+            [iPod setAppsLoadFinished:YES];
+            [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteApp object:iPod];
         });
     });
     
+    dispatch_async(spatchqueue, ^{
+        IMBApplicationManager *appManager = [[information applicationManager] retain];
+        [appManager loadAppDoucmentArray];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSMutableArray *appArray = (NSMutableArray *)[appManager appDoucmentArray];
+            information.appDoucmentArray = [appArray retain];
+            [iPod setAppDoucmentFinished:YES];
+            [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DeviceDataLoadCompleteAppDoucment object:iPod];
+        });
+    });
 }
 
 #pragma mark - action
@@ -681,23 +788,52 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  */
 #pragma mark - icloud、dropbox退出登录按钮点击事件
 - (void)signoutiCloudClicked {
+    _iCloudSecireTextField.stringValue = @"";
+    _icloudLoginPwdTextfield.stringValue = @"";
+    _iCloudUserTextField.enabled = YES;
+    _iCloudUserTextField.editable = YES;
+    _isEnter = NO;
     _iCloudDriveView.loginStatus = NO;
+    [_iCloudLoginAnimationView setHidden:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:_baseDriveManage.userID];
-    [[IMBDeviceConnection singleton] removeDeviceByKey:_baseDriveManage.userID];
+    [defaults removeObjectForKey:@"iCloud"];
+    IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+    IMBBaseInfo *itemBaseInfo = nil;
+    for (IMBBaseInfo *baseInfo in connection.allDevices) {
+        if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+            itemBaseInfo = baseInfo;
+        }
+    }
+    [connection.allDevices removeObject:itemBaseInfo];
     IMBViewManager *viewManger = [IMBViewManager singleton];
     [viewManger.allMainControllerDic removeObjectForKey:@"iCloud"];
     [_baseDriveManage userDidLogout];
     [_icloudDrivebox setContentView:_midiumSizeiCloudView];
 }
 
+- (void)chooseDeviceBtn:(IMBBaseInfo *)baseInfo {
+    if (baseInfo) {
+        [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"arrow"];
+    }else {
+        [_selectedDeviceBtn setHidden:YES];
+    }
+}
+
 - (void)signoutDropboxClicked {
-    _oneDriveView.loginStatus = NO;
-    [[IMBDeviceConnection singleton] removeDeviceByKey:_baseDriveManage.userID];
+    _dropboxView.loginStatus = NO;
+    _isDropBoxdown = NO;
+    IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+    IMBBaseInfo *itemBaseInfo = nil;
+    for (IMBBaseInfo *baseInfo in connection.allDevices) {
+        if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+            itemBaseInfo = baseInfo;
+        }
+    }
+     [connection.allDevices removeObject:itemBaseInfo];
     [_baseDriveManage userDidLogout];
     IMBViewManager *viewManger = [IMBViewManager singleton];
     [viewManger.allMainControllerDic removeObjectForKey:@"DropBox"];
-    [_oneDriveBox setContentView:_midiumSizeOneDriveView];
+    [_dropboxBox setContentView:_midiumSizeOneDriveView];
 }
 #pragma mark - 其他按钮点击
 - (IBAction)selectedDeviceBtnClicked:(IMBSelecedDeviceBtn *)sender {
@@ -749,8 +885,11 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 }
 
 - (IBAction)oneDriveLogin:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil userInfo:nil];
-    [self signDown:sender];
+    if (!_isDropBoxdown) {
+        _isDropBoxdown = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_ENTER_SIGNIN object:nil userInfo:nil];
+        [self signDown:sender];
+    }
 }
 
 - (IBAction)enterTextView:(id)sender {
@@ -805,7 +944,20 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  *  帮助按钮点击
  */
 - (IBAction)helpClicked:(id)sender {
-    
+    NSString *str = CustomLocalizedString(@"FAQ_Url", nil);
+    NSURL *url = [NSURL URLWithString:str];
+    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+    [ws openURL:url];
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:3 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    [ATTracker event:CSupport action:AHelp label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
 }
 
 #pragma mark - Dropbox Login
@@ -814,56 +966,62 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
 }
 
-- (void)switchViewController {
+- (void)switchViewControllerDropBox:(Dropbox *) dropbox {
+    [_iCloudLoginAnimationView setHidden:YES];
     [_iCloudUserTextField.cell setEnabled:YES];
     [_iCloudUserTextField setEditable:YES];
     _isEnter = NO;
     
     IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
     IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
-    [baseInfo setDeviceName:@"Drop box"];
-    [baseInfo setUniqueKey:@"Drop box"];
+    [baseInfo setDeviceName:dropbox.userID];
+    [baseInfo setUniqueKey:dropbox.userID];
     [baseInfo setConnectType:general_iCloud];
     [baseInfo setIsicloudView:YES];
+    [baseInfo setAllDeviceSize:dropbox.totalStorageInBytes];
+    [baseInfo setKyDeviceSize:dropbox.usedStorageInBytes];
     [baseInfo setChooseModelEnum:DropBoxLogEnum];
+    [baseInfo setDriveBaseManage:_baseDriveManage];
+//    [baseInfo setDropBox:dropbox];
+    baseInfo.dropBox = [dropbox  retain];
     [[deivceConnection allDevices] addObject:baseInfo];
     
     if (!_loginSuccessdropboxView) {
         _loginSuccessdropboxView = [[IMBMainWindowLoginSuccessView alloc] initWithNibName:@"IMBMainWindowLoginSuccessView" bundle:nil];
     }
-    [_oneDriveBox setContentView:_loginSuccessdropboxView.view];
+    [_dropboxBox setContentView:_loginSuccessdropboxView.view];
     //退出按钮点击
     _loginSuccessdropboxView.quitBtnClicked = ^{
-        
         [self signoutDropboxClicked];
     };
+    [_loginSuccessdropboxView.nameLabel setStringValue:dropbox.userID];
     [_loginSuccessdropboxView.imageView setImage:[NSImage imageNamed:@"mod_dropboxdrive"]];
-    [_loginSuccessdropboxView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:baseInfo.allDeviceSize reserved:2],[StringHelper getFileSizeString:baseInfo.kyDeviceSize reserved:2]]];
-    [_oneDriveView setLoginStatus:YES];
+    [_loginSuccessdropboxView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:dropbox.usedStorageInBytes reserved:2],[StringHelper getFileSizeString:dropbox.totalStorageInBytes reserved:2]]];
+    [_dropboxView setLoginStatus:YES];
     
-    [self mouseUp:nil];
-    
-    
+    [self mouseDown:nil];
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    [deviceConnection.drviceAry addObject:baseInfo];
     [baseInfo release];
     baseInfo = nil;
     [_delegate changeMainFrame:nil withMedleEnum:DropBoxLogEnum withiCloudDrvieBase:_baseDriveManage];
+    
 }
 
 #pragma mark - iCloud Diver Login
 - (IBAction)iCloudLogIn:(id)sender {
-    if (_isCheckBoxSelected && _iCloudUserTextField.stringValue.length) {
-        //当checkbox选中并且用户名有值的情况下，存储用户名
-        [[NSUserDefaults standardUserDefaults] setValue:_iCloudUserTextField.stringValue forKey:IMBiCloudUserName];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    [_iCloudLoginAnimationView setHidden:NO];
+    if ([IMBHelper stringIsNilOrEmpty:_iCloudUserTextField.stringValue] ||( [IMBHelper stringIsNilOrEmpty:_icloudLoginPwdTextfield.stringValue] && [IMBHelper stringIsNilOrEmpty:_iCloudSecireTextField.stringValue])) {
+        [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloud_id_4", nil) btnClickedBlock:nil];
+        return;
     }
     _isEnable = NO;
     [self addLoginLoadingAnimation];
     if ([_icloudLoginPwdTextfield.stringValue isEqualToString:@""]) {
-        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self];
+        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_iCloudSecireTextField.stringValue WithDelegate:self isRememberPassCode:_isCheckBoxSelected];
     }else {
-        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_icloudLoginPwdTextfield.stringValue WithDelegate:self];
+        _baseDriveManage = [[IMBiCloudDriveManager alloc]initWithUserID:_iCloudUserTextField.stringValue WithPassID:_icloudLoginPwdTextfield.stringValue WithDelegate:self isRememberPassCode:_isCheckBoxSelected];
     }
-    
 }
 
 - (void)switchiCloudDriveViewControllerWithiCloudDrive:(iCloudDrive *)icloudDrive {
@@ -871,15 +1029,19 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     _isEnable = YES;
     IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
     IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
-    [baseInfo setDeviceName:_baseDriveManage.userID];
-    [baseInfo setUniqueKey:_baseDriveManage.userID];
+    [baseInfo setDeviceName:icloudDrive.userName];
+    [baseInfo setUniqueKey:icloudDrive.userName];
     [baseInfo setConnectType:general_iCloud];
     [baseInfo setIsicloudView:YES];
     [baseInfo setKyDeviceSize:icloudDrive.usedStorageInBytes];
     [baseInfo setAllDeviceSize:icloudDrive.totalStorageInBytes];
     [baseInfo setChooseModelEnum:iCloudLogEnum];
+    [baseInfo setDriveBaseManage:_baseDriveManage];
+//    [baseInfo setICloudDrive:icloudDrive];
+    baseInfo.iCloudDrive = [icloudDrive retain];
     [[deivceConnection allDevices] addObject:baseInfo];
-    
+//    _iCloudDrive
+//_dropboxBox
     if (!_loginSuccessiCloudView) {
         _loginSuccessiCloudView = [[IMBMainWindowLoginSuccessView alloc] initWithNibName:@"IMBMainWindowLoginSuccessView" bundle:nil];
     }
@@ -890,62 +1052,93 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         [self signoutiCloudClicked];
     };
     [_loginSuccessiCloudView.imageView setImage:[NSImage imageNamed:@"mod_iclouddrive"]];
-    [_loginSuccessiCloudView.nameLabel setStringValue:_baseDriveManage.userID];
+    [_loginSuccessiCloudView.nameLabel setStringValue:icloudDrive.userName];
     [_loginSuccessiCloudView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:baseInfo.kyDeviceSize reserved:2],[StringHelper getFileSizeString:baseInfo.allDeviceSize reserved:2]]];
     
     [_iCloudDriveView setLoginStatus:YES];
     
-    [self mouseUp:nil];
+    [self mouseDown:nil];
     
     
     [_delegate changeMainFrame:nil withMedleEnum:iCloudLogEnum withiCloudDrvieBase:_baseDriveManage];
-    
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    [deviceConnection.drviceAry addObject:baseInfo];
     [baseInfo release];
     baseInfo = nil;
 }
 
 //登录错误
 - (void)driveLogInFial:(ResponseCode)responseCode {
+    [_iCloudLoginAnimationView setHidden:YES];
     _isEnable = YES;
     [_iCloudUserTextField.cell setEnabled:YES];
     [_iCloudUserTextField setEditable:YES];
     _isEnter = NO;
-    NSString *errStr = @"Error";
+    NSString *errStr = CustomLocalizedString(@"iCloud_id_6", nil);
     switch (responseCode) {
         case ResponseUserNameOrPasswordError://密码或者账号错误
         {
             [self removeLoginLoadingAnimation];
-            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Wrong_UsernameOrPwd", nil);
+            errStr = CustomLocalizedString(@"iCloud_id_4", nil);
         }
             break;
         case ResonseSecurityCodeError://<沿验证码错误
         {
             [self removeLoginLoadingAnimation];
-            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Wrong_Passcode", nil);
+            errStr = CustomLocalizedString(@"iCloud_id_2", nil);
         }
             break;
         case ResponseUnknown://未知错误
         {
             [self removeLoginLoadingAnimation];
-            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_Uknown_Error", nil);
+            errStr = CustomLocalizedString(@"iCloud_id_4", nil);
         }
             break;
         case ResponseInvalid://<响应无效 一般参数错误
         {
             [self removeLoginLoadingAnimation];
-            errStr = CustomLocalizedString(@"iCloud_LoginWarnig_No_Reponse", nil);
+            errStr = CustomLocalizedString(@"iCloud_id_1", nil);
         }
             break;
-            
+        case ResponseNotConnectedToInternet://网络错误
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_id_5", nil);
+            break;
         default:
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloud_id_6", nil);
             break;
     }
-    [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:errStr btnClickedBlock:nil];
+    [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:errStr btnClickedBlock:^{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"iCloud"];
+        [defaults synchronize];
+        [_iCloudDriveView setLoginStatus:NO];
+    }];
+}
+
+- (void)loadDataFial {
+//    [IMBCommonTool showSingleBtnAlertInMainWindow:@"iCloud" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
+    _isDropBoxdown = NO;
+    [self removeLoginLoadingAnimation];
+//    }];
 }
 
 - (void)driveNeedSecurityCode:(iCloudDrive *)iCloudDrive {
     _isEnable = YES;
     [self removeLoginLoadingAnimation];
+    [_iCloudDriveView setDisable:YES];
+    [_dropboxView setDisable:YES];
+    [_devicesView setDisable:YES];
+    _icloudLoginPwdTextfield.editable = NO;
+    _iCloudSecireTextField.enabled = NO;
+    _iCloudSecireTextField.editable = NO;
+    _iCloudUserTextField.editable = NO;
+    _iCloudUserTextField.enabled = NO;
+    [IMBCommonTool showDoubleVerificationViewIsDetailWindow:nil CancelClicked:nil okClicked:^(NSString *codeId){
+        [(IMBiCloudDriveManager *)_baseDriveManage  setTwoCodeID:codeId];
+        [self addLoginLoadingAnimation];
+    }];
 }
 
 - (IBAction)codeDown:(id)sender {
@@ -960,7 +1153,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
  */
 - (void)changBtnState {
     if ([_iCloudUserTextField.stringValue isEqualToString:@""]) {
-        [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"MainWindow_iCLoudUserPlaceholder_String", nil)];
+        [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"CloudLogin_AppleID_Txt", nil)];
     }else {
         [_iCloudUserTextField setPlaceholderString:CustomLocalizedString(@"", nil)];
     }
@@ -984,7 +1177,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     IMBiPod *ipod = [deviceConnection getiPodByKey:_selectedBaseInfo.uniqueKey];
-
+    [_devicesView mouseExited:nil];
     [_delegate changeMainFrame:ipod withMedleEnum:DeviceLogEnum withiCloudDrvieBase:nil];
 
 }
@@ -1026,11 +1219,14 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         [_devicePopoverViewController release];
         _devicePopoverViewController = nil;
     }
+    if (_loadLayer) {
+        [_loadLayer release];
+        _loadLayer = nil;
+    }
 
     [[IMBDeviceConnection singleton] stopListening];
     //移除通知
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:IMBSelectedDeviceDidChangeNotiWithParams object:nil];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:INSERT_TAB object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INSERT_TAB object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_TEXTFILED_INPUT_CHANGE object:nil];
     [super dealloc];
     
@@ -1039,42 +1235,71 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 #pragma mark - 加载动画的添加和移除
 - (void)addLoginLoadingAnimation {
     [_iCloudDriveView setDisable:YES];
-    [_oneDriveView setDisable:YES];
+    [_dropboxView setDisable:YES];
     [_devicesView setDisable:YES];
+    _icloudLoginPwdTextfield.editable = NO;
+    _iCloudSecireTextField.enabled = NO;
+    _iCloudSecireTextField.editable = NO;
+    _iCloudUserTextField.editable = NO;
+    _iCloudUserTextField.enabled = NO;
+    
+
+    CGFloat loadLayerWH = 14.f;
+    
+    _loadLayer = [[CALayer alloc] init];
+    
+     [_loadLayer setHidden:NO];
+    _loadLayer.contents = [NSImage imageNamed:@"other_sending"];
+    [_loadLayer setFrame:NSMakeRect(1,1, loadLayerWH, loadLayerWH)];
+    [_iCloudLoginAnimationView setHidden:NO];
+    [_iCloudLoginAnimationView setWantsLayer:YES];
+    [_iCloudLoginAnimationView.layer addSublayer:_loadLayer];
+    
+//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+//    animation.fromValue = @(2*M_PI);
+//    animation.toValue = 0;
+//    animation.repeatCount = MAXFLOAT;
+//    animation.duration = 1.0f;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+//    [_loadLayer addAnimation:animation forKey:@""];
+    [IMBViewAnimation animationWithRotationWithLayer:_loadLayer];
+    
     
     [icloudLoginbtn setEnabled:NO];
-    _loadLayer = [[CALayer alloc]init];
-    _loadLayer.contents = [NSImage imageNamed:@"other_sending"];
+    [icloudLoginbtn setNeedsDisplay:YES];
     [_checkoutPwdBtn setHidden:YES];
-    [_loadLayer setFrame:NSMakeRect(_checkoutPwdBtn.frame.origin.x, _checkoutPwdBtn.frame.origin.y, 12, 12)];
-    [_icloudCustomView setWantsLayer:YES];
-    [[_icloudCustomView layer] addSublayer:_loadLayer];
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    animation.fromValue = @(2*M_PI);
-    animation.toValue = 0;
-    animation.repeatCount = MAXFLOAT;
-    animation.duration = 1.0f;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    [_loadLayer addAnimation:animation forKey:@""];
 }
 
-
-- (void)closeWindow:(id)sender {
-    [_delegate closeWindow:sender];
-}
 
 - (void)removeLoginLoadingAnimation {
     [_iCloudDriveView setDisable:NO];
-    [_oneDriveView setDisable:NO];
+    [_dropboxView setDisable:NO];
     [_devicesView setDisable:NO];
+    _icloudLoginPwdTextfield.editable = YES;
+    _iCloudSecireTextField.editable = YES;
+    _iCloudUserTextField.editable = YES;
+    _iCloudSecireTextField.enabled = YES;
+    _iCloudUserTextField.enabled = YES;
     
     if (_loadLayer) {
+        [_loadLayer removeAllAnimations];
         [_loadLayer removeFromSuperlayer];
         [_loadLayer release];
         _loadLayer = nil;
     }
     [icloudLoginbtn setEnabled:YES];
     [_checkoutPwdBtn setHidden:NO];
+    
+//    NSParameterAssert(<#condition#>)
 }
+
+- (void)closeWindow:(id)sender {
+    [_delegate closeWindow:sender];
+}
+
+- (void)minWindow:(id)sender {
+    [_delegate minWindow:sender];
+}
+
 
 @end

@@ -273,6 +273,7 @@ typedef enum IPodFamily {
     iPad_mini_4 = 4004,
     iPad_Pro = 4005,
     iPad_5 = 4006,
+    iPad_6 = 4007,
     general_Android = 5000,
     general_iCloud = 6000,
     general_Add_Content = 7000,

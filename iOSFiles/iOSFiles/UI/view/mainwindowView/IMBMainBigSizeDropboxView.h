@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "IMBGridientButton.h"
 @interface IMBMainBigSizeDropboxView : NSView
 {
     @private
@@ -15,6 +15,6 @@
     IBOutlet NSTextField *_titleLabel;
     IBOutlet NSImageView *_imageView;
     IBOutlet NSTextField *_messageLabel;
-    IBOutlet NSButton *_goNowBtn;
+    IBOutlet IMBGridientButton *_goNowBtn;
 }
 @end

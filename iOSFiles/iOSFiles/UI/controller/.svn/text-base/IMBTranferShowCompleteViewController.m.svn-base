@@ -15,6 +15,8 @@
 #import "IMBTableViewBtnCell.h"
 #import <sqlite3.h>
 #import "TempHelper.h"
+#import "IMBCustomHeaderCell.h"
+
 #define TableViewRowWidth 360
 #define TableViewRowHight 100
 #define OringinalPropertityX 0
@@ -33,17 +35,27 @@
 - (void)loadView
 {
     [super loadView];
+    
+    
+    for (NSTableColumn *column in [_tableView tableColumns]) {
+        IMBCustomHeaderCell *cell = (IMBCustomHeaderCell *)[column headerCell];
+        if ([column.identifier isEqualToString:@"Image"]) {
+            cell.stringValue = @"";
+        }else if ([column.identifier isEqualToString:@"Name"]) {
+            [cell setHasLeftTitleBorderLine:NO];
+        }
+    }
+    [_noDataTopLine setBackgroundColor:COLOR_TEXT_LINE];
     count = 0;
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setListener:self];
-    [_tableView setCanSelect:NO];
-    [_tableView setIsTranferView:YES];
+    [_tableView setCanSelect:YES];
     _dataAry = [[NSMutableArray alloc] init];
     //    _alertViewController = [[IMBAlertViewController alloc] initWithNibName:@"IMBAlertViewController" bundle:nil];
-    [_nodataImageView setImage:[NSImage imageNamed:@"download_nodata"]];
+    [_nodataImageView setImage:[NSImage imageNamed:@"transferlist_history_blankpage_ai"]];
     [_noTipTextField setTextColor:NODATA_NOLIKTITLE_COLOR];
-    [_noTipTextField setStringValue:CustomLocalizedString(@"downloadpageNoDataTips", nil)];
+    [_noTipTextField setStringValue:CustomLocalizedString(@"TransferNodata_tips", nil)];
     
     [_tableView setBackgroundColor:[NSColor clearColor]];
     [_rootBox setContentView:_dataView];
@@ -129,9 +141,9 @@
         return 0;
     }
     DriveItem *driveItem = [displayArray objectAtIndex:row];
-    if ([@"transferTime" isEqualToString:tableColumn.identifier]) {
+    if ([@"Date" isEqualToString:tableColumn.identifier]) {
         return driveItem.completeDate;
-    }else if ([@"transferState" isEqualToString:tableColumn.identifier]) {
+    }else if ([@"State" isEqualToString:tableColumn.identifier]) {
         if (driveItem.state == DownloadStateComplete) {
             return CustomLocalizedString(@"TransferCompelete", nil);
         }else if (driveItem.state == DownloadStateError){
@@ -141,7 +153,7 @@
         }else if (driveItem.state == UploadStateError){
             return CustomLocalizedString(@"TransferFailed", nil);
         }
-    }else if ([@"transferName" isEqualToString:tableColumn.identifier]) {
+    }else if ([@"Name" isEqualToString:tableColumn.identifier]) {
         return [NSString stringWithFormat:@"%@\n%@",driveItem.fileName,[IMBHelper getFileSizeString:driveItem.fileSize reserved:2]];
     }
     return @"";
@@ -149,31 +161,80 @@
 
 - (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     DriveItem *driveitem = [_dataAry objectAtIndex:row];
-    if ([tableColumn.identifier isEqualToString:@"transferImage"]) {
+    if ([tableColumn.identifier isEqualToString:@"Image"]) {
         IMBImageAndTextCell *curCell = (IMBImageAndTextCell*)cell;
-//        if (driveitem.appIconImage == nil) {
-//            driveitem.appIconImage = [StringHelper imageNamed:@"app_default"];
-//            curCell.imageName = @"app_default";
-//        }
-        [curCell setImageSize:NSMakeSize(40, 30)];
+        [curCell setImageSize:NSMakeSize(30, 36)];
         if (driveitem.photoImage){
             curCell.image = driveitem.photoImage;
         }
         
         curCell.paddingX = 20;
         curCell.marginX = 20;
-    }else if ([@"transferName" isEqualToString:tableColumn.identifier]) {
+    }else if ([@"Name" isEqualToString:tableColumn.identifier]) {
         IMBMessageNameTextCell *message = (IMBMessageNameTextCell *)cell;
         message.titleFont = [NSFont userFontOfSize:12];
         [message setTitleFont:[NSFont fontWithName:@"Helvetica Neue" size:12]];
         [message setSubTitleFont:[NSFont fontWithName:@"Helvetica Neue" size:12]];
         [message setTitleColor:[NSColor blackColor]];
         [message setSubTitleColor:[NSColor colorWithCalibratedRed:141.0/255 green:141.0/255 blue:141.0/255 alpha:1]];
-    }else if ([@"transferBtn" isEqualToString:tableColumn.identifier]) {
+    }else if ([@"Operate" isEqualToString:tableColumn.identifier]) {
         IMBTableViewBtnCell *tableCell = (IMBTableViewBtnCell *)cell;
         tableCell.deleteBtn = driveitem.deleteFileBtn;
         tableCell.findBtn = driveitem.findFileBtn;
     }
+}
+
+//排序
+- (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
+
+    id cell = [tableColumn headerCell];
+    NSString *identify = [tableColumn identifier];
+    NSArray *array = [tableView tableColumns];
+    if (_dataAry.count <=0) {
+        return;
+    }
+    for (NSTableColumn  *column in array) {
+        if ([column.headerCell isKindOfClass:[IMBCustomHeaderCell class]]) {
+            IMBCustomHeaderCell *columnHeadercell = (IMBCustomHeaderCell *)column.headerCell;
+            if ([column.identifier isEqualToString:identify]) {
+                [columnHeadercell setIsShowTriangle:YES];
+            }else {
+                [columnHeadercell setIsShowTriangle:NO];
+            }
+        }
+    }
+    
+    if ([@"Name" isEqualToString:identify] || [@"Type" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
+        if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
+            IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
+            if (customHeaderCell.ascending) {
+                customHeaderCell.ascending = NO;
+            }else {
+                customHeaderCell.ascending = YES;
+            }
+            [self sort:customHeaderCell.ascending key:identify dataSource:_dataAry];
+        }
+    }
+    [_tableView reloadData];
+}
+
+- (void)sort:(BOOL)isAscending key:(NSString *)key dataSource:(NSMutableArray *)array {
+    if ([key isEqualToString:@"Name"]) {
+        key = @"fileName";
+    } else if ([key isEqualToString:@"Type"]) {
+        key = @"extension";
+    }else if ([key isEqualToString:@"Size"]) {
+        key = @"fileSize";
+    }else if ([key isEqualToString:@"Date"]) {
+        key = @"lastModifiedDateString";
+    }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:isAscending];//其中，price为数组中的对象的属性，这个针对数组中存放对象比较更简洁方便
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sortDescriptor count:1];
+    [array sortUsingDescriptors:sortDescriptors];
+    [_tableView reloadData];
+    
+    [sortDescriptor release];
+    [sortDescriptors release];
 }
 
 - (void)findItemDown:(id)sender {
@@ -181,8 +242,11 @@
     for (DriveItem *driveItem in _dataAry) {
         if (driveItem.deleteFileBtn.tag == imageBtn.tag) {
             NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-//            [ws openFile:driveItem.localPath];
-            [ws selectFile:nil inFileViewerRootedAtPath:driveItem.localPath];
+            if (driveItem.exportPath) {
+                [ws openFile:driveItem.exportPath];
+            }else {
+                [ws openFile:[driveItem.localPath stringByDeletingLastPathComponent]];
+            }
             break;
         }
     }

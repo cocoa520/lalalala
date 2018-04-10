@@ -10,6 +10,7 @@
 #import "IMBiPod.h"
 #import "IMBDeviceInfo.h"
 @implementation IMBAMFileSystem
+@synthesize mediaDirectory = _mediaDirectory;
 
 - (id)initWithDevice:(id)device {
     self = [super initWithDevice:device];

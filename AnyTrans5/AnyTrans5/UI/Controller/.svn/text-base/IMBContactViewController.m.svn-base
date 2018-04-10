@@ -1792,7 +1792,7 @@
             _transferController = nil;
         }
         _icloudTransCount = allCount;
-        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Contacts withDelegate:self withTransfertype:TransferSync withIsicloudView:YES];
+        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Contacts withDelegate:self withTransfertype:TransferSync withIsicloudView:NO];
         [_transferController setDelegate:self];
         _iCloudManager.delegate = self;
         if (result>0) {
@@ -1827,7 +1827,8 @@
             [_transferController release];
             _transferController = nil;
         }
-        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Contacts withDelegate:self withTransfertype:TransferSync withIsicloudView:YES];
+        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Contacts withDelegate:self withTransfertype:TransferSync withIsicloudView:NO];
+        [_transferController setIsNoExecute:YES];
         [_transferController setDelegate:self];
         _iCloudManager.delegate = self;
         [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
@@ -2350,21 +2351,23 @@
 }
 
 - (void)transfranDic:(NSDictionary *)contacDic {
-//    NSDictionary *dic = noti.object;
     NSArray *dataAry = nil;
     int count = 0;
     if (contacDic != nil){
-       dataAry = [contacDic objectForKey:@"contacts"];
+        dataAry = [contacDic objectForKey:@"contacts"];
         count = (int)dataAry.count;
-    }
-
-    for (int i = 0; i <= 100; i++) {
-        if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
-            [_transferController transferProgress:i];
+        
+        for (int i = 0; i <= 100; i++) {
+            if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
+                [_transferController transferProgress:i];
+            }
         }
     }
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [_iCloudManager getContactContent];
+        if (contacDic != nil){
+            [_iCloudManager getContactContent];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([_transferController respondsToSelector:@selector(transferComplete:TotalCount:)]) {
                 [_transferController transferComplete:count TotalCount:_icloudTransCount];

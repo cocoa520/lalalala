@@ -1,15 +1,15 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/DeviceConnection
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-02-02T05:49:00.794632Z
-1205
-dingming
+2018-04-03T03:33:24.839710Z
+2301
+luolei
 
 
 
@@ -97,40 +97,6 @@ dingming
 
 3792
 
-IMBInformationManager.h
-file
-
-
-
-
-2018-02-02T01:41:51.000000Z
-d396d6150a5f0d83ed443152d35bc45f
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1694
-
 IMBDBFileBackup.m
 file
 
@@ -164,6 +130,40 @@ has-props
 
 
 22768
+
+IMBInformationManager.h
+file
+
+
+
+
+2018-02-02T01:41:51.000000Z
+d396d6150a5f0d83ed443152d35bc45f
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1694
 
 MobileDeviceAccess.h
 file
@@ -267,40 +267,6 @@ dingming
 
 22134
 
-IMBInformationManager.m
-file
-
-
-
-
-2018-02-02T01:41:51.000000Z
-eae7ac5232c8637cfb0f7c6f15efb17f
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-27785
-
 IMBInformation.h
 file
 
@@ -334,6 +300,40 @@ has-props
 
 
 8077
+
+IMBInformationManager.m
+file
+
+
+
+
+2018-02-02T01:41:51.000000Z
+eae7ac5232c8637cfb0f7c6f15efb17f
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+27785
 
 MobileDeviceAccess.m
 file
@@ -409,11 +409,11 @@ file
 
 
 
-2018-02-02T01:41:51.000000Z
-2219f407818804acb3ef767eb9402f86
-2017-11-22T04:23:34.702949Z
-9
-dingming
+2018-04-03T03:40:39.000000Z
+2235e491d51ce0c1ee913356fe51ed4d
+2018-04-03T03:33:24.839710Z
+2301
+luolei
 has-props
 
 
@@ -435,7 +435,7 @@ has-props
 
 
 
-37089
+37080
 
 IMBiPod.h
 file

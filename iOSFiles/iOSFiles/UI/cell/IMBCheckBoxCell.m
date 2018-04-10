@@ -62,27 +62,26 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-    
+    IMBFLog(@"++++++++++++++++++--------------------++++++++++++");
     NSRect rect = NSMakeRect(cellFrame.origin.x, cellFrame.origin.y, CheckBoxWidth, CheckBoxHeight);
-    if (_isMessageCell) {
-        rect.origin.x += cellFrame.size.width - CheckBoxWidth;
-        rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 ;
-    }else{
-        if (_specifyCheck) {
-            rect.origin.x += (cellFrame.size.width - CheckBoxWidth) - 6;
-            rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 + 1;
-        }else {
-            if (_outlineCheck) {
-                rect.origin.x += (cellFrame.size.width - CheckBoxWidth) - 4;
+//    if (_isMessageCell) {
+//        rect.origin.x += cellFrame.size.width - CheckBoxWidth;
+//        rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 ;
+//    }else{
+//        if (_specifyCheck) {
+//            rect.origin.x += (cellFrame.size.width - CheckBoxWidth) - 6;
+//            rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 + 1;
+//        }else {
+//            if (_outlineCheck) {
+//                rect.origin.x += (cellFrame.size.width - CheckBoxWidth) - 4;
+//                rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 + 1;
+//            }else {
+                rect.origin.x += (cellFrame.size.width - CheckBoxWidth)/2.f;
                 rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 + 1;
-            }else {
-                rect.origin.x += cellFrame.size.width - CheckBoxWidth;
-                //            rect.origin.x += (cellFrame.size.width - CheckBoxWidth)/2.0;
-                rect.origin.y += (cellFrame.size.height - CheckBoxHeight)/2.0 + 1;
-            }
-        }
-
-    }
+//            }
+//        }
+//
+//    }
   
    
     if (!_isEmpty) {

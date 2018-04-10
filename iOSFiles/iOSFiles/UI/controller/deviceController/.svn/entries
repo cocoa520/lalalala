@@ -1,15 +1,15 @@
 10
 
 dir
-2207
+2603
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
+2018-04-10T11:29:59.829934Z
+2587
+longfan
 
 
 
@@ -32,10 +32,10 @@ file
 
 
 
-2018-03-28T06:34:17.000000Z
-8ecf22678b4e47079ab45a5d1adfe067
-2018-03-28T06:50:16.872210Z
-2045
+2018-04-09T04:31:25.000000Z
+8d25dfa97c045e4e504461554f63c10a
+2018-04-09T06:11:08.202978Z
+2479
 hezhonglin
 
 
@@ -164,20 +164,15 @@ has-props
 
 IMBDeviceAllDataViewController.xib
 file
+2605
 
 
 
-
-2018-04-01T01:59:47.000000Z
-ad3e15b81fcf1cbcc3b5cbde0d281770
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
-
-
-
-
-
+2018-04-10T12:42:08.000000Z
+780bfae0dd1cb547eb170f0622d85adf
+2018-04-10T12:43:27.882877Z
+2605
+hezhonglin
 
 
 
@@ -194,7 +189,12 @@ huyumin
 
 
 
-34935
+
+
+
+
+
+37824
 
 IMBPhotosListViewController.m
 file
@@ -236,11 +236,11 @@ file
 
 
 
-2018-03-30T09:25:12.000000Z
-f979440e7cfae93045da885f7de0b5a9
-2018-03-30T09:20:49.028781Z
-2168
-shuaimingzhong
+2018-04-10T12:03:51.000000Z
+25261d87b078cfa787dfcfd14116e36d
+2018-04-10T11:29:59.829934Z
+2587
+longfan
 
 
 
@@ -262,7 +262,7 @@ shuaimingzhong
 
 
 
-2126
+2747
 
 IMBPhotoViewController.xib
 file
@@ -300,48 +300,14 @@ hezhonglin
 
 IMBDeviceAllDataViewController.m
 file
-2209
-
-
-
-2018-04-01T02:27:17.000000Z
-b1fc66e4e453ff131cf954d73986134a
-2018-04-01T02:27:58.219181Z
-2209
-hezhonglin
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-99381
-
-IMBDevicePageViewController.xib
-file
-
-
-
-
-2018-04-01T01:01:24.000000Z
-2680a3c5e12abaf63a89dc422f7472a6
-2018-03-31T06:00:52.158264Z
-2190
+2018-04-10T12:03:51.000000Z
+5b788c8f8280b03e8fd0892dcf3011d2
+2018-04-10T11:29:59.829934Z
+2587
 longfan
 
 
@@ -364,7 +330,41 @@ longfan
 
 
 
-5822
+194246
+
+IMBDevicePageViewController.xib
+file
+
+
+
+
+2018-04-03T03:39:26.000000Z
+f888489cbc1ce5d493b0ccd2e65cdb80
+2018-04-03T03:33:47.241349Z
+2302
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5608
 
 IMBPhotoViewController.h
 file
@@ -610,10 +610,10 @@ file
 
 
 
-2018-04-01T01:59:47.000000Z
-2703e3c66ecf1d2f394148dbdc43d431
-2018-04-01T01:59:47.675412Z
-2207
+2018-04-10T04:30:27.000000Z
+12b328e95ad1d4fee56d96bcaaf601e9
+2018-04-10T04:20:58.302722Z
+2556
 huyumin
 
 
@@ -636,5 +636,5 @@ huyumin
 
 
 
-12233
+13334
 

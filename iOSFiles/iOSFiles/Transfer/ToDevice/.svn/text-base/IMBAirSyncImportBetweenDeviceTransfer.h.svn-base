@@ -11,6 +11,7 @@
 #import "IMBTrack.h"
 #import "IMBPlaylist.h"
 #import "IMBATHSync.h"
+#import "DriveItem.h"
 typedef struct {
     IMBPlaylist *SrcPlist;
     IMBPlaylist *DesPlist;
@@ -27,8 +28,9 @@ typedef struct {
     IMBATHSync *_athSync;
     int _infomationCount;
     id _delegate;
+    DriveItem *_driveItem;
 }
-
+@property (nonatomic, retain) DriveItem *driveItem;
 @property (nonatomic, readwrite) int infomationCount;
 @property (nonatomic, assign) id delegate;
 

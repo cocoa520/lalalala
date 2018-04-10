@@ -634,14 +634,18 @@
                             NSString *heicFilePath = filePath;
                             NSString *inputFilePath = [TempHelper getAppTempPath];
                             NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
-                            NSString *fileType = @"jpg";
+                            NSString *fileType = @"png";
                             [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
                             [pM startConvert];
-                            nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+                            nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
                             dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
                             dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                                if([_fileManager fileExistsAtPath:heicFilePath]){
-                                    [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                if ([_fileManager fileExistsAtPath:nowPath]) {
+                                    NSString *newNameExtension = [[nowPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+                                    [_fileManager moveItemAtPath:nowPath toPath:newNameExtension error:nil];
+                                    if([_fileManager fileExistsAtPath:heicFilePath]){
+                                        [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                    }
                                 }
                             });
                         }
@@ -958,12 +962,12 @@
         [noteExport setTotalItem:(int)_exportTracks.count];
         [noteExport startTransfer];
         _isStop = noteExport.isStop;
-        [noteExport release];
         if (_isStop) {
             _skipCount += notesArray.count;
         }else {
-            _successCount += notesArray.count;
+            _successCount += noteExport.successCount;
         }
+        [noteExport release];
     }
 }
 
@@ -986,12 +990,13 @@
         [contactExport setTotalItem:(int)_exportTracks.count];
         [contactExport startTransfer];
         _isStop = contactExport.isStop;
-        [contactExport release];
+        
         if (_isStop) {
             _skipCount += contactArray.count;
         }else {
-            _successCount += contactArray.count;
+            _successCount += contactExport.successCount;
         }
+        [contactExport release];
     }
 }
 
@@ -1013,12 +1018,12 @@
         [calenderExport setTotalItem:(int)_exportTracks.count];
         [calenderExport startTransfer];
         _isStop = calenderExport.isStop;
-        [calenderExport release];
         if (_isStop) {
             _skipCount += calenderArray.count;
         }else {
-            _successCount += calenderArray.count;
+            _successCount += calenderExport.successCount;
         }
+        [calenderExport release];
     }
 }
 
@@ -1041,12 +1046,12 @@
         [calenderExport setTotalItem:(int)_exportTracks.count];
         [calenderExport startTransfer];
         _isStop = calenderExport.isStop;
-        [calenderExport release];
         if (_isStop) {
             _skipCount += calenderArray.count;
         }else {
-            _successCount += calenderArray.count;
+            _successCount += calenderExport.successCount;
         }
+        [calenderExport release];
     }
 
 }
@@ -1084,12 +1089,13 @@
         [bookmarkExport setTotalItem:(int)_exportTracks.count];
         [bookmarkExport startTransfer];
         _isStop = bookmarkExport.isStop;
-        [bookmarkExport release];
+       
         if (_isStop) {
             _skipCount += bookmarkArray.count;
         }else {
-            _successCount += bookmarkArray.count;
+            _successCount += bookmarkExport.successCount;
         }
+         [bookmarkExport release];
     }
 }
 
@@ -1103,12 +1109,13 @@
         [messageExport setTotalItem:(int)_exportTracks.count];
         [messageExport startTransfer];
         _isStop = messageExport.isStop;
-        [messageExport release];
+
         if (_isStop) {
             _skipCount += messageArray.count;
         }else {
-            _successCount += messageArray.count;
+            _successCount += messageExport.successCount;
         }
+        [messageExport release];
     }
 }
 
@@ -1122,12 +1129,13 @@
         [historyExport setTotalItem:(int)_exportTracks.count];
         [historyExport startTransfer];
         _isStop = historyExport.isStop;
-        [historyExport release];
+
         if (_isStop) {
             _skipCount += historyArray.count;
         }else {
-            _successCount += historyArray.count;
+            _successCount += historyExport.successCount;
         }
+        [historyExport release];
     }
 }
 

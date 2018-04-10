@@ -32,7 +32,7 @@
     [super awakeFromNib];
     _sonControllerDic = [[NSMutableDictionary alloc]init];
     [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:_iPod.deviceInfo.deviceName];
-
+    [_gridView setFrame:NSMakeRect(0, 0, 1096, 550)];
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
     _gridView.itemSize = NSMakeSize(154, 154);
     _gridView.backgroundColor = [NSColor whiteColor];
@@ -60,13 +60,13 @@
     devicePageBook.nodesEnum = Category_iBooks;
     
     IMBDevicePageFolderModel *devicePageMedia = [[IMBDevicePageFolderModel alloc]init];
-    devicePageMedia.name = CustomLocalizedString(@"Device_MainPage_View_Media", nil);
-    devicePageMedia.image = [NSImage imageNamed:@"folder_icon_media"];
+    devicePageMedia.name = CustomLocalizedString(@"MenuItem_id_23", nil);
+    devicePageMedia.image = [NSImage imageNamed:@"cnt_foldericon_music"];
     devicePageMedia.nodesEnum = Category_Media;
     
     IMBDevicePageFolderModel *devicePageVideo = [[IMBDevicePageFolderModel alloc]init];
     devicePageVideo.name = CustomLocalizedString(@"MenuItem_id_29", nil);
-    devicePageVideo.image = [NSImage imageNamed:@"folder_icon_video"];
+    devicePageVideo.image = [NSImage imageNamed:@"folder_icon_media"];
     devicePageVideo.nodesEnum = Category_Video;
     
     IMBDevicePageFolderModel *devicePageApp = [[IMBDevicePageFolderModel alloc]init];
@@ -75,9 +75,19 @@
     devicePageApp.nodesEnum = Category_Applications;
     
     IMBDevicePageFolderModel *devicePageOther  = [[IMBDevicePageFolderModel alloc]init];
-    devicePageOther.name = CustomLocalizedString(@"MenuItem_id_30", nil);
+    devicePageOther.name = CustomLocalizedString(@"MenuItem_id_35", nil);
     devicePageOther.image = [NSImage imageNamed:@"folder_icon_others"];
     devicePageOther.nodesEnum = Category_System;
+    
+    IMBDevicePageFolderModel *storagePageOther  = [[IMBDevicePageFolderModel alloc]init];
+    storagePageOther.name = CustomLocalizedString(@"MenuItem_id_20", nil);
+    storagePageOther.image = [NSImage imageNamed:@"folder_icon_storage"];
+    storagePageOther.nodesEnum = Category_Storage;
+    
+    IMBDevicePageFolderModel *appDoucment  = [[IMBDevicePageFolderModel alloc]init];
+    appDoucment.name = CustomLocalizedString(@"MenuItem_id_2", nil);
+    appDoucment.image = [NSImage imageNamed:@"cnt_foldericon_otherfiles"];
+    appDoucment.nodesEnum = Category_appDoucment;
     
     IMBDevicePageFolderModel *cameraRollModel = [[IMBDevicePageFolderModel alloc]init];
     cameraRollModel.name = CustomLocalizedString(@"MenuItem_id_10", nil);
@@ -103,6 +113,8 @@
     [_dataSourceArray addObject:devicePageVideo];
     [_dataSourceArray addObject:devicePageApp];
     [_dataSourceArray addObject:devicePageOther];
+    [_dataSourceArray addObject:appDoucment];
+    [_dataSourceArray addObject:storagePageOther];
 
     [devicePagePhoto release];
     [devicePageBook release];
@@ -113,6 +125,7 @@
     [cameraRollModel release];
     [photoStreamModel release];
     [photoLibraryModel release];
+    [storagePageOther release];
 }
 
 #pragma mark - CNGridView DataSource
@@ -221,11 +234,16 @@
         baseViewController = [_sonControllerDic objectForKey:[NSString stringWithFormat:@"%d",_category]];
         if (!baseViewController) {
             baseViewController = [[IMBDeviceAllDataViewController alloc] initWithCategoryNodesEnum:_category withiPod:_iPod WithDelegete:self];
+            [baseViewController transferBtn:_transferBtn];
             [baseViewController loadToolBarView:_category WithDisplayMode:YES];
             [_contenBox setContentView:baseViewController.view];
             [_sonControllerDic setObject:baseViewController forKey:[NSString stringWithFormat:@"%d",_category]];
+            [baseViewController release];
         }else {
             [_contenBox setContentView:baseViewController.view];
+            if (_category == Category_Applications) {
+                [baseViewController loadApplicationsData];
+            }
         }
     }
 }
@@ -306,6 +324,11 @@
         baseViewController = [_sonControllerDic objectForKey:[NSString stringWithFormat:@"%d",_category]];
         [baseViewController doSearchBtn:searchStr withSearchBtn:searchView];
     }
+}
+
+#pragma mark 传输按钮
+- (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn {
+    _transferBtn = transferBtn;
 }
 
 -(void)dealloc {

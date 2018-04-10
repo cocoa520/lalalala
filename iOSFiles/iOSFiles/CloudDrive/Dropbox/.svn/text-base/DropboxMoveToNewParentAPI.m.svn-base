@@ -29,18 +29,18 @@
         sourceName = [NSString stringWithFormat:@"%@", _folderOrfileID];
     }else {
         if ([_folderOrfileID isEqualToString:@"0"]) {
-            sourceName = @"//";
+            sourceName = @"/";
         }else {
-            sourceName = [NSString stringWithFormat:@"/%@", _folderOrfileID];;
+            sourceName = [NSString stringWithFormat:@"%@", _folderOrfileID];
         }
     }
     if ([_newParentIDOrPath rangeOfString:@"id:"].location != NSNotFound) {
         targetName = [NSString stringWithFormat:@"%@", _newParentIDOrPath];
     }else {
         if ([_newParentIDOrPath isEqualToString:@"0"]) {
-            targetName = @"//";
+            targetName = @"/";
         }else {
-            targetName = [NSString stringWithFormat:@"/%@", _newParentIDOrPath];
+            targetName = [NSString stringWithFormat:@"%@", _newParentIDOrPath];
         }
     }
     return @{@"from_path": sourceName,

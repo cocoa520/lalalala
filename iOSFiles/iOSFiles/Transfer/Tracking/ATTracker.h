@@ -29,24 +29,23 @@
 /**
  *  构建事件跟踪
  *
- *  @param category      事件类别
- *  @param action        事件操作
- *  @param actionParams  事件操作类别
- *  @param label         事件标签
- *  @param transferCount 传输个数
- *  @param screenName   屏幕名称
- *  @param parameters    默认为nil
+ *  @param category             事件类别
+ *  @param action               事件操作
+ *  @param label                事件标签
+ *  @param labelParameters      事件标签描述
+ *  @param transferCount        传输个数
+ *  @param screenName           屏幕名称
+ *  @param parameters           默认为nil
  */
-+ (void)event:(EventCategory)category action:(EventAction)action actionParams:(NSString *)actionParams label:(EventLabel)label transferCount:(long)transferCount screenView:(NSString *)screenName userLanguageName:(NSString *)userLanguageName customParameters:(NSDictionary *)parameters;
++ (void)event:(EventCategory)category action:(EventAction)action label:(EventLabel)label labelParameters:(NSString *)labelParameters transferCount:(long)transferCount screenView:(NSString *)screenName userLanguageName:(NSString *)userLanguageName customParameters:(NSDictionary *)parameters;
 
 /**
  *  构建屏幕跟踪
  *
  *  @param screenName       屏幕名称
- *  @param customArray      自定义维度
  *  @param parameters       默认为nil
  */
-+ (void)screen:(Screen)screen customArray:(NSArray *)customArray customParameters:(NSDictionary *)parameters;
++ (void)screenView:(NSString *)screenName customParameters:(NSDictionary *)parameters;
 
 /**
  *  构建事件异常跟踪

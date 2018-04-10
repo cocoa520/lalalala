@@ -35,7 +35,7 @@
         NSString *commit = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", _fileName];
         uploadItem = [NSString stringWithFormat:@"{\"cursor\": %@, \"commit\" : %@}", cursor, commit];
     }else {
-        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"/%@/%@\"}", _parent, _fileName];
+        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, _fileName];
         uploadItem = [NSString stringWithFormat:@"{\"cursor\": %@, \"commit\" : %@}", cursor, commit];
     }
     return @{

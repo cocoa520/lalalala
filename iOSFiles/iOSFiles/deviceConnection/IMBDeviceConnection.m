@@ -27,6 +27,9 @@
 @synthesize isiPod = _isiPod;
 @synthesize isAndroid = _isAndroid;
 @synthesize chooseModelEnum = _chooseModelEnum;
+@synthesize driveBaseManage = _driveBaseManage;
+@synthesize dropBox = _dropBox;
+@synthesize iCloudDrive = _iCloudDrive;
 #pragma mark -- 初始化操作
 - (id)init {
     self = [super init];
@@ -58,6 +61,8 @@
 
 -(void)dealloc{
     [self setAccountiCloud:nil];
+    [_dropBox release];
+    [_iCloudDrive release];
     [super dealloc];
 }
 
@@ -80,6 +85,7 @@ static id _instance = nil;
 
 @synthesize allDevices = _allDevices;
 @synthesize alliPods = _alliPods;
+@synthesize drviceAry = _drviceAry;
 #pragma mark -- 单例实现
 + (instancetype)singleton {
     static dispatch_once_t onceToken;
@@ -261,10 +267,20 @@ static id _instance = nil;
     [baseInfo setConnectType:ipod.deviceInfo.family];
     [baseInfo setIsiPod:YES];
     
-    [_allDevices addObject:baseInfo];
-    [_alliPods addObject:ipod];
-    if (self.IMBDeviceConnectedCompletion) {
-        self.IMBDeviceConnectedCompletion(baseInfo);
+    //避免重复加入
+    BOOL flag = NO;
+    for (IMBBaseInfo *item in _allDevices) {
+        if ([baseInfo.uniqueKey isEqualToString:item.uniqueKey]) {
+            flag = YES;
+            break;
+        }
+    }
+    if (!flag) {
+        [_allDevices addObject:baseInfo];
+        [_alliPods addObject:ipod];
+        if (self.IMBDeviceConnectedCompletion) {
+            self.IMBDeviceConnectedCompletion(baseInfo);
+        }
     }
 }
 /**

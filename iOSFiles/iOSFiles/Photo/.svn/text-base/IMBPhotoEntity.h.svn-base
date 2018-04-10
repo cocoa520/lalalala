@@ -98,6 +98,7 @@ typedef enum PhotoType {
     BOOL _isexisted;
     
     int kindSubType;  //等于2 是live photo
+    NSString *_extension;
 }
 @property (nonatomic ,assign) int kindSubType;
 @property (nonatomic,assign)BOOL isexisted;
@@ -146,5 +147,5 @@ typedef enum PhotoType {
 @property(nonatomic, retain) NSString *catchName;
 @property (nonatomic, retain) NSImage *iCloudImage;
 @property (nonatomic, retain) NSString *toolTip;
-
+@property (nonatomic, retain) NSString *extension;
 @end

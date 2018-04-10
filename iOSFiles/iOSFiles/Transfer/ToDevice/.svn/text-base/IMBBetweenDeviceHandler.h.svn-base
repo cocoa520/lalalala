@@ -43,7 +43,7 @@
 @property (assign,nonatomic,setter = setThreadBreak:) BOOL threadBreak;
 @property (assign,nonatomic) BOOL isClone;
 - (id)initWithSelectedModels:(NSArray *)selectModels srcIpodKey:(NSString *)srcIpodKey desIpodKey:(NSString *)desIpodKey Delegate:(id)delegate;
-- (id)initWithSelectedArray:(NSArray *)selectArrs categoryModel:(IMBCategoryInfoModel*)categoryModel srcIpodKey:(NSString *)srcIpodKey desIpodKey:(NSString *)desIpodKey withPlaylistArray:(NSArray *)playListArray albumEntity:(IMBPhotoEntity *)albumEntity Delegate:(id)delegate;
+- (id)initWithSelectedArray:(DriveItem *)selectArrs categoryModel:(IMBCategoryInfoModel*)categoryModel srcIpodKey:(NSString *)srcIpodKey desIpodKey:(NSString *)desIpodKey withPlaylistArray:(NSArray *)playListArray albumEntity:(IMBPhotoEntity *)albumEntity Delegate:(id)delegate;
 - (void)startProgress;
 
 - (void)setThreadBreak:(BOOL)threadBreak;

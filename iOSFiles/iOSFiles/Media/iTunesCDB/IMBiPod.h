@@ -48,7 +48,9 @@
     BOOL _videoLoadFinished;
     BOOL _beingSynchronized;
     BOOL _isAndroidToiOS;
+    BOOL _appDoucmentFinished;
 }
+@property (nonatomic,assign)BOOL appDoucmentFinished;
 @property (nonatomic,assign)BOOL isAndroidToiOS;
 @property (nonatomic,assign)BOOL beingSynchronized;
 @property (nonatomic,assign)BOOL photoLoadFinished;

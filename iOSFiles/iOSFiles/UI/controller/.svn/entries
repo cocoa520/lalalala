@@ -1,15 +1,15 @@
 10
 
 dir
-2207
+2603
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
+2018-04-10T12:18:05.133002Z
+2602
+longfan
 
 
 
@@ -100,10 +100,10 @@ file
 
 
 
-2018-03-30T07:56:27.000000Z
-6d5b80411d02f578639c91eea49953b6
-2018-03-30T07:56:00.596244Z
-2161
+2018-04-02T00:56:37.000000Z
+fad3dcb17acb0e8b7b52e52f88c574ca
+2018-04-01T10:24:19.512981Z
+2233
 huyumin
 
 
@@ -126,7 +126,7 @@ huyumin
 
 
 
-4162
+4451
 
 IMBBaseViewController.h
 file
@@ -134,11 +134,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-38c30c76d006a556a8b54583162f18e5
-2018-03-31T07:44:40.063602Z
-2191
-shuaimingzhong
+2018-04-10T12:03:51.000000Z
+6e26e3bd954588fac9e1b451338caebb
+2018-04-10T11:35:05.325271Z
+2594
+qiujie
 
 
 
@@ -160,7 +160,7 @@ shuaimingzhong
 
 
 
-5602
+7171
 
 IMBMainPageViewController.xib
 file
@@ -168,10 +168,10 @@ file
 
 
 
-2018-03-30T02:01:11.000000Z
-efd90ea9b936d5536397e0b16e08e4b5
-2018-03-30T01:06:25.966681Z
-2136
+2018-04-10T02:53:02.000000Z
+49a3c9062c85e82c951f421df1278d46
+2018-04-10T02:45:54.464704Z
+2543
 huyumin
 
 
@@ -194,7 +194,7 @@ huyumin
 
 
 
-9070
+8966
 
 IMBTransferViewController.xib
 file
@@ -236,11 +236,11 @@ file
 
 
 
-2018-03-30T09:25:12.000000Z
-91a34dec167a843c625a64612d147776
-2018-03-30T09:20:49.028781Z
-2168
-shuaimingzhong
+2018-04-10T10:10:47.000000Z
+653eeaf29aac7ebb24ed107429a4ef78
+2018-04-10T09:45:39.507739Z
+2579
+qiujie
 
 
 
@@ -262,7 +262,7 @@ shuaimingzhong
 
 
 
-9923
+17382
 
 IMBMainPageViewController.h
 file
@@ -270,11 +270,11 @@ file
 
 
 
-2018-03-30T02:01:11.000000Z
-5f5e7b65b0041826f4893f9f493ac06a
-2018-03-30T01:06:25.966681Z
-2136
-huyumin
+2018-04-10T12:03:51.000000Z
+1cfbf9ad0bd394a719f3d5a9261a0425
+2018-04-10T11:35:05.325271Z
+2594
+qiujie
 
 
 
@@ -296,7 +296,7 @@ huyumin
 
 
 
-1701
+1871
 
 IMBTransferViewController.h
 file
@@ -338,11 +338,11 @@ file
 
 
 
-2018-04-01T01:59:47.000000Z
-46f7a104a90dfe7c8bcfa984ee7a4134
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
+2018-04-10T12:03:52.000000Z
+f6a595640252bf9f4e241bfc728cdaf8
+2018-04-10T11:35:05.325271Z
+2594
+qiujie
 
 
 
@@ -364,7 +364,7 @@ huyumin
 
 
 
-26584
+38721
 
 IMBTransferViewController.m
 file
@@ -406,11 +406,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-ad1b147b6ee887106584e2d1ad24cbf1
-2018-03-31T11:31:28.497904Z
-2204
-shuaimingzhong
+2018-04-10T02:05:50.000000Z
+76ea66b9ca363b4777bd8dacab76d177
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
 
 
 
@@ -432,7 +432,7 @@ shuaimingzhong
 
 
 
-48360
+51123
 
 IMBAppsListViewController.xib
 file
@@ -474,11 +474,11 @@ file
 
 
 
-2018-03-29T04:24:20.000000Z
-d7fc4ed9bb36f017a86551bb72d45b01
-2018-03-29T03:53:53.410975Z
-2103
-longfan
+2018-04-09T11:59:19.000000Z
+d4e476849e23c27e655ec099f3bd2678
+2018-04-09T11:53:11.068624Z
+2521
+huyumin
 
 
 
@@ -500,7 +500,7 @@ longfan
 
 
 
-14731
+13912
 
 IMBDownloadListViewController.xib
 file
@@ -508,10 +508,10 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-6487c06580b64bf5c6e3d76f9204b856
-2018-03-31T09:31:13.407232Z
-2200
+2018-04-10T12:03:52.000000Z
+bbb9c7cf48a0d032295e3a2831c6e42a
+2018-04-10T11:33:02.849456Z
+2593
 longfan
 
 
@@ -534,7 +534,7 @@ longfan
 
 
 
-17774
+18947
 
 IMBAppsListViewController.h
 file
@@ -576,11 +576,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-00ee9a37e0c7b5375a93d788b12f7a0d
-2018-03-31T08:26:26.098804Z
-2196
-huyumin
+2018-04-10T08:39:16.000000Z
+df416c171f7d4729bbc7a8149d5050ee
+2018-04-10T08:37:12.550925Z
+2573
+longfan
 
 
 
@@ -602,7 +602,7 @@ huyumin
 
 
 
-4181
+4602
 
 IMBTranferViewController.h
 file
@@ -610,11 +610,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-f0f21c06fcd0e9bf23f9f6ae965ce7d3
-2018-03-31T08:55:09.855032Z
-2197
-longfan
+2018-04-10T10:10:47.000000Z
+b6b8abd828e03b53342828d3356c8c6d
+2018-04-10T09:45:39.507739Z
+2579
+qiujie
 
 
 
@@ -636,7 +636,7 @@ longfan
 
 
 
-2960
+3753
 
 IMBDownloadListViewController.h
 file
@@ -644,11 +644,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-e657d391092661003cfd9a76d4a60261
-2018-03-31T08:55:09.855032Z
-2197
-longfan
+2018-04-10T10:10:47.000000Z
+8c3da4fa21279e2dfefb259fba361e2d
+2018-04-10T09:45:39.507739Z
+2579
+qiujie
 
 
 
@@ -670,7 +670,7 @@ longfan
 
 
 
-2847
+3905
 
 IMBAppsListViewController.m
 file
@@ -712,112 +712,10 @@ file
 
 
 
-2018-04-01T01:59:47.000000Z
-ab4b47f92dcea6de10d787974987dd93
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-46635
-
-IMBDevicePopoverViewController.xib
-file
-
-
-
-
-2018-04-01T01:59:21.000000Z
-371a9b44ee566d11fdb813c04b6ac549
-2018-04-01T01:54:07.953615Z
-2206
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1146
-
-IMBTranferViewController.m
-file
-
-
-
-
-2018-04-01T01:59:47.000000Z
-efc51c433c35a15d2db3e0faacb45fc0
-2018-04-01T01:59:47.675412Z
-2207
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-18098
-
-IMBDownloadListViewController.m
-file
-
-
-
-
-2018-04-01T01:01:26.000000Z
-eab23f5a78f6610abb22a2d236c54d8e
-2018-03-31T08:55:09.855032Z
-2197
+2018-04-10T12:41:01.000000Z
+4467f103e1c2d29a4acc0a5fa2bb268f
+2018-04-10T12:18:05.133002Z
+2602
 longfan
 
 
@@ -840,7 +738,109 @@ longfan
 
 
 
-45115
+59066
+
+IMBDevicePopoverViewController.xib
+file
+
+
+
+
+2018-04-09T04:31:24.000000Z
+27a0ac8acea6d6179e6b64bd0a582a71
+2018-04-09T06:11:08.202978Z
+2479
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1124
+
+IMBTranferViewController.m
+file
+
+
+
+
+2018-04-10T12:03:52.000000Z
+ad231330e60f0a870c16577abd1aa17b
+2018-04-10T11:35:05.325271Z
+2594
+qiujie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+24358
+
+IMBDownloadListViewController.m
+file
+
+
+
+
+2018-04-10T12:41:01.000000Z
+3c633bc4b49e078f2548d9f60a56e827
+2018-04-10T12:18:05.133002Z
+2602
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+77970
 
 IMBDevViewController.xib
 file
@@ -848,10 +848,10 @@ file
 
 
 
-2018-03-30T07:55:16.000000Z
-48b5d8d89adb4b190f1932c6cbbf8235
-2018-03-30T07:56:46.741125Z
-2162
+2018-04-09T04:31:25.000000Z
+7db5ee47f3cc92dc1715eabde78ed14b
+2018-04-09T06:11:08.202978Z
+2479
 hezhonglin
 
 
@@ -882,11 +882,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-878659e457067ce26b77b8aa5a0ec7ee
-2018-03-31T08:26:26.098804Z
-2196
-huyumin
+2018-04-01T07:15:25.000000Z
+b94226258c916df70237d84915d01ec3
+2018-04-01T06:47:57.918980Z
+2215
+longfan
 
 
 
@@ -908,7 +908,7 @@ huyumin
 
 
 
-1046
+1309
 
 IMBDevViewController.h
 file
@@ -950,10 +950,10 @@ file
 
 
 
-2018-04-01T01:59:21.000000Z
-02a8357c37fdcb8842d1d3ce1f61196b
-2018-04-01T01:54:07.953615Z
-2206
+2018-04-02T10:51:31.000000Z
+e13aebbf70698d644e62be40a4db8673
+2018-04-02T10:05:19.070057Z
+2270
 huyumin
 
 
@@ -976,7 +976,7 @@ huyumin
 
 
 
-6441
+7328
 
 IMBDevViewController.m
 file
@@ -984,11 +984,11 @@ file
 
 
 
-2018-03-28T02:24:28.000000Z
-2ee65875a15639a1bd403dd2f94a4c67
-2018-03-24T06:22:13.547314Z
-1907
-hezhonglin
+2018-04-02T10:51:31.000000Z
+d3b420fb9ade4c47095badd257ca0d30
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
 
 
 
@@ -1010,7 +1010,7 @@ hezhonglin
 
 
 
-4193
+4192
 
 IMBPopoverViewController.xib
 file
@@ -1048,20 +1048,15 @@ longfan
 
 IMBiCloudDriverViewController.xib
 file
+2605
 
 
 
-
-2018-04-01T01:01:26.000000Z
-286e830e84841133ce1b7b7fc638e304
-2018-03-31T08:02:54.421124Z
-2194
-dingming
-
-
-
-
-
+2018-04-10T12:42:08.000000Z
+15258df7e460c94bde2dfb0e54db17af
+2018-04-10T12:43:27.882877Z
+2605
+hezhonglin
 
 
 
@@ -1078,7 +1073,12 @@ dingming
 
 
 
-36192
+
+
+
+
+
+39087
 
 deviceController
 dir
@@ -1089,11 +1089,11 @@ file
 
 
 
-2018-03-29T04:24:20.000000Z
-7232571c288f90b5a926943d66fd59dd
-2018-03-29T03:53:53.410975Z
-2103
-longfan
+2018-04-10T11:15:23.000000Z
+214e57cc30afc042b21537570322cd89
+2018-04-10T10:44:02.509491Z
+2583
+huyumin
 
 
 
@@ -1115,7 +1115,7 @@ longfan
 
 
 
-15228
+16409
 
 IMBPopoverViewController.h
 file
@@ -1157,11 +1157,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-9db87675da6afc98eadcc22167003fb0
-2018-03-31T10:07:11.624222Z
-2203
-dingming
+2018-04-10T10:10:47.000000Z
+0de0a30a232a41e0cab1a091bd27a483
+2018-04-10T09:45:39.507739Z
+2579
+qiujie
 
 
 
@@ -1183,7 +1183,7 @@ dingming
 
 
 
-2215
+2819
 
 IMBTranferShowCompleteViewController.h
 file
@@ -1191,10 +1191,10 @@ file
 
 
 
-2018-03-28T12:00:48.000000Z
-eab0e7b22b8cab78dd1a80b7718675a2
-2018-03-28T11:50:44.591474Z
-2084
+2018-04-03T01:14:25.000000Z
+571461731f24f418abd83b0764a064d0
+2018-04-02T13:23:41.859763Z
+2286
 longfan
 
 
@@ -1217,7 +1217,7 @@ longfan
 
 
 
-865
+953
 
 IMBSystemCollectionViewController.xib
 file
@@ -1259,11 +1259,11 @@ file
 
 
 
-2018-03-30T07:56:27.000000Z
-fa6e8390a4a3d5f0b89e06852da42e42
-2018-03-30T07:56:00.596244Z
-2161
-huyumin
+2018-04-09T04:31:24.000000Z
+37698625ad722b88d61a86719b7a9317
+2018-04-09T06:11:08.202978Z
+2479
+hezhonglin
 
 
 
@@ -1285,7 +1285,7 @@ huyumin
 
 
 
-1205
+1183
 
 alertController
 dir
@@ -1330,11 +1330,11 @@ file
 
 
 
-2018-04-01T01:01:26.000000Z
-0b7e30bb7a4a15dcba228999e5802650
-2018-03-31T09:31:13.407232Z
-2200
-longfan
+2018-04-10T11:15:23.000000Z
+8124f725fb109d5d9ef016f7f384daec
+2018-04-10T10:44:02.509491Z
+2583
+huyumin
 
 
 
@@ -1356,24 +1356,19 @@ longfan
 
 
 
-11203
+13707
 
 IMBiCloudDriverViewController.m
 file
+2605
 
 
 
-
-2018-04-01T01:01:26.000000Z
-5c613c050843d9d51b4bc334127b8e8c
-2018-03-31T10:07:11.624222Z
-2203
-dingming
-
-
-
-
-
+2018-04-10T11:58:37.000000Z
+032c4d18c60d5516790e465c18c55c59
+2018-04-10T12:43:27.882877Z
+2605
+hezhonglin
 
 
 
@@ -1390,7 +1385,12 @@ dingming
 
 
 
-49158
+
+
+
+
+
+78108
 
 IMBSystemCollectionViewController.h
 file

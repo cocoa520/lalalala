@@ -31,6 +31,7 @@
 - (void)parseFile:(NSString *)file;
 //全部传输成功
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
+
 @optional
 //传输出现错误
 - (BOOL)transferOccurError:(NSString *)error;
@@ -97,6 +98,7 @@
 @property (assign,nonatomic) BOOL isPause;
 @property (assign,nonatomic) NSCondition *condition;
 @property (nonatomic, assign) BOOL isReminder;
+@property (nonatomic, assign) int successCount;
 
 - (id)initWithIPodkey:(NSString *)ipodKey withDelegate:(id)delegate;
 

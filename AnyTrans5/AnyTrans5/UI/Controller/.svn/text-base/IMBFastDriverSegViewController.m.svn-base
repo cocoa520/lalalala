@@ -345,7 +345,7 @@
     if (result1 == 0) {
         return;
     }
-    [((IMBAnnoyViewController *)annoyVC) closeWindow:nil];
+    [((IMBNewAnnoyViewController *)annoyVC) closeWindow:nil];
     NSString *path = [[openPanel URL] path];
     NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:CustomLocalizedString(@"Fast_Drive_id_1", nil)];
 //    [self copyCollectionContentToMac:filePath Result:result1 AnnoyVC:annoyVC];
@@ -406,7 +406,7 @@
         _threadCount --;
         return;
     }
-    [((IMBAnnoyViewController *)annoyVC) closeWindow:nil];
+    [((IMBNewAnnoyViewController *)annoyVC) closeWindow:nil];
     [_fastDriverCollecitonVC setCollectionView];
     //构造simpleNode对象
     NSMutableArray *simnodeArray = [self createSimnode:paths];

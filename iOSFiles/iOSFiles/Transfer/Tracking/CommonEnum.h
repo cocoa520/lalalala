@@ -10,83 +10,53 @@
 #define AnyTransTrack_CommonEnum_h
 
 //事件类别
-typedef enum CategoryEnum {
-    iTunes_Library,
-    iTunes_Backup,
-    Air_Backup,
-    iCloud_Content,
-    Device_Content,
-    Move_To_iOS,
-    Android_Connect,
-    Video_Download,
-    Skin_Theme,
-    AnyTrans_Activation,
-    AnyTrans_OpenOrClose,
-    Merge_Device,
-    Content_To_iTunes,
-    Content_To_Computer,
-    Fast_Drive,
-    Content_To_Device,
-    Add_Content,
-    Clone_Device,
-    Device_toiCloud,
-    None
-}EventCategory;
+typedef NS_ENUM(NSInteger, EventCategory) {
+    CiCloud,            ///<类别iCloud
+    CDropbox,           ///<类别Dropbox
+    CDevice,            ///<类别Device
+    COpenOrClose,       ///<类别打开关闭
+    CSupport,           ///<类别帮助支持
+    CNone               ///<类别无
+};
 
 //事件操作
-typedef enum ActionEnum {
-    ToDevice,
-    ToiTunes,
-    Import,
-    Delete,
-    ContentToMac,
-//    AddContent,
-    SkinApply,
-    Analyze,
-    Automatic_Download,
-    Manual_Download,
-    ReDownload,
-    Remove,
-    Find,
-    CleanList,
-    Automatic_Import,
-    Manual_Import,
-    Analyze_Success,
-    Analyze_Error,
-    Download_Error,
-    Download_Success,
-    Stop_Analysis,
-    Stop_Download,
-    Stop_Transfer,
-    iCloud_Drive,
-    iCloud_Backup,
-    iCloud_Import,
-    iCloud_Export,
-    iCloud_Sync,
-    Login,
-    ToiCloud,
-    AirBackup,
-    ActionNone
-}EventAction;
+typedef NS_ENUM(NSInteger, EventAction) {
+    AOpen,              ///<事件打开
+    AClose,             ///<事件关闭
+    AFirstLaunch,       ///<事件首次运行
+    ALogin,             ///<事件登录
+    ALogout,            ///<事件注销
+    AAddAccount,        ///<事件追加平台账号
+    AJump,              ///<事件跳转平台
+    AHelp,              ///<事件帮助
+    ACreateFolder,      ///<事件创建文件夹
+    ADelete,            ///<事件删除
+    AUpload,            ///<事件上传
+    ADownload,          ///<事件下载
+    ARename,            ///<事件文件夹及文件重命名
+    AMove,              ///<事件移动
+    AToDevice,          ///<事件至设备
+    AToiCloudDrive,     ///<事件至iCloudDrive
+    AToDropbox,         ///<事件至Dropbox
+    ARefresh,           ///<事件刷新
+    ADetail,            ///<事件文件详细信息
+    APreview,           ///<事件预览
+    ABuy,               ///<事件购买
+    ARegister,          ///<事件注册
+    ACancel,            ///<事件取消
+    AClearRecord,       ///<事件清理记录
+    AViewRecord,        ///<事件查看记录
+    AClearAll,          ///<事件清除所有
+    ASearch,            ///<事件搜索
+    ARightClick,        ///<事件右键单击
+    ANone               ///<事件无
+};
 
 //事件标签
-typedef enum LabelEnum {
-    Open,
-    Exit,
-    FirstLaunch,
-    Buy,
-    Register,
-    Switch,
-    Click,
-    Start,
-    Finish,
-    Stop,
-    Error,
-    LabelNone
-}EventLabel;
-
-typedef enum ScreenEnum {
-    Lock_Screen_Removals,
-}Screen;
+typedef NS_ENUM(NSInteger, EventLabel) {
+    LSuccess,           ///<标签成功
+    LFailed,            ///<标签失败
+    LNone               ///<标签无
+};
 
 #endif

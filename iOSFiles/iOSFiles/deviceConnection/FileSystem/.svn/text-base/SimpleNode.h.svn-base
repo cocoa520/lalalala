@@ -74,6 +74,11 @@ typedef enum {
     id _controller;
     NSString *_sourcePath;
     NSString *_lastDate;
+    
+    BOOL _isEdit;
+    BOOL _isEditing;
+    BOOL _isCreate;
+    BOOL _isCreating;
 }
 @property (nonatomic, retain) NSString *extension;
 @property(nonatomic,retain) NSString *decryptPath;
@@ -114,6 +119,10 @@ typedef enum {
 @property(nonatomic, assign)CheckStateEnum checkState;
 @property (nonatomic, retain)NSString *creatDate;//创建时间
 @property (nonatomic, retain)NSString *lastDate;//修改时间
+@property (nonatomic, assign) BOOL isCreating;
+@property (nonatomic, assign) BOOL isCreate;
+@property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, assign) BOOL isEdit;
 - (id)initWithName:(NSString *)name;
 + (SimpleNode *)nodeDataWithName:(NSString *)name;
 - (void)createProgressBar;

@@ -363,7 +363,13 @@
                 // Default serializer. Do nothing.
                 break;
             case YTKResponseSerializerTypeJSON:
+                
+                
+//                if (![request.responseString isEqualToString:@"null"]) {
                 request.responseObject = [self.jsonResponseSerializer responseObjectForResponse:task.response data:request.responseData error:&serializationError];
+//                }else{
+//                    request.responseObject = @{};
+//                }
                 request.responseJSONObject = request.responseObject;
                 break;
             case YTKResponseSerializerTypeXMLParser:

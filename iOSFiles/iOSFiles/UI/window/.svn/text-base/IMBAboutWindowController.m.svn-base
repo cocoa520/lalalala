@@ -13,6 +13,7 @@
 #import "IMBToolbarWindow.h"
 #import "HoverButton.h"
 #import "TempHelper.h"
+#import "IMBiCloudNoTitleBarWinodw.h"
 
 @implementation IMBAboutWindowController
 
@@ -32,16 +33,20 @@
 - (void)awakeFromNib {
     
     [self.window center];
-    [_titleCustomView setImage:[StringHelper imageNamed:@"about_logo"]];
+    
+    [[(IMBiCloudNoTitleBarWinodw *)self.window maxButton] setHidden:YES];
+    [[(IMBiCloudNoTitleBarWinodw *)self.window minButton] setHidden:YES];
+    
+    [_titleCustomView setImage:[StringHelper imageNamed:@"window_logo"]];
     [_lineView setBackgroundColor:COLOR_TEXT_LINE];
     
     //关于窗口title
-    [_titleStr setStringValue:CustomLocalizedString(@"Menu_About", nil)];
+    [_titleStr setStringValue:CustomLocalizedString(@"MainWindow_id_7", nil)];
     [_titleStr setTextColor:COLOR_TEXT_ORDINARY];
     
     [_subTitleVersion setTextColor:COLOR_TEXT_EXPLAIN];
     IMBSoftWareInfo *software = [IMBSoftWareInfo singleton];
-    [_subTitleVersion setStringValue: [NSString stringWithFormat:@"%@ %@ %@", CustomLocalizedString(@"Version_id", nil), software.version,  software.buildDate]];
+    [_subTitleVersion setStringValue: [NSString stringWithFormat:@"%@ %@ %@", CustomLocalizedString(@"List_Header_id_Version", nil), software.version,  software.buildDate]];
     
     [_supportStr setStringValue:CustomLocalizedString(@"about_window_1", nil)];
     [_supportStr setTextColor:COLOR_TEXT_ORDINARY];
@@ -52,7 +57,7 @@
     [_bottomLable setStringValue:CustomLocalizedString(@"about_window_3", nil)];
     [_bottomLable setTextColor:COLOR_TEXT_EXPLAIN];
     
-    NSMutableAttributedString* supportAttrStr = [[NSMutableAttributedString alloc] initWithString: CustomLocalizedString(@"sendlog_url", nil)];
+    NSMutableAttributedString* supportAttrStr = [[NSMutableAttributedString alloc] initWithString: CustomLocalizedString(@"support_url", nil)];
     NSRange range = NSMakeRange(0, [supportAttrStr length]);
     // make the text appear in blue
     
@@ -86,7 +91,7 @@
 }
 
 - (IBAction)supportBtnDown:(id)sender {
-    NSString *hoStr = CustomLocalizedString(@"support_url", nil);
+    NSString *hoStr = CustomLocalizedString(@"mailto_sendLog_url", nil);
     NSURL *url = [NSURL URLWithString:hoStr];
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];
     [ws openURL:url];

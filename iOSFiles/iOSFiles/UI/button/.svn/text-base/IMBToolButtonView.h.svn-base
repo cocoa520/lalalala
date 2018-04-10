@@ -39,6 +39,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     SyncTransferFuntion = 22,
     ToiCloudFunction = 23,
     SortFunctionType = 24,
+    PreviewFunctionType = 25,
 };
 
 @interface IMBToolButtonView : NSView
@@ -72,6 +73,7 @@ typedef NS_ENUM(int, OperationFunctionType) {
     HoverButton *_showImage;
     HoverButton *_rename;
     HoverButton *_sortBtn;
+    HoverButton *_preBtn;
     
     id _delegate;
     IMBWhiteView *_lineView;

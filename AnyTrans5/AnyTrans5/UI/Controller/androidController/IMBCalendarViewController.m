@@ -1360,7 +1360,7 @@
             [_transferController release];
             _transferController = nil;
         }
-        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Calendar withDelegate:self withTransfertype:TransferSync withIsicloudView:YES];
+        _transferController = [[IMBTransferViewController alloc] initWithType:Category_Calendar withDelegate:self withTransfertype:TransferSync withIsicloudView:NO];
         [_transferController setDelegate:self];
         if (result>0) {
             [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];

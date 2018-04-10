@@ -16,11 +16,15 @@
 #import "IMBViewManager.h"
 #import "IMBiPod.h"
 #import "IMBHelper.h"
+#import "IMBDoubleVerificationViewController.h"
 
 #import <objc/runtime.h>
 
-static CGFloat IMBAlertShowInterval = 0.2f;
 
+static CGFloat IMBAlertShowInterval = 0.4f;
+
+NSString * const IMBAlertViewiCloudKey = @"iCloud";
+NSString * const IMBAlertViewDropBoxKey = @"DropBox";
 
 
 @implementation IMBCommonTool
@@ -56,7 +60,6 @@ static CGFloat IMBAlertShowInterval = 0.2f;
     }
     
     if (inView == nil) return;
-    NSString *viewP = [NSString stringWithFormat:@"%p",inView];
     [inView addSubview:alert.view];
     [inView setHidden:NO];
     [alert.singleBtnViewMsgLabel setStringValue:msgText];
@@ -70,6 +73,7 @@ static CGFloat IMBAlertShowInterval = 0.2f;
     NSRect newF = alert.view.frame;
     newF.origin.y = inView.frame.size.height - newF.size.height + 10.f;
     [alert.view setWantsLayer:YES];
+    [alert resetMsgPostion];
     [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
         
     }];
@@ -129,6 +133,7 @@ static CGFloat IMBAlertShowInterval = 0.2f;
     NSRect newF = alert.view.frame;
     newF.origin.y = inView.frame.size.height - newF.size.height + 10.f;
     [alert.view setWantsLayer:YES];
+    [alert resetMsgPostion];
     [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
         
     }];
@@ -172,6 +177,70 @@ static CGFloat IMBAlertShowInterval = 0.2f;
     
 }
 
+//显示双重验证view
++ (void)showDoubleVerificationViewIsDetailWindow:(NSString *)isDetailWindow CancelClicked:(void (^)(void))cancelClicked okClicked:(void (^)(NSString *codeId))okClicked {
+    IMBAlertSupeView *inView = nil;
+    __block IMBDoubleVerificationViewController *alert = [[IMBDoubleVerificationViewController alloc] initWithNibName:@"IMBDoubleVerificationViewController" bundle:nil];
+    if (!isDetailWindow) {
+        inView = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBMainWindowAlertView);
+    }else {
+        NSMutableArray *obArr = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView);
+        for (NSDictionary *dic in obArr) {
+            if ([dic[@"key"] isEqualToString:isDetailWindow]) {
+                inView = dic[@"alertView"];
+                break;
+            }
+        }
+    }
+    
+    if (inView == nil) return;
+    [inView addSubview:alert.view];
+    [inView setHidden:NO];
+    [alert.view setFrameOrigin:NSMakePoint((inView.frame.size.width - alert.view.frame.size.width)/2.f, inView.frame.size.height)];
+    NSRect newF = alert.view.frame;
+    newF.origin.y = inView.frame.size.height - newF.size.height + 10.f;
+    [alert.view setWantsLayer:YES];
+    [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
+        
+    }];
+    
+    alert.okClicked = ^(NSString *codeId){
+        if (okClicked) {
+            okClicked(codeId);
+        }
+        
+        NSRect newF = alert.view.frame;
+        newF.origin.y = inView.frame.size.height;
+        [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
+            [alert.view removeFromSuperview];
+            if (inView.subviews.count == 0) {
+                [inView setHidden:YES];
+            }
+            [alert release];
+            alert = nil;
+            
+        }];
+        
+    };
+    
+    alert.cancelClicked = ^ {
+        if (cancelClicked) {
+            cancelClicked();
+        }
+        NSRect newF = alert.view.frame;
+        newF.origin.y = inView.frame.size.height;
+        [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
+            [alert.view removeFromSuperview];
+            if (inView.subviews.count == 0) {
+                [inView setHidden:YES];
+            }
+            [alert release];
+            alert = nil;
+        }];
+        
+    };
+}
+
 #pragma mark - 上传文件时，对于openpanel能打开什么样的文件进行判断返回
 + (NSArray<NSString *> *)getOpenPanelSuffxiWithCategory:(CategoryNodesEnum)category {
     switch (category) {
@@ -188,11 +257,6 @@ static CGFloat IMBAlertShowInterval = 0.2f;
         case Category_Media:
         {
             return @[@"mp3",@"m4a",@"wma",@"wav",@"rm",@"mdi",@"m4r",@"m4b",@"m4p",@"flac",@"amr",@"ogg",@"ac3",@"ape",@"aac",@"mka"];
-        }
-            break;
-        case Category_Applications:
-        {
-            return @[@"ipa"];
         }
             break;
         case Category_Video:

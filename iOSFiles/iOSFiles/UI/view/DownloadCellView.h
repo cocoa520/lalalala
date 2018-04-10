@@ -19,6 +19,7 @@
     IBOutlet ProgressView *_progessView;
     IBOutlet ProgressView *_transferProgressView;
   
+    IBOutlet NSImageView *_downOrUpImage;
     IBOutlet IMBWhiteView *_bgView;
     IBOutlet NSTextField *_titleField;
     IBOutlet NSTextField *_progessField;
@@ -56,6 +57,6 @@
 @property (nonatomic,assign)HoverButton *closeButton;
 @property (nonatomic,assign)HoverButton *closeTransferButton;
 @property (nonatomic,assign)HoverButton *reDownLoad;
-
+@property (nonatomic, retain) NSImageView *downOrUpImage;
 - (void)adjustSpaceX:(float)x Y:(float)y;
 @end

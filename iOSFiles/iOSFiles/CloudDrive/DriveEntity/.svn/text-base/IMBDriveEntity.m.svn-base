@@ -28,6 +28,8 @@
 @synthesize isEdit = _isEdit;
 @synthesize isEditing = _isEditing;
 @synthesize isCreate = _isCreate;
+@synthesize isCreating = _isCreating;
+@synthesize filePath = _filePath;
 
 - (id)init {
     if ([super init]) {
@@ -43,6 +45,7 @@
         _isEdit = NO;
         _isEditing = NO;
         _isCreate = NO;
+        _filePath = @"";
     }
     return self;
 }

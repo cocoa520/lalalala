@@ -13,9 +13,14 @@
     @private
     NSImage *_normalImage;
     NSImage *_hoverImage;
-    
+    NSImage *_outerImage;
+    NSImage *_normalAnimationImage;
+    CALayer *_loadLayer;
+    BOOL _istranferBtn;
+    NSImage *_selfImage;
 }
-- (void)setHoverImage:(NSString *)hoverImage;
+- (void)setHoverImage:(NSString *)hoverImage withSelfImage:(NSImage *)image;
 
-
+- (void)startTranfering;
+- (void)endTranfering;
 @end

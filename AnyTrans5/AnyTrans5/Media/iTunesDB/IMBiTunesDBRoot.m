@@ -89,7 +89,6 @@
 
 -(void)write:(NSMutableData *)writer{
     _sectionSize = [self getSectionSize];
-    
     identifierLength = 4;
     _identifier = (char*)malloc(identifierLength + 1);
     memset(_identifier, 0, malloc_size(_identifier));

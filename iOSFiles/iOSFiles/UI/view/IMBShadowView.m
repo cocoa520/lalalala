@@ -17,7 +17,7 @@
     [super drawRect:dirtyRect];
     //投影效果
     NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-    [shadow setShadowColor:COLOR_ALERT_SHADOWCOLOR];
+    [shadow setShadowColor:COLOR_VIEW_SHADOWCOLOR];
     [shadow setShadowOffset:NSMakeSize(0.0, -2.0)];
     [shadow setShadowBlurRadius:4];
     [shadow set];

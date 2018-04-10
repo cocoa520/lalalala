@@ -108,9 +108,9 @@
         
         self.domainNetwork = @"http://imobie.us.179.gppnetwork.com/";//@"http://cal.imobie.us/";//默认
         _isCopySyncPlistFile = YES;
-        _productName = @"iOSFiles";
-        _resProductName = @"iOSFiles";
-        _buildDate = @"20171201";
+        _productName = @"AllFiles";
+        _resProductName = @"AllFiles";
+        _buildDate = @"20180410";
 
         _selectModular = @"";
         _activityInfo = [[IMBActivityInfo alloc] init];

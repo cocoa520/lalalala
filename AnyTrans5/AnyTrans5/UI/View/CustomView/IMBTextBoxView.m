@@ -17,7 +17,7 @@
     if (borderColor) {
         _borderColor = [borderColor retain];
     }else {
-        _borderColor = [StringHelper getColorFromString:CustomColor(@"line_windowColor", nil)];
+        _borderColor = [[StringHelper getColorFromString:CustomColor(@"line_windowColor", nil)] retain];
     }
     [self setNeedsDisplay:YES];
 }

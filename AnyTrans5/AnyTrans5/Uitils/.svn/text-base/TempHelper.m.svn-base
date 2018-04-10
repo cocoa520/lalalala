@@ -13,6 +13,7 @@
 #import "IMBNotificationDefine.h"
 #import <SystemConfiguration/SCNetworkReachability.h>
 #import <netinet/in.h>
+#import "OperationLImitation.h"
 
 @implementation TempHelper
 
@@ -61,6 +62,23 @@
         [dict setObject:@"generalSource" forKey:@"cd4"];
     }else {
         [dict setObject:@"ironSource" forKey:@"cd4"];
+    }
+    [dict setObject:softInfo.selectModular forKey:@"cd5"];
+    if (!softInfo.isRegistered) {
+        OperationLImitation *limit = [OperationLImitation singleton];
+        if ([[limit limitStatus] isEqualToString:@"start"]) {
+            [dict setObject:@"start" forKey:@"cd6"];
+        }else if ([[limit limitStatus] isEqualToString:@"completed"]) {
+            [dict setObject:@"completed" forKey:@"cd6"];
+        }else if ([[limit limitStatus] isEqualToString:@"noquote"]) {
+            [dict setObject:@"noquote" forKey:@"cd6"];
+        }else if ([[limit limitStatus] isEqualToString:@"expired"]) {
+            [dict setObject:@"expired" forKey:@"cd6"];
+        }else if ([[limit limitStatus] isEqualToString:@"notactivate"]) {
+            [dict setObject:@"notactivate" forKey:@"cd6"];
+        }else {
+            [dict setObject:@"Unregister" forKey:@"cd6"];
+        }
     }
     return dict;
 }

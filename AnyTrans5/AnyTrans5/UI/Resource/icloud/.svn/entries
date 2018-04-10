@@ -1,7 +1,7 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/icloud
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -332,40 +332,6 @@ has-props
 
 2278
 
-iCloud_import@2x.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-3f57f6324fd14c9cfbe6580d6e1b9d36
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3269
-
 iCloud_addfolder.png
 file
 
@@ -400,17 +366,17 @@ has-props
 
 1137
 
-iCloud_addfiles@2x.png
+iCloud_import@2x.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-d76338d64c477844ff155077b80e9875
-2018-01-03T03:50:42.708986Z
-889
-dingming
+3f57f6324fd14c9cfbe6580d6e1b9d36
+2017-12-20T11:56:50.311318Z
+543
+huyumin
 has-props
 
 
@@ -432,7 +398,7 @@ has-props
 
 
 
-1688
+3269
 
 photoviedo_slomo1@2x.png
 file
@@ -467,6 +433,40 @@ has-props
 
 
 1223
+
+iCloud_addfiles@2x.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+d76338d64c477844ff155077b80e9875
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1688
 
 icloud_ser3@2x.png
 file
@@ -1080,40 +1080,6 @@ has-props
 
 1468
 
-backup_ipad@2x.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-5b85d3cf6fa5c1c8248ddf2cbe49e711
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1389
-
 iCloud_pause.png
 file
 
@@ -1148,14 +1114,14 @@ has-props
 
 20234
 
-backup_ipod.png
+backup_ipad@2x.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-5ccdb98841e5641de2b31fb02120e3d9
+5b85d3cf6fa5c1c8248ddf2cbe49e711
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1180,7 +1146,7 @@ has-props
 
 
 
-1219
+1389
 
 photoviedo_allvideo1.png
 file
@@ -1215,6 +1181,40 @@ has-props
 
 
 1139
+
+backup_ipod.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+5ccdb98841e5641de2b31fb02120e3d9
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1219
 
 iCloud_toiCloud.png
 file
@@ -1318,40 +1318,6 @@ has-props
 
 1113
 
-icloud_delete3.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-13b5ff538243bcac63b8c75a179d9e72
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1113
-
 icloud_ser2@2x.png
 file
 
@@ -1386,14 +1352,14 @@ has-props
 
 1466
 
-iCloud_sync@2x.png
+icloud_delete3.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-4b53ded57729ae506790e371611665fe
+13b5ff538243bcac63b8c75a179d9e72
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1418,7 +1384,7 @@ has-props
 
 
 
-4106
+1113
 
 icloud_delete4.png
 file
@@ -1453,6 +1419,40 @@ has-props
 
 
 1118
+
+iCloud_sync@2x.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+4b53ded57729ae506790e371611665fe
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4106
 
 iCloud_pause@2x.png
 file
@@ -1522,14 +1522,14 @@ has-props
 
 1539
 
-backup_ipod@2x.png
+photoviedo_allvideo1@2x.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-0d6aea71d4546dec3a398333ec4b0d4f
+661beb74cb372145e0e40dd9e0106a79
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1554,7 +1554,7 @@ has-props
 
 
 
-1423
+1270
 
 iCloud_collection.png
 file
@@ -1590,14 +1590,14 @@ has-props
 
 1392
 
-photoviedo_allvideo1@2x.png
+backup_ipod@2x.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-661beb74cb372145e0e40dd9e0106a79
+0d6aea71d4546dec3a398333ec4b0d4f
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1622,7 +1622,7 @@ has-props
 
 
 
-1270
+1423
 
 iCloud_continuedownload1.png
 file
@@ -1658,40 +1658,6 @@ has-props
 
 1404
 
-iCloud_continuedownload2.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-6b4b6b67b67f18f71e2e51e50b0c61b4
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1427
-
 iCloud_addfolder@2x.png
 file
 
@@ -1725,6 +1691,40 @@ has-props
 
 
 1260
+
+iCloud_continuedownload2.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+6b4b6b67b67f18f71e2e51e50b0c61b4
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1427
 
 icloud_delete3@2x.png
 file
@@ -1828,40 +1828,6 @@ has-props
 
 2590
 
-iCloud_arrow@2x.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-aeb12643e6fb8d24586705cd9f7e927a
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1692
-
 photoviedo_slomo@2x.png
 file
 
@@ -1896,14 +1862,14 @@ has-props
 
 1257
 
-iCloud_driver@2x.png
+iCloud_arrow@2x.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-68aec5a4b0735a9f13595cdff5470845
+aeb12643e6fb8d24586705cd9f7e927a
 2017-12-20T11:56:50.311318Z
 543
 huyumin
@@ -1928,7 +1894,7 @@ has-props
 
 
 
-2977
+1692
 
 photoviedo_panoramic1@2x.png
 file
@@ -1963,6 +1929,40 @@ has-props
 
 
 1290
+
+iCloud_driver@2x.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+68aec5a4b0735a9f13595cdff5470845
+2017-12-20T11:56:50.311318Z
+543
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2977
 
 iCloud_continuedownload1@2x.png
 file
@@ -2032,40 +2032,6 @@ has-props
 
 536
 
-iCloud_addfiles.png
-file
-
-
-
-
-2018-02-02T01:40:42.000000Z
-7046fb2adab888b53cc2756f14297075
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1314
-
 photoviedo_slomo1.png
 file
 
@@ -2100,14 +2066,14 @@ has-props
 
 1145
 
-log_loading.png
+iCloud_addfiles.png
 file
 
 
 
 
 2018-02-02T01:40:42.000000Z
-d1046b2a338f1d35a3abd9053b5d3dae
+7046fb2adab888b53cc2756f14297075
 2018-01-03T03:50:42.708986Z
 889
 dingming
@@ -2132,7 +2098,7 @@ has-props
 
 
 
-1915
+1314
 
 iCloud_iCloud.png
 file
@@ -2167,6 +2133,40 @@ has-props
 
 
 1633
+
+log_loading.png
+file
+
+
+
+
+2018-02-02T01:40:42.000000Z
+d1046b2a338f1d35a3abd9053b5d3dae
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1915
 
 iCloud_fileexport.png
 file

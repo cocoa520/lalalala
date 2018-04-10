@@ -13,6 +13,7 @@
 #import "IMBNotificationDefine.h"
 #import <SystemConfiguration/SCNetworkReachability.h>
 #import <netinet/in.h>
+#import "StringHelper.h"
 
 @implementation TempHelper
 
@@ -57,12 +58,44 @@
 + (NSMutableDictionary *)customDimension {
     NSMutableDictionary *dict = [[[NSMutableDictionary alloc] init] autorelease];
     IMBSoftWareInfo *softInfo = [IMBSoftWareInfo singleton];
-    if (!softInfo.isIronsrc) {
-        [dict setObject:@"generalSource" forKey:@"cd4"];
-    }else {
-        [dict setObject:@"ironSource" forKey:@"cd4"];
-    }
+    [dict setObject:softInfo.selectModular forKey:@"cd1"];
+    [dict setObject:@"generalSource" forKey:@"cd2"];
     return dict;
+}
+
++ (void)customViewType:(ChooseLoginModelEnum)loginEnum withCategoryEnum:(CategoryNodesEnum)categoryEnum {
+    IMBSoftWareInfo *softInfo = [IMBSoftWareInfo singleton];
+    if (loginEnum == iCloudLogEnum) {
+        [softInfo setSelectModular:@"iCloud"];
+    }else if (loginEnum == DropBoxLogEnum) {
+        [softInfo setSelectModular:@"Dropbox"];
+    }else {
+        if (categoryEnum != 0) {
+            if (categoryEnum == Category_CameraRoll || categoryEnum == Category_PhotoLibrary || categoryEnum == Category_PhotoStream) {
+                [softInfo setSelectModular:@"Photos"];
+            }else if (categoryEnum == Category_Media) {
+                [softInfo setSelectModular:@"Music"];
+            }else if (categoryEnum == Category_Video) {
+                [softInfo setSelectModular:@"Videos"];
+            }else if (categoryEnum == Category_Applications) {
+                [softInfo setSelectModular:@"Apps"];
+            }else if (categoryEnum == Category_appDoucment) {
+                [softInfo setSelectModular:@"Documents"];
+            }else if (categoryEnum == Category_System) {
+                [softInfo setSelectModular:@"System"];
+            }else if (categoryEnum == Category_Storage) {
+                [softInfo setSelectModular:@"Storage"];
+            }else if (categoryEnum == Category_iBooks) {
+                [softInfo setSelectModular:@"Books"];
+            }
+        }else {
+            if (loginEnum == DeviceLogEnum) {
+                [softInfo setSelectModular:@"Device"];
+            }else {
+                [softInfo setSelectModular:@"HomePage"];
+            }
+        }
+    }
 }
 
 +(NSString*)getAppTempPath {
@@ -121,7 +154,7 @@
 }
 
 +(NSString*)getAppiMobieConfigPath {
-    NSString *tmpPath = [[self getAppSupportPath] stringByAppendingPathComponent:@"iMobieConfig"];
+    NSString *tmpPath = [[self getAppSupportPath] stringByAppendingPathComponent:@"config"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:tmpPath]) {
         [fileManager createDirectoryAtPath:tmpPath withIntermediateDirectories:YES attributes:nil error:nil];
@@ -923,7 +956,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     exPath = [formatter stringFromDate:date];
     [formatter release];
-    exPath = [path stringByAppendingPathComponent:[@"iOSFiles-Export-" stringByAppendingString:exPath]];
+    exPath = [path stringByAppendingPathComponent:[@"AllFiles-Export-" stringByAppendingString:exPath]];
     if ([fm fileExistsAtPath:exPath]) {
         exPath = [self getFolderPathAlias:exPath];
     }
@@ -938,6 +971,71 @@
     [as addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0,as.length)];
     [as addAttribute:NSFontAttributeName value:font range:NSMakeRange(0,as.length)];
     return [as autorelease];
+}
+
+
++ (NSImage *)loadFileImage:(NSString *)extension{
+    FileTypeEnum type = [StringHelper getFileFormatWithExtension:[extension lowercaseString]];
+    NSImage *image;
+    if (type == ImageFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_img"];
+    } else if (type == MusicFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_music"];
+    } else if (type == MovieFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_video"];
+    } else if (type == TxtFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_txt"];
+    } else if (type == DocFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_doc"];
+    } else if (type == BookFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_books"];
+    } else if (type == PPtFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
+    } else if (type == ZIPFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_zip"];
+    } else if (type == dmgFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
+    } else if (type == contactFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
+    } else if (type == excelFile) {
+        image = [NSImage imageNamed:@"cnt_fileicon_excel"];
+    } else {
+        image = [NSImage imageNamed:@"cnt_fileicon_common"];
+    }
+    return image;
+}
+
+
+
++ (NSImage *)loadTransferFileImage:(NSString *)extension{
+    FileTypeEnum type = [StringHelper getFileFormatWithExtension:[extension lowercaseString]];
+    NSImage *image;
+    if (type == ImageFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_img"];
+    } else if (type == MusicFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_music"];
+    } else if (type == MovieFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_video"];
+    } else if (type == TxtFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_word"];
+    } else if (type == DocFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_word"];
+    } else if (type == BookFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_books"];
+    } else if (type == PPtFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_ppt"];
+    } else if (type == ZIPFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_zip"];
+    } else if (type == dmgFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_dmg"];
+    } else if (type == contactFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_contacts"];
+    } else if (type == excelFile) {
+        image = [NSImage imageNamed:@"transferlist_history_icon_excel"];
+    } else {
+        image = [NSImage imageNamed:@"transferlist_history_icon_common"];
+    }
+    return image;
 }
 
 //文件夹存在，生成别名
@@ -981,6 +1079,13 @@
         retVal = NO;
     }
     return retVal;
+}
+
++ (BOOL)isDirectory:(NSString *)filePath
+{
+    BOOL isDirectory = NO;
+    [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
+    return isDirectory;
 }
 
 @end

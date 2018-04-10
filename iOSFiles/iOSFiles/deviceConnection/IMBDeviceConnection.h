@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MobileDeviceAccess.h"
 #import "IMBAMDeviceInfo.h"
-
-
+#import "IMBDriveBaseManage.h"
+#import "iCloudDrive.h"
+#import "Dropbox.h"
 typedef enum DeviceConnectMode {
     WifiRecordDevice = 0,
     WifiConnectDevice = 1,
@@ -44,7 +45,13 @@ typedef enum DeviceConnectMode {
     BOOL _isBackuping;//正在备份
     NSMutableArray *_backupRecordAryM;
     ChooseLoginModelEnum _chooseModelEnum;
+    IMBDriveBaseManage *_driveBaseManage;
+    Dropbox *_dropBox;
+    iCloudDrive *_iCloudDrive;
 }
+@property (nonatomic, readwrite, retain) iCloudDrive *iCloudDrive;
+@property (nonatomic, readwrite, retain) Dropbox *dropBox;
+@property (nonatomic, readwrite, retain) IMBDriveBaseManage *driveBaseManage;
 @property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;
 @property (nonatomic, assign) int batteryCapacity;
 @property (nonatomic, assign) BOOL isicloudView;
@@ -79,7 +86,9 @@ typedef enum DeviceConnectMode {
     @private
     NSMutableArray *_allDevices;
     NSMutableArray *_alliPods;
+    NSMutableArray *_drviceAry;
 }
+@property(nonatomic, retain, readonly)NSMutableArray *drviceAry;
 @property(nonatomic, retain, readonly)NSMutableArray *allDevices;
 @property(nonatomic, retain, readonly)NSMutableArray *alliPods;
 

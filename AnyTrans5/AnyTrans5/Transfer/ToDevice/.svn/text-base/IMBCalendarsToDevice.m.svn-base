@@ -12,6 +12,7 @@
 #import "IMBCalendarsToDevice.h"
 #import "IMBCalendarEventEntity.h"
 #import "DateHelper.h"
+#import "IMBSoftWareInfo.h"
 
 @implementation IMBCalendarsToDevice
 
@@ -67,6 +68,7 @@
         for (id item in retArray) {
             if ([item isKindOfClass:[NSDictionary class]]) {
                 _successCount = (int)[(NSDictionary *)item allKeys].count;
+                [_limitation reduceRedmainderCount:_successCount];
             }
         }
     }else {
@@ -83,7 +85,11 @@
     [insertArray addObject:@"com.apple.Calendars"];
     int i = 2147483647;
     NSMutableDictionary *calendarsDic =[[NSMutableDictionary alloc] init];
+    long long remainderCount = _limitation.remainderCount;
     for (IMBCalendarEventEntity *entity in calendarEvents) {
+        if (![IMBSoftWareInfo singleton].isRegistered && remainderCount <= 0) {
+            break;
+        }
         NSMutableDictionary *calendarDic = [[NSMutableDictionary alloc] init];
         if (entity.startCurDate != nil) {
             NSDate *startdate = [DateHelper getNowDateFromatAnDate:entity.startCurDate];
@@ -113,6 +119,9 @@
         [calendarsDic setObject:calendarDic forKey:[NSString stringWithFormat:@"%d",i]];//@"2147483647"---calendar event id
         i--;
         [calendarDic release];
+        if (![IMBSoftWareInfo singleton].isRegistered) {
+            remainderCount --;
+        }
     }
     [insertArray addObject:calendarsDic];
     [calendarsDic release];

@@ -24,6 +24,7 @@
 #import "IMBGridientButton.h"
 #import "IMBDrawOneImageBtn.h"
 #import "IMBAndroidAlertViewController.h"
+#import "IMBPopoverActivateViewController.h"
 
 @class IMBiCloudManager;
 typedef enum TransferAnimation {
@@ -112,6 +113,11 @@ typedef enum TransferMode {
     
     int _exportType;//1--从设备导出；2--从iTunes backup导出；3--从iCloud Backup导出;0--从iTunes library导出;
     
+    BOOL _isNoExecute;
+    
+    NSPopover *_activatePopover;
+    IMBPopoverActivateViewController *_popoverViewController;
+    
     //icloud传输完成界面(活动)- 英语版
     IBOutlet NSTextView *_resultTitle;
     IBOutlet NSTextField *_resultSubTitle;
@@ -167,8 +173,36 @@ typedef enum TransferMode {
     IBOutlet NSTextField *_muicloudCompleteMiddleTitle;
     IBOutlet IMBGridientButton *_muicloudCompleteButton;
     
+    //未注册的结果页面
+    IBOutlet IMBWhiteView *_unregisteredResultView;
+    IBOutlet NSTextField *_unregisteredTitle;
+    IBOutlet IMBWhiteView *_unregisteredMidView;
+    IBOutlet NSTextField *_unregisteredMidPromptLabel;
+    IBOutlet NSTextField *_unregisteredMidLabel1;
+    IBOutlet NSTextField *_unregisteredMidLabel2;
+    IBOutlet NSTextField *_unregisteredMidLabel3;
+    IBOutlet NSTextField *_unregisteredMidLabel4;
+    IBOutlet IMBWhiteView *_unregisteredLineView;
+    IBOutlet IMBWhiteView *_unregisteredThridView;
+    IBOutlet NSTextField *_unregisteredThridPromptLabel;
+    IBOutlet IMBGridientButton *_unregisteredBuyBtn;
+    IBOutlet NSTextField *_unregisteredThridLabel1;
+    IBOutlet NSTextField *_unregisteredThridLabel2;
+    IBOutlet NSTextField *_unregisteredThridLabel3;
+    IBOutlet NSTextField *_unregisteredThridLabel4;
+    IBOutlet IMBCanClickText *_unregisteredActiveTextView;
     
-    
+    //当天额度用完的结果界面
+    IBOutlet IMBWhiteView *_runOutDayCompleteView;
+    IBOutlet NSTextField *_runOutDayTitleLable;
+    IBOutlet NSTextField *_runOutDaySubTitleLable;
+    IBOutlet IMBWhiteView *_runOutDayBgView;
+    IBOutlet IMBCanClickText *_runOutDayActiveTextView;
+    IBOutlet IMBGridientButton *_runOutDayStartBuyBtn;
+    IBOutlet NSTextField *_runOutDayExplainLable1;
+    IBOutlet NSTextField *_runOutDayExplainLable2;
+    IBOutlet NSTextField *_runOutDayExplainLable3;
+    IBOutlet NSTextField *_runOutDayExplainLable4;
 }
 @property (nonatomic,retain) IMBiCloudManager *icloudManager;
 @property (nonatomic,assign) BOOL isStop;
@@ -176,6 +210,7 @@ typedef enum TransferMode {
 @property (nonatomic,assign) BOOL isiTunesImport;
 @property (nonatomic,assign) BOOL isicloudView;
 @property (nonatomic,assign) int exportType;
+@property (nonatomic,assign) BOOL isNoExecute;
 //media、photo、audio等导出初始化
 - (id)initWithIPodkey:(NSString *)ipodKey Type:(CategoryNodesEnum)category SelectItems:(NSMutableArray *)selectedItems ExportFolder:(NSString *)exportFolder;
 

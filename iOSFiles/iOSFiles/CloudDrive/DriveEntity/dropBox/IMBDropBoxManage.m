@@ -12,6 +12,9 @@
 #import "DateHelper.h"
 #import "IMBDeviceViewController.h"
 #import "IMBBaseViewController.h"
+#import "TempHelper.h"
+#import "DriveItem.h"
+#import "IMBCommonTool.h"
 
 @implementation IMBDropBoxManage
 - (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate {
@@ -23,7 +26,7 @@
         [_dropbox setDelegate:self];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *sessionDic = [defaults objectForKey:@"DropBoxSessionKey"];
+        NSDictionary *sessionDic = [defaults objectForKey:@"kAppAuthDropboxStateKey"];
         if (sessionDic) {
             NSString *accessToken = [sessionDic objectForKey:@"accessToken"];
             NSString *refreshToken = [sessionDic objectForKey:@"refreshToken"];
@@ -42,6 +45,17 @@
 
 #pragma mark -- OneDrive Login
 - (void)driveDidLogIn:(BaseDrive *)drive {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    [ATTracker event:CDropbox action:ALogin label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
+    [_dropbox driveSetAccessTokenKey];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *sessionDic = [NSDictionary dictionaryWithObjectsAndKeys:drive.accessToken,@"accessToken",drive.refreshToken ,@"refreshToken",drive.expirationDate,@"expirationDate", nil];
     //保存访问令牌和刷新令牌到本地
@@ -53,152 +67,63 @@
 }
 
 - (void)loadDriveData {
+    
+    [_dropbox getSpaceUsage:@"" success:^(DriveAPIResponse *response) {
+        NSLog(@"");
+        NSMutableDictionary *dic = response.content;
+        NSDictionary *allocationDic = [dic objectForKey:@"allocation"];
+        long long usedSize = [[dic objectForKey:@"used"] longLongValue];
+        long long allocatedSize = [[allocationDic objectForKey:@"allocated"] longLongValue];
+        _dropbox.usedStorageInBytes = usedSize;
+        _dropbox.totalStorageInBytes = allocatedSize;
+    } fail:^(DriveAPIResponse *response) {
+        NSLog(@"");
+    }];
+    [_dropbox getAccount:@"" success:^(DriveAPIResponse *response) {
+        NSMutableDictionary *dic = response.content;
+        //        NSString *account_id = [dic objectForKey:@"account_id"];
+        //        NSString *email = [dic objectForKey:@"email"];
+        //        NSString *email_verified = [dic objectForKey:@"email_verified"];
+        NSDictionary *nameDic = [dic objectForKey:@"name"];
+        NSString *displayName = [nameDic objectForKey:@"display_name"];
+        _dropbox.userID = displayName;
+    } fail:^(DriveAPIResponse *response) {
+        NSLog(@"");
+    }];
+    
+    
     [_dropbox getList:@"0" success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *ary = [dic objectForKey:@"entries"];
         
         for (NSMutableDictionary *resDic in ary) {
-            //文件下载路径
-            NSString *downFileLoadURL = [resDic objectForKey:@"@microsoft.graph.downloadUrl"];
-            NSString *createdString = [self dateForm2001DateSting:[resDic objectForKey:@"createdDateTime"]];
-            NSString *lastModifiedString = [self dateForm2001DateSting:[resDic objectForKey:@"lastModifiedDateTime"]];
-            
-            NSString *fileName = [resDic objectForKey:@"name"];
-            long long size = [[resDic objectForKey:@"size"] longLongValue];
-            NSMutableDictionary *fileSystemInfo = [resDic objectForKey:@"fileSystemInfo"];
-            NSString *fileSystemCreatedDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"createdDateTime"]];
-            NSString *fileSystemLastDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"lastModifiedDateTime"]];
-            NSString *fileID = [resDic objectForKey:@"id"];
-            NSString *isFolder = [resDic objectForKey:@".tag"];
-            NSString *extension = [fileName pathExtension];
-            if (![StringHelper stringIsNilOrEmpty:extension]) {
-                extension = [extension lowercaseString];
-            }
-            
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
-            drviceEntity.fileLoadURL = downFileLoadURL;
-            drviceEntity.createdDateString = createdString;
-            drviceEntity.lastModifiedDateString = lastModifiedString;
-            drviceEntity.fileName = fileName;
-            drviceEntity.fileSize = size;
-            drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
-            drviceEntity.fileSystemLastDate = fileSystemLastDate;
-            drviceEntity.fileID = fileID;
-            drviceEntity.docwsid = fileID;
-            if ([isFolder isEqualToString:@"folder"]) {
-                drviceEntity.isFolder = YES;
-                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
-                drviceEntity.extension = @"Folder";
-            }else{
-                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
-                NSImage *image;
-                if (type == ImageFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
-                } else if (type == MusicFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
-                } else if (type == MovieFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
-                } else if (type == TxtFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
-                } else if (type == DocFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
-                } else if (type == BookFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
-                } else if (type == PPtFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
-                } else if (type == ZIPFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
-                } else if (type == dmgFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
-                } else if (type == contactFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
-                } else if (type == excelFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
-                } else {
-                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
-                }
-                drviceEntity.image = image;
-            }
+            [self createDriveEntity:drviceEntity ResDic:resDic];
             [_driveDataAry addObject:drviceEntity];
             [drviceEntity release];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_deivceDelegate switchViewController];
+            [_deivceDelegate switchViewControllerDropBox:_dropbox];
         });
     } fail:^(DriveAPIResponse *response) {
-        //todo 获取数据失败
+        [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
+            //            [self removeLoginLoadingAnimation];
+            [(IMBDeviceViewController *)_deivceDelegate loadDataFial];
+
+        }];
     }];
     
 }
 
 - (void)recursiveDirectoryContentsDics:(NSString *)folerID {
+    
     [_dropbox getList:folerID success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *ary = [dic objectForKey:@"entries"];
         NSMutableArray *dataAry = [[NSMutableArray alloc]init];
         for (NSMutableDictionary *resDic in ary) {
-
-            NSString *createdString = [self dateForm2001DateSting:[resDic objectForKey:@"client_modified"]];
-            NSString *lastModifiedString = [self dateForm2001DateSting:[resDic objectForKey:@"server_modified"]];
-            
-            NSString *fileName = [resDic objectForKey:@"name"];
-            long long size = [[resDic objectForKey:@"size"] longLongValue];
-            NSMutableDictionary *fileSystemInfo = [resDic objectForKey:@"fileSystemInfo"];
-            NSString *fileSystemCreatedDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"client_modified"]];
-            NSString *fileSystemLastDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"server_modified"]];
-            NSString *fileID = [resDic objectForKey:@"id"];
-            NSString *extension = [fileName pathExtension];
-            if (![StringHelper stringIsNilOrEmpty:extension]) {
-                extension = [extension lowercaseString];
-            }
-            
             IMBDriveEntity *drviceEntity = [[IMBDriveEntity alloc]init];
-            drviceEntity.createdDateString = createdString;
-            drviceEntity.lastModifiedDateString = lastModifiedString;
-            drviceEntity.fileName = fileName;
-            drviceEntity.fileSize = size;
-            drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
-            drviceEntity.fileSystemLastDate = fileSystemLastDate;
-            drviceEntity.fileID = fileID;
-            drviceEntity.extension = extension;
-            
-            if ([resDic.allKeys containsObject:@"folder"]) {
-                NSMutableDictionary *folderDic = [resDic objectForKey:@"folder"];
-                int childCount = [[folderDic objectForKey:@"childCount"] intValue];
-                drviceEntity.isFolder = YES;
-                drviceEntity.childCount = childCount;
-                drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
-                drviceEntity.extension = @"Folder";
-            }else{
-                FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
-                NSImage *image;
-                if (type == ImageFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_img"];
-                } else if (type == MusicFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_music"];
-                } else if (type == MovieFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_video"];
-                } else if (type == TxtFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_txt"];
-                } else if (type == DocFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_doc"];
-                } else if (type == BookFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_books"];
-                } else if (type == PPtFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
-                } else if (type == ZIPFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_zip"];
-                } else if (type == dmgFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
-                } else if (type == contactFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
-                } else if (type == excelFile) {
-                    image = [NSImage imageNamed:@"cnt_fileicon_excel"];
-                } else {
-                    image = [NSImage imageNamed:@"cnt_fileicon_common"];
-                }
-                drviceEntity.image = image;
-            }
+            [self createDriveEntity:drviceEntity ResDic:resDic];
             [dataAry addObject:drviceEntity];
             [drviceEntity release];
         }
@@ -206,9 +131,51 @@
             [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:loadAction];
         });
     } fail:^(DriveAPIResponse *response) {
+        [IMBCommonTool showSingleBtnAlertInMainWindow:@"DropBox" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
+//            [self removeLoginLoadingAnimation];
+        }];
         //todo 获取数据失败
-        
+//        [(IMBDeviceViewController *)_deivceDelegate loadDataFial];
     }];
+}
+
+- (void)createDriveEntity:(IMBDriveEntity *)drviceEntity ResDic:(NSDictionary *)resDic {
+    //文件下载路径
+    NSString *downFileLoadURL = [resDic objectForKey:@"@microsoft.graph.downloadUrl"];
+    NSString *createdString = [self dateForm2001DateSting:[resDic objectForKey:@"server_modified"]];
+    NSString *lastModifiedString = [self dateForm2001DateSting:[resDic objectForKey:@"client_modified"]];
+    
+    NSString *fileName = [resDic objectForKey:@"name"];
+    long long size = [[resDic objectForKey:@"size"] longLongValue];
+    NSMutableDictionary *fileSystemInfo = [resDic objectForKey:@"fileSystemInfo"];
+    NSString *fileSystemCreatedDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"createdDateTime"]];
+    NSString *fileSystemLastDate = [self dateForm2001DateSting:[fileSystemInfo objectForKey:@"lastModifiedDateTime"]];
+    NSString *fileID = [resDic objectForKey:@"id"];
+    NSString *isFolder = [resDic objectForKey:@".tag"];
+    NSString *extension = [fileName pathExtension];
+    NSString *path = [resDic objectForKey:@"path_display"];
+    if (![StringHelper stringIsNilOrEmpty:extension]) {
+        extension = [extension lowercaseString];
+    }
+    
+    drviceEntity.fileLoadURL = downFileLoadURL;
+    drviceEntity.createdDateString = createdString;
+    drviceEntity.lastModifiedDateString = lastModifiedString;
+    drviceEntity.fileName = [fileName stringByDeletingPathExtension];
+    drviceEntity.fileSize = size;
+    drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
+    drviceEntity.fileSystemLastDate = fileSystemLastDate;
+    drviceEntity.fileID = fileID;
+    drviceEntity.docwsid = fileID;
+    drviceEntity.filePath = path;
+    if ([isFolder isEqualToString:@"folder"]) {
+        drviceEntity.isFolder = YES;
+        drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+        drviceEntity.extension = @"Folder";
+    }else{
+        drviceEntity.image = [TempHelper loadFileImage:extension];
+        drviceEntity.extension = extension;
+    }
 }
 
 - (void)driveDidLogOut:(BaseDrive *)drive {
@@ -218,11 +185,31 @@
         drive.accessToken = nil;
         drive.refreshToken = nil;
         drive.expirationDate = nil;
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:1 withCategoryEnum:0];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDropbox action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     }
 }
 
 - (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error {
     //登录授权发  错误 在此处进 处
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    [ATTracker event:CDropbox action:ALogin label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
 }
 
 #pragma mark -- OneDrive Action
@@ -250,6 +237,11 @@
 
 //删除
 - (void)deleteDriveItem:(NSMutableArray *)deleteItemAry {
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
     [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *array = [dic objectForKey:@"items"];
@@ -263,21 +255,43 @@
                 [dataAry addObject:[dic objectForKey:@"drivewsid"]];
             }
         }
+        [ATTracker event:CDropbox action:ADelete label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:ADelete label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     }];
 }
 
 //重命名
 - (void)reName:(NSString *)newName idOrPath:(NSString *)idOrPath {
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
     [_dropbox reName:newName idOrPath:idOrPath success:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:ARename label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     } fail:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:ARename label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     }];
 }
 
@@ -286,16 +300,46 @@
 }
 
 //新建文件夹
-- (void)createFolder:(NSString *)folderName parent:(NSString *)parentID {
+- (void)createFolder:(NSString *)folderName parent:(NSString *)parentID withEntity:(nullable IMBDriveEntity *)drviceEntity {
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
     [_dropbox createFolder:folderName parent:parentID success:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:ACreateFolder label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        NSDictionary *resDic = response.content;
+        BOOL ret = NO;
+        if (resDic) {
+            ret = YES;
+            [self createDriveEntity:drviceEntity ResDic:resDic];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_driveWindowDelegate loadTransferComplete:[NSMutableArray arrayWithObjects:[NSNumber numberWithBool:ret], drviceEntity, nil] WithEvent:createFolder];
+        });
     } fail:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:ACreateFolder label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_driveWindowDelegate loadTransferComplete:[NSMutableArray arrayWithObjects:[NSNumber numberWithBool:NO], drviceEntity, nil] WithEvent:createFolder];
+        });
     }];
 }
 
 //移动文件
 - (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths {
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:1 withCategoryEnum:0];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
     [_dropbox moveToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *array = [dic objectForKey:@"items"];
@@ -309,13 +353,29 @@
                 [dataAry addObject:[dic objectForKey:@"drivewsid"]];
             }
         }
+        [ATTracker event:CDropbox action:AMove label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
             [dataAry release];
         });
     } fail:^(DriveAPIResponse *response) {
-        
+        [ATTracker event:CDropbox action:AMove label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
     }];
+}
+
+- (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(NSMutableArray *)item{
+    for (DriveItem *driveItem in item) {
+         [_dropbox toDrive:targetDrive item:driveItem];
+    }
+   
 }
 
 - (void)cancelUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item{
@@ -328,14 +388,16 @@
 
 //时间转换
 - (NSString *)dateForm2001DateSting:(NSString *)dateSting {
-    if ([StringHelper stringIsNilOrEmpty:dateSting] ) {
-        return @"";
+    if(dateSting.length >= 19) {
+        NSString *str = [dateSting substringToIndex:19];
+        str = [str stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+        NSDate *date = [DateHelper dateFromString:str Formate:@"yyyy-MM-dd HH:mm:ss" withTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
+        NSTimeInterval interval1 = [DateHelper getTimeStampFrom1970Date:date withTimezone:[NSTimeZone localTimeZone]];
+        NSString *str2 = [DateHelper dateFrom1970ToString:interval1 withMode:2];
+        return str2;
+    }else {
+        return @"--";
     }
-    NSString *replacString = [dateSting stringByReplacingOccurrencesOfString:@"T" withString:@" "];
-    NSString * replacString1 = [replacString substringToIndex:19];
-    NSDate *replacDate = [DateHelper dateFromString:replacString1 Formate:nil];
-    NSString *replacDateString = [DateHelper dateFrom2001ToDate:replacDate withMode:2];
-    return replacDateString;
 }
 
 #pragma mark -- iCloudDrive Action

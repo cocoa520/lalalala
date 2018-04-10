@@ -124,6 +124,8 @@ typedef enum
     NSString *_selectModular;
     
     int _buyId;
+    NSString *_discount;
+    BOOL _isOpenAnnoy;
 }
 @property (nonatomic, readwrite) BOOL isKeepPhotoDate;
 @property (nonatomic, readwrite) BOOL isNoYouToBePhoto;
@@ -186,6 +188,8 @@ typedef enum
 @property (nonatomic, readwrite) BOOL isStartUpAirBackup;
 @property (nonatomic, readwrite, retain) NSString *selectModular;
 @property (nonatomic, readwrite, assign) int buyId;
+@property (nonatomic, readwrite, retain) NSString *discount;
+@property (nonatomic, readwrite) BOOL isOpenAnnoy;
 
 
 + (IMBSoftWareInfo*) singleton;

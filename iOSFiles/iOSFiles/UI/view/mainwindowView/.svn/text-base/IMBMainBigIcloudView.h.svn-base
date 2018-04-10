@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "IMBGridientButton.h"
 @class IMBMyDrawCommonly,IMBDrawTextFiledView,customTextFiled,IMBSecireTextField;
 
 @interface IMBMainBigIcloudView : NSView
@@ -16,7 +17,7 @@
     IBOutlet NSTextField *_titleLabel;
     IBOutlet NSTextField *_messageLabel;
     IBOutlet NSTextField *_rememberMeLabel;
-    IBOutlet IMBMyDrawCommonly *_loginBtn;
+    IBOutlet IMBGridientButton *_loginBtn;
     IBOutlet IMBDrawTextFiledView *_icloudUserView;
     IBOutlet customTextFiled *_icloudUserTF;
     IBOutlet IMBDrawTextFiledView *_icloudLoginPwdView;

@@ -92,13 +92,14 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonatomic,retain)NSString *fileName;
 //要上传到的父目录id或者路径
 @property (nonatomic,retain)NSString *uploadParent;
+
+//要上传到的父目录的docwsid
+@property (nonatomic,retain)NSString *uploadDocwsID;
+
 //目标云名字
 @property (nonatomic,retain)NSString *toDriveName;
 //iCloud Drive 下载所需要，表明文件所属的域
 @property (nonnull,retain)NSString *zone;
-
-
-
 
 @property (nonnull,nonatomic,retain)NSMutableArray *dataAry;
 //用于用户多次选者下载数据下载
@@ -123,6 +124,8 @@ typedef NS_ENUM(NSUInteger,TransferState){
 @property (nonnull,nonatomic,retain) NSString * oriPath;
 @property(assign, nonatomic) long long photoDateData;
 @property (nonnull,nonatomic,retain) NSString * extension;
+@property (nonatomic,assign) BOOL isDownLoad;//是否是下载状态
+@property (nonnull,nonatomic,retain) NSString *exportPath;
 
 //唯一标识符
 - (NSString *)identifier;

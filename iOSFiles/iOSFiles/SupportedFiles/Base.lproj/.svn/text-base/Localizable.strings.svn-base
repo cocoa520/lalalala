@@ -13,7 +13,7 @@
 "MainWindow_id_5" = "Multiple devices can be managed at the same time";
 "MainWindow_id_6" = "Quick links work efficiently";
 
-"Menu_About" = "About IOSFiles";
+"Menu_About" = "About AllFiles";
 "Menu_Home" = "AnyTrans Home";
 "Menu_Guide" = "Online Guide";
 "Menu_SendLog" = "Send Log";
@@ -239,7 +239,7 @@
 
 "Cloud_LogginDefault_Title" = "Welcome to Cloud Driver";
 "Cloud_LogginDefault_Declare" = "We never retain any of your Apple account info or content!";
-"CloudLogin_Password_Txt" = "Password:";
+"CloudLogin_Password_Txt" = "パスワード:";
 "CloudLogin_AppleID_Txt" = "Apple ID:";
 "Cloud_Login" = "Login to Cloud";
 "Cloud_Logining" = "Logging in...";
@@ -249,7 +249,7 @@
 "iCloud_id_3" = "Scan previously downloaded iCloud backup files without logging in >>";
 "iCloud_id_4" = "Your Apple ID or Password is incorrect. Please check it and try again.";
 "iCloud_id_14" = "Analyzing files";
-"iCloudLogin_View_Remeberme" = "Remeber me";
+"iCloudLogin_View_Remeberme" = "サインインしたままにする";
 "iCloudLogin_View_codeTips1" = "Please enter the verification code to continue.";
 "iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
 "iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";
@@ -340,7 +340,7 @@
 "TransferFailed" = "传输失败";
 "Common_id_3" = "Preview";
 "TransferToPCView_NotExist_tips" = "文件已经不存在";
-"MenuItem_id_2" = "AppDoc";
+"MenuItem_id_2" = "ドキュメント";
 "MG_Transfering_tips" = "包含正在传输的项，请您重新选择操作";
 "MG_TransferingItem_tips" = "预览的项正在传输，请稍后再试";
 "MG_Preview_tips" = "正在生成预览";
@@ -348,19 +348,8 @@
 "ConnectedOneDriveTips" = "已经登录OneDrive描述";
 
 //window没有的
-"Device_MainPage_View_Media" = "Media";
-"NO_DATA_TITLE_1" = "You have no %@ here.";
-"NO_DATA_TITLE_2" = " Click to add new content.";
-"MainWindow_iCLoudUserPlaceholder_String" = "iCloud ID";
-"mainWindow_iCloudPassWord_String" = "Pass Word";
-"MainWindow_BigSize_Dropbox_TitleString" = "DropBox Login";
-"MainWindow_BigSize_Dropbox_MessageString" = "You need to go to the website authorization";
-
-"MainWindow_BigSize_Icloud_TitleString" = "iCloud Login";
-"MainWindow_BigSize_Icloud_MessageString" = "Don't you have an account?Sign up";
 "MainWindow_BigSize_Icloud_Rememberme" = "Remember me";
-"MainWindow_BigSize_Icloud_LoginBtnString" = "Login Now";
-"iCloud_detailView_count" = "ファイル数";
+
 "iCloud_detailView_lastTime" = "更新日時";
 "iCloud_detailView_creatTime" = "作成日時";
 "Transfer_completeView_transferState_Upload_Complete" = "上传完成";

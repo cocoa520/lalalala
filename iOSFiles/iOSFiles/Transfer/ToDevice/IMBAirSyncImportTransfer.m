@@ -29,7 +29,8 @@
 #import "NSString+Compare.h"
 @implementation IMBAirSyncImportTransfer
 @synthesize isRestore = _isRestore;
-
+@synthesize appKey = _appKey;
+@synthesize uploadParent = _uploadParent;
 /**
  同步导入初始化方法
     ipodKey ---- 设备key；
@@ -74,6 +75,41 @@
     return self;
 }
 
+- (id)initWithAppUpLoadIPodkey:(NSString *)ipodKey importFiles:(NSMutableArray*)importFilePathAry CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate
+{
+    self = [super initWithIPodkey:ipodKey withDelegate:delegate];
+    if (self) {
+        if (photoAlbum != nil) {
+            _importPhotoAlbum = [photoAlbum retain];
+        }
+        _playlistID = playlistID;
+        if (playlistID != 0 && _ipod.playlists != nil) {
+            _plistItem = [[_ipod.playlists getPlaylistByID:_playlistID] retain];
+        }
+        if ([_ipod tracks] == nil) {
+            _listTrack = [[IMBTracklist alloc] init];
+        }else {
+            _listTrack = [[_ipod tracks] retain];
+        }
+        _mediaConverter = [IMBMediaConverter singleton];
+        [_mediaConverter reInitWithiPod:_ipod];
+        _importFilePath = [importFilePathAry retain];
+        _toConvertFiles = [[NSMutableArray alloc] init];
+        _toConvertCategoryEnums = [[NSMutableArray alloc] init];
+        _importFiles = [[NSMutableArray alloc] init];
+        _importcategoryNodes = [[NSMutableArray alloc] init];
+        _importcategory = importcategory;
+        if (_importcategory == Category_Summary) {
+            _isSingleImport = NO;
+        }else{
+            _isSingleImport = YES;
+        }
+        _isNeedConversion = YES;
+    }
+    return self;
+
+}
+
 //android到iOS 时 调用
 - (id)initWithIPodkey:(NSString *)ipodKey TransferDic:(NSMutableDictionary *)transferDic delegate:(id)delegate
 {
@@ -107,6 +143,31 @@
         _rename = [rename retain];
     }
     return self;
+}
+
+- (void)appStartTransfer {
+    
+//    for (DriveItem *app in _exportTracks) {
+//        IMBInformationManager *inforManager = [IMBInformationManager shareInstance];
+//        IMBInformation *information = [inforManager.informationDic objectForKey:_ipod.uniqueKey];
+//        AFCApplicationDirectory *afcAppmd = [_ipod.deviceHandle newAFCApplicationDirectory:_appKey];
+//        [information applicationManager].currentItem = app;
+//        [[information applicationManager] exportAppDocumentToMac:_exportPath withSimpleNode:app appAFC:afcAppmd];
+//        [afcAppmd close];
+//        app.state = DownloadStateComplete;
+//    }
+//    NSString *path = [paths objectAtIndex:0];
+    IMBInformationManager *inforManager = [IMBInformationManager shareInstance];
+    IMBInformation *information = [inforManager.informationDic objectForKey:_ipod.uniqueKey];
+    AFCApplicationDirectory *afcAppmd = [_ipod.deviceHandle newAFCApplicationDirectory:_appKey];
+    for (DriveItem  *driveItem in _importFilePath) {
+        [[information applicationManager] setCurrentItem:driveItem];
+        [[information applicationManager] importCopyFromLocal:driveItem ToApp:afcAppmd ToPath:driveItem.uploadParent];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            driveItem.state = UploadStateComplete;
+        });
+    }
+    [afcAppmd close];
 }
 
 - (void)startTransfer {
@@ -144,7 +205,6 @@
                 }
             }
             _athSync = [[IMBATHSync alloc] initWithiPod:_ipod SyncNodes:importcategoryNodes syncCtrType:SyncAddFile photoAlbums:photoalbums];
-            
         }else{
             _athSync = [[IMBATHSync alloc] initWithiPod:_ipod SyncNodes:importcategoryNodes syncCtrType:SyncAddFile photoAlbum:_importPhotoAlbum];
         }
@@ -161,6 +221,7 @@
          [_listTrack freshFreeSpace];
         //创建所有的track对象
         NSMutableArray *allTracks = [self prepareAllTrack];
+        _currentDriveItem.fileSize = _totalSize;
         //存储最大uuid
         if (_transferDic != nil) {
             [_athSync setMaxUUIDStr:_maxUUIDStr];
@@ -799,7 +860,7 @@
             for (NSString *key in [dic allKeys]) {
                 NSArray *keyArray = [dic objectForKey:key];
                 i += keyArray.count;
-
+              
             }
         }else{
             i += array.count;
@@ -1120,7 +1181,7 @@
                             if (![StringHelper stringIsNilOrEmpty:bookPath]) {
                                 if (bookInfoDic != nil && [bookInfoDic count] > 0) {
                                     IMBNewTrack *newTrack = [self createTrack:bookInfoDic bookFilePath:[epubItem epubLocalPath] bookName:bookName];
-                                    _currentDriveItem.fileSize = _totalSize;
+//                                    _currentDriveItem.fileSize = _totalSize;
                                     IMBTrack *track = nil;
                                     @try {
                                         //创建track对象
@@ -1267,7 +1328,7 @@
                         [newTrack setDBMediaType:PDFBooks];
                         [newTrack setBookFileName:bookName];
                         newTrack.fileSize= (uint)[[_fileManager attributesOfItemAtPath:pdfItem error:nil] fileSize];
-                        _currentDriveItem.fileSize = newTrack.fileSize;
+//                        _currentDriveItem.fileSize = newTrack.fileSize;
                        // [self calculateItemSize:pdfItem];
                         IMBTrack *track = nil;
                         @try {

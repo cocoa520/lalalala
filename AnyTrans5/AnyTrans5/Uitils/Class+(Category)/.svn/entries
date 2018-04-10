@@ -1,7 +1,7 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/Uitils/Class+(Category)
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-NSImage+IMBCropExtensions.h
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-f6a9795bd889c087cb6069a1f28af7e5
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-823
 
 NSBezierPath+BezierPathQuartzUtilities.h
 file
@@ -94,6 +60,40 @@ has-props
 
 274
 
+NSImage+IMBCropExtensions.h
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+f6a9795bd889c087cb6069a1f28af7e5
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+823
+
 CALayer+Animation.h
 file
 
@@ -127,40 +127,6 @@ has-props
 
 
 362
-
-NSImage+NameCategory.h
-file
-
-
-
-
-2018-02-02T01:41:34.000000Z
-18a7ce54b817118cf531b4e271258a3c
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-282
 
 NSColor+Category.m
 file
@@ -196,18 +162,17 @@ dingming
 
 710
 
-NSImage+IMBCropExtensions.m
+NSImage+NameCategory.h
 file
 
 
 
 
 2018-02-02T01:41:34.000000Z
-e8137a8ba40c14c25d86a7630bece4e5
+18a7ce54b817118cf531b4e271258a3c
 2017-11-22T04:23:34.702949Z
 9
 dingming
-has-props
 
 
 
@@ -228,7 +193,8 @@ has-props
 
 
 
-5049
+
+282
 
 NSBezierPath+BezierPathQuartzUtilities.m
 file
@@ -263,6 +229,40 @@ has-props
 
 
 2031
+
+NSImage+IMBCropExtensions.m
+file
+
+
+
+
+2018-02-02T01:41:34.000000Z
+e8137a8ba40c14c25d86a7630bece4e5
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5049
 
 CALayer+Animation.m
 file

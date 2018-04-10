@@ -222,7 +222,7 @@
 				ORGANIZATIONNAME = imobie;
 				TargetAttributes = {
 					B93C9CE91E88F6DD00F0FE08 = {
-						DevelopmentTeam = 2QJGLWL8Y6;
+						DevelopmentTeam = 39J7ARRJF8;
 					};
 					B99A9E281E851B1B00189779 = {
 						DevelopmentTeam = 39J7ARRJF8;
@@ -345,6 +345,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -355,6 +356,7 @@
 				INFOPLIST_FILE = "ATHHostSync32 copy-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ATHHostSync64;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -365,6 +367,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,6 +378,7 @@
 				INFOPLIST_FILE = "ATHHostSync32 copy-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = ATHHostSync64;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};

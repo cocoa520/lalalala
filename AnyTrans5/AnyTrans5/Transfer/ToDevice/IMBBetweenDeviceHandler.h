@@ -37,6 +37,7 @@
     IMBPhotoEntity *_albumEntity;
 //    IMBAppBetweenDeviceInstall *_appsTransProgress;
     int _infomationCount;
+    int _repeatCount;//由于目标设备重复的，
     BOOL isClone;
 }
 

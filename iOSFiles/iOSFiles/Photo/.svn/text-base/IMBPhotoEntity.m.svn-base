@@ -56,7 +56,7 @@
 @synthesize toolTip = _toolTip;
 @synthesize isexisted = _isexisted;
 @synthesize kindSubType;
-
+@synthesize extension = _extension;
 - (id)init
 {
     if (self = [super init]) {

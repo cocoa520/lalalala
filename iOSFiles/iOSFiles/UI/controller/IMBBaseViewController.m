@@ -24,6 +24,7 @@
 #import "IMBPhotoExportSettingConfig.h"
 #import <objc/runtime.h>
 #import "IMBSearchView.h"
+#import "IMBToolButtonView.h"
 
 @implementation IMBBaseViewController
 @synthesize researchdataSourceArray = _researchdataSourceArray;
@@ -56,7 +57,7 @@
     _delegate = delegate;
 }
 
--(void)dealloc {
+- (void)dealloc {
     if (_annoyTimer != nil) {
         [_annoyTimer invalidate];
         _annoyTimer = nil;
@@ -123,6 +124,7 @@
 }
 
 - (void)awakeFromNib {
+    
     _alertViewController = [[IMBAlertViewController alloc] initWithNibName:@"IMBAlertViewController" bundle:nil];
     _condition = [[NSCondition alloc]init];
     _endRunloop = NO;
@@ -142,6 +144,129 @@
     [_toolBarButtonView setHidden:NO];
     [_toolBarButtonView loadButtons:[NSArray arrayWithObjects:@(0),@(17),@(1),@(2),@(4),@(5),@(24),@(12),nil] Target:self DisplayMode:YES];
 
+}
+
+- (void)configRightKeyMenuItemWithConfigArr:(NSArray *)configArr {
+    [_itemsReloadItem setTitle:CustomLocalizedString(@"Common_id_1", nil)];
+    [_itemsReloadItem setImage:[NSImage imageNamed:@"toolbar_icon_refresh_min"]];
+    
+    [_itemsAddItem setTitle:CustomLocalizedString(@"Common_id_7", nil)];
+    [_itemsAddItem setImage:[NSImage imageNamed:@"toolbar_icon_upload_min"]];
+    
+    [_itemsDeleteItem setTitle:CustomLocalizedString(@"Common_id_9", nil)];
+    [_itemsDeleteItem setImage:[NSImage imageNamed:@"toolbar_icon_del_min"]];
+    
+    [_itemsToMacItem setTitle:CustomLocalizedString(@"Menu_ToPc", nil)];
+    [_itemsToMacItem setImage:[NSImage imageNamed:@"toolbar_icon_download_min"]];
+    
+    [_itemsToDeviceItem setTitle:CustomLocalizedString(@"Menu_ToDevice", nil)];
+    [_itemsToDeviceItem setImage:[NSImage imageNamed:@"toolbar_icon_todevice_min"]];
+    
+    [_itemsToiCloudItem setTitle:CustomLocalizedString(@"Common_id_20", nil)];
+    [_itemsToiCloudItem setImage:[NSImage imageNamed:@"toolbar_icon_tocloud_min"]];
+    
+    [_itemsShowDetailItem setTitle:CustomLocalizedString(@"Common_id_2", nil)];
+    [_itemsShowDetailItem setImage:[NSImage imageNamed:@"toolbar_icon_getinfo_min"]];
+    
+    [_itemsMoveToFolderItem setTitle:CustomLocalizedString(@"Common_id_12", nil)];
+    [_itemsMoveToFolderItem setImage:[NSImage imageNamed:@"toolbar_icon_moveto_min"]];
+    
+    [_itemsDownloadToMacItem setTitle:CustomLocalizedString(@"Menu_ToPc", nil)];
+    [_itemsDownloadToMacItem setImage:[NSImage imageNamed:@"toolbar_icon_download_min"]];
+    
+    [_itemsCreateFolderItem setTitle:CustomLocalizedString(@"Common_id_19", nil)];
+    [_itemsCreateFolderItem setImage:[NSImage imageNamed:@"toolbar_icon_newfloder_min"]];
+    
+    [_itemsReNameItem setTitle:CustomLocalizedString(@"Common_id_8", nil)];
+    [_itemsReNameItem setImage:[NSImage imageNamed:@"toolbar_icon_rename_min"]];
+    
+    [_itemsPreviewItem setTitle:CustomLocalizedString(@"Common_id_3", nil)];
+    [_itemsPreviewItem setImage:[NSImage imageNamed:@"toolbar_icon_preview_min"]];
+    
+    [_itemsReloadItem setHidden:YES];
+    [_itemsAddItem setHidden:YES];
+    [_itemsDeleteItem setHidden:YES];
+    [_itemsToMacItem setHidden:YES];
+    [_itemsToDeviceItem setHidden:YES];
+    [_itemsToiCloudItem setHidden:YES];
+    [_itemsShowDetailItem setHidden:YES];
+    [_itemsMoveToFolderItem setHidden:YES];
+    [_itemsDownloadToMacItem setHidden:YES];
+    [_itemsCreateFolderItem setHidden:YES];
+    [_itemsReNameItem setHidden:YES];
+    [_itemsPreviewItem setHidden:YES];
+    
+    for (NSNumber *number in configArr) {
+        switch (number.intValue) {
+            case ReloadFunctionType:
+            {
+                [_itemsReloadItem setHidden:NO];
+            }
+                break;
+            case AddFunctionType:
+            {
+                [_itemsAddItem setHidden:NO];
+            }
+                break;
+                
+            case DeleteFunctionType:
+            {
+                [_itemsDeleteItem setHidden:NO];
+            }
+                break;
+            case ToMacFunctionType:
+            {
+                [_itemsToMacItem setHidden:NO];
+            }
+                break;
+                
+            case ToDeviceFunctionType:
+            {
+                [_itemsToDeviceItem setHidden:NO];
+            }
+                break;
+            case UpLoadFunction:
+            {
+                [_itemsAddItem setHidden:NO];
+            }
+                break;
+            case DownLoadFunction:
+            {
+                [_itemsDownloadToMacItem setHidden:NO];
+            }
+                break;
+            case ToiCloudFunction:
+            {
+                [_itemsToiCloudItem setHidden:NO];
+            }
+                break;
+            case RenameFunctionType:
+            {
+                [_itemsReNameItem setHidden:NO];
+            }
+                break;
+            case DeviceDatailFunctionType:
+            {
+                [_itemsShowDetailItem setHidden:NO];
+            }
+                break;
+            case NewGroupFuntion:
+            {
+                [_itemsCreateFolderItem setHidden:NO];
+            }
+                break;
+            case MoveFileFuntion:
+            {
+                [_itemsMoveToFolderItem setHidden:NO];
+            }
+                break;
+            case PreviewFunctionType:
+            {
+                [_itemsPreviewItem setHidden:NO];
+            }
+                break;
+        }
+    }
 }
 
 - (void)loadToolBarView:(CategoryNodesEnum) nodesEnum WithDisplayMode:(BOOL)displayMode {
@@ -193,7 +318,11 @@
     _toolBarButtonView = toolbar;
 }
 
-- (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView{
+- (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
+    NSLog(@"search");
+}
+
+- (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn {
     NSLog(@"search");
 }
 
@@ -225,10 +354,6 @@
     
 }
 
-- (void)doEdit:(id)sender {
-    
-}
-
 - (void)createNewFloder:(id)sender {
     
 }
@@ -242,6 +367,10 @@
 }
 
 - (void)showDetailView:(id)sender {
+    
+}
+
+- (void)preBtnClick:(id)sender {
     
 }
 
@@ -293,8 +422,6 @@
     
 }
 
-
-
 - (void)loadSonAryComplete:(NSMutableArray *)sonAry {
     
 }
@@ -320,6 +447,84 @@
     }
     [view setHidden:NO];
     [_alertViewController showAlertText:alertText WithButtonTitle:OkText WithSuperView:view];
+}
+
+#pragma mark - rightkey action
+- (IBAction)itemsRightKeyReload:(id)sender {
+    [self checkRightItemEnum];
+    [self reload:sender];
+}
+- (IBAction)itemsRightKeyAddItems:(id)sender {
+    [self checkRightItemEnum];
+    [self addItems:sender];
+}
+- (IBAction)itemsRightKeyDeleteItems:(id)sender {
+    [self checkRightItemEnum];
+    [self deleteItems:sender];
+}
+- (IBAction)itemsRightKeyToMac:(id)sender {
+    [self checkRightItemEnum];
+    [self toMac:sender];
+}
+- (IBAction)itemsRightKeyToDevice:(id)sender {
+    [self checkRightItemEnum];
+    [self toDevice:sender];
+}
+- (IBAction)itemsRightKeyToiCloud:(id)sender {
+    [self checkRightItemEnum];
+    [self toiCloud:sender];
+}
+- (IBAction)itemsRightKeyShowDetailView:(id)sender {
+    [self checkRightItemEnum];
+    [self showDetailView:sender];
+}
+- (IBAction)itemsRightKeyMoveToFolder:(id)sender {
+    [self checkRightItemEnum];
+    [self moveToFolder:sender];
+}
+- (IBAction)itemsRightKeyDownloadToMac:(id)sender {
+    [self checkRightItemEnum];
+    [self downloadToMac:sender];
+}
+- (IBAction)itemsRightKeyCreateFolder:(id)sender {
+    [self checkRightItemEnum];
+    [self createNewFloder:sender];
+}
+- (IBAction)itemsRightKeyReName:(id)sender {
+    [self checkRightItemEnum];
+    [self rename:sender];
+}
+- (IBAction)itemsRightKeyPreview:(id)sender {
+    [self checkRightItemEnum];
+    [self preBtnClick:sender];
+}
+
+- (void)checkRightItemEnum {
+    NSDictionary *dimensionDict = nil;
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CiCloud action:ARightClick label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        @autoreleasepool {
+            [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDropbox action:ARightClick label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else {
+        @autoreleasepool {
+            [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDevice action:ARightClick label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
 }
 
 @end

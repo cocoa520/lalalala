@@ -19,18 +19,45 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withDeviceAry:(NSMutableArray *)deviceAry {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        _deviceAry = [deviceAry retain];
+        _chooseDeviceAry = [deviceAry retain];
+    }
+    return self;
+}
+
+- (id)initWithChooseDeviceNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withDeviceAry:(NSMutableArray *)deviceAry withiPod:(IMBiPod *) ipod{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        _chooseDeviceAry = [deviceAry retain];
+        _iPod = [ipod retain];
+        _isChooseView = YES;
     }
     return self;
 }
 
 - (void)awakeFromNib {
+    _deviceAry = [[NSMutableArray alloc]init];
+    if (_isChooseView) {
+        for (IMBBaseInfo *baseInfo in _chooseDeviceAry) {
+            if (![baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
+                [_deviceAry addObject:baseInfo];
+            }
+        }
+        
+    }else{
+        [_deviceAry addObjectsFromArray: _chooseDeviceAry];
+    }
     NSRect f = self.view.frame;
     f.size.height = _deviceAry.count * DEVICEITEMHEIGHT + 10;
-    f.size.width = 160;
+    if (_isChooseView) {
+        f.size.width = 120;
+    }else {
+        f.size.width = 160;
+    }
+    
     self.view.frame = f;
     [self loadDeviceInfo];
-}
+    
+
+   }
 
 - (void)loadDeviceInfo {
     NSRect f = self.view.frame;
@@ -57,6 +84,10 @@
     if (_deviceAry) {
         [_deviceAry release];
         _deviceAry = nil;
+    }
+    if (_iPod) {
+        [_iPod release];
+        _iPod = nil;
     }
     [super dealloc];
 }
@@ -115,7 +146,7 @@
             [attrStr drawInRect:textRect2];
         }
         
-        NSImage *image = [NSImage imageNamed:@"device_icon_iPhone_selected"];
+        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_blue"];
         [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         
         
@@ -131,7 +162,7 @@
             [attrStr drawInRect:textRect2];
         }
         
-        NSImage *image = [NSImage imageNamed:@"device_icon_iPhone_selected"];
+        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_blue"];
         [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }else {
         [[NSColor clearColor] set];
@@ -146,7 +177,7 @@
             [attrStr drawInRect:textRect2];
         }
         
-        NSImage *image = [NSImage imageNamed:@"device_icon_iPhone_gray"];
+        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_gray"];
         [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }
     

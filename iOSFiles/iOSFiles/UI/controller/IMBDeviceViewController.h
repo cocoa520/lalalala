@@ -28,10 +28,14 @@
 #import "IMBMainWindowLoginSuccessView.h"
 #import "IMBMainLoginButton.h"
 #import "IMBAlertSupeView.h"
+#import "IMBGridientButton.h"
+#import "Dropbox.h"
+#import "IMBDeviceConnection.h"
 @class IMBDevicePopoverViewController;
 
 @interface IMBDeviceViewController : NSViewController<NSPopoverDelegate,BaseDriveDelegate>
 {
+    IBOutlet NSTextField *_mainTitle;
     IBOutlet IMBLackCornerView *_topView;
     IBOutlet IMBSelecedDeviceBtn *_selectedDeviceBtn;
     NSPopover *_devPopover;
@@ -45,20 +49,20 @@
     IMBDriveBaseManage *_baseDriveManage;
 
     IBOutlet IMBGradientComponentView *_iCloudDriveView;
-    IBOutlet IMBGradientComponentView *_oneDriveView;
+    IBOutlet IMBGradientComponentView *_dropboxView;
     IBOutlet IMBGradientComponentView *_devicesView;
     IMBiPod *_iPod;
     
     IBOutlet NSView *_midiumSizeiCloudView;
     IBOutlet NSView *_bigSizeiCloudView;
-    
+    IBOutlet NSView *_iCloudLoginAnimationView;
     
     IBOutlet NSView *_bigSizeOneDriveView;
     IBOutlet NSView *_midiumSizeOneDriveView;
     
     
     IBOutlet NSBox *_devicesBox;
-    IBOutlet NSBox *_oneDriveBox;
+    IBOutlet NSBox *_dropboxBox;
     IBOutlet NSBox *_icloudDrivebox;
     
     IBOutlet NSView *_smallSizeView;
@@ -104,7 +108,7 @@
     IBOutlet NSView *_icloudCustomView;
     
     
-    IBOutlet IMBMyDrawCommonly *icloudLoginbtn;
+    IBOutlet IMBGridientButton *icloudLoginbtn;
     
     
     CALayer *_loadLayer;
@@ -119,7 +123,7 @@
     IMBMainWindowLoginSuccessView *_loginSuccessdropboxView;
     
     
-    IBOutlet IMBMainLoginButton *_bigSizeIcloudGoNowBtn;
+    IBOutlet IMBGridientButton *_bigSizeIcloudGoNowBtn;
     
     IBOutlet IMBAlertSupeView *_alertSuperView;
     
@@ -136,14 +140,22 @@
     IBOutlet NSTextField *_midiumIcloudTitleLabel;
     
     BOOL _isEnable;
+    BOOL _isDropBoxdown;
 }
 @property (nonatomic,assign) BOOL isNewController;
 @property (nonatomic,assign) id delegate;
 //- (void)drive:(iCloudDrive *)iCloudDrive logInFailWithResponseCode:(ResponseCode)responseCode;
-- (void)switchViewController;
+- (void)switchViewControllerDropBox:(Dropbox *) dropbox;
 - (id)initWithDelegate:(id)delegate;
 //登录成功 切换页面
 - (void)switchiCloudDriveViewControllerWithiCloudDrive:(iCloudDrive *)icloudDrive;
 //登录错误
 - (void)driveLogInFial:(ResponseCode)responseCode;
+//获取icloud数据失败
+- (void)loadDataFial ;
+//退出icloud
+- (void)signoutiCloudClicked;
+- (void)signoutDropboxClicked;
+//内页退出 改变设备按钮
+- (void)chooseDeviceBtn:(IMBBaseInfo *)baseInfo;
 @end

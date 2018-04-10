@@ -8,6 +8,7 @@
 
 #import "IMBSignOutButton.h"
 #import "StringHelper.h"
+#import "IMBCommonDefine.h"
 @implementation IMBSignOutButton
 @synthesize isPhoto = _isPhoto;
 @synthesize buttonType = _buttonType;
@@ -40,10 +41,11 @@
 {
     [super drawRect:dirtyRect];
     NSBezierPath *path = [NSBezierPath bezierPathWithRect:dirtyRect];
+    [path addClip];
 //    if (_mouseState == MouseEnter) {
-//        [[StringHelper getColorFromString:CustomColor(@"hoverBtn_enter_bgColor", nil)] set];
+//        [COLOR_TABLEVIEW_ENTER set];
 //    }else if (_mouseState == MouseDown) {
-//        [[StringHelper getColorFromString:CustomColor(@"hoverBtn_down_bgColor", nil)] set];
+//        [COLOR_TABLEVIEW_CLICK set];
 //    }else {
        [[NSColor clearColor] set];
 //    }

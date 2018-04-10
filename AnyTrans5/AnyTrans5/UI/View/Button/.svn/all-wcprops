@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 65
-/svn/Mac/!svn/ver/528/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button
+V 66
+/svn/Mac/!svn/ver/1956/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button
 END
 IMBGridientButton.h
 K 25
@@ -33,11 +33,11 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPopupKindButtonCell.h
 END
-IMBGridientButton.m
+IMBDrawOneImageBtn.h
 K 25
 svn:wc:ra_dav:version-url
-V 83
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBGridientButton.m
+V 84
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBDrawOneImageBtn.h
 END
 IMBCustomButton.h
 K 25
@@ -45,11 +45,11 @@ svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBCustomButton.h
 END
-IMBDrawOneImageBtn.h
+IMBGridientButton.m
 K 25
 svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBDrawOneImageBtn.h
+V 83
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBGridientButton.m
 END
 IMBFolderOrFileButton.h
 K 25
@@ -63,17 +63,11 @@ svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPopupKindButtonCell.m
 END
-IMBCustomButton.m
+IMBiCloudButton.h
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBCustomButton.m
-END
-IMBDrawOneImageBtn.m
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBDrawOneImageBtn.m
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBiCloudButton.h
 END
 IMBTextButtonView.h
 K 25
@@ -81,11 +75,17 @@ svn:wc:ra_dav:version-url
 V 83
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBTextButtonView.h
 END
-IMBiCloudButton.h
+IMBDrawOneImageBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBDrawOneImageBtn.m
+END
+IMBCustomButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBiCloudButton.h
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBCustomButton.m
 END
 IMBCheckBoxTableColumnCell.h
 K 25
@@ -177,6 +177,12 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBiCloudDeleteButton.h
 END
+IMBiCloudDeleteButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBiCloudDeleteButton.m
+END
 IMBTextLinkButton.m
 K 25
 svn:wc:ra_dav:version-url
@@ -188,12 +194,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBWindowButton.h
-END
-IMBiCloudDeleteButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBiCloudDeleteButton.m
 END
 IMBPopupKindButton.h
 K 25
@@ -213,17 +213,17 @@ svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBCheckButton.h
 END
-IMBColorButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 80
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBColorButton.h
-END
 IMBPopupKindButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 84
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPopupKindButton.m
+END
+IMBColorButton.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBColorButton.h
 END
 IMBCheckButton.m
 K 25
@@ -237,17 +237,17 @@ svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBColorButton.m
 END
-IMBFunctionButtonCell.h
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBFunctionButtonCell.h
-END
 IMBEditButton.h
 K 25
 svn:wc:ra_dav:version-url
 V 79
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBEditButton.h
+END
+IMBFunctionButtonCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBFunctionButtonCell.h
 END
 IMBWhiteBGCheckButton.h
 K 25
@@ -261,17 +261,17 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBAirBackupDeviceBtn.h
 END
-IMBFunctionButtonCell.m
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBFunctionButtonCell.m
-END
 IMBEditButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 79
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBEditButton.m
+END
+IMBFunctionButtonCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBFunctionButtonCell.m
 END
 HoverButton.h
 K 25
@@ -285,23 +285,17 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBWhiteBGCheckButton.m
 END
-IMBLinkButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBLinkButton.h
-END
 IMBGuideButton.h
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBGuideButton.h
 END
-IMBAirBackupDeviceBtn.m
+IMBLinkButton.h
 K 25
 svn:wc:ra_dav:version-url
-V 89
-/svn/Mac/!svn/ver/528/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBAirBackupDeviceBtn.m
+V 79
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBLinkButton.h
 END
 IMBCustomPopupButton.h
 K 25
@@ -309,17 +303,17 @@ svn:wc:ra_dav:version-url
 V 86
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBCustomPopupButton.h
 END
+IMBAirBackupDeviceBtn.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mac/!svn/ver/528/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBAirBackupDeviceBtn.m
+END
 HoverButton.m
 K 25
 svn:wc:ra_dav:version-url
-V 77
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/HoverButton.m
-END
-IMBPreferencesButton.h
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPreferencesButton.h
+V 80
+/svn/Mac/!svn/ver/1956/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/HoverButton.m
 END
 IMBSwitchButton.h
 K 25
@@ -327,17 +321,23 @@ svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBSwitchButton.h
 END
-IMBLinkButton.m
+IMBPreferencesButton.h
 K 25
 svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBLinkButton.m
+V 86
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPreferencesButton.h
 END
 IMBGuideButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBGuideButton.m
+END
+IMBLinkButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBLinkButton.m
 END
 IMBCustomPopupButton.m
 K 25
@@ -351,17 +351,17 @@ svn:wc:ra_dav:version-url
 V 79
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBSkinButton.h
 END
-IMBPreferencesButton.m
-K 25
-svn:wc:ra_dav:version-url
-V 86
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPreferencesButton.m
-END
 IMBSwitchButton.m
 K 25
 svn:wc:ra_dav:version-url
 V 81
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBSwitchButton.m
+END
+IMBPreferencesButton.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/View/Button/IMBPreferencesButton.m
 END
 IMBSkinButton.m
 K 25

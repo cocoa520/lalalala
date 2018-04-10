@@ -39,7 +39,7 @@
     return self;
 }
 
-- (id)initWithSelectedArray:(NSArray *)selectArrs categoryModel:(IMBCategoryInfoModel *)categoryModel srcIpodKey:(NSString *)srcIpodKey desIpodKey:(NSString *)desIpodKey withPlaylistArray:(NSArray *)playListArray albumEntity:(IMBPhotoEntity *)albumEntity Delegate:(id)delegate {
+- (id)initWithSelectedArray:(DriveItem *)selectArrs categoryModel:(IMBCategoryInfoModel *)categoryModel srcIpodKey:(NSString *)srcIpodKey desIpodKey:(NSString *)desIpodKey withPlaylistArray:(NSArray *)playListArray albumEntity:(IMBPhotoEntity *)albumEntity Delegate:(id)delegate {
     if (self = [super initWithIPodkey:desIpodKey withDelegate:delegate]) {
         NSMutableArray *array = [NSMutableArray array];
         [array addObject:categoryModel];
@@ -56,7 +56,8 @@
         _srcIpod = [[[IMBDeviceConnection singleton] getiPodByKey:srcIpodKey] retain];
         _convertedMediaDic = [[NSMutableDictionary alloc] init];
         _toDeviceInforDic = [[NSMutableDictionary alloc] init];
-        _selectedArr = [selectArrs retain];
+        _currentDriveItem = [selectArrs retain];
+        _selectedArr =[[selectArrs childArray] retain];
         _isAll = NO;
         if (_albumEntity != nil) {
             _albumEntity = [albumEntity retain];
@@ -114,9 +115,9 @@
     if ([srcExportDic.allKeys containsObject:[NSNumber numberWithInt:Category_Applications]]) {
         [self verifyRepeatAppBySrcDic:srcExportDic desDic:desExportDic];
     }
-    if ([srcExportDic.allKeys containsObject:[NSNumber numberWithInt:Category_Contacts]]) {
-        [self verifyContactsBySrcDic:srcExportDic desDic:desExportDic];
-    }
+//    if ([srcExportDic.allKeys containsObject:[NSNumber numberWithInt:Category_Contacts]]) {
+//        [self verifyContactsBySrcDic:srcExportDic desDic:desExportDic];
+//    }
     NSMutableArray *carArray = [NSMutableArray array];
     for (NSNumber *number in srcExportDic.allKeys) {
         if (number.intValue == Category_Music||number.intValue == Category_Ringtone||number.intValue == Category_Audiobook||number.intValue == Category_Movies||number.intValue == Category_TVShow||number.intValue == Category_MusicVideo||number.intValue == Category_PodCasts||number.intValue == Category_iTunesU||number.intValue == Category_Ringtone) {
@@ -902,6 +903,7 @@
     [_loghandle writeInfoLog:[NSString stringWithFormat:@"is Sync Device:%d",isSyncDevice]];
     if (isSyncDevice) {
         _deviceTransfer = [[IMBAirSyncImportBetweenDeviceTransfer alloc] initWithIPodkey:_srcIpod.uniqueKey TarIPodKey:_ipod.uniqueKey itemsToTransfer:_convertedMediaDic photoAlbum:_albumEntity playlistID:0 delegate:_transferDelegate];
+        _deviceTransfer.driveItem = _currentDriveItem ;
         [_deviceTransfer setCondition:_condition];
         [_deviceTransfer setTotalItem:_totalItem];
         [_deviceTransfer setInfomationCount:_infomationCount];

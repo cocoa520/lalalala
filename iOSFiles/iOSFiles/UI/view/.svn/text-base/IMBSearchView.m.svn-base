@@ -26,7 +26,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setAutoresizesSubviews:YES];
-    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,0, self.frame.size.width -18, self.frame.size.height - 6)];
+    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,3, self.frame.size.width -19, self.frame.size.height - 6)];
     [_searchField setBordered:NO];
     [_searchField setDrawsBackground:YES];
     [[_searchField cell] setBackgroundColor:[NSColor grayColor]];
@@ -42,13 +42,14 @@
     [[[_searchField cell] cancelButtonCell] setImagePosition:NSNoImage];
 
     [self addSubview:_searchField];
-    NSImage *closeImage = [StringHelper imageNamed:@"nav_icon_close"];
-    _closeBtn = [[HoverButton alloc] initWithFrame:NSMakeRect(self.frame.size.width - closeImage.size.width - 6, (self.frame.size.height - closeImage.size.height)/2.0, closeImage.size.width, closeImage.size.height)];
+    NSImage *closeImage1 = [StringHelper imageNamed:@"nav_icon_close"];
+    NSImage *closeImage2 = [StringHelper imageNamed:@"nav_icon_close_hover"];
+    _closeBtn = [[HoverButton alloc] initWithFrame:NSMakeRect(self.frame.size.width - closeImage1.size.width - 6, (self.frame.size.height - closeImage1.size.height)/2.0, closeImage1.size.width, closeImage1.size.height)];
     [_closeBtn setAutoresizingMask:NSViewMinXMargin];
     [_closeBtn setHidden:YES];
     [_closeBtn setTarget:self];
     [_closeBtn setAction:@selector(clearInputString:)];
-    [_closeBtn setMouseEnteredImage:closeImage mouseExitImage:closeImage mouseDownImage:closeImage];
+    [_closeBtn setMouseEnteredImage:closeImage2 mouseExitImage:closeImage1 mouseDownImage:closeImage2];
     [self addSubview:_closeBtn];
 }
 
@@ -69,10 +70,10 @@
     [super drawRect:dirtyRect];
     if (!_isOPen) {
         if (_mouseState == MouseDown || _mouseState == MouseEnter) {
-            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search_1"];
+            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search1_hover"];
             [image drawInRect:NSMakeRect(0, (dirtyRect.size.height - image.size.height) / 2.0, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         }else {
-            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search_1"];
+            NSImage *image = [StringHelper imageNamed:@"navbar_icon_search1"];
             [image drawInRect:NSMakeRect(0, (dirtyRect.size.height - image.size.height) / 2.0, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         }
     }else {

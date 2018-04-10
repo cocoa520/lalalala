@@ -1015,6 +1015,9 @@
 //clone链接
 "url_guild_id_3" = "https://www.imobie.es/guide/anytrans/datos-reemplazados-en-clonacion.htm";
 "Buy_Url" = "https://www.imobie.es/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+//折扣购买链接
+"discount_Buy_Url" = "https://www.imobie.es/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+
 "anytrans_guide" = "https://www.imobie.es/guide/anytrans/inicio.htm";
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml";
 "update_url_2" = "anytrans6.xml";
@@ -1742,3 +1745,74 @@
 "iCloudLogin_View_Input_Toomany_ErrorCode" = "Ha introducido demasiadas veces códigos incorrectos. Por favor intente de nuevo más tarde.";
 "iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.com/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
+
+
+
+//传输开始之前的骚扰窗口
+"Annoy_StartTransfer_Title" = "¡Gracias por su interés en AnyTrans! Comience con la versión de prueba gratuita y gestione sus dispositivos iOS ahora";
+"Annoy_StartTransfer_SubTitle" = "Las características destacadas de AnyTrans:";
+"Annoy_StartTransfer_Detail_OneTitle" = "Excelente experiencia de transferencia";
+"Annoy_StartTransfer_Detail_OneSubTitle" = "Con la tecnología de vanguardia Flash-Trans, hace su transferencia más eficiente";
+"Annoy_StartTransfer_Detail_TwoTitle" = "Transferencia completa sin bloqueo";
+"Annoy_StartTransfer_Detail_TwoSubTitle" = "Pasar libremente los datos entre iPhone, iPad, iPod, iTunes, iCloud y ordenador.";
+"Annoy_StartTransfer_Detail_ThreeTitle" = "Cobertura completa de todo lo esencial";
+"Annoy_StartTransfer_Detail_ThreeSubTitle" = "Cuidar todos los datos y archivos importantes de iOS con posibilidades ilimitadas en la administración.";
+"Annoy_StartTransfer_Detail_FourTitle" = "El gestor inteligente que nunca ha visto";
+"Annoy_StartTransfer_Detail_FourSubTitle" = "AnyTrans inteligentemente sabe lo que quiere hacer y siempre lo hace decentemente para usted.";
+"Annoy_StartTransfer_BtnTitle" = "Comience su prueba gratis ahora";
+//试用传输完成后的页面
+"Annoy_TransferComplete_Title" = "¡Ha transferido %d ítems con éxito! Con la versión de prueba, sólo podrá transferir %d ítems más hoy.";
+"Annoy_TransferComplete_Title_1" = "¡Ha transferido %d ítem con éxito! Con la versión de prueba, sólo podrá transferir %d ítems más hoy.";
+"Annoy_TransferComplete_SecondPart_Title" = "O, consiga la versión completa para quitar todas las limitaciones y disfrutar de más funciones:";
+"Annoy_TransferComplete_SecondPart_SubTitle_1" = "Romper todas las restricciones, puede transferir cualquier y cuanto archivo que quiera.";
+"Annoy_TransferComplete_SecondPart_SubTitle_2" = "Exportar música entre iPhone, iTunes y ordenador, sin límite. ";
+"Annoy_TransferComplete_SecondPart_SubTitle_3" = "Exportar fotos al ordenador con solo un clic.";
+"Annoy_TransferComplete_SecondPart_SubTitle_4" = "Poner su canción favorita como tono exclusivo de tu iPhone.";
+"Annoy_TransferComplete_ThirdPart_Title" = "Estará completamente protegido por nuestro:";
+"Annoy_TransferComplete_ThirdPart_SubTitle_1" = "Garantía de entrega inmediata";
+"Annoy_TransferComplete_ThirdPart_SubTitle_2" = "Actualizaciones gratuitas de por vida";
+"Annoy_TransferComplete_ThirdPart_SubTitle_3" = "Garantía de servicio al cliente 24/7/365";
+"Annoy_TransferComplete_ThirdPart_SubTitle_4" = "100% Garantía de Satisfacción";
+"Annoy_TransferComplete_BtnTitle" = "Comprar una licencia Online";
+"Annoy_TransferComplete_Title_2" = "¡Ha transferido %d ítems con éxito! Esperemos que le haya gustado la prueba gratuita.";
+"Annoy_TransferComplete_Title_2_1" = "¡Ha transferido %d ítem con éxito! Esperemos que le haya gustado la prueba gratuita.";
+"Annoy_TransferComplete_SubTitle_2" = "Lamentamos que se haya agotado su cuota de transferencia hoy. Pero aún puede continuar completando su transferencia con la versión completa - le lleva solo 3 minutos obtener la versión completa de AnyTrans.";
+//点击Activate后弹出的页面
+"Annoy_Activate_Title" = "¡Su AnyTrans está";
+"Annoy_Activate_Title1" = "No activada!";
+"Annoy_Activate_Title2" = "Si ya tiene una licencia,  por favor la introduzca aquí para obtener la versión completa:";
+"Annoy_Activate_SecondPart_SubTitle" = "Beneficios en la versión completa:";
+"Annoy_Activate_SecondPart_SubTitle_1" = "Exportar música de iPhone a Pc/iTunes y viceversa.";
+"Annoy_Activate_SecondPart_SubTitle_2" = "1-clic a exportar fotos de iPhone al ordenador por categorías.";
+"Annoy_Activate_SecondPart_SubTitle_3" = "Poner su canción favorita como tono exclusivo de su iPhone.";
+"Annoy_Activate_SecondPart_SubTitle_4" = "Pasar vídeos entre iPhone, iPad y ordenador con facilidad.";
+"Annoy_Activate_SecondPart_SubTitle_5" = "Transferir iBook de ordenador o iPhone antiguo al nuevo.";
+"Annoy_Activate_SecondPart_SubTitle_6" = "Convertir su iPhone/iPad en disco flash cuando necesite. ";
+"Annoy_Activate_SecondPart_SubTitle_7" = "Romper límites de iTunes con transferencia simple & eficiente.";
+"Annoy_Activate_SecondPart_SubTitle_8" = "Disfrutar de actualizaciones GRATUITAS de por vida.";
+"Annoy_Activate_SecondPart_SubTitle_9" = "Acceso previo al servicio de atención al cliente 24/7/365.";
+"Annoy_Activate_ThirdPart_SubTitle_1" = "O, puede conseguir la licencia aquí.";
+"Annoy_Activate_BtnTitle" = "Comprar una licencia";
+"Annoy_Activate_ChooseBrowser_Title" = "¡ Elija su navegador preferido para abrir el enlace!";
+"Annoy_Go_Btn" = "Vamos";
+"Annoy_Activate_ChooseBrowser_Google" = "Google";
+"Annoy_Activate_ChooseBrowser_Safari" = "Safari";
+"Annoy_Activate_ChooseBrowser_Firfox" = "Firefox";
+"Annoy_Activate_ChooseBrowser_Opera" = "Opera";
+//试用期内当天传输额度用完后的骚扰页面
+"Annoy_Runout_Number_Title" = "Gracias por probar AnyTrans. Esperemos que le haya gustado la prueba gratuita.";
+"Annoy_Runout_Number_SubTitle" = "Lamentamos que se haya agotado su cuota de transferencia hoy. Pero aún puede continuar completando su transferencia con la versión completa - le lleva solo 3 minutos obtener la versión completa de AnyTrans.";//新增
+"Annoy_Runout_Number_SecondPart_Title" = "Estará completamente protegido por nuestro:";
+"Annoy_Runout_Number_SecondPart_SubTitle_1" = "Garantía de entrega inmediata";
+"Annoy_Runout_Number_SecondPart_SubTitle_2" = "Actualizaciones gratuitas de por vida";
+"Annoy_Runout_Number_SecondPart_SubTitle_3" = "Garantía de servicio al cliente 24/7/365";
+"Annoy_Runout_Number_SecondPart_SubTitle_4" = "100% Garantía de Satisfacción";
+"Annoy_Runout_Number_BtnTitle" = "Comprar una licencia Online";
+"Annoy_Runout_Number_ThirdPart_SubTitle_1" = "¿Ya tiene una licencia?";
+"Annoy_Runout_Number_ThirdPart_SubTitle_2" = " Activar Ahora";
+//试用期到期后的骚扰页面
+"Annoy_Runout_Day_Title" = "Gracias por probar AnyTrans. Esperemos que le haya gustado la prueba gratuita.";
+"Annoy_Runout_Day_SubTitle" = "Lamentamos que tu prueba gratuita haya expirado. Como nuestro regalo de agradecimiento, disfrutará de un descuento de %@, disponible en 24 horas.";
+"Annoy_Runout_Day_BtnTitle" = "Obtenga su descuento ahora";
+
+

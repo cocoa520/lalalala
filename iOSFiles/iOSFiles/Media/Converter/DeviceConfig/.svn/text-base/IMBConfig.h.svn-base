@@ -10,7 +10,7 @@
 #import "IMBiPod.h"
 #import "IMBCvtMediaFileEntity.h"
 
-#define DeviceConfigPath @"iMobieConfig"
+#define DeviceConfigPath @"config"
 #define CvtConfigName @"iMobieConvertConfig.plist"
 
 @interface IMBConfig : NSObject {

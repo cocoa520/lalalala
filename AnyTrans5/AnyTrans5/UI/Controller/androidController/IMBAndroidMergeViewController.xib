@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">14F27</string>
-		<string key="IBDocument.InterfaceBuilderVersion">7706</string>
+		<string key="IBDocument.SystemVersion">14E46</string>
+		<string key="IBDocument.InterfaceBuilderVersion">6250</string>
 		<string key="IBDocument.AppKitVersion">1348.17</string>
 		<string key="IBDocument.HIToolboxVersion">758.70</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">7706</string>
+			<string key="NS.object.0">6250</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSArrayController</string>
@@ -404,9 +404,9 @@
 										<object class="NSImageCell" key="NSCell" id="847807541">
 											<int key="NSCellFlags">134217728</int>
 											<int key="NSCellFlags2">33554432</int>
-											<object class="NSCustomResource" key="NSContents" id="889191471">
+											<object class="NSCustomResource" key="NSContents" id="601980003">
 												<string key="NSClassName">NSImage</string>
-												<string key="NSResourceName">clone_iphone</string>
+												<string key="NSResourceName">clone_iPhone</string>
 											</object>
 											<string key="NSCellIdentifier">_NS:9</string>
 											<int key="NSAlign">0</int>
@@ -437,7 +437,7 @@
 										<object class="NSImageCell" key="NSCell" id="874428810">
 											<int key="NSCellFlags">134217728</int>
 											<int key="NSCellFlags2">33554432</int>
-											<reference key="NSContents" ref="889191471"/>
+											<reference key="NSContents" ref="601980003"/>
 											<string key="NSCellIdentifier">_NS:9</string>
 											<int key="NSAlign">0</int>
 											<int key="NSScale">2</int>
@@ -827,10 +827,7 @@
 								<object class="NSImageCell" key="NSCell" id="891441329">
 									<int key="NSCellFlags">134217728</int>
 									<int key="NSCellFlags2">33554432</int>
-									<object class="NSCustomResource" key="NSContents">
-										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">clone_iPhone</string>
-									</object>
+									<reference key="NSContents" ref="601980003"/>
 									<string key="NSCellIdentifier">_NS:9</string>
 									<int key="NSAlign">0</int>
 									<int key="NSScale">2</int>
@@ -886,7 +883,7 @@
 												<int key="NSvFlags">2322</int>
 												<string key="NSFrameSize">{875, 20}</string>
 												<reference key="NSSuperview" ref="268613399"/>
-												<reference key="NSNextKeyView" ref="120403444"/>
+												<reference key="NSNextKeyView" ref="634318306"/>
 												<string key="NSReuseIdentifierKey">_NS:13</string>
 												<object class="NSTextContainer" key="NSTextContainer" id="286780066">
 													<object class="NSLayoutManager" key="NSLayoutManager">
@@ -994,7 +991,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								</array>
 								<string key="NSFrame">{{92, 390}, {875, 20}}</string>
 								<reference key="NSSuperview" ref="371407510"/>
-								<reference key="NSNextKeyView" ref="268613399"/>
+								<reference key="NSNextKeyView" ref="120403444"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<int key="NSsFlags">133120</int>
 								<reference key="NSVScroller" ref="120403444"/>
@@ -4272,7 +4269,6 @@ dWNjZXNzZnVsbHkgdHJhbnNmZXJyZWQgMzIgaXRlbXMocykuA</bytes>
 			<string key="clone_arrow">{70, 60}</string>
 			<string key="clone_complete">{696, 64}</string>
 			<string key="clone_iPhone">{116, 180}</string>
-			<string key="clone_iphone">{116, 180}</string>
 			<string key="mainFrame_arrow">{16, 16}</string>
 			<string key="rose_progress_bg">{370, 28}</string>
 			<string key="transfer_light">{100, 6}</string>

@@ -38,7 +38,6 @@
 #import "IMBPhotoToiCloud.h"
 #import "IMBCalendarsToDevice.h"
 #import "IMBiCloudMainPageViewController.h"
-
 @interface IMBTransferViewController ()
 
 @end
@@ -50,6 +49,7 @@
 @synthesize icloudManager = _icloudManager;
 @synthesize isicloudView = _isicloudView;
 @synthesize exportType = _exportType;
+@synthesize isNoExecute = _isNoExecute;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -392,7 +392,9 @@
             _baseTransfer = [[IMBPhotoToiCloud alloc] initWithIPodkey:_ipodKey importTracks:_selectedItems withiCloudManager:_icloudManager CategoryNodesEnum:_category  withDelegate:self];
         }
     }
-    [self performSelector:@selector(startTransfer) withObject:nil afterDelay:0.5];
+    if (!_isNoExecute) {
+        [self performSelector:@selector(startTransfer) withObject:nil afterDelay:0.5];
+    }
 }
 
 - (void)addAnimationView {
@@ -907,90 +909,90 @@
             }
             
         }else {
-            NSString *str3 = CustomLocalizedString(@"Transfer_text_id_4", nil);
-            NSMutableAttributedString *as3 = [[NSMutableAttributedString alloc] initWithString:str3?:@""];
-            if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"9"]) {
-                [as3 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue thin" size:30] range:NSMakeRange(0, as3.length)];
-            }else {
-                [as3 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue Light" size:30] range:NSMakeRange(0, as3.length)];
-            }
-            [as3 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] range:NSMakeRange(0, as3.length)];
-            [as3 setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as3.length)];
-            [_resultMainStr setAttributedStringValue:as3];
-            [as3 release], as3 = nil;
-            
-            NSString *transfercountStr = nil;
-            NSString *str;
-            if (_successCount > 1) {
-                transfercountStr = [NSString stringWithFormat:@"%d/%d",_successCount,totalCount];
-                str = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_tips", nil),transfercountStr];
-            }else {
-                transfercountStr = [NSString stringWithFormat:@"%d/%d",_successCount,totalCount];
-                str = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_tip", nil),transfercountStr];
-            }
-            NSMutableAttributedString *as4 = [[NSMutableAttributedString alloc] initWithString:str?:@""];
-            [as4 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, as4.length)];
-            [as4 addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, as4.length)];
-            [as4 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:NSMakeRange(0, as4.length)];
-            [as4 setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as4.length)];
-            [[_resultSubTextView textStorage] setAttributedString:as4];
-            [as4 autorelease], as4 = nil;
-            
-            if (_successCount < totalCount && [IMBTransferError singleton].errorArrayM.count > 0) {
-                
-                NSString *promptStr = @"";
-                NSString *overStr1 = @"";
-                NSString *overStr2 = @"";
-                NSString *overStr3 = @"";
-                if (_transferType == TransferToDevice || _transferType == TransferToiTunes  || _transferType == TransferImport || _transferType == TransferImportContacts || _transferType == TransferToContact || _transferType == TransferUpLoading||_transferType == TransferSync || _transferType == TransferToiCloud) {
-                    promptStr = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_viewfile", nil), CustomLocalizedString(@"Show_ResultWindow_linkTips", nil),CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil)];
-                    overStr1 = CustomLocalizedString(@"Show_ResultWindow_linkTips", nil);
-                    overStr2 = CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil);
-                }else{
-                    promptStr = [[[[[[[[CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil) stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"|", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"|", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"Show_ResultWindow_linkTips", nil)];
-                    overStr1 = CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil);
-                    overStr2 = CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil);
-                    overStr3 = CustomLocalizedString(@"Show_ResultWindow_linkTips", nil);
+            if ([IMBSoftWareInfo singleton].isRegistered || _successCount == 0) {
+                NSString *str3 = CustomLocalizedString(@"Transfer_text_id_4", nil);
+                NSMutableAttributedString *as3 = [[NSMutableAttributedString alloc] initWithString:str3?:@""];
+                if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"9"]) {
+                    [as3 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue thin" size:30] range:NSMakeRange(0, as3.length)];
+                }else {
+                    [as3 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue Light" size:30] range:NSMakeRange(0, as3.length)];
                 }
+                [as3 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] range:NSMakeRange(0, as3.length)];
+                [as3 setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as3.length)];
+                [_resultMainStr setAttributedStringValue:as3];
+                [as3 release], as3 = nil;
                 
-                NSDictionary *linkAttributes = @{(id)kCTForegroundColorAttributeName: [StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)], (id)kCTUnderlineStyleAttributeName: [NSNumber numberWithInt:kCTUnderlineStyleNone]};
-                [_textView setLinkTextAttributes:linkAttributes];
+                NSString *transfercountStr = nil;
+                NSString *str;
+                if (_successCount > 1) {
+                    transfercountStr = [NSString stringWithFormat:@"%d/%d",_successCount,totalCount];
+                    str = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_tips", nil),transfercountStr];
+                }else {
+                    transfercountStr = [NSString stringWithFormat:@"%d/%d",_successCount,totalCount];
+                    str = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_tip", nil),transfercountStr];
+                }
+                NSMutableAttributedString *as4 = [[NSMutableAttributedString alloc] initWithString:str?:@""];
+                [as4 addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, as4.length)];
+                [as4 addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, as4.length)];
+                [as4 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:NSMakeRange(0, as4.length)];
+                [as4 setAlignment:NSCenterTextAlignment range:NSMakeRange(0, as4.length)];
+                [[_resultSubTextView textStorage] setAttributedString:as4];
+                [as4 autorelease], as4 = nil;
                 
-                NSMutableAttributedString *promptAs = [[NSMutableAttributedString alloc] initWithString:promptStr?:@""];
-                [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, promptAs.length)];
-                [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
-                
-                
-                NSRange infoRange1 = [promptStr rangeOfString:overStr1];
-                [promptAs addAttribute:NSLinkAttributeName value:overStr1 range:infoRange1];
-                [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange1];
-                [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange1];
-                [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange1];
-                
-                
-                NSRange infoRange2 = [promptStr rangeOfString:overStr2];
-                [promptAs addAttribute:NSLinkAttributeName value:overStr2 range:infoRange2];
-                [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange2];
-                [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange2];
-                [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange2];
-                
-                NSRange infoRange3 = [promptStr rangeOfString:overStr3];
-                [promptAs addAttribute:NSLinkAttributeName value:overStr3 range:infoRange3];
-                [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange3];
-                [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange3];
-                [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange3];
-                
-                NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
-                [mutParaStyle setAlignment:NSCenterTextAlignment];
-                [mutParaStyle setLineSpacing:5.0];
-                [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
-                [[_textView textStorage] setAttributedString:promptAs];
-                [promptAs release], promptAs =nil;
-                [mutParaStyle release];
-                mutParaStyle = nil;
-                
-            } else {
-                
+                if (_successCount < totalCount && [IMBTransferError singleton].errorArrayM.count > 0) {
+                    
+                    NSString *promptStr = @"";
+                    NSString *overStr1 = @"";
+                    NSString *overStr2 = @"";
+                    NSString *overStr3 = @"";
+                    if (_transferType == TransferToDevice || _transferType == TransferToiTunes  || _transferType == TransferImport || _transferType == TransferImportContacts || _transferType == TransferToContact || _transferType == TransferUpLoading||_transferType == TransferSync || _transferType == TransferToiCloud) {
+                        promptStr = [NSString stringWithFormat:CustomLocalizedString(@"Transfer_text_complete_viewfile", nil), CustomLocalizedString(@"Show_ResultWindow_linkTips", nil),CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil)];
+                        overStr1 = CustomLocalizedString(@"Show_ResultWindow_linkTips", nil);
+                        overStr2 = CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil);
+                    }else{
+                        promptStr = [[[[[[[[CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil) stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"|", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"|", nil)] stringByAppendingString:CustomLocalizedString(@"  ", nil)] stringByAppendingString:CustomLocalizedString(@"Show_ResultWindow_linkTips", nil)];
+                        overStr1 = CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil);
+                        overStr2 = CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil);
+                        overStr3 = CustomLocalizedString(@"Show_ResultWindow_linkTips", nil);
+                    }
+                    
+                    NSDictionary *linkAttributes = @{(id)kCTForegroundColorAttributeName: [StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)], (id)kCTUnderlineStyleAttributeName: [NSNumber numberWithInt:kCTUnderlineStyleNone]};
+                    [_textView setLinkTextAttributes:linkAttributes];
+                    
+                    NSMutableAttributedString *promptAs = [[NSMutableAttributedString alloc] initWithString:promptStr?:@""];
+                    [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"text_explainColor", nil)] range:NSMakeRange(0, promptAs.length)];
+                    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
+                    
+                    
+                    NSRange infoRange1 = [promptStr rangeOfString:overStr1];
+                    [promptAs addAttribute:NSLinkAttributeName value:overStr1 range:infoRange1];
+                    [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange1];
+                    [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange1];
+                    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange1];
+                    
+                    
+                    NSRange infoRange2 = [promptStr rangeOfString:overStr2];
+                    [promptAs addAttribute:NSLinkAttributeName value:overStr2 range:infoRange2];
+                    [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange2];
+                    [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange2];
+                    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange2];
+                    
+                    NSRange infoRange3 = [promptStr rangeOfString:overStr3];
+                    [promptAs addAttribute:NSLinkAttributeName value:overStr3 range:infoRange3];
+                    [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange3];
+                    [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:12.0] range:infoRange3];
+                    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:infoRange3];
+                    
+                    NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+                    [mutParaStyle setAlignment:NSCenterTextAlignment];
+                    [mutParaStyle setLineSpacing:5.0];
+                    [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+                    [[_textView textStorage] setAttributedString:promptAs];
+                    [promptAs release], promptAs =nil;
+                    [mutParaStyle release];
+                    mutParaStyle = nil;
+                    
+                } else {
                     NSString *promptStr = @"";
                     NSString *overStr1 = @"";
                     NSString *overStr2 = @"";
@@ -1032,9 +1034,33 @@
                     [promptAs release], promptAs =nil;
                     [mutParaStyle release];
                     mutParaStyle = nil;
-                
+                }
+                [_contentView addSubview:_resultContentView];
+            }else {
+                OperationLImitation *limitation = [OperationLImitation singleton];
+                NSDictionary *dimensionDict = nil;
+                if (limitation.remainderCount <= 0) {
+                    @autoreleasepool {
+                        [limitation setLimitStatus:@"noquote"];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"noquote" label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                    [self configRunOutDayCompleteView];
+                    [_contentBox setContentView:_runOutDayCompleteView];
+                }else {
+                    @autoreleasepool {
+                        [limitation setLimitStatus:@"completed"];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"completed" label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                    [self configUnregisteredCompleteView];
+                    [_contentBox setContentView:_unregisteredResultView];
+                }
+                if (dimensionDict) {
+                    [dimensionDict release];
+                    dimensionDict = nil;
+                }
             }
-            [_contentView addSubview:_resultContentView];
         }
         
         EventAction action = ActionNone;
@@ -1092,103 +1118,164 @@
 #pragma mark - textView Delegete
 - (BOOL)textView:(NSTextView *)textView clickedOnLink:(id)link atIndex:(NSUInteger)charIndex {
     NSString *moreItemStr = nil;
-    if (_successCount < _totalCount && [IMBTransferError singleton].errorArrayM.count > 0) {
-        if (_transferType == TransferToDevice || _transferType == TransferToiTunes  || _transferType == TransferImport || _transferType == TransferImportContacts || _transferType == TransferToContact || _transferType == TransferUpLoading||_transferType == TransferSync || _transferType == TransferToiCloud) {
-            moreItemStr = CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil);
-        } else {
-            moreItemStr = CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil);
+    if ([link isEqualToString:CustomLocalizedString(@"Annoy_Runout_Number_ThirdPart_SubTitle_2", nil)]) {
+        //气泡的形式弹出注册窗口
+        if (_activatePopover != nil) {
+            if (_activatePopover.isShown) {
+                [_activatePopover close];
+                return YES;
+            }
         }
-        if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil)]) {
-            //查看传输完成的内容
-            if (_transferType == TransferToContact) {
-                //弹出Contacts窗口
-                char *ch = "open /Applications/Contacts.app";
-                system(ch);
-            }else {
-                NSWorkspace *workSpace = [NSWorkspace sharedWorkspace];
-                if (_isicloud) {
-                    [workSpace selectFile:nil inFileViewerRootedAtPath:_downPath];
-                }else{
-                    [workSpace selectFile:nil inFileViewerRootedAtPath:_exportFolder];
-                }
-            }
-        }else if ([link isEqualToString:moreItemStr]) {
-            //传输不是全部成功的时候点击传输更多
-            if (_transferType == TransferUpLoading) {
-                [(IMBiCloudDriverViewController *)_delegate iCloudReload:nil];
-            }
-            [self closeWindow:nil];
-            
-        } else if ([link isEqualToString: CustomLocalizedString(@"completeActivity_LinkTip", nil)]) {
-            //活动界面点击链接
-            NSString *hoStr = nil;
-            if (![StringHelper stringIsNilOrEmpty:[IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl]) {
-                hoStr = [IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl;
+        if (_activatePopover != nil) {
+            [_activatePopover release];
+            _activatePopover = nil;
+        }
+        _activatePopover = [[NSPopover alloc] init];
+        
+        if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"10"]) {
+            _activatePopover.appearance = (NSPopoverAppearance)[NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }else {
+            _activatePopover.appearance = NSPopoverAppearanceMinimal;
+        }
+        
+        _activatePopover.animates = YES;
+        _activatePopover.behavior = NSPopoverBehaviorApplicationDefined;
+        _popoverViewController = [[IMBPopoverActivateViewController alloc] initWithDelegate:self];
+        if (_activatePopover != nil) {
+            _activatePopover.contentViewController = _popoverViewController;
+        }
+        
+        [_popoverViewController release];
+        NSRectEdge prefEdge = NSMinYEdge;
+        
+        
+        int x = 175;
+        if ([IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage) {
+            x = 175;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
+            x = 215;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == FrenchLanguage) {
+            x = 200;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == GermanLanguage) {
+            x = 175;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ChinaLanguage) {
+            x = 140;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == SpanishLanguage) {
+            x = 175;
+        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ArabLanguage) {
+            x = 30;
+        }
+        
+        NSRect rect = NSMakeRect(x, textView.bounds.origin.y - 16, 410, 84);
+        [_activatePopover showRelativeToRect:rect ofView:textView preferredEdge:prefEdge];
+    }else {
+        if (_successCount < _totalCount && [IMBTransferError singleton].errorArrayM.count > 0) {
+            if (_transferType == TransferToDevice || _transferType == TransferToiTunes  || _transferType == TransferImport || _transferType == TransferImportContacts || _transferType == TransferToContact || _transferType == TransferUpLoading||_transferType == TransferSync || _transferType == TransferToiCloud) {
+                moreItemStr = CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil);
             } else {
-                hoStr = CustomLocalizedString(@"iCloudComplete_Url", nil);
+                moreItemStr = CustomLocalizedString(@"Show_Transfer_text_complete_viewfile_2", nil);
             }
-            hoStr = [hoStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSURL *url = [NSURL URLWithString:hoStr];
-            NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-            [ws openURL:url];
-        } else if ([link isEqualToString:CustomLocalizedString(@"Show_ResultWindow_linkTips", nil)]) {
-            //传输失败原因弹框
-            NSView *view = nil;
-            for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
-                if ([subView isMemberOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]&& [subView.subviews count] == 0) {
-                    view = subView;
-                    break;
+            if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil)]) {
+                //查看传输完成的内容
+                if (_transferType == TransferToContact) {
+                    //弹出Contacts窗口
+                    char *ch = "open /Applications/Contacts.app";
+                    system(ch);
+                }else {
+                    NSWorkspace *workSpace = [NSWorkspace sharedWorkspace];
+                    if (_isicloud) {
+                        [workSpace selectFile:nil inFileViewerRootedAtPath:_downPath];
+                    }else{
+                        [workSpace selectFile:nil inFileViewerRootedAtPath:_exportFolder];
+                    }
                 }
-            }
-            if (view) {
-                [view setHidden:NO];
-                [_androidAlertViewController showATtransferFailAlertViewWithSuperView:view WithFailReasonArray:[IMBTransferError singleton].errorArrayM];
-            }
-        }
-    } else {
-        if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil)]) {
-            NSLog(@"%@",CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil));
-            if (_transferType == TransferToContact) {
-                //弹出Contacts窗口
-                char *ch = "open /Applications/Contacts.app";
-                system(ch);
-            }else {
-                NSWorkspace *workSpace = [NSWorkspace sharedWorkspace];
-                if (_isicloud) {
-                    [workSpace selectFile:nil inFileViewerRootedAtPath:_downPath];
-                }else{
-                    [workSpace selectFile:nil inFileViewerRootedAtPath:_exportFolder];
+            }else if ([link isEqualToString:moreItemStr]) {
+                //传输不是全部成功的时候点击传输更多
+                if (_transferType == TransferUpLoading) {
+                    [(IMBiCloudDriverViewController *)_delegate iCloudReload:nil];
                 }
-            }
-        }else if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil)] || [link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_3", nil)]) {
-            //点击传输更多
-            if (_transferType == TransferUpLoading) {
-                [(IMBiCloudDriverViewController *)_delegate iCloudReload:nil];
-            }else if (_transferType == TransferSync){
+                [self closeWindow:nil];
                 
+            } else if ([link isEqualToString: CustomLocalizedString(@"completeActivity_LinkTip", nil)]) {
+                //活动界面点击链接
+                NSString *hoStr = nil;
+                if (![StringHelper stringIsNilOrEmpty:[IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl]) {
+                    hoStr = [IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl;
+                } else {
+                    hoStr = CustomLocalizedString(@"iCloudComplete_Url", nil);
+                }
+                hoStr = [hoStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSURL *url = [NSURL URLWithString:hoStr];
+                NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+                [ws openURL:url];
+            } else if ([link isEqualToString:CustomLocalizedString(@"Show_ResultWindow_linkTips", nil)]) {
+                //传输失败原因弹框
+                NSView *view = nil;
+                for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
+                    if ([subView isMemberOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]&& [subView.subviews count] == 0) {
+                        view = subView;
+                        break;
+                    }
+                }
+                if (view) {
+                    [view setHidden:NO];
+                    [_androidAlertViewController showATtransferFailAlertViewWithSuperView:view WithFailReasonArray:[IMBTransferError singleton].errorArrayM];
+                }
             }
-            [self closeWindow:nil];
-            
-        } else if ([link isEqualToString: CustomLocalizedString(@"completeActivity_LinkTip", nil)]) {
-            NSString *hoStr = nil;
-            if (![StringHelper stringIsNilOrEmpty:[IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl]) {
-                hoStr = [IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl;
-            } else {
-                hoStr = CustomLocalizedString(@"iCloudComplete_Url", nil);
+        } else {
+            if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil)]) {
+                NSLog(@"%@",CustomLocalizedString(@"Transfer_text_complete_viewfile_1", nil));
+                if (_transferType == TransferToContact) {
+                    //弹出Contacts窗口
+                    char *ch = "open /Applications/Contacts.app";
+                    system(ch);
+                }else {
+                    NSWorkspace *workSpace = [NSWorkspace sharedWorkspace];
+                    if (_isicloud) {
+                        [workSpace selectFile:nil inFileViewerRootedAtPath:_downPath];
+                    }else{
+                        [workSpace selectFile:nil inFileViewerRootedAtPath:_exportFolder];
+                    }
+                }
+            }else if ([link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_2", nil)] || [link isEqualToString:CustomLocalizedString(@"Transfer_text_complete_viewfile_3", nil)]) {
+                //点击传输更多
+                if (_transferType == TransferUpLoading) {
+                    [(IMBiCloudDriverViewController *)_delegate iCloudReload:nil];
+                }else if (_transferType == TransferSync){
+                    
+                }
+                [self closeWindow:nil];
+                
+            } else if ([link isEqualToString: CustomLocalizedString(@"completeActivity_LinkTip", nil)]) {
+                NSString *hoStr = nil;
+                if (![StringHelper stringIsNilOrEmpty:[IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl]) {
+                    hoStr = [IMBSoftWareInfo singleton].activityInfo.icloudUrlInfo.gatherUrl;
+                } else {
+                    hoStr = CustomLocalizedString(@"iCloudComplete_Url", nil);
+                }
+                hoStr = [hoStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSURL *url = [NSURL URLWithString:hoStr];
+                NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+                [ws openURL:url];
             }
-            hoStr = [hoStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSURL *url = [NSURL URLWithString:hoStr];
-            NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-            [ws openURL:url];
         }
     }
     return YES;
+}
+
+- (void)activateSuccess {
+    [self closeWindow:nil];
 }
 
 - (IBAction)closeWindow:(id)sender {
     if (_annoyTimer != nil) {
         [_annoyTimer invalidate];
         _annoyTimer = nil;
+    }
+    if (_activatePopover != nil) {
+        if (_activatePopover.isShown) {
+            [_activatePopover close];
+        }
     }
     if (!_isTransferComplete) {
         if (_baseTransfer != nil) {
@@ -1302,8 +1389,7 @@
 }
 
 #pragma mark - Alert
-- (int)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText CancelButton:(NSString *)cancelText
-{
+- (int)showAlertText:(NSString *)alertText OKButton:(NSString *)OkText CancelButton:(NSString *)cancelText {
     NSView *view = nil;
     for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
         if ([subView isMemberOfClass:[NSClassFromString(@"IMBAlertSupeView") class]]&& [subView.subviews count] == 0) {
@@ -1557,7 +1643,6 @@
     [_muicloudCompleteButton setTarget:self];
     [_muicloudCompleteButton setAction:@selector(iCloudCompleteButtonClick)];
     [_muicloudCompleteButton setNeedsDisplay:YES];
-
 }
 
 #pragma mark - iCloud传输完成界面 按钮点击方法
@@ -1646,7 +1731,240 @@
     [ws openURL:url];
 }
 
+#pragma mark - 未注册结果页面
+- (void)configUnregisteredCompleteView {
+    //关闭按钮
+    if (_closebutton) {
+        [_closebutton release];
+        _closebutton = nil;
+    }
+    _closebutton = [[HoverButton alloc] initWithFrame:NSMakeRect(24, ceil(_unregisteredResultView.frame.origin.y + _unregisteredResultView.frame.size.height - 38), 32, 32)];
+    [_closebutton setTarget:self];
+    [_closebutton setAction:@selector(closeWindow:)];
+    [_closebutton setAutoresizingMask:NSViewMaxXMargin|NSViewMinYMargin|NSViewNotSizable];
+    [_closebutton setMouseEnteredImage:[StringHelper imageNamed:@"clone_close_enter"] mouseExitImage:[StringHelper imageNamed:@"clone_close_normal"] mouseDownImage:[StringHelper imageNamed:@"clone_close_down"]];
+    [_unregisteredResultView addSubview:_closebutton];
+    
+    //购买按钮
+    [_unregisteredBuyBtn setIsLeftRightGridient:YES withLeftNormalBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_normal_color", nil)] withRightNormalBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_normal_color", nil)] withLeftEnterBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_enter_color", nil)] withRightEnterBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_enter_color", nil)] withLeftDownBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_down_color", nil)] withRightDownBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_down_color", nil)] withLeftForbiddenBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_normal_color", nil)] withRightForbiddenBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_normal_color", nil)]];
+    [_unregisteredBuyBtn setButtonTitle:CustomLocalizedString(@"Annoy_Activate_BtnTitle", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
+    [_unregisteredBuyBtn setHasRightImage:YES];
+    [_unregisteredBuyBtn setRightImage:[StringHelper imageNamed:@"annoy_buy_arrow"]];
+    [_unregisteredBuyBtn setHasBorder:NO];
+    [_unregisteredBuyBtn setIsiCloudCompleteBtn:YES];
+    [_unregisteredBuyBtn setTarget:self];
+    [_unregisteredBuyBtn setAction:@selector(unregisteredBuyButtonClick:)];
+    [_unregisteredBuyBtn setNeedsDisplay:YES];
+    
+    NSRect rect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Annoy_Activate_BtnTitle", nil) fontSize:18];
+    int width = (int)(rect.size.width + 4 + 32 + 120);
+    [_unregisteredBuyBtn setFrame:NSMakeRect(ceil((_unregisteredResultView.frame.size.width - width)/2.0), _unregisteredBuyBtn.frame.origin.y, width, _unregisteredBuyBtn.frame.size.height)];
+    
+    
+    //标题文字
+    NSString *overStr = nil;
+    NSString *promptStr = nil;
+    OperationLImitation *limitation = [OperationLImitation singleton];
+    NSString *remainderStr = [NSString stringWithFormat:@"%lld", limitation.remainderCount];
+//    if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
+        if (_successCount > 1) {
+            overStr = [NSString stringWithFormat:@"%d",_successCount];
+            promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title", nil),_successCount, limitation.remainderCount];
+//            overStr = [overStr stringByAppendingString:CustomLocalizedString(@"MSG_Item_id_2", nil)];
+        } else if (_successCount == 1){
+            overStr = [NSString stringWithFormat:@"%d",_successCount];
+            promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title_1", nil),_successCount, limitation.remainderCount];
+//            overStr = [overStr stringByAppendingString:CustomLocalizedString(@"MSG_Item_id_1", nil)];
+        }
+//    } else {
+//        if (_successCount > 1) {
+//            overStr = [NSString stringWithFormat:@"%d",_successCount];
+//            promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title", nil),overStr];
+//            overStr = [[overStr stringByAppendingString:@" "] stringByAppendingString:CustomLocalizedString(@"MSG_Item_id_2", nil)];
+//        } else if (_successCount == 1){
+//            overStr = [NSString stringWithFormat:@"%d",_successCount];
+//            promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title_1", nil),overStr];
+//            overStr = [[overStr stringByAppendingString:@" "] stringByAppendingString:CustomLocalizedString(@"MSG_Item_id_1", nil)];
+//        } else {
+//            promptStr = CustomLocalizedString(@"MoveToiOS_CompleteActivity_FailTitle", nil);
+//        }
+//    }
+    NSMutableAttributedString *promptAs = [StringHelper setSingleTextAttributedString:promptStr withFont:[NSFont fontWithName:@"Helvetica Neue" size:20.0] withColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
+    if (![IMBHelper stringIsNilOrEmpty:overStr]) {
+        NSRange infoRange = [promptStr rangeOfString:overStr];
+        [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange];
+        [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:20.0] range:infoRange];
+    }
+    if (![IMBHelper stringIsNilOrEmpty:remainderStr]) {
+        NSRange infoRange = [promptStr rangeOfString:remainderStr];
+        [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange];
+        [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:20.0] range:infoRange];
+    }
+    NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+    [mutParaStyle setAlignment:NSCenterTextAlignment];
+    [mutParaStyle setLineSpacing:5.0];
+    [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+    [_unregisteredTitle setAttributedStringValue:promptAs];
+    [mutParaStyle release], mutParaStyle = nil;
+    
+    //设置文字
+    [_unregisteredMidPromptLabel setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_SecondPart_Title", nil)];
+    [_unregisteredThridPromptLabel setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_ThirdPart_Title", nil)];
+    [_unregisteredThridLabel1 setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_ThirdPart_SubTitle_1", nil)];
+    [_unregisteredThridLabel2 setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_ThirdPart_SubTitle_2", nil)];
+    [_unregisteredThridLabel3 setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_ThirdPart_SubTitle_3", nil)];
+    [_unregisteredThridLabel4 setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_ThirdPart_SubTitle_4", nil)];
+
+    //配置颜色
+    [_unregisteredMidPromptLabel setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_explainColor", nil)]];
+    [_unregisteredThridPromptLabel setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_explainColor", nil)]];
+    [_unregisteredThridLabel1 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_unregisteredThridLabel2 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_unregisteredThridLabel3 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_unregisteredThridLabel4 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    
+    NSString *promptStr1 = CustomLocalizedString(@"Annoy_TransferComplete_SecondPart_SubTitle_1", nil);
+    [self setTextType:promptStr1 withTextLable:_unregisteredMidLabel1];
+    promptStr1 = CustomLocalizedString(@"Annoy_TransferComplete_SecondPart_SubTitle_2", nil);
+    [self setTextType:promptStr1 withTextLable:_unregisteredMidLabel2];
+    promptStr1 = CustomLocalizedString(@"Annoy_TransferComplete_SecondPart_SubTitle_3", nil);
+    [self setTextType:promptStr1 withTextLable:_unregisteredMidLabel3];
+    promptStr1 = CustomLocalizedString(@"Annoy_TransferComplete_SecondPart_SubTitle_4", nil);
+    [self setTextType:promptStr1 withTextLable:_unregisteredMidLabel4];
+    
+    [_unregisteredMidView setHasCorner:YES];
+    [_unregisteredMidView setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"popover_bgColor", nil)]];
+    [_unregisteredMidView setBorderColor:[StringHelper getColorFromString:CustomColor(@"line_windowColor", nil)]];
+    
+    [_unregisteredLineView setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"line_windowColor", nil)]];
+    
+    //    _unregisteredActiveTextView;
+    [_unregisteredActiveTextView setLinkStrIsFront:NO];
+    [_unregisteredActiveTextView setNormalString:CustomLocalizedString(@"Annoy_Runout_Number_ThirdPart_SubTitle_1", nil) WithLinkString:CustomLocalizedString(@"Annoy_Runout_Number_ThirdPart_SubTitle_2", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:14.0]];
+    [_unregisteredActiveTextView setAlignment:NSCenterTextAlignment];
+    [_unregisteredActiveTextView setDelegate:self];
+    [_unregisteredActiveTextView setSelectable:YES];
+}
+
+- (void)configRunOutDayCompleteView {
+    //增加关闭按钮
+    if (_closebutton) {
+        [_closebutton release];
+        _closebutton = nil;
+    }
+    _closebutton = [[HoverButton alloc] initWithFrame:NSMakeRect(24, ceil(_runOutDayCompleteView.frame.origin.y + _runOutDayCompleteView.frame.size.height - 38), 32, 32)];
+    [_closebutton setTarget:self];
+    [_closebutton setAction:@selector(closeWindow:)];
+    [_closebutton setAutoresizingMask:NSViewMaxXMargin|NSViewMinYMargin|NSViewNotSizable];
+    [_closebutton setMouseEnteredImage:[StringHelper imageNamed:@"clone_close_enter"] mouseExitImage:[StringHelper imageNamed:@"clone_close_normal"] mouseDownImage:[StringHelper imageNamed:@"clone_close_down"]];
+    [_runOutDayCompleteView addSubview:_closebutton];
+    
+    //购买按钮
+    [_runOutDayStartBuyBtn setIsLeftRightGridient:YES withLeftNormalBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_normal_color", nil)] withRightNormalBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_normal_color", nil)] withLeftEnterBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_enter_color", nil)] withRightEnterBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_enter_color", nil)] withLeftDownBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_down_color", nil)] withRightDownBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_down_color", nil)] withLeftForbiddenBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_left_normal_color", nil)] withRightForbiddenBgColor:[StringHelper getColorFromString:CustomColor(@"buy_license_right_normal_color", nil)]];
+    [_runOutDayStartBuyBtn setButtonTitle:CustomLocalizedString(@"Annoy_Activate_BtnTitle", nil) withNormalTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withEnterTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withDownTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withForbiddenTitleColor:[StringHelper getColorFromString:CustomColor(@"generalBtn_exitColor", nil)] withTitleSize:18.0 WithLightAnimation:NO];
+    [_runOutDayStartBuyBtn setHasRightImage:YES];
+    [_runOutDayStartBuyBtn setRightImage:[StringHelper imageNamed:@"annoy_buy_arrow"]];
+    [_runOutDayStartBuyBtn setHasBorder:NO];
+    [_runOutDayStartBuyBtn setIsiCloudCompleteBtn:YES];
+    [_runOutDayStartBuyBtn setTarget:self];
+    [_runOutDayStartBuyBtn setAction:@selector(unregisteredBuyButtonClick:)];
+    [_runOutDayStartBuyBtn setNeedsDisplay:YES];
+    
+    NSRect rect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Annoy_Activate_BtnTitle", nil) fontSize:18];
+    int width = (int)(rect.size.width +  4 + 32 + 120);
+    [_runOutDayStartBuyBtn setFrame:NSMakeRect(ceil((_runOutDayCompleteView.frame.size.width - width)/2.0), _runOutDayStartBuyBtn.frame.origin.y, width, _runOutDayStartBuyBtn.frame.size.height)];
+    
+    //标题按钮
+    NSString *overStr = nil;
+    NSString *promptStr = nil;
+    if (_successCount > 1) {
+        overStr = [NSString stringWithFormat:@"%d",_successCount];
+        promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title_2", nil),_successCount];
+    } else if (_successCount == 1){
+        overStr = [NSString stringWithFormat:@"%d",_successCount];
+        promptStr = [NSString stringWithFormat: CustomLocalizedString(@"Annoy_TransferComplete_Title_2_1", nil),_successCount];
+    }
+    NSMutableAttributedString *promptAs = [StringHelper setSingleTextAttributedString:promptStr withFont:[NSFont fontWithName:@"Helvetica Neue" size:26.0] withColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [promptAs addAttribute:NSCursorAttributeName value:[NSCursor arrowCursor] range:NSMakeRange(0, promptAs.length)];
+    if (![IMBHelper stringIsNilOrEmpty:overStr]) {
+        NSRange infoRange = [promptStr rangeOfString:overStr];
+        [promptAs addAttribute:NSForegroundColorAttributeName value:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] range:infoRange];
+        [promptAs addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:26.0] range:infoRange];
+    }
+    NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+    [mutParaStyle setAlignment:NSCenterTextAlignment];
+//    [mutParaStyle setLineSpacing:5.0];
+    [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+    [_runOutDayTitleLable setAttributedStringValue:promptAs];
+    [mutParaStyle release], mutParaStyle = nil;
+    
+    //设置文字
+    [_runOutDaySubTitleLable setStringValue:CustomLocalizedString(@"Annoy_TransferComplete_SubTitle_2", nil)];
+    [_runOutDayExplainLable1 setStringValue:CustomLocalizedString(@"Annoy_Runout_Number_SecondPart_SubTitle_1", nil)];
+    [_runOutDayExplainLable2 setStringValue:CustomLocalizedString(@"Annoy_Runout_Number_SecondPart_SubTitle_2", nil)];
+    [_runOutDayExplainLable3 setStringValue:CustomLocalizedString(@"Annoy_Runout_Number_SecondPart_SubTitle_3", nil)];
+    [_runOutDayExplainLable4 setStringValue:CustomLocalizedString(@"Annoy_Runout_Number_SecondPart_SubTitle_4", nil)];
+    
+    //配置颜色
+    [_runOutDaySubTitleLable setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_explainColor", nil)]];
+    [_runOutDayExplainLable1 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_runOutDayExplainLable2 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_runOutDayExplainLable3 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    [_runOutDayExplainLable4 setTextColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    
+    [_runOutDayBgView setHasCorner:YES];
+    [_runOutDayBgView setBackgroundColor:[StringHelper getColorFromString:CustomColor(@"popover_bgColor", nil)]];
+    [_runOutDayBgView setBorderColor:[StringHelper getColorFromString:CustomColor(@"line_windowColor", nil)]];
+    
+    [_runOutDayActiveTextView setLinkStrIsFront:NO];
+    [_runOutDayActiveTextView setNormalString:CustomLocalizedString(@"Annoy_Runout_Number_ThirdPart_SubTitle_1", nil) WithLinkString:CustomLocalizedString(@"Annoy_Runout_Number_ThirdPart_SubTitle_2", nil) WithNormalColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)] WithLinkNormalColor:[StringHelper getColorFromString:CustomColor(@"nodata_linkeTitle_color", nil)] WithLinkEnterColor:[StringHelper getColorFromString:CustomColor(@"text_click_enterColor", nil)] WithLinkDownColor:[StringHelper getColorFromString:CustomColor(@"text_click_downColor", nil)] WithFont:[NSFont fontWithName:@"Helvetica Neue" size:14.0]];
+    [_runOutDayActiveTextView setAlignment:NSCenterTextAlignment];
+    [_runOutDayActiveTextView setDelegate:self];
+    [_runOutDayActiveTextView setSelectable:YES];
+}
+
+- (void)setTextType:(NSString *)promptStr withTextLable:(NSTextField *)textField {
+    NSMutableAttributedString *promptAs = [StringHelper setSingleTextAttributedString:promptStr withFont:[NSFont fontWithName:@"Helvetica Neue" size:14.0] withColor:[StringHelper getColorFromString:CustomColor(@"at_text_normalColor", nil)]];
+    NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+    [mutParaStyle setAlignment:NSLeftTextAlignment];
+    [mutParaStyle setLineSpacing:5.0];
+    [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+    [textField setAttributedStringValue:promptAs];
+    [mutParaStyle release], mutParaStyle = nil;
+}
+
+- (void)unregisteredBuyButtonClick:(id)sender {
+    OperationLImitation *limitation = [OperationLImitation singleton];
+    NSDictionary *dimensionDict = nil;
+    if (limitation.remainderCount <= 0) {
+        @autoreleasepool {
+            [limitation setLimitStatus:@"noquote"];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=noquote", [TempHelper currentSelectionLanguage]] label:Buy transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else {
+        @autoreleasepool {
+            [limitation setLimitStatus:@"completed"];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=completed", [TempHelper currentSelectionLanguage]] label:Buy transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
+    
+    IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+    [SystemHelper openChooseBrowser:softWare.buyId withIsActivate:NO isDiscount:NO isNeedAnalytics:YES];
+}
+
 - (void)dealloc {
+    if (_activatePopover != nil) {
+        [_activatePopover close];
+        [_activatePopover release];
+        _activatePopover = nil;
+    }
     [_condition release],_condition = nil;
     [_downPath release],_downPath = nil;
     [_alertViewController release],_alertViewController = nil;

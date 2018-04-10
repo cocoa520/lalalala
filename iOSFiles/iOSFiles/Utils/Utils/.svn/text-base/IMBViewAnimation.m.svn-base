@@ -10,7 +10,7 @@
 #import <Quartz/Quartz.h>
 #import "IMBGradientComponentView.h"
 
-CGFloat const MidiumSizeAnimationTimeInterval = 0.5f;
+CGFloat const MidiumSizeAnimationTimeInterval = 0.3f;
 static CGFloat const IMBViewAnimInterval = 0.12f;
 
 @implementation IMBViewAnimation
@@ -251,7 +251,7 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         [context setDuration:timeInterval];
-        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
         [view.animator setFrame:frame];
     } completionHandler:completion];
 }
@@ -281,6 +281,19 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     [view setWantsLayer:YES];
     [view.layer removeAllAnimations];
     [view.layer addAnimation:animation forKey:@"opacityAnim"];
+}
+
++ (void)animationWithRotationWithLayer:(CALayer *)layer {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = @(2*M_PI);
+    animation.toValue = 0;
+    animation.repeatCount = MAXFLOAT;
+    animation.duration = 1.f;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [layer setAnchorPoint:NSMakePoint(0.5, 0.5)];
+    [layer addAnimation:animation forKey:@"rotationZ"];
 }
 
 @end

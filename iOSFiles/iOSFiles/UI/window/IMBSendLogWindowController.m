@@ -18,7 +18,9 @@
 #import "IMBSendLogFile.h"
 #import "HoverButton.h"
 #import "IMBCommonDefine.h"
-#import "IMBToolbarWindow.h"
+#import "IMBiCloudNoTitleBarWinodw.h"
+#import "IMBViewAnimation.h"
+
 @interface IMBSendLogWindowController ()
 
 @end
@@ -31,18 +33,11 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-- (void)awakeFromNib{
-    if ([[[[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode] lowercaseString ]isEqualToString:@"ar"]) {
-        [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
-        [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
-        [[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
-        HoverButton *closeBtn = [[HoverButton alloc] initWithFrame:NSMakeRect(7, 2, 12, 12)];
-        [closeBtn setMouseEnteredImage:[NSImage imageNamed:@"close2"] mouseExitImage:[NSImage imageNamed:@"close"] mouseDownImage:[NSImage imageNamed:@"close3"]];
-        [closeBtn setTarget:self];
-        [closeBtn setAction:@selector(closeWindow:)];
-        [[(IMBToolbarWindow *)self.window titleBarView] addSubview:closeBtn];
-        [closeBtn release], closeBtn = nil;
-    }
+- (void)awakeFromNib {
+    
+    [[(IMBiCloudNoTitleBarWinodw *)self.window maxButton] setHidden:YES];
+    [[(IMBiCloudNoTitleBarWinodw *)self.window minButton] setHidden:YES];
+    
     [self.window center];
     logHandle = [IMBLogManager singleton];
     _logFolderPath = [[[IMBHelper getAppTempPath] stringByAppendingPathComponent:@"LogFile"] retain];
@@ -54,14 +49,9 @@
     
     [_checkTitleStr setStringValue:CustomLocalizedString(@"log_id_7", nil)];
     [_titleStr setTextColor:COLOR_TEXT_ORDINARY];
-    [_middleTitleStr setTextColor:COLOR_TEXT_ORDINARY];
+    [_middleTitleStr setTextColor:COLOR_TEXT_EXPLAIN];
     [_bottomTextStr setTextColor:COLOR_TEXT_ORDINARY];
     [_checkTitleStr setTextColor:COLOR_TEXT_ORDINARY];
-    if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"9"]) {
-        [_titleStr setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:26]];
-    }else {
-        [_titleStr setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:26]];
-    }
     [_dottedLineView setIsSendLogView:YES];
     
     [_canCelBtn setIsNoGridient:YES];
@@ -79,8 +69,8 @@
     [_sendLogBtn setAction:@selector(sendLog:)];
     [_sendLogBtn setNeedsDisplay:YES];
     
-    NSRect sendBtnRect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Log_id_3", nil) fontSize:12];
-    NSRect cancelBtnRect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Calendar_id_12", nil) fontSize:12];
+    NSRect sendBtnRect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Button_Ok", nil) fontSize:12];
+    NSRect cancelBtnRect = [IMBHelper calcuTextBounds:CustomLocalizedString(@"Button_Cancel", nil) fontSize:12];
     int width = 0;
     if (sendBtnRect.size.width > cancelBtnRect.size.width) {
         width = sendBtnRect.size.width + 40;
@@ -91,26 +81,20 @@
     [_sendLogBtn setFrame:NSMakeRect(self.window.frame.size.width/2 +5, _canCelBtn.frame.origin.y, width, _canCelBtn.frame.size.height)];
     [_loadingString setHidden:YES];
     [_loadingImg setHidden:YES];
-    [_whiteView setBackgroundColor:COLOR_View_NORMAL];
 }
 
-- (void)sendLog:(id)sender{
+- (void)sendLog:(id)sender {
     [_loadingImg setHidden:NO];
     [_canCelBtn setHidden:YES];
     [_sendLogBtn setHidden:YES];
     [_loadingString setHidden:NO];
     [_loadingString setStringValue:CustomLocalizedString(@"Log_loading_Str", nil)];
     NSSize size2 = [_loadingString.cell cellSizeForBounds:_loadingString.frame];
-    [_loadingString setFrame:NSMakeRect((_whiteView.frame.size.width - size2.width - 10)/2, _loadingString.frame.origin.y, size2.width + 10, _loadingString.frame.size.height)];
-    [_loadingImg setFrame:NSMakeRect( _loadingString.frame.origin.x - 16 , _loadingString.frame.origin.y +7 , _loadingImg.frame.size.width, _loadingImg.frame.size.height)];
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    animation.fromValue = @(2*M_PI);
-    animation.toValue = 0;
-    animation.repeatCount = MAXFLOAT;
-    animation.duration = 2;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [_loadingString setFrame:NSMakeRect((480 - size2.width - 10)/2, _loadingString.frame.origin.y, size2.width + 10, _loadingString.frame.size.height)];
+    [_loadingView setFrame:NSMakeRect( _loadingString.frame.origin.x - 16 , _loadingString.frame.origin.y + 8 , _loadingImg.frame.size.width, _loadingImg.frame.size.height)];
+    
     [_loadingImg setWantsLayer:YES];
-    [_loadingImg.layer addAnimation:animation forKey:@""];
+    [IMBViewAnimation animationWithRotationWithLayer:_loadingImg.layer];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self sendFileLogToUs];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -119,7 +103,7 @@
             [_loadingString setHidden:YES];
             [_loadingImg setHidden:YES];
             NSMutableString *mailUrl = [[NSMutableString alloc] init];
-            NSString *sup = CustomLocalizedString(@"support_url", nil);
+            NSString *sup = CustomLocalizedString(@"mailto_sendLog_url", nil);
             [mailUrl appendString:sup];
             [mailUrl appendString:[NSString stringWithFormat:@"?body=%@",CustomLocalizedString(@"Log_id_5", nil)]];
             
@@ -201,7 +185,7 @@
         if ([fm1 fileExistsAtPath:logFilePath]) {
             // 当日志文件已经存在了就将他移动到一个位置进行弹出
             NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-            NSString *logZipFolder = [documentPath stringByAppendingPathComponent:@"iMobieSendLogs"];
+            NSString *logZipFolder = [documentPath stringByAppendingPathComponent:@"SendLogs"];
             if (![fm1 fileExistsAtPath:logZipFolder]) {
                 [fm1 createDirectoryAtPath:logZipFolder withIntermediateDirectories:YES attributes:nil error:nil];
             }
@@ -220,7 +204,7 @@
     sendLog = nil;
 }
 
-- (void)dealloc{
+- (void)dealloc {
     if (_logFolderPath != nil) {
         [_logFolderPath release];
         _logFolderPath = nil;

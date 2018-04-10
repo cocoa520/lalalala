@@ -982,6 +982,8 @@
 "Product_Url" = "https://www.imobie.jp/anytrans/iphone-manager.htm";
 "FAQ_Url" = "https://www.imobie.jp/faq/anytrans-faqs.htm";
 "Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+//折扣购买链接
+"discount_Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
 
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml"; //long add
 "update_url_2" = "anytrans6.xml";
@@ -1719,3 +1721,78 @@
 "iCloudLogin_View_Input_Toomany_ErrorCode" = "無効な確認コードの入力回数が上限に達しました。時間をおいてもう一度お試しください。";
 "iCloudLogin_View_Unlock_Accuont_URL" = "https://iforgot.apple.com/password/verify/appleid";
 "iCloudGetDoubleVerificationCodeHelp" = "https://www.imobie.jp/guide/anytrans/how-to-get-verification-code-and-sign-in-two-factor-authentication.htm";
+
+//传输开始之前的骚扰窗口
+"Annoy_StartTransfer_Title" = "AnyTransをダウンロードいただきありがとうございます。早速無料体験版でiOSデバイスの管理を始めよう！";
+"Annoy_StartTransfer_SubTitle" = "AnyTransにできること:";
+"Annoy_StartTransfer_Detail_OneTitle" = "最速のスピードと優れた転送体験";
+"Annoy_StartTransfer_Detail_OneSubTitle" = "革新的なフラッシュ－トランス技術を取り入れ、データの転送を素早く処理する。";
+"Annoy_StartTransfer_Detail_TwoTitle" = "同期の制限はなく、自由自在に転送する";
+"Annoy_StartTransfer_Detail_TwoSubTitle" = "データを自由自在にiPhone、iPad、iPod、iTunes、iCloudおよびコンピュータの間で移行できる。";
+"Annoy_StartTransfer_Detail_ThreeTitle" = "大切なデータを一つも失わない";
+"Annoy_StartTransfer_Detail_ThreeSubTitle" = "大切なiOSデータやファイルなどを制限なしできちんと管理する。";
+"Annoy_StartTransfer_Detail_FourTitle" = "最先端なデータ管理マネージャー";
+"Annoy_StartTransfer_Detail_FourSubTitle" = "今までにないスマートなデータ管理・転送ツールAnyTransは、いつでも手助けする。";
+"Annoy_StartTransfer_BtnTitle" = "今すぐ始めよう";
+//试用传输完成后的页面
+"Annoy_TransferComplete_Title" = "%d個の項目が転送されました！あと%d個の項目のみ転送できます。";
+"Annoy_TransferComplete_Title_1" = "%d項目が転送されました。未認証版を使用されているため、本日は残り%d項目が転送できます。";
+"Annoy_TransferComplete_SecondPart_Title" = "製品版にアップデートし、制限なしで転送しませんか？";
+"Annoy_TransferComplete_SecondPart_SubTitle_1" = "必要に応じて制限なし、データを気のままに転送することができる。";
+"Annoy_TransferComplete_SecondPart_SubTitle_2" = "音楽を気軽にiPhoneからコンピュータやiTunesに転送し、その逆もできる。";
+"Annoy_TransferComplete_SecondPart_SubTitle_3" = "ワンクリックだけでiPhone内の写真をカテゴリでコンピュータにエクスポートできる。";
+"Annoy_TransferComplete_SecondPart_SubTitle_4" = "お気に入りの曲をカスタマイズし、着信音に変換することは今までにない簡単。";
+"Annoy_TransferComplete_ThirdPart_Title" = "購入されたら：";
+"Annoy_TransferComplete_ThirdPart_SubTitle_1" = "即時発送保証付き";
+"Annoy_TransferComplete_ThirdPart_SubTitle_2" = "生涯無料アップデート権付き";
+"Annoy_TransferComplete_ThirdPart_SubTitle_3" = "24/7/365 顧客サービス付き";
+"Annoy_TransferComplete_ThirdPart_SubTitle_4" = "100％満足保証";
+"Annoy_TransferComplete_BtnTitle" = "今すぐ購入";
+"Annoy_TransferComplete_Title_2" = " %d個の項目が転送されました！お役立ていただければ幸いです。";
+"Annoy_TransferComplete_Title_2_1" = "%d個の項目が転送されました！お役立ていただければ幸いです。";
+"Annoy_TransferComplete_SubTitle_2" = "大変恐縮ですが、今日は転送の上限に達しました。もっと転送したい場合、製品版をご購入いただき、転送の制限はなく、思う存分に転送できます。";
+//点击Activate后弹出的页面
+"Annoy_Activate_Title" = "ご利用のAnyTransは";
+"Annoy_Activate_Title1" = "未認証版";
+"Annoy_Activate_Title2" = "です。ライセンスコードをお持ちの場合、ライセンスコードを入力して、すべての機能を制限無しでお楽しみください：";
+"Annoy_Activate_SecondPart_SubTitle" = "認証版の利点：";
+"Annoy_Activate_SecondPart_SubTitle_1" = "iPhone内の曲をパソコンやiTunesにインポート・エクスポート";
+"Annoy_Activate_SecondPart_SubTitle_2" = "ワンクリックでiPhone内の写真をカテゴリでコンピュータに移行";
+"Annoy_Activate_SecondPart_SubTitle_3" = "お気に入りの曲を自由に着信音に設定";
+"Annoy_Activate_SecondPart_SubTitle_4" = "動画をiPhone、iPad、およびコンピュータの間で高速に移行";
+"Annoy_Activate_SecondPart_SubTitle_5" = "古いiPhoneからiBooksをコンピュータまたは新iPhoneに移行";
+"Annoy_Activate_SecondPart_SubTitle_6" = "いつでもお使いのiPhoneやiPadをメモリーとして利用可能";
+"Annoy_Activate_SecondPart_SubTitle_7" = "iTunesの制限を破って、より簡単かつ無制限の転送を楽しめる";
+"Annoy_Activate_SecondPart_SubTitle_8" = "無料アップグレード権付きで、いつも最新版にアップデート可能";
+"Annoy_Activate_SecondPart_SubTitle_9" = "顧客サービスは24時間365日いつでもご利用可能";
+"Annoy_Activate_ThirdPart_SubTitle_1" = "ここからライセンスを購入しよう";
+"Annoy_Activate_BtnTitle" = "今すぐ購入";
+"Annoy_Activate_ChooseBrowser_Title" = "Webブラウザでリンク先を開きましょう";
+"Annoy_Go_Btn" = "開く";
+"Annoy_Activate_ChooseBrowser_Google" = "Google";
+"Annoy_Activate_ChooseBrowser_Safari" = "Safari";
+"Annoy_Activate_ChooseBrowser_Firfox" = "Firefox";
+"Annoy_Activate_ChooseBrowser_Opera" = "Opera";
+//试用期内当天传输额度用完后的骚扰页面
+"Annoy_Runout_Number_Title" = "AnyTransをご利用いただき、ありがとうございます。";
+"Annoy_Runout_Number_SubTitle" = "申し訳ございませんが、本日の転送上限を超えています。続けて転送するには、AnyTransのライセンスを購入し認証を行ってください。";//新增
+"Annoy_Runout_Number_SecondPart_Title" = "購入されたら：";
+"Annoy_Runout_Number_SecondPart_SubTitle_1" = "即時配送保証付き";
+"Annoy_Runout_Number_SecondPart_SubTitle_2" = "生涯無料アップデート権付き";
+"Annoy_Runout_Number_SecondPart_SubTitle_3" = "24/7/365 顧客サービス付き";
+"Annoy_Runout_Number_SecondPart_SubTitle_4" = "100％満足保証";
+"Annoy_Runout_Number_BtnTitle" = "今すぐ購入";
+"Annoy_Runout_Number_ThirdPart_SubTitle_1" = "ライセンスコードをお持ちですか？";
+"Annoy_Runout_Number_ThirdPart_SubTitle_2" = "今すぐ認証";
+//试用期到期后的骚扰页面
+"Annoy_Runout_Day_Title" = "AnyTransをご利用いただきありがとうございます。お役立ていただければ幸いです。";
+"Annoy_Runout_Day_SubTitle" = "大変恐縮ですが、ご利用の体験版の有効期限が切れました。われわれは感謝の意を込めて、24時間限定で%@OFFの割引サービスをご用意しています。";
+"Annoy_Runout_Day_BtnTitle" = "今すぐゲット";
+
+
+
+
+
+
+
+

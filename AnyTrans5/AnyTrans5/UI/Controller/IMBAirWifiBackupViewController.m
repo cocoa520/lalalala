@@ -960,6 +960,15 @@
 
 #pragma mark - 骚扰窗口
 - (void)configAnnoyView {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"Air Backup" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     if (![_annoyView.subviews containsObject:_closebutton]) {
         _closebutton = [[HoverButton alloc] initWithFrame:NSMakeRect(24, ceil(_annoyView.frame.origin.y + _annoyView.frame.size.height - 38), 32, 32)];
         [_closebutton setTarget:self];
@@ -1130,37 +1139,19 @@
 
 #pragma mark - buy-now
 - (void)buyNowButtonClick {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=%@", [TempHelper currentSelectionLanguage], [IMBSoftWareInfo singleton].selectModular] label:Buy transferCount:0 screenView:@"Air Backup" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
+    
     IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
-    NSURL *url = nil;
-    NSString *str = CustomLocalizedString(@"Buy_Url", nil);
-    NSString *ver = softWare.version;
-    if (softWare.isIronsrc) {
-        if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
-            ver = @"ironsrc3";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == GermanLanguage){
-            ver = @"ironsrc1";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == FrenchLanguage) {
-            ver = @"ironsrc2";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage){
-            ver = @"ironsrc";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == SpanishLanguage){
-            ver = @"ironsrc4";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ArabLanguage){
-            ver = @"ironsrc5";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ChinaLanguage) {
-            ver = @"ironsrc6";
-        }else {
-            ver = @"ironsrc";
-        }
-    }
-    if ([StringHelper chirstmasActivity] && [IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage && [[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
-        url = [NSURL URLWithString:@"https://www.imobie.com/anytrans/buy-mac.htm?ref=holiday"];
-    }else {
-        int buyId = 3;
-        url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId]];
-    }
-    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-    [ws openURL:url];
+    [SystemHelper openChooseBrowser:softWare.buyId withIsActivate:NO isDiscount:NO isNeedAnalytics:NO];
 }
 
 #pragma mark - activate method
@@ -1834,6 +1825,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self configTextAndImageAndButton];
         [self configAnnoyView];
+        [_closebutton setMouseEnteredImage:[StringHelper imageNamed:@"clone_close_enter"] mouseExitImage:[StringHelper imageNamed:@"clone_close_normal"] mouseDownImage:[StringHelper imageNamed:@"clone_close_down"]];
+        [_closebutton setNeedsDisplay:YES];
     });
 }
 

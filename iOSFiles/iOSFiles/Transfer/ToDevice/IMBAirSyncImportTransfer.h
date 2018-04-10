@@ -53,7 +53,11 @@
     
     @public
     BOOL _isiTunesImport; //如果是itunes导入 则不需要转换
+    NSString *_appKey;
+    NSString *_uploadParent;
 }
+@property (nonatomic, retain) NSString *uploadParent;
+@property (nonatomic, retain) NSString *appKey;
 @property (nonatomic, readwrite) BOOL isRestore;
 /**
  如果有导入到photoAlbum 传入photoAlbum对象 否则传入为空 
@@ -62,13 +66,14 @@
  */
 - (id)initWithIPodkey:(NSString *)ipodKey importFiles:(DriveItem*)importFilePath CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate;
 - (id)initWithIPodkey:(NSString *)ipodKey TransferDic:(NSMutableDictionary *)transferDic delegate:(id)delegate;
+- (id)initWithAppUpLoadIPodkey:(NSString *)ipodKey importFiles:(NSMutableArray*)importFilePathAry CategoryNodesEnum:(CategoryNodesEnum)importcategory photoAlbum:(IMBPhotoEntity *)photoAlbum playlistID:(int64_t)playlistID delegate:(id)delegate;
 //重命名相册
 - (id)initWithIPodkey:(NSString *)ipodKey Rename:(NSString *)rename AlbumEntity:(IMBPhotoEntity *)albumEntity;
 - (NSDictionary *)paraseFileType;
 - (void)prepareAndFilterConverterFiles:(NSDictionary *)dictionary;
 - (BOOL)conversionAndImportFiles;
 - (NSMutableArray *)prepareAllTrack;
-
+- (void)appStartTransfer;
 #pragma mark - 重命名相册
 -(void)renameAlbum;
 @end

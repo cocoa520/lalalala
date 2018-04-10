@@ -884,20 +884,38 @@
 {
     IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
     _endRunloop = NO;
-    if (!soft.isRegistered) {
-        OperationLImitation *limit = [OperationLImitation singleton];
+    OperationLImitation *limit = [OperationLImitation singleton];
+    if (!soft.isRegistered && (limit.remainderCount==0 || limit.remainderDays==0 || !soft.isOpenAnnoy)) {
         long long redminderCount = (long long)limit.remainderCount;
         //弹出骚扰窗口
-        (*annoyVC) = [[IMBAnnoyViewController alloc] initWithNibName:@"IMBAnnoyViewController" Delegate:self Result:&redminderCount];
-        ((IMBAnnoyViewController *)(*annoyVC)).category = _category;
-        ((IMBAnnoyViewController *)(*annoyVC)).isClone = _isClone;
-        ((IMBAnnoyViewController *)(*annoyVC)).isMerge = _isMerge;
-        ((IMBAnnoyViewController *)(*annoyVC)).isContentToMac = _isContentToMac;
-        ((IMBAnnoyViewController *)(*annoyVC)).isAddContent = _isAddContent;
+        (*annoyVC) = [[IMBNewAnnoyViewController alloc] initWithNibName:@"IMBNewAnnoyViewController" Delegate:self Result:&redminderCount];
+        ((IMBNewAnnoyViewController *)(*annoyVC)).category = _category;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isClone = _isClone;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isMerge = _isMerge;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isContentToMac = _isContentToMac;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isAddContent = _isAddContent;
         [(*annoyVC).view setFrameSize:NSMakeSize(NSWidth([self view].frame), NSHeight([self view].frame))];
         [(*annoyVC).view setWantsLayer:YES];
         [[self view] addSubview:(*annoyVC).view];
         [(*annoyVC).view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-(*annoyVC).view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+//        NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
+//        NSInteger result1 = NSRunContinuesResponse;
+//        while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop)
+//        {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//        [NSApp endModalSession:session];
+        
+        [self secondRunWindowSession];
+        _endRunloop = NO;
+        return redminderCount;
+    }else{
+        return -1;
+    }
+}
+
+- (void)secondRunWindowSession {//因为在关闭选择浏览器窗口时，runModalSession:会结束，影响后面的操作，所以用递归的方式检查；
+    if (!_endRunloop) {
         NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
         NSInteger result1 = NSRunContinuesResponse;
         while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop)
@@ -905,10 +923,7 @@
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
         [NSApp endModalSession:session];
-        _endRunloop = NO;
-        return redminderCount;
-    }else{
-        return -1;
+        [self secondRunWindowSession];
     }
 }
 

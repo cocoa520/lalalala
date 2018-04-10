@@ -15,6 +15,7 @@
     AFCFileReference *_syncLockFile;
     AFCCrashLogDirectory *_crashLogDirectory;
 }
+@property (nonatomic, retain) AFCMediaDirectory *mediaDirectory;
 
 - (id)initWithDevice:(id)device;
 

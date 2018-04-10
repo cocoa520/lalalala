@@ -8,18 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IMBDeviceConnection.h"
+#import "IMBiPod.h"
 @interface IMBDevicePopoverViewController : NSViewController
 {
     id _target;
     SEL _action;
     NSMutableArray *_deviceAry;
+    IMBiPod *_iPod;
+    BOOL _isChooseView;
+    NSMutableArray *_chooseDeviceAry;
 }
 
 @property (nonatomic, readwrite, retain) id target;
 @property (nonatomic, readwrite) SEL action;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withDeviceAry:(NSMutableArray *)deviceAry;
-
+- (id)initWithChooseDeviceNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withDeviceAry:(NSMutableArray *)deviceAry withiPod:(IMBiPod *) ipod;
 @end
 
 

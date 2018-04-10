@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <development version="5100" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBChooseBrowserWindowController">
+            <connections>
+                <outlet property="_firfoxView" destination="wwT-Io-S58" id="OZi-1s-H1h"/>
+                <outlet property="_googleView" destination="xmb-9j-OVn" id="YcS-D5-XtN"/>
+                <outlet property="_operaView" destination="1GX-iQ-VMz" id="ibM-EC-iYI"/>
+                <outlet property="_safariView" destination="38H-Kk-TjB" id="FUn-Hi-ahf"/>
+                <outlet property="_saveBtn" destination="HFn-aD-FAp" id="9gR-oS-H4n"/>
+                <outlet property="conView" destination="se5-gp-TjO" id="YpO-0b-7Cs"/>
+                <outlet property="optTextField" destination="P49-PO-Dg7" id="beK-Z5-mne"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBToolbarWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="558" height="312"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="se5-gp-TjO" customClass="IMBWhiteView">
+                <rect key="frame" x="0.0" y="0.0" width="558" height="312"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="eMI-Xt-4X0">
+                        <rect key="frame" x="0.0" y="0.0" width="558" height="62"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="active_explorer" id="Kiq-5x-AuA"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="P49-PO-Dg7">
+                        <rect key="frame" x="-2" y="240" width="562" height="31"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Please choose your language" id="Gt7-3N-HmB">
+                            <font key="font" size="18" name="HelveticaNeue"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="HFn-aD-FAp" customClass="IMBGridientButton">
+                        <rect key="frame" x="217" y="38" width="124" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                        <buttonCell key="cell" type="smallSquare" title="Getting Started" bezelStyle="smallSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="F3Y-PL-8DY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="defaultSettings:" target="-2" id="yh6-MT-HOX"/>
+                        </connections>
+                    </button>
+                    <customView id="xmb-9j-OVn" customClass="IMBChooseBrowserView">
+                        <rect key="frame" x="43" y="98" width="100" height="130"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                    </customView>
+                    <customView id="38H-Kk-TjB" customClass="IMBChooseBrowserView">
+                        <rect key="frame" x="167" y="98" width="100" height="130"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                    </customView>
+                    <customView id="wwT-Io-S58" customClass="IMBChooseBrowserView">
+                        <rect key="frame" x="291" y="98" width="100" height="130"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                    </customView>
+                    <customView id="1GX-iQ-VMz" customClass="IMBChooseBrowserView">
+                        <rect key="frame" x="415" y="98" width="100" height="130"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
+                    </customView>
+                </subviews>
+                <animations/>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="870" y="469"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="active_explorer" width="558" height="62"/>
+    </resources>
+</document>

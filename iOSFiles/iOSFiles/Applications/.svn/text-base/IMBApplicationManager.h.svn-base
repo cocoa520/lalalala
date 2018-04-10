@@ -45,9 +45,15 @@ public delegate void UpdateSingleAppStepHandle();
     IMBResultSingleton *_transResult;
     IMBProgressCounter *_progressCounter;
     BOOL _threadBreak;
+    DriveItem *_currentItem;
+    id _delegate;
+    
+    NSMutableArray *_appDoucmentArray;
 }
-
+@property (nonatomic, assign) id delegate;
+@property (nonatomic, retain) DriveItem *currentItem;
 @property (nonatomic, retain) NSArray *appEntityArray;
+@property (nonatomic, retain) NSMutableArray *appDoucmentArray;
 
 - (id)initWithiPod:(IMBiPod*)iPod;
 
@@ -64,6 +70,8 @@ public delegate void UpdateSingleAppStepHandle();
 //PhoneBrowse用，ExportAppFileToPc
 
 - (bool) backupAppTolocal:(DriveItem*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath;
+
+- (bool) backupToDriveAppTolocal:(IMBAppEntity*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath;
 
 - (bool) InstallApplication:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)localFilePath;
 - (bool) InstallApplication:(IMBAppTransferTypeEnum)archiveType appEntity:(IMBAppEntity *)appEntity ;
@@ -102,4 +110,62 @@ public delegate void UpdateSingleAppStepHandle();
 - (NSArray *)getSystemApplication;
 - (long long)getAllAppSize;
 
+/**
+ *  导出APP文件到电脑
+ *
+ *  @param folderPath 导出路径
+ *  @param node       需要导出的实体
+ *  @param afcAppmd   app的句柄
+ */
+- (void)exportAppDocumentToMac:(NSString *)folderPath withSimpleNode:(DriveItem *)node appAFC:(AFCApplicationDirectory *)afcAppmd;
+
+/**
+ *  导如文件到APP
+ *
+ *  @param localPath    导入的文件路径
+ *  @param appDir       app的句柄
+ *  @param remotePath   导入的目的路径
+ */
+- (void)importCopyFromLocal:(DriveItem *)localPath ToApp:(AFCApplicationDirectory*)appDir ToPath:(NSString*)remotePath;
+
+/**
+ *  删除APPdoucment文件
+ *
+ *  @param nodeArray    要删除的file实体数组
+ *  @param afcAppmd       app的句柄
+ */
+- (void)removeAppDoucment:(NSArray *)nodeArray appAFC:(AFCApplicationDirectory *)afcAppmd;
+
+/**
+ *  创建APPdoucment文件夹
+ *
+ *  @param newPath    创建的文件夹全路径
+ *  @param afcAppmd       app的句柄
+ */
+- (BOOL)createAppFolder:(NSString *)newPath appAFC:(AFCApplicationDirectory *)afcAppmd;
+
+/**
+ *  删除APPdoucment文件
+ *
+ *  @param filePath    重命名路径
+ *  @param fileName    需要修改成的名字
+ *  @param afcAppmd       app的句柄
+ */
+- (BOOL)rename:(NSString *)filePath withfileName:(NSString *)fileName appAFC:(AFCApplicationDirectory *)afcAppmd;
+
+/**
+ *  移动APPdoucment文件
+ *
+ *  @param oriPath    原始路径
+ *  @param desPath    目的路径
+ *  @param isFolder   是否是文件夹
+ *  @param afcAppmd   app的句柄
+ */
+- (BOOL)moveFile:(NSString *)oriPath desPath:(NSString *)desPath isFolder:(BOOL)isFolder appAFC:(AFCApplicationDirectory *)afcAppmd;
+
+#pragma mark - 获取APP Doucment
+/**
+ *  获取安装的APP 文件内容
+ */
+- (NSArray*)loadAppDoucmentArray;
 @end

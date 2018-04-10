@@ -701,6 +701,7 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
+        case iPad_6:
         case iPad_Pro:
             return [StringHelper imageNamed:@"device_ipad"];
             break;
@@ -864,6 +865,7 @@ char pinyinFirstLetter(unsigned short hanzi) {
         case iPad_mini_3:
         case iPad_mini_4:
         case iPad_5:
+        case iPad_6:
         case iPad_Pro:
             return [StringHelper imageNamed:@"airbackup_ipad"];
             break;

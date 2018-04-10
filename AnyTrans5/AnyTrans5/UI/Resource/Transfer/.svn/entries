@@ -1,15 +1,15 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource/Transfer
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-06T10:39:48.611690Z
-1513
-shuaimingzhong
+2018-03-26T03:10:12.269910Z
+1934
+huyumin
 
 
 
@@ -162,40 +162,6 @@ has-props
 
 15633
 
-transfer_animation_bg@2x.png
-file
-
-
-
-
-2018-02-02T01:40:39.000000Z
-144401ade357cccdc9265884defd24fc
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-645817
-
 transfer_windmill_header@2x.png
 file
 
@@ -229,6 +195,40 @@ has-props
 
 
 51898
+
+transfer_animation_bg@2x.png
+file
+
+
+
+
+2018-02-02T01:40:39.000000Z
+144401ade357cccdc9265884defd24fc
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+645817
 
 boat_animation_cloud2@2x.png
 file
@@ -332,40 +332,6 @@ has-props
 
 1929
 
-car_animation_line@2x.png
-file
-
-
-
-
-2018-02-02T01:40:39.000000Z
-96852ae30b0310e8e81d724bc99875c6
-2017-12-20T11:56:50.311318Z
-543
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1119
-
 transfer_light@2x.png
 file
 
@@ -400,17 +366,17 @@ has-props
 
 1192
 
-car_animation_mask@2x.png
+car_animation_line@2x.png
 file
 
 
 
 
 2018-02-02T01:40:39.000000Z
-c4bd35acd959c7821c0237e810d3a087
-2018-01-03T03:50:42.708986Z
-889
-dingming
+96852ae30b0310e8e81d724bc99875c6
+2017-12-20T11:56:50.311318Z
+543
+huyumin
 has-props
 
 
@@ -432,7 +398,7 @@ has-props
 
 
 
-47052
+1119
 
 backup_Animation_contact@2x.png
 file
@@ -467,6 +433,40 @@ has-props
 
 
 7506
+
+car_animation_mask@2x.png
+file
+
+
+
+
+2018-02-02T01:40:39.000000Z
+c4bd35acd959c7821c0237e810d3a087
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+47052
 
 transfer_to_macbook@2x.png
 file
@@ -1284,40 +1284,6 @@ has-props
 
 51215
 
-backup_Animation_message.png
-file
-
-
-
-
-2018-02-02T01:40:39.000000Z
-b34afc4e81e1cdff832dd0d4cdefa4e5
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5394
-
 boat_animation_mountain@2x.png
 file
 
@@ -1352,14 +1318,14 @@ has-props
 
 6750
 
-backup_Animation_bg.png
+backup_Animation_message.png
 file
 
 
 
 
 2018-02-02T01:40:39.000000Z
-1e1f2177344aa394fcc385c4f9bed3b2
+b34afc4e81e1cdff832dd0d4cdefa4e5
 2018-01-03T03:50:42.708986Z
 889
 dingming
@@ -1384,7 +1350,7 @@ has-props
 
 
 
-52389
+5394
 
 car_animation_bg.png
 file
@@ -1419,6 +1385,40 @@ has-props
 
 
 99554
+
+backup_Animation_bg.png
+file
+
+
+
+
+2018-02-02T01:40:39.000000Z
+1e1f2177344aa394fcc385c4f9bed3b2
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+52389
 
 backup_Animation_app@2x.png
 file
@@ -1488,40 +1488,6 @@ has-props
 
 23954
 
-car_animation_ground.png
-file
-
-
-
-
-2018-02-02T01:40:39.000000Z
-f4bd4529f21061b5d645335930b71d80
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-45478
-
 backup_Animation_message@2x.png
 file
 
@@ -1555,6 +1521,40 @@ has-props
 
 
 6326
+
+car_animation_ground.png
+file
+
+
+
+
+2018-02-02T01:40:39.000000Z
+f4bd4529f21061b5d645335930b71d80
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45478
 
 transfer_note@2x.png
 file
@@ -1624,40 +1624,6 @@ has-props
 
 43415
 
-backup_Animation_bg@2x.png
-file
-
-
-
-
-2018-02-02T01:40:39.000000Z
-449a3ce62919dc6f411d77718f782470
-2018-01-03T03:50:42.708986Z
-889
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-158922
-
 car_animation_bg@2x.png
 file
 
@@ -1692,14 +1658,14 @@ has-props
 
 338753
 
-transfer_compelete_CD.png
+backup_Animation_bg@2x.png
 file
 
 
 
 
 2018-02-02T01:40:39.000000Z
-d17cf6bad0143e69096752971f92fd0d
+449a3ce62919dc6f411d77718f782470
 2018-01-03T03:50:42.708986Z
 889
 dingming
@@ -1724,7 +1690,7 @@ has-props
 
 
 
-33075
+158922
 
 transfer_to_iTunes@2x.png
 file
@@ -1759,6 +1725,40 @@ has-props
 
 
 51231
+
+transfer_compelete_CD.png
+file
+
+
+
+
+2018-02-02T01:40:39.000000Z
+d17cf6bad0143e69096752971f92fd0d
+2018-01-03T03:50:42.708986Z
+889
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+33075
 
 transfer_people.png
 file
@@ -1828,14 +1828,14 @@ has-props
 
 40563
 
-transfer_windmill_header.png
+backup_Animation_callhistory@2x.png
 file
 
 
 
 
 2018-02-02T01:40:39.000000Z
-b1df7270a21d09f833dd5978b6882c34
+248e94f1c195dc06ac6d8bce6d667c54
 2018-01-03T03:50:42.708986Z
 889
 dingming
@@ -1860,7 +1860,7 @@ has-props
 
 
 
-15206
+6479
 
 transfer_animation_bg.png
 file
@@ -1896,14 +1896,14 @@ has-props
 
 42377
 
-backup_Animation_callhistory@2x.png
+transfer_windmill_header.png
 file
 
 
 
 
 2018-02-02T01:40:39.000000Z
-248e94f1c195dc06ac6d8bce6d667c54
+b1df7270a21d09f833dd5978b6882c34
 2018-01-03T03:50:42.708986Z
 889
 dingming
@@ -1928,7 +1928,7 @@ has-props
 
 
 
-6479
+15206
 
 scanning_bar_bg.png
 file
@@ -2507,6 +2507,9 @@ has-props
 
 
 12110
+
+Complete
+dir
 
 backup_Animation_box@2x.png
 file

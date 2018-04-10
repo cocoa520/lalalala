@@ -94,6 +94,7 @@ typedef enum CategoryNodes {
     Category_Media = 75,
     Category_Video = 76,
     Category_Normal = 77,
+    Category_appDoucment = 78,
 } CategoryNodesEnum;
 
 typedef enum chooseLog {
@@ -498,6 +499,7 @@ typedef enum : NSUInteger {
 typedef enum actionType {
     loadAction = 0,
     deleteAction = 1,
+    createFolder = 2,
 } ActionTypeEnum;
 
 

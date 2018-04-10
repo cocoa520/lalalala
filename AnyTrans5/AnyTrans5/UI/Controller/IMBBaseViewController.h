@@ -24,7 +24,7 @@
 #import "IMBTransferViewController.h"
 #import "IMBExportSetting.h"
 #import "IMBSoftWareInfo.h"
-#import "IMBAnnoyViewController.h"
+#import "IMBNewAnnoyViewController.h"
 #import "OperationLImitation.h"
 #import "ATTracker.h"
 #import "CommonEnum.h"

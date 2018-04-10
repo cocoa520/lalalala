@@ -9,5 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ShopLineView : NSView
+{
+    int _centerLength;//中间空白的长度
+}
+@property (nonatomic, assign) int centerLength;
 
 @end

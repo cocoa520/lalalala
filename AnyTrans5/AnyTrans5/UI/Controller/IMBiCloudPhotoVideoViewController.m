@@ -1014,58 +1014,60 @@
 //                            NSArray *dataAry = [_dataSourceArray objectsAtIndexes:[self selectedItems]];
                             int repeatCount = 0;
                             for (IMBToiCloudPhotoEntity *entity in selectedAry) {
-                                repeatCount ++;
-                                [_condition lock];
-                                if (_isPause) {
-                                    [_condition wait];
-                                }
-                                [_condition unlock];
-                                if (_isStop) {
-                                    [_iCloudManager cancel];
-                                    [[IMBTransferError singleton] addAnErrorWithErrorName:entity.photoName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
-                                    if (repeatCount == selectedAry.count) {
-                                        _isStop = NO;
+                                //luolei 修改 优化icloud photo大数据下载
+                                
+                                @autoreleasepool {
+                                    repeatCount ++;
+                                    [_condition lock];
+                                    if (_isPause) {
+                                        [_condition wait];
                                     }
-                                    continue;
-                                }
-                                if ([_transferController respondsToSelector:@selector(transferFile:)]) {
-                                    [_transferController transferFile:[NSString stringWithFormat:CustomLocalizedString(@"Transfer_Item_Title", nil),entity.photoName]];
-                                }
-                                BOOL success = [_iCloudManager downloadPhoto:entity withDownloadPath:path];
-                                if (success ) {
-                                    i ++;
-                                    if ([IMBSoftWareInfo singleton].isKeepPhotoDate) {
-                                        IMBPhotoEntity *photoEntity = (IMBPhotoEntity*)entity;
-                                        NSString *lacolPath = [path stringByAppendingPathComponent:[photoEntity photoName]];
-                                        NSTask *task;
-                                        task = [[NSTask alloc] init];
-                                        [task setLaunchPath: @"/usr/bin/touch"];
-                                        NSArray *arguments;
-                                        if (photoEntity.photoDateData != 0&&![IMBHelper stringIsNilOrEmpty:photoEntity.photoName]){
-                                            NSString *str = [IMBHelper longToDateStringFrom1970:photoEntity.photoDateData withMode:8];
-                                            
-                                            NSString *strData = [self replaceSpecialChar:str];
-                                            strData = [strData stringByReplacingOccurrencesOfString:@" " withString:@""];
-                                            strData = [strData stringByReplacingOccurrencesOfString:@"-" withString:@""];
-                                            arguments = [NSArray arrayWithObjects: @"-mt", strData, lacolPath, nil];
-                                            [task setArguments: arguments];
-                                            NSPipe *pipe;
-                                            pipe = [NSPipe pipe];
-                                            [task setStandardOutput: pipe];
-                                            NSFileHandle *file;
-                                            file = [pipe fileHandleForReading];
-                                            [task launch];
+                                    [_condition unlock];
+                                    if (_isStop) {
+                                        [_iCloudManager cancel];
+                                        [[IMBTransferError singleton] addAnErrorWithErrorName:entity.photoName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
+                                        if (repeatCount == selectedAry.count) {
+                                            _isStop = NO;
+                                        }
+                                        continue;
+                                    }
+                                    if ([_transferController respondsToSelector:@selector(transferFile:)]) {
+                                        [_transferController transferFile:[NSString stringWithFormat:CustomLocalizedString(@"Transfer_Item_Title", nil),entity.photoName]];
+                                    }
+                                    BOOL success = [_iCloudManager downloadPhoto:entity withDownloadPath:path];
+                                    if (success ) {
+                                        i ++;
+                                        if ([IMBSoftWareInfo singleton].isKeepPhotoDate) {
+                                            IMBPhotoEntity *photoEntity = (IMBPhotoEntity*)entity;
+                                            NSString *lacolPath = [path stringByAppendingPathComponent:[photoEntity photoName]];
+                                            NSTask *task;
+                                            task = [[NSTask alloc] init];
+                                            [task setLaunchPath: @"/usr/bin/touch"];
+                                            NSArray *arguments;
+                                            if (photoEntity.photoDateData != 0&&![IMBHelper stringIsNilOrEmpty:photoEntity.photoName]){
+                                                NSString *str = [IMBHelper longToDateStringFrom1970:photoEntity.photoDateData withMode:8];
+                                                
+                                                NSString *strData = [self replaceSpecialChar:str];
+                                                strData = [strData stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                                strData = [strData stringByReplacingOccurrencesOfString:@"-" withString:@""];
+                                                arguments = [NSArray arrayWithObjects: @"-mt", strData, lacolPath, nil];
+                                                [task setArguments: arguments];
+                                                NSPipe *pipe;
+                                                pipe = [NSPipe pipe];
+                                                [task setStandardOutput: pipe];
+                                                NSFileHandle *file;
+                                                file = [pipe fileHandleForReading];
+                                                [task launch];
+                                            }
                                         }
                                     }
-
+                                    count ++;
+                                    float progressCount =count/selectedAry.count*100;
+                                    [_transferController transferPrepareFileEnd];
+                                    if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
+                                        [_transferController transferProgress:progressCount];
+                                    }
                                 }
-                                count ++;
-                                float progressCount =count/selectedAry.count*100;
-                                [_transferController transferPrepareFileEnd];
-                                if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
-                                    [_transferController transferProgress:progressCount];
-                                }
-                                
                             }
                             [_transferController startTransAnimation];
                             dispatch_async(dispatch_get_main_queue(), ^{

@@ -14,6 +14,9 @@
 #import "DriveItem.h"
 #import "IMBDriveEntity.h"
 #import "IMBCommonEnum.h"
+#import "LoadingViewTwo.h"
+#import "IMBGrideView.h"
+@class IMBBaseInfo;
 @interface IMBiCloudDriverViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource> {
     
     IBOutlet IMBWhiteView *_topView;
@@ -26,7 +29,10 @@
     IBOutlet IMBWhiteView *_tableViewBgView;
     
     IBOutlet IMBWhiteView *_loadingView;
-    IBOutlet LoadingView *_loadAnimationView;
+    IBOutlet LoadingViewTwo *_loadAnimationView;
+    
+    IBOutlet IMBGrideView *_loadLeftView;
+    IBOutlet IMBGrideView *_loadRightView;
     
     IBOutlet IMBBackgroundBorderView *_topLineView;
     
@@ -44,31 +50,43 @@
     
     IBOutlet NSTextField *_detailSize;
     IBOutlet NSTextField *_detailCount;
-    IBOutlet NSTextField *_detailLastTime;
     IBOutlet NSTextField *_detailCreateTime;
     
     IBOutlet NSTextField *_detailSizeContent;
     IBOutlet NSTextField *_detailCountContent;
-    IBOutlet NSTextField *_detailLastTimeContent;
     IBOutlet NSTextField *_detailCreateTimeContent;
     
+    IBOutlet IMBBorderRectAndColorView *_promptCustomView;
+    IBOutlet NSTextField *_promptLabel;
+    IBOutlet NSImageView *_promptImageView;
     IMBDriveBaseManage *_driveBaseManage;
+    IMBDriveBaseManage *_tagDriveBaseManage;
     NSString *_currentDevicePath;
+    NSString *_currentGetListPath;//刷新用这个路径；
     
     NSMutableDictionary *_tempDic;
     int _doubleclickCount;
     BOOL _doubleClick;
     NSMutableDictionary *_oldWidthDic;
     NSMutableDictionary *_oldDocwsidDic;
+    NSMutableDictionary *_oldFileidDic;
     
     BOOL _isShow;
     IMBDriveEntity *_curEntity;
     BOOL _isShowTranfer;
-    ChooseLoginModelEnum _chooseLogModelEnmu;
-//    BOOL _isEdit;
+
     BOOL _isTableViewEdit;
     NSTextField *_editTextField;
-}
-- (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum;
 
+    IMBBaseInfo *_baseInfo;
+    IBOutlet NSButton *_closeDetailBtn;
+    BOOL _isDriveToDrive;
+}
+@property (nonatomic, retain) IMBBaseInfo *baseInfo;
+
+- (void)moveitemsToIndex:(int)index;
+
+- (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum;
+//这个方法中的，总数和个数不是真的
+- (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
 @end

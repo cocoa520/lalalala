@@ -242,6 +242,11 @@
     }
 }
 
+
+- (void)minWindow:(id)sender {
+    [self.window miniaturize:sender];
+}
+
 - (BOOL)removeObject:(id)object {
     BOOL ret = NO;
     IMBViewManager *viewManager = [IMBViewManager singleton];

@@ -12,6 +12,11 @@
 #import "IMBHelper.h"
 #import "IMBSoftWareInfo.h"
 #import "IMBSocketClient.h"
+#include <objc/runtime.h>
+#import "IMBChooseBrowserWindowController.h"
+#import "TempHelper.h"
+#import "ATTracker.h"
+
 @implementation SystemHelper
 + (NSString *)userHomePath{
     NSString *path = NSHomeDirectoryForUser(NSUserName()); //NSSearchPathForDirectoriesInDomains(, NSUserDomainMask, YES);
@@ -459,6 +464,133 @@
         }
     }
     return ret;
+}
+
++ (void)openChooseBrowser:(int)buyId withIsActivate:(BOOL)isActivate isDiscount:(BOOL)isDiscount isNeedAnalytics:(BOOL)isNeed {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL isDirectory = YES;
+    NSArray *userApplicationsDirs = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES);
+    NSMutableArray *aryM = [[NSMutableArray alloc] init] ;
+    NSString *identifer = nil;
+    if ([userApplicationsDirs count] > 0) {
+        NSString *userApplicationsDir = [userApplicationsDirs objectAtIndex:0];
+        if ([fm fileExistsAtPath:userApplicationsDir isDirectory:&isDirectory] && isDirectory) {
+            NSArray *contents = [fm contentsOfDirectoryAtPath:userApplicationsDir error:NULL];
+            for (NSString *contentsPath in contents) {
+                if ([[contentsPath pathExtension] isEqualToString:@"app"]) {
+                    if ([contentsPath.lowercaseString contains:@"google"] && ![aryM containsObject:@"google"]) {
+                        [aryM addObject:@"google"];
+                        identifer = @"com.google.Chrome";
+                    }else if ([contentsPath.lowercaseString contains:@"safari"] && ![aryM containsObject:@"safari"]) {
+                        [aryM addObject:@"safari"];
+                        identifer = @"com.apple.Safari";
+                    }else if ([contentsPath.lowercaseString contains:@"firefox"] && ![aryM containsObject:@"firefox"]) {
+                        [aryM addObject:@"firefox"];
+                        identifer = @"org.mozilla.firefox";
+                    }else if ([contentsPath.lowercaseString contains:@"opera"] && ![aryM containsObject:@"opera"]) {
+                        [aryM addObject:@"opera"];
+                        identifer = @"com.operasoftware.Opera";
+                    }
+                }
+            }
+        }
+    }
+    
+    /*
+    
+    //判断安装了几个浏览器，如果只安装了一个就直接打开，不需要出现选择浏览器窗口
+    NSMutableArray *aryM = [[NSMutableArray alloc] init];
+    //@"com.apple.Safari",@"com.google.Chrome",@"org.mozilla.firefox",@"com.operasoftware.Opera",@"com.tencent.QQBrowser"
+    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+    NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+    NSArray *allApplications = [workspace performSelector:@selector(allApplications)];
+    NSLog(@"2222222222222");
+    NSString *identifer = nil;
+    for (NSString *app in allApplications) {
+        NSString *appStr = [NSString stringWithFormat:@"%@",app];//转换成字符串
+        if ([appStr contains:@"com.google.Chrome"] && ![aryM containsObject:@"google"]) {
+            [aryM addObject:@"google"];
+            identifer = @"com.google.Chrome";
+        }else if ([appStr contains:@"com.apple.Safari"] && ![aryM containsObject:@"safari"]) {
+            [aryM addObject:@"safari"];
+            identifer = @"com.apple.Safari";
+        }else if ([appStr contains:@"org.mozilla.firefox"] && ![aryM containsObject:@"firefox"]) {
+            [aryM addObject:@"firefox"];
+            identifer = @"org.mozilla.firefox";
+        }else if ([appStr contains:@"com.operasoftware.Opera"] && ![aryM containsObject:@"opera"]) {
+            [aryM addObject:@"opera"];
+            identifer = @"com.operasoftware.Opera";
+        }
+    }
+    NSLog(@"333333333333");
+     */
+    if (aryM.count < 2) {
+        if (isNeed) {
+            NSDictionary *dimensionDict = nil;
+            @autoreleasepool {
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"default" label:ChooseBrowser transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+        }
+        IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
+        NSURL *url = nil;
+        NSString *str = CustomLocalizedString(@"Buy_Url", nil);
+        if (isDiscount) {
+            str = CustomLocalizedString(@"discount_Buy_Url", nil);
+        }
+        NSString *ver = softWare.version;
+        if (softWare.isIronsrc) {
+            if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
+                ver = @"ironsrc3";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == GermanLanguage){
+                ver = @"ironsrc1";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == FrenchLanguage) {
+                ver = @"ironsrc2";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage){
+                ver = @"ironsrc";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == SpanishLanguage){
+                ver = @"ironsrc4";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ArabLanguage){
+                ver = @"ironsrc5";
+            }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ChinaLanguage) {
+                ver = @"ironsrc6";
+            }else {
+                ver = @"ironsrc";
+            }
+        }
+        if (isDiscount) {
+            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver]];
+        }else {
+            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId]];
+        }
+        BOOL success = NO;
+        if (identifer) {
+            NSArray *ary = @[url];
+            success =  [[NSWorkspace sharedWorkspace] openURLs: ary withAppBundleIdentifier:identifer
+                                                       options: NSWorkspaceLaunchDefault additionalEventParamDescriptor: NULL launchIdentifiers: NULL];
+        }
+        if (!success) {
+            [[NSWorkspace sharedWorkspace] openURL:url];
+        }
+    }else {
+        IMBChooseBrowserWindowController *chooseWindow = [[IMBChooseBrowserWindowController alloc]initWithWindowNibName:@"IMBChooseBrowserWindowController" withIsNeedAnalytics:isNeed];
+        NSWindow *mainWindow = [NSApp mainWindow];
+        NSRect rect = mainWindow.frame;
+        NSPoint point = mainWindow.frame.origin;
+        float height = chooseWindow.window.frame.size.height;
+        float width = chooseWindow.window.frame.size.width;
+        [chooseWindow.window setFrameOrigin:NSMakePoint(point.x+(rect.size.width-width)/2, point.y+(rect.size.height-height)/2)];
+        [chooseWindow setInstallBrowsers:aryM];
+        [chooseWindow setIsActive:isActivate];
+        [chooseWindow setIsDisCountBuy:isDiscount];
+        [NSApp runModalForWindow:[chooseWindow window]];
+    }
+    [aryM release];
+    NSLog(@"44444444444");
 }
 
 @end

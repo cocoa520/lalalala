@@ -1,15 +1,15 @@
 10
 
 dir
-1877
+2505
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Window
 http://huyumin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-03-06T10:39:48.611690Z
-1513
-shuaimingzhong
+2018-04-03T09:01:48.532318Z
+2328
+qiujie
 
 
 
@@ -25,40 +25,6 @@ shuaimingzhong
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-IMBChooseLanguagesWindowController.h
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-9e6197c8205fa90714957aacba5969ef
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1189
 
 IMBPhotosPreviewWindowController.xib
 file
@@ -94,74 +60,6 @@ has-props
 
 22600
 
-IMBSkinPopoverWindowController.xib
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-a6be48b30688824a15efb65845046f6d
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-17957
-
-IMBChooseLanguagesWindowController.m
-file
-
-
-
-
-2018-02-26T03:27:37.000000Z
-0d7ebfeeeeefd7fc0b7f2abd93c82704
-2018-02-26T02:18:50.046298Z
-1368
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-13756
-
 IMBPhotosPreviewWindowController.h
 file
 
@@ -195,74 +93,6 @@ has-props
 
 
 1096
-
-IMBSkinPopoverWindowController.h
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-d252522b082e3751265a7a9a48a28fac
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-465
-
-IMBUpgradeWindowController.xib
-file
-
-
-
-
-2018-02-06T04:29:07.000000Z
-594117533ad650fb873ecca73afc2112
-2018-02-06T01:54:37.593916Z
-1236
-shuaimingzhong
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11627
 
 _NSThemeWidget.h
 file
@@ -298,40 +128,6 @@ has-props
 
 784
 
-_NSThemeWidgetCell.h
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-53110b8e3d585b351895d0455885fbe7
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2319
-
 IMBPhotosPreviewWindowController.m
 file
 
@@ -365,40 +161,6 @@ has-props
 
 
 15584
-
-IMBSkinPopoverWindowController.m
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-af6ad6fb33884680b03f2f9681cd9115
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2419
 
 IMBOpenPanel.h
 file
@@ -468,14 +230,14 @@ longfan
 
 10835
 
-IMBUpgradeWindowController.h
+IMBNavPopoverWindowController.xib
 file
 
 
 
 
 2018-02-02T01:40:06.000000Z
-c4577910d63db8f1bfa13f93f3d720b3
+c04d625dcc5b2cacef3f1014538ca674
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -500,7 +262,7 @@ dingming
 
 
 
-1447
+23178
 
 IMBOpenPanel.m
 file
@@ -536,74 +298,6 @@ has-props
 
 711
 
-IMBNavPopoverWindowController.xib
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-c04d625dcc5b2cacef3f1014538ca674
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-23178
-
-IMBPreferencesSettingWindowController.xib
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-b641f56e34c0bfebfa1b0d292f6427ec
-2017-11-22T04:23:34.702949Z
-9
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-217638
-
 IMBSendLogWindowController.h
 file
 
@@ -637,40 +331,6 @@ longfan
 
 
 985
-
-IMBUpgradeWindowController.m
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-74e959a074e98727f81b3b768c1ef60f
-2018-02-01T03:42:13.032716Z
-1167
-shuaimingzhong
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-28414
 
 IMBToolbarWindow.h
 file
@@ -706,40 +366,6 @@ dingming
 
 4937
 
-IMBNoTitleBarWindow.h
-file
-
-
-
-
-2018-02-02T01:40:06.000000Z
-40ea14b624f697bf67ff3ff271047c79
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-687
-
 IMBNavPopoverWindowController.h
 file
 
@@ -774,17 +400,18 @@ dingming
 
 2834
 
-IMBPreferencesSettingWindowController.h
+IMBNoTitleBarWindow.h
 file
 
 
 
 
 2018-02-02T01:40:06.000000Z
-5ad70eba595bda2b2d30fd9d3e9d43af
+40ea14b624f697bf67ff3ff271047c79
 2017-11-22T04:23:34.702949Z
 9
 dingming
+has-props
 
 
 
@@ -805,8 +432,7 @@ dingming
 
 
 
-
-3908
+687
 
 IMBSendLogWindowController.m
 file
@@ -910,6 +536,40 @@ dingming
 
 52608
 
+IMBNavPopoverWindowController.m
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+7af64700569bc93113866707c1d5ed9a
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+71052
+
 IMBNoTitleBarWindow.m
 file
 
@@ -944,14 +604,14 @@ dingming
 
 6908
 
-IMBNavPopoverWindowController.m
+IMBChooseLanguagesWindowController.h
 file
 
 
 
 
 2018-02-02T01:40:06.000000Z
-7af64700569bc93113866707c1d5ed9a
+9e6197c8205fa90714957aacba5969ef
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -976,7 +636,449 @@ dingming
 
 
 
-71052
+1189
+
+IMBSkinPopoverWindowController.xib
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+a6be48b30688824a15efb65845046f6d
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17957
+
+IMBChooseLanguagesWindowController.m
+file
+
+
+
+
+2018-02-26T03:27:37.000000Z
+0d7ebfeeeeefd7fc0b7f2abd93c82704
+2018-02-26T02:18:50.046298Z
+1368
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13756
+
+IMBSkinPopoverWindowController.h
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+d252522b082e3751265a7a9a48a28fac
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+465
+
+IMBChooseBrowserWindowController.xib
+file
+
+
+
+
+2018-03-26T02:28:24.000000Z
+cab71adb5e7936d6536c5394d17421de
+2018-03-26T01:16:32.234332Z
+1929
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6520
+
+IMBUpgradeWindowController.xib
+file
+
+
+
+
+2018-02-06T04:29:07.000000Z
+594117533ad650fb873ecca73afc2112
+2018-02-06T01:54:37.593916Z
+1236
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11627
+
+_NSThemeWidgetCell.h
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+53110b8e3d585b351895d0455885fbe7
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2319
+
+IMBChooseBrowserWindowController.h
+file
+
+
+
+
+2018-03-28T06:01:34.000000Z
+1608ee1b152c114e2158e80a5b802b25
+2018-03-28T05:54:55.111576Z
+2037
+qiujie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1165
+
+IMBSkinPopoverWindowController.m
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+af6ad6fb33884680b03f2f9681cd9115
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2419
+
+IMBUpgradeWindowController.h
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+c4577910d63db8f1bfa13f93f3d720b3
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1447
+
+IMBChooseBrowserWindowController.m
+file
+
+
+
+
+2018-04-03T09:22:15.000000Z
+66aa01035cfc2e9fc8d428399c6e088d
+2018-04-03T09:01:48.532318Z
+2328
+qiujie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12378
+
+IMBPreferencesSettingWindowController.xib
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+b641f56e34c0bfebfa1b0d292f6427ec
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+217638
+
+IMBUpgradeWindowController.m
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+74e959a074e98727f81b3b768c1ef60f
+2018-02-01T03:42:13.032716Z
+1167
+shuaimingzhong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+28414
+
+IMBPreferencesSettingWindowController.h
+file
+
+
+
+
+2018-02-02T01:40:06.000000Z
+5ad70eba595bda2b2d30fd9d3e9d43af
+2017-11-22T04:23:34.702949Z
+9
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3908
 
 IMBPreferencesSettingWindowController.m
 file

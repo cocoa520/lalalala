@@ -31,6 +31,8 @@
 @synthesize reDownLoad = _reDownLoad;
 @synthesize downloadFaildField = _downloadFaildField;
 @synthesize downLoadDriveItem = _downLoadDriveItem;
+@synthesize downOrUpImage = _downOrUpImage;
+
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -69,12 +71,26 @@
     [_downloadButton setFrameSize:NSMakeSize((int)rect1.size.width + 20, _downloadButton.frame.size.height)];
     [_closeButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_icon_del_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_icon_del"] mouseDownImage:[NSImage imageNamed:@"transferlist_icon_del_hover"]];
     [_closeTransferButton setMouseEnteredImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseExitImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"] mouseDownImage:[NSImage imageNamed:@"transferlist_history_icon_folder_hover"]];
+    [_closeButton setHidden:YES];
     _propertityViewArray = [[NSMutableArray alloc] init];
     [_TypeTextField setHidden:YES];
     [_DurationTextField setHidden:YES];
     [_downloadFaildField setTextColor:COLOR_TEXT_ORDINARY];
+    [_downOrUpImage setHidden:NO];
+    [_downOrUpImage setImage:[NSImage imageNamed:@"transferlist_icon_downloading"]];
 }
 
+- (void)updateTrackingAreas{
+    [super updateTrackingAreas];
+    if (_trackingArea) {
+        [self removeTrackingArea:_trackingArea];
+        [_trackingArea release];
+        _trackingArea = nil;
+    }
+    NSTrackingAreaOptions options = NSTrackingInVisibleRect | NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow;
+    _trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:options owner:self userInfo:nil];
+    [self addTrackingArea:_trackingArea];
+}
 
 
 - (void)adjustSpaceX:(float)x Y:(float)y
@@ -92,6 +108,15 @@
         }
         preView = view;
     }
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    [_closeButton setHidden:NO];
+}
+
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    [_closeButton setHidden:YES];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -113,6 +138,10 @@
     [_downLoadDriveItem release],_downLoadDriveItem = nil;
     [_propertityViewArray release],_propertityViewArray = nil;
     [_downLoadDriveItem removeObserver:self forKeyPath:@"state"];
+    if(_trackingArea != nil) {
+        [_trackingArea release];
+        _trackingArea = nil;
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_SKIN object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_CHANGE_ALLANGUAGE object:nil];
     [super dealloc];

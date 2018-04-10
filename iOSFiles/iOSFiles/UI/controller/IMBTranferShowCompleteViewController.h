@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IMBCustomHeaderTableView.h"
 #import "IMBImageAndTitleButton.h"
+#import "IMBWhiteView.h"
 @interface IMBTranferShowCompleteViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate>
 {
     NSMutableArray *_dataAry;
@@ -23,6 +24,8 @@
     IMBImageAndTitleButton *_deleteFileBtn;
     int count;
     id _delegate;
+    BOOL _isSearch;
+    IBOutlet IMBWhiteView *_noDataTopLine;
 }
 @property (nonatomic,assign)id delegate;
 - (void)addDataAry:(NSMutableArray *)dataAry;

@@ -74,6 +74,7 @@
 @synthesize videoArray = _videoArray;
 @synthesize mediaArray = _mediaArray;
 @synthesize appArray = _appArray;
+@synthesize appDoucmentArray = _appDoucmentArray;
 - (id)initWithiPod:(IMBiPod *)ipod
 {
     self = [super init];

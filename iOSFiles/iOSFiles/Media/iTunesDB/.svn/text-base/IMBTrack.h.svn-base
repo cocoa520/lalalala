@@ -115,6 +115,7 @@
     NSAttributedString *_titleAs;
     //luolei add 2017 7月21
     NSString *_photoAlbumName;
+    NSString *_extension;
 }
 
 #pragma mark - properties
@@ -149,6 +150,7 @@
 @property (nonatomic,readwrite) int albumZpk;
 @property (nonatomic,readwrite,retain) NSString *belongPlaylistName;
 @property (nonatomic,readwrite,retain) NSData *artworkData;
+@property (nonatomic, retain) NSString *extension;
 
 #pragma mark - track between device
 

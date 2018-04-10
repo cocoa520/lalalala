@@ -254,4 +254,7 @@
 //监听软件第一次启动
 #define NOTIFY_FIRST_LAUNCH @"First_Launch"
 
+//改变浏览器
+#define NOTIFY_CHANGE_BROWSER @"Change_Browser"
+
 #endif

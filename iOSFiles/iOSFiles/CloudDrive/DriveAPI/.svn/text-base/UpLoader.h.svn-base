@@ -13,6 +13,12 @@
 #else
 #import "YTKNetwork.h"
 #endif
+#if __has_include(<AFNetworking/AFURLRequestSerialization.h>)
+#import <AFNetworking/AFURLRequestSerialization.h>
+#else
+#import "AFURLRequestSerialization.h"
+#endif
+
 /**
  *  上传器专门负责上传文件
  */
@@ -23,24 +29,32 @@
     NSString *_localFilePath;                   ///<上传的本地文件路径
     NSMutableArray *_uploadListArray;           ///<上传文件列表
     NSMutableDictionary *_uploadTaskListDict;   ///<上传任务列表
-    NSInteger _uploadMaxCount;                  ///<最大上传数
-    NSInteger _activeUploadCount;               ///<已经激活上传数
+    
 }
 
 @property (nonnull, nonatomic, retain) NSString *localFilePath;
 @property (nonnull, nonatomic, readonly) NSMutableArray *uploadListArray;
 @property (nonnull, nonatomic, readonly) NSMutableDictionary *uploadTaskListDict;
-@property (nonatomic, assign) NSInteger uploadMaxCount;
-@property (nonatomic, assign) NSInteger activeUploadCount;
 
 - (id)initWithAccessToken:(NSString *)accessToken;
 
 /**
- *  上传单个文件
+ *  Description 通过表单方式上传
  *
- *  @param item 上传的对象
+ *  @param item    上传项
+ *  @param success 成功回调
+ *  @param fail 失败回调
  */
-- (void)uploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item  ;
+- (void)uploadmutilPartItem:(id<DownloadAndUploadDelegate>)item  success:(nullable YTKRequestCompletionBlock)success  fail:(nullable YTKRequestCompletionBlock)fail;
+
+/**
+ *  Description  上传
+ *
+ *  @param item    上传项
+ *  @param success 成功回调
+ *  @param fail    失败回调
+ */
+- (void)uploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item success:(nullable YTKRequestCompletionBlock)success  fail:(nullable YTKRequestCompletionBlock)fail;
 
 /**
  *  上传多个文件
@@ -85,12 +99,11 @@
  */
 - (void)cancelAllUploadItems;
 
+
 /**
  *  Description 表单上传文件 iCloud Drive需要
  *
  *  @param item    上传项
  *  @param success 成功回调
  */
-- (void)uploadmutilPartItem:(id<DownloadAndUploadDelegate>)item  success:(nullable YTKRequestCompletionBlock)success;
-
 @end

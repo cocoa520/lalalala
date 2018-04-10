@@ -33,7 +33,7 @@
         nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:nil];
         fm = [NSFileManager defaultManager];
-        NSString *regFolderPath = [[TempHelper getAppSupportPath] stringByAppendingPathComponent:@"iMobieConfig"];
+        NSString *regFolderPath = [[TempHelper getAppSupportPath] stringByAppendingPathComponent:@"config"];
         if (![fm fileExistsAtPath:regFolderPath]) {
             [fm createDirectoryAtPath:regFolderPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
@@ -258,7 +258,7 @@
     int quota = [self allowActiveCount:ks->quota];
     
     NSString *machineCode = [[IMBHWInfo singleton] platformSerialNumber];
-    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:license, @"licence", [NSNumber numberWithInt:quota], @"allowactivecount", [NSNumber numberWithInt:ks->activiate], @"activatetype", [NSNumber numberWithInt:ks->license], @"licensetype", endTimeStr, @"allowlastactivedate", productVersionStr, @"productversion", [NSNumber numberWithInt:ks->duration], @"duedate", machineCode, @"machinecode", [NSNumber numberWithBool:timeLimitation], @"timelimitation", [NSNumber numberWithBool:versionlimitation], @"versionlimitation", dateStr, @"localtime", @"iOSFiles", @"productname", @"Family", @"producttype", @"Mac", @"runtime", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:license, @"licence", [NSNumber numberWithInt:quota], @"allowactivecount", [NSNumber numberWithInt:ks->activiate], @"activatetype", [NSNumber numberWithInt:ks->license], @"licensetype", endTimeStr, @"allowlastactivedate", productVersionStr, @"productversion", [NSNumber numberWithInt:ks->duration], @"duedate", machineCode, @"machinecode", [NSNumber numberWithBool:timeLimitation], @"timelimitation", [NSNumber numberWithBool:versionlimitation], @"versionlimitation", dateStr, @"localtime", @"AllFiles", @"productname", @"Family", @"producttype", @"Mac", @"runtime", nil];
     NSString *str = [TempHelper dictionaryToJson:dic];
     //验证注册码
     NSString *valStr = [self getHashByWebservice:url nameSpace:nameSpace methodName:@"Activate_lience" sha1:str sha2:nil];

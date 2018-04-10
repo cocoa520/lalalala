@@ -183,7 +183,6 @@
         if (_mediaDatabase == nil) {
             [self refreshMedia];
         }
-        
         return [_mediaDatabase playlistList];
     }
     @catch (NSException *exception) {

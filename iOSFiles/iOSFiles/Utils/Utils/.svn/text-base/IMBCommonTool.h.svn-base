@@ -9,6 +9,9 @@
 #import <AppKit/AppKit.h>
 @class IMBiPod;
 
+APPKIT_EXTERN NSString * const IMBAlertViewiCloudKey;
+APPKIT_EXTERN NSString * const IMBAlertViewDropBoxKey;
+
 @interface IMBCommonTool : NSObject
 /**
  *  设置view的背景颜色
@@ -22,7 +25,7 @@
 + (void)setViewBgWithView:(NSView *)view color:(NSColor *)bgColor delta:(CGFloat)delta radius:(CGFloat)radius dirtyRect:(NSRect)dirtyRect;
 
 /**
- *  显示单个ok按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 @"DropBox"  当界面是iCloud时，isDetailWindow参数传入 @"iCloud"  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
+ *  显示单个ok按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 IMBAlertViewDropBoxKey  当界面是iCloud时，isDetailWindow参数传入 IMBAlertViewiCloudKey  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
  *
  *  @param isMainWindow    是否显示在mainwindow上
  *  @param btnTitle        btn的title
@@ -33,7 +36,7 @@
 + (void)showSingleBtnAlertInMainWindow:(NSString *)isDetailWindow alertTitle:(NSString *)alertTitle btnTitle:(NSString *)btnTitle msgText:(NSString *)msgText btnClickedBlock:(void(^)(void))btnClickedBlock;
 
 /**
- *  显示单个两个按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 @"DropBox"  当界面是iCloud时，isDetailWindow参数传入 @"iCloud"  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
+ *  显示单个两个按钮的下拉提示框，当界面是dropbox时，isDetailWindow参数传入 IMBAlertViewDropBoxKey  当界面是iCloud时，isDetailWindow参数传入 IMBAlertViewiCloudKey  当界面是device时，isDetailWindow参数传入 ipod.uniqueKey
  *
  *  @param isMainWindow          是否显示在mainwindow上
  *  @param firstTitle            第一个btn的title
@@ -60,6 +63,13 @@
  *  @param ipod  ipod
  */
 + (void)loadbookCover:(NSArray *)array ipod:(IMBiPod *)ipod;
+/**
+ *  显示双重验证view
+ *
+ *  @param cancelClicked cancel按钮取消
+ *  @param okClicked     ok按钮取消
+ */
++ (void)showDoubleVerificationViewIsDetailWindow:(NSString *)isDetailWindow CancelClicked:(void (^)(void))cancelClicked okClicked:(void (^)(NSString *codeId))okClicked;
 
 
 @end

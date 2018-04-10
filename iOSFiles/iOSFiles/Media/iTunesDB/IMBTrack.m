@@ -64,6 +64,8 @@
 @synthesize artworkData = _artworkData;
 @synthesize titleAs = _titleAs;
 @synthesize photoAlbumName = _photoAlbumName;
+@synthesize extension = _extension;
+
 #pragma mark - 初始化和释放方法
 -(id)init{
     self = [super init];
@@ -328,6 +330,7 @@
         }
     }
     newPath = [MediaHelper getiPodPathToStandardPath:path];
+    [self setExtension:newPath.pathExtension];
     return newPath;
 }
 

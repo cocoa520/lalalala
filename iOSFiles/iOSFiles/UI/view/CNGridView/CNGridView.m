@@ -37,7 +37,8 @@
 #import "IMBNoTitleBarContentView.h"
 #import "StringHelper.h"
 #import "IMBNotificationDefine.h"
-
+#import "IMBDeviceAllDataViewController.h"
+#import "IMBDragSingle.h"
 //#if !__has_feature(objc_arc)
 //#error "Please use ARC for compiling this file."
 //#endif
@@ -1277,18 +1278,33 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 #pragma mark - drop
 - (void)registerForDraggedTypes {
-    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,nil]];
+    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,NSPasteboardTypeTIFF,nil]];
 }
 
 - (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender {
     NSLog(@"draggingEntered");
+    [IMBDragSingle singleton].dragEnd = NO;
     if (_allowsDragAndDrop) {
         NSPasteboard *pboard = [sender draggingPasteboard];
-        if ([[pboard types] containsObject:NSFilenamesPboardType]) {
+        if ([[pboard types] containsObject:NSFilesPromisePboardType]) {
+            
+            NSPasteboard *pasteboard = [NSPasteboard pasteboardWithName:NSDragPboard];
+            NSMutableString *string = [[[NSMutableString alloc] init] autorelease];
+            for (NSString *str in selectedItems) {
+                CNGridViewItem *item = [selectedItems objectForKey:str];
+                [string appendString:[NSString stringWithFormat:@"%@",_delegate]];
+            }
+            [pasteboard clearContents];
+            BOOL success = [pasteboard setString:string forType:NSPasteboardTypeString];
+            
             NSArray *paths = [pboard propertyListForType:NSFilenamesPboardType];
             for (NSString *path in paths) {
                 return NSDragOperationCopy;
             }
+        }
+        if (![IMBDragSingle singleton].dragToOtherWindow) {
+            [[IMBDragSingle singleton] setDragSource:_delegate];
+            NSLog(@"************%@",[IMBDragSingle singleton].dragSource);
         }
         return NSDragOperationEvery;
     }else {
@@ -1298,6 +1314,9 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 - (void)draggingExited:(id<NSDraggingInfo>)sender {
     NSLog(@"draggingExited");
+    if (![IMBDragSingle singleton].dragEnd) {
+        [IMBDragSingle singleton].dragToOtherWindow = YES;
+    }
     //    NSPoint mouse    = [self convertPoint:[sender draggingLocation] fromView:nil];
     //    NSUInteger index = [layoutManager indexOfItemAtPoint:mouse];
     //
@@ -1312,26 +1331,49 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender  {
 //    NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"=========prepareForDragOperation:");
+    _moveToIndex = (int)[self boundIndexForItemAtLocation:NSMakePoint(sender.draggingLocation.x, self.superview.bounds.size.height - sender.draggingLocation.y)];
     return YES;
 }
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
+    NSLog(@"====performDragOperation");
     NSPasteboard *pastboard = [sender draggingPasteboard];
     NSArray *boarditemsArray = [pastboard pasteboardItems];
+
+    
     NSMutableArray *itemArray = [NSMutableArray array];
+    NSMutableArray *moveArray = [NSMutableArray array];
     for (NSPasteboardItem *item in boarditemsArray) {
+//        NSArray *types = [item types];
         NSString *urlPath = [item stringForType:@"public.file-url"];
         NSURL *url = [NSURL URLWithString:urlPath];
         NSString *path = [url relativePath];
         if(![StringHelper stringIsNilOrEmpty:path]) {
             [itemArray addObject:path];
         }
+        
+        NSString *movePath = [item stringForType:@"public.utf8-plain-text"];
+        if(![StringHelper stringIsNilOrEmpty:movePath]) {
+            [moveArray addObject:movePath];
+        }
     }
+
     if (itemArray.count >0) {
         if ([_delegate respondsToSelector:@selector(dropToCollectionViewTableViewWithpaths:)]) {
             [_delegate dropToCollectionViewTableViewWithpaths:itemArray];
         }
         return YES;
+    }else if (moveArray.count > 0) {
+        [[IMBDragSingle singleton] setDragDestination:_delegate];
+        if (![IMBDragSingle singleton].dragToOtherWindow) {
+            if ([_delegate respondsToSelector:@selector(moveitemsToIndex:)]) {
+                [_delegate moveitemsToIndex:_moveToIndex];
+            }
+            return YES;
+        }else {
+            return NO;
+        }
     }else{
         return NO;
     }
@@ -1368,11 +1410,26 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 //    }
     
 //    NSPasteboard *pasteboard = [NSPasteboard pasteboardWithName:NSDragPboard];
+//    NSMutableString *string = [[[NSMutableString alloc] init] autorelease];
+//    for (NSString *str in selectedItems) {
+//        CNGridViewItem *item = [selectedItems objectForKey:str];
+//       [string appendString:[NSString stringWithFormat:@"%@ %@\n",item.itemTitle,str]];
+//    }
+//    [pasteboard clearContents];
+//    BOOL success = [pasteboard setString:string forType:NSPasteboardTypeString];
+//    
+//    NSArray *boarditemsArray = [pasteboard pasteboardItems];
+//    for (NSPasteboardItem *item in boarditemsArray) {
+//        NSArray *types = [item types];
+//        NSString *urlPath = [item stringForType:NSPasteboardTypeString];
+//        NSLog(@"");
+//    }
+    
 
 //    [pasteboard setPropertyList:[NSArray arrayWithObject:@"Export"] forType:NSFilesPromisePboardType];
 //    [self delegateWriteIndexes:selectionIndexes toPasteboard:pasteboard];
 //    [self retain];
-    [self dragPromisedFilesOfTypes:[NSArray arrayWithObject:NSPasteboardTypeTIFF] fromRect:itemRect source:self slideBack:YES event:anEvent];
+    [self dragPromisedFilesOfTypes:[NSArray arrayWithObjects:NSPasteboardTypeTIFF,NSPasteboardTypeString,nil] fromRect:itemRect source:self slideBack:YES event:anEvent];
 //    [self dragImage:dragImage
 //                 at:NSMakePoint(NSMinX(itemRect), NSMaxY(itemRect))
 //             offset:NSMakeSize(0, 0)
@@ -1380,6 +1437,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 //         pasteboard:pasteboard
 //             source:self
 //          slideBack:YES];
+    
+    
 }
 
 - (void)dragImage:(NSImage *)anImage at:(NSPoint)viewLocation offset:(NSSize)initialOffset event:(NSEvent *)event pasteboard:(NSPasteboard *)pboard source:(id)sourceObj slideBack:(BOOL)slideFlag {
@@ -1497,6 +1556,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 - (void)draggingEnded:(id <NSDraggingInfo>)sender {
     NSLog(@"draggingEnded");
+    [IMBDragSingle singleton].dragEnd = YES;
+    [IMBDragSingle singleton].dragToOtherWindow = NO;
 //    if (dragHoverIndex != NSNotFound)
 //        [self setNeedsDisplayInRect:[layoutManager rectOfItemAtIndex:dragHoverIndex]];
 //    
@@ -1721,12 +1782,12 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
         if (inner) {
             //如果当前点击的index包含在之前选中的里面，选中的不改变
             //否则，选中当前点击的index
-//            if ([[self selectedIndexes] containsIndex:index]) {
-//                
-//            }else {
+            if ([[self selectedIndexes] containsIndex:index]) {
+
+            }else {
                 [self selectItemAtIndex:index usingModifierFlags:theEvent.modifierFlags];
-//            }
-            
+            }
+        
             if (!self.allowsDragAndDrop || index == NSNotFound) {
                 return;
             }
@@ -1742,6 +1803,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
             [self deselectAllItems];
         }
 	}else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_SHOW_DEVICEDETAIL object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
 		[self deselectAllItems];
 	}
@@ -1782,6 +1844,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 			[self gridView:self didActivateContextMenuWithIndexes:indexSet inSection:0];
 		}
     } else {
+        [self deselectAllItems];
+        
         if (_itemContextMenu) {
             NSEvent *fakeMouseEvent = [NSEvent mouseEventWithType:NSRightMouseDown
                                                          location:location
@@ -1794,8 +1858,6 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
                                                          pressure:0];
             
             [NSMenu popUpContextMenu:_itemContextMenu withEvent:fakeMouseEvent forView:self];
-        } else {
-            [self deselectAllItems];
         }
     }
 }

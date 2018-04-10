@@ -217,6 +217,9 @@
     }else if ([_productType isEqualToString:@"iPad6,11"] ||
               [_productType isEqualToString:@"iPad6,12"]) {
         _family = iPad_5;
+    }else if ([_productType isEqualToString:@"iPad7,5"] ||
+              [_productType isEqualToString:@"iPad7,6"]) {
+        _family = iPad_6;
     }else {
         if ([_hardwareModel.lowercaseString isEqualToString:@"n61ap"]) {
             _family = iPhone_6;

@@ -604,6 +604,10 @@
                             [_alertViewController showPhotoAlertSettingSuperView:view withContinue:YES];
                         });
                     }else{
+                        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                            exportSettingConfig.sureSaveCheckBtnState = NO;
+                            [exportSettingConfig saveData];
+                        });
                         [self photoToMac];
                     }
                 }

@@ -58,6 +58,9 @@
     IBOutlet LoadingView *_animationView;
     IMBiCloudManager *_icloudManager;
     NSMutableArray *_addCategoryAryM;
+    
+    @public
+    BOOL _endRunloop;
 }
 @property (nonatomic,assign)IMBiCloudManager *icloudManager;
 @property (nonatomic, assign) id delegate;

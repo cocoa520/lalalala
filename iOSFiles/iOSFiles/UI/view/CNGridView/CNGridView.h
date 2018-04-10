@@ -90,6 +90,8 @@ typedef BOOL (^CNGridViewSelectItem)(CNGridViewItem *item);
     BOOL _isFileManager;
     BOOL _isSelectView;
     BOOL _allowClickMultipleSelection;//一个一个点击多选。
+    
+    int _moveToIndex;
 //    NSEvent *_eventMonitor;
 //    int _eventCount;
 }

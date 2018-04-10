@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="IMBMainPageViewController">
             <connections>
                 <outlet property="_alertSuperView" destination="6lQ-bS-Z9z" id="ubC-9N-Ide"/>
+                <outlet property="_backHomeBtn" destination="u7e-Pi-tk9" id="1vW-hx-7Wb"/>
                 <outlet property="_lineView1" destination="RwI-3p-y1q" id="yOI-wb-8eD"/>
                 <outlet property="_lineView2" destination="mxd-UZ-xdx" id="e6p-Jk-w1o"/>
                 <outlet property="_rootBox" destination="ogG-Fy-WGA" id="dee-dw-nRr"/>
@@ -31,7 +32,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <customView id="3jL-SV-oCO" customClass="IMBSearchView">
-                            <rect key="frame" x="908" y="12" width="26" height="26"/>
+                            <rect key="frame" x="985" y="14" width="21" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <animations/>
                         </customView>
@@ -39,7 +40,7 @@
                             <rect key="frame" x="1031" y="0.0" width="68" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_transtion" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="8Vs-AC-swV">
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_transtion" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="8Vs-AC-swV">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -47,7 +48,7 @@
                                 <action selector="toolbarTransfefClicked:" target="-2" id="URF-FE-nbs"/>
                             </connections>
                         </button>
-                        <button verticalHuggingPriority="750" id="S3e-vi-1nC" customClass="IMBHoverChangeImageBtn">
+                        <button hidden="YES" verticalHuggingPriority="750" id="S3e-vi-1nC" customClass="IMBHoverChangeImageBtn">
                             <rect key="frame" x="961" y="0.0" width="68" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <animations/>
@@ -59,7 +60,7 @@
                                 <action selector="toolbarShoppingCartClicked:" target="-2" id="Jlh-3M-qa3"/>
                             </connections>
                         </button>
-                        <customView id="RwI-3p-y1q" userLabel="line1" customClass="IMBLineView">
+                        <customView hidden="YES" id="RwI-3p-y1q" userLabel="line1" customClass="IMBLineView">
                             <rect key="frame" x="960" y="0.0" width="1" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <animations/>
@@ -70,7 +71,7 @@
                             <animations/>
                         </customView>
                         <button verticalHuggingPriority="750" id="u7e-Pi-tk9" customClass="IMBMainPageWindowBackBtn">
-                            <rect key="frame" x="40" y="15" width="69" height="21"/>
+                            <rect key="frame" x="50" y="15" width="69" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <animations/>
                             <buttonCell key="cell" type="bevel" title="home" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="9mr-bg-AUq">
@@ -96,17 +97,15 @@
                     </subviews>
                     <animations/>
                 </customView>
-                <box title="Box" borderType="none" titlePosition="noTitle" id="ogG-Fy-WGA">
+                <box misplaced="YES" title="Box" borderType="none" titlePosition="noTitle" id="ogG-Fy-WGA">
                     <rect key="frame" x="0.0" y="0.0" width="1096" height="593"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <view key="contentView" id="Ydg-lF-i4u">
                         <rect key="frame" x="0.0" y="0.0" width="1096" height="593"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                     </view>
                     <animations/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
                 <customView hidden="YES" id="6lQ-bS-Z9z" customClass="IMBAlertSupeView">
                     <rect key="frame" x="0.0" y="0.0" width="1096" height="644"/>

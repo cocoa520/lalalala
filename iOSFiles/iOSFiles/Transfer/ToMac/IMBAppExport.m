@@ -12,8 +12,39 @@
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
 #import "IMBAppConfig.h"
+#import "IMBHelper.h"
 
 @implementation IMBAppExport
+@synthesize appKey = _appKey;
+- (void)fileStartTransfer {
+    if (_exportTracks != nil && [_exportTracks count]) {
+        IMBInformationManager *inforManager = [IMBInformationManager shareInstance];
+        IMBInformation *information = [inforManager.informationDic objectForKey:_ipod.uniqueKey];
+        AFCApplicationDirectory *afcAppmd = [_ipod.deviceHandle newAFCApplicationDirectory:_appKey];
+        for (DriveItem *app in _exportTracks) {
+            _currentDriveItem = [app retain];
+            [[information applicationManager] setDelegate:self];
+            [[information applicationManager] exportAppDocumentToMac:_exportPath withSimpleNode:app appAFC:afcAppmd];
+            [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:NO];
+        }
+        [afcAppmd close];
+    }
+}
+
+- (void)updateUI {
+     _currentDriveItem.state = DownloadStateComplete;
+}
+
+- (void)sendCopyProgress:(uint64_t)progress {
+     _curSize += progress;
+    if (!_currentDriveItem.isDownLoad) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _currentDriveItem.currentSize = _curSize;
+            _currentDriveItem.progress = (double)_currentDriveItem.currentSize/_currentDriveItem.fileSize *100;
+            _currentDriveItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[IMBHelper getFileSizeString:_curSize reserved:2],[IMBHelper getFileSizeString:_currentDriveItem.fileSize reserved:2]];
+        });
+    }
+}
 
 - (void)startTransfer {
     [_loghandle writeInfoLog:@"AppFileExport DoProgress enter"];
@@ -38,7 +69,7 @@
                 continue;
             }
             app.isStart = YES;
-            _currentDriveItem = app;
+            _currentDriveItem = [app retain];
             [_condition lock];
             if (_isPause) {
                 [_condition wait];

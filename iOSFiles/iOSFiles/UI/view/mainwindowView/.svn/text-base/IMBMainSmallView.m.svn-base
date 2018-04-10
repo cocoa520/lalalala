@@ -23,7 +23,6 @@
 }
 
 - (void)awakeFromNib {
-//    _titleLabel.stringValue = CustomLocalizedString(@"MainWindow_BigSize_Dropbox_TitleString", nil);
     [_titleLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.0]];
     [_titleLabel setTextColor:COLOR_TEXT_ORDINARY];
 }

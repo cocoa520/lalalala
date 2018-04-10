@@ -36,6 +36,7 @@
 @synthesize videoLoadFinished = _videoLoadFinished;
 @synthesize beingSynchronized = _beingSynchronized;
 @synthesize isAndroidToiOS = _isAndroidToiOS;
+@synthesize appDoucmentFinished = _appDoucmentFinished;
 - (id)initWithDevice:(id)device {
     self = [super init];
     if (self) {

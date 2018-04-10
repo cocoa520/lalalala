@@ -16,11 +16,15 @@
 #import "TempHelper.h"
 #import "DriveItem.h"
 #import "IMBHelper.h"
+#import "DateHelper.h"
+#import "IMBAppExport.h"
 
 @implementation IMBApplicationManager
 static int fileCount = 0;
 @synthesize appEntityArray = _appEntityArray;
-
+@synthesize currentItem = _currentItem;
+@synthesize delegate = _delegate;
+@synthesize appDoucmentArray = _appDoucmentArray;
 - (id)initWithiPod:(IMBiPod*)iPod {
     self = [super init];
     if (self) {
@@ -82,6 +86,77 @@ static int fileCount = 0;
     }
     _appEntityArray = [[self getIntalledAppArray] retain];
     return _appEntityArray;
+}
+
+
+//备份文件到本地
+//TODO 1.进度信息没追加
+//2.未把instalProxy放到最外层
+- (bool) backupToDriveAppTolocal:(IMBAppEntity*)appEntity ArchiveType:(IMBAppTransferTypeEnum)archiveType LocalFilePath:(NSString*)LocalFilePath {
+    
+    if (![_iPod.fileSystem fileExistsAtPath:@"/ApplicationArchives"]) {
+        [_iPod.fileSystem mkDir:@"/ApplicationArchives"];
+    }
+    
+    AFCApplicationDirectory* appDir = [_device newAFCApplicationDirectory:appEntity.zone];
+    //如果一些默认的文件夹不存在的话，就创建。
+    if (appDir != nil) {
+        if (![appDir fileExistsAtPath:@"/Documents"]) {
+            [appDir mkdir:@"/Documents"];
+        }
+        if (![appDir fileExistsAtPath:@"/Library"]) {
+            [appDir mkdir:@"/Library"];
+        }
+        if (![appDir fileExistsAtPath:@"/tmp"]) {
+            [appDir mkdir:@"/tmp"];
+        }
+        [appDir close];
+    }
+    
+    bool result = false;
+    AMInstallationProxy *instalProxy = [_device newAMInstallationProxyWithDelegate:self];
+    
+    //如果存在则删除备份
+    NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.zone] stringByAppendingPathExtension:@"zip"];
+    if ([_iPod.fileSystem fileExistsAtPath:archivedFilePath]) {
+        [instalProxy removeArchive:appEntity.zone];
+    }
+    
+    //第一步
+    [self setCurStep:1];
+    switch (archiveType) {
+        case AppTransferType_All:
+            result = [instalProxy archive:appEntity.zone container:true payload:true uninstall:false];
+            break;
+        case AppTransferType_DocumentsOnly:
+            result = [instalProxy archive:appEntity.zone container:true payload:false uninstall:false];
+            break;
+        case AppTransferType_ApplicationOnly:
+            result = [instalProxy archive:appEntity.zone container:false payload:true uninstall:false];
+            break;
+        default:
+            result = [instalProxy archive:appEntity.zone container:true payload:true uninstall:false];
+            break;
+    }
+    if (result == true) {
+        //第二步
+        [self setCurStep:2];
+        NSString *archivedFilePath = [[@"/ApplicationArchives" stringByAppendingPathComponent:appEntity.zone] stringByAppendingPathExtension:@"zip"];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        if ([fm fileExistsAtPath:LocalFilePath] ) {
+            [fm removeItemAtPath:LocalFilePath error:nil];
+        }
+        if ([_iPod.fileSystem fileExistsAtPath:archivedFilePath]) {
+            [_iPod.fileSystem copyRemoteFile:archivedFilePath toLocalFile:LocalFilePath];
+            //第三步
+            [self setCurStep:3];
+            [instalProxy removeArchive:appEntity.zone];
+            return true;
+        }
+    } else {
+        NSLog(@"Archive failed");
+    }
+    return false;
 }
 
 //备份文件到本地
@@ -660,9 +735,9 @@ static int fileCount = 0;
 
 - (NSArray*) getIntalledAppArray {
     if (_device != nil) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
-        [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+//        [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app strart: %@", [dateFormatter stringFromDate:[NSDate date]]]];
         NSArray *apps = [_device installedApplications];
         NSMutableArray *appInfos = nil;
         if (apps != nil && apps.count > 0) {
@@ -673,24 +748,26 @@ static int fileCount = 0;
             
             NSArray *allAppsInfo = [[instalProxy getAllAppsInfo] retain];
             for (AMApplication *app in apps) {
-                [appInfos addObject:[self wrapAppInfo:app allAppsInfo:allAppsInfo withSpringBoard:springBoard]];
+                IMBAppEntity *appEntity = [self wrapAppInfo:app allAppsInfo:allAppsInfo withSpringBoard:springBoard];
+                if (appEntity) {
+                    [appInfos addObject:appEntity];
+                }
             }
             [allAppsInfo release];
             allAppsInfo = nil;
             [springBoard release];
             springBoard = nil;
-            [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+//            [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
             return appInfos;
         }
-        [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
-        [dateFormatter release];
-        dateFormatter = nil;
+//        [logHandle writeInfoLog:[NSString stringWithFormat:@"get installed app end: %@", [dateFormatter stringFromDate:[NSDate date]]]];
+//        [dateFormatter release];
+//        dateFormatter = nil;
     }
     return nil;
 }
 
-- (NSArray *)getSystemApplication
-{
+- (NSArray *)getSystemApplication {
     if (_device != nil) {
         return [_device getSystemApplications];
     }else{
@@ -704,109 +781,120 @@ static int fileCount = 0;
     appInfo.appKey = amApp.bundleid;
     appInfo.appName = amApp.appname;
     NSDictionary *appInfoDic = amApp.info;
-    
-    if ([appInfoDic objectForKey:@"MinimumOSVersion"] != nil) {
-        appInfo.minimunOSVerison = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"MinimumOSVersion"]];
+    BOOL appShare = NO;
+    if ([_device.productVersion isVersionMajorEqual:@"8.3"]) {//获取共享file的APP
+        if ([appInfoDic.allKeys containsObject:@"UIFileSharingEnabled"]) {
+            appShare = [[appInfoDic objectForKey:@"UIFileSharingEnabled"] boolValue];
+        }
+    }else {
+        appShare = YES;
     }
     
-    if ([appInfoDic objectForKey:@"CFBundleShortVersionString"] != nil) {
-        NSString *vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
-        if (![vStr contains:@"."]) {
-            vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"]];
+    if (appShare) {
+        if ([appInfoDic objectForKey:@"MinimumOSVersion"] != nil) {
+            appInfo.minimunOSVerison = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"MinimumOSVersion"]];
+        }
+        
+        if ([appInfoDic objectForKey:@"CFBundleShortVersionString"] != nil) {
+            NSString *vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
             if (![vStr contains:@"."]) {
-                vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
-            }
-        }
-        appInfo.version = vStr;
-    } else if ([appInfoDic objectForKey:@"CFBundleVersion"] != nil) {
-        appInfo.version = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"] ];
-    }
-
-    if ([appInfoDic objectForKey:@"DTPlatformName"] != nil) {
-        appInfo.dtplatformName = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"DTPlatformName"]];
-    }
-    
-    if ([appInfoDic objectForKey:@"Entitlements"] != nil) {
-        NSMutableArray *ary = [[appInfoDic objectForKey:@"Entitlements"] objectForKey:@"com.apple.security.application-groups"];
-        if (ary != nil) {
-            appInfo.groupArray = ary;
-        }
-    }
-    
-    if ([appInfoDic objectForKey:@"UIDeviceFamily"] != nil) {
-        NSArray *familyArray = [appInfoDic objectForKey:@"UIDeviceFamily"];
-        bool isSptiPhone = [familyArray containsObject:[NSNumber numberWithInt:1]];
-        bool isSptiPad = [familyArray containsObject:[NSNumber numberWithInt:2]];
-        if (isSptiPhone && isSptiPad) {
-            appInfo.uiDeviceFamily = AppUIDeviceFamily_All;
-        } else if (isSptiPhone == false &&  isSptiPad == true) {
-            appInfo.uiDeviceFamily = AppUIDeivceFamily_iPad;
-        } else {
-            appInfo.uiDeviceFamily = AppUIDeivceFamily_iPhone;
-        }
-    }
-    
-    if (springBoard != nil) {
-        NSImage *icoImage = [springBoard getIcon:appInfo.appKey];
-        if (icoImage != nil) {
-            appInfo.appIconImage = icoImage;
-        }
-    }
-    
-
-    NSString *appIconPath = [self getAppIconPath:amApp.bundleid];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    if ([fm fileExistsAtPath:appIconPath]) {
-        NSImage *image = [[NSImage alloc] initWithContentsOfFile:appIconPath];
-        NSData *imageData = [IMBHelper createThumbnail:image withWidth:80 withHeight:60];
-        NSImage *iconImage = [[NSImage alloc] initWithData:imageData];
-        appInfo.appIconImage = iconImage;
-        [image release];
-        [iconImage release];
-    } else {
-        appInfo.appIconImage = [StringHelper imageNamed:@"folder_icon_app"];
-
-    }
-    
-    NSDictionary *appDic = nil;
-    NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        NSDictionary *dic = (NSDictionary *)evaluatedObject;
-        NSArray *keys = [dic allKeys];
-        NSString *appbundle = nil;
-        if ([keys containsObject:@"CFBundleIdentifier"]) {
-            appbundle = [dic objectForKey:@"CFBundleIdentifier"];
-        }
-        if ([appInfo.appKey isEqualToString:appbundle]) {
-            return YES;
-        } else {
-            return NO;
-        }
-    }];
-    NSArray *tmpArray = [allAppsInfo filteredArrayUsingPredicate:pre];
-    if (tmpArray != nil && tmpArray.count > 0) {
-        appDic = [tmpArray objectAtIndex:0];
-    }
-    
-    if (allAppsInfo != nil && allAppsInfo.count > 0) {
-        long long appSize = 0;
-        long long fileSize = 0;
-        if (appInfoDic != nil) {
-            NSArray *appAttrKey = [appDic allKeys];
-            if (appAttrKey != nil && appAttrKey.count > 0) {
-                if ([appAttrKey containsObject:@"StaticDiskUsage"]) {
-                    appSize = [[appDic objectForKey:@"StaticDiskUsage"] longLongValue];
-                }
-                if ([appAttrKey containsObject:@"DynamicDiskUsage"]) {
-                    fileSize = [[appDic objectForKey:@"DynamicDiskUsage"] longLongValue];
-                    
+                vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"]];
+                if (![vStr contains:@"."]) {
+                    vStr = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleShortVersionString"]];
                 }
             }
+            appInfo.version = vStr;
+        } else if ([appInfoDic objectForKey:@"CFBundleVersion"] != nil) {
+            appInfo.version = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"CFBundleVersion"] ];
         }
-        appInfo.appSize = appSize;
-        appInfo.documentSize = fileSize;
+
+        if ([appInfoDic objectForKey:@"DTPlatformName"] != nil) {
+            appInfo.dtplatformName = [NSString stringWithFormat:@"%@",[appInfoDic objectForKey:@"DTPlatformName"]];
+        }
+        
+        if ([appInfoDic objectForKey:@"Entitlements"] != nil) {
+            NSMutableArray *ary = [[appInfoDic objectForKey:@"Entitlements"] objectForKey:@"com.apple.security.application-groups"];
+            if (ary != nil) {
+                appInfo.groupArray = ary;
+            }
+        }
+        
+        if ([appInfoDic objectForKey:@"UIDeviceFamily"] != nil) {
+            NSArray *familyArray = [appInfoDic objectForKey:@"UIDeviceFamily"];
+            bool isSptiPhone = [familyArray containsObject:[NSNumber numberWithInt:1]];
+            bool isSptiPad = [familyArray containsObject:[NSNumber numberWithInt:2]];
+            if (isSptiPhone && isSptiPad) {
+                appInfo.uiDeviceFamily = AppUIDeviceFamily_All;
+            } else if (isSptiPhone == false &&  isSptiPad == true) {
+                appInfo.uiDeviceFamily = AppUIDeivceFamily_iPad;
+            } else {
+                appInfo.uiDeviceFamily = AppUIDeivceFamily_iPhone;
+            }
+        }
+        
+        if (springBoard != nil) {
+            NSImage *icoImage = [springBoard getIcon:appInfo.appKey];
+            if (icoImage != nil) {
+                appInfo.appIconImage = icoImage;
+            }
+        }
+        
+//    NSString *appIconPath = [self getAppIconPath:amApp.bundleid];
+//    NSFileManager *fm = [NSFileManager defaultManager];
+//    if ([fm fileExistsAtPath:appIconPath]) {
+//        NSImage *image = [[NSImage alloc] initWithContentsOfFile:appIconPath];
+//        NSData *imageData = [IMBHelper createThumbnail:image withWidth:80 withHeight:60];
+//        NSImage *iconImage = [[NSImage alloc] initWithData:imageData];
+//        appInfo.appIconImage = iconImage;
+//        [image release];
+//        [iconImage release];
+//    } else {
+//        appInfo.appIconImage = [StringHelper imageNamed:@"folder_icon_app"];
+//
+//    }
+        
+        NSDictionary *appDic = nil;
+        NSPredicate *pre = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            NSDictionary *dic = (NSDictionary *)evaluatedObject;
+            NSArray *keys = [dic allKeys];
+            NSString *appbundle = nil;
+            if ([keys containsObject:@"CFBundleIdentifier"]) {
+                appbundle = [dic objectForKey:@"CFBundleIdentifier"];
+            }
+            if ([appInfo.appKey isEqualToString:appbundle]) {
+                return YES;
+            } else {
+                return NO;
+            }
+        }];
+        NSArray *tmpArray = [allAppsInfo filteredArrayUsingPredicate:pre];
+        if (tmpArray != nil && tmpArray.count > 0) {
+            appDic = [tmpArray objectAtIndex:0];
+        }
+        
+        if (allAppsInfo != nil && allAppsInfo.count > 0) {
+            long long appSize = 0;
+            long long fileSize = 0;
+            if (appInfoDic != nil) {
+                NSArray *appAttrKey = [appDic allKeys];
+                if (appAttrKey != nil && appAttrKey.count > 0) {
+                    if ([appAttrKey containsObject:@"StaticDiskUsage"]) {
+                        appSize = [[appDic objectForKey:@"StaticDiskUsage"] longLongValue];
+                    }
+                    if ([appAttrKey containsObject:@"DynamicDiskUsage"]) {
+                        fileSize = [[appDic objectForKey:@"DynamicDiskUsage"] longLongValue];
+                        
+                    }
+                }
+            }
+            appInfo.appSize = appSize;
+            appInfo.documentSize = fileSize;
+        }
+        
+        return appInfo;
+    }else {
+        return nil;
     }
-    
-    return appInfo;
 }
 
 -  (NSString*) getAppIconPath:(NSString*)bundleid {
@@ -1249,7 +1337,7 @@ static int fileCount = 0;
     }
 }
 
-- (NSArray*)recursiveDirectoryContentsDics:(NSString*)path  appBundle:(NSString *)appBundle
+- (NSArray*)recursiveDirectoryContentsDics:(NSString*)path appBundle:(NSString *)appBundle
 {
     AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:appBundle];
     NSArray *nodeArray = [self getFirstContent:path afcMedia:afcAppmd];
@@ -1273,28 +1361,26 @@ static int fileCount = 0;
         }
         
         SimpleNode *node = [[SimpleNode alloc] initWithName:fileName];
+        node.fileName = [fileName stringByDeletingPathExtension];
         node.path = filePath;
         node.parentPath = path;
         NSDictionary *fileDic = [afcAppmd getFileInfo:filePath];
         NSString *fileType = [fileDic objectForKey:@"st_ifmt"];
+        NSString *extension = [node.path pathExtension];
         if ([fileType isEqualToString:@"S_IFDIR"]) {
-            
+            extension = CustomLocalizedString(@"Bookmark_id_6", nil);
             node.container = YES;
-            OSType code = UTGetOSTypeFromString((CFStringRef)@"fldr");
-            NSImage *picture = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(code)];
-            [picture setSize:NSMakeSize(66, 58)];
+            NSImage *picture = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
             node.image = picture;
-        }else
-        {
-            
+        }else {
             node.container = NO;
-            NSString *extension = [node.path pathExtension];
-            NSWorkspace *workSpace = [[NSWorkspace alloc] init];
-            NSImage *icon = [workSpace iconForFileType:extension];
-            [icon setSize:NSMakeSize(56, 52)];
-            node.image = icon;
-            [workSpace release];
+            node.image = [TempHelper loadFileImage:extension];
         }
+        NSDate *fileDate = [fileDic objectForKey:@"st_mtime"];
+        int64_t fileSize = [[fileDic objectForKey:@"st_size"] longLongValue];
+        node.itemSize = fileSize;
+        node.creatDate = [DateHelper dateFrom2001ToDate:fileDate withMode:2];
+        node.extension = extension;
         [nodeArray addObject:node];
         [node release];
     }
@@ -1311,9 +1397,6 @@ static int fileCount = 0;
 //    int totalCount = [self caculateTotalFileCount:nodeArray afcMedia:afcMedia];
     BOOL isOutOfCount = NO;//[IMBHelper determinWhetherIsOutOfTransferCount];
     if (!isOutOfCount) {
-//        [nc postNotificationName:PARSINGNOTIFICATION object:[NSNumber numberWithInt:PCImage]];
-//        [nc postNotificationName:COPYINGNOTIFICATION object:[NSNumber numberWithInt:FileTypeIcon]];
-//        [nc postNotificationName:NOTIFY_TRANSCATEGORY object:CustomLocalizedString(@"Export_id_1", nil) userInfo:nil];
         for (int i=0;i<[nodeArray count];i++) {
             if (_threadBreak == YES) {
                 break;
@@ -1336,19 +1419,6 @@ static int fileCount = 0;
             {
                 
                 if ([afcMedia fileExistsAtPath:node.path]) {
-//                    currItemIndex++;
-//                    BOOL IsNeedAnimation = YES;
-//                    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-//                                                 node.fileName,@"Message",
-//                                                 [NSNumber numberWithInt:currItemIndex], @"CurItemIndex",
-//                                                 [NSNumber numberWithBool:IsNeedAnimation],@"IsNeedAnimation",
-//                                                 [NSNumber numberWithInt:totalCount], @"TotalItemCount",
-//                                                 nil];
-                    
-//                    [nc postNotificationName:NOTIFY_TRANSCOUNTPROGRESS object:@"MSG_COM_Total_Progress" userInfo:info];
-//                    
-//                    [nc postNotificationName:NOTIFY_CURRENT_MESSAGE object:node.fileName];
-                    
                     BOOL success = [afcMedia copyRemoteFile:node.path toLocalFile:destinationPath];
                     if (success) {
                         successNum++;
@@ -1375,15 +1445,9 @@ static int fileCount = 0;
 
         
     }
-//    if (_softWareInfo != nil && _softWareInfo.isNeedRegister&&_softWareInfo.isRegistered == false) {
-//        [_softWareInfo addLimitCount:_transResult.mediaSuccessCount];
-//    }
 
     sleep(2);
-//    NSDictionary *infor = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:successNum],@"successNum",[NSNumber numberWithInt:AppResultTypeIcon],@"transferType",nil];
-//    [nc postNotificationName:NOTIFY_TRANSCOMPLETE object:CustomLocalizedString(@"MSG_COM_Transfer_Completed", nil) userInfo:infor];
     _threadBreak = NO;
-
 }
 
 - (void)copyAPPDocumentToMac:(NSString *)FolderPath withNodeArray:(NSArray *)nodeArray fileManger:(NSFileManager *)fileManger afcMedia:(AFCApplicationDirectory *)afcMedia currentIndex:(int *)currentIndex successCount:(int *)successCount
@@ -1476,5 +1540,317 @@ static int fileCount = 0;
     return allAppSize;
 }
 
+#pragma mark - 操作方法;
+- (void)exportAppDocumentToMac:(NSString *)folderPath withSimpleNode:(DriveItem *)node appAFC:(AFCApplicationDirectory *)afcAppmd {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *destinationPath = [folderPath stringByAppendingPathComponent:node.fileName];
+    if ([fm fileExistsAtPath:destinationPath]) {
+        destinationPath = [folderPath stringByAppendingPathComponent:[StringHelper createDifferentfileName:node.fileName]];
+    }
+    if (node.isFolder) {
+        [fm createDirectoryAtPath:destinationPath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSArray *arr = [self getFirstContent:node.oriPath afcMedia:afcAppmd];
+        for (SimpleNode *singleNode in arr) {
+            DriveItem *downloaditem = [[DriveItem alloc] init];
+            downloaditem.isFolder = singleNode.container;
+            downloaditem.oriPath = singleNode.path;
+            downloaditem.fileName = singleNode.fileName;
+            [self exportAppDocumentToMac:destinationPath withSimpleNode:downloaditem appAFC:afcAppmd];
+            [downloaditem release];
+            downloaditem = nil;
+        }
+    }else {
+        if ([afcAppmd fileExistsAtPath:node.oriPath]) {
+            
+            BOOL success = [self copyRemoteFile:node.oriPath toLocalFile:destinationPath appAFC:afcAppmd];
+            if (success) {
+                
+            }else {
+                
+            }
+        }
+    }
+}
+
+- (BOOL)copyRemoteFile:(NSString*)path1 toLocalFile:(NSString*)path2 appAFC:(AFCApplicationDirectory *)afcAppmd
+{
+    // NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    BOOL result = NO;
+    if ([afcAppmd ensureConnectionIsOpen]) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        // make sure local file doesn't exist
+        if (![fm fileExistsAtPath:path2]) {
+            // open remote file for read
+            AFCFileReference *in = [afcAppmd openForRead:path1];
+            if (in) {
+                uint32_t bufsz = 10240;
+                uint32_t filesize = [[[afcAppmd getFileInfo:path1] valueForKey:@"st_size"] intValue];
+                if (filesize>102400*5) {
+                    bufsz = 102400*5;
+                }else if (filesize<=102400*5&&filesize>102400){
+                    bufsz = 102400*5;
+                }else if (filesize<=102400){
+                    bufsz = 102400;
+                }
+                // open local file for write - stupidly we need to create it before
+                // we can make an NSFileHandle
+                [fm createFileAtPath:path2 contents:nil attributes:nil];
+                NSFileHandle *out = [NSFileHandle fileHandleForWritingAtPath:path2];
+                if (out) {
+                    // copy all content across 10K at a time...  use
+                    // malloc for the buffer rather than NSData because I've noticed
+                    // strange problems in the debugger
+                    //NSLog(@"after fileHandleForWritingAtPath1");
+                    char *buff = (char*)malloc(bufsz);
+                    uint64_t done = 0;
+                    while (1) {
+                        uint64_t n = [in readN:bufsz bytes:buff];
+                        if (n==0) break;
+                        NSData *b2 = [[NSData alloc]
+                                      initWithBytesNoCopy:buff length:n freeWhenDone:NO];
+                        [out writeData:b2];
+             
+                        [(IMBAppExport *)_delegate sendCopyProgress:n];
+                        [b2 release];
+                        done += n;
+                    }
+                    free(buff);
+                    [out closeFile];
+                    result = YES;
+                }
+                // close output file
+                [in closeFile];
+            }
+        }
+    }
+    return result;
+}
+
+- (void)importCopyFromLocal:(DriveItem *)localPath ToApp:(AFCApplicationDirectory*)appDir ToPath:(NSString*)remotePath {
+    if (appDir != nil) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSDictionary *fileInfoDic = [fm attributesOfItemAtPath:localPath.localPath error:nil];
+        if (fileInfoDic != nil && [fileInfoDic count] > 0) {
+            NSString *fileType = [fileInfoDic objectForKey:NSFileType];
+            if ([NSFileTypeRegular isEqualToString:fileType]) {
+                NSString *remotingFilePath = [remotePath stringByAppendingPathComponent:[localPath.localPath lastPathComponent]];
+                [self copyLocalFile:localPath.localPath toRemoteFile:remotingFilePath appAFC:appDir];
+            } else if ([NSFileTypeDirectory isEqualToString:fileType]) {
+                NSString *newRemotingPath = [remotePath stringByAppendingPathComponent:[localPath.localPath lastPathComponent]];
+                if (![appDir fileExistsAtPath:newRemotingPath]) {
+                    [appDir mkdir:newRemotingPath];
+                }
+                NSArray *tempArray = [fm contentsOfDirectoryAtPath:localPath.localPath error:nil];
+                if (tempArray != nil && [tempArray count] > 0) {
+                    for (NSString *item in tempArray) {
+                        NSString *temPath = [localPath.localPath stringByAppendingPathComponent:item];
+                        DriveItem *driveItem = [[DriveItem alloc]init];
+                        driveItem.localPath = temPath;
+                        [self importCopyFromLocal:driveItem ToApp:appDir ToPath:newRemotingPath];
+                        [driveItem release];
+                        driveItem = nil;
+                    }
+                }
+            }
+        }
+    }
+}
+
+- (BOOL)copyLocalFile:(NSString*)path1 toRemoteFile:(NSString*)path2 appAFC:(AFCApplicationDirectory *)afcAppmd
+{
+    //NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    BOOL result = NO;
+    if ([afcAppmd ensureConnectionIsOpen]) {
+        // make sure remote file doesn't exist
+     
+            // ok, make sure the input file opens before creating the
+            // output file
+            NSFileHandle *in = [NSFileHandle fileHandleForReadingAtPath:path1];
+            if (in) {
+                struct stat s;
+                stat([path1 fileSystemRepresentation],&s);
+                uint32_t bufsz = 10240;
+                long long filesize = (long long)s.st_size;
+                if (filesize>102400*5) {
+                    bufsz = 102400*5;
+                }else if (filesize<=102400*5&&filesize>102400){
+                    bufsz = 102400*5;
+                }else if (filesize<=102400){
+                    bufsz = 102400;
+                }
+                // open remote file for write
+                AFCFileReference *out = [afcAppmd openForWrite:path2];
+                if (out) {
+                    // copy all content across 10K at a time
+                    uint64_t done = 0;
+                    while (1) {
+                        @autoreleasepool {
+                            NSData *nextblock = [in readDataOfLength:bufsz];
+                            uint64_t n = [nextblock length];
+                            if (n==0) break;
+                            [out writeNSData:nextblock];
+                            done += n;
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                _currentItem.currentSize = done;
+                                _currentItem.progress = (double)_currentItem.currentSize/_currentItem.fileSize *100;
+                                _currentItem.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[IMBHelper getFileSizeString:done reserved:2],[IMBHelper getFileSizeString:_currentItem.fileSize reserved:2]];
+                            });
+                        }
+                    }
+                    [out closeFile];
+                    result = YES;
+                }
+                // close input file regardless
+                [in closeFile];
+            } else {
+            }
+    }
+    return result;
+}
+
+- (void)removeAppDoucment:(NSArray *)nodeArray appAFC:(AFCApplicationDirectory *)afcAppmd {
+    for (SimpleNode *node in nodeArray) {
+        if (node.container) {
+            if ([afcAppmd fileExistsAtPath:node.path]) {
+                [afcAppmd unlinkFolder:node.path];
+            }
+        }else {
+            if ([afcAppmd fileExistsAtPath:node.path]) {
+                [afcAppmd unlink:node.path];
+            }
+        }
+    }
+}
+
+- (BOOL)createAppFolder:(NSString *)newPath appAFC:(AFCApplicationDirectory *)afcAppmd {
+    BOOL success = NO;
+    if (![afcAppmd fileExistsAtPath:newPath]) {
+        success = [afcAppmd mkdir:newPath];
+    }
+    return success;
+}
+
+- (BOOL)rename:(NSString *)filePath withfileName:(NSString *)fileName appAFC:(AFCApplicationDirectory *)afcAppmd {
+    NSString *oldfileName = [filePath lastPathComponent];
+    NSString *newfilePath = [filePath stringByReplacingOccurrencesOfString:oldfileName withString:fileName];
+    BOOL success = [afcAppmd rename:filePath to:newfilePath];
+    return success;
+}
+
+- (BOOL)moveFile:(NSString *)oriPath desPath:(NSString *)desPath isFolder:(BOOL)isFolder appAFC:(AFCApplicationDirectory *)afcAppmd {
+    BOOL success = NO;
+    if ([afcAppmd fileExistsAtPath:oriPath]) {
+        if (isFolder) {
+            if (![afcAppmd fileExistsAtPath:desPath]) {
+                success = [afcAppmd mkdir:desPath];
+            }
+            NSArray *arr = [self getFirstContent:oriPath afcMedia:afcAppmd];
+            for (SimpleNode *singleNode in arr) {
+                NSString *path = @"";
+                if (singleNode.container) {
+                    path = [desPath stringByAppendingPathComponent:singleNode.fileName];
+                }else {
+                    path = [desPath stringByAppendingPathComponent:[singleNode.fileName stringByAppendingPathExtension:singleNode.extension]];
+                }
+                success = [self moveFile:singleNode.path desPath:path isFolder:singleNode.container appAFC:afcAppmd];
+            }
+            if (success) {
+                success = [afcAppmd unlinkFolder:oriPath];
+            }
+        }else {
+            success = [afcAppmd copyFile:oriPath toFile:desPath];
+            if (success) {
+                success = [afcAppmd unlink:oriPath];
+            }
+        }
+    }
+    return success;
+}
+
+#pragma mark - 获取APP Doucment
+- (NSArray*)loadAppDoucmentArray {
+    if (_appDoucmentArray != nil) {
+        [_appDoucmentArray release];
+        _appDoucmentArray = nil;
+    }
+    _appDoucmentArray = [[NSMutableArray alloc] init];
+    [self getIntalledAppDoucment];
+    return _appDoucmentArray;
+}
+
+- (void) getIntalledAppDoucment {
+    if (_device != nil) {
+        NSArray *apps = [_device installedApplications];
+        if (apps != nil && apps.count > 0) {
+            for (AMApplication *app in apps) {
+                [self getAppDoucmentInfo:app];
+            }
+        }
+    }
+}
+
+- (void)getAppDoucmentInfo:(AMApplication *)amApp {
+    NSDictionary *appInfoDic = amApp.info;
+    BOOL appShare = NO;
+    NSString *path = @"";
+    if ([_device.productVersion isVersionMajorEqual:@"8.3"]) {//获取共享file的APP
+        if ([appInfoDic.allKeys containsObject:@"UIFileSharingEnabled"]) {
+            appShare = [[appInfoDic objectForKey:@"UIFileSharingEnabled"] boolValue];
+            path = @"/Documents";
+        }
+    }else {
+        appShare = YES;
+        path = @"/";
+    }
+    
+    if (appShare) {
+        AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:amApp.bundleid];
+        [self getAppDoucmentContent:path afcMedia:afcAppmd withArray:_appDoucmentArray];
+        [afcAppmd close];
+    }
+}
+
+- (void)getAppDoucmentContent:(NSString *)path afcMedia:(AFCApplicationDirectory *)afcAppmd withArray:(NSMutableArray *)nodeArray {
+    NSArray *array = [afcAppmd directoryContents:path];
+    for (NSString *fileName in array) {
+        NSString *filePath = nil;
+        if ([path isEqualToString:@"/"]) {
+            
+            filePath = [NSString stringWithFormat:@"/%@",fileName];
+        }else
+        {
+            
+            filePath = [path stringByAppendingPathComponent:fileName];
+        }
+        
+        NSDictionary *fileDic = [afcAppmd getFileInfo:filePath];
+        NSString *fileType = [fileDic objectForKey:@"st_ifmt"];
+        if (![fileType isEqualToString:@"S_IFDIR"]) {
+            NSString *extension = [filePath pathExtension];
+            if ([self isAppDoucment:extension]) {
+                SimpleNode *node = [[SimpleNode alloc] initWithName:fileName];
+                node.path = filePath;
+                node.fileName = [fileName stringByDeletingPathExtension];
+                node.parentPath = path;
+                node.container = NO;
+                node.image = [TempHelper loadFileImage:extension];
+                NSDate *fileDate = [fileDic objectForKey:@"st_mtime"];
+                int64_t fileSize = [[fileDic objectForKey:@"st_size"] longLongValue];
+                node.itemSize = fileSize;
+                node.creatDate = [DateHelper dateFrom2001ToDate:fileDate withMode:2];
+                node.extension = extension;
+                [nodeArray addObject:node];
+                [node release];
+            }
+        }else {
+            [self getAppDoucmentContent:filePath afcMedia:afcAppmd withArray:nodeArray];
+        }
+    }
+}
+
+- (BOOL)isAppDoucment:(NSString *)extension {
+    NSArray *array = @[@"doc", @"txt", @"pdf", @"xlsx", @"wps", @"wps", @"xls", @"ppt", @"rar", @"zip", @"htm", @"html", @"jpg", @"png", @"gif", @"bmp", @"swf", @"plist", @"pages"];
+    return [array containsObject:[extension lowercaseString]];
+}
 
 @end

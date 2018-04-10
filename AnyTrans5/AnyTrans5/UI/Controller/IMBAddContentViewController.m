@@ -18,6 +18,7 @@
 #import "IMBDeviceMainPageViewController.h"
 #import "IMBNotificationDefine.h"
 #import "RegexKitLite.h"
+#import "IMBNewAnnoyViewController.h"
 
 @implementation IMBAddContentViewController
 @synthesize delegate = _delegate;
@@ -1356,22 +1357,70 @@
             }
             return ;
         }
-        
+
         transferController = [[IMBTransferViewController alloc] initWithIPodkey:nil Type:category_iCloudUp importFiles:[NSMutableArray arrayWithObjects:photoArray,contactArray,noteArray, nil] photoAlbum:nil playlistID:0];
         transferController.icloudManager = _icloudManager;
         transferController.isicloudView = YES;
     }else{
-        if (_selectArray.count == 0) {
+        NSMutableArray *importAry = [[[NSMutableArray alloc] init] autorelease];
+        for (IMBTrack *track in _musicArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _videoArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _voiceMemoArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _ringtoneArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _photoArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _bookArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        for (IMBTrack *track in _appArray) {
+            if (track.checkState == Check) {
+                [importAry addObject:track.srcFilePath];
+            }
+        }
+        
+        
+        
+        if (importAry.count == 0) {
             if ([_delegate respondsToSelector:@selector(showAlertText: OKButton:)]) {
                 [_delegate showAlertText:CustomLocalizedString(@"MSG_COM_No_Item_Selected", nil) OKButton:CustomLocalizedString(@"Button_Ok", nil)];
             }
             return ;
         }
-         transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:Category_Summary importFiles:_selectArray photoAlbum:_photoAlbum playlistID:0];
+        NSViewController *annoyVC = nil;
+        long long result = [self checkNeedAnnoy:&(annoyVC)];
+        if (result == 0) {
+            return;
+        }
+        if (annoyVC) {
+            [(IMBNewAnnoyViewController *)annoyVC closeWindow:nil];
+        }
+        
+         transferController = [[IMBTransferViewController alloc] initWithIPodkey:_iPod.uniqueKey Type:Category_Summary importFiles:importAry photoAlbum:_photoAlbum playlistID:0];
     }
     
     [transferController setDelegate:_delegate];
-     [transferController.view setFrame:NSMakeRect(0, 0, [(IMBBaseViewController *)_delegate view].frame.size.width, [(IMBDeviceMainPageViewController *)_delegate view].frame.size.height)];
+    [transferController.view setFrame:NSMakeRect(0, 0, [(IMBBaseViewController *)_delegate view].frame.size.width, [(IMBDeviceMainPageViewController *)_delegate view].frame.size.height)];
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [[(IMBBaseViewController *)_delegate view] addSubview:transferController.view];
         [transferController.view setWantsLayer:YES];
@@ -1382,6 +1431,51 @@
         [self release];
     }];
 
+}
+
+- (long long)checkNeedAnnoy:(NSViewController **)annoyVC {
+    IMBSoftWareInfo *soft = [IMBSoftWareInfo singleton];
+    _endRunloop = NO;
+    OperationLImitation *limit = [OperationLImitation singleton];
+    if (!soft.isRegistered && (limit.remainderCount==0 || limit.remainderDays==0 || !soft.isOpenAnnoy)) {
+        long long redminderCount = (long long)limit.remainderCount;
+        //弹出骚扰窗口
+        (*annoyVC) = [[IMBNewAnnoyViewController alloc] initWithNibName:@"IMBNewAnnoyViewController" Delegate:self Result:&redminderCount];
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isClone = NO;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isMerge = NO;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isContentToMac = NO;
+        ((IMBNewAnnoyViewController *)(*annoyVC)).isAddContent = YES;
+        [(*annoyVC).view setFrameSize:NSMakeSize(NSWidth([self view].frame), NSHeight([self view].frame))];
+        [(*annoyVC).view setWantsLayer:YES];
+        [[self view] addSubview:(*annoyVC).view];
+        [(*annoyVC).view.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:-(*annoyVC).view.frame.size.height] Y:[NSNumber numberWithInt:0] repeatCount:1] forKey:@"moveY"];
+//        NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
+//        NSInteger result1 = NSRunContinuesResponse;
+//        while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop)
+//        {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//        [NSApp endModalSession:session];
+        
+        [self secondRunWindowSession];
+        
+        _endRunloop = NO;
+        return redminderCount;
+    }else{
+        return -1;
+    }
+}
+
+- (void)secondRunWindowSession {//因为在关闭选择浏览器窗口时，runModalSession:会结束，影响后面的操作，所以用递归的方式检查；
+    if (!_endRunloop) {
+        NSModalSession session =  [NSApp beginModalSessionForWindow:self.view.window];
+        NSInteger result1 = NSRunContinuesResponse;
+        while ((result1 = [NSApp runModalSession:session]) == NSRunContinuesResponse&&!_endRunloop) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
+        [NSApp endModalSession:session];
+        [self secondRunWindowSession];
+    }
 }
 
 - (void)showTopLineView {

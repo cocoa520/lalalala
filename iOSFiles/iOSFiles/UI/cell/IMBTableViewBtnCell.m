@@ -36,14 +36,14 @@
         if (![self.deleteBtn superview]) {
             [self.deleteBtn removeFromSuperview];
             int oringeRight = centerX + centerSpace/2;
-            [self.deleteBtn setFrameOrigin:NSMakePoint(oringeRight, cellFrame.origin.y + (cellFrame.size.height - self.deleteBtn.frame.size.height) / 2)];
+            [self.deleteBtn setFrameOrigin:NSMakePoint(oringeRight +26, cellFrame.origin.y + (cellFrame.size.height - self.deleteBtn.frame.size.height) / 2)];
             [controlView addSubview:self.deleteBtn];
         }
     
         if (![self.findBtn superview]) {
             [self.findBtn removeFromSuperview];
             int oringeCenter = centerX  - self.findBtn.frame.size.width/2;
-            [self.findBtn setFrameOrigin:NSMakePoint(oringeCenter, cellFrame.origin.y + (cellFrame.size.height - self.findBtn.frame.size.height) / 2)];
+            [self.findBtn setFrameOrigin:NSMakePoint(oringeCenter +26, cellFrame.origin.y + (cellFrame.size.height - self.findBtn.frame.size.height) / 2)];
             [controlView addSubview:self.findBtn];
         }
 }

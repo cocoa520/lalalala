@@ -72,7 +72,7 @@
         }else if (_baseInfo.connectType == iPhone||_baseInfo.connectType == iPhone_3G||_baseInfo.connectType == iPhone_3GS||_baseInfo.connectType == iPhone_4||_baseInfo.connectType == iPhone_4S||_baseInfo.connectType == iPhone_5||_baseInfo.connectType == iPhone_5C||_baseInfo.connectType == iPhone_5S ||
                   _baseInfo.connectType == iPhone_6 || _baseInfo.connectType == iPhone_6_Plus|| _baseInfo.connectType == iPhone_6S|| _baseInfo.connectType == iPhone_6S_Plus|| _baseInfo.connectType == iPhone_SE|| _baseInfo.connectType == iPhone_7|| _baseInfo.connectType == iPhone_7_Plus || _baseInfo.connectType == iPhone_8 || _baseInfo.connectType == iPhone_8_Plus || _baseInfo.connectType == iPhone_X) {
             iconImg = [StringHelper imageNamed:@"iPhone"];
-        }else if (_baseInfo.connectType == iPad_1||_baseInfo.connectType == iPad_2||_baseInfo.connectType == The_New_iPad||_baseInfo.connectType == iPad_4||_baseInfo.connectType == iPad_Air||_baseInfo.connectType == iPad_Air2||_baseInfo.connectType == iPad_Pro||_baseInfo.connectType == iPad_5||_baseInfo.connectType == iPad_mini||_baseInfo.connectType == iPad_mini_2||_baseInfo.connectType == iPad_mini_3){
+        }else if (_baseInfo.connectType == iPad_1||_baseInfo.connectType == iPad_2||_baseInfo.connectType == The_New_iPad||_baseInfo.connectType == iPad_4||_baseInfo.connectType == iPad_Air||_baseInfo.connectType == iPad_Air2||_baseInfo.connectType == iPad_Pro||_baseInfo.connectType == iPad_5||_baseInfo.connectType == iPad_6||_baseInfo.connectType == iPad_mini||_baseInfo.connectType == iPad_mini_2||_baseInfo.connectType == iPad_mini_3){
             iconImg= [StringHelper imageNamed:@"ipad"];
         }else {
             iconImg = [StringHelper imageNamed:@"iPhone"];

@@ -9,7 +9,20 @@
 #import "BaseDrive.h"
 
 @interface Dropbox : BaseDrive
-
+{
+    long long _totalStorageInBytes;//总容量
+    long long _usedStorageInBytes;//使用容量
+}
+@property (nonatomic, assign) long long totalStorageInBytes;//总容量
+@property (nonatomic, assign) long long usedStorageInBytes;//使用容量
+/**
+ *  获取云盘使用信息
+ *
+ *  @param spaceUsage 默认传入0
+ *  @param success    成功回调block
+ *  @param fail       失败回调block
+ */
+- (void)getAccount:(NSString *)accountID success:(Callback)success fail:(Callback)fail;
 /**
  *  获取云盘使用空间
  *
@@ -18,6 +31,8 @@
  *  @param fail       失败回调block
  */
 - (void)getSpaceUsage:(NSString *)spaceUsage success:(Callback)success fail:(Callback)fail;
+
+
 /**
  *  删除指定的文件或者目录
  *

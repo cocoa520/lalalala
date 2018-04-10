@@ -21,13 +21,12 @@
 #import "IMBTranferViewController.h"
 #import "IMBAlertViewController.h"
 #import "IMBiCloudDriveManager.h"
-
-@interface IMBiCloudDriverViewController ()
-
-@end
+#import "IMBDropBoxManage.h"
+#import "IMBDeviceConnection.h"
+#import "IMBCommonTool.h"
 
 @implementation IMBiCloudDriverViewController
-
+@synthesize baseInfo = _baseInfo;
 - (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum{
     if (self = [super initWithNibName:@"IMBiCloudDriverViewController" bundle:nil]) {
         _dataSourceArray = [[NSMutableArray alloc] initWithArray:driveManage.driveDataAry];
@@ -62,6 +61,10 @@
         [_oldDocwsidDic release];
         _oldDocwsidDic = nil;
     }
+    if (_oldFileidDic) {
+        [_oldFileidDic release];
+        _oldFileidDic = nil;
+    }
     if (_toolBarArr != nil) {
         [_toolBarArr release];
         _toolBarArr = nil;
@@ -70,12 +73,20 @@
         [_editTextField release];
         _editTextField = nil;
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     [super dealloc];
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [_loadLeftView setIsLeftToRight:YES];
+    [_loadLeftView setNeedsDisplay:YES];
+    
+    [_loadRightView setIsLeftToRight:YES];
+    [_loadRightView setIsUpWhiteToClear:YES];
+    [_loadRightView setNeedsDisplay:YES];
+    
+    [(NSButtonCell *)_closeDetailBtn.cell setHighlightsBy:NSNoCellMask];
     [self configNoDataView];
     if (_toolBarArr != nil) {
         [_toolBarArr release];
@@ -83,6 +94,7 @@
     }
     _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(0),@(24),@(12), nil];
     [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
     
     [_rightContentView setWantsLayer:YES];
     [_leftContentView setWantsLayer:YES];
@@ -91,13 +103,20 @@
     
     _oldWidthDic = [[NSMutableDictionary alloc] init];
     _oldDocwsidDic = [[NSMutableDictionary alloc] init];
-    [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:CustomLocalizedString(@"NotConnectiCLoudTitle", nil)];
+    _oldFileidDic = [[NSMutableDictionary alloc] init];
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:CustomLocalizedString(@"NotConnectiCLoudTitle", nil)];
+    }else {
+        [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:CustomLocalizedString(@"NotConnectDropBoxTitle", nil)];
+    }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
     _doubleclickCount = 1;
     _currentDevicePath = @"0";
+    _currentGetListPath = @"0";
     [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+    [_oldFileidDic setObject:_currentGetListPath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
 //    [_topLineView setWantsLayer:YES];
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
     [_rightLineView setBackgroundColor:COLOR_TEXT_LINE];
@@ -126,19 +145,28 @@
     [_itemTableView reloadData];
     [_tableViewBgView setBackgroundColor:[NSColor whiteColor]];
     _currentSelectView = 1;
-    if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
+    if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
         [_contentBox setContentView:_gridBgView];
     } else {
         [_contentBox setContentView:_nodataView];
     }
     
     _editTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 306, 40)];
+    
+    for (NSTableColumn *column in [_itemTableView tableColumns]) {
+        IMBCustomHeaderCell *cell = (IMBCustomHeaderCell *)[column headerCell];
+        if ([column.identifier isEqualToString:@"ImageText"]) {
+            cell.stringValue = @"";
+            [cell setIsShowTriangle:NO];
+        }else if ([column.identifier isEqualToString:@"Name"]) {
+            [cell setHasLeftTitleBorderLine:NO];
+        }
+    }
 }
 
 - (void)configNoDataView {
-    
     [_nodataImageView setImage:[StringHelper imageNamed:@"nodata_myfiles"]];
-    NSString *promptStr = [NSString stringWithFormat:CustomLocalizedString(@"NO_DATA_TITLE_1", nil),CustomLocalizedString(@"MenuItem_id_81", nil)];
+    NSString *promptStr = CustomLocalizedString(@"Nodata_tips", nil);
     NSMutableAttributedString *promptAs = [TempHelper setSingleTextAttributedString:promptStr withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withColor:COLOR_TEXT_EXPLAIN];
     NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
     [mutParaStyle setAlignment:NSCenterTextAlignment];
@@ -191,6 +219,7 @@
 }
 
 - (void)iCloudButtonClick:(id)sender {
+    _curEntity = nil;
     int tag = (int)((IMBiCloudPathSelectBtn *)sender).tag;
     int viewCount = (int)[_topView subviews].count;
     for (int i = viewCount - 1; i > 0; i--) {
@@ -220,6 +249,9 @@
                 if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
                     [_oldDocwsidDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
                 }
+                if ([_oldFileidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",j]]) {
+                    [_oldFileidDic removeObjectForKey:[NSString stringWithFormat:@"%d",j]];
+                }
             }
             _doubleclickCount = i;
             
@@ -228,7 +260,10 @@
     }
     
     if ([_oldDocwsidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",tag]]) {
-       _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
+        _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
+    }
+    if ([_oldFileidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",tag]]) {
+        _currentGetListPath = [_oldFileidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
     }
     
 }
@@ -298,8 +333,9 @@
             [_toolBarArr release];
             _toolBarArr = nil;
         }
-        _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+        _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
         [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+        [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
         fielEntity.checkState = Check;
     }
 }
@@ -320,7 +356,7 @@
 
 - (void)gridViewDidDeselectAllItems:(CNGridView *)gridView {
     
-    if (_curEntity.isEdit) {
+    if (_curEntity.isEdit && !_curEntity.isCreating) {
         NSArray *selectArr = [_gridView keyedVisibleItems];
         NSDictionary *dic = nil;
         NSString *newName = @"";
@@ -340,17 +376,35 @@
                     newName = _curEntity.fileName;
                 }
                 if (_curEntity.isCreate) {
-                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                    _curEntity.isCreating = YES;
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+                    }
                 } else {
-                    dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
-                    if (dic != nil) {
-                        [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+                        if (dic != nil) {
+                            [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                        }
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [(IMBDropBoxManage *)_driveBaseManage reName:[[_curEntity.filePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:newName] idOrPath:_curEntity.fileID];
                     }
                 }
             }else {
                 if (_curEntity.isCreate) {
+                    _curEntity.isCreating = YES;
                     _curEntity.fileName = curItem.editText.stringValue;
-                    [_driveBaseManage createFolder:_curEntity.fileName parent:_currentDevicePath];
+                    NSString *str = _curEntity.fileName;
+                    if (_curEntity.fileName.length < 1) {
+                        str = CustomLocalizedString(@"Function_New_Folder", nil);
+                    }
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        [_driveBaseManage createFolder:str parent:_currentGetListPath withEntity:_curEntity];
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [_driveBaseManage createFolder:_curEntity.fileName parent:_currentDevicePath withEntity:_curEntity];
+                    }
                 }
             }
         }
@@ -378,32 +432,67 @@
     }
     _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(0),@(24),@(12), nil];
     [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
-    
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
     [_gridView reloadSelecdImage];
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
-    if ((int)index >= 0 && index < _dataSourceArray.count) {
-        IMBDriveEntity *driveEntity = [_dataSourceArray objectAtIndex:index];
-        if (driveEntity.isFolder/*&& !driveEntity.isEdit*/) {
-            [_contentBox setContentView:_loadingView];
-            [_loadAnimationView startAnimation];
-            _doubleclickCount ++;
-            _doubleClick = YES;
-            [self configSelectPathButtonWithButtonTag:_doubleclickCount WithButtonTitle:driveEntity.fileName];
-            if (driveEntity.childCount>120) {
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    @autoreleasepool {
-                        [_driveBaseManage recursiveDirectoryContentsDics:driveEntity.fileID];
-                        _currentDevicePath = driveEntity.fileID;
-                    }
-                });
+    NSArray *array = nil;
+    if (_isSearch) {
+        array = _researchdataSourceArray;
+    }else {
+        array = _dataSourceArray;
+    }
+    if ((int)index >= 0 && index < array.count) {
+        IMBDriveEntity *driveEntity = [array objectAtIndex:index];
+        if (driveEntity.isFolder) {
+            _isSearch = NO;
+            [_researchdataSourceArray removeAllObjects];
+            [_searhView setStringValue:@""];
+            
+            if (driveEntity.isCreating || driveEntity.isCreate) {
+                //提示正在创建，不能进入
+                [_promptLabel setTextColor:COLOR_TEXT_PRIORITY];
+                [_promptImageView setImage:[NSImage imageNamed:@"message-box-progress"]];
+                [self addPromptCustomView:CustomLocalizedString(@"prompt_creating_floder", nil)];
             }else {
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    [_driveBaseManage recursiveDirectoryContentsDics:driveEntity.fileID];
-                    _currentDevicePath = driveEntity.fileID;
-                });
+                [_toolBarButtonView toolBarButtonIsEnabled:NO];
+                [_contentBox setContentView:_loadingView];
+                [_loadAnimationView startAnimation];
+                _doubleclickCount ++;
+                _doubleClick = YES;
+                [self configSelectPathButtonWithButtonTag:_doubleclickCount WithButtonTitle:driveEntity.fileName];
+                if (![StringHelper stringIsNilOrEmpty:driveEntity.fileID]) {
+                    if (driveEntity.childCount>120) {
+                        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                            @autoreleasepool {
+                                [_driveBaseManage recursiveDirectoryContentsDics:driveEntity.fileID];
+                                if (_chooseLogModelEnmu == iCloudLogEnum) {
+                                    _currentDevicePath = driveEntity.docwsid;
+                                    _currentGetListPath = driveEntity.fileID;
+                                }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                                     _currentDevicePath = driveEntity.filePath;
+                                    _currentGetListPath = driveEntity.fileID;
+                                }
+                            }
+                        });
+                    }else {
+                        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                            [_driveBaseManage recursiveDirectoryContentsDics:driveEntity.fileID];
+                            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                                _currentDevicePath = driveEntity.docwsid;
+                                _currentGetListPath = driveEntity.fileID;
+                            }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                                 _currentDevicePath = driveEntity.filePath;
+                                _currentGetListPath = driveEntity.fileID;
+                            }
+                        
+                        });
+                    }
+                }
             }
+        }else {
+//            [self previewFile:driveEntity];
         }
     }
 }
@@ -447,6 +536,7 @@
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
         [disPalyAry sortUsingDescriptors:sortDescriptors];
         [_gridView reloadData];
+        [_itemTableView reloadData];
         [sortDescriptor release];
     }
 }
@@ -478,23 +568,32 @@
         }
         fileEntity = [_dataSourceArray objectAtIndex:row];
     }
-    if ([@"Formats" isEqualToString:tableColumn.identifier]){
-        
+    if ([@"Type" isEqualToString:tableColumn.identifier]){
         if (![StringHelper stringIsNilOrEmpty:fileEntity.extension]) {
-            return fileEntity.extension;
+            if (fileEntity.isFolder) {
+                return CustomLocalizedString(@"Bookmark_id_6", nil);
+            }else {
+               return fileEntity.extension;
+            }
         }else {
             return @"--";
         }
-    }else if ([@"FileName" isEqualToString:tableColumn.identifier]){
+    }else if ([@"Name" isEqualToString:tableColumn.identifier]){
         return fileEntity.fileName;
-    }else if ([@"LastTime" isEqualToString:tableColumn.identifier]){
+    }else if ([@"Date" isEqualToString:tableColumn.identifier]){
         if ([StringHelper stringIsNilOrEmpty:fileEntity.lastModifiedDateString]) {
             return @"--";
         }else{
             return fileEntity.lastModifiedDateString;
         }
     }else if ([@"Size" isEqualToString:tableColumn.identifier]){
-        return [IMBHelper getFileSizeString:fileEntity.fileSize reserved:2];
+        if (fileEntity.fileSize == 0) {
+            return @"--";
+        }else {
+            return [IMBHelper getFileSizeString:fileEntity.fileSize reserved:2];
+        }
+    }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+        return [NSNumber numberWithInt:fileEntity.checkState];
     }
     return @"";
 }
@@ -519,7 +618,6 @@
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSLog(@"shouldEditTableColumn");
     if (!_curEntity.isEdit) {
         _curEntity.isEdit = YES;
         _curEntity.isEditing = NO;
@@ -533,7 +631,6 @@
 }
 
 - (void)tableView:(NSTableView *)tableView WithSelectIndexSet:(NSIndexSet *)indexSet {
-    NSLog(@"WithSelectIndexSet");
     NSMutableArray *disPalyAry = nil;
     if (_isSearch) {
         disPalyAry = _researchdataSourceArray;
@@ -543,8 +640,6 @@
     if (disPalyAry.count <=0) {
         return;
     }
-    
-//    [self executeRenameOrCreate];
     
     NSArray *dataArr = nil;
     if (indexSet.count > 0) {
@@ -570,10 +665,21 @@
                 [_toolBarArr release];
                 _toolBarArr = nil;
             }
-            _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+            _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
             [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
+            [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
             break;
         }
+    }
+    
+    NSIndexSet *set = [self selectedItems];
+    
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
     }
     [_itemTableView reloadData];
 }
@@ -595,32 +701,7 @@
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
 }
 
-- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSLog(@"setObjectValue");
-    if (_dataSourceArray.count > row) {
-        IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:row];
-        if (entity.isEdit) {
-            NSString *newName = (NSString *)object;
-            entity.fileName = newName;
-            if (entity.extension && !entity.isFolder){
-                newName = [[newName stringByAppendingString:@"."] stringByAppendingString:entity.extension];
-            }
-            if (entity.isCreate) {
-                [_driveBaseManage createFolder:newName parent:_currentDevicePath];
-            } else {
-                NSDictionary *dic = @{@"drivewsid":entity.fileID,@"etag":entity.etag,@"name":newName};
-                if (dic != nil) {
-                    [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
-                }
-            }
-            entity.isEditing = NO;
-            entity.isEdit = NO;
-            entity.isCreate = NO;
-            [_toolBarButtonView toolBarButtonIsEnabled:YES];
-            [_itemTableView reloadData];
-        }
-    }
-}
+
 
 //排序
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
@@ -651,7 +732,7 @@
         
     }
     
-    if ([@"FileName" isEqualToString:identify] || [@"Formats" isEqualToString:identify] || [@"LastTime" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
+    if ([@"Name" isEqualToString:identify] || [@"Type" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
         if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
             IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
             if (customHeaderCell.ascending) {
@@ -661,18 +742,21 @@
             }
             [self sort:customHeaderCell.ascending key:identify dataSource:disPalyAry];
         }
+    }else if ([@"ImageText" isEqualToString:identify]) {
+        IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
+        [customHeaderCell setIsShowTriangle:NO];
     }
     [_itemTableView reloadData];
 }
 
 - (void)sort:(BOOL)isAscending key:(NSString *)key dataSource:(NSMutableArray *)array {
-    if ([key isEqualToString:@"FileName"]) {
+    if ([key isEqualToString:@"Name"]) {
         key = @"fileName";
-    } else if ([key isEqualToString:@"Formats"]) {
+    } else if ([key isEqualToString:@"Type"]) {
         key = @"extension";
     }else if ([key isEqualToString:@"Size"]) {
         key = @"fileSize";
-    }else if ([key isEqualToString:@"LastTime"]) {
+    }else if ([key isEqualToString:@"Date"]) {
         key = @"lastModifiedDateString";
     }
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:isAscending];//其中，price为数组中的对象的属性，这个针对数组中存放对象比较更简洁方便
@@ -785,12 +869,42 @@
     [self addItemsDelay:pathsAry];
 }
 
+- (void)moveitemsToIndex:(int)index {
+    NSArray *displayArr = nil;
+    if (_isSearch) {
+        displayArr = _researchdataSourceArray;
+    }else {
+        displayArr = _dataSourceArray;
+    }
+    IMBDriveEntity *entity = [displayArr objectAtIndex:index];
+    if (entity.isFolder && entity.checkState == UnChecked) {
+        [self startMoveTransferWith:entity];
+    }
+}
+
 #pragma mark - operation action
 - (void)reload:(id)sender {
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        [ATTracker event:CiCloud action:ARefresh label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        [ATTracker event:CDropbox action:ARefresh label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
+    _curEntity = nil;
+    [_toolBarButtonView toolBarButtonIsEnabled:NO];
     [_contentBox setContentView:_loadingView];
     [_loadAnimationView startAnimation];
-    [_driveBaseManage recursiveDirectoryContentsDics:_currentDevicePath];
+    [_driveBaseManage recursiveDirectoryContentsDics:_currentGetListPath];
     _isSearch = NO;
+    [_researchdataSourceArray removeAllObjects];
     [_searhView setStringValue:@""];
 }
 
@@ -802,20 +916,59 @@
 }
 
 - (void)showFileDetailViewWithEntity:(IMBDriveEntity *)entity {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        [ATTracker event:CiCloud action:ADetail label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        [ATTracker event:CDropbox action:ADetail label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     [_rightContentView.layer removeAllAnimations];
     [_leftContentView.layer removeAllAnimations];
     
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        
-        NSRect rect= NSMakeRect(814, 0, 282, 544);
-        NSRect rect2 = NSMakeRect(0, 0, 814, 544);
-        [context setDuration:0.3];
-        [[_rightContentView animator] setFrame:rect];
-        [[_leftContentView animator] setFrame:rect2];
-        
-    } completionHandler:^{
+    if (_rightContentView.frame.origin.x < 820) {
         [self configDetailViewWith:entity];
-    }];
+    }else {
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            NSRect rect= NSMakeRect(814, 0, 282, 548);
+            NSRect rect2 = NSMakeRect(0, 0, 814, 548);
+            [context setDuration:0.3];
+            [[_rightContentView animator] setFrame:rect];
+            [[_leftContentView animator] setFrame:rect2];
+            
+        } completionHandler:^{
+            [self configDetailViewWith:entity];
+        }];
+    }
+}
+
+- (void)showDeviceDetailView:(NSNotification *)niti {
+    if (_isShow) {
+        [_detailImageView setFrame:NSMakeRect(96, 360, 90, 90)];
+        if (_baseInfo.chooseModelEnum == iCloudLogEnum) {
+            [_detailImageView setImage:[NSImage imageNamed:@"mod_iclouddrive"]];
+            [_detailSizeContent setStringValue:[NSString stringWithFormat:@"%@ / %@",[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:2],[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:2]]];
+        }else {
+            [_detailImageView setImage:[NSImage imageNamed:@"mod_dropboxdrive"]];
+            [_detailSizeContent setStringValue:[NSString stringWithFormat:@"%@ / %@",[StringHelper getFileSizeString:_iPod.deviceInfo.totalDataAvailable reserved:2],[StringHelper getFileSizeString:_iPod.deviceInfo.totalDataCapacity reserved:2]]];
+        }
+        [_detailTitle setStringValue:_baseInfo.deviceName];
+        
+        
+        [_detailCreateTime setHidden:YES];
+        [_detailCreateTimeContent setHidden:YES];
+//        [_detailSize setHidden:YES];
+//        [_detailSizeContent setHidden:YES];
+        [_detailCountContent setHidden:YES];
+        [_detailCount setHidden:YES];
+    }
 }
 
 - (IBAction)hideFileDetailView:(id)sender {
@@ -824,8 +977,8 @@
         [_leftContentView.layer removeAllAnimations];
         
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            NSRect rect = NSMakeRect(1096, 0, 282,544);
-            NSRect rect2 = NSMakeRect(0, 0, 1096, 544);
+            NSRect rect = NSMakeRect(1096, 0, 282,548);
+            NSRect rect2 = NSMakeRect(0, 0, 1096, 548);
             [context setDuration:0.3];
             [[_rightContentView animator] setFrame:rect];
             [[_leftContentView animator] setFrame:rect2];
@@ -836,6 +989,9 @@
     
     if (_isShowTranfer) {
         IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+        [tranferView setDelegate:self];
+        tranferView.reloadDelegate = self;
+        [tranferView transferBtn:_transferBtn];
         _isShowTranfer = NO;
         [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
         NSView *view = nil;
@@ -855,45 +1011,68 @@
 }
 
 - (void)configDetailViewWith:(IMBDriveEntity *)entity {
+    [_detailCreateTime setHidden:NO];
+    [_detailCreateTimeContent setHidden:NO];
+    [_detailSize setHidden:NO];
+    [_detailSizeContent setHidden:NO];
+    [_detailCountContent setHidden:NO];
+    [_detailCount setHidden:NO];
     
     [_detailSize setStringValue:CustomLocalizedString(@"List_Header_id_Size", nil)];
-    [_detailCount setStringValue:CustomLocalizedString(@"iCloud_detailView_count", nil)];
-    [_detailLastTime setStringValue:CustomLocalizedString(@"iCloud_detailView_lastTime", nil)];
-    [_detailCreateTime setStringValue:CustomLocalizedString(@"iCloud_detailView_creatTime", nil)];
+    [_detailCount setStringValue:CustomLocalizedString(@"List_Header_id_Count", nil)];
+    [_detailCreateTime setStringValue:CustomLocalizedString(@"List_Header_id_Date", nil)];
     
     [_detailSize setTextColor:COLOR_TEXT_ORDINARY];
     [_detailCount setTextColor:COLOR_TEXT_ORDINARY];
-    [_detailLastTime setTextColor:COLOR_TEXT_ORDINARY];
     [_detailCreateTime setTextColor:COLOR_TEXT_ORDINARY];
     [_detailTitle setTextColor:COLOR_TEXT_ORDINARY];
     
+    [_detailImageView setFrame:NSMakeRect(101, 395, 80, 60)];
     
     [_detailImageView setImage:entity.image];
     [_detailTitle setStringValue:entity.fileName];
     
-    if ([StringHelper stringIsNilOrEmpty:entity.lastModifiedDateString]) {
-        [_detailLastTimeContent setStringValue:@"--"];
-    } else {
-        [_detailLastTimeContent setStringValue:entity.lastModifiedDateString];
+    if (entity.isFolder) {
+        [_detailCountContent setHidden:NO];
+        [_detailCount setHidden:NO];
+        [_detailCreateTime setFrameOrigin:NSMakePoint(20, 184)];
+        [_detailCreateTimeContent setFrameOrigin:NSMakePoint(130, 184)];
+    }else {
+        [_detailCountContent setHidden:YES];
+        [_detailCount setHidden:YES];
+        [_detailCreateTime setFrameOrigin:NSMakePoint(20, 213)];
+        [_detailCreateTimeContent setFrameOrigin:NSMakePoint(130, 213)];
     }
-    if ([StringHelper stringIsNilOrEmpty:entity.createdDateString]) {
+    
+
+    if ([StringHelper stringIsNilOrEmpty:entity.lastModifiedDateString]) {
         [_detailCreateTimeContent setStringValue:@"--"];
     } else {
-        [_detailCreateTimeContent setStringValue:entity.createdDateString];
+        [_detailCreateTimeContent setStringValue:entity.lastModifiedDateString];
     }
-    [_detailSizeContent setStringValue:[IMBHelper getFileSizeString:entity.fileSize reserved:2]];
-    [_detailCountContent setStringValue:[NSString stringWithFormat:@"%d",entity.childCount]];
+    if (entity.fileSize == 0) {
+            [_detailSizeContent setStringValue:@"--"];
+    }else {
+        [_detailSizeContent setStringValue:[IMBHelper getFileSizeString:entity.fileSize reserved:2]];
+    }
+
+    if (entity.childCount == 0) {
+        [_detailCountContent setStringValue:@"--"];
+    }else {
+        [_detailCountContent setStringValue:[NSString stringWithFormat:@"%d",entity.childCount]];
+    }
+    
     
 }
 
 - (void)downloadToMac:(id)sender {
-    
     _openPanel = [NSOpenPanel openPanel];
     [_openPanel setAllowsMultipleSelection:YES];
     [_openPanel setCanChooseFiles:YES];
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSFileHandlingPanelOKButton) {
+            [_transferBtn startTranfering];
             NSArray *urlArr = [_openPanel URLs];
             NSMutableArray *paths = [NSMutableArray array];
             for (NSURL *url in urlArr) {
@@ -906,7 +1085,13 @@
 }
 
 - (void)downloadWithPath:(NSString *)path {
-
+    NSString *filePath = @"";
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"iCloud"];
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"DropBox"];
+    }
+   
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
     NSArray *displayArr = nil;
@@ -920,16 +1105,116 @@
     }];
     
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
-    [_driveBaseManage setDownloadPath:path];
+    [tranferView setDelegate:self];
+     tranferView.reloadDelegate = self;
+    [tranferView transferBtn:_transferBtn];
+    [_driveBaseManage setDownloadPath:filePath];
     if (_chooseLogModelEnmu == iCloudLogEnum) {
-         [tranferView icloudDriveAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil];
+        [tranferView icloudDriveAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil withUploadDocID:@""];
     }else {
-       [tranferView dropBoxAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil];
+        [tranferView dropBoxAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil];
     }
 }
 
 - (void)toiCloud:(id)sender {
- 
+    _isDriveToDrive = YES;
+    IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+    IMBBaseInfo *iCloudBaseInfo = nil;
+    __block NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        for (IMBBaseInfo *baseInfo in connection.allDevices) {
+            if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                iCloudBaseInfo = baseInfo;
+                [ATTracker event:CiCloud action:AToDropbox label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                if (dimensionDict) {
+                    [dimensionDict release];
+                    dimensionDict = nil;
+                }
+                break;
+            }
+        }
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        for (IMBBaseInfo *baseInfo in connection.allDevices) {
+            if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                iCloudBaseInfo = baseInfo;
+                [ATTracker event:CDropbox action:AToiCloudDrive label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                if (dimensionDict) {
+                    [dimensionDict release];
+                    dimensionDict = nil;
+                }
+                break;
+            }
+        }
+    }
+    
+    if (iCloudBaseInfo) {
+        NSIndexSet *selectedSet = [self selectedItems];
+        NSMutableArray *preparedArray = [NSMutableArray array];
+        NSArray *displayArr = nil;
+        if (_isSearch) {
+            displayArr = _researchdataSourceArray;
+        }else {
+            displayArr = _dataSourceArray;
+        }
+        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [preparedArray addObject:[displayArr objectAtIndex:idx]];
+        }];
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+        
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [self driveToDriveDown:preparedArray];
+        });
+        [_transferBtn startTranfering];
+    }else {
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [IMBCommonTool showSingleBtnAlertInMainWindow:@"iCloud" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudBackup_View_Loggin_Tips", nil) btnClickedBlock:nil];
+
+        }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+            [IMBCommonTool showSingleBtnAlertInMainWindow:@"DropBox" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudBackup_View_Loggin_Tips", nil) btnClickedBlock:nil];
+
+        }
+    }
+}
+
+- (void)driveToDriveDown:(NSMutableArray *)ary{
+    [_driveBaseManage setDownloadPath:[TempHelper getAppTempPath]];
+    for (IMBDriveEntity *driveEntity in ary) {
+        DriveItem *downloaditem = [[DriveItem alloc] init];
+        [downloaditem setIsDownLoad:YES];
+        downloaditem.itemIDOrPath = driveEntity.fileID;
+        downloaditem.docwsID = driveEntity.docwsid;
+        downloaditem.zone = driveEntity.zone;
+        downloaditem.fileSize = driveEntity.fileSize;
+        downloaditem.photoImage = [driveEntity.image retain];
+        
+        downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
+        if (driveEntity.isFolder) {
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+            }
+            downloaditem.isFolder = YES;
+            downloaditem.fileName = driveEntity.fileName;
+        }else {
+            downloaditem.isFolder = NO;
+            if (driveEntity.extension){
+                downloaditem.fileName = [[driveEntity.fileName stringByAppendingString:@"."] stringByAppendingString:driveEntity.extension];
+            }else {
+                downloaditem.fileName = driveEntity.fileName;
+            }
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [TempHelper loadTransferFileImage:driveEntity.extension];
+            }
+        }
+        [downloaditem setLocalPath:[[TempHelper getAppTempPath] stringByAppendingPathComponent:downloaditem.fileName]];
+        [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        [_driveBaseManage oneDriveDownloadOneItem:downloaditem];
+        [downloaditem release];
+        downloaditem = nil;
+    }
 }
 
 - (void)addItems:(id)sender {
@@ -939,6 +1224,7 @@
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSFileHandlingPanelOKButton) {
+            [_transferBtn startTranfering];
             NSArray *urlArr = [_openPanel URLs];
             NSMutableArray *paths = [NSMutableArray array];
             for (NSURL *url in urlArr) {
@@ -955,11 +1241,15 @@
 //    [_loadAnimationView startAnimation];
 //    [_driveBaseManage driveUploadItems:dataArr];
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+    [tranferView setDelegate:self];
+     tranferView.reloadDelegate = self;
+    [tranferView transferBtn:_transferBtn];
 //    [_driveBaseManage setDownloadPath:pathStr];
     if (_chooseLogModelEnmu == iCloudLogEnum) {
-        [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentDevicePath];
+       
+        [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentGetListPath withUploadDocID:_currentDevicePath];
     }else {
-        [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentDevicePath];
+        [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentGetListPath withUploadDocID:_currentDevicePath];
 //        [tranferView dropBoxAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage];
     }
     
@@ -983,7 +1273,11 @@
     }];
     NSMutableArray *folderIdArr = [NSMutableArray array];
     for (IMBDriveEntity *entity in preparedArray) {
-        [folderIdArr addObject:@{@"etag":entity.etag,@"drivewsid":entity.fileID}];
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [folderIdArr addObject:@{@"etag":entity.etag,@"drivewsid":entity.fileID}];
+        }else {
+            [folderIdArr addObject:entity.fileID];
+        }
     }
     if (folderIdArr.count > 0) {
         [_contentBox setContentView:_loadingView];
@@ -1010,8 +1304,7 @@
         [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
         
         _currentSelectView = 0;
-        [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
-//        [_itemTableView reloadData];
+        
     }else if (segBtn.switchBtnState == 0) {
         [_gridView reloadData];
         _currentSelectView = 1;
@@ -1020,7 +1313,31 @@
         }else {
             [_contentBox setContentView:_nodataView];
         }
-        [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+    }
+    [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:_currentSelectView];
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+}
+
+- (void)preBtnClick:(id)sender {
+    NSIndexSet *selectedSet = [self selectedItems];
+    NSMutableArray *preparedArray = [NSMutableArray array];
+    NSArray *displayArr = nil;
+    if (_isSearch) {
+        displayArr = _researchdataSourceArray;
+    }else {
+        displayArr = _dataSourceArray;
+    }
+    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [preparedArray addObject:[displayArr objectAtIndex:idx]];
+    }];
+    if (preparedArray.count > 0) {
+        for (int i = 0; i < preparedArray.count; i ++) {
+            IMBDriveEntity *driveEntity = [preparedArray objectAtIndex:i];
+            if (!driveEntity.isFolder) {
+                [self previewFile:driveEntity];
+                break;
+            }
+        }
     }
 }
 
@@ -1031,23 +1348,25 @@
     }
     _dataSourceArray = [dataArr retain];
     [_gridView reloadData];
+    [_itemTableView deselectAll:nil];
     [_itemTableView reloadData];
     if (_toolBarArr != nil) {
         [_toolBarArr release];
         _toolBarArr = nil;
     }
     _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(0),@(24),@(12), nil];
-    if (_dataSourceArray.count > 0 && _dataSourceArray != nil) {
+    if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
         if (_currentSelectView == 0) {
-            [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
             [_contentBox setContentView:_tableViewBgView];
         } else {
-            [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
             [_contentBox setContentView:_gridBgView];
         }
     } else {
         [_contentBox setContentView:_nodataView];
     }
+    [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:_currentSelectView];
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+     [_toolBarButtonView toolBarButtonIsEnabled:YES];
 }
 
 - (void)loadTransferComplete:(NSMutableArray *)transferAry WithEvent:(ActionTypeEnum)actionType {
@@ -1061,16 +1380,95 @@
                 }];
             }
         }
-        [self changeContentViewWithDataArr:_dataSourceArray];
+        
+        [_gridView reloadData];
+        [_itemTableView deselectAll:nil];
+        [_itemTableView reloadData];
+        if (_toolBarArr != nil) {
+            [_toolBarArr release];
+            _toolBarArr = nil;
+        }
+        _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(0),@(24),@(12), nil];
+        if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
+            if (_currentSelectView == 0) {
+                [_contentBox setContentView:_tableViewBgView];
+            } else {
+                [_contentBox setContentView:_gridBgView];
+            }
+        } else {
+            [_contentBox setContentView:_nodataView];
+        }
+        [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:_currentSelectView];
+        [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+        [_toolBarButtonView toolBarButtonIsEnabled:YES];
+        [_loadAnimationView endAnimation];
+        _curEntity = nil;
     }else if (actionType == loadAction) {
         if (_doubleClick) {
             [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
+            [_oldFileidDic setObject:_currentGetListPath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
             [_tempDic setObject:transferAry forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];
         }
         [self changeContentViewWithDataArr:transferAry];
+        [_loadAnimationView endAnimation];
+        _curEntity = nil;
+    }else if (actionType == createFolder) {
+        BOOL ret = [[transferAry objectAtIndex:0] boolValue];
+        IMBDriveEntity *entity = [transferAry objectAtIndex:1];
+        if (ret) {
+            //提示创建成功
+            [_promptLabel setTextColor:COLOR_TEXT_PRIORITY];
+            [_promptImageView setImage:[NSImage imageNamed:@"message-box-success"]];
+            [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_success", nil)];
+            [_itemTableView reloadData];
+            [_gridView reloadData];
+        }else {
+            //提示创建失败
+            [_promptLabel setTextColor:COLOR_TEXT_ERROR];
+             [_promptImageView setImage:[NSImage imageNamed:@"message-box-error"]];
+            [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_failed", nil)];
+            [_dataSourceArray removeObject:entity];
+            [_itemTableView reloadData];
+            [_gridView reloadData];
+            _curEntity = nil;
+        }
+        entity.isCreating = NO;
     }
-    [_loadAnimationView endAnimation];
+}
 
+- (void)addPromptCustomView:(NSString *)prompt {
+    NSRect rect = [IMBHelper calcuTextBounds:prompt fontSize:14];
+    [_promptImageView setFrameOrigin:NSMakePoint(ceil((_promptCustomView.frame.size.width - _promptImageView.frame.size.width - 4 - rect.size.width)/2.0), _promptImageView.frame.origin.y)];
+    [_promptLabel setFrameOrigin:NSMakePoint(_promptImageView.frame.origin.x + _promptImageView.frame.size.width + 4, _promptLabel.frame.origin.y)];
+    
+    [_promptLabel setStringValue:prompt];
+    [_promptLabel setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:14]];
+    NSRect startFrame = NSMakeRect((_contentBox.frame.size.width - _promptCustomView.frame.size.width)/2, _contentBox.frame.size.height, _promptCustomView.frame.size.width, _promptCustomView.frame.size.height);
+    NSRect endFrame = NSMakeRect((_contentBox.frame.size.width - _promptCustomView.frame.size.width)/2, _contentBox.frame.size.height - _promptCustomView.frame.size.height + 12, _promptCustomView.frame.size.width, _promptCustomView.frame.size.height);
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:_promptCustomView,NSViewAnimationTargetKey,NSViewAnimationFadeInEffect,NSViewAnimationEffectKey,[NSValue valueWithRect:startFrame],NSViewAnimationStartFrameKey,[NSValue valueWithRect:endFrame],NSViewAnimationEndFrameKey,nil];
+    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:dictionary]];
+    
+    animation.duration = 0.5;
+    [animation setAnimationBlockingMode:NSAnimationNonblocking];
+    [animation startAnimation];
+    
+    [_contentBox addSubview:_promptCustomView];
+    [dictionary release];
+    [animation release];
+    
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5/*延迟执行时间*/ * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:_promptCustomView,NSViewAnimationTargetKey,NSViewAnimationFadeInEffect,NSViewAnimationEffectKey,[NSValue valueWithRect:endFrame],NSViewAnimationStartFrameKey,[NSValue valueWithRect:startFrame],NSViewAnimationEndFrameKey,nil];
+        NSViewAnimation *ani1 = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:dic1]];
+        
+        ani1.duration = 0.5;
+        [ani1 setAnimationBlockingMode:NSAnimationNonblocking];
+        [ani1 startAnimation];
+        
+        [_contentBox addSubview:_promptCustomView];
+        [dic1 release];
+        [ani1 release];
+    });
 }
 
 - (void)rename:(id)sender {
@@ -1104,19 +1502,22 @@
     if (_dataSourceArray != nil) {
         [_gridView deselectAllItems];
         IMBDriveEntity *newEntity = [[IMBDriveEntity alloc] init];
-        newEntity.fileName = @"new folder";
+        newEntity.fileName = CustomLocalizedString(@"Function_New_Folder", nil);
         newEntity.isFolder = YES;
         newEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
         newEntity.extension = @"Folder";
         newEntity.isEdit = YES;
         newEntity.isCreate = YES;
         newEntity.isEditing = NO;
+        newEntity.isCreating = NO;
         newEntity.checkState = Check;
         _curEntity = newEntity;
         [_dataSourceArray insertObject:newEntity atIndex:0];
         if (_currentSelectView == 1) {
+            [_contentBox setContentView:_gridBgView];
             [_gridView reloadData];
         }else {
+            [_contentBox setContentView:_tableViewBgView];
             [_itemTableView reloadData];
             NSMutableIndexSet *set = [NSMutableIndexSet indexSetWithIndex:0];
             [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
@@ -1140,7 +1541,7 @@
 
 - (void)executeRenameOrCreate {
     [_editTextField removeFromSuperview];
-    if (_isTableViewEdit) {
+    if (_isTableViewEdit && !_curEntity.isCreating) {
         _isTableViewEdit = NO;
         if (_curEntity) {
             NSString *newName = _editTextField.stringValue;
@@ -1150,23 +1551,41 @@
                     newName = [[newName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
                 }
                 if (_curEntity.isCreate) {
-                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                    _curEntity.isCreating = YES;
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+                    }
                 } else {
-                    NSDictionary *dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
-                    if (dic != nil) {
-                        [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        NSDictionary *dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+                        if (dic != nil) {
+                            [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                        }
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [(IMBDropBoxManage *)_driveBaseManage reName:newName idOrPath:_curEntity.fileID];
                     }
                 }
             }else {
                 if (_curEntity.isCreate) {
+                    _curEntity.isCreating = YES;
                     _curEntity.fileName = newName;
-                    [_driveBaseManage createFolder:newName parent:_currentDevicePath];
+                    if (_chooseLogModelEnmu == iCloudLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                        [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+                    }
                 }
             }
+            _curEntity.isEdit = NO;
+            _curEntity.isEditing = NO;
             _curEntity.isCreate = NO;
-            [_toolBarButtonView toolBarButtonIsEnabled:YES];
         }
     }
+    [_toolBarButtonView toolBarButtonIsEnabled:YES];
+    
+    
 }
 
 - (void)moveToFolder:(id)sender {
@@ -1215,19 +1634,188 @@
     }];
     NSMutableArray *moveItemsArr = [NSMutableArray array];
     for (IMBDriveEntity *itemEntity in preparedArray) {
-        [moveItemsArr addObject:@{@"drivewsid":itemEntity.fileID,@"etag":itemEntity.etag,@"clientId":itemEntity.fileID}];
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [moveItemsArr addObject:@{@"drivewsid":itemEntity.fileID,@"etag":itemEntity.etag,@"clientId":itemEntity.fileID}];
+        }else {
+            [moveItemsArr addObject:itemEntity.filePath];
+        }
+        
     }
     if (moveItemsArr.count > 0) {
         [_contentBox setContentView:_loadingView];
         [_loadAnimationView startAnimation];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [_driveBaseManage moveToNewParent:entity.fileID itemDics:moveItemsArr];
-        });
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [(IMBiCloudDriveManager *)_driveBaseManage moveToNewParent:entity.fileID itemDics:moveItemsArr];
+        }else {
+            [(IMBDropBoxManage *)_driveBaseManage moveToNewParent:entity.filePath sourceParent:@"" idOrPaths:moveItemsArr];
+        }
     }
 }
 
+- (void)previewFile:(IMBDriveEntity *)driveEntity {
+    [_promptLabel setTextColor:COLOR_TEXT_EXPLAIN];
+    [_promptImageView setImage:[NSImage imageNamed:@"message-box-progress"]];
+    [self addPromptCustomView:CustomLocalizedString(@"prompt_perview_file", nil)];
+    
+    NSString *tempPath = [IMBHelper getAppTempPath];
+    DriveItem *downloaditem = [[DriveItem alloc] init];
+    downloaditem.itemIDOrPath = driveEntity.fileID;
+    downloaditem.docwsID = driveEntity.docwsid;
+    downloaditem.zone = driveEntity.zone;
+    downloaditem.fileSize = driveEntity.fileSize;
+    downloaditem.photoImage = [driveEntity.image retain];
+    downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
+    downloaditem.localPath = [tempPath stringByAppendingPathComponent:downloaditem.fileName];
+    if (!driveEntity.isFolder) {
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [ATTracker event:CiCloud action:APreview label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+            [ATTracker event:CDropbox action:APreview label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+        downloaditem.isFolder = NO;
+        if (driveEntity.extension){
+            downloaditem.fileName = [[driveEntity.fileName stringByAppendingString:@"."] stringByAppendingString:driveEntity.extension];
+        }else {
+            downloaditem.fileName = driveEntity.fileName;
+        }
+        [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [_driveBaseManage setDownloadPath:tempPath];
+        [_driveBaseManage oneDriveDownloadOneItem:downloaditem];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    id <DownloadAndUploadDelegate> item = object;
+
+    if (_isDriveToDrive) {
+        if (item.state == DownloadStateComplete) {
+            
+            IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
+            IMBBaseInfo *iCloudBaseInfo = nil;
+            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                for (IMBBaseInfo *baseInfo in connection.allDevices) {
+                    if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                        iCloudBaseInfo = baseInfo;
+                    }
+                }
+            }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                for (IMBBaseInfo *baseInfo in connection.allDevices) {
+                    if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                        iCloudBaseInfo = baseInfo;
+                    }
+                }
+            }
+//            NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+//            [workspace openFile:item.localPath];
+            NSMutableArray *ary = [[NSMutableArray alloc]init];
+            [ary addObject:item.localPath];
+//                [self addItemsDelay:ary];
+            IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+            [tranferView setDelegate:self];
+             tranferView.reloadDelegate = self;
+            [tranferView transferBtn:_transferBtn];
+            [tranferView icloudDriveAddDataSource:ary WithIsDown:NO WithDriveBaseManage:iCloudBaseInfo.driveBaseManage withUploadParent:@"0" withUploadDocID:@"0"];
+            [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+            [ary release];
+            ary = nil;
+        }else if (item.state == DownloadStateError){
+
+            [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+        }
+    }else {
+        if (item.state == DownloadStateComplete) {
+            NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+            [workspace openFile:item.localPath];
+            [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+        }else if (item.state == DownloadStateError){
+            
+            [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+        }
+    }
+}
+
+- (void)tableView:(NSTableView *)tableView row:(NSInteger)index {
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    IMBDriveEntity *entity = [disPalyAry objectAtIndex:index];
+    entity.checkState = !entity.checkState;
+    
+    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
+    for (int i=0;i<[disPalyAry count]; i++) {
+        IMBPhotoEntity *item= [disPalyAry objectAtIndex:i];
+        if (item.checkState == NSOnState) {
+            [set addIndex:i];
+        }
+    }
+    if (entity.checkState == NSOnState) {
+        //        [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    }else if (entity.checkState == NSOffState)
+    {
+        [_itemTableView deselectRow:index];
+    }
+    
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView reloadData];
+}
+
+- (void)setAllselectState:(CheckStateEnum)checkState {
+    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
+    NSArray *displayArray = nil;
+    if (_isSearch) {
+        displayArray = _researchdataSourceArray;
+    }
+    else{
+        displayArray = _dataSourceArray;
+    }
+    
+    for (int i=0;i<[displayArray count]; i++) {
+        IMBDriveEntity *entity = [displayArray objectAtIndex:i];
+        [entity setCheckState:checkState];
+        if (entity.checkState == NSOnState) {
+            [set addIndex:i];
+        }
+    }
+    [_itemTableView reloadData];
+}
 #pragma mark 搜索 
 - (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
+    NSDictionary *dimensionDict = nil;
+    @autoreleasepool {
+        [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
+        dimensionDict = [[TempHelper customDimension] copy];
+    }
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        [ATTracker event:CiCloud action:ASearch label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        [ATTracker event:CDropbox action:ASearch label:LNone labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    }
+    if (dimensionDict) {
+        [dimensionDict release];
+        dimensionDict = nil;
+    }
     _searhView = searchView;
     _isSearch = YES;
     if (searchStr != nil && ![searchStr isEqualToString:@""]) {
@@ -1266,5 +1854,16 @@
     [_gridView reloadData];
     
 }
+
+#pragma mark 传输按钮
+- (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn {
+    _transferBtn = transferBtn;
+}
+
+- (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
+    [self reload:nil];
+    [_transferBtn endTranfering];
+}
+
 
 @end

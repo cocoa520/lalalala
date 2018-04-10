@@ -19,22 +19,21 @@
 #pragma mark - 窗口下拉和收回
 //窗口下拉
 - (void)loadAlertView:(NSView *)view alertView:(IMBBorderRectAndColorView *)alertView {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [alertView setBackground:[NSColor whiteColor]];
-        NSRect rect = [alertView frame];
-        [alertView setWantsLayer:YES];
-        [alertView setFrame:NSMakeRect(ceil((NSMaxX(self.view.bounds) - NSWidth(rect)) / 2), NSMaxY(self.view.bounds), NSWidth(rect), NSHeight(rect))];
-        
-        if (![self.view.subviews containsObject:alertView]) {
-            [self.view addSubview:alertView];
-        }
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            [alertView.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:-alertView.bounds.size.height + 10]  repeatCount:0] forKey:@"moveY"];
-        } completionHandler:^{
-            [alertView.layer removeAnimationForKey:@"moveY"];
-            [alertView setFrame:NSMakeRect(ceil((NSMaxX(view.bounds) - NSWidth(alertView.frame)) / 2), NSMaxY(view.bounds) - NSHeight(alertView.frame) + 10, NSWidth(alertView.frame), NSHeight(alertView.frame))];
-        }];
-    });
+    [alertView setBackground:[NSColor whiteColor]];
+    NSRect rect = [alertView frame];
+    [alertView setWantsLayer:YES];
+    [alertView setFrame:NSMakeRect(ceil((NSMaxX(self.view.bounds) - NSWidth(rect)) / 2), NSMaxY(self.view.bounds), NSWidth(rect), NSHeight(rect))];
+    
+    if (![self.view.subviews containsObject:alertView]) {
+        [self.view addSubview:alertView];
+    }
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [alertView.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:-alertView.bounds.size.height + 10]  repeatCount:0] forKey:@"moveY"];
+    } completionHandler:^{
+        [alertView.layer removeAnimationForKey:@"moveY"];
+        [alertView setFrame:NSMakeRect(ceil((NSMaxX(view.bounds) - NSWidth(alertView.frame)) / 2), NSMaxY(view.bounds) - NSHeight(alertView.frame) + 10, NSWidth(alertView.frame), NSHeight(alertView.frame))];
+    }];
+    
 }
 
 //窗口收回
@@ -73,6 +72,7 @@
     [_selectFolderAlertView setBackground:[NSColor whiteColor]];
     [_backgroundBorderView setBackgroundColor:[NSColor clearColor]];
     [_backgroundBorderView setIsDrawFrame:YES];
+    [_selectFolderAlertView setNeedsDisplay:YES];
     
     [_selectFolderAlertTitle setStringValue:CustomLocalizedString(@"MoveFileWindowTitle", nil)];
     [_selectFolderAlertTitle setTextColor:COLOR_TEXT_ORDINARY];
@@ -122,12 +122,22 @@
 - (void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if ([[tableColumn identifier] isEqualToString:@"ImageText"]) {
         IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
-        IMBDriveEntity *fileEntity = [_folderArray objectAtIndex:row];
-        [curCell setImageSize:NSMakeSize(24, 24)];
-        curCell.image = fileEntity.image;
-        curCell.imageText = fileEntity.fileName;
-        [curCell setIsDataImage:YES];
-        curCell.marginX = 12;
+        id item = [_folderArray objectAtIndex:row];
+        if ([item isKindOfClass:[IMBDriveEntity class]]) {
+            IMBDriveEntity *fileEntity = (IMBDriveEntity *)item;
+            [curCell setImageSize:NSMakeSize(24, 18)];
+            curCell.image = fileEntity.image;
+            curCell.imageText = fileEntity.fileName;
+            [curCell setIsDataImage:YES];
+            curCell.marginX = 12;
+        }else {
+            SimpleNode *node = (SimpleNode *)item;
+            [curCell setImageSize:NSMakeSize(24, 18)];
+            curCell.image = node.image;
+            curCell.imageText = node.fileName;
+            [curCell setIsDataImage:YES];
+            curCell.marginX = 12;
+        }
     }
 }
 

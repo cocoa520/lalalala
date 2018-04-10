@@ -809,8 +809,11 @@
 }
 
 - (BOOL)deletePhotos:(NSArray *)deleteArr {
+    //luolei 修改  因为如果同时进行删除200个以上会报错 所以现在进行修改 每次请求删除不超过100个  2018 0403
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];
     NSMutableArray *postArr = [NSMutableArray array];
+    int i = 1;
+    BOOL result = NO;
     for (IMBToiCloudPhotoEntity *entity in deleteArr) {
         NSMutableDictionary *conDic = [NSMutableDictionary dictionary];
         [conDic setObject:@"update" forKey:@"operationType"];
@@ -830,29 +833,32 @@
         [recordDic setObject:fieldDic forKey:@"fields"];
         [conDic setObject:recordDic forKey:@"record"];
         [postArr addObject:conDic];
-    }
-    
-    [postDic setObject:postArr forKey:@"operations"];
-    [postDic setObject:[NSDictionary dictionaryWithObject:@"PrimarySync" forKey:@"zoneName"] forKey:@"zoneID"];
-    [postDic setObject:[NSNumber numberWithBool:YES] forKey:@"atomic"];
-    
-    NSString *postStr = [TempHelper dictionaryToJson:postDic];
-    
-    if (postStr != nil) {
-        @try {
-            NSString *pathStr = @"/database/1/com.apple.photos.cloud/production/private/records/modify?remapEnums=true&ckjsBuildVersion=17AProjectDev84&ckjsVersion=2.0.3&getCurrentSyncToken=true&clientBuildNumber=17AHotfix3&clientMasteringNumber=17AHotfix3&dsid=%@";
-            NSDictionary *retDic = [_netClient postInformationContent:@"ckdatabasews" withPath:pathStr withPostStr:postStr];
-            if (retDic != nil) {
-                if ([retDic.allKeys containsObject:@"records"]) {
-                    return YES;
+        if (i%100 == 0||i == [deleteArr count]) {
+            [postDic setObject:postArr forKey:@"operations"];
+            [postDic setObject:[NSDictionary dictionaryWithObject:@"PrimarySync" forKey:@"zoneName"] forKey:@"zoneID"];
+            [postDic setObject:[NSNumber numberWithBool:YES] forKey:@"atomic"];
+            
+            NSString *postStr = [TempHelper dictionaryToJson:postDic];
+            
+            if (postStr != nil) {
+                @try {
+                    NSString *pathStr = @"/database/1/com.apple.photos.cloud/production/private/records/modify?remapEnums=true&ckjsBuildVersion=17AProjectDev84&ckjsVersion=2.0.3&getCurrentSyncToken=true&clientBuildNumber=17AHotfix3&clientMasteringNumber=17AHotfix3&dsid=%@";
+                    NSDictionary *retDic = [_netClient postInformationContent:@"ckdatabasews" withPath:pathStr withPostStr:postStr];
+                    if (retDic != nil) {
+                        if ([retDic.allKeys containsObject:@"records"]) {
+                            result = YES;
+                        }
+                    }
+                }
+                @catch (NSException *exception) {
+                    [_logHandle writeInfoLog:[NSString stringWithFormat:@"photo delete exception :%@",exception.reason]];
                 }
             }
+            [postArr removeAllObjects];
         }
-        @catch (NSException *exception) {
-             [_logHandle writeInfoLog:[NSString stringWithFormat:@"photo delete exception :%@",exception.reason]];
-        }
+        i++;
     }
-    return NO;
+    return result;
 }
 
 - (BOOL)addPhotoAlbum:(NSString *)albumName {
@@ -1710,6 +1716,7 @@
             }
         }
         @catch (NSException *exception) {
+            [_delegate transfranDic:nil];
             [_logHandle writeInfoLog:[NSString stringWithFormat:@"import contact exception :%@",exception.reason]];
         }
     }
@@ -3287,6 +3294,7 @@
         _isHigh = YES;
         NSArray *reNameArr = [self getHighNoteContent];
         [self getHighNoteDetailContent:reNameArr];
+        
     }
 }
 
@@ -3432,6 +3440,11 @@
 }
 
 - (NSMutableArray *)getHighNoteContent {
+    
+    
+    
+    
+    
     NSMutableArray *recordNameArr = [[[NSMutableArray alloc] init] autorelease];
     @try {
         //高版本的note，内容是用base64加密的
@@ -3879,6 +3892,7 @@
         }
     }
     @catch(NSException *exception) {
+        [_delegate transfranDic:nil];
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"add High Note exception :%@",exception.reason]];
     }
     
@@ -3897,6 +3911,7 @@
         }
     }
     @catch(NSException *exception) {
+        [_delegate transfranDic:nil];
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"add High Note exception :%@",exception.reason]];
     }
     

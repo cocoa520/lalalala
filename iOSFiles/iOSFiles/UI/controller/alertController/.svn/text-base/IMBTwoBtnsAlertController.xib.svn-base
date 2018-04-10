@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1314" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -19,12 +19,14 @@
             <rect key="frame" x="0.0" y="0.0" width="398" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txU-P5-saY">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="txU-P5-saY">
                     <rect key="frame" x="20" y="70" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="alert_icon" id="7yD-lU-AYk"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nu-z5-EPa">
-                    <rect key="frame" x="81" y="32" width="294" height="84"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="8nu-z5-EPa">
+                    <rect key="frame" x="80" y="40" width="294" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="2Ww-yO-VUJ">
                         <font key="font" size="14" name="HelveticaNeue"/>
                         <string key="title">Are you sure to remove the selected item(s)?Are you sure to remove the selected item(s)?Are you sure to remove the selected item(s)?Are you sure to</string>
@@ -32,19 +34,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8j-6F-GUu" customClass="IMBMyDrawCommonly">
-                    <rect key="frame" x="293" y="18" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Remove" bezelStyle="smallSquare" image="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" alignment="center" imageScaling="proportionallyDown" inset="2" id="ror-qs-qBe">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="12" name="HelveticaNeue"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="rwoBtnsViewOKClicked:" target="-2" id="r7x-zc-f6a"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1m-Zq-nRN" customClass="IMBMyDrawCommonly">
+                <button id="i1m-Zq-nRN" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="188" y="18" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" alignment="center" imageScaling="proportionallyDown" inset="2" id="1i6-Rb-S3e">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="30D81667-7632-44AB-950F-3BB79BF54A99" alignment="center" imageScaling="proportionallyDown" inset="2" id="1i6-Rb-S3e">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="12" name="HelveticaNeue"/>
                     </buttonCell>
@@ -52,12 +45,26 @@
                         <action selector="twoBtnsViewCancelClicked:" target="-2" id="hrh-Ls-lD5"/>
                     </connections>
                 </button>
+                <button id="h8j-6F-GUu" customClass="IMBMyDrawCommonly">
+                    <rect key="frame" x="292" y="18" width="80" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" title="Remove" bezelStyle="smallSquare" image="30D81667-7632-44AB-950F-3BB79BF54A99" alignment="center" imageScaling="proportionallyDown" inset="2" id="ror-qs-qBe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="rwoBtnsViewOKClicked:" target="-2" id="r7x-zc-f6a"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-82" y="-121"/>
         </customView>
     </objects>
     <resources>
-        <image name="0C3AD080-C3B2-4A07-9D37-45F4B1B7D530" width="1" height="1">
+        <image name="30D81667-7632-44AB-950F-3BB79BF54A99" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

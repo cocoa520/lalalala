@@ -75,6 +75,8 @@ typedef enum LabelEnum {
     Open,
     Exit,
     FirstLaunch,
+    ChooseBrowser,
+    Try,
     Buy,
     Register,
     Activate,

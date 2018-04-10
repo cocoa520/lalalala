@@ -26,20 +26,20 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBiCloudNoTitleBarWinodw">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="500" height="296"/>
+            <rect key="contentRect" x="196" y="240" width="500" height="316"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <value key="minSize" type="size" width="500" height="296"/>
-            <value key="maxSize" type="size" width="500" height="296"/>
-            <view key="contentView" id="se5-gp-TjO" customClass="IMBNoTitleBarContentView">
-                <rect key="frame" x="0.0" y="0.0" width="500" height="296"/>
+            <value key="minSize" type="size" width="500" height="316"/>
+            <value key="maxSize" type="size" width="500" height="316"/>
+            <view key="contentView" id="se5-gp-TjO" customClass="IMBWindowContentView">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="316"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="YRm-5b-7gO" customClass="IMBWhiteView">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="296"/>
+                        <rect key="frame" x="0.0" y="15" width="500" height="287"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CFT-gN-6cS">
-                                <rect key="frame" x="103" y="214" width="332" height="20"/>
+                                <rect key="frame" x="103" y="201" width="332" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="02f-Uj-KRI">
                                     <font key="font" size="12" name="HelveticaNeue"/>
@@ -48,7 +48,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g9f-RK-Dc5">
-                                <rect key="frame" x="103" y="234" width="332" height="38"/>
+                                <rect key="frame" x="103" y="225" width="332" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="AnyTrans" id="spZ-hZ-yCu">
                                     <font key="font" metaFont="system" size="30"/>
@@ -57,12 +57,12 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Qoh-po-fS6">
-                                <rect key="frame" x="21" y="202" width="74" height="74"/>
+                                <rect key="frame" x="21" y="189" width="74" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="update_logo" id="x7M-7w-5jA"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="window_logo" id="x7M-7w-5jA"/>
                             </imageView>
                             <customView id="e70-Ks-Ggv" customClass="IMBWhiteView">
-                                <rect key="frame" x="100" y="50" width="374" height="152"/>
+                                <rect key="frame" x="100" y="37" width="374" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="cXG-qL-Tgd">
@@ -97,7 +97,7 @@
                                 </subviews>
                             </customView>
                             <button id="GhM-nZ-fLm" customClass="IMBGridientButton">
-                                <rect key="frame" x="100" y="17" width="112" height="22"/>
+                                <rect key="frame" x="100" y="4" width="112" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="DET-Mc-nB5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -105,7 +105,7 @@
                                 </buttonCell>
                             </button>
                             <button id="Wzy-UO-3HL" customClass="IMBGridientButton">
-                                <rect key="frame" x="230" y="17" width="112" height="22"/>
+                                <rect key="frame" x="230" y="4" width="112" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="fpy-c5-RS4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -113,7 +113,7 @@
                                 </buttonCell>
                             </button>
                             <button id="KFJ-Es-YaA" customClass="IMBGridientButton">
-                                <rect key="frame" x="362" y="17" width="112" height="22"/>
+                                <rect key="frame" x="362" y="4" width="112" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="3c2-XF-DUS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -127,9 +127,10 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="437" y="324"/>
         </window>
     </objects>
     <resources>
-        <image name="update_logo" width="62" height="62"/>
+        <image name="window_logo" width="96" height="96"/>
     </resources>
 </document>

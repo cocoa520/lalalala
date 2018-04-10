@@ -151,817 +151,162 @@ static ATTracker *_instance = nil;
     return [outstring uppercaseString];
 }
 
-+ (void)event:(EventCategory)category action:(EventAction)action actionParams:(NSString *)actionParams label:(EventLabel)label transferCount:(long)transferCount screenView:(NSString *)screenName userLanguageName:(NSString *)userLanguageName customParameters:(NSDictionary *)parameters {
++ (void)event:(EventCategory)category action:(EventAction)action label:(EventLabel)label labelParameters:(NSString *)labelParameters transferCount:(long)transferCount screenView:(NSString *)screenName userLanguageName:(NSString *)userLanguageName customParameters:(NSDictionary *)parameters {
     /*
      An event hit with category, action, label
      */
     NSString *categoryName = nil;
     switch (category) {
-        case iTunes_Library:
-            categoryName = @"iTunes Library";
+        case CiCloud:
+            categoryName = @"iCloud";
             break;
-        case iTunes_Backup:
-            categoryName = @"iTunes Backup";
+        case CDropbox:
+            categoryName = @"Dropbox";
             break;
-        case Air_Backup:
-            categoryName = @"Air Backup";
+        case CDevice:
+            categoryName = @"Device";
             break;
-        case iCloud_Content:
-            categoryName = @"iCloud Content";
+        case COpenOrClose:
+            categoryName = @"OpenOrClose";
             break;
-        case Device_Content:
-            categoryName = @"Device Content";
+        case CSupport:
+            categoryName = @"Support";
             break;
-        case Move_To_iOS:
-            categoryName = @"iOS Mover";
-            break;
-        case Android_Connect:
-            categoryName = @"Android Connect";
-            if (transferCount == 0) {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Matched Connection", @"el": [NSString stringWithFormat:@"%@", actionParams], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];;
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }else if (transferCount == 1) {
-                @autoreleasepool {
-                    NSArray *otherError = [actionParams componentsSeparatedByString:@"#"];
-                    NSString *label = [[otherError objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Other Error", @"el": [NSString stringWithFormat:@"%@: %@", label, [otherError lastObject]], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }else if (transferCount == 2) {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Connecting", @"el": [NSString stringWithFormat:@"%@", actionParams], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }else if (transferCount == 3) {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Install APK", @"el": [NSString stringWithFormat:@"%@", actionParams], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }
-            return;
-        case Video_Download:
-            categoryName = @"Video Download";
-            break;
-        case Fast_Drive:
-            categoryName = @"Fast Drive";
-            break;
-        case Skin_Theme:
-            categoryName = @"Skin Theme";
-            switch (action) {
-                case SkinApply: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ActionNone: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Switch", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                default:
-                    break;
-            }
-            return;
-        case AnyTrans_Activation:
-            categoryName = @"AnyTrans Activation";
-            break;
-        case AnyTrans_OpenOrClose:
-            categoryName = @"AnyTrans OpenOrClose";
-            break;
-        case Merge_Device:
-            categoryName = @"Merge Device";
-            break;
-        case Content_To_iTunes:
-            categoryName = @"Content To iTunes";
-            break;
-        case Content_To_Computer:
-            categoryName = @"Content To Computer";
-            break;
-        case Content_To_Device:
-            categoryName = @"Content To Device";
-            break;
-        case Add_Content:
-            categoryName = @"Add Content";
-            break;
-        case Clone_Device:
-            categoryName = @"Clone Device";
-            break;
-        case None:
-            categoryName = @"undefinition event";
+        case CNone:
+            categoryName = @"UndefineEvent";
             break;
         default:
-            categoryName = @"undefinition event";
+            categoryName = @"UndefineEvent";
             break;
     }
+    
+    NSString *actionName = nil;
+    switch (action) {
+        case AOpen:
+            actionName = @"Open";
+            break;
+        case AClose:
+            actionName = @"Close";
+            break;
+        case AFirstLaunch:
+            actionName = @"First Launch";
+            break;
+        case ALogin:
+            actionName = @"Login";
+            break;
+        case ALogout:
+            actionName = @"Logout";
+            break;
+        case AAddAccount:
+            actionName = @"AddAccount";
+            break;
+        case AJump:
+            actionName = @"Jump";
+            break;
+        case AHelp:
+            actionName = @"Help";
+            break;
+        case ACreateFolder:
+            actionName = @"Create Folder";
+            break;
+        case ADelete:
+            actionName = @"Delete";
+            break;
+        case AUpload:
+            actionName = @"Upload";
+            break;
+        case ADownload:
+            actionName = @"Download";
+            break;
+        case ARename:
+            actionName = @"Rename";
+            break;
+        case AMove:
+            actionName = @"Move";
+            break;
+        case AToDevice:
+            actionName = @"ToDevice";
+            break;
+        case AToiCloudDrive:
+            actionName = @"ToiCloudDrive";
+            break;
+        case AToDropbox:
+            actionName = @"ToDropbox";
+            break;
+        case ARefresh:
+            actionName = @"Refresh";
+            break;
+        case ADetail:
+            actionName = @"Detail";
+            break;
+        case APreview:
+            actionName = @"Preview";
+            break;
+        case ABuy:
+            actionName = @"Buy";
+            break;
+        case ARegister:
+            actionName = @"Register";
+            break;
+        case ACancel:
+            actionName = @"Cancel";
+            break;
+        case AClearRecord:
+            actionName = @"Clear Record";
+            break;
+        case AViewRecord:
+            actionName = @"View Record";
+            break;
+        case AClearAll:
+            actionName = @"Clear All";
+            break;
+        case ASearch:
+            actionName = @"Search";
+            break;
+        case ARightClick:
+            actionName = @"Right Click";
+            break;
+        case ANone:
+            actionName = @"UndefineAction";
+            break;
+        default:
+            actionName = @"UndefineAction";
+            break;
+    }
+    
+    NSString *labelName = nil;
     switch (label) {
-        case Open: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@", actionParams], @"el": @"Open AnyTrans for Mac", @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
+        case LSuccess:
+            labelName = @"Success";
             break;
-        case Exit: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@", actionParams], @"el": @"Exit AnyTrans for Mac", @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
+        case LFailed:
+            labelName = @"Failed";
             break;
-        case FirstLaunch: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@", actionParams], @"el": @"1", @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
-            break;
-        case Buy: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to buy AnyTrans for Mac", @"el": [NSString stringWithFormat:@"Software language: %@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
-            break;
-        case Register: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to register AnyTrans for Mac", @"el": [NSString stringWithFormat:@"Registration result: %@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
-            break;
-        case Switch: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Switch", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
-            break;
-        case Click: {
-            if (transferCount == 0) {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
+        case LNone: {
+            if ([[labelParameters lowercaseString] isEqualToString:@"icloud"]) {
+                labelName = @"iCloud";
+            }else if ([[labelParameters lowercaseString] isEqualToString:@"dropbox"]) {
+                labelName = @"Dropbox";
+            }else if ([[labelParameters lowercaseString] isEqualToString:@"device"]) {
+                labelName = @"Device";
             }else {
-                switch (action) {
-                    case ToDevice: {
-                        @autoreleasepool {
-                            NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"1 Click To Device", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                            if (parameters != nil) {
-                                for (NSString *key in parameters) {
-                                    [params setObject:[parameters valueForKey:key] forKey:key];
-                                }
-                            }
-                            [self send:@"event" andParams:params];
-                        }
-                    }
-                        break;
-                    case ToiTunes: {
-                        @autoreleasepool {
-                            NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"1 Click To iTunes", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                            if (parameters != nil) {
-                                for (NSString *key in parameters) {
-                                    [params setObject:[parameters valueForKey:key] forKey:key];
-                                }
-                            }
-                            [self send:@"event" andParams:params];
-                        }
-                    }
-                        break;
-                    case ToiCloud: {
-                        @autoreleasepool {
-                            NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"1 Click To iCloud", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                            if (parameters != nil) {
-                                for (NSString *key in parameters) {
-                                    [params setObject:[parameters valueForKey:key] forKey:key];
-                                }
-                            }
-                            [self send:@"event" andParams:params];
-                        }
-                    }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-            break;
-        case Start: {
-            switch (action) {
-                case ToDevice: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ To Device Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ToiTunes: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ To iTunes Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case Import: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Import Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case Delete: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Delete Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ContentToMac: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to Mac Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-//                case ToiTunes: {
-//                    @autoreleasepool {
-//                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to iTunes Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"cc": [NSString stringWithFormat:@"%@", screenColor], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-//                        if (parameters != nil) {
-//                            for (NSString *key in parameters) {
-//                                [params setObject:[parameters valueForKey:key] forKey:key];
-//                            }
-//                        }
-//                        [self send:@"event" andParams:params];
-//                    }
-//                }
-//                    break;
-//                case AddContent: {
-//                    @autoreleasepool {
-//                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Add Content Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"cc": [NSString stringWithFormat:@"%@", screenColor], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-//                        if (parameters != nil) {
-//                            for (NSString *key in parameters) {
-//                                [params setObject:[parameters valueForKey:key] forKey:key];
-//                            }
-//                        }
-//                        [self send:@"event" andParams:params];
-//                    }
-//                }
-//                    break;
-                case ActionNone: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ToiCloud: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to iCloud Start", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case AirBackup: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Start", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-            break;
-        case Finish: {
-            switch (action) {
-                case ToDevice: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ To Device Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ToiTunes: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ To iTunes Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case Import: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Import Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case Delete: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Delete Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ContentToMac: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to Mac Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-//                case ContentToiTunes: {
-//                    @autoreleasepool {
-//                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to iTunes Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"cc": [NSString stringWithFormat:@"%@", screenColor], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-//                        if (parameters != nil) {
-//                            for (NSString *key in parameters) {
-//                                [params setObject:[parameters valueForKey:key] forKey:key];
-//                            }
-//                        }
-//                        [self send:@"event" andParams:params];
-//                    }
-//                }
-//                    break;
-//                case AddContent: {
-//                    @autoreleasepool {
-//                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Add Content Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"cc": [NSString stringWithFormat:@"%@", screenColor], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-//                        if (parameters != nil) {
-//                            for (NSString *key in parameters) {
-//                                [params setObject:[parameters valueForKey:key] forKey:key];
-//                            }
-//                        }
-//                        [self send:@"event" andParams:params];
-//                    }
-//                }
-//                    break;
-                case ActionNone: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case ToiCloud: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@ to iCloud Finish", actionParams], @"el": [NSString stringWithFormat:@"%ld", transferCount], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                case AirBackup: {
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Finish", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-            break;
-        case Stop: {
-            if ([actionParams isEqualToString:@"Backup"]) {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Stop", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }else {
-                @autoreleasepool {
-                    NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Stop", @"el": [NSString stringWithFormat:@"%@ Stop", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                    if (parameters != nil) {
-                        for (NSString *key in parameters) {
-                            [params setObject:[parameters valueForKey:key] forKey:key];
-                        }
-                    }
-                    [self send:@"event" andParams:params];
-                }
-            }
-        }
-            break;
-        case Error: {
-            @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Error", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                if (parameters != nil) {
-                    for (NSString *key in parameters) {
-                        [params setObject:[parameters valueForKey:key] forKey:key];
-                    }
-                }
-                [self send:@"event" andParams:params];
-            }
-        }
-            break;
-        case LabelNone: {
-            switch (action) {
-                case iCloud_Export:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"iCloud Export", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case iCloud_Import:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"iCloud Import", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case iCloud_Sync:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"iCloud Sync", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case iCloud_Backup:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"iCloud Backup", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-
-                case Analyze:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Analyze", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Automatic_Download:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Automatic Download", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Manual_Download:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Manual Download", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case ReDownload:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"ReDownload", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Remove:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Remove", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Find:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Find", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Login:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Login", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-
-                case CleanList:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"CleanList", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Automatic_Import:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Automatic Import", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Manual_Import:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Manual Import", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Analyze_Success:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Analyze Success", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Analyze_Error:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Analyze Error", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Download_Success:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Download Success", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Download_Error:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Download Error", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Stop_Analysis:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Stop Analysis", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Stop_Download:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Stop Download", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-                case Stop_Transfer:
-                    @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Stop Transfer", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
-                        if (parameters != nil) {
-                            for (NSString *key in parameters) {
-                                [params setObject:[parameters valueForKey:key] forKey:key];
-                            }
-                        }
-                        [self send:@"event" andParams:params];
-                    }
-                    break;
-
-                default:
-                    break;
+                labelName = @"1";
             }
         }
             break;
         default:
+            labelName = @"UndefineLabel";
             break;
     }
-}
-
-/**
- *  构建屏幕跟踪
- *
- *  @param screenName       屏幕名称
- *  @param customArray      自定义维度
- *  @param parameters       默认为nil
- */
-+ (void)screen:(Screen)screen customArray:(NSArray *)customArray customParameters:(NSDictionary *)parameters {
-    //待以后扩充
+    @autoreleasepool {
+        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": [NSString stringWithFormat:@"%@", actionName], @"el": [NSString stringWithFormat:@"%@", labelName], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+        if (parameters != nil) {
+            for (NSString *key in parameters) {
+                [params setObject:[parameters valueForKey:key] forKey:key];
+            }
+        }
+        [self send:@"event" andParams:params];
+    }
 }
 
 + (void)send:(NSString *)type andParams:(NSDictionary *)params {
@@ -980,46 +325,23 @@ static ATTracker *_instance = nil;
     if (encodedString) {
         NSString *urlString = [NSString stringWithFormat:@"%@%@", endpoint, encodedString];
         NSURL *url = [[[NSURL alloc] initWithString:urlString] autorelease];
-#if DEBUG
-//        NSLog(@"%@", urlString);
-#endif
         
         //以下方式支持i386、x86_64
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSOperationQueue *queue = [NSOperationQueue mainQueue];
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             //请求成功
-//            if (data) {
-//                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-//                if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-//                    NSLog(@"statusCode=%ld", (long)[httpResponse statusCode]);
-//                }
-//                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-//                NSString *error = [dict objectForKey:@"error"];
-//                if (error) {
-//#if DEBUG
-//                    NSLog(@"error description:%@", error.description);
-//#endif
-//                }
-//            }else {
-//                NSLog(@"网络繁忙，请稍后重试！");
-//            }
+            if ([urlString rangeOfString:@"ea=First%20Launch"].location != NSNotFound) {
+                if (data) {
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                    if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+                        if (httpResponse.statusCode == 200) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_FIRST_LAUNCH object:nil];
+                        }
+                    }
+                }
+            }
         }];
-        
-        //以下方式仅支持x86_64
-//        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-//            if ([httpResponse isKindOfClass:[NSHTTPURLResponse class]]) {
-//                NSLog(@"%ld", (long)[httpResponse statusCode]);
-//            } else {
-//                if (error) {
-//#if DEBUG
-//                    NSLog(@"%@", error.description);
-//#endif
-//                }
-//            }
-//        }];
-//        [task resume];
     }
 }
 

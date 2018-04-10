@@ -124,6 +124,9 @@
     [_athSync setCurrentThread:[NSThread currentThread]];
     //加上infomation的个数;
     _totalItemCount = [self totalItemscount] + _infomationCount;
+    if (_totalItemCount < _totalItem) {
+        _totalItemCount = _totalItem;
+    }
     int allCount = _totalItemCount;
     if ([_importFiles count]>0) {
         if (_srciPod != nil && _ipod != nil) {

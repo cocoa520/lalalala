@@ -2068,7 +2068,7 @@ static BOOL read_dir_size(AFCDirectoryAccess *self, afc_connection afc, NSString
     BOOL isSecure = [device isWifiConnection];
 	if (self = [super initWithName:@"com.apple.mobile.house_arrest" onDevice:device isSecure:isSecure]) {
 		NSDictionary *message;
-        if ([device.serialNumber isVersionMajorEqual:@"8.3"]) {
+        if ([device.productVersion isVersionMajorEqual:@"8.3"]) {
             message = [NSDictionary dictionaryWithObjectsAndKeys:
                        // value			key
                        @"VendDocuments",	@"Command",
@@ -3213,10 +3213,11 @@ static void AMNotificationProxy_callback(CFStringRef notification, void* data)
 		NSData *pngdata = [reply objectForKey:@"pngData"];
 		if (pngdata) {
             NSImage *sourceImage = [[NSImage alloc] initWithData:pngdata];
-            NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
-            [sourceImage release];
-			return [[[NSImage alloc] initWithData:imageData] autorelease];
-        } 
+//            NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
+//            [sourceImage release];
+//			return [[[NSImage alloc] initWithData:imageData] autorelease];
+            return [sourceImage autorelease];
+        }
 	}
 	return nil;
 }

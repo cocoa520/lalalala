@@ -6,408 +6,436 @@
   Copyright (c) 2014 iMobie Inc. All rights reserved.
 */
 
-"MainWindow_id_1" = "Device manager";
-"MainWindow_id_2" = "Can multi-device management";
-"MainWindow_id_3" = "Please link...";
-"MainWindow_id_4" = "You have not linked any devices please uese after link";
-"MainWindow_id_5" = "Multiple devices can be managed at the same time";
-"MainWindow_id_6" = "Quick links work efficiently";
+"MainWindow_id_1" = "デバイスマネージャー";
+"MainWindow_id_2" = "マルチデバイスの管理が可能";
+"MainWindow_id_3" = "お使いのデバイスを接続してください";
+"MainWindow_id_4" = "お使いのデバイスを接続してください";
+"MainWindow_id_5" = "複数のデバイスを管理可能";
+"MainWindow_id_6" = "デバイスを選択してください";
 
-"Menu_About" = "About iOSFiles";
-"Menu_Home" = "AnyTrans Home";
-"Menu_Guide" = "Online Guide";
-"Menu_SendLog" = "Send Log";
-"Menu_ContactUs" = "Contact Us";
-"Menu_Updates" = "Check for Updates";
-"Menu_Exit" = "Exit";
-"Menu_NewFloder" = "Open in new floder";
-"Menu_DefaultName" = "My Device";
+"MainWindow_id_7" = "AllFilesベータ版";
 
-"LanguageSetWinodw_id_1" = "Please choose your preferred language";
-"language_setting_id" = "Getting Started";
+"Menu_About" = "AllFilesについて";
+"Menu_Home" = "AllFilesホームページ";
+"Menu_Guide" = "オンラインガイド";
+"Menu_SendLog" = "ログファイルを送信";
+"Menu_ContactUs" = "お問い合わせ";
+"Menu_Updates" = "アップデートを確認";
+"Menu_Exit" = "終了";
+"Menu_NewFloder" = "新規ウィンドウで開く";
+"Menu_DefaultName" = "マイデバイス";
 
-"register_window_title" = "AnyTrans Activation";
-"register_window_description" = "Your AnyTrans is the unregistered version. Please buy a license code or enter yours if you already have one.";
-"register_window_buyBtn" = "Buy A License Code";
-"activate_error_disinternet" = "Please keep your Internet connection stable and try to active AnyTrans again.";
+"LanguageSetWinodw_id_1" = "言語を選択してください";
+"language_setting_id" = "言語を変更";
 
-"register_window_activateBtn" = "Activate";
-"register_text_waiting" = "Activating, please wait…";
-"verification_success_id" = "Verification succeeded!";
-"verification_failed_id" = "Verification failed!";
-"Register_failed_id" = "Activation failed!";
-"activate_success" = "Activation succeeded!";
-"activate_error_discorrect" = "Please make sure your license code is correct and try again.";
-"register_window_tryagainBtn" = "Try Again";
-"register_text_eg" = "Please enter your license code";
+"register_window_title" = "認証";
+"register_window_description" = "いま体験版をご利用中です。製品版をご利用になるにはライセンスをご購入ください。すでにライセンスをお持ちの方はライセンス認証を行ってください。";
+"register_window_buyBtn" = "ライセンスを購入";
+"activate_error_disinternet" = "インターネットに接続してライセンス認証を再度お試しください。";
+
+"register_window_activateBtn" = "ライセンス認証";
+"register_text_waiting" = "認証中、少々お待ちください...";
+"verification_success_id" = "認証完了";
+"verification_failed_id" = "認証失敗";
+"Register_failed_id" = "アクティベーション失敗";
+"activate_success" = "アクティベーション成功";
+"activate_error_discorrect" = "正しいライセンスコードを入力してください。";
+"register_window_tryagainBtn" = "再試行";
+"register_text_eg" = "ライセンスコードを入力してください。";
 
 "Button_Ok" = "OK";
-"Button_Yes" = "Yes";
-"Button_No" = "No";
-"Button_Retry" = "Retry";
-"Button_Login" = "Login";
-"Button_IKnown" = "OK, I know";
-"Button_Continue" = "Continue";
-"Button_Cancel" = "Cancel";
-"Button_Select" = "Select";
-"Button_Save" = "Save";
+"Button_Yes" = "はい";
+"Button_No" = "いいえ";
+"Button_Retry" = "やり直す";
+"Button_Login" = "サインイン";
+"Button_IKnown" = "OK";
+"Button_Continue" = "続行";
+"Button_Cancel" = "キャンセル";
+"Button_Select" = "選択";
+"Button_Save" = "保存";
 
-"iCloudBackup_View_Selected_Tips" = "Please select at least one item.";
-"iCloudBackup_View_Loggin_Tips" = "Please log in at least one more account.";
+"iCloudBackup_View_Selected_Tips" = "少なくとも1つの項目を選んでください。";
+"iCloudBackup_View_Loggin_Tips" = "少なくとも2つのアカウントでサインインしてください。";
 
-"iCloudBackup_View_Tips2" = "Download";
-"iCloudBackup_View_Tips6" = "View";
+"iCloudBackup_View_Tips2" = "ダウンロード";
+"iCloudBackup_View_Tips6" = "表示";
 
-"about_window_1" = "Support:";
-"about_window_2" = "Homepage:";
-"about_window_3" = "Copyright© iPhoneUtility All rights reserved.";
+"about_window_1" = "サポート:";
+"about_window_2" = "ホームページ:";
+"about_window_3" = "Copyright  © 2018 iPhoneUtility All rights reserved.";
 
-"connect_help_Tips" = "If you failed to connect your device, please try the solution below:";
-"connect_help_Tips1" = "Make sure your computer has installed the latest version of iTunes and your device can be recognized by iTunes. If not, uninstall iTunes first, and then reinstall it.";
-"connect_help_Tips2" = "Unplug your device first, and then reconnect it. If this won't work, reboot the device and plug in again to retry.";
-"connect_help_Tips3" = "Use another computer to retry.";
+"connect_help_Tips" = "お使いのiOSデバイスが認識されない場合、以下の操作をお試しください:";
+"connect_help_Tips1" = "ご利用のiTunesが最新バージョンで、お使いのiOSデバイスを認識できることをご確認ください。そうでない場合、iTunesを再インストールして再度お試しください。";
+"connect_help_Tips2" = "iOSデバイスを再接続または他のUSBケーブルでお試しください。解決しない場合、デバイスを再起動してみてください。";
+"connect_help_Tips3" = "他のコンピューターでお試しください。";
 
-"Update_Window_Text1" = "Your AnyTrans is up to date.";
-"Update_Window_Text2" = "Please update AnyTrans to enjoy more features.";
-"Update_Window_Text3" = "New Version: %@, built on: %@";
-"Update_Window_Text4" = "Version %@";
-"Update_Window_Text5" = "Connection error! Please check your network!";
-"Update_Window_Button1" = "Skip this version";
-"Update_Window_Button2" = "Remind me later";
-"Update_Window_Button3" = "Update Now";
-"UpdateWindow_id_8" = "Please update %@, otherwise some functions may not work properly.";
-"UpdateWindow_id_9" = "Checking for updates, please wait...";
-"UpdateWindow_id_10" = "%@ cannot access the latest version info, so we recommend you download the up-to-date version from our website.";
-"UpdateWindow_id_11" = "Loading, please wait...";
+"Update_Window_Text1" = "ご利用のAllFliesは最新バージョンです。";
+"Update_Window_Text2" = "最新の機能をご利用いただくにはアップデートしてください。";
+"Update_Window_Text3" = "新しいバージョン: %@、 作成日: %@";
+"Update_Window_Text4" = "バージョン%@";
+"Update_Window_Text5" = "接続エラー。ネットワーク接続をご確認ください。";
+"Update_Window_Button1" = "このバージョンをスキップする";
+"Update_Window_Button2" = "後で通知する";
+"Update_Window_Button3" = "今すぐアップデート";
+"UpdateWindow_id_8" = "%@をアップデートしないと、一部の機能が正常に動作しない場合があります。";
+"UpdateWindow_id_9" = "アップデートを確認中、少々お待ちください...";
+"UpdateWindow_id_10" = "%@のアップデート情報にアクセスできません。下のボタンをクリックして当社のウェブサイトから最新のバージョンをダウンロードしてください。";
+"UpdateWindow_id_11" = "読み込み中、少々お待ちください...";
 
-"TrustView_id_1" = "Please unlock your device and trust this computer.";
+"TrustView_id_1" = "デバイスのロックを解除して、「信頼」をタップしてください。";
 
-"Nothave_toDevices" = "Please connect at least two devices to continue.";
-"AirsyncTips" = "Syncing your device. Please wait...";
+"Nothave_toDevices" = "デバイスを接続してください。";
+"Nothave_toiCloud" = "请至少登录一项云";
+"AirsyncTips" = "デバイスを同期中… 少々お待ちください...";
 
 "MSG_Size_MB" = "MB";
 "MSG_Size_GB" = "GB";
 "MSG_Size_KB" = "KB";
 "MSG_Size_B" = "B";
-"MSG_Date_Today" = "Today";
-"MSG_Date_Yesterday" = "Yesterday";
-"MSG_Date_Tomorrow" = "Tomorrow";
-"MSG_Item_id_1" = "item";
-"MSG_Item_id_2" = "items";
-"MSG_Loading" = "Loading, please wait...";
-"MSG_COM_No_Item_Selected" = "Please select at least one item to continue.";
-"MSG_Device_Edition_Too_high" = "Your device is running iOS 8.3 or higher version, which doesn't support this feature in AnyTrans.";
-"MSG_App_Installing_Progres" = "Installing \"%@\", %@...";
-"MSG_App_Installing" = "Installing %@ App";
-"MSG_COM_delete" = "NO %@ to delete.";
+"MSG_Date_Today" = "今日";
+"MSG_Date_Yesterday" = "昨日";
+"MSG_Date_Tomorrow" = "明日";
+"MSG_Item_id_1" = "項目";
+"MSG_Item_id_2" = "項目";
+"MSG_Loading" = "読み込み中、少々お待ちください...";
+"MSG_COM_No_Item_Selected" = "続行するには、少なくとも1つの項目を選んでください。";
+"MSG_Device_Edition_Too_high" = "誠に申し訳ありませんが、iOS 8.3以上のデバイスではこの機能はご利用いただけません。";
+"MSG_App_Installing_Progres" = "\"%@\"をインストール中、 %@...";
+"MSG_App_Installing" = "App %@ をインストール中";
+"MSG_COM_delete" = "削除できる%@がありません。";
 
-"List_Header_id_Date" = "Date";
-"List_Header_id_Type" = "Type";
-"List_Header_id_Name" = "Name";
-"List_Header_id_Item" = "Item";
-"List_Header_id_Format" = "Resolution";
-"List_Header_id_Size" = "Size";
-"List_Header_id_Time" = "Time";
-"List_Header_id_Artist" = "Artist";
-"List_Header_id_Duration" = "Duration";
-"List_Header_id_State" = "State";
-"List_Header_id_Image" = "Image";
-"List_Header_id_Version" = "Version";
-"List_Header_id_Count" = "Files";
+"List_Header_id_Date" = "日付";
+"List_Header_id_Type" = "種類";
+"List_Header_id_Name" = "名前";
+"List_Header_id_Item" = "項目";
+"List_Header_id_Format" = "解像度";
+"List_Header_id_Size" = "サイズ";
+"List_Header_id_Time" = "時間";
+"List_Header_id_Artist" = "アーティスト";
+"List_Header_id_Duration" = "時間";
+"List_Header_id_State" = "状態";
+"List_Header_id_Image" = "画像";
+"List_Header_id_Version" = "バージョン";
+"List_Header_id_Count" = "ファイル";
 
-"List_Header_id_Minium" = "Minium iOS version";
-"List_Header_id_AppSize" = "App Size";
-"List_Header_id_DocumentSize" = "Document Size";
-"List_Header_id_iOSNub" = "iOS";
-"List_Header_id_SerialNub" = "Serial number";
-"List_Header_id_SerialNumber" = "Serial Number";
-"List_Header_id_Operate" = "Operation";
-"List_Header_id_Formats" = "Format";
-"MenuItem_id_1" = "Music";
-"MenuItem_id_6" = "Movies";
-"MenuItem_id_9" = "Photos";
-"MenuItem_id_10" = "Camera Roll";
-"MenuItem_id_13" = "Books";
-"MenuItem_id_14" = "Apps";
-"MenuItem_id_28" = "Audio";
-"MenuItem_id_29" = "Video";
-"MenuItem_id_30" = "Other";
-"MenuItem_id_35" = "System";
-"MenuItem_id_81" = "file";
-"MenuItem_id_23" = "Music";
+"List_Header_id_Minium" = "必須のiOSバージョン";
+"List_Header_id_AppSize" = "Appのサイズ";
+"List_Header_id_DocumentSize" = "ドキュメントのサイズ";
+"List_Header_id_iOSNub" = "シリアル番号";
+"List_Header_id_SerialNub" = "シリアル番号";
+"List_Header_id_SerialNumber" = "シリアル番号";
+"List_Header_id_Operate" = "操作";
+"List_Header_id_Formats" = "様式";
+"MenuItem_id_1" = "音楽";
+"MenuItem_id_6" = "ムービー";
+"MenuItem_id_9" = "写真";
+"MenuItem_id_10" = "カメラロール";
+"MenuItem_id_13" = "ブック";
+"MenuItem_id_14" = "App";
+"MenuItem_id_28" = "音楽";
+"MenuItem_id_29" = "ビデオ";
+"MenuItem_id_30" = "その他";
+"MenuItem_id_35" = "システム";
+"MenuItem_id_81" = "ファイル";
+"MenuItem_id_23" = "音楽";
 "MenuItem_id_33" = "App";
 "MenuItem_id_18" = "iCloud Drive";
 "MenuItem_id_19" = "Dropbox";
-"Bookmark_id_6" = "Folder";
-"BookmarkWindow_id_1" = "Title:";
-"BookmarkWindow_id_3" = "Album:";
-"BookmarkWindow_id_4" = "Author:";
+"Bookmark_id_6" = "フォルダ";
+"BookmarkWindow_id_1" = "タイトル:";
+"BookmarkWindow_id_3" = "アルバム:";
+"BookmarkWindow_id_4" = "作者:";
 
-"ToolContextMenuButton_id_1" = "Refresh";
-"ToolContextMenuButton_id_3" = "To PC";
+"ToolContextMenuButton_id_1" = "再読み込み";
+"ToolContextMenuButton_id_3" = "PCへ";
 
+"Common_sort_23" = "並び替え";
 
-"Common_id_1" = "Refresh";
-"Common_id_7" = "Add";
-"Common_id_8" = "Rename";
-"Common_id_9" = "Delete";
-"Common_id_10" = "Cut";
-"Common_id_11" = "Copy";
-"Common_id_12" = "Move to";
-"Common_id_13" = "Paste";
-"Common_id_14" = "Export";
-"Common_id_19" = "New Folder";
-"Common_id_20" = "to iCloud";
-"Menu_ToPc" = "Send to PC";
-"Menu_ToDevice" = "Send to Device";
+"Common_id_1" = "再読み込み";
+"Common_id_7" = "追加";
+"Common_id_8" = "名前を変更";
+"Common_id_9" = "削除";
+"Common_id_10" = "切り取り";
+"Common_id_11" = "コピー";
+"Common_id_12" = "移動";
+"Common_id_13" = "貼り付け";
+"Common_id_14" = "エクスポート";
+"Common_id_19" = "新規フォルダ";
+"Common_id_20" = "iCloudへ";
+"Menu_ToPc" = "Macへ転送";
+"Menu_ToDevice" = "デバイスへ転送";
 
-"icloud_addAcount" = "Add iCloud Account";
+"icloud_addAcount" = "アカウントを追加";
 
-"MSG_COM_Deleting" = "Deleting, please wait...";
-"MSG_TranResult_UnknownFailed" = "Unknown error occurred";
-"MSG_COM_Confirm_Before_Delete" = "Are you sure you want to permanently delete the selected items?";
-"MSG_COM_Confirm_Before_Delete_2" = "Are you sure you want to permanently delete the selected item?";
-"MSG_COM_Delete_Complete" = "Deleted successfully!";
+"MSG_COM_Deleting" = "削除中、少々お待ちください...";
+"MSG_TranResult_UnknownFailed" = "不明なエラーが発生しました";
+"MSG_COM_Confirm_Before_Delete" = "選択された項目を完全に削除しますか？";
+"MSG_COM_Confirm_Before_Delete_2" = "選択された項目を完全に削除しますか？";
+"MSG_COM_Delete_Complete" = "削除完了";
 "MSG_COM_Delete_Failed" = "Deleted Failed!";
-"MSG_COM_Delete_Complete_Description_ComPlex" = "Successfully removed %@ items";
-"MSG_COM_Delete_Complete_Description" = "Successfully removed %@ item";
-"MSG_AddData_Tips" = "To enable the Flash-sync performance, please select less than %@ items to transfer.";
-"MSG_AddPhotoToDefaultAlbum" = "From AnyTrans";
-"MSG_COM_Update_DataBase" = "Updating database, please wait…";
+"MSG_COM_Delete_Complete_Description_ComPlex" = "%@個の項目が削除されました。";
+"MSG_COM_Delete_Complete_Description" = "%@個の項目が削除されました。";
+"MSG_AddData_Tips" = "転送スピードを快適に保つには、転送する項目を%@個以下にしてください。";
+"MSG_AddPhotoToDefaultAlbum" = "AllFilesからの写真";
+"MSG_COM_Update_DataBase" = "データベースを更新中、少々お待ちください…";
 
-"TransferDevice_Message_Caution" = "Please don't disconnect your device before the content transferring process finished.";
-"ImportSync_id_1" = "Preparing to sync, please wait...";
-"ImportSync_id_2" = "Preparing device data, please wait...";
-"ImportSync_id_3" = "Analyzing %@...";
-"ImportSync_id_4" = "Analyzing Completed";
-"ImportSync_id_5" = "Transferring Stopped";
-"ImportSync_id_6" = "Preparing Media Transfer";
-"ImportSync_id_7" = "Missing FFMPEG component.";
-"ImportSync_id_8" = "Converting %@ Skipped.";
-"ImportSync_id_9" = "Conversion Completed";
-"ImportSync_id_10" = "Convert to Device Supported Files";
-"ImportSync_id_11" = "Conversion Failed. File Name: %@";
-"ImportSync_id_12" = "Transferring Media";
-"ImportSync_id_13" = "Converting %@";
-"ImportSync_id_14" = "Analyzing Failed";
-"ImportSync_id_15" = "Transferring Contacts";
-"ImportSync_id_16" = "Transferring Notes";
-"ImportSync_id_17" = "Transferring Bookmarks";
-"ImportSync_id_18" = "Transferring Books";
-"ImportSync_id_19" = "Transferring Apps";
-"ImportSync_id_20" = "Preparing Transfer...";
+"TransferDevice_Message_Caution" = "データのマージが終了するまで、デバイスの接続を切断しないでください。";
+"ImportSync_id_1" = "同期の準備中、少々お待ちください...";
+"ImportSync_id_2" = "デバイスのデータを準備中、少々お待ちください...";
+"ImportSync_id_3" = "%@を分析中...";
+"ImportSync_id_4" = "分析完了";
+"ImportSync_id_5" = "転送中止";
+"ImportSync_id_6" = "メディアの転送を準備中";
+"ImportSync_id_7" = "FFMPEGコンポーネントがありません。";
+"ImportSync_id_8" = "%@の変換がスキップされました。";
+"ImportSync_id_9" = "変換完了";
+"ImportSync_id_10" = "デバイスに対応するファイルに変換";
+"ImportSync_id_11" = "変換できませんでした。ファイル名： %@";
+"ImportSync_id_12" = "メディアを転送中";
+"ImportSync_id_13" = "%@を変換中";
+"ImportSync_id_14" = "分析できませんでした";
+"ImportSync_id_15" = "連絡先を転送中";
+"ImportSync_id_16" = "メモを転送中";
+"ImportSync_id_17" = "ブックマークを転送中";
+"ImportSync_id_18" = "ブックを転送中";
+"ImportSync_id_19" = "Appを転送中";
+"ImportSync_id_20" = "転送を準備中...";
 
-"Transfer_text_complete_tips" = "Successfully transferred XXXX items.";
-"Transfer_text_complete_tip" = "Successfully transferred XXXX item.";
-"ToDevice_Message_Title" = "Transferring data to \"%@\", Please wait...";
-"Transfer_text_id_1" = "Preparing data, please wait...";
-"Transfer_Item_Title" = "Transferring %@...";
+"Transfer_text_complete_tips" = "XXXX個の項目が転送されました。";
+"Transfer_text_complete_tip" = "XXXX個の項目が転送されました。";
+"ToDevice_Message_Title" = "\"%@\"にデータを転送中、少々お待ちください…";
+"Transfer_text_id_1" = "データを準備中、 少々お待ちください...";
+"Transfer_Item_Title" = "%@を転送中...";
 
 
-"Transfer_error_id_1" = "Importing failed, please make sure your internet connection is working.";
-"Transfer_error_id_2" = "Importing failed, please contact us for a solution.";
-"Transfer_text_success" = "Transferring Success!";
+"Transfer_error_id_1" = "インポートできませんでした。お使いのインターネット接続環境をご確認ください。";
+"Transfer_error_id_2" = "インポートできませんでした。サポートまでお問い合わせください。";
+"Transfer_text_success" = "転送完了";
 
-"mediaView_id_4" = "Unknown Album";
-"mediaView_id_6" = "Unknown Genre";
+"mediaView_id_4" = "不明なアルバム";
+"mediaView_id_6" = "不明なジャンル";
 
-"Photo_Export_Set_id_1" = "Set export format for HEIC photo.";
-"Photo_Export_Set_id_2" = "Export photo in HEIC format (Support to preview in macOS High Sierra and higher).";
-"Photo_Export_Set_id_3" = "Export photo in JPG format.";
-"Photo_Export_Set_id_4" = "Set export format for Live Photo.";
-"Photo_Export_Set_id_7" = "Export Live Photo in original format.";
-"Photo_Export_Set_id_8" = "Convert Live Photo to GIF format with high quality.";
-"Photo_Export_Set_id_9" = "Convert Live Photo to GIF format with equal quality.";
-"Photo_Export_Set_id_10" = "Convert Live Photo to GIF format with low quality.";
-"Photo_Export_Set_id_11" = "Convert to MP4 format.";
-"Photo_Export_Set_id_12" = "Convert to M4V format.";
-"Photo_Export_Set_id_13" = "Remind me to set before exporting photo.";
-"Photo_Export_Set_id_14" = "Do you want to change photo export setting?";
-"Photo_Export_Set_id_15" = "Keep the date info that was originally created on your device.";
-"SettingView_id_9" = "Export Path:";
+"Photo_Export_Set_id_1" = "HEIC画像出力設定";
+"Photo_Export_Set_id_2" = "HEIC形式で出力する（macOS High Sierra以降でプレビュー可能）";
+"Photo_Export_Set_id_3" = "JPG形式で出力する";
+"Photo_Export_Set_id_4" = "Live Photos（ライブフォト）出力設定";
+"Photo_Export_Set_id_7" = "元の形式で出力する<";
+"Photo_Export_Set_id_8" = "高画質のGIFに変換する";
+"Photo_Export_Set_id_9" = "通常画質のGIFに変換する";
+"Photo_Export_Set_id_10" = "低画質のGIFに変換する";
+"Photo_Export_Set_id_11" = "MP4に変換する";
+"Photo_Export_Set_id_12" = "M4Vに変換する";
+"Photo_Export_Set_id_13" = "エクスポートする前に通知する";
+"Photo_Export_Set_id_14" = "写真の出力形式を設定しますか？";
+"Photo_Export_Set_id_15" = "デバイスでのオリジナルな作成時間を維持します。";
+"SettingView_id_9" = "出力先:";
 
-"Connect_No_Driver_Txt" = "It seems you didn't install Apple iDevice driver on your PC, but AnyTrans needs them to communicate with your device. It's recommended to launch DriverInstall program to install them automatically.";
-"Playlist_id_2" = "Playlist Name:";
-"System_id_6" = "Import files";
-"CreateFileError" = "Cannot copy files to this folder. Please choose another one and retry.";
+"Connect_No_Driver_Txt" = "お使いのPCに、AllFilesの動作に必要なApple iDeviceドライバーがインストールされていないようです。DriverInstallプログラムを起動して、自動的にインストールすることをお勧めします。";
+"Playlist_id_2" = "プレイリストの名前:";
+"System_id_6" = "ファイルをインポート";
+"CreateFileError" = "このフォルダにファイルをコピーすることができません。ほかのフォルダを選択してやり直してください。";
 
 "ToTransfer_Title_TODevice" = "\"%@\"";
-"ToPCiTunes_Transfer_Title" = "Transferring to %@, please wait...";
-"Ex_Op_NoDiskSpaceSkip_ToPCiTunes" = "Not enough disk space on your computer.";
-"Ex_Op_InitiTuensAppFail_ToiTunes" = "Failed to initialize COM components.";
+"ToPCiTunes_Transfer_Title" = "%@に転送中、少々お待ちください..";
+"Ex_Op_NoDiskSpaceSkip_ToPCiTunes" = "コンピューターの空き領域が不足しています。";
+"Ex_Op_InitiTuensAppFail_ToiTunes" = "COMコンポーネントを初期化できませんでした。";
 
-"Cloud_LogginDefault_Title" = "Welcome to Cloud Driver";
-"Cloud_LogginDefault_Declare" = "We never retain any of your Apple account info or content!";
-"CloudLogin_Password_Txt" = "Password:";
+"Cloud_LogginDefault_Title" = "Cloud Driver";
+"Cloud_LogginDefault_Declare" = "Appleアカウントの情報やコンテンツは保存されません。";
+"CloudLogin_Password_Txt" = "パスワード:";
 "CloudLogin_AppleID_Txt" = "Apple ID:";
-"Cloud_Login" = "Login to Cloud";
-"Cloud_Logining" = "Logging in...";
+"Cloud_Login" = "iCloudへサインイン";
+"Cloud_Logining" = "サインイン中...";
 
-"iCloud_id_1" = "Please enter your Apple ID and password to log into your iCloud account.";
-"iCloud_id_2" = "We never retain any of your Apple account info or content!";
-"iCloud_id_3" = "Scan previously downloaded iCloud backup files without logging in >>";
-"iCloud_id_4" = "Your Apple ID or Password is incorrect. Please check it and try again.";
-"iCloud_id_14" = "Analyzing files";
-"iCloudLogin_View_Remeberme" = "Remeber me";
-"iCloudLogin_View_codeTips1" = "Please enter the verification code to continue.";
-"iCloudLogin_SecurityView_codeTips" = "You have turned on two-factor authentication. Please enter the verification code displayed on your iOS device to continue.";
-"iCloudLogin_View_NotReceiveCode" = "No verification code displayed on my device.";
-"iCloudLogin_View_Resend" = "Resend Code";
-"iCloudLogin_View_SendByMessage" = "Text Me";
-"iCloudLogin_View_Help" = "Need Help?";
-"iCloudLogin_View_ForbidenTip" = "你的账户已被禁用";
-"iCloudLogin_View_FrequetlyTip" = "频繁使用，请过一会再登录";
+"iCloud_id_1" = "iCloudアカウントにログインするために、Apple IDとパスワードを入力してください。";
+"iCloud_id_2" = "Appleアカウントの情報やコンテンツは保存されません";
+"iCloud_id_3" = "ログインせずにダウンロード済みのiCloudバックアップをスキャンする >>";
+"iCloud_id_4" = "Apple IDまたはパスワードが正しくありません。入力内容を確認し、再度お試しください。";
+"iCloud_id_5" = "インターネットに接続できませんでした。再度ログインしてお試しください。";
+"iCloud_id_6" = "不明なエラー";
+"iCloud_id_14" = "ファイルを分析中";
+"iCloudLogin_View_Remeberme" = "サインインしたままにする";
+"iCloudLogin_View_codeTips1" = "Apple IDまたはパスワードが正しくありません。入力内容を確認し、再度お試しください。";
+"iCloudLogin_SecurityView_codeTips" = "Apple IDの2ファクタ認証を有効にしました。 続行するには、iOSデバイスに表示されている確認コードを入力してください。";
+"iCloudLogin_View_NotReceiveCode" = "iOSデバイスに確認コードが表示されません。";
+"iCloudLogin_View_Resend" = "コードを再送信する";
+"iCloudLogin_View_SendByMessage" = "送信する";
+"iCloudLogin_View_Help" = "ヘルプページへ";
+"iCloudLogin_View_ForbidenTip" = "あなたのアカウントは一時的に無効になっています。";
+"iCloudLogin_View_FrequetlyTip" = "あなたのアカウントは頻繁に利用されているため、現在サインインできません。時間をおいてお試しください";
 
-"iCloudLogin_View_Verify" = "Verifying…";
-"iCloudLogin_View_codeTips2" = "Invalid verification code, please resend it to your device.";
-"iCloudLogin_View_codeTips3" = "Verification failed, please check and re-enter the verification code.";
-"iCloudLogin_View_SendCode_Fail" = "Failed to send verification code, please try again.";
-"iCloudLogin_View_Login_Fail" = "Failed to log in, please try again.";
-"iCloudLogin_View_SendCode_Success" = "A message with a verification code has been sent to your devices. Please enter the code to continue.";
-"iCloudLogin_View_Input_NewCode" = "Too many verification codes sent. Please enter the last one displayed on one of your devices, or try again later.";
-"iCloudLogin_View_Account_Locked" = "This Apple ID has been locked for security reasons. You must unlock it before signing in.";
-"iCloudLogin_View_Unlock_Account" = "Unlock Account";
-"iCloudLogin_View_Input_Toomany_ErrorCode" = "Verification code incorrectly entered too many times. Please try again later.";
-"iCloudLogin_View_Waitting" = "正在登录，请等待...";
+"iCloudLogin_View_Verify" = "確認中...";
+"iCloudLogin_View_codeTips2" = "確認コードが無効です。デバイスに再送信してください。";
+"iCloudLogin_View_codeTips3" = "認証に失敗しました。確認コードをチェックして再入力してください。";
+"iCloudLogin_View_SendCode_Fail" = "認証に失敗しました。確認コードをチェックして再入力してください。";
+"iCloudLogin_View_Login_Fail" = "サインインに失敗しました。再度お試しください。";
+"iCloudLogin_View_SendCode_Success" = "確認コードのメッセージがデバイスに送信されました。続行するにはコードを入力してください。";
+"iCloudLogin_View_Input_NewCode" = "認証コードが多すぎます。最新のコードを入力するか、時間をおいてお試しください。";
+"iCloudLogin_View_Account_Locked" = "このApple IDはセキュリティ上の理由からロックされています。ロックを解除してください。";
+"iCloudLogin_View_Unlock_Account" = "アカウントのロックを解除";
+"iCloudLogin_View_Input_Toomany_ErrorCode" = "間違った確認コードが複数回入力されました。時間をおいてお試しください。";
+"iCloudLogin_View_Waitting" = "サインイン中、少々お待ちください...";
 
-"MSG_COM_Moving" = "Moving, please wait...";
-"MoveFileWindowTitle" = "Select the target location you want move:";
-"common_id_33" = "Please enter the password to unlock the device.";
-"MSG_COM_transfer" = "No %@ to transfer.";
+"MSG_COM_Moving" = "移動中、少々お待ちください...";
+"MoveFileWindowTitle" = "移動先を選択する:";
+"common_id_33" = "パスワードを入力して、デバイスのロックを解除してください。";
+"MSG_COM_transfer" = "転送できる%@がありません。";
 
-"UIMSG_COM_NoDevice" = "My device";
+"UIMSG_COM_NoDevice" = "マイデバイス";
 "UIMSG_COM_NoiCloud" = "iCloud";
 "UIMSG_COM_NoDropbox" = "Dropbox";
 
-"FileManagerMenuItem_MoveConfirm1" = "Are you sure you want to move the selected items?";
-"FileManagerMenuItem_MoveConfirm" = "Are you sure you want to move the selected item?";
+"FileManagerMenuItem_MoveConfirm1" = "選択された項目を移動しますか。";
+"FileManagerMenuItem_MoveConfirm" = "選択された項目を移動しますか。";
 
 "NotConnectiCLoudTitle" = "iCloud";
-"NotConnectiCloudTips" = "iCloud描述";
-"NotConnectiCloudLoginingTips" = "正在登录iCloud....";
+"NotConnectiCloudTips" = "安全に保存。簡単に共有";
+"NotConnectiCloudLoginingTips" = "iCloudへサインイン中....";
 "NotConnectiCloudMouseEnter" = "iCloud ->";
 "NotConnectDropBoxTitle" = "Dropbox";
-"NotConnectDropBoxTips" = "Dropbox描述";
-"NotConnectDropBoxLoginingTips" = "正在登录Dropbox....";
-"ConnectedDropBoxTips" = "已经登录Dropbox描述";
+"NotConnectDropBoxTips" = "どこからでもファイルにアクセス";
+"NotConnectDropBoxLoginingTips" = "Dropboxへサインイン中....";
+"ConnectedDropBoxTips" = "Dropboxにサインインしました";
 "NotConnectDropBoxMouseEnter" = "Dropbox ->";
-"NotConnectDeviceTitle" = "Device";
-"NotConnectDeviceTips" = "Device描述";
-"ConnectedDeviceTips" = "已经连接了设备";
-"NotConnectDeviceMouseEnter" = "Device ->";
-"System_id_1" = "You can only select one item to rename.";
+"NotConnectDeviceTitle" = "デバイスマネージャー";
+"NotConnectDeviceTips" = "マルチデバイスの管理が可能。";
+"ConnectedDeviceTips" = "デバイスマネージャー";
+"NotConnectDeviceMouseEnter" = "デバイス ->";
+"System_id_1" = "名前を変更する際は一つの項目だけを選択できます";
 
 
-"search_control_seraching" = "Searching...";
+"search_control_seraching" = "検索中...";
 
-"InputNewName" = "InputNewName";
+"InputNewName" = "新しい名前を入力する";
 
 "UIParentNodeName" = "Cloud";
-"CloudNotLogin" = "未登录";
-"CloudLogined" = "已登录";
-"DeviceConnected" = "已连接";
+"CloudNotLogin" = "サインインしていない";
+"CloudLogined" = "サインイン済み";
+"DeviceConnected" = "接続済み";
 
-"TransferDetails_Upload" = "Upload";
-"TransferDetails_Sync" = "Sync";
+"TransferDetails_Upload" = "アップロード";
+"TransferDetails_Sync" = "ダウンロード";
 
-"BackWordBtn" = "后退";
-"MenuItem_id_11" = "Photo Stream";
-"MenuItem_id_12" = "Photo Library";
-"TransferDetails_StopAll" = "All Stop";
-"TransferDetails_History" = "History";
-"SearchControlDefaultText" = "请输入要搜索的内容";
-"DuplicateName" = "此位置已经包含同名文件。";
-"BackHomeReturn" = "Back Home";
-"cloud_NoFolders_MoveConfirm" = "There is no folder you can move.";
-"cloud_NoItems_MoveConfirm" = "There is no folder you can move.";
+"BackWordBtn" = "戻る";
+"MenuItem_id_11" = "フォトストリーム";
+"MenuItem_id_12" = "フォトライブラリ";
+"TransferDetails_StopAll" = "全部を停止";
+"TransferDetails_History" = "履歴";
+"SearchControlDefaultText" = "検索するキーワードを入力する";
+"DuplicateName" = "既に同名のファイルが存在しています。";
+"BackHomeReturn" = "戻る";
+"cloud_NoFolders_MoveConfirm" = "移動できるフォルダはありません。";
+"cloud_NoItems_MoveConfirm" = "移動できるフォルダはありません。";
 
-"iCloudLogin_Load_Error" = "Can't load icloud drive.";
-"Common_id_2" = "FileInfo";
-"PortableDevice_Title_1" = "The installation of your %@ portable driver is not correct";
-"PortableDevice_Setup_1_Open" = "Click to open the device manager";
-"PortableDevice_Setup_1" = "Please find Apple portable device in device manager, and right-click to uninstall the device driver.";
-"PortableDevice_Setup_2" = "After uninstall completed, please unplug your device and reconnect it.";
+"iCloudLogin_Load_Error" = "iCloud Driveにアクセスできません。";
+"Common_id_2" = "詳細";
+"PortableDevice_Title_1" = "あなたの %@ のポータブルドライバーのインストールが正しくありません";
+"PortableDevice_Setup_1_Open" = "クリックしてデバイスマネージャーを開く";
+"PortableDevice_Setup_1" = "デバイスマネージャーでApple Mobile Device USB Driverを右クリックしてアンインストールしてください。";
+"PortableDevice_Setup_2" = "ンストールが完了したら、デバイスのコネクタを外して接続してください。";
 
-"TransferUploading" = "Uploading";
-"TransferDownloading" = "Downloading";
-"TransferPaused" = "Paused";
-"TransferCompelete" = "已下载完成";
-"TransferHistoryTittle" = "Completed transfer list";
-"Clearall" = "Clear all";
-"TransferGridTittleStatus" = "状态";
+"TransferUploading" = "アップロード中";
+"TransferDownloading" = "ダウンロード中";
+"TransferPaused" = "終了";
+"TransferCompelete" = "ダウンロード済み";
+"TransferHistoryTittle" = "操作履歴リスト";
+"Clearall" = "クリーンアップ";
+"TransferGridTittleStatus" = "状態";
 "TransferGridTittleOperation" = "操作";
-"TransferFailed" = "传输失败";
-"Common_id_3" = "Preview";
-"TransferToPCView_NotExist_tips" = "文件已经不存在";
-"MenuItem_id_2" = "AppDoc";
-"MG_Transfering_tips" = "包含正在传输的项，请您重新选择操作";
-"MG_TransferingItem_tips" = "预览的项正在传输，请稍后再试";
-"MG_Preview_tips" = "正在生成预览";
+"TransferFailed" = "転送失敗";
+"Common_id_3" = "プレビュー";
+"TransferToPCView_NotExist_tips" = "指定されたファイルが見つかりません。";
+"MenuItem_id_2" = "ドキュメント";
+"MG_Transfering_tips" = "転送中の項目が含まれています。もう一度選択してください";
+"MG_TransferingItem_tips" = "転送中の項目です。後でお試しください";
+"MG_Preview_tips" = "プレビュー表示中";
 "ConnectediCloudTips" = "已经登录iCloud描述";
 "ConnectedOneDriveTips" = "已经登录OneDrive描述";
+"MoveFileTips" = "ファイル移動中 - 残り%d/%d 項目";
 
-/******************** window没有的(需要确认并替换) ************************/
-"Device_MainPage_View_Media" = "Media";
-"NO_DATA_TITLE_1" = "You have no %@ here.";
-"NO_DATA_TITLE_2" = " Click to add new content.";
-"MainWindow_iCLoudUserPlaceholder_String" = "iCloud ID";
-"mainWindow_iCloudPassWord_String" = "Pass Word";
-"MainWindow_BigSize_Dropbox_TitleString" = "DropBox Login";
-"MainWindow_BigSize_Dropbox_MessageString" = "You need to go to the website authorization";
+"mediaView_id_5" = "不明な名前";
 
-"MainWindow_BigSize_Icloud_TitleString" = "iCloud Login";
-"MainWindow_BigSize_Icloud_MessageString" = "Don't you have an account?Sign up";
-"MainWindow_BigSize_Icloud_Rememberme" = "Remember me";
-"MainWindow_BigSize_Icloud_LoginBtnString" = "Login Now";
+"Nodata_tips" = "データがありません";
+"TransferNodata_tips" = "項目がありません";
 
-"MainWindow_BigSize_Devices_Title" = "Device Manager";
-"MainWindow_BigSize_Devices_Login_Title" = "Multiple devices can be managed at the same time";
-"MainWindow_BigSize_Devices_Message" = "Can multi-device management";
-"MainWindow_BigSize_Devices_Login_Message" = "Quick links work efficiently";
+"DropBox_Login" = "サインイン";
 
-"MainWindow_iCloud_ClickTo_Login" = "Click to login →";
-"MainWindow_iCloud_Msg_String" = "For safe keeping.And easy sharing";
-"MainWindow_Dropbox_Msg_String" = "Get to your files from anywhere";
-"MainWindow_iCloud_Title_String" = "iCloud";
-"MainWindow_Dropbox_Title_String" = "Dropbox";
+"Transfer_list" = "項目リスト";
+"Transfer_ClearAll" = "クリーンアップ";
+"Transfer_History" = "テスク履歴";
+//**********************
+"Menu_ChooseLanguage" = "言語を選択";//这个可以不用，没有语言选择
+//Support联系邮箱-- =
+//"support_url" = "mailto:support@iphone-utility.com";
+"Button_id_1" = "プレイリストを追加";//"Add Playlist";
+"Button_id_2" = "アルバムを追加";//"Add Album";
+"Button_Stop" = "中止";//
+"register_text_enterLicense" = "ライセンスコード:";//"License Code:"
+"connect_help_Tips4" = "こちらをクリック"; //点击这里
+"Update_Window_Button4" = "閉じる"; //"Close"
+"iCloud_Login" = "iCloudにログイン"; //"Login to iCloud"
+"iCloud_Logining" = "ログイン中..."; //"Logging in..."
+"LoadDataTips" = "データを読み込み中...";
+"MoveFileTips2" = "项目已完成";
+"MoveFileTips_error" = "项目移动失败";
+"MG_Preview_tips_error" = "项目预览失败";
+"MG_Preview_tips_success" = "项目预览成功";
+"MenuItem_id_20" = "ユーザーストレージ";//user storage
 
-"From_Product_Name" = "From AllFiles";
+"Menu_FAQ" = "よくあるご質問（FAQ）";
+"Menu_Submit" = "お問い合わせフォーム";
+"Menu_HideOthers" = "ほかを隠す";
+"Menu_ShowAll" = "すべてを表示";
+"Menu_Window" = "ウィンドウ";
+"Menu_Minimize" = "最小化";
+"Menu_Zoom" = "ズーム";
+"Menu_BringAlltoFront" = "すべてを手前に移動";
+"Menu_Help" = "ヘルプ";
 
-"AlertView_Select_Items" = "Please select item";
-"AlertView_RunInHigherVersion" = "Your device is running iOS 8.3 or higher version, which has disabled this feature in iOS Files.";
-"AlertView_AskSureToDelete" = "Are U Sure To Delete?";
-"AlertView_Transfer_Error" = "Transfer Error" ;
-"AlertView_Transfer_Success_Format" = "SuccessCount/TotalCount:%d/%d,we're going to refresh again";
-"AlertView_RemindTo_Connect_Multi_Devices" = "Please connecet at least 2 devices";
-"AlertView_RemindTo_Loading_Data" = "Another device is loading data";
-"AlertView_Device_Need_Pwd" = "Device Needs Password";
+"Function_New_Folder" = "新しいフォルダ";
+/******************** window没有的************************/
 
+"From_Product_Name" = "ALlFilesからの写真";
+"AlertView_RemindTo_Loading_Data" = "他のデバイスが読み込み中...";
+"Transfer_completeView_transferState_Upload_Complete" = "アップロード完了";
 
-"iCloud_LoginWarnig_Wrong_UsernameOrPwd" = "Wrong username or pwd";
-"iCloud_LoginWarnig_Wrong_Passcode" = "wrong pass code";
-"iCloud_LoginWarnig_Uknown_Error" = "Uknown error";
-"iCloud_LoginWarnig_No_Reponse" = "No response";
+"Menu_Title" = "AllFiles";
+"Menu_Hide" = "AllFilesを最小化";
+"Menu_Quit" = "AllFilesを終了";
 
+"prompt_create_floder_success" = "フォルダー作成成功";
+"prompt_create_floder_failed" = "フォルダー作成失敗";
+"prompt_creating_floder" = "フォルダー作成中";
+"prompt_perview_file" = "ファイルをプレビュー中...";
 
-"NO_DATA_String" = "You have no %@ here.";
-"iCloud_content_view_file" = "files";
-"icloud_addAcount" = "添加iCloud账户";
-"icloud_add_DropBox_Acount" = "添加DropBox账户";
+//send log window
+"Log_id_6" = "ロゴファイルを送る";
+"Log_id_2" = "ご理解、ご協力ありがとうございます。";
+"Log_id_3" = "送信";
+"Log_id_5" = "ログファイルをご送信いただき、誠にありがとうございます。問題の解決を早めるため、よろしければ発生した問題について簡単にご説明いただければ幸いです。";
+"log_id_7" = "データベースからバックアップを添付";
+"Log_id_8" = "ご迷惑をおかけして申し訳ございません。問題の分析と解決のため、ログファイルをご送信いただければ幸いです。これからより良いソフトのご提供を目指し、改善してまいりますので、ご理解とご協力のほど宜しくお願いいたします。";
+"Log_loading_Str" = "圧縮中、しばらくお待ち下さい...";
 
-"iCloud_detailView_Size" = "サイズ";
-"iCloud_detailView_count" = "ファイル数";
-"iCloud_detailView_lastTime" = "更新日時";
-"iCloud_detailView_creatTime" = "作成日時";
-"Transfer_completeView_transferState_Upload_Complete" = "上传完成";
-"Menu_Title" = "iOSFiles";
-"Menu_Submit" = "Submit a request";
-"Menu_Hide" = "Hide iOSFiles";
-"Menu_HideOthers" = "Hide Others";
-"Menu_ShowAll" = "Show All";
-"Menu_Quit" = "Quit iOSFiles";
-"Menu_Window" = "Window";
-"Menu_Minimize" = "Minimize";
-"Menu_Zoom" = "Zoom";
-"Menu_BringAlltoFront" = "Bring All to Front";
-"Menu_Help" = "Help";
-/******************** window没有的(需要确认并替换) ************************/
+/**************** AllFiles Url ****************/
+"anytrans_common_home" = "https://www.iphone-utility.com/allfiles";
+
+"FAQ_Url" = "https://www.iphone-utility.com/faq/allfiles.htm";
+
+"imobie_home" = "https://www.iphone-utility.com";
+
+"support_url" = "support@iphone-utility.com";
+
+"mailto_sendLog_url" = "mailto:support@iphone-utility.com";
+
+"update_url_1" = "https://www.iphone-utility.com/download/update.plist";
+"update_url_2" = "AllFiles.plist";
+
+"submit_request" = "https://www.iphone-utility.com/contact.htm";
+
+//<!--Update窗口中的Download地址-->
+"Download_Url" = "https://www.iphone-utility.com/allfiles/update.htm";
+
+"allfiles_guide" = "https://www.iphone-utility.com/allfiles/manual.htm";
+
+/**************** AllFiles Url ****************/

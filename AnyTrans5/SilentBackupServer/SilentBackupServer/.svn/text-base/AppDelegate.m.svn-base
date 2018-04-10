@@ -124,6 +124,22 @@
         _langStr = langStr;
         break;
     }
+    if ([_langStr isEqualToString:@""]) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *path = [[[[[fm URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] objectAtIndex:0] path] stringByAppendingPathComponent:@"Preferences"] stringByAppendingPathComponent:@"com.imobie.AnyTrans.plist"];
+        
+        if([fm fileExistsAtPath:path]) {
+            NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:path];
+            NSArray *array = [dic objectForKey:@"AppleLanguages"];
+            if (array.count > 0) {
+                _langStr = [array objectAtIndex:0];
+                [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"anytrans language:%@",_langStr]];
+            }else {
+                _langStr = @"en";
+            }
+        }
+    }
+    
     NSString *langPath = [[NSBundle mainBundle] pathForResource:_langStr ofType:@".lproj"];
     if (![[NSFileManager defaultManager] fileExistsAtPath:langPath]) {
         _langStr = @"en";

@@ -1211,7 +1211,7 @@
         [_transferController release];
         _transferController = nil;
     }
-    _transferController = [[IMBTransferViewController alloc] initWithType:Category_Notes withDelegate:self withTransfertype:TransferSync withIsicloudView:YES];
+    _transferController = [[IMBTransferViewController alloc] initWithType:Category_Notes withDelegate:self withTransfertype:TransferSync withIsicloudView:NO];
     [_transferController setDelegate:self];
     if (result>0) {
         [self animationAddTransferViewfromRight:_transferController.view AnnoyVC:annoyVC];
@@ -1547,13 +1547,14 @@
         [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"%@",noteDic]];
         dataAry = [noteDic objectForKey:@"records"];
         count = (int)dataAry.count;
-    }
-
-    for (int i = 0; i <= 100; i++) {
-        if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
-            [_transferController transferProgress:i];
+        
+        for (int i = 0; i <= 100; i++) {
+            if ([_transferController respondsToSelector:@selector(transferProgress:)]) {
+                [_transferController transferProgress:i];
+            }
         }
     }
+    
     double delayInSeconds = 2.0;
 
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));

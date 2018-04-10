@@ -11,6 +11,7 @@
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
 #import "StringHelper.h"
+#import "IMBAMFileSystem.h"
 @implementation IMBFileSystemManager
 @synthesize delegate = _delegate;
 @synthesize curItems =  _curItems;
@@ -73,6 +74,7 @@ static int fileCount = 0;
             filePath = [path stringByAppendingPathComponent:fileName];
         }
         SimpleNode *node = [[SimpleNode alloc] initWithName:fileName];
+        node.fileName = [fileName stringByDeletingPathExtension];
         node.path = filePath;
         node.parentPath = path;
         NSDictionary *fileDic = [afcMedia getFileInfo:filePath];
@@ -96,34 +98,7 @@ static int fileCount = 0;
         }else {
             node.container = NO;
             node.itemSize = [[fileDic objectForKey:@"st_size"] longLongValue];
-            FileTypeEnum type = [StringHelper getFileFormatWithExtension:extension];
-            NSImage *image;
-            if (type == ImageFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_img"];
-            } else if (type == MusicFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_music"];
-            } else if (type == MovieFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_video"];
-            } else if (type == TxtFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_txt"];
-            } else if (type == DocFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_doc"];
-            } else if (type == BookFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_books"];
-            } else if (type == PPtFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_ppt"];
-            } else if (type == ZIPFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_zip"];
-            } else if (type == dmgFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_dmg"];
-            } else if (type == contactFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_contacts"];
-            } else if (type == excelFile) {
-                image = [NSImage imageNamed:@"cnt_fileicon_excel"];
-            } else {
-                image = [NSImage imageNamed:@"cnt_fileicon_common"];
-            }
-            node.image = image;
+            node.image = [TempHelper loadFileImage:extension];
         }
         [nodeArray addObject:node];
         [node release];
@@ -144,10 +119,6 @@ static int fileCount = 0;
             if ([afcMediaDir fileExistsAtPath:node.path]) {
                 [afcMediaDir unlink:node.path];
             }
-            _curItems ++;
-            if ([_delegate respondsToSelector:@selector(setDeleteCurItems:)]) {
-                [_delegate setDeleteCurItems:_curItems];
-            }
         }
     }
 }
@@ -159,11 +130,13 @@ static int fileCount = 0;
 
     NSString *newfilePath = [filePath stringByReplacingOccurrencesOfString:oldfileName withString:fileName];
     BOOL success = [_ipod.fileSystem rename:filePath newPath:newfilePath];
-    if (success) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            node.fileName = fileName;
-            node.path = newfilePath;
-        });
+    return success;
+}
+
+- (BOOL)createFolder:(NSString *)newPath {
+    BOOL success = NO;
+    if (![_ipod.fileSystem fileExistsAtPath:newPath]) {
+        success = [_ipod.fileSystem mkDir:newPath];
     }
     return success;
 }
@@ -224,6 +197,36 @@ static int fileCount = 0;
         }
     }
     return fileCount;
+}
+
+- (BOOL)moveFile:(NSString *)oriPath desPath:(NSString *)desPath isFolder:(BOOL)isFolder {
+    BOOL success = NO;
+    if ([_ipod.fileSystem fileExistsAtPath:oriPath]) {
+        if (isFolder) {
+            if (![_ipod.fileSystem fileExistsAtPath:desPath]) {
+                success = [_ipod.fileSystem mkDir:desPath];
+            }
+            NSArray *arr = [self getFirstContent:oriPath afcMedia:[(IMBAMFileSystem *)_ipod.fileSystem mediaDirectory]];
+            for (SimpleNode *singleNode in arr) {
+                NSString *path = @"";
+                if (singleNode.container) {
+                    path = [desPath stringByAppendingPathComponent:singleNode.fileName];
+                }else {
+                    path = [desPath stringByAppendingPathComponent:[singleNode.fileName stringByAppendingPathExtension:singleNode.extension]];
+                }
+                success = [self moveFile:singleNode.path desPath:path isFolder:singleNode.container];
+            }
+            if (success) {
+                success = [_ipod.fileSystem unlinkFolder:oriPath];
+            }
+        }else {
+            success = [_ipod.fileSystem copyFile:oriPath copyTo:desPath];
+            if (success) {
+                success = [_ipod.fileSystem unlink:oriPath];
+            }
+        }
+    }
+    return success;
 }
 
 - (void)dealloc

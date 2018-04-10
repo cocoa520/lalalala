@@ -29,7 +29,10 @@
     BOOL _isEdit;
     BOOL _isEditing;
     BOOL _isCreate;
+    BOOL _isCreating;
+    NSString *_filePath;
 }
+@property (nonatomic, assign) BOOL isCreating;
 @property (nonatomic, assign) BOOL isCreate;
 @property (nonatomic, assign) BOOL isEditing;
 @property (nonatomic, assign) BOOL isEdit;
@@ -49,4 +52,5 @@
 @property(nonatomic, assign)CheckStateEnum checkState;
 @property(nonatomic,retain)NSImage  *image;
 @property (nonatomic, retain) NSString *zone;
+@property (nonatomic, retain) NSString *filePath;
 @end

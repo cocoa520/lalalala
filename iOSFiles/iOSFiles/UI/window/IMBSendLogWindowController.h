@@ -24,14 +24,13 @@
     NSFileManager *fm;
     IMBLogManager *logHandle;
     NSString *_sendLogZipPath;
-    IBOutlet IMBWhiteView *_whiteView;
     IBOutlet IMBCheckBtn *_checkBoxBtn;
     IBOutlet NSTextField *_checkTitleStr;
     IBOutlet IMBDottedlLineView *_dottedLineView;
     IBOutlet NSTextField *_loadingString;
     IBOutlet NSImageView *_loadingImg;
 
+    IBOutlet NSView *_loadingView;
 }
-
 
 @end

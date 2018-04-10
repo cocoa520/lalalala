@@ -21,7 +21,7 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
-    NSImage *iconImage = [NSImage imageNamed:@"device_icon_iPhone_gray.png"];
+    NSImage *iconImage = [NSImage imageNamed:@"popup_icon_iphone_gray"];
     [iconImage setResizingMode:NSImageResizingModeStretch];
     int xPos = _iconX;
     NSRect imageRect;

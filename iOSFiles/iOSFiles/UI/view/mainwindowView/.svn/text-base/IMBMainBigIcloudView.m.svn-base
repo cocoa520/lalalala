@@ -21,19 +21,19 @@
 }
 
 - (void)awakeFromNib {
-    _titleLabel.stringValue = CustomLocalizedString(@"MainWindow_BigSize_Icloud_TitleString", nil);
+    _titleLabel.stringValue = CustomLocalizedString(@"MenuItem_id_18", nil);
     [_titleLabel setFont:[NSFont fontWithName:IMBCommonFont size:18.0]];
     [_titleLabel setTextColor:COLOR_TEXT_ORDINARY];
     
-    [_messageLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_MessageString", nil)];
+    [_messageLabel setStringValue:CustomLocalizedString(@"iCloud_id_2", nil)];
     [_messageLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
     [_messageLabel setTextColor:COLOR_TEXT_EXPLAIN];
     
-    [_rememberMeLabel setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_Rememberme", nil)];
+    [_rememberMeLabel setStringValue:CustomLocalizedString(@"iCloudLogin_View_Remeberme", nil)];
     [_rememberMeLabel setFont:[NSFont fontWithName:IMBCommonFont size:12.0]];
     [_rememberMeLabel setTextColor:COLOR_MAINWINDOW_REMEMBENME_TEXT];
     
-    [_loginBtn setStringValue:CustomLocalizedString(@"MainWindow_BigSize_Icloud_LoginBtnString", nil)];
+    [_loginBtn setButtonTitle:CustomLocalizedString(@"Cloud_Login", nil)];
     
     [_icloudLoginPwdTF setPlaceholderString:CustomLocalizedString(@"CloudLogin_Password_Txt", nil)];
     [_icloudLoginPwdTF setFont:[NSFont fontWithName:IMBCommonFont size:14.0]];

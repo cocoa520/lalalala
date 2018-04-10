@@ -181,13 +181,19 @@
                                 NSString *heicFilePath = filePath;
                                 NSString *inputFilePath = [TempHelper getAppTempPath];
                                 NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
-                                NSString *fileType = @"jpg";
-                                nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+                                NSString *fileType = @"png";
+                                nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
                                 [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
                                 [pM startConvert];
                                 dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
                                 dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                                    [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                    if ([_fileManager fileExistsAtPath:nowPath]) {
+                                        NSString *newNameExtension = [[nowPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+                                        [_fileManager moveItemAtPath:nowPath toPath:newNameExtension error:nil];
+                                        if ([_fileManager fileExistsAtPath:heicFilePath]) {
+                                            [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                        }
+                                    }
                                 });
                             }
                         }else{
@@ -281,13 +287,18 @@
                                     NSString *heicFilePath = filePath;
                                     NSString *inputFilePath = [TempHelper getAppTempPath];
                                     NSString *outputFilePath = [filePath stringByDeletingLastPathComponent];
-                                    NSString *fileType = @"jpg";
+                                    NSString *fileType = @"png";
+                                    nowPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
                                     [pM initParamsWithHeic:heicFilePath withInputPath:inputFilePath withOutputPath:outputFilePath withFileType:fileType];
                                     [pM startConvert];
                                     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2/*延迟执行时间*/ * NSEC_PER_SEC));
                                     dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                                        if([_fileManager fileExistsAtPath:heicFilePath]){
-                                            [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                        if ([_fileManager fileExistsAtPath:nowPath]) {                                            
+                                            NSString *newNameExtension = [[nowPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+                                            [_fileManager moveItemAtPath:nowPath toPath:newNameExtension error:nil];
+                                            if([_fileManager fileExistsAtPath:heicFilePath]){
+                                                [_fileManager removeItemAtPath:heicFilePath error:nil];
+                                            }
                                         }
                                      
                                     });

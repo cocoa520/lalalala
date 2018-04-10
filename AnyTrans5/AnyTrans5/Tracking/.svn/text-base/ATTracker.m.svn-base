@@ -327,6 +327,30 @@ static ATTracker *_instance = nil;
             }
         }
             break;
+        case ChooseBrowser: {
+            @autoreleasepool {
+                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to chose Browser", @"el": [NSString stringWithFormat:@"browser=%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                if (parameters != nil) {
+                    for (NSString *key in parameters) {
+                        [params setObject:[parameters valueForKey:key] forKey:key];
+                    }
+                }
+                [self send:@"event" andParams:params];
+            }
+        }
+            break;
+        case Try: {
+            @autoreleasepool {
+                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to try AnyTrans for Mac", @"el": [NSString stringWithFormat:@"status=%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                if (parameters != nil) {
+                    for (NSString *key in parameters) {
+                        [params setObject:[parameters valueForKey:key] forKey:key];
+                    }
+                }
+                [self send:@"event" andParams:params];
+            }
+        }
+            break;
         case Buy: {
             @autoreleasepool {
                 NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to buy AnyTrans for Mac", @"el": [NSString stringWithFormat:@"Software language: %@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
@@ -353,7 +377,7 @@ static ATTracker *_instance = nil;
             break;
         case Activate: {
             @autoreleasepool {
-                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to activate AnyTrans for Mac", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Click to activate AnyTrans for Mac", @"el": [NSString stringWithFormat:@"status=%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
                 if (parameters != nil) {
                     for (NSString *key in parameters) {
                         [params setObject:[parameters valueForKey:key] forKey:key];
@@ -957,7 +981,7 @@ static ATTracker *_instance = nil;
                     break;
                 case AdAnnoy:
                     @autoreleasepool {
-                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Ad annoy", @"el": [NSString stringWithFormat:@"%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
+                        NSMutableDictionary *params = [[[NSMutableDictionary alloc] initWithDictionary:@{@"ec": [NSString stringWithFormat:@"%@", categoryName], @"ea": @"Ad annoy", @"el": [NSString stringWithFormat:@"status=%@", actionParams], @"cd": [NSString stringWithFormat:@"%@", screenName], @"ul": [NSString stringWithFormat:@"%@", userLanguageName]}] autorelease];
                         if (parameters != nil) {
                             for (NSString *key in parameters) {
                                 [params setObject:[parameters valueForKey:key] forKey:key];

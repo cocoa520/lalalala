@@ -21,7 +21,7 @@
 @implementation IMBAirSyncImportBetweenDeviceTransfer
 @synthesize infomationCount = _infomationCount;
 @synthesize delegate = _delegate;
-
+@synthesize driveItem = _driveItem;
 
 - (void)setIsStop:(BOOL)isStop {
     if (_athSync != nil) {
@@ -204,6 +204,15 @@
     if ([_transferDelegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
         [_transferDelegate transferComplete:_successCount TotalCount:allCount];
     }
+   dispatch_async(dispatch_get_main_queue(), ^{
+       if (_successCount == 0) {
+           _driveItem.fileSize = _totalSize;
+           _driveItem.state = UploadStateError;
+       }else {
+           _driveItem.fileSize = _totalSize;
+           _driveItem.state = UploadStateComplete;
+       }
+   });
     [_ipod endSync];
     _ipod.beingSynchronized = NO;
 }
@@ -1377,6 +1386,8 @@
     }
     if (reslut) {
         _successCount ++;
+        _currentDriveItem.currentSize = _successCount;
+        _currentDriveItem.progress = (double)_successCount/_currentDriveItem.speed *100;
     }
     return reslut;
 }

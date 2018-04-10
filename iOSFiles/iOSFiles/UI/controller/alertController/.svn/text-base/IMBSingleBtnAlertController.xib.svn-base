@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1314" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -18,22 +18,28 @@
             <rect key="frame" x="0.0" y="0.0" width="398" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ov-ZA-XJc">
-                    <rect key="frame" x="20" y="74" width="46" height="46"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9ov-ZA-XJc">
+                    <rect key="frame" x="20" y="70" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="alert_icon" id="LdE-IR-1Cp"/>
                 </imageView>
-                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcA-cW-n84" customClass="IMBMyDrawCommonly">
+                <button focusRingType="none" id="wcA-cW-n84" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="293" y="20" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="87FCEC75-ED9A-45BF-AB6C-F945E56A4406" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0pT-3D-Mly">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="4CB57CC6-028F-4C20-82FD-30D7B2E5186E" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0pT-3D-Mly">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="12" name="HelveticaNeue"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     </buttonCell>
                     <connections>
                         <action selector="singleBtnViewOKClicked:" target="-2" id="EPL-0J-KdM"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6z-ug-QDK">
-                    <rect key="frame" x="86" y="36" width="294" height="84"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="L6z-ug-QDK">
+                    <rect key="frame" x="80" y="40" width="294" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Do you really want to delete the selec-ted files?" id="WHR-f1-lfP">
                         <font key="font" size="14" name="HelveticaNeue"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +51,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="87FCEC75-ED9A-45BF-AB6C-F945E56A4406" width="1" height="1">
+        <image name="4CB57CC6-028F-4C20-82FD-30D7B2E5186E" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

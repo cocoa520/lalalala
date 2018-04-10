@@ -51,7 +51,7 @@
     [attrText setValue:color forKey:NSForegroundColorAttributeName];
     [attrText setValue:[NSFont fontWithName:IMBCommonFont size:12.0] forKey:NSFontAttributeName];
     [attrText setValue:pghStyle forKey:NSParagraphStyleAttributeName];
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"Go Now →" attributes:attrText];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"NotConnectDropBoxMouseEnter", nil) attributes:attrText];
     [self setAttributedTitle:attrString];
     
     [pghStyle release];

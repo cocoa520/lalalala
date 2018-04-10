@@ -11,7 +11,7 @@
 #import "IMBiPod.h"
 
 #define AppConfigName @"iMobieAppConfig.plist"
-#define AppDeviceConfigPath @"iMobieConfig"
+#define AppDeviceConfigPath @"config"
 @interface IMBAppConfig : NSObject {
     IMBiPod *_ipod;
     NSString *_configDevicePath;

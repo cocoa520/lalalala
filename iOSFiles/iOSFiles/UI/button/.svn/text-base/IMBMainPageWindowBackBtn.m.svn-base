@@ -19,6 +19,8 @@
 
 @implementation IMBMainPageWindowBackBtn
 
+@synthesize enable = _enable;
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
@@ -27,7 +29,7 @@
         NSImage *iconImage =[[NSImage alloc] initWithSize:NSMakeSize(10.f, 10.f)];
         iconImage = [NSImage imageNamed:_imgStirng];
         [iconImage setResizingMode:NSImageResizingModeTile];
-        int xPos = 0;
+        int xPos = -1.f;
         NSRect imageRect;
         imageRect.origin = NSZeroPoint ;
         imageRect.size = NSMakeSize(iconImage.size.width , iconImage.size.height );
@@ -36,8 +38,6 @@
         drawingRect.size = imageRect.size;
         [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
-    
-    
 }
 
 - (void)awakeFromNib {
@@ -45,6 +45,7 @@
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
     
     _imgStirng = @"navbar_icon_rt_back";
+    _enable = YES;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
@@ -52,6 +53,7 @@
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
+    if (!_enable) return;
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
     [NSApp sendAction:self.action to:self.target from:self];
     _imgStirng = @"navbar_icon_rt_back";
@@ -59,12 +61,13 @@
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
-    
+    if (!_enable) return;
     [self setTitleAttrWithTitleColor:COLOR_MAINWINDOW_MESSAGE_BLUE_TEXT];
     _imgStirng = @"navbar_icon_rt_back_hover";
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
+    if (!_enable) return;
     [self setTitleAttrWithTitleColor:COLOR_MAINPAGE_BACK];
     _imgStirng = @"navbar_icon_rt_back";
 }
@@ -76,7 +79,7 @@
     [attrText setValue:color forKey:NSForegroundColorAttributeName];
     [attrText setValue:[NSFont fontWithName:IMBCommonFont size:14.0] forKey:NSFontAttributeName];
     [attrText setValue:pghStyle forKey:NSParagraphStyleAttributeName];
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"home" attributes:attrText];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"BackHomeReturn", nil) attributes:attrText];
     [self setAttributedTitle:attrString];
     
     [pghStyle release];

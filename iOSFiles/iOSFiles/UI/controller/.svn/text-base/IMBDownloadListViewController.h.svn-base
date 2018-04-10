@@ -18,13 +18,13 @@
 #import "IMBBorderRectAndColorView.h"
 #import "IMBDownWhiteView.h"
 #import "IMBiPod.h"
+#import "IMBHoverChangeImageBtn.h"
 @interface IMBDownloadListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,NSTextViewDelegate>
 {
     IBOutlet IMBBorderRectAndColorView *mainBgView;
     IBOutlet IMBBasedViewTableView *_tableView;
 
     NSMutableArray *_downloadDataSource;
-    NSMutableArray *_uploadDataSource;
     NSOperationQueue *_operationQueue;
     IBOutlet NSBox *_contentBox;
     IBOutlet NSImageView *_nodataImageView;
@@ -44,16 +44,23 @@
     int _upCount;
     NSString *_exportPath;
     ChooseLoginModelEnum _chooseModeEnum;
+    CategoryNodesEnum _categoryEnum;
     BOOL _isDownLoadData;
     id _delegate;
     BOOL _isdeiveData;
     long long _sysSize;
+    IMBHoverChangeImageBtn *_transferBtn;
+    NSString *_appKey;
+    BOOL _isAllUpLoad;//是否是上次数据，上次完成刷新界面
 }
 @property (nonatomic,assign) id delagete;
 @property (nonatomic,retain)NSString *exportPath;
 @property (nonatomic,retain)IMBiPod *iPod;
 @property (nonatomic,retain)NSMutableArray *downloadDataSource;
 @property (nonatomic,retain)IMBDriveBaseManage *deviceManager;
+@property (nonatomic,retain)NSString *appKey;
+@property (nonatomic, assign) CategoryNodesEnum categoryEnum;
+
 /**
  *  给进度赋值
  *  @param addDataSource  选择的数据 分为文件和文件夹
@@ -64,12 +71,23 @@
  */
 - (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath;
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
-- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
+- (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID;
+- (void)toDeviceAddDataSorue:(NSMutableArray *)addDataSource withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum srciPodKey:(NSString *)srcIpodKey desiPodKey:(NSString *)desiPodKey;
 
+/**
+ *  toiCloud
+ *  @param addDataSource  选择的数据 分为文件和文件夹
+ *  @param driveBaseManage  目标云对象
+ */
+- (void)toiCloudBaseManager:(IMBDriveBaseManage *)driveBaseManage withAddDataSorue:(NSMutableArray *)addDataSource ;
+
+- (void)downDeviceDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath;
 - (void)reloadData:(BOOL)isAdd;
 - (void)reloadBgview;
 
 - (void)switchUpDownViewAndDownView;
 
 - (void)removeAllUpOrDownData;
+
+-(void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn;
 @end

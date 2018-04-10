@@ -70,7 +70,7 @@
     }else if (mode == 7) {
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     }
-
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
     NSString *returnString = [dateFormatter stringFromDate:date];
     [dateFormatter release];
     return returnString;
@@ -299,6 +299,7 @@
     }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
     [dateFormatter setDateFormat:formate];
     NSDate *destDate= [dateFormatter dateFromString:dateString];
     [dateFormatter release];

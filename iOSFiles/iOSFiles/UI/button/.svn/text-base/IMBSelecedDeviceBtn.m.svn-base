@@ -122,7 +122,7 @@
                 drawingRect.size = imageRect.size;
                 [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
             }else {
-                iconImage = [NSImage imageNamed:@"device_icon_iPhone_selected"];
+                iconImage = [NSImage imageNamed:@"popup_icon_iphone_blue"];
                 [iconImage setResizingMode:NSImageResizingModeStretch];
                 int  xPos = 0;
                 if (_isShowTrangle) {
@@ -134,7 +134,7 @@
                 NSRect imageRect;
                 imageRect.origin = NSZeroPoint ;
                 imageRect.size = iconImage.size;
-                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 6);
+                drawingRect.origin = NSMakePoint(NSMinX(dirtyRect) + xPos , 4);
                 drawingRect.size = imageRect.size;
                 [iconImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
             }
@@ -174,7 +174,7 @@
             NSRect imageRect;
             imageRect.origin = NSZeroPoint ;
             imageRect.size = image.size;
-            drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 5);
+            drawingArrowRect.origin = NSMakePoint(NSMaxX(drawingRect) + 8 , 6);
             drawingArrowRect.size = imageRect.size;
             [image drawInRect:drawingArrowRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }

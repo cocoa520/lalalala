@@ -43,12 +43,10 @@
 {
     [super setEnabled:flag];
     if (flag) {
-//        [self setImage:_mouseExitImage];
         _status = 1;
         [self setAlphaValue:1.0];
     }else
     {
-//        [self setImage:_forBidImage];
         _status = 4;
         [self setAlphaValue:0.5];
     }

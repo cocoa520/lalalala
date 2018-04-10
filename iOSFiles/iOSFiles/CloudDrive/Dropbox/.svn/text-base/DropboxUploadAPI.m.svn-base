@@ -35,7 +35,7 @@
     if ([_parent rangeOfString:@"0"].location != NSNotFound) {
         uploadItem = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", _fileName];
     }else {
-        uploadItem = [NSString stringWithFormat:@"{\"path\":\"/%@/%@\"}", _parent, _fileName];
+        uploadItem = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, _fileName];
     }
     return @{
              @"Authorization": authorizationHeaderValue,

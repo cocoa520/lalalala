@@ -22,6 +22,7 @@
 #import "IMBCalendarEntity.h"
 #import "IMBCalendarEventEntity.h"
 #import "IMBSMSChatDataEntity.h"
+#import "IMBSoftWareInfo.h"
 
 #define CategoryButtonWidth 80
 #define CategoryButtonHeight 100
@@ -1270,7 +1271,21 @@
     }
     //向popUpView上添加按钮之前，先移除之前的subview
     //如果按钮是容器可以扩展的
-    if (sender.isContainer) { 
+    IMBSoftWareInfo *software = [IMBSoftWareInfo singleton];
+    if (sender.isContainer) {
+        NSInteger tags = (NSInteger)sender.tag;
+        if (tags == 500) {
+            [software setSelectModular:@"Audio"];
+        }else if (tags == 501) {
+            [software setSelectModular:@"Videos"];
+        }else if (tags == 502) {
+            [software setSelectModular:@"Photos"];
+        }else if (tags == 503) {
+            [software setSelectModular:@"Safari"];
+        }else if (tags == 505) {
+            [software setSelectModular:@"File System"];
+        }
+        
         NSPoint point = sender.frame.origin;//[self convertPoint:sender.frame.origin toView:_transparentView];
         _popUpView.startPoint = point.x + sender.frame.size.width/2;
        
@@ -1359,7 +1374,27 @@
             }
         }
         [view setHidden:NO];
-
+        NSInteger tags = (NSInteger)sender.tag;
+        if (tags == 9) {
+            [software setSelectModular:@"Books"];
+        }else if (tags == 18) {
+            [software setSelectModular:@"Apps"];
+        }else if (tags == 19) {
+            [software setSelectModular:@"Podcasts"];
+        }else if (tags == 20) {
+            [software setSelectModular:@"iTunes U"];
+        }else if (tags == 21) {
+            [software setSelectModular:@"Notes"];
+        }else if (tags == 33) {
+            [software setSelectModular:@"Voice Mail"];
+        }else if (tags == 23) {
+            [software setSelectModular:@"Messages"];
+        }else if (tags == 24) {
+            [software setSelectModular:@"Contacts"];
+        }else if (tags == 26) {
+            [software setSelectModular:@"Calendars"];
+        }
+        
         //按钮不能扩展
         CategoryNodesEnum category = (CategoryNodesEnum)sender.tag;
 

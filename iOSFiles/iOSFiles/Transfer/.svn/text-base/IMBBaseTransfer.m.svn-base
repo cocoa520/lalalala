@@ -613,10 +613,6 @@
         [_exportPath release];
         _exportPath = nil;
     }
-    if (_currentDriveItem) {
-        [_currentDriveItem release];
-        _currentDriveItem = nil;
-    }
     [_ipod release],_ipod = nil;
     [super dealloc];
 }

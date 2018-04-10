@@ -11,7 +11,6 @@
                 <outlet property="_bottomLable" destination="YM1-MI-nn7" id="daa-z5-AOv"/>
                 <outlet property="_homePageUrlBtn" destination="8AM-Th-JfQ" id="cR1-f9-rhi"/>
                 <outlet property="_honePageStr" destination="DVb-N1-0Ou" id="1xm-al-zFu"/>
-                <outlet property="_lineView" destination="Aa9-on-qaR" id="Bv2-4N-hYJ"/>
                 <outlet property="_subTitleVersion" destination="VRU-DN-0wA" id="9Zm-u2-KCL"/>
                 <outlet property="_suportUrlBtn" destination="gwm-U6-2VU" id="TBj-hg-xoP"/>
                 <outlet property="_supportStr" destination="Kj0-mf-VOY" id="poC-86-e07"/>
@@ -25,39 +24,25 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="Dpc-96-jjB" customClass="IMBiCloudNoTitleBarWinodw">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="468" height="298"/>
+            <rect key="contentRect" x="810" y="305" width="328" height="372"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <value key="minSize" type="size" width="468" height="298"/>
-            <value key="maxSize" type="size" width="468" height="298"/>
-            <view key="contentView" id="xHU-kg-1Qf" customClass="IMBNoTitleBarContentView">
-                <rect key="frame" x="0.0" y="0.0" width="468" height="298"/>
+            <value key="minSize" type="size" width="328" height="372"/>
+            <value key="maxSize" type="size" width="328" height="372"/>
+            <view key="contentView" id="xHU-kg-1Qf" customClass="IMBWindowContentView">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="372"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <customView id="b9I-tY-MWt" customClass="IMBWhiteView">
+                        <rect key="frame" x="0.0" y="18" width="328" height="336"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fPg-T3-qQW">
-                        <rect key="frame" x="27" y="165" width="86" height="86"/>
+                        <rect key="frame" x="124" y="240" width="86" height="88"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="about_logo" id="D2n-Ve-waV"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="window_logo" id="D2n-Ve-waV"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vTe-cw-cwT">
-                        <rect key="frame" x="121" y="199" width="308" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="AnyTrans® for Android" id="7PH-1s-4lw">
-                            <font key="font" size="26" name="HelveticaNeue-Thin"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VRU-DN-0wA">
-                        <rect key="frame" x="121" y="179" width="284" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="version" id="xSB-rx-KYk">
-                            <font key="font" size="12" name="HelveticaNeue"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Kj0-mf-VOY">
-                        <rect key="frame" x="25" y="103" width="122" height="20"/>
+                        <rect key="frame" x="60" y="112" width="122" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" title="Supprot:" id="9uh-sL-75e">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -66,7 +51,7 @@
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DVb-N1-0Ou">
-                        <rect key="frame" x="25" y="72" width="122" height="20"/>
+                        <rect key="frame" x="60" y="81" width="122" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" title="HomePage:" id="Ir5-ga-6n3">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -75,17 +60,16 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="YM1-MI-nn7">
-                        <rect key="frame" x="25" y="9" width="425" height="41"/>
+                        <rect key="frame" x="6" y="9" width="317" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="dxq-WS-0JT">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Copyright  © 2018 iPhoneUtility All rights reserved." id="dxq-WS-0JT">
                             <font key="font" size="11" name="HelveticaNeue"/>
-                            <string key="title">Copyright © iMobie Inc. Todos los derechos reservados. AnyTrans® es una marca registrada de iMobie Inc., registrada en los EE.UU.</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button focusRingType="none" id="gwm-U6-2VU" customClass="IMBLinkButton">
-                        <rect key="frame" x="82" y="102" width="168" height="20"/>
+                        <rect key="frame" x="117" y="111" width="168" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="DYt-Bv-GRN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -96,7 +80,7 @@
                         </connections>
                     </button>
                     <button focusRingType="none" id="8AM-Th-JfQ" customClass="IMBLinkButton">
-                        <rect key="frame" x="95" y="71" width="168" height="20"/>
+                        <rect key="frame" x="130" y="80" width="168" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="left" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="IsI-oh-akW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -106,10 +90,24 @@
                             <action selector="homeBtnDown:" target="-2" id="Z80-hT-bXH"/>
                         </connections>
                     </button>
-                    <customView id="Aa9-on-qaR" customClass="IMBWhiteView">
-                        <rect key="frame" x="15" y="145" width="438" height="1"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vTe-cw-cwT">
+                        <rect key="frame" x="10" y="182" width="308" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AnyTrans® for Android" id="7PH-1s-4lw">
+                            <font key="font" size="26" name="HelveticaNeue-Thin"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VRU-DN-0wA">
+                        <rect key="frame" x="23" y="157" width="284" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version" id="xSB-rx-KYk">
+                            <font key="font" size="12" name="HelveticaNeue"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
@@ -119,6 +117,6 @@
         </window>
     </objects>
     <resources>
-        <image name="about_logo" width="90" height="90"/>
+        <image name="window_logo" width="96" height="96"/>
     </resources>
 </document>

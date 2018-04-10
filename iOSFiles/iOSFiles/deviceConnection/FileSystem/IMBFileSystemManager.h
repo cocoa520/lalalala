@@ -36,6 +36,10 @@
 - (void)importFileToDevice:(NSString *)destinationFolder withsourcePathArray:(NSArray *)sourcePathArray fileManger:(NSFileManager *)fileManger afcMedia:(AFCMediaDirectory *)afcMedia;
 //重命名
 - (BOOL)rename:(SimpleNode *)node withfileName:(NSString *)fileName;
+//创建文件夹
+- (BOOL)createFolder:(NSString *)newPath;
+//移动文件
+- (BOOL)moveFile:(NSString *)oriPath desPath:(NSString *)desPath isFolder:(BOOL)isFolder;
 //backup
 //- (BOOL)copyBackupItemToMac:(NSString *)desPath node:(NSArray *)nodeArr backupPath:(NSString *)backupPath iCloudBackup:(IMBiCloudBackup *)iCloudBackup ipod:(IMBiPod *)ipod isDrag:(BOOL)isDrag;
 //拷贝文件从头一个设备到另一个设备

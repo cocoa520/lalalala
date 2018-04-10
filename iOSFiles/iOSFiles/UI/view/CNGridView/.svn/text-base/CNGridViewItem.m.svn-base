@@ -231,7 +231,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
     //设置选中背景
     if (self.selected && _isFileManager) {
         NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(36, 30, 92, 82) xRadius:5 yRadius:5];
-        [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
+        [[NSColor colorWithDeviceRed:225/255.0 green:244/255.0 blue:255/255.0 alpha:1.0] setFill];
         [path fill];
     }
     if (_isFileManager) {
@@ -360,7 +360,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             titleRect.origin.y = textRect.origin.y + 2;
             
             NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:titleRect xRadius:5 yRadius:5];
-            [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
+            [[NSColor colorWithDeviceRed:225/255.0 green:244/255.0 blue:255/255.0 alpha:1.0] setFill];
             [path fill];
         }
         if (_isEdit && ![(IMBDriveEntity *)_entity isEditing]) {
@@ -391,7 +391,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             mutParaStyle = nil;
 
             [self addSubview:_editText];
-            
+            [_editText becomeFirstResponder];
         } else {
             [self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
         }
@@ -511,7 +511,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
         
         if (self.selected && _isFileManager) {
             NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:textRect xRadius:5 yRadius:5];
-            [[NSColor colorWithDeviceRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1.0] setFill];
+            [[NSColor colorWithDeviceRed:225/255.0 green:244/255.0 blue:255/255.0 alpha:1.0] setFill];
             [path fill];
         }
     }

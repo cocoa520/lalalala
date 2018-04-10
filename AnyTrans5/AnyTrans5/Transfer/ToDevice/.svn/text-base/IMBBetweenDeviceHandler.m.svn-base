@@ -35,6 +35,7 @@
         _isAll = YES;
         isClone = NO;
         _infomationCount = 0;
+        _repeatCount = 0;
     }
     return self;
 }
@@ -62,6 +63,7 @@
             _albumEntity = [albumEntity retain];
         }
         _infomationCount = 0;
+        _repeatCount = 0;
     }
     return self;
 }
@@ -105,6 +107,7 @@
         [srcExportDic setObject:_selectedArr forKey:[NSNumber numberWithInt:categoryInfoModel.categoryNodes]];
 
     }
+
     NSMutableDictionary *desExportDic = [NSMutableDictionary dictionary];
     [self getDesipodContent:desExportDic ipod:_ipod];
     
@@ -664,7 +667,7 @@
         }
     }
     _infomationCount = [self totalInforsItemCount] + [self totalAppsItemCount] + [self totalEpubBooksItemCount];
-    _totalItem = [self totalMediasItemCount] + _infomationCount;
+    _totalItem = [self totalMediasItemCount] + _infomationCount + _repeatCount;
 }
 
 - (void)startProgress{
@@ -682,8 +685,7 @@
 }
 
 //程序入口
-- (void)startTransfer
-{
+- (void)startTransfer {
     if (isClone) {
         [self filterToNoRepeatItems];
         [self prepareDataWithSelectedModels];
@@ -1156,6 +1158,7 @@
                 [tarArray addObject:track];
             }
             else{
+                _repeatCount ++;
 //                _transResult.mediaIgnoreCount ++;
 //                [_transResult recordMediaResult:track.title resultStatus:TransIgnore messageID:[NSString stringWithFormat:CustomLocalizedString(@"MSG_TranResult_Skiped_Existed", nil),track.title]];
 
@@ -1174,6 +1177,7 @@
         NSArray *srcplistArr = [srcExportDic objectForKey:[NSNumber numberWithInt:Category_Playlist]];
         NSArray *desplistArr = [desExportDic objectForKey:[NSNumber numberWithInt:Category_Playlist]];
         NSMutableArray *totalExistingTrack = [NSMutableArray array];
+        
         if (desplistArr.count != 0) {
             //目标数组,存放的是IMBPlayList
             NSMutableArray *targetArr = [NSMutableArray array];

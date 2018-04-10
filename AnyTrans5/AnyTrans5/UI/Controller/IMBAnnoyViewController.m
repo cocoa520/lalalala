@@ -14,6 +14,7 @@
 #import "IMBBaseViewController.h"
 #import "IMBNotificationDefine.h"
 #import "IMBSoftWareInfo.h"
+#import "SystemHelper.h"
 @interface IMBAnnoyViewController ()
 
 @end
@@ -489,11 +490,13 @@
     }
 }
 
-- (void)activateSuccess
-{
+- (void)activateSuccess {
     *_result = NSIntegerMax;
     [[NSNotificationCenter defaultCenter] postNotificationName:ANNOY_REGIST_SUCCESS object:nil];
     ((IMBBaseViewController *)_delegate)->_endRunloop = YES;
+//    if ([_delegate respondsToSelector:@selector(startTransfer:)]) {
+//        [_delegate startTransfer:self];
+//    }
     [_annoyAnimaitonView stopAnimation];
     [_annoyAnimationViewTwo stopAnimation];
     [_annoyAnimationViewThree stopAnimation];
@@ -552,49 +555,19 @@
 
 - (IBAction)buyNow:(id)sender {
     IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
-//    NSLocale *currentLocale = [NSLocale currentLocale];
-//    NSString *lanStr = [currentLocale objectForKey:NSLocaleLanguageCode];
-    NSURL *url = nil;
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
-        NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
-        dimensionMutDict = [TempHelper customDimension];
-        [dimensionMutDict setObject:softWare.selectModular forKey:@"cd5"];
-        dimensionDict = [dimensionMutDict copy];
+        [[OperationLImitation singleton] setLimitStatus:@"completed"];
+        dimensionDict = [[TempHelper customDimension] copy];
     }
-    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[TempHelper currentSelectionLanguage] label:Buy transferCount:0 screenView:@"go shop" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=completed", [TempHelper currentSelectionLanguage]] label:Buy transferCount:0 screenView:@"go shop" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    
     if (dimensionDict) {
         [dimensionDict release];
         dimensionDict = nil;
     }
-    NSString *str = CustomLocalizedString(@"Buy_Url", nil);
-    NSString *ver = softWare.version;
-    if (softWare.isIronsrc) {
-        if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
-            ver = @"ironsrc3";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == GermanLanguage){
-            ver = @"ironsrc1";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == FrenchLanguage) {
-            ver = @"ironsrc2";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage){
-            ver = @"ironsrc";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == SpanishLanguage){
-            ver = @"ironsrc4";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ArabLanguage){
-            ver = @"ironsrc5";
-        }else if ([IMBSoftWareInfo singleton].chooseLanguageType == ChinaLanguage) {
-            ver = @"ironsrc6";
-        }else {
-            ver = @"ironsrc";
-        }
-    }
-    if ([StringHelper chirstmasActivity] && [IMBSoftWareInfo singleton].chooseLanguageType == EnglishLanguage && [[IMBSoftWareInfo singleton].curUseSkin isEqualToString:@"christmasSkin"]) {
-        url = [NSURL URLWithString:@"https://www.imobie.com/anytrans/buy-mac.htm?ref=holiday"];
-    }else {
-        url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, [IMBSoftWareInfo singleton].buyId]];
-    }
-    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-    [ws openURL:url];
+    
+    [SystemHelper openChooseBrowser:softWare.buyId withIsActivate:NO isDiscount:NO isNeedAnalytics:YES];
 }
 
 - (void)countdownComplete

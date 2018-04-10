@@ -42,6 +42,9 @@
 }
 
 - (void)awakeFromNib {
+    
+
+    
     [_nonectimageView1 setImage:[StringHelper imageNamed:@"noconnect_bg"]];
     count = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doChangeLanguage:) name:NOTIFY_CHANGE_ALLANGUAGE object:nil];

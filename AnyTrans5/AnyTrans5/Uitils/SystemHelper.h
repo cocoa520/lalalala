@@ -40,4 +40,5 @@
 + (void)startLaunchDaemon;
 + (BOOL)createAirBackupHelperPlistFile;
 + (BOOL)stopLaunchDaemon;
++ (void)openChooseBrowser:(int)buyId withIsActivate:(BOOL)isActivate isDiscount:(BOOL)isDiscount isNeedAnalytics:(BOOL)isNeed;
 @end
