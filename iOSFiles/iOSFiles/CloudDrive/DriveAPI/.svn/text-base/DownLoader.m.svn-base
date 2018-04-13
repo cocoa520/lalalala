@@ -74,7 +74,6 @@
 
 - (void)startDownload:(_Nonnull id <DownloadAndUploadDelegate>)item completionHandler:(nullable void (^)(NSURL * _Nullable filePath, NSError * _Nullable error))completionHandler
 {
-    
     if (item.parent != nil) {
         id <DownloadAndUploadDelegate> parentItem = item.parent;
         parentItem.state = DownloadStateLoading;
@@ -442,18 +441,27 @@
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadProgress:(double)downloadProgress
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if ([[NSThread currentThread] isMainThread]) {
         if ([item respondsToSelector:@selector(setProgress:)]) {
             item.progress = downloadProgress;
         }else{
             NSAssert(1,@"item未实现setDownloadProgress:");
         }
-    });
+    }else{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([item respondsToSelector:@selector(setProgress:)]) {
+                item.progress = downloadProgress;
+            }else{
+                NSAssert(1,@"item未实现setDownloadProgress:");
+            }
+        });
+    }
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadCurrentSize:(long long)downcurrentSize
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    if ([[NSThread currentThread] isMainThread]) {
         if ([item respondsToSelector:@selector(setCurrentSize:)]) {
             item.currentSize = downcurrentSize;
             if (item.parent == nil){
@@ -470,29 +478,72 @@
         }else{
             NSAssert(1,@"item未实现setCurrentSize:");
         }
-    });
+    }else{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([item respondsToSelector:@selector(setCurrentSize:)]) {
+                item.currentSize = downcurrentSize;
+                if (item.parent == nil){
+                    item.currentSizeStr = [NSString stringWithFormat:@"%@/%@",[self getFileSizeString:downcurrentSize reserved:2],[self getFileSizeString:item.fileSize reserved:2]];
+                }else{
+                    NSString *downCurrentSize = [self getFileSizeString:item.parent.currentSize reserved:2];
+                    NSString *fileSize = [self getFileSizeString:item.parent.fileSize reserved:2];
+                    item.currentSize = downcurrentSize;
+                    NSString *currenSize = [NSString stringWithFormat:@"%@/%@",downCurrentSize,fileSize];
+                    //                NSLog(@"downCurrentSize:%@ fileSize:%@",downCurrentSize,fileSize);
+                    item.parent.currentSizeStr = currenSize;
+                }
+                
+            }else{
+                NSAssert(1,@"item未实现setCurrentSize:");
+            }
+        });
+    }
+    
+    
+    
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadError:(NSError *)error
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if ([[NSThread currentThread] isMainThread]) {
         if ([item respondsToSelector:@selector(setError:)]) {
             item.error = error;
         }else{
             NSAssert(1,@"item未实现setDowndloadError:");
         }
-    });
+    }else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([item respondsToSelector:@selector(setError:)]) {
+                item.error = error;
+            }else{
+                NSAssert(1,@"item未实现setDowndloadError:");
+            }
+        });
+    }
+    
+    
+    
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadSpeed:(NSInteger)downloadSpeed
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if ([[NSThread currentThread] isMainThread]) {
         if ([item respondsToSelector:@selector(setSpeed:)]) {
             item.speed = downloadSpeed;
         }else{
             NSAssert(1,@"item未实现setDownloadSpeed:");
         }
-    });
+    }else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([item respondsToSelector:@selector(setSpeed:)]) {
+                item.speed = downloadSpeed;
+            }else{
+                NSAssert(1,@"item未实现setDownloadSpeed:");
+            }
+        });
+    }
+    
+   
 }
 
 - (BOOL)isActivityLessMax

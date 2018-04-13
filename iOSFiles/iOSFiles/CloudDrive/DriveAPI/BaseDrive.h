@@ -46,6 +46,10 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
 - (void)driveDidLogIn:(BaseDrive *)drive;
 - (void)driveDidLogOut:(BaseDrive *)drive;
 - (void)drive:(BaseDrive *)drive logInFailWithError:(NSError *)error;
+//表明需要二次验证 回调给给界面弹出安全码验证框
+- (void)driveNeedSecurityCode:(BaseDrive *)drive;
+//账号被锁住了
+- (void)driveAccountLocked:(BaseDrive *)drive;
 
 @end
 

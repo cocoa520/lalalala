@@ -99,6 +99,15 @@
     
     xPos = 14;
     yPos = 0;
+    if (_baseInfo.leftImage && _baseInfo.leftHoverImage) {
+        if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
+            NSRect imageFrame = NSMakeRect(10, 8, _baseInfo.leftHoverImage.size.width, _baseInfo.leftHoverImage.size.height);
+            [_baseInfo.leftHoverImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        }else {
+            NSRect imageFrame = NSMakeRect(10, 8, _baseInfo.leftImage.size.width, _baseInfo.leftImage.size.height);
+            [_baseInfo.leftImage drawInRect:imageFrame fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        }
+    }
     //画设备的名字
     if (_baseInfo.deviceName != nil) {
         NSSize size ;
@@ -108,23 +117,25 @@
         }else {
             color = COLOR_TEXT_ORDINARY;
         }
-        NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_baseInfo.deviceName withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:112 withSize:&size withColor:color withAlignment:NSLeftTextAlignment];
-        NSRect textRect2 = NSMakeRect(20 , 8, size.width, 22);
+        NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_baseInfo.deviceName withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:92 withSize:&size withColor:color withAlignment:NSLeftTextAlignment];
+        NSRect textRect2 = NSMakeRect(20+18  , 8, size.width, 22);
         [attrStr drawInRect:textRect2];
     }
     if (_baseInfo.chooseModelEnum == DeviceLogEnum) {
-         NSColor *color = nil;
+        NSColor *color = nil;
+        NSSize size ;
         if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
             color = COLOR_TEXT_PRIORITY;
         }else {
             color = COLOR_TEXT_ORDINARY;
         }
-        NSRect sizeRect = NSMakeRect(130, 14, 100, 16);
+        NSRect sizeRect = NSMakeRect(130, 8, 100, 22);
         NSString *str = nil;
         if (_baseInfo.kyDeviceSize) {
             str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/" ] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
-
-            [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:color];
+            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:str withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:92 withSize:&size withColor:color withAlignment:NSLeftTextAlignment];
+//            NSRect textRect2 = NSMakeRect(20+18  , 8, size.width, 22);
+            [attrStr drawInRect:sizeRect];
         }
     }else {
         NSColor *color = nil;
@@ -133,20 +144,21 @@
         }else {
             color = COLOR_TEXT_ORDINARY;
         }
-        NSRect sizeRect = NSMakeRect(130, 14, 100, 16);
+         NSSize size ;
+        NSRect sizeRect = NSMakeRect(130, 8, 100, 22);
         NSString *str = nil;
         if (_baseInfo.kyDeviceSize) {
             str = [[[StringHelper getFileSizeString:_baseInfo.kyDeviceSize reserved:0] stringByAppendingString:@"/"] stringByAppendingString:[StringHelper getFileSizeString:_baseInfo.allDeviceSize reserved:0]];
-            
-            [self drawLeftText:str withFrame:sizeRect withFontSize:12 withColor:color];
+            NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:str withFont:[NSFont fontWithName:@"Helvetica Neue" size:12] withLineSpacing:0 withMaxWidth:92 withSize:&size withColor:color withAlignment:NSLeftTextAlignment];
+            [attrStr drawInRect:sizeRect];
         }
     }
     if (![_baseInfo.deviceName isEqualToString:CustomLocalizedString(@"icloud_addAcount", nil)]) {
         //退出按钮
-        [_openWindowBtn setFrame:NSMakeRect(268 , 9, 24, 24)];
+        [_openWindowBtn setFrame:NSMakeRect(268 , 8, 24, 24)];
         [self addSubview:_openWindowBtn];
         
-        [_signOutBtn setFrame:NSMakeRect(244 , 9, 24, 24)];
+        [_signOutBtn setFrame:NSMakeRect(244 , 8, 24, 24)];
         [self addSubview:_signOutBtn];
     }
 }

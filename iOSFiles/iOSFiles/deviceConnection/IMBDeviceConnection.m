@@ -30,6 +30,8 @@
 @synthesize driveBaseManage = _driveBaseManage;
 @synthesize dropBox = _dropBox;
 @synthesize iCloudDrive = _iCloudDrive;
+@synthesize leftImage = _leftImage;
+@synthesize leftHoverImage = _leftHoverImage;
 #pragma mark -- 初始化操作
 - (id)init {
     self = [super init];
@@ -264,6 +266,8 @@ static id _instance = nil;
     if ([dev isKindOfClass:[AMDevice class]]) {
         [baseInfo setIsConnected:dev.isConnected];
     }
+    [baseInfo setLeftImage:[self getipodImage:ipod]];
+    [baseInfo setLeftHoverImage:[self getHoveriPodImage:ipod]];
     [baseInfo setConnectType:ipod.deviceInfo.family];
     [baseInfo setIsiPod:YES];
     
@@ -290,6 +294,44 @@ static id _instance = nil;
  */
 - (void)reConnectDevice:(am_device)dev {
     [[MobileDeviceAccess singleton] connectDevice:dev];
+}
+/**
+ *  获取设备对应的图片
+ *
+ *  @param ipod
+ */
+- (NSImage *)getipodImage:(IMBiPod *)ipod
+{
+    NSImage *image = [NSImage imageNamed:@"popbox_icon_iphone"];
+    if (ipod.deviceInfo.isiPhone) {
+        if (ipod.deviceInfo.family == iPhone_X) {
+            image = [NSImage imageNamed:@"popbox_icon_iphonex"];
+        }else{
+            image = [NSImage imageNamed:@"popbox_icon_iphone"];
+        }
+    }else if (ipod.deviceInfo.isiPad){
+        image = [NSImage imageNamed:@"popbox_icon_ipad"];
+    }else if (ipod.deviceInfo.isiPod){
+        image = [NSImage imageNamed:@"popbox_icon_iphone"];
+    }
+    return image;
+}
+
+- (NSImage *)getHoveriPodImage:(IMBiPod *)ipod
+{
+    NSImage *image = [NSImage imageNamed:@"popbox_icon_iphone_hover"];
+    if (ipod.deviceInfo.isiPhone) {
+        if (ipod.deviceInfo.family == iPhone_X) {
+            image = [NSImage imageNamed:@"popbox_icon_iphonex_hover"];
+        }else{
+            image = [NSImage imageNamed:@"popbox_icon_iphone_hover"];
+        }
+    }else if (ipod.deviceInfo.isiPad){
+        image = [NSImage imageNamed:@"popbox_icon_ipad_hover"];
+    }else if (ipod.deviceInfo.isiPod){
+        image = [NSImage imageNamed:@"popbox_icon_ipod_hover"];
+    }
+    return image;
 }
 
 #pragma mark -- 获取/删除设备

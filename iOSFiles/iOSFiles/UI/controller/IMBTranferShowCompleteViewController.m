@@ -16,7 +16,7 @@
 #import <sqlite3.h>
 #import "TempHelper.h"
 #import "IMBCustomHeaderCell.h"
-
+@class IMBTranferViewController;
 #define TableViewRowWidth 360
 #define TableViewRowHight 100
 #define OringinalPropertityX 0
@@ -190,32 +190,34 @@
     id cell = [tableColumn headerCell];
     NSString *identify = [tableColumn identifier];
     NSArray *array = [tableView tableColumns];
-    if (_dataAry.count <=0) {
-        return;
-    }
-    for (NSTableColumn  *column in array) {
-        if ([column.headerCell isKindOfClass:[IMBCustomHeaderCell class]]) {
-            IMBCustomHeaderCell *columnHeadercell = (IMBCustomHeaderCell *)column.headerCell;
-            if ([column.identifier isEqualToString:identify]) {
-                [columnHeadercell setIsShowTriangle:YES];
-            }else {
-                [columnHeadercell setIsShowTriangle:NO];
+    if ([@"Name" isEqualToString:identify]) {
+        if (_dataAry.count <=0) {
+            return;
+        }
+        for (NSTableColumn  *column in array) {
+            if ([column.headerCell isKindOfClass:[IMBCustomHeaderCell class]]) {
+                IMBCustomHeaderCell *columnHeadercell = (IMBCustomHeaderCell *)column.headerCell;
+                if ([column.identifier isEqualToString:identify]) {
+                    [columnHeadercell setIsShowTriangle:YES];
+                }else {
+                    [columnHeadercell setIsShowTriangle:NO];
+                }
             }
         }
-    }
-    
-    if ([@"Name" isEqualToString:identify] || [@"Type" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
-        if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
-            IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
-            if (customHeaderCell.ascending) {
-                customHeaderCell.ascending = NO;
-            }else {
-                customHeaderCell.ascending = YES;
+        
+        if ([@"Name" isEqualToString:identify] || [@"Type" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
+            if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
+                IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
+                if (customHeaderCell.ascending) {
+                    customHeaderCell.ascending = NO;
+                }else {
+                    customHeaderCell.ascending = YES;
+                }
+                [self sort:customHeaderCell.ascending key:identify dataSource:_dataAry];
             }
-            [self sort:customHeaderCell.ascending key:identify dataSource:_dataAry];
         }
+        [_tableView reloadData];
     }
-    [_tableView reloadData];
 }
 
 - (void)sort:(BOOL)isAscending key:(NSString *)key dataSource:(NSMutableArray *)array {
@@ -269,7 +271,9 @@
             sqlite3_close(dbPoint);
         }
     }
-    
+    [item.findFileBtn removeFromSuperview];
+    [item.deleteFileBtn removeFromSuperview];
+    [(IMBTranferViewController *)_delegate removeCompletData:item WithIsRemoveAllData:NO];
     [_dataAry removeObject:item];
     [_tableView reloadData];
 }
@@ -294,6 +298,7 @@
     }else {
         [_rootBox setContentView:_nodataView];
     }
+    [(IMBTranferViewController *)_delegate removeCompletData:nil WithIsRemoveAllData:YES];
     [_delegate removeAllHistoryAry];
     [_tableView reloadData];
 }

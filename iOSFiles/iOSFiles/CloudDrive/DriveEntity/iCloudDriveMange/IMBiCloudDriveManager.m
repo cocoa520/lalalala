@@ -371,14 +371,31 @@
     [_iCloudDrive cancelUploadItem:item];
 }
 
-//时间转换
+//时间转换  2018-04-09T05:23:19-07:00  T：他表示后面跟的时间   -07:00 ：时区
 - (NSString *)dateForm2001DateSting:(NSString *)dateSting {
     if(dateSting.length >= 19) {
+        //取到当前时区
+        NSTimeZone *zone1 = [NSTimeZone systemTimeZone];
+        NSInteger seconds1 = [zone1 secondsFromGMT];
+        //获取系统默认的时区
+        NSString *differStr = [dateSting substringWithRange:NSMakeRange(20, 2)];
+        int differTimeInt = [differStr intValue];
+        
         NSString *str = [dateSting substringToIndex:19];
         str = [str stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+        //转换
         NSDate *date = [DateHelper dateFromString:str Formate:@"yyyy-MM-dd HH:mm:ss" withTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
-        NSTimeInterval interval1 = [DateHelper getTimeStampFrom1970Date:date withTimezone:[NSTimeZone localTimeZone]];
-        NSString *str2 = [DateHelper dateFrom1970ToString:interval1 withMode:2];
+        NSTimeInterval interval1 = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+        //对时间
+        NSTimeInterval endInterval1 = 0;
+        if (seconds1 > 0) {
+            endInterval1 = interval1 + (seconds1/60/60 +  differTimeInt) *60*60;
+        }else {
+            seconds1 = seconds1 *-1;
+            NSInteger differ = (seconds1/60/60 - differTimeInt) *-1;
+            endInterval1 = interval1 + differ*60*60;
+        }
+        NSString *str2 = [DateHelper dateFrom1970ToString:endInterval1 withMode:2];
         return str2;
     }else {
         return @"--";

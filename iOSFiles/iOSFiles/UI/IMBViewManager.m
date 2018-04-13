@@ -10,6 +10,10 @@
 
 static id _instance = nil;
 
+@interface IMBViewManager()<NSCopying>
+
+@end
+
 @implementation IMBViewManager
 @synthesize allMainControllerDic = _allMainControllerDic;
 @synthesize windowDic = _windowDic;
@@ -35,6 +39,7 @@ static id _instance = nil;
 - (id)copyWithZone:(NSZone *)zone {
     return _instance;
 }
+
 /**
  *  销毁操作
  */

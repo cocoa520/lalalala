@@ -693,7 +693,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSMutableArray *cameraRoll = [[NSMutableArray alloc] init];
             [cameraRoll addObjectsFromArray:[information camerarollArray] ? [information camerarollArray] : [NSArray array]];
-            [cameraRoll addObjectsFromArray:[information photovideoArray] ? [information photovideoArray] : [NSArray array]];
+//            [cameraRoll addObjectsFromArray:[information photovideoArray] ? [information photovideoArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[information photoSelfiesArray] ? [information photoSelfiesArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[information screenshotArray] ? [information screenshotArray] : [NSArray array]];
             [cameraRoll addObjectsFromArray:[information slowMoveArray] ? [information slowMoveArray] : [NSArray array]];
@@ -813,7 +813,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 
 - (void)chooseDeviceBtn:(IMBBaseInfo *)baseInfo {
     if (baseInfo) {
-        [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"arrow"];
+        [_selectedDeviceBtn configButtonName:baseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
+        
     }else {
         [_selectedDeviceBtn setHidden:YES];
     }
@@ -829,7 +830,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             itemBaseInfo = baseInfo;
         }
     }
-     [connection.allDevices removeObject:itemBaseInfo];
+
+    [connection.allDevices removeObject:itemBaseInfo];
     [_baseDriveManage userDidLogout];
     IMBViewManager *viewManger = [IMBViewManager singleton];
     [viewManger.allMainControllerDic removeObjectForKey:@"DropBox"];
@@ -849,6 +851,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
     
     if (allDevices.count == 1) {
+        _selectedBaseInfo = [allDevices objectAtIndex:0];
         [self selectedDeviceDidChange];
     }else if (allDevices.count >= 2) {
         if (_devPopover.isShown) {
@@ -974,12 +977,14 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     
     IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
     IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
-    [baseInfo setDeviceName:dropbox.userID];
-    [baseInfo setUniqueKey:dropbox.userID];
+    [baseInfo setDeviceName:dropbox.userID?:@"DropBox"];
+    [baseInfo setUniqueKey:dropbox.userID?:@"DropBox"];
     [baseInfo setConnectType:general_iCloud];
     [baseInfo setIsicloudView:YES];
     [baseInfo setAllDeviceSize:dropbox.totalStorageInBytes];
     [baseInfo setKyDeviceSize:dropbox.usedStorageInBytes];
+    [baseInfo setLeftImage:[NSImage imageNamed:@"popbox_icon_dropbox"]];
+    [baseInfo setLeftHoverImage:[NSImage imageNamed:@"popbox_icon_dropbox_hover"]];
     [baseInfo setChooseModelEnum:DropBoxLogEnum];
     [baseInfo setDriveBaseManage:_baseDriveManage];
 //    [baseInfo setDropBox:dropbox];
@@ -994,11 +999,11 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     _loginSuccessdropboxView.quitBtnClicked = ^{
         [self signoutDropboxClicked];
     };
-    [_loginSuccessdropboxView.nameLabel setStringValue:dropbox.userID];
-    [_loginSuccessdropboxView.imageView setImage:[NSImage imageNamed:@"mod_dropboxdrive"]];
-    [_loginSuccessdropboxView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:dropbox.usedStorageInBytes reserved:2],[StringHelper getFileSizeString:dropbox.totalStorageInBytes reserved:2]]];
-    [_dropboxView setLoginStatus:YES];
     
+    [_loginSuccessdropboxView.nameLabel setStringValue:dropbox.userID?:@""];
+    [_loginSuccessdropboxView.imageView setImage:[NSImage imageNamed:@"mod_dropboxdrive"]];
+    [_loginSuccessdropboxView.sizeLabel setStringValue:[NSString stringWithFormat:@"%@/%@",[StringHelper getFileSizeString:dropbox.usedStorageInBytes reserved:2]?:@"",[StringHelper getFileSizeString:dropbox.totalStorageInBytes reserved:2]?:@""]];
+    [_dropboxView setLoginStatus:YES];
     [self mouseDown:nil];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     [deviceConnection.drviceAry addObject:baseInfo];
@@ -1036,6 +1041,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [baseInfo setKyDeviceSize:icloudDrive.usedStorageInBytes];
     [baseInfo setAllDeviceSize:icloudDrive.totalStorageInBytes];
     [baseInfo setChooseModelEnum:iCloudLogEnum];
+    [baseInfo setLeftImage:[NSImage imageNamed:@"popbox_icon_icloud"]];
+    [baseInfo setLeftHoverImage:[NSImage imageNamed:@"popbox_icon_icloud_hover"]];
     [baseInfo setDriveBaseManage:_baseDriveManage];
 //    [baseInfo setICloudDrive:icloudDrive];
     baseInfo.iCloudDrive = [icloudDrive retain];
@@ -1058,7 +1065,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_iCloudDriveView setLoginStatus:YES];
     
     [self mouseDown:nil];
-    
     
     [_delegate changeMainFrame:nil withMedleEnum:iCloudLogEnum withiCloudDrvieBase:_baseDriveManage];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
@@ -1103,6 +1109,10 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         case ResponseNotConnectedToInternet://网络错误
             [self removeLoginLoadingAnimation];
             errStr = CustomLocalizedString(@"iCloud_id_5", nil);
+            break;
+        case ResponseAccountLocked:
+            [self removeLoginLoadingAnimation];
+            errStr = CustomLocalizedString(@"iCloudLogin_View_Unlock_Account", nil);
             break;
         default:
             [self removeLoginLoadingAnimation];

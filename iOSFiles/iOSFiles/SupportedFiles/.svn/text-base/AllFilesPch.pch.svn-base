@@ -36,6 +36,7 @@
 #define IMBRgbColor(r,g,b) IMBRgbAColor(r,g,b,1)
 #define IMBGrayColor(n) IMBRgbAColor(n,n,n,1)
 
+#define IMBNotiCenter [NSNotificationCenter defaultCenter]
 
 #endif
 

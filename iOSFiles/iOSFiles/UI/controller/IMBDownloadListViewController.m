@@ -153,6 +153,8 @@
             }
             [uploaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
             [_downloadDataSource insertObject:uploaditem atIndex:0];
+            [uploaditem release];
+            uploaditem = nil;
         }
         [self loadTranferView];
         [_deviceManager driveUploadItems:_downloadDataSource];
@@ -225,6 +227,8 @@
             }
             [uploaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
             [_downloadDataSource insertObject:uploaditem atIndex:0];
+            [uploaditem release];
+            uploaditem = nil;
         }
         [self loadTranferView];
         [_deviceManager driveUploadItems:_downloadDataSource];
@@ -1331,7 +1335,8 @@
         entity.toDriveName = CustomLocalizedString(@"Download Fail", nil);
         sqlite3_close(dbPoint);
         [(IMBTranferViewController*)_delegate loadCompleteData:entity];
-        
+        [formatter release];
+        formatter = nil;
     }
     [_tableView reloadData];
 }
@@ -1395,7 +1400,10 @@
         entity.toDriveName = CustomLocalizedString(@"Download Fail", nil);
         sqlite3_close(dbPoint);
         [(IMBTranferViewController*)_delegate loadCompleteData:entity];
+        [formatter release];
+        formatter = nil;
     }
+    [_transferBtn endTranfering];
     [copyArray release];
     [disAry removeAllObjects];
     [_tableView reloadData];

@@ -16,6 +16,7 @@ typedef enum ResponseCode {
     ResponseNetworkConnectionLost,       ///<网络中断
     ResponseNotConnectedToInternet,      ///<无网络连接
     ResponseTokenInvalid,      ///<token失效
+    ResponseAccountLocked,    ///<账号被锁了
     
     ResponseSessionExpired, ///sesion失效过期，主要是icloud drive如果长时间不操作 会存在此情况
     ResponseUserNameOrPasswordError,    ///<用户名或者密码错误

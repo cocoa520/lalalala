@@ -108,7 +108,7 @@
         [self configSelectPathButtonWithButtonTag:2 WithButtonTitle:[StringHelper getCategeryStr:_categoryNodeEunm]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
     _doubleclickCount = 2;
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
@@ -190,8 +190,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaLoadFinished:) name:deviceDataLoadCompleteMedia object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoLoadFinished:) name:DeviceDataLoadCompleteVideo object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDoumentLoadFinished:) name:DeviceDataLoadCompleteAppDoucment object:nil];
-        [_itemTableView reloadData];
-        [_gridView reloadData];
+
     }
     if (_categoryNodeEunm == Category_appDoucment) {
         _isSmipNode = YES;
@@ -226,6 +225,8 @@
         } else {
             [_contentBox setContentView:_nodataView];
         }
+        [_itemTableView reloadData];
+        [_gridView reloadData];
     }else {
         [_toolBarButtonView toolBarButtonIsEnabled:NO];
         [_loadAnimationView startAnimation];
@@ -468,6 +469,26 @@
             _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
         }
     }
+    
+    NSIndexSet *set = [self selectedItems];
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
 }
 
 - (void)changeContentViewWithDataArr:(NSMutableArray *)dataArr {
@@ -917,6 +938,9 @@
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
+    [_itemTableView changeHeaderCheckState:UnChecked];
+    [self hideFileDetailView:nil];
+    
     NSArray *array = nil;
     if (_isSearch) {
         array = _researchdataSourceArray;
@@ -1350,6 +1374,8 @@
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:track.fileSize reserved:2];
+        }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+            return [NSNumber numberWithInt:track.checkState];
         }
     }else if (_categoryNodeEunm == Category_iBooks) {
         IMBBookEntity *bookEntity = [array objectAtIndex:row];
@@ -1367,6 +1393,8 @@
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:bookEntity.size reserved:2];
+        }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+            return [NSNumber numberWithInt:bookEntity.checkState];
         }
     }else if (_categoryNodeEunm == Category_Applications|| _categoryNodeEunm == Category_appDoucment) {
         id entity = [array objectAtIndex:row];
@@ -1386,6 +1414,8 @@
                 }
             }else if ([@"Size" isEqualToString:tableColumn.identifier]){
                 return [StringHelper getFileSizeString:appEntity.appSize reserved:2];
+            }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+                return [NSNumber numberWithInt:appEntity.checkState];
             }
         }else if ([entity isKindOfClass:[SimpleNode class]]) {
             SimpleNode *fileEntity = (SimpleNode *)entity;
@@ -1407,6 +1437,8 @@
                 }else {
                     return [StringHelper getFileSizeString:fileEntity.itemSize reserved:2];
                 }
+            }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+                return [NSNumber numberWithInt:fileEntity.checkState];
             }
         }
     }else if (_categoryNodeEunm == Category_System || _categoryNodeEunm == Category_Storage) {
@@ -1429,6 +1461,8 @@
             }else {
                 return [StringHelper getFileSizeString:simpleNode.itemSize reserved:2];
             }
+        }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+            return [NSNumber numberWithInt:simpleNode.checkState];
         }
     }else if (_categoryNodeEunm == Category_CameraRoll||_categoryNodeEunm == Category_PhotoLibrary||_categoryNodeEunm == Category_PhotoStream) {
         IMBPhotoEntity *photoEnity = [array objectAtIndex:row];
@@ -1447,8 +1481,12 @@
             }
         }else if ([@"Size" isEqualToString:tableColumn.identifier]){
             return [StringHelper getFileSizeString:photoEnity.photoSize reserved:2];
+        }else if ([@"CheckCol" isEqualToString:tableColumn.identifier]) {
+            return [NSNumber numberWithInt:photoEnity.checkState];
         }
     }
+    
+    
     return @"";
 }
 
@@ -1664,6 +1702,15 @@
             }
         }
     }
+    NSIndexSet *set = [self selectedItems];
+    
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
     [_itemTableView reloadData];
 }
 
@@ -1791,6 +1838,25 @@
 }
 
 - (void)setAllselectState:(CheckStateEnum)checkState {
+    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
+    NSArray *displayArray = nil;
+    if (_isSearch) {
+        displayArray = _researchdataSourceArray;
+    }
+    else{
+        displayArray = _dataSourceArray;
+    }
+    
+    for (int i=0;i<[displayArray count]; i++) {
+        IMBDriveEntity *entity = [displayArray objectAtIndex:i];
+        [entity setCheckState:checkState];
+        if (entity.checkState == NSOnState) {
+            [set addIndex:i];
+        }
+    }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
+    
     NSArray *disPalyAry = nil;
     if (_isSearch) {
         disPalyAry = _researchdataSourceArray;
@@ -1831,7 +1897,8 @@
             [item setCheckState:checkState];
         }
     }
-    [_itemTableView reloadData];
+    
+    
 }
 
 - (void)doSwitchView:(id)sender {
@@ -1951,6 +2018,42 @@
     }
     return selectedItems;
 }
+- (void)tableView:(NSTableView *)tableView row:(NSInteger)index {
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    IMBDriveEntity *entity = [disPalyAry objectAtIndex:index];
+    entity.checkState = !entity.checkState;
+    
+    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
+    for (int i=0;i<[disPalyAry count]; i++) {
+        IMBPhotoEntity *item= [disPalyAry objectAtIndex:i];
+        if (item.checkState == NSOnState) {
+            [set addIndex:i];
+        }
+    }
+    if (entity.checkState == NSOnState) {
+        //        [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    }else if (entity.checkState == NSOffState)
+    {
+        [_itemTableView deselectRow:index];
+    }
+    
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView reloadData];
+}
 
 #pragma mark - NSTableView drop and drag
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
@@ -2048,17 +2151,21 @@
             }else{
                 return ;
             }
-            if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
-                if (_currentSelectView == 0) {
-                    [_contentBox setContentView:_tableViewBgView];
-                }else {
-                    [_contentBox setContentView:_gridBgView];
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+            
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
+                    if (_currentSelectView == 0) {
+                        [_contentBox setContentView:_tableViewBgView];
+                    }else {
+                        [_contentBox setContentView:_gridBgView];
+                    }
+                } else {
+                    [_contentBox setContentView:_nodataView];
                 }
-            } else {
-                [_contentBox setContentView:_nodataView];
-            }
-            [_toolBarButtonView toolBarButtonIsEnabled:YES];
-            [_loadAnimationView endAnimation];
+                [_toolBarButtonView toolBarButtonIsEnabled:YES];
+                [_loadAnimationView endAnimation];
+            });
             [_gridView reloadData];
             [_itemTableView reloadData];
         }
@@ -2570,8 +2677,6 @@
 }
 
 - (void)reloadEnd {
-    
-    [_loadAnimationView endAnimation];
     [_gridView reloadData];
     [_itemTableView reloadData];
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
@@ -2590,7 +2695,27 @@
             [_contentBox setContentView:_nodataView];
         }
     }
+    [_loadAnimationView endAnimation];
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
+    
+    NSIndexSet *set = [self selectedItems];
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     
 }
 
@@ -3887,6 +4012,7 @@
 }
 
 - (void)setDeleteComplete:(int)success totalCount:(int)totalCount {
+    
     if (!_isPreview) {
         _isPreview = NO;
         [self setCompletionWithSuccessCount:success totalCount:totalCount title:@"Delete Completed"];

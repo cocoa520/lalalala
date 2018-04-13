@@ -108,7 +108,7 @@
         [self configSelectPathButtonWithButtonTag:2 WithButtonTitle:[StringHelper getCategeryStr:_categoryNodeEunm]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
     _doubleclickCount = 2;
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
@@ -190,8 +190,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mediaLoadFinished:) name:deviceDataLoadCompleteMedia object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoLoadFinished:) name:DeviceDataLoadCompleteVideo object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDoumentLoadFinished:) name:DeviceDataLoadCompleteAppDoucment object:nil];
-        [_itemTableView reloadData];
-        [_gridView reloadData];
+
     }
     if (_categoryNodeEunm == Category_appDoucment) {
         _isSmipNode = YES;
@@ -226,6 +225,8 @@
         } else {
             [_contentBox setContentView:_nodataView];
         }
+        [_itemTableView reloadData];
+        [_gridView reloadData];
     }else {
         [_toolBarButtonView toolBarButtonIsEnabled:NO];
         [_loadAnimationView startAnimation];
@@ -468,6 +469,26 @@
             _currentDevicePath = [_oldDocwsidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
         }
     }
+    
+    NSIndexSet *set = [self selectedItems];
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
 }
 
 - (void)changeContentViewWithDataArr:(NSMutableArray *)dataArr {
@@ -917,6 +938,9 @@
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
+    [_itemTableView changeHeaderCheckState:UnChecked];
+    [self hideFileDetailView:nil];
+    
     NSArray *array = nil;
     if (_isSearch) {
         array = _researchdataSourceArray;
@@ -1830,6 +1854,7 @@
             [set addIndex:i];
         }
     }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     [_itemTableView reloadData];
     
     NSArray *disPalyAry = nil;
@@ -2126,17 +2151,21 @@
             }else{
                 return ;
             }
-            if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
-                if (_currentSelectView == 0) {
-                    [_contentBox setContentView:_tableViewBgView];
-                }else {
-                    [_contentBox setContentView:_gridBgView];
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5/*延迟执行时间*/ * NSEC_PER_SEC));
+            
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                if (_dataSourceArray != nil && _dataSourceArray.count > 0) {
+                    if (_currentSelectView == 0) {
+                        [_contentBox setContentView:_tableViewBgView];
+                    }else {
+                        [_contentBox setContentView:_gridBgView];
+                    }
+                } else {
+                    [_contentBox setContentView:_nodataView];
                 }
-            } else {
-                [_contentBox setContentView:_nodataView];
-            }
-            [_toolBarButtonView toolBarButtonIsEnabled:YES];
-            [_loadAnimationView endAnimation];
+                [_toolBarButtonView toolBarButtonIsEnabled:YES];
+                [_loadAnimationView endAnimation];
+            });
             [_gridView reloadData];
             [_itemTableView reloadData];
         }
@@ -2648,10 +2677,8 @@
 }
 
 - (void)reloadEnd {
-    
-    [_loadAnimationView endAnimation];
     [_gridView reloadData];
-    [_itemTableView reloadData];
+    
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
     [self changeToolButtonsIsSelectedIntems:NO];
     if (_currentSelectView == 0) {
@@ -2668,7 +2695,28 @@
             [_contentBox setContentView:_nodataView];
         }
     }
+    [_loadAnimationView endAnimation];
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
+    
+    NSIndexSet *set = [self selectedItems];
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
     
 }
 
@@ -3965,6 +4013,7 @@
 }
 
 - (void)setDeleteComplete:(int)success totalCount:(int)totalCount {
+    
     if (!_isPreview) {
         _isPreview = NO;
         [self setCompletionWithSuccessCount:success totalCount:totalCount title:@"Delete Completed"];

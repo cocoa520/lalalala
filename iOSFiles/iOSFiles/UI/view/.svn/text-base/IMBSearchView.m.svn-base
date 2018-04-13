@@ -26,7 +26,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setAutoresizesSubviews:YES];
-    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,3, self.frame.size.width -19, self.frame.size.height - 6)];
+    _searchField = [[IMBSearchTextField alloc] initWithFrame:NSMakeRect(18,3, self.frame.size.width - 16.5, self.frame.size.height - 6)];
     [_searchField setBordered:NO];
     [_searchField setDrawsBackground:YES];
     [[_searchField cell] setBackgroundColor:[NSColor grayColor]];

@@ -31,11 +31,10 @@
     NSString *authorizationHeaderValue = [NSString stringWithFormat:@"Bearer %@", _accestoken];
     NSString *uploadItem = nil;
     NSString *range = [NSString stringWithFormat:@"bytes %lld-%lld/%lld", _uploadRangeStart, _uploadRangeEnd, _uploadFileSize];
-    NSLog(@"range: %@", range);
     if ([_parent rangeOfString:@"0"].location != NSNotFound) {
-        uploadItem = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", _fileName];
+        uploadItem = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", [BaseDriveAPI utf8ToUnicode:_fileName]];
     }else {
-        uploadItem = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, _fileName];
+        uploadItem = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, [BaseDriveAPI utf8ToUnicode:_fileName]];
     }
     return @{
              @"Authorization": authorizationHeaderValue,

@@ -87,6 +87,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     }
     
     IMBTranferViewController *tranferVC = [IMBTranferViewController singleton];
+    [tranferVC transferBtn:_transferBtn];
     tranferVC.showWindowDelegate = self;
     [_rootBox setWantsLayer:YES];
     [_lineView1 setLineColor:COLOR_MAIN_WINDOW_LINE_COLOR];
@@ -199,6 +200,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (IBAction)toolbarTransfefClicked:(id)sender {
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
+    [tranferView transferBtn:_transferBtn];
     if (!_isShowTranfer) {
         _isShowCompleteView = NO;
         _isShowTranfer = YES;
@@ -235,6 +237,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             _isShowTranfer = NO;
              IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
             [tranferView setDelegate:self];
+            [tranferView transferBtn:_transferBtn];
             [tranferView closeCompleteView:nil];
         }else{
             _isShowTranfer = NO;
@@ -353,15 +356,27 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             return;
         }else {
             IMBiPod *ipod = [connection getiPodByKey:baseInfo.uniqueKey];
+            NSDictionary *dimensionDict = nil;
+            
             if (_chooseModelEnum == iCloudLogEnum) {
                 if (baseInfo.chooseModelEnum == iCloudLogEnum) {
                     return;
                 }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     windowController = [viewManager.windowDic objectForKey:@"DropBox"];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:@"iCloud"];
                     }
                 }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"iCloud"];
@@ -369,6 +384,11 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 }
             }else if (_chooseModelEnum == DropBoxLogEnum) {
                 if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     windowController = [viewManager.windowDic objectForKey:@"iCloud"];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"iCloud" withCloud:@"DropBox"];
@@ -376,6 +396,11 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
                     return;
                 }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"DropBox"];
@@ -383,11 +408,21 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 }
             }else if (_chooseModelEnum == DeviceLogEnum) {
                 if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     windowController = [viewManager.windowDic objectForKey:@"iCloud"];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"iCloud" withCloud:_iPod.uniqueKey];
                     }
                 }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                    @autoreleasepool {
+                        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:0];
+                        dimensionDict = [[TempHelper customDimension] copy];
+                    }
+                    [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                      windowController = [viewManager.windowDic objectForKey:@"DropBox"];
                     if (!windowController) {
                         [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:_iPod.uniqueKey];
@@ -395,6 +430,10 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
                     return;
                 }
+            }
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
             }
             if (windowController) {
                 [windowController showWindow:self];
@@ -603,15 +642,29 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)openWindow:(IMBBaseInfo *)baseInfo {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
-        [TempHelper customViewType:baseInfo.chooseModelEnum withCategoryEnum:_baseViewController.category];
+        [TempHelper customViewType:_chooseModelEnum withCategoryEnum:_baseViewController.category];
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    if (baseInfo.chooseModelEnum == iCloudLogEnum) {
-        [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
-        [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-    }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
-        [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    if (_chooseModelEnum == iCloudLogEnum) {
+        if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+            [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+            [ATTracker event:CiCloud action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
+    }else if (_chooseModelEnum == DropBoxLogEnum) {
+        if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+            [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
+            [ATTracker event:CDropbox action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
+    }else {
+        if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+            [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"iCloud" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+            [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"Dropbox" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }else if (![baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
+            [ATTracker event:CDevice action:AJump label:LNone labelParameters:@"Device" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        }
     }
     if (dimensionDict) {
         [dimensionDict release];
@@ -666,6 +719,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     if (_isShowTranfer && !_isShowCompleteView) {
         IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
         [tranferView setDelegate:self];
+        [tranferView transferBtn:_transferBtn];
         _isShowTranfer = NO;
         [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
         NSView *view = nil;
@@ -695,6 +749,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)closeCompteleTranferView {
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
+    [tranferView transferBtn:_transferBtn];
     _isShowTranfer = NO;
     
     [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:0] toX:[NSNumber numberWithInt:tranferView.view.frame.size.width] repeatCount:1 beginTime:0]  forKey:@"moveX"];
@@ -704,6 +759,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)closeCompleteOver {
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView.view removeFromSuperview];
+    [tranferView transferBtn:_transferBtn];
     [tranferView.view.layer removeAllAnimations];
     [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
 

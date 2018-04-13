@@ -1,15 +1,15 @@
 10
 
 dir
-2603
+2722
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-10T12:18:05.133002Z
-2602
-longfan
+2018-04-13T04:23:42.032700Z
+2718
+hezhonglin
 
 
 
@@ -338,11 +338,11 @@ file
 
 
 
-2018-04-10T12:03:52.000000Z
-f6a595640252bf9f4e241bfc728cdaf8
-2018-04-10T11:35:05.325271Z
-2594
-qiujie
+2018-04-13T00:55:29.000000Z
+886f56592ae5dbe5288c1c5d3df3b861
+2018-04-12T07:37:02.132121Z
+2696
+longfan
 
 
 
@@ -364,7 +364,7 @@ qiujie
 
 
 
-38721
+43122
 
 IMBTransferViewController.m
 file
@@ -536,40 +536,6 @@ longfan
 
 18947
 
-IMBAppsListViewController.h
-file
-
-
-
-
-2018-03-28T02:24:28.000000Z
-3294326cfc0af419d0d7561159bb31bb
-2018-03-08T09:16:51.709655Z
-1584
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2494
-
 IMBDeviceViewController.h
 file
 
@@ -604,17 +570,51 @@ longfan
 
 4602
 
+IMBAppsListViewController.h
+file
+
+
+
+
+2018-03-28T02:24:28.000000Z
+3294326cfc0af419d0d7561159bb31bb
+2018-03-08T09:16:51.709655Z
+1584
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2494
+
 IMBTranferViewController.h
 file
 
 
 
 
-2018-04-10T10:10:47.000000Z
-b6b8abd828e03b53342828d3356c8c6d
-2018-04-10T09:45:39.507739Z
-2579
-qiujie
+2018-04-13T00:55:29.000000Z
+a63f60db1085b32a6061f883500f6bb2
+2018-04-12T07:37:02.132121Z
+2696
+longfan
 
 
 
@@ -636,7 +636,7 @@ qiujie
 
 
 
-3753
+5320
 
 IMBDownloadListViewController.h
 file
@@ -672,6 +672,40 @@ qiujie
 
 3905
 
+IMBDeviceViewController.m
+file
+
+
+
+
+2018-04-13T00:55:29.000000Z
+44e9898d1d8a4032cbfc69e9764bfdde
+2018-04-12T07:37:02.132121Z
+2696
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+59680
+
 IMBAppsListViewController.m
 file
 
@@ -705,40 +739,6 @@ longfan
 
 
 65378
-
-IMBDeviceViewController.m
-file
-
-
-
-
-2018-04-10T12:41:01.000000Z
-4467f103e1c2d29a4acc0a5fa2bb268f
-2018-04-10T12:18:05.133002Z
-2602
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-59066
 
 IMBDevicePopoverViewController.xib
 file
@@ -780,44 +780,10 @@ file
 
 
 
-2018-04-10T12:03:52.000000Z
-ad231330e60f0a870c16577abd1aa17b
-2018-04-10T11:35:05.325271Z
-2594
-qiujie
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-24358
-
-IMBDownloadListViewController.m
-file
-
-
-
-
-2018-04-10T12:41:01.000000Z
-3c633bc4b49e078f2548d9f60a56e827
-2018-04-10T12:18:05.133002Z
-2602
+2018-04-13T00:55:29.000000Z
+7b6b79d81d54afb6ad262529c7f8a815
+2018-04-12T07:37:02.132121Z
+2696
 longfan
 
 
@@ -840,7 +806,41 @@ longfan
 
 
 
-77970
+24597
+
+IMBDownloadListViewController.m
+file
+
+
+
+
+2018-04-11T03:09:04.000000Z
+8f6ba0b57e9d2fad90def66205682028
+2018-04-11T03:07:53.885605Z
+2629
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+78231
 
 IMBDevViewController.xib
 file
@@ -882,10 +882,10 @@ file
 
 
 
-2018-04-01T07:15:25.000000Z
-b94226258c916df70237d84915d01ec3
-2018-04-01T06:47:57.918980Z
-2215
+2018-04-13T00:55:29.000000Z
+77cfbca0c429e77c5a17156ba7199cf3
+2018-04-12T07:37:02.132121Z
+2696
 longfan
 
 
@@ -908,7 +908,7 @@ longfan
 
 
 
-1309
+1400
 
 IMBDevViewController.h
 file
@@ -950,11 +950,11 @@ file
 
 
 
-2018-04-02T10:51:31.000000Z
-e13aebbf70698d644e62be40a4db8673
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
+2018-04-13T00:55:29.000000Z
+7a98ef8e575f2c69b4a7d28ec4e2d62a
+2018-04-12T11:12:58.110877Z
+2709
+longfan
 
 
 
@@ -976,7 +976,7 @@ huyumin
 
 
 
-7328
+7560
 
 IMBDevViewController.m
 file
@@ -1048,14 +1048,14 @@ longfan
 
 IMBiCloudDriverViewController.xib
 file
-2605
 
 
 
-2018-04-10T12:42:08.000000Z
-15258df7e460c94bde2dfb0e54db17af
-2018-04-10T12:43:27.882877Z
-2605
+
+2018-04-10T13:04:07.000000Z
+b077245ea1ad606a7b82ed94cd00b112
+2018-04-11T01:50:31.535851Z
+2626
 hezhonglin
 
 
@@ -1078,7 +1078,7 @@ hezhonglin
 
 
 
-39087
+40338
 
 deviceController
 dir
@@ -1330,11 +1330,11 @@ file
 
 
 
-2018-04-10T11:15:23.000000Z
-8124f725fb109d5d9ef016f7f384daec
-2018-04-10T10:44:02.509491Z
-2583
-huyumin
+2018-04-13T00:55:29.000000Z
+e3a6f3dc68dbe35a94428b97b13b0e0f
+2018-04-12T07:37:02.132121Z
+2696
+longfan
 
 
 
@@ -1356,18 +1356,18 @@ huyumin
 
 
 
-13707
+14162
 
 IMBiCloudDriverViewController.m
 file
-2605
 
 
 
-2018-04-10T11:58:37.000000Z
-032c4d18c60d5516790e465c18c55c59
-2018-04-10T12:43:27.882877Z
-2605
+
+2018-04-13T04:22:25.000000Z
+2c022e87404c143fca5dbc0655885d9c
+2018-04-13T04:23:42.032700Z
+2718
 hezhonglin
 
 
@@ -1390,7 +1390,7 @@ hezhonglin
 
 
 
-78108
+80951
 
 IMBSystemCollectionViewController.h
 file

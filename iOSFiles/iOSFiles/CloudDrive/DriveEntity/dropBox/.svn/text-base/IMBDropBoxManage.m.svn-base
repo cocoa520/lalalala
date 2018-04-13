@@ -59,7 +59,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *sessionDic = [NSDictionary dictionaryWithObjectsAndKeys:drive.accessToken,@"accessToken",drive.refreshToken ,@"refreshToken",drive.expirationDate,@"expirationDate", nil];
     //保存访问令牌和刷新令牌到本地
-    [defaults setObject:sessionDic forKey:@"oneDriveSessionKey"];
+    [defaults setObject:sessionDic forKey:@"kAppAuthDropboxStateKey"];
     [defaults synchronize];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self loadDriveData];
@@ -86,7 +86,11 @@
         //        NSString *email_verified = [dic objectForKey:@"email_verified"];
         NSDictionary *nameDic = [dic objectForKey:@"name"];
         NSString *displayName = [nameDic objectForKey:@"display_name"];
-        _dropbox.userID = displayName;
+        if (displayName!=nil) {
+            _dropbox.userID = displayName;
+        }else {
+            _dropbox.userID = @"DropBox";
+        }
     } fail:^(DriveAPIResponse *response) {
         NSLog(@"");
     }];
@@ -102,9 +106,7 @@
             [_driveDataAry addObject:drviceEntity];
             [drviceEntity release];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_deivceDelegate switchViewControllerDropBox:_dropbox];
-        });
+        [_deivceDelegate switchViewControllerDropBox:_dropbox];
     } fail:^(DriveAPIResponse *response) {
         [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
             //            [self removeLoginLoadingAnimation];
@@ -157,17 +159,31 @@
     if (![StringHelper stringIsNilOrEmpty:extension]) {
         extension = [extension lowercaseString];
     }
-    
-    drviceEntity.fileLoadURL = downFileLoadURL;
-    drviceEntity.createdDateString = createdString;
-    drviceEntity.lastModifiedDateString = lastModifiedString;
-    drviceEntity.fileName = [fileName stringByDeletingPathExtension];
+    if (downFileLoadURL) {
+         drviceEntity.fileLoadURL = downFileLoadURL;
+    }
+    if (createdString) {
+        drviceEntity.createdDateString = createdString;
+    }
+    if (lastModifiedString) {
+        drviceEntity.lastModifiedDateString = lastModifiedString;
+    }
+    if (fileName) {
+        drviceEntity.fileName = [fileName stringByDeletingPathExtension];
+    }
+    if (fileSystemCreatedDate) {
+        drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
+    }
     drviceEntity.fileSize = size;
-    drviceEntity.fileSystemCreatedDate = fileSystemCreatedDate;
-    drviceEntity.fileSystemLastDate = fileSystemLastDate;
+    if (fileSystemLastDate) {
+        drviceEntity.fileSystemLastDate = fileSystemLastDate;
+    }
     drviceEntity.fileID = fileID;
     drviceEntity.docwsid = fileID;
-    drviceEntity.filePath = path;
+    if (path) {
+        drviceEntity.filePath = path;
+    }
+    
     if ([isFolder isEqualToString:@"folder"]) {
         drviceEntity.isFolder = YES;
         drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
@@ -180,7 +196,8 @@
 
 - (void)driveDidLogOut:(BaseDrive *)drive {
     if ([drive isKindOfClass:[Dropbox class]]) { //将记录在本地的登录信息删掉
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; [defaults removeObjectForKey:@"oneDriveSessionKey"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"kAppAuthDropboxStateKey"];
         [defaults synchronize];
         drive.accessToken = nil;
         drive.refreshToken = nil;
@@ -244,26 +261,21 @@
     }
     [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
-        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
         NSMutableArray *dataAry = [[NSMutableArray alloc]init];
-        for (NSDictionary *dic in array) {
-            NSString *status = @"";
-            if ([dic.allKeys containsObject:@"status"]) {
-                status = [dic objectForKey:@"status"];
-            }
-            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
-                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
-            }
+        if ([dataDic.allKeys containsObject:@"id"]) {
+            [dataAry addObject:[dataDic objectForKey:@"id"]];
         }
+ 
         [ATTracker event:CDropbox action:ADelete label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         if (dimensionDict) {
             [dimensionDict release];
             dimensionDict = nil;
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
             [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
             [dataAry release];
-        });
+//        });
     } fail:^(DriveAPIResponse *response) {
         [ATTracker event:CDropbox action:ADelete label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         if (dimensionDict) {
@@ -316,9 +328,19 @@
         BOOL ret = NO;
         if (resDic) {
             ret = YES;
-            [self createDriveEntity:drviceEntity ResDic:resDic];
+            NSDictionary *dataDic = [resDic objectForKey:@"metadata"];
+            NSString *fileName = [dataDic objectForKey:@"name"];
+            drviceEntity.fileName = fileName;
+            drviceEntity.fileID = [dataDic objectForKey:@"id"];
+            drviceEntity.docwsid  = [dataDic objectForKey:@"id"];
+            drviceEntity.filePath = [dataDic objectForKey:@"path_display"];
+//            drviceEntity.fileID = [resDic objectForKey:@"id"];
+//            [self createDriveEntity:drviceEntity ResDic:resDic];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
+            drviceEntity.isFolder = YES;
+            drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
+            drviceEntity.extension = @"Folder";
             [_driveWindowDelegate loadTransferComplete:[NSMutableArray arrayWithObjects:[NSNumber numberWithBool:ret], drviceEntity, nil] WithEvent:createFolder];
         });
     } fail:^(DriveAPIResponse *response) {
@@ -342,17 +364,13 @@
     }
     [_dropbox moveToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
-        NSMutableArray *array = [dic objectForKey:@"items"];
+        NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
         NSMutableArray *dataAry = [[NSMutableArray alloc]init];
-        for (NSDictionary *dic in array) {
-            NSString *status = @"";
-            if ([dic.allKeys containsObject:@"status"]) {
-                status = [dic objectForKey:@"status"];
-            }
-            if ([dic.allKeys containsObject:@"drivewsid"] && [status isEqualToString:@"OK"]) {
-                [dataAry addObject:[dic objectForKey:@"drivewsid"]];
-            }
+
+        if ([dataDic.allKeys containsObject:@"id"]) {
+            [dataAry addObject:[dataDic objectForKey:@"id"]];
         }
+    
         [ATTracker event:CDropbox action:AMove label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         if (dimensionDict) {
             [dimensionDict release];
@@ -383,7 +401,25 @@
 }
 
 - (void)userDidLogout {
-    [_dropbox userDidLogout];
+//    if ([drive isKindOfClass:[Dropbox class]]) { //将记录在本地的登录信息删掉
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"kAppAuthDropboxStateKey"];
+        [defaults synchronize];
+        _dropbox.accessToken = nil;
+        _dropbox.refreshToken = nil;
+        _dropbox.expirationDate = nil;
+        NSDictionary *dimensionDict = nil;
+        @autoreleasepool {
+            [TempHelper customViewType:1 withCategoryEnum:0];
+            dimensionDict = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:CDropbox action:ALogout label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        if (dimensionDict) {
+            [dimensionDict release];
+            dimensionDict = nil;
+        }
+//    }
+//    [_dropbox userDidLogout];
 }
 
 //时间转换

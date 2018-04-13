@@ -273,6 +273,7 @@
 "iCloudLogin_View_Input_NewCode" = "認証コードが多すぎます。最新のコードを入力するか、時間をおいてお試しください。";
 "iCloudLogin_View_Account_Locked" = "このApple IDはセキュリティ上の理由からロックされています。ロックを解除してください。";
 "iCloudLogin_View_Unlock_Account" = "アカウントのロックを解除";
+
 "iCloudLogin_View_Input_Toomany_ErrorCode" = "間違った確認コードが複数回入力されました。時間をおいてお試しください。";
 "iCloudLogin_View_Waitting" = "サインイン中、少々お待ちください...";
 
@@ -392,7 +393,7 @@
 "Menu_BringAlltoFront" = "すべてを手前に移動";
 "Menu_Help" = "ヘルプ";
 
-"Function_New_Folder" = "新しいフォルダ";
+"Function_New_Folder" = "新規フォルダ";
 /******************** window没有的************************/
 
 "From_Product_Name" = "ALlFilesからの写真";

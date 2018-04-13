@@ -56,12 +56,51 @@
 @property (nonatomic, assign) ChooseLoginModelEnum chooseLoginModelEnum;
 
 + (instancetype)singleton;
-- (void)loadDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withSelectedAry:(NSMutableArray *)selectedAry withIsDownItem:(BOOL)isDownItem withiPod:(IMBiPod *)ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum withIsiCloudDrive:(BOOL)isiCloudDrive;
-
+/**
+ *  icloud 上传 下载
+ *  @param addDataSource  选择的数据
+ *  @param isdown  是否是下载  yes 是下载  No是上传
+ *  @param categoryNodesEnum device 不同数据的枚举   icloud 传 Category_Normal
+ *  @param driveBaseManage  iclouddrive 或者 dropbox 管理对象
+ *  @param uploadParent  上传的目录
+ *  @param docID  用户新建文件夹
+ */
 - (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID;
+/**
+ *  dropBox 上传 下载
+ *  @param addDataSource  选择的数据
+ *  @param isdown  是否是下载  yes 是下载  No是上传
+ *  @param categoryNodesEnum device 不同数据的枚举   icloud 传 Category_Normal
+ *  @param driveBaseManage  iclouddrive 或者 dropbox 管理对象
+ *  @param uploadParent  上传的目录
+ */
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
+/**
+ *  device 上传 下载
+ *  @param addDataSource  选择的数据
+ *  @param isdown  是否是下载  yes 是下载  No是上传
+ *  @param categoryNodesEnum device 不同数据的枚举   icloud 传 Category_Normal
+ *  @param driveBaseManage  iclouddrive 或者 dropbox 管理对象
+ *  @param uploadParent  上传的目录
+ */
 - (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath;
+/**
+ *  设备toicloud 下载
+ *  @param addDataSource  选择的数据
+ *  @param isdown  是否是下载  yes 是下载  No是上传
+ *  @param categoryNodesEnum device 不同数据的枚举   icloud 传 Category_Normal
+ *  @param driveBaseManage  iclouddrive 或者 dropbox 管理对象
+ *  @param uploadParent  上传的目录
+ */
 - (void)downDeviceDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath;
+/**
+ *  todevice
+ *  @param addDataSource  选择的数据
+ *  @param isdown  是否是下载  yes 是下载  No是上传
+ *  @param categoryNodesEnum device 不同数据的枚举   icloud 传 Category_Normal
+ *  @param driveBaseManage  iclouddrive 或者 dropbox 管理对象
+ *  @param uploadParent  上传的目录
+ */
 - (void)toDeviceAddDataSorue:(NSMutableArray *)addDataSource withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum srciPodKey:(NSString *)srcIpodKey desiPodKey:(NSString *)desiPodKey ;
 - (void)loadCompleteData:(DriveItem *)driveItem;
 - (void)reparinitialization;
@@ -69,5 +108,8 @@
 - (void)removeAllHistoryAry;
 - (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn;
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
-
+/**
+ *  完成界面删除所有记录
+ */
+- (void)removeCompletData:(DriveItem *)driveItem WithIsRemoveAllData:(BOOL) isRemoveAllData;
 @end

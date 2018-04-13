@@ -427,6 +427,14 @@ static id _instance = nil;
     [_allHistoryArray removeAllObjects];
 }
 
+- (void)removeCompletData:(DriveItem *) driveItem WithIsRemoveAllData:(BOOL) isRemoveAllData {
+    if (isRemoveAllData) {
+        [_allHistoryArray removeAllObjects];
+    }else {
+        [_allHistoryArray removeObject:driveItem];
+    }
+}
+
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount {
     if (_reloadDelegate &&[_reloadDelegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
         [_reloadDelegate transferComplete:successCount TotalCount:totalCount];

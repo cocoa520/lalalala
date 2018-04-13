@@ -17,8 +17,9 @@
     IMBiPod *_iPod;
     BOOL _isChooseView;
     NSMutableArray *_chooseDeviceAry;
+    IMBBaseInfo *_baseInfo;
 }
-
+@property (nonatomic, readwrite, retain) IMBBaseInfo* baseInfo;
 @property (nonatomic, readwrite, retain) id target;
 @property (nonatomic, readwrite) SEL action;
 

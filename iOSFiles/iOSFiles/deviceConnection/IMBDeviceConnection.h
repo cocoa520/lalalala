@@ -48,7 +48,11 @@ typedef enum DeviceConnectMode {
     IMBDriveBaseManage *_driveBaseManage;
     Dropbox *_dropBox;
     iCloudDrive *_iCloudDrive;
+    NSImage *_leftImage;
+    NSImage *_leftHoverImage;
 }
+@property (nonatomic, readwrite, retain) NSImage *leftHoverImage;
+@property (nonatomic, readwrite, retain) NSImage *leftImage;
 @property (nonatomic, readwrite, retain) iCloudDrive *iCloudDrive;
 @property (nonatomic, readwrite, retain) Dropbox *dropBox;
 @property (nonatomic, readwrite, retain) IMBDriveBaseManage *driveBaseManage;

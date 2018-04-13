@@ -96,9 +96,8 @@
 #pragma mark - 点击OK进行传输
 - (void)clickOKSelectFolderAlertView:(id)sender {
     if (_curEntity) {
+         [self unloadAlertView:_selectFolderAlertView];
         [_delegete startMoveTransferWith:_curEntity];
-        
-        [self unloadAlertView:_selectFolderAlertView];
     }
 }
 

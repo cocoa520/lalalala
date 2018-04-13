@@ -32,10 +32,10 @@
     NSString *uploadItem = nil;
     NSString *cursor = [NSString stringWithFormat:@"{\"session_id\":\"%@\", \"offset\": %lld}", _uploadSessionID, _uploadFileSize];
     if ([_parent rangeOfString:@"0"].location != NSNotFound) {
-        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", _fileName];
+        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"/%@\"}", [BaseDriveAPI utf8ToUnicode:_fileName]];
         uploadItem = [NSString stringWithFormat:@"{\"cursor\": %@, \"commit\" : %@}", cursor, commit];
     }else {
-        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, _fileName];
+        NSString *commit = [NSString stringWithFormat:@"{\"path\":\"%@/%@\"}", _parent, [BaseDriveAPI utf8ToUnicode:_fileName]];
         uploadItem = [NSString stringWithFormat:@"{\"cursor\": %@, \"commit\" : %@}", cursor, commit];
     }
     return @{

@@ -119,6 +119,7 @@
         [dateFormatter setDateFormat:@"yyyyMMdd"];
     }
     NSDate *date = [self dateFrom1970:timeStamp];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
     NSString *returnString = [dateFormatter stringFromDate:date];
     [dateFormatter release];
     return returnString;

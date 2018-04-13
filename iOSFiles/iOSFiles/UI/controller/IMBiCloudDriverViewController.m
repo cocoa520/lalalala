@@ -219,6 +219,7 @@
 }
 
 - (void)iCloudButtonClick:(id)sender {
+
     _curEntity = nil;
     int tag = (int)((IMBiCloudPathSelectBtn *)sender).tag;
     int viewCount = (int)[_topView subviews].count;
@@ -265,7 +266,16 @@
     if ([_oldFileidDic.allKeys containsObject:[NSString stringWithFormat:@"%d",tag]]) {
         _currentGetListPath = [_oldFileidDic objectForKey:[NSString stringWithFormat:@"%d",tag]];
     }
+    [_itemTableView reloadData];
+    [self changeCheckboxState];
     
+    if (_toolBarArr != nil) {
+        [_toolBarArr release];
+        _toolBarArr = nil;
+    }
+    _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+    [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
 }
 
 #pragma mark - CNGridView DataSource
@@ -328,7 +338,7 @@
         array = _dataSourceArray;
     }
     if (index < array.count) {
-        IMBDriveEntity *fielEntity = [array objectAtIndex:index];
+        IMBDriveEntity *fileEntity = [array objectAtIndex:index];
         if (_toolBarArr != nil) {
             [_toolBarArr release];
             _toolBarArr = nil;
@@ -336,7 +346,22 @@
         _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
         [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
         [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
-        fielEntity.checkState = Check;
+        fileEntity.checkState = Check;
+    }
+    NSIndexSet *set = [self selectedItems];
+    if (set.count) {
+        [set enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            IMBDriveEntity *fileEntity = [array objectAtIndex:idx];
+            if (_toolBarArr != nil) {
+                [_toolBarArr release];
+                _toolBarArr = nil;
+            }
+            if (fileEntity.isFolder) {
+                _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+                [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+                [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+            }
+        }];
     }
 }
 
@@ -403,7 +428,7 @@
                     if (_chooseLogModelEnmu == iCloudLogEnum) {
                         [_driveBaseManage createFolder:str parent:_currentGetListPath withEntity:_curEntity];
                     }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
-                        [_driveBaseManage createFolder:_curEntity.fileName parent:_currentDevicePath withEntity:_curEntity];
+                        [_driveBaseManage createFolder:str parent:_currentDevicePath withEntity:_curEntity];
                     }
                 }
             }
@@ -437,6 +462,9 @@
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
+    [_itemTableView changeHeaderCheckState:UnChecked];
+    [self hideFileDetailView:nil];
+    
     NSArray *array = nil;
     if (_isSearch) {
         array = _researchdataSourceArray;
@@ -844,6 +872,7 @@
             [set addIndex:i];
         }
     }
+    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     [_itemTableView reloadData];
 }
 #pragma mark - NSTableView drop and drag
@@ -961,6 +990,8 @@
     _isSearch = NO;
     [_researchdataSourceArray removeAllObjects];
     [_searhView setStringValue:@""];
+    
+    
 }
 
 - (void)showDetailView:(id)sender {
@@ -1315,30 +1346,40 @@
 }
 
 - (void)deleteItems:(id)sender {
-    NSIndexSet *selectedSet = [self selectedItems];
-    NSMutableArray *preparedArray = [NSMutableArray array];
-    NSArray *displayArr = nil;
-    if (_isSearch) {
-        displayArr = _researchdataSourceArray;
-    }else {
-        displayArr = _dataSourceArray;
+    NSString *key = nil;
+    if (_categoryNodeEunm == iCloudLogEnum) {
+        key = IMBAlertViewiCloudKey;
+    }else if (_categoryNodeEunm == DropBoxLogEnum) {
+        key = IMBAlertViewDropBoxKey;
     }
-    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [preparedArray addObject:[displayArr objectAtIndex:idx]];
-    }];
-    NSMutableArray *folderIdArr = [NSMutableArray array];
-    for (IMBDriveEntity *entity in preparedArray) {
-        if (_chooseLogModelEnmu == iCloudLogEnum) {
-            [folderIdArr addObject:@{@"etag":entity.etag,@"drivewsid":entity.fileID}];
+    [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"MSG_COM_Confirm_Before_Delete", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
+        NSIndexSet *selectedSet = [self selectedItems];
+        NSMutableArray *preparedArray = [NSMutableArray array];
+        NSArray *displayArr = nil;
+        if (_isSearch) {
+            displayArr = _researchdataSourceArray;
         }else {
-            [folderIdArr addObject:entity.fileID];
+            displayArr = _dataSourceArray;
         }
-    }
-    if (folderIdArr.count > 0) {
-        [_contentBox setContentView:_loadingView];
-        [_loadAnimationView startAnimation];
-        [_driveBaseManage deleteDriveItem:folderIdArr];
-    }
+        [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            [preparedArray addObject:[displayArr objectAtIndex:idx]];
+        }];
+        NSMutableArray *folderIdArr = [NSMutableArray array];
+        for (IMBDriveEntity *entity in preparedArray) {
+            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                [folderIdArr addObject:@{@"etag":entity.etag,@"drivewsid":entity.fileID}];
+            }else {
+                [folderIdArr addObject:entity.fileID];
+            }
+        }
+        if (folderIdArr.count > 0) {
+            [_contentBox setContentView:_loadingView];
+            [_loadAnimationView startAnimation];
+            [_driveBaseManage deleteDriveItem:folderIdArr];
+            [_toolBarButtonView toolBarButtonIsEnabled:NO];
+        }
+    }];
+    
 }
 
 - (void)doSwitchView:(id)sender {
@@ -1402,6 +1443,9 @@
         _dataSourceArray = nil;
     }
     _dataSourceArray = [dataArr retain];
+    
+    
+    
     [_gridView reloadData];
     [_itemTableView deselectAll:nil];
     [_itemTableView reloadData];
@@ -1422,6 +1466,8 @@
     [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:_currentSelectView];
     [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
      [_toolBarButtonView toolBarButtonIsEnabled:YES];
+    
+    [self changeCheckboxState];
 }
 
 - (void)loadTransferComplete:(NSMutableArray *)transferAry WithEvent:(ActionTypeEnum)actionType {
@@ -1625,6 +1671,9 @@
             }else {
                 if (_curEntity.isCreate) {
                     _curEntity.isCreating = YES;
+                    if (newName.length < 1) {
+                        newName = CustomLocalizedString(@"Function_New_Folder", nil);
+                    }
                     _curEntity.fileName = newName;
                     if (_chooseLogModelEnmu == iCloudLogEnum) {
                         [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
@@ -1799,7 +1848,29 @@
     }
 }
 
-
+- (void)changeCheckboxState {
+    if (_currentSelectView) return;
+    
+    NSIndexSet *set = [self selectedItems];
+    NSMutableArray *disPalyAry = nil;
+    if (_isSearch) {
+        disPalyAry = _researchdataSourceArray;
+    }else{
+        disPalyAry = _dataSourceArray;
+    }
+    if (disPalyAry.count <=0) {
+        return;
+    }
+    if (set.count == disPalyAry.count) {
+        [_itemTableView changeHeaderCheckState:Check];
+    }else if (set.count == 0){
+        [_itemTableView changeHeaderCheckState:UnChecked];
+    }else{
+        [_itemTableView changeHeaderCheckState:SemiChecked];
+    }
+//    [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
+}
 #pragma mark 搜索 
 - (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
     NSDictionary *dimensionDict = nil;

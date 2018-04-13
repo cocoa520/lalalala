@@ -100,7 +100,7 @@
 
 - (void)awakeFromNib {
     [IMBSoftWareInfo singleton];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveFirstLaunch:) name:NOTIFY_FIRST_LAUNCH object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(saveFirstLaunch:) name:NOTIFY_FIRST_LAUNCH object:nil];
 }
 
 - (IBAction)aboutAnyTransMenuClick:(id)sender {

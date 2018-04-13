@@ -300,5 +300,7 @@
 - (id)initWithDsid:(NSString *)dsid cookie:(NSMutableDictionary *)cookie;
 
 + (NSString *)createGUID;
++ (NSString *) utf8ToUnicode:(NSString *)string;
+
 
 @end

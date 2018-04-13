@@ -14,8 +14,7 @@
 @implementation IMBDevicePopoverViewController
 @synthesize action = _action;
 @synthesize target = _target;
-
-
+@synthesize baseInfo = _baseInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withDeviceAry:(NSMutableArray *)deviceAry {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -146,7 +145,7 @@
             [attrStr drawInRect:textRect2];
         }
         
-        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_blue"];
+        NSImage *image = _baseInfo.leftHoverImage;
         [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         
         
@@ -161,13 +160,11 @@
             NSRect textRect2 = NSMakeRect(30 , 2, size.width, 22);
             [attrStr drawInRect:textRect2];
         }
-        
-        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_blue"];
+        NSImage *image = _baseInfo.leftHoverImage;
         [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     }else {
         [[NSColor clearColor] set];
         [path1 fill];
-        
         
         //画设备的名字
         if (_baseInfo.deviceName != nil) {
@@ -176,15 +173,15 @@
             NSRect textRect2 = NSMakeRect(30 , 2, size.width, 22);
             [attrStr drawInRect:textRect2];
         }
-        
-        NSImage *image = [NSImage imageNamed:@"popup_icon_iphone_gray"];
-        [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        if (_mouseSatue == MouseEnter || _mouseSatue == MouseUp) {
+            NSImage *image = _baseInfo.leftHoverImage;
+            [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        }else {
+            NSImage *image = _baseInfo.leftImage;
+            [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+        }
+       
     }
-    
-    
-
-
-    
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {

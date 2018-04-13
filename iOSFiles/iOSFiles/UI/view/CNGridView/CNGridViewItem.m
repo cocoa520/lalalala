@@ -383,10 +383,12 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
             [mutParaStyle setAlignment:NSCenterTextAlignment];
             [mutParaStyle setLineBreakMode:NSLineBreakByTruncatingMiddle];
             [promptAs addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[[promptAs string] length])];
+//            [_editText setPlaceholderString:self.itemTitle];
             [_editText setEditable:YES];
             [_editText setSelectable:YES];
-            [_editText setFocusRingType:NSFocusRingTypeDefault];
+            [_editText setFocusRingType:NSFocusRingTypeNone];
             [_editText setAttributedStringValue:promptAs];
+            [_editText setAlignment:NSCenterTextAlignment];
             [mutParaStyle release];
             mutParaStyle = nil;
 

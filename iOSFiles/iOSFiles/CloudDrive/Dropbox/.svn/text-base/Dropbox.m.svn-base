@@ -70,8 +70,9 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                                                 //此处需要给自己的token赋值
                                                                 self.accessToken = authState.lastTokenResponse.accessToken;
                                                                 self.expirationDate = authState.lastTokenResponse.accessTokenExpirationDate;
-                                                                
-                                                               [self driveSetAccessTokenKey];
+                                                                if ([_delegate respondsToSelector:@selector(driveDidLogIn:)]) {
+                                                                    [_delegate driveDidLogIn:self];
+                                                                }
                                                             } else {
                                                                 if ([_delegate respondsToSelector:@selector(drive:logInFailWithError:)]) {
                                                                     [_delegate drive:self logInFailWithError:error];
@@ -222,9 +223,11 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             YTKRequest *request = [batchRequestAPI.requestArray lastObject];
             ResponseCode code = [self checkResponseTypeWithSuccess:request];
             if (code == ResponseSuccess) {
-                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
-                success?success(response):nil;
-                [response release];
+                for (YTKBaseRequest *baseRequest in batchRequest.requestArray) {
+                    DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[baseRequest responseData] status:code];
+                    success?success(response):nil;
+                    [response release];
+                }
             }else {
                 NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
                 NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -327,9 +330,11 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             YTKRequest *request = [batchRequest.requestArray lastObject];
             ResponseCode code = [self checkResponseTypeWithSuccess:request];
             if (code == ResponseSuccess) {
-                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
-                success?success(response):nil;
-                [response release];
+                for (YTKBaseRequest *baseRequest in batchRequest.requestArray) {
+                    DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[baseRequest responseData] status:code];
+                    success?success(response):nil;
+                    [response release];
+                }
             }else {
                 NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
                 NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -570,44 +575,52 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                                         }
 
                                                         //请求完成后，检查当前任务状态
-                                                        [self checkUploadStatus:item];
+//                                                        [self checkUploadStatus:item];
                                                         if (i == totalCount - 1) {
                                                             break;
                                                         }
                                                     }
                                                 }
                                                 if ([self isExecute]) {
-                                                    
-                                                    [item setIsBigFile:YES];
-                                                    long long residualBlock = (fileSize % fileBlock);
-                                                    YTKRequest *uploadRequestAPI = [[DropboxUploadSessionFinishAPI alloc] initWithFileName:[item fileName] Parent:[item uploadParent] uploadFile:[item localPath] offset:(fileSize - residualBlock) sessionID:sessionID accessToken:_accessToken];
-                                                    [fileHandle seekToEndOfFile];
-                                                    [fileHandle seekToFileOffset:([fileHandle offsetInFile] - residualBlock * sizeof(char))];
-                                                    NSData *data = [fileHandle readDataToEndOfFile];
-                                                    [uploadRequestAPI setResumableUploadBodyData:data];
-                                                    [item setRequestAPI:uploadRequestAPI];
-                                                    [fileHandle seekToEndOfFile];
-                                                    [uploadRequestAPI release];
-                                                    [_upLoader uploadItem:item success:^(__kindof YTKBaseRequest * _Nonnull request) {
-                                                        [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                                                        if (dimensionDict) {
-                                                            [dimensionDict release];
-                                                            dimensionDict = nil;
+                                                    if (item.state == UploadStateLoading) {
+                                                        [item setIsBigFile:YES];
+                                                        long long residualBlock = (fileSize % fileBlock);
+                                                        YTKRequest *uploadRequestAPI = [[DropboxUploadSessionFinishAPI alloc] initWithFileName:[item fileName] Parent:[item uploadParent] uploadFile:[item localPath] offset:(fileSize - residualBlock) sessionID:sessionID accessToken:_accessToken];
+                                                        [fileHandle seekToEndOfFile];
+                                                        [fileHandle seekToFileOffset:([fileHandle offsetInFile] - residualBlock * sizeof(char))];
+                                                        NSData *data = [fileHandle readDataToEndOfFile];
+                                                        [uploadRequestAPI setResumableUploadBodyData:data];
+                                                        [item setRequestAPI:uploadRequestAPI];
+                                                        [fileHandle seekToEndOfFile];
+                                                        [uploadRequestAPI release];
+                                                        [_upLoader uploadItem:item success:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                            
+                                                        } fail:^(__kindof YTKBaseRequest * _Nonnull request) {
+                                                            
+                                                        }];
+                                                        while ([item isBigFile]) {
+                                                            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
                                                         }
-                                                    } fail:^(__kindof YTKBaseRequest * _Nonnull request) {
-                                                        [ATTracker event:CDropbox action:AUpload label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                                                        if (dimensionDict) {
-                                                            [dimensionDict release];
-                                                            dimensionDict = nil;
-                                                        }
-                                                    }];
-                                                    while ([item isBigFile]) {
-                                                        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+
                                                     }
-                                                    //请求完成后，检查当前任务状态
+                                                    
+                                                                                                        //请求完成后，检查当前任务状态
 //                                                    [self checkUploadStatus:item];
                                                     
                                                     if (item.state == UploadStateComplete || item.state == UploadStateError) {
+                                                        if (item.state == UploadStateComplete) {
+                                                            [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                                                            if (dimensionDict) {
+                                                                [dimensionDict release];
+                                                                dimensionDict = nil;
+                                                            }
+                                                        }else if (item.state == UploadStateError){
+                                                            [ATTracker event:CDropbox action:AUpload label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                                                            if (dimensionDict) {
+                                                                [dimensionDict release];
+                                                                dimensionDict = nil;
+                                                            }
+                                                        }
                                                         dispatch_sync(_synchronQueue, ^{
                                                             [weakSelf removeUploadTaskForItem:item];
                                                             [weakSelf startNextTaskIfAllow];
@@ -703,31 +716,34 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                 [item setRequestAPI:requestAPI];
                                 [requestAPI release];
                                 [_upLoader uploadItem:item success:^(__kindof YTKBaseRequest * _Nonnull request) {
-                                    [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                                    if (dimensionDict) {
-                                        [dimensionDict release];
-                                        dimensionDict = nil;
-                                    }
-                                    dispatch_sync(_synchronQueue, ^{
-                                        [weakSelf removeUploadTaskForItem:item];
-                                        [weakSelf startNextTaskIfAllow];
-                                    });
                                     
                                 } fail:^(__kindof YTKBaseRequest * _Nonnull request) {
-                                    [ATTracker event:CDropbox action:AUpload label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-                                    if (dimensionDict) {
-                                        [dimensionDict release];
-                                        dimensionDict = nil;
+                                    
+                                }];
+                                while ([item isBigFile]) {
+                                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+                                }
+                                if (item.state == UploadStateComplete || item.state == UploadStateError) {
+                                    if (item.state == UploadStateComplete) {
+                                        [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                                        if (dimensionDict) {
+                                            [dimensionDict release];
+                                            dimensionDict = nil;
+                                        }
+                                    }else if (item.state == UploadStateError){
+                                        [ATTracker event:CDropbox action:AUpload label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+                                        if (dimensionDict) {
+                                            [dimensionDict release];
+                                            dimensionDict = nil;
+                                        }
                                     }
                                     dispatch_sync(_synchronQueue, ^{
                                         [weakSelf removeUploadTaskForItem:item];
                                         [weakSelf startNextTaskIfAllow];
                                     });
-                                }];
-//                                while ([item isBigFile]) {
-//                                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//                                }
-//                                //请求完成后，检查当前任务状态
+                                }
+
+                                //请求完成后，检查当前任务状态
 //                                [self checkUploadStatus:item];
                             }
                         } @catch (NSException *exception) {

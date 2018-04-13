@@ -272,6 +272,51 @@
     return self;
 }
 
++ (NSString *) utf8ToUnicode:(NSString *)string
+{
+    NSUInteger length = [string length];
+    NSMutableString *s = [NSMutableString stringWithCapacity:0];
+    for (int i = 0;i < length; i++)
+    {
+        NSString *subStr = [string substringWithRange:NSMakeRange(i, 1)];
+//        unichar _char = [string characterAtIndex:i];
+//        //判断是否为英文和数字
+//        if (_char <= '9' && _char >= '0')
+//        {
+//            [s appendFormat:@"%@",[string substringWithRange:NSMakeRange(i, 1)]];
+//        }
+//        else if(_char >= 'a' && _char <= 'z')
+//        {
+//            [s appendFormat:@"%@",[string substringWithRange:NSMakeRange(i, 1)]];
+//        }
+//        else if(_char >= 'A' && _char <= 'Z')
+//        {
+//            [s appendFormat:@"%@",[string substringWithRange:NSMakeRange(i, 1)]];
+//        }
+//        else
+//        {
+//            [s appendFormat:@"\\u%x",[string characterAtIndex:i]];
+//        }
+        
+        if ([BaseDriveAPI isChinese:subStr]){
+            [s appendFormat:@"\\u%x",[string characterAtIndex:i]];
+        }else {
+            [s appendFormat:@"%@",[string substringWithRange:NSMakeRange(i, 1)]];
+        }
+    }
+    return s;
+}
+
++ (BOOL)isChinese:(NSString *)userName
+{
+    NSString *match = @"(^[\u4e00-\u9fa5]+$)";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF matches %@", match];
+    
+    NSString *match1 = @"^[\u0800-\u4e00]";
+    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"SELF matches %@", match1];
+    return [predicate evaluateWithObject:userName] || [predicate1 evaluateWithObject:userName];
+}
+
 #pragma mark - 请求参数的一些通用配置 如果比较特殊 需要子类重写
 
 /**

@@ -268,9 +268,9 @@
         }
     } else {
         _clickSpace = YES;
-        if ([_listener respondsToSelector:@selector(tableView:WithSelectIndexSet:)]) {
-            [_listener tableView:self WithSelectIndexSet:nil];
-        }
+//        if ([_listener respondsToSelector:@selector(tableView:WithSelectIndexSet:)]) {
+//            [_listener tableView:self WithSelectIndexSet:nil];
+//        }
     }
 }
 

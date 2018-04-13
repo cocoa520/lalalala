@@ -143,8 +143,8 @@
                     if ([errorArray count]>0) {
                         NSDictionary *errorDic = [errorArray objectAtIndex:0];
                         if ([[errorDic objectForKey:@"code"] isEqualToString:@"-20209"]) {
-                            if ([_delegate respondsToSelector:@selector(driveAccountLocked:)]) {
-                                [_delegate driveAccountLocked:self];
+                            if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
+                                [_delegate drive:self logInFailWithResponseCode:ResponseAccountLocked];
                             }
                         }else {
                             if ([_delegate respondsToSelector:@selector(drive:logInFailWithResponseCode:)]) {
@@ -547,7 +547,7 @@
     }];
 }
 
-- (void)moveToNewParent:(NSString *)newParent itemDic:(NSArray *)items   success:(Callback)success fail:(Callback)fail
+- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail
 {
     YTKRequest *requestAPI = [[iCloudDriveMoveToNewParentAPI alloc] initWithMoveItemDic:items newParentIDOrPathdsid:newParent dsid:_dsid cookie:_cookie iCloudDriveURL:_iCloudDriveUrl];
     __block YTKRequest *weakRequestAPI = requestAPI;
@@ -767,7 +767,6 @@
 - (void)startUploadItem:(_Nonnull id<DownloadAndUploadDelegate>)item
 {
     item.state = UploadStateLoading;
-    NSLog(@"我开始传了 文明名字: %@",item.fileName);
     _activeUploadCount++;
     if (item.parent != nil) {
         id <DownloadAndUploadDelegate> parentItem = item.parent;
