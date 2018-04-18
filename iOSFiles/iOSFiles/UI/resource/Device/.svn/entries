@@ -1,7 +1,7 @@
 10
 
 dir
-2743
+2856
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/Device
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -162,16 +162,16 @@ has-props
 
 544
 
-popbox_icon_ipad.png
+popbox_icon_iphonex_hover.png
 file
 
 
 
 
 2018-04-13T00:55:29.000000Z
-f63225907769bf279db88b886eb5ff45
-2018-04-12T07:37:02.132121Z
-2696
+87308fa780a596b9414a3010add68c2d
+2018-04-12T11:12:58.110877Z
+2709
 longfan
 has-props
 
@@ -194,7 +194,7 @@ has-props
 
 
 
-482
+573
 
 popbox_icon_dropbox.png
 file
@@ -230,16 +230,16 @@ has-props
 
 555
 
-popbox_icon_iphonex_hover.png
+popbox_icon_ipad.png
 file
 
 
 
 
 2018-04-13T00:55:29.000000Z
-87308fa780a596b9414a3010add68c2d
-2018-04-12T11:12:58.110877Z
-2709
+f63225907769bf279db88b886eb5ff45
+2018-04-12T07:37:02.132121Z
+2696
 longfan
 has-props
 
@@ -262,7 +262,7 @@ has-props
 
 
 
-573
+482
 
 download_process_bg.png
 file
@@ -332,40 +332,6 @@ has-props
 
 397
 
-popbox_icon_ipad_hover.png
-file
-
-
-
-
-2018-04-13T00:55:29.000000Z
-4bc956e8531739b76b1c0fd2abaf9f17
-2018-04-12T11:12:58.110877Z
-2709
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-494
-
 popbox_icon_dropbox_hover.png
 file
 
@@ -400,16 +366,16 @@ has-props
 
 584
 
-popbox_icon_iphone.png
+popbox_icon_ipad_hover.png
 file
 
 
 
 
 2018-04-13T00:55:29.000000Z
-3c942c6ce9c28d147c2a7f12280d4d67
-2018-04-12T07:37:02.132121Z
-2696
+4bc956e8531739b76b1c0fd2abaf9f17
+2018-04-12T11:12:58.110877Z
+2709
 longfan
 has-props
 
@@ -432,7 +398,7 @@ has-props
 
 
 
-501
+494
 
 popbox_icon_icloud_hover.png
 file
@@ -467,6 +433,40 @@ has-props
 
 
 402
+
+popbox_icon_iphone.png
+file
+
+
+
+
+2018-04-13T00:55:29.000000Z
+3c942c6ce9c28d147c2a7f12280d4d67
+2018-04-12T07:37:02.132121Z
+2696
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+501
 
 popbox_icon_iphone_hover.png
 file

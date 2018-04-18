@@ -12,12 +12,16 @@
 #import "DropboxUserSpaceUsageAPI.h"
 #import "DropboxCreateFolderAPI.h"
 #import "DropboxDeleteItemAPI.h"
+#import "DropboxDeleteMultipleItemAPI.h"
+#import "DropboxDeleteMultipleItemCheckAPI.h"
 #import "DropboxGetListAPI.h"
 #import "DropboxUploadAPI.h"
 #import "DropboxUploadSessionStartAPI.h"
 #import "DropboxUploadSessionAppendAPI.h"
 #import "DropboxUploadSessionFinishAPI.h"
 #import "DropboxMoveToNewParentAPI.h"
+#import "DropboxMoveMultipleToNewParentAPI.h"
+#import "DropboxMoveMultipleToNewParentCheckAPI.h"
 
 NSString *const kClientIDWithDropbox = @"b2s64tb9o4zifiz";
 NSString *const kClientSecretWithDropbox = @"wowjeltci8ohak8";
@@ -210,49 +214,8 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
 
 - (void)deleteFilesOrFolders:(NSArray *)filePathOrFolderName success:(Callback)success fail:(Callback)fail {
     if ([self isExecute]) {
-        NSMutableArray *mutRequestArray = [[NSMutableArray alloc] init];
-        for (NSString *itemStr in filePathOrFolderName) {
-            YTKRequest *requestAPI = [[DropboxDeleteItemAPI alloc] initWithItemID:itemStr accessToken:_accessToken];
-            [mutRequestArray addObject:requestAPI];
-            [requestAPI release];
-            requestAPI = nil;
-        }
-        YTKBatchRequest *batchRequestAPI = [[YTKBatchRequest alloc] initWithRequestArray:mutRequestArray];
-        __block YTKBatchRequest *weakBatchRequestAPI = batchRequestAPI;
-        [batchRequestAPI startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
-            YTKRequest *request = [batchRequestAPI.requestArray lastObject];
-            ResponseCode code = [self checkResponseTypeWithSuccess:request];
-            if (code == ResponseSuccess) {
-                for (YTKBaseRequest *baseRequest in batchRequest.requestArray) {
-                    DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[baseRequest responseData] status:code];
-                    success?success(response):nil;
-                    [response release];
-                }
-            }else {
-                NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
-                NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
-                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
-                fail?fail(response):nil;
-                [response release];
-            }
-            [weakBatchRequestAPI release];
-        } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
-            //to do需要更具返回值判断错误
-            YTKRequest *request = [batchRequestAPI.requestArray lastObject];
-            ResponseCode code = [self checkResponseTypeWithFailed:request];
-            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
-            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
-            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
-            fail?fail(response):nil;
-            [response release];
-            [weakBatchRequestAPI release];
-        }];
-    }
-}
-
-- (void)deleteMultipleFilesOrFolders:(NSString *)folderName parent:(NSString *)parentFilePath success:(Callback)success fail:(Callback)fail {
-    if ([self isExecute]) {
-        YTKRequest *requestAPI = [[DropboxDeleteItemAPI alloc] initWithFolderName:folderName Parent:parentFilePath accessToken:_accessToken];
+        NSString *itemStr = [filePathOrFolderName objectAtIndex:0];
+        YTKRequest *requestAPI = [[DropboxDeleteItemAPI alloc] initWithItemID:itemStr accessToken:_accessToken];
         __block YTKRequest *weakRequestAPI = requestAPI;
         [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             ResponseCode code = [self checkResponseTypeWithSuccess:request];
@@ -269,7 +232,6 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             }
             [weakRequestAPI release];
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            //to do需要更具返回值判断错误
             ResponseCode code = [self checkResponseTypeWithFailed:request];
             NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
             NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -277,6 +239,57 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
             fail?fail(response):nil;
             [response release];
             [weakRequestAPI release];
+        }];
+    }
+}
+
+- (void)deleteMultipleFilesOrFolders:(NSArray *)filePathOrFolderName success:(Callback)success fail:(Callback)fail {
+    if ([self isExecute]) {
+        YTKRequest *requestAPI = [[DropboxDeleteMultipleItemAPI alloc] initWithItemsID:filePathOrFolderName accessToken:_accessToken];
+        __block YTKRequest *weakResquestAPI = requestAPI;
+        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+            if (code == ResponseSuccess) {
+                if ([request responseData]) {
+                    if ([request responseJSONObject] && [[request responseJSONObject] isKindOfClass:[NSDictionary class]]) {
+                        NSString *asyncJobID = [[request responseJSONObject] objectForKey:@"async_job_id"];
+                        YTKRequest *asyncJobRequestAPI = [[DropboxDeleteMultipleItemCheckAPI alloc] initWithItemsAsyncJobID:asyncJobID accessToken:_accessToken];
+                        __block YTKRequest *weakAsyncJobResquestAPI = asyncJobRequestAPI;
+                        [asyncJobRequestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+                            if (code == ResponseSuccess) {
+                                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+                                success?success(response):nil;
+                                [response release];
+                            }
+                            [weakAsyncJobResquestAPI release];
+                        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                            ResponseCode code = [self checkResponseTypeWithFailed:request];
+                            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                            fail?fail(response):nil;
+                            [response release];
+                            [weakAsyncJobResquestAPI release];
+                        }];
+                    }
+                }
+            }else {
+                NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                fail?fail(response):nil;
+                [response release];
+            }
+            [weakResquestAPI release];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            ResponseCode code = [self checkResponseTypeWithFailed:request];
+            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+            fail?fail(response):nil;
+            [response release];
+            [weakResquestAPI release];
         }];
     }
 }
@@ -317,23 +330,72 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
 
 - (void)moveToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths success:(Callback)success fail:(Callback)fail {
     if ([self isExecute]) {
-        NSMutableArray *requestArray = [NSMutableArray array];
-        for (NSString *itemID in idOrPaths ) {
-            NSString *newName = [[itemID componentsSeparatedByString:@"/"] lastObject];
-            YTKRequest *requestAPI = [[DropboxMoveToNewParentAPI alloc] initWithItemID:itemID newParentIDOrPath:[newParent stringByAppendingPathComponent:newName] parent:@"" accessToken:_accessToken];
-            [requestArray addObject:requestAPI];
-            [requestAPI release];
-        }
-        YTKBatchRequest *batchRequest = [[YTKBatchRequest alloc] initWithRequestArray:requestArray];
-        __block YTKBatchRequest *weakBatchRequest = batchRequest;
-        [batchRequest startWithCompletionBlockWithSuccess:^(YTKBatchRequest * _Nonnull batchRequest) {
-            YTKRequest *request = [batchRequest.requestArray lastObject];
+        NSString *itemID = [idOrPaths objectAtIndex:0];
+        NSString *newName = [[itemID componentsSeparatedByString:@"/"] lastObject];
+        YTKRequest *requestAPI = [[DropboxMoveToNewParentAPI alloc] initWithItemID:itemID newParentIDOrPath:[newParent stringByAppendingPathComponent:newName] parent:@"" accessToken:_accessToken];
+        __block YTKRequest *weakRequest = requestAPI;
+        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             ResponseCode code = [self checkResponseTypeWithSuccess:request];
             if (code == ResponseSuccess) {
-                for (YTKBaseRequest *baseRequest in batchRequest.requestArray) {
-                    DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[baseRequest responseData] status:code];
-                    success?success(response):nil;
-                    [response release];
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+                success?success(response):nil;
+                [response release];
+            }else {
+                NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                fail?fail(response):nil;
+                [response release];
+            }
+            [weakRequest release];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            //to do需要更具返回值判断错误
+            ResponseCode code = [self checkResponseTypeWithFailed:request];
+            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+            fail?fail(response):nil;
+            [response release];
+            [weakRequest release];
+        }];
+    }
+}
+
+- (void)moveMultipleToNewParent:(NSString *)newParent sourceParent:(NSString *)parent idOrPaths:(NSArray *)idOrPaths success:(Callback)success fail:(Callback)fail {
+    if ([self isExecute]) {
+        NSMutableArray *newIdOrPathsArray = [[NSMutableArray alloc] init];
+        for (NSString *itemID in idOrPaths ) {
+            NSString *newName = [[itemID componentsSeparatedByString:@"/"] lastObject];
+            [newIdOrPathsArray addObject:[newParent stringByAppendingPathComponent:newName]];
+        }
+        YTKRequest *requestAPI = [[DropboxMoveMultipleToNewParentAPI alloc] initWithItemsID:idOrPaths newParentIDOrPath:newIdOrPathsArray parent:@"" accessToken:_accessToken];
+        __block YTKRequest *weakRequest = requestAPI;
+        [requestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+            if (code == ResponseSuccess) {
+                if ([request responseData]) {
+                    if ([request responseJSONObject] && [[request responseJSONObject] isKindOfClass:[NSDictionary class]]) {
+                        NSString *asyncJobID = [[request responseJSONObject] objectForKey:@"async_job_id"];
+                        YTKRequest *asyncJobRequestAPI = [[DropboxMoveMultipleToNewParentCheckAPI alloc] initWithItemsAsyncJobID:asyncJobID accessToken:_accessToken];
+                        __block YTKRequest *weakAsyncJobResquestAPI = asyncJobRequestAPI;
+                        [asyncJobRequestAPI startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                            ResponseCode code = [self checkResponseTypeWithSuccess:request];
+                            if (code == ResponseSuccess) {
+                                DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:[request responseData] status:code];
+                                success?success(response):nil;
+                                [response release];
+                            }
+                            [weakAsyncJobResquestAPI release];
+                        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                            ResponseCode code = [self checkResponseTypeWithFailed:request];
+                            NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
+                            NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
+                            DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
+                            fail?fail(response):nil;
+                            [response release];
+                            [weakAsyncJobResquestAPI release];
+                        }];
+                    }
                 }
             }else {
                 NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
@@ -342,17 +404,15 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                 fail?fail(response):nil;
                 [response release];
             }
-            [weakBatchRequest release];
-        } failure:^(YTKBatchRequest * _Nonnull batchRequest) {
-            //to do需要更具返回值判断错误
-            YTKRequest *request = [batchRequest.requestArray lastObject];
+            [weakRequest release];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
             ResponseCode code = [self checkResponseTypeWithFailed:request];
             NSString *codeStr = [[request userInfo] objectForKey:@"errorMessage"];
             NSData *data = [codeStr dataUsingEncoding:NSUTF8StringEncoding];
             DriveAPIResponse *response = [[DriveAPIResponse alloc] initWithResponseData:data status:code];
             fail?fail(response):nil;
             [response release];
-            [weakBatchRequest release];
+            [weakRequest release];
         }];
     }
 }

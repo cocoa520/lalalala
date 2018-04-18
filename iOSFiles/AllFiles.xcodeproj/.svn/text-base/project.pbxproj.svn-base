@@ -206,6 +206,10 @@
 		34DD6E02207C948D00320F39 /* Rightbar_slip_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DD6E01207C948D00320F39 /* Rightbar_slip_btn@2x.png */; };
 		34DD6E04207C94A600320F39 /* window_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DD6E03207C94A600320F39 /* window_logo@2x.png */; };
 		34DD6E06207C95BA00320F39 /* mac_cnt_fileicon_myfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34DD6E05207C95BA00320F39 /* mac_cnt_fileicon_myfile@2x.png */; };
+		7B66B5A42086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B66B5A32086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.m */; };
+		7B66B5A72086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B66B5A62086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.m */; };
+		7B66B5AA2086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B66B5A92086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.m */; };
+		7B66B5AD2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B66B5AC2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.m */; };
 		7B6BB4D22044E97000BBD6E9 /* IMBDriveEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */; };
 		7B830C1F2047AFD8000841AE /* iCloudDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830BFE2047AFD8000841AE /* iCloudDrive.m */; };
 		7B830C202047AFD8000841AE /* iCloudDriveAccountLoginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B830C002047AFD8000841AE /* iCloudDriveAccountLoginAPI.m */; };
@@ -327,6 +331,24 @@
 		B918479420689A8E00B83DDC /* navbar_icon_rt_back.png in Resources */ = {isa = PBXBuildFile; fileRef = B918479220689A8E00B83DDC /* navbar_icon_rt_back.png */; };
 		B918479B2068F4A100B83DDC /* navbar_icon_search1.png in Resources */ = {isa = PBXBuildFile; fileRef = B91847992068F4A100B83DDC /* navbar_icon_search1.png */; };
 		B918479C2068F4A100B83DDC /* navbar_icon_search1_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = B918479A2068F4A100B83DDC /* navbar_icon_search1_hover.png */; };
+		B91BBBF220874F0300D80793 /* IMBPurchaseMiddleController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BBBF020874F0300D80793 /* IMBPurchaseMiddleController.m */; };
+		B91BBBF320874F0300D80793 /* IMBPurchaseMiddleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF120874F0300D80793 /* IMBPurchaseMiddleController.xib */; };
+		B91BBC052087516F00D80793 /* buy_icon01.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF52087516F00D80793 /* buy_icon01.png */; };
+		B91BBC062087516F00D80793 /* buy_icon01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF62087516F00D80793 /* buy_icon01@2x.png */; };
+		B91BBC072087516F00D80793 /* buy_icon02.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF72087516F00D80793 /* buy_icon02.png */; };
+		B91BBC082087516F00D80793 /* buy_icon02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF82087516F00D80793 /* buy_icon02@2x.png */; };
+		B91BBC092087516F00D80793 /* buy_icon03.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBF92087516F00D80793 /* buy_icon03.png */; };
+		B91BBC0A2087516F00D80793 /* buy_icon03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFA2087516F00D80793 /* buy_icon03@2x.png */; };
+		B91BBC0B2087516F00D80793 /* buy_icon04.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFB2087516F00D80793 /* buy_icon04.png */; };
+		B91BBC0C2087516F00D80793 /* buy_icon04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFC2087516F00D80793 /* buy_icon04@2x.png */; };
+		B91BBC0D2087516F00D80793 /* buy_icon05.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFD2087516F00D80793 /* buy_icon05.png */; };
+		B91BBC0E2087516F00D80793 /* buy_icon05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFE2087516F00D80793 /* buy_icon05@2x.png */; };
+		B91BBC0F2087516F00D80793 /* buy_icon06.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBBFF2087516F00D80793 /* buy_icon06.png */; };
+		B91BBC102087516F00D80793 /* buy_icon06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC002087516F00D80793 /* buy_icon06@2x.png */; };
+		B91BBC112087516F00D80793 /* buy_icon07.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC012087516F00D80793 /* buy_icon07.png */; };
+		B91BBC122087516F00D80793 /* buy_icon07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC022087516F00D80793 /* buy_icon07@2x.png */; };
+		B91BBC132087516F00D80793 /* buy_icon08.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC032087516F00D80793 /* buy_icon08.png */; };
+		B91BBC142087516F00D80793 /* buy_icon08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC042087516F00D80793 /* buy_icon08@2x.png */; };
 		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
 		B925AA1320295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */; };
 		B92A179E20215F6200187405 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179920215F6200187405 /* NSData+Category.m */; };
@@ -1428,6 +1450,14 @@
 		34DD6E01207C948D00320F39 /* Rightbar_slip_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rightbar_slip_btn@2x.png"; sourceTree = "<group>"; };
 		34DD6E03207C94A600320F39 /* window_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "window_logo@2x.png"; sourceTree = "<group>"; };
 		34DD6E05207C95BA00320F39 /* mac_cnt_fileicon_myfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac_cnt_fileicon_myfile@2x.png"; sourceTree = "<group>"; };
+		7B66B5A22086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxDeleteMultipleItemAPI.h; sourceTree = "<group>"; };
+		7B66B5A32086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxDeleteMultipleItemAPI.m; sourceTree = "<group>"; };
+		7B66B5A52086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxDeleteMultipleItemCheckAPI.h; sourceTree = "<group>"; };
+		7B66B5A62086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxDeleteMultipleItemCheckAPI.m; sourceTree = "<group>"; };
+		7B66B5A82086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxMoveMultipleToNewParentAPI.h; sourceTree = "<group>"; };
+		7B66B5A92086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxMoveMultipleToNewParentAPI.m; sourceTree = "<group>"; };
+		7B66B5AB2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxMoveMultipleToNewParentCheckAPI.h; sourceTree = "<group>"; };
+		7B66B5AC2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxMoveMultipleToNewParentCheckAPI.m; sourceTree = "<group>"; };
 		7B6BB4D02044E97000BBD6E9 /* IMBDriveEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDriveEntity.h; sourceTree = "<group>"; };
 		7B6BB4D12044E97000BBD6E9 /* IMBDriveEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDriveEntity.m; sourceTree = "<group>"; };
 		7B830BFD2047AFD8000841AE /* iCloudDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudDrive.h; sourceTree = "<group>"; };
@@ -1603,6 +1633,25 @@
 		B918479220689A8E00B83DDC /* navbar_icon_rt_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_icon_rt_back.png; sourceTree = "<group>"; };
 		B91847992068F4A100B83DDC /* navbar_icon_search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_icon_search1.png; sourceTree = "<group>"; };
 		B918479A2068F4A100B83DDC /* navbar_icon_search1_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_icon_search1_hover.png; sourceTree = "<group>"; };
+		B91BBBEF20874F0300D80793 /* IMBPurchaseMiddleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseMiddleController.h; sourceTree = "<group>"; };
+		B91BBBF020874F0300D80793 /* IMBPurchaseMiddleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseMiddleController.m; sourceTree = "<group>"; };
+		B91BBBF120874F0300D80793 /* IMBPurchaseMiddleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseMiddleController.xib; sourceTree = "<group>"; };
+		B91BBBF52087516F00D80793 /* buy_icon01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon01.png; sourceTree = "<group>"; };
+		B91BBBF62087516F00D80793 /* buy_icon01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon01@2x.png"; sourceTree = "<group>"; };
+		B91BBBF72087516F00D80793 /* buy_icon02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon02.png; sourceTree = "<group>"; };
+		B91BBBF82087516F00D80793 /* buy_icon02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon02@2x.png"; sourceTree = "<group>"; };
+		B91BBBF92087516F00D80793 /* buy_icon03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon03.png; sourceTree = "<group>"; };
+		B91BBBFA2087516F00D80793 /* buy_icon03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon03@2x.png"; sourceTree = "<group>"; };
+		B91BBBFB2087516F00D80793 /* buy_icon04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon04.png; sourceTree = "<group>"; };
+		B91BBBFC2087516F00D80793 /* buy_icon04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon04@2x.png"; sourceTree = "<group>"; };
+		B91BBBFD2087516F00D80793 /* buy_icon05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon05.png; sourceTree = "<group>"; };
+		B91BBBFE2087516F00D80793 /* buy_icon05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon05@2x.png"; sourceTree = "<group>"; };
+		B91BBBFF2087516F00D80793 /* buy_icon06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon06.png; sourceTree = "<group>"; };
+		B91BBC002087516F00D80793 /* buy_icon06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon06@2x.png"; sourceTree = "<group>"; };
+		B91BBC012087516F00D80793 /* buy_icon07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon07.png; sourceTree = "<group>"; };
+		B91BBC022087516F00D80793 /* buy_icon07@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon07@2x.png"; sourceTree = "<group>"; };
+		B91BBC032087516F00D80793 /* buy_icon08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon08.png; sourceTree = "<group>"; };
+		B91BBC042087516F00D80793 /* buy_icon08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon08@2x.png"; sourceTree = "<group>"; };
 		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
 		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
 		B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleSubPhotoNames.plist; sourceTree = "<group>"; };
@@ -3376,6 +3425,39 @@
 			path = Plists;
 			sourceTree = "<group>";
 		};
+		B91BBBEE20874EDF00D80793 /* purchaseController */ = {
+			isa = PBXGroup;
+			children = (
+				B91BBBEF20874F0300D80793 /* IMBPurchaseMiddleController.h */,
+				B91BBBF020874F0300D80793 /* IMBPurchaseMiddleController.m */,
+				B91BBBF120874F0300D80793 /* IMBPurchaseMiddleController.xib */,
+			);
+			path = purchaseController;
+			sourceTree = "<group>";
+		};
+		B91BBBF42087516F00D80793 /* purchaseImages */ = {
+			isa = PBXGroup;
+			children = (
+				B91BBBF52087516F00D80793 /* buy_icon01.png */,
+				B91BBBF62087516F00D80793 /* buy_icon01@2x.png */,
+				B91BBBF72087516F00D80793 /* buy_icon02.png */,
+				B91BBBF82087516F00D80793 /* buy_icon02@2x.png */,
+				B91BBBF92087516F00D80793 /* buy_icon03.png */,
+				B91BBBFA2087516F00D80793 /* buy_icon03@2x.png */,
+				B91BBBFB2087516F00D80793 /* buy_icon04.png */,
+				B91BBBFC2087516F00D80793 /* buy_icon04@2x.png */,
+				B91BBBFD2087516F00D80793 /* buy_icon05.png */,
+				B91BBBFE2087516F00D80793 /* buy_icon05@2x.png */,
+				B91BBBFF2087516F00D80793 /* buy_icon06.png */,
+				B91BBC002087516F00D80793 /* buy_icon06@2x.png */,
+				B91BBC012087516F00D80793 /* buy_icon07.png */,
+				B91BBC022087516F00D80793 /* buy_icon07@2x.png */,
+				B91BBC032087516F00D80793 /* buy_icon08.png */,
+				B91BBC042087516F00D80793 /* buy_icon08@2x.png */,
+			);
+			path = purchaseImages;
+			sourceTree = "<group>";
+		};
 		B92A179520215EEE00187405 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -4513,6 +4595,7 @@
 		B9E3DEBA2063D6A2008DDF92 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				B91BBBF42087516F00D80793 /* purchaseImages */,
 				EE0AD8B12065FF4700307EB1 /* transfer */,
 				B9E3DEBB2063D6A2008DDF92 /* app */,
 				B9E3DEBE2063D6A2008DDF92 /* button */,
@@ -5327,12 +5410,20 @@
 				EE2650B620525FB900142F89 /* DropboxCreateFolderAPI.m */,
 				EE2650B720525FB900142F89 /* DropboxDeleteItemAPI.h */,
 				EE2650B820525FB900142F89 /* DropboxDeleteItemAPI.m */,
+				7B66B5A22086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.h */,
+				7B66B5A32086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.m */,
+				7B66B5A52086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.h */,
+				7B66B5A62086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.m */,
 				EE2650B920525FB900142F89 /* DropboxDownloadAPI.h */,
 				EE2650BA20525FB900142F89 /* DropboxDownloadAPI.m */,
 				EE2650BB20525FB900142F89 /* DropboxGetListAPI.h */,
 				EE2650BC20525FB900142F89 /* DropboxGetListAPI.m */,
 				EE2650BD20525FB900142F89 /* DropboxMoveToNewParentAPI.h */,
 				EE2650BE20525FB900142F89 /* DropboxMoveToNewParentAPI.m */,
+				7B66B5A82086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.h */,
+				7B66B5A92086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.m */,
+				7B66B5AB2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.h */,
+				7B66B5AC2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.m */,
 				EE2650C120525FB900142F89 /* DropboxUploadAPI.h */,
 				EE2650C220525FB900142F89 /* DropboxUploadAPI.m */,
 				EE59D6ED2063D62D00B00046 /* DropboxUserAccountAPI.h */,
@@ -5580,6 +5671,7 @@
 		EEF4565E2063D1F80078BB23 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				B91BBBEE20874EDF00D80793 /* purchaseController */,
 				EEF45A282063D3580078BB23 /* alertController */,
 				EEF4565F2063D1F80078BB23 /* deviceController */,
 				EEF456752063D1F80078BB23 /* IMBBaseViewController.h */,
@@ -5956,6 +6048,7 @@
 				34DD6DE5207C71C600320F39 /* transferlist_history_icon_books@2x.png in Resources */,
 				B9E3E0032063D6A3008DDF92 /* music_show@2x.png in Resources */,
 				B914C19E2023F0EC00B998AC /* DevicePageFolderNames.plist in Resources */,
+				B91BBC072087516F00D80793 /* buy_icon02.png in Resources */,
 				B9E3E0CD2063D6A3008DDF92 /* tool_import_normal@2x.png in Resources */,
 				34DD6D35207C4E8100320F39 /* cnt_fileicon_contacts@2x.png in Resources */,
 				B9E3DFFF2063D6A3008DDF92 /* itu_default2@2x.png in Resources */,
@@ -5967,6 +6060,7 @@
 				34DD6DA2207C649600320F39 /* toolbar_icon_todevice_min@2x.png in Resources */,
 				B90BDEA720665EDC007E84EA /* nav_icon_help_hover.png in Resources */,
 				34DD6CD1207C491900320F39 /*  topbox_icon_signout_hover@2x.png in Resources */,
+				B91BBC0F2087516F00D80793 /* buy_icon06.png in Resources */,
 				B90BDEE820665F2A007E84EA /* toolbar_icon_list2.png in Resources */,
 				B9E73A7A20280FC000E1BB3B /* IMBSoftware-Info.plist in Resources */,
 				34DD6DC4207C6B9F00320F39 /* mod_icon_signout_hover@2x.png in Resources */,
@@ -6037,6 +6131,7 @@
 				34DD6D5B207C4E9F00320F39 /* toolbar_icon_newfloder_hover@2x.png in Resources */,
 				B9E3DFD62063D6A3008DDF92 /* app_default.png in Resources */,
 				B9E3DFDD2063D6A3008DDF92 /* backup_advance3.png in Resources */,
+				B91BBC052087516F00D80793 /* buy_icon01.png in Resources */,
 				B90BDE772065FA51007E84EA /* arrow@2x.png in Resources */,
 				34DD6DF5207C71C600320F39 /* transferlist_history_icon_video@2x.png in Resources */,
 				B9E3E0112063D6A3008DDF92 /* checkbox3@2x.png in Resources */,
@@ -6126,6 +6221,7 @@
 				B9E3E0A62063D6A3008DDF92 /* left_top2.png in Resources */,
 				B9E3E02C2063D6A3008DDF92 /* cnt_fileicon_video.png in Resources */,
 				B9E3E0DE2063D6A3008DDF92 /* tool_todevice_normal.png in Resources */,
+				B91BBC0E2087516F00D80793 /* buy_icon05@2x.png in Resources */,
 				34DD6CB4207C487400320F39 /* message-box-success@2x.png in Resources */,
 				34DD6DBF207C6A9C00320F39 /* folder_icon_screen@2x.png in Resources */,
 				EEF458992063D1F90078BB23 /* IMBiCloudDriverViewController.xib in Resources */,
@@ -6208,6 +6304,7 @@
 				34DD6D25207C4E7000320F39 /* toolbar_icon_getinfo_hover@2x.png in Resources */,
 				EE68EC64207F3B1800627EBC /* popbox_icon_icloud_hover.png in Resources */,
 				B9E3E0C62063D6A3008DDF92 /* tool_exit_normal.png in Resources */,
+				B91BBC102087516F00D80793 /* buy_icon06@2x.png in Resources */,
 				B9E3E0942063D6A3008DDF92 /* log_loading@2x.png in Resources */,
 				B9E3E09A2063D6A3008DDF92 /* noData_filesystem@2x.png in Resources */,
 				B9E3E0B72063D6A3008DDF92 /* add_item1@2x.png in Resources */,
@@ -6219,10 +6316,13 @@
 				34486392206DE5E6001B9971 /* IMBSortPopoverViewController.xib in Resources */,
 				34DD6D37207C4E8100320F39 /* cnt_fileicon_doc@2x.png in Resources */,
 				B9E3E00E2063D6A3008DDF92 /* checkbox2.png in Resources */,
+				B91BBC092087516F00D80793 /* buy_icon03.png in Resources */,
 				EE68EC69207F3B1800627EBC /* popbox_icon_ipod.png in Resources */,
 				B9E3DFE52063D6A3008DDF92 /* backup_retreat2.png in Resources */,
 				34DD6D63207C4E9F00320F39 /* toolbar_icon_sort_hover@2x.png in Resources */,
 				34DD6D5C207C4E9F00320F39 /* toolbar_icon_newfloder@2x.png in Resources */,
+				B91BBC082087516F00D80793 /* buy_icon02@2x.png in Resources */,
+				B91BBC062087516F00D80793 /* buy_icon01@2x.png in Resources */,
 				F7CAC14D206E45A80029236D /* folder_icon_library.png in Resources */,
 				B9E3DFDE2063D6A3008DDF92 /* backup_advance3@2x.png in Resources */,
 				EEF458862063D1F90078BB23 /* IMBPhotosListViewController.xib in Resources */,
@@ -6233,6 +6333,7 @@
 				B9E3DFE12063D6A3008DDF92 /* backup_advance_enter@2x.png in Resources */,
 				B9E3E0252063D6A3008DDF92 /* sel_sem@2x.png in Resources */,
 				34DD6D77207C5ACA00320F39 /* windowmin3.png in Resources */,
+				B91BBC0B2087516F00D80793 /* buy_icon04.png in Resources */,
 				B9E3DFF22063D6A3008DDF92 /* box_select1.png in Resources */,
 				34DD6D3D207C4E8100320F39 /* cnt_fileicon_video@2x.png in Resources */,
 				34DD6DE7207C71C600320F39 /* transferlist_history_icon_common@2x.png in Resources */,
@@ -6258,6 +6359,8 @@
 				EEF458842063D1F90078BB23 /* IMBDevicePageViewController.xib in Resources */,
 				34DD6DA6207C649600320F39 /* toolbar_icon_preview_min.png in Resources */,
 				34DD6D21207C4E3100320F39 /* transferlist_icon_folder_hover@2x.png in Resources */,
+				B91BBC0C2087516F00D80793 /* buy_icon04@2x.png in Resources */,
+				B91BBC0D2087516F00D80793 /* buy_icon05.png in Resources */,
 				EEF458932063D1F90078BB23 /* IMBDeviceViewController.xib in Resources */,
 				B9E3E0E32063D6A3008DDF92 /* tool_tomac_normal@2x.png in Resources */,
 				B9E3E0AE2063D6A3008DDF92 /* right_mid3.png in Resources */,
@@ -6277,6 +6380,7 @@
 				34DD6D59207C4E9F00320F39 /* toolbar_icon_moveto_hover@2x.png in Resources */,
 				B9E3E0CE2063D6A3008DDF92 /* tool_information_normal.png in Resources */,
 				B9E3E09D2063D6A3008DDF92 /* alert_icon.png in Resources */,
+				B91BBC142087516F00D80793 /* buy_icon08@2x.png in Resources */,
 				34DD6D26207C4E7000320F39 /* toolbar_icon_getinfo@2x.png in Resources */,
 				3404AA45207CDED500A5B8D0 /* message-box-progress.png in Resources */,
 				B9E3E0D52063D6A3008DDF92 /* tool_sel_icons_normal@2x.png in Resources */,
@@ -6309,13 +6413,16 @@
 				EE3C43A020689D0D0098AE9D /* transferlist_icon_history_hover.png in Resources */,
 				34DD6D66207C4E9F00320F39 /* toolbar_icon_tocloud@2x.png in Resources */,
 				B9E3DFD72063D6A3008DDF92 /* app_default@2x.png in Resources */,
+				B91BBBF320874F0300D80793 /* IMBPurchaseMiddleController.xib in Resources */,
 				EE3C43BE206A3D220098AE9D /* transferlist_history_icon_del_hover.png in Resources */,
 				0C44F5D0207241C600000C94 /*  topbox_icon_signout_hover.png in Resources */,
+				B91BBC0A2087516F00D80793 /* buy_icon03@2x.png in Resources */,
 				34DD6CB2207C487400320F39 /* message-box-error@2x.png in Resources */,
 				F7CAC144206E1F490029236D /* folder_icon_media.png in Resources */,
 				B9E3E0282063D6A3008DDF92 /* cnt_fileicon_img.png in Resources */,
 				B9E3E09C2063D6A3008DDF92 /* nodata_myfiles@2x.png in Resources */,
 				34DD6D0F207C4E0900320F39 /* transferlist_history_icon_close_hover@2x.png in Resources */,
+				B91BBC122087516F00D80793 /* buy_icon07@2x.png in Resources */,
 				B90BDEE120665F2A007E84EA /* popup_icon_arrow.png in Resources */,
 				34DD6D67207C4E9F00320F39 /* toolbar_icon_todevice_hover@2x.png in Resources */,
 				B9E3E0A42063D6A3008DDF92 /* left_bottom3.png in Resources */,
@@ -6332,6 +6439,7 @@
 				34DD6CD4207C491900320F39 /* nav_icon_cart@2x.png in Resources */,
 				B9E3DFD92063D6A3008DDF92 /* addcontent_arrowright1@2x.png in Resources */,
 				B9E3E0C72063D6A3008DDF92 /* tool_exit_normal@2x.png in Resources */,
+				B91BBC132087516F00D80793 /* buy_icon08.png in Resources */,
 				B9E3E0062063D6A3008DDF92 /* windowclose.png in Resources */,
 				EE22C411207B427900B9CF27 /* cnt_foldericon_otherfiles.png in Resources */,
 				B9E3E0D32063D6A3008DDF92 /* tool_sel_icons_down@2x.png in Resources */,
@@ -6386,6 +6494,7 @@
 				0C44F5CF207241C600000C94 /*  topbox_icon_signout_default.png in Resources */,
 				B90BDEF420665F2A007E84EA /* toolbar_icon_todevice.png in Resources */,
 				B9E3E0B82063D6A3008DDF92 /* add_item2.png in Resources */,
+				B91BBC112087516F00D80793 /* buy_icon07.png in Resources */,
 				34DD6D5A207C4E9F00320F39 /* toolbar_icon_moveto@2x.png in Resources */,
 				34DD6D1E207C4E0900320F39 /* transferlist_icon_uploading@2x.png in Resources */,
 				F7BD44DE206B215F00E08F71 /* IMBAlertViewController.xib in Resources */,
@@ -6531,6 +6640,7 @@
 				B9E73A532028054200E1BB3B /* IMBRingtoneConfig.m in Sources */,
 				B9E73ADE20282FF500E1BB3B /* zutil.c in Sources */,
 				B96563312021D2B000BD7FF5 /* MediaInfo_File.cpp in Sources */,
+				7B66B5AA2086F2F3004A3FE0 /* DropboxMoveMultipleToNewParentAPI.m in Sources */,
 				EEF459F62063D1F90078BB23 /* NSView+CNGridView.m in Sources */,
 				EE59D6F22063D62D00B00046 /* DropboxUserSpaceUsageAPI.m in Sources */,
 				B96563A22021D2B000BD7FF5 /* FileName.cpp in Sources */,
@@ -6566,6 +6676,7 @@
 				EEF458732063D1F90078BB23 /* IMBSignOutButton.m in Sources */,
 				EEF458762063D1F90078BB23 /* customTextFieldCell.m in Sources */,
 				B92A17B120215FB100187405 /* MediaHelper.m in Sources */,
+				7B66B5A72086E036004A3FE0 /* DropboxDeleteMultipleItemCheckAPI.m in Sources */,
 				B9E73A282028038D00E1BB3B /* IMBMediaFileExport.m in Sources */,
 				B96562D92021D2B000BD7FF5 /* File_Bzip2.cpp in Sources */,
 				B90D14E5202021D0002D9F9B /* IMBAnimation.m in Sources */,
@@ -6714,6 +6825,7 @@
 				EEF458922063D1F90078BB23 /* IMBDeviceViewController.m in Sources */,
 				B96563172021D2B000BD7FF5 /* File__Analyze_Streams_Finish.cpp in Sources */,
 				B96563732021D2B000BD7FF5 /* File_Lyrics3v2.cpp in Sources */,
+				7B66B5A42086D3AA004A3FE0 /* DropboxDeleteMultipleItemAPI.m in Sources */,
 				EEF45A052063D1F90078BB23 /* IMBFolderOrFileTitleField.m in Sources */,
 				B965637A2021D2B000BD7FF5 /* File_Eia608.cpp in Sources */,
 				B965634F2021D2B000BD7FF5 /* File_Mpeg4.cpp in Sources */,
@@ -6755,6 +6867,7 @@
 				B934899C201EFD2100A8CEC3 /* FMResultSet.m in Sources */,
 				B96563122021D2B000BD7FF5 /* Export_reVTMD.cpp in Sources */,
 				EE2650CF20525FB900142F89 /* DropboxMoveToNewParentAPI.m in Sources */,
+				7B66B5AD2086F30B004A3FE0 /* DropboxMoveMultipleToNewParentCheckAPI.m in Sources */,
 				EEF458672063D1F90078BB23 /* IMBGeneralBtnCell.m in Sources */,
 				B932E2FD2052737F0009DD4B /* AFNetworkReachabilityManager.m in Sources */,
 				EEF45A192063D1F90078BB23 /* MyPopoverBackgroundView.m in Sources */,
@@ -6929,6 +7042,7 @@
 				B96563242021D2B000BD7FF5 /* File_Ico.cpp in Sources */,
 				B910BF3C20219E3B00849CBB /* UpLoader.m in Sources */,
 				B96563962021D2B000BD7FF5 /* File_Theora.cpp in Sources */,
+				B91BBBF220874F0300D80793 /* IMBPurchaseMiddleController.m in Sources */,
 				B932E3062052737F0009DD4B /* YTKChainRequestAgent.m in Sources */,
 				B96563492021D2B000BD7FF5 /* File_Ibi.cpp in Sources */,
 				B96564AC2021D47600BD7FF5 /* IMBType6Container.m in Sources */,

@@ -56,6 +56,10 @@
     NSString *_iCloudDriveUrl;
     NSMutableDictionary *_cookie;  ///<cookie
     NSString *_dsid;  ///<iCloudDrive唯一标志
+    
+    NSArray *_multipleFilesOrFolder;    ///<多文件或文件夹数组
+    NSMutableArray *_multipleNewFilesOrFolder;      ///<多文件或文件夹新数组
+    NSString *_multipleFilesOrFolderAsyncJobID;     ///<多文件或文件夹异步任务检查ID
 }
 
 @property (nonatomic, assign) BOOL isFolder;
@@ -121,6 +125,26 @@
 /**
  *  初始化方法
  *
+ *  @param filesOrFoldersAry        需要操作的多文件或者目录的ID，有的云盘也可能是相对路径
+ *  @param accessToken              访问令牌
+ *
+ *  @return 返回自己
+ */
+- (id)initWithItemsID:(NSArray *)filesOrFoldersAry accessToken:(NSString *)accessToken;
+
+/**
+ *  初始化方法
+ *
+ *  @param asyncJobID               Dropbox多文件、文件夹操作异步任务检查ID
+ *  @param accessToken              访问令牌
+ *
+ *  @return 返回自己
+ */
+- (id)initWithItemsAsyncJobID:(NSString *)asyncJobID accessToken:(NSString *)accessToken;
+
+/**
+ *  初始化方法
+ *
  *  @param folderID    需要操作的文件或者目录的ID，有的云盘也可能是相对路径
  *  @param accessToken 访问令牌
  *  @param isFolder    是否为文件夹
@@ -153,13 +177,23 @@
 
 /**
  *  移动初始化方法
- * @param folderOrfileID 要移动项的id或者路径
+ *  @param folderOrfileID 要移动项的id或者路径
  *  @param newParentIDOrPath 新的父路径或者id
  *  @param accessToken       访问令牌
  *  @param parent      原父目录
  *  @return 返回自己
  */
 - (id)initWithItemID:(NSString *)folderOrfileID newParentIDOrPath:(NSString *)newParentIDOrPath  parent:(NSString *)parent accessToken:(NSString *)accessToken;
+
+/**
+ *  移动初始化方法
+ *  @param folderOrfileIDAry        要移动项的多id或者路径数组
+ *  @param newParentIDOrPathAry     新的父路径或者多id数组
+ *  @param accessToken              访问令牌
+ *  @param parent                   原父目录
+ *  @return 返回自己
+ */
+- (id)initWithItemsID:(NSArray *)folderOrfileIDAry newParentIDOrPath:(NSMutableArray *)newParentIDOrPathAry  parent:(NSString *)parent accessToken:(NSString *)accessToken;
 /**
  *  初始化方法
  *

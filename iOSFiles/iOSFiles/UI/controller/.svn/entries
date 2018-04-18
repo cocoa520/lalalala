@@ -1,15 +1,15 @@
 10
 
 dir
-2743
+2856
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-16T01:05:28.915538Z
-2731
-longfan
+2018-04-18T04:15:10.327035Z
+2852
+hezhonglin
 
 
 
@@ -334,7 +334,7 @@ longfan
 
 IMBMainPageViewController.m
 file
-2757
+
 
 
 
@@ -402,14 +402,14 @@ longfan
 
 IMBDeviceViewController.xib
 file
-2817
+2869
 
 
 
-2018-04-17T01:12:10.000000Z
-7817eaabe1b91df7866dbad15deb1297
-2018-04-17T08:59:34.117653Z
-2817
+2018-04-18T07:44:15.000000Z
+118d0fc8e26f70c0d0f38aa4291ef8eb
+2018-04-18T08:13:45.863779Z
+2869
 hezhonglin
 
 
@@ -432,7 +432,7 @@ hezhonglin
 
 
 
-48773
+48769
 
 IMBAppsListViewController.xib
 file
@@ -536,6 +536,40 @@ longfan
 
 18947
 
+IMBAppsListViewController.h
+file
+
+
+
+
+2018-03-28T02:24:28.000000Z
+3294326cfc0af419d0d7561159bb31bb
+2018-03-08T09:16:51.709655Z
+1584
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2494
+
 IMBDeviceViewController.h
 file
 
@@ -570,39 +604,8 @@ longfan
 
 4602
 
-IMBAppsListViewController.h
-file
-
-
-
-
-2018-03-28T02:24:28.000000Z
-3294326cfc0af419d0d7561159bb31bb
-2018-03-08T09:16:51.709655Z
-1584
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2494
+purchaseController
+dir
 
 IMBTranferViewController.h
 file
@@ -672,40 +675,6 @@ qiujie
 
 3905
 
-IMBDeviceViewController.m
-file
-
-
-
-
-2018-04-13T00:55:29.000000Z
-44e9898d1d8a4032cbfc69e9764bfdde
-2018-04-12T07:37:02.132121Z
-2696
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-59680
-
 IMBAppsListViewController.m
 file
 
@@ -739,6 +708,40 @@ longfan
 
 
 65378
+
+IMBDeviceViewController.m
+file
+2870
+
+
+
+2018-04-18T08:33:10.000000Z
+3383138ca0dce7416b95a5df99488471
+2018-04-18T08:33:44.725885Z
+2870
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+60282
 
 IMBDevicePopoverViewController.xib
 file
@@ -1360,14 +1363,14 @@ longfan
 
 IMBiCloudDriverViewController.m
 file
-2833
+2875
 
 
 
-2018-04-18T01:59:32.000000Z
-337b94468937e4426c8f1170af91613b
-2018-04-18T02:00:26.860837Z
-2833
+2018-04-18T09:43:21.000000Z
+9577996a4d68f0a9499187c2f88ae598
+2018-04-18T10:30:20.230572Z
+2875
 hezhonglin
 
 
@@ -1390,7 +1393,7 @@ hezhonglin
 
 
 
-83253
+84548
 
 IMBSystemCollectionViewController.h
 file

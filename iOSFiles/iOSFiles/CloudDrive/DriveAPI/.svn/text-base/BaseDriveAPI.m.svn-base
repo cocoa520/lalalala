@@ -79,6 +79,32 @@
     return self;
 }
 
+- (id)initWithItemsID:(NSArray *)filesOrFoldersAry accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _multipleFilesOrFolder = [filesOrFoldersAry retain];
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
+- (id)initWithItemsAsyncJobID:(NSString *)asyncJobID accessToken:(NSString *)accessToken {
+    if (self = [super init]) {
+        _multipleFilesOrFolderAsyncJobID = [asyncJobID retain];
+        _accestoken = [accessToken retain];
+        return self;
+    }else {
+#if !__has_feature(objc_arc)
+        [self release];
+#endif
+        return nil;
+    }
+}
+
 - (id)initWithItemID:(NSString *)folderID cookie:(NSMutableDictionary *)cookie iCloudDriveURL:(NSString *)url
 {
     if (self = [super init]) {
@@ -124,6 +150,17 @@
     if (self = [super init]) {
         _folderOrfileID = [folderOrfileID retain];
         _newParentIDOrPath = [newParentIDOrPath retain];
+        _parent = parent;
+        _accestoken = [accessToken retain];
+    }
+    return self;
+}
+
+- (id)initWithItemsID:(NSArray *)folderOrfileIDAry newParentIDOrPath:(NSMutableArray *)newParentIDOrPathAry  parent:(NSString *)parent accessToken:(NSString *)accessToken
+{
+    if (self = [super init]) {
+        _multipleFilesOrFolder = [folderOrfileIDAry retain];
+        _multipleNewFilesOrFolder = [newParentIDOrPathAry retain];
         _parent = parent;
         _accestoken = [accessToken retain];
     }

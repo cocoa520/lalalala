@@ -44,7 +44,9 @@
         }
     }
     return @{@"from_path": sourceName,
-             @"to_path": targetName};
+             @"to_path": targetName,
+             @"autorename": @YES
+             };
 }
 
 @end

@@ -264,30 +264,61 @@
         [TempHelper customViewType:1 withCategoryEnum:0];
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
-        NSMutableDictionary *dic = response.content;
-        NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
-        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
-        if ([dataDic.allKeys containsObject:@"id"]) {
-            [dataAry addObject:[dataDic objectForKey:@"id"]];
-        }
- 
-        [ATTracker event:CDropbox action:ADelete label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-        if (dimensionDict) {
-            [dimensionDict release];
-            dimensionDict = nil;
-        }
-//        dispatch_async(dispatch_get_main_queue(), ^{
+    if ([deleteItemAry count] == 1) {
+        [_dropbox deleteFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
+            NSMutableDictionary *dic = response.content;
+            NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
+            NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+            if ([dataDic.allKeys containsObject:@"id"]) {
+                [dataAry addObject:[dataDic objectForKey:@"id"]];
+            }
+            
+            [ATTracker event:CDropbox action:ADelete label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
             [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
             [dataAry release];
-//        });
-    } fail:^(DriveAPIResponse *response) {
-        [ATTracker event:CDropbox action:ADelete label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-        if (dimensionDict) {
-            [dimensionDict release];
-            dimensionDict = nil;
-        }
-    }];
+        } fail:^(DriveAPIResponse *response) {
+            [ATTracker event:CDropbox action:ADelete label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+        }];
+    }else {
+        [_dropbox deleteMultipleFilesOrFolders:deleteItemAry success:^(DriveAPIResponse *response) {
+            NSMutableDictionary *dic = response.content;
+            NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+            if ([[dic allKeys] containsObject:@"entries"]) {
+                id obj = [dic objectForKey:@"entries"];
+                if (obj && [obj isKindOfClass:[NSArray class]]) {
+                    NSArray *objAry = (NSArray *)obj;
+                    for (NSDictionary *mutDict in objAry) {
+                        NSMutableDictionary *dataDic = [mutDict objectForKey:@"metadata"];
+                        if ([dataDic.allKeys containsObject:@"id"]) {
+                            [dataAry addObject:[dataDic objectForKey:@"id"]];
+                        }
+                    }
+                }
+            }
+            
+            [ATTracker event:CDropbox action:ADelete label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+            [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+            [dataAry release];
+        } fail:^(DriveAPIResponse *response) {
+            [ATTracker event:CDropbox action:ADelete label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+        }];
+    }
 }
 
 //重命名
@@ -368,34 +399,71 @@
         [TempHelper customViewType:1 withCategoryEnum:0];
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    [_dropbox moveToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
-        NSMutableDictionary *dic = response.content;
-        NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
-        NSMutableArray *dataAry = [[NSMutableArray alloc]init];
-
-        if ([dataDic.allKeys containsObject:@"id"]) {
-            [dataAry addObject:[dataDic objectForKey:@"id"]];
-        }
-    
-        [ATTracker event:CDropbox action:AMove label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-        if (dimensionDict) {
-            [dimensionDict release];
-            dimensionDict = nil;
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
-            [dataAry release];
-        });
-    } fail:^(DriveAPIResponse *response) {
-        [ATTracker event:CDropbox action:AMove label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_driveWindowDelegate loadTransferComplete:nil WithEvent:deleteAction];
-        });
-        if (dimensionDict) {
-            [dimensionDict release];
-            dimensionDict = nil;
-        }
-    }];
+    if ([idOrPaths count] == 1) {
+        [_dropbox moveToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
+            NSMutableDictionary *dic = response.content;
+            NSMutableDictionary *dataDic = [dic objectForKey:@"metadata"];
+            NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+            
+            if ([dataDic.allKeys containsObject:@"id"]) {
+                [dataAry addObject:[dataDic objectForKey:@"id"]];
+            }
+            
+            [ATTracker event:CDropbox action:AMove label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+                [dataAry release];
+            });
+        } fail:^(DriveAPIResponse *response) {
+            [ATTracker event:CDropbox action:AMove label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_driveWindowDelegate loadTransferComplete:nil WithEvent:deleteAction];
+            });
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+        }];
+    }else {
+        [_dropbox moveMultipleToNewParent:newParent sourceParent:parent idOrPaths:idOrPaths success:^(DriveAPIResponse *response) {
+            NSMutableDictionary *dic = response.content;
+            NSMutableArray *dataAry = [[NSMutableArray alloc]init];
+            if ([[dic allKeys] containsObject:@"entries"]) {
+                id obj = [dic objectForKey:@"entries"];
+                if (obj && [obj isKindOfClass:[NSArray class]]) {
+                    NSArray *objAry = (NSArray *)obj;
+                    for (NSDictionary *mutDict in objAry) {
+                        NSMutableDictionary *dataDic = [mutDict objectForKey:@"metadata"];
+                        if ([dataDic.allKeys containsObject:@"id"]) {
+                            [dataAry addObject:[dataDic objectForKey:@"id"]];
+                        }
+                    }
+                }
+            }
+            [ATTracker event:CDropbox action:AMove label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_driveWindowDelegate loadTransferComplete:dataAry WithEvent:deleteAction];
+                [dataAry release];
+            });
+        } fail:^(DriveAPIResponse *response) {
+            [ATTracker event:CDropbox action:AMove label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_driveWindowDelegate loadTransferComplete:nil WithEvent:deleteAction];
+            });
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
+        }];
+    }
 }
 
 - (void)toDrive:(BaseDrive * _Nonnull)targetDrive item:(NSMutableArray *)item{

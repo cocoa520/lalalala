@@ -126,6 +126,8 @@
         //commandA
         IMBFLog(@"commandA");
         [_gridView selectAllItems];
+        [self setAllselectState:1];
+        [self changeToolButtonsIsSelectedIntems:YES];
     };
     [_tableViewBgView setBackgroundColor:[NSColor whiteColor]];
     

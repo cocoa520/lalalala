@@ -126,6 +126,8 @@
         //commandA
         IMBFLog(@"commandA");
         [_gridView selectAllItems];
+        [self setAllselectState:1];
+        [self changeToolButtonsIsSelectedIntems:YES];
     };
     [_tableViewBgView setBackgroundColor:[NSColor whiteColor]];
     
@@ -3240,6 +3242,7 @@
     }else {
         
         [IMBCommonTool showTwoBtnsAlertInMainWindow:_iPod.uniqueKey firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"MSG_COM_Confirm_Before_Delete", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
+            [_toolBarButtonView toolBarButtonIsEnabled:NO];
             NSDictionary *dimensionDict = nil;
             @autoreleasepool {
                 [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];

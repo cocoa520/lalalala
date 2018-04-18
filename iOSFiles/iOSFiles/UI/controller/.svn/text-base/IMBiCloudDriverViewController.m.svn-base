@@ -144,6 +144,8 @@
         //commandA
         IMBFLog(@"commandA");
         [_gridView selectAllItems];
+        [self setAllselectState:1];
+        [self changeToolbarButton];
     };
     [_gridView setIsFileManager:YES];
     [_gridView reloadData];
@@ -168,7 +170,34 @@
         }
     }
 }
-
+- (void)changeToolbarButton {
+    NSArray *array = nil;
+    if (_isSearch) {
+        array = _researchdataSourceArray;
+    }else {
+        array = _dataSourceArray;
+    }
+    _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
+    [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+    [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+    
+    NSIndexSet *set = [self selectedItems];
+    if (set.count) {
+        [set enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+            IMBDriveEntity *fileEntity = [array objectAtIndex:idx];
+            fileEntity.checkState = YES;
+            if (_toolBarArr != nil) {
+                [_toolBarArr release];
+                _toolBarArr = nil;
+            }
+            if (fileEntity.isFolder) {
+                _toolBarArr = [[NSArray alloc] initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+                [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
+                [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
+            }
+        }];
+    }
+}
 - (void)configNoDataView {
     [_nodataImageView setImage:[StringHelper imageNamed:@"nodata_myfiles"]];
     NSString *promptStr = CustomLocalizedString(@"Nodata_tips", nil);
@@ -1490,6 +1519,7 @@
             }
         }
         
+        
         [_gridView reloadData];
         [_itemTableView deselectAll:nil];
         [_itemTableView reloadData];
@@ -1512,6 +1542,7 @@
         [_toolBarButtonView toolBarButtonIsEnabled:YES];
         [_loadAnimationView endAnimation];
         _curEntity = nil;
+        [self reload:nil];
     }else if (actionType == loadAction) {
         if (_doubleClick) {
             [_oldDocwsidDic setObject:_currentDevicePath forKey:[NSString stringWithFormat:@"%d",_doubleclickCount]];

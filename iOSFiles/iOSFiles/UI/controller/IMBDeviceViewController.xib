@@ -130,17 +130,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="wbg-n4-zr5" customClass="IMBGridientButton">
-                    <rect key="frame" x="51" y="24" width="200" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="Go Now →" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Z6m-zh-KBa">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="HelveticaNeue"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="oneDriveLogin:" target="-2" id="LWP-ej-NPx"/>
-                    </connections>
-                </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AHM-XV-tCg">
                     <rect key="frame" x="73" y="128" width="156" height="88"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -155,6 +144,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="wbg-n4-zr5" customClass="IMBGridientButton">
+                    <rect key="frame" x="51" y="24" width="200" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="Go Now" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Z6m-zh-KBa">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="HelveticaNeue"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="oneDriveLogin:" target="-2" id="LWP-ej-NPx"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="_goNowBtn" destination="wbg-n4-zr5" id="WRL-qE-aLZ"/>

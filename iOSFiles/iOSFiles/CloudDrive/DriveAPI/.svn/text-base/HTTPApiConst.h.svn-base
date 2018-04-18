@@ -137,7 +137,7 @@ static NSString *const DropboxDeleteMultipleFolderAndFilePath = @"2/files/delete
 /**
  *  检查删除多文件夹及文件状态
  */
-static NSString *const DropboxDeleteMultipleFolderAndFilePathStatus = @"2/files/delete_batch/check";
+static NSString *const DropboxDeleteMultipleFolderAndFilePathCheck = @"2/files/delete_batch/check";
 /**
  *  下载文件
  */
@@ -157,6 +157,14 @@ static NSString *const DropboxUploadSessionFinish = @"2/files/upload_session/fin
  *  移动文件或者文件夹
  */
 static NSString *const DropboxMove = @"2/files/move_v2";
+/**
+ *  移动多文件或者文件夹
+ */
+static NSString *const DropboxMoveMultiple = @"2/files/move_batch";
+/**
+ *  检查移动多文件或者文件夹
+ */
+static NSString *const DropboxMoveMultipleCheck = @"2/files/move_batch/check";
 /**
  *  重命名文件或者文件夹
  */

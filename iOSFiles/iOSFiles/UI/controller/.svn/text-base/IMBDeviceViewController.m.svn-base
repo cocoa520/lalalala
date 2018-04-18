@@ -154,7 +154,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     
     [icloudLoginbtn setButtonTitle:CustomLocalizedString(@"Cloud_Login" , nil) withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
     
-    [_bigSizeIcloudGoNowBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_LOGIN_LEFTCOLOR withRightNormalBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftEnterBgColor:COLOR_LOGIN_LEFTCOLOR withRightEnterBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftDownBgColor:COLOR_LOGIN_LEFTCOLOR withRightDownBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftForbiddenBgColor:COLOR_LOGIN_LEFTCOLOR withRightForbiddenBgColor:COLOR_LOGIN_RIGHTCOLOR];
+    [_bigSizeIcloudGoNowBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_LOGIN_LEFTCOLOR withRightNormalBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftEnterBgColor:COLOR_LOGIN_LEFTCOLOR withRightEnterBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftDownBgColor:COLOR_LOGIN_LEFTCOLOR withRightDownBgColor:COLOR_LOGIN_RIGHTCOLOR withLeftForbiddenBgColor:COLOR_LOGIN_LEFT_FORBIDDENCOLOR withRightForbiddenBgColor:COLOR_LOGIN_RIGHT_FORBIDDENCOLOR];
     
     [_bigSizeIcloudGoNowBtn setBordered:NO];
     
@@ -965,11 +965,38 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 
 #pragma mark - Dropbox Login
 - (void)signDown:(id)sender {
+    if (_loadLayer) {
+        [_loadLayer release];
+        _loadLayer = nil;
+    }
+    
+    CGFloat wh = 16.f;
+    _loadLayer = [[CALayer alloc] init];
+    
+    [_loadLayer setHidden:NO];
+    _loadLayer.contents = [NSImage imageNamed:@"other_sending"];
+    [_loadLayer setFrame:NSMakeRect(150,(NSHeight(_bigSizeIcloudGoNowBtn.frame) - wh)/2.f, wh, wh)];
+    _bigSizeIcloudGoNowBtn.wantsLayer = YES;
+    [_bigSizeIcloudGoNowBtn.layer addSublayer:_loadLayer];
+    
+    [IMBViewAnimation animationWithRotationWithLayer:_loadLayer];
+    [_bigSizeIcloudGoNowBtn setEnabled:NO];
+    [_bigSizeIcloudGoNowBtn setNeedsDisplay:YES];
+    
     _baseDriveManage = [[IMBDropBoxManage alloc] initWithUserID:nil withDelegate:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_ICLOUD_SIGNIN_FAIL object:nil userInfo:nil];
 }
 
 - (void)switchViewControllerDropBox:(Dropbox *) dropbox {
+    if (_loadLayer) {
+        [_loadLayer removeAllAnimations];
+        [_loadLayer removeFromSuperlayer];
+        [_loadLayer release];
+        _loadLayer = nil;
+    }
+    
+    [_bigSizeIcloudGoNowBtn setEnabled:YES];
+    [_bigSizeIcloudGoNowBtn setNeedsDisplay:YES];
     [_iCloudLoginAnimationView setHidden:YES];
     [_iCloudUserTextField.cell setEnabled:YES];
     [_iCloudUserTextField setEditable:YES];
@@ -1256,6 +1283,10 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 
     CGFloat loadLayerWH = 14.f;
     
+    if (_loadLayer) {
+        [_loadLayer release];
+        _loadLayer = nil;
+    }
     _loadLayer = [[CALayer alloc] init];
     
      [_loadLayer setHidden:NO];
@@ -1265,13 +1296,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     [_iCloudLoginAnimationView setWantsLayer:YES];
     [_iCloudLoginAnimationView.layer addSublayer:_loadLayer];
     
-//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-//    animation.fromValue = @(2*M_PI);
-//    animation.toValue = 0;
-//    animation.repeatCount = MAXFLOAT;
-//    animation.duration = 1.0f;
-//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-//    [_loadLayer addAnimation:animation forKey:@""];
     [IMBViewAnimation animationWithRotationWithLayer:_loadLayer];
     
     
