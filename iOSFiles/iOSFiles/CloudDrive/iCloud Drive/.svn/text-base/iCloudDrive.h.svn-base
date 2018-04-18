@@ -108,7 +108,7 @@
  *  @param success   成功回调block
  *  @param fail      失败回调block
  */
-- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail;
+- (void)moveToNewParent:(NSString *)newParent itemDic:(NSArray *)items success:(Callback)success fail:(Callback)fail;
 
 
 /**

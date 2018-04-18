@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBTransferViewController">
@@ -550,7 +550,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="wEU-cH-UE4">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="36"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="LFo-1W-CNz">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="36"/>
@@ -677,7 +677,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="UDi-Yv-HHJ">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="23"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="J82-w5-ddY">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="23"/>
@@ -729,7 +729,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="VQW-FE-qqO">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8HD-Ms-ucp">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
@@ -781,7 +781,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="812-G4-8dk">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="jok-Bl-u7D">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
@@ -833,7 +833,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="uet-lc-u1Y">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="scb-cL-eyO">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
@@ -885,7 +885,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Uny-Dg-qeA">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="daw-By-KAf">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
@@ -1128,7 +1128,7 @@
                                         <color key="textColor" red="0.72941176470000002" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="minSize" width="600" height="24"/>
-                                        <size key="maxSize" width="600" height="24"/>
+                                        <size key="maxSize" width="700" height="24"/>
                                         <attributedString key="textStorage">
                                             <fragment content="Already have a license? Activate now">
                                                 <attributes>
@@ -1147,7 +1147,7 @@
                                         </attributedString>
                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <size key="minSize" width="600" height="24"/>
-                                        <size key="maxSize" width="600" height="24"/>
+                                        <size key="maxSize" width="700" height="24"/>
                                     </textView>
                                 </subviews>
                                 <animations/>

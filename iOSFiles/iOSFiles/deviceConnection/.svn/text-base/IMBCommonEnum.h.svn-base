@@ -500,6 +500,7 @@ typedef enum actionType {
     loadAction = 0,
     deleteAction = 1,
     createFolder = 2,
+    renameAction = 3,
 } ActionTypeEnum;
 
 

@@ -2001,11 +2001,17 @@
                     
                     NSDictionary *dimensionDict = nil;
                     @autoreleasepool {
+                        if (_transferType == ToDeviceType) {
+                            if (limitation.remainderCount <= 0) {
+                                [limitation setLimitStatus:@"noquote"];
+                            }else {
+                                [limitation setLimitStatus:@"completed"];
+                            }
+                        }
                         dimensionDict = [[TempHelper customDimension] copy];
                     }
                     if (limitation.remainderCount <= 0) {
                         if (_transferType == ToDeviceType) {
-                            [limitation setLimitStatus:@"noquote"];
                             [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"noquote" label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                         }else {
                             [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
@@ -2014,7 +2020,6 @@
                         [_unregisteredBox setContentView:_runOutDayCompleteView];
                     }else {
                         if (_transferType == ToDeviceType) {
-                            [limitation setLimitStatus:@"completed"];
                             [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"completed" label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                         }else {
                             [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];

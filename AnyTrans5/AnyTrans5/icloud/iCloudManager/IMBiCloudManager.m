@@ -1696,7 +1696,9 @@
     if (postStr != nil) {
         @try {
             NSDictionary *conDic = [_netClient postInformationContent:@"contacts" withPath:pathStr withPostStr:postStr];
-            [_delegate transfranDic:conDic];
+            if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+                [_delegate transfranDic:conDic];
+            }
             if (conDic != nil) {
     
 //                if ([conDic.allKeys containsObject:@"prefToken"]) {
@@ -1716,7 +1718,9 @@
             }
         }
         @catch (NSException *exception) {
-            [_delegate transfranDic:nil];
+            if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+                [_delegate transfranDic:nil];
+            }
             [_logHandle writeInfoLog:[NSString stringWithFormat:@"import contact exception :%@",exception.reason]];
         }
     }
@@ -3884,7 +3888,9 @@
     NSString *postStr = [self createHighNoteModifyModel:noteDataArr];
     @try {
         NSDictionary *retDic = [_netClient postInformationContent:@"ckdatabasews" withPath:pathStr withPostStr:postStr];
-         [_delegate transfranDic:retDic];
+        if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+            [_delegate transfranDic:retDic];
+        }
         if (retDic != nil && [retDic.allKeys containsObject:@"records"]) {
             
             ret = YES;
@@ -3892,7 +3898,9 @@
         }
     }
     @catch(NSException *exception) {
-        [_delegate transfranDic:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+            [_delegate transfranDic:nil];
+        }
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"add High Note exception :%@",exception.reason]];
     }
     
@@ -3905,13 +3913,17 @@
     NSString *postStr = [self createLowNoteModifyModel:noteDataArr];
     @try {
         NSDictionary *retDic = [_netClient postInformationContent:@"notes" withPath:pathStr withPostStr:postStr];
-        [_delegate transfranDic:retDic];
+        if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+            [_delegate transfranDic:retDic];
+        }
         if (retDic != nil && [retDic.allKeys containsObject:@"notes"]) {
             ret = YES;
         }
     }
     @catch(NSException *exception) {
-        [_delegate transfranDic:nil];
+        if (_delegate && [_delegate respondsToSelector:@selector(transfranDic:)]) {
+            [_delegate transfranDic:nil];
+        }
         [_logHandle writeInfoLog:[NSString stringWithFormat:@"add High Note exception :%@",exception.reason]];
     }
     

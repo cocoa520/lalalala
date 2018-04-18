@@ -94,7 +94,12 @@ typedef BOOL (^CNGridViewSelectItem)(CNGridViewItem *item);
     int _moveToIndex;
 //    NSEvent *_eventMonitor;
 //    int _eventCount;
+    
+    BOOL _commandFlag;
+    BOOL _commandAndA;
+    BOOL _isKeyUp;
 }
+@property(nonatomic, copy) void(^commandADown)(void);
 @property (nonatomic, assign) BOOL isAppItem;
 @property (nonatomic, assign) BOOL isPhotoView;
 @property (nonatomic, assign) BOOL isFileManager;

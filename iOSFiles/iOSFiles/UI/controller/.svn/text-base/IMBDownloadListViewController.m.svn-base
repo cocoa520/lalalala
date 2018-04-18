@@ -812,6 +812,8 @@
     
     switch (categoryNodesEnum) {
         case Category_CameraRoll:
+            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_camera"];
+            downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_10", nil);
             break;
         case Category_PhotoLibrary:
         {

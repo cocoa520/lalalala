@@ -909,7 +909,7 @@
     if ([_ipod.deviceHandle.productVersion isVersionMajorEqual:@"7"]) {
         imageData = [(NSMutableData *)[TempHelper scalingImage:sourceImage withLenght:140] retain];
     }else {
-        imageData = [(NSMutableData *)[TempHelper createThumbnail:sourceImage withWidth:140 withHeight:140] retain];
+        imageData = [(NSMutableData *)[TempHelper createThumbnail:sourceImage withWidth:140 withHeight:110] retain];
     }
     [sourceImage release];
     

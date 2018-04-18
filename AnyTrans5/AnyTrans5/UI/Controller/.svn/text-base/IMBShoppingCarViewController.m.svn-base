@@ -554,7 +554,7 @@
             }
             dimensionDict = [[TempHelper customDimension] copy];
         }
-        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"Registration code is empty",_secondViewInputTextFiled.stringValue] label:Register transferCount:0 screenView:@"activate" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"Registration code is empty" label:Register transferCount:0 screenView:@"activate" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         if (dimensionDict) {
             [dimensionDict release];
             dimensionDict = nil;

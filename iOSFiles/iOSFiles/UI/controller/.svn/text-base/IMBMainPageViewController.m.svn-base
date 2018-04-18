@@ -53,24 +53,41 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [super awakeFromNib];
     if (_alertSuperView) {
         NSMutableArray *obArr = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView);
+        NSMutableArray *newObArr = [NSMutableArray array];
         if (!obArr) {
             obArr = [NSMutableArray array];
         }
+        
         NSString *key = nil;
         switch (_chooseModelEnum) {
             case iCloudLogEnum:
             {
                 key = IMBAlertViewiCloudKey;
+                for (NSDictionary *dic in obArr) {
+                    if ([dic[@"key"] isEqualToString:IMBAlertViewiCloudKey]) {
+                        continue;
+                    }
+                    [newObArr addObject:dic];
+                }
             }
                 break;
             case DropBoxLogEnum:
             {
                 key = IMBAlertViewDropBoxKey;
+                for (NSDictionary *dic in obArr) {
+                    if ([dic[@"key"] isEqualToString:IMBAlertViewDropBoxKey]) {
+                        continue;
+                    }
+                    [newObArr addObject:dic];
+                }
             }
                 break;
             case DeviceLogEnum:
             {
                 key = _iPod.uniqueKey;
+                for (NSDictionary *dic in obArr) {
+                    [newObArr addObject:dic];
+                }
             }
                 break;
                 
@@ -78,8 +95,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 break;
         }
         if (key) {
-            [obArr addObject:@{@"key" : key, @"alertView" : _alertSuperView}];
-            objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, obArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            [newObArr addObject:@{@"key" : key, @"alertView" : _alertSuperView}];
+            objc_setAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView, newObArr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }else {
             IMBFLog(@"Warning----alertView associated failed----");
         }

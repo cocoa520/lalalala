@@ -73,7 +73,8 @@
         [_editTextField release];
         _editTextField = nil;
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    
     [super dealloc];
 }
 
@@ -110,7 +111,7 @@
         [self configSelectPathButtonWithButtonTag:1 WithButtonTitle:CustomLocalizedString(@"NotConnectDropBoxTitle", nil)];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
     _doubleclickCount = 1;
     _currentDevicePath = @"0";
@@ -139,7 +140,11 @@
     _gridView.allowsMultipleSelection = YES;
     _gridView.allowsMultipleSelectionWithDrag = YES;
     _gridView.allowClickMultipleSelection = NO;
-    
+    _gridView.commandADown = ^{
+        //commandA
+        IMBFLog(@"commandA");
+        [_gridView selectAllItems];
+    };
     [_gridView setIsFileManager:YES];
     [_gridView reloadData];
     [_itemTableView reloadData];
@@ -394,7 +399,7 @@
         }
         if (curItem) {
             if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] && ![curItem.editText.stringValue isEqualToString:_curEntity.fileName]) {
-                _curEntity.fileName = curItem.editText.stringValue;
+                _curEntity.fileName = [self checkoutName:curItem.editText.stringValue];//curItem.editText.stringValue;
                 if (_curEntity.extension && !_curEntity.isFolder){
                     newName = [[_curEntity.fileName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
                 }else {
@@ -462,7 +467,7 @@
 }
 
 - (void)gridView:(CNGridView *)gridView didDoubleClickItemAtIndex:(NSUInteger)index inSection:(NSUInteger)section {
-    [_itemTableView changeHeaderCheckState:UnChecked];
+    
     [self hideFileDetailView:nil];
     
     NSArray *array = nil;
@@ -474,6 +479,7 @@
     if ((int)index >= 0 && index < array.count) {
         IMBDriveEntity *driveEntity = [array objectAtIndex:index];
         if (driveEntity.isFolder) {
+            [_itemTableView changeHeaderCheckState:UnChecked];
             _isSearch = NO;
             [_researchdataSourceArray removeAllObjects];
             [_searhView setStringValue:@""];
@@ -1057,6 +1063,7 @@
     }
 }
 
+
 - (IBAction)hideFileDetailView:(id)sender {
     if (_isShow) {
         [_rightContentView.layer removeAllAnimations];
@@ -1347,9 +1354,9 @@
 
 - (void)deleteItems:(id)sender {
     NSString *key = nil;
-    if (_categoryNodeEunm == iCloudLogEnum) {
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
         key = IMBAlertViewiCloudKey;
-    }else if (_categoryNodeEunm == DropBoxLogEnum) {
+    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
         key = IMBAlertViewDropBoxKey;
     }
     [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"MSG_COM_Confirm_Before_Delete", nil) firstBtnClickedBlock:nil secondBtnClickedBlock:^{
@@ -1472,6 +1479,7 @@
 
 - (void)loadTransferComplete:(NSMutableArray *)transferAry WithEvent:(ActionTypeEnum)actionType {
     if (actionType == deleteAction) {
+        [_toolBarButtonView toolBarButtonIsEnabled:YES];
         if (transferAry.count > 0) {
             for (NSString *foldId in transferAry) {
                 [_dataSourceArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -1645,7 +1653,8 @@
     if (_isTableViewEdit && !_curEntity.isCreating) {
         _isTableViewEdit = NO;
         if (_curEntity) {
-            NSString *newName = _editTextField.stringValue;
+            NSString *newName = [self checkoutName:_editTextField.stringValue];//_editTextField.stringValue;
+            _editTextField.stringValue = newName;
             if (![StringHelper stringIsNilOrEmpty:newName] && ![_curEntity.fileName isEqualToString:newName]) {
                 _curEntity.fileName = newName;
                 if (_curEntity.extension && !_curEntity.isFolder){
@@ -1692,6 +1701,61 @@
     
 }
 
+- (NSString *)checkoutName:(NSString *)originalName {
+    if ([originalName isEqualToString:@""] || [originalName isEqualToString:_curEntity.fileName]) {
+        return originalName;
+    }
+    
+    NSInteger count = _dataSourceArray.count;
+    BOOL hasSameName = YES;
+    NSMutableArray *sameEntityArr = [NSMutableArray array];
+    if (_curEntity.isFolder) {
+        for (NSInteger i = 0; i < count; i++) {
+            IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:i];
+            if (entity.isFolder) {
+                [sameEntityArr addObject:entity];
+            }
+        }
+    }
+    else {
+        for (NSInteger i = 0; i < count; i++) {
+            IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:i];
+            if ([_curEntity.extension isEqualToString:entity.extension]) {
+                [sameEntityArr addObject:entity];
+            }
+        }
+    }
+    
+    if (sameEntityArr.count) {
+        NSInteger sameCount = sameEntityArr.count;
+        int d = 2;
+        while (hasSameName) {
+            for (NSInteger i = 0; i < sameCount; i++) {
+                IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
+                if ([entity.fileName isEqualToString:originalName]) {
+                    if (entity == _curEntity) {
+                        hasSameName = NO;
+                        break;
+                    }
+                    if (d > 2) {
+                        NSString *lastStr = [NSString stringWithFormat:@" %d",d-1];
+                        originalName = [originalName substringToIndex:originalName.length - lastStr.length];
+                    }
+                    originalName = [NSString stringWithFormat:@"%@ %d",originalName,d++];
+                    break;
+                }
+                if (i == sameCount - 1) {
+                    hasSameName = NO;
+                    break;
+                }
+            }
+        }
+    }
+    
+    return originalName;
+    
+}
+
 - (void)moveToFolder:(id)sender {
     NSArray *displayArr = nil;
     if (_isSearch) {
@@ -1725,6 +1789,7 @@
 }
 
 - (void)startMoveTransferWith:(IMBDriveEntity *)entity {
+    [_toolBarButtonView toolBarButtonIsEnabled:NO];
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
     NSArray *displayArr = nil;
@@ -1754,6 +1819,8 @@
             [(IMBDropBoxManage *)_driveBaseManage moveToNewParent:entity.filePath sourceParent:@"" idOrPaths:moveItemsArr];
         }
     }
+    
+    
 }
 
 - (void)previewFile:(IMBDriveEntity *)driveEntity {

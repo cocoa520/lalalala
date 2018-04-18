@@ -188,6 +188,11 @@
         drviceEntity.isFolder = YES;
         drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
         drviceEntity.extension = @"Folder";
+        if ([fileName containsString:@".app" options:0]) {
+            drviceEntity.image = [NSImage imageNamed:@"folder_icon_app"];
+            drviceEntity.isFolder = NO;
+            drviceEntity.extension = @"app";
+        }
     }else{
         drviceEntity.image = [TempHelper loadFileImage:extension];
         drviceEntity.extension = extension;
@@ -298,6 +303,7 @@
             [dimensionDict release];
             dimensionDict = nil;
         }
+        
     } fail:^(DriveAPIResponse *response) {
         [ATTracker event:CDropbox action:ARename label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
         if (dimensionDict) {
@@ -382,6 +388,9 @@
         });
     } fail:^(DriveAPIResponse *response) {
         [ATTracker event:CDropbox action:AMove label:LFailed labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_driveWindowDelegate loadTransferComplete:nil WithEvent:deleteAction];
+        });
         if (dimensionDict) {
             [dimensionDict release];
             dimensionDict = nil;

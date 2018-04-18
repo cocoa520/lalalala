@@ -478,8 +478,8 @@
             NSArray *contents = [fm contentsOfDirectoryAtPath:userApplicationsDir error:NULL];
             for (NSString *contentsPath in contents) {
                 if ([[contentsPath pathExtension] isEqualToString:@"app"]) {
-                    if ([contentsPath.lowercaseString contains:@"google"] && ![aryM containsObject:@"google"]) {
-                        [aryM addObject:@"google"];
+                    if ([contentsPath.lowercaseString contains:@"chrome"] && ![aryM containsObject:@"chrome"]) {
+                        [aryM addObject:@"chrome"];
                         identifer = @"com.google.Chrome";
                     }else if ([contentsPath.lowercaseString contains:@"safari"] && ![aryM containsObject:@"safari"]) {
                         [aryM addObject:@"safari"];
@@ -508,8 +508,8 @@
     NSString *identifer = nil;
     for (NSString *app in allApplications) {
         NSString *appStr = [NSString stringWithFormat:@"%@",app];//转换成字符串
-        if ([appStr contains:@"com.google.Chrome"] && ![aryM containsObject:@"google"]) {
-            [aryM addObject:@"google"];
+        if ([appStr contains:@"com.google.Chrome"] && ![aryM containsObject:@"chrome"]) {
+            [aryM addObject:@"chrome"];
             identifer = @"com.google.Chrome";
         }else if ([appStr contains:@"com.apple.Safari"] && ![aryM containsObject:@"safari"]) {
             [aryM addObject:@"safari"];

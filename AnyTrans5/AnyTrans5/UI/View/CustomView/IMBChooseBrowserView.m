@@ -55,6 +55,37 @@
     }
     [path fill];
     
+    if (_mouseStatus == MouseEnter ||  _mouseStatus == MouseUp) {
+        NSBezierPath *path1 = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+        [[StringHelper getColorFromString:CustomColor(@"lineAlertColor_InputTextBoderColor", nil)] setStroke];
+        [path1 addClip];
+        [path1 setLineWidth:2];
+        [path1 stroke];
+        [path1 closePath];
+//        if (!_isSelected) {
+//            NSRect drawingRect;
+//            NSImage *selectImage = [StringHelper imageNamed:@"itunes_checkbox1"];
+//            NSRect imageRect;
+//            imageRect.origin = NSZeroPoint;
+//            imageRect.size = NSMakeSize(14, 14);
+//            drawingRect.origin.x = 64;
+//            drawingRect.origin.y = 56;
+//            drawingRect.size.width = imageRect.size.width;
+//            drawingRect.size.height = imageRect.size.height;
+//            [selectImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
+//        }
+    }else if (_mouseStatus == MouseDown){
+        NSBezierPath *path1 = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+        [[StringHelper getColorFromString:CustomColor(@"tableView_oddBgColor", nil)] setFill];
+        [path1 addClip];
+        [path1 fill];
+        
+        [[StringHelper getColorFromString:CustomColor(@"lineAlertColor_InputTextBoderColor", nil)] setStroke];
+        [path1 addClip];
+        [path1 setLineWidth:2];
+        [path1 stroke];
+        [path1 closePath];
+    }
     
     if (_image != nil) {
         NSRect drawingRect;
@@ -63,55 +94,33 @@
         imageRect.origin = NSZeroPoint;
         imageRect.size = NSMakeSize(64, 64);
         drawingRect.origin.x = (dirtyRect.size.width - 64) / 2.0;
-        drawingRect.origin.y = 56;
+        drawingRect.origin.y = 52;
         drawingRect.size.width = imageRect.size.width;
         drawingRect.size.height = imageRect.size.height;
         [_image drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
     }
     
-    
-    if (_mouseStatus == MouseEnter ||  _mouseStatus == MouseUp) {
-        NSBezierPath *path1 = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
-        [[StringHelper getColorFromString:CustomColor(@"lineAlertColor_InputTextBoderColor", nil)] setStroke];
-        [path1 addClip];
-        [path1 setLineWidth:2];
-        [path1 stroke];
-        [path1 closePath];
-        if (!_isSelected) {
-            NSRect drawingRect;
-            NSImage *selectImage = [StringHelper imageNamed:@"itunes_checkbox1"];
-            NSRect imageRect;
-            imageRect.origin = NSZeroPoint;
-            imageRect.size = NSMakeSize(14, 14);
-            drawingRect.origin.x = 64;
-            drawingRect.origin.y = 56;
-            drawingRect.size.width = imageRect.size.width;
-            drawingRect.size.height = imageRect.size.height;
-            [selectImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
-        }
-    }
-    
     if (_title != nil) {
         NSSize size ;
         NSMutableAttributedString *attrStr = [StringHelper TruncatingTailForStringDrawing:_title withFont:[NSFont fontWithName:@"Helvetica Neue" size:14] withLineSpacing:0 withMaxWidth:85 withSize:&size withColor:[StringHelper getColorFromString:CustomColor(@"text_normalColor", nil)] withAlignment:NSLeftTextAlignment];
-        NSRect textRect2 = NSMakeRect(ceil((dirtyRect.size.width - size.width)/ 2.0) , 12, size.width, 22);
+        NSRect textRect2 = NSMakeRect(ceil((dirtyRect.size.width - size.width)/ 2.0) , 19, size.width, 22);
         [attrStr drawInRect:textRect2];
     }
     
 
     
-    if (_isSelected) {
-        NSRect drawingRect;
-        NSImage *selectImage = [StringHelper imageNamed:@"itunes_checkbox2"];
-        NSRect imageRect;
-        imageRect.origin = NSZeroPoint;
-        imageRect.size = NSMakeSize(14, 14);
-        drawingRect.origin.x = 64;
-        drawingRect.origin.y = 56;
-        drawingRect.size.width = imageRect.size.width;
-        drawingRect.size.height = imageRect.size.height;
-        [selectImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
-    }
+//    if (_isSelected) {
+//        NSRect drawingRect;
+//        NSImage *selectImage = [StringHelper imageNamed:@"itunes_checkbox2"];
+//        NSRect imageRect;
+//        imageRect.origin = NSZeroPoint;
+//        imageRect.size = NSMakeSize(14, 14);
+//        drawingRect.origin.x = 64;
+//        drawingRect.origin.y = 56;
+//        drawingRect.size.width = imageRect.size.width;
+//        drawingRect.size.height = imageRect.size.height;
+//        [selectImage drawInRect:drawingRect fromRect:imageRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
+//    }
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

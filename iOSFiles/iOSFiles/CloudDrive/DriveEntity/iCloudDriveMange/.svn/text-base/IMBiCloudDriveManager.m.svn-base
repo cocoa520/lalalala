@@ -146,8 +146,20 @@
         drviceEntity.isFolder = YES;
         drviceEntity.image = [NSImage imageNamed:@"mac_cnt_fileicon_myfile"];
         drviceEntity.extension = file;
+        if ([name containsString:@".app" options:0]) {
+            drviceEntity.image = [NSImage imageNamed:@"folder_icon_app"];
+            drviceEntity.isFolder = NO;
+            drviceEntity.extension = @"app";
+            drviceEntity.fileName = [name stringByReplacingOccurrencesOfString:@".app" withString:@""];
+        }
     }else {
-        drviceEntity.image = [TempHelper loadFileImage:extension];
+        if ([drviceEntity.extension isEqualToString:@"app"]) {
+            drviceEntity.image = [NSImage imageNamed:@"folder_icon_app"];
+        }else {
+            drviceEntity.image = [TempHelper loadFileImage:extension];
+        }
+        
+        
     }
 }
 
@@ -362,7 +374,10 @@
             [dimensionDict release];
             dimensionDict = nil;
         }
-        [IMBCommonTool showSingleBtnAlertInMainWindow:@"iCloud" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [(IMBiCloudDriverViewController *)_driveWindowDelegate loadTransferComplete:nil WithEvent:deleteAction];
+        });
+        [IMBCommonTool showSingleBtnAlertInMainWindow:IMBAlertViewiCloudKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
         }];
     }];
 }

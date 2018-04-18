@@ -18,7 +18,6 @@
     IBOutlet IMBChooseBrowserView *_firfoxView;
     IBOutlet IMBChooseBrowserView *_operaView;
     
-    IBOutlet IMBGridientButton *_saveBtn;
     IBOutlet NSTextField *optTextField;
     NSMutableArray *_installBrowsers;
     

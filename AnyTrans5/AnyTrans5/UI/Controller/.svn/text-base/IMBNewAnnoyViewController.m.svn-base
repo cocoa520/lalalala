@@ -54,7 +54,7 @@
             dimensionDict = [[TempHelper customDimension] copy];
         }
         [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:@"start" label:LabelNone transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-
+        [_limitation setLimitStatus:@""];
         //既有天数 又有个数
         [self addTransferStartAnnoyView];
         [[IMBSoftWareInfo singleton] setIsOpenAnnoy:YES];
@@ -158,7 +158,7 @@
 - (void)startFreeTransfer:(id)sender {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
-        [[OperationLImitation singleton] setLimitStatus:@"start"];
+        [_limitation setLimitStatus:@"start"];
         dimensionDict = [[TempHelper customDimension] copy];
     }
     [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"start" label:Try transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
@@ -166,6 +166,7 @@
         [dimensionDict release];
         dimensionDict = nil;
     }
+    [_limitation setLimitStatus:@""];
     if ([_delegate isKindOfClass:[IMBAddContentViewController class]]) {
         ((IMBAddContentViewController *)_delegate)->_endRunloop = YES;
     }else {

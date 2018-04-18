@@ -73,7 +73,8 @@
         [_editTextField release];
         _editTextField = nil;
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    
     [super dealloc];
 }
 
@@ -121,6 +122,11 @@
     _gridView.allowsMultipleSelectionWithDrag = YES;
     _gridView.allowClickMultipleSelection = NO;
     [_gridView setIsFileManager:YES];
+    _gridView.commandADown = ^{
+        //commandA
+        IMBFLog(@"commandA");
+        [_gridView selectAllItems];
+    };
     [_tableViewBgView setBackgroundColor:[NSColor whiteColor]];
     
     _itemTableViewcanDrop = YES;
@@ -657,7 +663,7 @@
             item.itemImage = photoEntity.photoImage;
         } else {
             NSData *imageData = [self createImageToTableView:photoEntity];
-            NSImage *photoImage = [[NSImage alloc]initWithData:imageData];
+            NSImage *photoImage = [[NSImage alloc] initWithData:imageData];
             item.itemImage = photoImage;
             if (photoImage) {
                 photoEntity.photoImage = photoImage;
@@ -1336,7 +1342,7 @@
         if (photoEnity.photoDateData == 0) {
             [_detailCreateTimeContent  setStringValue:@"--"];
         }else{
-            [_detailCreateTimeContent  setStringValue:[DateHelper dateFrom1970ToString:photoEnity.photoDateData withMode:2]];
+            [_detailCreateTimeContent  setStringValue:[DateHelper dateFrom2001ToString:photoEnity.photoDateData withMode:2]];
         }
     }
 }
@@ -1502,14 +1508,13 @@
         if (_categoryNodeEunm == Category_Media||_categoryNodeEunm == Category_Video) {
             IMBTrack *track = [array objectAtIndex:row];
             IMBImageAndTextFieldCell *curCell = (IMBImageAndTextFieldCell *)cell;
-            [curCell setImageSize:NSMakeSize(34, 34)];
-            curCell.image = track.thumbImage;
             if ([IMBHelper stringIsNilOrEmpty:track.title]) {
                 curCell.imageText = CustomLocalizedString(@"mediaView_id_5", nil);
             }else {
-                 curCell.imageText = track.title;
+                curCell.imageText = track.title;
             }
-           
+            [curCell setImageSize:NSMakeSize(34, 34)];
+            curCell.image = track.thumbImage;
             [curCell setIsDataImage:YES];
             curCell.marginX = 12;
         }else if (_categoryNodeEunm == Category_iBooks) {
@@ -2461,6 +2466,7 @@
     }
 }
 
+
 - (void)reload:(id)sender {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
@@ -2678,7 +2684,7 @@
 
 - (void)reloadEnd {
     [_gridView reloadData];
-    [_itemTableView reloadData];
+    
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
     [self changeToolButtonsIsSelectedIntems:NO];
     if (_currentSelectView == 0) {
@@ -2716,6 +2722,7 @@
         [_itemTableView changeHeaderCheckState:SemiChecked];
     }
     [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
+    [_itemTableView reloadData];
     
 }
 
@@ -4092,7 +4099,7 @@
     NSData *data = [self readFileData:filePath];
     NSImage *sourceImage = [[NSImage alloc] initWithData:data];
     
-    NSData *imageData = [IMBHelper createThumbnail:sourceImage withWidth:80 withHeight:60];
+    NSData *imageData = [TempHelper createThumbnail:sourceImage withWidth:80 withHeight:80];
     [sourceImage release];
     
     return imageData;

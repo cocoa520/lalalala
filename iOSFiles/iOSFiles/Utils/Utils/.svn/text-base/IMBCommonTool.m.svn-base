@@ -115,6 +115,7 @@ NSString * const IMBAlertViewDropBoxKey = @"DropBox";
         }
     }
     
+   
     if (inView == nil) return;
     [inView addSubview:alert.view];
     [inView setHidden:NO];

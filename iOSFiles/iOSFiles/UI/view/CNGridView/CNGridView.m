@@ -271,7 +271,41 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
                                           }];
     _isMouseDrag = NO;
     
-
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^NSEvent * _Nullable(NSEvent * _Nonnull event) {
+        
+        if (event.keyCode == 0 && _commandFlag) {
+            if (!_isKeyUp) {
+                IMBFLog(@"----commandAkeydown----");
+                if (self.commandADown) {
+                    self.commandADown();
+                }
+                _commandAndA = YES;
+                _isKeyUp = YES;
+            }
+            
+        }
+        return event;
+    }];
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyUpMask handler:^NSEvent * _Nullable(NSEvent * _Nonnull event) {
+        IMBFLog(@"----keyup----");
+        _commandAndA = NO;
+        _isKeyUp = NO;
+        return event;
+    }];
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSFlagsChangedMask handler:^NSEvent * _Nullable(NSEvent * _Nonnull event) {
+        IMBFLog(@"----flagsdown----");
+        if (event.modifierFlags == 0x100108) {
+            if (event.keyCode == 55) {
+                //command按下
+                _commandFlag = YES;
+            }else {
+                _commandFlag = NO;
+            }
+        }else if (event.modifierFlags == 0x100) {
+            _commandFlag = NO;
+        }
+        return event;
+    }];
 }
 
 - (void)lisenterMouseEvent:(NSNotification *)noti {

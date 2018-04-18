@@ -547,7 +547,7 @@
     }];
 }
 
-- (void)moveToNewParent:(NSString *)newParent itemDics:(NSArray *)items success:(Callback)success fail:(Callback)fail
+- (void)moveToNewParent:(NSString *)newParent itemDic:(NSArray *)items success:(Callback)success fail:(Callback)fail
 {
     YTKRequest *requestAPI = [[iCloudDriveMoveToNewParentAPI alloc] initWithMoveItemDic:items newParentIDOrPathdsid:newParent dsid:_dsid cookie:_cookie iCloudDriveURL:_iCloudDriveUrl];
     __block YTKRequest *weakRequestAPI = requestAPI;

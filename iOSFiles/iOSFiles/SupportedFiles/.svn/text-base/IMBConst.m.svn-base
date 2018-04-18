@@ -24,6 +24,8 @@ NSString * const IMBDevicePageStopLoadingAnimNoti = @"IMBDevicePageStopLoadingAn
 NSString * const IMBDevicePageShowToolbarNoti = @"IMBDevicePageShowToolbarNoti";
 NSString * const IMBDevicePageHideToolbarNoti = @"IMBDevicePageHideToolbarNoti";
 
+NSString * const IMBGridViewCommandANoti = @"IMBGridViewCommandANoti";
+
 NSString * const DeviceDataLoadCompletePhoto = @"DeviceDataLoadCompletePhoto";
 NSString * const deviceDataLoadCompleteBooks = @"deviceDataLoadCompleteBooks";
 NSString * const DeviceDataLoadCompleteApp = @"DeviceDataLoadCompleteApp";

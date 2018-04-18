@@ -471,6 +471,7 @@
         for (IMBPhotoEntity *pe in photoArray) {
             if (_limitation.remainderCount == 0) {
                 [[IMBTransferError singleton] addAnErrorWithErrorName:pe.photoName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
+                continue;
             }
             [_condition lock];
             if (_isPause) {
@@ -813,6 +814,7 @@
         AFCMediaDirectory *afcDir = [_ipod.fileSystem afcMediaDirectory];
         for (IMBBookEntity *book in iBookArray) {
             if (_limitation.remainderCount == 0) {
+                [[IMBTransferError singleton] addAnErrorWithErrorName:book.bookName WithErrorReson:CustomLocalizedString(@"ResultWindow_result_2", nil)];
                 break;
             }
             [_condition lock];
