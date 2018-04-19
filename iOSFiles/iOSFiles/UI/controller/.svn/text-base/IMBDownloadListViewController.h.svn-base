@@ -52,6 +52,9 @@
     IMBHoverChangeImageBtn *_transferBtn;
     NSString *_appKey;
     BOOL _isAllUpLoad;//是否是上次数据，上次完成刷新界面
+    BOOL _isiCloudToDeviceDown;
+    NSOperationQueue *_queue;
+    BOOL _isiCloudDownComplete;
 }
 @property (nonatomic,assign) id delagete;
 @property (nonatomic,retain)NSString *exportPath;
@@ -71,9 +74,11 @@
  */
 - (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath;
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent;
+- (void)dropBoxToDeviceAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent  withiPod:(IMBiPod *)ipod;
+
 - (void)icloudDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID;
 - (void)toDeviceAddDataSorue:(NSMutableArray *)addDataSource withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum srciPodKey:(NSString *)srcIpodKey desiPodKey:(NSString *)desiPodKey;
-
+- (void)icloudToDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID withiPod:(IMBiPod *)ipod;
 /**
  *  toiCloud
  *  @param addDataSource  选择的数据 分为文件和文件夹

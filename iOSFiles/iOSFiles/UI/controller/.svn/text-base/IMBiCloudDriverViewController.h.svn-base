@@ -16,6 +16,7 @@
 #import "IMBCommonEnum.h"
 #import "LoadingViewTwo.h"
 #import "IMBGrideView.h"
+#import "IMBDevicePopoverViewController.h"
 @class IMBBaseInfo;
 @interface IMBiCloudDriverViewController : IMBBaseViewController<CNGridViewDelegate,CNGridViewDataSource> {
     
@@ -81,6 +82,9 @@
     IMBBaseInfo *_baseInfo;
     IBOutlet NSButton *_closeDetailBtn;
     BOOL _isDriveToDrive;
+    NSPopover *_devChoosePopover;
+    IMBDevicePopoverViewController *_devicePopoverViewController;
+    
 }
 @property (nonatomic, retain) IMBBaseInfo *baseInfo;
 

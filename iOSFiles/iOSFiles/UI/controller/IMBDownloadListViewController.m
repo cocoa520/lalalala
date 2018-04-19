@@ -58,6 +58,7 @@
 
 
 - (void)awakeFromNib {
+
 }
 
 - (void)loadView {
@@ -162,7 +163,53 @@
     [self reloadData:YES];
 }
 
-- (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent{
+- (void)icloudToDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID withiPod:(IMBiPod *)ipod{
+    _chooseModeEnum = iCloudLogEnum;
+    _deviceManager = driveBaseManage ;
+    _isDownLoadData = YES;
+    _isiCloudToDeviceDown = YES;
+    _queue = [[NSOperationQueue alloc] init];
+    [_queue setMaxConcurrentOperationCount:1];
+    _iPod = ipod;
+    for (IMBDriveEntity *driveEntity in addDataSource) {
+        DriveItem *downloaditem = [[DriveItem alloc] init];
+        [downloaditem setIsDownLoad:YES];
+        downloaditem.itemIDOrPath = driveEntity.fileID;
+        downloaditem.docwsID = driveEntity.docwsid;
+        downloaditem.zone = driveEntity.zone;
+        downloaditem.fileSize = driveEntity.fileSize;
+        downloaditem.photoImage = [driveEntity.image retain];
+        downloaditem.toDriveName = CustomLocalizedString(@"TransferUploading", nil);
+        if (driveEntity.isFolder) {
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [NSImage imageNamed:@"transferlist_history_icon_list_folder"];
+            }
+            downloaditem.isFolder = YES;
+            downloaditem.fileName = driveEntity.fileName;
+        }else {
+            downloaditem.isFolder = NO;
+            if (driveEntity.extension){
+                downloaditem.fileName = [[driveEntity.fileName stringByAppendingString:@"."] stringByAppendingString:driveEntity.extension];
+            }else {
+                downloaditem.fileName = driveEntity.fileName;
+            }
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [TempHelper loadTransferFileImage:driveEntity.extension];
+            }
+        }
+        [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        [_downloadDataSource insertObject:downloaditem atIndex:0];
+        [downloaditem release];
+        downloaditem = nil;
+    }
+    [self loadTranferView];
+    [_deviceManager driveDownloadItemsToMac:_downloadDataSource];
+    [self reloadData:YES];
+}
+
+
+- (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent {
+
     _deviceManager = [driveBaseManage retain];
     _chooseModeEnum = DropBoxLogEnum;
     if (isDown) {
@@ -234,6 +281,49 @@
         [_deviceManager driveUploadItems:_downloadDataSource];
         
     }
+    [self reloadData:YES];
+}
+
+- (void)dropBoxToDeviceAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent  withiPod:(IMBiPod *)ipod{
+    _isiCloudToDeviceDown = YES;
+    _deviceManager = [driveBaseManage retain];
+    _chooseModeEnum = DropBoxLogEnum;
+    _isDownLoadData = YES;
+    _iPod = ipod;
+    for (IMBDriveEntity *driveEntity in addDataSource) {
+        DriveItem *downloaditem = [[DriveItem alloc] init];
+        [downloaditem setIsDownLoad:YES];
+        downloaditem.itemIDOrPath = driveEntity.fileID;
+        downloaditem.docwsID = driveEntity.docwsid;
+        downloaditem.zone = driveEntity.zone;
+        downloaditem.fileSize = driveEntity.fileSize;
+        downloaditem.photoImage = [driveEntity.image retain];
+        downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
+        if (driveEntity.isFolder) {
+            downloaditem.isFolder = YES;
+            downloaditem.fileName = driveEntity.fileName;
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [NSImage imageNamed:@"transferlist_history_icon_list_folder"];
+            }
+        }else {
+            downloaditem.isFolder = NO;
+            if (driveEntity.extension){
+                downloaditem.fileName = [[driveEntity.fileName stringByAppendingString:@"."] stringByAppendingString:driveEntity.extension];
+            }else {
+                downloaditem.fileName = driveEntity.fileName;
+            }
+            if (!downloaditem.photoImage) {
+                downloaditem.photoImage = [TempHelper loadTransferFileImage:driveEntity.extension];;
+            }
+        }
+        
+        [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        [_downloadDataSource insertObject:downloaditem atIndex:0];
+        [downloaditem release];
+        downloaditem = nil;
+    }
+    [self loadTranferView];
+    [_deviceManager driveDownloadItemsToMac:_downloadDataSource];
     [self reloadData:YES];
 }
 
@@ -876,11 +966,20 @@
         }
     }else {
         if ([keyPath isEqualToString:@"state"]){
-            if (_isDownLoadData) {
-                [self allDataDownCompleteData:item];
-            }else{
-                [self loadDataUploadComplet:item];
+            if (_isiCloudToDeviceDown) {
+                if (item.isDownLoad) {
+                    [self allDataDownCompleteData:item];
+                }else{
+                    [self loadDataUploadComplet:item];
+                }
+            }else {
+                if (_isDownLoadData) {
+                    [self allDataDownCompleteData:item];
+                }else{
+                    [self loadDataUploadComplet:item];
+                }
             }
+
         }
     }
 }
@@ -993,22 +1092,67 @@
     NSString *sldsf = [self greadSqlite];
     sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
     if (item.state == DownloadStateComplete) {
-        [_downloadDataSource removeObject:item];
-        //        dispatch_async(dispatch_get_main_queue(), ^{
-        if (_downloadDataSource.count < 1) {
-            [_transferBtn endTranfering];
+        if (_isiCloudToDeviceDown) {
+            [_downloadDataSource removeObject:item];
+            if (_downloadDataSource.count < 1) {
+                [_transferBtn endTranfering];
+            }
+            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,0,item.docwsID,item.isFolder];
+            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
+            item.toDriveName = CustomLocalizedString(@"TransferCompelete", nil);
+            [(IMBTranferViewController*)_delegate loadCompleteData:item];
+            if (_downloadDataSource.count == 0) {
+                [_contentBox setContentView:_nodataView];
+            }
+            [self reloadData:YES];
+            NSMutableArray *ary = [NSMutableArray array];
+            [ary addObject:item.localPath];
+           FileTypeEnum type = [self loadTransferFileImage:[item.localPath pathExtension]];
+            CategoryNodesEnum nodesEnum;
+            if (type == ImageFile) {
+                nodesEnum = Category_PhotoLibrary;
+            } else if (type == MusicFile) {
+                nodesEnum = Category_Media;
+            } else if (type == MovieFile) {
+                nodesEnum = Category_Video;
+            } else if (type == TxtFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == DocFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == BookFile) {
+                nodesEnum = Category_iBooks;
+            } else if (type == PPtFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == ZIPFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == dmgFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == contactFile) {
+                nodesEnum = Category_Storage;
+            } else if (type == excelFile) {
+                nodesEnum = Category_Storage;
+            } else {
+                nodesEnum = Category_Storage;
+            }
+            [_queue addOperationWithBlock:^{
+              [self deviceiCloudTodeviceAddDataSoure:ary WithIsDown:NO WithiPod:_iPod withCategoryNodesEnum:nodesEnum isExportPath:nil withSystemPath:@"/general_storage"];
+            }];
+        }else {
+            [_downloadDataSource removeObject:item];
+            //        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_downloadDataSource.count < 1) {
+                [_transferBtn endTranfering];
+            }
+            //        });
+            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,1,item.docwsID,item.isFolder];
+            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
+            item.toDriveName = CustomLocalizedString(@"TransferCompelete", nil);
+            [(IMBTranferViewController*)_delegate loadCompleteData:item];
+            if (_downloadDataSource.count == 0) {
+                [_contentBox setContentView:_nodataView];
+            }
+            [self reloadData:YES];
         }
-        //        });
-        NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,1,item.docwsID,item.isFolder];
-        sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
-        item.toDriveName = CustomLocalizedString(@"TransferCompelete", nil);
-        [(IMBTranferViewController*)_delegate loadCompleteData:item];
-        
-        
-        if (_downloadDataSource.count == 0) {
-            [_contentBox setContentView:_nodataView];
-        }
-        [self reloadData:YES];
         [(NSObject*)item removeObserver:self forKeyPath:@"state"];
     }else if (item.state == DownloadStateError){
         [_downloadDataSource removeObject:item];
@@ -1031,6 +1175,157 @@
     sqlite3_close(dbPoint);
 }
 
+- (void)deviceiCloudTodeviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{
+    _chooseModeEnum = DeviceLogEnum;
+    IMBBaseTransfer *baseTransfer = nil;
+        _isAllUpLoad = YES;
+        DriveItem *downloaditem = [[DriveItem alloc] init];
+        downloaditem.isDownLoad = NO;
+        downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_12", nil);
+        downloaditem.toDriveName = CustomLocalizedString(@"TransferUploading", nil);
+        downloaditem.childArray = addDataSource;
+        [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        _isDownLoadData = NO;
+        
+        switch (categoryNodesEnum) {
+            case Category_CameraRoll:
+                
+                break;
+            case Category_PhotoLibrary:
+            {
+                IMBPhotoEntity *albumEntity = [[IMBPhotoEntity alloc] init];
+                albumEntity.albumZpk = 46;
+                albumEntity.photoCounts = (int)[addDataSource count];
+                albumEntity.albumKind = 1551;
+                albumEntity.albumTitle = CustomLocalizedString(@"From_Product_Name", nil);
+                albumEntity.albumType = CreateAlbum;
+                albumEntity.photoType = CommonType;
+                
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_img"];
+                baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:albumEntity playlistID:0 delegate:self];
+                [albumEntity release];
+                albumEntity = nil;
+                [_downloadDataSource insertObject:downloaditem atIndex:0];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [baseTransfer startTransfer];
+                    [baseTransfer release];
+//                });
+                
+                [downloaditem release];
+                downloaditem = nil;
+                
+            }
+                break;
+            case Category_iBooks:
+            {
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_books"];
+                downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_13", nil);
+                baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
+                [_downloadDataSource insertObject:downloaditem atIndex:0];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [baseTransfer startTransfer];
+                    [baseTransfer release];
+//                });
+                
+                [downloaditem release];
+                downloaditem = nil;
+                
+            }
+                break;
+            case Category_appDoucment:
+            case Category_Applications:
+            {
+                NSFileManager *fm = [NSFileManager defaultManager];
+                for (NSString *pathStr in addDataSource) {
+                    DriveItem *uploaditem = [[DriveItem alloc] init];
+                    [uploaditem setIsDownLoad:NO];
+                    [uploaditem setUploadParent:systemPath];
+                    [uploaditem setFileName:[pathStr lastPathComponent]];
+                    [uploaditem setLocalPath:pathStr];
+                    uploaditem.toDriveName = CustomLocalizedString(@"TransferUploading", nil);
+                    NSDictionary *fileInfoDic = [fm attributesOfItemAtPath:pathStr error:nil];
+                    unsigned long long length = [fileInfoDic fileSize];
+                    uploaditem.fileSize = length;
+                    NSString *fileType = [fileInfoDic objectForKey:NSFileType];
+                    if ([NSFileTypeRegular isEqualToString:fileType]) {
+                        uploaditem.isFolder = NO;
+                    } else if ([NSFileTypeDirectory isEqualToString:fileType]) {
+                        uploaditem.isFolder = YES;
+                    }
+                    
+                    if (uploaditem.isFolder) {
+                        uploaditem.photoImage = [NSImage imageNamed:@"transferlist_history_icon_list_folder"];
+                    }else {
+                        uploaditem.photoImage = [TempHelper loadTransferFileImage:[pathStr pathExtension]];;
+                    }
+                    [uploaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+                    [_downloadDataSource insertObject:uploaditem atIndex:0];
+                }
+                baseTransfer = [[IMBAirSyncImportTransfer alloc]initWithAppUpLoadIPodkey:ipod.uniqueKey importFiles:_downloadDataSource CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
+                [(IMBAirSyncImportTransfer *)baseTransfer setAppKey:_appKey];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [(IMBAirSyncImportTransfer *)baseTransfer appStartTransfer];
+                    [baseTransfer release];
+//                });
+                
+            }
+                break;
+            case Category_Media:
+            {
+                downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_28", nil);
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+                baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
+                [_downloadDataSource insertObject:downloaditem atIndex:0];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [baseTransfer startTransfer];
+                    [baseTransfer release];
+//                });
+                
+                [downloaditem release];
+                downloaditem = nil;
+                
+            }
+                break;
+            case Category_Video:
+            {
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+                downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_29", nil);
+                baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
+                [_downloadDataSource insertObject:downloaditem atIndex:0];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [baseTransfer startTransfer];
+                    [baseTransfer release];
+//                });
+                
+                [downloaditem release];
+                downloaditem = nil;
+                
+            }
+                break;
+            case Category_Storage:
+            case Category_System:
+                downloaditem.photoImage = [NSImage imageNamed:@"transferlist_history_icon_list_folder"];
+                downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_35", nil);
+                
+                baseTransfer = [[IMBBaseTransfer alloc] initWithIPodkey:ipod.uniqueKey importTracks:downloaditem withCurrentPath:systemPath withDelegate:self];
+                [_downloadDataSource insertObject:downloaditem atIndex:0];
+//                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [baseTransfer startTransfer];
+                    [baseTransfer release];
+//                });
+                
+                [downloaditem release];
+                downloaditem = nil;
+                
+                break;
+            default:
+                break;
+        }
+        [self reloadData:YES];
+
+    [self loadTranferView];
+}
+
 //数据上传完成
 -(void)loadDataUploadComplet:(DriveItem *)item {
     NSDate *date = [NSDate date];
@@ -1047,6 +1342,9 @@
     sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
     
     if (item.state == UploadStateComplete) {
+        if (_isiCloudToDeviceDown) {
+        
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_downloadDataSource.count <= 1) {
                 if (_delegate && [_delegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
@@ -1604,6 +1902,12 @@
     NSString *insertData = @"insert into \"main\".\"FileHistory\" (\"transfer_name\",\"transfer_exportPath\",\"transfer_time\",\"transfer_size\",\"transfer_status\",\"transfer_isdown\",\"transfer_id\",\"transfer_isfolder\") values ('%@','%@','%@','%lld','%d','%d','%@','%d');";
     return insertData;
 }
+
+- (FileTypeEnum )loadTransferFileImage:(NSString *)extension{
+    FileTypeEnum type = [StringHelper getFileFormatWithExtension:[extension lowercaseString]];
+    return type;
+}
+
 
 - (void)dealloc {
     //    [_completeArray release],_completeArray = nil;

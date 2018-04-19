@@ -193,6 +193,19 @@ static id _instance = nil;
     }
 }
 
+- (void)icloudToDriveAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent withUploadDocID:(NSString *) docID withiPod:(IMBiPod *)ipod{
+    _chooseLoginModelEnum = iCloudLogEnum;
+    [self downLoadBtn:nil];
+    if (!_downLoadViewController) {
+        _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+        [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
+    }
+    [_boxView setContentView:_downLoadViewController.view];
+    [_downLoadViewController icloudToDriveAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent withUploadDocID:docID withiPod:ipod];
+
+}
+
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent{
     _chooseLoginModelEnum = DropBoxLogEnum;
     if (isDown) {
@@ -216,6 +229,18 @@ static id _instance = nil;
         [_boxView setContentView:_downLoadViewController.view];
         [self upLoadBtn:nil];
     }
+}
+
+- (void)dropBoxToDeviceAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent  withiPod:(IMBiPod *)ipod{
+    _chooseLoginModelEnum = DropBoxLogEnum;
+    if (!_downLoadViewController) {
+        _downLoadViewController = [[IMBDownloadListViewController alloc] initWithNibName:@"IMBDownloadListViewController" bundle:nil];
+        [_downLoadViewController setDelagete:self];
+        [_downLoadViewController transferBtn:_tranferBtn];
+        [_boxView setContentView:_downLoadViewController.view];
+    }
+    [_downLoadViewController dropBoxToDeviceAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+    [self downLoadBtn:nil];
 }
 
 - (void)deviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{

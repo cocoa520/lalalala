@@ -54,3 +54,15 @@ APPKIT_EXTERN char kIMBMainPageWindowAlertView;
 
 #pragma mark - font
 APPKIT_EXTERN NSString * const IMBCommonFont;
+
+#pragma mark - purchaseIcon
+
+APPKIT_EXTERN NSString * const IMBPurchaseIcon01;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon02;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon03;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon04;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon05;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon06;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon07;
+APPKIT_EXTERN NSString * const IMBPurchaseIcon08;
+

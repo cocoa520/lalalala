@@ -59,3 +59,14 @@ char kIMBMainPageWindowAlertView;
 
 NSString * const IMBCommonFont = @"Helvetica Neue";
 
+#pragma mark - purchaseIcon
+
+NSString * const IMBPurchaseIcon01 = @"buy_icon01";
+NSString * const IMBPurchaseIcon02 = @"buy_icon02";
+NSString * const IMBPurchaseIcon03 = @"buy_icon03";
+NSString * const IMBPurchaseIcon04 = @"buy_icon04";
+NSString * const IMBPurchaseIcon05 = @"buy_icon05";
+NSString * const IMBPurchaseIcon06 = @"buy_icon06";
+NSString * const IMBPurchaseIcon07 = @"buy_icon07";
+NSString * const IMBPurchaseIcon08 = @"buy_icon08";
+

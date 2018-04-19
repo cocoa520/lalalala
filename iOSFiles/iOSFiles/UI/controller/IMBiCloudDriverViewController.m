@@ -24,6 +24,7 @@
 #import "IMBDropBoxManage.h"
 #import "IMBDeviceConnection.h"
 #import "IMBCommonTool.h"
+#import "SystemHelper.h"
 
 @implementation IMBiCloudDriverViewController
 @synthesize baseInfo = _baseInfo;
@@ -72,6 +73,14 @@
     if (_editTextField) {
         [_editTextField release];
         _editTextField = nil;
+    }
+    if (_devicePopoverViewController) {
+        [_devicePopoverViewController release];
+        _devicePopoverViewController = nil;
+    }
+    if (_devChoosePopover) {
+        [_devChoosePopover release];
+        _devChoosePopover = nil;
     }
     [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
@@ -307,7 +316,7 @@
         [_toolBarArr release];
         _toolBarArr = nil;
     }
-    _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+    _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(5),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
     [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
     [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
 }
@@ -377,7 +386,7 @@
             [_toolBarArr release];
             _toolBarArr = nil;
         }
-        _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
+        _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(5),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
         [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
         [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
         fileEntity.checkState = Check;
@@ -391,7 +400,7 @@
                 _toolBarArr = nil;
             }
             if (fileEntity.isFolder) {
-                _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
+                _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(5),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(24),@(12), nil];
                 [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:YES];
                 [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
             }
@@ -728,7 +737,7 @@
                 [_toolBarArr release];
                 _toolBarArr = nil;
             }
-            _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
+            _toolBarArr = [[NSArray alloc]initWithObjects:@(21),@(17),@(5),@(18),@(3),@(19),@(23),@(2),@(0),@(6),@(25),@(24),@(12), nil];
             [_toolBarButtonView loadButtons:_toolBarArr Target:self DisplayMode:NO];
             [self configRightKeyMenuItemWithConfigArr:_toolBarArr];
             break;
@@ -1092,7 +1101,6 @@
     }
 }
 
-
 - (IBAction)hideFileDetailView:(id)sender {
     if (_isShow) {
         [_rightContentView.layer removeAllAnimations];
@@ -1235,6 +1243,99 @@
         [tranferView icloudDriveAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil withUploadDocID:@""];
     }else {
         [tranferView dropBoxAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil];
+    }
+}
+
+-(void)toDevice:(id)sender {
+    
+    IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+    NSMutableArray *deviceAry = [[NSMutableArray alloc]init];
+    for (IMBBaseInfo *baseinfo in deviceConnection.allDevices) {
+        if (baseinfo.chooseModelEnum == DeviceLogEnum) {
+            [deviceAry addObject:baseinfo];
+        }
+    }
+    if (deviceAry.count > 1) {
+        if (_devChoosePopover != nil) {
+            if (_devChoosePopover.isShown) {
+                [_devChoosePopover close];
+                return;
+            }
+        }
+        if (_devChoosePopover != nil) {
+            [_devChoosePopover release];
+            _devChoosePopover = nil;
+        }
+        _devChoosePopover = [[NSPopover alloc] init];
+        
+        if ([[SystemHelper getSystemLastNumberString] isVersionMajorEqual:@"10"]) {
+            _devChoosePopover.appearance = (NSPopoverAppearance)[NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }else {
+            _devChoosePopover.appearance = NSPopoverAppearanceMinimal;
+        }
+        
+        _devChoosePopover.animates = YES;
+        _devChoosePopover.behavior = NSPopoverBehaviorTransient;
+        _devChoosePopover.delegate = self;
+        
+        _devicePopoverViewController = [[IMBDevicePopoverViewController alloc] initWithChooseDeviceNibName:@"IMBDevicePopoverViewController" bundle:nil withDeviceAry:deviceAry withiPod:_iPod];
+        if (_devChoosePopover != nil) {
+            _devChoosePopover.contentViewController = _devicePopoverViewController;
+        }
+        [_devicePopoverViewController setTarget:self];
+        [_devicePopoverViewController setAction:@selector(chooseDeviceBtnClick:)];
+        [_devicePopoverViewController release];
+        NSButton *targetButton = (NSButton *)sender;
+        NSRectEdge prefEdge = NSMaxYEdge;
+        NSRect rect = NSMakeRect(targetButton.bounds.origin.x, targetButton.bounds.origin.y, targetButton.bounds.size.width, targetButton.bounds.size.height);
+        [_devChoosePopover showRelativeToRect:rect ofView:sender preferredEdge:prefEdge];
+        
+    }else if (deviceAry.count == 1){
+        IMBDeviceConnection *conn = [IMBDeviceConnection singleton];
+        IMBiPod *desIpod = nil;
+        for (IMBiPod *ipod in conn.alliPods) {
+            desIpod = ipod;
+        }
+        [self chooseDeviceBtnClick:desIpod];
+    }else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [IMBCommonTool showSingleBtnAlertInMainWindow:@"iCloud" btnTitle:CustomLocalizedString(@"Button_Ok", nil)  msgText:CustomLocalizedString(@"Nothave_toDevices", nil) btnClickedBlock:nil];
+        });
+    }
+    [deviceAry release];
+    deviceAry = nil;
+}
+
+- (void)chooseDeviceBtnClick:(id)sender {
+    if (_devChoosePopover != nil) {
+        [_devChoosePopover close];
+    }
+    IMBiPod *ipod = (IMBiPod *)sender;
+//    IMBInformationManager *manager = [IMBInformationManager shareInstance];
+//    IMBInformation *desInformation = [manager.informationDic objectForKey:baseInfo.uniqueKey];
+    NSString *filePath = @"";
+    filePath = [IMBHelper getAppRootPath];
+    NSIndexSet *selectedSet = [self selectedItems];
+    NSMutableArray *preparedArray = [NSMutableArray array];
+    NSArray *displayArr = nil;
+    if (_isSearch) {
+        displayArr = _researchdataSourceArray;
+    }else {
+        displayArr = _dataSourceArray;
+    }
+    [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [preparedArray addObject:[displayArr objectAtIndex:idx]];
+    }];
+
+    IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+    [tranferView setDelegate:self];
+    tranferView.reloadDelegate = self;
+    [tranferView transferBtn:_transferBtn];
+    [_driveBaseManage setDownloadPath:filePath];
+    if (_chooseLogModelEnmu == iCloudLogEnum) {
+        [tranferView icloudToDriveAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil withUploadDocID:@"" withiPod:ipod];
+    }else {
+        [tranferView dropBoxToDeviceAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage withUploadParent:nil withiPod:ipod];
     }
 }
 

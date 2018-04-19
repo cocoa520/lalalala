@@ -85,6 +85,15 @@
 //登录按钮右边颜色
 #define COLOR_LOGIN_RIGHT_FORBIDDENCOLOR IMBRgbColor(191,191,191)
 
+//购买按钮左边颜色
+#define COLOR_PURCHASE_LEFT_FORBIDDENCOLOR IMBRgbColor(9,158,250)
+//购买按钮右边颜色
+#define COLOR_PURCHASE_RIGHT_FORBIDDENCOLOR IMBRgbColor(65,224,215)
+
+#define COLOR_PURCHASE_LEFTNUM_ORANGE IMBRgbColor(232,137,83)
+#define COLOR_PURCHASE_LEFTNUM_GREEN IMBRgbColor(63,190,84)
+#define COLOR_PURCHASE_LEFTNUM_RED IMBRgbColor(230,76,76)
+
 /******************  颜色规范（如有新增颜色，请问设计要,不要直接就随便添加进来）  *************************/
 
 //主窗口背景颜色
@@ -183,3 +192,8 @@
 #define COLOR_TEXT_BUTTON_CELLCLICK IMBGrayColor(217)
 //alert按钮未选中文字颜色
 #define COLOR_ALERT_BUTTON_UNSELECTED_TEXT IMBGrayColor(51)
+//购买界面文字颜色
+#define COLOR_PURCHASE_TEXT IMBGrayColor(48)
+
+//
+#define COLOR_PURCHASE_TITLE_TEXT IMBGrayColor(33)

@@ -20,9 +20,11 @@
 #import "IMBCommonDefine.h"
 #import "IMBTranferViewController.h"
 #import "IMBAnimation.h"
+#import "IMBSearchView.h"
+#import "IMBPurchaseOrAnnoyController.h"
 
 #import <objc/runtime.h>
-#import "IMBSearchView.h"
+
 
 static CGFloat const kSelectedBtnfontSize = 14.0f;
 
@@ -212,6 +214,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 
 - (IBAction)toolbarShoppingCartClicked:(id)sender {
     IMBFFuncLog
+    
 }
 
 - (IBAction)toolbarTransfefClicked:(id)sender {
@@ -823,7 +826,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             _isLoadSearchView = NO;
             [_searchView mouseExited:nil];
             [_searchView setNeedsDisplay:YES];
-            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 114, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
+            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 180, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
             [_searchView setFrame:newRect];
         }];
     }

@@ -350,6 +350,16 @@
 		B91BBC132087516F00D80793 /* buy_icon08.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC032087516F00D80793 /* buy_icon08.png */; };
 		B91BBC142087516F00D80793 /* buy_icon08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC042087516F00D80793 /* buy_icon08@2x.png */; };
 		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
+		B923AC712088403E00E62AED /* IMBPurchaseLeftNumController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC6F2088403E00E62AED /* IMBPurchaseLeftNumController.m */; };
+		B923AC722088403E00E62AED /* IMBPurchaseLeftNumController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC702088403E00E62AED /* IMBPurchaseLeftNumController.xib */; };
+		B923AC76208845FC00E62AED /* IMBPurchaseTopVerifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC74208845FC00E62AED /* IMBPurchaseTopVerifyController.m */; };
+		B923AC77208845FC00E62AED /* IMBPurchaseTopVerifyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC75208845FC00E62AED /* IMBPurchaseTopVerifyController.xib */; };
+		B923AC7B20884A6A00E62AED /* IMBPurchaseBottomButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC7920884A6A00E62AED /* IMBPurchaseBottomButtonController.m */; };
+		B923AC7C20884A6A00E62AED /* IMBPurchaseBottomButtonController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC7A20884A6A00E62AED /* IMBPurchaseBottomButtonController.xib */; };
+		B923AC802088505500E62AED /* IMBPurchaseBottomVerifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC7E2088505500E62AED /* IMBPurchaseBottomVerifyController.m */; };
+		B923AC812088505500E62AED /* IMBPurchaseBottomVerifyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC7F2088505500E62AED /* IMBPurchaseBottomVerifyController.xib */; };
+		B923AC852088761E00E62AED /* IMBPurchaseOrAnnoyController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC832088761E00E62AED /* IMBPurchaseOrAnnoyController.m */; };
+		B923AC862088761E00E62AED /* IMBPurchaseOrAnnoyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC842088761E00E62AED /* IMBPurchaseOrAnnoyController.xib */; };
 		B925AA1320295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */; };
 		B92A179E20215F6200187405 /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179920215F6200187405 /* NSData+Category.m */; };
 		B92A179F20215F6200187405 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B92A179B20215F6200187405 /* NSDictionary+Category.m */; };
@@ -1654,6 +1664,21 @@
 		B91BBC042087516F00D80793 /* buy_icon08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon08@2x.png"; sourceTree = "<group>"; };
 		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
 		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
+		B923AC6E2088403E00E62AED /* IMBPurchaseLeftNumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseLeftNumController.h; sourceTree = "<group>"; };
+		B923AC6F2088403E00E62AED /* IMBPurchaseLeftNumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseLeftNumController.m; sourceTree = "<group>"; };
+		B923AC702088403E00E62AED /* IMBPurchaseLeftNumController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseLeftNumController.xib; sourceTree = "<group>"; };
+		B923AC73208845FC00E62AED /* IMBPurchaseTopVerifyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseTopVerifyController.h; sourceTree = "<group>"; };
+		B923AC74208845FC00E62AED /* IMBPurchaseTopVerifyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseTopVerifyController.m; sourceTree = "<group>"; };
+		B923AC75208845FC00E62AED /* IMBPurchaseTopVerifyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseTopVerifyController.xib; sourceTree = "<group>"; };
+		B923AC7820884A6A00E62AED /* IMBPurchaseBottomButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseBottomButtonController.h; sourceTree = "<group>"; };
+		B923AC7920884A6A00E62AED /* IMBPurchaseBottomButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseBottomButtonController.m; sourceTree = "<group>"; };
+		B923AC7A20884A6A00E62AED /* IMBPurchaseBottomButtonController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseBottomButtonController.xib; sourceTree = "<group>"; };
+		B923AC7D2088505500E62AED /* IMBPurchaseBottomVerifyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseBottomVerifyController.h; sourceTree = "<group>"; };
+		B923AC7E2088505500E62AED /* IMBPurchaseBottomVerifyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseBottomVerifyController.m; sourceTree = "<group>"; };
+		B923AC7F2088505500E62AED /* IMBPurchaseBottomVerifyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseBottomVerifyController.xib; sourceTree = "<group>"; };
+		B923AC822088761E00E62AED /* IMBPurchaseOrAnnoyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseOrAnnoyController.h; sourceTree = "<group>"; };
+		B923AC832088761E00E62AED /* IMBPurchaseOrAnnoyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurchaseOrAnnoyController.m; sourceTree = "<group>"; };
+		B923AC842088761E00E62AED /* IMBPurchaseOrAnnoyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBPurchaseOrAnnoyController.xib; sourceTree = "<group>"; };
 		B925AA1220295ADD0068E540 /* DetailVCHeaderTitleSubPhotoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DetailVCHeaderTitleSubPhotoNames.plist; sourceTree = "<group>"; };
 		B92A179820215F6200187405 /* NSData+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Category.h"; sourceTree = "<group>"; };
 		B92A179920215F6200187405 /* NSData+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Category.m"; sourceTree = "<group>"; };
@@ -3431,6 +3456,21 @@
 				B91BBBEF20874F0300D80793 /* IMBPurchaseMiddleController.h */,
 				B91BBBF020874F0300D80793 /* IMBPurchaseMiddleController.m */,
 				B91BBBF120874F0300D80793 /* IMBPurchaseMiddleController.xib */,
+				B923AC6E2088403E00E62AED /* IMBPurchaseLeftNumController.h */,
+				B923AC6F2088403E00E62AED /* IMBPurchaseLeftNumController.m */,
+				B923AC702088403E00E62AED /* IMBPurchaseLeftNumController.xib */,
+				B923AC73208845FC00E62AED /* IMBPurchaseTopVerifyController.h */,
+				B923AC74208845FC00E62AED /* IMBPurchaseTopVerifyController.m */,
+				B923AC75208845FC00E62AED /* IMBPurchaseTopVerifyController.xib */,
+				B923AC7820884A6A00E62AED /* IMBPurchaseBottomButtonController.h */,
+				B923AC7920884A6A00E62AED /* IMBPurchaseBottomButtonController.m */,
+				B923AC7A20884A6A00E62AED /* IMBPurchaseBottomButtonController.xib */,
+				B923AC7D2088505500E62AED /* IMBPurchaseBottomVerifyController.h */,
+				B923AC7E2088505500E62AED /* IMBPurchaseBottomVerifyController.m */,
+				B923AC7F2088505500E62AED /* IMBPurchaseBottomVerifyController.xib */,
+				B923AC822088761E00E62AED /* IMBPurchaseOrAnnoyController.h */,
+				B923AC832088761E00E62AED /* IMBPurchaseOrAnnoyController.m */,
+				B923AC842088761E00E62AED /* IMBPurchaseOrAnnoyController.xib */,
 			);
 			path = purchaseController;
 			sourceTree = "<group>";
@@ -6053,6 +6093,7 @@
 				34DD6D35207C4E8100320F39 /* cnt_fileicon_contacts@2x.png in Resources */,
 				B9E3DFFF2063D6A3008DDF92 /* itu_default2@2x.png in Resources */,
 				B9E5EC4F206CF77C00613C07 /* mod_dropbox_auth_ai.png in Resources */,
+				B923AC862088761E00E62AED /* IMBPurchaseOrAnnoyController.xib in Resources */,
 				B9E3DFFE2063D6A3008DDF92 /* itu_default2.png in Resources */,
 				34DD6D6A207C4E9F00320F39 /* toolbar_icon_upload@2x.png in Resources */,
 				34DD6CC8207C48BD00320F39 /* mod_iclouddrive@2x.png in Resources */,
@@ -6094,6 +6135,7 @@
 				EE68EC63207F3B1800627EBC /* popbox_icon_dropbox_hover.png in Resources */,
 				B9E3E02A2063D6A3008DDF92 /* cnt_fileicon_ppt.png in Resources */,
 				B9E3DFF82063D6A3008DDF92 /* exit3@2x.png in Resources */,
+				B923AC812088505500E62AED /* IMBPurchaseBottomVerifyController.xib in Resources */,
 				B9E3E0C22063D6A3008DDF92 /* tool_delete_normal.png in Resources */,
 				34DD6DC8207C705100320F39 /* cnt_foldericon_music.png in Resources */,
 				B9E3E0A72063D6A3008DDF92 /* left_top3.png in Resources */,
@@ -6167,6 +6209,7 @@
 				EEF4589B2063D1F90078BB23 /* IMBMainPageViewController.xib in Resources */,
 				34DD6D1D207C4E0900320F39 /* transferlist_icon_history@2x.png in Resources */,
 				B9E3E0AF2063D6A3008DDF92 /* right_top.png in Resources */,
+				B923AC722088403E00E62AED /* IMBPurchaseLeftNumController.xib in Resources */,
 				34DD6D9D207C649600320F39 /* toolbar_icon_newfloder_min.png in Resources */,
 				EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */,
 				EE3C43A52068A4F50098AE9D /* transferlist_history_icon_close.png in Resources */,
@@ -6353,6 +6396,7 @@
 				F7CAC14C206E45A80029236D /* folder_icon_camera.png in Resources */,
 				B9E3E0972063D6A3008DDF92 /* noData_box.png in Resources */,
 				34DD6D95207C649600320F39 /* toolbar_icon_del_min@2x.png in Resources */,
+				B923AC77208845FC00E62AED /* IMBPurchaseTopVerifyController.xib in Resources */,
 				B9E3E0D72063D6A3008DDF92 /* tool_sel_list_down@2x.png in Resources */,
 				F7C52B49206F8856006532D8 /* IMBSendLogWindowController.xib in Resources */,
 				34DD6D1C207C4E0900320F39 /* transferlist_icon_history_hover@2x.png in Resources */,
@@ -6401,6 +6445,7 @@
 				B90BDEEB20665F2A007E84EA /* toolbar_icon_moveto_hover.png in Resources */,
 				B90BDEF520665F2A007E84EA /* toolbar_icon_todevice_hover.png in Resources */,
 				3429B729206F47C80019C13A /* IMBDevicePopoverViewController.xib in Resources */,
+				B923AC7C20884A6A00E62AED /* IMBPurchaseBottomButtonController.xib in Resources */,
 				34DD6D0E207C4E0900320F39 /* transferlist_history_blankpage_ai@2x.png in Resources */,
 				EEF458972063D1F90078BB23 /* IMBDownloadListViewController.xib in Resources */,
 				B9E3E0042063D6A3008DDF92 /* tool_editor_normal.png in Resources */,
@@ -6814,6 +6859,7 @@
 				EEF45A092063D1F90078BB23 /* IMBScrollView.m in Sources */,
 				B9348AAB201EFE2D00A8CEC3 /* IMBBaseEntity.m in Sources */,
 				EE39AD18200CBD9700D084CE /* DDASLLogger.m in Sources */,
+				B923AC7B20884A6A00E62AED /* IMBPurchaseBottomButtonController.m in Sources */,
 				EEF45A0D2063D1F90078BB23 /* IMBShadowView.m in Sources */,
 				F7C52B51206F8C81006532D8 /* IMBLinkButton.m in Sources */,
 				B96563B32021D2B000BD7FF5 /* ZtringList.cpp in Sources */,
@@ -6954,6 +7000,7 @@
 				EEF4587B2063D1F90078BB23 /* IMBCustomHeaderCell.m in Sources */,
 				EE39AD19200CBD9700D084CE /* DDFileLogger.m in Sources */,
 				B96563192021D2B000BD7FF5 /* File__Duplicate.cpp in Sources */,
+				B923AC802088505500E62AED /* IMBPurchaseBottomVerifyController.m in Sources */,
 				B910BF4320219E3B00849CBB /* OneDrive.m in Sources */,
 				B9E739582027FB2100E1BB3B /* IMBSyncPhotoData.m in Sources */,
 				B9113C452044F8B40023E09F /* RegexKitLite.m in Sources */,
@@ -7038,6 +7085,7 @@
 				B96563872021D2B000BD7FF5 /* File_AfdBarData.cpp in Sources */,
 				B932E3002052737F0009DD4B /* AFURLResponseSerialization.m in Sources */,
 				B965649B2021D47600BD7FF5 /* IMBHash58.cpp in Sources */,
+				B923AC852088761E00E62AED /* IMBPurchaseOrAnnoyController.m in Sources */,
 				B965633A2021D2B000BD7FF5 /* File_Cdxa.cpp in Sources */,
 				B96563242021D2B000BD7FF5 /* File_Ico.cpp in Sources */,
 				B910BF3C20219E3B00849CBB /* UpLoader.m in Sources */,
@@ -7064,6 +7112,7 @@
 				B96562DA2021D2B000BD7FF5 /* File_Elf.cpp in Sources */,
 				B96563152021D2B000BD7FF5 /* File__Analyze_Buffer_MinimizeSize.cpp in Sources */,
 				EEF45A0E2063D1F90078BB23 /* IMBStackBox.m in Sources */,
+				B923AC712088403E00E62AED /* IMBPurchaseLeftNumController.m in Sources */,
 				F7C52B46206F8856006532D8 /* IMBAboutWindowController.m in Sources */,
 				B96564992021D47600BD7FF5 /* IMBSyncPlistBuilder.m in Sources */,
 				B96564942021D47600BD7FF5 /* IMBSqliteTables_Above3.m in Sources */,
@@ -7153,6 +7202,7 @@
 				EEF4586E2063D1F90078BB23 /* IMBMainLoginButton.m in Sources */,
 				B965649C2021D47600BD7FF5 /* IMBHash72.cpp in Sources */,
 				B96562DE2021D2B000BD7FF5 /* File_Rar.cpp in Sources */,
+				B923AC76208845FC00E62AED /* IMBPurchaseTopVerifyController.m in Sources */,
 				EEF458A62063D1F90078BB23 /* IMBViewManager.m in Sources */,
 				B96564952021D47600BD7FF5 /* IMBSqliteTables_Nano5G.m in Sources */,
 				B95F74CB2045637E00D4B7C0 /* NSObject+Extension.m in Sources */,

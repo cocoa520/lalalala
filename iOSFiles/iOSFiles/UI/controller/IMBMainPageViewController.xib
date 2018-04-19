@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1314" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -32,14 +32,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <customView id="3jL-SV-oCO" customClass="IMBSearchView">
-                            <rect key="frame" x="985" y="14" width="21" height="21"/>
+                            <rect key="frame" x="915" y="14" width="21" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <animations/>
                         </customView>
                         <button verticalHuggingPriority="750" id="pGc-65-Lfc" customClass="IMBHoverChangeImageBtn">
                             <rect key="frame" x="1031" y="0.0" width="68" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_transtion" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="8Vs-AC-swV">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -48,10 +46,9 @@
                                 <action selector="toolbarTransfefClicked:" target="-2" id="URF-FE-nbs"/>
                             </connections>
                         </button>
-                        <button hidden="YES" verticalHuggingPriority="750" id="S3e-vi-1nC" customClass="IMBHoverChangeImageBtn">
+                        <button verticalHuggingPriority="750" id="S3e-vi-1nC" customClass="IMBHoverChangeImageBtn">
                             <rect key="frame" x="961" y="0.0" width="68" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="navbar_icon_cart_big" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qhC-zr-gDT">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -60,20 +57,17 @@
                                 <action selector="toolbarShoppingCartClicked:" target="-2" id="Jlh-3M-qa3"/>
                             </connections>
                         </button>
-                        <customView hidden="YES" id="RwI-3p-y1q" userLabel="line1" customClass="IMBLineView">
+                        <customView id="RwI-3p-y1q" userLabel="line1" customClass="IMBLineView">
                             <rect key="frame" x="960" y="0.0" width="1" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <animations/>
                         </customView>
                         <customView id="mxd-UZ-xdx" userLabel="line2" customClass="IMBLineView">
                             <rect key="frame" x="1030" y="0.0" width="1" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <animations/>
                         </customView>
                         <button verticalHuggingPriority="750" id="u7e-Pi-tk9" customClass="IMBMainPageWindowBackBtn">
                             <rect key="frame" x="50" y="15" width="69" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <buttonCell key="cell" type="bevel" title="home" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="9mr-bg-AUq">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" size="14" name="HelveticaNeue"/>
@@ -85,7 +79,6 @@
                         <button hidden="YES" autoresizesSubviews="NO" focusRingType="none" id="eyg-Z1-geY" customClass="IMBCustomImageTextBtn">
                             <rect key="frame" x="453" y="9" width="200" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="x65-aU-vTj">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -95,7 +88,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <animations/>
                 </customView>
                 <box misplaced="YES" title="Box" borderType="none" titlePosition="noTitle" id="ogG-Fy-WGA">
                     <rect key="frame" x="0.0" y="0.0" width="1096" height="593"/>
@@ -103,17 +95,13 @@
                     <view key="contentView" id="Ydg-lF-i4u">
                         <rect key="frame" x="0.0" y="0.0" width="1096" height="593"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                     </view>
-                    <animations/>
                 </box>
                 <customView hidden="YES" id="6lQ-bS-Z9z" customClass="IMBAlertSupeView">
                     <rect key="frame" x="0.0" y="0.0" width="1096" height="644"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <animations/>
                 </customView>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="214" y="306"/>
         </customView>
     </objects>

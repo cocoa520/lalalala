@@ -147,7 +147,6 @@
                 [_mouseExitedImage drawInRect:dirtyRect fromRect:sourceimageRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
             }
         }
-
     }
      if (_isDFUGuide) {
         NSAttributedString *as = [[NSAttributedString alloc] initWithString:[self.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
@@ -173,8 +172,6 @@
 
 
 }
-
-
 
 -(void)mouseUp:(NSEvent *)theEvent{
     if (self.isEnabled) {

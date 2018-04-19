@@ -180,7 +180,6 @@
             NSImage *image = _baseInfo.leftImage;
             [image drawInRect:NSMakeRect(5, 2, image.size.width, image.size.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         }
-       
     }
 }
 

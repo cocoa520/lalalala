@@ -35,6 +35,8 @@
 #import <objc/runtime.h>
 #import "SystemHelper.h"
 #import "IMBDevicePopoverViewController.h"
+#import "IMBCvtMediaFileEntity.h"
+#import "IMBConfig.h"
 
 static CGFloat const SelectedBtnTextFont = 15.0f;
 
@@ -663,6 +665,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 - (void)setDeviceInfosWithiPod:(IMBBaseInfo *)baseInfo {
     IMBiPod *iPod = [[IMBDeviceConnection singleton] getiPodByKey:baseInfo.uniqueKey];
     [iPod startSync];
+    iPod.transCodingConfig.mediaFormat = CvtMediaFormat_MPEG4;
+    iPod.transCodingConfig.audioFormat = CvtMediaFormat_AAC;
     dispatch_async(dispatch_get_main_queue(), ^{
       
         [_selectedDeviceBtn setHidden:NO];

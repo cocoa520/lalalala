@@ -1864,6 +1864,7 @@
     [_itemTableView selectRowIndexes:set byExtendingSelection:NO];
     [_itemTableView reloadData];
     
+    
     NSArray *disPalyAry = nil;
     if (_isSearch) {
         disPalyAry = _researchdataSourceArray;

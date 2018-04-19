@@ -347,7 +347,7 @@
                 </scrollView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nf-WR-01f" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="398" y="19" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="28C3EE15-202A-49C6-8BB3-B3F66A98A4BA" alignment="center" imageScaling="proportionallyDown" inset="2" id="gGF-ff-53j">
+                    <buttonCell key="cell" type="smallSquare" title="Ok" bezelStyle="smallSquare" image="128984DD-C929-4004-94AF-A84D222CD36D" alignment="center" imageScaling="proportionallyDown" inset="2" id="gGF-ff-53j">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name="HelveticaNeue"/>
                         <string key="keyEquivalent" base64-UTF8="YES">
@@ -360,7 +360,7 @@ DQ
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sgc-ih-r0q" customClass="IMBMyDrawCommonly">
                     <rect key="frame" x="310" y="19" width="80" height="22"/>
-                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="EFF83EF6-825A-4E6C-874E-DA3FEF67D7FF" alignment="center" imageScaling="proportionallyDown" inset="2" id="Nd6-cd-MDW">
+                    <buttonCell key="cell" type="smallSquare" title="Cancel" bezelStyle="smallSquare" image="BBC35F15-6880-4346-AA6C-62B99B8BF85C" alignment="center" imageScaling="proportionallyDown" inset="2" id="Nd6-cd-MDW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name="HelveticaNeue"/>
                     </buttonCell>
@@ -383,7 +383,7 @@ enter your verification code</string>
         </customView>
     </objects>
     <resources>
-        <image name="28C3EE15-202A-49C6-8BB3-B3F66A98A4BA" width="1" height="1">
+        <image name="128984DD-C929-4004-94AF-A84D222CD36D" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -433,7 +433,7 @@ AKkAqwCwALMAtQC3ALkAuwDAANcA2QDbCVMJWAljCWwJfwmDCY4JlwmcCaQJpwmsCbsJvwnGCc4J2wng
 CeIJ5AnpCfEJ9An5CgEKBAoWChkKHgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAogA
 </mutableData>
         </image>
-        <image name="EFF83EF6-825A-4E6C-874E-DA3FEF67D7FF" width="1" height="1">
+        <image name="BBC35F15-6880-4346-AA6C-62B99B8BF85C" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

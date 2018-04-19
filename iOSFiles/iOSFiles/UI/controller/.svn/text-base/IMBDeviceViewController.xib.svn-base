@@ -477,7 +477,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uoj-kD-NIY">
-                    <rect key="frame" x="0.0" y="127" width="248" height="25"/>
+                    <rect key="frame" x="0.0" y="127" width="247" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Device Manager" id="oxg-MJ-QLC">
                         <font key="font" size="18" name="HelveticaNeue"/>
