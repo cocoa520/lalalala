@@ -7,6 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBPurchaseTopVerifyController">
             <connections>
+                <outlet property="_secondViewActiveBtn" destination="Edh-8J-hRS" id="KrZ-YE-b8f"/>
+                <outlet property="_secondViewInputTextFiled" destination="eWe-0A-aJg" id="9L9-TE-ZnC"/>
+                <outlet property="_secondViewInputTextFiledBgView" destination="9cB-70-pqY" id="yf9-Z3-jT9"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -27,9 +30,28 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView id="7Rl-AC-f2S">
-                    <rect key="frame" x="222" y="9" width="481" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <customView id="9cB-70-pqY" customClass="IMBWhiteView">
+                    <rect key="frame" x="269" y="13" width="400" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button id="Edh-8J-hRS" customClass="IMBGridientButton">
+                            <rect key="frame" x="320" y="0.0" width="81" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Active" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="BAb-1L-6Sz">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" size="12" name="HelveticaNeue"/>
+                            </buttonCell>
+                        </button>
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="eWe-0A-aJg" customClass="customTextFiled">
+                            <rect key="frame" x="6" y="7" width="294" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" id="wcd-ed-q2w" customClass="customTextFieldCell">
+                                <font key="font" size="13" name="HelveticaNeue"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
                 </customView>
             </subviews>
         </customView>

@@ -17,6 +17,7 @@
                 <outlet property="_selectedDeviceBtn" destination="eyg-Z1-geY" id="A6m-fB-cpb"/>
                 <outlet property="_shoppingCartBtn" destination="S3e-vi-1nC" id="WxM-gG-yBQ"/>
                 <outlet property="_topView" destination="Vdt-es-Jt1" id="9R7-XQ-qPN"/>
+                <outlet property="_topcoverView" destination="eBq-Pg-Y4y" id="Or2-fM-pcw"/>
                 <outlet property="_transferBtn" destination="pGc-65-Lfc" id="F6n-fL-yia"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -87,6 +88,10 @@
                                 <action selector="selectedDeviceBtnDown:" target="-2" id="sYJ-u6-Bbt"/>
                             </connections>
                         </button>
+                        <customView hidden="YES" id="eBq-Pg-Y4y" customClass="IMBCoverView">
+                            <rect key="frame" x="0.0" y="0.0" width="1096" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
                     </subviews>
                 </customView>
                 <box misplaced="YES" title="Box" borderType="none" titlePosition="noTitle" id="ogG-Fy-WGA">

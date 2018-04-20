@@ -36,4 +36,6 @@ APPKIT_EXTERN CGFloat const MidiumSizeAnimationTimeInterval;
 
 + (void)animationWithRotationWithLayer:(CALayer *)layer;
 
++ (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void(^)(void))completion;
+
 @end

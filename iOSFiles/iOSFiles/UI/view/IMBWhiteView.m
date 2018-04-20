@@ -133,7 +133,7 @@
         [path closePath];
     }
     if (_hasCorner) {
-        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:5 yRadius:5];
+        NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:2 yRadius:2];
         [[NSColor colorWithDeviceRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1] set];
         [path addClip];
         [path setLineWidth:2];

@@ -18,8 +18,15 @@
     CALayer *_loadLayer;
     BOOL _istranferBtn;
     NSImage *_selfImage;
+    
+    BOOL _selected;
 }
+
+@property(nonatomic, assign)BOOL selected;
+
+
 - (void)setHoverImage:(NSString *)hoverImage withSelfImage:(NSImage *)image;
+
 
 - (void)startTranfering;
 - (void)endTranfering;

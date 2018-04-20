@@ -65,6 +65,15 @@
     _sixthLabel.textColor = COLOR_PURCHASE_TEXT;
     _sixthLabel.font = [NSFont fontWithName:IMBCommonFont size:12.f];
     
+    _titleLabel.textColor = COLOR_PURCHASE_TEXT;
+    _titleLabel.font = [NSFont fontWithName:IMBCommonFont size:12.f];
+    
+    _leftMsgLabel.textColor = COLOR_PURCHASE_TEXT;
+    _leftMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    
+    _rightMsgLabel.textColor = COLOR_PURCHASE_TEXT;
+    _rightMsgLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    
     
 }
 @end

@@ -205,11 +205,11 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
     animation.fromValue = scaleFromValue;
     animation.toValue = scaleToValue;
-    animation.duration=timeInterval;
-    animation.beginTime=CACurrentMediaTime();
-    animation.repeatCount=1;
-    animation.removedOnCompletion=NO;
-    animation.fillMode=kCAFillModeForwards;
+    animation.duration = timeInterval;
+    animation.beginTime = CACurrentMediaTime();
+    animation.repeatCount = 1;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
     view.layer.anchorPoint = NSMakePoint(0.5, 0);
     [view.layer addAnimation:animation forKey:@"transformScale"];
     
@@ -294,6 +294,23 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     [layer setAnchorPoint:NSMakePoint(0.5, 0.5)];
     [layer addAnimation:animation forKey:@"rotationZ"];
+}
+
+
++ (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void (^)(void))completion {
+    [view setWantsLayer:YES];
+    [view.layer removeAllAnimations];
+    
+    NSRect toFrame = view.frame;
+    toFrame.origin.y = toY;
+    
+    [NSAnimationContext endGrouping];
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:timeInterval];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [view.animator setFrame:toFrame];
+    } completionHandler:completion];
 }
 
 @end

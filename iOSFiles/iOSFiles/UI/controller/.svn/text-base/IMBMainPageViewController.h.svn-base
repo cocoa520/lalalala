@@ -19,9 +19,10 @@
 #import "IMBLineView.h"
 #import "IMBHoverChangeImageBtn.h"
 #import "IMBMainPageWindowBackBtn.h"
+#import "IMBCoverView.h"
 
 
-@class IMBSearchView;
+@class IMBSearchView,IMBPurchaseOrAnnoyController;
 
 
 @interface IMBMainPageViewController : IMBBaseViewController
@@ -49,6 +50,9 @@
     BOOL _isShowCompleteView;
     
     IBOutlet IMBMainPageWindowBackBtn *_backHomeBtn;
+    
+    IMBPurchaseOrAnnoyController *_purchaseVc;
+    IBOutlet IMBCoverView *_topcoverView;
     
 }
 @property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;

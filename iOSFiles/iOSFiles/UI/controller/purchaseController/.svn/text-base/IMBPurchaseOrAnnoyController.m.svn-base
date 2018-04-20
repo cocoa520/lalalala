@@ -20,9 +20,9 @@
 @end
 
 @implementation IMBPurchaseOrAnnoyController
-
+@synthesize whiteView = _whiteView;
 #pragma mark - 工厂方法
-+ (instancetype)annoy {
++ (instancetype)purchase {
     CGFloat viewX = 76.f;
     
     IMBPurchaseOrAnnoyController *vc = [[IMBPurchaseOrAnnoyController alloc] initWithNibName:@"IMBPurchaseOrAnnoyController" bundle:nil];
@@ -48,6 +48,11 @@
     middleVc.fifthLabel.stringValue = CustomLocalizedString(@"Purchase_text_006", nil);
     middleVc.sixthLabel.stringValue = CustomLocalizedString(@"Purchase_text_008", nil);
     
+    middleVc.leftMsgLabel.hidden = YES;
+    middleVc.rightMsgLabel.hidden = YES;
+    
+    middleVc.titleLabel.stringValue = CustomLocalizedString(@"Purchase_OfficialVersion_Welfare", nil);
+    
     [vc.view addSubview:middleVc.view];
     
     IMBPurchaseTopVerifyController *topVc = [[IMBPurchaseTopVerifyController alloc] initWithNibName:@"IMBPurchaseTopVerifyController" bundle:nil];
@@ -65,7 +70,7 @@
     return vc;
 }
 
-+ (instancetype)purchaseWithToMacLeftNum:(NSInteger)toMacLeftNum toDeviceLeftNum:(NSInteger)toDeviceLeftNum toCloudLeftNum:(NSInteger)toCloudLeftNum {
++ (instancetype)annoyWithToMacLeftNum:(NSInteger)toMacLeftNum toDeviceLeftNum:(NSInteger)toDeviceLeftNum toCloudLeftNum:(NSInteger)toCloudLeftNum {
     CGFloat viewX = 76.f;
     
     IMBPurchaseOrAnnoyController *vc = [[IMBPurchaseOrAnnoyController alloc] initWithNibName:@"IMBPurchaseOrAnnoyController" bundle:nil];
@@ -110,9 +115,6 @@
     return vc;
 }
 
-- (void)show {
-    
-}
 
 #pragma mark - setup view
 - (void)viewDidLoad {
@@ -134,7 +136,9 @@
 
 #pragma mark - 按钮点击
 - (IBAction)closeWindowClicked:(id)sender {
-    
+    if (self.closeClicked) {
+        self.closeClicked();
+    }
 }
 
 @end

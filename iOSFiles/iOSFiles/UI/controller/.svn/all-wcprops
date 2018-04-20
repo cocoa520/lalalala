@@ -31,7 +31,7 @@ IMBMainPageViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 94
-/svn/Mac/!svn/ver/2917/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.xib
+/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.xib
 END
 IMBTransferViewController.xib
 K 25
@@ -49,7 +49,7 @@ IMBMainPageViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/2594/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.h
+/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.h
 END
 IMBTransferViewController.h
 K 25
@@ -61,7 +61,7 @@ IMBMainPageViewController.m
 K 25
 svn:wc:ra_dav:version-url
 V 92
-/svn/Mac/!svn/ver/2931/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.m
+/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/IMBMainPageViewController.m
 END
 IMBTransferViewController.m
 K 25
@@ -93,17 +93,17 @@ svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2593/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDownloadListViewController.xib
 END
-IMBDeviceViewController.h
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/2573/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.h
-END
 IMBAppsListViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1584/JPProject/iOSFiles/iOSFiles/UI/controller/IMBAppsListViewController.h
+END
+IMBDeviceViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/2573/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.h
 END
 IMBTranferViewController.h
 K 25
@@ -117,17 +117,17 @@ svn:wc:ra_dav:version-url
 V 96
 /svn/Mac/!svn/ver/2911/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDownloadListViewController.h
 END
-IMBDeviceViewController.m
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/2889/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.m
-END
 IMBAppsListViewController.m
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1613/JPProject/iOSFiles/iOSFiles/UI/controller/IMBAppsListViewController.m
+END
+IMBDeviceViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/IMBDeviceViewController.m
 END
 IMBDevicePopoverViewController.xib
 K 25

@@ -11,6 +11,10 @@
 #import "NSView+Extension.h"
 @implementation IMBHoverChangeImageBtn
 
+#pragma mark - synthesize
+@synthesize selected = _selected;
+
+#pragma mark - setup view
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     

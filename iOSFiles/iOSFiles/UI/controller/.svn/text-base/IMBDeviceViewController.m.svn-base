@@ -569,8 +569,6 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 [self deviceDisconnected:serialNum];
                 _selectedBaseInfo = nil;
             }
-            
-            
         }else {
             [_selectedDeviceBtn setHidden:YES];
             [self deviceDisconnected:serialNum];

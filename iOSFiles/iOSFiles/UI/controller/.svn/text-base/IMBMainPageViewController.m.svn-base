@@ -22,6 +22,8 @@
 #import "IMBAnimation.h"
 #import "IMBSearchView.h"
 #import "IMBPurchaseOrAnnoyController.h"
+#import "IMBViewAnimation.h"
+
 
 #import <objc/runtime.h>
 
@@ -208,16 +210,46 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 }
 
 #pragma mark - toolbar上 搜索、购物车 和 传输  按钮点击事件
-- (IBAction)toolbarSearchClicked:(id)sender {
+- (IBAction)toolbarSearchClicked:(IMBHoverChangeImageBtn *)sender {
     [(IMBBaseViewController*)_baseViewController doSearchBtn:_searchView.stringValue withSearchBtn:_searchView];
 }
 
-- (IBAction)toolbarShoppingCartClicked:(id)sender {
+- (IBAction)toolbarShoppingCartClicked:(IMBHoverChangeImageBtn *)sender {
     IMBFFuncLog
+    
+    CGFloat timeInterval = 0.45f;
+    NSView *view = nil;
+    for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
+        if ([subView isMemberOfClass:[NSClassFromString(@"IMBTranferBackgroundView") class]]) {
+            view = subView;
+            break;
+        }
+    }
+    for (NSView *subView in view.subviews) {
+        [subView removeFromSuperview];
+    }
+    
+    if (_purchaseVc) {
+        [_purchaseVc release];
+        _purchaseVc = nil;
+    }
+    _purchaseVc = [IMBPurchaseOrAnnoyController purchase];
+    _purchaseVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
+    _purchaseVc.closeClicked = ^{
+        [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:timeInterval completion:^{
+            _topcoverView.hidden = YES;
+        }];
+    };
+    
+    [view addSubview:_purchaseVc.view];
+    
+    [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:0 timeInterval:timeInterval completion:^{
+        _topcoverView.hidden = NO;
+    }];
     
 }
 
-- (IBAction)toolbarTransfefClicked:(id)sender {
+- (IBAction)toolbarTransfefClicked:(IMBHoverChangeImageBtn *)sender {
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
     [tranferView transferBtn:_transferBtn];
@@ -234,9 +266,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                 break;
             }
         }
-        for (NSView *subView in view.subviews) {
-            [subView removeFromSuperview];
-        }
+        
+        
         [tranferView.view setWantsLayer:YES];
         [view setHidden:NO];
         [view setWantsLayer:YES];
@@ -293,6 +324,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)setIsShowCompletView:(BOOL)isShowCompleteView {
     _isShowCompleteView = isShowCompleteView;
 }
+
 
 #pragma -- mark  DeviceBtn Actions
 - (IBAction)selectedDeviceBtnDown:(id)sender {
@@ -869,8 +901,6 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }
     }
 }
-
-
 
 - (void)dealloc {
     [super dealloc];

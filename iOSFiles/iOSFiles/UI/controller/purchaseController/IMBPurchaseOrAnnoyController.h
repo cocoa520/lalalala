@@ -7,14 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class IMBHoverChangeImageBtn;
+@class IMBHoverChangeImageBtn,IMBWhiteView;
 
 @interface IMBPurchaseOrAnnoyController : NSViewController
 {
     IBOutlet IMBHoverChangeImageBtn *_closeWindowBtn;
+    IBOutlet IMBWhiteView *_whiteView;
 }
 
-+ (instancetype)purchaseWithToMacLeftNum:(NSInteger)toMacLeftNum toDeviceLeftNum:(NSInteger)toDeviceLeftNum toCloudLeftNum:(NSInteger)toCloudLeftNum;
-+ (instancetype)annoy;
+@property(nonatomic, assign)IMBWhiteView *whiteView;
+@property(nonatomic, copy)void(^closeClicked)(void);
+
++ (instancetype)annoyWithToMacLeftNum:(NSInteger)toMacLeftNum toDeviceLeftNum:(NSInteger)toDeviceLeftNum toCloudLeftNum:(NSInteger)toCloudLeftNum;
++ (instancetype)purchase;
 
 @end

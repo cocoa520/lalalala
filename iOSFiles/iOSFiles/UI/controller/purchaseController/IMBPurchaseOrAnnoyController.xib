@@ -8,26 +8,33 @@
         <customObject id="-2" userLabel="File's Owner" customClass="IMBPurchaseOrAnnoyController">
             <connections>
                 <outlet property="_closeWindowBtn" destination="nka-HU-mgB" id="FjL-sn-bQi"/>
+                <outlet property="_whiteView" destination="lAR-mv-aze" id="T8i-wO-lw1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="1092" height="590"/>
+            <rect key="frame" x="0.0" y="0.0" width="1096" height="590"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" id="nka-HU-mgB" customClass="IMBHoverChangeImageBtn">
-                    <rect key="frame" x="26" y="549" width="28" height="28"/>
+                <customView id="lAR-mv-aze" customClass="IMBWhiteView">
+                    <rect key="frame" x="0.0" y="0.0" width="1096" height="590"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="transferlist_history_icon_close" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="pT0-XF-7dh">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="closeWindowClicked:" target="-2" id="Zbd-87-eac"/>
-                    </connections>
-                </button>
+                    <subviews>
+                        <button verticalHuggingPriority="750" id="nka-HU-mgB" customClass="IMBHoverChangeImageBtn">
+                            <rect key="frame" x="13" y="551" width="28" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="transferlist_history_icon_close" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="pT0-XF-7dh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="closeWindowClicked:" target="-2" id="Zbd-87-eac"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </subviews>
         </customView>
     </objects>

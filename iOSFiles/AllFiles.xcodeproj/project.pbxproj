@@ -410,6 +410,7 @@
 		B93C64792071BCAA00F4A65E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C64732071BCAA00F4A65E /* AppDelegate.m */; };
 		B93C647A2071BCAA00F4A65E /* IMBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C64762071BCAA00F4A65E /* IMBConst.m */; };
 		B93C647B2071BCAA00F4A65E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C64782071BCAA00F4A65E /* main.m */; };
+		B93E564A2089F40900AD31A6 /* IMBCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = B93E56492089F40900AD31A6 /* IMBCoverView.m */; };
 		B9430FD22050CA810019C018 /* IMBViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9430FD12050CA810019C018 /* IMBViewAnimation.m */; };
 		B946BA81206DF53900B0BC84 /* allfiles.icns in Resources */ = {isa = PBXBuildFile; fileRef = B946BA80206DF53900B0BC84 /* allfiles.icns */; };
 		B9538FE2202BEC69000BED1C /* NSColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9538FE1202BEC69000BED1C /* NSColor+Category.m */; };
@@ -1780,6 +1781,8 @@
 		B93C64762071BCAA00F4A65E /* IMBConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBConst.m; sourceTree = "<group>"; };
 		B93C64772071BCAA00F4A65E /* IMBNotificationDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBNotificationDefine.h; sourceTree = "<group>"; };
 		B93C64782071BCAA00F4A65E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B93E56482089F40900AD31A6 /* IMBCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCoverView.h; sourceTree = "<group>"; };
+		B93E56492089F40900AD31A6 /* IMBCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCoverView.m; sourceTree = "<group>"; };
 		B9430FD02050CA810019C018 /* IMBViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBViewAnimation.h; sourceTree = "<group>"; };
 		B9430FD12050CA810019C018 /* IMBViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBViewAnimation.m; sourceTree = "<group>"; };
 		B946BA80206DF53900B0BC84 /* allfiles.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = allfiles.icns; sourceTree = "<group>"; };
@@ -4867,8 +4870,9 @@
 		B9E3DF232063D6A3008DDF92 /* homeIcons */ = {
 			isa = PBXGroup;
 			children = (
-				34DD6E03207C94A600320F39 /* window_logo@2x.png */,
+				B90BDEA920665F2A007E84EA /* devicePage */,
 				34DD6D7B207C649600320F39 /* RightMouse */,
+				34DD6E03207C94A600320F39 /* window_logo@2x.png */,
 				34DD6CF1207C4B7D00320F39 /* popup_icon_iphone_blue@2x.png */,
 				34DD6CF2207C4B7D00320F39 /* popup_icon_iphone_gray@2x.png */,
 				34DD6CD5207C493C00320F39 /* nav_icon_help_hover@2x.png */,
@@ -4885,7 +4889,6 @@
 				F7A8DB802079AEEA0053A90C /* window_logo.png */,
 				0C44F5AB2072333B00000C94 /* popup_icon_iphone_blue.png */,
 				0C44F5AC2072333B00000C94 /* popup_icon_iphone_gray.png */,
-				B90BDEA920665F2A007E84EA /* devicePage */,
 				B90BDEFA20666057007E84EA /* mod_icon_checkbox_selected.png */,
 				B90BDEFB20666057007E84EA /* mod_icon_checkbox.png */,
 				B90BDEA520665EDC007E84EA /* nav_icon_help_hover.png */,
@@ -5864,6 +5867,8 @@
 				EE3C43A72068CA790098AE9D /* IMBTranferBackgroundView.m */,
 				F7A8DB7B2079AB250053A90C /* IMBWindowContentView.h */,
 				F7A8DB7C2079AB250053A90C /* IMBWindowContentView.m */,
+				B93E56482089F40900AD31A6 /* IMBCoverView.h */,
+				B93E56492089F40900AD31A6 /* IMBCoverView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6608,6 +6613,7 @@
 				B965636C2021D2B000BD7FF5 /* Reader_libcurl.cpp in Sources */,
 				B96563392021D2B000BD7FF5 /* File_Bdmv.cpp in Sources */,
 				B932E2FC2052737F0009DD4B /* AFHTTPSessionManager.m in Sources */,
+				B93E564A2089F40900AD31A6 /* IMBCoverView.m in Sources */,
 				B90BDE8420662B63007E84EA /* NSView+Extension.m in Sources */,
 				B96564A32021D47600BD7FF5 /* IMBPlaylistItem.m in Sources */,
 				B9E73AD920282FF500E1BB3B /* inffast.c in Sources */,

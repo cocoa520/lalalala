@@ -16,4 +16,8 @@
 @property (nonatomic, retain) NSColor *bgColor;
 @property (nonatomic, retain) NSColor *titleColor;
 @property (nonatomic, assign) BOOL hasBorder;
+
+- (void)reSetInit:(NSString *)btnName WithPrefixImageName:(NSString *)prefixImageName;
+
+
 @end
