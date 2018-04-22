@@ -415,9 +415,9 @@
                 downloaditem.photoDateData = track.dateLastModified;
                 downloaditem.exportPath = exportPath;
                 if (categoryNodesEnum == Category_Media){
-                    downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+                    downloaditem.photoImage = [NSImage imageNamed:@"cnt_foldericon_music"];
                 }else {
-                    downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+                    downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
                 }
                 
                 downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
@@ -625,7 +625,7 @@
             case Category_Media:
             {
                 downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_28", nil);
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+                downloaditem.photoImage = [NSImage imageNamed:@"cnt_foldericon_music"];
                 baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
                 [_downloadDataSource insertObject:downloaditem atIndex:0];
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -640,7 +640,7 @@
                 break;
             case Category_Video:
             {
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
                 downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_29", nil);
                 baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
                 [_downloadDataSource insertObject:downloaditem atIndex:0];
@@ -760,11 +760,10 @@
             downloaditem.isAddCompleteView = YES;
             downloaditem.photoDateData = track.dateLastModified;
             if (categoryNodesEnum == Category_Media){
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+                downloaditem.photoImage = [NSImage imageNamed:@"cnt_foldericon_music"];
             }else {
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
             }
-            
             downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
             if (downloaditem.oriPath) {
                 downloaditem.localPath = [[exportPath stringByAppendingPathComponent:downloaditem.fileName] stringByAppendingPathExtension:[downloaditem.oriPath  pathExtension]];
@@ -925,14 +924,14 @@
             break;
         case Category_Media:
         {
-            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+            downloaditem.photoImage = [NSImage imageNamed:@"cnt_foldericon_music"];
             downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_28", nil);
             
         }
             break;
         case Category_Video:
         {
-            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
             downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_29", nil);
         }
             break;
@@ -1273,7 +1272,7 @@
             case Category_Media:
             {
                 downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_28", nil);
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
+                downloaditem.photoImage = [NSImage imageNamed:@"cnt_foldericon_music"];
                 baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
                 [_downloadDataSource insertObject:downloaditem atIndex:0];
 //                dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -1288,7 +1287,7 @@
                 break;
             case Category_Video:
             {
-                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_video"];
+                downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_media"];
                 downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_29", nil);
                 baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithIPodkey:ipod.uniqueKey importFiles:downloaditem CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
                 [_downloadDataSource insertObject:downloaditem atIndex:0];

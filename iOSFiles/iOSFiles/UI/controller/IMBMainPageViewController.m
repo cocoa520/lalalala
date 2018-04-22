@@ -235,13 +235,14 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     }
     _purchaseVc = [IMBPurchaseOrAnnoyController purchase];
     _purchaseVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
+    [view addSubview:_purchaseVc.view];
     _purchaseVc.closeClicked = ^{
         [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:timeInterval completion:^{
             _topcoverView.hidden = YES;
         }];
     };
     
-    [view addSubview:_purchaseVc.view];
+    
     
     [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:0 timeInterval:timeInterval completion:^{
         _topcoverView.hidden = NO;

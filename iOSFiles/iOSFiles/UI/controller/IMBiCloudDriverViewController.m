@@ -1872,6 +1872,8 @@
                     if (d > 2) {
                         NSString *lastStr = [NSString stringWithFormat:@" %d",d-1];
                         originalName = [originalName substringToIndex:originalName.length - lastStr.length];
+                    }else {
+                        //TODO   添加新名字和已有名字重复的提醒
                     }
                     originalName = [NSString stringWithFormat:@"%@ %d",originalName,d++];
                     break;

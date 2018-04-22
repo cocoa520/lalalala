@@ -19,7 +19,7 @@
 #pragma mark - 窗口下拉和收回
 //窗口下拉
 - (void)loadAlertView:(NSView *)view alertView:(IMBBorderRectAndColorView *)alertView {
-    [alertView setBackground:[NSColor whiteColor]];
+//    [alertView setBackground:[NSColor whiteColor]];
     NSRect rect = [alertView frame];
     [alertView setWantsLayer:YES];
     [alertView setFrame:NSMakeRect(ceil((NSMaxX(self.view.bounds) - NSWidth(rect)) / 2), NSMaxY(self.view.bounds), NSWidth(rect), NSHeight(rect))];
@@ -57,9 +57,10 @@
         [_folderArray release];
         _folderArray = nil;
     }
+    [superView setWantsLayer:YES];
     _folderArray = [[NSMutableArray alloc] initWithArray:folderArray];
     _mainView = superView;
-    [superView setWantsLayer:YES];
+    
     [self.view setFrameSize:NSMakeSize(NSWidth(superView.frame), NSHeight(superView.frame))];
     [superView addSubview:self.view];
     
