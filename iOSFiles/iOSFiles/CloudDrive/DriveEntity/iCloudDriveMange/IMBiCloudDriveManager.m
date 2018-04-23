@@ -345,7 +345,7 @@
         [TempHelper customViewType:0 withCategoryEnum:0];
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    [_iCloudDrive moveToNewParent:newParent itemDics:items success:^(DriveAPIResponse *response) {
+    [_iCloudDrive moveToNewParent:newParent itemDic:items success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *array = [dic objectForKey:@"items"];
         NSMutableArray *dataAry = [[NSMutableArray alloc]init];

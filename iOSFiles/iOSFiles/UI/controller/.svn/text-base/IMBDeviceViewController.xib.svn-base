@@ -410,6 +410,11 @@
             <rect key="frame" x="0.0" y="0.0" width="134" height="181"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iAd-NV-C5J">
+                    <rect key="frame" x="22" y="70" width="90" height="90"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mod_iclouddrive" id="dtU-4n-l56"/>
+                </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vf3-sW-qBC">
                     <rect key="frame" x="34" y="32" width="67" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -419,11 +424,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iAd-NV-C5J">
-                    <rect key="frame" x="22" y="70" width="90" height="90"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mod_iclouddrive" id="dtU-4n-l56"/>
-                </imageView>
             </subviews>
             <point key="canvasLocation" x="92" y="1411.5"/>
         </customView>
@@ -431,20 +431,20 @@
             <rect key="frame" x="0.0" y="0.0" width="134" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="efq-EY-Wqt">
-                    <rect key="frame" x="13" y="32" width="109" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="DropBox" id="9U4-pw-Eep">
-                        <font key="font" size="18" name="HelveticaNeue"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YZF-vh-0Ok">
                     <rect key="frame" x="22" y="70" width="90" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mod_dropboxdrive" id="pSp-MW-4qU"/>
                 </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="efq-EY-Wqt">
+                    <rect key="frame" x="13" y="32" width="109" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Dropbox" id="9U4-pw-Eep">
+                        <font key="font" size="18" name="HelveticaNeue"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="_imageView" destination="YZF-vh-0Ok" id="yR7-Bg-mdm"/>

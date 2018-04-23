@@ -72,6 +72,7 @@
         _fileSize = 0;
         _currentSize = 0;
         _currentTotalSize = 0;
+        _photoImage.resizingMode = NSImageResizingModeTile;
         
     }
     return self;

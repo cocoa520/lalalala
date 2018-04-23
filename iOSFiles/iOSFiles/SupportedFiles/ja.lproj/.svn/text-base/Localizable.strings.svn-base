@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  DataRecovery
-
-  Created by iMobie on 5/4/14.
-  Copyright (c) 2014 iMobie Inc. All rights reserved.
-*/
+/*
+ Localizable.strings
+ DataRecovery
+ 
+ Created by iMobie on 5/4/14.
+ Copyright (c) 2014 iMobie Inc. All rights reserved.
+ */
 
 "MainWindow_id_1" = "デバイスマネージャー";
 "MainWindow_id_2" = "マルチデバイスの管理が可能";
@@ -16,7 +16,7 @@
 "MainWindow_id_7" = "AllFilesベータ版";
 
 "Menu_About" = "AllFilesについて";
-"Menu_Home" = "AllFilesホームページ";
+"Menu_Home" = "AllFiles公式サイト";
 "Menu_Guide" = "オンラインガイド";
 "Menu_SendLog" = "ログファイルを送信";
 "Menu_ContactUs" = "お問い合わせ";
@@ -61,7 +61,7 @@
 "iCloudBackup_View_Tips6" = "表示";
 
 "about_window_1" = "サポート:";
-"about_window_2" = "ホームページ:";
+"about_window_2" = "公式サイト:";
 "about_window_3" = "Copyright  © 2018 iPhoneUtility All rights reserved.";
 
 "connect_help_Tips" = "お使いのiOSデバイスが認識されない場合、以下の操作をお試しください:";
@@ -116,7 +116,7 @@
 "List_Header_id_State" = "状態";
 "List_Header_id_Image" = "画像";
 "List_Header_id_Version" = "バージョン";
-"List_Header_id_Count" = "ファイル";
+"List_Header_id_Count" = "ドキュメント";
 
 "List_Header_id_Minium" = "必須のiOSバージョン";
 "List_Header_id_AppSize" = "Appのサイズ";
@@ -125,19 +125,19 @@
 "List_Header_id_SerialNub" = "シリアル番号";
 "List_Header_id_SerialNumber" = "シリアル番号";
 "List_Header_id_Operate" = "操作";
-"List_Header_id_Formats" = "様式";
+"List_Header_id_Formats" = "フォーマット";
 "MenuItem_id_1" = "音楽";
 "MenuItem_id_6" = "ムービー";
 "MenuItem_id_9" = "写真";
 "MenuItem_id_10" = "カメラロール";
 "MenuItem_id_13" = "ブック";
 "MenuItem_id_14" = "App";
-"MenuItem_id_28" = "音楽";
+"MenuItem_id_28" = "オーディオ";
 "MenuItem_id_29" = "ビデオ";
-"MenuItem_id_30" = "その他";
+"MenuItem_id_30" = "システム";
 "MenuItem_id_35" = "システム";
 "MenuItem_id_81" = "ファイル";
-"MenuItem_id_23" = "音楽";
+"MenuItem_id_23" = "オーディオ";
 "MenuItem_id_33" = "App";
 "MenuItem_id_18" = "iCloud Drive";
 "MenuItem_id_19" = "Dropbox";
@@ -255,7 +255,7 @@
 "iCloud_id_6" = "不明なエラー";
 "iCloud_id_14" = "ファイルを分析中";
 "iCloudLogin_View_Remeberme" = "サインインしたままにする";
-"iCloudLogin_View_codeTips1" = "Apple IDまたはパスワードが正しくありません。入力内容を確認し、再度お試しください。";
+"iCloudLogin_View_codeTips1" = "確認コードを入力してください";
 "iCloudLogin_SecurityView_codeTips" = "Apple IDの2ファクタ認証を有効にしました。 続行するには、iOSデバイスに表示されている確認コードを入力してください。";
 "iCloudLogin_View_NotReceiveCode" = "iOSデバイスに確認コードが表示されません。";
 "iCloudLogin_View_Resend" = "コードを再送信する";
@@ -357,13 +357,13 @@
 "mediaView_id_5" = "不明な名前";
 
 "Nodata_tips" = "データがありません";
-"TransferNodata_tips" = "項目がありません";
+"TransferNodata_tips" = "データがありません";
 
 "DropBox_Login" = "サインイン";
 
 "Transfer_list" = "項目リスト";
 "Transfer_ClearAll" = "クリーンアップ";
-"Transfer_History" = "テスク履歴";
+"Transfer_History" = "操作履歴";
 //**********************
 "Menu_ChooseLanguage" = "言語を選択";//这个可以不用，没有语言选择
 //Support联系邮箱-- =

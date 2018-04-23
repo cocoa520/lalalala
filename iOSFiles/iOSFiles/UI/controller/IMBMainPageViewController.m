@@ -233,6 +233,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         [_purchaseVc release];
         _purchaseVc = nil;
     }
+    view.hidden = NO;
     _purchaseVc = [IMBPurchaseOrAnnoyController purchase];
     _purchaseVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
     [view addSubview:_purchaseVc.view];

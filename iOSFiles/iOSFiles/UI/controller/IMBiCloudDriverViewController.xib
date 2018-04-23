@@ -221,7 +221,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="nuX-dK-w9d">
                         <rect key="frame" x="0.0" y="0.0" width="1098" height="549"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="40" headerView="Zjp-FH-Phh" id="1xx-hL-Sn7" customClass="IMBCustomHeaderTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="1086" height="40"/>
@@ -334,7 +334,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5VM-e2-fjB">
                                 <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="tpW-q2-S1O">
                                         <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
@@ -404,15 +404,8 @@
         </customView>
         <menu id="Rhb-RZ-5Vr">
             <items>
-                <menuItem title="Refresh" image="toolbar_icon_refresh" id="zqb-Ha-hpH">
-                    <attributedString key="attributedTitle">
-                        <fragment content="Refresh">
-                            <attributes>
-                                <font key="NSFont" metaFont="cellTitle"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                <menuItem title="再読み込み" image="toolbar_icon_refresh" id="zqb-Ha-hpH">
+                    <attributedString key="attributedTitle"/>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="itemsRightKeyReload:" target="-2" id="Aya-J3-eh8"/>

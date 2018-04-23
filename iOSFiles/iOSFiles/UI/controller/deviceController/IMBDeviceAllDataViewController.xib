@@ -80,7 +80,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ys8-Fx-kdH">
                         <rect key="frame" x="0.0" y="0.0" width="1098" height="549"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="60" headerView="PRD-TX-hG8" id="q8R-dk-hmL" customClass="IMBCustomHeaderTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="1137" height="60"/>
@@ -301,7 +301,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LLV-mL-CTR">
                                 <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rpd-ha-y0N">
                                         <rect key="frame" x="0.0" y="0.0" width="618" height="50"/>
@@ -338,7 +338,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="V1G-0v-8FQ">
                         <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view id="l75-f4-LJ0" customClass="CNGridView">
                                 <rect key="frame" x="0.0" y="0.0" width="1096" height="548"/>
@@ -387,14 +387,7 @@
         <menu id="GRe-GE-hok">
             <items>
                 <menuItem title="Refresh" image="toolbar_icon_refresh" id="uuw-bO-Ql7">
-                    <attributedString key="attributedTitle">
-                        <fragment content="Refresh">
-                            <attributes>
-                                <font key="NSFont" metaFont="cellTitle"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                    <attributedString key="attributedTitle"/>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="itemsRightKeyReload:" target="-2" id="PPB-38-6eH"/>

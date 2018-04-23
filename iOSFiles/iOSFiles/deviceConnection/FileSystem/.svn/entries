@@ -1,7 +1,7 @@
 10
 
 dir
-2916
+3012
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/deviceConnection/FileSystem
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -60,40 +60,6 @@ has-props
 
 1786
 
-SimpleNode.h
-file
-
-
-
-
-2018-04-03T07:07:52.000000Z
-1188e28e77b16c6e8df12eace7e01836
-2018-04-03T07:06:32.899771Z
-2321
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4026
-
 IMBAMFileSystem.m
 file
 
@@ -127,6 +93,40 @@ dingming
 
 
 7855
+
+SimpleNode.h
+file
+
+
+
+
+2018-04-03T07:07:52.000000Z
+1188e28e77b16c6e8df12eace7e01836
+2018-04-03T07:06:32.899771Z
+2321
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4026
 
 IMBDeviceInfo.h
 file
@@ -196,40 +196,6 @@ has-props
 
 5820
 
-IMBFileSystemManager.h
-file
-
-
-
-
-2018-04-03T15:53:51.000000Z
-fe4116229fe87abb887f48f5f8ac0686
-2018-04-03T15:53:11.441671Z
-2361
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1947
-
 IMBAnimation.h
 file
 
@@ -264,17 +230,17 @@ has-props
 
 3234
 
-IMBInformationManager.h
+IMBFileSystemManager.h
 file
 
 
 
 
-2018-03-28T02:24:30.000000Z
-d396d6150a5f0d83ed443152d35bc45f
-2018-01-30T02:00:31.622092Z
-1090
-hezhonglin
+2018-04-03T15:53:51.000000Z
+fe4116229fe87abb887f48f5f8ac0686
+2018-04-03T15:53:11.441671Z
+2361
+dingming
 has-props
 
 
@@ -296,7 +262,7 @@ has-props
 
 
 
-1694
+1947
 
 IMBDeviceInfo.m
 file
@@ -332,14 +298,14 @@ dingming
 
 20017
 
-IMBFileSystem.h
+IMBInformationManager.h
 file
 
 
 
 
 2018-03-28T02:24:30.000000Z
-de52c5c55ede6cf7ce66b94a272dc645
+d396d6150a5f0d83ed443152d35bc45f
 2018-01-30T02:00:31.622092Z
 1090
 hezhonglin
@@ -364,41 +330,7 @@ has-props
 
 
 
-5160
-
-IMBFileSystemManager.m
-file
-
-
-
-
-2018-04-03T15:53:51.000000Z
-50dc93754efec3b49f4830e2f0d2a29e
-2018-04-03T15:53:11.441671Z
-2361
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8056
+1694
 
 IMBAnimation.m
 file
@@ -434,17 +366,17 @@ has-props
 
 14456
 
-IMBInformation.h
+IMBFileSystemManager.m
 file
 
 
 
 
-2018-04-09T07:03:07.000000Z
-19b504c9626d1116b52eed584d8ff138
-2018-04-09T07:00:26.202173Z
-2484
-longfan
+2018-04-03T15:53:51.000000Z
+50dc93754efec3b49f4830e2f0d2a29e
+2018-04-03T15:53:11.441671Z
+2361
+dingming
 has-props
 
 
@@ -466,7 +398,41 @@ has-props
 
 
 
-8635
+8056
+
+IMBFileSystem.h
+file
+
+
+
+
+2018-03-28T02:24:30.000000Z
+de52c5c55ede6cf7ce66b94a272dc645
+2018-01-30T02:00:31.622092Z
+1090
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5160
 
 IMBInformationManager.m
 file
@@ -501,6 +467,40 @@ has-props
 
 
 1221
+
+IMBInformation.h
+file
+
+
+
+
+2018-04-09T07:03:07.000000Z
+19b504c9626d1116b52eed584d8ff138
+2018-04-09T07:00:26.202173Z
+2484
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8635
 
 IMBAMDeviceInfo.h
 file

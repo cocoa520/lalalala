@@ -116,7 +116,7 @@
 "List_Header_id_State" = "状態";
 "List_Header_id_Image" = "画像";
 "List_Header_id_Version" = "バージョン";
-"List_Header_id_Count" = "ドキュメント";
+"List_Header_id_Count" = "ファイル";
 
 "List_Header_id_Minium" = "必須のiOSバージョン";
 "List_Header_id_AppSize" = "Appのサイズ";
@@ -134,7 +134,7 @@
 "MenuItem_id_14" = "App";
 "MenuItem_id_28" = "オーディオ";
 "MenuItem_id_29" = "ビデオ";
-"MenuItem_id_30" = "システム";
+"MenuItem_id_30" = "その他";
 "MenuItem_id_35" = "システム";
 "MenuItem_id_81" = "ファイル";
 "MenuItem_id_23" = "オーディオ";
@@ -357,7 +357,7 @@
 "mediaView_id_5" = "不明な名前";
 
 "Nodata_tips" = "データがありません";
-"TransferNodata_tips" = "データがありません";
+"TransferNodata_tips" = "項目がありません";
 
 "DropBox_Login" = "サインイン";
 

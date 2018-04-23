@@ -299,12 +299,11 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 
 + (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void (^)(void))completion {
     [view setWantsLayer:YES];
-    [view.layer removeAllAnimations];
     
+     
     NSRect toFrame = view.frame;
     toFrame.origin.y = toY;
     
-    [NSAnimationContext endGrouping];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         [context setDuration:timeInterval];

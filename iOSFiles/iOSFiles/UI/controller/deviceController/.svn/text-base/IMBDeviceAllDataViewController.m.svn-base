@@ -762,7 +762,7 @@
 - (void)gridViewDidDeselectAllItems:(CNGridView *)gridView {
     if (_categoryNodeEunm == Category_Applications|| _categoryNodeEunm == Category_appDoucment || _categoryNodeEunm == Category_System ||_categoryNodeEunm == Category_Storage) {
         if ((_isSmipNode || _categoryNodeEunm == Category_System||_categoryNodeEunm == Category_Storage) && _curEntity) {
-            SimpleNode *node = (SimpleNode *)_curEntity;
+            SimpleNode *node = [(SimpleNode *)_curEntity retain];
             if (node.isEdit && !node.isCreating) {
                 NSArray *selectArr = [_gridView keyedVisibleItems];
                 NSString *newName = @"";
@@ -776,7 +776,7 @@
                 BOOL isDelete = NO;
                 NSDictionary *dimensionDict = nil;
                 if (curItem) {
-                    if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] && ![curItem.editText.stringValue isEqualToString:node.fileName]) {
+                    if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] ) {
                         NSString *str = curItem.editText.stringValue;
                         if (node.extension && !node.container){
                             newName = [[str stringByAppendingString:@"."] stringByAppendingString:node.extension];
@@ -856,6 +856,7 @@
                                     [TempHelper customViewType:_chooseLogModelEnmu withCategoryEnum:_categoryNodeEunm];
                                     dimensionDict = [[TempHelper customDimension] copy];
                                 }
+                                
                                 ret = [_systemManager createFolder:[_currentDevicePath stringByAppendingPathComponent:newName]];
                             }else {
                                 AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
@@ -2747,7 +2748,7 @@
     }
     
     if (!selectedSet || selectedSet.count == 0) {
-        [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudBackup_View_Selected_Tips", nil)btnClickedBlock:nil];
+        [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudBackup_View_Selected_Tips", nil) btnClickedBlock:nil];
     }else {
         NSOpenPanel *openPanel = [NSOpenPanel openPanel];
         [openPanel setCanChooseFiles:NO];
@@ -2764,7 +2765,7 @@
 }
 
 - (void)transferToMacWithPath:(NSString *)path withSelecteSet:(NSIndexSet *)selectedSet withAry:(NSArray *)displayArr {
-    NSString *filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:[IMBCommonEnum categoryNodesEnumToName:_categoryNodeEunm]];
+    NSString *filePath = [path stringByAppendingString:@"/"];
     NSMutableArray *exportArray = [NSMutableArray array];
     NSDictionary *dimensionDict = nil;
     switch (_categoryNodeEunm) {
@@ -2848,10 +2849,10 @@
                 dimensionDict = [[TempHelper customDimension] copy];
             }
             //TODO:toMac测试
-//            SimpleNode *fileEntity = [exportArray objectAtIndex:0];
-//            AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
-//            [[_information applicationManager] exportAppDocumentToMac:path withSimpleNode:fileEntity appAFC:afcAppmd];
-//            [afcAppmd close];
+            SimpleNode *fileEntity = [exportArray objectAtIndex:0];
+            AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
+            [[_information applicationManager] exportAppDocumentToMac:path withSimpleNode:fileEntity appAFC:afcAppmd];
+            [afcAppmd close];
         }
             break;
         case Category_Video:
@@ -3363,9 +3364,9 @@
                                 [[_information applicationManager] removeAppDoucment:delArray appAFC:afcAppmd];
                                 [afcAppmd close];
 
-                                
                                 dispatch_sync(dispatch_get_main_queue(), ^{
                                     [_loadAnimationView endAnimation];
+                                    [_toolBarButtonView toolBarButtonIsEnabled:YES];
                                     if (_currentSelectView == 0) {
                                         [_contentBox setContentView:_tableViewBgView];
                                         [_itemTableView reloadData];

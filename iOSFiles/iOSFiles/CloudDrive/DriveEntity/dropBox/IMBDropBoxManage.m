@@ -89,7 +89,7 @@
         if (displayName!=nil) {
             _dropbox.userID = displayName;
         }else {
-            _dropbox.userID = @"DropBox";
+            _dropbox.userID = @"Dropbox";
         }
     } fail:^(DriveAPIResponse *response) {
         NSLog(@"");

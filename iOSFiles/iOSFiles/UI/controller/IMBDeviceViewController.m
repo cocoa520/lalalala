@@ -213,7 +213,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
                 [self setOriginalFrame:NO];
                 _devicesView.isDevicesOriginalFrame = YES;
                 
-                [_smallSizeTitle setStringValue:@"DropBox"];
+                [_smallSizeTitle setStringValue:@"Dropbox"];
                 [_smallSizeTitle setTextColor:COLOR_TEXT_ORDINARY];
                 [_dropboxBox setContentView:_smallSizeView];
                 [self setDeviceViewConnectedStatus];
@@ -357,10 +357,13 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     }
     if ([sender isKindOfClass:[IMBBaseInfo class]]) {
         IMBBaseInfo *baseInfo = (IMBBaseInfo *)sender;
+        _selectedBaseInfo = [baseInfo retain];
         IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
         IMBiPod *ipod = [deviceConnection getiPodByKey:baseInfo.uniqueKey];
         [_devicesView mouseExited:nil];
         [_delegate changeMainFrame:ipod withMedleEnum:DeviceLogEnum withiCloudDrvieBase:nil];
+        [_selectedDeviceBtn configButtonName:_selectedBaseInfo.deviceName WithTextColor:COLOR_TEXT_PRIORITY WithTextSize:SelectedBtnTextFont WithIsShowIcon:YES WithIsShowTrangle:YES WithIsDisable:NO withConnectType:baseInfo.connectType rightIcon:@"popup_icon_arrow"];
+        [_selectedDeviceBtn setFrame:NSMakeRect((_midiumSizeDevicesView.frame.size.width - _selectedDeviceBtn.frame.size.width)/2, _selectedDeviceBtn.frame.origin.y, _selectedDeviceBtn.frame.size.width, _selectedDeviceBtn.frame.size.height)];
     }
 }
 
@@ -1006,8 +1009,8 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     
     IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
     IMBBaseInfo *baseInfo = [[IMBBaseInfo alloc] init];
-    [baseInfo setDeviceName:dropbox.userID?:@"DropBox"];
-    [baseInfo setUniqueKey:dropbox.userID?:@"DropBox"];
+    [baseInfo setDeviceName:dropbox.userID?:@"Dropbox"];
+    [baseInfo setUniqueKey:dropbox.userID?:@"Dropbox"];
     [baseInfo setConnectType:general_iCloud];
     [baseInfo setIsicloudView:YES];
     [baseInfo setAllDeviceSize:dropbox.totalStorageInBytes];

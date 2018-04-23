@@ -147,7 +147,7 @@
 }
 
 - (void)configRightKeyMenuItemWithConfigArr:(NSArray *)configArr {
-    [_itemsReloadItem setTitle:CustomLocalizedString(@"Common_id_1", nil)];
+    [_itemsReloadItem setTitle:CustomLocalizedString(@"ToolContextMenuButton_id_1", nil)];
     [_itemsReloadItem setImage:[NSImage imageNamed:@"toolbar_icon_refresh_min"]];
     
     [_itemsAddItem setTitle:CustomLocalizedString(@"Common_id_7", nil)];

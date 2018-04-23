@@ -8,6 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface IMBPurchaseBottomVerifyController : NSViewController
+@class IMBWhiteView,customTextFiled,IMBGridientButton;
 
+
+@interface IMBPurchaseBottomVerifyController : NSViewController
+{
+    IBOutlet IMBWhiteView *_secondViewInputTextFiledBgView;
+    IBOutlet customTextFiled *_secondViewInputTextFiled;
+    IBOutlet IMBGridientButton *_secondViewActiveBtn;
+}
 @end

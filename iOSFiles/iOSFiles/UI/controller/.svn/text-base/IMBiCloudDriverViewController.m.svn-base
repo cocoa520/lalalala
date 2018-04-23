@@ -437,6 +437,61 @@
         }
         if (curItem) {
             if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] && ![curItem.editText.stringValue isEqualToString:_curEntity.fileName]) {
+//                if ([self hasSameNameWithName:curItem.editText.stringValue]) {
+//                    
+//                    //TODO   添加新名字和已有名字重复的提醒
+//                    NSString *key = nil;
+//                    NSString *alertString = nil;
+//                    switch (_chooseLogModelEnmu) {
+//                        case iCloudLogEnum:
+//                        {
+//                            key = IMBAlertViewiCloudKey;
+//                        }
+//                            break;
+//                        case DropBoxLogEnum:
+//                        {
+//                            key = IMBAlertViewDropBoxKey;
+//                        }
+//                            break;
+//                            
+//                        default:
+//                            break;
+//                    }
+//                    if (_curEntity.isFolder) {
+//                        alertString = CustomLocalizedString(@"RenameTipsFolder", nil);
+//                    }else {
+//                        alertString = CustomLocalizedString(@"RenameTipsFile", nil);
+//                    }
+//                    [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:alertString firstBtnClickedBlock:^{
+//                        [self setNewNameWithName:[self checkoutName:_curEntity.fileName]];
+//                    } secondBtnClickedBlock:^{
+//                        [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
+//                    }];
+//                }else {
+//                    _curEntity.fileName = [self checkoutName:curItem.editText.stringValue];//curItem.editText.stringValue;
+//                    if (_curEntity.extension && !_curEntity.isFolder){
+//                        newName = [[_curEntity.fileName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
+//                    }else {
+//                        newName = _curEntity.fileName;
+//                    }
+//                    if (_curEntity.isCreate) {
+//                        _curEntity.isCreating = YES;
+//                        if (_chooseLogModelEnmu == iCloudLogEnum) {
+//                            [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+//                        }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+//                            [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+//                        }
+//                    } else {
+//                        if (_chooseLogModelEnmu == iCloudLogEnum) {
+//                            dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+//                            if (dic != nil) {
+//                                [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+//                            }
+//                        }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+//                            [(IMBDropBoxManage *)_driveBaseManage reName:[[_curEntity.filePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:newName] idOrPath:_curEntity.fileID];
+//                        }
+//                    }
+//                }
                 _curEntity.fileName = [self checkoutName:curItem.editText.stringValue];//curItem.editText.stringValue;
                 if (_curEntity.extension && !_curEntity.isFolder){
                     newName = [[_curEntity.fileName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
@@ -564,7 +619,7 @@
                 }
             }
         }else {
-//            [self previewFile:driveEntity];
+            [self previewFile:driveEntity];
         }
     }
 }
@@ -577,6 +632,7 @@
         }
     }
 }
+
 
 //排序
 - (void)sortClick:(id)sender {
@@ -1215,13 +1271,13 @@
 }
 
 - (void)downloadWithPath:(NSString *)path {
-    NSString *filePath = @"";
-    if (_chooseLogModelEnmu == iCloudLogEnum) {
-        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"iCloud"];
-    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
-        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"DropBox"];
-    }
-   
+    NSString *filePath = [path stringByAppendingString:@"/"];
+//    if (_chooseLogModelEnmu == iCloudLogEnum) {
+//        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"iCloud"];
+//    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+//        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"DropBox"];
+//    }
+//   
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
     NSArray *displayArr = nil;
@@ -1785,61 +1841,95 @@
     if (_isTableViewEdit && !_curEntity.isCreating) {
         _isTableViewEdit = NO;
         if (_curEntity) {
-            NSString *newName = [self checkoutName:_editTextField.stringValue];//_editTextField.stringValue;
-            _editTextField.stringValue = newName;
-            if (![StringHelper stringIsNilOrEmpty:newName] && ![_curEntity.fileName isEqualToString:newName]) {
-                _curEntity.fileName = newName;
-                if (_curEntity.extension && !_curEntity.isFolder){
-                    newName = [[newName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
-                }
-                if (_curEntity.isCreate) {
-                    _curEntity.isCreating = YES;
-                    if (_chooseLogModelEnmu == iCloudLogEnum) {
-                        [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
-                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
-                        [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+            if ([self hasSameNameWithName:_editTextField.stringValue]) {
+                //TODO   添加新名字和已有名字重复的提醒
+                NSString *key = nil;
+                NSString *alertString = nil;
+                switch (_chooseLogModelEnmu) {
+                    case iCloudLogEnum:
+                    {
+                        key = IMBAlertViewiCloudKey;
                     }
-                } else {
-                    if (_chooseLogModelEnmu == iCloudLogEnum) {
-                        NSDictionary *dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
-                        if (dic != nil) {
-                            [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
-                        }
-                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
-                        [(IMBDropBoxManage *)_driveBaseManage reName:newName idOrPath:_curEntity.fileID];
+                        break;
+                    case DropBoxLogEnum:
+                    {
+                        key = IMBAlertViewDropBoxKey;
                     }
+                        break;
+                        
+                    default:
+                        break;
                 }
+                if (_curEntity.isFolder) {
+                    alertString = CustomLocalizedString(@"RenameTipsFolder", nil);
+                }else {
+                    alertString = CustomLocalizedString(@"RenameTipsFile", nil);
+                }
+                [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:alertString firstBtnClickedBlock:^{
+                    [self setNewNameWithName:[self checkoutName:_curEntity.fileName]];
+                } secondBtnClickedBlock:^{
+                    [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
+                }];
             }else {
-                if (_curEntity.isCreate) {
-                    _curEntity.isCreating = YES;
-                    if (newName.length < 1) {
-                        newName = CustomLocalizedString(@"Function_New_Folder", nil);
-                    }
-                    _curEntity.fileName = newName;
-                    if (_chooseLogModelEnmu == iCloudLogEnum) {
-                        [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
-                    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
-                        [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
-                    }
-                }
+                [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
             }
-            _curEntity.isEdit = NO;
-            _curEntity.isEditing = NO;
-            _curEntity.isCreate = NO;
+            
         }
     }
-    [_toolBarButtonView toolBarButtonIsEnabled:YES];
-    
     
 }
 
+- (void)setNewNameWithName:(NSString *)name {
+    NSString *newName = name;//[self checkoutName:_editTextField.stringValue];//_editTextField.stringValue;
+    _editTextField.stringValue = newName;
+    if (![StringHelper stringIsNilOrEmpty:newName] && ![_curEntity.fileName isEqualToString:newName]) {
+        _curEntity.fileName = newName;
+        if (_curEntity.extension && !_curEntity.isFolder){
+            newName = [[newName stringByAppendingString:@"."] stringByAppendingString:_curEntity.extension];
+        }
+        if (_curEntity.isCreate) {
+            _curEntity.isCreating = YES;
+            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+            }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+            }
+        } else {
+            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                NSDictionary *dic = @{@"drivewsid":_curEntity.fileID,@"etag":_curEntity.etag,@"name":newName};
+                if (dic != nil) {
+                    [(IMBiCloudDriveManager *)_driveBaseManage reNameWithDic:dic];
+                }
+            }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                [(IMBDropBoxManage *)_driveBaseManage reName:newName idOrPath:_curEntity.fileID];
+            }
+        }
+    }else {
+        if (_curEntity.isCreate) {
+            _curEntity.isCreating = YES;
+            if (newName.length < 1) {
+                newName = CustomLocalizedString(@"Function_New_Folder", nil);
+            }
+            _curEntity.fileName = newName;
+            if (_chooseLogModelEnmu == iCloudLogEnum) {
+                [_driveBaseManage createFolder:newName parent:_currentGetListPath withEntity:_curEntity];
+            }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
+                [_driveBaseManage createFolder:newName parent:_currentDevicePath withEntity:_curEntity];
+            }
+        }
+    }
+    _curEntity.isEdit = NO;
+    _curEntity.isEditing = NO;
+    _curEntity.isCreate = NO;
+    [_toolBarButtonView toolBarButtonIsEnabled:YES];
+}
 - (NSString *)checkoutName:(NSString *)originalName {
     if ([originalName isEqualToString:@""] || [originalName isEqualToString:_curEntity.fileName]) {
         return originalName;
     }
     
     NSInteger count = _dataSourceArray.count;
-    BOOL hasSameName = YES;
+    __block BOOL hasSameName = YES;
     NSMutableArray *sameEntityArr = [NSMutableArray array];
     if (_curEntity.isFolder) {
         for (NSInteger i = 0; i < count; i++) {
@@ -1860,7 +1950,18 @@
     
     if (sameEntityArr.count) {
         NSInteger sameCount = sameEntityArr.count;
+        BOOL isSameName = NO;
         int d = 2;
+        for (NSInteger i = 0; i < sameCount; i++) {
+            IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
+            if ([entity.fileName isEqualToString:originalName]) {
+                if (entity == _curEntity) {
+                    hasSameName = NO;
+                    break;
+                }
+                isSameName = YES;
+            }
+        }
         while (hasSameName) {
             for (NSInteger i = 0; i < sameCount; i++) {
                 IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
@@ -1888,6 +1989,44 @@
     
 }
 
+- (BOOL)hasSameNameWithName:(NSString *)originalName {
+    NSInteger count = _dataSourceArray.count;
+    BOOL isSameName = NO;
+    NSMutableArray *sameEntityArr = [NSMutableArray array];
+    if (_curEntity.isFolder) {
+        for (NSInteger i = 0; i < count; i++) {
+            IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:i];
+            if (entity.isFolder) {
+                [sameEntityArr addObject:entity];
+            }
+        }
+    }
+    else {
+        for (NSInteger i = 0; i < count; i++) {
+            IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:i];
+            if ([_curEntity.extension isEqualToString:entity.extension]) {
+                [sameEntityArr addObject:entity];
+            }
+        }
+    }
+    
+    if (sameEntityArr.count) {
+        NSInteger sameCount = sameEntityArr.count;
+        
+        for (NSInteger i = 0; i < sameCount; i++) {
+            IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
+            if ([entity.fileName isEqualToString:originalName]) {
+                if (entity != _curEntity) {
+                    isSameName = YES;
+                    break;
+                }
+                
+            }
+        }
+    }
+    return isSameName;
+    
+}
 - (void)moveToFolder:(id)sender {
     NSArray *displayArr = nil;
     if (_isSearch) {
