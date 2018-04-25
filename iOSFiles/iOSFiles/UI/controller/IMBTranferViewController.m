@@ -11,6 +11,8 @@
 #import "IMBDriveEntity.h"
 #import "IMBMainPageViewController.h"
 #import "IMBPurcahseLeftNumLabel.h"
+#import "IMBPurchaseOrAnnoyController.h"
+#import "IMBViewAnimation.h"
 
 
 @class IMBTranferViewController;
@@ -322,7 +324,21 @@ static id _instance = nil;
 
 #pragma mark - operation action
 - (IBAction)unlimitClicked:(id)sender {
+    IMBPurchaseOrAnnoyController *annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:50 toDeviceLeftNum:20 toCloudLeftNum:0];
+    annoyVc.view.imb_x = 1096.f - self.view.imb_width;
+    [self.view.superview addSubview:annoyVc.view];
+    [self.view removeFromSuperview];
     
+    annoyVc.closeClicked = ^{
+        //关闭按钮点击
+        [IMBViewAnimation animationPositionXWithView:annoyVc.view toX:1096.f timeInterval:0.45f completion:^{
+            [annoyVc.view removeFromSuperview];
+        }];
+    };
+    
+    [IMBViewAnimation animationPositionXWithView:annoyVc.view toX:0 timeInterval:0.35f completion:^{
+        
+    }];
 }
 
 - (IBAction)upLoadBtn:(id)sender {
@@ -434,6 +450,13 @@ static id _instance = nil;
     [theAnim startAnimation];
     [theAnim release];
     theAnim = nil;
+    
+//    _limitBox.imb_height = 0;
+//    _limitBox.hidden = YES;
+//    _boxView.imb_y = 0;
+//    _boxView.imb_height = 496.f;
+    
+    [_boxView setNeedsDisplay:YES];
 }
 
 - (IBAction)closeCompleteView:(id)sender {

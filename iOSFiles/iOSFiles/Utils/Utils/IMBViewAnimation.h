@@ -38,4 +38,6 @@ APPKIT_EXTERN CGFloat const MidiumSizeAnimationTimeInterval;
 
 + (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void(^)(void))completion;
 
++ (void)animationPositionXWithView:(NSView *)view toX:(CGFloat)toX timeInterval:(NSTimeInterval)timeInterval completion:(void(^)(void))completion;
+
 @end

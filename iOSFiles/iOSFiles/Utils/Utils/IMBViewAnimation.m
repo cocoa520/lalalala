@@ -312,4 +312,19 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     } completionHandler:completion];
 }
 
++ (void)animationPositionXWithView:(NSView *)view toX:(CGFloat)toX timeInterval:(NSTimeInterval)timeInterval completion:(void (^)(void))completion {
+    [view setWantsLayer:YES];
+    
+    
+    NSRect toFrame = view.frame;
+    toFrame.origin.x = toX;
+    
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:timeInterval];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+        [view.animator setFrame:toFrame];
+    } completionHandler:completion];
+}
+
 @end

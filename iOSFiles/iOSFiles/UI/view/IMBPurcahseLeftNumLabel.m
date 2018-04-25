@@ -62,7 +62,7 @@
 - (NSColor *)getTextColorWithLeftNum:(NSInteger)leftNum {
     if (leftNum == 0) {
         return COLOR_PURCHASE_LEFTNUM_RED;
-    }else if (leftNum > 0 && leftNum <= 50) {
+    }else if (leftNum > 0 && leftNum < 50) {
         return COLOR_PURCHASE_LEFTNUM_ORANGE;
     }else {
         return COLOR_PURCHASE_LEFTNUM_GREEN;
