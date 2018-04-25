@@ -75,11 +75,13 @@
     }
     [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     
+    
     [super dealloc];
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     [_loadLeftMaskView setIsLeftToRight:YES];
     [_loadLeftMaskView setNeedsDisplay:YES];
     
@@ -294,6 +296,7 @@
     mutParaStyle = nil;
     
 }
+
 
 #pragma mark - 搜索
 - (void)doSearchBtn:(NSString *)searchStr withSearchBtn:(IMBSearchView *)searchView {
@@ -776,8 +779,11 @@
                 BOOL isDelete = NO;
                 NSDictionary *dimensionDict = nil;
                 if (curItem) {
+                    NSString *str = curItem.editText.stringValue;
+                    if ([StringHelper stringIsNilOrEmpty:str]) {
+                        str = node.fileName;
+                    }
                     if (![StringHelper stringIsNilOrEmpty:curItem.editText.stringValue] ) {
-                        NSString *str = curItem.editText.stringValue;
                         if (node.extension && !node.container){
                             newName = [[str stringByAppendingString:@"."] stringByAppendingString:node.extension];
                         }else {
@@ -811,20 +817,20 @@
                                 isDelete = YES;
                                 _curEntity = nil;
                             }
-                                    node.isCreating = NO;
-                                    [_promptLabel setTextColor:COLOR_TEXT_PRIORITY];
-                                    if (ret) {
-                                        node.fileName = curItem.editText.stringValue;
-                                        node.path = [_currentDevicePath stringByAppendingPathComponent:newName];
-                                        [_promptImageView setImage:[NSImage imageNamed:@"message-box-success"]];
-                                        [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_success", nil)];
-                                    }else {
-                                        [_promptImageView setImage:[NSImage imageNamed:@"message-box-error"]];
-                                        [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_failed", nil)];
-                                        [_dataSourceArray removeObject:node];
-                                        isDelete = YES;
-                                        _curEntity = nil;
-                                    }
+                            node.isCreating = NO;
+                            [_promptLabel setTextColor:COLOR_TEXT_PRIORITY];
+                            if (ret) {
+                                node.fileName = curItem.editText.stringValue;
+                                node.path = [_currentDevicePath stringByAppendingPathComponent:newName];
+                                [_promptImageView setImage:[NSImage imageNamed:@"message-box-success"]];
+                                [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_success", nil)];
+                            }else {
+                                [_promptImageView setImage:[NSImage imageNamed:@"message-box-error"]];
+                                [self addPromptCustomView:CustomLocalizedString(@"prompt_create_floder_failed", nil)];
+                                [_dataSourceArray removeObject:node];
+                                isDelete = YES;
+                                _curEntity = nil;
+                            }
                         } else {
                             BOOL ret = NO;
                             if (_categoryNodeEunm == Category_System||_categoryNodeEunm == Category_Storage) {
@@ -999,7 +1005,7 @@
                     }
                 });
             }else {
-                
+//                [self previewFile:_baseEntity];
             }
         }else if (_categoryNodeEunm == Category_Applications|| _categoryNodeEunm == Category_appDoucment) {
             id entity = [array objectAtIndex:index];
@@ -1092,7 +1098,7 @@
                         }
                     });
                 }else {
-                    
+                    [self previewFile:fileEntity];
                 }
             }
         }
@@ -1318,13 +1324,17 @@
             [_detailImageView setImage:appEntity.appIconImage];
             [_detailTitle setStringValue:appEntity.appName];
             [_detailSizeContent setStringValue:[StringHelper getFileSizeString:appEntity.appSize reserved:2]];
-            [_detailCreateTimeContent  setStringValue:@"--"];
+//            [_detailCreateTimeContent  setStringValue:@"--"];
+            _detailCreateTimeContent.hidden = YES;
+            _detailCreateTime.hidden = YES;
         }else if ([entity isKindOfClass:[SimpleNode class]]) {
             SimpleNode *fileEntity = (SimpleNode *)entity;
             [_detailImageView setImage:fileEntity.image];
             [_detailTitle setStringValue:fileEntity.fileName];
             [_detailSizeContent setStringValue:[StringHelper getFileSizeString:fileEntity.itemSize reserved:2]];
-            [_detailCreateTimeContent  setStringValue:@"--"];
+//            [_detailCreateTimeContent  setStringValue:@"--"];
+            _detailCreateTimeContent.hidden = YES;
+            _detailCreateTime.hidden = YES;
         }
     }else if (_categoryNodeEunm == Category_System||_categoryNodeEunm == Category_Storage) {
         SimpleNode *simpleNode = (SimpleNode *)entity;
@@ -2849,10 +2859,10 @@
                 dimensionDict = [[TempHelper customDimension] copy];
             }
             //TODO:toMac测试
-            SimpleNode *fileEntity = [exportArray objectAtIndex:0];
-            AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
-            [[_information applicationManager] exportAppDocumentToMac:path withSimpleNode:fileEntity appAFC:afcAppmd];
-            [afcAppmd close];
+//            SimpleNode *fileEntity = [exportArray objectAtIndex:0];
+//            AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
+//            [[_information applicationManager] exportAppDocumentToMac:path withSimpleNode:fileEntity appAFC:afcAppmd];
+//            [afcAppmd close];
         }
             break;
         case Category_Video:
@@ -3562,7 +3572,7 @@
 }
 /**
  *  预览
- */
+ **/
 - (void)preBtnClick:(id)sender {
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
@@ -3583,6 +3593,7 @@
         }
     }
 }
+
 
 - (void)previewFile:(id)entity {
     _isPreview = YES;

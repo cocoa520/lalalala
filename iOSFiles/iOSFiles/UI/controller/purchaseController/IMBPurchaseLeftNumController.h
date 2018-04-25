@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class IMBPurcahseLeftNumLabel;
 
 @interface IMBPurchaseLeftNumController : NSViewController
 {
     
-    IBOutlet NSTextField *_firstLabel;
-    IBOutlet NSTextField *_secondLabel;
-    IBOutlet NSTextField *_thirdLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_firstLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_secondLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_thirdLabel;
     IBOutlet NSTextField *_titleLabel;
     
     NSArray *_leftNums;

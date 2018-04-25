@@ -40,13 +40,6 @@
     [((customTextFieldCell *)_secondViewInputTextFiled.cell) setCursorColor:COLOR_ALERT_BUTTON_UNSELECTED_TEXT];
     [_secondViewInputTextFiled.cell setPlaceholderAttributedString:as5];
     
-//    NSString *OkText = CustomLocalizedString(@"register_window_activateBtn", nil);
-//    NSMutableAttributedString *attributedTitles1 = [[[NSMutableAttributedString alloc]initWithString:OkText]autorelease];
-//    [attributedTitles1 addAttribute:NSBackgroundColorAttributeName value:[NSColor clearColor] range:NSMakeRange(0, OkText.length)];
-//    [attributedTitles1 addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:14] range:NSMakeRange(0, OkText.length)];
-//    [attributedTitles1 addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:NSMakeRange(0, OkText.length)];
-//    [attributedTitles1 setAlignment:NSCenterTextAlignment range:NSMakeRange(0, attributedTitles1.length)];
-//    [_secondViewActiveBtn setAttributedTitle:attributedTitles1];
     
     [_secondViewActiveBtn setTarget:self];
     [_secondViewActiveBtn setAction:@selector(startActive)];

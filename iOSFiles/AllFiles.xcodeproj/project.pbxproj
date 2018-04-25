@@ -412,6 +412,7 @@
 		B93C647B2071BCAA00F4A65E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C64782071BCAA00F4A65E /* main.m */; };
 		B93E564A2089F40900AD31A6 /* IMBCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = B93E56492089F40900AD31A6 /* IMBCoverView.m */; };
 		B9430FD22050CA810019C018 /* IMBViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9430FD12050CA810019C018 /* IMBViewAnimation.m */; };
+		B94649E7208ED820006A5225 /* IMBPurcahseLeftNumLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B94649E6208ED820006A5225 /* IMBPurcahseLeftNumLabel.m */; };
 		B946BA81206DF53900B0BC84 /* allfiles.icns in Resources */ = {isa = PBXBuildFile; fileRef = B946BA80206DF53900B0BC84 /* allfiles.icns */; };
 		B9538FE2202BEC69000BED1C /* NSColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = B9538FE1202BEC69000BED1C /* NSColor+Category.m */; };
 		B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95BD51C20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist */; };
@@ -1785,6 +1786,8 @@
 		B93E56492089F40900AD31A6 /* IMBCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCoverView.m; sourceTree = "<group>"; };
 		B9430FD02050CA810019C018 /* IMBViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBViewAnimation.h; sourceTree = "<group>"; };
 		B9430FD12050CA810019C018 /* IMBViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBViewAnimation.m; sourceTree = "<group>"; };
+		B94649E5208ED820006A5225 /* IMBPurcahseLeftNumLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurcahseLeftNumLabel.h; sourceTree = "<group>"; };
+		B94649E6208ED820006A5225 /* IMBPurcahseLeftNumLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBPurcahseLeftNumLabel.m; sourceTree = "<group>"; };
 		B946BA80206DF53900B0BC84 /* allfiles.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = allfiles.icns; sourceTree = "<group>"; };
 		B9538FE0202BEC69000BED1C /* NSColor+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Category.h"; sourceTree = "<group>"; };
 		B9538FE1202BEC69000BED1C /* NSColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Category.m"; sourceTree = "<group>"; };
@@ -5869,6 +5872,8 @@
 				F7A8DB7C2079AB250053A90C /* IMBWindowContentView.m */,
 				B93E56482089F40900AD31A6 /* IMBCoverView.h */,
 				B93E56492089F40900AD31A6 /* IMBCoverView.m */,
+				B94649E5208ED820006A5225 /* IMBPurcahseLeftNumLabel.h */,
+				B94649E6208ED820006A5225 /* IMBPurcahseLeftNumLabel.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6940,6 +6945,7 @@
 				B965647E2021D47600BD7FF5 /* IMBArtworkDBRoot.m in Sources */,
 				B90D14DC2020214C002D9F9B /* SimpleNode.m in Sources */,
 				B96564962021D47600BD7FF5 /* IMBSqliteTables_Nano6G.m in Sources */,
+				B94649E7208ED820006A5225 /* IMBPurcahseLeftNumLabel.m in Sources */,
 				7B830C1F2047AFD8000841AE /* iCloudDrive.m in Sources */,
 				EEF458942063D1F90078BB23 /* IMBDevViewController.m in Sources */,
 				7B830C2B2047AFD8000841AE /* iCloudDriveUploadOneAPI.m in Sources */,

@@ -11,6 +11,9 @@
 //通用白色
 #define COLOR_View_NORMAL IMBGrayColor(255)
 
+//通用白色
+#define COLOR_View_CLEAR [NSColor clearColor]
+
 //普通文字
 #define COLOR_TEXT_ORDINARY IMBGrayColor(0)
 
@@ -197,3 +200,5 @@
 
 //
 #define COLOR_PURCHASE_TITLE_TEXT IMBGrayColor(33)
+
+#define COLOR_PURCHASE_COLUMN_BG IMBRgbColor(233,243,249)

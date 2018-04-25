@@ -1179,7 +1179,7 @@
         tranferView.reloadDelegate = self;
         [tranferView transferBtn:_transferBtn];
         _isShowTranfer = NO;
-        [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width +8, -8, 360, tranferView.view.frame.size.height)];
+        [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - tranferView.view.frame.size.width + 8, - 8, 360, tranferView.view.frame.size.height)];
         NSView *view = nil;
         for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
             if ([subView isMemberOfClass:[NSClassFromString(@"IMBTranferBackgroundView") class]]&& [subView.subviews count] == 0) {

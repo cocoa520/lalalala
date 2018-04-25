@@ -14,6 +14,10 @@
 #import "DriveItem.h"
 #import "IMBImageAndTitleButton.h"
 
+
+@class IMBPurcahseLeftNumLabel;
+
+
 @interface IMBTranferViewController : NSViewController
 {
     IBOutlet IMBBackgroundBorderView *_topView;
@@ -45,6 +49,15 @@
     NSString *_appKey;
     id _showWindowDelegate;
     id _reloadDelegate;
+    IBOutlet NSTextField *_titleLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_firstLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_secondLabel;
+    IBOutlet IMBPurcahseLeftNumLabel *_thirdLabel;
+    
+    NSArray *_leftNums;
+    IBOutlet NSBox *_limitBox;
+    IBOutlet IMBBackgroundBorderView *_limitView;
+    IBOutlet IMBGridientButton *_unlimitBtn;
 }
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) id reloadDelegate;
@@ -54,6 +67,7 @@
 @property (nonatomic,retain) NSString *appKey;
 @property (nonatomic, assign) id showWindowDelegate;
 @property (nonatomic, assign) ChooseLoginModelEnum chooseLoginModelEnum;
+@property(nonatomic, retain)NSArray *leftNums;
 
 + (instancetype)singleton;
 /**

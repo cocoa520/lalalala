@@ -23,6 +23,9 @@
 @synthesize msgLabel = _msgLabel;
 @synthesize titleLabel = _titleLabel;
 
+@synthesize purchaseButtonTitle = _purchaseButtonTitle;
+
+
 #pragma mark - setup view
 
 - (void)viewDidLoad {
@@ -41,6 +44,22 @@
     
     [_purchaseButton setBordered:NO];
     
-    [_purchaseButton setButtonTitle:CustomLocalizedString(@"Purchase_Button_text" , nil) withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
+    [_purchaseButton setButtonTitle:_purchaseButtonTitle withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
 }
+
+- (void)setPurchaseButtonTitle:(NSString *)purchaseButtonTitle {
+    _purchaseButtonTitle = purchaseButtonTitle;
+    
+    [_purchaseButton setButtonTitle:_purchaseButtonTitle withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
+}
+
+#pragma mark - 按钮点击事件
+
+
+- (IBAction)buttonClicked:(id)sender {
+    if (self.btnClicked) {
+        self.btnClicked();
+    }
+}
+
 @end

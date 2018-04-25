@@ -38,8 +38,17 @@
                         <color key="backgroundColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JVd-gx-VhK">
-                    <rect key="frame" x="3" y="42" width="303" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DmI-Mh-0fo">
+                    <rect key="frame" x="182" y="77" width="575" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="無償で使用できる残りの項目数" id="h38-Fa-MCy">
+                        <font key="font" size="14" name="HelveticaNeue"/>
+                        <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JVd-gx-VhK" customClass="IMBPurcahseLeftNumLabel">
+                    <rect key="frame" x="9" y="43" width="282" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Ecg-de-uph">
                         <font key="font" metaFont="system"/>
@@ -47,8 +56,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K0w-QW-REa">
-                    <rect key="frame" x="319" y="42" width="300" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K0w-QW-REa" customClass="IMBPurcahseLeftNumLabel">
+                    <rect key="frame" x="361" y="43" width="216" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="0H4-W2-hDd">
                         <font key="font" size="12" name="HelveticaNeue"/>
@@ -56,21 +65,12 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iWV-lv-J0P">
-                    <rect key="frame" x="632" y="43" width="298" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iWV-lv-J0P" customClass="IMBPurcahseLeftNumLabel">
+                    <rect key="frame" x="645" y="43" width="248" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="IVa-vf-3sB">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="IVa-vf-3sB">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DmI-Mh-0fo">
-                    <rect key="frame" x="182" y="77" width="575" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="無償で使用できる残りの項目数" id="h38-Fa-MCy">
-                        <font key="font" size="14" name="HelveticaNeue"/>
-                        <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>

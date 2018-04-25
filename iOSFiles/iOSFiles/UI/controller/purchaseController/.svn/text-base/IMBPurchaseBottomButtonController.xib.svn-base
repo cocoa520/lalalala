@@ -60,6 +60,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="HelveticaNeue"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="buttonClicked:" target="-2" id="WH3-1C-GFi"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ubz-4y-Hmw">
                     <rect key="frame" x="285" y="11" width="368" height="17"/>

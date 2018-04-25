@@ -17,11 +17,17 @@
     IBOutlet NSTextField *_msgLabel;
     IBOutlet NSTextField *_titleLabel;
     
+    NSString *_purchaseButtonTitle;
+    
 }
 
 @property(nonatomic, retain)NSView *topView;
 @property(nonatomic, retain)IMBGridientButton *purchaseButton;
 @property(nonatomic, retain)NSTextField *msgLabel;
 @property(nonatomic, retain)NSTextField *titleLabel;
+
+@property(nonatomic, copy)NSString *purchaseButtonTitle;
+
+@property(nonatomic, copy) void(^btnClicked)(void);
 
 @end

@@ -13,6 +13,9 @@
 
 @interface IMBPurchaseBottomVerifyController : NSViewController
 {
+    
+    IBOutlet NSButton *_toActiveViewBtn;
+    
     IBOutlet IMBWhiteView *_secondViewInputTextFiledBgView;
     IBOutlet customTextFiled *_secondViewInputTextFiled;
     IBOutlet IMBGridientButton *_secondViewActiveBtn;

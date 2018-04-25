@@ -1,14 +1,14 @@
 10
 
 dir
-3012
+3111
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-19T10:46:08.293991Z
-2937
+2018-04-24T02:52:52.644624Z
+3063
 hezhonglin
 
 
@@ -162,40 +162,6 @@ has-props
 
 1089
 
-IMBDeviceAllDataViewController.xib
-file
-3015
-
-
-
-2018-04-23T03:53:54.000000Z
-a6ff8c776de07ffb109550a912d343d6
-2018-04-23T03:55:33.298524Z
-3015
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-38523
-
 IMBPhotosListViewController.m
 file
 
@@ -229,6 +195,40 @@ hezhonglin
 
 
 33868
+
+IMBDeviceAllDataViewController.xib
+file
+
+
+
+
+2018-04-23T03:53:54.000000Z
+a6ff8c776de07ffb109550a912d343d6
+2018-04-23T03:55:33.298524Z
+3015
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+38523
 
 IMBDeviceAllDataViewController.h
 file
@@ -298,40 +298,6 @@ hezhonglin
 
 3717
 
-IMBDeviceAllDataViewController.m
-file
-3045
-
-
-
-2018-04-23T10:27:32.000000Z
-e594d08669f979ddf7aff10a46ea0a9d
-2018-04-23T10:32:07.365116Z
-3045
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-198909
-
 IMBDevicePageViewController.xib
 file
 
@@ -365,6 +331,40 @@ longfan
 
 
 5608
+
+IMBDeviceAllDataViewController.m
+file
+3211
+
+
+
+2018-04-25T09:51:18.000000Z
+066e848b3efb9522713ddad94b1210e3
+2018-04-25T10:05:42.510675Z
+3211
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+199203
 
 IMBPhotoViewController.h
 file

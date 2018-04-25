@@ -67,7 +67,6 @@
 }
 
 - (void)loadDriveData {
-    
     [_dropbox getSpaceUsage:@"" success:^(DriveAPIResponse *response) {
         NSLog(@"");
         NSMutableDictionary *dic = response.content;
@@ -95,7 +94,6 @@
         NSLog(@"");
     }];
     
-    
     [_dropbox getList:@"0" success:^(DriveAPIResponse *response) {
         NSMutableDictionary *dic = response.content;
         NSMutableArray *ary = [dic objectForKey:@"entries"];
@@ -108,13 +106,12 @@
         }
         [_deivceDelegate switchViewControllerDropBox:_dropbox];
     } fail:^(DriveAPIResponse *response) {
-        [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudLogin_Load_Error", nil) btnClickedBlock:^{
+        [IMBCommonTool showSingleBtnAlertInMainWindow:nil btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"DropboxLogin_Load_Error", nil) btnClickedBlock:^{
             //            [self removeLoginLoadingAnimation];
             [(IMBDeviceViewController *)_deivceDelegate loadDataFial];
 
         }];
     }];
-    
 }
 
 - (void)recursiveDirectoryContentsDics:(NSString *)folerID {

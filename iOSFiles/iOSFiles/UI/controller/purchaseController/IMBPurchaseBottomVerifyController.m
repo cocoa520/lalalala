@@ -57,6 +57,9 @@
     
     [_secondViewActiveBtn setButtonTitle:CustomLocalizedString(@"register_window_title" , nil) withNormalTitleColor:COLOR_View_NORMAL withEnterTitleColor:COLOR_View_NORMAL withDownTitleColor:COLOR_View_NORMAL withForbiddenTitleColor:COLOR_View_NORMAL withTitleSize:14 WithLightAnimation:NO];
     [_secondViewActiveBtn setEnabled:NO];
+    
+    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithString:@"こちらへ＞" attributes:@{NSForegroundColorAttributeName : COLOR_BTN_BLUE_BG, NSUnderlineStyleAttributeName :@(NSUnderlineStyleSingle)}];
+    [_toActiveViewBtn setAttributedTitle:titleAttr];
 }
 
 - (void)startActive {

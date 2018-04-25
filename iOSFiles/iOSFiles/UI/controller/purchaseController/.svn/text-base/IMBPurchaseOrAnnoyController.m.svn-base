@@ -15,6 +15,9 @@
 #import "IMBPurchaseBottomVerifyController.h"
 
 
+#import "IMBViewAnimation.h"
+
+
 @interface IMBPurchaseOrAnnoyController ()
 
 @end
@@ -29,6 +32,11 @@
     
     IMBPurchaseBottomButtonController *bottomVc = [[IMBPurchaseBottomButtonController alloc] initWithNibName:@"IMBPurchaseBottomButtonController" bundle:nil];
     bottomVc.view.imb_origin = NSMakePoint(viewX, 40.f);
+    bottomVc.purchaseButtonTitle = CustomLocalizedString(@"Purchase_in_website", nil);
+    bottomVc.btnClicked = ^ {
+        //按钮点击
+        
+    };
     [vc.view addSubview:bottomVc.view];
     
     IMBPurchaseMiddleController *middleVc = [[IMBPurchaseMiddleController alloc] initWithNibName:@"IMBPurchaseMiddleController" bundle:nil];
@@ -78,7 +86,24 @@
     IMBPurchaseBottomButtonController *bottomVc = [[IMBPurchaseBottomButtonController alloc] initWithNibName:@"IMBPurchaseBottomButtonController" bundle:nil];
     bottomVc.view.imb_origin = NSMakePoint(viewX, 40.f);
     bottomVc.topView.hidden = YES;
+    bottomVc.purchaseButtonTitle = CustomLocalizedString(@"Purchase_with_halfPrice", nil);
+    
     [vc.view addSubview:bottomVc.view];
+    
+    bottomVc.btnClicked = ^ {
+        //按钮点击
+        IMBPurchaseBottomVerifyController *bottomVerifyVc = [[IMBPurchaseBottomVerifyController alloc] initWithNibName:@"IMBPurchaseBottomVerifyController" bundle:nil];
+        [vc.view addSubview:bottomVerifyVc.view];
+        bottomVerifyVc.view.frame = NSMakeRect(viewX, - bottomVc.view.imb_height, 928.f, 100.f);
+        
+        [IMBViewAnimation animationPositionYWithView:bottomVc.view toY:150.f timeInterval:0.2f completion:^{
+            bottomVc.view.hidden = YES;
+        }];
+        
+        [IMBViewAnimation animationPositionYWithView:bottomVerifyVc.view toY:40.f timeInterval:0.35f completion:^{
+            [bottomVc release];
+        }];
+    };
     
     IMBPurchaseMiddleController *middleVc = [[IMBPurchaseMiddleController alloc] initWithNibName:@"IMBPurchaseMiddleController" bundle:nil];
     middleVc.firstImage.image = [NSImage imageNamed:@"buy_icon01"];
@@ -141,4 +166,31 @@
     }
 }
 
+#pragma mark - mouse event
+- (void)mouseDown:(NSEvent *)theEvent {
+    
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+
+}
+
+-(void)mouseMoved:(NSEvent *)theEvent {
+    
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+
+}
+
+-(void)mouseEntered:(NSEvent *)theEvent {
+
+}
+
+#pragma mark - dealloc
+
+- (void)dealloc {
+    [super dealloc];
+    
+}
 @end

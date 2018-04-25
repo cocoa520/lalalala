@@ -392,7 +392,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 //	[self _refreshInset];
 //	__weak typeof(self) wSelf = self;
-    CNGridView *wSelf = self;
+    __block CNGridView *wSelf = self;
 	dispatch_async(dispatch_get_main_queue(), ^{
 	    [wSelf _refreshInset];
 	    [wSelf updateReuseableItems];

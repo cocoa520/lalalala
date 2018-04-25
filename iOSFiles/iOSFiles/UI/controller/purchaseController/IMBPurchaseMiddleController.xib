@@ -183,7 +183,7 @@ iPad間にシンプルに転送できます。</string>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2Fs-Md-fFf">
-                    <rect key="frame" x="345" y="278" width="219" height="17"/>
+                    <rect key="frame" x="347" y="278" width="213" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AllFiles正式版を今すぐ入手する理由" id="7NB-KW-0zA">
                         <font key="font" size="12" name="HelveticaNeue"/>
@@ -192,7 +192,7 @@ iPad間にシンプルに転送できます。</string>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CCu-HH-YK4">
-                    <rect key="frame" x="48" y="245" width="361" height="17"/>
+                    <rect key="frame" x="42" y="245" width="361" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="無料版の制限機能を解除" id="ErL-5g-EKc">
                         <font key="font" size="12" name="HelveticaNeue"/>
@@ -201,7 +201,7 @@ iPad間にシンプルに転送できます。</string>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Nbx-Sk-X53">
-                    <rect key="frame" x="524" y="245" width="377" height="17"/>
+                    <rect key="frame" x="524" y="245" width="377" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="特典サービスを楽しめる" id="omV-vN-MEH">
                         <font key="font" size="12" name="HelveticaNeue"/>

@@ -522,6 +522,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
 - (void)deviceConnection {
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     
+    //设备连接成功
     deviceConnection.IMBDeviceConnected = ^{
         NSDictionary *dimensionDict = nil;
         @autoreleasepool {
@@ -536,7 +537,12 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
         //设备连接成功
         [self deviceConnectedWithConnection:deviceConnection];
     };
+    
+    //设备断开连接
     deviceConnection.IMBDeviceDisconnected = ^(NSString *serialNum){
+        
+        [IMBNotiCenter postNotificationName:IMBDeviceDisconnectedNoti object:serialNum];
+        
         NSDictionary *dimensionDict = nil;
         @autoreleasepool {
             [TempHelper customViewType:2 withCategoryEnum:0];
@@ -547,7 +553,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
             [dimensionDict release];
             dimensionDict = nil;
         }
-        //设备断开连接
+        
         NSMutableArray *allDevices = [NSMutableArray array];
         if (deviceConnection.allDevices.count) {
             for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 83
-/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController
+/svn/Mac/!svn/ver/3109/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController
 END
 IMBPurchaseMiddleController.m
 K 25
@@ -9,29 +9,29 @@ svn:wc:ra_dav:version-url
 V 113
 /svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseMiddleController.m
 END
-IMBPurchaseLeftNumController.xib
-K 25
-svn:wc:ra_dav:version-url
-V 116
-/svn/Mac/!svn/ver/2917/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.xib
-END
 IMBPurchaseBottomButtonController.m
 K 25
 svn:wc:ra_dav:version-url
 V 119
-/svn/Mac/!svn/ver/2917/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.m
+/svn/Mac/!svn/ver/3188/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.m
+END
+IMBPurchaseLeftNumController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mac/!svn/ver/3161/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.xib
 END
 IMBPurchaseLeftNumController.h
 K 25
 svn:wc:ra_dav:version-url
 V 114
-/svn/Mac/!svn/ver/2931/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.h
+/svn/Mac/!svn/ver/3080/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.h
 END
 IMBPurchaseLeftNumController.m
 K 25
 svn:wc:ra_dav:version-url
 V 114
-/svn/Mac/!svn/ver/2931/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.m
+/svn/Mac/!svn/ver/3080/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseLeftNumController.m
 END
 IMBPurchaseOrAnnoyController.xib
 K 25
@@ -49,7 +49,7 @@ IMBPurchaseBottomVerifyController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 121
-/svn/Mac/!svn/ver/3015/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.xib
+/svn/Mac/!svn/ver/3181/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.xib
 END
 IMBPurchaseOrAnnoyController.h
 K 25
@@ -63,41 +63,41 @@ svn:wc:ra_dav:version-url
 V 116
 /svn/Mac/!svn/ver/3015/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseTopVerifyController.h
 END
-IMBPurchaseBottomVerifyController.h
-K 25
-svn:wc:ra_dav:version-url
-V 119
-/svn/Mac/!svn/ver/3015/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.h
-END
 IMBPurchaseMiddleController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 115
-/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseMiddleController.xib
+/svn/Mac/!svn/ver/3161/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseMiddleController.xib
+END
+IMBPurchaseBottomVerifyController.h
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Mac/!svn/ver/3181/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.h
 END
 IMBPurchaseOrAnnoyController.m
 K 25
 svn:wc:ra_dav:version-url
 V 114
-/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseOrAnnoyController.m
+/svn/Mac/!svn/ver/3188/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseOrAnnoyController.m
 END
 IMBPurchaseBottomButtonController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 121
-/svn/Mac/!svn/ver/2917/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.xib
+/svn/Mac/!svn/ver/3161/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.xib
 END
 IMBPurchaseTopVerifyController.m
 K 25
 svn:wc:ra_dav:version-url
 V 116
-/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseTopVerifyController.m
+/svn/Mac/!svn/ver/3181/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseTopVerifyController.m
 END
 IMBPurchaseBottomVerifyController.m
 K 25
 svn:wc:ra_dav:version-url
 V 119
-/svn/Mac/!svn/ver/3015/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.m
+/svn/Mac/!svn/ver/3181/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomVerifyController.m
 END
 IMBPurchaseMiddleController.h
 K 25
@@ -109,5 +109,5 @@ IMBPurchaseBottomButtonController.h
 K 25
 svn:wc:ra_dav:version-url
 V 119
-/svn/Mac/!svn/ver/2917/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.h
+/svn/Mac/!svn/ver/3188/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController/IMBPurchaseBottomButtonController.h
 END

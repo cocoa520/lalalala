@@ -52,9 +52,18 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     }
     return self;
 }
+- (void)dealloc {
+    [super dealloc];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [IMBNotiCenter removeObserver:self name:IMBDeviceDisconnectedNoti object:nil];
+}
 
 -(void)awakeFromNib {
     [super awakeFromNib];
+    
+    [IMBNotiCenter addObserver:self selector:@selector(disconnectedDevice:) name:IMBDeviceDisconnectedNoti object:nil];
+    
     if (_alertSuperView) {
         NSMutableArray *obArr = objc_getAssociatedObject([NSApplication sharedApplication], &kIMBMainPageWindowAlertView);
         NSMutableArray *newObArr = [NSMutableArray array];
@@ -208,7 +217,22 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)doSwitchView:(id)sender {
     [_baseViewController doSwitchView:sender];
 }
-
+//设备断开连接
+- (void)disconnectedDevice:(NSNotification *)noti {
+    NSString *serNum = [noti object];
+    if ([serNum isEqualToString:_iPod.uniqueKey]) {
+        NSView *view = nil;
+        for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
+            if ([subView isMemberOfClass:[NSClassFromString(@"IMBTranferBackgroundView") class]]) {
+                view = subView;
+                break;
+            }
+        }
+        for (NSView *subView in view.subviews) {
+            [subView removeFromSuperview];
+        }
+    }
+}
 #pragma mark - toolbar上 搜索、购物车 和 传输  按钮点击事件
 - (IBAction)toolbarSearchClicked:(IMBHoverChangeImageBtn *)sender {
     [(IMBBaseViewController*)_baseViewController doSearchBtn:_searchView.stringValue withSearchBtn:_searchView];
@@ -234,7 +258,9 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         _purchaseVc = nil;
     }
     view.hidden = NO;
-    _purchaseVc = [IMBPurchaseOrAnnoyController purchase];
+    _topcoverView.hidden = NO;
+    
+    _purchaseVc = [IMBPurchaseOrAnnoyController purchase];//[IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:80 toDeviceLeftNum:20 toCloudLeftNum:0];
     _purchaseVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
     [view addSubview:_purchaseVc.view];
     _purchaseVc.closeClicked = ^{
@@ -243,10 +269,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }];
     };
     
-    
-    
     [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:0 timeInterval:timeInterval completion:^{
-        _topcoverView.hidden = NO;
+        
     }];
     
 }
@@ -259,7 +283,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         _isShowCompleteView = NO;
         _isShowTranfer = YES;
         [tranferView reparinitialization];
-        [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - 360+4 , -6, 360, tranferView.view.frame.size.height)];
+        [tranferView.view setFrame:NSMakeRect([_delegate window].contentView.frame.size.width - 360 + 4 , -6, 360, tranferView.view.frame.size.height)];
         
         NSView *view = nil;
         for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
@@ -405,8 +429,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             if (_chooseModelEnum == baseInfo.chooseModelEnum) {
                 return;
             }
-        }
-        if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey] || _chooseModelEnum == baseInfo.chooseModelEnum) {
+        }else if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
             return;
         }else {
             IMBiPod *ipod = [connection getiPodByKey:baseInfo.uniqueKey];
@@ -482,7 +505,11 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
                         [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:_iPod.uniqueKey];
                     }
                 }else if (baseInfo.chooseModelEnum == DeviceLogEnum) {
-                    return;
+                    windowController = [viewManager.windowDic objectForKey:@"DropBox"];
+                    if (!windowController) {
+                        IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
+                        [_delegate switchMainPageViewControllerWithiPod:[deviceConnection getiPodByKey:baseInfo.uniqueKey] withKey:baseInfo.uniqueKey withCloud:_iPod.uniqueKey];
+                    }
                 }
             }
             if (dimensionDict) {
@@ -904,9 +931,5 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     }
 }
 
-- (void)dealloc {
-    [super dealloc];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
-}
 
 @end

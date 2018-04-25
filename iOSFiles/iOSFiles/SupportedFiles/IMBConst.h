@@ -25,6 +25,8 @@ APPKIT_EXTERN NSString * const IMBDevicePageShowToolbarNoti;
 APPKIT_EXTERN NSString * const IMBDevicePageHideToolbarNoti;
 
 APPKIT_EXTERN NSString * const IMBGridViewCommandANoti;
+APPKIT_EXTERN NSString * const IMBDeviceDisconnectedNoti;
+
 //设备数据加载完成
 APPKIT_EXTERN NSString * const DeviceDataLoadCompletePhoto;
 APPKIT_EXTERN NSString * const deviceDataLoadCompleteBooks;

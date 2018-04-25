@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="17E199" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16G1314" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -7,6 +7,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBPurchaseBottomVerifyController">
             <connections>
+                <outlet property="_secondViewActiveBtn" destination="dAo-qs-9dD" id="TjR-mu-cju"/>
+                <outlet property="_secondViewInputTextFiled" destination="xcN-PX-OAA" id="DdN-Hz-QCA"/>
+                <outlet property="_secondViewInputTextFiledBgView" destination="N4u-Kk-G8r" id="eYR-vy-QvC"/>
+                <outlet property="_toActiveViewBtn" destination="3ST-oe-ZWz" id="sta-6c-VK1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -17,16 +21,24 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QLV-j8-J8g">
-                    <rect key="frame" x="451" y="83" width="37" height="17"/>
+                    <rect key="frame" x="285" y="96" width="284" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Q0G-eC-XTz">
-                        <font key="font" metaFont="system"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="プロダクトキー（ライセンスコード）がある場合、" id="Q0G-eC-XTz">
+                        <font key="font" size="12" name="HelveticaNeue"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="3ST-oe-ZWz">
+                    <rect key="frame" x="564" y="88" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="こちらへ＞ " bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="xrU-QM-iFi">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                    </buttonCell>
+                </button>
                 <customView id="N4u-Kk-G8r" customClass="IMBWhiteView">
-                    <rect key="frame" x="269" y="28" width="400" height="30"/>
+                    <rect key="frame" x="269" y="30" width="400" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button id="dAo-qs-9dD" customClass="IMBGridientButton">

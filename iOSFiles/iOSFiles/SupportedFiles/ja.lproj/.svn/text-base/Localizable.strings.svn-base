@@ -329,6 +329,7 @@
 "cloud_NoItems_MoveConfirm" = "移動できるフォルダはありません。";
 
 "iCloudLogin_Load_Error" = "iCloud Driveにアクセスできません。";
+"DropboxLogin_Load_Error" = "Dropboxにアクセスできません。";
 "Common_id_2" = "詳細";
 "PortableDevice_Title_1" = "あなたの %@ のポータブルドライバーのインストールが正しくありません";
 "PortableDevice_Setup_1_Open" = "クリックしてデバイスマネージャーを開く";
@@ -432,7 +433,6 @@
 "Purchase_text_007" = "1.ライセンスコードで認証すると、すぐ制限なしのフル機能\nを使用できます。";
 "Purchase_text_008" = "3.年間無休の技術サポートとカスタマイズされ解決策\nをお楽しみ頂けます。";
 
-"Purchase_Button_text" = "こちらから購入できる";
 
 
 "Purchase_left_toMac_num" = "iOSデバイスファイルのエクスポート：";
@@ -444,7 +444,11 @@
 "Purchase_bought_reason_text" = "AllFiles正式版を今すぐ入手する理由";
 "Purchase_OfficialVersion_Welfare" = "正式版の特典サービス";
 
-"xxxx-xxxx-xxxx-xxxx-xxxx" = "xxxx-xxxx-xxxx-xxxx-xxxx";
+"xxxx-xxxx-xxxx-xxxx-xxxx" = "プロダクトキー（ライセンスコード）を入力";
+
+"Purchase_unlimit_btn_title" = "機能制限を解除";
+"Purchase_with_halfPrice" = "今すぐAllFilesを半額で入手";
+"Purchase_in_website" = "こちらから購入できる";
 
 /**************** AllFiles Url ****************/
 "anytrans_common_home" = "https://www.iphone-utility.com/allfiles";

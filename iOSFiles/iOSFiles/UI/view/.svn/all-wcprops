@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/Mac/!svn/ver/2993/JPProject/iOSFiles/iOSFiles/UI/view
+/svn/Mac/!svn/ver/3109/JPProject/iOSFiles/iOSFiles/UI/view
 END
 IMBDottedlLineView.h
 K 25
@@ -295,7 +295,7 @@ IMBAlertSupeView.h
 K 25
 svn:wc:ra_dav:version-url
 V 77
-/svn/Mac/!svn/ver/1945/JPProject/iOSFiles/iOSFiles/UI/view/IMBAlertSupeView.h
+/svn/Mac/!svn/ver/3081/JPProject/iOSFiles/iOSFiles/UI/view/IMBAlertSupeView.h
 END
 CapacityView.h
 K 25
@@ -321,6 +321,12 @@ svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/1945/JPProject/iOSFiles/iOSFiles/UI/view/IMBAlertSupeView.m
 END
+IMBPurcahseLeftNumLabel.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/3080/JPProject/iOSFiles/iOSFiles/UI/view/IMBPurcahseLeftNumLabel.h
+END
 CapacityView.m
 K 25
 svn:wc:ra_dav:version-url
@@ -338,6 +344,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/2261/JPProject/iOSFiles/iOSFiles/UI/view/BRNumberFormatter.h
+END
+IMBPurcahseLeftNumLabel.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mac/!svn/ver/3200/JPProject/iOSFiles/iOSFiles/UI/view/IMBPurcahseLeftNumLabel.m
 END
 BRNumberFormatter.m
 K 25
@@ -357,12 +369,6 @@ svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/1253/JPProject/iOSFiles/iOSFiles/UI/view/IMBSelectionView.h
 END
-DownloadTextFieldView.h
-K 25
-svn:wc:ra_dav:version-url
-V 82
-/svn/Mac/!svn/ver/1865/JPProject/iOSFiles/iOSFiles/UI/view/DownloadTextFieldView.h
-END
 IMBCustomCornerView.m
 K 25
 svn:wc:ra_dav:version-url
@@ -374,6 +380,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/2262/JPProject/iOSFiles/iOSFiles/UI/view/IMBCodeTextField.h
+END
+DownloadTextFieldView.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/1865/JPProject/iOSFiles/iOSFiles/UI/view/DownloadTextFieldView.h
 END
 IMBSelectionView.m
 K 25

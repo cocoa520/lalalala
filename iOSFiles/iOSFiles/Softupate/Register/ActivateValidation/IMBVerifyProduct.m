@@ -218,12 +218,12 @@
 }
 
 - (KeyStateStruct *)verifyProductLicense:(NSString *)license {
-    
+
    //判断是否是Phonetrans Pro或Podtrans Pro
    //进行三种注册码的验证
    //  Anytrans:'A' 'T'  PhoneTrans: 'P' 'E'  PodTrans: ‘P’ ‘O’
     KeyStateStruct *ks=nil;
-    ks = [IMBVerifyActivate verify:license id1:'A' id2:'T'];
+    ks = [IMBVerifyActivate verify:license id1:'A' id2:'F'];
     return ks;
 }
 

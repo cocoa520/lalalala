@@ -10,6 +10,9 @@
 #import "IMBDownloadListViewController.h"
 #import "IMBDriveEntity.h"
 #import "IMBMainPageViewController.h"
+#import "IMBPurcahseLeftNumLabel.h"
+
+
 @class IMBTranferViewController;
 static id _instance = nil;
 @interface IMBTranferViewController ()
@@ -24,6 +27,8 @@ static id _instance = nil;
 @synthesize appKey = _appKey;
 @synthesize showWindowDelegate = _showWindowDelegate;
 @synthesize reloadDelegate = _reloadDelegate;
+@synthesize leftNums = _leftNums;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
@@ -56,6 +61,9 @@ static id _instance = nil;
     [_topLeftBtn setAttributedTitle:attrString];
     
 
+    
+    [_limitView setBackgroundColor:COLOR_PURCHASE_COLUMN_BG];
+    
     [_topRightBtn setHasBorder:NO];
     [_topRightBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_View_NORMAL withRightNormalBgColor:COLOR_View_NORMAL withLeftEnterBgColor:COLOR_View_NORMAL withRightEnterBgColor:COLOR_View_NORMAL withLeftDownBgColor:COLOR_View_NORMAL withRightDownBgColor:COLOR_View_NORMAL withLeftForbiddenBgColor:COLOR_View_NORMAL withRightForbiddenBgColor:COLOR_View_NORMAL];
     [_topRightBtn setButtonTitle:CustomLocalizedString(@"Transfer_ClearAll", nil) withNormalTitleColor:COLOR_TEXT_EXPLAIN withEnterTitleColor:COLOR_TEXT_PASSAFTER withDownTitleColor:COLOR_TEXT_CLICK withForbiddenTitleColor:COLOR_TEXT_EXPLAIN withTitleSize:12 WithLightAnimation:NO];
@@ -64,8 +72,15 @@ static id _instance = nil;
     [_historyBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_View_NORMAL withRightNormalBgColor:COLOR_View_NORMAL withLeftEnterBgColor:COLOR_View_NORMAL withRightEnterBgColor:COLOR_View_NORMAL withLeftDownBgColor:COLOR_View_NORMAL withRightDownBgColor:COLOR_View_NORMAL withLeftForbiddenBgColor:COLOR_View_NORMAL withRightForbiddenBgColor:COLOR_View_NORMAL];
     [_historyBtn setButtonTitle:CustomLocalizedString(@"Transfer_History", nil) withNormalTitleColor:COLOR_TEXT_EXPLAIN withEnterTitleColor:COLOR_TEXT_PASSAFTER withDownTitleColor:COLOR_TEXT_CLICK withForbiddenTitleColor:COLOR_TEXT_EXPLAIN withTitleSize:14 WithLightAnimation:NO];
     
+    [_unlimitBtn setHasBorder:NO];
+    [_unlimitBtn setAlignment:NSCenterTextAlignment];
+    
+    [_unlimitBtn setIsLeftRightGridient:YES withLeftNormalBgColor:COLOR_PURCHASE_COLUMN_BG withRightNormalBgColor:COLOR_PURCHASE_COLUMN_BG withLeftEnterBgColor:COLOR_PURCHASE_COLUMN_BG withRightEnterBgColor:COLOR_PURCHASE_COLUMN_BG withLeftDownBgColor:COLOR_PURCHASE_COLUMN_BG withRightDownBgColor:COLOR_PURCHASE_COLUMN_BG withLeftForbiddenBgColor:COLOR_PURCHASE_COLUMN_BG withRightForbiddenBgColor:COLOR_PURCHASE_COLUMN_BG];
+    [_unlimitBtn setButtonTitle:CustomLocalizedString(@"Purchase_unlimit_btn_title", nil) withNormalTitleColor:COLOR_TEXT_PASSAFTER withEnterTitleColor:COLOR_TEXT_PASSAFTER withDownTitleColor:COLOR_TEXT_PASSAFTER withForbiddenTitleColor:COLOR_TEXT_PASSAFTER withTitleSize:14 WithLightAnimation:NO];
+    
     [_topBoxs setContentView:_topView];
     [_bottomBoxs setContentView:_bottomView];
+    [_limitBox setContentView:_limitView];
     
     [_topBottomLine setBackgroundColor:COLOR_TEXT_LINE];
     [_bottomLineView setBorderColor:COLOR_TEXT_LINE];
@@ -93,6 +108,21 @@ static id _instance = nil;
     [self.view setWantsLayer:YES];
     [self.view.layer setMasksToBounds:YES];
     [self.view.layer setCornerRadius:5];
+    
+    _titleLabel.textColor = COLOR_PURCHASE_TITLE_TEXT;
+    _titleLabel.font = [NSFont fontWithName:IMBCommonFont size:14.f];
+    
+    _titleLabel.stringValue = CustomLocalizedString(@"Purchase_left_num_tips", nil);
+    
+    
+    _firstLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToMac;
+    _firstLabel.leftNum = 6;//[_leftNums[0] integerValue];
+    
+    _secondLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToDevice;
+    _secondLabel.leftNum = 6;//[_leftNums[1] integerValue];
+    
+    _thirdLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToCloud;
+    _thirdLabel.leftNum = 6;//[_leftNums[2] integerValue];
    
 }
 
@@ -291,6 +321,9 @@ static id _instance = nil;
 
 
 #pragma mark - operation action
+- (IBAction)unlimitClicked:(id)sender {
+    
+}
 
 - (IBAction)upLoadBtn:(id)sender {
     _isDownLoadView = NO;

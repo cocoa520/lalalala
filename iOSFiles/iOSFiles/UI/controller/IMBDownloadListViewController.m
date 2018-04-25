@@ -910,6 +910,7 @@
             downloaditem.fileName = CustomLocalizedString(@"MenuItem_id_12", nil);
             
         }
+            break;
         case Category_iBooks:
         {
             downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_books"];
