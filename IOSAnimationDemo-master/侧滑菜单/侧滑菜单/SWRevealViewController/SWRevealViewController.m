@@ -329,7 +329,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     BOOL stableDrag;
     FrontViewPosition position = _c.frontViewPosition;
     
-    int symetry = x<0 ? -1 : 1;
+    int symetry = x< 0 ? -1 : 1;
     
     [_c _getRevealWidth:&revealWidth revealOverDraw:&revealOverdraw forSymetry:symetry];
     [_c _getBounceBack:&bounceBack pStableDrag:&stableDrag forSymetry:symetry];
