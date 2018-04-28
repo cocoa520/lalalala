@@ -57,7 +57,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="K0w-QW-REa" customClass="IMBPurcahseLeftNumLabel">
-                    <rect key="frame" x="361" y="43" width="216" height="22"/>
+                    <rect key="frame" x="358" y="43" width="224" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="0H4-W2-hDd">
                         <font key="font" size="12" name="HelveticaNeue"/>

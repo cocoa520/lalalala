@@ -1841,38 +1841,39 @@
     if (_isTableViewEdit && !_curEntity.isCreating) {
         _isTableViewEdit = NO;
         if (_curEntity) {
-            if ([self hasSameNameWithName:_editTextField.stringValue]) {
-                //TODO   添加新名字和已有名字重复的提醒
-                NSString *key = nil;
-                NSString *alertString = nil;
-                switch (_chooseLogModelEnmu) {
-                    case iCloudLogEnum:
-                    {
-                        key = IMBAlertViewiCloudKey;
-                    }
-                        break;
-                    case DropBoxLogEnum:
-                    {
-                        key = IMBAlertViewDropBoxKey;
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
-                if (_curEntity.isFolder) {
-                    alertString = CustomLocalizedString(@"RenameTipsFolder", nil);
-                }else {
-                    alertString = CustomLocalizedString(@"RenameTipsFile", nil);
-                }
-                [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:alertString firstBtnClickedBlock:^{
-                    [self setNewNameWithName:[self checkoutName:_curEntity.fileName]];
-                } secondBtnClickedBlock:^{
-                    [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
-                }];
-            }else {
-                [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
-            }
+            [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
+//            if ([self hasSameNameWithName:_editTextField.stringValue]) {
+//                //TODO   添加新名字和已有名字重复的提醒
+//                NSString *key = nil;
+//                NSString *alertString = nil;
+//                switch (_chooseLogModelEnmu) {
+//                    case iCloudLogEnum:
+//                    {
+//                        key = IMBAlertViewiCloudKey;
+//                    }
+//                        break;
+//                    case DropBoxLogEnum:
+//                    {
+//                        key = IMBAlertViewDropBoxKey;
+//                    }
+//                        break;
+//                        
+//                    default:
+//                        break;
+//                }
+//                if (_curEntity.isFolder) {
+//                    alertString = CustomLocalizedString(@"RenameTipsFolder", nil);
+//                }else {
+//                    alertString = CustomLocalizedString(@"RenameTipsFile", nil);
+//                }
+//                [IMBCommonTool showTwoBtnsAlertInMainWindow:key firstBtnTitle:CustomLocalizedString(@"Button_Cancel", nil) secondBtnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:alertString firstBtnClickedBlock:^{
+//                    [self setNewNameWithName:[self checkoutName:_curEntity.fileName]];
+//                } secondBtnClickedBlock:^{
+//                    [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
+//                }];
+//            }else {
+//                [self setNewNameWithName:[self checkoutName:_editTextField.stringValue]];
+//            }
             
         }
     }
@@ -1880,7 +1881,7 @@
 }
 
 - (void)setNewNameWithName:(NSString *)name {
-    NSString *newName = name;//[self checkoutName:_editTextField.stringValue];//_editTextField.stringValue;
+    NSString *newName = [self checkoutName:_editTextField.stringValue];//_editTextField.stringValue;
     _editTextField.stringValue = newName;
     if (![StringHelper stringIsNilOrEmpty:newName] && ![_curEntity.fileName isEqualToString:newName]) {
         _curEntity.fileName = newName;

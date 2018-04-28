@@ -15,17 +15,65 @@ svn:wc:ra_dav:version-url
 V 87
 /svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device.png
 END
-popup_icon_iphone_blue@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 102
-/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_blue@2x.png
-END
 popup_icon_iphone_gray.png
 K 25
 svn:wc:ra_dav:version-url
 V 99
 /svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_gray.png
+END
+mod_icon_checkbox_selected.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_icon_checkbox_selected.png
+END
+nav_icon_help_hover.png
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/nav_icon_help_hover.png
+END
+mod_device@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device@2x.png
+END
+device_icon_arrow.png
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/device_icon_arrow.png
+END
+popup_icon_iphone_blue.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_blue.png
+END
+mod_device_detail_ipad@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_ipad@2x.png
+END
+mod_device_no.png
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_no.png
+END
+mod_device_detail_ipodtouch.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mac/!svn/ver/3350/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_ipodtouch.png
+END
+popup_icon_iphone_blue@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_blue@2x.png
 END
 mod_device_detail_iphoneN.png
 K 25
@@ -51,23 +99,11 @@ svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_no@2x.png
 END
-mod_icon_checkbox_selected.png
-K 25
-svn:wc:ra_dav:version-url
-V 103
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_icon_checkbox_selected.png
-END
 mod_dropboxdrive.png
 K 25
 svn:wc:ra_dav:version-url
 V 93
 /svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_dropboxdrive.png
-END
-nav_icon_help_hover.png
-K 25
-svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/nav_icon_help_hover.png
 END
 mod_icon_checkbox@2x.png
 K 25
@@ -75,17 +111,17 @@ svn:wc:ra_dav:version-url
 V 97
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_icon_checkbox@2x.png
 END
+mod_device_detail_ipodtouch@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mac/!svn/ver/3350/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_ipodtouch@2x.png
+END
 mod_iclouddrive.png
 K 25
 svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_iclouddrive.png
-END
-mod_device@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device@2x.png
 END
 popup_icon_iphone_gray@2x.png
 K 25
@@ -93,17 +129,17 @@ svn:wc:ra_dav:version-url
 V 102
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_gray@2x.png
 END
-mod_device_detail_iphoneX.png
-K 25
-svn:wc:ra_dav:version-url
-V 102
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_iphoneX.png
-END
 mod_device_detail_iphoneN@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 105
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_iphoneN@2x.png
+END
+mod_device_detail_iphoneX.png
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_iphoneX.png
 END
 mod_device_detail_ipad.png
 K 25
@@ -129,12 +165,6 @@ svn:wc:ra_dav:version-url
 V 96
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_dropboxdrive@2x.png
 END
-device_icon_arrow.png
-K 25
-svn:wc:ra_dav:version-url
-V 94
-/svn/Mac/!svn/ver/1703/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/device_icon_arrow.png
-END
 nav_icon_help_hover@2x.png
 K 25
 svn:wc:ra_dav:version-url
@@ -147,12 +177,6 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_iclouddrive@2x.png
 END
-popup_icon_iphone_blue.png
-K 25
-svn:wc:ra_dav:version-url
-V 99
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/popup_icon_iphone_blue.png
-END
 mod_device_detail_iphoneX@2x.png
 K 25
 svn:wc:ra_dav:version-url
@@ -164,16 +188,4 @@ K 25
 svn:wc:ra_dav:version-url
 V 88
 /svn/Mac/!svn/ver/2396/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/window_logo.png
-END
-mod_device_detail_ipad@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 102
-/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_detail_ipad@2x.png
-END
-mod_device_no.png
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons/mod_device_no.png
 END

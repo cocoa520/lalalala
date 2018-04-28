@@ -114,6 +114,8 @@
         return @"iPhoneN";
     } else if (_family > 3000) {
         return @"iPad";
+    }else if (_family > 1000 && _family < 2000) {
+        return @"iPod touch";
     }
     return @"";
 }

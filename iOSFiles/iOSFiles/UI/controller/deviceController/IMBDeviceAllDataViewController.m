@@ -2468,6 +2468,8 @@
             [_detailImageView setImage:[NSImage imageNamed:@"mod_device_detail_iphoneN"]];
         }else if ([familyString isEqualToString:@"iPhoneX"]) {
             [_detailImageView setImage:[NSImage imageNamed:@"mod_device_detail_iphoneX"]];
+        }else if ([familyString isEqualToString:@"iPod touch"]) {
+            [_detailImageView setImage:[NSImage imageNamed:@"mod_device_detail_ipodtouch"]];
         }else {
             [_detailImageView setImage:[NSImage imageNamed:@"mod_device_detail_ipad"]];
         }
@@ -2475,10 +2477,6 @@
         
         _detailCreateTime.stringValue = CustomLocalizedString(@"Show_Detail_Device_Type", nil);
         _detailCreateTimeContent.stringValue = [_iPod.deviceInfo getIPodFamilyString];
-//        [_detailCreateTime setHidden:YES];
-//        [_detailCreateTimeContent setHidden:YES];
-//        [_detailSize setHidden:YES];
-//        [_detailSizeContent setHidden:YES];
     }
 }
 
@@ -2937,7 +2935,7 @@
     [_openPanel setCanChooseFiles:YES];
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode== NSFileHandlingPanelOKButton) {
+        if (returnCode == NSFileHandlingPanelOKButton) {
             NSArray *urlArr = [_openPanel URLs];
             NSMutableArray *paths = [NSMutableArray array];
             for (NSURL *url in urlArr) {

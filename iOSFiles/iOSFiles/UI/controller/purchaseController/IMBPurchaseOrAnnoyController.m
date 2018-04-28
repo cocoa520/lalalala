@@ -78,8 +78,8 @@
 //    bottomVc = nil;
     [middleVc release];
     middleVc = nil;
-    [topVc release];
-    topVc = nil;
+//    [topVc release];
+//    topVc = nil;
     
     return vc;
 }

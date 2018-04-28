@@ -99,6 +99,7 @@
         _secondViewActiveBtn.enabled = NO;
     }
     _isBackspaseDown = NO;
+    _secondViewInputTextFiled.stringValue = [_secondViewInputTextFiled.stringValue uppercaseString];
     
 }
 

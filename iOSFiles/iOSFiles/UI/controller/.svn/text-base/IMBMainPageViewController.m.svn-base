@@ -23,6 +23,7 @@
 #import "IMBSearchView.h"
 #import "IMBPurchaseOrAnnoyController.h"
 #import "IMBViewAnimation.h"
+#import "IMBLimitation.h"
 
 
 #import <objc/runtime.h>
@@ -280,7 +281,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [tranferView setDelegate:self];
     tranferView.unlimitClicked = ^{
         _isShowTranfer = NO;
-        IMBPurchaseOrAnnoyController *annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:50 toDeviceLeftNum:20 toCloudLeftNum:0];
+        
+        IMBPurchaseOrAnnoyController *annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToMac] toDeviceLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToDevice] toCloudLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToCloud]];
         annoyVc.view.imb_x = 1096.f - tranferView.view.imb_width;
         [tranferView.view.superview addSubview:annoyVc.view];
         [tranferView.view removeFromSuperview];

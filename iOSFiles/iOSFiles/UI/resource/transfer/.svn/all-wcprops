@@ -9,17 +9,17 @@ svn:wc:ra_dav:version-url
 V 107
 /svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_close.png
 END
-transferlist_history_icon_del_hover.png
-K 25
-svn:wc:ra_dav:version-url
-V 111
-/svn/Mac/!svn/ver/1906/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del_hover.png
-END
 transferlist_icon_folder_hover@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 109
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_folder_hover@2x.png
+END
+transferlist_history_icon_del_hover.png
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mac/!svn/ver/1906/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del_hover.png
 END
 message-box-error.png
 K 25
@@ -33,23 +33,17 @@ svn:wc:ra_dav:version-url
 V 106
 /svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_word.png
 END
-transferlist_icon_start_hover.png
-K 25
-svn:wc:ra_dav:version-url
-V 105
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_start_hover.png
-END
 transferlist_icon_delall_hover.png
 K 25
 svn:wc:ra_dav:version-url
 V 106
 /svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_delall_hover.png
 END
-transferlist_history_icon_video@2x.png
+transferlist_icon_start_hover.png
 K 25
 svn:wc:ra_dav:version-url
-V 110
-/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_video@2x.png
+V 105
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_start_hover.png
 END
 transferlist_history_icon_list_folder@2x.png
 K 25
@@ -57,17 +51,23 @@ svn:wc:ra_dav:version-url
 V 116
 /svn/Mac/!svn/ver/2591/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_list_folder@2x.png
 END
+transferlist_history_icon_video@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_video@2x.png
+END
+transferlist_history_icon_app.png
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mac/!svn/ver/3350/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_app.png
+END
 transferlist_history_icon_del_hover@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 114
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del_hover@2x.png
-END
-transferlist_icon_del.png
-K 25
-svn:wc:ra_dav:version-url
-V 97
-/svn/Mac/!svn/ver/2591/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_del.png
 END
 transferlist_icon_history_hover.png
 K 25
@@ -75,17 +75,23 @@ svn:wc:ra_dav:version-url
 V 107
 /svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_history_hover.png
 END
-transferlist_history_icon_word@2x.png
+transferlist_icon_del.png
 K 25
 svn:wc:ra_dav:version-url
-V 109
-/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_word@2x.png
+V 97
+/svn/Mac/!svn/ver/2591/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_del.png
 END
 transferlist_history_blankpage_ai.png
 K 25
 svn:wc:ra_dav:version-url
 V 109
 /svn/Mac/!svn/ver/2311/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_blankpage_ai.png
+END
+transferlist_history_icon_word@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_word@2x.png
 END
 transferlist_history_icon_img@2x.png
 K 25
@@ -207,17 +213,17 @@ svn:wc:ra_dav:version-url
 V 108
 /svn/Mac/!svn/ver/1998/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_folder.png
 END
-transferlist_history_icon_del@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 108
-/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del@2x.png
-END
 transferlist_history_icon_contacts.png
 K 25
 svn:wc:ra_dav:version-url
 V 110
 /svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_contacts.png
+END
+transferlist_history_icon_del@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del@2x.png
 END
 transferlist_history_icon_close@2x.png
 K 25
@@ -255,17 +261,17 @@ svn:wc:ra_dav:version-url
 V 95
 /svn/Mac/!svn/ver/2527/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/message-box-success.png
 END
-transferlist_history_icon_folder_hover@2x.png
-K 25
-svn:wc:ra_dav:version-url
-V 117
-/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_folder_hover@2x.png
-END
 transferlist_history_icon_common.png
 K 25
 svn:wc:ra_dav:version-url
 V 108
 /svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_common.png
+END
+transferlist_history_icon_folder_hover@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_folder_hover@2x.png
 END
 transferlist_icon_history@2x.png
 K 25
@@ -285,17 +291,17 @@ svn:wc:ra_dav:version-url
 V 112
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_blankpage_ai@2x.png
 END
-transferlist_icon_uploading.png
-K 25
-svn:wc:ra_dav:version-url
-V 103
-/svn/Mac/!svn/ver/2333/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_uploading.png
-END
 message-box-success@2x.png
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2537/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/message-box-success@2x.png
+END
+transferlist_icon_uploading.png
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mac/!svn/ver/2333/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_uploading.png
 END
 transferlist_history_icon_ppt.png
 K 25
@@ -309,17 +315,17 @@ svn:wc:ra_dav:version-url
 V 105
 /svn/Mac/!svn/ver/1998/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_del.png
 END
-transferlist_history_icon_video.png
-K 25
-svn:wc:ra_dav:version-url
-V 107
-/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_video.png
-END
 transferlist_history_icon_list_folder.png
 K 25
 svn:wc:ra_dav:version-url
 V 113
 /svn/Mac/!svn/ver/2591/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_list_folder.png
+END
+transferlist_history_icon_video.png
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_video.png
 END
 transferlist_history_icon_dmg.png
 K 25
@@ -333,17 +339,17 @@ svn:wc:ra_dav:version-url
 V 113
 /svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_close_hover.png
 END
-transferlist_icon_start.png
-K 25
-svn:wc:ra_dav:version-url
-V 99
-/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_start.png
-END
 transferlist_icon_delall.png
 K 25
 svn:wc:ra_dav:version-url
 V 100
 /svn/Mac/!svn/ver/1973/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_delall.png
+END
+transferlist_icon_start.png
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Mac/!svn/ver/2270/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_icon_start.png
 END
 transferlist_history_icon_ppt@2x.png
 K 25
@@ -392,6 +398,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 113
 /svn/Mac/!svn/ver/2556/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_contacts@2x.png
+END
+transferlist_history_icon_app@2x.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mac/!svn/ver/3350/JPProject/iOSFiles/iOSFiles/UI/resource/transfer/transferlist_history_icon_app@2x.png
 END
 message-box-progress@2x.png
 K 25
