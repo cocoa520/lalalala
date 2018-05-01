@@ -15,10 +15,25 @@ typedef enum : NSUInteger {
 } IMBLimitationType;
 
 @interface IMBLimitation : NSObject
+{
+    @private
+    int _leftToMacNums;
+    int _leftToDeviceNums;
+    int _leftToCloudNums;
+}
+
+@property(nonatomic, assign)int leftToMacNums;
+@property(nonatomic, assign)int leftToDeviceNums;
+@property(nonatomic, assign)int leftToCloudNums;
+
 
 + (instancetype)sharedLimitation;
 
 - (void)initializeConfigurationInfo;
+/**
+ *  获取所有的剩余数并进行对属性的赋值
+ */
+- (void)getRestNumsWithNum;
 /**
  *  存取剩余个数
  *  @param restNum 剩余个数

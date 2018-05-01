@@ -17,6 +17,11 @@ static IMBLimitation *_instance = nil;
 
 @implementation IMBLimitation
 
+#pragma mark - 
+@synthesize leftToMacNums = _leftToMacNums;
+@synthesize leftToDeviceNums = _leftToDeviceNums;
+@synthesize leftToCloudNums = _leftToCloudNums;
+
 #pragma mark - 单例实现
 + (instancetype)sharedLimitation {
     static dispatch_once_t onceToken;
@@ -54,6 +59,11 @@ static IMBLimitation *_instance = nil;
     }
 }
 #pragma mark - methods
+- (void)getRestNumsWithNum {
+    _leftToMacNums = [self getRestNumsWithType:IMBLimitationTypeToMac];
+    _leftToCloudNums = [self getRestNumsWithType:IMBLimitationTypeToCloud];
+    _leftToDeviceNums = [self getRestNumsWithType:IMBLimitationTypeToDevice];
+}
 /**
  *  @return -1则为 错误信息
  */
