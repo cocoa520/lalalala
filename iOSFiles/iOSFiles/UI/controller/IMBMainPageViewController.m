@@ -56,8 +56,10 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 - (void)dealloc {
     [super dealloc];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [IMBNotiCenter removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     [IMBNotiCenter removeObserver:self name:IMBDeviceDisconnectedNoti object:nil];
+    [IMBNotiCenter removeObserver:self name:IMBRegisteredSuccessfulNoti object:nil];
+    
 }
 
 -(void)awakeFromNib {
@@ -199,10 +201,19 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [self.view setWantsLayer:YES];
     [self.view.layer setMasksToBounds:YES];
     [self.view.layer setCornerRadius:5];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(registerSuccess) name:IMBRegisteredSuccessfulNoti object:nil];
 }
 
 #pragma -- mark  Actions
+- (void)registerSuccess {
+    if (_purchaseVc) {
+        [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:.35f completion:^{
+            _topcoverView.hidden = YES;
+        }];
+    }
+    
+}
 - (void)toMac:(IMBInformation *)information {
 
 }
@@ -282,24 +293,29 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     tranferView.unlimitClicked = ^{
         _isShowTranfer = NO;
         
-        IMBPurchaseOrAnnoyController *annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToMac] toDeviceLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToDevice] toCloudLeftNum:[[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToCloud]];
-        annoyVc.view.imb_x = 1096.f - tranferView.view.imb_width;
-        [tranferView.view.superview addSubview:annoyVc.view];
+        _annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:[[IMBLimitation sharedLimitation] leftToMacNums] toDeviceLeftNum:[[IMBLimitation sharedLimitation] leftToDeviceNums] toCloudLeftNum:[[IMBLimitation sharedLimitation] leftToCloudNums]];
+        _annoyVc.view.imb_x = 1096.f - tranferView.view.imb_width;
+        [tranferView.view.superview addSubview:_annoyVc.view];
         [tranferView.view removeFromSuperview];
         
-        annoyVc.closeClicked = ^{
+        _annoyVc.closeClicked = ^{
             //关闭按钮点击
-            [IMBViewAnimation animationPositionXWithView:annoyVc.view toX:1096.f timeInterval:0.45f completion:^{
-                [annoyVc.view removeFromSuperview];
+            [IMBViewAnimation animationPositionXWithView:_annoyVc.view toX:1096.f timeInterval:0.45f completion:^{
+                [_annoyVc.view removeFromSuperview];
             }];
         };
         
-        [IMBViewAnimation animationPositionXWithView:annoyVc.view toX:0 timeInterval:0.35f completion:^{
+        [IMBViewAnimation animationPositionXWithView:_annoyVc.view toX:0 timeInterval:0.35f completion:^{
             
         }];
     };
     [tranferView transferBtn:_transferBtn];
     if (!_isShowTranfer) {
+        if ([IMBSoftWareInfo singleton].isRegistered) {
+            [tranferView setLimitViewShowing:NO];
+        }else {
+            [tranferView setLimitViewShowing:YES];
+        }
         _isShowCompleteView = NO;
         _isShowTranfer = YES;
         [tranferView reparinitialization];

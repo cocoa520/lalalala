@@ -11,6 +11,8 @@
 #import "customTextFiled.h"
 #import "IMBWhiteView.h"
 #import "IMBCommonDefine.h"
+#import "IMBSoftWareInfo.h"
+#import "IMBRegisterResultView.h"
 
 
 @interface IMBPurchaseBottomVerifyController ()
@@ -110,7 +112,17 @@
     }
 }
 - (void)startActive {
-    
+    BOOL success = [[IMBSoftWareInfo singleton] registerSoftware:_secondViewInputTextFiled.stringValue];
+    if (success) {
+        _registerResultView.iconImageView.image = [NSImage imageNamed:@"message-box-success"];
+        _registerResultView.msgTextfield.stringValue = CustomLocalizedString(@"verification_success_id", nil);
+        _registerResultView.msgTextfield.textColor = [NSColor grayColor];
+        [IMBNotiCenter postNotificationName:IMBRegisteredSuccessfulNoti object:nil];
+    }else {
+        _registerResultView.iconImageView.image = [NSImage imageNamed:@"message-box-error"];
+        _registerResultView.msgTextfield.stringValue = CustomLocalizedString(@"verification_failed_id", nil);
+        _registerResultView.msgTextfield.textColor = [NSColor redColor];
+    }
 }
 
 @end

@@ -34,6 +34,7 @@ typedef enum : NSUInteger {
  *  获取所有的剩余数并进行对属性的赋值
  */
 - (void)getRestNumsWithNum;
+- (void)saveRestNums;
 /**
  *  存取剩余个数
  *  @param restNum 剩余个数

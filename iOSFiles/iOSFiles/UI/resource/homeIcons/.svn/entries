@@ -1,15 +1,15 @@
 10
 
 dir
-3238
+3390
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-10T08:56:46.000586Z
-2575
-huyumin
+2018-04-28T04:22:56.363813Z
+3350
+hezhonglin
 
 
 
@@ -402,7 +402,7 @@ has-props
 
 mod_device_detail_ipodtouch.png
 file
-3350
+
 
 
 
@@ -505,40 +505,6 @@ has-props
 RightMouse
 dir
 
-mod_device_no@2x.png
-file
-
-
-
-
-2018-04-10T02:05:51.000000Z
-ef0610b6dd58dcb85ade7f937673c0ca
-2018-04-10T01:58:45.774135Z
-2537
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-45586
-
 nav_icon_help.png
 file
 
@@ -572,6 +538,40 @@ has-props
 
 
 585
+
+mod_device_no@2x.png
+file
+
+
+
+
+2018-04-10T02:05:51.000000Z
+ef0610b6dd58dcb85ade7f937673c0ca
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45586
 
 mod_dropboxdrive.png
 file
@@ -641,40 +641,6 @@ has-props
 
 386
 
-mod_device_detail_ipodtouch@2x.png
-file
-3350
-
-
-
-2018-04-28T03:08:54.000000Z
-d0696c4f5a7702f547641d19ff561eb6
-2018-04-28T04:22:56.363813Z
-3350
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-22346
-
 mod_iclouddrive.png
 file
 
@@ -708,6 +674,43 @@ has-props
 
 
 4255
+
+mod_device_detail_ipodtouch@2x.png
+file
+
+
+
+
+2018-04-28T03:08:54.000000Z
+d0696c4f5a7702f547641d19ff561eb6
+2018-04-28T04:22:56.363813Z
+3350
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+22346
+
+devicePage
+dir
 
 popup_icon_iphone_gray@2x.png
 file
@@ -743,8 +746,39 @@ has-props
 
 853
 
-devicePage
-dir
+mod_device_detail_iphoneX.png
+file
+
+
+
+
+2018-04-02T10:51:32.000000Z
+bd58c1055c25fc865ee563332d889bc8
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6112
 
 mod_device_detail_iphoneN@2x.png
 file
@@ -779,40 +813,6 @@ has-props
 
 
 22667
-
-mod_device_detail_iphoneX.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-bd58c1055c25fc865ee563332d889bc8
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6112
 
 mod_device_detail_ipad.png
 file

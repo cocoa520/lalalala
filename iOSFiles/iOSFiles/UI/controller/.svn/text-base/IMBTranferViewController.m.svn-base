@@ -36,8 +36,8 @@ static id _instance = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-//    [self performSelector:@selector(addKeyAnimation) withObject:nil afterDelay:.5f];
-    [self addKeyAnimation];
+    [self performSelector:@selector(addKeyAnimation) withObject:nil afterDelay:.5f];
+//    [self addKeyAnimation];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -110,7 +110,7 @@ static id _instance = nil;
     [_removeAllCompleDataBtn WithMouseExitedfillColor:COLOR_BOTTN_Exited_COLOR WithMouseUpfillColor:COLOR_BOTTN_Exited_COLOR WithMouseDownfillColor:COLOR_BOTTN_Down_COLOR withMouseEnteredfillColor:COLOR_BOTTN_Down_COLOR];
     [_removeAllCompleDataBtn WithMouseExitedLineColor:[NSColor clearColor] WithMouseUpLineColor:[NSColor clearColor] WithMouseDownLineColor:[NSColor clearColor] withMouseEnteredLineColor:[NSColor clearColor]];
     [_removeAllCompleDataBtn WithMouseExitedtextColor:[NSColor whiteColor] WithMouseUptextColor:[NSColor whiteColor] WithMouseDowntextColor:[NSColor whiteColor] withMouseEnteredtextColor:[NSColor whiteColor]];
-    [_removeAllCompleDataBtn setTitleName:CustomLocalizedString(@"Clearall", nil) WithDarwRoundRect:4 WithLineWidth:0 withFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
+    [_removeAllCompleDataBtn setTitleName:CustomLocalizedString(@"Clearall", nil) WithDarwRoundRect:4 WithLineWidth:0 withFont:[NSFont fontWithName:IMBCommonFont size:14]];
     [self.view setWantsLayer:YES];
     [self.view.layer setMasksToBounds:YES];
     [self.view.layer setCornerRadius:5];
@@ -122,16 +122,25 @@ static id _instance = nil;
     
     
     _firstLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToMac;
-    _firstLabel.leftNum = [[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToMac];
+    _firstLabel.leftNum = [[IMBLimitation sharedLimitation] leftToMacNums];
     
     _secondLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToDevice;
-    _secondLabel.leftNum = [[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToDevice];
+    _secondLabel.leftNum = [[IMBLimitation sharedLimitation] leftToDeviceNums];
     
     _thirdLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToCloud;
-    _thirdLabel.leftNum = [[IMBLimitation sharedLimitation] getRestNumsWithType:IMBLimitationTypeToCloud];
-    
-    
+    _thirdLabel.leftNum = [[IMBLimitation sharedLimitation] leftToCloudNums];
    
+}
+
+- (void)setLimitViewShowing:(BOOL)showing {
+    if (showing) {
+        _limitBoxH.constant = 140;
+        _limitView.hidden = NO;
+    }else {
+        _limitBoxH.constant = 0;
+        _limitView.hidden = YES;
+    }
+    
 }
 
 - (void)addKeyAnimation {
@@ -139,7 +148,7 @@ static id _instance = nil;
     _keyImageView.wantsLayer = YES;
     
     [IMBViewAnimation animationMouseEnteredExitedWithView:_keyImageView frame:NSMakeRect(307.f, 98.f, 16.f, 16.f) timeInterval:2.f disable:NO completion:^{
-        
+        _keyImageView.frame = NSMakeRect(307.f, 98.f, 16.f, 16.f);
     }];
 }
 
@@ -402,6 +411,10 @@ static id _instance = nil;
 }
 
 - (IBAction)showHistoryBtnDown:(id)sender {
+    
+    _limitBoxH.constant = 0;
+    _limitView.hidden = YES;
+    
     NSDictionary *dimensionDict = nil;
     if ([_showWindowDelegate chooseModelEnum] == iCloudLogEnum) {
         @autoreleasepool {

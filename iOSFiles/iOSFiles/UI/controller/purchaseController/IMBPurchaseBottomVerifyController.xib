@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBPurchaseBottomVerifyController">
             <connections>
+                <outlet property="_registerResultView" destination="1Q7-oc-Fk4" id="xge-tX-b6k"/>
                 <outlet property="_secondViewActiveBtn" destination="dAo-qs-9dD" id="TjR-mu-cju"/>
                 <outlet property="_secondViewInputTextFiled" destination="xcN-PX-OAA" id="DdN-Hz-QCA"/>
                 <outlet property="_secondViewInputTextFiledBgView" destination="N4u-Kk-G8r" id="eYR-vy-QvC"/>
@@ -59,6 +60,10 @@
                             </textFieldCell>
                         </textField>
                     </subviews>
+                </customView>
+                <customView id="1Q7-oc-Fk4" customClass="IMBRegisterResultView">
+                    <rect key="frame" x="269" y="21" width="163" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
             </subviews>
         </customView>

@@ -75,6 +75,11 @@ static IMBLimitation *_instance = nil;
         return -1;
     }
 }
+- (void)saveRestNums {
+    [self saveRestNumsWithNum:self.leftToMacNums type:IMBLimitationTypeToMac];
+    [self saveRestNumsWithNum:self.leftToDeviceNums type:IMBLimitationTypeToDevice];
+    [self saveRestNumsWithNum:self.leftToCloudNums type:IMBLimitationTypeToCloud];
+}
 /**
  *  存取剩余个数
  *  @param restNum 剩余个数
@@ -122,5 +127,25 @@ static IMBLimitation *_instance = nil;
     return NO;
 }
 
+- (void)setLeftToMacNums:(int)leftToMacNums {
+    _leftToMacNums = leftToMacNums;
+    if (leftToMacNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+    }
+}
+
+- (void)setLeftToDeviceNums:(int)leftToDeviceNums {
+    _leftToDeviceNums = leftToDeviceNums;
+    if (leftToDeviceNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+    }
+}
+
+- (void)setLeftToCloudNums:(int)leftToCloudNums {
+    _leftToCloudNums = leftToCloudNums;
+    if (leftToCloudNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+    }
+}
 
 @end

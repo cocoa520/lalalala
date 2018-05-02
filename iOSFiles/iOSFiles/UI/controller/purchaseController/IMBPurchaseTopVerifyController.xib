@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="IMBPurchaseTopVerifyController">
             <connections>
+                <outlet property="_registerResultView" destination="Lxt-KG-ZI7" id="GF2-Xi-SJb"/>
                 <outlet property="_secondViewActiveBtn" destination="Edh-8J-hRS" id="KrZ-YE-b8f"/>
                 <outlet property="_secondViewInputTextFiled" destination="eWe-0A-aJg" id="9L9-TE-ZnC"/>
                 <outlet property="_secondViewInputTextFiledBgView" destination="9cB-70-pqY" id="yf9-Z3-jT9"/>

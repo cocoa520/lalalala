@@ -61,6 +61,9 @@
     
     IBOutlet NSImageView *_keyImageView;
     
+    
+    IBOutlet NSLayoutConstraint *_limitBoxH;
+    
 }
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) id reloadDelegate;
@@ -132,6 +135,7 @@
 - (void)removeAllHistoryAry;
 - (void)transferBtn:(IMBHoverChangeImageBtn *)transferBtn;
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
+- (void)setLimitViewShowing:(BOOL)showing;
 /**
  *  完成界面删除所有记录
  */

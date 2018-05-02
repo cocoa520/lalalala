@@ -53,6 +53,7 @@
     
     IMBPurchaseOrAnnoyController *_purchaseVc;
     IBOutlet IMBCoverView *_topcoverView;
+    IMBPurchaseOrAnnoyController *_annoyVc;
     
 }
 @property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;

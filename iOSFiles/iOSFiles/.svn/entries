@@ -1,14 +1,14 @@
 10
 
 dir
-3238
+3390
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-25T11:00:47.782080Z
-3219
+2018-05-02T07:41:09.879584Z
+3388
 longfan
 
 
@@ -26,16 +26,13 @@ longfan
 
 a323380f-3d89-8743-8c24-0bf67719c927
 
-Media
+ja.lproj
 dir
 
 deviceConnection
 dir
 
-ja.lproj
-dir
-
-Log
+Media
 dir
 
 IMBCommonDefine.h
@@ -71,6 +68,9 @@ has-props
 
 
 4897
+
+Log
+dir
 
 Transfer
 dir
@@ -109,10 +109,10 @@ huyumin
 
 1470
 
-iBooks
+Applications
 dir
 
-Applications
+iBooks
 dir
 
 Photo
@@ -124,13 +124,13 @@ dir
 Base.lproj
 dir
 
-CloudDrive
+Model
 dir
 
 Utils
 dir
 
-Model
+CloudDrive
 dir
 
 OopenSource

@@ -92,6 +92,7 @@
     
     //初始化配置信息
     [[IMBLimitation sharedLimitation] initializeConfigurationInfo];
+    [[IMBLimitation sharedLimitation] getRestNumsWithNum];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -101,6 +102,7 @@
     if ([fm fileExistsAtPath:appTempPath]) {
         [fm removeItemAtPath:appTempPath error:nil];
     }
+    //这里要做限制的剩余个数存储
 }
 
 - (void)awakeFromNib {

@@ -349,6 +349,11 @@
 		B91BBC122087516F00D80793 /* buy_icon07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC022087516F00D80793 /* buy_icon07@2x.png */; };
 		B91BBC132087516F00D80793 /* buy_icon08.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC032087516F00D80793 /* buy_icon08.png */; };
 		B91BBC142087516F00D80793 /* buy_icon08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91BBC042087516F00D80793 /* buy_icon08@2x.png */; };
+		B91CDA9620940BD00092D88D /* transferlist_history_icon_app.png in Resources */ = {isa = PBXBuildFile; fileRef = B91CDA9420940BD00092D88D /* transferlist_history_icon_app.png */; };
+		B91CDA9720940BD00092D88D /* transferlist_history_icon_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91CDA9520940BD00092D88D /* transferlist_history_icon_app@2x.png */; };
+		B91CDA9A2094128A0092D88D /* IMBRegisterResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B91CDA992094128A0092D88D /* IMBRegisterResultView.m */; };
+		B91CDA9D20941EF30092D88D /* mod_device_detail_ipodtouch.png in Resources */ = {isa = PBXBuildFile; fileRef = B91CDA9B20941EF30092D88D /* mod_device_detail_ipodtouch.png */; };
+		B91CDA9E20941EF30092D88D /* mod_device_detail_ipodtouch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B91CDA9C20941EF30092D88D /* mod_device_detail_ipodtouch@2x.png */; };
 		B920D0CC2022B6640077F606 /* IMBFileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */; };
 		B923AC712088403E00E62AED /* IMBPurchaseLeftNumController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923AC6F2088403E00E62AED /* IMBPurchaseLeftNumController.m */; };
 		B923AC722088403E00E62AED /* IMBPurchaseLeftNumController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B923AC702088403E00E62AED /* IMBPurchaseLeftNumController.xib */; };
@@ -1669,6 +1674,12 @@
 		B91BBC022087516F00D80793 /* buy_icon07@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon07@2x.png"; sourceTree = "<group>"; };
 		B91BBC032087516F00D80793 /* buy_icon08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_icon08.png; sourceTree = "<group>"; };
 		B91BBC042087516F00D80793 /* buy_icon08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_icon08@2x.png"; sourceTree = "<group>"; };
+		B91CDA9420940BD00092D88D /* transferlist_history_icon_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transferlist_history_icon_app.png; sourceTree = "<group>"; };
+		B91CDA9520940BD00092D88D /* transferlist_history_icon_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transferlist_history_icon_app@2x.png"; sourceTree = "<group>"; };
+		B91CDA982094128A0092D88D /* IMBRegisterResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBRegisterResultView.h; sourceTree = "<group>"; };
+		B91CDA992094128A0092D88D /* IMBRegisterResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBRegisterResultView.m; sourceTree = "<group>"; };
+		B91CDA9B20941EF30092D88D /* mod_device_detail_ipodtouch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mod_device_detail_ipodtouch.png; sourceTree = "<group>"; };
+		B91CDA9C20941EF30092D88D /* mod_device_detail_ipodtouch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mod_device_detail_ipodtouch@2x.png"; sourceTree = "<group>"; };
 		B920D0CA2022B6640077F606 /* IMBFileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBFileSystemManager.h; sourceTree = "<group>"; };
 		B920D0CB2022B6640077F606 /* IMBFileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBFileSystemManager.m; sourceTree = "<group>"; };
 		B923AC6E2088403E00E62AED /* IMBPurchaseLeftNumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBPurchaseLeftNumController.h; sourceTree = "<group>"; };
@@ -4893,6 +4904,8 @@
 				B90BDEA920665F2A007E84EA /* devicePage */,
 				34DD6D7B207C649600320F39 /* RightMouse */,
 				34DD6E03207C94A600320F39 /* window_logo@2x.png */,
+				B91CDA9B20941EF30092D88D /* mod_device_detail_ipodtouch.png */,
+				B91CDA9C20941EF30092D88D /* mod_device_detail_ipodtouch@2x.png */,
 				34DD6CF1207C4B7D00320F39 /* popup_icon_iphone_blue@2x.png */,
 				34DD6CF2207C4B7D00320F39 /* popup_icon_iphone_gray@2x.png */,
 				34DD6CD5207C493C00320F39 /* nav_icon_help_hover@2x.png */,
@@ -5387,6 +5400,8 @@
 		EE0AD8B12065FF4700307EB1 /* transfer */ = {
 			isa = PBXGroup;
 			children = (
+				B91CDA9420940BD00092D88D /* transferlist_history_icon_app.png */,
+				B91CDA9520940BD00092D88D /* transferlist_history_icon_app@2x.png */,
 				0C88E7C8207CD5A0008AFE65 /* transferlist_history_icon_list_folder.png */,
 				0C88E7C9207CD5A0008AFE65 /* transferlist_history_icon_list_folder@2x.png */,
 				34DD6DCE207C71C600320F39 /* transferlist_history_icon_books.png */,
@@ -5891,6 +5906,8 @@
 				B93E56492089F40900AD31A6 /* IMBCoverView.m */,
 				B94649E5208ED820006A5225 /* IMBPurcahseLeftNumLabel.h */,
 				B94649E6208ED820006A5225 /* IMBPurcahseLeftNumLabel.m */,
+				B91CDA982094128A0092D88D /* IMBRegisterResultView.h */,
+				B91CDA992094128A0092D88D /* IMBRegisterResultView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6204,6 +6221,7 @@
 				B91BBC052087516F00D80793 /* buy_icon01.png in Resources */,
 				B90BDE772065FA51007E84EA /* arrow@2x.png in Resources */,
 				34DD6DF5207C71C600320F39 /* transferlist_history_icon_video@2x.png in Resources */,
+				B91CDA9D20941EF30092D88D /* mod_device_detail_ipodtouch.png in Resources */,
 				B9E3E0112063D6A3008DDF92 /* checkbox3@2x.png in Resources */,
 				34DD6DF8207C71C600320F39 /* transferlist_history_icon_zip.png in Resources */,
 				34DD6D14207C4E0900320F39 /* transferlist_history_icon_folder@2x.png in Resources */,
@@ -6286,6 +6304,7 @@
 				B95BD51D20243FB400297F02 /* DetailVCHeaderTitleTrackNames.plist in Resources */,
 				B9E3E0342063D6A3008DDF92 /* device_name_icloud@2x.png in Resources */,
 				B9E739542027FB2100E1BB3B /* MP4Box in Resources */,
+				B91CDA9620940BD00092D88D /* transferlist_history_icon_app.png in Resources */,
 				B9E3DFF52063D6A3008DDF92 /* exit2.png in Resources */,
 				B9E3E0DA2063D6A3008DDF92 /* tool_setting_normal.png in Resources */,
 				B9E3E0BA2063D6A3008DDF92 /* add_item3.png in Resources */,
@@ -6516,6 +6535,7 @@
 				B9E3E0C72063D6A3008DDF92 /* tool_exit_normal@2x.png in Resources */,
 				B91BBC132087516F00D80793 /* buy_icon08.png in Resources */,
 				B9E3E0062063D6A3008DDF92 /* windowclose.png in Resources */,
+				B91CDA9E20941EF30092D88D /* mod_device_detail_ipodtouch@2x.png in Resources */,
 				EE22C411207B427900B9CF27 /* cnt_foldericon_otherfiles.png in Resources */,
 				B9E3E0D32063D6A3008DDF92 /* tool_sel_icons_down@2x.png in Resources */,
 				B9113C402044F80E0023E09F /* ffmpeg in Resources */,
@@ -6570,6 +6590,7 @@
 				0C44F5CF207241C600000C94 /*  topbox_icon_signout_default.png in Resources */,
 				B90BDEF420665F2A007E84EA /* toolbar_icon_todevice.png in Resources */,
 				B9E3E0B82063D6A3008DDF92 /* add_item2.png in Resources */,
+				B91CDA9720940BD00092D88D /* transferlist_history_icon_app@2x.png in Resources */,
 				B91BBC112087516F00D80793 /* buy_icon07.png in Resources */,
 				34DD6D5A207C4E9F00320F39 /* toolbar_icon_moveto@2x.png in Resources */,
 				34DD6D1E207C4E0900320F39 /* transferlist_icon_uploading@2x.png in Resources */,
@@ -7080,6 +7101,7 @@
 				B96562EF2021D2B000BD7FF5 /* File_ChannelGrouping.cpp in Sources */,
 				B96564A22021D47600BD7FF5 /* IMBPlaylist.m in Sources */,
 				B965647D2021D47600BD7FF5 /* IMBArtworkDB.m in Sources */,
+				B91CDA9A2094128A0092D88D /* IMBRegisterResultView.m in Sources */,
 				B96564852021D47600BD7FF5 /* IMBiPod.m in Sources */,
 				B965648B2021D47600BD7FF5 /* IMBiTunesCDBRoot.m in Sources */,
 				B96563742021D2B000BD7FF5 /* File_VorbisCom.cpp in Sources */,

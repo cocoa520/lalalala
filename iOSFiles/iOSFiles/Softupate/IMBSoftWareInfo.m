@@ -169,7 +169,7 @@
             _iosMoverDiscountUrl = [[dic objectForKey:@"IosMoverDiscountUrl"] retain];
         }
         
-        _isRegistered = YES;//[[dic objectForKey:@"IsRegistered"] boolValue];
+        _isRegistered = [[dic objectForKey:@"IsRegistered"] boolValue];
         _registerCodeArray = [[NSMutableArray arrayWithObjects:
                                @"7XNB-N8D4-WPXJ-Q3CY",
                                nil] retain];
@@ -504,14 +504,7 @@
     tmpRegisterCode = [tmpRegisterCode stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     tmpRegisterCode = [tmpRegisterCode stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     BOOL succeceed = NO;
-//    for (NSString *registerCode in _registerCodeArray) {
-//        succeceed =  [registerCode isEqualToString:tmpRegisterCode];
-//        if (succeceed) {
-//            break;
-//        }
-//    }
     succeceed = [self verifyActivateSoftware:tmpRegisterCode];
-    
     if (succeceed) {
         self.isRegistered = TRUE;
         NSDate *date = [NSDate date];
@@ -521,7 +514,6 @@
         [dateFormatter release];
         self.registeredCode = tmpRegisterCode;
         [self save];
-        // [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_SUCCEED object:nil  userInfo:nil];
     }
     return succeceed;
 }
@@ -529,46 +521,20 @@
 - (BOOL)verifyActivateSoftware:(NSString *)licenseStr {
     BOOL result = NO;
     KeyStateStruct *ks = [_verifyLicense verifyProductLicense:licenseStr];
-    if (!ks->valid) {
-        _isIllegal = YES;
-    }
-    
-    //验证是否有时间和版本限制
-    if (ks->versiolimitation == 0 && ks->valid) {
-        NSString *version = [NSString stringWithFormat:@"%d.%d.%d", ks->version1, ks->version2, ks->version3];
-        if ([_version compare:version] == NSOrderedDescending) {
-            [[IMBLogManager singleton] writeInfoLog:[NSString stringWithFormat:@"version limitation ver:%@",version]];
-            ks->valid = NO;
-            _isIllegal = YES;
-        }
-    }
-    
-    if (ks->activiate == 0 && ks->valid) {//在线激活
-        [[IMBLogManager singleton] writeInfoLog:@"Online Activation!"];
-        result = [self onlineVerifyActivateProduct:ks withLicensn:licenseStr];
-    }else if (ks->activiate == 1) {//本地激活
-        [[IMBLogManager singleton] writeInfoLog:@"Local Activation!"];
-        result = [_verifyLicense activeProduct:ks withLicensn:licenseStr];
-        if (result) {
-            self.registeredCode = licenseStr;
-            self.RegisteredStatus = Activate_Local;
-            self.isRegistered = TRUE;
-            NSDate *date = [NSDate date];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
-            self.registeredDate = [dateFormatter stringFromDate:date];
-            [dateFormatter release];
-            [self save];
-            //            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_SUCCEED object:nil userInfo:nil];
-        }else {
-            // 通知注册的页面注册码无效--->本地激活失败
-//            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:Activate_Local], @"RegisteredStatus", nil];
-            //            [nc postNotificationName:NOTIFY_REGISTER_LICENSE_INVALID object:nil userInfo:userInfo];
-        }
+    [[IMBLogManager singleton] writeInfoLog:@"Local Activation!"];
+    result = [_verifyLicense activeProduct:ks withLicensn:licenseStr];
+    if (result) {
+        self.registeredCode = licenseStr;
+        self.RegisteredStatus = Activate_Local;
+        self.isRegistered = TRUE;
+        NSDate *date = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+        self.registeredDate = [dateFormatter stringFromDate:date];
+        [dateFormatter release];
+        [self save];
     }else {
-        // 通知注册的页面注册码无效--->注册码不可用
-//        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:Activate_NO], @"RegisteredStatus", nil];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_LICENSE_INVALID object:nil userInfo:userInfo];
+
     }
     return result;
 }
@@ -645,6 +611,7 @@
         usleep(500);
     }
     isEditRegFile = YES;
+    _isRegistered = YES;
     NSString *path = [TempHelper resourcePathOfAppDir:@"IMBSoftware-Info" ofType:@"plist"];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     NSArray *allkeys = dic.allKeys;
@@ -702,6 +669,7 @@
         }
     }
     if([dic writeToFile:path atomically:YES]){
+        IMBFLog(@"success");
     }else{
     }
     [dic release];
