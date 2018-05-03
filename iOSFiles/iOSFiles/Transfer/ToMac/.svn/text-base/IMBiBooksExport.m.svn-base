@@ -11,8 +11,10 @@
 #import "StringHelper.h"
 #import "IMBZipHelper.h"
 #import "IMBFileSystem.h"
-//#import "IMBBackupManager.h"
+#import "IMBLimitation.h"
 #import "DateHelper.h"
+
+
 @implementation IMBiBooksExport
 
 - (void)startTransfer {
@@ -66,7 +68,7 @@
                         }
                         BOOL issuccess = [self copyRemoteFile:filePath toLocalFile:desfilePath];
                         if (issuccess) {
-//                            [_limitation reduceRedmainderCount];
+                            [IMBLimitation sharedLimitation].leftToMacNums--;
                             _successCount ++;
                             book.state = DownloadStateComplete;
                             IMBExportSetting *exportSetting = [[IMBExportSetting alloc]initWithIPod:_ipod];

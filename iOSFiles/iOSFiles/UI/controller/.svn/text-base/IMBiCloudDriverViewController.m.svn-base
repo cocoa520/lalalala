@@ -25,6 +25,16 @@
 #import "IMBDeviceConnection.h"
 #import "IMBCommonTool.h"
 #import "SystemHelper.h"
+#import "IMBMoveTransferManager.h"
+#import "AFNetworking.h"
+
+@interface IMBiCloudDriverViewController()
+
+{
+    AFNetworkReachabilityManager *_afReachabilityMgr;
+}
+
+@end
 
 @implementation IMBiCloudDriverViewController
 @synthesize baseInfo = _baseInfo;
@@ -42,6 +52,10 @@
 }
 
 - (void)dealloc {
+    if (_afReachabilityMgr) {
+        [_afReachabilityMgr release];
+        _afReachabilityMgr = nil;
+    }
     if (_dataSourceArray != nil) {
         [_dataSourceArray release];
         _dataSourceArray = nil;
@@ -149,6 +163,7 @@
     _gridView.allowsMultipleSelection = YES;
     _gridView.allowsMultipleSelectionWithDrag = YES;
     _gridView.allowClickMultipleSelection = NO;
+    [_gridView setGridDelegate:self];
     _gridView.commandADown = ^{
         //commandA
         IMBFLog(@"commandA");
@@ -178,6 +193,45 @@
             [cell setHasLeftTitleBorderLine:NO];
         }
     }
+    
+    _afReachabilityMgr = [AFNetworkReachabilityManager sharedManager];
+    
+    //2.监听网络状态的改变
+    /*
+     AFNetworkReachabilityStatusUnknown          = 未知
+     AFNetworkReachabilityStatusNotReachable     = 没有网络
+     AFNetworkReachabilityStatusReachableViaWWAN = 3G
+     AFNetworkReachabilityStatusReachableViaWiFi = WIFI
+     */
+    [_afReachabilityMgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                NSLog(@"未知");
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                NSLog(@"没有网络");
+                NSString *key = @"";
+                if (_chooseLogModelEnmu == iCloudLogEnum) {
+                    key = IMBAlertViewiCloudKey;
+                }else if (_chooseLogModelEnmu == iCloudLogEnum) {
+                    key = IMBAlertViewDropBoxKey;
+                }
+                [IMBCommonTool showSingleBtnAlertInMainWindow:key btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:@"No Network" btnClickedBlock:nil];
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                NSLog(@"3G");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                NSLog(@"WIFI");
+                break;
+                
+            default:
+                break;
+        }
+    }];
+    
+    //3.开始监听
+    [_afReachabilityMgr startMonitoring];
 }
 - (void)changeToolbarButton {
     NSArray *array = nil;
@@ -632,7 +686,6 @@
         }
     }
 }
-
 
 //排序
 - (void)sortClick:(id)sender {
@@ -2028,6 +2081,7 @@
     return isSameName;
     
 }
+
 - (void)moveToFolder:(id)sender {
     NSArray *displayArr = nil;
     if (_isSearch) {
@@ -2275,5 +2329,46 @@
     [_transferBtn endTranfering];
 }
 
+- (void)selectItemAry:(NSMutableArray *)itemAry {
+
+    NSMutableArray *selectedAry = [[NSMutableArray alloc]init];
+    NSMutableArray *disAry = nil;
+    if (_isSearch) {
+        disAry = _researchdataSourceArray;
+    }else{
+        disAry = _dataSourceArray;
+    }
+    for (NSString *tag in itemAry) {
+        IMBDriveEntity *driveEntity = [disAry objectAtIndex:[tag integerValue]];
+        [selectedAry addObject:driveEntity];
+    }
+    IMBMoveTransferManager *moveManager = [IMBMoveTransferManager singleton];
+    moveManager.originChooseModelEnum = _chooseLogModelEnmu;
+    moveManager.originDriveBaseManager = _driveBaseManage;
+    moveManager.selectedAry = [selectedAry retain];
+    [selectedAry release];
+    selectedAry = nil;
+}
+
+- (void)moveToItemIndex:(int)index {
+    IMBMoveTransferManager *moveManager = [IMBMoveTransferManager singleton];
+    moveManager.targerDriveBaseManager = _driveBaseManage;
+    moveManager.targerChooseModelEnum = _chooseLogModelEnmu;
+    if (moveManager.originChooseModelEnum == DeviceLogEnum) {
+        IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
+        for (IMBBaseInfo *baseInfo in deivceConnection.allDevices) {
+            if (baseInfo.chooseModelEnum == _chooseLogModelEnmu) {
+                baseInfo.isSelected = YES;
+            }
+        }
+        IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+        tranferView.reloadDelegate = self;
+        [tranferView downDeviceDataSoure:moveManager.selectedAry WithIsDown:NO WithiPod:moveManager.origniPod withCategoryNodesEnum:moveManager.categoryNodeEnum isExportPath:[TempHelper getAppTempPath] withSystemPath:nil];
+    }else {
+        if (moveManager.originChooseModelEnum != moveManager.targerChooseModelEnum) {
+            [moveManager driveToDriveDown:moveManager.selectedAry];
+        }
+    }
+}
 
 @end

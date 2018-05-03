@@ -27,17 +27,17 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *sessionDic = [defaults objectForKey:@"kAppAuthDropboxStateKey"];
-        if (sessionDic) {
-            NSString *accessToken = [sessionDic objectForKey:@"accessToken"];
-            NSString *refreshToken = [sessionDic objectForKey:@"refreshToken"];
-            NSDate *expirationDate = [sessionDic objectForKey:@"expirationDate"];
-            _dropbox.accessToken = accessToken;
-            _dropbox.refreshToken = refreshToken;
-            _dropbox.expirationDate = expirationDate;
-            [self loadDriveData];
-        }else{
+//        if (sessionDic) {
+//            NSString *accessToken = [sessionDic objectForKey:@"accessToken"];
+//            NSString *refreshToken = [sessionDic objectForKey:@"refreshToken"];
+//            NSDate *expirationDate = [sessionDic objectForKey:@"expirationDate"];
+//            _dropbox.accessToken = accessToken;
+//            _dropbox.refreshToken = refreshToken;
+//            _dropbox.expirationDate = expirationDate;
+//            [self loadDriveData];
+//        }else{
             [_dropbox logIn];
-        }
+//        }
         _deivceDelegate = delegate;
     }
     return self;

@@ -147,8 +147,10 @@ static id _instance = nil;
     _keyImageView.layer.anchorPoint = NSMakePoint(0.5, 0.5);
     _keyImageView.wantsLayer = YES;
     
-    [IMBViewAnimation animationMouseEnteredExitedWithView:_keyImageView frame:NSMakeRect(307.f, 98.f, 16.f, 16.f) timeInterval:2.f disable:NO completion:^{
-        _keyImageView.frame = NSMakeRect(307.f, 98.f, 16.f, 16.f);
+    [IMBViewAnimation animationMouseEnteredExitedWithView:_keyImageView frame:NSMakeRect(307.f, 107.f, 16.f, 16.f) timeInterval:2.f disable:NO completion:^{
+        _keyImageView.frame = NSMakeRect(307.f, 107.f, 16.f, 16.f);
+        _keyImageView.hidden = NO;
+        [_limitView addSubview:_keyImageView];
     }];
 }
 
@@ -295,7 +297,9 @@ static id _instance = nil;
         [_downLoadViewController transferBtn:_tranferBtn];
         [_boxView setContentView:_downLoadViewController.view];
     }
-    [_downLoadViewController dropBoxToDeviceAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+//    [_downLoadViewController dropBoxToDeviceAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent];
+    [_downLoadViewController dropBoxToDeviceAddDataSource:addDataSource WithIsDown:isDown WithDriveBaseManage:driveBaseManage withUploadParent:uploadParent withiPod:ipod];
+
     [self downLoadBtn:nil];
 }
 

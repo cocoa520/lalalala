@@ -285,7 +285,8 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 
 + (void)animationWithRotationWithLayer:(CALayer *)layer {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    animation.fromValue = @(2*M_PI);
+
+    animation.fromValue = @(-2*M_PI);
     animation.toValue = 0;
     animation.repeatCount = MAXFLOAT;
     animation.duration = 1.f;

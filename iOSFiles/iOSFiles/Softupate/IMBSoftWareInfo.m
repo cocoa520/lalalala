@@ -13,7 +13,9 @@
 #import "IMBDeviceInfo.h"
 #import "StringHelper.h"
 #import "TempHelper.h"
-//#import "OperationLImitation.h"
+#import "IMBLimitation.h"
+
+
 @implementation IMBSoftWareInfo
 @synthesize isFirstRun = _isFirstRun;
 @synthesize firstRunDateTime = _firstRunDateTime;
@@ -513,6 +515,8 @@
         self.registeredDate = [dateFormatter stringFromDate:date];
         [dateFormatter release];
         self.registeredCode = tmpRegisterCode;
+        [[IMBLimitation sharedLimitation] setRegisterStatus:1];
+        [[IMBLimitation sharedLimitation] saveRegisterStatus];
         [self save];
     }
     return succeceed;
@@ -611,7 +615,7 @@
         usleep(500);
     }
     isEditRegFile = YES;
-    _isRegistered = YES;
+//    _isRegistered = YES;
     NSString *path = [TempHelper resourcePathOfAppDir:@"IMBSoftware-Info" ofType:@"plist"];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     NSArray *allkeys = dic.allKeys;

@@ -498,9 +498,6 @@
             }
         });
     }
-    
-    
-    
 }
 
 - (void)notifyDownloadItem:(id<DownloadAndUploadDelegate>)item withDownloadError:(NSError *)error

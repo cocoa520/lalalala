@@ -55,6 +55,11 @@
     IBOutlet IMBCoverView *_topcoverView;
     IMBPurchaseOrAnnoyController *_annoyVc;
     
+    
+    IBOutlet IMBLineView *_topViewSepLine1;
+    
+    NSRect _originalSearchViewF;
+    
 }
 @property (nonatomic, assign) ChooseLoginModelEnum chooseModelEnum;
 @property (nonatomic, assign) BOOL isShowTranfer;

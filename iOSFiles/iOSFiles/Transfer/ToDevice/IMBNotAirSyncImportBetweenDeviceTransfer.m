@@ -8,6 +8,9 @@
 
 #import "IMBNotAirSyncImportBetweenDeviceTransfer.h"
 #import "IMBFileSystem.h"
+#import "IMBLimitation.h"
+
+
 @implementation IMBNotAirSyncImportBetweenDeviceTransfer
 
 - (void)startTransfer
@@ -60,7 +63,7 @@
 
                     if ( [_ipod.fileSystem copyFileBetweenDevice:track.srcFilePath sourDriverLetter:_srciPod.fileSystem.driveLetter targFileName:track.filePath targDriverLetter:_ipod.fileSystem.driveLetter sourDevice:_srciPod]) {
                         //统计成功
-//                        [_limitation reduceRedmainderCount];
+                        [IMBLimitation sharedLimitation].leftToDeviceNums--;
                         _successCount++;
                     }
                 }

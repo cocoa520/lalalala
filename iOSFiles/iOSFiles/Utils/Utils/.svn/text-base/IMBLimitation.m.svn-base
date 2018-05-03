@@ -11,6 +11,8 @@
 static IMBLimitation *_instance = nil;
 
 
+NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
+
 @interface IMBLimitation()<NSCopying>
 
 @end
@@ -21,6 +23,8 @@ static IMBLimitation *_instance = nil;
 @synthesize leftToMacNums = _leftToMacNums;
 @synthesize leftToDeviceNums = _leftToDeviceNums;
 @synthesize leftToCloudNums = _leftToCloudNums;
+@synthesize registerStatus = _registerStatus;
+
 
 #pragma mark - 单例实现
 + (instancetype)sharedLimitation {
@@ -123,12 +127,12 @@ static IMBLimitation *_instance = nil;
     }
 }
 
-- (BOOL)isRegistered {
-    return NO;
-}
 
 - (void)setLeftToMacNums:(int)leftToMacNums {
     _leftToMacNums = leftToMacNums;
+    if (_registerStatus) {
+        return;
+    }
     if (leftToMacNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
@@ -136,6 +140,9 @@ static IMBLimitation *_instance = nil;
 
 - (void)setLeftToDeviceNums:(int)leftToDeviceNums {
     _leftToDeviceNums = leftToDeviceNums;
+    if (_registerStatus) {
+        return;
+    }
     if (leftToDeviceNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
@@ -143,9 +150,24 @@ static IMBLimitation *_instance = nil;
 
 - (void)setLeftToCloudNums:(int)leftToCloudNums {
     _leftToCloudNums = leftToCloudNums;
+    if (_registerStatus) {
+        return;
+    }
     if (leftToCloudNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
 }
+
+
+- (void)saveRegisterStatus {
+//    _registerStatus = 0;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",_registerStatus] forKey:IMBLimitationRegisterStatus];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)getRegisterStatus {
+    _registerStatus = [[[NSUserDefaults standardUserDefaults] objectForKey:IMBLimitationRegisterStatus] intValue];
+}
+
 
 @end

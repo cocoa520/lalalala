@@ -15,10 +15,12 @@
 #import "CommonEnum.h"
 #import "NSString+Category.h"
 #import "IMBPhotoExportSettingConfig.h"
-//#import "IMBTransResult.h"
+#import "IMBLimitation.h"
 #import "IMBMediaInfo.h"
 #import "IMBPhotoHeicManager.h"
 #import "DriveItem.h"
+
+
 @implementation IMBPhotoFileExport
 @synthesize exportType = _exportType;
 
@@ -233,7 +235,7 @@
                                 [task launch];
                             }
                             pe.state = DownloadStateComplete;
-                            //                            [_limitation reduceRedmainderCount];
+                            [IMBLimitation sharedLimitation].leftToMacNums--;
                             _successCount += 1;
                         }else {
                             [[IMBTransferError singleton] addAnErrorWithErrorName:pe.fileName WithErrorReson:@"Coping file failed."];

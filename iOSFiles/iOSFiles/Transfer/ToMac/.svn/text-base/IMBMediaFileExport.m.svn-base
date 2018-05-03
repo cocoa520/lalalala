@@ -12,7 +12,7 @@
 #import "IMBTrack.h"
 //#import "IMBTransResult.h"
 #import "IMBFileSystem.h"
-//#import "IMBCommonDefine.h"
+#import "IMBLimitation.h"
 #import "IMBExportSetting.h"
 #import "IMBDeviceInfo.h"
 
@@ -86,7 +86,7 @@
                     }
                     if ([self copyRemoteFile:remotingFilePath toLocalFile:destFilePath]) {
 //                    if ([self asyncCopyRemoteFile:remotingFilePath toLocalFile:destFilePath]) {
-//                        [_limitation reduceRedmainderCount];
+                        [IMBLimitation sharedLimitation].leftToMacNums--;
                         _successCount += 1;
                         track.currentSize = 0;
                         _curSize  = 0;

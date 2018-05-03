@@ -39,6 +39,7 @@
 #import "IMBNotificationDefine.h"
 #import "IMBDeviceAllDataViewController.h"
 #import "IMBDragSingle.h"
+#import "IMBiCloudDriverViewController.h"
 //#if !__has_feature(objc_arc)
 //#error "Please use ARC for compiling this file."
 //#endif
@@ -134,7 +135,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 @synthesize isFileManager = _isFileManager;
 @synthesize isSelectView = _isSelectView;
 @synthesize allowClickMultipleSelection = _allowClickMultipleSelection;
-
+@synthesize gridDelegate = _gridDelegate;
 
 #pragma mark - Initialization
 - (id)init {
@@ -1309,7 +1310,6 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 	}
 }
 
-
 #pragma mark - drop
 - (void)registerForDraggedTypes {
     [self registerForDraggedTypes:[NSArray arrayWithObjects:NSFilesPromisePboardType, NSFilenamesPboardType,NSStringPboardType,NSPasteboardTypeTIFF,nil]];
@@ -1328,7 +1328,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
                 CNGridViewItem *item = [selectedItems objectForKey:str];
                 [string appendString:[NSString stringWithFormat:@"%@",_delegate]];
             }
-            [pasteboard clearContents];
+//            [pasteboard clearContents];
             BOOL success = [pasteboard setString:string forType:NSPasteboardTypeString];
             
             NSArray *paths = [pboard propertyListForType:NSFilenamesPboardType];
@@ -1367,6 +1367,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 //    NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     NSLog(@"=========prepareForDragOperation:");
     _moveToIndex = (int)[self boundIndexForItemAtLocation:NSMakePoint(sender.draggingLocation.x, self.superview.bounds.size.height - sender.draggingLocation.y)];
+    [_gridDelegate moveToItemIndex:_moveToIndex];
     return YES;
 }
 
@@ -1409,12 +1410,10 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
             return NO;
         }
     }else{
-        return NO;
+        return YES;
     }
 
 }
-
-
 
 #pragma mark - drag & drop
 - (void)initiateDraggingSessionWithEvent:(NSEvent *)anEvent {
@@ -1539,9 +1538,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
     
     NSPoint point = [self convertPoint:event.locationInWindow fromView:nil];
     NSPoint atPoint = NSMakePoint(point.x - dragImage2.size.width / 2, point.y + dragImage2.size.height / 2);
+    [_gridDelegate selectItemAry:(NSMutableArray *)selectedItems.allKeys];
     [super dragImage:dragImage2 at:atPoint offset:initialOffset event:event pasteboard:pasteboard source:sourceObj slideBack:slideFlag];
-
-    
 }
 
 - (void)draggedImage:(NSImage *)anImage beganAt:(NSPoint)aPoint {
@@ -1600,10 +1598,6 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 //    if ([_delegate respondsToSelector:@selector(collectionView:draggingEnded:)])
 //        [_delegate collectionView:self draggingEnded:sender];
 }
-
-
-
-
 
 - (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context {
     NSLog(@"dragging Session");

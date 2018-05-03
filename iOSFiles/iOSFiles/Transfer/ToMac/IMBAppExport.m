@@ -13,6 +13,8 @@
 #import "IMBInformationManager.h"
 #import "IMBAppConfig.h"
 #import "IMBHelper.h"
+#import "IMBLimitation.h"
+
 
 @implementation IMBAppExport
 @synthesize appKey = _appKey;
@@ -92,6 +94,7 @@
                 if ([appManager backupAppTolocal:app ArchiveType:_archiveType LocalFilePath:appFilePath]) {
 //                    [_limitation reduceRedmainderCount];
                     _successCount += 1;
+                    [IMBLimitation sharedLimitation].leftToMacNums--;
                     app.state = DownloadStateComplete;
                 } else {
                      [[IMBTransferError singleton] addAnErrorWithErrorName:app.fileName WithErrorReson:@"Coping file failed."];

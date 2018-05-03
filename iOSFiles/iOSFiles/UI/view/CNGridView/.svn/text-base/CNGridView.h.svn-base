@@ -98,6 +98,7 @@ typedef BOOL (^CNGridViewSelectItem)(CNGridViewItem *item);
     BOOL _commandFlag;
     BOOL _commandAndA;
     BOOL _isKeyUp;
+    id _gridDelegate;
 }
 @property(nonatomic, copy) void(^commandADown)(void);
 @property (nonatomic, assign) BOOL isAppItem;
@@ -105,6 +106,7 @@ typedef BOOL (^CNGridViewSelectItem)(CNGridViewItem *item);
 @property (nonatomic, assign) BOOL isFileManager;
 @property (nonatomic, assign) BOOL isSelectView;
 @property (nonatomic, assign) BOOL allowClickMultipleSelection;
+@property (nonatomic, assign) id gridDelegate;
 #pragma mark - Initializing a CNGridView Object
 /** @name Initializing a CNGridView Object */
 

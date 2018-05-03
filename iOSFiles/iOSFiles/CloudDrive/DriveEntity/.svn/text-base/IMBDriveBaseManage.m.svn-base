@@ -12,6 +12,7 @@
 @synthesize driveWindowDelegate = _driveWindowDelegate;
 @synthesize driveDataAry = _driveDataAry;
 @synthesize downloadPath = _downloadPath;
+@synthesize isCloudDrive = _isCloudDrive;
 
 - (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate {
     if ([self init]) {

@@ -613,7 +613,7 @@
                     [uploaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
                     [_downloadDataSource insertObject:uploaditem atIndex:0];
                 }
-                baseTransfer = [[IMBAirSyncImportTransfer alloc]initWithAppUpLoadIPodkey:ipod.uniqueKey importFiles:_downloadDataSource CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
+                baseTransfer = [[IMBAirSyncImportTransfer alloc] initWithAppUpLoadIPodkey:ipod.uniqueKey importFiles:_downloadDataSource CategoryNodesEnum:categoryNodesEnum photoAlbum:nil playlistID:0 delegate:self];
                 [(IMBAirSyncImportTransfer *)baseTransfer setAppKey:_appKey];
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     [(IMBAirSyncImportTransfer *)baseTransfer appStartTransfer];
@@ -729,7 +729,7 @@
             downloaditem.fileSize = bookEntity.size;
             downloaditem.isAddCompleteView = YES;
             downloaditem.allPath = bookEntity.fullPath;
-            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_books"];
+            downloaditem.photoImage = [NSImage imageNamed:@"folder_icon_bo+oks"];
             downloaditem.toDriveName = CustomLocalizedString(@"TransferDownloading", nil);
             if (downloaditem.extension) {
                 downloaditem.localPath = [[exportPath stringByAppendingPathComponent:downloaditem.fileName] stringByAppendingPathExtension:downloaditem.extension];

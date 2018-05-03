@@ -33,8 +33,7 @@
 #import "SystemHelper.h"
 #import "IMBDevicePopoverViewController.h"
 #import "IMBFileSystemExport.h"
-
-
+#import "IMBMoveTransferManager.h"
 #import "IMBViewManager.h"
 
 @implementation IMBDeviceAllDataViewController
@@ -123,6 +122,7 @@
     _gridView.allowsMultipleSelection = YES;
     _gridView.allowsMultipleSelectionWithDrag = YES;
     _gridView.allowClickMultipleSelection = NO;
+    _gridView.gridDelegate = self;
     [_gridView setIsFileManager:YES];
     _gridView.commandADown = ^{
         //commandA
@@ -3445,7 +3445,7 @@
         [_devChoosePopover close];
     }
 
-    NSMutableArray *deviceAry = [[NSMutableArray alloc]init];
+    NSMutableArray *deviceAry = [[NSMutableArray alloc] init];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
         if (baseInfo.chooseModelEnum != DeviceLogEnum) {
@@ -4172,17 +4172,96 @@
     [self reload:nil];
 }
 
-- (void)moveitemsToIndex:(int)index {
+
+- (void)selectItemAry:(NSMutableArray *)itemAry {
+    NSIndexSet *selectedSet = [self selectedItems];
+    NSMutableArray *preparedArray = [NSMutableArray array];
     NSArray *displayArr = nil;
     if (_isSearch) {
         displayArr = _researchdataSourceArray;
     }else {
         displayArr = _dataSourceArray;
     }
-    SimpleNode *entity = [displayArr objectAtIndex:index];
-    if (entity.container && entity.checkState == UnChecked) {
-        [self startMoveTransferWith:entity];
+    switch (_categoryNodeEunm) {
+        case Category_PhotoStream:
+        case Category_PhotoLibrary:
+        case Category_CameraRoll:
+        {
+        
+                [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                    IMBPhotoEntity *pe = [displayArr objectAtIndex:idx];
+                    [preparedArray addObject:pe];
+                }];
+      
+        }
+            break;
+        case Category_iBooks:
+        {
+                [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                    IMBBookEntity *be = [displayArr objectAtIndex:idx];
+                    [preparedArray addObject:be];
+                }];
+                    break;
+        }
+        case Category_appDoucment:
+        case Category_Applications:
+            //没有to Device功能
+            break;
+        case Category_Media:
+        {
+          
+                [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                    //TODO
+                    IMBTrack *track = [displayArr objectAtIndex:idx];
+                    [preparedArray addObject:track];
+                }];
+            break;
+        }
+        case Category_Video:
+        {
+           
+                [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                    //TODO
+                    IMBTrack *track = [displayArr objectAtIndex:idx];
+                    [preparedArray addObject:track];
+                }];
+        }
+            break;
+        default:
+            break;
     }
+  
+    IMBMoveTransferManager *moveManager = [IMBMoveTransferManager singleton];
+    moveManager.originChooseModelEnum = _chooseLogModelEnmu;
+    moveManager.origniPod = _iPod;
+    moveManager.categoryNodeEnum = _categoryNodeEunm;
+    moveManager.selectedAry = [preparedArray retain];
 }
 
+- (void)moveToItemIndex:(int)index {
+    IMBMoveTransferManager *moveManager = [IMBMoveTransferManager singleton];
+    moveManager.targerDriveBaseManager = _driveBaseManage;
+    moveManager.targeriPod = _iPod;
+    if (moveManager.originChooseModelEnum == iCloudLogEnum || moveManager.originChooseModelEnum == DropBoxLogEnum) {
+        IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+        [tranferView setDelegate:self];
+        tranferView.reloadDelegate = self;
+        [tranferView transferBtn:_transferBtn];
+        NSString *filePath = @"";
+        filePath = [IMBHelper getAppRootPath];
+        [moveManager.originDriveBaseManager setDownloadPath:filePath];
+        if (_chooseLogModelEnmu == iCloudLogEnum) {
+            [tranferView icloudToDriveAddDataSource:moveManager.selectedAry WithIsDown:YES WithDriveBaseManage:moveManager.originDriveBaseManager withUploadParent:nil withUploadDocID:@"" withiPod:_iPod];
+        }else {
+            [tranferView dropBoxToDeviceAddDataSource:moveManager.selectedAry WithIsDown:YES WithDriveBaseManage:moveManager.originDriveBaseManager withUploadParent:nil withiPod:_iPod];
+        }
+    }else {
+        if ([moveManager.origniPod.uniqueKey isEqualToString:_iPod.uniqueKey]) {
+            IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
+            [tranferView transferBtn:_transferBtn];
+            tranferView.reloadDelegate = self;
+            [tranferView toDeviceAddDataSorue:moveManager.selectedAry withCategoryNodesEnum:_categoryNodeEunm srciPodKey:moveManager.origniPod.uniqueKey desiPodKey:_iPod.uniqueKey];
+        }
+    }
+}
 @end

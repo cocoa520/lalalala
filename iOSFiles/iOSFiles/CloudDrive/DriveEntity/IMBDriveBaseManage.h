@@ -22,12 +22,13 @@
     id _deivceDelegate;
     NSString *_passWordID;
     NSString *_downloadPath;
-
+    BOOL _isCloudDrive;
 }
 @property (nonatomic,assign,nullable) id driveWindowDelegate;
 @property (nonatomic,retain,nullable) NSMutableArray* driveDataAry;
 @property (nonatomic,retain,nullable) NSString *userID;
 @property (nonatomic,retain,nullable) NSString *downloadPath;
+@property (nonatomic,assign) BOOL isCloudDrive;
 - (_Nullable id)initWithUserID:(NSString * _Nullable ) userID WithPassID:( NSString * _Nullable) passID WithDelegate:(_Nullable id)delegate;
 - (_Nullable id)initWithUserID:( NSString * _Nullable)userID withDelegate:(_Nullable id)delegate;
 //删除

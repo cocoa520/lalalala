@@ -93,4 +93,7 @@
 - (id)initWithDrivemanage:(IMBDriveBaseManage *)driveManage withDelegete:(id)delegete withChooseLoginModelEnum:(ChooseLoginModelEnum) chooseLogModelEnum;
 //这个方法中的，总数和个数不是真的
 - (void)transferComplete:(int)successCount TotalCount:(int)totalCount;
+
+- (void)selectItemAry:(NSMutableArray *)itemAry;
+- (void)moveToItemIndex:(int)index;
 @end

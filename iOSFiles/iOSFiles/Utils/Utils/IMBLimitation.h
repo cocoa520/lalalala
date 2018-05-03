@@ -20,11 +20,14 @@ typedef enum : NSUInteger {
     int _leftToMacNums;
     int _leftToDeviceNums;
     int _leftToCloudNums;
+    
+    int _registerStatus;
 }
 
 @property(nonatomic, assign)int leftToMacNums;
 @property(nonatomic, assign)int leftToDeviceNums;
 @property(nonatomic, assign)int leftToCloudNums;
+@property(nonatomic, assign)int registerStatus;
 
 
 + (instancetype)sharedLimitation;
@@ -45,6 +48,8 @@ typedef enum : NSUInteger {
  */
 - (int)getRestNumsWithType:(IMBLimitationType)type;
 
-- (BOOL)isRegistered;
+
+- (void)saveRegisterStatus;
+- (void)getRegisterStatus;
 
 @end

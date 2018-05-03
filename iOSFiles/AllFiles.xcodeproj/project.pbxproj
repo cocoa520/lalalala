@@ -1054,6 +1054,7 @@
 		EE48D163205630AB00857BD6 /* String.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE48D165205630AB00857BD6 /* String.strings */; };
 		EE48D168205630D100857BD6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EE48D166205630D100857BD6 /* Credits.rtf */; };
 		EE48D16C2056333E00857BD6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE48D16A2056333E00857BD6 /* Localizable.strings */; };
+		EE522386209A98DF00CA556B /* IMBMoveTransferManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE522385209A98DF00CA556B /* IMBMoveTransferManager.m */; };
 		EE59D6EC2063D55D00B00046 /* IMBMainWindowLoginSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE59D6EB2063D55D00B00046 /* IMBMainWindowLoginSuccessView.xib */; };
 		EE59D6F12063D62D00B00046 /* DropboxUserAccountAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59D6EE2063D62D00B00046 /* DropboxUserAccountAPI.m */; };
 		EE59D6F22063D62D00B00046 /* DropboxUserSpaceUsageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE59D6F02063D62D00B00046 /* DropboxUserSpaceUsageAPI.m */; };
@@ -2857,6 +2858,8 @@
 		EE48D167205630D100857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
 		EE48D16B2056333E00857BD6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EE48D16D2056334200857BD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EE522384209A98DF00CA556B /* IMBMoveTransferManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBMoveTransferManager.h; sourceTree = "<group>"; };
+		EE522385209A98DF00CA556B /* IMBMoveTransferManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBMoveTransferManager.m; sourceTree = "<group>"; };
 		EE59D6EB2063D55D00B00046 /* IMBMainWindowLoginSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMBMainWindowLoginSuccessView.xib; sourceTree = "<group>"; };
 		EE59D6ED2063D62D00B00046 /* DropboxUserAccountAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUserAccountAPI.h; sourceTree = "<group>"; };
 		EE59D6EE2063D62D00B00046 /* DropboxUserAccountAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUserAccountAPI.m; sourceTree = "<group>"; };
@@ -5097,6 +5100,8 @@
 				B9E739832028038D00E1BB3B /* ToDelete */,
 				B9E739942028038D00E1BB3B /* ToDevice */,
 				B9E739A62028038D00E1BB3B /* ToMac */,
+				EE522384209A98DF00CA556B /* IMBMoveTransferManager.h */,
+				EE522385209A98DF00CA556B /* IMBMoveTransferManager.m */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -6825,6 +6830,7 @@
 				B92A17A720215F7A00187405 /* DateHelper.m in Sources */,
 				B96562D82021D2B000BD7FF5 /* File_Ace.cpp in Sources */,
 				B96563822021D2B000BD7FF5 /* File_SubRip.cpp in Sources */,
+				EE522386209A98DF00CA556B /* IMBMoveTransferManager.m in Sources */,
 				B9348B3F201F0DAB00A8CEC3 /* IMBInformationManager.m in Sources */,
 				B965631B2021D2B000BD7FF5 /* File_Dummy.cpp in Sources */,
 				34289978206CE05000969DD9 /* IMBSearchView.m in Sources */,

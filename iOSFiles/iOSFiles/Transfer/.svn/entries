@@ -1,14 +1,14 @@
 10
 
 dir
-3390
+3431
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Transfer
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-04-19T06:50:43.030781Z
-2911
+2018-05-03T03:12:17.931404Z
+3424
 longfan
 
 
@@ -26,26 +26,20 @@ longfan
 
 a323380f-3d89-8743-8c24-0bf67719c927
 
-ToDevice
-dir
-
 ToiCloud
 dir
 
-Tracking
-dir
-
-IMBBaseTransfer.m
+IMBMoveTransferManager.h
 file
 
 
 
 
-2018-04-02T00:56:49.000000Z
-198ac0582793b2274358841ae667ecae
-2018-04-01T10:24:19.512981Z
-2233
-huyumin
+2018-05-03T03:13:51.000000Z
+f801b90fd627bf0932bf3c3b384bc9ee
+2018-05-03T03:12:17.931404Z
+3424
+longfan
 
 
 
@@ -67,47 +61,7 @@ huyumin
 
 
 
-33414
-
-IMBExportSetting.m
-file
-
-
-
-
-2018-03-28T02:24:30.000000Z
-016fb266df181679c02d79126c6a0d24
-2018-02-05T08:04:10.487107Z
-1229
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11756
-
-ToMac
-dir
-
-ToDelete
-dir
+1203
 
 IMBCategoryInfoModel.h
 file
@@ -143,11 +97,42 @@ has-props
 
 749
 
-ATHSync
-dir
-
 Error
 dir
+
+IMBMoveTransferManager.m
+file
+
+
+
+
+2018-05-03T03:13:51.000000Z
+67874114e55f1301f92866f6ea3bb76e
+2018-05-03T03:12:17.931404Z
+3424
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3870
 
 IMBBaseTransfer.h
 file
@@ -250,4 +235,87 @@ has-props
 
 
 2022
+
+ToDevice
+dir
+
+Tracking
+dir
+
+IMBBaseTransfer.m
+file
+
+
+
+
+2018-04-02T00:56:49.000000Z
+198ac0582793b2274358841ae667ecae
+2018-04-01T10:24:19.512981Z
+2233
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+33414
+
+IMBExportSetting.m
+file
+
+
+
+
+2018-03-28T02:24:30.000000Z
+016fb266df181679c02d79126c6a0d24
+2018-02-05T08:04:10.487107Z
+1229
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11756
+
+ToMac
+dir
+
+ToDelete
+dir
+
+ATHSync
+dir
 

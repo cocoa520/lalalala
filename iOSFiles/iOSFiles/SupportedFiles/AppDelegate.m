@@ -93,6 +93,8 @@
     //初始化配置信息
     [[IMBLimitation sharedLimitation] initializeConfigurationInfo];
     [[IMBLimitation sharedLimitation] getRestNumsWithNum];
+//    [[IMBLimitation sharedLimitation] saveRegisterStatus];
+    [[IMBLimitation sharedLimitation] getRegisterStatus];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

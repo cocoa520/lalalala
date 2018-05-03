@@ -17,6 +17,7 @@
                 <outlet property="_selectedDeviceBtn" destination="eyg-Z1-geY" id="A6m-fB-cpb"/>
                 <outlet property="_shoppingCartBtn" destination="S3e-vi-1nC" id="WxM-gG-yBQ"/>
                 <outlet property="_topView" destination="Vdt-es-Jt1" id="9R7-XQ-qPN"/>
+                <outlet property="_topViewSepLine1" destination="RwI-3p-y1q" id="izO-ja-4E6"/>
                 <outlet property="_topcoverView" destination="eBq-Pg-Y4y" id="Or2-fM-pcw"/>
                 <outlet property="_transferBtn" destination="pGc-65-Lfc" id="F6n-fL-yia"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>

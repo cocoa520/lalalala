@@ -59,6 +59,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [IMBNotiCenter removeObserver:self name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     [IMBNotiCenter removeObserver:self name:IMBDeviceDisconnectedNoti object:nil];
     [IMBNotiCenter removeObserver:self name:IMBRegisteredSuccessfulNoti object:nil];
+    [IMBNotiCenter removeObserver:self name:IMBLimitationNoti object:nil];
     
 }
 
@@ -201,17 +202,80 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [self.view setWantsLayer:YES];
     [self.view.layer setMasksToBounds:YES];
     [self.view.layer setCornerRadius:5];
+    
+    if ([[IMBLimitation sharedLimitation] registerStatus]) {
+        _searchView.imb_x = 986.f;
+        _topViewSepLine1.hidden = YES;
+        _shoppingCartBtn.hidden = YES;
+    }else {
+        _searchView.imb_x = 915.f;
+        _topViewSepLine1.hidden = NO;
+        _shoppingCartBtn.hidden = NO;
+    }
+    _originalSearchViewF = _searchView.frame;
     [IMBNotiCenter addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     [IMBNotiCenter addObserver:self selector:@selector(registerSuccess) name:IMBRegisteredSuccessfulNoti object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(achieveLimitation) name:IMBLimitationNoti object:nil];
 }
 
 #pragma -- mark  Actions
+- (void)achieveLimitation {
+    if (_annoyVc) {
+        [_annoyVc release];
+        _annoyVc = nil;
+    }
+    _isShowTranfer = NO;
+    
+    _topcoverView.hidden = NO;
+    CGFloat timeInterval = 0.45f;
+    _annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:[[IMBLimitation sharedLimitation] leftToMacNums] toDeviceLeftNum:[[IMBLimitation sharedLimitation] leftToDeviceNums] toCloudLeftNum:[[IMBLimitation sharedLimitation] leftToCloudNums]];
+    _annoyVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
+    NSView *view = nil;
+    for (NSView *subView in ((NSView *)self.view.window.contentView).subviews) {
+        if ([subView isMemberOfClass:[NSClassFromString(@"IMBTranferBackgroundView") class]]) {
+            view = subView;
+            break;
+        }
+    }
+    for (NSView *subView in view.subviews) {
+        [subView removeFromSuperview];
+    }
+    
+    view.hidden = NO;
+    _annoyVc.closeClicked = ^{
+        //关闭按钮点击
+        [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:timeInterval completion:^{
+            _topcoverView.hidden = YES;
+            [_annoyVc.view removeFromSuperview];
+            [_annoyVc release];
+            _annoyVc = nil;
+        }];
+    };
+    
+    [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:0 timeInterval:timeInterval completion:^{
+        _topcoverView.hidden = NO;
+    }];
+}
 - (void)registerSuccess {
     if (_purchaseVc) {
         [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:.35f completion:^{
             _topcoverView.hidden = YES;
+            [_purchaseVc release];
+            _purchaseVc = nil;
         }];
     }
+    if (_annoyVc) {
+        //关闭按钮点击
+        [IMBViewAnimation animationPositionXWithView:_annoyVc.view toX:1096.f timeInterval:0.45f completion:^{
+            [_annoyVc.view removeFromSuperview];
+            [_annoyVc release];
+            _annoyVc = nil;
+        }];
+    }
+    
+    _searchView.imb_x = 986.f;
+    _topViewSepLine1.hidden = YES;
+    _shoppingCartBtn.hidden = YES;
     
 }
 - (void)toMac:(IMBInformation *)information {
@@ -272,7 +336,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     view.hidden = NO;
     _topcoverView.hidden = NO;
     
-    _purchaseVc = [IMBPurchaseOrAnnoyController purchase];//[IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:80 toDeviceLeftNum:20 toCloudLeftNum:0];
+    _purchaseVc = [IMBPurchaseOrAnnoyController purchase];
     _purchaseVc.view.frame = NSMakeRect(0, -590.f, 1096.f, 590.f);
     [view addSubview:_purchaseVc.view];
     _purchaseVc.closeClicked = ^{
@@ -302,6 +366,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             //关闭按钮点击
             [IMBViewAnimation animationPositionXWithView:_annoyVc.view toX:1096.f timeInterval:0.45f completion:^{
                 [_annoyVc.view removeFromSuperview];
+                [_annoyVc release];
+                _annoyVc = nil;
             }];
         };
         
@@ -311,11 +377,7 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     };
     [tranferView transferBtn:_transferBtn];
     if (!_isShowTranfer) {
-        if ([IMBSoftWareInfo singleton].isRegistered) {
-            [tranferView setLimitViewShowing:NO];
-        }else {
-            [tranferView setLimitViewShowing:YES];
-        }
+        
         _isShowCompleteView = NO;
         _isShowTranfer = YES;
         [tranferView reparinitialization];
@@ -335,6 +397,12 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         [view setWantsLayer:YES];
         [view addSubview:tranferView.view];
         [tranferView.view.layer addAnimation:[IMBAnimation moveX:0.5 fromX:[NSNumber numberWithInt:tranferView.view.frame.size.width] toX:[NSNumber numberWithInt:0] repeatCount:1 beginTime:0]  forKey:@"moveX"];
+        
+        if ([[IMBLimitation sharedLimitation] registerStatus]) {
+            [tranferView setLimitViewShowing:NO];
+        }else {
+            [tranferView setLimitViewShowing:YES];
+        }
 //        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8/*延迟执行时间*/ * NSEC_PER_SEC));
 //        
 //        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
@@ -923,8 +991,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
             _isLoadSearchView = NO;
             [_searchView mouseExited:nil];
             [_searchView setNeedsDisplay:YES];
-            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 180, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
-            [_searchView setFrame:newRect];
+//            NSRect newRect = NSMakeRect(_topView.frame.origin.x+_topView.frame.size.width - 180, _searchView.frame.origin.y, 21, _searchView.frame.size.height);
+            [_searchView setFrame:_originalSearchViewF];
         }];
     }
 }

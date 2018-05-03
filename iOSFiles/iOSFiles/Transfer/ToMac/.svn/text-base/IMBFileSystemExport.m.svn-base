@@ -11,6 +11,8 @@
 #import "TempHelper.h"
 #import "StringHelper.h"
 #import "IMBFileSystem.h"
+#import "IMBLimitation.h"
+
 
 @implementation IMBFileSystemExport
 
@@ -80,6 +82,7 @@
                     if (success) {
 //                        [_limitation reduceRedmainderCount];
                         _successCount ++;
+                        [IMBLimitation sharedLimitation].leftToMacNums--;
 //                        dispatch_async(dispatch_get_main_queue(), ^{
                              _currentDriveItem.state = DownloadStateComplete;
 //                        });
