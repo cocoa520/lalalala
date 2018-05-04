@@ -403,15 +403,6 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }else {
             [tranferView setLimitViewShowing:YES];
         }
-//        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8/*延迟执行时间*/ * NSEC_PER_SEC));
-//        
-//        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-//            [self.view setWantsLayer:YES];
-//            [self.view.layer setMasksToBounds:YES];
-//            [self.view.layer setCornerRadius:5];
-//        });
-
-        
     }else {
         if (_isShowCompleteView) {
             _isShowCompleteView = NO;

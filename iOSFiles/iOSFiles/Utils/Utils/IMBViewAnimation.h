@@ -35,6 +35,7 @@ APPKIT_EXTERN CGFloat const MidiumSizeAnimationTimeInterval;
 + (void)animationOpacityWithView:(NSView *)view timeInterval:(CGFloat)timeInterval isHidden:(BOOL)isHidden;
 
 + (void)animationWithRotationWithLayer:(CALayer *)layer;
++ (void)animationWithRotation1WithLayer:(CALayer *)layer;
 
 + (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void(^)(void))completion;
 

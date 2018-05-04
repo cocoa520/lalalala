@@ -152,10 +152,9 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 @end
 
 
-//@interface CNGridViewItem ()
-//@property (retain) NSImageView *itemImageView;
-//@property (retain) CNGridViewItemLayout *currentLayout;
-//@end
+@interface CNGridViewItem ()<IMBGridTextFieldDelegate>
+
+@end
 
 @implementation CNGridViewItem
 @synthesize isAppPhoto = _isAppPhoto;
@@ -210,6 +209,7 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 	_currentLayout = _defaultLayout;
 	_useLayout = YES;
     _isMouseEnter = NO;
+    
 }
 
 - (BOOL)isFlipped {
@@ -369,7 +369,8 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
                 [_editText release];
                 _editText = nil;
             }
-            _editText = [[NSTextField alloc] initWithFrame:NSZeroRect];
+            _editText = [[IMBGridTextField alloc] initWithFrame:NSZeroRect];
+            _editText.dlg = self;
             NSRect titleRect = [StringHelper calcuTextBounds:self.itemTitle fontSize:12.0];
             titleRect.size.height = 24;
             titleRect.size.width = 108;
@@ -624,9 +625,9 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
     [super dealloc];
 }
 
-//- (BOOL)mouseDownCanMoveWindow {
-//    NSLog(@"----------cngrid view item");
-//    return NO;
-//}
+
+- (void)gridTextFieldInsertNewline {
+    [IMBNotiCenter postNotificationName:INSERT_INSETNEWLINE object:nil];
+}
 
 @end

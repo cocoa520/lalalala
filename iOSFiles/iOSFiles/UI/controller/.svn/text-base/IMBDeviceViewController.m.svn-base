@@ -990,7 +990,7 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     _bigSizeIcloudGoNowBtn.wantsLayer = YES;
     [_bigSizeIcloudGoNowBtn.layer addSublayer:_loadLayer];
     
-    [IMBViewAnimation animationWithRotationWithLayer:_loadLayer];
+    [IMBViewAnimation animationWithRotation1WithLayer:_loadLayer];
     [_bigSizeIcloudGoNowBtn setEnabled:NO];
     [_bigSizeIcloudGoNowBtn setNeedsDisplay:YES];
     

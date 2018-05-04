@@ -28,10 +28,14 @@
         [self.view addSubview:alertView];
     }
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        [alertView.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:-alertView.bounds.size.height + 10]  repeatCount:0] forKey:@"moveY"];
+        context.duration = 0.45f;
+        NSRect newRect = alertView.frame;
+        newRect.origin.y = NSMaxY(view.bounds) - NSHeight(alertView.frame) + 10;
+        [alertView.animator setFrame:newRect];
+//        [alertView.layer addAnimation:[IMBAnimation moveY:0.5 X:[NSNumber numberWithInt:0] Y:[NSNumber numberWithInt:-alertView.bounds.size.height + 10]  repeatCount:0] forKey:@"moveY"];
     } completionHandler:^{
-        [alertView.layer removeAnimationForKey:@"moveY"];
-        [alertView setFrame:NSMakeRect(ceil((NSMaxX(view.bounds) - NSWidth(alertView.frame)) / 2), NSMaxY(view.bounds) - NSHeight(alertView.frame) + 10, NSWidth(alertView.frame), NSHeight(alertView.frame))];
+//        [alertView.layer removeAnimationForKey:@"moveY"];
+//        [alertView setFrame:NSMakeRect(ceil((NSMaxX(view.bounds) - NSWidth(alertView.frame)) / 2), NSMaxY(view.bounds) - NSHeight(alertView.frame) + 10, NSWidth(alertView.frame), NSHeight(alertView.frame))];
     }];
     
 }

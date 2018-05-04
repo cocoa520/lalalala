@@ -9,11 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "customTextFieldCell.h"
 
-@protocol customTextFiledDelegate <NSObject>
-
-- (void)inputTFDidChange:(NSTextField *)tf;
-
-@end
 
 @interface customTextFiled : NSTextField
 {
@@ -22,7 +17,6 @@
 }
 @property (nonatomic,assign)BOOL needPasteboardContent;
 
-@property(nonatomic, assign)id<customTextFiledDelegate> dlg;
 
 @end
 

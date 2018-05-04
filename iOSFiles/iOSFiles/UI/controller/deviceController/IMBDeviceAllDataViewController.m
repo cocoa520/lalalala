@@ -1765,7 +1765,7 @@
         
     }
     
-    if ( [@"Name" isEqualToString:identify] || [@"Type" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
+    if ( [@"Name" isEqualToString:identify] || [@"Date" isEqualToString:identify] || [@"Size" isEqualToString:identify]) {
         if ([cell isKindOfClass:[IMBCustomHeaderCell class]]) {
             IMBCustomHeaderCell *customHeaderCell = (IMBCustomHeaderCell *)cell;
             if (customHeaderCell.ascending) {
@@ -2972,7 +2972,7 @@
 - (void)toDevice:(id)sender {
 
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-    NSMutableArray *deviceAry = [[NSMutableArray alloc]init];
+    NSMutableArray *deviceAry = [[NSMutableArray alloc] init];
     for (IMBBaseInfo *baseinfo in deviceConnection.allDevices) {
         if (baseinfo.chooseModelEnum == DeviceLogEnum) {
             [deviceAry addObject:baseinfo];

@@ -286,7 +286,7 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
 + (void)animationWithRotationWithLayer:(CALayer *)layer {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 
-    animation.fromValue = @(-2*M_PI);
+    animation.fromValue = @(2*M_PI);
     animation.toValue = 0;
     animation.repeatCount = MAXFLOAT;
     animation.duration = 1.f;
@@ -297,6 +297,19 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     [layer addAnimation:animation forKey:@"rotationZ"];
 }
 
++ (void)animationWithRotation1WithLayer:(CALayer *)layer {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    
+    animation.fromValue = 0;
+    animation.toValue = @(2*M_PI);
+    animation.repeatCount = MAXFLOAT;
+    animation.duration = 1.f;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    [layer setAnchorPoint:NSMakePoint(0.5, 0.5)];
+    [layer addAnimation:animation forKey:@"rotationZ"];
+}
 
 + (void)animationPositionYWithView:(NSView *)view toY:(CGFloat)toY timeInterval:(NSTimeInterval)timeInterval completion:(void (^)(void))completion {
     [view setWantsLayer:YES];

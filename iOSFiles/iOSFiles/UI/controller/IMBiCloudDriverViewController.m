@@ -97,6 +97,7 @@
         _devChoosePopover = nil;
     }
     [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter removeObserver:self name:INSERT_INSETNEWLINE object:nil];
     
     [super dealloc];
 }
@@ -135,6 +136,7 @@
     }
     
     [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(renameTFInsertnewlinedown) name:INSERT_INSETNEWLINE object:nil];
     
     _doubleclickCount = 1;
     _currentDevicePath = @"0";
@@ -593,6 +595,7 @@
     }
     
     NSArray *array = nil;
+    
     if (_isSearch) {
         array = _researchdataSourceArray;
     }else {
@@ -2369,6 +2372,12 @@
             [moveManager driveToDriveDown:moveManager.selectedAry];
         }
     }
+}
+
+#pragma mark - 通知响应方法
+
+- (void)renameTFInsertnewlinedown {
+    [self gridViewDidDeselectAllItems:_gridView];
 }
 
 @end

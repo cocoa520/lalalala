@@ -151,6 +151,7 @@
 
 #define INSERT_TAB @"Inset_Tab"
 #define INSERT_BACKSPASE @"Inset_Backspase"
+#define INSERT_INSETNEWLINE @"Inset_InsertNewLine"
 
 #define NOTIFY_WRITE_FILEINFO_FINISHED @"write_fileInfo_finished"                    //分析完成通知
 #define ANNOY_REGIST_SUCCESS @"Annoy_Regisr_Succss"

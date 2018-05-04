@@ -753,6 +753,7 @@
 		B96C86E7205FA45100931921 /* IMBDownloadService.m in Sources */ = {isa = PBXBuildFile; fileRef = B96C86E6205FA45100931921 /* IMBDownloadService.m */; };
 		B971B922207C5E0600284FA3 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = B971B921207C5E0600284FA3 /* loading.png */; };
 		B9B9F5F3206B776600DB762F /* IMBDeviceAllDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0AD8BE20664A1100307EB1 /* IMBDeviceAllDataViewController.m */; };
+		B9D1500A209C1241000C9325 /* IMBGridTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D15009209C1241000C9325 /* IMBGridTextField.m */; };
 		B9D61AA92058F96E00E371A0 /* IMBCommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D61AA82058F96E00E371A0 /* IMBCommonTool.m */; };
 		B9E3DFD62063D6A3008DDF92 /* app_default.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E3DEBC2063D6A2008DDF92 /* app_default.png */; };
 		B9E3DFD72063D6A3008DDF92 /* app_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E3DEBD2063D6A2008DDF92 /* app_default@2x.png */; };
@@ -2453,6 +2454,8 @@
 		B96C86E5205FA45100931921 /* IMBDownloadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBDownloadService.h; sourceTree = "<group>"; };
 		B96C86E6205FA45100931921 /* IMBDownloadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBDownloadService.m; sourceTree = "<group>"; };
 		B971B921207C5E0600284FA3 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		B9D15008209C1241000C9325 /* IMBGridTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBGridTextField.h; sourceTree = "<group>"; };
+		B9D15009209C1241000C9325 /* IMBGridTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBGridTextField.m; sourceTree = "<group>"; };
 		B9D61AA72058F96E00E371A0 /* IMBCommonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBCommonTool.h; sourceTree = "<group>"; };
 		B9D61AA82058F96E00E371A0 /* IMBCommonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBCommonTool.m; sourceTree = "<group>"; };
 		B9E3DEBC2063D6A2008DDF92 /* app_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_default.png; sourceTree = "<group>"; };
@@ -5913,6 +5916,8 @@
 				B94649E6208ED820006A5225 /* IMBPurcahseLeftNumLabel.m */,
 				B91CDA982094128A0092D88D /* IMBRegisterResultView.h */,
 				B91CDA992094128A0092D88D /* IMBRegisterResultView.m */,
+				B9D15008209C1241000C9325 /* IMBGridTextField.h */,
+				B9D15009209C1241000C9325 /* IMBGridTextField.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6904,6 +6909,7 @@
 				7B830C292047AFD8000841AE /* iCloudDriveMoveToNewParentAPI.m in Sources */,
 				B9348B3A201F0DAB00A8CEC3 /* IMBAMDeviceInfo.m in Sources */,
 				EEF458802063D1F90078BB23 /* IMBTranferViewCell.m in Sources */,
+				B9D1500A209C1241000C9325 /* IMBGridTextField.m in Sources */,
 				B965633B2021D2B000BD7FF5 /* File_DashMpd.cpp in Sources */,
 				B9347CCD201ED9F600A8CEC3 /* IMBSqliteManager.m in Sources */,
 				B96563602021D2B000BD7FF5 /* File_Riff_Elements.cpp in Sources */,
