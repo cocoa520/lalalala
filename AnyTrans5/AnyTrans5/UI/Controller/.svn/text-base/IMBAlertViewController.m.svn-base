@@ -598,7 +598,7 @@
     IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
     NSURL *url = nil;
     NSString *str = CustomLocalizedString(@"Buy_Url", nil);
-    NSString *ver = softWare.version;
+    NSString *ver = softWare.trackTestVersionID;
     if (softWare.isIronsrc) {
         if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
             ver = @"ironsrc3";
@@ -618,7 +618,16 @@
             ver = @"ironsrc";
         }
     }
-    url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, softWare.buyId]];
+    NSString *annoyType = @"e";
+    NSString *limitStatus = [[OperationLImitation singleton] limitStatus];
+    if ([limitStatus isEqualToString:@"completed"]) {
+        annoyType = @"a";
+    }else if ([limitStatus isEqualToString:@"noquote"]) {
+        annoyType = @"b";
+    }else if ([limitStatus isEqualToString:@"notactivate"]) {
+        annoyType = @"c";
+    }
+    url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, softWare.buyId, annoyType]];
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];
     [ws openURL:url];
 }
@@ -2337,10 +2346,13 @@
         NSDictionary *dimensionDict = nil;
         @autoreleasepool {
             OperationLImitation *limit = [OperationLImitation singleton];
-            if (limit.remainderCount <= 0) {
-                [limit setLimitStatus:@"noquote"];
+            if ([[limit limitStatus] isEqualToString:@""]) {
             }else {
-                [limit setLimitStatus:@"completed"];
+                if (limit.remainderCount <= 0) {
+                    [limit setLimitStatus:@"noquote"];
+                }else {
+                    [limit setLimitStatus:@"completed"];
+                }
             }
             dimensionDict = [[TempHelper customDimension] copy];
         }
@@ -2359,10 +2371,13 @@
         NSDictionary *dimensionDict = nil;
         @autoreleasepool {
             OperationLImitation *limit = [OperationLImitation singleton];
-            if (limit.remainderCount <= 0) {
-                [limit setLimitStatus:@"noquote"];
+            if ([[limit limitStatus] isEqualToString:@""]) {
             }else {
-                [limit setLimitStatus:@"completed"];
+                if (limit.remainderCount <= 0) {
+                    [limit setLimitStatus:@"noquote"];
+                }else {
+                    [limit setLimitStatus:@"completed"];
+                }
             }
             dimensionDict = [[TempHelper customDimension] copy];
         }
@@ -2383,10 +2398,13 @@
                 NSDictionary *dimensionDict = nil;
                 @autoreleasepool {
                     OperationLImitation *limit = [OperationLImitation singleton];
-                    if (limit.remainderCount <= 0) {
-                        [limit setLimitStatus:@"noquote"];
+                    if ([[limit limitStatus] isEqualToString:@""]) {
                     }else {
-                        [limit setLimitStatus:@"completed"];
+                        if (limit.remainderCount <= 0) {
+                            [limit setLimitStatus:@"noquote"];
+                        }else {
+                            [limit setLimitStatus:@"completed"];
+                        }
                     }
                     dimensionDict = [[TempHelper customDimension] copy];
                 }
@@ -2406,10 +2424,13 @@
                NSDictionary *dimensionDict = nil;
                @autoreleasepool {
                    OperationLImitation *limit = [OperationLImitation singleton];
-                   if (limit.remainderCount <= 0) {
-                       [limit setLimitStatus:@"noquote"];
+                   if ([[limit limitStatus] isEqualToString:@""]) {
                    }else {
-                       [limit setLimitStatus:@"completed"];
+                       if (limit.remainderCount <= 0) {
+                           [limit setLimitStatus:@"noquote"];
+                       }else {
+                           [limit setLimitStatus:@"completed"];
+                       }
                    }
                    dimensionDict = [[TempHelper customDimension] copy];
                }
@@ -2455,10 +2476,13 @@
                NSDictionary *dimensionDict = nil;
                @autoreleasepool {
                    OperationLImitation *limit = [OperationLImitation singleton];
-                   if (limit.remainderCount <= 0) {
-                       [limit setLimitStatus:@"noquote"];
+                   if ([[limit limitStatus] isEqualToString:@""]) {
                    }else {
-                       [limit setLimitStatus:@"completed"];
+                       if (limit.remainderCount <= 0) {
+                           [limit setLimitStatus:@"noquote"];
+                       }else {
+                           [limit setLimitStatus:@"completed"];
+                       }
                    }
                    dimensionDict = [[TempHelper customDimension] copy];
                }

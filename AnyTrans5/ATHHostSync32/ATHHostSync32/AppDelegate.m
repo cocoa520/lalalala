@@ -18,7 +18,6 @@
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:Notify_AirSyncServiceStartSuccess object:nil userInfo:nil deliverImmediately:YES];
 }
 
-
 - (void)dealloc
 {
     [_ath release],_ath = nil;

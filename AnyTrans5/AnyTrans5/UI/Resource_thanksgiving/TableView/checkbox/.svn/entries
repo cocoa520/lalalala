@@ -1,7 +1,7 @@
 10
 
 dir
-2712
+3437
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_thanksgiving/TableView/checkbox
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -25,40 +25,6 @@ dingming
 
 
 a323380f-3d89-8743-8c24-0bf67719c927
-
-sel_all2.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-0371e25b1b008d9306689cd75a7a3784
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1169
 
 sel_non.png
 file
@@ -93,6 +59,40 @@ has-props
 
 
 1103
+
+sel_all2.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+0371e25b1b008d9306689cd75a7a3784
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1169
 
 itunes_checkbox1.png
 file
@@ -196,14 +196,14 @@ has-props
 
 1304
 
-sel_non@2x.png
+sel_all2@2x.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-77c5f8f516cfb16c2bb4ce64f53d8638
+1b54e2686aa0352ecbfedcbf8f1771e1
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -228,7 +228,7 @@ has-props
 
 
 
-1280
+1392
 
 checkbox1.png
 file
@@ -264,14 +264,14 @@ has-props
 
 1128
 
-sel_all2@2x.png
+sel_non@2x.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-1b54e2686aa0352ecbfedcbf8f1771e1
+77c5f8f516cfb16c2bb4ce64f53d8638
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -296,75 +296,7 @@ has-props
 
 
 
-1392
-
-itunes_checkbox1@2x.png
-file
-
-
-
-
-2018-03-28T10:44:39.000000Z
-ccaa9e10d6e65dab3d192f49d70d048e
-2018-03-28T08:53:51.378033Z
-2064
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-374
-
-checkbox2.png
-file
-
-
-
-
-2018-02-02T01:41:07.000000Z
-c6107cdcba34dcf79be6c62f1daa3b32
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1249
+1280
 
 preferBtn1.png
 file
@@ -400,48 +332,14 @@ has-props
 
 1252
 
-itunes_checkbox2@2x.png
-file
-
-
-
-
-2018-03-28T10:44:39.000000Z
-3fcff55d219d007b6a6ad0c35437bc13
-2018-03-28T08:53:51.378033Z
-2064
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-558
-
-sel_sem2.png
+checkbox2.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-375e589c8056a6697b2c9fabbfa4d5b5
+c6107cdcba34dcf79be6c62f1daa3b32
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -466,7 +364,75 @@ has-props
 
 
 
-1107
+1249
+
+itunes_checkbox1@2x.png
+file
+
+
+
+
+2018-03-28T10:44:39.000000Z
+ccaa9e10d6e65dab3d192f49d70d048e
+2018-03-28T08:53:51.378033Z
+2064
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+374
+
+preferBtn2.png
+file
+
+
+
+
+2018-02-02T01:41:07.000000Z
+1961dfbe4752a0c458061e2dc2de99ba
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1382
 
 checkbox3.png
 file
@@ -502,14 +468,14 @@ has-props
 
 1146
 
-preferBtn2.png
+sel_sem2.png
 file
 
 
 
 
 2018-02-02T01:41:07.000000Z
-1961dfbe4752a0c458061e2dc2de99ba
+375e589c8056a6697b2c9fabbfa4d5b5
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -534,7 +500,41 @@ has-props
 
 
 
-1382
+1107
+
+itunes_checkbox2@2x.png
+file
+
+
+
+
+2018-03-28T10:44:39.000000Z
+3fcff55d219d007b6a6ad0c35437bc13
+2018-03-28T08:53:51.378033Z
+2064
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+558
 
 sel_all.png
 file

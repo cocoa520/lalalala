@@ -34,7 +34,6 @@
 /* Begin PBXFileReference section */
 		B93C9CE71E88F69000F0FE08 /* Anytrans.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Anytrans.icns; sourceTree = "<group>"; };
 		B93C9CFB1E88F6DD00F0FE08 /* ATHHostSync64.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATHHostSync64.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B93C9CFC1E88F6DD00F0FE08 /* ATHHostSync32 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ATHHostSync32 copy-Info.plist"; path = "/Users/iMobie/Desktop/AnyTrans5/ATHHostSync32/ATHHostSync32 copy-Info.plist"; sourceTree = "<absolute>"; };
 		B99431771E88C6CE006C1C81 /* IMBDistantObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMBDistantObject.m; path = ../../AnyTrans5/Transfer/ATHSync/IMBDistantObject.m; sourceTree = "<group>"; };
 		B99431781E88C6CE006C1C81 /* IMBDistantObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMBDistantObject.h; path = ../../AnyTrans5/Transfer/ATHSync/IMBDistantObject.h; sourceTree = "<group>"; };
 		B99A9E291E851B1B00189779 /* ATHHostSync32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATHHostSync32.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +93,6 @@
 				B99A9E501E851B1C00189779 /* ATHHostSync32Tests */,
 				B99A9E2B1E851B1B00189779 /* Frameworks */,
 				B99A9E2A1E851B1B00189779 /* Products */,
-				B93C9CFC1E88F6DD00F0FE08 /* ATHHostSync32 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,6 +343,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -365,6 +364,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +460,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,6 +481,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

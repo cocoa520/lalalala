@@ -120,7 +120,7 @@
 //    NSString *str2 = [IMBHelper dictionaryToJson:dic2];
 //    [socketClient sendData:str2];
 
-    [ATTracker setupWithTrackingID:@"UA-115743684-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试) UA-115743684-1
+    [ATTracker setupWithTrackingID:@"UA-115743684-1"];//UA-85655135-1(真实)   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试) UA-115743684-1
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -332,7 +332,7 @@
             if (result == NO) {//验证失败后，未对界面上做出相应处理
                 //主线程中弹出提示框
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_REGISTER_CHECK_FAIL object:errorStr];
-                softInfo.isRegistered = YES;
+                softInfo.isRegistered = NO;
             }
             [self savePlist];
         }else {//本地认证
@@ -340,7 +340,7 @@
             if (![StringHelper stringIsNilOrEmpty:softInfo.registeredCode]) {
                 KeyStateStruct *ks = [softInfo.verifyLicense verifyProductLicense:softInfo.registeredCode];
                 if (ks->valid == NO) {
-                    softInfo.isRegistered = YES;
+                    softInfo.isRegistered = NO;
                     result = NO;
                     errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);
                 }else {
@@ -348,7 +348,7 @@
                     softInfo.isRegistered = YES;
                 }
             }else {
-                softInfo.isRegistered = YES;
+                softInfo.isRegistered = NO;
                 result = NO;
                 errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);
             }
@@ -363,10 +363,10 @@
         if (![StringHelper stringIsNilOrEmpty:softInfo.registeredCode]) {
             KeyStateStruct *ks = [softInfo.verifyLicense verifyProductLicense:softInfo.registeredCode];
             if (ks->valid == NO) {
-                softInfo.isRegistered = YES;
+                softInfo.isRegistered = NO;
             }
         }else {
-            softInfo.isRegistered = YES;
+            softInfo.isRegistered = NO;
         }
         if (softInfo.isRegistered == NO) {
             NSString *errorStr = CustomLocalizedString(@"activate_error_onlineFailed", nil);
@@ -536,7 +536,11 @@
 }
 
 - (IBAction)toLogMenuClick:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"https://my.imobie.com/support/create_ticket.php"];
+    NSString *str = @"https://my.imobie.com/support/create_ticket.php";
+    if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
+        str = @"https://my.imobie.com/support/create_ticket_jp.php";
+    }
+    NSURL *url = [NSURL URLWithString:str];
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];
     [ws openURL:url];
 }

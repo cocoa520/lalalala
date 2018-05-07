@@ -1,7 +1,7 @@
 10
 
 dir
-2712
+3437
 http://huyumin@192.168.0.2:8080/svn/Mac/AnyTrans/AnyTrans5/AnyTrans5/UI/Resource_b/Toolbar
 http://huyumin@192.168.0.2:8080/svn/Mac
 
@@ -536,40 +536,6 @@ has-props
 
 1344
 
-tool_todevice_normal@2x.png
-file
-
-
-
-
-2018-02-02T01:40:53.000000Z
-c5901c3cbe8451b5d9d158236148a676
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1345
-
 tool_delete_normal@2x.png
 file
 
@@ -604,14 +570,14 @@ has-props
 
 1317
 
-tool_tomac_normal@2x.png
+tool_todevice_normal@2x.png
 file
 
 
 
 
 2018-02-02T01:40:53.000000Z
-990f3b865fa86b205676e62964ba06d3
+c5901c3cbe8451b5d9d158236148a676
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -636,7 +602,7 @@ has-props
 
 
 
-1307
+1345
 
 tool_setting_normal.png
 file
@@ -671,6 +637,40 @@ has-props
 
 
 1290
+
+tool_tomac_normal@2x.png
+file
+
+
+
+
+2018-02-02T01:40:53.000000Z
+990f3b865fa86b205676e62964ba06d3
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1307
 
 tool_backup_normal@2x.png
 file
@@ -774,40 +774,6 @@ has-props
 
 1240
 
-add_item2.png
-file
-
-
-
-
-2018-02-02T01:40:53.000000Z
-46c412083973417252222958367c379e
-2017-11-22T04:23:34.702949Z
-9
-dingming
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1296
-
 tool_exit_normal@2x.png
 file
 
@@ -842,14 +808,14 @@ has-props
 
 1339
 
-add_item3.png
+add_item2.png
 file
 
 
 
 
 2018-02-02T01:40:53.000000Z
-04eaf0b059728ff66ac3b9c37674a07e
+46c412083973417252222958367c379e
 2017-11-22T04:23:34.702949Z
 9
 dingming
@@ -874,7 +840,7 @@ has-props
 
 
 
-1310
+1296
 
 tool_import_normal@2x.png
 file
@@ -909,6 +875,40 @@ has-props
 
 
 1317
+
+add_item3.png
+file
+
+
+
+
+2018-02-02T01:40:53.000000Z
+04eaf0b059728ff66ac3b9c37674a07e
+2017-11-22T04:23:34.702949Z
+9
+dingming
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1310
 
 tool_editor_normal.png
 file

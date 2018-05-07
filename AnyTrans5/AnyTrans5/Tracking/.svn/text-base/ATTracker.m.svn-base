@@ -290,6 +290,21 @@ static ATTracker *_instance = nil;
             categoryName = @"undefinition event";
             break;
     }
+    if ([userLanguageName isEqualToString:@"en"]) {
+        userLanguageName = @"en-US";
+    }else if ([userLanguageName isEqualToString:@"ja"]) {
+        userLanguageName = @"ja-JP";
+    }else if ([userLanguageName isEqualToString:@"de"]) {
+        userLanguageName = @"de-DE";
+    }else if ([userLanguageName isEqualToString:@"fr"]) {
+        userLanguageName = @"fr-FR";
+    }else if ([userLanguageName isEqualToString:@"es"]) {
+        userLanguageName = @"es-MX";
+    }else if ([userLanguageName isEqualToString:@"ar"]) {
+        userLanguageName = @"ar-AR";
+    }else if ([userLanguageName isEqualToString:@"zh"]) {
+        userLanguageName = @"zh-CN";
+    }
     switch (label) {
         case Open: {
             @autoreleasepool {

@@ -981,9 +981,11 @@
 "url_guild_id_3" = "https://www.imobie.jp/guide/anytrans/what-data-will-be-overwritten-in-device.htm";
 "Product_Url" = "https://www.imobie.jp/anytrans/iphone-manager.htm";
 "FAQ_Url" = "https://www.imobie.jp/faq/anytrans-faqs.htm";
-"Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+
+"Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=%@";//anytrans/buy-iphone-manager.htm?mac%@";
+
 //折扣购买链接
-"discount_Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+"discount_Buy_Url" = "https://www.imobie.jp/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=d&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
 
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml"; //long add
 "update_url_2" = "anytrans6.xml";

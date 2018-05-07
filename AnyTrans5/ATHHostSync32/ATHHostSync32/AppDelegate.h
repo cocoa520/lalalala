@@ -12,7 +12,6 @@
 {
     ATHHostSync32 *_ath;
 }
-
 @property (assign) IBOutlet NSWindow *window;
 
 @end

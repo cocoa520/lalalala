@@ -1038,9 +1038,11 @@
     if (iTLPlaylists != nil) {
         NSArray *categoryPlaylists = [iTLPlaylists filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"distinguishedKindId == %d",iTunes_Books]];
         if([[self getiTunesVersion] isVersionMajorEqual:@"12.5"]){//iTunes具体取消book,改为audiobook的版本大概在12.5，具体的版本不确定
-            IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];
-            bookPlayst.distinguishedKindId = iTunes_Audiobook;
-            bookPlayst.iTunesType = iTunes_Audiobook;
+            if ([categoryPlaylists count]>0) {
+                IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];
+                bookPlayst.distinguishedKindId = iTunes_Audiobook;
+                bookPlayst.iTunesType = iTunes_Audiobook;
+            }
         }else {
             if (categoryPlaylists.count > 0) {
                IMBiTLPlaylist *bookPlayst = [categoryPlaylists objectAtIndex:0];

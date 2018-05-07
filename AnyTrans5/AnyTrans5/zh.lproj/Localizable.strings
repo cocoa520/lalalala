@@ -1032,9 +1032,11 @@
 "url_guild_id_2" = "http://imobie.com/guide/anytrans/how-to-turn-off-two-step-verification-in-icloud.htm";
 //clone链接
 "url_guild_id_3" = "http://www.imobie.com/guide/anytrans/what-data-will-be-overwritten-in-device.htm";
-"Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+
+"Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=%@";//anytrans/buy-iphone-manager.htm?mac%@";
+
 //折扣购买链接
-"discount_Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+"discount_Buy_Url" = "https://www.imobie.com/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=d&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
 
 "anytrans_guide" = "https://www.imobie.com/guide/anytrans/get-started.htm";
 "update_url_1" = "http://dl.imobie.com/config/anytrans6.xml";

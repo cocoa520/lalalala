@@ -962,6 +962,7 @@
 - (void)configAnnoyView {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
+        [[OperationLImitation singleton] setLimitStatus:@""];
         dimensionDict = [[TempHelper customDimension] copy];
     }
     [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"Air Backup" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
@@ -1141,6 +1142,7 @@
 - (void)buyNowButtonClick {
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
+        [[OperationLImitation singleton] setLimitStatus:@""];
         dimensionDict = [[TempHelper customDimension] copy];
     }
     [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=%@", [TempHelper currentSelectionLanguage], [IMBSoftWareInfo singleton].selectModular] label:Buy transferCount:0 screenView:@"Air Backup" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
@@ -1164,6 +1166,7 @@
         }
     }
     [view setHidden:NO];
+    [[OperationLImitation singleton] setLimitStatus:@""];
     int result = [_alertViewController showAlertActivationView:view WithIsBackupNow:_isBackupNow];
     if (result == 2) {
         [self backupNowClick];

@@ -120,7 +120,7 @@
 //    NSString *str2 = [IMBHelper dictionaryToJson:dic2];
 //    [socketClient sendData:str2];
 
-    [ATTracker setupWithTrackingID:@"UA-115743684-1"];//UA-85655135-1   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试) UA-115743684-1
+    [ATTracker setupWithTrackingID:@"UA-115743684-1"];//UA-85655135-1(真实)   UA-85633510-3(测试)  UA-84363639-1   UA-85633510-4(测试) UA-115743684-1
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
         dimensionDict = [[TempHelper customDimension] copy];
@@ -536,7 +536,11 @@
 }
 
 - (IBAction)toLogMenuClick:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"https://my.imobie.com/support/create_ticket.php"];
+    NSString *str = @"https://my.imobie.com/support/create_ticket.php";
+    if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
+        str = @"https://my.imobie.com/support/create_ticket_jp.php";
+    }
+    NSURL *url = [NSURL URLWithString:str];
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];
     [ws openURL:url];
 }

@@ -80,6 +80,10 @@
             [dict setObject:@"Unregister" forKey:@"cd6"];
         }
     }
+    if ([softInfo.trackTestVersionID isEqualToString:@""]) {
+        softInfo.trackTestVersionID = [softInfo.version stringByAppendingString:@".1"];
+    }
+    [dict setObject:softInfo.trackTestVersionID forKey:@"cd8"];
     return dict;
 }
 

@@ -16,7 +16,13 @@
 
 + (KeyStateStruct *)verifyProductLicense:(NSString *)license {
     KeyStateStruct *ks=nil;
-    ks = [IMBVerifyActivate verify:license id1:'A' id2:'T'];
+    if ([license hasPrefix:@"VQ"]) {//iOS和Android通用注册码
+        ks = [IMBVerifyActivate verify:license id1:'F' id2:'B'];
+    }else if ([license hasPrefix:@"JK"]){//德语合作版本注册码
+        ks = [IMBVerifyActivate verify:license id1:'A' id2:'E'];
+    }else {
+        ks = [IMBVerifyActivate verify:license id1:'A' id2:'T'];
+    }
     return ks;
 }
 

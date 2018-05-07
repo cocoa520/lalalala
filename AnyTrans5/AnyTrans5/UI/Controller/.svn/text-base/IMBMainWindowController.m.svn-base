@@ -242,16 +242,18 @@
         [dimensionDict release];
         dimensionDict = nil;
     }
-    NSDictionary *dimensionDicts = nil;
-    @autoreleasepool {
-        [[OperationLImitation singleton] setLimitStatus:@"notactivate"];
-        dimensionDicts = [[TempHelper customDimension] copy];
-    }
-    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"notactivate" label:Activate transferCount:0 screenView:@"AnyTrans Activation" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDicts];
-    if (dimensionDicts) {
-        [dimensionDicts release];
-        dimensionDicts = nil;
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSDictionary *dimensionDicts = nil;
+        @autoreleasepool {
+            [[OperationLImitation singleton] setLimitStatus:@"notactivate"];
+            dimensionDicts = [[TempHelper customDimension] copy];
+        }
+        [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:@"notactivate" label:Activate transferCount:0 screenView:@"AnyTrans Activation" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDicts];
+        if (dimensionDicts) {
+            [dimensionDicts release];
+            dimensionDicts = nil;
+        }
+    });
     if (![StringHelper stringIsNilOrEmpty:_searchView.searchField.stringValue]) {
         [_searchView.searchField setStringValue:@""];
         [self doSearch:nil];

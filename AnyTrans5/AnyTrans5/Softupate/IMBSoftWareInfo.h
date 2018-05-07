@@ -124,6 +124,9 @@ typedef enum
     NSString *_selectModular;
     
     int _buyId;
+    
+    /** 跟踪测试版本号 */
+    NSString *_trackTestVersionID;
     NSString *_discount;
     BOOL _isOpenAnnoy;
 }
@@ -189,6 +192,7 @@ typedef enum
 @property (nonatomic, readwrite, retain) NSString *selectModular;
 @property (nonatomic, readwrite, assign) int buyId;
 @property (nonatomic, readwrite, retain) NSString *discount;
+@property (nonatomic, readwrite, retain) NSString *trackTestVersionID;
 @property (nonatomic, readwrite) BOOL isOpenAnnoy;
 
 

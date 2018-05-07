@@ -98,7 +98,13 @@
 #pragma mark - 查询数据库方法
 - (void)querySqliteDBContent {
     if ([_iOSVersion isVersionMajorEqual:@"6"]) {
-        [self querySMSTableContentIos6];
+        @try {
+            [self querySMSTableContentIos6];
+        } @catch (NSException *exception) {
+            [_logManger writeInfoLog:[NSString stringWithFormat:@"query SMS exception:%@ %@",exception.name,exception.reason]];
+        } @finally {
+            
+        }
     }else {
         [self querySMSTableContentIos5];
     }

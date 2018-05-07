@@ -1050,9 +1050,10 @@
 "Main_Window_Closing_Merge_Tips" = "La fusion de vos données est en cours. La fermeture d’AnyTrans peut causer des problèmes inattendus. Êtes-vous sûr de quitter AnyTrans?";
 "Main_Window_Closing_Clone_Tips" = "Le clone de vos données est en cours. La fermeture d’AnyTrans peut causer des problèmes inattendus. Êtes-vous sûr de quitter AnyTrans?";
 
-"Buy_Url" = "https://www.imobie.fr/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
+"Buy_Url" = "https://www.imobie.fr/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=%@";//anytrans/buy-iphone-manager.htm?mac%@";
+
 //折扣购买链接
-"discount_Buy_Url" = "https://www.imobie.fr/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+"discount_Buy_Url" = "https://www.imobie.fr/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=d&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
 
 "Clone_id_17" = "Erreur de sauvegarde de \"%@\"! Essayez encore une fois.";
 "Clone_id_23" = "Réessayer";

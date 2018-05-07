@@ -16,6 +16,7 @@
 #import "IMBChooseBrowserWindowController.h"
 #import "TempHelper.h"
 #import "ATTracker.h"
+#import "OperationLImitation.h"
 
 @implementation SystemHelper
 + (NSString *)userHomePath{
@@ -542,7 +543,7 @@
         if (isDiscount) {
             str = CustomLocalizedString(@"discount_Buy_Url", nil);
         }
-        NSString *ver = softWare.version;
+        NSString *ver = softWare.trackTestVersionID;
         if (softWare.isIronsrc) {
             if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
                 ver = @"ironsrc3";
@@ -563,9 +564,18 @@
             }
         }
         if (isDiscount) {
-            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver]];
-        }else {
             url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId]];
+        }else {
+            NSString *annoyType = @"e";
+            NSString *limitStatus = [[OperationLImitation singleton] limitStatus];
+            if ([limitStatus isEqualToString:@"completed"]) {
+                annoyType = @"a";
+            }else if ([limitStatus isEqualToString:@"noquote"]) {
+                annoyType = @"b";
+            }else if ([limitStatus isEqualToString:@"notactivate"]) {
+                annoyType = @"c";
+            }
+            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId, annoyType]];
         }
         BOOL success = NO;
         if (identifer) {

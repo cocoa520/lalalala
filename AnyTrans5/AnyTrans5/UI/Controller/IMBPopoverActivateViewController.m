@@ -70,10 +70,13 @@
          @autoreleasepool {
              NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
              OperationLImitation *limit = [OperationLImitation singleton];
-             if (limit.remainderCount <= 0) {
-                 [limit setLimitStatus:@"noquote"];
+             if ([[limit limitStatus] isEqualToString:@""]) {
              }else {
-                 [limit setLimitStatus:@"completed"];
+                 if (limit.remainderCount <= 0) {
+                     [limit setLimitStatus:@"noquote"];
+                 }else {
+                     [limit setLimitStatus:@"completed"];
+                 }
              }
              dimensionMutDict = [TempHelper customDimension];
              [dimensionMutDict setObject:[IMBSoftWareInfo singleton].selectModular forKey:@"cd7"];
@@ -89,7 +92,7 @@
      _loadingLayer.contents = [NSImage imageNamed:@"registedLoading"];
      
      [_inputTextFiled setWantsLayer:YES];
-     [_loadingLayer setFrame:CGRectMake(_inputTextFiled.frame.size.width  -10 -8  , (_inputTextFiled.frame.size.height - 14)/2 +2 , 14,14)];
+     [_loadingLayer setFrame:CGRectMake(_inputTextFiled.frame.size.width  - 10 - 8 , (_inputTextFiled.frame.size.height - 14)/2 + 2 , 14,14)];
      [_inputTextFiled.layer addSublayer:_loadingLayer];
      [_loadingLayer addAnimation:[IMBAnimation rotation:FLT_MAX toValue:[NSNumber numberWithFloat:2*M_PI] durTimes:2.0] forKey:@"circularLayerRotation"];
      
@@ -103,10 +106,13 @@
          @autoreleasepool {
              NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
              OperationLImitation *limit = [OperationLImitation singleton];
-             if (limit.remainderCount <= 0) {
-                 [limit setLimitStatus:@"noquote"];
+             if ([[limit limitStatus] isEqualToString:@""]) {
              }else {
-                 [limit setLimitStatus:@"completed"];
+                 if (limit.remainderCount <= 0) {
+                     [limit setLimitStatus:@"noquote"];
+                 }else {
+                     [limit setLimitStatus:@"completed"];
+                 }
              }
              dimensionMutDict = [TempHelper customDimension];
              [dimensionMutDict setObject:[IMBSoftWareInfo singleton].selectModular forKey:@"cd7"];
@@ -131,10 +137,13 @@
                 @autoreleasepool {
                     NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
                     OperationLImitation *limit = [OperationLImitation singleton];
-                    if (limit.remainderCount <= 0) {
-                        [limit setLimitStatus:@"noquote"];
+                    if ([[limit limitStatus] isEqualToString:@""]) {
                     }else {
-                        [limit setLimitStatus:@"completed"];
+                        if (limit.remainderCount <= 0) {
+                            [limit setLimitStatus:@"noquote"];
+                        }else {
+                            [limit setLimitStatus:@"completed"];
+                        }
                     }
                     dimensionMutDict = [TempHelper customDimension];
                     [dimensionMutDict setObject:[IMBSoftWareInfo singleton].selectModular forKey:@"cd7"];
@@ -160,10 +169,13 @@
                  @autoreleasepool {
                      NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
                      OperationLImitation *limit = [OperationLImitation singleton];
-                     if (limit.remainderCount <= 0) {
-                         [limit setLimitStatus:@"noquote"];
+                     if ([[limit limitStatus] isEqualToString:@""]) {
                      }else {
-                         [limit setLimitStatus:@"completed"];
+                         if (limit.remainderCount <= 0) {
+                             [limit setLimitStatus:@"noquote"];
+                         }else {
+                             [limit setLimitStatus:@"completed"];
+                         }
                      }
                      dimensionMutDict = [TempHelper customDimension];
                      [dimensionMutDict setObject:software.selectModular forKey:@"cd7"];
@@ -210,10 +222,13 @@
                  @autoreleasepool {
                      NSMutableDictionary *dimensionMutDict = [[[NSMutableDictionary alloc] init] autorelease];
                      OperationLImitation *limit = [OperationLImitation singleton];
-                     if (limit.remainderCount <= 0) {
-                         [limit setLimitStatus:@"noquote"];
+                     if ([[limit limitStatus] isEqualToString:@""]) {
                      }else {
-                         [limit setLimitStatus:@"completed"];
+                         if (limit.remainderCount <= 0) {
+                             [limit setLimitStatus:@"noquote"];
+                         }else {
+                             [limit setLimitStatus:@"completed"];
+                         }
                      }
                      dimensionMutDict = [TempHelper customDimension];
                      [dimensionMutDict setObject:software.selectModular forKey:@"cd7"];

@@ -19,6 +19,7 @@
 #import "TempHelper.h"
 #import "ATTracker.h"
 #import "NSString+Category.h"
+#import "OperationLImitation.h"
 
 @implementation IMBChooseBrowserWindowController
 @synthesize isDisCountBuy = _isDisCountBuy;
@@ -126,7 +127,7 @@
     IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
     
     NSString *str = CustomLocalizedString(@"Buy_Url", nil);
-    NSString *ver = softWare.version;
+    NSString *ver = softWare.trackTestVersionID;
     if (softWare.isIronsrc) {
         if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
             ver = @"ironsrc3";
@@ -147,12 +148,21 @@
         }
     }
     if (_isDisCountBuy) {
-        url = [NSURL URLWithString:[NSString stringWithFormat:CustomLocalizedString(@"discount_Buy_Url", nil),ver]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:CustomLocalizedString(@"discount_Buy_Url", nil),ver, softWare.buyId]];
     }else {
+        NSString *annoyType = @"e";
+        NSString *limitStatus = [[OperationLImitation singleton] limitStatus];
+        if ([limitStatus isEqualToString:@"completed"]) {
+            annoyType = @"a";
+        }else if ([limitStatus isEqualToString:@"noquote"]) {
+            annoyType = @"b";
+        }else if ([limitStatus isEqualToString:@"notactivate"]) {
+            annoyType = @"c";
+        }
         if (_isActive) {
-            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, 0]];
+            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, 0, annoyType]];
         }else {
-            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, softWare.buyId]];
+            url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, softWare.buyId, annoyType]];
         }
     }
     

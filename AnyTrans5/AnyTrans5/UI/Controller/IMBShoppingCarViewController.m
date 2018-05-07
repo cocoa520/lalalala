@@ -859,7 +859,7 @@
     
     NSString *str = CustomLocalizedString(@"Buy_Url", nil);
 
-    NSString *ver = softWare.version;
+    NSString *ver = softWare.trackTestVersionID;
     if (softWare.isIronsrc) {
         if ([IMBSoftWareInfo singleton].chooseLanguageType == JapaneseLanguage) {
             ver = @"ironsrc3";
@@ -883,7 +883,16 @@
         url = [NSURL URLWithString:@"https://www.imobie.com/anytrans/buy-mac.htm?ref=holiday"];
     }else {
         int buyId = 0;
-        url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId]];
+        NSString *annoyType = @"e";
+        NSString *limitStatus = [[OperationLImitation singleton] limitStatus];
+        if ([limitStatus isEqualToString:@"completed"]) {
+            annoyType = @"a";
+        }else if ([limitStatus isEqualToString:@"noquote"]) {
+            annoyType = @"b";
+        }else if ([limitStatus isEqualToString:@"notactivate"]) {
+            annoyType = @"c";
+        }
+        url = [NSURL URLWithString:[NSString stringWithFormat:str, ver, buyId, annoyType]];
     }
     
     NSWorkspace *ws = [NSWorkspace sharedWorkspace];

@@ -1291,15 +1291,17 @@
     if (!soft.isRegistered && (limit.remainderCount==0 || limit.remainderDays==0 || !soft.isOpenAnnoy || _transferType == MergeType || _transferType == CloneType)) {
         NSDictionary *dimensionDict = nil;
         long long redminderCount = (long long)limit.remainderCount;
-        @autoreleasepool {
-            dimensionDict = [[TempHelper customDimension] copy];
-        }
-        [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"Ad annoy" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
-        if (dimensionDict) {
-            [dimensionDict release];
-            dimensionDict = nil;
-        }
+        
         if (_transferType == MergeType || _transferType == CloneType) {//clone、merge还是用之前的骚扰界面
+            @autoreleasepool {
+                [[OperationLImitation singleton] setLimitStatus:@""];
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"Ad annoy" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
             (*annoyVC) = [[IMBAnnoyViewController alloc] initWithNibName:@"IMBAnnoyViewController" Delegate:self Result:&redminderCount];
             ((IMBAnnoyViewController *)(*annoyVC)).category = _category;
             ((IMBAnnoyViewController *)(*annoyVC)).isClone = _isClone;
@@ -1313,6 +1315,15 @@
                 ((IMBAnnoyViewController *)(*annoyVC)).isClone = YES;
             }
         }else {
+            @autoreleasepool {
+                [[OperationLImitation singleton] setLimitStatus:@"expired"];
+                dimensionDict = [[TempHelper customDimension] copy];
+            }
+            [ATTracker event:AnyTrans_Activation action:AdAnnoy actionParams:[IMBSoftWareInfo singleton].selectModular label:LabelNone transferCount:0 screenView:@"Ad annoy" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+            if (dimensionDict) {
+                [dimensionDict release];
+                dimensionDict = nil;
+            }
             (*annoyVC) = [[IMBNewAnnoyViewController alloc] initWithNibName:@"IMBNewAnnoyViewController" Delegate:self Result:&redminderCount];
             ((IMBNewAnnoyViewController *)(*annoyVC)).category = _category;
             ((IMBNewAnnoyViewController *)(*annoyVC)).isClone = _isClone;
@@ -2007,6 +2018,8 @@
                             }else {
                                 [limitation setLimitStatus:@"completed"];
                             }
+                        }else {
+                            [limitation setLimitStatus:@""];
                         }
                         dimensionDict = [[TempHelper customDimension] copy];
                     }
@@ -2567,6 +2580,7 @@
     OperationLImitation *limitation = [OperationLImitation singleton];
     NSDictionary *dimensionDict = nil;
     @autoreleasepool {
+        [limitation setLimitStatus:@""];
         dimensionDict = [[TempHelper customDimension] copy];
     }
     if (limitation.remainderCount <= 0) {

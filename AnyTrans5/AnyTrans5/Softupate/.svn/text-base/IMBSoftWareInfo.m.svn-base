@@ -75,6 +75,7 @@
 @synthesize isStartUpAirBackup = _isStartUpAirBackup;
 @synthesize selectModular = _selectModular;
 @synthesize buyId = _buyId;
+@synthesize trackTestVersionID = _trackTestVersionID;
 @synthesize discount = _discount;
 @synthesize isOpenAnnoy = _isOpenAnnoy;
 
@@ -113,7 +114,12 @@
         _isCopySyncPlistFile = YES;
         _productName = @"AnyTrans";
         _resProductName = @"AnyTrans";
-        _buildDate = @"20180315";
+        _buildDate = @"20180412";
+        
+        //此变量必须填入正确值, 用于跟踪测试版本,
+        //填入规则: 发布版本号 + .1; 假设为版本号为6.3.6, 则填入的正确值为: 6.3.6.1
+        //每更新一次跟踪内容，在.1的基础上加1变为.2
+        _trackTestVersionID = @"6.3.6.1";
 
         _discount = @"25%";//默认值为25
         _buyId = 1;

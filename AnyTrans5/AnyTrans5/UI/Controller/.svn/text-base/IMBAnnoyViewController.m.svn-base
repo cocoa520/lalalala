@@ -556,11 +556,22 @@
 - (IBAction)buyNow:(id)sender {
     IMBSoftWareInfo *softWare = [IMBSoftWareInfo singleton];
     NSDictionary *dimensionDict = nil;
+    OperationLImitation *limit = [OperationLImitation singleton];
     @autoreleasepool {
-        [[OperationLImitation singleton] setLimitStatus:@"completed"];
+        if (_isClone || _isMerge) {
+            [limit setLimitStatus:@""];
+        }else {
+            if (limit.remainderDays > 0) {
+                [limit setLimitStatus:@"completed"];
+            }else if (limit.retainCount == 0 && limit.remainderDays > 0) {
+                [limit setLimitStatus:@"noquote"];
+            }else {
+                [limit setLimitStatus:@"expired"];
+            }
+        }
         dimensionDict = [[TempHelper customDimension] copy];
     }
-    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=completed", [TempHelper currentSelectionLanguage]] label:Buy transferCount:0 screenView:@"go shop" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
+    [ATTracker event:AnyTrans_Activation action:ActionNone actionParams:[NSString stringWithFormat:@"%@#status=%@", [TempHelper currentSelectionLanguage], limit.limitStatus] label:Buy transferCount:0 screenView:@"go shop" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
     
     if (dimensionDict) {
         [dimensionDict release];

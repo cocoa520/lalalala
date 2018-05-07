@@ -1069,10 +1069,9 @@
 
 "Main_Window_Closing_Merge_Tips" = "Wenn Sie AnyTrans während der Datenzusammenführung beenden, werden unerwartete Probleme verursacht. Möchten Sie AnyTrans wirklich beenden?";
 "Main_Window_Closing_Clone_Tips" = "Wenn Sie AnyTrans während des Klonen der Inhalte beenden, werden unerwartete Probleme verursacht. Möchten Sie AnyTrans wirklich beenden?";
-"Buy_Url" = "https://www.imobie.de/go/store.php?product=ati&os=mac&v=%@&id=%d";//anytrans/buy-iphone-manager.htm?mac%@";
-
+"Buy_Url" = "https://www.imobie.de/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=%@";//anytrans/buy-iphone-manager.htm?mac%@";
 //折扣购买链接
-"discount_Buy_Url" = "https://www.imobie.de/go/store.php?product=ati&os=mac&v=%@&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
+"discount_Buy_Url" = "https://www.imobie.de/go/store.php?product=ati&os=mac&v=%@&id=%d&sid=d&link=anytrans/buy-iphone-manager-time-limited-offer.htm";
 
 "anytrans_guide" = "https://www.imobie.de/guide/anytrans/anfang.htm";
 

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 61
-/svn/Mac/!svn/ver/2694/AnyTrans/AnyTrans5/AnyTrans5/UI/Window
+/svn/Mac/!svn/ver/3279/AnyTrans/AnyTrans5/AnyTrans5/UI/Window
 END
 IMBPhotosPreviewWindowController.xib
 K 25
@@ -93,17 +93,17 @@ svn:wc:ra_dav:version-url
 V 77
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBToolbarWindow.m
 END
-IMBNavPopoverWindowController.m
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBNavPopoverWindowController.m
-END
 IMBNoTitleBarWindow.m
 K 25
 svn:wc:ra_dav:version-url
 V 80
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBNoTitleBarWindow.m
+END
+IMBNavPopoverWindowController.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBNavPopoverWindowController.m
 END
 IMBChooseLanguagesWindowController.h
 K 25
@@ -123,23 +123,17 @@ svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/1368/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseLanguagesWindowController.m
 END
-IMBSkinPopoverWindowController.h
-K 25
-svn:wc:ra_dav:version-url
-V 91
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBSkinPopoverWindowController.h
-END
 IMBChooseBrowserWindowController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svn/Mac/!svn/ver/2674/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseBrowserWindowController.xib
 END
-_NSThemeWidgetCell.h
+IMBSkinPopoverWindowController.h
 K 25
 svn:wc:ra_dav:version-url
-V 79
-/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/_NSThemeWidgetCell.h
+V 91
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBSkinPopoverWindowController.h
 END
 IMBUpgradeWindowController.xib
 K 25
@@ -147,17 +141,23 @@ svn:wc:ra_dav:version-url
 V 92
 /svn/Mac/!svn/ver/1236/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBUpgradeWindowController.xib
 END
-IMBChooseBrowserWindowController.h
+_NSThemeWidgetCell.h
 K 25
 svn:wc:ra_dav:version-url
-V 96
-/svn/Mac/!svn/ver/2660/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseBrowserWindowController.h
+V 79
+/svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/_NSThemeWidgetCell.h
 END
 IMBSkinPopoverWindowController.m
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svn/Mac/!svn/ver/9/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBSkinPopoverWindowController.m
+END
+IMBChooseBrowserWindowController.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mac/!svn/ver/2660/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseBrowserWindowController.h
 END
 IMBUpgradeWindowController.h
 K 25
@@ -169,7 +169,7 @@ IMBChooseBrowserWindowController.m
 K 25
 svn:wc:ra_dav:version-url
 V 96
-/svn/Mac/!svn/ver/2694/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseBrowserWindowController.m
+/svn/Mac/!svn/ver/3279/AnyTrans/AnyTrans5/AnyTrans5/UI/Window/IMBChooseBrowserWindowController.m
 END
 IMBPreferencesSettingWindowController.xib
 K 25
