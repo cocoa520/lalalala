@@ -328,6 +328,7 @@
                             //                            if (_exportType == 2) {
                             //                                [_limitation reduceRedmainderCount];
                             //                            }
+                            [IMBLimitation sharedLimitation].leftToMacNums--;
                             _successCount += 1;
                             IMBPhotoExportSettingConfig *photoExportConfig = [IMBPhotoExportSettingConfig singleton];
                             if (photoExportConfig.isCreadPhotoDate) {

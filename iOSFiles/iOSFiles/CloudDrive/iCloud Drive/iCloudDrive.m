@@ -27,6 +27,8 @@
 #import "iCloudDriveLogoutAPI.h"
 #import "iCloudDriveValidateAPI.h"
 #import "iCloudDriveUsedStorageAPI.h"
+#import "IMBLimitation.h"
+
 //#import "iCloudDriveGetSMSSecuritycodeAPI.h"
 
 @implementation iCloudDrive
@@ -621,6 +623,7 @@
                                          dimensionDict = nil;
                                      }
                                  }else {
+                                     [IMBLimitation sharedLimitation].leftToCloudNums --;
                                      [ATTracker event:CiCloud action:ADownload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                                      if (dimensionDict) {
                                          [dimensionDict release];
@@ -756,6 +759,7 @@
     }else{
         [_uploadArray addObject:item];
         item.state = UploadStateWait;
+        IMBFLog(@"current thread -- %@",[NSThread currentThread]);
         dispatch_sync(_synchronQueue, ^{
             if ([self isUploadActivityLessMax]) {
                 [self startUploadItem:item];

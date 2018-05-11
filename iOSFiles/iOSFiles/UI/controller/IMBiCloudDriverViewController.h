@@ -84,7 +84,6 @@
     BOOL _isDriveToDrive;
     NSPopover *_devChoosePopover;
     IMBDevicePopoverViewController *_devicePopoverViewController;
-    
 }
 @property (nonatomic, retain) IMBBaseInfo *baseInfo;
 

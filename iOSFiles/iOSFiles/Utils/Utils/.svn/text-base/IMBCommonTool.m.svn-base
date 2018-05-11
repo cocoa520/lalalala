@@ -71,10 +71,11 @@ NSString * const IMBAlertViewDropBoxKey = @"DropBox";
         [alert.singleBtnViewOKBtn setTitle:@"OK"];
     }
     
+    alert.view.wantsLayer = YES;
+    
     [alert.view setFrameOrigin:NSMakePoint((inView.frame.size.width - alert.view.frame.size.width)/2.f, inView.frame.size.height)];
     NSRect newF = alert.view.frame;
     newF.origin.y = inView.frame.size.height - newF.size.height + 10.f;
-    [alert.view setWantsLayer:YES];
     [alert resetMsgPostion];
     [IMBViewAnimation animationWithView:alert.view frame:newF timeInterval:IMBAlertShowInterval disable:NO completion:^{
         

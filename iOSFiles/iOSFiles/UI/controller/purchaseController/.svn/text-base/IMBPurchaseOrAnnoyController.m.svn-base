@@ -13,10 +13,12 @@
 #import "IMBPurchaseTopVerifyController.h"
 #import "IMBPurchaseBottomButtonController.h"
 #import "IMBPurchaseBottomVerifyController.h"
-
+#import "IMBLimitation.h"
 
 #import "IMBViewAnimation.h"
 
+
+static IMBPurchaseLeftNumController *_topVc = nil;
 
 @interface IMBPurchaseOrAnnoyController ()
 
@@ -151,24 +153,36 @@
     
     middleVc.view.imb_origin = NSMakePoint(viewX, 182.f);
     
+    if (_topVc) {
+        [_topVc release];
+        _topVc = nil;
+    }
+    _topVc = [[IMBPurchaseLeftNumController alloc] initWithNibName:@"IMBPurchaseLeftNumController" bundle:nil];
+    _topVc.view.imb_origin = NSMakePoint(viewX, 475.f);
+    _topVc.leftNums = @[@(toMacLeftNum),@(toDeviceLeftNum),@(toCloudLeftNum)];
+    [vc.view addSubview:_topVc.view];
     
-    IMBPurchaseLeftNumController *topVc = [[IMBPurchaseLeftNumController alloc] initWithNibName:@"IMBPurchaseLeftNumController" bundle:nil];
-    topVc.view.imb_origin = NSMakePoint(viewX, 475.f);
-    topVc.leftNums = @[@(toMacLeftNum),@(toDeviceLeftNum),@(toCloudLeftNum)];
-    [vc.view addSubview:topVc.view];
-    
+    [[IMBLimitation sharedLimitation] addObserver:vc forKeyPath:@"leftToMacNums" options:NSKeyValueObservingOptionNew context:nil];
+    [[IMBLimitation sharedLimitation] addObserver:vc forKeyPath:@"leftToDeviceNums" options:NSKeyValueObservingOptionNew context:nil];
+    [[IMBLimitation sharedLimitation] addObserver:vc forKeyPath:@"leftToCloudNums" options:NSKeyValueObservingOptionNew context:nil];
     
 //    [bottomVc release];
 //    bottomVc = nil;
     [middleVc release];
     middleVc = nil;
-    [topVc release];
-    topVc = nil;
+    [_topVc release];
+    _topVc = nil;
     
     return vc;
 }
 
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        _topVc.leftNums = @[@([IMBLimitation sharedLimitation].leftToMacNums),@([IMBLimitation sharedLimitation].leftToDeviceNums),@([IMBLimitation sharedLimitation].leftToCloudNums)];
+    });
+    
+}
 #pragma mark - setup view
 - (void)viewDidLoad {
     [super viewDidLoad];

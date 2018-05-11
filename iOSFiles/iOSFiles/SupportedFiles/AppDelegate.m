@@ -105,6 +105,7 @@
         [fm removeItemAtPath:appTempPath error:nil];
     }
     //这里要做限制的剩余个数存储
+    [[IMBLimitation sharedLimitation] saveRestNums];
 }
 
 - (void)awakeFromNib {

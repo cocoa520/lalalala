@@ -124,11 +124,11 @@
     [path fill];
     
     
-    int xPos;
-    int yPos;
-    
-    xPos = 14;
-    yPos = 0;
+//    int xPos;
+//    int yPos;
+//    
+//    xPos = 14;
+//    yPos = 0;
     
     
     //背景

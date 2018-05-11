@@ -7,12 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class IMBHoverChangeImageBtn,IMBWhiteView;
+@class IMBHoverChangeImageBtn,IMBWhiteView,IMBPurchaseLeftNumController;
 
 @interface IMBPurchaseOrAnnoyController : NSViewController
 {
     IBOutlet IMBHoverChangeImageBtn *_closeWindowBtn;
     IBOutlet IMBWhiteView *_whiteView;
+
 }
 
 @property(nonatomic, assign)IMBWhiteView *whiteView;

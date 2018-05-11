@@ -7449,6 +7449,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AllFiles;
 				PRODUCT_NAME = AllFiles;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.11;
 			};
 			name = Debug;
@@ -7487,6 +7488,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AllFiles;
 				PRODUCT_NAME = AllFiles;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx10.11;
 			};
 			name = Release;

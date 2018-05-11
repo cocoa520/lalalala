@@ -1,15 +1,15 @@
 10
 
 dir
-3431
+3712
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/view
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-05-03T03:48:57.504067Z
-3431
-longfan
+2018-05-04T06:45:46.165254Z
+3482
+hezhonglin
 
 
 
@@ -128,40 +128,6 @@ shuaimingzhong
 
 2031
 
-ObjectTableRowView.h
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-4ef3127a32a2b154f8ab84fb4f1e6f4c
-2018-03-22T12:14:47.147361Z
-1865
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-317
-
 IMBCoverView.h
 file
 
@@ -196,16 +162,16 @@ hezhonglin
 
 196
 
-IMBWhiteView.h
+ObjectTableRowView.h
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-658c362c0fd7636e77110d7b5b84bfd4
-2018-03-24T02:10:38.804802Z
-1894
+4ef3127a32a2b154f8ab84fb4f1e6f4c
+2018-03-22T12:14:47.147361Z
+1865
 longfan
 has-props
 
@@ -228,7 +194,7 @@ has-props
 
 
 
-1232
+317
 
 IMBTextButtonView.h
 file
@@ -264,84 +230,16 @@ has-props
 
 879
 
-IMBCoverView.m
-file
-
-
-
-
-2018-04-20T10:16:43.000000Z
-fb780d5ef8b77866e29ef698db2806cf
-2018-04-20T10:39:06.409803Z
-2993
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-392
-
-IMBDeviceItem.h
-file
-
-
-
-
-2018-04-03T06:43:37.000000Z
-c1d57639ebbe54add846bc9882940ee7
-2018-04-03T06:33:53.801530Z
-2316
-huyumin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1501
-
-ObjectTableRowView.m
+IMBWhiteView.h
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-fb5a438df1d0dfe16b80fafaef0a7a46
-2018-03-22T12:14:47.147361Z
-1865
+658c362c0fd7636e77110d7b5b84bfd4
+2018-03-24T02:10:38.804802Z
+1894
 longfan
 has-props
 
@@ -364,7 +262,7 @@ has-props
 
 
 
-1645
+1232
 
 IMBLackCornerView.h
 file
@@ -400,16 +298,84 @@ dingming
 
 637
 
-IMBShadowView.h
+ObjectTableRowView.m
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-c81315d3a7f0e56957c226667cd527fe
-2018-03-14T01:38:30.196324Z
-1646
+fb5a438df1d0dfe16b80fafaef0a7a46
+2018-03-22T12:14:47.147361Z
+1865
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1645
+
+IMBDeviceItem.h
+file
+
+
+
+
+2018-04-03T06:43:37.000000Z
+c1d57639ebbe54add846bc9882940ee7
+2018-04-03T06:33:53.801530Z
+2316
+huyumin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1501
+
+IMBCoverView.m
+file
+
+
+
+
+2018-04-20T10:16:43.000000Z
+fb780d5ef8b77866e29ef698db2806cf
+2018-04-20T10:39:06.409803Z
+2993
 hezhonglin
 
 
@@ -432,7 +398,41 @@ hezhonglin
 
 
 
-198
+392
+
+IMBTextButtonView.m
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+f5b7d1402c20de169a5e6ec9493665a8
+2018-03-22T12:14:47.147361Z
+1865
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7563
 
 IMBWhiteView.m
 file
@@ -468,18 +468,17 @@ has-props
 
 5665
 
-IMBTextButtonView.m
+IMBShadowView.h
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-f5b7d1402c20de169a5e6ec9493665a8
-2018-03-22T12:14:47.147361Z
-1865
-longfan
-has-props
+c81315d3a7f0e56957c226667cd527fe
+2018-03-14T01:38:30.196324Z
+1646
+hezhonglin
 
 
 
@@ -500,7 +499,8 @@ has-props
 
 
 
-7563
+
+198
 
 IMBSelectedDeviceTextfield.h
 file
@@ -1114,40 +1114,6 @@ longfan
 
 223
 
-IMBDrawTextFiledView.m
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-21c90e040487407ada9855fde1e4bf54
-2018-03-20T12:10:04.671758Z
-1776
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-708
-
 PopoverRootView.m
 file
 
@@ -1181,6 +1147,40 @@ longfan
 
 
 1210
+
+IMBDrawTextFiledView.m
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+21c90e040487407ada9855fde1e4bf54
+2018-03-20T12:10:04.671758Z
+1776
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+708
 
 ProgressView.h
 file
@@ -1216,40 +1216,6 @@ longfan
 
 896
 
-MyPopoverBackgroundView.m
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-31d467300d9a1bae2022afa532a96417
-2018-03-19T03:14:09.143526Z
-1724
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1852
-
 IMBBackgroundBorderView.h
 file
 
@@ -1283,6 +1249,40 @@ longfan
 
 
 1264
+
+MyPopoverBackgroundView.m
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+31d467300d9a1bae2022afa532a96417
+2018-03-19T03:14:09.143526Z
+1724
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1852
 
 IMBGradientComponentView.h
 file
@@ -1828,40 +1828,6 @@ hezhonglin
 
 979
 
-CapacityView.m
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-738e52c328bfaf5d5ca1882374eda93f
-2018-03-19T03:14:09.143526Z
-1724
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1243
-
 IMBPurcahseLeftNumLabel.h
 file
 
@@ -1896,16 +1862,16 @@ hezhonglin
 
 661
 
-IMBDownWhiteView.m
+CapacityView.m
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-b63121736ad7f3b7d500037467f0d371
-2018-03-22T12:14:47.147361Z
-1865
+738e52c328bfaf5d5ca1882374eda93f
+2018-03-19T03:14:09.143526Z
+1724
 longfan
 
 
@@ -1928,7 +1894,7 @@ longfan
 
 
 
-1206
+1243
 
 BRNumberFormatter.h
 file
@@ -1963,6 +1929,40 @@ has-props
 
 
 255
+
+IMBDownWhiteView.m
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+b63121736ad7f3b7d500037467f0d371
+2018-03-22T12:14:47.147361Z
+1865
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1206
 
 IMBPurcahseLeftNumLabel.m
 file
@@ -2032,40 +2032,6 @@ has-props
 
 1417
 
-IMBCustomCornerView.h
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-79da5908ecbc599dc10784f3b303b834
-2018-03-07T10:42:03.133680Z
-1556
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-183
-
 IMBRegisterResultView.h
 file
 
@@ -2099,6 +2065,40 @@ hezhonglin
 
 
 613
+
+IMBCustomCornerView.h
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+79da5908ecbc599dc10784f3b303b834
+2018-03-07T10:42:03.133680Z
+1556
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+183
 
 IMBSelectionView.h
 file
@@ -2442,7 +2442,7 @@ has-props
 
 IMBGridTextField.h
 file
-3482
+
 
 
 
@@ -2476,7 +2476,7 @@ hezhonglin
 
 IMBGridTextField.m
 file
-3482
+
 
 
 

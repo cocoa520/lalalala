@@ -130,7 +130,43 @@ static id _instance = nil;
     _thirdLabel.leftStirngEnum = IMBPurcahseLeftNumLabelLeftStringToCloud;
     _thirdLabel.leftNum = [[IMBLimitation sharedLimitation] leftToCloudNums];
    
+    
+    [[IMBLimitation sharedLimitation] addObserver:self forKeyPath:@"leftToMacNums" options:NSKeyValueObservingOptionNew context:nil];
+    [[IMBLimitation sharedLimitation] addObserver:self forKeyPath:@"leftToDeviceNums" options:NSKeyValueObservingOptionNew context:nil];
+    [[IMBLimitation sharedLimitation] addObserver:self forKeyPath:@"leftToCloudNums" options:NSKeyValueObservingOptionNew context:nil];
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    IMBFLog(@"current thread -- %@",[NSThread currentThread]);
+    if ([NSThread currentThread] == [NSThread mainThread]) {
+        if ([keyPath isEqualToString:@"leftToMacNums"]) {
+            _firstLabel.leftNum = [[IMBLimitation sharedLimitation] leftToMacNums];
+            [_firstLabel setNeedsDisplay];
+        }else if ([keyPath isEqualToString:@"leftToDeviceNums"]) {
+            _secondLabel.leftNum = [[IMBLimitation sharedLimitation] leftToDeviceNums];
+            [_secondLabel setNeedsDisplay];
+        }else if ([keyPath isEqualToString:@"leftToCloudNums"]) {
+            _thirdLabel.leftNum = [[IMBLimitation sharedLimitation] leftToCloudNums];
+            [_thirdLabel setNeedsDisplay];
+        }
+    }else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if ([keyPath isEqualToString:@"leftToMacNums"]) {
+                _firstLabel.leftNum = [[IMBLimitation sharedLimitation] leftToMacNums];
+                [_firstLabel setNeedsDisplay];
+            }else if ([keyPath isEqualToString:@"leftToDeviceNums"]) {
+                _secondLabel.leftNum = [[IMBLimitation sharedLimitation] leftToDeviceNums];
+                [_secondLabel setNeedsDisplay];
+            }else if ([keyPath isEqualToString:@"leftToCloudNums"]) {
+                _thirdLabel.leftNum = [[IMBLimitation sharedLimitation] leftToCloudNums];
+                [_thirdLabel setNeedsDisplay];
+            }
+        });
+    }
+//    [_limitView setNeedsDisplay:YES];
+    
+}
+
 
 - (void)setLimitViewShowing:(BOOL)showing {
     if (showing) {

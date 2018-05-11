@@ -127,18 +127,30 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
     }
 }
 
-
 - (void)setLeftToMacNums:(int)leftToMacNums {
-    _leftToMacNums = leftToMacNums;
+    if (leftToMacNums < 0) {
+        leftToMacNums = -1;
+        _leftToMacNums = 0;
+    }else {
+        _leftToMacNums = leftToMacNums;
+    }
+    
     if (_registerStatus) {
         return;
     }
     if (leftToMacNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
+    
 }
 
 - (void)setLeftToDeviceNums:(int)leftToDeviceNums {
+    if (leftToDeviceNums < 0) {
+        leftToDeviceNums = -1;
+        _leftToMacNums = 0;
+    }else {
+        _leftToMacNums = leftToDeviceNums;
+    }
     _leftToDeviceNums = leftToDeviceNums;
     if (_registerStatus) {
         return;
@@ -146,9 +158,16 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
     if (leftToDeviceNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
+    
 }
 
 - (void)setLeftToCloudNums:(int)leftToCloudNums {
+    if (leftToCloudNums < 0) {
+        leftToCloudNums = -1;
+        _leftToMacNums = 0;
+    }else {
+        _leftToMacNums = leftToCloudNums;
+    }
     _leftToCloudNums = leftToCloudNums;
     if (_registerStatus) {
         return;
@@ -156,6 +175,7 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
     if (leftToCloudNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
+   
 }
 
 

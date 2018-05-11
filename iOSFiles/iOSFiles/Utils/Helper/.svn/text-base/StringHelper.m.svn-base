@@ -17,7 +17,7 @@
 
 + (BOOL)stringIsNilOrEmpty:(NSString*)string {
     if ([string isKindOfClass:[NSNull class]]) {
-        return NO;
+        return YES;
     }
     if (string == nil || [string isEqualToString:@""]  ) {
         return YES;

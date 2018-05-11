@@ -596,6 +596,7 @@
     
     NSArray *array = nil;
     
+    
     if (_isSearch) {
         array = _researchdataSourceArray;
     }else {
@@ -1544,6 +1545,7 @@
                 downloaditem.photoImage = [TempHelper loadTransferFileImage:driveEntity.extension];
             }
         }
+        
         [downloaditem setLocalPath:[[TempHelper getAppTempPath] stringByAppendingPathComponent:downloaditem.fileName]];
         [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
         [_driveBaseManage oneDriveDownloadOneItem:downloaditem];
@@ -2217,7 +2219,7 @@
             }
 //            NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
 //            [workspace openFile:item.localPath];
-            NSMutableArray *ary = [[NSMutableArray alloc]init];
+            NSMutableArray *ary = [[NSMutableArray alloc] init];
             [ary addObject:item.localPath];
 //                [self addItemsDelay:ary];
             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];

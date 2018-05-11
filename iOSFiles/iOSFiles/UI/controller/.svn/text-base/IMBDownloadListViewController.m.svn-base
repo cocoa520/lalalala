@@ -979,7 +979,6 @@
                     [self loadDataUploadComplet:item];
                 }
             }
-
         }
     }
 }
@@ -1003,7 +1002,7 @@
     DriveItem *uploaditem = [[DriveItem alloc] init];
     [uploaditem setUploadParent:@"0"];
     [uploaditem setFileName:[item.localPath lastPathComponent]];
-    [uploaditem setLocalPath:item.localPath];
+    [uploaditem setLocalPath:[item.localPath stringByDeletingPathExtension]];
     [uploaditem setUploadDocwsID:@"root"];
     uploaditem.isAddCompleteView = NO;
     uploaditem.isDownLoad = NO;

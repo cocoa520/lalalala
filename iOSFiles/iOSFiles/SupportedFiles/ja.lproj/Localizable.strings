@@ -16,7 +16,7 @@
 "MainWindow_id_7" = "AllFilesベータ版";
 
 "Menu_About" = "AllFilesについて";
-"Menu_Home" = "AllFiles公式サイト";
+"Menu_Home" = "AllFilesホームページ";
 "Menu_Guide" = "オンラインガイド";
 "Menu_SendLog" = "ログファイルを送信";
 "Menu_ContactUs" = "お問い合わせ";
@@ -132,12 +132,12 @@
 "MenuItem_id_10" = "カメラロール";
 "MenuItem_id_13" = "ブック";
 "MenuItem_id_14" = "App";
-"MenuItem_id_28" = "オーディオ";
+"MenuItem_id_28" = "音楽";
 "MenuItem_id_29" = "ビデオ";
 "MenuItem_id_30" = "システム";
 "MenuItem_id_35" = "システム";
-"MenuItem_id_81" = "ファイル";
-"MenuItem_id_23" = "オーディオ";
+"MenuItem_id_81" = "ドキュメント";
+"MenuItem_id_23" = "音楽";
 "MenuItem_id_33" = "App";
 "MenuItem_id_18" = "iCloud Drive";
 "MenuItem_id_19" = "Dropbox";
@@ -161,7 +161,7 @@
 "Common_id_13" = "貼り付け";
 "Common_id_14" = "エクスポート";
 "Common_id_19" = "新規フォルダ";
-"Common_id_20" = "iCloudへ";
+"Common_id_20" = "クラウドへ";
 "Menu_ToPc" = "Macへ転送";
 "Menu_ToDevice" = "デバイスへ転送";
 
@@ -464,8 +464,8 @@
 "support_url" = "support@iphone-utility.com";
 
 "mailto_sendLog_url" = "mailto:support@iphone-utility.com";
-"click_to_purchase_url" = "http://iphone-utility.com/go/store.php?product=af&os=macos&v=1.0.0&id=0";
-"click_to_half_purchase_url" = "http://iphone-utility.com/go/store.php?product=af&os=macos&v=1.0.0&id=1";
+"click_to_purchase_url" = "http://iphone-utility.com/go/store.php?product=af&os=mac&v=1.0.0&id=0";
+"click_to_half_purchase_url" = "http://iphone-utility.com/go/store.php?product=af&os=mac&v=1.0.0&id=1";
 
 "update_url_1" = "https://www.iphone-utility.com/download/update.plist";
 "update_url_2" = "AllFiles.plist";

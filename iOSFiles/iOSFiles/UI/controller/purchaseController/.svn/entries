@@ -1,14 +1,14 @@
 10
 
 dir
-3431
+3712
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller/purchaseController
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-05-02T08:30:26.365577Z
-3391
+2018-05-08T04:16:03.364993Z
+3577
 hezhonglin
 
 
@@ -60,40 +60,6 @@ hezhonglin
 
 2265
 
-IMBPurchaseBottomButtonController.m
-file
-
-
-
-
-2018-04-26T03:07:28.000000Z
-4c22a5f2d4c01959767bb551d6c5277e
-2018-04-26T04:01:32.101250Z
-3239
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2655
-
 IMBPurchaseLeftNumController.xib
 file
 
@@ -127,6 +93,40 @@ hezhonglin
 
 
 6689
+
+IMBPurchaseBottomButtonController.m
+file
+
+
+
+
+2018-04-26T03:07:28.000000Z
+4c22a5f2d4c01959767bb551d6c5277e
+2018-04-26T04:01:32.101250Z
+3239
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2655
 
 IMBPurchaseLeftNumController.h
 file
@@ -304,10 +304,10 @@ file
 
 
 
-2018-04-26T03:33:28.000000Z
-23b62f40e2da9ae7397aa13646f38293
-2018-04-26T04:01:32.101250Z
-3239
+2018-05-08T01:51:18.000000Z
+7a226cd4866b3acea47f10b80304a038
+2018-05-08T04:16:03.364993Z
+3577
 hezhonglin
 
 
@@ -330,7 +330,7 @@ hezhonglin
 
 
 
-714
+744
 
 IMBPurchaseTopVerifyController.h
 file
@@ -366,40 +366,6 @@ hezhonglin
 
 562
 
-IMBPurchaseBottomVerifyController.h
-file
-
-
-
-
-2018-05-02T04:29:48.000000Z
-f52cdc4471bcbfeaa058a7c0955390ab
-2018-05-02T06:55:37.768785Z
-3385
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-621
-
 IMBPurchaseMiddleController.xib
 file
 
@@ -434,16 +400,16 @@ hezhonglin
 
 19415
 
-IMBPurchaseOrAnnoyController.m
+IMBPurchaseBottomVerifyController.h
 file
 
 
 
 
-2018-04-28T02:02:57.000000Z
-a304ea9049a48bd1a3a7a0c542400d71
-2018-04-28T04:22:56.363813Z
-3350
+2018-05-02T04:29:48.000000Z
+f52cdc4471bcbfeaa058a7c0955390ab
+2018-05-02T06:55:37.768785Z
+3385
 hezhonglin
 
 
@@ -466,7 +432,41 @@ hezhonglin
 
 
 
-8262
+621
+
+IMBPurchaseOrAnnoyController.m
+file
+
+
+
+
+2018-05-08T02:26:16.000000Z
+0aff709fa6cea3e209fa4b2dcc6efd6d
+2018-05-08T04:16:03.364993Z
+3577
+hezhonglin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9173
 
 IMBPurchaseBottomButtonController.xib
 file

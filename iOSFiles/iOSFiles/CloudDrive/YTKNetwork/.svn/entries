@@ -1,7 +1,7 @@
 10
 
 dir
-3431
+3712
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/CloudDrive/YTKNetwork
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -196,40 +196,6 @@ dingming
 
 2054
 
-YTKChainRequestAgent.m
-file
-
-
-
-
-2018-03-28T02:24:30.000000Z
-d1af03478263000b0b6d440056fcb8b1
-2018-03-09T07:47:45.177618Z
-1605
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2054
-
 YTKNetworkConfig.h
 file
 
@@ -263,6 +229,40 @@ dingming
 
 
 3970
+
+YTKChainRequestAgent.m
+file
+
+
+
+
+2018-03-28T02:24:30.000000Z
+d1af03478263000b0b6d440056fcb8b1
+2018-03-09T07:47:45.177618Z
+1605
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2054
 
 YTKBaseRequest.h
 file
@@ -298,40 +298,6 @@ dingming
 
 17040
 
-YTKNetworkPrivate.h
-file
-
-
-
-
-2018-03-28T02:24:30.000000Z
-0a66be40e889058f2bec5f06856fa52b
-2018-03-09T07:47:45.177618Z
-1605
-dingming
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3255
-
 YTKNetworkConfig.m
 file
 
@@ -366,14 +332,14 @@ dingming
 
 3247
 
-YTKRequest.h
+YTKNetworkPrivate.h
 file
 
 
 
 
 2018-03-28T02:24:30.000000Z
-0d1c527f07acf56ebeab63237b662c4d
+0a66be40e889058f2bec5f06856fa52b
 2018-03-09T07:47:45.177618Z
 1605
 dingming
@@ -398,7 +364,7 @@ dingming
 
 
 
-4061
+3255
 
 YTKBaseRequest.m
 file
@@ -434,14 +400,14 @@ dingming
 
 7817
 
-YTKNetworkPrivate.m
+YTKRequest.h
 file
 
 
 
 
 2018-03-28T02:24:30.000000Z
-ad2eb4a4af61de9587a27a2719abddd2
+0d1c527f07acf56ebeab63237b662c4d
 2018-03-09T07:47:45.177618Z
 1605
 dingming
@@ -466,7 +432,7 @@ dingming
 
 
 
-8548
+4061
 
 YTKNetwork.h
 file
@@ -501,6 +467,40 @@ dingming
 
 
 2106
+
+YTKNetworkPrivate.m
+file
+
+
+
+
+2018-03-28T02:24:30.000000Z
+ad2eb4a4af61de9587a27a2719abddd2
+2018-03-09T07:47:45.177618Z
+1605
+dingming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8548
 
 YTKBatchRequest.h
 file

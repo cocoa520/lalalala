@@ -35,6 +35,8 @@
 #import "IMBFileSystemExport.h"
 #import "IMBMoveTransferManager.h"
 #import "IMBViewManager.h"
+#import "IMBLimitation.h"
+
 
 @implementation IMBDeviceAllDataViewController
 
@@ -407,7 +409,7 @@
             [button setEnabled:NO];
         }
     } else {
-        if (buttonTag == 2 && _categoryNodeEunm != Category_System &&( _categoryNodeEunm != Category_Applications|| _categoryNodeEunm != Category_appDoucment) &&_categoryNodeEunm != Category_Storage) {
+        if (buttonTag == 2 && _categoryNodeEunm != Category_System && _categoryNodeEunm != Category_Applications && ( _categoryNodeEunm != Category_appDoucment) &&_categoryNodeEunm != Category_Storage) {
             [button setEnabled:NO];
         }
     }
@@ -571,7 +573,7 @@
             item.itemImage = track.thumbImage;
         } else {
             NSData *data = [self createThumbImage:track];
-            NSImage *itemImage = [[NSImage alloc] initWithData:data];
+            NSImage *itemImage = [[[NSImage alloc] initWithData:data] autorelease];
             item.itemImage = itemImage;
             if (itemImage) {
                 track.thumbImage = itemImage;
@@ -1005,7 +1007,8 @@
                     }
                 });
             }else {
-//                [self previewFile:_baseEntity];
+                id item = [array objectAtIndex:index];
+                [self previewFile:item];
             }
         }else if (_categoryNodeEunm == Category_Applications|| _categoryNodeEunm == Category_appDoucment) {
             id entity = [array objectAtIndex:index];
@@ -1098,9 +1101,13 @@
                         }
                     });
                 }else {
-                    [self previewFile:fileEntity];
+                    id item = [array objectAtIndex:index];
+                    [self previewFile:item];
                 }
             }
+        }else {
+            id item = [array objectAtIndex:index];
+            [self previewFile:item];
         }
     }
 }
@@ -2120,14 +2127,14 @@
 }
 
 - (NSArray *)tableView:(NSTableView *)tableView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedRowsWithIndexes:(NSIndexSet *)indexSet {
-    NSArray *namesArray = nil;
+    NSArray *namesArray = [NSArray array];
     //获取目的url
-    BOOL iconHide = NO;
+//    BOOL iconHide = NO;
     NSString *url = [dropDestination relativePath];
     //此处调用导出方法
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:indexSet,@"indexSet",url,@"url", nil];
     [self performSelector:@selector(delayCollectionViewTableViewdragToMac:) withObject:dic afterDelay:0.1];
-    iconHide = YES;
+//    iconHide = YES;
     return namesArray;
 }
 
@@ -2384,6 +2391,10 @@
             }
                 break;
             case Category_Storage:
+            {
+                _toolBarArr = [[NSArray alloc] initWithObjects:@(AddFunctionType),@(ToMacFunctionType),@(ToDeviceFunctionType),@(RenameFunctionType),@(ToiCloudFunction),@(NewGroupFuntion),@(MoveFileFuntion),@(DeleteFunctionType),@(ReloadFunctionType),@(DeviceDatailFunctionType),@(PreviewFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
+            }
+                break;
             case Category_System:
             {
                 _toolBarArr = [[NSArray alloc] initWithObjects:@(AddFunctionType),@(ToMacFunctionType),@(RenameFunctionType),@(ToiCloudFunction),@(NewGroupFuntion),@(MoveFileFuntion),@(DeleteFunctionType),@(ReloadFunctionType),@(DeviceDatailFunctionType),@(PreviewFunctionType),@(SortFunctionType),@(SwitchFunctionType),nil];
@@ -2576,8 +2587,8 @@
                     NSArray *appArray = [appManager appEntityArray];
                     [_dataSourceArray addObjectsFromArray:appArray];
                     
-                    [appArray release];
-                    appArray = nil;
+//                    [appArray release];
+//                    appArray = nil;
                     
                     [appManager release];
                     appManager = nil;
@@ -2605,8 +2616,8 @@
                     NSArray *appArray = [appManager appEntityArray];
                     [_dataSourceArray addObjectsFromArray:appArray];
                     
-                    [appArray release];
-                    appArray = nil;
+//                    [appArray release];
+//                    appArray = nil;
                     
                     [appManager release];
                     appManager = nil;
@@ -2749,6 +2760,10 @@
 }
 
 - (void)toMacSettingsWithInformation:(IMBInformation *)information {
+    if ([IMBLimitation sharedLimitation].leftToMacNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+        return;
+    }
     NSIndexSet *selectedSet = [self selectedItems];
     NSArray *displayArr = nil;
     if (_isSearch) {
@@ -2851,7 +2866,7 @@
             }];
             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
             [tranferView transferBtn:_transferBtn];
-             tranferView.reloadDelegate = self;
+            tranferView.reloadDelegate = self;
             tranferView.appKey = _appKey;
             [tranferView deviceAddDataSoure:exportArray WithIsDown:YES WithiPod:_iPod withCategoryNodesEnum:_categoryNodeEunm isExportPath:filePath withSystemPath:nil];
             @autoreleasepool {
@@ -2970,9 +2985,12 @@
  *  到设备
  */
 - (void)toDevice:(id)sender {
-
+    if ([IMBLimitation sharedLimitation].leftToDeviceNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+        return;
+    }
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
-    NSMutableArray *deviceAry = [[NSMutableArray alloc] init];
+    NSMutableArray *deviceAry = [[[NSMutableArray alloc] init] autorelease];
     for (IMBBaseInfo *baseinfo in deviceConnection.allDevices) {
         if (baseinfo.chooseModelEnum == DeviceLogEnum) {
             [deviceAry addObject:baseinfo];
@@ -3027,8 +3045,8 @@
     }else {
         [self showAlertWithoutMultiDevices];
     }
-    [deviceAry release];
-    deviceAry = nil;
+//    [deviceAry release];
+//    deviceAry = nil;
 }
 
 - (void)chooseDeviceBtnClick:(id)sender {
@@ -3269,7 +3287,7 @@
                 [_loadAnimationView startAnimation];
                 [_contentBox setContentView:_loadingView];
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    AFCMediaDirectory *afcMedia = [_iPod.deviceHandle newAFCMediaDirectory];
+                    AFCMediaDirectory *afcMedia = [[_iPod.deviceHandle newAFCMediaDirectory] autorelease];
                     [_systemManager removeFiles:preparedArray afcMediaDir:afcMedia];
                     [_dataSourceArray removeObjectsInArray:preparedArray];
                     [afcMedia close];
@@ -3290,7 +3308,7 @@
             }else {
                 NSOperationQueue *opQueue = [[[NSOperationQueue alloc] init] autorelease];
                 [opQueue addOperationWithBlock:^{
-                    NSMutableArray *delArray = [[NSMutableArray alloc] init];
+                    NSMutableArray *delArray = [[[NSMutableArray alloc] init] autorelease];
                     switch (_categoryNodeEunm) {
                         case Category_CameraRoll:
                             return;
@@ -3345,8 +3363,11 @@
                                 newTrack.mediaType = type;
                                 newTrack.packageHash = packageHash;
                                 [delArray addObject:newTrack];
+                                
                                 [newTrack release];
                                 newTrack = nil;
+                                [bookEntity release];
+                                bookEntity = nil;
                             }];
                         }
                             break;
@@ -3371,7 +3392,7 @@
                             
                             dispatch_async(dispatch_get_global_queue(0, 0), ^{
 
-                                AFCApplicationDirectory *afcAppmd = [_iPod.deviceHandle newAFCApplicationDirectory:_appKey];
+                                AFCApplicationDirectory *afcAppmd = [[_iPod.deviceHandle newAFCApplicationDirectory:_appKey] autorelease];
                                 [[_information applicationManager] removeAppDoucment:delArray appAFC:afcAppmd];
                                 [afcAppmd close];
 
@@ -3426,8 +3447,8 @@
                     [deleteTrack setDelegate:self];
                     [deleteTrack startDelete];
                     [deleteTrack release];
-                    [delArray release];
-                    delArray = nil;
+//                    [delArray release];
+//                    delArray = nil;
                     
                     
                 }];
@@ -3444,15 +3465,15 @@
     if (_devChoosePopover != nil) {
         [_devChoosePopover close];
     }
-
-    NSMutableArray *deviceAry = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *deviceAry = [[[NSMutableArray alloc] init] autorelease];
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
         if (baseInfo.chooseModelEnum != DeviceLogEnum) {
             [deviceAry addObject:baseInfo];
         }
     }
-    if (deviceAry.count ==1) {
+    if (deviceAry.count == 1) {
         for (IMBBaseInfo *baseInfo in deviceConnection.allDevices) {
             if (baseInfo.chooseModelEnum != DeviceLogEnum) {
                 baseInfo.isSelected = YES;
@@ -3535,7 +3556,12 @@
 //    if (_devChoosePopover.isShown) {
         [_devChoosePopover close];
 //    }
-    
+    IMBDeviceConnection *deivceConnection = [IMBDeviceConnection singleton];
+    IMBDriveBaseManage *driveManage = nil;
+    for (IMBBaseInfo *baseInfo in deivceConnection.allDevices) {
+        [baseInfo setIsSelected:NO];
+    }
+
     IMBBaseInfo *selectedBaseInfo = (IMBBaseInfo *)sender;
     [selectedBaseInfo setIsSelected:YES];
     NSDictionary *dimensionDict = nil;
@@ -3612,7 +3638,7 @@
         dimensionDict = nil;
     }
     NSString *tempPath = [IMBHelper getAppTempPath];
-    DriveItem *downloaditem = [[DriveItem alloc] init];
+    DriveItem *downloaditem = [[[DriveItem alloc] init] autorelease];
     [downloaditem addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
     if (_categoryNodeEunm == Category_Media || _categoryNodeEunm == Category_Video) {
         IMBTrack *item = (IMBTrack *)entity;
@@ -3900,7 +3926,7 @@
                 _isTableViewEdit = NO;
                 if (_curEntity) {
                     BOOL isDelete = NO;
-                    NSString *newName = _editTextField.stringValue;
+                    NSString *newName = [self checkoutName:_editTextField.stringValue];
                     if (![StringHelper stringIsNilOrEmpty:newName] && ![node.fileName isEqualToString:newName]) {
                         if (node.extension && !node.container){
                             newName = [[newName stringByAppendingString:@"."] stringByAppendingString:node.extension];
@@ -3995,6 +4021,63 @@
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
 }
 
+- (NSString *)checkoutName:(NSString *)originalName {
+    SimpleNode *node = (SimpleNode *)_curEntity;
+    if ([originalName isEqualToString:@""] || [originalName isEqualToString:node.fileName]) {
+        return originalName;
+    }
+    
+    NSInteger count = _dataSourceArray.count;
+    __block BOOL hasSameName = YES;
+    NSMutableArray *sameEntityArr = [NSMutableArray array];
+    for (NSInteger i = 0; i < count; i++) {
+        IMBDriveEntity *entity = [_dataSourceArray objectAtIndex:i];
+        if ([node.extension isEqualToString:entity.extension]) {
+            [sameEntityArr addObject:entity];
+        }
+    }
+    
+    if (sameEntityArr.count) {
+        NSInteger sameCount = sameEntityArr.count;
+        BOOL isSameName = NO;
+        int d = 2;
+        for (NSInteger i = 0; i < sameCount; i++) {
+            IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
+            if ([entity.fileName isEqualToString:originalName]) {
+                if (entity == _curEntity) {
+                    hasSameName = NO;
+                    break;
+                }
+                isSameName = YES;
+            }
+        }
+        while (hasSameName) {
+            for (NSInteger i = 0; i < sameCount; i++) {
+                IMBDriveEntity *entity = [sameEntityArr objectAtIndex:i];
+                if ([entity.fileName isEqualToString:originalName]) {
+                    if (entity == _curEntity) {
+                        hasSameName = NO;
+                        break;
+                    }
+                    if (d > 2) {
+                        NSString *lastStr = [NSString stringWithFormat:@" %d",d-1];
+                        originalName = [originalName substringToIndex:originalName.length - lastStr.length];
+                    }
+                    originalName = [NSString stringWithFormat:@"%@ %d",originalName,d++];
+                    break;
+                }
+                if (i == sameCount - 1) {
+                    hasSameName = NO;
+                    break;
+                }
+            }
+        }
+    }
+    
+    return originalName;
+    
+}
+
 - (void)addPromptCustomView:(NSString *)prompt {
     NSRect rect = [IMBHelper calcuTextBounds:prompt fontSize:14];
     [_promptImageView setFrameOrigin:NSMakePoint(ceil((_promptCustomView.frame.size.width - _promptImageView.frame.size.width - 4 - rect.size.width)/2.0), _promptImageView.frame.origin.y)];
@@ -4046,10 +4129,10 @@
 - (void)setCompletionWithSuccessCount:(int)successCount totalCount:(int)totalCount title:(NSString *)title {
     if (![[IMBDeviceConnection singleton] getiPodByKey:_iPod.uniqueKey]) return;
     dispatch_async(dispatch_get_main_queue(), ^{
-        
+        [self reload:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:[NSString stringWithFormat:CustomLocalizedString(@"MoveFileTips", nil),successCount,totalCount] btnClickedBlock:^{
-                [self reload:nil];
+            [IMBCommonTool showSingleBtnAlertInMainWindow:_iPod.uniqueKey btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:[NSString stringWithFormat:CustomLocalizedString(@"MSG_COM_Delete_Complete_Description", nil),successCount,totalCount] btnClickedBlock:^{
+                
             }];
         });
         

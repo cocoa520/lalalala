@@ -22,6 +22,8 @@
 #import "DropboxMoveToNewParentAPI.h"
 #import "DropboxMoveMultipleToNewParentAPI.h"
 #import "DropboxMoveMultipleToNewParentCheckAPI.h"
+#import "IMBLimitation.h"
+
 
 NSString *const kClientIDWithDropbox = @"b2s64tb9o4zifiz";
 NSString *const kClientSecretWithDropbox = @"wowjeltci8ohak8";
@@ -486,6 +488,7 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                         dimensionDict = nil;
                     }
                 }else {
+                    [IMBLimitation sharedLimitation].leftToCloudNums --;
                     [ATTracker event:CDropbox action:ADownload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     if (dimensionDict) {
                         [dimensionDict release];

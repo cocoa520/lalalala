@@ -155,6 +155,7 @@
                     BOOL success = [self copyRemoteFile:node.path toLocalFile:destinationPath];
                     if (success) {
                         _successCount ++;
+                        [IMBLimitation sharedLimitation].leftToMacNums--;
 //                        [_limitation reduceRedmainderCount];
                     }else {
                         [[IMBTransferError singleton] addAnErrorWithErrorName:node.fileName WithErrorReson:@"Coping file failed."];

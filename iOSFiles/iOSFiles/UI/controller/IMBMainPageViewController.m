@@ -220,6 +220,17 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
 
 #pragma -- mark  Actions
 - (void)achieveLimitation {
+    IMBFLog(@"current thread1 -- %@",[NSThread currentThread]);
+    if ([NSThread currentThread] == [NSThread mainThread]) {
+        [self showAnnoyView];
+        return;
+    }
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self showAnnoyView];
+    });
+}
+
+- (void)showAnnoyView {
     if (_annoyVc) {
         [_annoyVc release];
         _annoyVc = nil;
@@ -242,9 +253,10 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     }
     
     view.hidden = NO;
+    [view addSubview:_annoyVc.view];
     _annoyVc.closeClicked = ^{
         //关闭按钮点击
-        [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:-590.f timeInterval:timeInterval completion:^{
+        [IMBViewAnimation animationPositionYWithView:_annoyVc.view toY:-590.f timeInterval:timeInterval completion:^{
             _topcoverView.hidden = YES;
             [_annoyVc.view removeFromSuperview];
             [_annoyVc release];
@@ -252,8 +264,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }];
     };
     
-    [IMBViewAnimation animationPositionYWithView:_purchaseVc.view toY:0 timeInterval:timeInterval completion:^{
-        _topcoverView.hidden = NO;
+    [IMBViewAnimation animationPositionYWithView:_annoyVc.view toY:0 timeInterval:timeInterval completion:^{
+        //        _topcoverView.hidden = NO;
     }];
 }
 - (void)registerSuccess {
@@ -356,6 +368,11 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     [tranferView setDelegate:self];
     tranferView.unlimitClicked = ^{
         _isShowTranfer = NO;
+        
+        if (_annoyVc) {
+            [_annoyVc release];
+            _annoyVc = nil;
+        }
         
         _annoyVc = [IMBPurchaseOrAnnoyController annoyWithToMacLeftNum:[[IMBLimitation sharedLimitation] leftToMacNums] toDeviceLeftNum:[[IMBLimitation sharedLimitation] leftToDeviceNums] toCloudLeftNum:[[IMBLimitation sharedLimitation] leftToCloudNums]];
         _annoyVc.view.imb_x = 1096.f - tranferView.view.imb_width;
@@ -523,6 +540,32 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         if (_chooseModelEnum == iCloudLogEnum || _chooseModelEnum == DropBoxLogEnum) {
             if (_chooseModelEnum == baseInfo.chooseModelEnum) {
                 return;
+            }else if (_chooseModelEnum == iCloudLogEnum){
+                if (baseInfo.chooseModelEnum == DropBoxLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:@"DropBox"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"DropBox" withCloud:@"iCloud"];
+                    }
+                }else {
+                    IMBiPod *ipod = [connection getiPodByKey:baseInfo.uniqueKey];
+                    windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"iCloud"];
+                    }
+                }
+            }else {
+                if (baseInfo.chooseModelEnum == iCloudLogEnum) {
+                    windowController = [viewManager.windowDic objectForKey:@"iCloud"];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:nil withKey:@"iCloud" withCloud:@"DropBox"];
+                    }
+                }else {
+                    IMBiPod *ipod = [connection getiPodByKey:baseInfo.uniqueKey];
+                    windowController = [viewManager.windowDic objectForKey:baseInfo.uniqueKey];
+                    if (!windowController) {
+                        [_delegate switchMainPageViewControllerWithiPod:ipod withKey:baseInfo.uniqueKey withCloud:@"DropBox"];
+                    }
+                }
             }
         }else if ([baseInfo.uniqueKey isEqualToString:_iPod.uniqueKey]) {
             return;

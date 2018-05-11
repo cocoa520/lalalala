@@ -1,7 +1,7 @@
 10
 
 dir
-3431
+3712
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/homeIcons
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -505,40 +505,6 @@ has-props
 RightMouse
 dir
 
-nav_icon_help.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-207ea33b8b49533cd509520249f66b60
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-585
-
 mod_device_no@2x.png
 file
 
@@ -572,6 +538,40 @@ has-props
 
 
 45586
+
+nav_icon_help.png
+file
+
+
+
+
+2018-04-02T10:51:32.000000Z
+207ea33b8b49533cd509520249f66b60
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+585
 
 mod_dropboxdrive.png
 file
@@ -641,40 +641,6 @@ has-props
 
 386
 
-mod_iclouddrive.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-dea88bb3b16907c98b1f9aca725f8d50
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4255
-
 mod_device_detail_ipodtouch@2x.png
 file
 
@@ -709,8 +675,39 @@ has-props
 
 22346
 
-devicePage
-dir
+mod_iclouddrive.png
+file
+
+
+
+
+2018-04-02T10:51:32.000000Z
+dea88bb3b16907c98b1f9aca725f8d50
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4255
 
 popup_icon_iphone_gray@2x.png
 file
@@ -746,39 +743,8 @@ has-props
 
 853
 
-mod_device_detail_iphoneX.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-bd58c1055c25fc865ee563332d889bc8
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6112
+devicePage
+dir
 
 mod_device_detail_iphoneN@2x.png
 file
@@ -813,6 +779,40 @@ has-props
 
 
 22667
+
+mod_device_detail_iphoneX.png
+file
+
+
+
+
+2018-04-02T10:51:32.000000Z
+bd58c1055c25fc865ee563332d889bc8
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6112
 
 mod_device_detail_ipad.png
 file
