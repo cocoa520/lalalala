@@ -22,13 +22,19 @@ typedef enum : NSUInteger {
     int _leftToCloudNums;
     
     int _registerStatus;
+    
+    BOOL _isToCloud;
+    BOOL _isDeviceToDevice;
+    BOOL _isShownAnnoyView;
 }
 
 @property(nonatomic, assign)int leftToMacNums;
 @property(nonatomic, assign)int leftToDeviceNums;
 @property(nonatomic, assign)int leftToCloudNums;
 @property(nonatomic, assign)int registerStatus;
-
+@property (nonatomic, assign)BOOL isToCloud;
+@property (nonatomic, assign)BOOL isDeviceToDevice;
+@property (nonatomic, assign)BOOL isShownAnnoyView;
 
 + (instancetype)sharedLimitation;
 

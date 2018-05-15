@@ -36,6 +36,9 @@
 @synthesize cookie = _cookie;
 @synthesize totalStorageInBytes = _totalStorageInBytes;
 @synthesize usedStorageInBytes = _usedStorageInBytes;
+
+
+
 - (instancetype)init
 {
     if (self == [super init]) {
@@ -623,7 +626,7 @@
                                          dimensionDict = nil;
                                      }
                                  }else {
-                                     [IMBLimitation sharedLimitation].leftToCloudNums --;
+//                                     [IMBLimitation sharedLimitation].leftToCloudNums --;
                                      [ATTracker event:CiCloud action:ADownload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                                      if (dimensionDict) {
                                          [dimensionDict release];
@@ -830,6 +833,9 @@
                                 }
                             }
                             [weakrequestThreeAPI release];
+                            if ([IMBLimitation sharedLimitation].isToCloud) {
+                                [IMBLimitation sharedLimitation].leftToCloudNums --;
+                            }
                             [ATTracker event:CiCloud action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                             if (dimensionDict) {
                                 [dimensionDict release];

@@ -1405,6 +1405,8 @@
 //            }
 //            [logHandle writeInfoLog:[NSString stringWithFormat:@"File %lld exsit status is True (IMBAirSyncImportBetweenDeviceTransfer)",track.dbID]];
 //        } else  {
+    _driveItem.fileSize = _totalSize;
+    _driveItem.state = UploadStateComplete;
             [_loghandle writeInfoLog:[NSString stringWithFormat:@"File %lld exsit status is False (IMBAirSyncImportBetweenDeviceTransfer)",track.dbID]];
 //        }
 //        if ([_succeedTracks containsObject:track]) {
@@ -1415,6 +1417,7 @@
 //        }
 //        [_mediaSet addObject:[NSNumber numberWithInt:track.mediaType]];
 //    }
+
 }
 
 - (void)sendCopyProgress:(uint64_t)curSize {

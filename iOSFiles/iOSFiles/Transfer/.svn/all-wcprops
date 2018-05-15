@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 59
-/svn/Mac/!svn/ver/3592/JPProject/iOSFiles/iOSFiles/Transfer
+/svn/Mac/!svn/ver/3752/JPProject/iOSFiles/iOSFiles/Transfer
 END
 IMBBaseTransfer.m
 K 25
@@ -14,6 +14,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/1229/JPProject/iOSFiles/iOSFiles/Transfer/IMBExportSetting.m
+END
+IMBTranferBtnManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/3750/JPProject/iOSFiles/iOSFiles/Transfer/IMBTranferBtnManager.m
 END
 IMBMoveTransferManager.h
 K 25
@@ -31,7 +37,7 @@ IMBMoveTransferManager.m
 K 25
 svn:wc:ra_dav:version-url
 V 84
-/svn/Mac/!svn/ver/3424/JPProject/iOSFiles/iOSFiles/Transfer/IMBMoveTransferManager.m
+/svn/Mac/!svn/ver/3750/JPProject/iOSFiles/iOSFiles/Transfer/IMBMoveTransferManager.m
 END
 IMBBaseTransfer.h
 K 25
@@ -50,4 +56,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 78
 /svn/Mac/!svn/ver/2573/JPProject/iOSFiles/iOSFiles/Transfer/IMBExportSetting.h
+END
+IMBTranferBtnManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Mac/!svn/ver/3750/JPProject/iOSFiles/iOSFiles/Transfer/IMBTranferBtnManager.h
 END

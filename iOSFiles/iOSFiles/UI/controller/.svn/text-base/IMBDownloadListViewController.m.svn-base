@@ -36,6 +36,9 @@
 #import "IMBBetweenDeviceHandler.h"
 #import "IMBCommonTool.h"
 #import "IMBMainPageViewController.h"
+#import "IMBTranferBtnManager.h"
+#import "IMBLimitation.h"
+
 @interface IMBDownloadListViewController ()
 
 @end
@@ -206,7 +209,6 @@
     [_deviceManager driveDownloadItemsToMac:_downloadDataSource];
     [self reloadData:YES];
 }
-
 
 - (void)dropBoxAddDataSource:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithDriveBaseManage:(IMBDriveBaseManage *)driveBaseManage withUploadParent:(NSString *)uploadParent {
 
@@ -1083,21 +1085,25 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     item.completeDate = [formatter stringFromDate:date];
     
-    sqlite3 *dbPoint;
-    NSString *tempPath = [TempHelper getAppiMobieConfigPath];
-    NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
-    sqlite3_open([documentPath UTF8String], &dbPoint);
-    
-    NSString *sldsf = [self greadSqlite];
-    sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
+//    sqlite3 *dbPoint;
+//    NSString *tempPath = [TempHelper getAppiMobieConfigPath];
+//    NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
+//    sqlite3_open([documentPath UTF8String], &dbPoint);
+//    
+//    NSString *sldsf = [self greadSqlite];
+//    sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
     if (item.state == DownloadStateComplete) {
         if (_isiCloudToDeviceDown) {
             [_downloadDataSource removeObject:item];
             if (_downloadDataSource.count < 1) {
-                [_transferBtn endTranfering];
+                IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+                for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                    [tranferBtn endTranfering];
+                    [tranferBtn setNeedsDisplay:YES];
+                }
             }
-            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,0,item.docwsID,item.isFolder];
-            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
+//            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,0,item.docwsID,item.isFolder];
+//            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
             item.toDriveName = CustomLocalizedString(@"TransferCompelete", nil);
             [(IMBTranferViewController*)_delegate loadCompleteData:item];
             if (_downloadDataSource.count == 0) {
@@ -1133,32 +1139,44 @@
             } else {
                 nodesEnum = Category_Storage;
             }
-            [_queue addOperationWithBlock:^{
+            [_operationQueue addOperationWithBlock:^{
               [self deviceiCloudTodeviceAddDataSoure:ary WithIsDown:NO WithiPod:_iPod withCategoryNodesEnum:nodesEnum isExportPath:nil withSystemPath:@"/general_storage"];
             }];
         }else {
             [_downloadDataSource removeObject:item];
             //        dispatch_async(dispatch_get_main_queue(), ^{
             if (_downloadDataSource.count < 1) {
-                [_transferBtn endTranfering];
+                IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+                for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                    [tranferBtn endTranfering];
+                    [tranferBtn setNeedsDisplay:YES];
+                }
             }
             //        });
-            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,1,item.docwsID,item.isFolder];
-            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
+//            NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,1,item.docwsID,item.isFolder];
+//            sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
             item.toDriveName = CustomLocalizedString(@"TransferCompelete", nil);
             [(IMBTranferViewController*)_delegate loadCompleteData:item];
             if (_downloadDataSource.count == 0) {
                 [_contentBox setContentView:_nodataView];
             }
-            [self reloadData:YES];
+//            [self reloadData:YES];
         }
         [(NSObject*)item removeObserver:self forKeyPath:@"state"];
     }else if (item.state == DownloadStateError){
         [_downloadDataSource removeObject:item];
         //        dispatch_async(dispatch_get_main_queue(), ^{
         if (_downloadDataSource.count < 1) {
-            [_transferBtn endTranfering];
+            IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+            for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                [tranferBtn endTranfering];
+                [tranferBtn setNeedsDisplay:YES];
+            }
         }
+        sqlite3 *dbPoint;
+        NSString *tempPath = [TempHelper getAppiMobieConfigPath];
+        NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
+        sqlite3_open([documentPath UTF8String], &dbPoint);
         //        });
         NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,0,1,item.docwsID,item.isFolder];
         sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
@@ -1170,8 +1188,9 @@
         }
         [self reloadData:YES];
         [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+        sqlite3_close(dbPoint);
     }
-    sqlite3_close(dbPoint);
+
 }
 
 - (void)deviceiCloudTodeviceAddDataSoure:(NSMutableArray *)addDataSource WithIsDown:(BOOL)isDown WithiPod:(IMBiPod *) ipod withCategoryNodesEnum:(CategoryNodesEnum)categoryNodesEnum isExportPath:(NSString *) exportPath withSystemPath:(NSString *)systemPath{
@@ -1327,20 +1346,19 @@
 
 //数据上传完成
 -(void)loadDataUploadComplet:(DriveItem *)item {
-    NSDate *date = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    item.completeDate = [formatter stringFromDate:date];
-    
-    sqlite3 *dbPoint;
-    NSString *tempPath = [TempHelper getAppiMobieConfigPath];
-    NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
-    sqlite3_open([documentPath UTF8String], &dbPoint);
-    
-    NSString *sldsf = [self greadSqlite];
-    sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
-    
     if (item.state == UploadStateComplete) {
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        item.completeDate = [formatter stringFromDate:date];
+        
+        sqlite3 *dbPoint;
+        NSString *tempPath = [TempHelper getAppiMobieConfigPath];
+        NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
+        sqlite3_open([documentPath UTF8String], &dbPoint);
+        
+        NSString *sldsf = [self greadSqlite];
+        sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
         if (_isiCloudToDeviceDown) {
         
         }
@@ -1350,9 +1368,16 @@
                     //这里没有统计总的个数和成功个数
                     [_delegate transferComplete:1 TotalCount:1];
                 }
-                [_transferBtn endTranfering];
+                IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+                for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                    [tranferBtn endTranfering];
+                    [tranferBtn setNeedsDisplay:YES];
+                }
             }
         });
+        if ([IMBLimitation sharedLimitation].isDeviceToDevice) {
+            [IMBLimitation sharedLimitation].leftToDeviceNums -= (int)item.childArray.count;
+        }
         NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,1,0,item.docwsID,item.isFolder];
         sqlite3_exec(dbPoint, [insertData UTF8String], nil, nil, nil);
         item.toDriveName = CustomLocalizedString(@"Transfer_completeView_transferState_Upload_Complete", nil);
@@ -1369,13 +1394,29 @@
         [self reloadData:YES];
         [(NSObject*)item removeObserver:self forKeyPath:@"state"];
     }else if (item.state == UploadStateError){
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        item.completeDate = [formatter stringFromDate:date];
+        
+        sqlite3 *dbPoint;
+        NSString *tempPath = [TempHelper getAppiMobieConfigPath];
+        NSString *documentPath= [tempPath stringByAppendingPathComponent:@"FileHistory.sqlite"];
+        sqlite3_open([documentPath UTF8String], &dbPoint);
+        
+        NSString *sldsf = [self greadSqlite];
+        sqlite3_exec(dbPoint, [sldsf UTF8String], nil, nil, nil);
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_downloadDataSource.count <= 1) {
                 if (_delegate && [_delegate respondsToSelector:@selector(transferComplete:TotalCount:)]) {
                     //这里没有统计总的个数和成功个数
                     [_delegate transferComplete:1 TotalCount:1];
                 }
-                [_transferBtn endTranfering];
+                IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+                for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                    [tranferBtn endTranfering];
+                    [tranferBtn setNeedsDisplay:YES];
+                }
             }
         });
         NSString *insertData = [NSString stringWithFormat:[self insertDataSqlite],item.fileName,item.localPath,item.completeDate,item.fileSize,0,0,item.docwsID,item.isFolder];
@@ -1396,8 +1437,8 @@
         [self reloadData:YES];
         [self reloadData:YES];
         [(NSObject*)item removeObserver:self forKeyPath:@"state"];
+        sqlite3_close(dbPoint);
     }
-    sqlite3_close(dbPoint);
 }
 
 - (void)reloadData:(BOOL)isAdd {
@@ -1461,11 +1502,7 @@
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSMutableArray *disAry = nil;
-    if (_isDownLoadData) {
-        disAry = _downloadDataSource;
-    }else {
-        disAry = _downloadDataSource;
-    }
+    disAry = _downloadDataSource;
     DownloadCellView *cellView = [tableView makeViewWithIdentifier:@"MainCell" owner:self];
     DriveItem *entity = [disAry objectAtIndex:row];
     if (entity.isDownLoad) {
@@ -1565,7 +1602,11 @@
         [_deviceManager cancelDownloadItem:entity];
         [disAry removeObject:entity];
         if (disAry.count <1) {
-            [_transferBtn endTranfering];
+            IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+            for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                [tranferBtn endTranfering];
+                [tranferBtn setNeedsDisplay:YES];
+            }
         }
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -1607,7 +1648,11 @@
         }
         [disAry removeObject:entity];
         if (disAry.count <1) {
-            [_transferBtn endTranfering];
+            IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+            for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+                [tranferBtn endTranfering];
+                [tranferBtn setNeedsDisplay:YES];
+            }
         }
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -1702,6 +1747,12 @@
         [formatter release];
         formatter = nil;
     }
+    IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+    for (IMBHoverChangeImageBtn *tranferBtn in [tranferBtnManager tranferAry]) {
+        [tranferBtn endTranfering];
+        [tranferBtn setNeedsDisplay:YES];
+    }
+    [[tranferBtnManager tranferAry] removeAllObjects];
     [_transferBtn endTranfering];
     [copyArray release];
     [disAry removeAllObjects];

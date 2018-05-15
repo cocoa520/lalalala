@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/svn/Mac/!svn/ver/3689/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController
+/svn/Mac/!svn/ver/3752/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController
 END
 IMBPhotosListViewController.xib
 K 25
@@ -27,23 +27,23 @@ svn:wc:ra_dav:version-url
 V 111
 /svn/Mac/!svn/ver/2133/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBPhotosListViewController.h
 END
+IMBDeviceAllDataViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mac/!svn/ver/3752/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.xib
+END
 IMBPhotosListViewController.m
 K 25
 svn:wc:ra_dav:version-url
 V 111
 /svn/Mac/!svn/ver/1757/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBPhotosListViewController.m
 END
-IMBDeviceAllDataViewController.xib
-K 25
-svn:wc:ra_dav:version-url
-V 116
-/svn/Mac/!svn/ver/3015/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.xib
-END
 IMBDeviceAllDataViewController.h
 K 25
 svn:wc:ra_dav:version-url
 V 114
-/svn/Mac/!svn/ver/2587/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.h
+/svn/Mac/!svn/ver/3781/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.h
 END
 IMBPhotoViewController.xib
 K 25
@@ -51,17 +51,17 @@ svn:wc:ra_dav:version-url
 V 108
 /svn/Mac/!svn/ver/2045/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBPhotoViewController.xib
 END
+IMBDeviceAllDataViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mac/!svn/ver/3789/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.m
+END
 IMBDevicePageViewController.xib
 K 25
 svn:wc:ra_dav:version-url
 V 113
 /svn/Mac/!svn/ver/2302/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDevicePageViewController.xib
-END
-IMBDeviceAllDataViewController.m
-K 25
-svn:wc:ra_dav:version-url
-V 114
-/svn/Mac/!svn/ver/3727/JPProject/iOSFiles/iOSFiles/UI/controller/deviceController/IMBDeviceAllDataViewController.m
 END
 IMBPhotoViewController.h
 K 25

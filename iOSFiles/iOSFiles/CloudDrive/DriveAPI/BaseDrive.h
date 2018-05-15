@@ -83,6 +83,7 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
     NSInteger _activeUploadCount;
     NSMutableArray *_uploadArray;               ///<上传数组
     dispatch_queue_t _synchronQueue;
+    
 }
 
 @property(nonatomic,retain)NSString *userID;
@@ -93,6 +94,7 @@ typedef void (^RefreshTokenAction)(BOOL refresh);
 @property(nonatomic,retain)NSDate *expirationDate;
 @property(nonatomic,retain)DownLoader *downLoader; 
 @property(nonatomic,retain)id<BaseDriveDelegate >delegate;
+
 
 /**
  *  Description 从本地认证初始化方法

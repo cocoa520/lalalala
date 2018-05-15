@@ -1016,6 +1016,8 @@ char pinyinFirstLetter(unsigned short hanzi) {
         [formatOne setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
         NSString *newDateOne = [formatOne stringFromDate:newDate];
         nowDate = [dateFormat dateFromString:newDateOne];
+        [formatOne release];
+        formatOne = nil;
     }
     
     NSDate *startDate = [dateFormat dateFromString:@"12/22/2017 00:00:00"];
@@ -1025,6 +1027,8 @@ char pinyinFirstLetter(unsigned short hanzi) {
     if (secOne >= 0 && secTwo < 0) {
         return YES;
     }
+    [dateFormat release];
+    dateFormat = nil;
     return NO;
 }
 
@@ -1047,6 +1051,8 @@ char pinyinFirstLetter(unsigned short hanzi) {
     dMatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [dMatter setDateFormat:@"dd MMM yyyy HH:mm:ss"];
     NSDate *netDate = [dMatter dateFromString:date];
+    [dMatter release];
+    dMatter = nil;
     
     NSTimeZone *zone = [NSTimeZone timeZoneWithAbbreviation:@"GMT-0800"];
     NSInteger interval = [zone secondsFromGMTForDate: netDate];

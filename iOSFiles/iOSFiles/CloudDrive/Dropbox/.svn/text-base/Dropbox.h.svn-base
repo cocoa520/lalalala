@@ -12,6 +12,7 @@
 {
     long long _totalStorageInBytes;//总容量
     long long _usedStorageInBytes;//使用容量
+    
 }
 @property (nonatomic, assign) long long totalStorageInBytes;//总容量
 @property (nonatomic, assign) long long usedStorageInBytes;//使用容量

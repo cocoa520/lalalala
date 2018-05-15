@@ -86,8 +86,8 @@
                     [driveItem.deleteFileBtn release];
                 }
                 if (driveItem.findFileBtn) {
-                    [driveItem.findFileBtn release];
                     [driveItem.findFileBtn removeFromSuperview];
+                    [driveItem.findFileBtn release];
                 }
                 driveItem.deleteFileBtn = [[IMBImageAndTitleButton alloc]initWithFrame:NSMakeRect(100, 0, 40, 40)];
                 [driveItem.deleteFileBtn setBordered:NO];

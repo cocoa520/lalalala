@@ -13,6 +13,8 @@
 #import "IMBDeviceViewController.h"
 #import "IMBCommonTool.h"
 #import "DriveItem.h"
+#import "IMBLimitation.h"
+
 @implementation IMBiCloudDriveManager
 
 - (id)initWithUserID:(NSString *) userID WithPassID:(NSString*) passID WithDelegate:(id)delegate isRememberPassCode:(BOOL)isRememberPassCode{
@@ -214,12 +216,15 @@
 #pragma mark -- OneDrive Action
 //下载单个
 - (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
+    [IMBLimitation sharedLimitation].isToCloud = YES;
     [[_iCloudDrive downLoader] setDownloadPath:_downloadPath];
     [_iCloudDrive downloadItem:item];
+    
 }
 
 //下载多个
 - (void)driveDownloadItemsToMac:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [IMBLimitation sharedLimitation].isToCloud = YES;
     [[_iCloudDrive downLoader] setDownloadPath:_downloadPath];
     [_iCloudDrive downloadItems:items];
 }

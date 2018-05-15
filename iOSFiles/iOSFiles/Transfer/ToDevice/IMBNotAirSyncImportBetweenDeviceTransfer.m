@@ -63,7 +63,7 @@
 
                     if ( [_ipod.fileSystem copyFileBetweenDevice:track.srcFilePath sourDriverLetter:_srciPod.fileSystem.driveLetter targFileName:track.filePath targDriverLetter:_ipod.fileSystem.driveLetter sourDevice:_srciPod]) {
                         //统计成功
-                        [IMBLimitation sharedLimitation].leftToDeviceNums--;
+                        
                         _successCount++;
                     }
                 }

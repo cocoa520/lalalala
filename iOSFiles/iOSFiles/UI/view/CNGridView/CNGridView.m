@@ -1407,7 +1407,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
             }
             return YES;
         }else {
-            return NO;
+            return YES;
         }
     }else{
         return YES;

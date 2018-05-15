@@ -27,6 +27,9 @@
 #import "SystemHelper.h"
 #import "IMBMoveTransferManager.h"
 #import "AFNetworking.h"
+#import "IMBTranferBtnManager.h"
+#import "IMBLimitation.h"
+
 
 @interface IMBiCloudDriverViewController()
 
@@ -98,6 +101,7 @@
     }
     [IMBNotiCenter removeObserver:self name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     [IMBNotiCenter removeObserver:self name:INSERT_INSETNEWLINE object:nil];
+    [IMBNotiCenter removeObserver:self name:IMBLimitationViewClosedNoti object:nil];
     
     [super dealloc];
 }
@@ -137,6 +141,7 @@
     
     [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
     [IMBNotiCenter addObserver:self selector:@selector(renameTFInsertnewlinedown) name:INSERT_INSETNEWLINE object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(backToCloudTransfer:) name:IMBLimitationViewClosedNoti object:nil];
     
     _doubleclickCount = 1;
     _currentDevicePath = @"0";
@@ -218,7 +223,7 @@
                 }else if (_chooseLogModelEnmu == iCloudLogEnum) {
                     key = IMBAlertViewDropBoxKey;
                 }
-                [IMBCommonTool showSingleBtnAlertInMainWindow:key btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:@"No Network" btnClickedBlock:nil];
+                [IMBCommonTool showSingleBtnAlertInMainWindow:key btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"MSG_NO_Network_Tips", nil) btnClickedBlock:nil];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
                 NSLog(@"3G");
@@ -235,6 +240,8 @@
     //3.开始监听
     [_afReachabilityMgr startMonitoring];
 }
+
+
 - (void)changeToolbarButton {
     NSArray *array = nil;
     if (_isSearch) {
@@ -886,8 +893,6 @@
     [_toolBarButtonView toolBarButtonIsEnabled:YES];
 }
 
-
-
 //排序
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
     //在重命名或者创建文件夹时，点击排序执行相应操作
@@ -1315,6 +1320,8 @@
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSFileHandlingPanelOKButton) {
+            IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+            [manager.tranferAry addObject:_transferBtn];
             [_transferBtn startTranfering];
             NSArray *urlArr = [_openPanel URLs];
             NSMutableArray *paths = [NSMutableArray array];
@@ -1328,13 +1335,14 @@
 }
 
 - (void)downloadWithPath:(NSString *)path {
+ 
     NSString *filePath = [path stringByAppendingString:@"/"];
 //    if (_chooseLogModelEnmu == iCloudLogEnum) {
 //        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"iCloud"];
 //    }else if (_chooseLogModelEnmu == DropBoxLogEnum) {
 //        filePath = [TempHelper createCategoryPath:[TempHelper createExportPath:path] withString:@"DropBox"];
 //    }
-//   
+//
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
     NSArray *displayArr = nil;
@@ -1346,7 +1354,9 @@
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [preparedArray addObject:[displayArr objectAtIndex:idx]];
     }];
-    
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
+    [_transferBtn startTranfering];
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
      tranferView.reloadDelegate = self;
@@ -1360,7 +1370,7 @@
 }
 
 -(void)toDevice:(id)sender {
-    
+
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     NSMutableArray *deviceAry = [[NSMutableArray alloc]init];
     for (IMBBaseInfo *baseinfo in deviceConnection.allDevices) {
@@ -1439,7 +1449,9 @@
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [preparedArray addObject:[displayArr objectAtIndex:idx]];
     }];
-
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
+    [_transferBtn startTranfering];
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
     tranferView.reloadDelegate = self;
@@ -1452,7 +1464,51 @@
     }
 }
 
+- (void)backToCloudTransfer:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        if ([key isEqualToString:@"DropBox"]) {
+            if ([NSThread currentThread] == [NSThread mainThread]) {
+                [self toiCloud:nil];
+            }
+            else {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self toiCloud:nil];
+                });
+            }
+        }
+    }else {
+        if ([key isEqualToString:@"iCloud"]) {
+            if ([NSThread currentThread] == [NSThread mainThread]) {
+                [self toiCloud:nil];
+            }
+            else {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self toiCloud:nil];
+                });
+            }
+        }
+    }
+}
 - (void)toiCloud:(id)sender {
+    if (sender) {
+        [IMBLimitation sharedLimitation].isShownAnnoyView = NO;
+    }
+    if ([IMBLimitation sharedLimitation].registerStatus == 0) {
+        if ([IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+            [self setAnnoyViewNoti];
+            return;
+        }
+        if ([IMBLimitation sharedLimitation].leftToMacNums == 0 || [IMBLimitation sharedLimitation].leftToDeviceNums == 0 || [IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+            if ([IMBLimitation sharedLimitation].isShownAnnoyView == NO) {
+                [self setAnnoyViewNoti];
+                return;
+            }
+        }
+    }
+    
+    
+    
     _isDriveToDrive = YES;
     IMBDeviceConnection *connection = [IMBDeviceConnection singleton];
     IMBBaseInfo *iCloudBaseInfo = nil;
@@ -1504,7 +1560,11 @@
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
             [self driveToDriveDown:preparedArray];
         });
+        IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+        [manager.tranferAry addObject:_transferBtn];
         [_transferBtn startTranfering];
+        
+        
     }else {
         if (_chooseLogModelEnmu == iCloudLogEnum) {
             [IMBCommonTool showSingleBtnAlertInMainWindow:@"iCloud" btnTitle:CustomLocalizedString(@"Button_Ok", nil) msgText:CustomLocalizedString(@"iCloudBackup_View_Loggin_Tips", nil) btnClickedBlock:nil];
@@ -1514,6 +1574,18 @@
 
         }
     }
+    
+    
+}
+
+- (void)setAnnoyViewNoti {
+    NSString *key = nil;
+    if (_chooseLogModelEnmu == DropBoxLogEnum) {
+        key = @"DropBox";
+    }else {
+        key = @"iCloud";
+    }
+    [IMBNotiCenter postNotificationName:IMBLimitationNoti object:key];
 }
 
 - (void)driveToDriveDown:(NSMutableArray *)ary{
@@ -1561,6 +1633,8 @@
     [_openPanel setCanChooseDirectories:YES];
     [_openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSFileHandlingPanelOKButton) {
+            IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+            [manager.tranferAry addObject:_transferBtn];
             [_transferBtn startTranfering];
             NSArray *urlArr = [_openPanel URLs];
             NSMutableArray *paths = [NSMutableArray array];
@@ -1573,15 +1647,14 @@
 }
 
 - (void)addItemsDelay:(NSMutableArray *)paths {
-    
-//    [_contentBox setContentView:_loadingView];
-//    [_loadAnimationView startAnimation];
-//    [_driveBaseManage driveUploadItems:dataArr];
+    [IMBLimitation sharedLimitation].isToCloud = NO;
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView setDelegate:self];
      tranferView.reloadDelegate = self;
     [tranferView transferBtn:_transferBtn];
-//    [_driveBaseManage setDownloadPath:pathStr];
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
+    [_transferBtn startTranfering];
     if (_chooseLogModelEnmu == iCloudLogEnum) {
        
         [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentGetListPath withUploadDocID:_currentDevicePath];
@@ -1589,11 +1662,6 @@
         [tranferView icloudDriveAddDataSource:paths WithIsDown:NO WithDriveBaseManage:_driveBaseManage withUploadParent:_currentGetListPath withUploadDocID:_currentDevicePath];
 //        [tranferView dropBoxAddDataSource:preparedArray WithIsDown:YES WithDriveBaseManage:_driveBaseManage];
     }
-    
-//    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0/*延迟执行时间*/ * NSEC_PER_SEC));
-//    dispatch_after(delayTime, dispatch_get_global_queue(0, 0), ^{
-//        [_driveBaseManage recursiveDirectoryContentsDics:_currentDevicePath];
-//    });
 }
 
 - (void)deleteItems:(id)sender {
@@ -2194,6 +2262,8 @@
         [_driveBaseManage setDownloadPath:tempPath];
         [_driveBaseManage oneDriveDownloadOneItem:downloaditem];
     }
+    [downloaditem release];
+    downloaditem = nil;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -2366,10 +2436,16 @@
                 baseInfo.isSelected = YES;
             }
         }
+        IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+        [manager.tranferAry addObject:_transferBtn];
+        [_transferBtn startTranfering];
         IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
         tranferView.reloadDelegate = self;
         [tranferView downDeviceDataSoure:moveManager.selectedAry WithIsDown:NO WithiPod:moveManager.origniPod withCategoryNodesEnum:moveManager.categoryNodeEnum isExportPath:[TempHelper getAppTempPath] withSystemPath:nil];
     }else {
+        IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+        [manager.tranferAry addObject:_transferBtn];
+        [_transferBtn startTranfering];
         if (moveManager.originChooseModelEnum != moveManager.targerChooseModelEnum) {
             [moveManager driveToDriveDown:moveManager.selectedAry];
         }

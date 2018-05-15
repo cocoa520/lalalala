@@ -129,8 +129,7 @@
 + (NSString *)longToDateString:(long)timeStamp withMode:(int)mode {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Africa/Bamako"]];
-    NSString *_systemDateFormatter = @"";
-    _systemDateFormatter = @"MM/dd/yyyy";
+    NSString *_systemDateFormatter = _systemDateFormatter = @"MM/dd/yyyy";
     NSDate *nowDate = [NSDate date];
     NSString *sDateStr = [NSDateFormatter localizedStringFromDate:nowDate dateStyle:NSDateFormatterMediumStyle timeStyle:0];
     if ([sDateStr contains:@"年"]) {

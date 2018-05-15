@@ -178,9 +178,15 @@ static IMBPurchaseLeftNumController *_topVc = nil;
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    IMBFLog(@"---current thread -- %@",[NSThread currentThread]);
+    if ([NSThread currentThread] == [NSThread mainThread]) {
         _topVc.leftNums = @[@([IMBLimitation sharedLimitation].leftToMacNums),@([IMBLimitation sharedLimitation].leftToDeviceNums),@([IMBLimitation sharedLimitation].leftToCloudNums)];
-    });
+    }
+    else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            _topVc.leftNums = @[@([IMBLimitation sharedLimitation].leftToMacNums),@([IMBLimitation sharedLimitation].leftToDeviceNums),@([IMBLimitation sharedLimitation].leftToCloudNums)];
+        });
+    }
     
 }
 #pragma mark - setup view

@@ -83,6 +83,9 @@
     BOOL _isTableViewEdit;
     NSTextField *_editTextField;
     BOOL _isPreview;//如果是预览 就不掉完成代理
+    
+    BOOL _isExcutingToMac;
+    BOOL _isExcutingToDevice;
 }
 - (id)initWithCategoryNodesEnum:(CategoryNodesEnum )nodeEnum withiPod:(IMBiPod *)iPod WithDelegete:(id)delegete;
 - (void)loadApplicationsData;

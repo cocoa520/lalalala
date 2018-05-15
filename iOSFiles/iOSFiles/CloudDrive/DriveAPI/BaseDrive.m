@@ -36,6 +36,8 @@
 @synthesize dataAry = _dataAry;
 @synthesize isStart = _isStart;
 @synthesize uploadDocwsID = _uploadDocwsID;
+
+
 - (instancetype)init
 {
     self = [super init];
@@ -99,6 +101,7 @@
 @synthesize driveArray = _driveArray;
 @synthesize refreshToken = _refreshToken;
 @synthesize downLoader = _downLoader;
+
 
 - (instancetype)init
 {

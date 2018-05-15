@@ -94,11 +94,6 @@
     }
     [path1 fill];
     
-    int xPos;
-    int yPos;
-    
-    xPos = 14;
-    yPos = 0;
     if (_baseInfo.leftImage && _baseInfo.leftHoverImage) {
         if (_mouseStatus == MouseEnter || _mouseStatus == MouseUp || _mouseStatus == MouseDown) {
             NSRect imageFrame = NSMakeRect(10, 8, _baseInfo.leftHoverImage.size.width, _baseInfo.leftHoverImage.size.height);
@@ -208,12 +203,16 @@
         NSAttributedString *as2 = [[NSAttributedString alloc]initWithString:@"..."];
         NSRect rect = NSMakeRect(frame.origin.x + textSize.width, frame.origin.y + (frame.size.height - textSize.height) / 2, 20, textSize.height);
         [as2.string drawInRect:rect withAttributes:attributes];
+        [as2 release];
+        as2 = nil;
     }
     NSRect f = NSMakeRect(frame.origin.x , frame.origin.y + (frame.size.height - textSize.height) / 2, textSize.width, textSize.height);
     [as.string drawInRect:f withAttributes:attributes];
     
     [as release];
+    as = nil;
     [style release];
+    style = nil;
 }
 
 -(NSString*)getFileSizeString:(long long)totalSize reserved:(int)decimalPoints {

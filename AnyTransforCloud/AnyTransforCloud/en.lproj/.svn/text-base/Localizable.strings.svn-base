@@ -1,0 +1,145 @@
+/* 
+  Localizable.strings
+  AnyTransforCloud
+
+  Created by JGehry on 10/04/2018.
+  Copyright © 2018 IMB. All rights reserved.
+*/
+
+/******************************  与window统一的语言  ******************************/
+
+"SoftwareName" = "AnyTrans for Cloud";
+//<!--Login View-->
+//<!--sign in view-->
+"Login_Signin_UserName" = "用户名";
+"Login_Signin_UserPassword" = "密码";
+"Login_Signin_UserConfirmPassword" = "确认密码";
+"Login_Signin_Remember" = "记住我";
+"Login_Signin_PassForgot" = "忘记密码?";
+"Login_Signin_Button" = "登录";
+"Login_Signin_OtherAuthorization" = "或继续";
+"Login_Signin_SwitchButton" = "我没有账号，";
+"Login_Signin_SwitchButton_Sub" = "点击注册";
+
+//<!--sign up view-->
+"Login_Signup_Title" = "30天免费注册，无需绑定信用卡";
+"Login_Signup_Email" = "邮箱";
+"Login_Signup_Button" = "创建账户";
+"Login_Signup_SwitchButton" = "已经有帐户了，";
+"Login_Signup_SwitchButton_Sub" = "点击登录";
+
+"Login_UserNameEmptyTips" = "请输入用户名";
+"Login_UserNameValidTips" = "请输入有效的用户名";
+"Login_LenghtTips" = "你至少需要输入6个字符";
+"Login_PasswordEmptyTips" = "请输入密码";
+"Login_PasswordValidTips" = "请输入有效的密码";
+"Login_PasswordComfirmErrorTips" = "密码输入不一致";
+"Login_EmailEmptyTips" = "请输入邮箱";
+"Login_EmailValidTips" = "请输入有效的邮箱";
+"Login_ErrorTips" = "登录失败，请重试!";
+"Login_Registered_ErrorTips" = "注册失败，请重试!";
+"Login_Registered_ErrorTips1" = "邮箱已被注册，请重新输入!";
+"Login_Registered_ErrorTips2" = "用户名和密码输入有误，请重新输入!";
+"Login_Registered_ErrorTips3" = "请确保网络正常链接!";
+"Lock_View_Title" = "AnyTrans for Cloud已锁定";
+"Lock_View_Title2" = "你可以请输入登录密码解除锁定";
+"Lock_View_Button" = "解锁";
+"Lock_View_ErrorTips" = "发生未知错误，请重新登录!";
+
+//<!--Add Cloud View-->
+"AddCloud_Title" = "欢迎使用AnyTrans for Cloud";
+"AddCloud_SubTitle" = "请添加您的云盘, AnyTrans for Cloud帮您把所有的云盘集中在一起管理，方便快捷传输文件";
+"AddCloud_Classify_Recommend" = "推荐云盘";
+"AddCloud_Classify_Social" = "社交云盘";
+"AddCloud_Classify_Free" = "免费云盘";
+"AddCloud_Classify_All" = "所有云盘";
+"AddCloud_Classify_My" = "我的云盘";
+"AddCloud_Button_Content" = "添加";
+"AddCloud_Result" = "添加云盘成功";
+"AddCloud_Result1" = "添加云盘成功";
+
+//<!--Menu View-->
+"Menu_AddCloud_Tips" = "添加云盘";
+"Menu_ShareCloud_Tips" = "分享";
+"Menu_FavoriteCloud_Tips" = "收藏";
+"Menu_HistoryCloud_Tips" = "历史记录";
+"Menu_TrashCloud_Tips" = "垃圾箱";
+"Menu_ExitCloud_Tips" = "退出";
+"Menu_MoreCloud_Tips" = "更多";
+"Menu_LockCloud_Tips" = "锁定";
+"Exit_Cloud_Message" = "你确定要退出?";
+"Menu_HomePage" = "主页";
+"Menu_Setting" = "设置";
+"Menu_ChangePass" = "更改密码";
+"Menu_Help" = "帮助";
+"Menu_About" = "关于";
+"Menu_SingOut" = "登出";
+
+"HomeViewTitle" = "欢迎，%@!";
+"HomeView_Upgrade" = "升级";
+"HomeView_Edit" = "编辑信息";
+"HomeView_Recent" = "最近访问";
+"HomeView_Cloud_Capacity" = "你有%@/%@的免费空间";
+"HomeView_Last_Date" = "最近访问时间";
+"HomeView_Frequent" = "频繁访问";
+"HomeView_Search" = "搜索云盘";
+"HomeView_Task_Tips" = "完成任务以获得更多的流量，";
+"HomeView_Task_Tips1" = "现在就去";
+"HomeView_NewMenu_1" = "新建文件夹";
+"HomeView_NewMenu_2" = "上传文件";
+"HomeView_NewMenu_3" = "上传文件夹";
+"HomeView_NewMenu_4" = "新建同步";
+"HomeView_NewMenu_5" = "添加云盘";
+
+"Date_Today" = "今天";
+"Date_Yesterday" = "昨天";
+"Date_Tomorrow" = "明天";
+"Item_id_1" = "项目";
+"Item_id_2" = "items";
+"Button_Ok" = "好";
+"Button_Cancel" = "取消";
+"Button_Yes" = "确定";
+"Button_No" = "不";
+"Button_Continue" = "继续";
+"Button_Stop" = "停止";
+"Button_Select" = "选择";
+"Button_Save" = "保存";
+"Button_IKnown" = "好，我知道";
+"Button_Retry" = "重试";
+"Button_New" = "新建";
+"Mouse_Right_Menu_1" = "拷贝";
+"Mouse_Right_Menu_2" = "下载";
+"Mouse_Right_Menu_3" = "上传";
+"Mouse_Right_Menu_4" = "删除";
+"Mouse_Right_Menu_5" = "重命名";
+"Mouse_Right_Menu_6" = "刷新";
+"List_Header_Name_1" = "名称";
+"List_Header_Name_2" = "大小";
+"List_Header_Name_3" = "修改时间";
+"List_Header_Name_4" = "类别";
+
+"AccountHomePage_RV" = "Recently visited";
+"AccountHomePage_FV" = "Frequent visits";
+"AccountHomePage_Upgreate" = "Go Upgrade";
+"AccountHomePage_EditUserInfo" = "Edit personal";
+"AccountHomePage_FileNotExists" = "选择的文件不存在";
+"AccountHomePage_FolderNotExists" = "选择的文件夹不存在";
+"AccountHomePage_TimrConvert1" = "%@天前";
+"AccountHomePage_TimrConvert2" = "今天";
+"AccountHomePage_TimrConvert3" = "昨天";
+"AccountHomePage_LastVisit" = "last visist:";
+"AccountHomePage_FreeSize" = "You have %@ Free";
+"Unit_B" = "B";
+"Unit_KB" = "KB";
+"Unit_MB" = "MB";
+"Unit_G" = "GB";
+"Unit_T" = "T";
+
+"TopControl_Add" = "New";
+"TopControl_NewFolder" = "New Folder";
+"TopControl_FileUpload" = "File upload";
+"TopControl_FolderUpload" = "Folder upload";
+"TopControl_NewSync" = "Add new sync";
+"TopControl_NewCloud" = "Add new cloud";
+
+/******************************  与window统一的语言  ******************************/

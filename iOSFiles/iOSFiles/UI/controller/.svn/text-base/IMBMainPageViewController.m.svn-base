@@ -24,7 +24,7 @@
 #import "IMBPurchaseOrAnnoyController.h"
 #import "IMBViewAnimation.h"
 #import "IMBLimitation.h"
-
+#import "IMBTranferBtnManager.h"
 
 #import <objc/runtime.h>
 
@@ -117,9 +117,9 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }else {
             IMBFLog(@"Warning----alertView associated failed----");
         }
-        
     }
-    
+    IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+    [[tranferBtnManager tranferAry] addObject:_transferBtn];
     IMBTranferViewController *tranferVC = [IMBTranferViewController singleton];
     [tranferVC transferBtn:_transferBtn];
     tranferVC.showWindowDelegate = self;
@@ -215,11 +215,29 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     _originalSearchViewF = _searchView.frame;
     [IMBNotiCenter addObserver:self selector:@selector(hideFileDetailView:) name:NOTIFY_HIDE_ICLOUDDETAIL object:nil];
     [IMBNotiCenter addObserver:self selector:@selector(registerSuccess) name:IMBRegisteredSuccessfulNoti object:nil];
-    [IMBNotiCenter addObserver:self selector:@selector(achieveLimitation) name:IMBLimitationNoti object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(achieveLimitation:) name:IMBLimitationNoti object:nil];
 }
 
 #pragma -- mark  Actions
-- (void)achieveLimitation {
+- (void)achieveLimitation:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if (_chooseModelEnum == DeviceLogEnum) {
+        if ([key isEqualToString:_iPod.uniqueKey]) {
+            [self beforeShowAnnoyView];
+        }
+    }else if (_chooseModelEnum == DropBoxLogEnum) {
+        if ([key isEqualToString:@"DropBox"]) {
+            [self beforeShowAnnoyView];
+        }
+    }else {
+        if ([key isEqualToString:@"iCloud"]) {
+            [self beforeShowAnnoyView];
+        }
+    }
+    
+}
+
+- (void)beforeShowAnnoyView {
     IMBFLog(@"current thread1 -- %@",[NSThread currentThread]);
     if ([NSThread currentThread] == [NSThread mainThread]) {
         [self showAnnoyView];
@@ -257,6 +275,16 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
     _annoyVc.closeClicked = ^{
         //关闭按钮点击
         [IMBViewAnimation animationPositionYWithView:_annoyVc.view toY:-590.f timeInterval:timeInterval completion:^{
+            NSString *key = nil;
+            if (_chooseModelEnum == DeviceLogEnum) {
+                key = _iPod.uniqueKey;
+            }else if (_chooseModelEnum == DropBoxLogEnum) {
+                key = @"DropBox";
+            }else {
+                key = @"iCloud";
+            }
+            [IMBLimitation sharedLimitation].isShownAnnoyView = YES;
+            [IMBNotiCenter postNotificationName:IMBLimitationViewClosedNoti object:key];
             _topcoverView.hidden = YES;
             [_annoyVc.view removeFromSuperview];
             [_annoyVc release];
@@ -848,7 +876,8 @@ static CGFloat const kSelectedBtnfontSize = 14.0f;
         }
         [viewManager.mainViewController signoutiCloudClicked];
     }
- 
+    [deviceAry release];
+    deviceAry = nil;
 //    [self changeSelectDeviceBtn:_curFunctionType];
 
 //        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:

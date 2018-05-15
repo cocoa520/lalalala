@@ -1,15 +1,15 @@
 10
 
 dir
-3712
+3753
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/Transfer
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-05-08T08:57:08.211415Z
-3592
-hezhonglin
+2018-05-12T08:34:08.619206Z
+3752
+longfan
 
 
 
@@ -28,6 +28,40 @@ a323380f-3d89-8743-8c24-0bf67719c927
 
 ToiCloud
 dir
+
+IMBTranferBtnManager.m
+file
+
+
+
+
+2018-05-14T01:00:13.000000Z
+f4497562e7297aad9e17415d16f56f85
+2018-05-12T07:10:50.947628Z
+3750
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+758
 
 IMBMoveTransferManager.h
 file
@@ -97,16 +131,19 @@ has-props
 
 749
 
+Error
+dir
+
 IMBMoveTransferManager.m
 file
 
 
 
 
-2018-05-03T03:13:51.000000Z
-67874114e55f1301f92866f6ea3bb76e
-2018-05-03T03:12:17.931404Z
-3424
+2018-05-14T01:00:13.000000Z
+fe772167e27cb566c4d01cea88a68698
+2018-05-12T07:10:50.947628Z
+3750
 longfan
 
 
@@ -129,78 +166,7 @@ longfan
 
 
 
-3870
-
-Error
-dir
-
-IMBExportSetting.h
-file
-
-
-
-
-2018-04-10T08:39:15.000000Z
-8e56af86313028dc26efad51f6b726f1
-2018-04-10T08:37:12.550925Z
-2573
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2022
-
-IMBCategoryInfoModel.m
-file
-
-
-
-
-2018-03-28T02:24:30.000000Z
-cf2f7013a4cfe1ebd96292917498a05c
-2018-02-05T08:04:10.487107Z
-1229
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1188
+3903
 
 IMBBaseTransfer.h
 file
@@ -236,14 +202,14 @@ longfan
 
 3769
 
-IMBExportSetting.m
+IMBCategoryInfoModel.m
 file
 
 
 
 
 2018-03-28T02:24:30.000000Z
-016fb266df181679c02d79126c6a0d24
+cf2f7013a4cfe1ebd96292917498a05c
 2018-02-05T08:04:10.487107Z
 1229
 hezhonglin
@@ -268,7 +234,47 @@ has-props
 
 
 
-11756
+1188
+
+IMBExportSetting.h
+file
+
+
+
+
+2018-04-10T08:39:15.000000Z
+8e56af86313028dc26efad51f6b726f1
+2018-04-10T08:37:12.550925Z
+2573
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2022
+
+ToDevice
+dir
+
+Tracking
+dir
 
 IMBBaseTransfer.m
 file
@@ -304,11 +310,39 @@ huyumin
 
 33414
 
-Tracking
-dir
-
-ToDevice
-dir
+IMBExportSetting.m
+file
+
+
+
+
+2018-03-28T02:24:30.000000Z
+016fb266df181679c02d79126c6a0d24
+2018-02-05T08:04:10.487107Z
+1229
+hezhonglin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11756
 
 ToMac
 dir
@@ -318,4 +352,38 @@ dir
 
 ATHSync
 dir
+
+IMBTranferBtnManager.h
+file
+
+
+
+
+2018-05-14T01:00:13.000000Z
+47e2e1921bcf36862a6e57009706bb6a
+2018-05-12T07:10:50.947628Z
+3750
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+353
 

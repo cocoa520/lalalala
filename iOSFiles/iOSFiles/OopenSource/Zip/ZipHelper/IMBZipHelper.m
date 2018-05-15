@@ -309,9 +309,13 @@
 
     NSMutableString *mutFileName = [fileName mutableCopy];
     if ([mutFileName rangeOfString:@"icon-"].location != NSNotFound) {
+        [mutFileName release];
+        mutFileName = nil;
         return true;
     }
     else{
+        [mutFileName release];
+        mutFileName = nil;
         [mutFileName replaceOccurrencesOfString:@".png" withString:@"" options:nil range:NSMakeRange(0, mutFileName.length)];
         [mutFileName replaceOccurrencesOfString:@".jpg" withString:@"" options:nil range:NSMakeRange(0, mutFileName.length)];
         [mutFileName replaceOccurrencesOfString:@".jpeg" withString:@"" options:nil range:NSMakeRange(0, mutFileName.length)];
@@ -333,6 +337,7 @@
         }
     }
     [mutFileName release];
+    mutFileName = nil;
     return result;
 }
 

@@ -24,6 +24,9 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
 @synthesize leftToDeviceNums = _leftToDeviceNums;
 @synthesize leftToCloudNums = _leftToCloudNums;
 @synthesize registerStatus = _registerStatus;
+@synthesize isToCloud = _isToCloud;
+@synthesize isDeviceToDevice = _isDeviceToDevice;
+@synthesize isShownAnnoyView = _isShownAnnoyView;
 
 
 #pragma mark - 单例实现
@@ -80,6 +83,7 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
     }
 }
 - (void)saveRestNums {
+    if (self.registerStatus) return;
     [self saveRestNumsWithNum:self.leftToMacNums type:IMBLimitationTypeToMac];
     [self saveRestNumsWithNum:self.leftToDeviceNums type:IMBLimitationTypeToDevice];
     [self saveRestNumsWithNum:self.leftToCloudNums type:IMBLimitationTypeToCloud];
@@ -175,9 +179,7 @@ NSString * const IMBLimitationRegisterStatus = @"IMBLimitationRegisterStatus";
     if (leftToCloudNums == 0) {
         [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
     }
-   
 }
-
 
 - (void)saveRegisterStatus {
 //    _registerStatus = 0;

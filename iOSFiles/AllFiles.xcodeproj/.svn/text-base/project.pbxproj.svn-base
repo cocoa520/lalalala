@@ -1027,6 +1027,7 @@
 		EE2650D220525FB900142F89 /* DropboxUploadSessionAppendAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C520525FB900142F89 /* DropboxUploadSessionAppendAPI.m */; };
 		EE2650D320525FB900142F89 /* DropboxUploadSessionFinishAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C720525FB900142F89 /* DropboxUploadSessionFinishAPI.m */; };
 		EE2650D420525FB900142F89 /* DropboxUploadSessionStartAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2650C920525FB900142F89 /* DropboxUploadSessionStartAPI.m */; };
+		EE2A1E8B20A6D18B00E06E42 /* IMBTranferBtnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2A1E8A20A6D18B00E06E42 /* IMBTranferBtnManager.m */; };
 		EE39AC94200CBC1300D084CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE39AC93200CBC1300D084CE /* Cocoa.framework */; };
 		EE39AD14200CBD9700D084CE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE39ACE4200CBD9700D084CE /* MainMenu.xib */; };
 		EE39AD15200CBD9700D084CE /* MobileDeviceAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = EE39ACEA200CBD9700D084CE /* MobileDeviceAccess.m */; };
@@ -2819,6 +2820,8 @@
 		EE2650C720525FB900142F89 /* DropboxUploadSessionFinishAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadSessionFinishAPI.m; sourceTree = "<group>"; };
 		EE2650C820525FB900142F89 /* DropboxUploadSessionStartAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxUploadSessionStartAPI.h; sourceTree = "<group>"; };
 		EE2650C920525FB900142F89 /* DropboxUploadSessionStartAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxUploadSessionStartAPI.m; sourceTree = "<group>"; };
+		EE2A1E8920A6D18B00E06E42 /* IMBTranferBtnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMBTranferBtnManager.h; sourceTree = "<group>"; };
+		EE2A1E8A20A6D18B00E06E42 /* IMBTranferBtnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMBTranferBtnManager.m; sourceTree = "<group>"; };
 		EE39AB74200C5EB300D084CE /* AllFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE39AC93200CBC1300D084CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EE39ACE5200CBD9700D084CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -5091,6 +5094,8 @@
 		B9E739592028038D00E1BB3B /* Transfer */ = {
 			isa = PBXGroup;
 			children = (
+				EE2A1E8920A6D18B00E06E42 /* IMBTranferBtnManager.h */,
+				EE2A1E8A20A6D18B00E06E42 /* IMBTranferBtnManager.m */,
 				B9E7397F2028038D00E1BB3B /* IMBBaseTransfer.h */,
 				B9E739802028038D00E1BB3B /* IMBBaseTransfer.m */,
 				B9E739812028038D00E1BB3B /* IMBExportSetting.h */,
@@ -7185,6 +7190,7 @@
 				B96564992021D47600BD7FF5 /* IMBSyncPlistBuilder.m in Sources */,
 				B96564942021D47600BD7FF5 /* IMBSqliteTables_Above3.m in Sources */,
 				B96563632021D2B000BD7FF5 /* File_Skm.cpp in Sources */,
+				EE2A1E8B20A6D18B00E06E42 /* IMBTranferBtnManager.m in Sources */,
 				B96563AA2021D2B000BD7FF5 /* int128s.cpp in Sources */,
 				EE39AD1C200CBD9700D084CE /* IMBLogManager.m in Sources */,
 				B96564B72021D47600BD7FF5 /* NSString+Compare.m in Sources */,
@@ -7449,7 +7455,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AllFiles;
 				PRODUCT_NAME = AllFiles;
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx10.11;
 			};
 			name = Debug;
@@ -7488,7 +7494,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AllFiles;
 				PRODUCT_NAME = AllFiles;
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx10.11;
 			};
 			name = Release;

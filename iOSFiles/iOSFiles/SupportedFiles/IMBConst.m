@@ -28,6 +28,7 @@ NSString * const IMBGridViewCommandANoti = @"IMBGridViewCommandANoti";
 NSString * const IMBDeviceDisconnectedNoti = @"IMBDeviceDisconnectedNoti";
 NSString * const IMBRegisteredSuccessfulNoti = @"IMBRegisteredSuccessfulNoti";
 NSString * const IMBLimitationNoti = @"IMBLimitationNoti";
+NSString * const IMBLimitationViewClosedNoti = @"IMBLimitationViewClosedNoti";
 
 NSString * const DeviceDataLoadCompletePhoto = @"DeviceDataLoadCompletePhoto";
 NSString * const deviceDataLoadCompleteBooks = @"deviceDataLoadCompleteBooks";

@@ -672,6 +672,7 @@ static NSString *_appSyncPath = @"/PublicStaging/ApplicationSync";
                             if (_listener && [_listener respondsToSelector:@selector(completedCopyTrack:)]) {
                                 [_listener completedCopyTrack:(id)track];
                             }
+        
                             continue;
                         }else {
                             [self sendFileErrorWithAssetID:assetID WithType:assetEntity.assetType];

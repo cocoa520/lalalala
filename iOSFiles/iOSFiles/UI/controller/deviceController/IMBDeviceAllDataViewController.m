@@ -36,7 +36,7 @@
 #import "IMBMoveTransferManager.h"
 #import "IMBViewManager.h"
 #import "IMBLimitation.h"
-
+#import "IMBTranferBtnManager.h"
 
 @implementation IMBDeviceAllDataViewController
 
@@ -113,6 +113,7 @@
     }
     
     [IMBNotiCenter addObserver:self selector:@selector(showDeviceDetailView:) name:NOTIFY_SHOW_DEVICEDETAIL object:nil];
+    [IMBNotiCenter addObserver:self selector:@selector(backToCloudTransfer:) name:IMBLimitationViewClosedNoti object:nil];
     
     _doubleclickCount = 2;
     [_topLineView setBackgroundColor:COLOR_TEXT_LINE];
@@ -208,6 +209,18 @@
         _isSmipNode = YES;
     }
     _editTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 296, 60)];
+}
+
+- (void)backToCloudTransfer:(NSNotification *)noti {
+    NSString *key = [noti object];
+    if ([key isEqualToString:_iPod.uniqueKey]) {
+        if (_isExcutingToDevice) {
+            [self toDevice:nil];
+        }
+        if (_isExcutingToMac) {
+            [self toMac:nil];
+        }
+    }
 }
 
 - (void)loadApplicationsData {
@@ -343,7 +356,9 @@
             predicate = [NSPredicate predicateWithFormat:@"photoName CONTAINS[cd] %@ ",searchStr];
         }
         [_researchdataSourceArray removeAllObjects];
-        [_researchdataSourceArray addObjectsFromArray:[_dataSourceArray  filteredArrayUsingPredicate:predicate]];
+        if (_dataSourceArray.count > 0) {
+             [_researchdataSourceArray addObjectsFromArray:[_dataSourceArray  filteredArrayUsingPredicate:predicate]];
+        }
     }else{
         _isSearch = NO;
         [_researchdataSourceArray removeAllObjects];
@@ -2150,6 +2165,12 @@
 }
 
 - (void)dropToCollectionViewTableViewWithpaths:(NSMutableArray *)paths {
+    IMBTranferBtnManager *tranferBtnManager = [IMBTranferBtnManager singleton];
+    for (IMBHoverChangeImageBtn *btn in [tranferBtnManager tranferAry]) {
+        [btn startTranfering];
+    }
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     tranferView.reloadDelegate = self;
     [tranferView transferBtn:_transferBtn];
@@ -2755,15 +2776,33 @@
  *  到电脑
  */
 - (void)toMac:(id)sender {
-
+    if (sender) {
+        [IMBLimitation sharedLimitation].isShownAnnoyView = NO;
+    }
     [self toMacSettingsWithInformation:_information];
 }
 
 - (void)toMacSettingsWithInformation:(IMBInformation *)information {
-    if ([IMBLimitation sharedLimitation].leftToMacNums == 0) {
-        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
-        return;
+    if ([IMBLimitation sharedLimitation].registerStatus == 0) {
+        if ([IMBLimitation sharedLimitation].leftToMacNums == 0) {
+            [self setAnnoyViewNoti];
+            return;
+            
+        }
+        if ([IMBLimitation sharedLimitation].leftToMacNums == 0 || [IMBLimitation sharedLimitation].leftToDeviceNums == 0 || [IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+            if ([IMBLimitation sharedLimitation].isShownAnnoyView == NO) {
+                _isExcutingToMac = YES;
+                _isExcutingToDevice = NO;
+                [self setAnnoyViewNoti];
+                return;
+            }
+            
+        }
     }
+    
+    
+    
+    _isExcutingToMac = NO;
     NSIndexSet *selectedSet = [self selectedItems];
     NSArray *displayArr = nil;
     if (_isSearch) {
@@ -2781,15 +2820,25 @@
         [openPanel setCanCreateDirectories:YES];
         [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
             if (NSModalResponseOK == result) {
+                IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+                [manager.tranferAry addObject:_transferBtn];
                 [_transferBtn startTranfering];
                 NSString *path = [[openPanel URL] path];
                 [self transferToMacWithPath:path withSelecteSet:selectedSet withAry:displayArr];
             }
         }];
     }
+    
+    if ([IMBLimitation sharedLimitation].leftToMacNums == 0 || [IMBLimitation sharedLimitation].leftToDeviceNums == 0 || [IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+        return;
+    }
 }
 
 - (void)transferToMacWithPath:(NSString *)path withSelecteSet:(NSIndexSet *)selectedSet withAry:(NSArray *)displayArr {
+    [_transferBtn startTranfering];
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
     NSString *filePath = [path stringByAppendingString:@"/"];
     NSMutableArray *exportArray = [NSMutableArray array];
     NSDictionary *dimensionDict = nil;
@@ -2975,6 +3024,9 @@
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [preparedArray addObject:[displayArr objectAtIndex:idx]];
     }];
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
+    [_transferBtn startTranfering];
     
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView transferBtn:_transferBtn];
@@ -2985,10 +3037,29 @@
  *  到设备
  */
 - (void)toDevice:(id)sender {
-    if ([IMBLimitation sharedLimitation].leftToDeviceNums == 0) {
-        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
-        return;
+    if (sender) {
+        [IMBLimitation sharedLimitation].isShownAnnoyView = NO;
     }
+    if ([IMBLimitation sharedLimitation].registerStatus == 0) {
+        if ([IMBLimitation sharedLimitation].leftToDeviceNums == 0) {
+            [self setAnnoyViewNoti];
+            return;
+            
+        }
+        if ([IMBLimitation sharedLimitation].leftToMacNums == 0 || [IMBLimitation sharedLimitation].leftToDeviceNums == 0 || [IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+            if ([IMBLimitation sharedLimitation].isShownAnnoyView == NO) {
+                _isExcutingToMac = NO;
+                _isExcutingToDevice = YES;
+                [self setAnnoyViewNoti];
+                return;
+            }
+            
+        }
+    }
+    
+    
+    
+    _isExcutingToDevice = NO;
     IMBDeviceConnection *deviceConnection = [IMBDeviceConnection singleton];
     NSMutableArray *deviceAry = [[[NSMutableArray alloc] init] autorelease];
     for (IMBBaseInfo *baseinfo in deviceConnection.allDevices) {
@@ -3045,10 +3116,16 @@
     }else {
         [self showAlertWithoutMultiDevices];
     }
-//    [deviceAry release];
-//    deviceAry = nil;
+    
+    if ([IMBLimitation sharedLimitation].leftToMacNums == 0 || [IMBLimitation sharedLimitation].leftToDeviceNums == 0 || [IMBLimitation sharedLimitation].leftToCloudNums == 0) {
+        [IMBNotiCenter postNotificationName:IMBLimitationNoti object:nil];
+        return;
+    }
 }
-
+- (void)setAnnoyViewNoti {
+    NSString *key = _iPod.uniqueKey;
+    [IMBNotiCenter postNotificationName:IMBLimitationNoti object:key];
+}
 - (void)chooseDeviceBtnClick:(id)sender {
     if (_devChoosePopover != nil) {
         [_devChoosePopover close];
@@ -3062,6 +3139,8 @@
 
 - (void)toDeviceSettingsWithInformation:(IMBInformation *)information withdesIpod:(IMBiPod *)desIpod{
     [_transferBtn startTranfering];
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSMutableArray *selectAry = [NSMutableArray array];
         NSIndexSet *selectedSet = [self selectedItems];
@@ -3080,6 +3159,7 @@
         }else {
             displayArr = _dataSourceArray;
         }
+  
         NSDictionary *dimensionDict = nil;
         switch (_categoryNodeEunm) {
             case Category_PhotoStream:
@@ -3087,6 +3167,7 @@
             case Category_CameraRoll:
             {
                 if (desIpod.photoLoadFinished) {
+                    [IMBLimitation sharedLimitation].isDeviceToDevice = YES;
                     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
                         IMBPhotoEntity *pe = [displayArr objectAtIndex:idx];
                         [selectAry addObject:pe];
@@ -3109,6 +3190,7 @@
             case Category_iBooks:
             {
                 if (desIpod.bookLoadFinished) {
+                    [IMBLimitation sharedLimitation].isDeviceToDevice = YES;
                     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
                         IMBBookEntity *be = [displayArr objectAtIndex:idx];
                         [selectAry addObject:be];
@@ -3134,6 +3216,7 @@
             case Category_Media:
             {
                 if (desIpod.mediaLoadFinished) {
+                    [IMBLimitation sharedLimitation].isDeviceToDevice = YES;
                     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
                         //TODO
                         IMBTrack *track = [displayArr objectAtIndex:idx];
@@ -3155,6 +3238,7 @@
             case Category_Video:
             {
                 if (desIpod.videoLoadFinished) {
+                    [IMBLimitation sharedLimitation].isDeviceToDevice = YES;
                     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
                         //TODO
                         IMBTrack *track = [displayArr objectAtIndex:idx];
@@ -3219,11 +3303,15 @@
     
     [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
         if (NSModalResponseOK == result) {
+            [IMBLimitation sharedLimitation].isDeviceToDevice = NO;
+            IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+            [manager.tranferAry addObject:_transferBtn];
             [_transferBtn startTranfering];
             NSMutableArray *paths = [NSMutableArray array];
             for (NSURL *urlPath in openPanel.URLs) {
                 [paths addObject:urlPath.path];
             }
+    
             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
             [tranferView transferBtn:_transferBtn];
              tranferView.reloadDelegate = self;
@@ -3505,6 +3593,8 @@
         [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
             [preparedArray addObject:[displayArr objectAtIndex:idx]];
         }];
+        IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+        [manager.tranferAry addObject:_transferBtn];
         [_transferBtn startTranfering];
         IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
         tranferView.appKey = _appKey;
@@ -3590,6 +3680,8 @@
     [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [preparedArray addObject:[displayArr objectAtIndex:idx]];
     }];
+    IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+    [manager.tranferAry addObject:_transferBtn];
     [_transferBtn startTranfering];
     IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
     [tranferView transferBtn:_transferBtn];
@@ -4255,7 +4347,6 @@
     [self reload:nil];
 }
 
-
 - (void)selectItemAry:(NSMutableArray *)itemAry {
     NSIndexSet *selectedSet = [self selectedItems];
     NSMutableArray *preparedArray = [NSMutableArray array];
@@ -4309,6 +4400,14 @@
                     [preparedArray addObject:track];
                 }];
         }
+        break;
+        case Category_System:
+        case Category_Storage:
+            [selectedSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
+                //TODO
+                SimpleNode *track = [displayArr objectAtIndex:idx];
+                [preparedArray addObject:track];
+            }];
             break;
         default:
             break;
@@ -4333,16 +4432,25 @@
         NSString *filePath = @"";
         filePath = [IMBHelper getAppRootPath];
         [moveManager.originDriveBaseManager setDownloadPath:filePath];
+        IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+        [manager.tranferAry addObject:_transferBtn];
+        [_transferBtn startTranfering];
         if (_chooseLogModelEnmu == iCloudLogEnum) {
             [tranferView icloudToDriveAddDataSource:moveManager.selectedAry WithIsDown:YES WithDriveBaseManage:moveManager.originDriveBaseManager withUploadParent:nil withUploadDocID:@"" withiPod:_iPod];
         }else {
             [tranferView dropBoxToDeviceAddDataSource:moveManager.selectedAry WithIsDown:YES WithDriveBaseManage:moveManager.originDriveBaseManager withUploadParent:nil withiPod:_iPod];
         }
     }else {
-        if ([moveManager.origniPod.uniqueKey isEqualToString:_iPod.uniqueKey]) {
+        if (![moveManager.origniPod.uniqueKey isEqualToString:_iPod.uniqueKey]) {
             IMBTranferViewController *tranferView = [IMBTranferViewController singleton];
             [tranferView transferBtn:_transferBtn];
             tranferView.reloadDelegate = self;
+            if (_categoryNodeEunm == Category_System || _categoryNodeEunm == Category_Storage) {
+                return;
+            }
+            IMBTranferBtnManager *manager = [IMBTranferBtnManager singleton];
+            [manager.tranferAry addObject:_transferBtn];
+            [_transferBtn startTranfering];
             [tranferView toDeviceAddDataSorue:moveManager.selectedAry withCategoryNodesEnum:_categoryNodeEunm srciPodKey:moveManager.origniPod.uniqueKey desiPodKey:_iPod.uniqueKey];
         }
     }

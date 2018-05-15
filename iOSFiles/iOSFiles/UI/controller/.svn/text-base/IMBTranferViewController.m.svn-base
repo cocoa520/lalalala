@@ -65,9 +65,8 @@ static id _instance = nil;
     [attrText setValue:pghStyle forKey:NSParagraphStyleAttributeName];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:CustomLocalizedString(@"Transfer_list", nil) attributes:attrText];
     [_topLeftBtn setAttributedTitle:attrString];
-    
-
-    
+    [attrString release];
+    attrString = nil;
     [_limitView setBackgroundColor:COLOR_PURCHASE_COLUMN_BG];
     
     [_topRightBtn setHasBorder:NO];
@@ -184,9 +183,7 @@ static id _instance = nil;
     _keyImageView.wantsLayer = YES;
     
     [IMBViewAnimation animationMouseEnteredExitedWithView:_keyImageView frame:NSMakeRect(307.f, 107.f, 16.f, 16.f) timeInterval:2.f disable:NO completion:^{
-        _keyImageView.frame = NSMakeRect(307.f, 107.f, 16.f, 16.f);
         _keyImageView.hidden = NO;
-        [_limitView addSubview:_keyImageView];
     }];
 }
 
@@ -372,6 +369,7 @@ static id _instance = nil;
         [_boxView setContentView:_downLoadViewController.view];
     }
     [_downLoadViewController setAppKey:_appKey];
+    [_tranferBtn startTranfering];
     [_downLoadViewController downDeviceDataSoure:addDataSource WithIsDown:isDown WithiPod:ipod withCategoryNodesEnum:categoryNodesEnum isExportPath:exportPath withSystemPath:systemPath];
 }
 
@@ -391,7 +389,6 @@ static id _instance = nil;
     if (self.unlimitClicked) {
         self.unlimitClicked();
     }
-    
 }
 
 - (IBAction)upLoadBtn:(id)sender {

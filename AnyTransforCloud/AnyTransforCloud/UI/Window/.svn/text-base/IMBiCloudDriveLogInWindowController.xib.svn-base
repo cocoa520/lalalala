@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBiCloudDriveLogInWindowController">
+            <connections>
+                <outlet property="_accountAndSecireView" destination="gk6-C8-JXV" id="qb2-re-H8g"/>
+                <outlet property="_accountTextField" destination="BPJ-KL-2h6" id="E9g-Dx-QZ6"/>
+                <outlet property="_checkButton" destination="TJy-wi-0rV" id="ljO-Xw-sKg"/>
+                <outlet property="_forgetButton" destination="Avs-qQ-lro" id="DJI-fb-e2K"/>
+                <outlet property="_logInView" destination="NfA-0E-i2B" id="Vns-xw-NjO"/>
+                <outlet property="_loginAccountErrorLable" destination="0rm-pE-ERH" id="r7b-0B-MoQ"/>
+                <outlet property="_loginAnimationView" destination="KsY-Pi-bo6" id="zpe-fG-8zv"/>
+                <outlet property="_loginPwdErrorLable" destination="Vgm-Xz-wmA" id="02M-h1-VYs"/>
+                <outlet property="_loginTitle" destination="DM3-2d-W9D" id="kcB-La-W1l"/>
+                <outlet property="_oneLineView" destination="t6s-V5-eWR" id="wlg-OZ-nFx"/>
+                <outlet property="_rememberTextField" destination="uat-2o-JwW" id="dHA-5P-HS4"/>
+                <outlet property="_rootBox" destination="AT1-Jq-Lmj" id="2a0-ST-ZKY"/>
+                <outlet property="_secireTextField" destination="FWb-5Y-DTf" id="I07-M0-ne3"/>
+                <outlet property="_signInButton" destination="KUz-Da-Wx3" id="e7l-H1-gY4"/>
+                <outlet property="_twoLineView" destination="rmd-k0-EOi" id="aAk-Ow-oLP"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="IMBToolbarWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="400" height="450"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box borderWidth="0.0" title="Box" borderType="none" titlePosition="noTitle" id="AT1-Jq-Lmj">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <view key="contentView" id="Zbt-6F-VCl">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" id="lwD-Ft-nvQ">
+                                    <rect key="frame" x="123" y="301" width="81" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Up8-Vm-uy3">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                </button>
+                                <button verticalHuggingPriority="750" id="KI4-8B-b9h">
+                                    <rect key="frame" x="205" y="175" width="81" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xw9-ZI-ljP">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                </button>
+                            </subviews>
+                            <animations/>
+                        </view>
+                        <animations/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                    <customView id="6TO-F5-6G7" customClass="IMBAlertSuperView">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                    </customView>
+                </subviews>
+                <animations/>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+        <customView id="NfA-0E-i2B" customClass="IMBWhiteView">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jHW-8c-irc" customClass="IMBImageView">
+                    <rect key="frame" x="10" y="302" width="380" height="114"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sign_bg" id="IBD-Q7-xU7"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DM3-2d-W9D">
+                    <rect key="frame" x="75" y="254" width="250" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Anytrans for cloud" id="gQE-xc-tHW">
+                        <font key="font" size="30" name="HelveticaNeue-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uat-2o-JwW">
+                    <rect key="frame" x="67" y="85" width="136" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remember me" id="K5d-Co-226">
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                        <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Vgm-Xz-wmA">
+                    <rect key="frame" x="47" y="90" width="314" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="wrong password" id="zIG-DH-jly">
+                        <font key="font" size="12" name="HelveticaNeue"/>
+                        <color key="textColor" red="0.98369586470000003" green="0.27537945279999998" blue="0.34240589430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView id="gk6-C8-JXV">
+                    <rect key="frame" x="45" y="130" width="314" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView id="KsY-Pi-bo6">
+                            <rect key="frame" x="266" y="10" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                        </customView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0rm-pE-ERH">
+                            <rect key="frame" x="1" y="42" width="311" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="2y1-cF-rxU">
+                                <font key="font" size="12" name="HelveticaNeue"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <customView id="BqW-dq-eQr" customClass="IMBWhiteView">
+                            <rect key="frame" x="0.0" y="60" width="290" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="BPJ-KL-2h6" customClass="IMBCustomTextFiled">
+                                    <rect key="frame" x="4" y="2" width="284" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" id="cbe-hZ-X74" customClass="IMBCustomTextFieldCell">
+                                        <font key="font" size="14" name="HelveticaNeue"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <animations/>
+                        </customView>
+                        <customView id="jci-3Z-PBI" customClass="IMBWhiteView">
+                            <rect key="frame" x="2" y="4" width="290" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <secureTextField focusRingType="none" verticalHuggingPriority="750" tag="2" id="FWb-5Y-DTf" customClass="IMBSecireTextField">
+                                    <rect key="frame" x="6" y="4" width="286" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <secureTextFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" focusRingType="none" alignment="left" placeholderString="" drawsBackground="YES" id="dwv-vb-En4" customClass="IMBSecureTextFieldCell">
+                                        <font key="font" size="14" name="HelveticaNeue"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <allowedInputSourceLocales>
+                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                        </allowedInputSourceLocales>
+                                    </secureTextFieldCell>
+                                </secureTextField>
+                            </subviews>
+                            <animations/>
+                        </customView>
+                        <customView id="t6s-V5-eWR" customClass="IMBWhiteView">
+                            <rect key="frame" x="0.0" y="60" width="310" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                        </customView>
+                        <customView id="rmd-k0-EOi" customClass="IMBWhiteView">
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                        </customView>
+                    </subviews>
+                    <animations/>
+                </customView>
+                <button verticalHuggingPriority="750" id="TJy-wi-0rV" customClass="IMBCheckButton">
+                    <rect key="frame" x="47" y="87" width="15" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="GbW-UK-AG7">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="HelveticaNeue"/>
+                    </buttonCell>
+                </button>
+                <button id="Avs-qQ-lro" customClass="IMBGridientButton">
+                    <rect key="frame" x="179" y="82" width="176" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="bevel" title="Forget Password?" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="kAI-ed-hnm">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button id="KUz-Da-Wx3" customClass="IMBLoginButton">
+                    <rect key="frame" x="44" y="20" width="312" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="bevel" title="SIGN IN" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zPf-75-oyy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="signInCloud:" target="-2" id="XYF-1d-Wqg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="367" y="84"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="sign_bg" width="380" height="114"/>
+    </resources>
+</document>

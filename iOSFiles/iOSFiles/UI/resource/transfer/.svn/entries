@@ -1,7 +1,7 @@
 10
 
 dir
-3712
+3753
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/transfer
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -60,40 +60,6 @@ has-props
 
 728
 
-transferlist_icon_folder_hover@2x.png
-file
-
-
-
-
-2018-04-10T02:05:51.000000Z
-01e508a22ee9f9616b22a07c237d8296
-2018-04-10T01:58:45.774135Z
-2537
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-569
-
 transferlist_history_icon_del_hover.png
 file
 
@@ -127,6 +93,40 @@ has-props
 
 
 289
+
+transferlist_icon_folder_hover@2x.png
+file
+
+
+
+
+2018-04-10T02:05:51.000000Z
+01e508a22ee9f9616b22a07c237d8296
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+569
 
 message-box-error.png
 file
@@ -196,40 +196,6 @@ has-props
 
 831
 
-transferlist_icon_start_hover.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-67414eb941122a60520559b2a5493bec
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-295
-
 transferlist_icon_delall_hover.png
 file
 
@@ -264,16 +230,16 @@ has-props
 
 704
 
-transferlist_history_icon_video@2x.png
+transferlist_icon_start_hover.png
 file
 
 
 
 
-2018-04-10T04:30:28.000000Z
-01afd72b39ec04c06ff88ce30b0dad03
-2018-04-10T04:20:58.302722Z
-2556
+2018-04-02T10:51:32.000000Z
+67414eb941122a60520559b2a5493bec
+2018-04-02T10:05:19.070057Z
+2270
 huyumin
 has-props
 
@@ -296,41 +262,7 @@ has-props
 
 
 
-768
-
-transferlist_history_icon_list_folder@2x.png
-file
-
-
-
-
-2018-04-10T12:03:52.000000Z
-bbd0a6a2553575e30fe554e59e6f52c8
-2018-04-10T11:31:31.277295Z
-2591
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-643
+295
 
 transferlist_history_icon_app.png
 file
@@ -366,6 +298,74 @@ has-props
 
 873
 
+transferlist_history_icon_list_folder@2x.png
+file
+
+
+
+
+2018-04-10T12:03:52.000000Z
+bbd0a6a2553575e30fe554e59e6f52c8
+2018-04-10T11:31:31.277295Z
+2591
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+643
+
+transferlist_history_icon_video@2x.png
+file
+
+
+
+
+2018-04-10T04:30:28.000000Z
+01afd72b39ec04c06ff88ce30b0dad03
+2018-04-10T04:20:58.302722Z
+2556
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+768
+
 transferlist_history_icon_del_hover@2x.png
 file
 
@@ -399,40 +399,6 @@ has-props
 
 
 439
-
-transferlist_icon_del.png
-file
-
-
-
-
-2018-04-10T12:03:52.000000Z
-8efdccfaa739ba7b0601910976781e9e
-2018-04-10T11:31:31.277295Z
-2591
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-258
 
 transferlist_icon_history_hover.png
 file
@@ -468,16 +434,16 @@ has-props
 
 756
 
-transferlist_history_blankpage_ai.png
+transferlist_icon_del.png
 file
 
 
 
 
-2018-04-03T05:53:09.000000Z
-ecfbb7861fe0bc3bbc4fa22941b39448
-2018-04-03T04:15:11.420912Z
-2311
+2018-04-10T12:03:52.000000Z
+8efdccfaa739ba7b0601910976781e9e
+2018-04-10T11:31:31.277295Z
+2591
 huyumin
 has-props
 
@@ -500,7 +466,7 @@ has-props
 
 
 
-789
+258
 
 transferlist_history_icon_word@2x.png
 file
@@ -535,6 +501,40 @@ has-props
 
 
 1658
+
+transferlist_history_blankpage_ai.png
+file
+
+
+
+
+2018-04-03T05:53:09.000000Z
+ecfbb7861fe0bc3bbc4fa22941b39448
+2018-04-03T04:15:11.420912Z
+2311
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+789
 
 transferlist_history_icon_img@2x.png
 file
@@ -1216,40 +1216,6 @@ has-props
 
 342
 
-transferlist_history_icon_contacts.png
-file
-
-
-
-
-2018-04-10T04:30:28.000000Z
-48343d27236bc0c3732ec21ad887157b
-2018-04-10T04:20:58.302722Z
-2556
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-566
-
 transferlist_history_icon_del@2x.png
 file
 
@@ -1283,6 +1249,40 @@ has-props
 
 
 466
+
+transferlist_history_icon_contacts.png
+file
+
+
+
+
+2018-04-10T04:30:28.000000Z
+48343d27236bc0c3732ec21ad887157b
+2018-04-10T04:20:58.302722Z
+2556
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+566
 
 transferlist_history_icon_close@2x.png
 file
@@ -1488,40 +1488,6 @@ has-props
 
 593
 
-transferlist_history_icon_common.png
-file
-
-
-
-
-2018-04-10T04:30:28.000000Z
-18f0c687b1551bdeabc1ddf9caf489c7
-2018-04-10T04:20:58.302722Z
-2556
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-286
-
 transferlist_history_icon_folder_hover@2x.png
 file
 
@@ -1555,6 +1521,40 @@ has-props
 
 
 685
+
+transferlist_history_icon_common.png
+file
+
+
+
+
+2018-04-10T04:30:28.000000Z
+18f0c687b1551bdeabc1ddf9caf489c7
+2018-04-10T04:20:58.302722Z
+2556
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+286
 
 transferlist_icon_history@2x.png
 file
@@ -1658,40 +1658,6 @@ has-props
 
 1974
 
-transferlist_icon_uploading.png
-file
-
-
-
-
-2018-04-03T10:09:59.000000Z
-0ace1ac9a1746c049c5e70e1089a57fb
-2018-04-03T10:01:44.432233Z
-2333
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-197
-
 message-box-success@2x.png
 file
 
@@ -1725,6 +1691,40 @@ has-props
 
 
 1260
+
+transferlist_icon_uploading.png
+file
+
+
+
+
+2018-04-03T10:09:59.000000Z
+0ace1ac9a1746c049c5e70e1089a57fb
+2018-04-03T10:01:44.432233Z
+2333
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+197
 
 transferlist_history_icon_ppt.png
 file
@@ -1794,40 +1794,6 @@ has-props
 
 307
 
-transferlist_history_icon_video.png
-file
-
-
-
-
-2018-04-10T04:30:28.000000Z
-eb2e961abba9121498e6efcd1d5a9776
-2018-04-10T04:20:58.302722Z
-2556
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-423
-
 transferlist_history_icon_list_folder.png
 file
 
@@ -1861,6 +1827,40 @@ has-props
 
 
 316
+
+transferlist_history_icon_video.png
+file
+
+
+
+
+2018-04-10T04:30:28.000000Z
+eb2e961abba9121498e6efcd1d5a9776
+2018-04-10T04:20:58.302722Z
+2556
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+423
 
 transferlist_history_icon_dmg.png
 file
@@ -1930,40 +1930,6 @@ has-props
 
 784
 
-transferlist_icon_start.png
-file
-
-
-
-
-2018-04-02T10:51:32.000000Z
-6965829df63f44366d76c9cbb70a7e2f
-2018-04-02T10:05:19.070057Z
-2270
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-300
-
 transferlist_icon_delall.png
 file
 
@@ -1997,6 +1963,40 @@ has-props
 
 
 595
+
+transferlist_icon_start.png
+file
+
+
+
+
+2018-04-02T10:51:32.000000Z
+6965829df63f44366d76c9cbb70a7e2f
+2018-04-02T10:05:19.070057Z
+2270
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+300
 
 transferlist_history_icon_ppt@2x.png
 file

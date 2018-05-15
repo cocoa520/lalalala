@@ -15,6 +15,8 @@
 #import "TempHelper.h"
 #import "DriveItem.h"
 #import "IMBCommonTool.h"
+#import "IMBLimitation.h"
+
 
 @implementation IMBDropBoxManage
 - (id)initWithUserID:(NSString *)userID withDelegate:(id)delegate {
@@ -234,12 +236,14 @@
 #pragma mark -- OneDrive Action
 //下载单个
 - (void)oneDriveDownloadOneItem:(_Nonnull id<DownloadAndUploadDelegate>)item {
+    [IMBLimitation sharedLimitation].isToCloud = YES;
     [[_dropbox downLoader] setDownloadPath:_downloadPath];
     [_dropbox downloadItem:item];
 }
 
 //下载多个
 - (void)driveDownloadItemsToMac:(NSArray<id<DownloadAndUploadDelegate>> *)items {
+    [IMBLimitation sharedLimitation].isToCloud = YES;
     [[_dropbox downLoader] setDownloadPath:_downloadPath];
     [_dropbox downloadItems:items];
 }

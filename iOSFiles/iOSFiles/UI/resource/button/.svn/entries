@@ -1,7 +1,7 @@
 10
 
 dir
-3712
+3753
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/resource/button
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
@@ -298,40 +298,6 @@ has-props
 
 1159
 
-backup_retreat2.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-0c5785a427c94570314302086b711caa
-2018-02-07T07:03:33.830227Z
-1253
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1530
-
 box_default1.png
 file
 
@@ -365,6 +331,40 @@ has-props
 
 
 1116
+
+backup_retreat2.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+0c5785a427c94570314302086b711caa
+2018-02-07T07:03:33.830227Z
+1253
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1530
 
 backup_retreat3.png
 file
@@ -1080,40 +1080,6 @@ has-props
 
 1240
 
-icon_newwindow_default@2x.png
-file
-
-
-
-
-2018-04-10T02:05:50.000000Z
-ec8828976414ced08926054147afca1c
-2018-04-10T01:58:45.774135Z
-2537
-huyumin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-495
-
 windowclose@2x.png
 file
 
@@ -1147,6 +1113,40 @@ has-props
 
 
 1561
+
+icon_newwindow_default@2x.png
+file
+
+
+
+
+2018-04-10T02:05:50.000000Z
+ec8828976414ced08926054147afca1c
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+495
 
 windowmin3@2x.png
 file
@@ -1386,17 +1386,17 @@ has-props
 
 1403
 
-navbar_icon_cart_big@2x.png
+navbar_icon_transtion_hover.png
 file
 
 
 
 
-2018-04-10T02:05:50.000000Z
-c54b085c4128f30e56673c9c84bd3f7a
-2018-04-10T01:58:45.774135Z
-2537
-huyumin
+2018-03-28T02:24:29.000000Z
+c709664a147f8ab4835fea7f42662e2c
+2018-03-26T02:28:02.366667Z
+1931
+hezhonglin
 has-props
 
 
@@ -1418,7 +1418,7 @@ has-props
 
 
 
-892
+685
 
 toolbar_icon_getinfo.png
 file
@@ -1454,17 +1454,17 @@ has-props
 
 175
 
-navbar_icon_transtion_hover.png
+navbar_icon_cart_big@2x.png
 file
 
 
 
 
-2018-03-28T02:24:29.000000Z
-c709664a147f8ab4835fea7f42662e2c
-2018-03-26T02:28:02.366667Z
-1931
-hezhonglin
+2018-04-10T02:05:50.000000Z
+c54b085c4128f30e56673c9c84bd3f7a
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
 has-props
 
 
@@ -1486,41 +1486,7 @@ has-props
 
 
 
-685
-
-arrow.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-d0225eb849f3e8773aada3726734fbcb
-2018-03-22T12:31:16.111098Z
-1871
-hezhonglin
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1060
+892
 
 windowclose3@2x.png
 file
@@ -1556,17 +1522,17 @@ has-props
 
 1639
 
-navbar_icon_dropdown_triangle@2x.png
+arrow.png
 file
 
 
 
 
-2018-04-10T02:05:50.000000Z
-dd9862cb9c99ea68455e71b747d3dc17
-2018-04-10T01:58:45.774135Z
-2537
-huyumin
+2018-03-28T02:24:29.000000Z
+d0225eb849f3e8773aada3726734fbcb
+2018-03-22T12:31:16.111098Z
+1871
+hezhonglin
 has-props
 
 
@@ -1588,7 +1554,7 @@ has-props
 
 
 
-286
+1060
 
 icon_newwindow_hover.png
 file
@@ -1624,17 +1590,17 @@ has-props
 
 249
 
-windowclose.png
+navbar_icon_dropdown_triangle@2x.png
 file
 
 
 
 
-2018-03-28T02:24:29.000000Z
-849c20474550546b123ffd6782bb4455
-2018-01-31T06:04:52.702396Z
-1128
-longfan
+2018-04-10T02:05:50.000000Z
+dd9862cb9c99ea68455e71b747d3dc17
+2018-04-10T01:58:45.774135Z
+2537
+huyumin
 has-props
 
 
@@ -1656,7 +1622,7 @@ has-props
 
 
 
-1227
+286
 
 icon_newwindow_default.png
 file
@@ -1692,6 +1658,40 @@ has-props
 
 261
 
+windowclose.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+849c20474550546b123ffd6782bb4455
+2018-01-31T06:04:52.702396Z
+1128
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1227
+
 backup_advance@2x.png
 file
 
@@ -1725,40 +1725,6 @@ has-props
 
 
 2018
-
-backup_retreat_no@2x.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-52a57b4672af2a9639dfd8e682191a83
-2018-02-07T07:03:33.830227Z
-1253
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1088
 
 itu_default2@2x.png
 file
@@ -1794,6 +1760,40 @@ has-props
 
 1674
 
+backup_retreat_no@2x.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+52a57b4672af2a9639dfd8e682191a83
+2018-02-07T07:03:33.830227Z
+1253
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1088
+
 navbar_icon_search1_hover@2x.png
 file
 
@@ -1828,40 +1828,6 @@ has-props
 
 1734
 
-exit2@2x.png
-file
-
-
-
-
-2018-03-28T02:24:29.000000Z
-eab83b372796abd3f73374ed5bffa08a
-2018-03-20T02:02:33.444935Z
-1754
-longfan
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1226
-
 tool_editor_normal@2x.png
 file
 
@@ -1895,6 +1861,40 @@ has-props
 
 
 1403
+
+exit2@2x.png
+file
+
+
+
+
+2018-03-28T02:24:29.000000Z
+eab83b372796abd3f73374ed5bffa08a
+2018-03-20T02:02:33.444935Z
+1754
+longfan
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1226
 
 icon_newwindow_hover@2x.png
 file
@@ -2032,17 +2032,17 @@ has-props
 
 273
 
-backup_advance_no.png
+navbar_icon_transtion.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-3d262f14de8a9869e96d0cc5778b1966
-2018-02-07T07:03:33.830227Z
-1253
-longfan
+ca76d897c4c4b6a058520af53bbe61a8
+2018-03-26T02:28:02.366667Z
+1931
+hezhonglin
 has-props
 
 
@@ -2064,7 +2064,7 @@ has-props
 
 
 
-1052
+499
 
 box_select1@2x.png
 file
@@ -2100,17 +2100,17 @@ has-props
 
 1461
 
-navbar_icon_transtion.png
+backup_advance_no.png
 file
 
 
 
 
 2018-03-28T02:24:29.000000Z
-ca76d897c4c4b6a058520af53bbe61a8
-2018-03-26T02:28:02.366667Z
-1931
-hezhonglin
+3d262f14de8a9869e96d0cc5778b1966
+2018-02-07T07:03:33.830227Z
+1253
+longfan
 has-props
 
 
@@ -2132,7 +2132,7 @@ has-props
 
 
 
-499
+1052
 
 navbar_icon_rt_back_hover@2x.png
 file

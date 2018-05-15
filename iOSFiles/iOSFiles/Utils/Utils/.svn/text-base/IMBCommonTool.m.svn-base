@@ -281,7 +281,7 @@ NSString * const IMBAlertViewDropBoxKey = @"DropBox";
 + (void)loadbookCover:(NSArray *)array ipod:(IMBiPod *)ipod {
     for (IMBBookEntity *book in array ) {
         
-        __block NSString *filePath = nil;
+        NSString *filePath = nil;
         @synchronized(self){
             NSData *data = nil;
             if ([book.extension isEqualToString:@"epub"]) {

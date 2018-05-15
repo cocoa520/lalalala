@@ -35,6 +35,7 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
 @implementation Dropbox
 @synthesize totalStorageInBytes = _totalStorageInBytes;
 @synthesize usedStorageInBytes = _usedStorageInBytes;
+
 - (void)logIn
 {
     if ([self isAuthValid]) {
@@ -488,7 +489,7 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                         dimensionDict = nil;
                     }
                 }else {
-                    [IMBLimitation sharedLimitation].leftToCloudNums --;
+//                    [IMBLimitation sharedLimitation].leftToCloudNums --;
                     [ATTracker event:CDropbox action:ADownload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                     if (dimensionDict) {
                         [dimensionDict release];
@@ -712,6 +713,9 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                                     
                                                     if (item.state == UploadStateComplete || item.state == UploadStateError) {
                                                         if (item.state == UploadStateComplete) {
+                                                            if ([IMBLimitation sharedLimitation].isToCloud) {
+                                                                [IMBLimitation sharedLimitation].leftToCloudNums --;
+                                                            }
                                                             [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                                                             if (dimensionDict) {
                                                                 [dimensionDict release];
@@ -767,6 +771,9 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                                 }
                                                 if (item.state == UploadStateComplete || item.state == UploadStateError) {
                                                     if (item.state == UploadStateComplete) {
+                                                        if ([IMBLimitation sharedLimitation].isToCloud) {
+                                                            [IMBLimitation sharedLimitation].leftToCloudNums --;
+                                                        }
                                                         [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                                                         if (dimensionDict) {
                                                             [dimensionDict release];
@@ -828,6 +835,9 @@ NSString *const TokenEndpointWithDropbox = @"https://api.dropboxapi.com/oauth2/t
                                 }
                                 if (item.state == UploadStateComplete || item.state == UploadStateError) {
                                     if (item.state == UploadStateComplete) {
+                                        if ([IMBLimitation sharedLimitation].isToCloud) {
+                                            [IMBLimitation sharedLimitation].leftToCloudNums --;
+                                        }
                                         [ATTracker event:CDropbox action:AUpload label:LSuccess labelParameters:@"1" transferCount:0 screenView:@"" userLanguageName:[TempHelper currentSelectionLanguage] customParameters:dimensionDict];
                                         if (dimensionDict) {
                                             [dimensionDict release];

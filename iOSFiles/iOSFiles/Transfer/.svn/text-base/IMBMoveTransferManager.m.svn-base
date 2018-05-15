@@ -9,6 +9,7 @@
 #import "IMBMoveTransferManager.h"
 #import "DriveItem.h"
 #import "IMBTranferViewController.h"
+#import "IMBTranferBtnManager.h"
 @implementation IMBMoveTransferManager
 @synthesize selectedAry = _selectedAry;
 @synthesize originDriveBaseManager = _originDriveBaseManager;

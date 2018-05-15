@@ -243,10 +243,6 @@
                         <action selector="unlimitClicked:" target="-2" id="bMH-mZ-ovV"/>
                     </connections>
                 </button>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-tN-BnT">
-                    <rect key="frame" x="303" y="89" width="25" height="25"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="buy_icon_bg" id="WOk-8X-tcZ"/>
-                </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWm-Ke-g5Z">
                     <rect key="frame" x="316" y="102" width="1" height="1"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Group 6" id="dWn-Ds-TiH"/>
@@ -275,6 +271,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-tN-BnT">
+                    <rect key="frame" x="304" y="90" width="25" height="25"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="buy_icon_bg" id="WOk-8X-tcZ"/>
+                </imageView>
             </subviews>
             <point key="canvasLocation" x="563" y="741.5"/>
         </customView>

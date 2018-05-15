@@ -28,6 +28,7 @@ APPKIT_EXTERN NSString * const IMBGridViewCommandANoti;
 APPKIT_EXTERN NSString * const IMBDeviceDisconnectedNoti;
 APPKIT_EXTERN NSString * const IMBRegisteredSuccessfulNoti;
 APPKIT_EXTERN NSString * const IMBLimitationNoti;
+APPKIT_EXTERN NSString * const IMBLimitationViewClosedNoti;
 
 //设备数据加载完成
 APPKIT_EXTERN NSString * const DeviceDataLoadCompletePhoto;

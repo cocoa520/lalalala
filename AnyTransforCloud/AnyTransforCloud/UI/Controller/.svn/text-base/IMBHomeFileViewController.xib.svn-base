@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19009" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBHomeFileViewController">
+            <connections>
+                <outlet property="_arrayController" destination="q7C-9g-IhE" id="aqu-Gt-C6B"/>
+                <outlet property="_collectionView" destination="P9D-iA-nsZ" id="YKe-2n-ngG"/>
+                <outlet property="_scrollView" destination="hcB-iU-ugo" id="WZP-7x-eiu"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="990" height="182"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        </customView>
+        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="hcB-iU-ugo">
+            <rect key="frame" x="0.0" y="0.0" width="990" height="182"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Elc-9X-Msr">
+                <rect key="frame" x="0.0" y="0.0" width="990" height="182"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <collectionView id="P9D-iA-nsZ" customClass="IMBBlankDraggableCollectionView">
+                        <rect key="frame" x="0.0" y="0.0" width="990" height="182"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <binding destination="q7C-9g-IhE" name="content" keyPath="arrangedObjects" id="jhR-RA-XIc"/>
+                            <binding destination="q7C-9g-IhE" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="jhR-RA-XIc" id="dQn-cj-FB4"/>
+                            <outlet property="_collectionItem" destination="TDR-0G-mvj" id="P2V-4x-q6b"/>
+                            <outlet property="itemPrototype" destination="TDR-0G-mvj" id="cVe-gb-Fa6"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Mo0-kd-MTu">
+                <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="XLd-j4-mhO">
+                <rect key="frame" x="-100" y="-100" width="15" height="143"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+        </scrollView>
+        <collectionViewItem id="TDR-0G-mvj" customClass="IMBHomeFileCollectionViewItem">
+            <connections>
+                <outlet property="view" destination="3bP-CS-cgS" id="ib5-7H-wfk"/>
+            </connections>
+        </collectionViewItem>
+        <view id="3bP-CS-cgS" customClass="IMBCollectionItemView">
+            <rect key="frame" x="0.0" y="0.0" width="176" height="182"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="101" id="xPg-sZ-gyr">
+                    <rect key="frame" x="10" y="0.0" width="138" height="172"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="HYD-oV-VNQ"/>
+                </imageView>
+                <customView id="cRS-kR-gfi" customClass="IMBFileHistoryView">
+                    <rect key="frame" x="10" y="0.0" width="156" height="172"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView id="FIY-xO-Q8F" customClass="IMBFileItemView">
+                            <rect key="frame" x="5" y="5" width="146" height="162"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="96Q-Hn-Sog">
+                                    <rect key="frame" x="28" y="70" width="90" height="72"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="def_ai" id="NP4-en-ucZ"/>
+                                    <connections>
+                                        <binding destination="TDR-0G-mvj" name="value" keyPath="representedObject.iConimage" id="yfO-mT-LAa"/>
+                                    </connections>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="J2K-cg-wwL">
+                                    <rect key="frame" x="2" y="38" width="142" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="O7M-5b-D0F">
+                                        <font key="font" size="14" name="HelveticaNeue"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="TDR-0G-mvj" name="value" keyPath="representedObject.fileName" id="4f0-kY-pLu"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="100" id="tHs-GN-WDN">
+                                    <rect key="frame" x="2" y="18" width="142" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="4eP-ow-8UU">
+                                        <font key="font" size="12" name="HelveticaNeue"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="TDR-0G-mvj" name="value" keyPath="representedObject.createdDateString" id="Srx-YV-lny"/>
+                                    </connections>
+                                </textField>
+                                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="99" id="oT9-kp-vQD">
+                                    <rect key="frame" x="45" y="145" width="4" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="eRN-cs-mEB">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="TDR-0G-mvj" name="value" keyPath="representedObject.itemIDOrPath" id="PFW-1d-uoS"/>
+                                    </connections>
+                                </textField>
+                                <button hidden="YES" verticalHuggingPriority="750" tag="1001" id="r3d-AU-Cmk" customClass="IMBToolBarButton">
+                                    <rect key="frame" x="10" y="5" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="asv-dH-XN1">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="operationFile:" target="-2" id="uDZ-PJ-3YN"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" verticalHuggingPriority="750" tag="1002" id="mYb-ez-Ao6" customClass="IMBToolBarButton">
+                                    <rect key="frame" x="44" y="5" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qTM-WS-VGd">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="operationFile:" target="-2" id="HnN-AF-vRf"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" verticalHuggingPriority="750" tag="1003" id="UV0-cz-YId" customClass="IMBToolBarButton">
+                                    <rect key="frame" x="78" y="5" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="sj4-6j-AoW">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="operationFile:" target="-2" id="q1J-xn-t9x"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" verticalHuggingPriority="750" tag="1004" id="7JJ-lf-thA" customClass="IMBToolBarButton">
+                                    <rect key="frame" x="112" y="5" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W0R-9C-3b7">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="operationFile:" target="-2" id="dvU-nC-uCx"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <connections>
+                                <outlet property="_more" destination="7JJ-lf-thA" id="N0u-BQ-dtL"/>
+                                <outlet property="_share" destination="mYb-ez-Ao6" id="9nh-tR-G5a"/>
+                                <outlet property="_star" destination="r3d-AU-Cmk" id="1CT-IS-LPw"/>
+                                <outlet property="_subTextField" destination="tHs-GN-WDN" id="Igo-LL-3Eb"/>
+                                <outlet property="_sync" destination="UV0-cz-YId" id="qLO-dP-nPh"/>
+                                <outlet property="_titleTextField" destination="J2K-cg-wwL" id="BIK-1M-p5O"/>
+                            </connections>
+                        </customView>
+                    </subviews>
+                </customView>
+            </subviews>
+        </view>
+        <arrayController objectClassName="IMBDriveModel" id="q7C-9g-IhE">
+            <declaredKeys>
+                <string>fileName</string>
+                <string>createdDateString</string>
+                <string>iConimage</string>
+                <string>itemIDOrPath</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.dataAry" id="fHS-GA-GhA"/>
+            </connections>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="Qqr-RG-cDM"/>
+    </objects>
+    <resources>
+        <image name="def_ai" width="110" height="88"/>
+    </resources>
+</document>

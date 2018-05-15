@@ -14,7 +14,6 @@
 #import "IMBSoftWareInfo.h"
 #import "IMBRegisterResultView.h"
 
-
 @interface IMBPurchaseTopVerifyController ()
 {
     BOOL _isBackspaseDown;

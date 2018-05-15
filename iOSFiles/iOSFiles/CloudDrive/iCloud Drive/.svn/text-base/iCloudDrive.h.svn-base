@@ -28,6 +28,7 @@
     BOOL _stopHearBeat;
     dispatch_queue_t _queue;
     
+    
    
     long long _totalStorageInBytes;
     long long _usedStorageInBytes;
@@ -36,6 +37,7 @@
 @property (nonatomic,assign) long long usedStorageInBytes;
 @property (nonatomic,retain)NSString *userName;
 @property (nonatomic,retain)NSMutableDictionary *cookie;
+
 /**
  *  Description 通过appleid和密码进行icloud drive登录
  *

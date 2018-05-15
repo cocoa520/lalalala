@@ -22,6 +22,9 @@
 #import "IMBPlaylistList.h"
 #import "IMBInformation.h"
 #import "IMBInformationManager.h"
+#import "IMBLimitation.h"
+
+
 @implementation IMBBetweenDeviceHandler
 @synthesize threadBreak = _threadBreak;
 @synthesize isClone = isClone;
@@ -1041,7 +1044,7 @@
 //验证app是否重复
 - (void)verifyRepeatAppBySrcDic:(NSMutableDictionary *)srcExportDic desDic:(NSMutableDictionary *)desExportDic{
     NSArray *srcAppEntities = [srcExportDic objectForKey:[NSNumber numberWithInt:Category_Applications]];
-    NSArray *desAppEntities = [desExportDic objectForKey:[NSNumber numberWithInt:Category_Applications]];
+//    NSArray *desAppEntities = [desExportDic objectForKey:[NSNumber numberWithInt:Category_Applications]];
     if (srcAppEntities.count == 0) {
         return;
     }

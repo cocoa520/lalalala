@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15G1212" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="IMBHomeCloudViewController">
+            <connections>
+                <outlet property="_arrayController" destination="psF-09-WbQ" id="WwX-gv-kYR"/>
+                <outlet property="_collectionView" destination="AV5-1q-mT4" id="hxz-K5-e0l"/>
+                <outlet property="_scrollView" destination="1Sr-NF-hQJ" id="GXQ-XG-xaW"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="990" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <animations/>
+        </customView>
+        <collectionViewItem id="BaJ-NE-fKa" customClass="IMBHomeCollectionViewItem">
+            <connections>
+                <outlet property="view" destination="G9r-ar-6mL" id="bF4-HV-kqz"/>
+            </connections>
+        </collectionViewItem>
+        <view id="G9r-ar-6mL" customClass="IMBCollectionItemView">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" tag="101" id="Yk8-4u-Tak">
+                    <rect key="frame" x="10" y="6" width="260" height="92"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="cef-1z-u00"/>
+                </imageView>
+                <customView id="YQ0-vU-9v5" customClass="IMBCloudHistoryView">
+                    <rect key="frame" x="10" y="6" width="260" height="92"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <customView id="FEe-nX-fYr" customClass="IMBCloudItemView">
+                            <rect key="frame" x="5" y="5" width="250" height="82"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5vL-4M-s4T">
+                                    <rect key="frame" x="13" y="10" width="62" height="62"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ReJ-qb-jXh"/>
+                                    <connections>
+                                        <binding destination="BaJ-NE-fKa" name="value" keyPath="representedObject.image" id="EI6-cn-Fd0"/>
+                                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isHidden" id="EVT-Zt-2bJ"/>
+                                    </connections>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OX0-da-bIx">
+                                    <rect key="frame" x="80" y="54" width="168" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" id="OMm-M2-lmP">
+                                        <font key="font" size="14" name="HelveticaNeue"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isHidden" id="OyP-so-vXX"/>
+                                        <binding destination="BaJ-NE-fKa" name="value" keyPath="representedObject.name" id="4jB-kn-HOz"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="t7p-3n-u0a">
+                                    <rect key="frame" x="80" y="34" width="168" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" id="Se5-Ag-sGL">
+                                        <font key="font" size="12" name="HelveticaNeue"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="BaJ-NE-fKa" name="value" keyPath="representedObject.email" id="ReL-I1-eLl"/>
+                                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isHidden" id="heV-DT-Mgl"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VKs-iW-gGY">
+                                    <rect key="frame" x="80" y="14" width="168" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" id="6Qd-hJ-xXW">
+                                        <font key="font" size="12" name="HelveticaNeue"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isHidden" id="6iw-7a-Ynj"/>
+                                        <binding destination="BaJ-NE-fKa" name="value" keyPath="representedObject.showSize" id="xQN-yK-sws"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <animations/>
+                            <connections>
+                                <outlet property="_emailTextField" destination="t7p-3n-u0a" id="6JX-oS-PWQ"/>
+                                <outlet property="_nameTextField" destination="OX0-da-bIx" id="tj8-0L-ZYP"/>
+                                <outlet property="_sizeTextField" destination="VKs-iW-gGY" id="FNZ-oQ-Ltt"/>
+                            </connections>
+                        </customView>
+                    </subviews>
+                    <animations/>
+                    <connections>
+                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isHidden" id="Jzt-QG-pNQ"/>
+                    </connections>
+                </customView>
+                <customView id="E70-NQ-E9j" customClass="IMBCloudHistoryView">
+                    <rect key="frame" x="10" y="6" width="148" height="92"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView id="HI8-6B-neC" customClass="IMBCloudItemView">
+                            <rect key="frame" x="5" y="5" width="138" height="82"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="c16-Np-Xfn">
+                                    <rect key="frame" x="58" y="30" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="def_addcloud" id="UhD-dZ-vhX"/>
+                                    <connections>
+                                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isAddHidden" id="4yE-ZE-dUM"/>
+                                    </connections>
+                                </imageView>
+                            </subviews>
+                            <animations/>
+                        </customView>
+                    </subviews>
+                    <animations/>
+                    <connections>
+                        <binding destination="BaJ-NE-fKa" name="hidden" keyPath="representedObject.isAddHidden" id="SCd-km-TOC"/>
+                    </connections>
+                </customView>
+            </subviews>
+            <animations/>
+        </view>
+        <arrayController objectClassName="IMBCloudEntity" id="psF-09-WbQ">
+            <declaredKeys>
+                <string>name</string>
+                <string>image</string>
+                <string>email</string>
+                <string>showSize</string>
+                <string>isHidden</string>
+                <string>isAddHidden</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.dataAry" id="cM7-wp-Mge"/>
+            </connections>
+        </arrayController>
+        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" id="1Sr-NF-hQJ">
+            <rect key="frame" x="0.0" y="0.0" width="990" height="104"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="9HH-UZ-xKc">
+                <rect key="frame" x="0.0" y="0.0" width="990" height="104"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <collectionView id="AV5-1q-mT4" customClass="IMBBlankDraggableCollectionView">
+                        <rect key="frame" x="0.0" y="0.0" width="990" height="104"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <binding destination="psF-09-WbQ" name="content" keyPath="arrangedObjects" id="evc-NL-Oyw"/>
+                            <binding destination="psF-09-WbQ" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="evc-NL-Oyw" id="ZKG-Vc-2ib"/>
+                            <outlet property="_collectionItem" destination="BaJ-NE-fKa" id="rlQ-mo-uCw"/>
+                            <outlet property="itemPrototype" destination="BaJ-NE-fKa" id="boD-nd-e1h"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <animations/>
+            </clipView>
+            <animations/>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="lfc-wZ-6Zc">
+                <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <animations/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="sPU-zc-45P">
+                <rect key="frame" x="-100" y="-100" width="15" height="143"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <animations/>
+            </scroller>
+        </scrollView>
+    </objects>
+    <resources>
+        <image name="def_addcloud" width="22" height="22"/>
+    </resources>
+</document>

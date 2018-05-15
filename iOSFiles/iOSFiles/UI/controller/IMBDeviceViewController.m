@@ -721,7 +721,9 @@ static CGFloat const SelectedBtnTextFont = 15.0f;
     dispatch_async(spatchqueue, ^{
         [information loadiBook];
         NSArray *ibooks = [information allBooksArray] ;
-        [IMBCommonTool loadbookCover:ibooks ipod:iPod];
+        if (ibooks) {
+            [IMBCommonTool loadbookCover:ibooks ipod:iPod];
+        }
         dispatch_sync(dispatch_get_main_queue(), ^{
             [iPod setBookLoadFinished:YES];
             [inforManager.informationDic setObject:information forKey:iPod.uniqueKey];

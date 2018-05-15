@@ -166,7 +166,11 @@
                             }
                         }
                     }
+                    [sonFileList release];
+                    sonFileList = nil;
                 }
+                [fileList release];
+                fileList = nil;
             }
         }
     }

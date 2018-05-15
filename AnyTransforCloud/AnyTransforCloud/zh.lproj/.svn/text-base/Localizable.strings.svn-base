@@ -1,0 +1,381 @@
+/* 
+  Localizable.strings
+  AnyTransforCloud
+
+  Created by JGehry on 10/04/2018.
+  Copyright © 2018 IMB. All rights reserved.
+*/
+/******************************  与window统一的语言  ******************************/
+
+"SoftwareName" = "AnyTrans for Cloud";
+//<!--Login View-->
+//<!--sign in view-->
+"Login_Signin_UserName" = "用户名";
+"Login_Signin_UserPassword" = "密码";
+"Login_Signin_UserConfirmPassword" = "确认密码";
+"Login_Signin_Remember" = "记住我";
+"Login_Signin_PassForgot" = "忘记密码?";
+"Login_Signin_Button" = "登录";
+"Login_Signin_OtherAuthorization" = "或继续";
+"Login_Signin_SwitchButton" = "我没有账号，";
+"Login_Signin_SwitchButton_Sub" = "点击注册";
+
+//<!--sign up view-->
+"Login_Signup_Title" = "30天免费注册，无需绑定信用卡";
+"Login_Signup_Email" = "邮箱";
+"Login_Signup_Button" = "创建账户";
+"Login_Signup_SwitchButton" = "已经有帐户了，";
+"Login_Signup_SwitchButton_Sub" = "点击登录";
+
+"Login_UserNameEmptyTips" = "请输入用户名";
+"Login_UserNameValidTips" = "请输入有效的用户名";
+"Login_LenghtTips" = "你至少需要输入6个字符";
+"Login_PassLenghtMaxTips" = "你输入的密码过长，请重新输入";
+"Login_NameLenghtMaxTips" = "你输入的用户名过长，请重新输入";
+"Login_NameLenghtMixTips" = "你输入的用户名过短，请重新输入";
+"Login_PasswordEmptyTips" = "请输入密码";
+//"Login_PasswordValidTips" = "请输入有效的密码";
+"Login_PasswordValidTips" = "密码必须包含数字和字母";
+"Login_PasswordComfirmErrorTips" = "密码输入不一致";
+"Login_EmailEmptyTips" = "请输入邮箱";
+"Login_EmailValidTips" = "请输入有效的邮箱";
+"Login_ErrorTips" = "登录失败，请重试!";
+"Login_Registered_ErrorTips" = "注册失败，请重试!";
+"Login_Registered_ErrorTips1" = "邮箱已被注册，请重新输入!";
+"Login_Registered_ErrorTips2" = "用户名和密码输入有误，请重新输入!";
+"Login_Registered_Exception"="请确保网络正常链接!";
+
+"Login_AuthCode_ErrorTips" = "请输入正确的验证码";
+"Login_AuthCode_BackBtn"="返回";
+"Login_AuthCode_ForgotTips"="我没有收到验证码？";
+
+"CacheEntryNotFound" = "找不到指定的缓存项";
+"ConnectFailure" = "无法联系远程服务";
+"ConnectionClosed" = "远程服务器连接断开";
+"KeepAliveFailure" = "请求的连接意外关闭";
+"MessageLengthLimitExceeded" = "发送请求时超出指定的限制或从服务器接收响应";
+"ProtocolError" = "服务器拒绝访问";
+"ReceiveFailure" = "远程服务器未收到完整的响应";
+"RequestCanceled" = "请求已取消";
+"SendFailure" = "无法与远程服务器发送一个完整的请求";
+"Timeout" = "请求超时, 请重新尝试";
+"TrustFailure" = "无法验证服务器证书";
+"NameResolutionFailure" = "无法链接服务器，请确保网络正常链接";
+
+"Lock_View_Title" = "AnyTrans for Cloud已锁定";
+"Lock_View_Title2" = "你可以请输入登录密码解除锁定";
+"Lock_View_Button" = "解锁";
+"Lock_View_ErrorTips" = "发生未知错误，请重新登录!";
+"Lock_View_ErrorTips1" = "解锁失败，请重试!"; //没有和win统一的
+
+"faGoogleControl_Title_Tips" = "Two-Factor Authentication";
+"faGoogleControl_Description_Tips" = "请输入动态验证码";
+"faGoogleControl_AuthCode_Tips" = "验证码";
+"faGoogleControl_BtnContent_Tips" = "验证";
+
+//<!--Add Cloud View-->
+"AddCloud_Title" = "欢迎使用AnyTrans for Cloud";
+"AddCloud_SubTitle" = "请添加您的云盘, AnyTrans for Cloud帮您把所有的云盘集中在一起管理，方便快捷传输文件";
+"AddCloud_Classify_Popular" = "推荐云盘";
+"AddCloud_Classify_Personal" = "个人云盘";
+"AddCloud_Button_Content" = "添加";
+"AddCloud_Result" = "添加云盘成功";
+"AddCloud_Result_Fialed_AlreadyExist" = "添加云盘失败，当前已经存在所添加的云";
+"AddCloud_Result1" = "添加云盘成功";
+"AddCloud_PopoverView_Title" = "%@ cloud disk added successfully, click to view";//没有和win统一的
+"AddCloud_Classify_My" = "我的云盘";//没有和win统一的
+
+"AddCloud_Classify_App" = "应用程序";
+"AddCloud_Classify_Business" = "商业云盘";
+"AddCloud_Classify_Other" = "其它云盘";
+"AddCloud_Others_Button_Content"="添加云盘";
+"AddCloud_Authorized_Title"="网盘是否授权成功?";
+"AddCloud_Authorized_Describe"="网盘管理需要添加网盘并授权，如果授权成功请点击刷新按钮，如果未授权成功请再次授权。";
+"AddCloud_Authorized_AuthButton"="我已授权";
+
+
+//<!--Menu View-->
+"Menu_AddCloud_Tips" = "添加云盘";
+"Menu_ShareCloud_Tips" = "分享";
+"Menu_FavoriteCloud_Tips" = "收藏";
+"Menu_HistoryCloud_Tips" = "历史记录";
+"Menu_TrashCloud_Tips" = "垃圾箱";
+"Menu_ExitCloud_Tips" = "退出";
+"Menu_MoreCloud_Tips" = "更多";
+"Menu_LockCloud_Tips" = "锁定";
+"Menu_HomePage" = "主页";
+"Menu_Setting" = "设置";
+"Menu_ChangePass" = "更改密码";
+"Menu_Help" = "帮助";
+"Menu_About" = "关于";
+"Menu_SingOut" = "登出";
+
+"HomeViewTitle" = "欢迎，%@!";
+"HomeView_Upgrade" = "升级";
+"HomeView_Edit" = "编辑信息";
+"HomeView_Recent" = "最近访问";
+"HomeView_Cloud_Capacity" = "免费空间:%@/%@";
+"HomeView_Last_Date" = "最近访问时间";
+"HomeView_Frequent" = "频繁访问";
+"HomeView_Search" = "搜索云盘";
+"HomeView_Task_Tips" = "完成任务以获得更多的流量，";
+"HomeView_Task_Tips1" = "现在就去";
+
+"Date_Today" = "今天";
+"Date_Yesterday" = "昨天";
+"Date_Tomorrow" = "明天";
+"Item_id_1" = "项目";
+"Item_id_2" = "items";
+"Button_Ok" = "好";
+"Button_Cancel" = "取消";
+"Button_Yes" = "确定";
+"Button_No" = "不";
+"Button_Continue" = "继续";
+"Button_Stop" = "停止";
+"Button_Select" = "选择";
+"Button_Save" = "保存";
+"Button_IKnown" = "好，我知道";
+"Button_Retry" = "重试";
+"Button_Next"="下一步";
+"Mouse_Right_Menu_1" = "拷贝";
+"Mouse_Right_Menu_2" = "下载";
+"Mouse_Right_Menu_3" = "上传";
+"Mouse_Right_Menu_4" = "删除";
+"Mouse_Right_Menu_5" = "重命名";
+"Mouse_Right_Menu_6" = "刷新";
+"Mouse_Right_Menu_7" = "New Folder";
+"Mouse_Right_Menu_8" = "Cut";
+"Mouse_Right_Menu_9" = "Copy";
+"Mouse_Right_Menu_10" = "Paste";
+"Mouse_Right_Menu_11" = "同步";
+"Mouse_Right_Menu_12" = "分享";
+"Mouse_Right_Menu_13" = "收藏";
+"Mouse_Right_Menu_14" = "移动";
+"Mouse_Right_Menu_15" = "详细信息";
+"Mouse_Right_Menu_16" = "排序";
+"Mouse_Right_Menu_17" = "视图模式";
+"Mouse_Right_Menu_18" = "列表模式";
+"Mouse_Right_Menu_19" = "按时间排序";
+"Mouse_Right_Menu_20" = "按名称排序";
+"Mouse_Right_Menu_21" = "按大小排序";
+"Mouse_Right_Menu_22" = "预览";
+
+"List_Header_Name_1" = "名称";
+"List_Header_Name_2" = "大小";
+"List_Header_Name_3" = "修改时间";
+"List_Header_Name_4" = "类别";
+
+"AccountHomePage_RV" = "常用云盘";
+"AccountHomePage_FV" = "最近访问";
+"AccountHomePage_Upgreate" = "升级";
+"AccountHomePage_EditUserInfo" = "编辑个人信息";
+"AccountHomePage_FileNotExists" = "选择的文件不存在";
+"AccountHomePage_FolderNotExists" = "选择的文件夹不存在";
+"AccountHomePage_TimrConvert1" = "%@天前";
+"AccountHomePage_TimrConvert2" = "今天";
+"AccountHomePage_TimrConvert3" = "昨天";
+"AccountHomePage_LastVisit" = "最后访问:";
+"AccountHomePage_FreeSize" = "容量:%@";
+"AccountHomePage_More" = "更多";
+"AccountHomePage_NodataFV" = "没有最近访问的文件";
+
+"Unit_B" = "B";
+"Unit_KB" = "KB";
+"Unit_MB" = "MB";
+"Unit_G" = "GB";
+"Unit_T" = "T";
+
+"TopControl_Add" = "新建";
+"TopControl_NewFolder" = "新建文件夹";
+"TopControl_FileUpload" = "文件上传";
+"TopControl_FolderUpload" = "文件夹上传";
+"TopControl_NewSync" = "新建同步";
+"TopControl_NewCloud" = "添加云盘";
+
+//添加云盘
+"AddCloud_amaon" = "amaon";
+"AddCloud_box" = "box";
+"AddCloud_dropBox" = "dropBox";
+"AddCloud_faceBook" = "faceBook";
+"AddCloud_google" = "google";
+"AddCloud_googlePhoto" = "googlePhoto";
+"AddCloud_ins" = "ins";
+"AddCloud_oneDrive" = "oneDrive";
+"AddCloud_sumsung" = "sumsung";
+"AddCloud_twitter" = "twitter";
+"AddCloud_pCloud" = "pCloud";
+"AddCloud_people" = "%d people";
+"AddCloud_Add" = "Add";
+"AddCloud_iCloudDrive" = "iCloud Drive";
+
+//搜索
+"SearchControl_Tips" = "搜索云盘";
+"SearchControl_Type" = "类型";
+"SearchControl_Type1" = "任何类型";
+"SearchControl_Type2" = "视频";
+"SearchControl_Type3" = "文档";
+"SearchControl_Type4" = "图片";
+"SearchControl_Type5" = "文件夹";
+"SearchControl_Type6" = "音频";
+"SearchControl_Time" = "修改日期";
+"SearchControl_Time1" = "任何时间";
+"SearchControl_Time2" = "今天";
+"SearchControl_Time3" = "昨天";
+"SearchControl_Time4" = "最近7天";
+"SearchControl_Time5" = "最近30天";
+"SearchControl_CloudName" = "云盘名称";
+"SearchControl_AllCloud" = "所有云盘";
+
+////重命名
+//"CWTip_RenameFile" = "当前包含相同名字的文件，是否要重命名为%@？";
+//"CWTip_RenameFolder" = "当前包含相同名字的文件夹，是否将该文件夹重命名为%@？";
+//"RenameIllegaChar" = "名字中包含了非法字符： \"%@\"";
+
+//传输文字
+//"TransferToPCView_NotExist_tips" = "文件已经不存在";
+//"MG_Transfering_tips" = "包含正在传输的项，请您重新选择操作";
+//"MG_TransferingItem_tips" = "预览的项正在传输，请稍后再试";
+//"MG_OperateRenameItem_tips" = "请选中后再进行操作";
+//"FileManagerMenuItem_MoveConfirm1" = "您确定要移动所选的项吗?";
+//"FileManagerMenuItem_MoveConfirm" = "您确定要移动所选的项吗?";
+
+"TransferControl_Sync1" = "同步任务";
+"TransferControl_Sync2" = "同步列表";
+"TransferControl_Sync3" = "完成同步";
+"TransferControl_Transfer1" = "正在上传";
+"TransferControl_Transfer2" = "正在下载";
+"TransferControl_Transfer3" = "已经完成";
+"TransferControl_Transfer4" = "%d个在传输中";
+"TransferControl_Transfer5" = "所有暂停";
+"TransferControl_Transfer6" = "所有删除";
+"TransferControl_Transfer7" = "确定删除所有数据？";
+"TransferControl_Transfer8" = "%d传输完成";
+"TransferControl_Transfer9" = "%d传输失败";
+
+"TransferControl_Tips" = "%d个任务正在";
+"TransferControl_Tips1" = "%d个任务正在";
+"TransferControl_Uploading" = "上传";
+"TransferControl_Downloading" = "下载";
+"TransferControl_Syncing" = "同步";
+"TransferControl_NoDataTitle" = "暂时没有同步任务";
+"TransferControl_NoDataTips" = "您还没有正在执行的任务哦,";
+"TransferControl_CreateTask" = "立即创建";
+"MainTopTips_copyTips"="拷贝文件中...";
+"CopyProgressTips"="拷贝文件完成，拷贝了%d/%d";
+"MainTopTips_cutTips"="剪切文件中...";
+"CutProgressTips"="剪切文件完成，剪切了%d/%d";
+"SyncFileTaskControl_TimeCustom"="自定义";
+"SyncFileTaskControl_TimeDay"="每天";
+"SyncFileTaskControl_TimeWeek"="每周";
+"SyncFileTaskControl_TimeMouth"="每月";
+"SyncFileTaskControl_Mode_Title"="双向同步";
+"SyncFileTaskControl_Mode_Tips"="在同步进行时终始保持源目录和目标目录中的文件完全一致。";
+
+"SyncFilesControl_Title" = "文件同步";
+"SyncFilesControl_Tip" = "AnyTrans is the world's ONLY manager that covers all your important mobile data &amp; files. First time ever, you’ve got a one-stop solution to fully and freely manage them across iOS, Android";
+"SyncFilesControl_Sync" = "同步到";
+"SyncFilesControl_Help" = "更多帮助 >";
+"SyncFilesControl_SourceTitle" = "源数据";
+"SyncFilesControl_TargetTitle" = "目标数据";
+"MoveFileWindowTitle" = "选择一个您想移动的目标位置：";
+"MainTopTips_preView" = "预览“%@”中...";
+"MainTopTips_deleteTips" = "删除文件中...";
+"MoveFileProgressTips" = "删除文件中，删除了%@/%@";
+"SyncFileTaskControl_TaskName" = "我的同步任务";
+"SyncFileTaskControl_Edit" = "编辑标题";
+"SyncFileTaskControl_SetTime" = "设置时间";
+"SyncFileTaskControl_Immediately" = "立刻开始";
+"SyncFileTaskControl_Mode1_Title" = "双向同步";
+"SyncFileTaskControl_Mode1_Tips" = "From iPhone, iPad, iPod touch to Android phone/tablet";
+"SyncFileTaskControl_Mode2_Title" = "单向同步";
+"SyncFileTaskControl_Mode2_Tips" = "From iPhone, iPad, iPod touch to Android phone/tablet";
+"SyncFileTaskControl_Mode3_Title" = "单向累加同步";
+"SyncFileTaskControl_Mode3_Tips" = "From iPhone, iPad, iPod touch to Android phone/tablet";
+//详情页面
+"DetailView_Information_TotalSize"="总大小";
+"DetailView_Information_FreeSize"="剩余大小";
+"DetailView_Information_CreateTime"="创建时间";
+"DetailView_Information_ModifyTime"="修改时间";
+"DetailView_Information_CloudPath"="路径";
+"DetailView_Information_Contains"="包含";
+
+//提示语
+"CWTitle_FileNotExist"="没有找到文件";
+"CWTitle_RemoveCloud"="您确定要移除\"%@\"?";
+"CWTitle_FileRenameNotSelect"="文件重命名";
+"CWTitle_FileNameError"="文件名无效";
+"CWTitle_FileIsTransfering"="操作无效";
+"CWTitle_NoFolderMove"="无法执行移动操作";
+"CWTitle_NoFileMove"="没有可移动的文件";
+"CWTitle_MoveFile"="移动文件";
+"CWTitle_FileIsTransfreingOpen"="预览失败";
+"CWTitle_PasteFileError"="粘贴文件失败";
+"CWTitle_ExitCloud"="退出登录";
+"CWTitle_Rename"="重命名";
+"CWTitle_SyncTaskCancel"="取消同步任务";
+"CWTitle_RemoveCloudFailed"="移除失败";
+"CWTip_FileNotExist"="该文件已经被删除";
+"CWTip_RemoveCloud"="移除之后需要重新添加";
+"CWTip_AddCloudFailed"="云盘添加失败，请稍后再试！";
+"CWTip_FileRenameNotSelect"="请选中一个后再进行重命名";
+"CWTip_FileNameError"="文件名中不能包含字符：\"%@\"";
+"CWTip_FileIsTransfering"="包含正在传输的项，请您重新选择操作";
+"CWTip_NoFolderMove"="移动的目标文件不存在或已经被删除";
+"CWTip_NoFileMove"="请重新选择需要移动的文件";
+"CWTip_MoveFile"="您确定要移动所选的项吗?";
+"CWTip_MoveFile1"="您确定要移动所选的项吗?";
+"CWTip_FileIsTransfreingOpen"="预览的项正在传输，请稍后再试";
+"CWTip_PasteFileError"="目标文件夹是源文件件集合里面某一个的子文件夹";
+"CWTip_ExitCloud"="你确定要退出当前账户吗?";
+"CWTip_RenameFolder"="当前包含相同名字的文件夹，是否将该文件夹重命名为%@？";
+"CWTip_RenameFile"="当前包含相同名字的文件，是否要重命名为%@？";
+"CWTip_SyncTaskCancel"="你确定要取消当前同步任务吗？";
+"CWTip_RemoveCloudFailed"="移除\"%@\"失败，请重试!";
+
+"CWTip_RenameNeedInputName"="必须输入文件名";
+"CWTitle_RenameNeedInputName"="文件命名失败";
+//nodata
+"NoData_FileAddButton" = "添加";
+"NoData_FileAdd" = "更多文件";
+"AddCloud_Others_Button_Content" = "添加云盘";
+"NoData_CloudAdd" = "以开始管理云盘数据";
+"NoData_Transfer_title" = "暂时没有任务";
+"NoData_Transfer_subtitle" = "您还没有正在执行的任务，快去操作吧";
+
+/******************************  与window统一的语言  ******************************/
+"transfer_progrss" = "传输%d%%";
+"transfer_failed" = "failed";
+"unknown_id" = "Unknown";
+"verificationCode_notReceive" = "I did not receive a verification code？";
+"backBtn_id" = "Back";
+"Login_unLock_PassForgot" = "忘记密码? 请点击找回您的密码";
+
+"detailView_id_1" = "总大小：";
+"detailView_id_2" = "剩余大小：";
+"detailView_id_3" = "邮箱：";
+"detailView_id_4" = "路径：";
+"detailView_id_5" = "包含：";
+"detailView_id_6" = "大小：";
+"detailView_id_7" = "创建时间：";
+"detailView_id_8" = "修改时间：";
+
+"AddCloud_ReAuthorized_AuthButton"="重新授权";
+
+"AddCloud_AuthorizedFailed_Title"="授权失败";
+"AddCloud_AuthorizedFailed_Describe"="请重新授权，授权后可管理云盘文件。";
+
+//2018.5.8  add
+"CreateFolder_Complete_tip_Str" = "新建完成";
+"deleteFile_Complete_tip_Str" = "删除完成";
+"MoveFile_Complete_tip_Str" = "移动完成";
+"ReName_Complete_tip_Str" = "重命名完成";
+"copyFile_Complete_tip_Str" = "拷贝完成";
+"CreateFolder_Fail_tip_Str" = "新建失败";
+"MoveFile_Fail_tip_Str" = "移动失败";
+"copyFile_Fail_tip_Str" = "拷贝失败";
+"deleteFile_Fail_tip_Str" = "删除失败";
+"ReName_Fail_tip_Str" = "重命名失败";
+
+"CWTip_DeleteFile"="您确定要删除所选的项吗?";
+
+"CWTip_Rename_NameRepeat"="名称“%@”已被占用，请选取其他名称。";

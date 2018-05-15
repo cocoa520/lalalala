@@ -1,14 +1,14 @@
 10
 
 dir
-3712
+3753
 http://hezhonglin@192.168.0.2:8080/svn/Mac/JPProject/iOSFiles/iOSFiles/UI/controller
 http://hezhonglin@192.168.0.2:8080/svn/Mac
 
 
 
-2018-05-10T11:22:47.805072Z
-3707
+2018-05-12T08:34:08.619206Z
+3752
 longfan
 
 
@@ -334,14 +334,14 @@ longfan
 
 IMBMainPageViewController.m
 file
+3781
 
 
 
-
-2018-05-10T06:54:42.000000Z
-bf5f5eb9284f6e9bd89928188949d8e2
-2018-05-10T06:56:39.195825Z
-3688
+2018-05-14T10:34:04.000000Z
+a0a260b921f8a9a9af4bcd6e9d1cda4a
+2018-05-14T10:45:35.259795Z
+3781
 hezhonglin
 
 
@@ -364,7 +364,7 @@ hezhonglin
 
 
 
-51760
+52917
 
 IMBTransferViewController.m
 file
@@ -470,14 +470,14 @@ longfan
 
 IMBTranferViewController.xib
 file
+3786
 
 
 
-
-2018-05-02T04:10:44.000000Z
-7a41d4df47561e2f5baf9910e84c2ff6
-2018-05-02T06:55:37.768785Z
-3385
+2018-05-15T01:26:05.000000Z
+ad6d9e6554db78427e9a34451b5a1286
+2018-05-15T01:56:31.656194Z
+3786
 hezhonglin
 
 
@@ -508,10 +508,10 @@ file
 
 
 
-2018-04-10T12:03:52.000000Z
-bbb9c7cf48a0d032295e3a2831c6e42a
-2018-04-10T11:33:02.849456Z
-2593
+2018-05-14T00:59:35.000000Z
+d481e537949b65ba62d9009dd1fa0a62
+2018-05-12T08:34:08.619206Z
+3752
 longfan
 
 
@@ -535,40 +535,6 @@ longfan
 
 
 18947
-
-IMBAppsListViewController.h
-file
-
-
-
-
-2018-03-28T02:24:28.000000Z
-3294326cfc0af419d0d7561159bb31bb
-2018-03-08T09:16:51.709655Z
-1584
-longfan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2494
 
 IMBDeviceViewController.h
 file
@@ -604,8 +570,39 @@ longfan
 
 4602
 
-purchaseController
-dir
+IMBAppsListViewController.h
+file
+
+
+
+
+2018-03-28T02:24:28.000000Z
+3294326cfc0af419d0d7561159bb31bb
+2018-03-08T09:16:51.709655Z
+1584
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2494
 
 IMBTranferViewController.h
 file
@@ -641,6 +638,9 @@ hezhonglin
 
 6430
 
+purchaseController
+dir
+
 IMBDownloadListViewController.h
 file
 
@@ -675,6 +675,40 @@ longfan
 
 4471
 
+IMBDeviceViewController.m
+file
+
+
+
+
+2018-05-14T00:59:35.000000Z
+013a70c0a0d650fcb1939f3f95ff1d9a
+2018-05-12T07:34:32.671725Z
+3751
+longfan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+61173
+
 IMBAppsListViewController.m
 file
 
@@ -708,40 +742,6 @@ longfan
 
 
 65378
-
-IMBDeviceViewController.m
-file
-
-
-
-
-2018-05-04T02:13:22.000000Z
-c39e4853692158dafeb3a72d4446186f
-2018-05-04T02:14:11.437434Z
-3469
-hezhonglin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-61137
 
 IMBDevicePopoverViewController.xib
 file
@@ -779,14 +779,14 @@ hezhonglin
 
 IMBTranferViewController.m
 file
-3716
+3786
 
 
 
-2018-05-11T02:05:21.000000Z
-4ad6e0ed5b679b580e34175cc900c83d
-2018-05-11T02:31:23.972825Z
-3716
+2018-05-15T01:35:13.000000Z
+3c7f8ff792f328047b8dc9ce6baa012c
+2018-05-15T01:56:31.656194Z
+3786
 hezhonglin
 
 
@@ -809,18 +809,18 @@ hezhonglin
 
 
 
-31312
+31264
 
 IMBDownloadListViewController.m
 file
-3731
+3767
 
 
 
-2018-05-11T04:10:56.000000Z
-e5a5a0b675b663dad3a69295fe214482
-2018-05-11T04:18:39.514528Z
-3731
+2018-05-14T08:16:23.000000Z
+cd58cf8c461f6d68c5c015bae8b574a9
+2018-05-14T08:23:28.253618Z
+3767
 hezhonglin
 
 
@@ -843,7 +843,7 @@ hezhonglin
 
 
 
-93544
+96683
 
 IMBDevViewController.xib
 file
@@ -1333,10 +1333,10 @@ file
 
 
 
-2018-04-13T00:55:29.000000Z
-e3a6f3dc68dbe35a94428b97b13b0e0f
-2018-04-12T07:37:02.132121Z
-2696
+2018-05-14T00:59:36.000000Z
+5232b80de42d36db0f32e7dfb5dca3f6
+2018-05-12T07:10:50.947628Z
+3750
 longfan
 
 
@@ -1363,14 +1363,14 @@ longfan
 
 IMBiCloudDriverViewController.m
 file
+3789
 
 
 
-
-2018-05-09T10:53:32.000000Z
-26f519b1aca5bb76274f6c511e05f3c0
-2018-05-10T03:40:56.914800Z
-3679
+2018-05-15T02:46:52.000000Z
+83cb918b64b519a1d2eed90653e924d4
+2018-05-15T02:49:54.139019Z
+3789
 hezhonglin
 
 
@@ -1393,7 +1393,7 @@ hezhonglin
 
 
 
-99506
+102366
 
 IMBSystemCollectionViewController.h
 file

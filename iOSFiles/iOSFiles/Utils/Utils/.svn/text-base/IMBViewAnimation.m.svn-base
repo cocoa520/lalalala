@@ -234,9 +234,10 @@ static CGFloat const IMBViewAnimInterval = 0.12f;
     [NSAnimationContext endGrouping];
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [view.animator setFrame:frame];
         [context setDuration:timeInterval];
         [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-        [view.animator setFrame:frame];
+        
     } completionHandler:completion];
     
     

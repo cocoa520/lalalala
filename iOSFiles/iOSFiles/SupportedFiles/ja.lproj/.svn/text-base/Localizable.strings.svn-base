@@ -179,6 +179,8 @@
 "MSG_AddPhotoToDefaultAlbum" = "AllFilesからの写真";
 "MSG_COM_Update_DataBase" = "データベースを更新中、少々お待ちください…";
 
+"MSG_NO_Network_Tips" = "インターネットに接続されていないため、クラウドドライバーの操作に失敗しました。ネットに正常に接続できることを確認してから、もう一度お試しください。";
+
 "TransferDevice_Message_Caution" = "データのマージが終了するまで、デバイスの接続を切断しないでください。";
 "ImportSync_id_1" = "同期の準備中、少々お待ちください...";
 "ImportSync_id_2" = "デバイスのデータを準備中、少々お待ちください...";
