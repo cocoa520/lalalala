@@ -1,6 +1,0 @@
-framework module IMBAirTrafficHost64 {
-  umbrella header "IMBAirTrafficHost64.h"
-
-  export *
-  module * { export * }
-}

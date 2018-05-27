@@ -1,6 +1,0 @@
-framework module IMBAndroidDevice {
-  umbrella header "IMBAndroidDevice.h"
-
-  export *
-  module * { export * }
-}
